@@ -1,0 +1,15 @@
+---
+title: "IOverboughtOversoldEvents"
+type: "interface"
+source: "https://www.amcharts.com/docs/v5/reference/ioverboughtoversoldevents/"
+scraped: "2026-03-15"
+---
+
+Inheritance
+
+## Inheritance
+
+Extends: IChartIndicatorEvents
+Extended by: ICommodityChannelIndexEvents, IRelativeStrengthIndexEvents, IStochasticMomentumIndexEvents, IStochasticOscillatorEvents, IWilliamsREvents
+
+> **Note:** This class also inherits all settings, properties, methods, and events from IChartIndicatorEvents (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.

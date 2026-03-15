@@ -17,6 +17,7 @@ const SKILL_DIR = existsSync(SUBMODULE_DIR) ? SUBMODULE_DIR : CONTENT_DIR;
 const REFERENCES_DIR = existsSync(join(SKILL_DIR, "references"))
   ? join(SKILL_DIR, "references")
   : SKILL_DIR;
+const EXTENDED_DIR = join(ROOT, "extended");
 
 // ---------------------------------------------------------------------------
 // Load and index all content at startup
@@ -24,6 +25,12 @@ const REFERENCES_DIR = existsSync(join(SKILL_DIR, "references"))
 
 /** @type {Map<string, {title: string, content: string, sections: {heading: string, body: string}[]}>} */
 const docs = new Map();
+
+/** @type {Map<string, {title: string, content: string, sections: {heading: string, body: string}[], path: string}>} */
+const extendedDocs = new Map();
+
+/** @type {Map<string, {title: string, category: string, content: string, source: string}>} */
+const examples = new Map();
 
 /** Chart type aliases → reference file mapping */
 const CHART_TYPE_MAP = {
@@ -120,6 +127,51 @@ function loadContent() {
 }
 
 loadContent();
+
+// ---------------------------------------------------------------------------
+// Load extended docs and examples
+// ---------------------------------------------------------------------------
+
+function loadExtendedDir(dir, prefix = "") {
+  if (!existsSync(dir)) return;
+  const entries = readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      loadExtendedDir(fullPath, prefix ? `${prefix}/${entry.name}` : entry.name);
+    } else if (entry.name.endsWith(".md")) {
+      const key = prefix ? `${prefix}/${entry.name.replace(".md", "")}` : entry.name.replace(".md", "");
+      const content = readFileSync(fullPath, "utf-8");
+
+      // Parse frontmatter
+      const fmMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+      const body = fmMatch ? fmMatch[2].trim() : content;
+      const fm = fmMatch ? fmMatch[1] : "";
+      const titleMatch = fm.match(/title:\s*"(.+?)"/);
+      const categoryMatch = fm.match(/category:\s*"(.+?)"/);
+      const sourceMatch = fm.match(/source:\s*"(.+?)"/);
+      const title = titleMatch ? titleMatch[1] : entry.name.replace(".md", "");
+
+      if (key.startsWith("examples/")) {
+        examples.set(key, {
+          title,
+          category: categoryMatch ? categoryMatch[1] : "",
+          content: body,
+          source: sourceMatch ? sourceMatch[1] : "",
+        });
+      } else {
+        extendedDocs.set(key, {
+          title,
+          content: body,
+          sections: parseSections(body),
+          path: key,
+        });
+      }
+    }
+  }
+}
+
+loadExtendedDir(EXTENDED_DIR);
 
 // ---------------------------------------------------------------------------
 // Search helpers
@@ -312,6 +364,150 @@ server.tool(
     }
     text += `## ${setupSection.heading}\n${setupSection.body}`;
 
+    return { content: [{ type: "text", text }] };
+  }
+);
+
+// --- Tool: search_all ---
+server.tool(
+  "search_all",
+  "Search across ALL amCharts 5 content: skill references, full documentation, and code examples. Use this for broad searches across everything.",
+  {
+    query: z.string().describe("Search query, e.g. 'react integration', 'date axis formatting', 'stacked bar example'"),
+    maxResults: z.number().optional().default(10).describe("Maximum results (default 10)"),
+  },
+  async ({ query, maxResults }) => {
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    const results = [];
+
+    // Search skill docs
+    for (const [name, doc] of docs) {
+      for (const section of doc.sections) {
+        const text = (section.heading + " " + section.body).toLowerCase();
+        const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
+        if (score > 0) {
+          results.push({ source: `skill/${name}`, title: doc.title, heading: section.heading, preview: section.body.slice(0, 300), score: score + 0.1, type: "skill" });
+        }
+      }
+    }
+
+    // Search extended docs
+    for (const [key, doc] of extendedDocs) {
+      for (const section of doc.sections) {
+        const text = (section.heading + " " + section.body).toLowerCase();
+        const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
+        if (score > 0) {
+          results.push({ source: key, title: doc.title, heading: section.heading, preview: section.body.slice(0, 300), score, type: "docs" });
+        }
+      }
+    }
+
+    // Search examples
+    for (const [key, ex] of examples) {
+      const text = (ex.title + " " + ex.category + " " + ex.content).toLowerCase();
+      const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
+      if (score > 0) {
+        results.push({ source: key, title: ex.title, heading: ex.category, preview: ex.content.slice(0, 300), score, type: "example" });
+      }
+    }
+
+    results.sort((a, b) => b.score - a.score);
+    const top = results.slice(0, maxResults);
+
+    if (top.length === 0) {
+      return { content: [{ type: "text", text: `No results found for "${query}".` }] };
+    }
+
+    let text = `# Search results for "${query}" (${results.length} total, showing ${top.length})\n\n`;
+    for (const r of top) {
+      text += `## [${r.type}] ${r.title}${r.heading ? ` → ${r.heading}` : ""}\n`;
+      text += `*Source: ${r.source} | Relevance: ${r.score}*\n\n`;
+      text += r.preview + "\n\n---\n\n";
+    }
+    return { content: [{ type: "text", text }] };
+  }
+);
+
+// --- Tool: get_doc ---
+server.tool(
+  "get_doc",
+  "Get a full documentation page from the extended amCharts 5 docs. Use search_all first to find the right path.",
+  {
+    path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react'"),
+  },
+  async ({ path: docPath }) => {
+    const key = docPath.replace(/^\/|\/$/g, "").replace(/\.md$/, "");
+    const doc = extendedDocs.get(key);
+    if (!doc) {
+      // List available top-level paths
+      const paths = [...extendedDocs.keys()];
+      const topLevel = [...new Set(paths.map(p => p.split("/")[0]))].sort();
+      return {
+        content: [{ type: "text", text: `Doc "${key}" not found.\n\nAvailable top-level sections: ${topLevel.join(", ")}\n\nUse search_all to find the right path.` }],
+      };
+    }
+    return { content: [{ type: "text", text: `# ${doc.title}\n\n${doc.content}` }] };
+  }
+);
+
+// --- Tool: list_examples ---
+server.tool(
+  "list_examples",
+  "List all available amCharts 5 code examples, optionally filtered by category.",
+  {
+    category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid'. Omit to list all categories."),
+  },
+  async ({ category }) => {
+    if (!category) {
+      // List categories with counts
+      const cats = {};
+      for (const [, ex] of examples) {
+        cats[ex.category] = (cats[ex.category] || 0) + 1;
+      }
+      let text = "# amCharts 5 — Example Categories\n\n";
+      for (const [cat, count] of Object.entries(cats).sort((a, b) => a[0].localeCompare(b[0]))) {
+        text += `- **${cat}** (${count} examples)\n`;
+      }
+      text += `\n**Total: ${examples.size} examples**\n`;
+      text += "\nUse list_examples with a category to see all examples in that category.";
+      return { content: [{ type: "text", text }] };
+    }
+
+    const matching = [...examples.entries()]
+      .filter(([, ex]) => ex.category === category)
+      .sort((a, b) => a[1].title.localeCompare(b[1].title));
+
+    if (matching.length === 0) {
+      const cats = [...new Set([...examples.values()].map(e => e.category))].sort();
+      return { content: [{ type: "text", text: `No examples in category "${category}".\n\nAvailable: ${cats.join(", ")}` }] };
+    }
+
+    let text = `# ${category} examples (${matching.length})\n\n`;
+    for (const [key, ex] of matching) {
+      text += `- **${ex.title}** — \`${key}\`\n`;
+    }
+    text += "\nUse get_example with the path to get the full code.";
+    return { content: [{ type: "text", text }] };
+  }
+);
+
+// --- Tool: get_example ---
+server.tool(
+  "get_example",
+  "Get the full code for a specific amCharts 5 example/demo. Use list_examples or search_all to find the path.",
+  {
+    path: z.string().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map'"),
+  },
+  async ({ path: exPath }) => {
+    const key = exPath.replace(/^\/|\/$/g, "").replace(/\.md$/, "");
+    const ex = examples.get(key);
+    if (!ex) {
+      return { content: [{ type: "text", text: `Example "${key}" not found. Use list_examples to browse available examples.` }] };
+    }
+    let text = `# ${ex.title}\n`;
+    text += `*Category: ${ex.category}*\n`;
+    if (ex.source) text += `*Source: ${ex.source}*\n`;
+    text += `\n${ex.content}`;
     return { content: [{ type: "text", text }] };
   }
 );

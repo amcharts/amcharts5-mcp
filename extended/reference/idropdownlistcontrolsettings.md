@@ -1,0 +1,220 @@
+---
+title: "IDropdownListControlSettings"
+type: "interface"
+source: "https://www.amcharts.com/docs/v5/reference/idropdownlistcontrolsettings/"
+scraped: "2026-03-15"
+---
+
+Inheritance
+IDropdownListControlSettings extends IStockControlSettings.
+IDropdownListControlSettings is extended by IIndicatorControlSettings, ISeriesTypeControlSettings, IIntervalControlSettings, IDataSaveControlSettings, ISettingsControlSettings, IComparisonControlSettings.
+Properties
+
+
+        active        
+        #
+      
+
+
+                          Type undefined | false | true                      
+Default false
+
+Inherited from IStockControlSettings
+Indicates if control is active.
+
+
+        align        
+        #
+      
+
+
+                          Type "left" | "right"                      
+Default "left"
+
+Inherited from IStockControlSettings
+Alignment of the control in a toolbar.
+
+
+        currentItem        
+        #
+      
+
+
+                          Type string | IDropdownListItem                      
+Currently selected item.
+
+
+        description        
+        #
+      
+
+
+                          Type undefined | string                      
+Inherited from IStockControlSettings
+Description of what the button does.
+
+
+        exclude        
+        #
+      
+
+
+                          Type string[]                      
+An array of item IDs to now show in the list.
+@since 5.7.0
+
+
+        fixedLabel        
+        #
+      
+
+
+                          Type undefined | false | true                      
+Label does not change when item is selected in the list.
+
+
+        forceHidden        
+        #
+      
+
+
+                          Type undefined | false | true                      
+Inherited from IStockControlSettings
+Force this control to always be invisible.
+@since 5.8.5
+@defaul false
+
+
+        icon        
+        #
+      
+
+
+                          Type HTMLElement | SVGElement | "none"                      
+Inherited from IStockControlSettings
+An element with control icon. If not set, each control will aytomatically create an icon.
+
+
+        id        
+        #
+      
+
+
+                          Type undefined | string                      
+Inherited from IEntitySettings
+A custom string ID for the element.
+ If set, element can be looked up via root.entitiesById.
+ Will raise error if an element with the same ID already exists.
+
+
+        items        
+        #
+      
+
+
+                          Type Array                      
+A list of items in the dropdown.
+
+
+        maxSearchItems        
+        #
+      
+
+
+                          Type undefined | number                      
+Maximum search items to show.
+
+
+        name        
+        #
+      
+
+
+                          Type undefined | string                      
+Inherited from IStockControlSettings
+Name of the control. Used for the label.
+
+
+        scrollable        
+        #
+      
+
+
+                          Type undefined | false | true                      
+If set to true, the dropdown will fix the height to fit within chart's area, with scroll if the contents do not fit.
+
+
+        searchCallback        
+        #
+      
+
+
+                          Type undefined | ( query: string) => IDropdownListItem[]                      
+A callback function which returns a list of items based on a search query.
+
+
+        searchable        
+        #
+      
+
+
+                          Type undefined | false | true                      
+Is the list searchable? If true shows search field and calls searchCallback function for a list of items.
+
+
+        stateAnimationDuration        
+        #
+      
+
+
+                          Type undefined | number                      
+Inherited from IEntitySettings
+Duration of transition from one state to another.
+
+
+        stateAnimationEasing        
+        #
+      
+
+
+                          Type $ease.Easing                      
+Inherited from IEntitySettings
+Easing of transition from one state to another.
+
+
+        stockChart        
+        #
+      
+
+
+                          Type StockChart                      
+Inherited from IStockControlSettings
+A StockChart the toolbar is for.
+
+
+        themeTags        
+        #
+      
+
+
+                          Type Array                      
+Inherited from IEntitySettings
+Tags which can be used by the theme rules.
+
+## Inheritance
+
+Extends: IStockControlSettings
+Extended by: IIndicatorControlSettings, ISeriesTypeControlSettings, IIntervalControlSettings, IDataSaveControlSettings, ISettingsControlSettings, IComparisonControlSettings
+
+> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+
+## Properties
+
+- **currentItem** (`string | IDropdownListItem`) — Currently selected item.
+- **exclude** (`string[]`) — An array of item IDs to now show in the list. @since 5.7.0
+- **fixedLabel** (`undefined | false | true`) — Label does not change when item is selected in the list.
+- **items** (`Array`) — A list of items in the dropdown.
+- **maxSearchItems** (`undefined | number`) — Maximum search items to show.
+- **scrollable** (`undefined | false | true`) — If set to true, the dropdown will fix the height to fit within chart's area, with scroll if the contents do not fit.
+- **searchCallback** (`undefined | ( query: string) => IDropdownListItem[]`) — A callback function which returns a list of items based on a search query.
+- **searchable** (`undefined | false | true`) — Is the list searchable? If true shows search field and calls searchCallback function for a list of items.

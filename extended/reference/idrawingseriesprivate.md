@@ -1,0 +1,19 @@
+---
+title: "IDrawingSeriesPrivate"
+type: "interface"
+source: "https://www.amcharts.com/docs/v5/reference/idrawingseriesprivate/"
+scraped: "2026-03-15"
+---
+
+Inheritance
+
+## Inheritance
+
+Extends: ILineSeriesPrivate
+Extended by: ISimpleLineSeriesPrivate, IPolylineSeriesPrivate, IDoodleSeriesPrivate, IEllipseSeriesPrivate
+
+> **Note:** This class also inherits all settings, properties, methods, and events from ILineSeriesPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+
+## Properties
+
+- **allowChangeSnap** (`undefined | false | true`) — (no description)

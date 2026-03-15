@@ -35,8 +35,8 @@ const tests = [
   // Step 1: List tools
   {
     send: { jsonrpc: "2.0", id: 2, method: "tools/list", params: {} },
-    check: (r) => r.result?.tools?.length === 6 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
-    label: "List tools (expect 6)",
+    check: (r) => r.result?.tools?.length === 10 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
+    label: "List tools (expect 10)",
   },
   // Step 2: list_chart_types
   {
@@ -118,6 +118,51 @@ const tests = [
       return count >= 12 ? `PASS (${count} resources)` : `FAIL (${count} resources)`;
     },
     label: "List resources (expect 13 doc files)",
+  },
+  // Step 11: search_all
+  {
+    send: { jsonrpc: "2.0", id: 12, method: "tools/call", params: { name: "search_all", arguments: { query: "react integration", maxResults: 3 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Search results") && text.includes("react") ? "PASS" : "FAIL";
+    },
+    label: "search_all('react integration') — finds results",
+  },
+  // Step 12: get_doc
+  {
+    send: { jsonrpc: "2.0", id: 13, method: "tools/call", params: { name: "get_doc", arguments: { path: "concepts/events" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Events") || text.includes("event") ? `PASS (${text.length} chars)` : "FAIL";
+    },
+    label: "get_doc('concepts/events') — returns doc",
+  },
+  // Step 13: list_examples (all categories)
+  {
+    send: { jsonrpc: "2.0", id: 14, method: "tools/call", params: { name: "list_examples", arguments: {} } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("column-bar") && text.includes("Total:") ? "PASS" : "FAIL";
+    },
+    label: "list_examples() — lists categories",
+  },
+  // Step 14: list_examples (specific category)
+  {
+    send: { jsonrpc: "2.0", id: 15, method: "tools/call", params: { name: "list_examples", arguments: { category: "flow" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Sankey") || text.includes("sankey") ? "PASS" : "FAIL";
+    },
+    label: "list_examples('flow') — lists flow examples",
+  },
+  // Step 15: get_example
+  {
+    send: { jsonrpc: "2.0", id: 16, method: "tools/call", params: { name: "get_example", arguments: { path: "examples/flow/sankey-diagram" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Sankey") && text.includes("am5") ? `PASS (${text.length} chars)` : "FAIL";
+    },
+    label: "get_example('examples/flow/sankey-diagram') — returns code",
   },
 ];
 

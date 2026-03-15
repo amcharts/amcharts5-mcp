@@ -1,0 +1,75 @@
+---
+title: "IZigZagSettings"
+type: "interface"
+source: "https://www.amcharts.com/docs/v5/reference/izigzagsettings/"
+scraped: "2026-03-15"
+---
+
+Inheritance
+IZigZagSettings extends IIndicatorSettings.
+IZigZagSettings is not extended by any other symbol.
+Properties
+
+
+        active        
+        #
+      
+
+
+                          Type undefined | false | true                      
+Inherited from ISpriteSettings
+Indicates if element is currently active.
+
+
+        ariaChecked        
+        #
+      
+
+
+                          Type undefined | false | true                      
+Inherited from ISpriteSettings
+aria-checked setting.
+ This setting is ignored unless role is one of the following:
+
+"checkbox"
+
+"option"
+
+"radio"
+
+"menuitemcheckbox"
+
+"menuitemradio"
+
+"treeitem"
+
+
+        ariaControls        
+        #
+      
+
+
+                          Type undefined | string                      
+Inherited from ISpriteSettings
+aria-controls setting.
+
+
+        ariaCurrent        
+        #
+      
+
+
+                          Type undefined | string                      
+Inherited from ISpriteSettings
+aria-current setting.
+
+## Inheritance
+
+Extends: IIndicatorSettings
+
+> **Note:** This class also inherits all settings, properties, methods, and events from IIndicatorSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+
+## Properties
+
+- **depth** (`undefined | number`) — The minimum number of price bars required where there is no secondary high or low.
+- **deviation** (`undefined | number`) — Percentage of price movement you want to set as your threshold
