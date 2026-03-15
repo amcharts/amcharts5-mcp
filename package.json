@@ -16,8 +16,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "prepublishOnly": "mkdir -p content && cp amcharts5-skill/amcharts5-skill/SKILL.md content/ && cp amcharts5-skill/amcharts5-skill/references/*.md content/",
-    "postpublish": "rm -rf content"
+    "prepublishOnly": "node -e \"const fs=require('fs');if(!fs.existsSync('content'))fs.mkdirSync('content');fs.cpSync('amcharts5-skill/amcharts5-skill/SKILL.md','content/SKILL.md');for(const f of fs.readdirSync('amcharts5-skill/amcharts5-skill/references').filter(x=>x.endsWith('.md')))fs.cpSync('amcharts5-skill/amcharts5-skill/references/'+f,'content/'+f)\"",
+    "postpublish": "node -e \"require('fs').rmSync('content',{recursive:true,force:true})\""
   },
   "repository": {
     "type": "git",
