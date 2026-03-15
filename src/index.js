@@ -3,13 +3,20 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { readFileSync, readdirSync } from "fs";
+import { readFileSync, readdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const SKILL_DIR = join(__dirname, "..", "amcharts5-skill", "amcharts5-skill");
-const REFERENCES_DIR = join(SKILL_DIR, "references");
+const ROOT = join(__dirname, "..");
+
+// Submodule path (local dev) or content/ fallback (npm install)
+const SUBMODULE_DIR = join(ROOT, "amcharts5-skill", "amcharts5-skill");
+const CONTENT_DIR = join(ROOT, "content");
+const SKILL_DIR = existsSync(SUBMODULE_DIR) ? SUBMODULE_DIR : CONTENT_DIR;
+const REFERENCES_DIR = existsSync(join(SKILL_DIR, "references"))
+  ? join(SKILL_DIR, "references")
+  : SKILL_DIR;
 
 // ---------------------------------------------------------------------------
 // Load and index all content at startup
@@ -100,10 +107,13 @@ function loadFile(filePath, name) {
 
 function loadContent() {
   // Load core SKILL.md
-  loadFile(join(SKILL_DIR, "SKILL.md"), "SKILL");
+  const skillPath = join(SKILL_DIR, "SKILL.md");
+  if (existsSync(skillPath)) {
+    loadFile(skillPath, "SKILL");
+  }
 
   // Load all reference files
-  const files = readdirSync(REFERENCES_DIR).filter(f => f.endsWith(".md"));
+  const files = readdirSync(REFERENCES_DIR).filter(f => f.endsWith(".md") && f !== "SKILL.md");
   for (const file of files) {
     loadFile(join(REFERENCES_DIR, file), file.replace(".md", ""));
   }

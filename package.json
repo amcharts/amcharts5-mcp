@@ -7,9 +7,24 @@
   "bin": {
     "amcharts5-mcp": "src/index.js"
   },
+  "files": [
+    "src/",
+    "content/",
+    "README.md"
+  ],
   "scripts": {
     "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch src/index.js",
+    "prepublishOnly": "mkdir -p content && cp amcharts5-skill/amcharts5-skill/SKILL.md content/ && cp amcharts5-skill/amcharts5-skill/references/*.md content/",
+    "postpublish": "rm -rf content"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amcharts/amcharts5-mcp.git"
+  },
+  "homepage": "https://github.com/amcharts/amcharts5-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/amcharts/amcharts5-mcp/issues"
   },
   "keywords": [
     "amcharts",
