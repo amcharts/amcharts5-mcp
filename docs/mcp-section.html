@@ -5,9 +5,9 @@
 
 <h2 id="mcp-server">MCP Server</h2>
 
-<p>The amCharts 5 MCP (Model Context Protocol) server gives AI assistants on-demand access to the full amCharts documentation. Instead of loading everything into context upfront, the AI queries only what it needs &mdash; a specific chart type reference, a search for &ldquo;tooltip formatting&rdquo;, or a quick-start template. This means better answers with less context waste.</p>
+<p>The amCharts 5 MCP (Model Context Protocol) server gives AI assistants on-demand access to the complete amCharts 5 knowledge base: documentation, 283 code examples, and 1,098 class API references. Instead of loading everything into context upfront, the AI queries only what it needs &mdash; keeping responses fast and accurate.</p>
 
-<p>It works with <strong>Claude Code</strong>, <strong>Claude Desktop</strong>, <strong>Cursor</strong>, and any MCP-compatible tool.</p>
+<p>It works with <strong>Claude Code</strong>, <strong>Claude Desktop</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, <strong>VS Code + Copilot</strong>, and any other MCP-compatible tool.</p>
 
 <ul>
   <li>npm: <a href="https://www.npmjs.com/package/@amcharts/amcharts5-mcp" target="_blank">@amcharts/amcharts5-mcp</a></li>
@@ -24,9 +24,9 @@
 
 <pre><code class="language-bash">claude mcp add amcharts5 -- npx -y @amcharts/amcharts5-mcp</code></pre>
 
-<h3>Installing for Claude Desktop / Cursor</h3>
+<h3>Installing for Claude Desktop</h3>
 
-<p>Add to your MCP configuration file (<code>claude_desktop_config.json</code> or Cursor MCP settings):</p>
+<p>Add to your Claude Desktop config file (<code>claude_desktop_config.json</code>):</p>
 
 <pre><code class="language-json">{
   "mcpServers": {
@@ -36,6 +36,64 @@
     }
   }
 }</code></pre>
+
+<h3>Installing for Cursor</h3>
+
+<p>Create or edit <code>.cursor/mcp.json</code> in your project root (or <code>~/.cursor/mcp.json</code> for global):</p>
+
+<pre><code class="language-json">{
+  "mcpServers": {
+    "amcharts5": {
+      "command": "npx",
+      "args": ["-y", "@amcharts/amcharts5-mcp"]
+    }
+  }
+}</code></pre>
+
+<h3>Installing for Windsurf</h3>
+
+<p>Edit <code>~/.codeium/windsurf/mcp_config.json</code> (or open it via Windsurf settings &rarr; Manage MCP Servers &rarr; View raw config):</p>
+
+<pre><code class="language-json">{
+  "mcpServers": {
+    "amcharts5": {
+      "command": "npx",
+      "args": ["-y", "@amcharts/amcharts5-mcp"]
+    }
+  }
+}</code></pre>
+
+<h3>Installing for VS Code + GitHub Copilot</h3>
+
+<p>Create or edit <code>.vscode/mcp.json</code> in your workspace (or add to your user <code>settings.json</code>):</p>
+
+<pre><code class="language-json">{
+  "servers": {
+    "amcharts5": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@amcharts/amcharts5-mcp"]
+    }
+  }
+}</code></pre>
+
+<h3>Other MCP-compatible tools</h3>
+
+<p>For any other tool that supports MCP (Cline, Continue, Amazon Q, Zed, etc.), configure it to run this command:</p>
+
+<pre><code class="language-bash">npx -y @amcharts/amcharts5-mcp</code></pre>
+
+<p>Refer to your tool&rsquo;s documentation for the exact configuration format.</p>
+
+<h3>What&rsquo;s included</h3>
+
+<p>The server provides access to <strong>1,500+ documents</strong>:</p>
+
+<ul>
+  <li><strong>141 documentation pages</strong> &mdash; getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides (React, Angular, Vue, Next.js, Svelte, and more).</li>
+  <li><strong>283 code examples</strong> &mdash; working demos across 16 categories: column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more. Each example includes full JavaScript, HTML, and CSS.</li>
+  <li><strong>1,098 class API references</strong> &mdash; every class in the amCharts 5 library with its settings, properties, methods, events, and inheritance chain.</li>
+</ul>
 
 <h3>Available tools</h3>
 
@@ -50,31 +108,59 @@
   </thead>
   <tbody>
     <tr>
-      <td><code>list_chart_types</code></td>
-      <td>List all available chart types and their keywords</td>
-    </tr>
-    <tr>
-      <td><code>get_chart_reference</code></td>
-      <td>Get full reference docs for a specific chart type (e.g. &ldquo;pie&rdquo;, &ldquo;sankey&rdquo;, &ldquo;treemap&rdquo;)</td>
-    </tr>
-    <tr>
       <td><code>get_core_reference</code></td>
       <td>Get core amCharts 5 docs &mdash; setup, themes, colors, events, common pitfalls</td>
     </tr>
     <tr>
+      <td><code>get_chart_reference</code></td>
+      <td>Get full reference for a chart type (e.g. &ldquo;pie&rdquo;, &ldquo;sankey&rdquo;, &ldquo;treemap&rdquo;)</td>
+    </tr>
+    <tr>
+      <td><code>list_chart_types</code></td>
+      <td>List all available chart types and their keywords</td>
+    </tr>
+    <tr>
       <td><code>search_docs</code></td>
-      <td>Search across all docs by keyword or topic</td>
+      <td>Search the skill reference docs by keyword</td>
+    </tr>
+    <tr>
+      <td><code>search_all</code></td>
+      <td>Search across <strong>everything</strong> &mdash; skill docs, full documentation, and code examples</td>
+    </tr>
+    <tr>
+      <td><code>get_doc</code></td>
+      <td>Get a full documentation page (e.g. &ldquo;charts/xy-chart/axes&rdquo;, &ldquo;concepts/events&rdquo;)</td>
     </tr>
     <tr>
       <td><code>get_section</code></td>
-      <td>Get a specific section from any reference file</td>
+      <td>Get a specific section from a reference file by heading</td>
     </tr>
     <tr>
       <td><code>get_quick_start</code></td>
       <td>Get a minimal working template for any chart type</td>
     </tr>
+    <tr>
+      <td><code>list_examples</code></td>
+      <td>Browse all 283 examples, optionally filtered by category</td>
+    </tr>
+    <tr>
+      <td><code>get_example</code></td>
+      <td>Get the full code for a specific example</td>
+    </tr>
   </tbody>
 </table>
+
+<h3>Example usage</h3>
+
+<p>Once connected, your AI assistant can do things like:</p>
+
+<ul>
+  <li><strong>&ldquo;Build me a pie chart&rdquo;</strong> &mdash; AI calls <code>get_quick_start("pie")</code> and adapts the template</li>
+  <li><strong>&ldquo;How do I format date axis labels?&rdquo;</strong> &mdash; AI calls <code>search_all("date axis label format")</code></li>
+  <li><strong>&ldquo;Show me the Sankey diagram example&rdquo;</strong> &mdash; AI calls <code>get_example("examples/flow/sankey-diagram")</code></li>
+  <li><strong>&ldquo;What settings does XYChart support?&rdquo;</strong> &mdash; AI calls <code>get_doc("reference/xychart")</code></li>
+  <li><strong>&ldquo;How do I integrate with React?&rdquo;</strong> &mdash; AI calls <code>get_doc("getting-started/integrations/react")</code></li>
+</ul>
 
 <h3>MCP server vs. Skill files</h3>
 
@@ -95,6 +181,11 @@
       <td>AI queries only what it needs on demand</td>
     </tr>
     <tr>
+      <td><strong>Content</strong></td>
+      <td>Curated skill reference</td>
+      <td>1,500+ docs, examples, and class API references</td>
+    </tr>
+    <tr>
       <td><strong>Context usage</strong></td>
       <td>Higher &mdash; entire skill loaded upfront</td>
       <td>Lower &mdash; only relevant sections fetched</td>
@@ -107,12 +198,12 @@
     <tr>
       <td><strong>Works with</strong></td>
       <td>Any AI tool (Claude, ChatGPT, Cursor, Copilot, etc.)</td>
-      <td>MCP-compatible tools (Claude Code, Claude Desktop, Cursor)</td>
+      <td>MCP-compatible tools (see install instructions above)</td>
     </tr>
     <tr>
       <td><strong>Best for</strong></td>
       <td>Editors without MCP support</td>
-      <td>Claude Code, Claude Desktop, Cursor</td>
+      <td>Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot</td>
     </tr>
     <tr>
       <td><strong>Stays up to date</strong></td>
@@ -123,7 +214,7 @@
 </table>
 
 <blockquote>
-  <p><strong>Recommendation:</strong> If your tool supports MCP, use the MCP server. If not, use the skill files. You can also use both &mdash; the MCP server uses the same content as the skill files.</p>
+  <p><strong>Recommendation:</strong> If your tool supports MCP, use the MCP server &mdash; it has much more content and uses context more efficiently. If your tool doesn&rsquo;t support MCP, use the skill files.</p>
 </blockquote>
 
 
@@ -139,7 +230,7 @@ Add alongside the existing .cursorrules and Skill download buttons:
 
 
 <!-- ============================================================
-     Quick Reference Table — add an "MCP server" row
+     Quick Reference Table — update the "MCP server" row
      ============================================================ -->
 
 <!--
@@ -150,7 +241,7 @@ Add a new row to the existing quick reference table:
   <td>N/A</td>
   <td>Supported</td>
   <td>Supported</td>
-  <td>N/A</td>
+  <td>Supported</td>
   <td>Supported</td>
 </tr>
 
@@ -165,5 +256,5 @@ Add a new row to the existing quick reference table:
 <!--
 Add to the summary list:
 
-<li>For Claude Code and Claude Desktop, the MCP server is the most efficient option — install once and the AI pulls exactly the docs it needs.</li>
+<li>For Claude Code, Claude Desktop, Cursor, Windsurf, and VS Code + Copilot, the MCP server is the most efficient option — install once and the AI pulls exactly the docs it needs.</li>
 -->
