@@ -1,0 +1,27 @@
+{
+  "name": "@amcharts/amcharts5-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for amCharts 5 — gives AI assistants on-demand access to amCharts docs, examples, and API reference",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "amcharts5-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "amcharts",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "charts",
+    "data-visualization"
+  ],
+  "author": "amCharts",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  }
+}

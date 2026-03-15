@@ -1,0 +1,3 @@
+[submodule "amcharts5-skill"]
+	path = amcharts5-skill
+	url = https://github.com/amcharts/amcharts5-skill.git
