@@ -292,9 +292,7 @@ cursor.lineX.setAll({
   strokeDasharray: \[\]
 });
 
-cursor.lineY.setAll({
-  visible: false
-});
+cursor.lineY.set("forceHidden", true);
 
 let cursor = chart.get("cursor");
 
@@ -304,11 +302,9 @@ cursor.lineX.setAll({
   strokeDasharray: \[\]
 });
 
-cursor.lineY.setAll({
-  visible: false
-});
+cursor.lineY.set("forceHidden", true);
 
-The above will apply color, remove dashing, and make vertical line thicker, while completely hide horizontal line.
+The above will apply color, remove dashing, and make vertical line thicker, while completely hiding the horizontal line. Use `forceHidden: true` rather than `visible: false` to hide cursor lines — the cursor internally sets `visible: true` when the pointer enters the plot area, so `visible: false` gets overridden. `forceHidden` prevents this system behavior.
 
 ### Selection
 
