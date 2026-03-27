@@ -4,6 +4,8 @@ An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that g
 
 Works with **Claude Code**, **Claude Desktop**, **Cursor**, **Windsurf**, **VS Code + GitHub Copilot**, and any other MCP-compatible AI tool.
 
+[![amCharts 5 Server MCP server](https://glama.ai/mcp/servers/amcharts/amcharts5-mcp/badges/card.svg)](https://glama.ai/mcp/servers/amcharts/amcharts5-mcp)
+
 ## Why?
 
 Instead of loading the entire amCharts reference into the AI's context window, the MCP server lets the AI **query exactly what it needs** — a specific chart type reference, a code example, or an API lookup. This means better answers with less context waste.
