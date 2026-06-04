@@ -73,4 +73,5 @@ Extended by: IBollingerBandsSettings, IMovingAverageEnvelopeSettings
 ## Properties
 
 - **offset** (`undefined | number`) — Default 0 Offset.
-- **type** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — Default "simple" Type of the moving average.
+- **maType** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — Default "simple" Type of the moving average. (Renamed from `type` in 5.18.0.)
+- **type** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — *Deprecated since 5.18.0 — use `maType` (still works).* Default "simple" Type of the moving average.

@@ -22,5 +22,8 @@ Extends: LinkedHierarchy
 
 ## Settings
 
+- **clustered** (`undefined | false | true`) — Default false If set to true, uses a cluster (dendrogram) layout where all leaf nodes are placed at the same depth. @since 5.16.2
+- **fitNodes** (`undefined | false | true`) — Default false If set to true, hidden nodes are excluded from the layout, giving more space to visible ones. @since 5.18.0
 - **inversed** (`undefined | false | true`) — Default false If set to true, will flip the tree direction. @since 5.2.4
+- **nodeSeparation** (`undefined | (a: DataItem, b: DataItem) => number`) — Custom node-separation function; receives two data items and returns a numeric spacing value. @since 5.16.2
 - **orientation** (`"horizontal" | "vertical"`) — Default "vertical" Orientation of the diagram.

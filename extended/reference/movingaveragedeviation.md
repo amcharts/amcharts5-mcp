@@ -24,7 +24,8 @@ Extends: ChartIndicator
 
 - **decreasingColor** (`Color`) — Decreasing color.
 - **increasingColor** (`Color`) — Increasing color.
-- **type** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — Default "simple" Type of the moving average.
+- **maType** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — Default "simple" Type of the moving average. (Renamed from `type` in 5.18.0.)
+- **type** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — *Deprecated since 5.18.0 — use `maType` (still works).* Default "simple" Type of the moving average.
 - **unit** (`"points" | "percent"`) — Default "points" How units are calculated.
 
 ## Properties

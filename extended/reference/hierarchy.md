@@ -32,6 +32,7 @@ Extended by: LinkedHierarchy, Pack, Partition, Treemap, VoronoiTreemap
 - **downDepth** (`undefined | number`) — Number of child levels to open when clicking on a node. Click here for more info
 - **fillField** (`undefined | string`) — A field in data that holds color used for fills for various elements, such as nodes.
 - **initialDepth** (`undefined | number`) — Number of levels to show on chart's first load. Click here for more info
+- **parentIdField** (`undefined | string`) — A field in data that holds the parent node's ID. Used with the `setFlatData(data)` method to build the hierarchy from a flat array (with parent-ID references) instead of nested `children`. @since 5.16.2
 - **patterns** (`PatternSet`) — A PatternSet to use when asigning patterns for nodes. Click here for more info @since 5.10.0
 - **selectedDataItem** (`DataItem`) — A data item for currently selected node. Click here for more info
 - **singleBranchOnly** (`undefined | false | true`) — If set to true will make all other branches collapse when some branch is expanded.

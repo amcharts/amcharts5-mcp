@@ -27,7 +27,8 @@ Extends: Hierarchy
 - **cornerCount** (`undefined | number`) — Default 120 Number of corners when type is "polygon". 120 means the polygoon will look like a circle. NOTE: this setting is ignored if type="rectangle".
 - **maxIterationCount** (`undefined | number`) — Default 100 Maximum allowed number of iterations when computing the layout. Computation is stopped when it number of iterations is reached, even if the convergenceRatio is not yet reached. Bigger number means finer results, but slower performance.
 - **minWeightRatio** (`undefined | number`) — Default 0.005 Minimum weight ratio which allows computing the minimum allowed weight (= [maximum weight] * minWeightRatio). Setting very small minWeigtRatio might result flickering. NOTE: the nodes that have smaller weight will be scaled up and will not represent their true value correctly.
-- **type** (`"rectangle" | "polygon"`) — Default "polygon" Type of the diagram's shape. Click here for more info
+- **shapeType** (`"rectangle" | "polygon"`) — Default "polygon" Type of the diagram's shape. (Renamed from `type` in 5.18.0.) Click here for more info
+- **type** (`"rectangle" | "polygon"`) — *Deprecated since 5.18.0 — use `shapeType` (still works).* Default "polygon" Type of the diagram's shape.
 
 ## Properties
 
