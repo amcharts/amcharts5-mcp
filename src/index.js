@@ -10,6 +10,10 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
+// Single source of truth for the server version: package.json
+const PKG = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf-8"));
+const VERSION = PKG.version;
+
 // Submodule path (local dev) or content/ fallback (npm install)
 const SUBMODULE_DIR = join(ROOT, "amcharts5-skill", "amcharts5-skill");
 const CONTENT_DIR = join(ROOT, "content");
@@ -177,10 +181,38 @@ loadExtendedDir(EXTENDED_DIR);
 // Search helpers
 // ---------------------------------------------------------------------------
 
-function searchDocs(query, maxResults = 10) {
+/**
+ * Import sections carry two ### sub-blocks: one for ES modules, one for CDN /
+ * script tags. Return only the requested one (esm | html), or "" if not found.
+ */
+function extractImportBlock(body, format) {
+  const lines = body.split("\n");
+  const wantEsm = format === "esm";
+  let capturing = false;
+  let captured = [];
+  let sawSub = false;
+  for (const line of lines) {
+    const sub = line.match(/^###\s+(.+)/);
+    if (sub) {
+      sawSub = true;
+      const h = sub[1].toLowerCase();
+      const isEsm = /es module|esm|typescript|import/.test(h);
+      // Note: "typescript" contains "script", so match "script tag"/"cdn", not bare "script".
+      const isCdn = /cdn|script tag|<script/.test(h);
+      capturing = wantEsm ? isEsm : isCdn;
+      continue;
+    }
+    if (capturing) captured.push(line);
+  }
+  if (!sawSub) return ""; // no sub-blocks → caller falls back to full body
+  return captured.join("\n").trim();
+}
+
+function searchDocs(query, maxResults = 10, scope = "skill") {
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
   const results = [];
 
+  // Skill docs (SKILL.md + references/*.md)
   for (const [name, doc] of docs) {
     for (const section of doc.sections) {
       const text = (section.heading + " " + section.body).toLowerCase();
@@ -188,11 +220,35 @@ function searchDocs(query, maxResults = 10) {
       if (score > 0) {
         results.push({
           file: name,
+          source: "skill",
           docTitle: doc.title,
           heading: section.heading,
           body: section.body.trim(),
-          score,
+          // Nudge skill results slightly ahead of extended on ties — the skill
+          // is the curated layer; extended is the exhaustive API reference.
+          score: score + 0.1,
         });
+      }
+    }
+  }
+
+  // Extended docs (charts/, concepts/, getting-started/, reference/<class>) —
+  // this is where the per-class API + defaults live. Only scanned when scope=all.
+  if (scope === "all") {
+    for (const [key, doc] of extendedDocs) {
+      for (const section of doc.sections) {
+        const text = (section.heading + " " + section.body).toLowerCase();
+        const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
+        if (score > 0) {
+          results.push({
+            file: key,
+            source: "extended",
+            docTitle: doc.title,
+            heading: section.heading,
+            body: section.body.trim(),
+            score,
+          });
+        }
       }
     }
   }
@@ -207,7 +263,7 @@ function searchDocs(query, maxResults = 10) {
 
 const server = new McpServer({
   name: "amcharts5",
-  version: "1.0.0",
+  version: VERSION,
 });
 
 // --- Tool: list_chart_types ---
@@ -269,21 +325,25 @@ server.tool(
 // --- Tool: search_docs ---
 server.tool(
   "search_docs",
-  "Search across all amCharts 5 documentation for a keyword or topic. Returns matching sections ranked by relevance.",
+  "Search the curated amCharts 5 skill docs (SKILL.md + chart references) for a keyword or topic, returning matching sections ranked by relevance. NOTE: by default this scans ONLY the skill layer. The per-class API reference and per-setting DEFAULTS (e.g. tooltip background cornerRadius, axis tick `visible` default, cursor line strokeDasharray) live in the extended docs — pass scope:'all' here, or use search_all / get_api_reference / get_doc, to reach them.",
   {
     query: z.string().describe("Search query, e.g. 'legend', 'axis label rotation', 'tooltip format', 'data processor'"),
     maxResults: z.number().optional().default(5).describe("Maximum number of results to return (default 5)"),
+    scope: z.enum(["skill", "all"]).optional().default("skill").describe("'skill' (default) searches only the curated skill docs; 'all' also searches the extended docs / per-class API reference where settings and defaults live."),
   },
-  async ({ query, maxResults }) => {
-    const results = searchDocs(query, maxResults);
+  async ({ query, maxResults, scope }) => {
+    const results = searchDocs(query, maxResults, scope);
     if (results.length === 0) {
-      return { content: [{ type: "text", text: `No results found for "${query}".` }] };
+      const hint = scope === "skill"
+        ? ` Nothing in the skill docs — retry with scope:'all' to include the API reference, or use search_all.`
+        : "";
+      return { content: [{ type: "text", text: `No results found for "${query}".${hint}` }] };
     }
 
-    let text = `# Search results for "${query}"\n\n`;
+    let text = `# Search results for "${query}" (scope: ${scope})\n\n`;
     for (const r of results) {
       text += `## ${r.docTitle} → ${r.heading}\n`;
-      text += `*(source: ${r.file}.md, relevance: ${r.score})*\n\n`;
+      text += `*(source: ${r.source}/${r.file}.md, relevance: ${r.score})*\n\n`;
       // Truncate very long sections
       const body = r.body.length > 2000 ? r.body.slice(0, 2000) + "\n\n...(truncated)" : r.body;
       text += body + "\n\n---\n\n";
@@ -338,9 +398,16 @@ server.tool(
       };
     }
 
-    // Find the setup/core pattern section
+    // Grab the imports section first so we can exclude it from the setup match.
+    const importSection = doc.sections.find(s =>
+      /import/i.test(s.heading)
+    );
+
+    // Find the setup/core pattern section — must NOT be the imports section
+    // (headings like "Required imports" otherwise win and the actual core
+    // setup pattern is never shown, making esm/html identical).
     const setupSection = doc.sections.find(s =>
-      /setup|core.*pattern|basic|quick.*start|required.*import/i.test(s.heading)
+      s !== importSection && /setup|core.*pattern|basic|quick.*start/i.test(s.heading)
     );
 
     if (!setupSection) {
@@ -349,17 +416,17 @@ server.tool(
       return { content: [{ type: "text", text: intro }] };
     }
 
-    // Also grab the imports section
-    const importSection = doc.sections.find(s =>
-      /import/i.test(s.heading)
-    );
-
     let text = `# Quick Start: ${doc.title}\n\n`;
     if (importSection && importSection !== setupSection) {
+      // Import sections contain both an "ES modules" and a "CDN / script tags"
+      // sub-block. Emit only the one matching the requested format so esm and
+      // html actually differ (instead of relabeling the same body).
+      const esm = extractImportBlock(importSection.body, "esm");
+      const cdn = extractImportBlock(importSection.body, "html");
       if (format === "esm") {
-        text += `## Imports (ES modules)\n${importSection.body}\n\n`;
+        text += `## Imports (ES modules)\n${esm || importSection.body}\n\n`;
       } else {
-        text += `## Imports\n${importSection.body}\n\n`;
+        text += `## Imports (CDN / script tags)\n${cdn || importSection.body}\n\n`;
       }
     }
     text += `## ${setupSection.heading}\n${setupSection.body}`;
@@ -433,7 +500,7 @@ server.tool(
   "get_doc",
   "Get a full documentation page from the extended amCharts 5 docs. Use search_all first to find the right path.",
   {
-    path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react'"),
+    path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API). For a class's full settings + defaults prefer get_api_reference."),
   },
   async ({ path: docPath }) => {
     const key = docPath.replace(/^\/|\/$/g, "").replace(/\.md$/, "");
@@ -447,6 +514,56 @@ server.tool(
       };
     }
     return { content: [{ type: "text", text: `# ${doc.title}\n\n${doc.content}` }] };
+  }
+);
+
+// --- Tool: get_api_reference ---
+server.tool(
+  "get_api_reference",
+  "Get the per-class API reference for an amCharts 5 class — the class page PLUS its settings table (with DEFAULTS) and, optionally, its private/read-only settings. This is the authoritative source for exact setting names and default values (e.g. tooltip background cornerRadius, axis tick `visible` default). Pass a class name in any casing, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'AxisRendererX'.",
+  {
+    className: z.string().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored."),
+    includePrivate: z.boolean().optional().default(false).describe("Also include the private (read-only / internal) settings table. Default false."),
+  },
+  async ({ className, includePrivate }) => {
+    // Normalize: "XYCursor" / "xy-cursor" / "XY Cursor" → "xycursor"
+    const norm = className.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const classDoc = extendedDocs.get(`reference/${norm}`);
+    const settingsDoc = extendedDocs.get(`reference/i${norm}settings`);
+    const privateDoc = extendedDocs.get(`reference/i${norm}private`);
+
+    if (!classDoc && !settingsDoc) {
+      // Friendly not-found: suggest close matches among the class pages
+      // (reference keys that are NOT i…settings / i…private interface pages).
+      const classKeys = [...extendedDocs.keys()]
+        .filter(k => k.startsWith("reference/"))
+        .map(k => k.slice("reference/".length))
+        .filter(k => !k.startsWith("i"));
+      const suggestions = classKeys
+        .filter(k => k.includes(norm) || norm.includes(k))
+        .slice(0, 10);
+      let msg = `No API reference found for "${className}" (normalized "${norm}").`;
+      if (suggestions.length) {
+        msg += `\n\nDid you mean: ${suggestions.join(", ")}?`;
+      }
+      msg += `\n\nTip: use search_all to find the right class, or list_chart_types for chart families.`;
+      return { content: [{ type: "text", text: msg }] };
+    }
+
+    let text = "";
+    if (classDoc) {
+      text += `# ${classDoc.title}\n\n${classDoc.content}\n\n`;
+    }
+    if (settingsDoc) {
+      text += `\n---\n\n# ${settingsDoc.title} (settings + defaults)\n\n${settingsDoc.content}\n\n`;
+    }
+    if (includePrivate && privateDoc) {
+      text += `\n---\n\n# ${privateDoc.title} (private / read-only)\n\n${privateDoc.content}\n\n`;
+    }
+    if (!includePrivate && privateDoc) {
+      text += `\n---\n\n*Private/read-only settings also exist — call get_api_reference("${className}", includePrivate: true) to include them.*\n`;
+    }
+    return { content: [{ type: "text", text: text.trim() }] };
   }
 );
 

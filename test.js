@@ -35,8 +35,8 @@ const tests = [
   // Step 1: List tools
   {
     send: { jsonrpc: "2.0", id: 2, method: "tools/list", params: {} },
-    check: (r) => r.result?.tools?.length === 10 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
-    label: "List tools (expect 10)",
+    check: (r) => r.result?.tools?.length === 11 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
+    label: "List tools (expect 11)",
   },
   // Step 2: list_chart_types
   {
@@ -110,6 +110,24 @@ const tests = [
     },
     label: "get_quick_start('line', 'esm') — returns template",
   },
+  // Step 9b: get_quick_start esm emits real ES module imports, not CDN scripts
+  {
+    send: { jsonrpc: "2.0", id: 21, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "line", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('import * as am5') && !text.includes("<script") ? "PASS (ESM only)" : "FAIL";
+    },
+    label: "get_quick_start('line','esm') — ES module imports, no CDN",
+  },
+  // Step 9c: get_quick_start html emits CDN script tags
+  {
+    send: { jsonrpc: "2.0", id: 22, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "line", format: "html" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("<script src=") && !text.includes("import * as am5") ? "PASS (CDN only)" : "FAIL";
+    },
+    label: "get_quick_start('line','html') — CDN scripts, no ESM",
+  },
   // Step 10: List resources
   {
     send: { jsonrpc: "2.0", id: 11, method: "resources/list", params: {} },
@@ -163,6 +181,43 @@ const tests = [
       return text.includes("Sankey") && text.includes("am5") ? `PASS (${text.length} chars)` : "FAIL";
     },
     label: "get_example('examples/flow/sankey-diagram') — returns code",
+  },
+  // Step 16: get_api_reference (normalization + settings/defaults)
+  {
+    send: { jsonrpc: "2.0", id: 17, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "XYCursor" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("XYCursor") && /settings/i.test(text) ? `PASS (${text.length} chars)` : "FAIL";
+    },
+    label: "get_api_reference('XYCursor') — class page + settings",
+  },
+  // Step 17: get_api_reference graceful not-found with suggestions
+  {
+    send: { jsonrpc: "2.0", id: 18, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "NotARealClass" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("No API reference found") ? "PASS (graceful error)" : "FAIL";
+    },
+    label: "get_api_reference('NotARealClass') — graceful error",
+  },
+  // Step 18: search_docs scope:'all' reaches the extended API reference / defaults
+  // (use a setting name that only exists in extended/reference, not the skill).
+  {
+    send: { jsonrpc: "2.0", id: 19, method: "tools/call", params: { name: "search_docs", arguments: { query: "pointerBaseWidth", maxResults: 5, scope: "all" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Search results") && text.includes("extended/reference/") ? "PASS (reaches extended)" : "FAIL";
+    },
+    label: "search_docs('pointerBaseWidth', scope:all) — reaches extended reference",
+  },
+  // Step 19: search_docs default scope stays skill-only
+  {
+    send: { jsonrpc: "2.0", id: 20, method: "tools/call", params: { name: "search_docs", arguments: { query: "legend", maxResults: 3 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("scope: skill") && !text.includes("extended/") ? "PASS (skill-only)" : "FAIL";
+    },
+    label: "search_docs('legend') — default scope skill-only",
   },
 ];
 
