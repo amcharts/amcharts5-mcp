@@ -1,0 +1,39 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "amcharts5-mcp",
+  "main": "cloudflare/index.js",
+  "compatibility_date": "2025-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // Serve on the custom domain. Requires amcharts.com to be a zone in this
+  // Cloudflare account; on deploy, Cloudflare creates the DNS record + TLS
+  // cert automatically. Endpoints: https://mcp.amcharts.com/mcp (+ /sse).
+  //
+  // SELF-HOSTING: this is amCharts's production domain. To run your own copy,
+  // change "pattern" to a subdomain in YOUR Cloudflare account, or delete this
+  // whole "routes" block to serve at <name>.<account>.workers.dev instead.
+  // See "Self-hosting on your own Cloudflare account" in cloudflare/DEPLOYMENT.md.
+  "routes": [
+    {
+      "pattern": "mcp.amcharts.com",
+      "custom_domain": true
+    }
+  ],
+  // McpAgent persists session state in a SQLite-backed Durable Object.
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["AmCharts5MCP"]
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "AmCharts5MCP",
+        "name": "MCP_OBJECT"
+      }
+    ]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

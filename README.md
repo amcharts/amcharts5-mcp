@@ -10,6 +10,57 @@ Instead of loading the entire amCharts reference into the AI's context window, t
 
 ## Quick Start
 
+The easiest way is the **hosted server** — no install, just add one URL. Prefer to
+run it yourself? See [Local install](#local-install-npx) below.
+
+### Hosted (no install) — recommended
+
+Point your AI client at:
+
+```
+https://mcp.amcharts.com/mcp
+```
+
+**Claude Code**
+
+```bash
+claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
+```
+
+**Claude Desktop / claude.ai** — Settings → Connectors → **Add custom connector**, then paste `https://mcp.amcharts.com/mcp`.
+
+**Cursor** — `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "amcharts5": {
+      "url": "https://mcp.amcharts.com/mcp"
+    }
+  }
+}
+```
+
+**VS Code + GitHub Copilot** — `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "amcharts5": {
+      "type": "http",
+      "url": "https://mcp.amcharts.com/mcp"
+    }
+  }
+}
+```
+
+Any other MCP client that accepts a remote server URL works too — use the `/mcp`
+endpoint (Streamable HTTP) or `/sse` (legacy SSE).
+
+## Local install (npx)
+
+Prefer running it yourself? The server is also published to npm and runs over stdio.
+
 ### Claude Code
 
 For **all projects** (global, recommended):

@@ -1,7 +1,11 @@
 import { spawn } from "child_process";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const ROOT = dirname(fileURLToPath(import.meta.url));
 
 const server = spawn("node", ["src/index.js"], {
-  cwd: "C:/projects/amcharts5-mcp",
+  cwd: ROOT,
   stdio: ["pipe", "pipe", "pipe"],
 });
 

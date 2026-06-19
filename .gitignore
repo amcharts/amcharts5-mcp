@@ -1,2 +1,10 @@
 node_modules/
 content/
+
+# Cloudflare Worker build artifacts (regenerated on every deploy)
+cloudflare/content.generated.js
+.wrangler/
+dist/
+
+# Internal amCharts-only docs (not for the public repo)
+.internal/

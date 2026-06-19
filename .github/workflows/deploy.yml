@@ -1,0 +1,45 @@
+name: Deploy MCP server to Cloudflare
+
+# Every push to main rebuilds the content bundle (from this repo + the
+# amcharts5-skill submodule) and deploys the Worker. The public URL never
+# changes — clients stay connected across deploys.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Avoid overlapping deploys if pushes land in quick succession.
+concurrency:
+  group: deploy-cloudflare
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (with submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Worker content bundle
+        run: npm run build:worker
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # wrangler-action runs `wrangler deploy` by default. Re-run the build
+          # via the command so the generated bundle is guaranteed present.
+          command: deploy
+          preCommands: npm run build:worker
