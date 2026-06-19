@@ -54,8 +54,55 @@ claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
 }
 ```
 
+**Windsurf** — `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "amcharts5": {
+      "serverUrl": "https://mcp.amcharts.com/mcp"
+    }
+  }
+}
+```
+
+**ChatGPT** (Plus/Pro/Enterprise with connectors/developer mode enabled) — Settings → **Connectors** → **Add custom connector**, then paste `https://mcp.amcharts.com/mcp`.
+
+**Cline** (VS Code extension) — open the **MCP Servers** panel → **Remote Servers**, paste `https://mcp.amcharts.com/mcp`, or add to its MCP settings JSON:
+
+```json
+{
+  "mcpServers": {
+    "amcharts5": {
+      "type": "streamableHttp",
+      "url": "https://mcp.amcharts.com/mcp"
+    }
+  }
+}
+```
+
+**Clients that only support local (stdio) servers** (e.g. Zed, Continue, Amazon Q Developer) — bridge to the hosted URL with [`mcp-remote`](https://www.npmjs.com/package/mcp-remote). Use this as the server's run command in the client's config:
+
+```bash
+npx mcp-remote https://mcp.amcharts.com/mcp
+```
+
+For example, in a `command`/`args` style config:
+
+```json
+{
+  "mcpServers": {
+    "amcharts5": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.amcharts.com/mcp"]
+    }
+  }
+}
+```
+
 Any other MCP client that accepts a remote server URL works too — use the `/mcp`
-endpoint (Streamable HTTP) or `/sse` (legacy SSE).
+endpoint (Streamable HTTP) or `/sse` (legacy SSE). For URL-only clients that still
+expect a command, use the `mcp-remote` bridge shown above.
 
 ## Local install (npx)
 
