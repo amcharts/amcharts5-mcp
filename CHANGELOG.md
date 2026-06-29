@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.3.1] - 2026-06-29
+
+### Security
+- Updated build/dev dependencies in the `agents` / `wrangler` tree to clear 7 advisories (hono, fast-uri, ip-address, path-to-regexp, qs, @hono/node-server). These are transitive devDependencies; no change to the stdio/npm or Worker runtime behavior.
+
+### Changed
+- Deduplicated the content build step in the Cloudflare deploy workflow (it previously ran `build:worker` twice per deploy).
+
 ## [1.3.0] - 2026-06-19
 
 ### Added

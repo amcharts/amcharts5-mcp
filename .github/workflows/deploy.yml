@@ -39,7 +39,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # wrangler-action runs `wrangler deploy` by default. Re-run the build
-          # via the command so the generated bundle is guaranteed present.
+          # The bundle is already built by the previous step.
           command: deploy
-          preCommands: npm run build:worker
