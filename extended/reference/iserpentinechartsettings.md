@@ -75,4 +75,5 @@ Extends: ICurveChartSettings
 - **levelCount** (`undefined | number`) — Default 3 Number of levels in the chart.
 - **orientation** (`"horizontal" | "vertical"`) — Default "vertical" Orientation of the serpatine.
 - **startLocation** (`undefined | number`) — Relative location (0-1) of the start postion. @defult 0
+- **yAxisRadius** (`Percent`) — Default 50% Radius of the Y-axis (band thickness); applied to every Y axis renderer's radius.
 

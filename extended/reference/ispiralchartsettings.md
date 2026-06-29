@@ -75,4 +75,5 @@ Extends: ICurveChartSettings
 - **innerRadius** (`Percent`) — Default 60% Inner radius of the spiral in percent.
 - **levelCount** (`undefined | number`) — Default 3 Numer of spiral circles.
 - **startAngle** (`undefined | number`) — Default -90 Start angle of the spiral in degrees.
+- **yAxisRadius** (`Percent`) — Default 50% Y-axis radius in percent (band thickness); applied to every Y axis renderer's radius.
 

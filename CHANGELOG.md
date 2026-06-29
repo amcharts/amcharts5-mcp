@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.3.2] - 2026-06-29
+
+### Fixed
+- **Audited every documented setting against the installed `@amcharts/amcharts5@5.19.1` type definitions and runtime, and corrected settings that don't exist on the class they were documented under** (amCharts silently ignores unknown settings, so these failed silently):
+  - **Timeline** (`references/timeline.md`, `cursorrules`): removed the phantom `yAxisInnerRadius` (Serpentine/Spiral) and chart-level `inversed` (Spiral). Kept the real `yAxisRadius` (a `Percent`, default 50%) and documented that curve band radius lives on the chart for Serpentine/Spiral, or on `AxisRendererCurveY.axisLength` for a plain `CurveChart`.
+  - **XY** (`references/xy.md`): `arrangeFields` → the real `arrangeTooltips`.
+  - **Stock** (`references/stock.md`): indicator class `MovingAverageCross` → `MACross`; the `periodselected` event fires on `PeriodSelector`, not `stockChart`.
+  - **UI elements** (`references/ui-elements.md`): `Button` has no `togglable` setting or `isActive()` method → use `toggleKey: "active"` and `.get("active")`.
+  - **Word cloud** (`references/wordcloud.md`): corrected defaults (`maxFontSize` 100, `minFontSize` 10, `angles` [0], `randomness` 0).
+  - **Gantt** (`references/gantt.md`): `childCellSize` default 0.8 (was 0.7); `excludeWeekends` default false; `sidebarWidth` is `number | Percent`, default 30%.
+- Added the missing `yAxisRadius` property to the scraped `ISerpentineChartSettings` / `ISpiralChartSettings` reference (`extended/reference/`), which the API reference served as incomplete.
+
 ## [1.3.1] - 2026-06-29
 
 ### Security
