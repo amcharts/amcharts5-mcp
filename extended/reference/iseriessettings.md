@@ -76,7 +76,9 @@ Extended by: IFlowSettings, IFlowNodesSettings, IPercentSeriesSettings, ILegendS
 - **customValueField** (`undefined | string`) — A key to look up in data for a numeric customValue of the data item. Usually used for storing additional numeric information and heat rules.
 - **excludeFromAggregate** (`Array`) — A list of field names to exclude from automatic aggregation when calculateAggregates is enabled. Use it to optimize performance by disabling automatic aggregation for data fields where aggregate values are not needed. @since 5.14.4
 - **fill** (`Color`) — Series fill color. Click here for more info
+- **fillGradient** (`Gradient`) — *(since 5.20.0)* Series fill gradient.
 - **fillPattern** (`Pattern`) — Series fill pattern. Click here for more info @since 5.10.0
+- **strokeGradient** (`Gradient`) — *(since 5.20.0)* Series stroke gradient.
 - **heatRules** (`IHeatRule[]`) — A list of heat rules to apply on series elements. Click here for more info
 - **idField** (`undefined | string`) — A key to look up in data for an id of the data item.
 - **legendDataItem** (`DataItem`) — A data item representing series in a Legend. @readonly

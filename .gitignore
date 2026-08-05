@@ -8,3 +8,8 @@ dist/
 
 # Internal amCharts-only docs (not for the public repo)
 .internal/
+
+# WIP output of scripts/generate-reference.cjs — not served, not published.
+# Also excluded in src/content-fs.js (loader) and package.json "files" (tarball);
+# this entry alone is not enough, since npm packs from the filesystem.
+extended/reference-generated/

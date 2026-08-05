@@ -55,3 +55,4 @@ Extends: IPatternSettings
 - **gap** (`undefined | number`) — Default 6 Gap between rectangles, in pixels.
 - **maxHeight** (`undefined | number`) — Default 5 Maximum height of the rectangle, in pixels.
 - **maxWidth** (`undefined | number`) — Default 5 Maximum width of the rectangle, in pixels.
+- **rotateShapes** (`undefined | false | true`) — Default false *(since 5.20.0)* If set to true, rotation rotates each rectangle around its own center while the grid/tile stays axis-aligned, instead of rotating the whole pattern. This tiles seamlessly (a small width/height is enough) and is much faster than rotating the whole pattern on large tiles.

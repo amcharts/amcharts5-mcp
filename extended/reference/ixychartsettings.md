@@ -82,6 +82,8 @@ Extended by: IRadarChartSettings, IStockPanelSettings, ICurveChartSettings
 - **pinchZoomY** (`undefined | false | true`) — Default false If set to true, using pinch gesture on the chart's plot area will zoom chart vertically. NOTE: this setting is not supported in a RadarChart. Click here for more info @since 5.1.8
 - **scrollbarX** (`Scrollbar`) — horizontal scrollbar. Click here for more info
 - **scrollbarY** (`Scrollbar`) — Vertical scrollbar.
+- **strokeDasharrays** (`Array<number | Array<number>>`) — *(since 5.20.0)* A list of stroke dash arrays to cycle through for line series as they are added, the same way colors cycles series colors. Each entry is a strokeDasharray value (an array of dash/gap lengths, or a single number); 0 or an empty array is a solid line.
+- **strokeWidths** (`Array<number>`) — *(since 5.20.0)* A list of stroke widths (in pixels) to cycle through for line series as they are added, the same way colors cycles series colors. Each added line series is given the next width based on its position. Useful for telling line series apart without relying on color (e.g. the "Patterns" theme).
 - **wheelStep** (`undefined | number`) — Default 0.25 Indicates the relative "speed" of the mouse wheel.
 - **wheelX** (`"zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY" | "none"`) — Indicates what happens when mouse wheel is spinned horizontally while over plot area. Click here for more info
 - **wheelY** (`"zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY" | "none"`) — Indicates what happens when mouse wheel is spinned vertically while over plot area. Click here for more info

@@ -2,6 +2,8 @@
 title: "Themes"
 source: "https://www.amcharts.com/docs/v5/concepts/themes/"
 scraped: "2026-03-15"
+updated: "2026-08-05"
+updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
 
 Themes can be used to apply a collection of settings to chart's elements easily, with a a single line of code.
@@ -61,6 +63,95 @@ A theme that can be used to enable responsive features of the chart - adapting s
 `Spirited`
 
 A theme that adds alternative default colors.
+
+## Themes added in 5.20.0
+
+The list above is the pre-5.20 set. Version 5.20.0 added a large batch of palette themes, dark variants, and two parameterized themes. All live in `/themes` and load exactly like the others.
+
+### New palette themes
+
+Theme name
+
+Comment
+
+`Colorblind`
+
+A color-blindness-safe palette based on the Okabe-Ito color set.
+
+`Ember`
+
+A warm, fire-oriented palette.
+
+`Midnight`
+
+A dark theme.
+
+`Nord`
+
+A palette based on the Nord color scheme.
+
+`Pastel`
+
+A soft, low-saturation palette.
+
+`Patterns`
+
+Uses pattern fills instead of flat colors — useful for print, monochrome output, and accessibility.
+
+`Petroleum`
+
+A deep blue-green palette.
+
+`Savanna`
+
+A warm, earthy palette.
+
+### New dark variants
+
+Dark counterparts were added for most palette themes: `ColorblindDark`, `DatavizDark`, `FrozenDark`, `KellyDark`, `MaterialDark`, `MoonriseDark`, `NordDark`, `PastelDark`, `PatternsDark`, `SpiritedDark`.
+
+Each already carries dark background and interface colors, so you should NOT additionally apply the `Dark` theme when using one.
+
+### Parameterized themes: `Monochrome` and `Adaptive`
+
+These two themes generate their palette from colors you supply, using OKLCH so the result stays perceptually balanced (even lightness/chroma, evenly spread hues). Because a theme cannot take constructor parameters, they ship as **factory functions** — call them with `(root, settings)`. A `.new(root, settings)` alias also works.
+
+Both are additive: they do not modify any built-in theme.
+
+`Monochrome` — a single-hue lightness ramp:
+
+```javascript
+import am5themes_Monochrome from "@amcharts/amcharts5/themes/Monochrome";
+
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_Monochrome(root, {
+    color: 0x2c6e91,    // base color of the ramp; hex number, CSS string, or Color. Default: #2e7c9e (blue)
+    accent: 0xff7f0e,   // optional: applied to the FIRST series only, so one series stands out
+    count: 7,           // number of steps in the ramp. Default: 7
+    dark: false         // true = dark background + interface colors, ramp runs light-to-mid. Default: false
+  })
+]);
+```
+
+`Adaptive` — a full palette generated from one or two base colors:
+
+```javascript
+import am5themes_Adaptive from "@amcharts/amcharts5/themes/Adaptive";
+
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_Adaptive(root, {
+    baseColor: 0x2c6e91,   // primary base color. The FIRST generated color is this color,
+                           // so a brand color always appears in the chart.
+                           // Default: green-to-yellow (#4b8e39 first, #ffdd00 last)
+    baseColor2: 0xffdd00,  // optional: palette spans the two colors, interpolated in OKLCH,
+                           // instead of fanning out from a single hue
+    count: 10,             // number of series colors to generate. Default: 10
+    dark: false            // true = faintly base-tinted dark background + matching interface colors
+  })
+]);
+```
 
 ## Applying
 

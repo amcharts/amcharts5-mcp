@@ -25,6 +25,14 @@ const REFERENCES_DIR = existsSync(join(SKILL_DIR, "references"))
   : SKILL_DIR;
 const EXTENDED_DIR = join(ROOT, "extended");
 
+// Directories under extended/ that must never be served. `reference-generated/`
+// is work-in-progress output from scripts/generate-reference.cjs: it duplicates
+// every page in reference/ under a second key, which makes search return each
+// class twice and advertises an unfinished section via get_doc. It is untracked,
+// but untracked does NOT mean unpublished — `files: ["extended/"]` packs from the
+// filesystem, so without this it also ships in the npm tarball.
+const EXTENDED_SKIP_DIRS = new Set(["reference-generated"]);
+
 /**
  * Read all skill + extended markdown into the raw { skillFiles, extendedFiles }
  * shape that buildContent() expects.
@@ -58,6 +66,8 @@ function walkExtended(dir, prefix, out) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
+      // Only skip at the top level — a nested dir of the same name is fine.
+      if (!prefix && EXTENDED_SKIP_DIRS.has(entry.name)) continue;
       walkExtended(fullPath, prefix ? `${prefix}/${entry.name}` : entry.name, out);
     } else if (entry.name.endsWith(".md")) {
       const key = prefix

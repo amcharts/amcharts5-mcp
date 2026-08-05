@@ -223,20 +223,52 @@ const tests = [
     },
     label: "search_docs('legend') — default scope skill-only",
   },
+  // Step 20: get_doc not-found lists available sections — and must NOT advertise
+  // any work-in-progress dir. `extended/reference-generated/` (output of
+  // scripts/generate-reference.cjs) once loaded alongside reference/, which made
+  // search return every class twice and would have shipped in the npm tarball.
+  // src/content-fs.js EXTENDED_SKIP_DIRS excludes it; this guards that.
+  {
+    send: { jsonrpc: "2.0", id: 21, method: "tools/call", params: { name: "get_doc", arguments: { path: "no/such/doc" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("not found") || !text.includes("Available top-level sections")) return "FAIL (no graceful error)";
+      if (text.includes("reference-generated")) return "FAIL (serving WIP reference-generated/)";
+      return "PASS (graceful error, no WIP sections)";
+    },
+    label: "get_doc(bad path) — graceful error, no work-in-progress sections",
+  },
+  // Step 21: the served reference must be the scraped/curated one only — a stray
+  // duplicate set would return each class twice in scope:'all' searches.
+  {
+    send: { jsonrpc: "2.0", id: 22, method: "tools/call", params: { name: "search_all", arguments: { query: "pointerBaseWidth", maxResults: 10 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("reference-generated") ? "FAIL (duplicate reference set served)" : "PASS (no duplicate reference set)";
+    },
+    label: "search_all — no duplicate results from a stray reference set",
+  },
 ];
+
+let failed = 0;
 
 function handleResponse(msg) {
   if (step >= tests.length) return;
   const test = tests[step];
   const result = test.check(msg);
-  const icon = result.startsWith("PASS") ? "✓" : "✗";
-  console.log(`${icon} Test ${step + 1}/${tests.length}: ${test.label} → ${result}`);
+  const passed = result.startsWith("PASS");
+  if (!passed) failed++;
+  console.log(`${passed ? "✓" : "✗"} Test ${step + 1}/${tests.length}: ${test.label} → ${result}`);
   step++;
   if (step < tests.length) {
     sendNext();
   } else {
-    console.log("\nAll tests complete.");
     server.kill();
+    if (failed > 0) {
+      console.error(`\n${failed} of ${tests.length} tests FAILED.`);
+      process.exit(1);
+    }
+    console.log(`\nAll ${tests.length} tests passed.`);
     process.exit(0);
   }
 }

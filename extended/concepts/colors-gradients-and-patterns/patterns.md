@@ -2,6 +2,8 @@
 title: "Patterns"
 source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/"
 scraped: "2026-03-15"
+updated: "2026-08-05"
+updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
 
 This tutorial looks at how we can create patterns to use for element fills ant outlines.
@@ -43,7 +45,56 @@ Example
 
 `[PathPattern](https://www.amcharts.com/docs/v5/reference/pathpattern/)`
 
+`[StarPattern](https://www.amcharts.com/docs/v5/reference/starpattern/)` (5.20.0)
+
+`[TrianglePattern](https://www.amcharts.com/docs/v5/reference/trianglepattern/)` (5.20.0)
+
 Patterns can be customized by applying rotation, gap, stroke, and other settings, which we'll explore in a bit.
+
+### Star and triangle patterns (5.20.0)
+
+`StarPattern` and `TrianglePattern` work like `RectanglePattern`/`CirclePattern` — a grid of shapes with a `gap` between them, and an optional `checkered` mode that places only every second shape.
+
+```javascript
+columnSeries.columns.template.set("fillPattern", am5.StarPattern.new(root, {
+  color: am5.color(0xffffff),
+  radius: 5,               // outer radius of the star, in pixels. Default: 5
+  innerRadius: am5.percent(50), // inner radius: pixels or a percent of `radius`. Default: 50%
+  spikes: 5,               // number of spikes. Default: 5
+  gap: 6,                  // gap between stars, in pixels. Default: 6
+  checkered: false,        // place every second star. Default: false
+  centered: true           // center stars in their grid cell. Default: true
+}));
+
+columnSeries.columns.template.set("fillPattern", am5.TrianglePattern.new(root, {
+  color: am5.color(0xffffff),
+  maxWidth: 8,             // width of the triangle, in pixels. Default: 8
+  maxHeight: 8,            // height of the triangle, in pixels. Default: 8
+  gap: 6,                  // gap between triangles, in pixels. Default: 6
+  checkered: false,
+  centered: true
+}));
+```
+
+### `rotateShapes` (5.20.0)
+
+`RectanglePattern`, `StarPattern` and `TrianglePattern` accept a `rotateShapes` setting (default `false`).
+
+When `false`, `rotation` rotates the whole pattern grid. That does not tile periodically on an axis-aligned tile, so you usually have to enlarge `width`/`height` and tweak `gap` to avoid seams — expensive on large tiles.
+
+When `true`, `rotation` instead rotates **each shape around its own center** while the grid stays axis-aligned. This tiles seamlessly (a small `width`/`height` is enough) and is significantly faster.
+
+```javascript
+columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, {
+  color: am5.color(0xffffff),
+  rotation: 45,
+  rotateShapes: true    // rotate each rectangle, not the whole grid
+}));
+```
+
+NOTE Star, triangle, rectangle and circle patterns normalize an oversized `width`/`height` down to a single repeat cell (2×2 cells when `checkered`), since the grid repeats every cell anyway. This optimization is skipped when a whole-pattern `rotation` is set — another reason to prefer `rotateShapes`.
+
+NOTE As of 5.20.0, `PathPattern` repeats its `svgPath` as a grid itself instead of drawing once and letting the rendering engine repeat it.
 
 ## Setting pattern
 
@@ -243,6 +294,8 @@ For more configuration options, visit following class references:
 -   [`RectanglePattern` settings](https://www.amcharts.com/docs/v5/reference/linepattern/#Settings)
 -   [`CirclePattern` settings](https://www.amcharts.com/docs/v5/reference/linepattern/#Settings)
 -   [`PathPattern` settings](https://www.amcharts.com/docs/v5/reference/pathpattern/#Settings)
+-   [`StarPattern` settings](https://www.amcharts.com/docs/v5/reference/starpattern/#Settings)
+-   [`TrianglePattern` settings](https://www.amcharts.com/docs/v5/reference/trianglepattern/#Settings)
 
 ## Examples
 

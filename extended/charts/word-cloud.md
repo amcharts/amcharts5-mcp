@@ -2,6 +2,8 @@
 title: "Word cloud"
 source: "https://www.amcharts.com/docs/v5/charts/word-cloud/"
 scraped: "2026-03-15"
+updated: "2026-08-05"
+updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
 
 [Word clouds](https://en.wikipedia.org/wiki/Tag_cloud) (or tag clouds) help visualize weight or importance of individual words from a keyword list or a free-form text.
@@ -247,13 +249,27 @@ Series setting responsible for identifying possible angles is named `angles`.
 
 It's an array of numbers, and the default is `[0, -90]` meaning that words can come at zero (horizontal) or 90 (vertical) angle.
 
-The only supported values are `0`, `90`, and `-90`.
-
 To make all words horizontal, set it to `[0]`. To make all vertical, use `[90]`.
+
+**Any angle is supported as of 5.20.1.** Earlier versions only handled `0`, `90` and `-90`; the layout rewrite in 5.20.1 rasterizes each word and its collision mask at the word's actual angle, so diagonal values work and neighboring words pack into the corners of a rotated word's footprint rather than reserving its full axis-aligned bounding box.
+
+```javascript
+am5wc.WordCloud.new(root, {
+  categoryField: "tag",
+  valueField: "weight",
+  angles: [0, -30, -45, -60, -90]   // arbitrary angles, not just 0/±90
+});
+```
+
+NOTE There is one place where `0` and `±90` still get special treatment: if a word comes out very wide relative to the available area, the layout will flip it to `0` or `±90` for a better fit — but only if that value is present in your `angles` array. Omit them and your angles are used as given.
+
+#### Choosing angles
+
+`randomizeAngles` (default `true`) picks a random entry from `angles` for each word. Set it to `false` to cycle through `angles` in order — combined with `randomness: 0` this produces a reproducible layout.
 
 #### Rotating whole series
 
-Even though non-horizontal/vertical angles are not supported, the whole series can easily be rotated to achieve intermediate angle effect by `rotation` and relative centering settings to the series itself.
+Instead of (or in addition to) rotating individual words, the whole series can be rotated using `rotation` and relative centering settings on the series itself.
 
 let series = root.container.children.push(
   am5wc.WordCloud.new(root, {

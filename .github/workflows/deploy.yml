@@ -31,6 +31,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Gate the deploy: never ship a Worker that fails the stdio test suite.
+      - name: Run tests
+        run: npm test
+
       - name: Build Worker content bundle
         run: npm run build:worker
 

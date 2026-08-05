@@ -2,6 +2,8 @@
 title: "Events"
 source: "https://www.amcharts.com/docs/v5/concepts/events/"
 scraped: "2026-03-15"
+updated: "2026-08-05"
+updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
 
 ## User interactions
@@ -81,6 +83,22 @@ Some elements might have events that signal some change on it without user's int
 For example, a Scrollbar might invoke a `rangechanged` event when its selection range changes, whether by dragging its grips or programatically.
 
 For a complete list of element's events, see "Events" section in its class reference. Here's a [link](https://www.amcharts.com/docs/v5/reference/scrollbar/#Events) to `Scrollbar` events as an example.
+
+## Global pointer events
+
+Regular pointer events like `pointerdown` fire only when the pointer is over the element itself. The "global" variants fire on **every** element for a pointer action anywhere on the chart surface, which is what you need for drag-style interactions that must keep tracking once the pointer leaves the element.
+
+Available on all elements:
+
+-   `globalpointermove`
+-   `globalpointerup`
+-   `globalpointerdown` — added in 5.20.0
+
+```javascript
+series.columns.template.events.on("globalpointerdown", function(ev) {
+  // fires on a press anywhere on the chart surface
+});
+```
 
 ## Debounced events
 
