@@ -248,6 +248,50 @@ const tests = [
     },
     label: "search_all — no duplicate results from a stray reference set",
   },
+  // Step 22: get_section accepts the source label exactly as search results
+  // print it ("skill/SKILL.md"). Previously every such form was rejected, so a
+  // truncated search result could not be expanded.
+  {
+    send: { jsonrpc: "2.0", id: 23, method: "tools/call", params: { name: "get_section", arguments: { file: "skill/SKILL.md", heading: "Recent API changes" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Recent API changes") && text.includes("5.20") ? "PASS (label resolves)" : "FAIL";
+    },
+    label: "get_section('skill/SKILL.md', 'Recent API changes') — search label resolves",
+  },
+  // Step 23: get_section also reaches extended docs by their path.
+  {
+    send: { jsonrpc: "2.0", id: 24, method: "tools/call", params: { name: "get_section", arguments: { file: "extended/concepts/events", heading: "Settings value change" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Settings value change") && text.includes("on(") ? "PASS (extended path resolves)" : "FAIL";
+    },
+    label: "get_section('extended/concepts/events', …) — extended path resolves",
+  },
+  // Step 24: get_doc exposes the skill corpus under 'skill/…'.
+  {
+    send: { jsonrpc: "2.0", id: 25, method: "tools/call", params: { name: "get_doc", arguments: { path: "skill/SKILL.md" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Critical rules") && text.includes("Common pitfalls") ? "PASS (skill via get_doc)" : "FAIL";
+    },
+    label: "get_doc('skill/SKILL.md') — skill corpus reachable",
+  },
+  // Step 25: a truncated search excerpt must say how to fetch the full section
+  // and quote matching lines that fell beyond the cut. "Recent API changes" is
+  // far longer than the excerpt budget; the bullet-inheritance line sits deep
+  // inside it.
+  {
+    send: { jsonrpc: "2.0", id: 26, method: "tools/call", params: { name: "search_docs", arguments: { query: "bullet Graphics with no paint of its own", maxResults: 5 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("(truncated")) return "FAIL (nothing truncated — budget or fixture changed?)";
+      if (!/get_section\(file: "skill\/[^"]+", heading: "[^"]+"\)/.test(text)) return "FAIL (no fetch hint)";
+      if (!text.includes("Matching lines beyond the excerpt")) return "FAIL (matching lines not quoted)";
+      return "PASS (fetch hint + matching lines)";
+    },
+    label: "search_docs — truncated excerpt carries fetch hint and matching lines",
+  },
 ];
 
 let failed = 0;

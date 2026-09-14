@@ -175,3 +175,4 @@ Extends: ISerializerSettings
 
 - **includeProjection** (`undefined | false | true`) — Default false Include projection settings in the output. If enabled, the projection function will be included in the output, according to the functionsAs setting.
 - **removeEmptyObjects** (`undefined | false | true`) — Default true Remove empty objects from the output.
+- **includeRoot** (`undefined | false | true`) — Default false If set to true, adds a top-level `root` section with the Root object's settings and properties (interfaceColors, formatters, utc, fps, tabindex) to the serialized output. JsonParser applies a `root` section before parsing the chart. @since 5.20.2

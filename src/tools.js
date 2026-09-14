@@ -12,6 +12,26 @@ import { CHART_TYPE_MAP, extractImportBlock, searchDocs } from "./content.js";
 export function registerTools(server, content) {
   const { docs, extendedDocs, examples } = content;
 
+  // Resolve any identifier a search result prints — "skill/SKILL.md",
+  // "skill/xy", "SKILL", "xy.md", "extended/charts/xy-chart/cursor",
+  // "charts/xy-chart/cursor", "reference/xycursor" — to a doc. Search results
+  // label their source exactly this way, so an agent can paste the label
+  // straight into get_section / get_doc.
+  function resolveDoc(id) {
+    let key = String(id || "").trim().replace(/^\/+|\/+$/g, "").replace(/\.md$/i, "");
+    if (!key) return null;
+    let skillKey = key.startsWith("skill/") ? key.slice("skill/".length) : key;
+    if (docs.has(skillKey)) return { doc: docs.get(skillKey), label: `skill/${skillKey}` };
+    const extKey = key.startsWith("extended/") ? key.slice("extended/".length) : key;
+    if (extendedDocs.has(extKey)) return { doc: extendedDocs.get(extKey), label: `extended/${extKey}` };
+    // Case-insensitive skill fallback ("skill" → "SKILL", "Xy" → "xy").
+    const lower = skillKey.toLowerCase();
+    for (const [name, doc] of docs) {
+      if (name.toLowerCase() === lower) return { doc, label: `skill/${name}` };
+    }
+    return null;
+  }
+
   // --- Tool: list_chart_types ---
   server.tool(
     "list_chart_types",
@@ -86,12 +106,39 @@ export function registerTools(server, content) {
         return { content: [{ type: "text", text: `No results found for "${query}".${hint}` }] };
       }
 
+      // Per-result excerpt budget. When only one or two sections match, the
+      // whole point is to read them — grow the budget instead of cutting the
+      // answer off.
+      const budget = results.length <= 2 ? 6000 : 2000;
+      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+
       let text = `# Search results for "${query}" (scope: ${scope})\n\n`;
       for (const r of results) {
+        const id = `${r.source}/${r.file}`;
         text += `## ${r.docTitle} → ${r.heading}\n`;
-        text += `*(source: ${r.source}/${r.file}.md, relevance: ${r.score})*\n\n`;
-        // Truncate very long sections
-        const body = r.body.length > 2000 ? r.body.slice(0, 2000) + "\n\n...(truncated)" : r.body;
+        text += `*(source: ${id}.md, relevance: ${r.score})*\n\n`;
+        let body = r.body;
+        if (body.length > budget) {
+          // The excerpt is a fixed-size head, so the line that matched the
+          // query may lie past the cut. Quote the matching lines beyond the
+          // head so the answer is never lost, and print the exact call that
+          // returns the full section.
+          const head = body.slice(0, budget);
+          const beyond = [];
+          let offset = 0;
+          for (const line of body.split("\n")) {
+            const start = offset;
+            offset += line.length + 1;
+            if (start < budget) continue;
+            const l = line.toLowerCase();
+            if (terms.some(t => l.includes(t))) beyond.push(line.trim().slice(0, 400));
+            if (beyond.length >= 8) break;
+          }
+          body = head + `\n\n...(truncated — full section: get_section(file: "${id}", heading: "${r.heading}"))`;
+          if (beyond.length) {
+            body += `\n\nMatching lines beyond the excerpt:\n` + beyond.map(l => `> ${l}`).join("\n");
+          }
+        }
         text += body + "\n\n---\n\n";
       }
       return { content: [{ type: "text", text }] };
@@ -101,28 +148,29 @@ export function registerTools(server, content) {
   // --- Tool: get_section ---
   server.tool(
     "get_section",
-    "Get a specific section from an amCharts 5 reference file by heading name. Use search_docs first to find the right section.",
+    "Get the FULL text of one section of a doc by heading — use it to expand a truncated search_docs / search_all result. `file` accepts the source label exactly as search results print it ('skill/SKILL.md', 'skill/xy', 'extended/charts/xy-chart/cursor', 'reference/xycursor') as well as a bare skill file name ('SKILL', 'xy', 'map').",
     {
-      file: z.string().describe("Reference file name without .md, e.g. 'xy', 'pie', 'SKILL', 'map'"),
-      heading: z.string().describe("Section heading to retrieve, e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls'"),
+      file: z.string().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
+      heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'"),
     },
     async ({ file, heading }) => {
-      const doc = docs.get(file);
-      if (!doc) {
-        return { content: [{ type: "text", text: `File "${file}" not found.` }] };
+      const resolved = resolveDoc(file);
+      if (!resolved) {
+        const skillFiles = [...docs.keys()].map(k => `skill/${k}`).join(", ");
+        return { content: [{ type: "text", text: `File "${file}" not found.\n\nSkill files: ${skillFiles}\n\nExtended docs use their path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'reference/xycursor' (with or without an 'extended/' prefix). Use search_docs / search_all to find one.` }] };
       }
+      const { doc, label } = resolved;
 
-      const section = doc.sections.find(
-        s => s.heading.toLowerCase().includes(heading.toLowerCase())
-      );
+      const needle = heading.toLowerCase();
+      const section = doc.sections.find(s => s.heading.toLowerCase().includes(needle));
       if (!section) {
         const available = doc.sections.map(s => s.heading).filter(Boolean).join("\n- ");
         return {
-          content: [{ type: "text", text: `Section "${heading}" not found in ${file}.md.\n\nAvailable sections:\n- ${available}` }],
+          content: [{ type: "text", text: `Section "${heading}" not found in ${label}.md.\n\nAvailable sections:\n- ${available}` }],
         };
       }
       return {
-        content: [{ type: "text", text: `# ${section.heading}\n\n${section.body}` }],
+        content: [{ type: "text", text: `# ${section.heading}\n*(source: ${label}.md)*\n\n${section.body}` }],
       };
     }
   );
@@ -244,22 +292,26 @@ export function registerTools(server, content) {
   // --- Tool: get_doc ---
   server.tool(
     "get_doc",
-    "Get a full documentation page from the extended amCharts 5 docs. Use search_all first to find the right path.",
+    "Get a full documentation page — an extended doc by path, or a skill file by 'skill/<name>'. Accepts the source label exactly as search_docs / search_all print it. Use search_all first to find the right path.",
     {
-      path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API). For a class's full settings + defaults prefer get_api_reference."),
+      path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API), or a skill file such as 'skill/SKILL.md' / 'skill/xy'. For a class's full settings + defaults prefer get_api_reference."),
     },
     async ({ path: docPath }) => {
-      const key = docPath.replace(/^\/|\/$/g, "").replace(/\.md$/, "");
-      const doc = extendedDocs.get(key);
-      if (!doc) {
+      const key = String(docPath || "").replace(/^\/|\/$/g, "").replace(/\.md$/, "");
+      // Extended docs take precedence for bare paths; 'skill/…' always means the skill layer.
+      const resolved = key.startsWith("skill/")
+        ? resolveDoc(key)
+        : (extendedDocs.has(key) ? { doc: extendedDocs.get(key), label: `extended/${key}` } : resolveDoc(key));
+      if (!resolved) {
         // List available top-level paths
         const paths = [...extendedDocs.keys()];
         const topLevel = [...new Set(paths.map(p => p.split("/")[0]))].sort();
         return {
-          content: [{ type: "text", text: `Doc "${key}" not found.\n\nAvailable top-level sections: ${topLevel.join(", ")}\n\nUse search_all to find the right path.` }],
+          content: [{ type: "text", text: `Doc "${key}" not found.\n\nAvailable top-level sections: skill, ${topLevel.join(", ")}\n\nSkill files: ${[...docs.keys()].map(k => `skill/${k}`).join(", ")}\n\nUse search_all to find the right path.` }],
         };
       }
-      return { content: [{ type: "text", text: `# ${doc.title}\n\n${doc.content}` }] };
+      const { doc, label } = resolved;
+      return { content: [{ type: "text", text: `# ${doc.title}\n*(source: ${label}.md)*\n\n${doc.content}` }] };
     }
   );
 

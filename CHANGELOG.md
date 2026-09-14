@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.5.0] - 2026-09-14
+
+### Added
+Brought the skill and served docs up to date with **amCharts 5.20.2 – 5.20.5** (2026-08-13 to 2026-09-03). Every new setting was verified against the library source (`@since 5.20.x` tags, default themes and `_setRawDefault` calls), not the changelog text — which mattered twice: `MapChart.boxZoom` is an enum naming the modifier key, not a boolean, and `updateTargets` is an option of `JsonParser.parse()`, not a parser setting.
+
+- **New API (5.20.2–5.20.4)** in `SKILL.md`, `cursorrules` and the served reference: `MapChart.doubleClickZoom` (default **true** — a behavior change) and `boxZoom` / `boxZoomSelection`; `MapLineSeries` `pointIds` data field with `pointSeries` / `pointIdsField`; column series `colorByDataItem` + `colors`; `Scrollbar.opposite`; `Root.fontFamily` / `fontSize` / `fontWeight`; `ChartSerializer.includeRoot` and the top-level `root` config section; `JsonParser.parse(config, { updateTargets })`; `Entity.once()` / `onceDebounced()`; and the new `am5.SerialChartContainer` (with its `zoomTools` setting and `zoomableContainer` property) — new served pages `reference/serialchartcontainer`, `iserialchartcontainersettings` and `iparsesettings`.
+- **Serialization guide** — a new "Serializing to JSON" section in `SKILL.md` and expanded `concepts/serializing*` docs: only user-set settings are serialized (5.20.3), Gantt is now supported, adapters never round-trip (skipped on parse since 5.20.4; crashed the chart before), serialize the top container child rather than a bare series (`selectedDataItem` cycles), and what `ChartSerializer` still does not capture as of 5.20.5 (`ZoomableContainer` contents, Venn `hoverGraphics` / slice states).
+- **Behavior changes (5.20.2)** — bullets on flow nodes, `ArcDiagram` nodes and funnel/pyramid slices are now positioned properly; an unpainted bullet takes its own slice/node color and is therefore invisible unless styled. Noted in `SKILL.md`, `references/flow.md` and a new "Bullets on slices" section in `references/pie.md`.
+- **Gotchas surfaced by editor tooling**, each verified at runtime or in source: custom GeoJSON needs **clockwise** exterior rings or the map floods (`references/map.md` + pitfall #34, with a rewind snippet and `zoomToGeoBounds`); `axis.dispose()` does not remove an axis from `chart.xAxes`/`yAxes` — use `removeValue()` (pitfall #35, `references/xy.md`); `DateAxis` format maps need `markDirtySize()` and `groupIntervals` needs the data re-set to take effect live; heat rules on bullets need `valueField` + `calculateAggregates` and a `Template` target, with the serializer crash explained; a `ColorSet` must hold ≥1 color; HeatLegend segments are styled through `markers.template` with a width/height-by-orientation thickness rule; the "shared vs per-sprite tooltip" model with the correct `tooltipText` target per chart type; WordCloud parser settings re-parse `text` since 5.20.0.
+- **"Settings that already equal the default — omit them"** — a verified cheat-sheet in `SKILL.md` (hierarchy depth/branch settings, percent `alignLabels`, `maskBullets` **true**, `connect`, `noRisers`, …) so generated code stops restating defaults.
+- Every `series.bullets.push(...)` example in the skill and `cursorrules` now uses the `function(root, series, dataItem)` signature (24 call sites), which is what JSON round-trips require; pitfall #36 states the rule.
+
+### Fixed
+- **Phantom `MapChart` settings removed** from an in-progress `SKILL.md` edit: `keyboardNavigation`, `keyboardRotateStep` and `keyboardPanStep` do not exist in 5.20.5 (no such identifiers anywhere in the library source or changelog).
+- **`get_section` now accepts the source label search results print** (`skill/SKILL.md`, `skill/xy`, `extended/concepts/events`, `reference/xycursor`, with or without `.md` / prefixes) and reaches extended docs as well as skill files. Previously every form of the printed label was rejected with `File "skill/SKILL.md" not found`, so a truncated result could not be expanded.
+- **`search_docs` truncation no longer loses the answer.** Excerpts still cut at 2,000 characters (6,000 when only one or two sections match), but a truncated excerpt now ends with the exact `get_section(...)` call that returns the full section and quotes up to eight query-matching lines that fell beyond the cut. Re-querying with wording from the truncated line previously returned the same excerpt cut at the same point.
+- **`get_doc` exposes the skill corpus** under `skill/<name>` and lists `skill` among the available sections; `get_section` / `get_doc` responses carry a `(source: …)` line that is itself a valid identifier.
+- `package-lock.json` root version was stale at 1.3.2; now tracks `package.json`.
+
+### Added
+- Four regression tests (28 total): `get_section` with a search-result label and with an extended path, `get_doc('skill/SKILL.md')`, and a truncated `search_docs` excerpt carrying the fetch hint and matching lines.
+
 ## [1.4.0] - 2026-08-05
 
 ### Added

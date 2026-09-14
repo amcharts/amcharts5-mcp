@@ -20,3 +20,4 @@ Extended by: IGraticuleSeriesDataItem
 - **lineType** (`"curved" | "straight"`) — Default "curved" A line type. "curved" (default) - connects points using shortest distance, which will result in curved lines based on map projection. "straight" - connects points using visually straight lines, and will not cross the -180/180 longitude. @since 5.2.32
 - **mapLine** (`MapLine`) — Related MapLine object.
 - **pointsToConnect** (`Array`) — An array of data items from MapPointSeries to use as line end-points. Note, fixed points can not be used here.
+- **pointIds** (`Array<string>`) — Ids of the points (data items of the series set in pointSeries, matched by their id) a line connects, e.g. `{ pointIds: ["JFK", "LAX"] }`. The line waits for every id to match a point before it is drawn, so it is never drawn short. Fixed points cannot be used, same as with pointsToConnect. Ignored if pointsToConnect is set on the same data item. @since 5.20.3

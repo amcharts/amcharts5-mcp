@@ -43,3 +43,7 @@ If set to some string, it will be used as inner <div> ARIA-LABEL.
 - **role** (`undefined | string`) — Allows setting a "role" for the inner <div>. @since 5.3.17 Click here for more info
 - **tooltipContainerBounds** (`undefined | { bottom: number,  left: number,  right: number,  top: number }`) — Allows defining margins around chart area for tooltips to go outside the chart itself. @since 5.2.24
 
+- **fontFamily** (`undefined | string`) — Default font family for all text elements, unless overridden on an element. @since 5.20.2
+- **fontSize** (`undefined | number | string`) — Default font size for all text elements, unless overridden on an element. @since 5.20.2
+- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Default font weight for all text elements, unless overridden on an element. @since 5.20.2
+- **sanitizeHTML** (`undefined | false | true`) — Default true If set to true, dynamically-set HTML (html/labelHTML, HTML tooltips, modal content) is sanitized. Set to false to opt out. @since 5.19.0

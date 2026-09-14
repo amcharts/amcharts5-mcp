@@ -52,3 +52,4 @@ Extended by: ISliderSettings, IXYChartScrollbarSettings
 - **end** (`undefined | number`) — Relative end of the selected range, with 0 meaning beginning, and 1 the end.
 - **orientation** (`"horizontal" | "vertical"`) — Orientation of the scrollbar.
 - **start** (`undefined | number`) — Relative start of the selected range, with 0 meaning beginning, and 1 the end.
+- **opposite** (`undefined | false | true`) — Default false If set to true, a chart's scrollbarX is placed below the plot area and its scrollbarY to the left, instead of above and to the right. Only has effect on scrollbars set via a chart's scrollbarX/scrollbarY settings; a scrollbar the user added to a container themselves is left where it is. Unrelated to the `opposite` setting of AxisRendererX/AxisRendererY. @since 5.20.2

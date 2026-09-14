@@ -88,3 +88,5 @@ Extended by: IGraticuleSeriesSettings
 
 - **clipBack** (`undefined | false | true`) — If set to true will hide line segments that are in the invisible range of the map. For example on the side of the globe facing away from the viewer when used with Orthographic projection. NOTE: not all projections have invisible side.
 - **lineType** (`"curved" | "straight"`) — Default "curved" A line type. "curved" (default) - connects points using shortest distance, which will result in curved lines based on map projection. "straight" - connects points using visually straight lines, and will not cross the -180/180 longitude. @since 5.2.24
+- **pointIdsField** (`undefined | string`) — Default "pointIds" A field in data that holds ids of the points a line connects. @since 5.20.3
+- **pointSeries** (`MapPointSeries`) — A MapPointSeries the pointIds of a data item are looked up in. @since 5.20.3

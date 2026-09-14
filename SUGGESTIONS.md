@@ -11,9 +11,200 @@ semantics** were repeatedly needed.
 
 ---
 
+## 2026-09-14 — Content: API added in 5.20.2 – 5.20.5 is missing (MCP last updated at 5.20.1)
+
+**Type:** Content freshness. High value — this is new public API the MCP will currently deny exists.
+
+> ✅ Done 2026-09-14 (MCP 1.5.0, skill commit alongside): the `@since` grep returned exactly the 17 hits / 7 files listed here and every row of the settings table matched the source. Added to `SKILL.md` "Recent API changes" (now "covered through 5.20.5"), `cursorrules`, `references/map.md` (`boxZoom`/`doubleClickZoom`/`boxZoomSelection`, `pointIds`/`pointSeries`), `references/xy.md` (`colorByDataItem`/`colors`, `Scrollbar.opposite`), `references/hierarchy.md` (`SerialChartContainer` — which also has a `zoomTools` setting the table above omits), a new `SKILL.md` "Serializing to JSON" section, and the served reference (`imapchartsettings`, `mapchart`, `iscrollbarsettings`, `irootsettings`, `ichartserializersettings`, `imaplineseriessettings`, `imaplineseriesdataitem`, `ibasecolumnseriessettings`, `ibasecolumnseriesdataitem`, new `serialchartcontainer` / `iserialchartcontainersettings` / `iparsesettings`, `concepts/serializing*`, `concepts/events`). One extra trap found: an uncommitted `SKILL.md` edit already described `keyboardNavigation` / `keyboardRotateStep` / `keyboardPanStep` on `MapChart` — none exist in 5.20.5; removed. Unreleased `CategoryAxis`/`ValueAxis` fixes deliberately left out until they ship.
+
+**Source:** Verified against the library sources in `c:/projects/amcharts-d3/public/src/.internal/`,
+not against the CHANGELOG prose. Where the two disagree the source wins, and it disagrees in two
+places that matter (see `boxZoom` and `updateTargets` below). Library CHANGELOG lives at
+`c:/projects/amcharts-d3/public/packages/shared/CHANGELOG.md`.
+
+The last content update was commit `7fa8508` (2026-08-05), "Update docs for amCharts 5.20.x", made
+when 5.20.1 (2026-08-03) was the newest release. Four releases have shipped since: 5.20.2, 5.20.3,
+5.20.4, 5.20.5.
+
+**Mechanical handle:** the new settings carry `@since` tags in the source. This finds all of them:
+
+```
+grep -rn "@since 5\.20\.[2-5]" c:/projects/amcharts-d3/public/src/.internal/ --include=*.ts
+```
+
+That returns 17 hits across 7 files and is the authoritative list for the settings part of this job.
+Classes and behaviour changes are not tagged; those are itemised below.
+
+### Three traps — do not document these from the CHANGELOG prose
+
+- **`MapChart.boxZoom` is not a boolean.** Type is `"none" | "drag" | "shift" | "ctrl" | "alt"`,
+  default `"none"` (set in `MapChartDefaultTheme.ts:46`). The value names the modifier that arms
+  box-zoom dragging. The CHANGELOG's "new `boxZoom` setting zooms the map to an area drawn with a
+  pointer" reads as an on/off switch. Declared in `charts/map/MapChart.ts:325`.
+- **`Scrollbar.opposite` is a new, different setting from the long-standing `opposite` on
+  `AxisRendererX`/`AxisRendererY`.** Grepping for the name finds `opposite: false` at
+  `XYChartDefaultTheme.ts:309` and `:318` — those are the **axis renderer** rules and predate this
+  release. The new `Scrollbar.opposite` has no theme rule at all, so it is simply unset/falsy. Do
+  not merge the two into one reference entry and do not copy the axis renderer's default onto it.
+- **`JsonParser.updateTargets` is not a setting on the parser.** It is a member of `IParseSettings`,
+  the options object passed as the second argument to `parse()`:
+  `await parser.parse(config, { updateTargets: "soft" })`. `parse()` is async and returns a Promise.
+  Declared in `plugins/json/Json.ts:945`; `IParseSettings` at `Json.ts:927`; `JsonParser` class at
+  `Json.ts:954`. Note the file is `Json.ts`, not `JsonParser.ts`.
+
+### New classes
+
+- **`SerialChartContainer`** — a `SerialChart` whose `seriesContainer` sits inside a
+  `ZoomableContainer`, for zoomable/pannable series such as `ForceDirected`. Exported from the
+  **`am5` root module**, not from a chart module: `public/src/index.ts:44`. Implementation at
+  `core/render/SerialChartContainer.ts:36`. Exposes a `zoomableContainer` property. Settings,
+  events and private interfaces are exported alongside it.
+
+### New settings (all verified: name, type, default, owning class)
+
+| Setting | Class | Type | Default | Source |
+|---|---|---|---|---|
+| `opposite` | `Scrollbar` | `boolean` | unset — no theme rule (see trap above) | `core/render/Scrollbar.ts:57` |
+| `fontFamily` | `Root` | `string` | unset | `core/Root.ts:177` |
+| `fontSize` | `Root` | `number \| string` | unset | `core/Root.ts:184` |
+| `fontWeight` | `Root` | `"normal" \| "bold" \| "bolder" \| "lighter" \| "100"…"900"` | unset | `core/Root.ts:191` |
+| `includeRoot` | `ChartSerializer` | `boolean` | `false` | `plugins/json/ChartSerializer.ts:45`, default at `:95` |
+| `boxZoom` | `MapChart` | `"none" \| "drag" \| "shift" \| "ctrl" \| "alt"` | `"none"` | `charts/map/MapChart.ts:325` |
+| `doubleClickZoom` | `MapChart` | `boolean` | `true` | `charts/map/MapChart.ts:311` |
+| `pointSeries` | `MapLineSeries` | `MapPointSeries` | unset | `charts/map/MapLineSeries.ts:98` |
+| `pointIdsField` | `MapLineSeries` | `string` | `"pointIds"` | `charts/map/MapLineSeries.ts:106` |
+| `colorByDataItem` | column series (`BaseColumnSeries`) | `boolean` | `false` (call-site fallback, no theme rule) | `charts/xy/series/BaseColumnSeries.ts:78` |
+| `colors` | column series (`BaseColumnSeries`) | `ColorSet` | unset | `charts/xy/series/BaseColumnSeries.ts:89` |
+
+`pointIdsField` is **not** in the CHANGELOG but is public API and belongs in the reference.
+
+### New elements, methods and data fields
+
+- **`MapChart.boxZoomSelection`** — a `Rectangle` showing the area being dragged when `boxZoom` is
+  armed. Public readonly property, `charts/map/MapChart.ts:387`.
+- **`MapLineSeries` `pointIds` data field** — `Array<string>`, names the points a line connects
+  instead of holding their data items: `{ pointIds: ["JFK", "LAX"] }`. Looked up in the series given
+  by `pointSeries`. `pointsToConnect` wins if both are set. `charts/map/MapLineSeries.ts:48`.
+- **`Entity.once(key, callback)`** — like `on()`, but fires only on the first change to that setting,
+  then removes itself. Returns `IDisposer`. `core/util/Entity.ts:600`.
+- **`Entity.onceDebounced(key, callback, debounceDelay)`** — same, debounced. Returns `IDisposer`.
+  `core/util/Entity.ts:701`.
+
+### JSON config / serialization
+
+- **Top-level `root` section** in a JSON config applies settings and properties to the `Root` object.
+  Applied before the chart is parsed. Handling at `plugins/json/Json.ts:587` and `:995`.
+- **`ChartSerializer` now emits only user-set settings**, leaving theme and library defaults out of
+  the output. This is a significant behavioural change for anyone diffing serializer output, and it
+  is worth an explicit note in the skill rather than a changelog line.
+- **`Root.interfaceColors`** is serialized and re-applied on parse, alongside `utc`, `fps`,
+  `numberFormatter`, `dateFormatter`, `durationFormatter` and `tabindex`.
+  `plugins/json/ChartSerializer.ts:235`.
+- **Gantt charts** are supported by `ChartSerializer`/`JsonParser`.
+- Cross-references between objects are written as references rather than copies, e.g.
+  `"@series.get('fill')"`.
+- Large values are written short and rebuilt on parse: a map's `geoJSON` and a `Root`'s locale are
+  stored by the name of the pack they came from.
+
+### Behaviour changes worth a skill note (no new API)
+
+- **`ArcDiagram`** — bullets on nodes are now positioned on the node circle, with `locationX`/
+  `locationY` read as fractions of it. Previously they were created but never placed.
+- **Flow charts** — bullets on nodes are children of the node, drawn above its shape and below its
+  label, positioned relative to the node.
+- **`FunnelSeries`/`PyramidSeries`** — bullet `locationX`/`locationY` follow the slice's sloping
+  edges rather than its bounding box.
+- **Bullets with no paint of their own** take the colour of their own slice or node on pie, funnel,
+  flow and hierarchy charts, rather than the series colour.
+- **`CategoryAxis`** (unreleased) — series data that is not in axis-category order no longer loses
+  items. Relevant to hand-built Gantt-style column charts.
+- **`ValueAxis`** (unreleased) — a logarithmic axis with a wide range now grids on round powers of
+  ten instead of the axis minimum times ten.
+
+### Suggested order of work
+
+1. Run the `@since` grep above and reconcile it against the settings table — if it returns anything
+   not listed here, the table is stale and the source is right.
+2. Add the new settings and `SerialChartContainer` to the reference/skill content.
+3. Add the serialization notes, especially "only user-set settings are serialized".
+4. Regenerate and deploy through the normal pipeline (`npm run build:worker`, `npm run deploy`);
+   do not hand-edit served content.
+
+### Not part of this item
+
+A verification pass over the **existing** content — checking that every setting already documented
+still exists under that name with that default — is a separate job and should be tracked separately.
+Commit `2810da3` ("Fix phantom/wrong settings in skill + reference") shows that pass has found real
+problems before, and the two `boxZoom`/`updateTargets` traps above suggest changelog-derived content
+is where the errors concentrate.
+
+---
+
+## 2026-08-05 — MCP: `search_docs`/`search_all` truncate at the most relevant line, and `get_section` can't resolve the path they report
+
+**Type:** MCP tool behaviour. Medium-high value — cost several wasted round-trips on a real task.
+
+> ✅ Done 2026-09-14 (MCP 1.5.0): `get_section` / `get_doc` now accept the label exactly as printed (`skill/SKILL.md`, `skill/xy`, `extended/…`, `reference/…`, with or without `.md`), `get_doc` exposes the skill corpus under `skill/…` and lists `skill` among its sections, and a truncated `search_docs` excerpt ends with the exact `get_section(file:…, heading:…)` call plus up to 8 query-matching lines from beyond the cut (budget grows to 6,000 chars when ≤2 sections match). Four regression tests added. The bullet auto-colour consequence (same colour as the slice → invisible) is now stated in `SKILL.md`, `references/pie.md` and `references/flow.md`.
+
+**Source:** Needed to confirm whether a recent amCharts release auto-colours an unpainted bullet
+`Graphics` from its data item (relevant to pie/percent and flow-node bullets, which have no
+series-level fill). `search_docs("pie percent series bullets color inherit slice fill")` returned the
+right section — `skill/SKILL.md` → "Recent API changes (newer than the bundled class reference)" —
+but the excerpt cut off mid-sentence at exactly the line that mattered:
+
+> - `Series`: `fillGradient` / `strokeGradient` settings. A bullet `Graphics` with no paint of
+>
+> ...(truncated)
+
+Two problems:
+
+1. **Truncation lands on the answer.** The excerpt window appears to be a fixed character budget
+   applied per result. Re-querying with wording lifted verbatim from the truncated line
+   (`"bullet Graphics with no paint of its own inherits series color"`) returned the *same* section
+   truncated at the *same* point — so there is no way to page past it via search.
+
+2. **The reported source path is not accepted by `get_section`.** Results are labelled
+   `*(source: skill/SKILL.md, relevance: 11.1)*`. Every obvious form was rejected:
+   - `get_section(file: "skill/SKILL.md", heading: "Recent API changes (newer than the bundled class reference)")` → `File "skill/SKILL.md" not found.`
+   - `get_section(file: "skill/SKILL", ...)` → `File "skill/SKILL" not found.`
+   - `get_doc(path: "SKILL.md")` → `Doc "SKILL" not found. Available top-level sections: charts, concepts, getting-started, migrating-from-amcharts-4, reference`
+
+   Note `get_doc`'s available-sections list does not include `skill`, so the skill corpus appears to
+   be searchable but not directly fetchable.
+
+**Suggested fixes:**
+- Make the `source:` label in search results a valid identifier for `get_section`/`get_doc` (or
+  print the exact call needed to fetch the full section — agents will copy it verbatim).
+- Expose the skill corpus to `get_doc` alongside `charts`/`concepts`/etc.
+- Give search results a way to expand: an `offset`/`full` parameter, or grow the per-result budget
+  when a query matches only one or two sections.
+- Cheap alternative: end truncated excerpts with the containing heading plus the fetch command,
+  e.g. `…(truncated — full text: get_section(file: "<id>", heading: "<h>"))`.
+
+**Workaround used:** wrote a standalone probe page against `cdn.amcharts.com/lib/5` and read the
+values back through puppeteer. This confirmed the behaviour directly and is worth documenting in the
+skill anyway:
+
+```js
+// PieSeries has NO fill of its own; an unpainted bullet Graphics is auto-coloured per data item.
+series.get("fill")                       // undefined
+dataItem.get("slice").get("fill")        // #67b7dc, #6794dc, #6771dc
+bulletSprite.get("fill")                 // #67b7dc, #6794dc, #6771dc  (nothing was ever set)
+```
+
+**Skill-docs suggestion while here:** state explicitly, in the percent-chart and flow-chart bullet
+sections, that bullets on series *without* a series-level fill (percent, flow nodes) inherit the
+per-data-item shape colour automatically, and that setting `fill` on the bullet sprite defeats it.
+Worth calling out the consequence too: an auto-coloured bullet is the *same* colour as the slice it
+sits on, so it is invisible unless offset, stroked, or given a contrasting fill deliberately.
+
+---
+
 ## 2026-07-19 — GOTCHA: custom-GeoJSON MapPolygonSeries needs CLOCKWISE exterior rings (else the map floods)
 
 **Type:** Skill docs / common-pitfalls. High value — silent, total map failure with a non-obvious cause.
+
+> ✅ Done 2026-09-14: pitfall #34 in `SKILL.md`, #32 in `cursorrules`, and a "Custom GeoJSON: exterior rings must be CLOCKWISE" block in `references/map.md` (Polygon + MultiPolygon rewind snippet, "amCharts does not auto-rewind"), plus `zoomToGeoBounds` in the same block and under "Zoom controls".
 
 **Source:** Built a choropleth of Great Britain from a custom GeoJSON of 4,779 small square grid
 cells (each a ~0.083° box), fed to `am5map.MapPolygonSeries` via `geoJSON:` with `geoMercator()`.
@@ -55,6 +246,8 @@ country geodata, `chart.zoomToGeoBounds({ left, right, top, bottom }, duration)`
 
 **Type:** Skill docs / reference. Medium value — directly improves generated-code quality.
 
+> ✅ Done 2026-09-14 (partially): `SKILL.md` gained "Settings that already equal the default — omit them", a table verified against the 5.20.5 default themes rather than the empirical list above. Two corrections to the list: `XYSeries.maskBullets` defaults to **true** (so `maskBullets: false` is a real change), and `XYChart.maxTooltipDistance` has no default — unset and `0` behave differently, so "leave unset" is the advice. `Radar`/`Nightingale` `maskContent` and `VennSeries` `paddingBottom` were not verified and are not listed. The runtime-mutated-settings caveat and `_userProperties` note are included. A `get_defaults(className)` tool was **not** added — `get_api_reference` already returns defaults per class.
+
 **Source:** Ran an automated pass to strip redundant settings from 59 AI-generated demo charts
 (`editor/static/charts/*`). Method: for each live element, remove each user-set setting, re-read
 `get()`, and if the resolved value is unchanged the setting equalled its default. Then re-render the
@@ -89,6 +282,8 @@ pixel-identical re-render. Also useful: user-set settings live in `entity._userP
 
 **Type:** amCharts core bug (not just docs). Medium priority — easy to hit from any UI that lets a
 user clear a palette.
+
+> ✅ Documented 2026-09-14 (library bug still present in 5.20.5 — `generateColors()` falls back to `baseColor` only when `colors` is *unset*, not empty): `SKILL.md` ColorSet section + pitfall #37, `cursorrules` #34, including the async `baseColor` / re-set-the-data note. Core fix remains an upstream item.
 
 **Source:** Editor lets users edit a series' `colors` (ColorSet) palette. Deleting **all** colors
 (so `colorSet.set("colors", [])`) throws the moment a series iterates the palette during data
@@ -126,6 +321,8 @@ pass) is the reliable path. Worth documenting.
 
 **Type:** skill/docs gap — WordCloud text parsing. Low-medium priority.
 
+> ✅ Done 2026-09-14: superseded by the library — since **5.20.0** (`WordCloud.ts` marks `text` dirty when `maxCount`/`minValue`/`minWordLength`/`excludeWords` change) parser settings re-parse automatically. `references/wordcloud.md` now says so and keeps the "set before `text` / re-assign `text`" advice for older versions.
+
 **Source:** Editor feature — paste text into a WordCloud and tune the word list. Setting `text`
 parses it into words+counts (great). But changing a parser setting afterward — `minValue`,
 `maxCount`, `minWordLength`, `excludeWords` — does **not** re-run the parse, so the displayed word
@@ -142,6 +339,8 @@ after changing them for the change to take effect on an already-parsed cloud.
 ## 2026-07-06 — Document that `axis.dispose()` does NOT remove the axis from `chart.xAxes`/`yAxes`
 
 **Type:** skill/docs gap — disposal asymmetry. Medium priority (caused a real delete-axis bug in the editor).
+
+> ✅ Done 2026-09-14: pitfall #35 in `SKILL.md`, #33 in `cursorrules`, and a "Removing an axis" note under "Dual Y-axis" in `references/xy.md` (`chart.yAxes.removeValue(axis)` / `removeIndex(i)`; the list auto-disposes).
 
 **Source:** Implementing "delete axis" in the editor. `series.dispose()` removes the series from
 `chart.series` automatically, so we assumed axes behave the same. They don't: `axis.dispose()`
@@ -163,6 +362,8 @@ call out the asymmetry with `series.dispose()` (which does self-remove from `cha
 ## 2026-07-06 — Document DateAxis live-update gotchas: labels & data grouping don't refresh on `.set()`
 
 **Type:** skill/docs gap — DateAxis runtime behavior. Medium priority (bit us twice building the editor's date-axis format & grouping editors).
+
+> ✅ Done 2026-09-14: "Live updates" note under `DateAxis` in `references/xy.md` (`markDirtySize()` for the format maps; re-set every bound series' data for `groupIntervals`).
 
 **Source:** Building live editors for `dateFormats`/`periodChangeDateFormats`/`minorDateFormats` and for `groupIntervals` on a DateAxis. Two settings apply cleanly with `axis.set(...)` but produce **no visible change** until you nudge the chart:
 
@@ -191,6 +392,8 @@ format maps and the data re-set for `groupIntervals`.
 
 **Type:** skill/docs gap — HeatLegend internals. Low-medium priority.
 
+> ✅ Done 2026-09-14: "Styling heat-legend segments" note under Choropleth in `references/map.md` (`markers.template`, width-15/height-100% vertical vs height-15/width-100% horizontal — matches `DefaultTheme` `heatlegend marker` rules).
+
 **Source:** Adding per-segment styling to a heat legend in the editor. The skill's
 map reference shows creating a `HeatLegend` with `stepCount`, but never explains
 how to style the individual color blocks. Confirmed at runtime:
@@ -218,6 +421,8 @@ width/height-by-orientation thickness rule.
 ## 2026-07-05 — Document the "tooltipText alone uses the Root's shared tooltip" model
 
 **Type:** skill/docs best-practice — tooltips architecture. Medium priority; broadly useful.
+
+> ✅ Done 2026-09-14: "Shared vs per-sprite tooltip" subsection in `SKILL.md` (Tooltip section) with the per-chart `tooltipText` targets listed here; the shared tooltip is `root.container.get("tooltip")` (verified: `Root` does `container._setC("tooltip", …)` and `Sprite.getTooltip()` walks parents). Mirrored as `cursorrules` #35 and in `references/pie.md` / `references/flow.md`.
 
 **Source:** Refactoring tooltips across an editor + 15 non-XY sample charts
 (`c:/projects/dojo.amcharts`). The mental model that made everything simpler and
@@ -253,6 +458,8 @@ creating `am5.Tooltip.new(...)` on non-XY series.
 
 **Type:** skill/docs gotcha — serializing + Venn hover. Low-medium priority.
 
+> ✅ Documented 2026-09-14 (still not serialized as of 5.20.5 — no `hoverGraphics` handling in `ChartSerializer.ts`): "Serialization gotcha" section in `references/venn.md`, the `SKILL.md` "Serializing to JSON" list, and `concepts/serializing/chart-serializer.md` "Unsupported features". Upstream fix remains open.
+
 **Source:** Reproducing the amCharts venn demo hover in the editor. The demo's
 hover is a dashed white set outline via `series.hoverGraphics.setAll({
 strokeDasharray:[3,3], stroke:0xffffff, strokeWidth:2 })`. This does **not**
@@ -277,6 +484,8 @@ serializable way to express a custom Venn hover appearance.
 ## 2026-07-03 — Document that ChartSerializer does NOT serialize a ZoomableContainer's contents (round-trip gotcha)
 
 **Type:** skill/docs gotcha — serializing + ZoomableContainer. Medium priority.
+
+> ✅ Documented 2026-09-14 (still not serialized as of 5.20.5): `SKILL.md` "Serializing to JSON", `concepts/serializing/chart-serializer.md` "Unsupported features", and `references/hierarchy.md`. The practical answer since 5.20.2 is `am5.SerialChartContainer`, which builds its own zoomable wrapper and round-trips as a normal chart.
 
 **Source:** Adding a "make chart zoomable" feature to the editor. The docs
 (`concepts/common-elements/containers` → "Zoomable container") correctly explain
@@ -371,6 +580,8 @@ cross-checking `I*ChartSettings`.
 
 **Skill addition** (heat rules + bullets are under-documented and have sharp edges).
 
+> ✅ Done 2026-09-14: "Using heat rules on bullets" in `SKILL.md` now lists the rules (Template target, `dataField` is the property key, `valueField` + `calculateAggregates`, re-feed data after a late `valueField`) and the serializer crash (still unguarded in `Series.ts` as of 5.20.5 — `target.dataItem.get(...)` with no null check) with the `_setDataItem` workaround; also `cursorrules` #35 and `concepts/serializing/chart-serializer.md`.
+
 Building "size bullets by data value" in the editor surfaced three things worth a skill section:
 
 1. **A heat rule on a bullet needs the series to track the field.** The rule reads
@@ -420,6 +631,8 @@ from a numeric field; bullets built from a shared template so the rule round-tri
 
 ## 2026-06-17 — ChartSerializer cycles/overflows on self-referential settings (`selectedDataItem`)
 
+> ✅ Documented 2026-09-14 (`_pruneEmptyObjects` still has no visited-set as of 5.20.5): "serialize the top-level container child, never a bare series" is the first rule of the new `SKILL.md` "Serializing to JSON" section, `cursorrules` #36 and `concepts/serializing/chart-serializer.md` "Limited functionality". Plugin robustness items remain upstream.
+
 **Where surfaced**: amCharts editor `/convert` pipeline. The `treemap` template (`am5hierarchy.Treemap` inside an `am5.Container`, with `series.set("selectedDataItem", series.dataItems[0])`) failed two ways:
 
 1. With `removeEmptyObjects: true` (the default via `_setSoft`):
@@ -445,6 +658,8 @@ from a numeric field; bullets built from a shared template so the rule round-tri
 ---
 
 ## 2026-06-17 — Adapters cannot round-trip through JSON; `ChartSerializer` `includeAdapters` is a trap
+
+> ✅ Done 2026-09-14: "Adapters do not round-trip" in `SKILL.md` "Serializing to JSON", `concepts/serializing.md` (Adapters) and `concepts/serializing/chart-serializer.md` (Limited functionality). The library now skips an adapter whose callback did not survive JSON (5.20.4) instead of crashing, and the declarative replacement for palette adapters exists: column series `colorByDataItem` (5.20.4), documented in `references/xy.md` with the adapter demoted to a pre-5.20.4 fallback. The opt-in `parseFunctions` idea stays upstream.
 
 **Where surfaced**: amCharts editor (`c:/projects/dojo.amcharts/editor`). Loading any catalog template that used a fill/stroke adapter (e.g. `standard-column`, which palette-colors each column) threw at render time:
 
@@ -473,6 +688,8 @@ Uncaught TypeError: i[s] is not a function
 ---
 
 ## 2026-06-09 — Bullets callback signature is inconsistent in the skill
+
+> ✅ Done 2026-09-14: all 24 `series.bullets.push(function() {…})` call sites across `SKILL.md`, `references/*.md` and `cursorrules` now use `function(root, series, dataItem)`; pitfall #36 (`SKILL.md`) / #34 (`cursorrules`) states the rule.
 
 Working through the JSON-driven editor (where everything has to round-trip
 through `ChartSerializer` + `JsonParser`), bullet callbacks that close over

@@ -66,3 +66,7 @@ Extends: SerialChart
 - **wheelY** (`"none" | "zoom" | "rotateX" | "rotateY"`) — Default "zoom" Defines what happens when mouse wheel is turned. Click here for more info
 - **zoomControl** (`ZoomControl`) — A ZoomControl instance. Click here for more info
 - **zoomLevel** (`undefined | number`) — Current zoom level.
+
+## Properties
+
+- **boxZoomSelection** (`Rectangle`) — A Rectangle element that shows the area being drawn when boxZoom is enabled. Read-only; style its fill/stroke. @since 5.20.2

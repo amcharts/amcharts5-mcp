@@ -337,3 +337,4 @@ Extended by: IColumnSeriesDataItem, IRadarColumnSeriesDataItem, ICurveColumnSeri
 - **graphics** (`Graphics`) — An actual Graphics element (Column/Slice/Candlestick/OHLC).
 - **legendDataItem** (`DataItem`) — If data items from this series are used to feed a Legend, this will hold a reference to the equivalent Legend data item. Click here for more info
 - **rangeGraphics** (`Array`) — In case axis ranges are added to the series, it creates a separate element (Graphics) for each axis range. This array holds them all.
+- **fill** (`Color`) — Color of the column, when the series colors each data item separately (colorByDataItem). @since 5.20.4

@@ -659,6 +659,8 @@ Since adapters are functions, they can't technically be part of a serialized JSO
   }\]
 }
 
+**Adapters and JSON round-trips:** a function reference works only when the config is a JavaScript object in the same scope. Once the config has been through `JSON.stringify` (or `ChartSerializer` with `functionsAs: "string"`), the callback is a string — `JsonParser` does not evaluate it, and since 5.20.4 such an adapter is skipped (before that it was registered as-is and crashed the chart with `i[s] is not a function`). Effects that must survive a round-trip need a declarative equivalent: `colorByDataItem` on column series (5.20.4), a per-item `fill` field with `templateField`, or `heatRules`.
+
 ## Parsing
 
 To parse serialized configs, we'll need:
@@ -678,6 +680,18 @@ parser.parse({
   // Chart config
   // ...
 });
+
+### Parse options (`IParseSettings`)
+
+The second argument of `parse()` is an options object — these are **not** settings of the parser itself:
+
+-   `parent` — a `Container` to place the parsed chart into.
+-   `updateTargets` *(5.20.3)* — `"strict"` (default): when the source object has a `type`, a new object of that type is created and replaces the existing one. `"soft"`: if source and target are the same type, only settings are applied onto the existing object (as if `type` had not been specified); objects are replaced only when the types differ. Use `"soft"` to update a live chart from a modified config without rebuilding it.
+
+var parser = am5plugins\_json.JsonParser.new(root);
+parser.parse(config, { parent: root.container, updateTargets: "soft" });
+
+A config may also carry a top-level `root` section *(5.20.2)* whose `settings`/`properties` are applied to the `Root` object before the chart is parsed (`ChartSerializer` writes one when `includeRoot: true`).
 
 ### Post-parse handler
 

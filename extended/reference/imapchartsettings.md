@@ -75,3 +75,5 @@ Extends: ISerialChartSettings
 - **zoomControl** (`ZoomControl`) — A ZoomControl instance. Click here for more info
 - **zoomLevel** (`undefined | number`) — Current zoom level.
 
+- **boxZoom** (`"none" | "drag" | "shift" | "ctrl" | "alt"`) — Default "none" Allows zooming the map to an area drawn with a pointer. The value is the key that must be held while dragging; "drag" means no key is needed — since a plain drag pans the map, use "drag" with panX/panY set to "none". The drawn area is represented by the boxZoomSelection element. NOT a boolean. @since 5.20.2
+- **doubleClickZoom** (`undefined | false | true`) — Default true Setting true will make map zoom in on a double click (or double tap), and zoom out on a shift + double click. On maps panned by rotating (panX: "rotateX" and/or panY: "rotateY") the clicked location is rotated to the center of the map; otherwise it stays under the pointer. @since 5.20.2

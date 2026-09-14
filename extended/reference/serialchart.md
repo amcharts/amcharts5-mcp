@@ -17,7 +17,7 @@ import * as am5 from "@amcharts/amcharts5"
 ## Inheritance
 
 Extends: Chart
-Extended by: PercentChart, XYChart, MapChart
+Extended by: PercentChart, XYChart, MapChart, SerialChartContainer
 
 > **Note:** This class also inherits all settings, properties, methods, and events from Chart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
 

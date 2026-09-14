@@ -166,6 +166,20 @@ xAxis.onPrivate("selectionMax", function(value, target) {
   console.log("End date changed:", end);
 });
 
+### One-shot handlers (5.20.4)
+
+`once(key, callback)` works like `on()` but fires only the first time that setting changes (or is set), then removes itself. `onceDebounced(key, callback, delay)` is the debounced version. Both return an `IDisposer`.
+
+series.once("visible", function(visible, target) {
+  console.log("First visibility change", visible);
+});
+
+xAxis.onceDebounced("start", function(start) {
+  console.log("Zoom settled at", start);
+}, 300);
+
+(Do not confuse with `events.once("eventName", …)`, which has existed for regular events all along.)
+
 ### Removing
 
 Turning off value change events are similar to regular events: we can just use `off()` or `offPrivate()` methods.
