@@ -2,7 +2,7 @@
 title: "Population Pyramid"
 source: "https://www.amcharts.com/demos/population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A population pyramid, also called an "age-sex-pyramid" or "mirror bar chart", is a graphical illustration that shows the distribution of various age groups in a population.

@@ -2,7 +2,7 @@
 title: "Location-Sensitive Map"
 source: "https://www.amcharts.com/demos/location-sensitive-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This is a demo of dynamically loading a local map based on the viewer's location.
@@ -29,6 +29,7 @@ root.setThemes([
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",
   projection: am5map.geoMercator(),
+  boxZoom: "shift",
   layout: root.horizontalLayout
 }));
 

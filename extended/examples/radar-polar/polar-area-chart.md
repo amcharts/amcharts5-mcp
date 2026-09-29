@@ -2,7 +2,7 @@
 title: "Polar Area Chart"
 source: "https://www.amcharts.com/demos/polar-area-chart/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Polar area chart (also known as Polar area diagram, Coxcomb chart, Rose chart) is often used to plot cyclical data like average monthly temperature, hourly traffic to a website, etc.

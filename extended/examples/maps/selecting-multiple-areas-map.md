@@ -2,7 +2,7 @@
 title: "Selecting Multiple Areas Map"
 source: "https://www.amcharts.com/demos/selecting-multiple-areas-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In this demo we enable users to select multiple countries on a map.

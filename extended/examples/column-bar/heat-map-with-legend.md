@@ -2,7 +2,7 @@
 title: "Heat Map with Legend"
 source: "https://www.amcharts.com/demos/heat-map-with-legend/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Heat map (also known as Heatmap, Heat table, Shading matrix) represents data in a rectangular matrix where individual values are differentiated by color.

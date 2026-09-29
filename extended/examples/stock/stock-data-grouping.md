@@ -2,7 +2,7 @@
 title: "Stock Data Grouping"
 source: "https://www.amcharts.com/demos/stock-data-grouping/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Using the data grouping functions in amCharts 5 Stock Chart can group (aggregate) your data automatically and display easily comprehensible charts based on the current zoom level. Try zooming into the chart above and at several zoom points you will see how data gets more granular once it makes sense to display that level of detail.

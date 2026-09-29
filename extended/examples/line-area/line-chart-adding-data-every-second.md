@@ -2,7 +2,7 @@
 title: "Line Chart Adding Data Every Second"
 source: "https://www.amcharts.com/demos/line-chart-adding-data-every-second/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Displaying charts for live data is a common task these days and amCharts is here to help you do it in style.

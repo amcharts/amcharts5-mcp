@@ -2,11 +2,11 @@
 title: "Chart with Gaps in Data"
 source: "https://www.amcharts.com/demos/chart-with-gaps-in-data/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Breaking the line
-If your data contains gaps - data points without values - you can easily make the chart display a gap as well. Just set its connect = false&nbsp;setting.
+If your data contains gaps - data points without values - you can easily make the chart display a gap as well. Just set its connect = false setting.
 [More about line series with gaps](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Gaps)
 Defining value ranges
 You can apply different colors and other visual properties to the segments of series that fall within certain range of values. For that you can use "axis ranges".
@@ -15,7 +15,6 @@ You can apply different colors and other visual properties to the segments of se
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");

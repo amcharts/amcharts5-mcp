@@ -2,7 +2,7 @@
 title: "Grouped Countries Map"
 source: "https://www.amcharts.com/demos/grouped-countries-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sometimes you need to group countries on a map based on some criteria. In the most simple case you can just set the same fill color for countries in a group. But in this demo we go a step further and make all countries in a group react to pointer events jointly and also create a legend that switches the whole group off and back on.
@@ -138,8 +138,7 @@ am5.array.each(groupData, function(group) {
 
 
   polygonSeries.mapPolygons.template.setAll({
-    tooltipText: "[bold]{name}[/]
-Member since {joined}",
+    tooltipText: "[bold]{name}[/]\nMember since {joined}",
     interactive: true,
     fill: color,
     strokeWidth: 2

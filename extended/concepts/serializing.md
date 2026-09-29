@@ -22,6 +22,7 @@ Supported features:
 -   Properties
 -   Settings
 -   Adapters
+-   Declared animations — the `animations` setting *(5.20.8)*, see "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)". In a JSON config, colors and percents in an entry's `from`/`to` use the object form (`{ "type": "Color", "value": "#f00" }`, `{ "type": "Percent", "value": 50 }`).
 
 Unsupported features:
 
@@ -342,6 +343,8 @@ To do that, instead of assigning one object to `refs` we assign an array of obje
 The items in the array will be processed one by one, so that references from the first item, are ensured to be fully processed when the next one starts processing.
 
 This way, a value can reference to any object from previous items.
+
+Since 5.20.7, a setting or property value that names a ref defined further down the config (later in the same `refs` object, or in a later group) no longer fails with "Could not find ref" — it is resolved after the rest of the config has been parsed. This is what makes e.g. a legend inside an axis header that lists a series defined later work. Groups are still the way to make sure an object is fully built before something uses it, and they are still required for [axis range](#Axis_ranges) definitions: a range's `axis` and `series` are looked up immediately, so the referenced axis and series need to come first, in an earlier group.
 
 {
   type: "XYChart",

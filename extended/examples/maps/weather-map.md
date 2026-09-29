@@ -2,7 +2,7 @@
 title: "Weather Map"
 source: "https://www.amcharts.com/demos/weather-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Weather maps is one of the typical use cases for map charts. This demo shows how to use amCharts Maps as a weather map.

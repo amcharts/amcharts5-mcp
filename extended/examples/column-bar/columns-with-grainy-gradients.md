@@ -2,7 +2,7 @@
 title: "Columns with Grainy Gradients"
 source: "https://www.amcharts.com/demos/columns-with-grainy-gradients/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Grain pattern is a special kind of pattern that can complement regular fills with overhead pixel noise to add that additional fuzzy look. It works by applying a random assortment of semi-transparent dots over existing fills.
@@ -88,6 +88,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   tooltip: am5.Tooltip.new(root, {
     labelText: "{valueY}"
   }),
+  // Each column takes its own color, from the palette set above
+  colorByDataItem: true,
+  colors: chart.get("colors")
 }));
 
 series.columns.template.setAll({
@@ -122,10 +125,6 @@ series.columns.template.states.create("hover", {
   cornerRadiusTL: 10,
   cornerRadiusTR: 10
 })
-
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
 
 // Set data
 var data = [{

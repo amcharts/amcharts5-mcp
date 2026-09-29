@@ -2,7 +2,7 @@
 title: "Bubble Chart"
 source: "https://www.amcharts.com/demos/bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bubble chart displays three dimensions of data: 2 dimensions are represented by the x,y position of the data point, and the third one is represented by its size.

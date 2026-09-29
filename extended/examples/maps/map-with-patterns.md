@@ -2,7 +2,7 @@
 title: "Map with Patterns"
 source: "https://www.amcharts.com/demos/map-with-patterns/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Using patterns instead or in addition to colors is a great way to not only achieve a different look but also to improve readability of the charts for your color blind viewers.
@@ -81,8 +81,13 @@ polygonSeries.data.setAll([{
   id: "northAmerica",
   settings: {
     fill: colors.next(),
-    fillPattern: am5.CirclePattern.new(root, {
-      color: am5.color(0xffffff)
+    fillPattern: am5.TrianglePattern.new(root, {
+      color: am5.color(0xffffff),
+      maxWidth: 8,
+      maxHeight: 8,
+      gap: 6,
+      rotation: 180,
+      rotateShapes: true
     })
   }
 }, {
@@ -99,7 +104,7 @@ polygonSeries.data.setAll([{
   id: "oceania",
   settings: {
     fill: colors.next(),
-    fillPattern: am5.LinePattern.new(root, {
+    fillPattern: am5.StarPattern.new(root, {
       color: am5.color(0xffffff),
     })
   }

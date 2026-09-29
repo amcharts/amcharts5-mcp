@@ -2,7 +2,7 @@
 title: "Force-Directed Adding Links"
 source: "https://www.amcharts.com/demos/force-directed-adding-links/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Not only can you use amCharts 5 to create amazing force-directed network visuals but you can also use the library as a UI to let users set those links in an engaging visual manner. Try clicking on a node and then click other nodes to link with it.
@@ -36,8 +36,8 @@ for (var i = 0; i < 15; i++) {
 }
 
 // Create wrapper container
-var container = root.container.children.push(
-  am5.Container.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.percent(100),
     height: am5.percent(100),
     layout: root.verticalLayout
@@ -46,7 +46,7 @@ var container = root.container.children.push(
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(
+var series = chart.series.push(
   am5hierarchy.ForceDirected.new(root, {
     singleBranchOnly: false,
     downDepth: 2,

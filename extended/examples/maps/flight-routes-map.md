@@ -2,7 +2,7 @@
 title: "Flight Routes Map"
 source: "https://www.amcharts.com/demos/flight-routes-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how we can use MapChart API to draw map markers and lines using latitude/longitude coordinates.
@@ -29,9 +29,17 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     panX: "translateX",
     panY: "translateY",
+    boxZoom: "shift",
     projection: am5map.geoMercator()
   })
 );
+
+// Zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+// the home button is hidden by default
+zoomControl.homeButton.set("visible", true);
 
 // Add labels and controls
 var cont = chart.children.push(

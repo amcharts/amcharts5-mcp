@@ -2,7 +2,7 @@
 title: "Strip Plot"
 source: "https://www.amcharts.com/demos/strip-plot/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A strip plot displays a distribution of many values across some categories.

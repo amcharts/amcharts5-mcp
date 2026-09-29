@@ -2,7 +2,7 @@
 title: "Zoomable Multilevel Tree Map"
 source: "https://www.amcharts.com/demos/multilevel-tree-map/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In a Tree Map the rectangle is divided into smaller rectangles with their size representing the value of each data item. Those smaller rectangles can in turn be divided into even smaller ones creating a sub-treemap.
@@ -45,22 +45,23 @@ root.setThemes([
   myTheme
 ]);
 
-var zoomableContainer = root.container.children.push(
-  am5.ZoomableContainer.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.p100,
-    height: am5.p100,
-    wheelable: true,
-    pinchZoom: true
+    height: am5.p100
   })
 );
 
-var zoomTools = zoomableContainer.children.push(am5.ZoomTools.new(root, {
-  target: zoomableContainer
-}));
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = zoomableContainer.contents.children.push(
+var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     maskContent:false, //!important with zoomable containers
     sort: "descending",

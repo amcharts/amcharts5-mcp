@@ -2,7 +2,7 @@
 title: "Infinity Timeline"
 source: "https://www.amcharts.com/demos/infinity-timeline/"
 category: "timeline"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This is another chart created with the amCharts Timeline chart, illustrating the stages of the Apollo moon mission.
@@ -230,8 +230,8 @@ series.data.setAll([
   { "value": 0, "date": "1969-07-21 02:53", "event": "Modular equipment stowage assembly deployed (CDR)." },
   { "value": 0, "date": "1969-07-21 02:54", "event": "First clear TV picture received." },
   { "value": 0, "date": "1969-07-21 02:55", "event": "CDR at foot of ladder (starts to report, then pauses to listen)." },
-  { "value": 0, "date": "1969-07-21 02:55", "event": "CDR at foot of ladder and described surface as "almost like a powder."" },
-  { "value": 0, "date": "1969-07-21 02:56", "event": "1st step taken lunar surface (CDR). "That's one small step for a man…one giant leap for mankind."" },
+  { "value": 0, "date": "1969-07-21 02:55", "event": "CDR at foot of ladder and described surface as \"almost like a powder.\"" },
+  { "value": 0, "date": "1969-07-21 02:56", "event": "1st step taken lunar surface (CDR). \"That's one small step for a man…one giant leap for mankind.\"" },
   { "value": 0, "date": "1969-07-21 02:56", "event": "CDR started surface examination and description, assessed mobility and described effects of LM descent engine." },
   { "value": 0, "date": "1969-07-21 02:58", "event": "CDR ended surface examination. LMP started to send down camera." },
   { "value": 0, "date": "1969-07-21 03:02", "event": "Camera installed on RCU bracket, LEC stored on secondary strut of LM landing gear." },

@@ -2,7 +2,7 @@
 title: "Map Using D3 Projections"
 source: "https://www.amcharts.com/demos/map-using-d3-projections/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Besides a solid list of built-in projections, amCharts 5 MapChart can use any projection from D3 and related packages.

@@ -2,7 +2,7 @@
 title: "Force-Directed Tree with Animated Bullets"
 source: "https://www.amcharts.com/demos/force-directed-tree-with-animated-bullets/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A force-directed chart is a visual tool used to depict networks by simulating physical forces on nodes (entities) and edges (connections) between them. Nodes repel each other while edges act like springs, pulling connected nodes closer. This simulation arranges the nodes in a layout that intuitively displays clusters and connections, simplifying the understanding of complex relationships.
@@ -25,22 +25,23 @@ root.setThemes([
 ]);
 
 
-var zoomableContainer = root.container.children.push(
-  am5.ZoomableContainer.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.p100,
-    height: am5.p100,
-    wheelable: true,
-    pinchZoom: true
+    height: am5.p100
   })
 );
 
-var zoomTools = zoomableContainer.children.push(am5.ZoomTools.new(root, {
-  target: zoomableContainer
-}));
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = zoomableContainer.contents.children.push(am5hierarchy.ForceDirected.new(root, {
+var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
   singleBranchOnly: false,
   downDepth: 1,
   initialDepth: 10,

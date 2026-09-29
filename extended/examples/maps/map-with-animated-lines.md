@@ -2,7 +2,7 @@
 title: "Map with Animated Lines"
 source: "https://www.amcharts.com/demos/map-with-animated-lines/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Connecting points on a map is a typical way to display relationships between these points. When you want to display the direction of that relationship you can either use arrows, like in the Maps with Curved Lines demo, or you can use animation like we are doing here.
@@ -78,10 +78,13 @@ cont.children.push(am5.Label.new(root, {
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  name: "Polygon Series",
   geoJSON: am5geodata_worldLow
 }));
 
-var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
+var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
+  name: "Graticule Series"
+}));
 graticuleSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0.08
@@ -91,14 +94,18 @@ graticuleSeries.mapLines.template.setAll({
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
 
 // this will be invisible line (note strokeOpacity = 0) along which invisible points will animate
-var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+  name: "Guide Line Series"
+}));
 lineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0
 });
 
 // this will be visible line. Lines will connectg animating points so they will look like animated
-var animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+var animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+  name: "Animated Line Series"
+}));
 animatedLineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0.6
@@ -106,7 +113,9 @@ animatedLineSeries.mapLines.template.setAll({
 
 // destination series
 var citySeries = chart.series.push(
-  am5map.MapPointSeries.new(root, {})
+  am5map.MapPointSeries.new(root, {
+    name: "City Series"
+  })
 );
 
 // visible city circles
@@ -127,7 +136,9 @@ citySeries.bullets.push(function() {
 
 // invisible series which will animate along invisible lines
 var animatedBulletSeries = chart.series.push(
-  am5map.MapPointSeries.new(root, {})
+  am5map.MapPointSeries.new(root, {
+    name: "Animated Point Series"
+  })
 );
 
 animatedBulletSeries.bullets.push(function() {
@@ -222,32 +233,33 @@ citySeries.data.setAll(cities);
 // Prepare line series data
 var destinations = ["reykjavik", "lisbon", "moscow", "belgrade", "ljublana", "madrid", "stockholm", "bern", "kiev", "new york"];
 
-// London coordinates
-var originLongitude = -0.1262;
-var originLatitude = 51.5002;
+// guide lines connect London to each destination
+lineSeries.set("pointSeries", citySeries);
+lineSeries.data.setAll(destinations.map(function(did) {
+  return { id: did, pointIds: ["london", did] };
+}));
+
+// a start and an end point on each guide line
+var animatedPoints = [];
+am5.array.each(destinations, function(did) {
+  animatedPoints.push({ id: did + "-start", lineId: did, positionOnLine: 0 });
+  animatedPoints.push({ id: did + "-end", lineId: did, positionOnLine: 1 });
+});
+animatedBulletSeries.data.setAll(animatedPoints);
+
+// visible lines connect the start and end points
+animatedLineSeries.set("pointSeries", animatedBulletSeries);
+animatedLineSeries.data.setAll(destinations.map(function(did) {
+  return { pointIds: [did + "-start", did + "-end"] };
+}));
 
 var londonDataItem = citySeries.getDataItemById("london");
 
 // this will do all the animations
 am5.array.each(destinations, function(did) {
   var destinationDataItem = citySeries.getDataItemById(did);
-  var lineDataItem = lineSeries.pushDataItem({});
-  lineDataItem.set("pointsToConnect", [londonDataItem, destinationDataItem])
-
-  var startDataItem = animatedBulletSeries.pushDataItem({});
-  startDataItem.setAll({
-    lineDataItem: lineDataItem,
-    positionOnLine: 0
-  });
-
-  var endDataItem = animatedBulletSeries.pushDataItem({});
-  endDataItem.setAll({
-    lineDataItem: lineDataItem,
-    positionOnLine: 1
-  });
-
-  var animatedLineDataItem = animatedLineSeries.pushDataItem({});
-  animatedLineDataItem.set("pointsToConnect", [startDataItem, endDataItem])
+  var startDataItem = animatedBulletSeries.getDataItemById(did + "-start");
+  var endDataItem = animatedBulletSeries.getDataItemById(did + "-end");
 
   var lon0 = londonDataItem.get("longitude");
   var lat0 = londonDataItem.get("latitude");

@@ -2,7 +2,7 @@
 title: "Drag-ordering of Bars"
 source: "https://www.amcharts.com/demos/drag-ordering-of-bars/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 While data visualization is the primary function of amCharts, you can also use its interactive features to let end-users adjust the charts how they see fit. In this example, viewers can re-arrange the order of bars in the chart.

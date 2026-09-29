@@ -2,7 +2,7 @@
 title: "Approximate Working Hours Map"
 source: "https://www.amcharts.com/demos/approximate-working-hours-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo showcases a way to highlight a specific time band on a map. In this specific case we display areas where it is working hours at the moment based on current time.
@@ -32,8 +32,16 @@ root.setThemes([
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",
   panY: "rotateY",
+  boxZoom:"shift",
   projection: am5map.geoMercator()
 }));
+
+// Zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+// the home button is hidden by default
+zoomControl.homeButton.set("visible", true);
 
 // Create series for background fill
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon

@@ -2,7 +2,7 @@
 title: "Date axis with labels near minor grid lines"
 source: "https://www.amcharts.com/demos/date-axis-with-labels-near-minor-grid-lines/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Using minor grid lines enables decluttering the plot container, while still maintaining clear perception of axis scale as well as its relation to the series.

@@ -2,7 +2,7 @@
 title: "Packed Circle Chart"
 source: "https://www.amcharts.com/demos/packed-circle-chart/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Packed Circle Chart is great for visualizing hierarchical data. Circles on the bottom (leaf) level represent the values on that level and then they are packed (hence the name) into parent circles and determine their size. This way you can see a birds-eye view of the values in your data and also drill down for the details. Try clicking on the circles in the demo.
@@ -27,7 +27,7 @@ root.setThemes([
 
 
 // Create wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
   width: am5.percent(100),
   height: am5.percent(100),
   layout: root.verticalLayout
@@ -36,7 +36,7 @@ var container = root.container.children.push(am5.Container.new(root, {
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(am5hierarchy.Pack.new(root, {
+var series = chart.series.push(am5hierarchy.Pack.new(root, {
   singleBranchOnly: false,
   downDepth: 1,
   initialDepth: 10,

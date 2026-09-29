@@ -2,7 +2,7 @@
 title: "Semi-Circle Pie Chart"
 source: "https://www.amcharts.com/demos/semi-circle-pie-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The main advantage of the Semi-Circle Pie Chart (also known as Semi-circle donut chart, Half pie chart) is that it takes two times less space than the regular Pie or Donut Chart for the same amount of data displayed.

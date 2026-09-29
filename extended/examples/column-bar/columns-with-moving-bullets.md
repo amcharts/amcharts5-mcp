@@ -2,7 +2,7 @@
 title: "Columns with Moving Bullets"
 source: "https://www.amcharts.com/demos/columns-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Interactivity is a great way to direct viewers attention in visualizations. amCharts 5 helps you implement moving bullets in a conservative but effective bar chart to make it way more appealing without sacrificing the maximum comprehension level of this classic chart type.

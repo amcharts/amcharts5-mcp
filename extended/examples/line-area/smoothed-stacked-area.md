@@ -2,7 +2,7 @@
 title: "Smoothed Stacked Area"
 source: "https://www.amcharts.com/demos/smoothed-stacked-area/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts 5 comes with a number of line smoothing algorithms that you can use to suit your particular data.
@@ -159,8 +159,7 @@ function createSeries(name, field) {
     stroke: am5.color(0xffffff),
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "[bold]{name}[/]
-{categoryX}: {valueY}"
+      labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
     })
   }));
 

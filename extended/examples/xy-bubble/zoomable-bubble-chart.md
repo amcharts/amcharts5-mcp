@@ -2,7 +2,7 @@
 title: "Zoomable Bubble Chart"
 source: "https://www.amcharts.com/demos/zoomable-bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A great thing about interactive charts is that you can put a lot of information into one chart and let users zoom in and out to see the data with varying level of detail. This demo shows a bubble chart with all the zooming features enabled.
@@ -77,10 +77,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
   seriesTooltipTarget:"bullet",
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "[bold]{title}[/]
-Life expectancy: {valueY.formatNumber('#.0')}
-GDP: {valueX.formatNumber('#,###.')}
-Population: {value.formatNumber('#,###.')}"
+    labelText: "[bold]{title}[/]\nLife expectancy: {valueY.formatNumber('#.0')}\nGDP: {valueX.formatNumber('#,###.')}\nPopulation: {value.formatNumber('#,###.')}"
   })
 }));
 

@@ -2,7 +2,7 @@
 title: "Line Graph"
 source: "https://www.amcharts.com/demos/line-graph/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Line graph (also known as Line chart) displays series of data points connected by straight line segments. Line graphs are often used to display time series chronologically with category axis (usually horizontal x-axis) serving as an evenly spaced date-time scale.

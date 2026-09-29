@@ -2,7 +2,7 @@
 title: "Drill-down, zoomable Voronoi Treemap"
 source: "https://www.amcharts.com/demos/voronoi-treemap/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Voronoi treemaps (diagrams) are a data visualization technique that combines the concepts of Voronoi diagrams and treemaps to represent hierarchical data. In a Voronoi treemap, the available space is divided into cells based on the Voronoi diagram, where each cell represents a portion of the data. The hierarchical structure is encoded by nesting cells within each other, with larger cells containing smaller cells. The size of each cell corresponds to a quantitative value associated with the data element it represents. By employing this approach, Voronoi treemaps offer a visually appealing and space-filling representation of hierarchical data, allowing users to explore the data's structure and proportions in a hierarchical context.
@@ -1241,23 +1241,24 @@ am5.array.each(data.children, function (continent) {
 });
 
 
-var zoomableContainer = root.container.children.push(
-  am5.ZoomableContainer.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.p100,
-    height: am5.p100,
-    wheelable: true,
-    pinchZoom: true
+    height: am5.p100
   })
 );
 
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
 
-var zoomTools = zoomableContainer.children.push(am5.ZoomTools.new(root, {
-  target: zoomableContainer
-}));
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = zoomableContainer.contents.children.push(am5hierarchy.VoronoiTreemap.new(root, {
+var series = chart.series.push(am5hierarchy.VoronoiTreemap.new(root, {
   paddingLeft: 5,
   paddingRight: 5,
   paddingTop: 5,

@@ -1,17 +1,15 @@
 ---
-title: "Live Order Book / Depth Chart"
+title: "Crypto Order Book Depth Chart"
 source: "https://www.amcharts.com/demos/live-order-book-depth-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
-Important: This demo uses direct access URL to Poloniex API, which may be prevented by CORS restrictions in browser. If the demo does not work, try accessing the following URL directly first, then reload this page, so the source is cached.
-This demo shows how you can implement a simple "Order Book" chart using our XYChart. The chart shows a real distribution of booked sell and buy orders for bitcoin and their volume.
+This order book depth chart (market depth chart) is built in JavaScript with a standard amCharts 5 XYChart. It plots cumulative bids and asks as step lines, with the volume at each price level as columns, using live order book data for the ETH/BTC pair (Ether priced in bitcoin).
 Live data loading and processing
-This chart uses amCharts 5 build-in external data loading functionality.
-In this case we load data directly from Bitcoin exchange Poloniex API.
-The chart is set to reload the data every 30 seconds.
-[More about loading external data](https://www.amcharts.com/docs/v5/concepts/data/#External_data)
+The chart uses amCharts 5 built-in external data loading (am5.net.load()) to fetch the top 50 bids and asks from the public Binance market data API. The endpoint allows cross-origin requests and needs no API key, so the data loads directly in the browser.
+Each price/volume pair is sorted and accumulated into running totals before it is set as chart data. The order book reloads every 30 seconds; if a request fails, the demo falls back to a built-in sample order book.
+More about loading external data
 
 ## JavaScript
 
@@ -84,9 +82,7 @@ var bidsTotalVolume = chart.series.push(am5xy.StepLineSeries.new(root, {
   fill: am5.color(0x00ff00),
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "[width: 120px]Ask:[/][bold]{categoryX}[/]
-[width: 120px]Total volume:[/][bold]{valueY}[/]
-[width: 120px]Volume:[/][bold]{bidsvolume}[/]"
+    labelText: "[width: 120px]Ask:[/][bold]{categoryX}[/]\n[width: 120px]Total volume:[/][bold]{valueY}[/]\n[width: 120px]Volume:[/][bold]{bidsvolume}[/]"
   })
 }));
 bidsTotalVolume.strokes.template.set("strokeWidth", 2)
@@ -105,9 +101,7 @@ var asksTotalVolume = chart.series.push(am5xy.StepLineSeries.new(root, {
   fill: am5.color(0xff0000),
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "[width: 120px]Ask:[/][bold]{categoryX}[/]
-[width: 120px]Total volume:[/][bold]{valueY}[/]
-[width: 120px]Volume:[/][bold]{asksvolume}[/]"
+    labelText: "[width: 120px]Ask:[/][bold]{categoryX}[/]\n[width: 120px]Total volume:[/][bold]{valueY}[/]\n[width: 120px]Volume:[/][bold]{asksvolume}[/]"
   })
 }));
 asksTotalVolume.strokes.template.set("strokeWidth", 2)
@@ -145,7 +139,7 @@ cursor.lineY.set("visible", false);
 
 // Data loader
 function loadData() {
-  am5.net.load("https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_ETH&depth=50").then(function(result) {
+  am5.net.load("https://data-api.binance.vision/api/v3/depth?symbol=ETHBTC&limit=50").then(function(result) {
     var data = am5.JSONParser.parse(result.response);
     parseData(data);
   }).catch(function() {

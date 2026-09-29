@@ -2,7 +2,7 @@
 title: "Compass Chart"
 source: "https://www.amcharts.com/demos/compass-chart/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This multi-arrow RadarChart uses built-in animation routines to dynamically change start and end angles of the whole chart to imitate rotating of a compass dial.

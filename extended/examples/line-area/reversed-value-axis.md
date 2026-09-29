@@ -2,7 +2,7 @@
 title: "Reversed Value Axis"
 source: "https://www.amcharts.com/demos/reversed-value-axis/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In most common scenarios your line or column chart has a value axis that goes up from the bottom left corner (for positive values). But in some cases you may want to reverse this behavior. This demo shows you how to do it.
@@ -164,8 +164,7 @@ function createSeries(name, field) {
       categoryXField: "year",
       tooltip: am5.Tooltip.new(root, {
         pointerOrientation: "horizontal",
-        labelText: "[bold]{name}[/]
-{categoryX}: {valueY}"
+        labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
       })
     })
   );

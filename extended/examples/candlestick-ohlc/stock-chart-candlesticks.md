@@ -2,7 +2,7 @@
 title: "Stock Chart Candlesticks"
 source: "https://www.amcharts.com/demos/stock-chart-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 You can create your typical stock charts with amCharts XYChart. In this example we create a candlestick stock price graph and a volume graph under it.

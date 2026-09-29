@@ -2,7 +2,7 @@
 title: "Vertical Sankey Diagram"
 source: "https://www.amcharts.com/demos/vertical-sankey-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sankey diagram is a perfect chart to show the flow and relation between stages of a process. Horizontal orientation is more common for Sankey diagrams but with amCharts you can create vertical diagrams just as easily.
@@ -24,7 +24,9 @@ root.setThemes([am5themes_Animated.new(root)]);
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(
   am5flow.Sankey.new(root, {
     orientation: "vertical",
     sourceIdField: "from",
@@ -66,8 +68,7 @@ series.nodes.data.setAll([
     id: "Cash in the U.S.",
     fill: am5.color(0x00aea0),
     labelSettings: {
-      text: "CASH IN THE U.S.
-[bold]$460 BILLION",
+      text: "CASH IN THE U.S.\n[bold]$460 BILLION",
       forceHidden: false,
       centerY: am5.p100
     }
@@ -77,8 +78,7 @@ series.nodes.data.setAll([
     fill: am5.color(0x000000),
     labelSettings: {
       text:
-        "[#5ea9e1 fontSize:1.5em]CASH OVERSEAS
-[bold #5ea9e1 fontSize:1.5em]$1,31 TRILLION",
+        "[#5ea9e1 fontSize:1.5em]CASH OVERSEAS\n[bold #5ea9e1 fontSize:1.5em]$1,31 TRILLION",
       fill: am5.color(0xffffff),
       forceHidden: false,
       centerY: am5.p100
@@ -128,11 +128,7 @@ series.data.setAll([
     value: 1768,
     labelSettings: {
       text:
-        "[fontSize:1.5em]2016 BREAKDOWN OF
-THE U.S.CORPORATE CASH PILE
- 
-[/]NON-FINANCIAL COMPANIES 
- [bold]$1,768 Trillion[/]",
+        "[fontSize:1.5em]2016 BREAKDOWN OF\nTHE U.S.CORPORATE CASH PILE\n \n[/]NON-FINANCIAL COMPANIES \n [bold]$1,768 Trillion[/]",
       rotation: 0
     }
   },
@@ -141,15 +137,13 @@ THE U.S.CORPORATE CASH PILE
     from: "Total non financial companies",
     to: "Non-tech companies",
     value: 907,
-    labelSettings: { text: "NON-TECH COMPANIES
- [bold]$907 Billion[/]" }
+    labelSettings: { text: "NON-TECH COMPANIES\n [bold]$907 Billion[/]" }
   },
   {
     from: "Total non financial companies",
     to: "Tech companies",
     value: 861,
-    labelSettings: { text: "TECH COMPANIES
- [bold]861 Billion[/]" }
+    labelSettings: { text: "TECH COMPANIES\n [bold]861 Billion[/]" }
   },
 
   { from: "Non-tech companies", to: "Cash in the U.S.", value: 324 },
@@ -159,15 +153,13 @@ THE U.S.CORPORATE CASH PILE
     from: "Tech companies",
     to: "Rest of tech",
     value: 274,
-    labelSettings: { text: "REST OF TECH
-[bold]$274 Billion[/]" }
+    labelSettings: { text: "REST OF TECH\n[bold]$274 Billion[/]" }
   },
   {
     from: "Tech companies",
     to: "Top 5 tech companies",
     value: 587,
-    labelSettings: { text: "TOP 5 TECH COMPANIES
-[bold]$587 Billion[/]" }
+    labelSettings: { text: "TOP 5 TECH COMPANIES\n[bold]$587 Billion[/]" }
   },
 
   { from: "Rest of tech", to: "Cash in the U.S.", value: 74 },

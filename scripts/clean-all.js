@@ -8,15 +8,19 @@
  * 4. Strip "Posted in Uncategorized..." from reference files
  * 5. Remove @todo markers from reference files
  * 6. Convert [amb href="url"]text[/amb] to [text](url) in examples
- * 7. Fix venn-diagram.md missing closing brace
+ * 7. Collapse runs of 3+ blank lines to 2
+ * Steps 2-7 only touch prose: fenced code blocks are left exactly as they are.
+ *
+ * Usage: node scripts/clean-all.js [dir]
+ *   dir defaults to extended/; pass extended/examples to clean only the
+ *   examples (e.g. after re-scraping them) and leave docs/reference alone.
  */
 
-import fs from "fs/promises";
-import { readdirSync, readFileSync, existsSync, statSync } from "fs";
+import { readdirSync, readFileSync, writeFileSync, unlinkSync } from "fs";
 import path from "path";
-import { unlinkSync } from "fs";
 
 const EXTENDED_DIR = path.resolve("extended");
+const ROOT_DIR = path.resolve(process.argv[2] || EXTENDED_DIR);
 
 const stats = {
   emptyRemoved: 0,
@@ -28,6 +32,24 @@ const stats = {
   filesModified: 0,
   filesScanned: 0,
 };
+
+// [stats key, transform] for steps 2-7
+const PROSE_STEPS = [
+  ["seeThePen", (s) => s.replace(/^.*See the Pen .+$/gm, "")],
+  // [ \t]*, not \s*: eating the newline would glue the next line (or fence) on
+  ["emptyImages", (s) => s.replace(/\[]\(https?:\/\/[^\)]+\)[ \t]*/g, "")],
+  ["postedIn", (s) => s.replace(/^.*Posted in Uncategorized.*$/gm, "")],
+  ["todoMarkers", (s) => s.replace(/@todo\s+(needs description|requires description|review\s*)/gi, "")],
+  ["ambTags", (s) => s.replace(/\[amb href="([^"]+)"\]([^\[]*)\[\/amb\]/g, "[$2]($1)")],
+  [null, (s) => s.replace(/\n{4,}/g, "\n\n\n")],
+];
+
+// Splits content into prose and fenced code blocks (odd indices are code).
+// A demo's code can hold any of the patterns below in a string or template
+// literal, and must not be rewritten.
+function splitFences(content) {
+  return content.split(/(^[ \t]*```[^\n]*\n[\s\S]*?\n[ \t]*```[ \t]*\r?(?=\n|$))/m);
+}
 
 function processFile(filePath) {
   const original = readFileSync(filePath, "utf-8");
@@ -47,33 +69,20 @@ function processFile(filePath) {
     }
   }
 
-  // 2. Strip "See the Pen..." lines
-  const seeThePenBefore = content;
-  content = content.replace(/^.*See the Pen .+$/gm, "");
-  if (content !== seeThePenBefore) stats.seeThePen++;
-
-  // 3. Strip empty image references [](url)
-  const emptyImgBefore = content;
-  content = content.replace(/\[]\(https?:\/\/[^\)]+\)\s*/g, "");
-  if (content !== emptyImgBefore) stats.emptyImages++;
-
-  // 4. Strip "Posted in Uncategorized..." lines
-  const postedBefore = content;
-  content = content.replace(/^.*Posted in Uncategorized.*$/gm, "");
-  if (content !== postedBefore) stats.postedIn++;
-
-  // 5. Remove @todo markers
-  const todoBefore = content;
-  content = content.replace(/@todo\s+(needs description|requires description|review\s*)/gi, "");
-  if (content !== todoBefore) stats.todoMarkers++;
-
-  // 6. Convert [amb href="url"]text[/amb] to [text](url)
-  const ambBefore = content;
-  content = content.replace(/\[amb href="([^"]+)"\]([^\[]*)\[\/amb\]/g, "[$2]($1)");
-  if (content !== ambBefore) stats.ambTags++;
-
-  // 7. Clean up excessive blank lines (3+ -> 2)
-  content = content.replace(/\n{4,}/g, "\n\n\n");
+  // 2-7, on the prose parts only
+  const changed = new Set();
+  content = splitFences(content)
+    .map((part, i) => {
+      if (i % 2) return part;
+      for (const [key, fn] of PROSE_STEPS) {
+        const before = part;
+        part = fn(part);
+        if (key && part !== before) changed.add(key);
+      }
+      return part;
+    })
+    .join("");
+  for (const key of changed) stats[key]++;
 
   // Write back if changed
   if (content !== original) {
@@ -93,25 +102,6 @@ function walkDir(dir) {
       stats.filesScanned++;
       const result = processFile(fullPath);
       if (result !== null && result !== undefined) {
-        require("fs").writeFileSync(fullPath, result, "utf-8");
-      }
-    }
-  }
-}
-
-// Can't use require in ESM, so use writeFileSync from fs
-import { writeFileSync } from "fs";
-
-function walkDirFixed(dir) {
-  const entries = readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      walkDirFixed(fullPath);
-    } else if (entry.name.endsWith(".md")) {
-      stats.filesScanned++;
-      const result = processFile(fullPath);
-      if (result !== null && result !== undefined) {
         writeFileSync(fullPath, result, "utf-8");
       }
     }
@@ -119,7 +109,7 @@ function walkDirFixed(dir) {
 }
 
 console.log("Final cleanup pass...\n");
-walkDirFixed(EXTENDED_DIR);
+walkDir(ROOT_DIR);
 
 console.log("Results:");
 console.log(`  Files scanned: ${stats.filesScanned}`);

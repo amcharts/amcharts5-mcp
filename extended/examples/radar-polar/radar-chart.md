@@ -2,7 +2,7 @@
 title: "Radar Chart"
 source: "https://www.amcharts.com/demos/radar-chart/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Radar chart (also known as web chart, spider chart, star chart, etc.) is used to display data as circular two-dimensional plots. In the scope of amCharts you can think of radar charts as circular XY charts with a lot of the same concepts applicable throughout.

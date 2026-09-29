@@ -2,7 +2,7 @@
 title: "Divergent Stacked Bars"
 source: "https://www.amcharts.com/demos/divergent-stacked-bars/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sometimes you want to stack all the bars in a bar chart on top of each other. Other times, you want some parts of the chart go into diverging directions. This demo shows you a simple way to achieve that with amCharts.
@@ -39,15 +39,6 @@ var chart = root.container.children.push(
 
 // Use only absolute numbers
 root.numberFormatter.set("numberFormat", "#.#s'%");
-
-// Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = chart.children.push(
-  am5.Legend.new(root, {
-    centerX: am5.p50,
-    x: am5.p50
-  })
-);
 
 // Data
 var data = [{

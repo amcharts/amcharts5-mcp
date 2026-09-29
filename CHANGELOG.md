@@ -7,6 +7,56 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.6.0] - 2026-09-29
+
+### Fixed
+- **36 of the 284 examples served JavaScript that did not parse** (e.g. `candlestick-ohlc/candlestick-chart`, most stacked-area and sankey demos, `timeline/infinity-timeline`): `get_example` returned code that threw a `SyntaxError` before the chart was created. `scripts/clean-examples2.js` unescaped the demo code a second time after `JSON.parse` had already decoded it, turning `\n` and `\"` inside string literals into raw line breaks and bare quotes. The code is now used as parsed, and every example was re-scraped and re-cleaned. All 284 parse, and all run in headless Chromium against the amCharts 5.20.8 CDN except three whose upstream demos are broken on amcharts.com too (two load data from a dead `s.cdpn.io` bucket, one uses an undefined `homeButton`).
+- **Example descriptions:** inline `<style>` / `<svg>` markup from demo pages leaked CSS into six map examples; HTML entities (`&nbsp;`, `&rarr;`, numeric) were left undecoded while `&amp;lt;` was decoded twice; indented lines rendered as markdown code blocks.
+- `maps/map-sankey-series` had no HTML, CSS or "Required resources" section, so it did not say which scripts to load.
+- **Pre-existing errors in the docs and reference:**
+  - The phantom `ChartSerializer` setting `includeProjection` is removed; it does not exist.
+  - `includeStates` / `includeAdapters` default to `true`, not `false`.
+  - Projections set by name or with a bundled `am5map.geoXxx()` factory do round-trip; the docs listed all projections as unsupported.
+  - `am5.ease.pow` was listed as a plain easing, but it is `pow(t, e)` and returns `NaN` without an exponent.
+  - A plain `Serializer`'s `functionsAs` defaults to `"string"`.
+  - Missing defaults were added for `clipFront`, `stateAnimationDuration` and `stateAnimationEasing`.
+  - `latitudeField` was described as longitude.
+  - A missing `to` row was added to `AnimationOptions`.
+  - An unterminated string was fixed in the serializer's custom-label sample.
+- **Security:** `npm audit fix` cleared 19 advisories (11 high, e.g. `fast-uri`, `undici`, `hono`) in transitive dependencies of the MCP SDK and `wrangler`. This changes only the lockfile.
+
+### Changed
+- **Examples refreshed from amcharts.com (2026-09-29).** Besides the 36 fixes, about 80 demos that amCharts has rewritten since the March scrape now show current 5.20.x code: `SerialChartContainer` for hierarchy / flow / venn / word cloud, `colorByDataItem`, map points on lines as data rows, and declared `animations`.
+
+### Added
+- **amCharts 5.20.6 – 5.20.8** (2026-09-16 to 2026-09-23) in `SKILL.md`, `cursorrules`, the chart references, the served docs and the API reference. Everything was verified against the 5.20.8 source and npm typings, and the new snippets were run in a browser:
+  - **New API:**
+    - The `animations` setting on every element: animations described as data, which round-trip through JSON. It is new page `reference/ideclaredanimation`.
+    - `ChartSerializer` / `Serializer` `runningAnimations`.
+    - `am5.ease.byName()` / `easingInfo()`, with new page `reference/ieasinginfo`.
+    - Series links: `urlField` / `linkTarget` / `openUrl()` and the data item's `url`.
+    - `MapPointSeries` `lineIdField` / `positionOnLineField` / `autoRotateField` / `autoRotateAngleField`, so points on lines can be plain data rows.
+    - An auto-rotating point turns to face its travel direction.
+  - **Version-tag note:** the 5.20.8 additions carry `@since 5.21.0` in the typings and in the live API reference, but ship in 5.20.8. They are documented as 5.20.8.
+  - **Behavior changes:**
+    - Series data no longer has to follow `CategoryAxis` order.
+    - Log axis labels use round powers of ten.
+    - `axisHeader` content added later gets room.
+    - A `Container` `background` `templateField` reads the data item.
+    - `CSVParser.parse("")` no longer hangs. It returns `[{}]` by default and `[]` with `useColumnNames: true`.
+    - `JsonParser` resolves forward references, so a legend inside an `axisHeader` round-trips.
+    - User `themeTags` are serialized.
+    - Map data rows drop geodata properties.
+- **Example tooling:**
+  - `npm run build:examples [-- slug …]` scrapes, cleans and checks.
+    - Cleaning always runs, even when some demos failed to scrape, and the exit code reports any failure.
+  - `npm run clean:examples` runs the cleaning passes on their own.
+  - `npm run check:examples` checks every example for a JavaScript block that parses, a "Required resources" list and no raw `demoData` left over.
+  - `npm test` now runs `check:examples` first, so CI and the deploy workflow reject a broken example.
+  - `scripts/scrape-demos.js` takes demo slugs, rejects unknown ones and stamps the real scrape date.
+  - `scripts/clean-examples2.js` reads `demoData` from the JavaScript section. It no longer "repairs" invalid JSON, which could rewrite the code inside it; such a file is left raw and fails the check. This makes `scripts/clean-examples.js` redundant, so it is removed.
+  - `scripts/clean-all.js` takes a directory. It never rewrites fenced code, and no longer glues text onto a following fence when it strips an empty image link.
+
 ## [1.5.0] - 2026-09-14
 
 ### Added

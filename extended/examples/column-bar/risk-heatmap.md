@@ -2,7 +2,7 @@
 title: "Risk Heatmap"
 source: "https://www.amcharts.com/demos/risk-heatmap/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Two-dimensional category axes

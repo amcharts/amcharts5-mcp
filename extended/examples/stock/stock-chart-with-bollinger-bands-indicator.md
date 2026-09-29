@@ -2,7 +2,7 @@
 title: "Stock Chart with Bollinger Bands Indicator"
 source: "https://www.amcharts.com/demos/stock-chart-with-bollinger-bands-indicator/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bollinger Band is a technical analysis indicator designed to provide investors with insights to discover oversold and undersold assets.

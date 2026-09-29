@@ -2,7 +2,7 @@
 title: "Column Chart with Images on Top"
 source: "https://www.amcharts.com/demos/column-chart-images-top/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bullets in amCharts 5 are more than just a way to display geometric shapes over the data points. You can display anything inside the bullet - from a simple circle to a fully fledged sub-chart. In this demo we display images as bullet content.
@@ -77,7 +77,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   valueYField: "value",
   sequencedInterpolation: true,
   categoryXField: "name",
-  tooltip: am5.Tooltip.new(root, { dy: -25, labelText: "{valueY}" })
+  tooltip: am5.Tooltip.new(root, { dy: -25, labelText: "{valueY}" }),
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 
@@ -85,14 +87,6 @@ series.columns.template.setAll({
   cornerRadiusTL: 5,
   cornerRadiusTR: 5,
   strokeOpacity: 0
-});
-
-series.columns.template.adapters.add("fill", (fill, target) => {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", (stroke, target) => {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
 });
 
 // Set data

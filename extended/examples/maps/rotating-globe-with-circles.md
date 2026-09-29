@@ -2,7 +2,7 @@
 title: "Rotating Globe with Circles"
 source: "https://www.amcharts.com/demos/rotating-globe-with-circles/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 With amCharts 5 you can create amazing Map charts and you don't have to be limited to flattened representation of Earth. As you can see in this demo, you can use an orthographic projection to display the planet as an interactive globe.
@@ -28,9 +28,16 @@ root.setThemes([
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",
   panY: "rotateY",
+  boxZoom: "shift",
   projection: am5map.geoOrthographic()
 }));
 
+// Zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+// the home button is hidden by default
+zoomControl.homeButton.set("visible", true);
 
 // Create series for background fill
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
@@ -284,6 +291,16 @@ polygonSeries.events.on("datavalidated", function () {
     }
   }
 })
+
+// Rotate animation
+var spin = chart.animate({
+  key: "rotationX",
+  from: 0,
+  to: 360,
+  duration: 30000,
+  loops: Infinity
+});
+
 
 
 // Make stuff animate on load

@@ -2,7 +2,7 @@
 title: "US Heat (Choropleth) Map"
 source: "https://www.amcharts.com/demos/us-heat-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Using our mapping tool you can easily create heat (or as BI-centric folks like to call it, choropleth) maps. You only need to set light and dark color, and if your areas/countries/states has value assigned, the map will automatically choose intermediate color corresponding its value.

@@ -2,7 +2,7 @@
 title: "Spiral timeline"
 source: "https://www.amcharts.com/demos/spiral-timeline/"
 category: "timeline"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A spiral timeline chart is a circular data visualization that arranges events along a spiraling path, ideal for representing long or recurring time periods in a compact and visually engaging format. Unlike linear timelines, the spiral layout wraps the timeline inward or outward in loops, allowing you to display a large number of events or extended durations within a limited area.
@@ -177,7 +177,8 @@ var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
   valueXField: "end",
   openValueXField: "start",
   categoryYField: "category",
-  layer: 30
+  layer: 30,
+  colorByDataItem: true
 }));
 
 series.columns.template.setAll({
@@ -213,10 +214,6 @@ series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     sprite: circle, locationX: 1
   })
-})
-
-series.columns.template.adapters.add("fill", function(fill, target) {
-  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
 })
 
 // Line series for flags

@@ -2,7 +2,7 @@
 title: "Step Line Chart"
 source: "https://www.amcharts.com/demos/step-line-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Step Line Chart (also known as Step Chart, Stepped Line Chart) is useful when you want to show changes happening at specific points. In contrast to Line Chart, which connects data points with the shortest possible line thus creating an appearance of values changing gradually, Step Line Chart highlights that values change discretely at specific points.

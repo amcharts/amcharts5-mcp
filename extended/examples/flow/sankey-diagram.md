@@ -2,7 +2,7 @@
 title: "Sankey Diagram"
 source: "https://www.amcharts.com/demos/sankey-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sankey diagram is a perfect chart to show the flow and relation between stages of a process.
@@ -27,7 +27,9 @@ root.setThemes([
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(am5flow.Sankey.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5flow.Sankey.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
   valueField: "value",

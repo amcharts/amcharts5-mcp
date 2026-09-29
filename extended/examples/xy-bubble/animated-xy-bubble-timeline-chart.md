@@ -2,7 +2,7 @@
 title: "Animated XY Bubble Timeline chart"
 source: "https://www.amcharts.com/demos/animated-xy-bubble-timeline-chart/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Animating changes in data is a great way to convey trends over time that would require series of charts or overcrowding one static chart. amCharts has all the tools you need to create animated timelines.

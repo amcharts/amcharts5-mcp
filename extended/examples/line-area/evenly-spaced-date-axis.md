@@ -2,7 +2,7 @@
 title: "Evenly Spaced Date Axis"
 source: "https://www.amcharts.com/demos/evenly-spaced-date-axis/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Note: this demo uses CategoryDateAxis which is now deprecated in favor of more advanced GaplessDateAxis. Checkout the No-gap Date Axis demo to see GaplessDateAxis in action.

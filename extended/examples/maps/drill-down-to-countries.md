@@ -2,14 +2,14 @@
 title: "Drill-Down to Countries"
 source: "https://www.amcharts.com/demos/drill-down-to-countries/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how a country map can be loaded dynamically when needed. Click on any colored country: the map will zoom in on it then load and display the country map for it.
 amCharts 5 comes with maps for over 200 countries, with new maps being added constantly.
- 	Map chart
- 	Drill-down naviagtion
- 	Getting the most out of net.load utility
+Map chart
+Drill-down naviagtion
+Getting the most out of net.load utility
 
 ## JavaScript
 

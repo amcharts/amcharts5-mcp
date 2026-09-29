@@ -2,7 +2,7 @@
 title: "Gantt chart in read-only mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This is a Gantt chart in read-only mode, where all interactions are disabled except for zooming and hovering over the columns. To enable editing, click the pencil icon in the top-right corner. Once editing is enabled, you can add or remove categories, move columns, and perform all the usual editing actions.

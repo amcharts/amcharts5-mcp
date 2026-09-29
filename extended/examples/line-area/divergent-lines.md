@@ -2,7 +2,7 @@
 title: "Divergent Lines"
 source: "https://www.amcharts.com/demos/divergent-lines/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how an XYChart can combine several smoothed LineSeries to depict projections using divergent lines. Divergent lines refer to a set of lines that originate from a common point and gradually spread or move apart from each other as they extend further. These lines exhibit a diverging pattern, creating increasing space or distance between them.
@@ -131,8 +131,7 @@ function createSeries(field, name, color, dashed) {
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
       getFillFromSprite: false,
-      labelText: "[bold]{name}[/]
-{valueX}: [bold]{valueY}[/]"
+      labelText: "[bold]{name}[/]\n{valueX}: [bold]{valueY}[/]"
     })
   }));
   

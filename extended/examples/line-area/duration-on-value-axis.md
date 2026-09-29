@@ -2,7 +2,7 @@
 title: "Duration on Value Axis"
 source: "https://www.amcharts.com/demos/duration-on-value-axis/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo showcases several powerful concepts. Let's take a look.

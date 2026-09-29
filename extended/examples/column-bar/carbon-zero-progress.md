@@ -2,7 +2,7 @@
 title: "Carbon-zero Progress"
 source: "https://www.amcharts.com/demos/carbon-zero-progress/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts flexibility allows you to go way beyond canonical chart types and use our libraries to build vast variety of data visualizations. In this demo we use the XY chart to implement a beautiful progress bar.
@@ -248,8 +248,7 @@ series.bullets.push(function(root, target, dataItem) {
     }));
     
     var label = container.children.push(am5.Label.new(root, {
-      text: "GOAL
-[bold]ZERO[/]",
+      text: "GOAL\n[bold]ZERO[/]",
       textAlign: "center",
       //fontSize: "10",
       fill: am5.color(0xffffff),

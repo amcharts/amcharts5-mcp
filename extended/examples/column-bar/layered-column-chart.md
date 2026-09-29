@@ -2,7 +2,7 @@
 title: "Layered Column Chart"
 source: "https://www.amcharts.com/demos/layered-column-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In some scenarios, showing multiple column series side-by-side (clustered) is the best and most "standard" way to display multiple column series. However, when each series has equal and fairly limited number of items, layering series on top of each other presents a much more impactful visualization.

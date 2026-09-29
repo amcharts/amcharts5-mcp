@@ -2,7 +2,7 @@
 title: "Drill-down Congressional Map"
 source: "https://www.amcharts.com/demos/drill-down-congressional-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo uses a state map of the USA on its first level.
@@ -58,7 +58,7 @@ usaSeries.mapPolygons.template.events.on("click", (ev) => {
 
   Promise.all([
     zoomAnimation.waitForStop(),
-    am5.net.load("https://cdn.amcharts.com/lib/5/geodata/json/region/usa/congressional2022/" + id + "Low.json", chart)
+    am5.net.load("https://cdn.amcharts.com/lib/5/geodata/json/region/usa/congressional120/" + id + "Low.json", chart)
   ]).then(function(results) {
     var geodata = am5.JSONParser.parse(results[1].response);
     stateSeries.setAll({

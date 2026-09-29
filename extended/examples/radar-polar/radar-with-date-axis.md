@@ -2,7 +2,7 @@
 title: "Radar with Date Axis"
 source: "https://www.amcharts.com/demos/radar-with-date-axis/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Date-based data for cyclical periods (months, years, etc.) is well suited to be depicted in a Radar Chart. amCharts flexibility enables you to use date axes in a circular fashion with little effort.

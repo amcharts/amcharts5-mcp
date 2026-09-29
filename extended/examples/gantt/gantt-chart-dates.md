@@ -2,7 +2,7 @@
 title: "Editable Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart-dates/"
 category: "gantt"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Our Gantt chart is not just a static display of information — it’s a fully interactive editor. You can create new tasks, rearrange their order, and organize them into categories and subcategories. Build dependencies by drawing links between tasks, or add timeline markers simply by clicking on the X-axis.

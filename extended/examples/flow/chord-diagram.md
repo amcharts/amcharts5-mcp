@@ -2,7 +2,7 @@
 title: "Chord Diagram"
 source: "https://www.amcharts.com/demos/chord-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Chord Diagrams (also known as Radial network diagram, Chord layout, Dependency wheel) help us visualize relationships between data arranged beautifully in a circle. You can use Chord Diagrams to visualize data ranging from relationships between Lost characters to Uber rides between neighborhoods in a city to complex scientific subjects that are even hard to pronounce.
@@ -26,7 +26,9 @@ root.setThemes([
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(am5flow.Chord.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5flow.Chord.new(root, {
   sourceIdField: "source",
   targetIdField: "target",
   valueField: "value"

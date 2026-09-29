@@ -2,7 +2,7 @@
 title: "Column and Line Mix"
 source: "https://www.amcharts.com/demos/column-and-line-mix/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 You can use our XYChart to mix and match various types of two-dimensional charts - line, bar, column, area, candlestick, OHLC, etc. The most common combination is the column and line chart.

@@ -2,7 +2,7 @@
 title: "Exporting Chart to Image"
 source: "https://www.amcharts.com/demos/exporting-chart-to-image/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Exporting plugin

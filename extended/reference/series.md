@@ -35,10 +35,12 @@ Extended by: Flow, FlowNodes, PercentSeries, Legend, XYSeries, Hierarchy, MapSer
 - **legendDataItem** (`DataItem`) — A data item representing series in a Legend. @readonly
 - **legendLabelText** (`undefined | string`) — A text template to be used for label in legend.
 - **legendValueText** (`undefined | string`) — A text template to be used for value label in legend.
+- **linkTarget** (`undefined | string`) — Default "_self" Where a data item's URL (see urlField) opens: `"_self"` for the same window, `"_blank"` for a new tab (opened with `noopener`), or a named window / frame. A chart embedded in an iframe usually wants `"_blank"` or `"_top"`. @since 5.20.7
 - **name** (`undefined | string`) — Name of the series.
 - **sequencedDelay** (`undefined | number`) — A delay in milliseconds to wait before starting animation of next data item. Click here for more info
 - **sequencedInterpolation** (`undefined | false | true`) — If set to true the series initial animation will be played item by item rather than all at once. Click here for more info
 - **stroke** (`Color`) — Series stroke color. Click here for more info
+- **urlField** (`undefined | string`) — A key to look up in data for a URL to open when the data item's element (a bullet, column, slice, map polygon or map line) is clicked. Links are off until this is set. Linked elements: bullet sprites of every series; BaseColumnSeries columns (column, candlestick, OHLC, Gantt…); PercentSeries slices (pie, funnel, pyramid, pictorial); Venn slices; MapPolygon; MapLine — not hierarchy nodes, flow nodes/links, word-cloud labels or MapSankey nodes. A linked element gets `cursorOverStyle: "pointer"` unless you set one yourself. Script URLs (`javascript:`, `data:`, `vbscript:`) are never opened. Can be set after the data; a URL added later (e.g. `data.setIndex()`) links too. Clicks go through the public `series.openUrl(dataItem)` method, which opens the data item's `url` in linkTarget — override it to intercept links. @since 5.20.7
 - **valueField** (`undefined | string`) — A key to look up in data for a numeric value of the data item. Some series use it to display its elements. It can also be used in heat rules.
 
 ## Properties

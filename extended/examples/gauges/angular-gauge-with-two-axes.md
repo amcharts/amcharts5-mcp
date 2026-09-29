@@ -2,7 +2,7 @@
 title: "Angular Gauge with Two Axes"
 source: "https://www.amcharts.com/demos/angular-gauge-with-two-axes/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Like most amCharts charts you can have multiple axes in Gauge charts as well. This also enables multiple independent clock hands pointing to values on different scales.

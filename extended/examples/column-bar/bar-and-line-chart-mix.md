@@ -2,7 +2,7 @@
 title: "Bar and Line Chart Mix"
 source: "https://www.amcharts.com/demos/bar-and-line-chart-mix/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Mixing bar and line chart in the same visual is a good way to emphasize the difference between series while still maintaining their relationship.
@@ -39,13 +39,6 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   layout: root.verticalLayout
 }));
 
-
-// Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.p50,
-  x: am5.p50
-}))
 
 var data = [{
   "year": "2005",
@@ -112,8 +105,7 @@ var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
   sequencedInterpolation: true,
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "[bold]{name}[/]
-{categoryY}: {valueX}"
+    labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
   })
 }));
 
@@ -131,8 +123,7 @@ var series2 = chart.series.push(am5xy.LineSeries.new(root, {
   sequencedInterpolation: true,
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "[bold]{name}[/]
-{categoryY}: {valueX}"
+    labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
   })
 }));
 

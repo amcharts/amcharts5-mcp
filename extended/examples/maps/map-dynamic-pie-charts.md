@@ -2,7 +2,7 @@
 title: "Map with Dynamic Pie Charts"
 source: "https://www.amcharts.com/demos/map-dynamic-pie-charts/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 One of the super-powers of amCharts is that you can combine multiple chart types into a single cohesive and interactive visualization. This demo shows interactive pie charts on top of an active zoomable map.

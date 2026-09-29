@@ -2,7 +2,7 @@
 title: "Editable Multilevel Gantt Chart"
 source: "https://www.amcharts.com/demos/editable-multilevel-gantt-chart/"
 category: "gantt"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Experience the power of an interactive, editable multilevel Gantt chart designed for modern project management. Add, edit, and reorder tasks effortlessly with intuitive drag-and-drop controls. Expand or collapse task hierarchies to keep complex projects organized and easy to navigate. Update progress, set dependencies, and adjust schedules in real time for seamless collaboration.

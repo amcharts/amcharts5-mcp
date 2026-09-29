@@ -2,7 +2,7 @@
 title: "Serpentine Timeline Chart"
 source: "https://www.amcharts.com/demos/serpentine-timeline-chart/"
 category: "timeline"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A serpentine timeline chart is a type of data visualization that arranges chronological events along a curved, snake-like path, allowing for compact and visually engaging displays of long time spans. Unlike traditional straight-line timelines, the serpentine layout bends the timeline back and forth—either horizontally or vertically—making efficient use of limited screen space.
@@ -177,7 +177,9 @@ var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
   valueXField: "end",
   openValueXField: "start",
   categoryYField: "category",
-  layer: 30
+  layer: 30,
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 series.columns.template.setAll({
@@ -213,10 +215,6 @@ series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     sprite: circle, locationX: 1
   })
-})
-
-series.columns.template.adapters.add("fill", function(fill, target) {
-  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
 })
 
 // line series for flags

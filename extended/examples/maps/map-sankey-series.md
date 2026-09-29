@@ -127,3 +127,25 @@ sankeySeries.events.on("datavalidated", function () {
 
 chart.appear(1000, 100);
 ```
+
+## HTML
+
+```html
+<div id="chartdiv"></div>
+```
+
+## CSS
+
+```css
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+```
+
+## Required resources
+
+- https://cdn.amcharts.com/lib/5/index.js
+- https://cdn.amcharts.com/lib/5/map.js
+- https://cdn.amcharts.com/lib/5/geodata/worldLow.js
+- https://cdn.amcharts.com/lib/5/themes/Animated.js

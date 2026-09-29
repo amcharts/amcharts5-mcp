@@ -2,7 +2,7 @@
 title: "Highlighting Line Chart Series on Legend Hover"
 source: "https://www.amcharts.com/demos/highlighting-line-chart-series-on-legend-hover/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Charts with multiple series are great to get a high-level view of data but could be hard to read when you want to focus on data in one series. Selecting the series in the legend and highlighting its respective graph is a perfect way to solve this issue.

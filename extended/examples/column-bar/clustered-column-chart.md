@@ -2,13 +2,13 @@
 title: "Clustered Column Chart"
 source: "https://www.amcharts.com/demos/clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Clustered Column Chart is the default column chart behavior where values from all series are displayed next to each other at the same category axis value.
 Key implementation details
 In this demo we emphasize the "clusters" by adding margins around them. We do this by setting cellStartLocation and cellEndLocation on the horizontal axis renderer (AxisRendererX). We set them to 0.1 and 0.9 respectively, resulting in 10% margins on both sides.
- 	Cell start/end locations
+Cell start/end locations
 
 ## JavaScript
 

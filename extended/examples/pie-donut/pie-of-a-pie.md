@@ -2,7 +2,7 @@
 title: "Pie of a Pie (Exploding Pie Chart)"
 source: "https://www.amcharts.com/demos/pie-of-a-pie/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Two pie charts, one showing the drill-down data of a selected slice. Click on a slice of a big pie to explode/expand the slice. This chart type is sometimes called exploding pie chart.

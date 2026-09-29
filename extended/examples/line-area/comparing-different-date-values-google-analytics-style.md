@@ -2,7 +2,7 @@
 title: "Comparing Different Date Values Google Analytics Style"
 source: "https://www.amcharts.com/demos/comparing-different-date-values-google-analytics-style/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Google popularized this type of chart where data from one period is compared to the same data in the previous period in it's Analytics product. In this demo we implement this concept with amCharts.
@@ -73,8 +73,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
   valueYField: "value1",
   valueXField: "date",
   tooltip: am5.Tooltip.new(root, {
-    labelText: "{valueX}: {valueY}
-{previousDate}: {value2}"
+    labelText: "{valueX}: {valueY}\n{previousDate}: {value2}"
   })
 }));
 

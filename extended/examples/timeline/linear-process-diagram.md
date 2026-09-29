@@ -2,7 +2,7 @@
 title: "Linear Process Diagram"
 source: "https://www.amcharts.com/demos/linear-process-diagram/"
 category: "timeline"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A linear process diagram is a clear and intuitive way to visualize a sequence of steps or stages in a process. Traditionally arranged in a straight line, this type of diagram is ideal for showing workflows, progressions, life cycles, or any step-by-step structure.

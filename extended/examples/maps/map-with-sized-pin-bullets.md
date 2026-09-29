@@ -2,7 +2,7 @@
 title: "Map with Sized Pin Bullets"
 source: "https://www.amcharts.com/demos/map-with-sized-pin-bullets/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo implements pin-like bullets with the pin head size adjusted based on the corresponding value.

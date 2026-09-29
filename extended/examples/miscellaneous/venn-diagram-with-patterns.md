@@ -2,7 +2,7 @@
 title: "Venn Diagram with Patterns"
 source: "https://www.amcharts.com/demos/venn-diagram-with-patterns/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Venn diagrams are one of the most popular diagram types for showing relationships between sets of data.
@@ -21,14 +21,14 @@ root.setThemes([
 ]);
 
 // Create wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
   width: am5.p100,
   height: am5.p100,
   layout: root.verticalLayout
 }));
 
 // Create venn series
-var chart = container.children.push(am5venn.Venn.new(root, {
+var series = chart.series.push(am5venn.Venn.new(root, {
   categoryField: "name",
   valueField: "value",
   intersectionsField: "sets",
@@ -46,9 +46,9 @@ var pattern = am5.CirclePattern.new(root, {
   checkered: true
 })
 
-chart.slices.template.setAll({ templateField: "sliceSettings" });
-chart.labels.template.set("fill", am5.color(0xffffff));
-chart.labels.template.setup = function(target) {
+series.slices.template.setAll({ templateField: "sliceSettings" });
+series.labels.template.set("fill", am5.color(0xffffff));
+series.labels.template.setup = function(target) {
   target.set("background", am5.RoundedRectangle.new(root, {
     stroke: am5.color(0xffffff),
     fill: am5.color(0x000000),
@@ -61,7 +61,7 @@ chart.labels.template.setup = function(target) {
 }
 
 // Set data
-chart.data.setAll([{
+series.data.setAll([{
 	name: "Polar bear",
 	value: 100,
 	sliceSettings: {
@@ -87,7 +87,7 @@ chart.data.setAll([{
 
 
 // Set up hover appearance
-chart.hoverGraphics.setAll({
+series.hoverGraphics.setAll({
   strokeDasharray: [3, 3],
   stroke: am5.color(0xffffff),
   strokeWidth: 2

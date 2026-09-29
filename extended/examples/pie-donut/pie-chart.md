@@ -2,12 +2,12 @@
 title: "Pie Chart"
 source: "https://www.amcharts.com/demos/pie-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
-Pie charts are the most commonly used chart type to represent qualitative data (values in relation to the whole). amCharts has an extensive support for various pie chart sub-types and configuration options. This demo shows the most basic and commonly used implementation of pie chart.
+Pie charts are the most commonly used chart type to represent qualitative data (values in relation to the whole). This JavaScript pie chart shows values for seven countries, with tooltips on hover and an animated entrance.
 Key implementation details
-We create an instance of PieChart and add PieSeries to it with data fields configured. And that's all you need to do to add this type of pie chart in your web app.
+We create an instance of PieChart and add a PieSeries to it with data fields configured. The chart's startAngle and endAngle settings (-90 and 270 by default, which draws a full circle) control how much of the circle the pie covers. See the Semi-Circle Pie Chart demo for a half pie, or the Simple Pie Chart demo for the minimal setup.
 Pie chart
 Pie series
 

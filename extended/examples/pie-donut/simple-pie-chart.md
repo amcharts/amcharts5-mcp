@@ -2,12 +2,13 @@
 title: "Simple Pie Chart"
 source: "https://www.amcharts.com/demos/simple-pie-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
-Pie charts are the most commonly used chart type to represent qualitative data (values in relation to the whole). amCharts has an extensive support for various pie chart sub-types and configuration options. This demo shows the most basic and commonly used implementation of pie chart.
+This is the simplest possible pie chart in amCharts 5: a PieChart with one PieSeries and seven values, in about 20 lines of code. There is no legend, no custom angles and no label settings, which makes it a clean starting point for your own pie chart.
 Key implementation details
-We create an instance of&nbsp;PieChart&nbsp;and add&nbsp;PieSeries&nbsp;to it with data fields configured. And that’s all you need to do to add this type of pie chart in your web app.
+We create an instance of PieChart and add PieSeries to it with data fields configured. And that’s all you need to do to add this type of pie chart in your web app.
+From here you can add a legend (Pie Chart with Legend), set innerRadius to turn it into a donut (Donut Chart), or set startAngle and endAngle for a half pie (Semi-Circle Pie Chart).
 Pie chart
 Pie series
 

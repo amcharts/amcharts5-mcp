@@ -2,7 +2,7 @@
 title: "Funnel with Gradient Fill"
 source: "https://www.amcharts.com/demos/funnel-with-gradient-fill/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Gradients can enhance the visual appeal of chart and even create a faux 3D feel when needed. amCharts has the helpers to create advanced gradients.

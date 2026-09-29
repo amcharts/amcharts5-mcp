@@ -2,7 +2,7 @@
 title: "Two-Level Pie Chart"
 source: "https://www.amcharts.com/demos/two-level-pie-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Two-Level pie chart (or a multi-level pie chart as a generic case) lets you display data in multiple dimensions. For example, you can show detailed data as one level and then that same data grouped into higher-level groups as a second level.

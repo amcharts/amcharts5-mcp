@@ -2,21 +2,19 @@
 title: "Images as Categories"
 source: "https://www.amcharts.com/demos/images-as-categories/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how bullets can be added to any axis.
 Key implementation details
 While creating a CategoryAxis we set its bullet property to a function returning a new Bullet with its sprite set to a Picture using an image from dataItem's icon field as its source (src).
- 	Bullets
- 	Images (Picture)
- 	Axis bullets
-&nbsp;
+Bullets
+Images (Picture)
+Axis bullets
 
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
@@ -47,57 +45,57 @@ var colors = chart.get("colors");
 var data = [{
   country: "US",
   visits: 725,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/united-states.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/united-states.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "UK",
   visits: 625,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/united-kingdom.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/united-kingdom.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "China",
   visits: 602,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/china.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/china.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "Japan",
   visits: 509,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/japan.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/japan.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "Germany",
   visits: 322,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/germany.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/germany.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "France",
   visits: 214,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/france.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/france.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "India",
   visits: 204,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/india.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/india.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "Spain",
   visits: 198,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/spain.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/spain.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "Netherlands",
   visits: 165,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/netherlands.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/netherlands.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "South Korea",
   visits: 93,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/south-korea.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/south-korea.svg" },
   columnSettings: { fill: colors.next() }
 }, {
   country: "Canada",
   visits: 41,
-  icon: "https://www.amcharts.com/wp-content/uploads/flags/canada.svg",
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/flags/canada.svg" },
   columnSettings: { fill: colors.next() }
 }];
 
@@ -120,7 +118,7 @@ var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
         height: 24,
         centerY: am5.p50,
         centerX: am5.p50,
-        src: dataItem.dataContext.icon
+        templateField: "iconSettings"
       })
     });
   }

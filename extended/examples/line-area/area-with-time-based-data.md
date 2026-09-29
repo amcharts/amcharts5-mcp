@@ -2,7 +2,7 @@
 title: "Area with Time Based Data"
 source: "https://www.amcharts.com/demos/area-with-time-based-data/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows you how to create a time-based area chart with amCharts 5.
@@ -88,8 +88,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
   valueXField: "date",
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "[bold]{name}[/]
-{valueX.formatDate()}: {valueY}"
+    labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
   })
 }));
 

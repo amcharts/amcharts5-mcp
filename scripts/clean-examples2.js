@@ -11,27 +11,30 @@ import path from "path";
 
 const EXAMPLES_DIR = path.resolve("extended/examples");
 
+const NAMED_ENTITIES = {
+  amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
+  rarr: "→", larr: "←", hellip: "…", mdash: "—", ndash: "–",
+  lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”", times: "×", deg: "°", copy: "©",
+};
+
 function stripHtml(html) {
   return html
     .replace(/<!-- .*? -->/gs, "")
+    // Drop elements whose content is not prose (inline promo styling, icons)
+    .replace(/<(style|script|svg)\b[\s\S]*?<\/\1>/gi, "")
     .replace(/<[^>]+>/g, "")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
+    // One pass, so "&amp;lt;" decodes to "&lt;", not "<"
+    .replace(/&(#\d+|#x[0-9a-f]+|[a-z]+);/gi, (entity, name) => {
+      if (name[0] === "#") {
+        const code = name[1] === "x" || name[1] === "X" ? parseInt(name.slice(2), 16) : parseInt(name.slice(1), 10);
+        return code <= 0x10ffff ? String.fromCodePoint(code) : entity;
+      }
+      return NAMED_ENTITIES[name.toLowerCase()] ?? entity;
+    })
+    // Indented lines would render as markdown code blocks
+    .split("\n").map((line) => line.trim()).join("\n")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
-}
-
-function unescapeJson(str) {
-  return str
-    .replace(/\\\//g, "/")
-    .replace(/\\r\\n/g, "\n")
-    .replace(/\\r/g, "\n")
-    .replace(/\\n/g, "\n")
-    .replace(/\\t/g, "\t")
-    .replace(/\\"/g, '"');
 }
 
 async function processDir(dir) {
@@ -59,26 +62,25 @@ async function processDir(dir) {
 
     // Extract frontmatter
     const fmMatch = content.match(/^(---\n[\s\S]*?\n---)\n/);
-    if (!fmMatch) { unchanged++; continue; }
+    if (!fmMatch) { console.warn(`  No frontmatter, left raw: ${fullPath}`); unchanged++; continue; }
     const frontmatter = fmMatch[1];
 
-    // Extract the JSON blob
-    const jsonMatch = content.match(/var demoData = (\{[\s\S]*?\n\})/);
-    if (!jsonMatch) { unchanged++; continue; }
+    // Extract the JSON blob. A raw scrape also holds an indented copy of it in
+    // the page text before ## JavaScript, which does not end in a column-0
+    // "}"; read the one inside the JavaScript section.
+    const jsAt = content.indexOf("## JavaScript");
+    const jsonMatch = content.slice(Math.max(jsAt, 0)).match(/var demoData = (\{[\s\S]*?\n\})/);
+    if (!jsonMatch) { console.warn(`  demoData not found, left raw: ${fullPath}`); unchanged++; continue; }
 
+    // No "repair" on failure: rewriting the JSON text would also rewrite the
+    // code strings inside it. A file left raw fails check-examples loudly.
     let data;
     try {
       data = JSON.parse(jsonMatch[1]);
     } catch {
-      // Try to fix common JSON issues
-      try {
-        // Sometimes there are trailing commas or other issues
-        const fixed = jsonMatch[1].replace(/,\s*}/g, "}").replace(/,\s*]/g, "]");
-        data = JSON.parse(fixed);
-      } catch {
-        unchanged++;
-        continue;
-      }
+      console.warn(`  demoData is not valid JSON, left raw: ${fullPath}`);
+      unchanged++;
+      continue;
     }
 
     // Build clean markdown
@@ -94,29 +96,29 @@ async function processDir(dir) {
       }
     }
 
-    // JavaScript
+    // Code. JSON.parse has already decoded the JSON string escapes, so the
+    // code is used as-is: unescaping it again turns escapes inside the code
+    // itself ("a\nb", "say \"hi\"") into raw line breaks and bare quotes,
+    // and the JavaScript no longer parses.
     if (data.javascript) {
-      const js = unescapeJson(data.javascript);
-      parts.push("## JavaScript", "", "```javascript", js, "```", "");
+      parts.push("## JavaScript", "", "```javascript", data.javascript, "```", "");
     }
 
     // HTML
     if (data.html) {
-      const html = unescapeJson(data.html);
-      parts.push("## HTML", "", "```html", html, "```", "");
+      parts.push("## HTML", "", "```html", data.html, "```", "");
     }
 
     // CSS
     if (data.css) {
-      const css = unescapeJson(data.css);
-      parts.push("## CSS", "", "```css", css, "```", "");
+      parts.push("## CSS", "", "```css", data.css, "```", "");
     }
 
     // Resources (CDN links)
     if (data.resources && data.resources.length > 0) {
       parts.push("## Required resources", "");
       for (const r of data.resources) {
-        parts.push(`- ${r.replace(/\\\//g, "/")}`);
+        parts.push(`- ${r}`);
       }
       parts.push("");
     }

@@ -2,12 +2,14 @@
 title: "U.S. Congressional Districts"
 source: "https://www.amcharts.com/demos/us-congressional-districts/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
-This demo uses a U.S. Congressional Districts map (118th Congress version).
-It also uses "template fields" to selectively apply coloring to specific areas.
-MapChartUsing regional mapsTemplate fields
+This demo uses a U.S. Congressional Districts map (120th Congress version, 2027–2029) and colors each district by party using "template fields".
+The party colors are example data from an earlier Congress, and districts without data are shown in gray. Replace the data array with your own to map election results or any other district-level values.
+MapChart
+Using regional maps
+Template fields
 
 ## JavaScript
 
@@ -17,6 +19,13 @@ var colors = {
   D: am5.color(0x244999),
   R: am5.color(0xd22532),
   N: am5.color(0x999999)
+}
+
+// Party names for tooltips and legend (N = no data)
+var partyNames = {
+  D: "Democrat",
+  R: "Republican",
+  N: "No data"
 }
 
 // Data
@@ -459,11 +468,12 @@ var data = [
 	{ id: "5600", state: "WY", statename: "Wyoming", party: "R" }
 ];
 
-// Populate colors
+// Populate colors and party names
 for(var i = 0; i < data.length; i++) {
   data[i].polygonSettings = {
     fill: colors[data[i].party]
   }
+  data[i].partyName = partyNames[data[i].party];
 }
 
 // Create root and chart
@@ -484,14 +494,13 @@ var chart = root.container.children.push(
 // Create polygon series
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata_region_usa_congressional2022_usaCongressionalLow
+    geoJSON: am5geodata_region_usa_congressional120_usaCongressionalLow
   })
 );
 
 
 polygonSeries.mapPolygons.template.setAll({
-  tooltipText: "[bold]{STATENAME} ({party})[/]
-{name}",
+  tooltipText: "[bold]{STATENAME} ({partyName})[/]\n{name}",
   templateField: "polygonSettings",
   fillOpacity: 0.9
 });
@@ -528,7 +537,7 @@ legend.data.setAll([{
   name: "Republicans",
   color: colors.R
 }, {
-  name: "Neutral",
+  name: "No data",
   color: colors.N
 }]);
 ```
@@ -552,5 +561,5 @@ legend.data.setAll([{
 
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
-- https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional2022/usaCongressionalLow.js
+- https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional120/usaCongressionalLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js

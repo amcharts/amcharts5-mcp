@@ -2,7 +2,7 @@
 title: "Spectrum Chart"
 source: "https://www.amcharts.com/demos/spectrum-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how we can leverage single-category ColumnSeries with floating columns, DateAxis, "axis ranges", and "template fields" to create a Spectrum chart.

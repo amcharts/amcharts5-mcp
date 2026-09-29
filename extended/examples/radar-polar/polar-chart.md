@@ -2,7 +2,7 @@
 title: "Polar Chart"
 source: "https://www.amcharts.com/demos/polar-chart/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Polar Chart is a variation of Radar Chart where points are placed in the polar coordinate system and values represent the distance from the pole (center).

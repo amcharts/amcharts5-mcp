@@ -2,7 +2,7 @@
 title: "Directed Chord Diagram"
 source: "https://www.amcharts.com/demos/toggleable-chord-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A Directed Chord Diagram is a specialized type of data visualization that represents directed relationships or flows between different entities or categories. It combines the elements of chord diagrams and flow diagrams to show the connections and directional flow between pairs of items. The diagram consists of arcs or chords that connect the entities, with the width or thickness of the arc indicating the strength or intensity of the relationship. The direction of the flow is represented by arrows along the chords. Directed Chord Diagrams are commonly used to visualize complex systems, such as migration patterns, trade flows, or communication networks, where understanding the directional relationships is crucial. They provide a clear and comprehensive representation of the flow and directionality of interactions between various entities, facilitating analysis and insights into the data.
@@ -26,7 +26,9 @@ root.setThemes([
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(am5flow.ChordDirected.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5flow.ChordDirected.new(root, {
   startAngle: 80,
   padAngle: 1,
   linkHeadRadius: undefined,

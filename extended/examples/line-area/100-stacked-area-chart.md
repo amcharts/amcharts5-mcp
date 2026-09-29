@@ -2,12 +2,12 @@
 title: "100% Stacked Area Chart"
 source: "https://www.amcharts.com/demos/100-stacked-area-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Using calculated values for series
 In amCharts 6, Series can be drawn from a variety of auto-calculated values, not necessarily the absolute ones.
-In this case, we are setting valueYShow&nbsp;data field to "valueYTotalPercent"&nbsp;which is an auto-calculated value, producing a 100% stack chart.
+In this case, we are setting valueYShow data field to "valueYTotalPercent" which is an auto-calculated value, producing a 100% stack chart.
 XY chart
 Line series
 XY chart series: 100% stacks
@@ -185,8 +185,7 @@ function createSeries(name, field) {
     legendValueText: "{valueY}",
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "[bold]{name}[/]
-{categoryX}: {valueYTotalPercent.formatNumber('#.0')}% ({valueY})"
+      labelText: "[bold]{name}[/]\n{categoryX}: {valueYTotalPercent.formatNumber('#.0')}% ({valueY})"
     })
   }));
 

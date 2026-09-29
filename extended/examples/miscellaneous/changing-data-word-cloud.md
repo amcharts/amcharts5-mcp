@@ -2,7 +2,7 @@
 title: "Changing Data of Word Cloud"
 source: "https://www.amcharts.com/demos/changing-data-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Word cloud (or tag cloud, or weighted list) is a visual representation of text data where word size shows the frequency of the word in text or some other word value.
@@ -26,7 +26,9 @@ root.setThemes([
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/word-cloud/
-var series = root.container.children.push(am5wc.WordCloud.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5wc.WordCloud.new(root, {
   categoryField: "tag",
   valueField: "weight",
   maxFontSize: am5.percent(15)

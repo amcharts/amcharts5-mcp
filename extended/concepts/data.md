@@ -773,6 +773,8 @@ am5.net.load("/data/mydata.csv").then(function(result) {
   console.log("Error loading " + result.xhr.responseURL);
 });
 
+NOTE Since 5.20.7, `CSVParser.parse()` copes with an empty string, such as an empty response from a server. Before, it looped until it ran out of memory and threw "Invalid array length". With `useColumnNames: true` an empty string now parses to an empty array (`[]`); without it, to a single empty row (`[{}]`) — check for an empty `result.response` before parsing if you need to tell the two apart.
+
 We can also use standalone data parser to parse date/numeric/color fields in data after it is parsed:
 
 am5.net.load("/data/mydata.csv").then(function(result) {

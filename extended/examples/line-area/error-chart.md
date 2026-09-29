@@ -2,7 +2,7 @@
 title: "Error Chart"
 source: "https://www.amcharts.com/demos/error-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Error chart helps you visualize uncertainty or variability of data. This demo shows you how to create error bars on top of a regular line graph.
@@ -117,8 +117,7 @@ var series = chart.series.push(
     valueYField: "visits",
     categoryXField: "country",
     tooltip: am5.Tooltip.new(root, {
-      labelText: "value: {valueY}
-error: {error}"
+      labelText: "value: {valueY}\nerror: {error}"
     })
   })
 );

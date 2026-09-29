@@ -2,7 +2,7 @@
 title: "Flower Chart"
 source: "https://www.amcharts.com/demos/flower-chart/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Flower chart, also known as filled radar chart.

@@ -2,7 +2,7 @@
 title: "Map with Animated Bubbles"
 source: "https://www.amcharts.com/demos/map-with-animated-bubbles/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Animating bullet sizes and values is a great way to showcase data changes over time. This demo shows you how to do it on a map.
@@ -56,7 +56,9 @@ var data = [
 var root = am5.Root.new("chartdiv");
 root.setThemes([am5themes_Animated.new(root)]);
 
-var chart = root.container.children.push(am5map.MapChart.new(root, {}));
+var chart = root.container.children.push(am5map.MapChart.new(root, {
+   boxZoom: "shift"
+}));
 
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {

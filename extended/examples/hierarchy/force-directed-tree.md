@@ -2,7 +2,7 @@
 title: "Force-Directed Tree"
 source: "https://www.amcharts.com/demos/force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Force Directed Tree is a special kind of chart used to display of multi-item data related in hierarchical, linear or mixed way, as a series of linked bubbles.
@@ -25,7 +25,7 @@ root.setThemes([
 
 
 // Create wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
   width: am5.percent(100),
   height: am5.percent(100),
   layout: root.verticalLayout
@@ -34,7 +34,7 @@ var container = root.container.children.push(am5.Container.new(root, {
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(am5hierarchy.ForceDirected.new(root, {
+var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
   singleBranchOnly: false,
   downDepth: 1,
   initialDepth: 2,

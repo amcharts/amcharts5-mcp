@@ -2,7 +2,7 @@
 title: "Pictorial Chart"
 source: "https://www.amcharts.com/demos/pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sometimes you might want the picture you want to use for pictorial chart not to be filled completely from bottom to the top, like this one. Our PictorialStackedSeries has startLocation and endLocation properties which help to adjust start/end locations of the fills. Try to drag the slider to do it yourself.

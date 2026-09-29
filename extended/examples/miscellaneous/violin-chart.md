@@ -2,7 +2,7 @@
 title: "Violin Chart"
 source: "https://www.amcharts.com/demos/violin-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A violin plot is a graphical method used to visualize the distribution of numerical data across different categories, combining elements of both box plots and kernel density plots. It shows the distribution’s shape and spread, giving insight into the density of the data at different values.

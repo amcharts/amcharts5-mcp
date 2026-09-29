@@ -2,12 +2,12 @@
 title: "Multi-Series Map"
 source: "https://www.amcharts.com/demos/multi-series-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how we can combine multiple maps in a single chart.
- 	Map chart
- 	Map polygon series
+Map chart
+Map polygon series
 
 ## JavaScript
 
@@ -29,6 +29,7 @@ root.setThemes([
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "translateX",
   panY: "translateY",
+  boxZoom: "shift",
   projection: am5map.geoMercator()
 }));
 

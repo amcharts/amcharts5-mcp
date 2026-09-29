@@ -2,7 +2,7 @@
 title: "Radar Heat Map"
 source: "https://www.amcharts.com/demos/radar-heat-map/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Generally, Heat maps represent data in rectangular matrices where individual values are differentiated by color. In this case, we apply this concept to a radial shape which could be useful for visualizing repeating activities, for example.

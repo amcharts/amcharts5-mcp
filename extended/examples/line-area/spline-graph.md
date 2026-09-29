@@ -2,7 +2,7 @@
 title: "Spline Graph"
 source: "https://www.amcharts.com/demos/spline-graph/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A spline graph is a type of line chart that uses a smoothing algorithm to create a curved line connecting the data points, rather than straight lines. Use the slider on the plot area to adjust the level of smoothness.

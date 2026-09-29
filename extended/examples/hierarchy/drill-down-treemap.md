@@ -2,7 +2,7 @@
 title: "Drill-Down Treemap"
 source: "https://www.amcharts.com/demos/drill-down-treemap/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Drill-Down Treemap is a great way to cleanly display high-level information without losing the ability to analyze the underlying details. Try clicking on one of the squares to see the sales of different models of that brand. You can also compare this demo to the multi-level treemap demo where the same data is displayed in full detail from the get-go.
@@ -45,8 +45,8 @@ root.setThemes([
 ]);
 
 // Create wrapper container
-var container = root.container.children.push(
-  am5.Container.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.percent(100),
     height: am5.percent(100),
     layout: root.verticalLayout
@@ -55,7 +55,7 @@ var container = root.container.children.push(
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(
+var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     sort: "descending",
     singleBranchOnly: false,
@@ -73,7 +73,7 @@ series.nodes.template.setPrivate("trustBounds", true);
 series.get("colors").set("step", 1);
 
 
-container.children.moveValue(
+chart.children.moveValue(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
   }), 0

@@ -2,7 +2,7 @@
 title: "Waffle Chart"
 source: "https://www.amcharts.com/demos/waffle-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Waffle Chart is an alternative to pie chart for displaying data in relation to the whole.

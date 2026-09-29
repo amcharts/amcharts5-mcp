@@ -2,7 +2,7 @@
 title: "Motion Chart"
 source: "https://www.amcharts.com/demos/motion-chart/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Motion chart type was popularized by the great GapMinder.org. It's great at showcasing the changes in some dataset on multiple dimensions (x, y, bubble size, color, etc.)
@@ -472,10 +472,7 @@ bubbleSeries.bullets.push(function() {
     radius: 5,
     templateField: "settings",
     fillOpacity: 0.9,
-    tooltipText: "[fontSize:18px; bold]{name}[/]
-Metric Y: {valueY}
-Metric X: {valueX}$
-Metric bubble: {value}"
+    tooltipText: "[fontSize:18px; bold]{name}[/]\nMetric Y: {valueY}\nMetric X: {valueX}$\nMetric bubble: {value}"
   }, circleTemplate);
   return am5.Bullet.new(root, {
     sprite: bulletCircle

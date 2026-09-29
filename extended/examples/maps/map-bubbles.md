@@ -2,7 +2,7 @@
 title: "Map with Bubbles"
 source: "https://www.amcharts.com/demos/map-bubbles/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Map with Bubbles (also known as Bubble Map Chart) is a variant of a bubble chart where bubble location is determined by geographic location rather than Cartesian coordinates. The size of the bubble determines the value while its location is calculated automatically - the map finds the visual center of each country and places the bubble there.
@@ -29,9 +29,17 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     panX: "rotateX",
     panY: "rotateY",
+    boxZoom: "shift",
     projection: am5map.geoMercator()
-  })
-);
+  }));
+
+
+// Zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+// the home button is hidden by default
+zoomControl.homeButton.set("visible", true);
 
 // Create series for background fill
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon

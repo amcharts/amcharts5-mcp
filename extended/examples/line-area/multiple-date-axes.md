@@ -2,7 +2,7 @@
 title: "Multiple Date Axes"
 source: "https://www.amcharts.com/demos/multiple-date-axes/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Just like you can have multiple value axes to address different ranges of values, you can also have multiple date axes in one XY chart. This could be useful when comparing data between current and previous periods, for example.

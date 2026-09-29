@@ -2,7 +2,7 @@
 title: "Pie Chart with Legend"
 source: "https://www.amcharts.com/demos/pie-chart-with-legend/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Legends are great for adding context to charts and can even replace labels in busier visualizations. Additionally, in amCharts legend items can act as toggles for the series in the chart (try clicking on the legend in this demo). And you get all of that functionality with no extra code.

@@ -2,7 +2,7 @@
 title: "Scatter Chart"
 source: "https://www.amcharts.com/demos/scatter-chart/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Scatter Chart (also known as Scatter Plot, Scatterplot, Scatter graph, Scattergram, Scatter Diagram) is used to display values in a two-dimensional coordinate system. Each point's location is determined by one of its coordinates on one axis of the chart and the other coordinate on another axis.

@@ -2,7 +2,7 @@
 title: "Vertical Line Chart"
 source: "https://www.amcharts.com/demos/vertical-line-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Need your line chart to go from the bottom to the top instead of left to right? No problem with amCharts.

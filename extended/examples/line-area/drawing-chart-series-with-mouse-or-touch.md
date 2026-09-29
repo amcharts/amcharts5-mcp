@@ -2,7 +2,7 @@
 title: "Drawing Chart Series with Mouse or Touch"
 source: "https://www.amcharts.com/demos/drawing-chart-series-with-mouse-or-touch/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Your charts don't have to be limited to passively displaying data. You can use amCharts as an interactive chart creation surface and enable your users to visually draw new charts. Click anywhere on plot area to draw the new series, drag bullets to adjust positions.

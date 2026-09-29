@@ -2,7 +2,7 @@
 title: "Dynamic Data Updates on Treemap"
 source: "https://www.amcharts.com/demos/dynamic-data-updates-on-treemap/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Updating data in real-time is one of the key use-cases for interactive dynamic data visualizations. Animating to the new values leads the viewer's attention and makes those updates much more readable. amCharts has all the tools to make this process completely seamless.
@@ -33,8 +33,8 @@ root.setThemes([
 
 
 // Create wrapper container
-var container = root.container.children.push(
-  am5.Container.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.percent(100),
     height: am5.percent(100),
     layout: root.verticalLayout
@@ -43,7 +43,7 @@ var container = root.container.children.push(
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(
+var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     singleBranchOnly: false,
     sort: "descending",

@@ -2,7 +2,7 @@
 title: "Tag Cloud"
 source: "https://www.amcharts.com/demos/tag-cloud/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Tag cloud (or word cloud, or weighted list) is a visual representation of text data where tag size shows the frequency of the tag in some data set.
@@ -26,7 +26,7 @@ root.setThemes([
 
 
 // Add wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
   width: am5.percent(100),
   height: am5.percent(100),
   layout: root.verticalLayout
@@ -34,17 +34,18 @@ var container = root.container.children.push(am5.Container.new(root, {
 
 
 // Add chart title
-var title = container.children.push(am5.Label.new(root, {
+var title = chart.children.push(am5.Label.new(root, {
   text: "Most popular languages on StackOverflow",
   fontSize: 20,
   x: am5.percent(50),
   centerX: am5.percent(50)
 }));
+chart.children.moveValue(title, 0);
 
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/word-cloud/
-var series = container.children.push(am5wc.WordCloud.new(root, {
+var series = chart.series.push(am5wc.WordCloud.new(root, {
   categoryField: "tag",
   valueField: "weight",
   calculateAggregates: true // this is needed for heat rules to work

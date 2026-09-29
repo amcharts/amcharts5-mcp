@@ -2,7 +2,7 @@
 title: "Animated Gauge"
 source: "https://www.amcharts.com/demos/animated-gauge/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Gauge charts are most useful for displaying live data. This demo shows such a chart in action.

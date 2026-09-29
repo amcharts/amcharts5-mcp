@@ -2,7 +2,7 @@
 title: "Pictorial Column Chart"
 source: "https://www.amcharts.com/demos/pictorial-column-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Pictorial Column Chart (also known as Pictorial Bar Chart) is a visually spiced up version of a regular bar chart using images to display bars. It is harder to compare values in a pictorial chart but it could be much easier to identify objects portrayed when their shape has a distinct recognizable meaning (like in this demo).

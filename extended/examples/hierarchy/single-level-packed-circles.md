@@ -2,7 +2,7 @@
 title: "Single-Level Packed Circles"
 source: "https://www.amcharts.com/demos/single-level-packed-circles/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows a packed circle chart as a visual representation of single-level data, where each circle corresponds to a distinct category, and the size of each circle reflects the quantitative value associated with that category. This chart allows for a clear and compact presentation of data distribution, making it easy to compare the relative magnitudes of individual data points within a single level.
@@ -28,22 +28,23 @@ root.setThemes([
 ]);
 
 
-var zoomableContainer = root.container.children.push(
-  am5.ZoomableContainer.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.p100,
-    height: am5.p100,
-    wheelable: true,
-    pinchZoom: true
+    height: am5.p100
   })
 );
 
-var zoomTools = zoomableContainer.children.push(am5.ZoomTools.new(root, {
-  target: zoomableContainer
-}));
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = zoomableContainer.contents.children.push(am5hierarchy.Pack.new(root, {
+var series = chart.series.push(am5hierarchy.Pack.new(root, {
   maskContent:false, //!important with zoomable containers
   topDepth: 1,
   valueField: "value",

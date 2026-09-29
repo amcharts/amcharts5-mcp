@@ -2,7 +2,7 @@
 title: "Interactive Wheel of Life"
 source: "https://www.amcharts.com/demos/wheel-of-life/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This is an interactive version of a classic "Wheel of Life" diagram, used to visualize what areas of one's life are important.

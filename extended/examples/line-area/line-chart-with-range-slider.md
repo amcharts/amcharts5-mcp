@@ -2,7 +2,7 @@
 title: "Line Chart with Range Slider"
 source: "https://www.amcharts.com/demos/line-chart-with-range-slider/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Displaying parts of the chart differently is a powerful visual aid helping users comprehend the data better. Add an interactive element adjusting the point dividing the parts and you get a powerful analytical tool.

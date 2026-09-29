@@ -2,7 +2,7 @@
 title: "Selecting and Marking Multiple Ranges"
 source: "https://www.amcharts.com/demos/selecting-and-marking-multiple-ranges/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Click and drag on plot area to select a range on a chart. Chart creates an axis range in the place of a selection and also checks if a new range is not overlapping with previously created.
@@ -13,7 +13,6 @@ Tracking cursor movementAxis ranges
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");

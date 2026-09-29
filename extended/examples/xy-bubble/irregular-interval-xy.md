@@ -2,7 +2,7 @@
 title: "Irregular Interval XY"
 source: "https://www.amcharts.com/demos/irregular-interval-xy/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The most popular XY charts, such as Column Chart or Line Chart, are often distributed over a category axis with equal intervals on the X-axis (or Y-axis for Bar Charts). In most cases, this is logical and fits the goals of the visualization just right. In other cases, you want to distribute the graph differently to reflect some particular dataset in the most sensible way.

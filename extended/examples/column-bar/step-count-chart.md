@@ -2,7 +2,7 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo is inspired by the chart used in Samsung health app. The cursor always stays in the same position but you can pan the chart to the position you want.

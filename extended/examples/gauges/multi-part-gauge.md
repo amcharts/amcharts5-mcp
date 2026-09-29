@@ -2,7 +2,7 @@
 title: "Multi-Part Gauge"
 source: "https://www.amcharts.com/demos/multi-part-gauge/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 You can use amCharts Gauge Chart to display multiple discreet values in one gauge. One way to do that is using multiple axes overlapping in a common space. The other is to have the parts occupy separate sections of the gauge.

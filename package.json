@@ -1,6 +1,6 @@
 {
   "name": "@amcharts/amcharts5-mcp",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "mcpName": "io.github.amcharts/amcharts5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
   "type": "module",
@@ -19,7 +19,10 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "node test.js",
+    "test": "node scripts/check-examples.js && node test.js",
+    "check:examples": "node scripts/check-examples.js",
+    "build:examples": "node scripts/build-examples.js",
+    "clean:examples": "node scripts/clean-examples2.js && node scripts/clean-all.js extended/examples && node scripts/check-examples.js",
     "build:worker": "node scripts/build-worker-content.js",
     "dev:worker": "npm run build:worker && wrangler dev",
     "deploy": "npm run build:worker && wrangler deploy",

@@ -2,7 +2,7 @@
 title: "Column with Rotated Labels"
 source: "https://www.amcharts.com/demos/column-with-rotated-series/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In this demo, we create a simple column chart.
@@ -91,19 +91,12 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   categoryXField: "country",
   tooltip: am5.Tooltip.new(root, {
     labelText: "{valueY}"
-  })
+  }),
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-
 // Set data
 var data = [{
   country: "USA",

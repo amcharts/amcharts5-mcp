@@ -2,10 +2,10 @@
 title: "Scatter plot with tens of thousands points"
 source: "https://www.amcharts.com/demos/scatter-plot-with-tens-of-thousands-points/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
-When a chart has a lot of data, it might get slow, especially if you use a separate object, like a bullet for each data item. Each object uses part of the memory so at some point your chart's performance will get worse. In many such cases there is a solution which will extend amCharts possibilities to display huge data sets many times: instead of creating a separate Bullet object for each data item, we create a single Graphics object and use default drawing capabilities to draw required shapes into this Graphics. You can draw any shape there. 
+When a chart has a lot of data, it might get slow, especially if you use a separate object, like a bullet for each data item. Each object uses part of the memory so at some point your chart's performance will get worse. In many such cases there is a solution which will extend amCharts possibilities to display huge data sets many times: instead of creating a separate Bullet object for each data item, we create a single Graphics object and use default drawing capabilities to draw required shapes into this Graphics. You can draw any shape there. The chart below plots 30,000 points this way, and zooming, panning, scrollbars and tooltips all keep working.
 XY chart
 Graphics
 
@@ -78,8 +78,8 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, {
 }));
 
 var data = [];
-for (var i = 0; i < 15000; i++) {
-  data.push({ x: Math.random() * 100, y: Math.random() * 100, color: am5.Color.fromString("#" + Math.floor(Math.random() * 16777215).toString(16)), value: Math.random() * 20 })
+for (var i = 0; i < 30000; i++) {
+  data.push({ x: Math.random() * 100, y: Math.random() * 100, color: am5.Color.fromString("#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")), value: Math.random() * 20 })
 }
 
 // add graphics to line series which will contain bullets
@@ -112,6 +112,8 @@ function drawBullets() {
 }
 
 series.data.setAll(data);
+
+
 ```
 
 ## HTML

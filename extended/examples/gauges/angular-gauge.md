@@ -2,7 +2,7 @@
 title: "Angular Gauge"
 source: "https://www.amcharts.com/demos/angular-gauge/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Angular Gauges (also known as Speedometer Chart) are most commonly used to mimic the real-life gauges to display values like volume, temperature, speed, etc.

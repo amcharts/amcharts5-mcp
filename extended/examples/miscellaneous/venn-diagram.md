@@ -2,7 +2,7 @@
 title: "Venn Diagram"
 source: "https://www.amcharts.com/demos/venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A Venn diagram (also know as primary diagram, set diagram or logic diagram) shows all possible logical relations between different sets. Learn more about Venn diagrams in the documentation.
@@ -20,14 +20,14 @@ root.setThemes([
 ]);
 
 // Create wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
   width: am5.p100,
   height: am5.p100,
   layout: root.verticalLayout
 }));
 
 // Create venn series
-var chart = container.children.push(am5venn.Venn.new(root, {
+var series = chart.series.push(am5venn.Venn.new(root, {
   categoryField: "name",
   valueField: "value",
   intersectionsField: "sets",
@@ -38,7 +38,7 @@ var chart = container.children.push(am5venn.Venn.new(root, {
 }));
 
 // Set data
-chart.data.setAll([
+series.data.setAll([
   { name: "A", value: 10 },
   { name: "B", value: 10 },
   { name: "C", value: 5 },
@@ -49,23 +49,23 @@ chart.data.setAll([
 }]);
 
 // Set tooltip content
-chart.slices.template.set("tooltipText", "{category}: {value}");
+series.slices.template.set("tooltipText", "{category}: {value}");
 
 // Set up hover appearance
-chart.hoverGraphics.setAll({
+series.hoverGraphics.setAll({
   strokeDasharray: [3, 3],
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
 
 // Add legend
-var legend = container.children.push(
+var legend = chart.children.push(
   am5.Legend.new(root, {
     centerX: am5.p50,
     x: am5.p50
   })
 );
-legend.data.setAll(chart.dataItems);
+legend.data.setAll(series.dataItems);
 ```
 
 ## HTML

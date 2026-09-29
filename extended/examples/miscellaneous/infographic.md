@@ -2,7 +2,7 @@
 title: "Infographic"
 source: "https://www.amcharts.com/demos/infographic/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 While amCharts libraries are most commonly used in advanced data visualization scenarios, their flexibility enables us to implement more of a storytelling scenarios as well.

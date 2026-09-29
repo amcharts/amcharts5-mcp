@@ -2,7 +2,7 @@
 title: "Beeswarm"
 source: "https://www.amcharts.com/demos/beeswarm/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A beeswarm chart, also known as a "dot plot," is a data visualization technique used to display the distribution of a dataset along a single axis. In a beeswarm chart, individual data points are represented as dots or circles, and they are arranged in a way that avoids overlap while maintaining their alignment along the axis.

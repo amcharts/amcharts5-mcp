@@ -2,7 +2,7 @@
 title: "Gauge with Gradient Fill"
 source: "https://www.amcharts.com/demos/gauge-with-gradient-fill/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 It is very common for physical gauges to have a scale from safe to dangerous values, for example. This scale is usually accompanied with a gradient color band going from green to red. You can easily achieve the same with amCharts Gauge Chart.

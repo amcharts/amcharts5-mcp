@@ -2,12 +2,12 @@
 title: "Bubble-Based Heat Map"
 source: "https://www.amcharts.com/demos/bubble-based-heat-map/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo utilizes heat rules to automatically size bubble bullets based on their value.
- 	Heat rules
- 	Bullets
+Heat rules
+Bullets
 
 ## JavaScript
 

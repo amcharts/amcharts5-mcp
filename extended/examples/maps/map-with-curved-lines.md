@@ -2,7 +2,7 @@
 title: "Map with Curved Lines"
 source: "https://www.amcharts.com/demos/map-with-curved-lines/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 As you probably know, flat maps are not exactly geometrically accurate and we use different projections to transform our globe onto a flat surface. For this reason a straight (shortest path) line going from point A to point B wouldn't be straight on a projected map. amCharts Maps takes care of this and enables you to create lines curved according to the current projection without doing any work to get there.
@@ -33,6 +33,13 @@ root.setThemes([
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "translateX",
   panY: "translateY",
+    "homeZoomLevel": 3,
+    "homeRotationY": 0,
+    "homeGeoPoint": {
+      "latitude": 39,
+      "longitude": -24.3
+    },
+  minZoomLevel:0.5,
   projection: am5map.geoMercator()
 }));
 
@@ -78,10 +85,13 @@ cont.children.push(am5.Label.new(root, {
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  name: "Polygon Series",
   geoJSON: am5geodata_worldLow
 }));
 
-var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
+var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
+  name: "Graticule Series"
+}));
 graticuleSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0.08
@@ -89,7 +99,9 @@ graticuleSeries.mapLines.template.setAll({
 
 // Create line series for trajectory lines
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
-var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+  name: "Line Series"
+}));
 lineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0.6
@@ -97,7 +109,9 @@ lineSeries.mapLines.template.setAll({
 
 // destination series
 var citySeries = chart.series.push(
-  am5map.MapPointSeries.new(root, {})
+  am5map.MapPointSeries.new(root, {
+    name: "City Series"
+  })
 );
 
 citySeries.bullets.push(function() {
@@ -117,19 +131,16 @@ citySeries.bullets.push(function() {
 
 // arrow series
 var arrowSeries = chart.series.push(
-  am5map.MapPointSeries.new(root, {})
+  am5map.MapPointSeries.new(root, {
+    name: "Arrow Series"
+  })
 );
 
 arrowSeries.bullets.push(function() {
   var arrow = am5.Graphics.new(root, {
     fill: am5.color(0x000000),
     stroke: am5.color(0x000000),
-    draw: function (display) {
-      display.moveTo(0, -3);
-      display.lineTo(8, 0);
-      display.lineTo(0, 3);
-      display.lineTo(0, -3);
-    }
+    svgPath: "M0,-3 L8,0 L0,3 Z"
   });
 
   return am5.Bullet.new(root, {
@@ -217,28 +228,27 @@ citySeries.data.setAll(cities);
 
 // prepare line series data
 var destinations = ["reykjavik", "lisbon", "moscow", "belgrade", "ljublana", "madrid", "stockholm", "bern", "kiev", "new york"];
-// London coordinates
-var originLongitude = -0.1262;
-var originLatitude = 51.5002;
 
-am5.array.each(destinations, function (did) {
-  var destinationDataItem = citySeries.getDataItemById(did);
-  var lineDataItem = lineSeries.pushDataItem({ geometry: { type: "LineString", coordinates: [[originLongitude, originLatitude], [destinationDataItem.get("longitude"), destinationDataItem.get("latitude")]] } });
+// lines connect cities by their ids
+lineSeries.set("pointSeries", citySeries);
 
-  arrowSeries.pushDataItem({
-    lineDataItem: lineDataItem,
-    positionOnLine: 0.5,
-    autoRotate: true
-  });
-})
+lineSeries.data.setAll(destinations.map(function (did) {
+  return { id: did, pointIds: ["london", did] };
+}));
+
+// arrows sit in the middle of the line with the same id
+arrowSeries.data.setAll(destinations.map(function (did) {
+  return { lineId: did, positionOnLine: 0.5, autoRotate: true };
+}));
 
 polygonSeries.events.on("datavalidated", function () {
-  chart.zoomToGeoPoint({ longitude: -0.1262, latitude: 51.5002 }, 3);
+  chart.goHome();
 })
 
 
 // Make stuff animate on load
 chart.appear(1000, 100);
+
 ```
 
 ## HTML

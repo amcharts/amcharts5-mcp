@@ -2,7 +2,7 @@
 title: "Pie Chart with Broken Down Slices"
 source: "https://www.amcharts.com/demos/pie-chart-broken-slices/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Drilling down from a high-level overview to more details is one of the main advantages of interactive data visualizations. This demo shows you one such scenario utilizing a pie chart. Click on one of the slices to see it in action.

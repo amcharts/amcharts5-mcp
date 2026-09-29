@@ -2,7 +2,7 @@
 title: "Micro Charts & Sparklines"
 source: "https://www.amcharts.com/demos/micro-charts-sparklines/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Micro charts & sparklines give a quick representation of statistical information with no additional details and in a condensed space. They are typically drawn without axes and intended to be succinct, memorable, and located where they are discussed.

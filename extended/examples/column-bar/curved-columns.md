@@ -2,7 +2,7 @@
 title: "Curved Columns"
 source: "https://www.amcharts.com/demos/curved-columns/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Curved Column Chart (also known as Curved Bar Chart) is a visual variation of a "standard" bar chart. Semantically there's no difference between regular and curved column chart. The only difference is that columns are displayed in the shape of areas instead of regular rectangles. This gives the chart a fresher visual look while sacrificing clarity a bit, as curves of the columns have no meaning.
@@ -81,7 +81,9 @@ var series = chart.series.push(
     yAxis: yAxis,
     valueYField: "value",
     sequencedInterpolation: true,
-    categoryXField: "country"
+    categoryXField: "country",
+    // Each column takes its own color from the series palette
+    colorByDataItem: true
   })
 );
 
@@ -90,14 +92,6 @@ series.columns.template.setAll({
   fillOpacity: 0.9,
   strokeOpacity: 0
 });
-series.columns.template.adapters.add("fill", (fill, target) => {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", (stroke, target) => {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
 series.columns.template.set("draw", function(display, target) {
   var w = target.getPrivate("width", 0);
   var h = target.getPrivate("height", 0);

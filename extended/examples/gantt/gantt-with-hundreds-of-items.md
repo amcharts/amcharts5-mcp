@@ -2,7 +2,7 @@
 title: "Gantt with hundreds of items"
 source: "https://www.amcharts.com/demos/gantt-with-hundreds-of-items/"
 category: "gantt"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Our Gantt chart is designed to handle hundreds of tasks efficiently. With a single click on the “Fit to View” button (top-right), the timeline automatically zooms so that all tasks in the current scope are visible at once. You can drag and drop tasks to rearrange them, toggle progress by clicking on the progress indicator, and add markers by clicking directly on the top axis. Tasks with hierarchies can be easily collapsed or expanded to reduce clutter and focus on the right level of detail.

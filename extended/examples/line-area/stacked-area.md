@@ -2,7 +2,7 @@
 title: "Stacked Area"
 source: "https://www.amcharts.com/demos/stacked-area/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Stacked Area Chart (also known as Stacked Area Plot) is a variation on a simple Area Chart with multiple areas stacked on top of each other. This allows comparing the evolution of the whole as well as contributions of individual parts over a period.
@@ -181,8 +181,7 @@ function createSeries(name, field) {
     categoryXField: "year",
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "[bold]{name}[/]
-{categoryX}: {valueY}"
+      labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
     })
   }));
 

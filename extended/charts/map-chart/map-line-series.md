@@ -268,7 +268,7 @@ lineSeries.pushDataItem({
 
 This can also work the other way around: we can make a data item form map line series "stick" to any point on a line.
 
-All we have to do is to set `lineDataItem` to a data item of the specific line, as well as `positionOnLine` to indicate relative position, when creating a point series data item:
+All we have to do is to set `lineDataItem` to a data item of the specific line, as well as `positionOnLine` to indicate relative position, when creating a point series data item (since 5.20.6 the same can be done in regular data — see "Points on a line via data" below):
 
 // Create line series
 let lineSeries = chart.series.push(
@@ -368,5 +368,114 @@ If set to `true`, point bullet will be automatically rotated to the angle of the
 If set, this will be added to the angle calculated by `autoRotate`. Can be used to reverse the direction.
 
 The below example uses above code, albeit with the slightly more sophisticated image as a point bullet:
+
+### Points on a line via data (5.20.6)
+
+Since 5.20.6, `lineId`, `positionOnLine`, `autoRotate` and `autoRotateAngle` can be given in point series' data, so a point placed on a line no longer needs to be created with `pushDataItem()` and a `lineDataItem`. `lineId` is the `id` of a line in this line series' data (the line series' `idField`, `"id"` by default). Pushing the line series to the chart before the point series is a safe precaution.
+
+The data fields are read via these point series settings, which all have defaults, so nothing needs to be set:
+
+Setting
+
+Default
+
+`lineIdField`
+
+`"lineId"`
+
+`positionOnLineField`
+
+`"positionOnLine"`
+
+`autoRotateField`
+
+`"autoRotate"`
+
+`autoRotateAngleField`
+
+`"autoRotateAngle"`
+
+`autoRotate` and `autoRotateAngle` values in data take precedence over the same settings on the bullet.
+
+```javascript
+// Create line series
+var lineSeries = chart.series.push(
+  am5map.MapLineSeries.new(root, {})
+);
+
+lineSeries.data.setAll([{
+  id: "route",
+  geometry: {
+    type: "LineString",
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
+  }
+}]);
+
+// Create point series
+var pointSeries = chart.series.push(
+  am5map.MapPointSeries.new(root, {})
+);
+
+pointSeries.bullets.push(function(root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fill: am5.color(0xff0000)
+    })
+  });
+});
+
+pointSeries.data.setAll([{
+  lineId: "route",
+  positionOnLine: 0.7,
+  autoRotate: true
+}]);
+```
+
+NOTE This matters when the chart is [serialized](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/): points created with `pushDataItem()` are not data rows, so they are not part of a serialized config. Points given as data rows are.
+
+#### Animating a point along a line (5.20.8)
+
+To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization.
+
+```javascript
+var planeSeries = chart.series.push(
+  am5map.MapPointSeries.new(root, {})
+);
+
+planeSeries.bullets.push(function(root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Graphics.new(root, {
+      svgPath: "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
+      scale: 0.06,
+      centerX: am5.p50,
+      centerY: am5.p50,
+      animations: [{
+        target: "dataItem",
+        key: "positionOnLine",
+        from: 0,
+        to: 1,
+        duration: 6000,
+        loops: 0,
+        yoyo: true,
+        easing: "cubic",
+        ease: "inOut"
+      }]
+    })
+  });
+});
+
+planeSeries.data.setAll([{
+  lineId: "route",
+  positionOnLine: 0,
+  autoRotate: true
+}]);
+```
+
+Since 5.20.8, an auto-rotating point turns round (180° is added to its angle) while such an `animations` entry moves it back toward the start of the line — e.g. on the way back of a `yoyo` — so the plane faces the way it is travelling. This applies only to an `animations` entry on the bullet's sprite; a point moved from code with `dataItem.animate()` is not turned round, and that code is expected to turn it itself (e.g. via `autoRotateAngle`).
 
 

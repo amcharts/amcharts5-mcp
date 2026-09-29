@@ -2,7 +2,7 @@
 title: "Stock Chart with Volume Profile"
 source: "https://www.amcharts.com/demos/stock-chart-with-volume-profile/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The Volume Profile indicator (or Volume-by-price) displays the distribution of trading volume at different price levels, offering insights into key support and resistance areas. By illustrating areas of high or low trading activity, it helps traders identify potential price levels of significance and make informed decisions.

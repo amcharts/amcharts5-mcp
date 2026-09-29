@@ -2,7 +2,7 @@
 title: "Stadium Track Chart"
 source: "https://www.amcharts.com/demos/stadium-track-chart/"
 category: "timeline"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A stadium track chart is a unique data visualization that arranges information along an oval or rounded rectangular path, resembling an athletic stadium track. This layout allows for continuous flow while maximizing use of space, making it ideal for presenting cyclic, sequential, or comparative data in a visually engaging format.

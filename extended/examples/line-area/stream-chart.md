@@ -2,7 +2,7 @@
 title: "Stream / ThemeRiver Chart"
 source: "https://www.amcharts.com/demos/stream-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The ThemeRiver or Stream chart is a type of flow graph that shows changes of events (themes) over time.
@@ -121,8 +121,7 @@ function createSeries(field, name) {
     categoryXField: "year",
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "[fontSize: 18px]{name}[/]
-{categoryX}: [bold]{" + field + "}[/]"
+      labelText: "[fontSize: 18px]{name}[/]\n{categoryX}: [bold]{" + field + "}[/]"
     })
   }));
   

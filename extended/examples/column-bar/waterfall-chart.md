@@ -2,7 +2,7 @@
 title: "Waterfall Chart"
 source: "https://www.amcharts.com/demos/waterfall-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Waterfall Chart (also known as Flying bricks chart, Mario chart, Cascade chart) is most frequently used to display the effect of the series of consecutive positive or negative events on the initial value.

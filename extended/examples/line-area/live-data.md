@@ -2,7 +2,7 @@
 title: "Live Data"
 source: "https://www.amcharts.com/demos/live-data/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Displaying pre-defined data in the most beautiful and readable way is great but amCharts lets you visualize live constantly updating data just as well.

@@ -2,7 +2,7 @@
 title: "Line Chart with Scroll and Zoom"
 source: "https://www.amcharts.com/demos/line-chart-with-scroll-and-zoom/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Having the whole chart overview while zooming into parts of it and panning around is a powerful user experience aid. amCharts comes with advanced scrollbars to make this functionality a breeze to impelemnt.

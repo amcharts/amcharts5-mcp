@@ -2,7 +2,7 @@
 title: "World Time Zone Map"
 source: "https://www.amcharts.com/demos/world-time-zone-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Time zones are notoriously tricky. amCharts maintains several time zone related maps to make it easy for you to display time zone centric maps.
@@ -31,6 +31,7 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     panX: "translateX",
     panY: "translateY",
+    boxZoom: "shift",
     projection: am5map.geoMercator()
   })
 );

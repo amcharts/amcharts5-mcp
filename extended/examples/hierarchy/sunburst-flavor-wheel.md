@@ -2,14 +2,14 @@
 title: "Sunburst Flavor Wheel"
 source: "https://www.amcharts.com/demos/sunburst-flavor-wheel/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The demo shows off two-level Sunburst chart. The data uses all same values because the purpose of this chart is displaying hierarchy of types rather than their quantitative distribution.
 We also are using "template fields" technique to assign individual color to each chart via data.
 This chart is added to a Zoomable Container, so you can pan, zoom-in and zoom-out this chart using mouse wheel, pinch-zoom or zoom tools on the bottom-right.
- 	Sunburst
- 	Template fields
+Sunburst
+Template fields
 
 ## JavaScript
 
@@ -32,24 +32,23 @@ root.setThemes([
 ]);
 
 
-var container = root.container.children.push(
-  am5.ZoomableContainer.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.p100,
-    height: am5.p100,
-    wheelable: true,
-    pinchZoom: true
+    height: am5.p100
   })
 );
 
-var zoomTools = container.children.push(am5.ZoomTools.new(root, {
-  target: container
-}));
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Add title
-var title = container.contents.children.push(am5.Label.new(root, {
-  text: "COFFEE
-[#63bdc5]AROMA[/]
-[#63bdc5]WHEEL[/]",
+var title = chart.zoomableContainer.contents.children.push(am5.Label.new(root, {
+  text: "COFFEE\n[#63bdc5]AROMA[/]\n[#63bdc5]WHEEL[/]",
   textAlign: "center",
   x: am5.p50,
   y: am5.p50,
@@ -60,9 +59,8 @@ var title = container.contents.children.push(am5.Label.new(root, {
   fill: am5.color(0x385d63)
 }));
 
-var credits = container.children.push(am5.Label.new(root, {
-  text: "Inspired by
-[bold]CoffeeMind",
+var credits = chart.children.push(am5.Label.new(root, {
+  text: "Inspired by\n[bold]CoffeeMind",
   x: am5.p100,
   y: 0,
   centerX: am5.p100,
@@ -83,7 +81,7 @@ credits.events.on("click", function() {
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.contents.children.push(am5hierarchy.Sunburst.new(root, {
+var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
   singleBranchOnly: true,
   downDepth: 2,
   initialDepth: 2,
@@ -257,8 +255,7 @@ var data = [{
   }, {
     value: 0.1, nodeSettings: { fill: am5.color(0xffffff) }
   }, {
-    name: "Herb/
-vegetal",
+    name: "Herb/\nvegetal",
     nodeSettings: { fill: am5.color(0x598264) },
     children: [
       { name: "Thyme", nodeSettings: { fill: am5.color(0x6c8067) }, value: 1 },

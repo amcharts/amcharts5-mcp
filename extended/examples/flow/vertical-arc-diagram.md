@@ -2,7 +2,7 @@
 title: "Vertical Arc Diagram"
 source: "https://www.amcharts.com/demos/vertical-arc-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 An arc diagram is a powerful visual representation that depicts relationships and connections between entities. It employs curved lines or arcs to illustrate these connections. Arc diagrams are extensively used in various fields, such as network analysis, biology, and information visualization. By presenting complex relationships in a simplified and intuitive manner, arc diagrams enable researchers and analysts to identify patterns, explore interdependencies, and gain valuable insights from the data at hand.
@@ -26,7 +26,9 @@ root.setThemes([
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/
-var series = root.container.children.push(am5flow.ArcDiagram.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5flow.ArcDiagram.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
   valueField: "value",

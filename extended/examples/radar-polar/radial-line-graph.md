@@ -2,7 +2,7 @@
 title: "Radial Line Graph"
 source: "https://www.amcharts.com/demos/radial-line-graph/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Radial line graph (also known as Polar line chart) is useful for displaying cyclical data of several series in a circular form.

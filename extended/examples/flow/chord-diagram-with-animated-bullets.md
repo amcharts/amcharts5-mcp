@@ -2,7 +2,7 @@
 title: "Chord Diagram with Animated Bullets"
 source: "https://www.amcharts.com/demos/chord-diagram-with-animated-bullets/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Animations help direct viewer's attention and, in the case of the directed chord diagram, emphasize the direction of the data flow.
@@ -26,7 +26,9 @@ root.setThemes([am5themes_Animated.new(root)]);
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(
   am5flow.ChordDirected.new(root, {
     sourceIdField: "from",
     targetIdField: "to",

@@ -2,12 +2,12 @@
 title: "Annotating Charts"
 source: "https://www.amcharts.com/demos/annotating-charts/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Exporting plugin includes Annotator tool, which can be used to annotations to any chart using simple user interface.
- 	Annotator
- 	Exporting charts
+Annotator
+Exporting charts
 
 ## JavaScript
 

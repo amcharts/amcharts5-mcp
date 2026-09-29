@@ -2,7 +2,7 @@
 title: "Show Percentage Change"
 source: "https://www.amcharts.com/demos/show-percentage-change/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 If your data already has percent values, then all you need to do is to add % sign to the y axis labels, for this you set number format on the axis:

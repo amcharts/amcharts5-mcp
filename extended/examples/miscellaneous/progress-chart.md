@@ -2,7 +2,7 @@
 title: "Progress Chart"
 source: "https://www.amcharts.com/demos/progress-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In this demo we use a single-category CatergoryAxis with a ColumnSeries that uses floating columns as well as "template fields".

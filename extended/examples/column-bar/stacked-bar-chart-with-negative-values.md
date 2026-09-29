@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart with Negative Values"
 source: "https://www.amcharts.com/demos/stacked-bar-chart-with-negative-values/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In this demo we use negative numbers to create a population pyramid via a stacked bar chart with bars appearing on both sides of the axis. We then tell the chart to display absolute values so our "trick" isn't visible to the viewer.

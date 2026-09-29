@@ -2,7 +2,7 @@
 title: "Control Chart"
 source: "https://www.amcharts.com/demos/control-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how XYChart can be used to create a Control Chart (also known as Shewhart chart).

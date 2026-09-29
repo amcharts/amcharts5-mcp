@@ -2,7 +2,7 @@
 title: "Floating Bar Chart"
 source: "https://www.amcharts.com/demos/floating-bar-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bars in a bar chart don't have to start at zero. In cases when you need to specify a different starting value in amCharts 5, you set an openValueXField on a ColumnSeries
@@ -125,8 +125,7 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 series.columns.template.setAll({
   height: am5.percent(100),
   templateField: "columnSettings",
-  tooltipText: "[bold]{name}[/]
-{categoryY}: {valueX}"
+  tooltipText: "[bold]{name}[/]\n{categoryY}: {valueX}"
 });
 
 series.data.setAll(data);

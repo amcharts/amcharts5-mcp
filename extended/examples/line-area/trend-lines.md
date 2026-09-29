@@ -2,7 +2,7 @@
 title: "Trend Lines"
 source: "https://www.amcharts.com/demos/trend-lines/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 You can create real analytical trendlines, indicators, and other annotations with amCharts Stock Chart but when you need something simple you can just use the core tools at your disposal in the XY Charts.

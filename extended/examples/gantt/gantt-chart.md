@@ -2,7 +2,7 @@
 title: "Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart/"
 category: "gantt"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Built on the amCharts 5 engine, this Gantt chart library delivers powerful project-management capabilities right in your web app. It offers features such as:

@@ -2,7 +2,7 @@
 title: "XY Error Chart"
 source: "https://www.amcharts.com/demos/xy-error-chart/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Error Charts let us display variability of data in a graphical format. This chart displays the ranges of how far the exact (error-free) value might be from the center point displayed.
@@ -99,10 +99,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
   valueYField: "y",
   valueXField: "x",
   tooltip: am5.Tooltip.new(root, {
-    labelText: "x: {valueX}
-y: {valueY}
-errorX: {errorX}
-errorY: {errorY}"
+    labelText: "x: {valueX}\ny: {valueY}\nerrorX: {errorX}\nerrorY: {errorY}"
   })
 }));
 

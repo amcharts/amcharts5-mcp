@@ -2,15 +2,15 @@
 title: "Forest Plot"
 source: "https://www.amcharts.com/demos/forest-plot/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows a basic Forest Plot chart.
 This relatively simple demo utilizes a bunch of amCharts 5 concepts: template fields, heat rules, axis ranges, and adapters.
- 	Axis ranges (used to display vertical comparison guide)
- 	Heat rules (used to size bullets based on their value)
- 	Adapters (used to dynamically update content of axis labels)
- 	Template fields (used to override bullet settings via data)
+Axis ranges (used to display vertical comparison guide)
+Heat rules (used to size bullets based on their value)
+Adapters (used to dynamically update content of axis labels)
+Template fields (used to override bullet settings via data)
 
 ## JavaScript
 

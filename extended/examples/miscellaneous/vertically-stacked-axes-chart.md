@@ -2,7 +2,7 @@
 title: "Vertically Stacked Axes Chart"
 source: "https://www.amcharts.com/demos/vertically-stacked-axes-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The chart above is a regular, single XY chart although it might look like a multi-panel chart with two value axes. We have a similar chart here. The only real difference is that instead of arranging Y axes side by side we stack them one above another. So the result is quite the same as a multiple-panel chart with shared x-axis.

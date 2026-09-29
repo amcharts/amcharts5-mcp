@@ -2,7 +2,7 @@
 title: "Date Based Data"
 source: "https://www.amcharts.com/demos/date-based-data/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The most common type of chart is some column or line chart where the Y axis represents numeric values and the X axis is some sequence of discreet values (often referred to as "categories"). The categories can also be some string representations of dates but they are actually just plain strings as far as the chart's smarts are concerned. A proper way to display date-based data is using a date-aware X axis which can handle displaying different labels (days, months, years) based on the amount of data, zoom level, etc., as well as handle different data granularity (eg. no data on some days). All of this is handled automatically by amCharts XY chart.

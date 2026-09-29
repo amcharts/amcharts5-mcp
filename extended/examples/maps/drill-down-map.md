@@ -2,12 +2,12 @@
 title: "Drill-Down Map"
 source: "https://www.amcharts.com/demos/drill-down-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Click on any continent - the map will be zoomed-in and then a country-level map will be displayed. You can easily create drill-down maps using our product.
- 	Map chart
- 	Map polygon series
+Map chart
+Map polygon series
 
 ## JavaScript
 

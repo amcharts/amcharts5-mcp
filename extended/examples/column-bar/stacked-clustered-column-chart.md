@@ -2,7 +2,7 @@
 title: "Stacked and Clustered Column Chart"
 source: "https://www.amcharts.com/demos/stacked-clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Stacked column charts are great for displaying the contributions of parts of a whole (eg. how much each product line contributed to the total revenue). Clustered column charts excel at being the most comprehensible while comparing the absolute values visually. With amCharts 5 you can combine both techniques to get the best of both worlds.

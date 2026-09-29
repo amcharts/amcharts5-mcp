@@ -2,7 +2,7 @@
 title: "Stock Chart"
 source: "https://www.amcharts.com/demos/stock-chart/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Stock Chart is well suited for visualizing stock, financial, and other time-based data. Based on the super-fast amCharts 5 engine it delivers a new level of flexibility and functionality.

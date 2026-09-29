@@ -2,7 +2,7 @@
 title: "Animated Time-Line Pie Chart"
 source: "https://www.amcharts.com/demos/animated-time-line-pie-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Animated timelines are a great type of infographic. This demo shows how to create a pie chart cycling through datasets from a timeline.

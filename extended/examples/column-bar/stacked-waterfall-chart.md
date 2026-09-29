@@ -2,7 +2,7 @@
 title: "Stacked Waterfall Chart"
 source: "https://www.amcharts.com/demos/stacked-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A Waterfall Chart (also known as Flying Bricks Chart or Mario Chart or Bridge Chart) helps viewers understand the cumulative effect of sequential events. Stacking series of events gives a clearer picture of the effect of multiple parallel series.

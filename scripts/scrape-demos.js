@@ -4,7 +4,10 @@
  * Scrapes amCharts 5 demo pages and saves them as markdown files
  * in the extended/examples/ directory, organized by category.
  *
- * Usage: node scripts/scrape-demos.js
+ * Usage: node scripts/scrape-demos.js [slug | category/slug ...]
+ *   With no arguments every demo is scraped; otherwise only the named ones.
+ *   The output is raw and still needs the cleaning passes, so prefer
+ *     npm run build:examples [-- slug ...]     (scrape + clean + check)
  *
  * Dependencies: npm install jsdom (same as scrape-docs.js)
  */
@@ -589,7 +592,7 @@ async function processDemo(demo) {
     `title: "${title.replace(/"/g, '\\"')}"`,
     `source: "${url}"`,
     `category: "${category}"`,
-    `scraped: "2026-03-15"`,
+    `scraped: "${new Date().toISOString().slice(0, 10)}"`,
     "---",
     "",
   ];
@@ -624,7 +627,16 @@ async function processDemo(demo) {
  * Main entry point.
  */
 async function main() {
-  const demos = buildDemoList();
+  const only = process.argv.slice(2);
+  const all = buildDemoList();
+  const unknown = only.filter((a) => !all.some((d) => a === d.slug || a === `${d.category}/${d.slug}`));
+  if (unknown.length) {
+    console.error(`Unknown demo(s): ${unknown.join(", ")}`);
+    process.exit(1);
+  }
+  const demos = all.filter(
+    (d) => !only.length || only.includes(d.slug) || only.includes(`${d.category}/${d.slug}`)
+  );
 
   console.log(`amCharts 5 Demo Scraper`);
   console.log(`================================`);
@@ -669,6 +681,11 @@ async function main() {
     for (const { url, error } of errors) {
       console.log(`  - ${url}: ${error}`);
     }
+    // The demos that did scrape are raw until cleaned: build:examples cleans
+    // them anyway and then fails on this exit code.
+    console.log();
+    console.log(`Scraped demos still need cleaning (build:examples does it; otherwise npm run clean:examples).`);
+    process.exitCode = 1;
   }
 }
 

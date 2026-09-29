@@ -2,7 +2,7 @@
 title: "Non-Ribbon Chord diagram"
 source: "https://www.amcharts.com/demos/non-ribbon-chord-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Compared to traditional Chord diagrams, Non-ribbon chord diagrams emphasize the connections between data points rather than additional properties of those connections.
@@ -26,7 +26,9 @@ root.setThemes([
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(am5flow.ChordNonRibbon.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5flow.ChordNonRibbon.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
   valueField: "value"

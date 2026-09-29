@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Donut Chart"
 source: "https://www.amcharts.com/demos/variable-radius-nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts supports nested pie/donut series. By default it would automatically spread the series within the whole pie. But you can also control [outer] radius and innerRadius of each series to achieve the look you want. Moreover, pie/donut charts don't have to be fully circular.
@@ -77,8 +77,7 @@ var label = chart.seriesContainer.children.push(
     textAlign: "center",
     centerY: am5.p100,
     centerX: am5.p50,
-    text: "[fontSize:18px]total[/]:
-[bold fontSize:30px]1647.9[/]"
+    text: "[fontSize:18px]total[/]:\n[bold fontSize:30px]1647.9[/]"
   })
 );
 

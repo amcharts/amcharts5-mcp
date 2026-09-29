@@ -2,7 +2,7 @@
 title: "Yes and No Gauge"
 source: "https://www.amcharts.com/demos/yes-and-no-gauge/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows a binary yes/no gauge implemented with amCharts Gauge chart.

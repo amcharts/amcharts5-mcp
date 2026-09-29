@@ -2,7 +2,7 @@
 title: "OHLC Chart"
 source: "https://www.amcharts.com/demos/ohlc-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The OHLC chart is a very popular way to display financial (and other) data over time with open, high, low, and close values for periods.
@@ -115,10 +115,7 @@ var series = chart.series.push(am5xy.OHLCSeries.new(root, {
   legendRangeValueText: "{valueYClose}",
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "horizontal",
-    labelText: "open: {openValueY}
-low: {lowValueY}
-high: {highValueY}
-close: {valueY}"
+    labelText: "open: {openValueY}\nlow: {lowValueY}\nhigh: {highValueY}\nclose: {valueY}"
   })
 }));
 
@@ -170,7 +167,7 @@ var sbseries = scrollbar.chart.series.push(am5xy.LineSeries.new(root, {
 
 // Add legend
 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = yAxis.axisHeader.children.push(
+var legend = chart.plotContainer.children.push(
   am5.Legend.new(root, {})
 );
 

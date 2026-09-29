@@ -2,7 +2,7 @@
 title: "Combined Bullet/Column and Line Graphs with Multiple Value Axes"
 source: "https://www.amcharts.com/demos/combined-bullet-column-line-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 The XYChart is a universal chart type covering most of all of your two-dimensional charting needs. It can also have multiple value axes to represent dramatically different series in a nice readable chart. In this demo we plot two column series and two line series with two value axes.

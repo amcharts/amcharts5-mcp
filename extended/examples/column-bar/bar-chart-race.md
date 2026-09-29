@@ -2,7 +2,7 @@
 title: "Bar Chart Race"
 source: "https://www.amcharts.com/demos/bar-chart-race/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bar Chart Race is a great and highly visual way to display data changing over time in the form of an animated bar chart. It's a very comprehensible representation of time-based changes in data.
@@ -450,20 +450,13 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueXField: "value",
-  categoryYField: "network"
+  categoryYField: "network",
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 // Rounded corners for columns
 series.columns.template.setAll({ cornerRadiusBR: 5, cornerRadiusTR: 5 });
-
-// Make each column to be of a different color
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
 
 // Add label bullet
 series.bullets.push(function () {

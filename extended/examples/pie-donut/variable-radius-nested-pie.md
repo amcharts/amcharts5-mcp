@@ -2,7 +2,7 @@
 title: "Variable-radius Nested Pie"
 source: "https://www.amcharts.com/demos/variable-radius-nested-pie/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In this demo we create a nested pie chart where the inner slices represent totals for the year and outer slices represent the detailed values comprising these totals.

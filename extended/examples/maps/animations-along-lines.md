@@ -2,7 +2,7 @@
 title: "Animations Along Lines"
 source: "https://www.amcharts.com/demos/animations-along-lines/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts Map Chart has all the tools you need to connect points on a map taking the geography and geometry into account. And then you can even animate objects along those connecting lines.
@@ -77,7 +77,9 @@ cont.children.push(
 
 // Create series for background fill
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
-var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  name: "Background Series"
+}));
 backgroundSeries.mapPolygons.template.setAll({
   fill: root.interfaceColors.get("alternativeBackground"),
   fillOpacity: 0,
@@ -93,12 +95,15 @@ backgroundSeries.data.push({
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  name: "Polygon Series",
   geoJSON: am5geodata_worldLow
 }));
 
 // Create line series for trajectory lines
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
-var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+  name: "Line Series"
+}));
 lineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0.3
@@ -106,7 +111,9 @@ lineSeries.mapLines.template.setAll({
 
 // Create point series for markers
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
-var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+  name: "City Series"
+}));
 
 pointSeries.bullets.push(function() {
   var circle = am5.Circle.new(root, {
@@ -136,16 +143,22 @@ pointSeries.bullets.push(function() {
   });
 });
 
-var paris = addCity({ latitude: 48.8567, longitude: 2.351 }, "Paris");
-var toronto = addCity({ latitude: 43.8163, longitude: -79.4287 }, "Toronto");
-var la = addCity({ latitude: 34.3, longitude: -118.15 }, "Los Angeles");
-var havana = addCity({ latitude: 23, longitude: -82 }, "Havana");
+pointSeries.data.setAll([
+  { id: "paris", title: "Paris", latitude: 48.8567, longitude: 2.351 },
+  { id: "toronto", title: "Toronto", latitude: 43.8163, longitude: -79.4287 },
+  { id: "la", title: "Los Angeles", latitude: 34.3, longitude: -118.15 },
+  { id: "havana", title: "Havana", latitude: 23, longitude: -82 }
+]);
 
-var lineDataItem = lineSeries.pushDataItem({
-  pointsToConnect: [paris, toronto, la, havana]
-});
+// the route connects the cities by their ids
+lineSeries.set("pointSeries", pointSeries);
+lineSeries.data.setAll([
+  { id: "route", pointIds: ["paris", "toronto", "la", "havana"] }
+]);
 
-var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+  name: "Plane Series"
+}));
 
 var plane = am5.Graphics.new(root, {
   svgPath:
@@ -162,13 +175,12 @@ planeSeries.bullets.push(function() {
   return am5.Bullet.new(root, { sprite: container });
 });
 
+// the plane sits on the start of the route
+planeSeries.data.setAll([
+  { id: "plane", lineId: "route", positionOnLine: 0, autoRotate: true }
+]);
 
-var planeDataItem = planeSeries.pushDataItem({
-  lineDataItem: lineDataItem,
-  positionOnLine: 0,
-  autoRotate: true
-});
-planeDataItem.dataContext = {};
+var planeDataItem = planeSeries.getDataItemById("plane");
 
 planeDataItem.animate({
   key: "positionOnLine",
@@ -178,23 +190,17 @@ planeDataItem.animate({
   easing: am5.ease.yoyo(am5.ease.linear)
 });
 
+var prevPosition;
 planeDataItem.on("positionOnLine", (value) => {
-  if (planeDataItem.dataContext.prevPosition < value) {
+  if (prevPosition < value) {
     plane.set("rotation", 0);
   }
 
-  if (planeDataItem.dataContext.prevPosition > value) {
+  if (prevPosition > value) {
     plane.set("rotation", -180);
   }
-  planeDataItem.dataContext.prevPosition = value;
+  prevPosition = value;
 });
-
-function addCity(coords, title) {
-  return pointSeries.pushDataItem({
-    latitude: coords.latitude,
-    longitude: coords.longitude
-  });
-}
 
 // Make stuff animate on load
 chart.appear(1000, 100);

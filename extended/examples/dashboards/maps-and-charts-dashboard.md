@@ -2,7 +2,7 @@
 title: "Maps and Charts Dashboard"
 source: "https://www.amcharts.com/demos/maps-and-charts-dashboard/"
 category: "dashboards"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 ## JavaScript

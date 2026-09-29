@@ -2,7 +2,7 @@
 title: "Logarithmic Scale"
 source: "https://www.amcharts.com/demos/logarithmic-scale/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Displaying wide-ranging values on a regular (linear) scale makes charts unreadable. Switch your value axis to logarithmic scale and get back to highly useful data visualizations.

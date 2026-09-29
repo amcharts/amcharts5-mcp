@@ -2,7 +2,7 @@
 title: "Grouped Stacks"
 source: "https://www.amcharts.com/demos/grouped-stacks/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo uses multiple stacked series to create virtual groups.

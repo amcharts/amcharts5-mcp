@@ -2,7 +2,7 @@
 title: "Stacked Column Chart"
 source: "https://www.amcharts.com/demos/stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Stacked bar charts are useful to demonstrate how a larger data category is comprised of smaller categories, and what part each of the smaller categories plays in the total of a larger one.

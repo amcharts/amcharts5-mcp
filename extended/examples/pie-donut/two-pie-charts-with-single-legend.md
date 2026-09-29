@@ -2,7 +2,7 @@
 title: "Two Linked Pie Charts with a Legend"
 source: "https://www.amcharts.com/demos/two-pie-charts-with-single-legend/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 ## JavaScript

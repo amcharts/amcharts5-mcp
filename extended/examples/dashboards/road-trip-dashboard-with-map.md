@@ -2,7 +2,7 @@
 title: "Road Trip Dashboard with Map"
 source: "https://www.amcharts.com/demos/road-trip-dashboard-with-map/"
 category: "dashboards"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 ## JavaScript
@@ -164,6 +164,7 @@ function makeMapChart() {
   // Create main polygon series for countries
   // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
   var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+    name: "Polygon Series",
     geoJSON: am5geodata_region_world_europeLow
   }));
 
@@ -178,7 +179,9 @@ function makeMapChart() {
     chart.goHome();
   })
 
-  var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+  var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+    name: "Line Series"
+  }));
   lineSeries.mapLines.template.setAll({
     stroke: am5.color(0x000000),
     strokeDasharray: [3, 3],
@@ -187,6 +190,7 @@ function makeMapChart() {
   });
 
   pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+    name: "City Series",
     valueField: "population",
     calculateAggregates: true,
     idField: "name"
@@ -227,7 +231,7 @@ function makeMapChart() {
 
         if (di) {
           var bullet = di.bullets[0];
-          
+
           if (bullet) {
             var container = bullet.get("sprite");
             var c = container.children.getIndex(0);
@@ -247,7 +251,7 @@ function makeMapChart() {
 
         if (di) {
           var bullet = di.bullets[0];
-          
+
           if (bullet) {
             var container = bullet.get("sprite");
             var c = container.children.getIndex(0);
@@ -257,7 +261,7 @@ function makeMapChart() {
           }
         }
       }
-    });    
+    });
 
 
     var label = container.children.push(am5.Label.new(root, {
@@ -283,15 +287,14 @@ function makeMapChart() {
 
   pointSeries.data.setAll(data);
 
-  // create line series data items with points to connect
-  var pointsToConnect = [];
-  am5.array.each(pointSeries.dataItems, function (dataItem) {
-    pointsToConnect.push(dataItem);
-  })
-
-  lineSeries.pushDataItem({
-    pointsToConnect: pointsToConnect
-  });
+  // the route connects the cities by their names
+  lineSeries.set("pointSeries", pointSeries);
+  lineSeries.data.setAll([{
+    id: "route",
+    pointIds: data.map(function (city) {
+      return city.name;
+    })
+  }]);
 
 
   // Make stuff animate on load
@@ -355,7 +358,7 @@ function makeSerpentineChart() {
       fillOpacity: 1
     }));
   }
-  
+
 
   var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
     maxDeviation: 0,
@@ -365,7 +368,7 @@ function makeSerpentineChart() {
 
   var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
     renderer: xRenderer,
-    numberFormat: "#' km'",    
+    numberFormat: "#' km'",
   }));
 
   // Data
@@ -374,7 +377,7 @@ function makeSerpentineChart() {
   // Add series
   // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
   serpentineSeries = chart.series.push(am5timeline.CurveLineSeries.new(root, {
-    xAxis: xAxis,    
+    xAxis: xAxis,
     yAxis: yAxis,
     baseAxis: yAxis,
     valueField: "population",
@@ -409,9 +412,7 @@ function makeSerpentineChart() {
       strokeWidth: 2,
       strokeOpacity: 0.8,
       layer: 30,
-      tooltipText: "[bold fontSize: 20px]{name}[/]
-{date.formatDate('MMM dd, yyyy')}
-population: {population}",
+      tooltipText: "[bold fontSize: 20px]{name}[/]\n{date.formatDate('MMM dd, yyyy')}\npopulation: {population}",
       tooltipY: 0,
       fillOpacity: 0.7
     }, circleTemplate));
@@ -429,7 +430,7 @@ population: {population}",
 
         if (di) {
           var bullet = di.bullets[0];
-          
+
           if (bullet) {
             var container = bullet.get("sprite");
             var c = container.children.getIndex(0);
@@ -449,7 +450,7 @@ population: {population}",
 
         if (di) {
           var bullet = di.bullets[0];
-          
+
           if (bullet) {
             var container = bullet.get("sprite");
             var c = container.children.getIndex(0);
@@ -459,7 +460,7 @@ population: {population}",
           }
         }
       }
-    });        
+    });
 
     var label = container.children.push(am5.Label.new(root, {
       text: "{name}",

@@ -2,7 +2,7 @@
 title: "Simple Treemap"
 source: "https://www.amcharts.com/demos/simple-treemap/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Simple Treemap displays hierarchical data in the shape of rectangles proportional in size to their value as part of the whole. Each rectangle, in turn, can be divided into sub-items according to the values of its children in the hierarchy.
@@ -23,8 +23,8 @@ root.setThemes([
 ]);
 
 // Create wrapper container
-var container = root.container.children.push(
-  am5.Container.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.percent(100),
     height: am5.percent(100),
     layout: root.verticalLayout
@@ -33,7 +33,7 @@ var container = root.container.children.push(
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(
+var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     singleBranchOnly: false,
     downDepth: 1,

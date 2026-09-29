@@ -2,7 +2,7 @@
 title: "Process Control Chart"
 source: "https://www.amcharts.com/demos/process-control-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows an implementation of a Process control chart.

@@ -2,7 +2,7 @@
 title: "Zoomable Value Axis"
 source: "https://www.amcharts.com/demos/zoomable-value-axis/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Zoomable in any direction

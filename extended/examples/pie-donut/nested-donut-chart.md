@@ -2,7 +2,7 @@
 title: "Nested Donut Chart"
 source: "https://www.amcharts.com/demos/nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Nested donut chart (also known as Multi-level doughnut chart, Multi-series doughnut chart) allows you to display multiple series in a single visualization. The series are usually related but represent different categories or slices of data (like the distribution of some category values over different years, etc.)

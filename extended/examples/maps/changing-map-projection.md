@@ -2,7 +2,7 @@
 title: "Changing Map Projection"
 source: "https://www.amcharts.com/demos/changing-map-projection/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Multi-projection support
@@ -21,6 +21,7 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     panX: "rotateX",
     panY: "none",
+    boxZoom: "shift",
     projection: am5map.geoNaturalEarth1()
   })
 );

@@ -2,7 +2,7 @@
 title: "XY Chart with Date-Based Axis"
 source: "https://www.amcharts.com/demos/xy-chart-date-based-axis/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In addition to category and value axes, XYChart supports date axes. This enables various date-specific formatting and layout scenarios.

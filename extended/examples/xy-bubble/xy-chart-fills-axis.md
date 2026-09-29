@@ -2,7 +2,7 @@
 title: "XY Chart with Fills to the Axis"
 source: "https://www.amcharts.com/demos/xy-chart-fills-axis/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how to create area chart series with fills going to different axes. As you can see, the fill of the lower series goes to the X axis, while the upper series is filled to the Y axis.

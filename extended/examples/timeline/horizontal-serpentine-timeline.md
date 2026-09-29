@@ -2,7 +2,7 @@
 title: "Horizontal Serpentine Timeline"
 source: "https://www.amcharts.com/demos/horizontal-serpentine-timeline/"
 category: "timeline"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A serpentine timeline chart uses a curved, winding path to display events over an extended period. By bending the timeline back and forth—either horizontally or vertically—it makes efficient use of limited space when a continuous line wouldn’t suffice. amCharts offers the flexibility to adjust the bend count and orientation, making it perfect for visually summarizing lengthy timelines in a compact format.
@@ -178,7 +178,9 @@ var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
   valueXField: "end",
   openValueXField: "start",
   categoryYField: "category",
-  layer: 30
+  layer: 30,
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 series.columns.template.setAll({
@@ -214,10 +216,6 @@ series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     sprite: circle, locationX: 1
   })
-})
-
-series.columns.template.adapters.add("fill", function(fill, target) {
-  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
 })
 
 // line series for flags

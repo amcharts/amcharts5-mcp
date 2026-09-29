@@ -2,7 +2,7 @@
 title: "Range Bullet Chart"
 source: "https://www.amcharts.com/demos/range-bullet-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bullet charts can be useful by effectively displaying some value against the target goal, for example.

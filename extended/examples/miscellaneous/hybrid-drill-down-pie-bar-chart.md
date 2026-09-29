@@ -2,13 +2,13 @@
 title: "Hybrid Drill-Down Pie/Bar Chart"
 source: "https://www.amcharts.com/demos/hybrid-drill-down-pie-bar-chart/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how you can crate a single Container with two charts in it - PieChart and XYChart - connected using events.
- 	Containers
- 	Events
- 	Dynamic data updates
+Containers
+Events
+Dynamic data updates
 
 ## JavaScript
 

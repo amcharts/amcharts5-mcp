@@ -2,7 +2,7 @@
 title: "Animated Bullet at the End of the Series"
 source: "https://www.amcharts.com/demos/animated-bullet-at-the-end-of-the-series/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Displaying a pulsating element at a data point on a chart is a great way to attract viewer's attention. This demo shows you how to do it with amCharts.

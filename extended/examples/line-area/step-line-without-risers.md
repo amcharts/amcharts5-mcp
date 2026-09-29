@@ -2,7 +2,7 @@
 title: "Step Line Without Risers"
 source: "https://www.amcharts.com/demos/step-line-without-risers/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Step line chart is a great alternative to a regular line chart when you have discreet data items. A regular line connecting two data points would mislead the viewer suggesting that there was some continuous movement from point A to point B when in reality there was a jump with no intermediary values. Additionally, amCharts lets you display step line chart with no vertical lines making it a great alternative to a column chart when there's a lot of data.

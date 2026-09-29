@@ -2,7 +2,7 @@
 title: "Draggable Range with a Close Button"
 source: "https://www.amcharts.com/demos/draggable-range-with-close-button/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A very common use-case with line and area charts is having some sort of visual indicator to be able to easily see parts of the series going over (or below) some specific value. It is very easy to implement with amCharts' axis range feature. But we can go one step further and allow the viewer to adjust the indicator value. Try dragging the "Stop loss" indicator box up and down.

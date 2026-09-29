@@ -2,7 +2,7 @@
 title: "Range Area Chart"
 source: "https://www.amcharts.com/demos/range-area-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Range Area Chart is a type of area chart where rather than starting on the axis, the area is represented by the space between two values. These charts are useful for displaying ranges of values, such as between minimum and maximum prices over a timespan, or projected values for the future when the projection is represented by a range instead of a specific value.

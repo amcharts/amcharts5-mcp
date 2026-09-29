@@ -2,7 +2,7 @@
 title: "Variance Indicators"
 source: "https://www.amcharts.com/demos/variance-indicators/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A clever use of highly configurable clustered Column series and adapters enables us to create automatically-calculated variance indicators.

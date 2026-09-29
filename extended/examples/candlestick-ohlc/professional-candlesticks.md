@@ -2,7 +2,7 @@
 title: "Professional Candlesticks"
 source: "https://www.amcharts.com/demos/professional-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Professional candlestick chart is similar to the "regular" candlestick chart but applies different coloring logic. You may notice that some candlesticks are filled and some are hollow. More about this type of candlesticks can be found in the docs.
@@ -120,10 +120,7 @@ var series = chart.series.push(
     legendRangeValueText: "{valueYClose}",
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "open: {openValueY}
-low: {lowValueY}
-high: {highValueY}
-close: {valueY}"
+      labelText: "open: {openValueY}\nlow: {lowValueY}\nhigh: {highValueY}\nclose: {valueY}"
     })
   })
 );
@@ -183,7 +180,7 @@ var sbseries = scrollbar.chart.series.push(
 
 // Add legend
 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = yAxis.axisHeader.children.push(am5.Legend.new(root, {}));
+var legend = chart.plotContainer.children.push(am5.Legend.new(root, {}));
 
 legend.data.push(series);
 

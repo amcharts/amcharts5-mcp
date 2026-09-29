@@ -2,7 +2,7 @@
 title: "Radar Timeline"
 source: "https://www.amcharts.com/demos/radar-timeline/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In this demo we use a Radar chart to display data changing over time.

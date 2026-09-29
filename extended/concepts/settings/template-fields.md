@@ -99,6 +99,30 @@ And the data:
 }\];
 
 
+## Backgrounds (5.20.7)
+
+A container's `background` (e.g. the background of a `Label`) has no data item of its own. Since 5.20.7, a background that has its own `templateField` reads the data item of the container it belongs to, so a background can be set per data item — for example, a different label background on each bullet:
+
+```javascript
+series.bullets.push(function (root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Label.new(root, {
+      text: "{valueY}",
+      populateText: true,
+      background: am5.RoundedRectangle.new(root, {
+        templateField: "labelBg"
+      })
+    })
+  });
+});
+
+// Data
+// { date: ..., value: 1000, labelBg: { fill: am5.color(0xff0000) } }
+```
+
+Before 5.20.7 such a `templateField` on a background was never applied.
+
+
 ## Bullets
 
 There are some caveats involved when using template fields with bullets.

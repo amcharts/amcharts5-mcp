@@ -2,7 +2,7 @@
 title: "Dragging Pie Slices"
 source: "https://www.amcharts.com/demos/dragging-pie-slices/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Interactivity in data visualization is the norm these days and amCharts excels at it. But we can also take it to the next level and enable users to manipulate the visuals. In this demo you can drag slices from one pie chart to the other and enable advanced visual data analysis driven by the user.

@@ -2,7 +2,7 @@
 title: "Trump’s Reciprocal Tariffs Map"
 source: "https://www.amcharts.com/demos/trumps-reciprocal-tariffs-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A real world application of a heat map, featuring amCharts 5 features like heat rules, heat legend, globe (orthographic) projection, animations and custom controls.

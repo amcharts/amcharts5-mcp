@@ -2,7 +2,7 @@
 title: "Horizontal Dumbbell Plot"
 source: "https://www.amcharts.com/demos/horizontal-dumbbell-plot/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Dumbbell plot (also known as Dumbbell chart, Connected dot plot) is great for displaying changes between two points in time, two conditions or differences between two groups.

@@ -2,7 +2,7 @@
 title: "Stacked Area Radar"
 source: "https://www.amcharts.com/demos/stacked-area-radar/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Like with XY Charts, it is possible to create stacked area charts in the scope of the Radar chart as well.
@@ -119,8 +119,7 @@ var series2 = chart.series.push(
     categoryXField: "name",
     stacked: true,
     tooltip: am5.Tooltip.new(root, {
-      labelText: "Outside: {value1}
-Inside:{value2}"
+      labelText: "Outside: {value1}\nInside:{value2}"
     })
   })
 );

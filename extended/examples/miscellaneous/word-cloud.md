@@ -2,7 +2,7 @@
 title: "Word Cloud"
 source: "https://www.amcharts.com/demos/word-cloud/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A word cloud, also known as a tag cloud or wordle or weighted list, is a visual representation of text data where words are displayed in different sizes and colors. The size of each word in the cloud is proportional to its frequency or importance in the given text. Commonly used words are usually displayed in larger fonts, while less frequent words appear in smaller fonts. Word clouds provide a quick and intuitive way to visually highlight key terms, topics, or themes within a body of text. They are widely used in data analysis, text mining, and visual storytelling to summarize, explore, and communicate textual information in a visually appealing manner.
@@ -24,23 +24,24 @@ root.setThemes([
   am5themes_Animated.new(root)
 ]);
 
-var zoomableContainer = root.container.children.push(
-  am5.ZoomableContainer.new(root, {
+var chart = root.container.children.push(
+  am5.SerialChartContainer.new(root, {
     width: am5.p100,
-    height: am5.p100,
-    wheelable: true,
-    pinchZoom: true
+    height: am5.p100
   })
 );
 
-var zoomTools = zoomableContainer.children.push(am5.ZoomTools.new(root, {
-  target: zoomableContainer
-}));
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/word-cloud/
-var series = zoomableContainer.contents.children.push(am5wc.WordCloud.new(root, {
+var series = chart.series.push(am5wc.WordCloud.new(root, {
   maxCount:100,
   minWordLength:2,
   maxFontSize:am5.percent(35),

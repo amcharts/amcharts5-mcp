@@ -2,12 +2,12 @@
 title: "Radar Chart Visualizing Yearly Activities"
 source: "https://www.amcharts.com/demos/radar-chart-visualizing-yearly-activities/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Radar charts are great for creating stunning multi-level visualizations in a fairly compact space. This demo shows a year's worth of daily bicycle ride data together with weekly totals, and a grand total in the same colorful interactive radial diagram.
 Key implementation details
-We create a date axis for the whole year as our X axis (circular outer axis), then add a couple of Y axes: the inner one for weekly distances and the outer one for weekdays. Weekly distances are represented by column series bound to the the inner distances axis. Finally, we add line series where bullet sizes represent distances cycled on specific weekdays and "attach" it to the weekday Y-axis. 
+We create a date axis for the whole year as our X axis (circular outer axis), then add a couple of Y axes: the inner one for weekly distances and the outer one for weekdays. Weekly distances are represented by column series bound to the the inner distances axis. Finally, we add line series where bullet sizes represent distances cycled on specific weekdays and "attach" it to the weekday Y-axis.
 Radar chart
 Radar axes
 Radar series
@@ -755,8 +755,7 @@ var chart = root.container.children.push(
 chart.radarContainer.children.push(
   am5.Label.new(root, {
     text:
-      "[fontSize:0.8em]In 2019 I cycled:[/]
-[fontSize:1.5em]" +
+      "[fontSize:0.8em]In 2019 I cycled:[/]\n[fontSize:1.5em]" +
       Math.round(total) +
       " km[/]",
     textAlign: "center",

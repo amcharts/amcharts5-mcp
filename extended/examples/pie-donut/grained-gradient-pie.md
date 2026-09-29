@@ -2,7 +2,7 @@
 title: "Grainy Gradient Pie"
 source: "https://www.amcharts.com/demos/grained-gradient-pie/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 You can fill any graphics object with grain (noise) pattern. Grain pattern is a special kind of pattern that can complement regular fills with overhead pixel noise to add that additional fuzzy look. It works by applying a random assortment of semi-transparent dots over existing fills.

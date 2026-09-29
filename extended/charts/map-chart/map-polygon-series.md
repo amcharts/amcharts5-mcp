@@ -378,6 +378,53 @@ polygonSeries.mapPolygons.template.events.on("click", function(ev) {
   }
 });
 
+### Linking via `urlField` (5.20.7)
+
+Since 5.20.7 a click handler is not needed: set series' `urlField` to the data field holding the URL, and clicking a polygon that has one opens it. `linkTarget` sets where it opens.
+
+```javascript
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    urlField: "url",
+    linkTarget: "_blank"
+  })
+);
+
+polygonSeries.data.setAll([{
+  id: "US",
+  url: "https://en.wikipedia.org/wiki/United_States"
+}, {
+  id: "CA",
+  url: "https://en.wikipedia.org/wiki/Canada"
+}, {
+  id: "MX",
+  url: "https://en.wikipedia.org/wiki/Mexico"
+}]);
+```
+
+Setting
+
+Default
+
+Comment
+
+`urlField`
+
+(none)
+
+A data field holding the URL to open when the data item's element is clicked. Links are off until this is set.
+
+`linkTarget`
+
+`"_self"`
+
+Where the URL opens: `"_self"` (same window, like a plain link), `"_blank"` (new tab, opened with `noopener`), or a named window/frame. A chart embedded in an iframe usually wants `"_blank"` or `"_top"`.
+
+Polygons with a URL get a pointer cursor automatically, unless you set a `cursorOverStyle` yourself. `urlField` can be set after the data, and a URL added to an item later (e.g. via `data.setIndex()`) links too. Script URLs (`javascript:`, `data:`, `vbscript:`) are not opened. To intercept links (e.g. in an editor), override the series' `openUrl(dataItem)` method.
+
+The same settings work on other series: they link bullets of any series, columns (including candlesticks, OHLC and Gantt bars), pie/funnel/pyramid/pictorial slices, Venn slices, and map lines. Hierarchy nodes, flow nodes and links, word cloud words and map Sankey nodes are not linked — use a click handler for those.
+
 ## Excluding or including polygons
 
 Series can be set up to either exclude certain polygons out of the loaded geodata, or only include specific ones.

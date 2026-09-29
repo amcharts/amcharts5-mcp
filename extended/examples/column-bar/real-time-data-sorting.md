@@ -2,7 +2,7 @@
 title: "Real-time Data Sorting"
 source: "https://www.amcharts.com/demos/real-time-data-sorting/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sorting a column or bar chart by column's value is a common scenario that is easily implemented by sorting the underlying data beforehand. But what if data is constantly updated? This demo shows an approach to solving the real-time sorting problem that is both functional and visually appealing.
@@ -75,7 +75,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "value",
-  categoryXField: "country"
+  categoryXField: "country",
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 // Rounded corners for columns
@@ -83,15 +85,6 @@ series.columns.template.setAll({
   cornerRadiusTL: 5,
   cornerRadiusTR: 5,
   strokeOpacity: 0
-});
-
-// Make each column to be of a different color
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
 });
 
 // Add Label bullet

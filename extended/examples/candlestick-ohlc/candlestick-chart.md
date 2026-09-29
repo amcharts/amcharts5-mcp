@@ -2,7 +2,7 @@
 title: "Candlestick Chart"
 source: "https://www.amcharts.com/demos/candlestick-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Candlestick chart is one of the most common ways to display financial data such as stock trading prices over time. Creating candlestick charts with amCharts is really easy and you get a lot of advanced features such as grouping right out of the box (try zooming in and out).
@@ -121,10 +121,7 @@ var series = chart.series.push(
     legendRangeValueText: "{valueYClose}",
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "open: {openValueY}
-low: {lowValueY}
-high: {highValueY}
-close: {valueY}"
+      labelText: "open: {openValueY}\nlow: {lowValueY}\nhigh: {highValueY}\nclose: {valueY}"
     })
   })
 );

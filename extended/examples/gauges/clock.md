@@ -2,7 +2,7 @@
 title: "Clock"
 source: "https://www.amcharts.com/demos/clock/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo showcases a creative use of the amCharts Gauge/Radar chart. amCharts core Charts package includes all the elements you need to create a functioning clock.

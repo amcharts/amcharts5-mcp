@@ -2,7 +2,7 @@
 title: "Clock with Two Faces"
 source: "https://www.amcharts.com/demos/clock-with-two-faces/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts Radar Chart can be used for tasks beyond your common data visualization. In this case, we create a functioning clock with separate faces for hours/minutes and seconds.

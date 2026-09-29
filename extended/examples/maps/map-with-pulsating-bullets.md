@@ -2,7 +2,7 @@
 title: "Map with Pulsating Bullets"
 source: "https://www.amcharts.com/demos/map-with-pulsating-bullets/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how to add animated dots to your maps. This could be useful to attract viewer's attention to specific locations on the map.
@@ -15,18 +15,6 @@ Animations
 ## JavaScript
 
 ```javascript
-/**
- * ---------------------------------------
- * This demo was created using amCharts 5.
- *
- * For more information visit:
- * https://www.amcharts.com/
- *
- * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
- * ---------------------------------------
- */
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
@@ -41,6 +29,7 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     panX: "rotateX",
     panY: "translateY",
+    boxZoom: "shift",
     projection: am5map.geoMercator()
   })
 );
@@ -52,6 +41,13 @@ var cont = chart.children.push(
     y: 40
   })
 );
+
+// Zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+// the home button is hidden by default
+zoomControl.homeButton.set("visible", true);
 
 // Add labels and controls
 cont.children.push(

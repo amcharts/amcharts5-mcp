@@ -2,7 +2,7 @@
 title: "Sorted Bar Chart"
 source: "https://www.amcharts.com/demos/sorted-bar-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sorting a bar chart by bar’s value is a common scenario that is easily implemented by sorting the underlying data beforehand. But what if data is constantly updated? This demo shows an approach to solving the real-time sorting problem that is both functional and visually appealing.
@@ -82,7 +82,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   tooltip: am5.Tooltip.new(root, {
     pointerOrientation: "left",
     labelText: "{valueX}"
-  })
+  }),
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 
@@ -92,16 +94,6 @@ series.columns.template.setAll({
   cornerRadiusBR: 5,
   strokeOpacity: 0
 });
-
-// Make each column to be of a different color
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
 
 // Set data
 var data = [

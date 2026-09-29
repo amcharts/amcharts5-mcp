@@ -2,7 +2,7 @@
 title: "Sunburst Chart"
 source: "https://www.amcharts.com/demos/sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sunburst Chart or Diagram represents hierarchical relational data in a circular chart. It looks similar to nested donut charts, however, the hierarchical nature of the Sunburst means that each level represents detalization of the previous one. In other words, children slices on each level comprise the whole of the parent slice.
@@ -25,7 +25,7 @@ root.setThemes([
 
 
 // Create wrapper container
-var container = root.container.children.push(am5.Container.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
   width: am5.percent(100),
   height: am5.percent(100),
   layout: root.verticalLayout
@@ -34,7 +34,7 @@ var container = root.container.children.push(am5.Container.new(root, {
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = container.children.push(am5hierarchy.Sunburst.new(root, {
+var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
   singleBranchOnly: true,
   downDepth: 10,
   initialDepth: 10,

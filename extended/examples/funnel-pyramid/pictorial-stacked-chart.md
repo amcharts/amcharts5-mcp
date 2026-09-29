@@ -2,7 +2,7 @@
 title: "Pictorial Stacked Chart"
 source: "https://www.amcharts.com/demos/pictorial-stacked-chart/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Pictorial Stacked Chart is a spiced up variation on a regular stacked bar or column chart. It uses a meaningful subject-related image to frame the values of the whole divided into segments comprising that whole.

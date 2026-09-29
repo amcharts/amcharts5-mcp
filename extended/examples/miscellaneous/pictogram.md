@@ -2,7 +2,7 @@
 title: "Pictogram"
 source: "https://www.amcharts.com/demos/pictogram/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo uses bullets on a matrix from two category axes, to display a pictogram.
@@ -92,8 +92,7 @@ yAxis1.data.setAll(generateCategories(colSize));
 
 yAxis1.children.unshift(
   am5.Label.new(root, {
-    text: "[#247ba0]Male[/]
-[#247ba0]58[/][#999999]/100[/]",
+    text: "[#247ba0]Male[/]\n[#247ba0]58[/][#999999]/100[/]",
     fontSize: 32,
     y: am5.p50,
     centerY: am5.p50
@@ -112,8 +111,7 @@ yAxis2.data.setAll(generateCategories(colSize));
 
 yAxis2.children.unshift(
   am5.Label.new(root, {
-    text: "[#f25f5c]Female[/]
-[#f25f5c]67[/][#999999]/100[/]",
+    text: "[#f25f5c]Female[/]\n[#f25f5c]67[/][#999999]/100[/]",
     fontSize: 32,
     y: am5.p50,
     centerY: am5.p50

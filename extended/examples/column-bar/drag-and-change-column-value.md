@@ -2,7 +2,7 @@
 title: "Drag and change column value"
 source: "https://www.amcharts.com/demos/drag-and-change-column-value/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 While amCharts libraries primarily focus on data visualization, they can also be used as UI where it makes sense, thanks to all the great interactivity features. In this demo you can adjust the values behind the columns simply by dragging the columns up and down.
@@ -119,19 +119,12 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   valueXField: "date",
   tooltip: am5.Tooltip.new(root, {
     labelText: "{valueY}"
-  })
+  }),
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-
 // manipulating with mouse code
 var isDown = false;
 

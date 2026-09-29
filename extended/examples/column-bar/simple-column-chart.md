@@ -2,7 +2,7 @@
 title: "Simple Column Chart"
 source: "https://www.amcharts.com/demos/simple-column-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Column Chart (also known as vertical bar chart) is one of the most common and, arguably, the easiest to read chart type when it comes to visualizing category-based values. Rectangular bars are placed along the category axis with bar length representing the value for a specific category.
@@ -12,8 +12,8 @@ The centerpiece of every XY Chart is its series (the actual "graph" if you will)
 Finally, we add a horizontal Scrollbar for precise zooming and panning.
 All that's left is to assign our data.
 As a final touch, we apply some lite animation to make everything look nicer.
- 	XY Chart
- 	Animations
+XY Chart
+Animations
 
 ## JavaScript
 

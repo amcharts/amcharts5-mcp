@@ -2,7 +2,7 @@
 title: "Radial Histogram"
 source: "https://www.amcharts.com/demos/radial-histogram/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Radial Histogram (also known as Circular Histogram, Circular Bar Chart, Angular Histogram, Polar Histogram) is a variation of a bar chart where every bar is displayed along a circle. Compared to traditional linear bar charts this results in more eye-catchy visualizations with an ability to display more bars in the same space. On the negative side, these charts are harder to read and make it difficult to compare values at distant locations along the axis.
@@ -83,7 +83,9 @@ var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "value",
-  categoryXField: "category"
+  categoryXField: "category",
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 // Rounded corners for columns
@@ -91,16 +93,6 @@ series.columns.template.setAll({
   cornerRadius: 5,
   tooltipText: "{categoryX}: {valueY}"
 });
-
-// Make each column to be of a different color
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
 
 // Set data
 var data = [];

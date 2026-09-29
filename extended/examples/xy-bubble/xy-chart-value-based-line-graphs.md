@@ -2,7 +2,7 @@
 title: "XY Chart with Value-Based Line Graphs"
 source: "https://www.amcharts.com/demos/xy-chart-value-based-line-graphs/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 In the most common version of a line chart you have an X-axis representing some categories or date/time and an Y-axis representing values for those categories. In amCharts XY charts you can have any type of axis in each dimension. In this demo we use two value axes and the lines just have two numeric coordinates.

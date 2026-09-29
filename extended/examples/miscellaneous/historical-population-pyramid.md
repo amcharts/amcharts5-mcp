@@ -2,7 +2,7 @@
 title: "Historical Population Pyramid"
 source: "https://www.amcharts.com/demos/historical-population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A population pyramid, also called an "age-sex-pyramid" or "mirror bar chart", is a graphical illustration that shows the distribution of various age groups in a population.
@@ -370,9 +370,7 @@ var popSeriesFemale = popChart.series.push(
     stacked: true,
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "[bold]U.S. population in {valueX.formatDate()}[/]
-[font-size: 20]Male: {col4}
-Female: {col5}"
+      labelText: "[bold]U.S. population in {valueX.formatDate()}[/]\n[font-size: 20]Male: {col4}\nFemale: {col5}"
     })
   })
 );

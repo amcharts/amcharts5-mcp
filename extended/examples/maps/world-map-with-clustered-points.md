@@ -2,7 +2,7 @@
 title: "World Map With Clustered Points"
 source: "https://www.amcharts.com/demos/world-map-with-clustered-points/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A map with a lot of markers can appear cluttered. It's also not easy to use and make a sense of.
@@ -31,6 +31,7 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     panX: "rotateX",
     panY: "translateY",
+    boxZoom: "shift",
     projection: am5map.geoMercator(),
   })
 );

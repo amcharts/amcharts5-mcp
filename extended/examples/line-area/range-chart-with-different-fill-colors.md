@@ -2,10 +2,10 @@
 title: "Range Chart with Different Fill Colors"
 source: "https://www.amcharts.com/demos/range-chart-with-different-fill-colors/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
-Range charts are great for displaying the delta between two values at a specific point. Data sets with a small number of discreet values are easy to represent with a floating column chart and those are easy to color according to the trend in data. But when you have more and/or continuous (eg. date-based) values floating columns become less than optimal. 
+Range charts are great for displaying the delta between two values at a specific point. Data sets with a small number of discreet values are easy to represent with a floating column chart and those are easy to color according to the trend in data. But when you have more and/or continuous (eg. date-based) values floating columns become less than optimal.
 So, you display the range as an area chart. But now you have a problem of displaying the positive/negative trends in data differently. Luckily, you are using amCharts and it has all the tools you need to complete the task.
 Key implementation details
 As mentioned, we are displaying the range via an area chart (LineSeries with both valueYField and openValueYField set, and a non-transparent fill). And to color the parts differently we go through the data, determine intersection points where open value becomes less than close (and vice versa), and create axis ranges on the series to fill those sections differently.

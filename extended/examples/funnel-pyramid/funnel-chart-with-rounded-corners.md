@@ -2,7 +2,7 @@
 title: "Funnel chart with rounded corners"
 source: "https://www.amcharts.com/demos/funnel-chart-with-rounded-corners/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 ## JavaScript

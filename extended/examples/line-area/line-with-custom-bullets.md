@@ -2,7 +2,7 @@
 title: "Line with Custom Bullets"
 source: "https://www.amcharts.com/demos/line-with-custom-bullets/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Anything can be a bullet
@@ -53,39 +53,48 @@ var colorSet = am5.ColorSet.new(root, {});
 var data = [
   {
     date: "2021-12-31 18:00",
-    value: 0
+    value: 0,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline0.svg" }
   },
   {
     date: "2021-12-31 19:00",
-    value: 0
+    value: 0,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline1.svg" }
   },
   {
     date: "2021-12-31 20:00",
-    value: 0
+    value: 0,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline2.svg" }
   },
   {
     date: "2021-12-31 21:00",
-    value: 0.3
+    value: 0.3,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline3.svg" }
   },
   {
     date: "2021-12-31 22:00",
-    value: 0.8
+    value: 0.8,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline4.svg" }
   },
   {
     date: "2021-12-31 23:00",
-    value: 1.2
+    value: 1.2,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline5.svg" }
   },
   {
     date: "2022-01-01 00:00",
-    value: 2.2
+    value: 2.2,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline6.svg" }
   },
   {
     date: "2022-01-01 01:00",
-    value: 2.5
+    value: 2.5,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline7.svg" }
   },
   {
     date: "2022-01-01 02:00",
-    value: 2.2
+    value: 2.2,
+    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline0.svg" }
   }
 ];
 
@@ -146,14 +155,8 @@ series.data.processor = am5.DataProcessor.new(root, {
 series.strokes.template.setAll({ strokeDasharray: [3, 3], strokeWidth: 2 });
 
 
-var i = -1;
+// Each bullet takes its icon from the data item's "iconSettings"
 series.bullets.push(function () {
-  i++;
-
-  if (i > 7) {
-    i = 0;
-  }
-
   var container = am5.Container.new(root, {
     centerX: am5.p50,
     centerY: am5.p50
@@ -169,7 +172,7 @@ series.bullets.push(function () {
       centerY: am5.p50,
       width: 23,
       height: 23,
-      src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline" + i + ".svg"
+      templateField: "iconSettings"
     })
   );
 

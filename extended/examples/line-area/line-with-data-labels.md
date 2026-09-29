@@ -2,7 +2,7 @@
 title: "Line with Data Labels"
 source: "https://www.amcharts.com/demos/line-with-data-labels/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Line series in amCharts can have labels displayed near data points, the same as any other series type. Labels are added in the same way as regular bullets, by attaching them to individual data points. You can customize the appearance and position of the labels, including their font, size, color, and alignment. Additionally, you can add a background, border, or padding to make the labels stand out. This allows you to effectively highlight values or provide additional context directly on the chart.

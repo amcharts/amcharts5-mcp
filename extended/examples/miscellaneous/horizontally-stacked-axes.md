@@ -2,7 +2,7 @@
 title: "Horizontally Stacked Axes"
 source: "https://www.amcharts.com/demos/horizontally-stacked-axes/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Similarly to vertically stacked axes you can stack them horizontally. It's a single XY chart with one shared Y axis and multiple value axes. Instead of arranging them one under another we arrange them horizontally. You can specify custom width for each of the axes if you don't want them to be of the same width.

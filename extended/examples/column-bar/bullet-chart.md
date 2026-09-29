@@ -2,7 +2,7 @@
 title: "Bullet Chart"
 source: "https://www.amcharts.com/demos/bullet-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Bullet Chart (also know as Bullet graph) is a great replacement for traditional dashboard gauges and meters. It empowers to display way more information in a more compact space by getting rid of unnecessary decoration in favor of data clarity and usability.

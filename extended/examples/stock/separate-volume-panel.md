@@ -2,7 +2,7 @@
 title: "Separate Volume Panel"
 source: "https://www.amcharts.com/demos/separate-volume-panel/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts Stock Chart enables you to have multiple chart panels that you can resize, rearrange, etc. while automatically staying in sync.

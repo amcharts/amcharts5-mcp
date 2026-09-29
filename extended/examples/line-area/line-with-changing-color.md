@@ -2,7 +2,7 @@
 title: "Line with Changing Color"
 source: "https://www.amcharts.com/demos/line-with-changing-color/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Alternating line color via data

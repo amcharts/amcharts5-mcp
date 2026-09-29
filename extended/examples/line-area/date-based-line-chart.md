@@ -2,7 +2,7 @@
 title: "Line with Different Negative Color"
 source: "https://www.amcharts.com/demos/date-based-line-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Axis ranges

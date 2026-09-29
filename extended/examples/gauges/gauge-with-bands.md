@@ -2,7 +2,7 @@
 title: "Gauge with Bands"
 source: "https://www.amcharts.com/demos/gauge-with-bands/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Gauge charts are great for representing where the value falls in a range. They are especially useful in a live data scenarios like in this demo. We can also add bands on the gauge to make the value even more readable at a glance.

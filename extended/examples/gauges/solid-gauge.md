@@ -2,7 +2,7 @@
 title: "Solid Gauge"
 source: "https://www.amcharts.com/demos/solid-gauge/"
 category: "gauges"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Solid Gauge Chart is similar to the Angular Gauge Chart and is most commonly used to mimic real-world gauges. The main difference from the Angular Gauge Chart is that the values are displayed by a filled portion of a gauge scale rather than a hand of a mechanical-like gauge.

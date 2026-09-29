@@ -2,13 +2,13 @@
 title: "Clustered Bar Chart"
 source: "https://www.amcharts.com/demos/clustered-bar-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Clustered Bar Chart (also known as Grouped bar chart, Multi-series bar chart) is great for displaying and comparing multiple sets of data over the same categories (like sales revenue of various departments of the company over several years).
 Key implementation details
 Clustered is the default behavior for the column/bar chart, so you don't have to do anything extra to achieve the "clustering".
-To make a horizontal Bar chart (as opposed to a vertical Column chart) we set yAxis to be a CategoryAxis and xAxis to a ValueAxis. Accordingly, we set valueXField and categoryYField properties on the series, so they know that categories go along the Y axis and values along the X. 
+To make a horizontal Bar chart (as opposed to a vertical Column chart) we set yAxis to be a CategoryAxis and xAxis to a ValueAxis. Accordingly, we set valueXField and categoryYField properties on the series, so they know that categories go along the Y axis and values along the X.
 Normally, axes start at the 0 point (bottom-left) but in this case we wanted years to go from top to bottom. To achieve this, we've set inversed: true on the category axis renderer.
 Finally, to make bars appear in a sequenced animation (one-by-one and not all at once) we enable sequencedInterpolation on the series.
 XY chart axes
@@ -41,15 +41,6 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   paddingLeft:0,
   layout: root.verticalLayout
 }));
-
-
-// Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.p50,
-  x: am5.p50
-}))
-
 
 // Data
 var data = [{
@@ -110,8 +101,7 @@ function createSeries(field, name) {
     sequencedInterpolation: true,
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "horizontal",
-      labelText: "[bold]{name}[/]
-{categoryY}: {valueX}"
+      labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
     })
   }));
 

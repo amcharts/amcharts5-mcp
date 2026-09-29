@@ -2,7 +2,7 @@
 title: "Honeycomb tile map"
 source: "https://www.amcharts.com/demos/honeycomb-tile-map/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This Honeycomb or hex map is a simple XYChart with bullets arranged so that they resemble true map.

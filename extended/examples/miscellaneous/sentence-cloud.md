@@ -2,7 +2,7 @@
 title: "Sentence cloud"
 source: "https://www.amcharts.com/demos/sentence-cloud/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A sentence cloud, also referred to as a sentence visualization or sentence collage, is a textual representation that visualizes sentences or short phrases from a body of text. Instead of focusing on individual words like a word cloud, a sentence cloud emphasizes complete sentences or meaningful sentence fragments.
@@ -24,7 +24,9 @@ root.setThemes([
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/word-cloud/
-var series = root.container.children.push(am5wc.WordCloud.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5wc.WordCloud.new(root, {
   maxCount: 100,
   minWordLength: 2,
   minFontSize: am5.percent(6),
@@ -50,25 +52,14 @@ series.labels.template.setup = function(label) {
 
 
 series.data.setAll([
-  { category: "Lorem ipsum
-dolorsit amet,
-consectetur", value: 2.1 },
-  { category: "Sed do eiusmod
-tempor incididunt
-ut labore et", value: 2.2 },
-  { category: "Duis aute irure
-dolor in
-reprehenderit", value: 2.3 },
-  { category: "Voluptate velit
-esse cillum dolore
-eu fugiat nulla", value: 2.1 },
-  { category: "Excepteur sint
-occaecat cupidatat
-non proident", value: 2.2 },
+  { category: "Lorem ipsum\ndolorsit amet,\nconsectetur", value: 2.1 },
+  { category: "Sed do eiusmod\ntempor incididunt\nut labore et", value: 2.2 },
+  { category: "Duis aute irure\ndolor in\nreprehenderit", value: 2.3 },
+  { category: "Voluptate velit\nesse cillum dolore\neu fugiat nulla", value: 2.1 },
+  { category: "Excepteur sint\noccaecat cupidatat\nnon proident", value: 2.2 },
   { category: "Nupidatat non proident", value: 2 },
   { category: "Incididunt ut labore et", value: 2.5 },
-  { category: "Voluptate velit
-cillum dolore eu nulla", value: 2.1 }])
+  { category: "Voluptate velit\ncillum dolore eu nulla", value: 2.1 }])
 ```
 
 ## HTML

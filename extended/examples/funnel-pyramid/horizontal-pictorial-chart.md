@@ -2,7 +2,7 @@
 title: "Horizontal Pictorial Chart"
 source: "https://www.amcharts.com/demos/horizontal-pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Pictorial charts use meaningful subject-related images to frame the values of the whole divided into segments comprising that whole. By default they are vertical but can be horizontal just as well.

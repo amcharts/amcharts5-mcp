@@ -14,4 +14,5 @@ Animation options.
 - **from** (`Value`) — Initial value to animate from. If not set, will use current value.
 - **key** (`Key`) — A setting key to animate value for.
 - **loops** (`undefined | number`) — How many times to play the animation. Defaults to 1.
+- **to** (`Value`) — Target value to animate to.
 

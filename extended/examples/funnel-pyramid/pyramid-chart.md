@@ -2,7 +2,7 @@
 title: "Pyramid Chart"
 source: "https://www.amcharts.com/demos/pyramid-chart/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Pyramid Chart represents a single data series with values displayed as parts of a whole in a triangular shape. Due to its shape, it is often used to display hierarchically related data items. Conceptually, Pyramid chart is the inverse version of a Funnel chart.

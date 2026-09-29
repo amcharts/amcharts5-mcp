@@ -2,7 +2,7 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Traceable Sankey Diagram is a specific version of the regular Sankey Diagram enabling viewers to see the whole path of some data by hovering over the chart.
@@ -22,7 +22,9 @@ root.setThemes([am5themes_Animated.new(root)]);
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var series = root.container.children.push(
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
     targetIdField: "to",

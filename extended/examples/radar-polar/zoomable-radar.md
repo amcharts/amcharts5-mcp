@@ -2,7 +2,7 @@
 title: "Zoomable Radar"
 source: "https://www.amcharts.com/demos/zoomable-radar/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows all the ways to enable zooming in a radar chart.

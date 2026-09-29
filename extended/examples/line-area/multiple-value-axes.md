@@ -2,7 +2,7 @@
 title: "Multiple Value Axes"
 source: "https://www.amcharts.com/demos/multiple-value-axes/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 It's very common to have multiple vastly different values yet want to be able to visually compare trends and relations between them. When you chart those values on the same scale you get mostly unusable results. But if you could map different graphs along different value axes you'd get a much better visualization. And amCharts has all the tools for you to achieve this. This demo shows you how.

@@ -2,7 +2,7 @@
 title: "Donut with Radial Gradient"
 source: "https://www.amcharts.com/demos/donut-with-radial-gradient/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Radial gradient modifiers
@@ -10,7 +10,7 @@ amCharts 5 can either use full-fledged gradients or "gradient modifiers" as a fi
 A gradient modifier is an easy way to automatically create gradients out of the plain fill colors, for an instant stunning looks of the charts.
 [More about gradient modifiers](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/)
 Legend
-Adding legend to the chart is super easy: you just set legend&nbsp;property of the chart with a new instance of Legend.
+Adding legend to the chart is super easy: you just set legend property of the chart with a new instance of Legend.
 The chart will take car of the rest, creating a legend with items for each slice and toggling/hover functionality.
 [More about chart legend](https://www.amcharts.com/docs/v5/concepts/legend/)
 

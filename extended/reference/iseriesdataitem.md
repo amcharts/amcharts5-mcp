@@ -25,6 +25,7 @@ Extended by: IFlowDataItem, IFlowNodesDataItem, IPercentSeriesDataItem, ILegendD
 - **customValueChangeSelectionPercent** (`undefined | number`) — (no description)
 - **customValueWorking** (`undefined | number`) — (no description)
 - **id** (`undefined | string`) — (no description)
+- **url** (`undefined | string`) — A URL to open when the data item's element is clicked. Filled from data by the series' urlField; opened in the series' linkTarget. @since 5.20.7
 - **value** (`undefined | number`) — (no description)
 - **valueChange** (`undefined | number`) — (no description)
 - **valueChangePercent** (`undefined | number`) — (no description)

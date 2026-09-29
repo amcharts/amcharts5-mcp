@@ -2,7 +2,7 @@
 title: "Horizontal Funnel"
 source: "https://www.amcharts.com/demos/horizontal-funnel/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Normally, Funnel charts are depicted vertically as a representation of actual physical funnels. Having said that, there's no reason why funnels can't be horizontal when a situation calls for it. It's very easy to achieve this with amCharts 5.

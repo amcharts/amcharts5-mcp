@@ -2,7 +2,7 @@
 title: "Mekko Chart"
 source: "https://www.amcharts.com/demos/mekko/"
 category: "miscellaneous"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Mekko or Marimekko chart is a variation of stacked area charts with varied-width categories.

@@ -2,7 +2,7 @@
 title: "Stock Chart Comparing Prices"
 source: "https://www.amcharts.com/demos/stock-chart-comparing-prices/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Stock Chart comes with a Comparison control (see top left corner) which is used to allow users interactively add additional data series for comparison with the main dataset.

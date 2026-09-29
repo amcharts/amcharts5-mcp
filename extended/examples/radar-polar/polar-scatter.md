@@ -2,7 +2,7 @@
 title: "Polar Scatter"
 source: "https://www.amcharts.com/demos/polar-scatter/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Polar scatter plots are great for visualizing discreet data that has periodic nature.

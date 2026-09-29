@@ -60,6 +60,8 @@ Or it can be a subset of data.
 
 IMPORTANTThe order of categories needs to be the same in both series' and axis' data.
 
+NOTE Since 5.20.6, series items are drawn even when the series' data is not in the same order as the axis categories — for example, a Gantt-like column chart where several items share a category and the data is sorted by date. (Before, some of those items were not drawn at all.) A line series, however, still connects its points in data order, so for lines keep the series data in category order.
+
 Having different data for category axis makes sense in the situations where we want to have only specific categories displayed:
 
 let xAxis = chart.xAxes.push(

@@ -2,7 +2,7 @@
 title: "Bubble Chart with Pie Bullets"
 source: "https://www.amcharts.com/demos/bubble-chart-with-pie-bullets/"
 category: "xy-bubble"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows a bubble chart uses PieChart elements as bubbles as well as heat rules to size them according to their value.

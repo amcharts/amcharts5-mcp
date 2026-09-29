@@ -2,7 +2,7 @@
 title: "Data Grouping 50K Points"
 source: "https://www.amcharts.com/demos/data-grouping-50k-points/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows how dynamic data item grouping - a feature built-in into amCharts 5 - can help coping with large data sets.
@@ -14,7 +14,6 @@ And, best of all, you're in control when specifying how aggregate values are cal
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");

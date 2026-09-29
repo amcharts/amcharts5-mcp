@@ -2,7 +2,7 @@
 title: "Manipulate chart data with mouse"
 source: "https://www.amcharts.com/demos/manipulate-chart-data-with-mouse/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Click and move mouse anywhere on plot area to change the graph.

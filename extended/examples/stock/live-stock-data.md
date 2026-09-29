@@ -2,7 +2,7 @@
 title: "Live Stock Data"
 source: "https://www.amcharts.com/demos/live-stock-data/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Stock Chart can display static data from a historical dataset. It can display live constantly updated data just as well. This demo shows how to setup a cursor to follow the latest data, update the dataset in real time, animate the data label to its new location and adjust the color based on the value.

@@ -2,7 +2,7 @@
 title: "Gantt Chart Playground"
 source: "https://www.amcharts.com/demos/gantt-chart-playground/"
 category: "gantt"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Welcome to your interactive Gantt chart!
@@ -54,6 +54,9 @@ function saveGanttMarkedDates() {
 }
 
 var markedDates = [];
+var categoryData = [];
+var seriesData = [];
+
 const gantt_data = loadGanttData();
 
 if (gantt_data.categoryData) {
@@ -83,12 +86,10 @@ gantt.events.onDebounced("valueschanged", (ev) => {
 }, 500);
 
 gantt.events.on("datemarked", (ev) => {
-  console.log("Date marked: " + ev.date + " (" + new Date(ev.date) + ") in " + ev.dataItem.get(name));
   saveGanttMarkedDates();
 });
 
 gantt.events.on("dateunmarked", (ev) => {
-  console.log("Date unmarked: " + ev.date + " (" + new Date(ev.date) + ") in " + ev.dataItem.get(name));
   saveGanttMarkedDates();
 });
 

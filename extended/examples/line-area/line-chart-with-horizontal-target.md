@@ -2,7 +2,7 @@
 title: "Line Chart with Horizontal Target"
 source: "https://www.amcharts.com/demos/line-chart-with-horizontal-target/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 It is very common to have a target value line on a chart and it is also common to display the parts of the chart that fall below and above that target line differently. Achieving this effect is very easy with amCharts.

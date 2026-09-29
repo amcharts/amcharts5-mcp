@@ -2,7 +2,7 @@
 title: "Variable Radius Pie Chart"
 source: "https://www.amcharts.com/demos/variable-radius-pie-chart/"
 category: "pie-donut"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Individual radii for each slice

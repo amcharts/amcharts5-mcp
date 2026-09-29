@@ -2,7 +2,7 @@
 title: "Variable-Radius Radar"
 source: "https://www.amcharts.com/demos/variable-radius-radar/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts Radar Chart doesn't necessarily have to be a perfect circle. It can be anything from full circle to half-arc to a totally flat bar/line chart. Try moving the slider under the chart to change the shape.

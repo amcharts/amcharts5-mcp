@@ -2,7 +2,7 @@
 title: "Line with Different Colors for Ups and Downs"
 source: "https://www.amcharts.com/demos/line-different-colors-ups-downs/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sometimes it's great to emphasize the trend in data by coloring the line according to the direction of value changes.

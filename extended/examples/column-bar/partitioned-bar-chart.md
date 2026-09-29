@@ -2,7 +2,7 @@
 title: "Partitioned Bar Chart"
 source: "https://www.amcharts.com/demos/partitioned-bar-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Sometimes you need to group and partition parts of your bar chart. amCharts XY Chart has all the tools for you to address that need.

@@ -2,7 +2,7 @@
 title: "Radial Bar Chart"
 source: "https://www.amcharts.com/demos/radial-bar-chart/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A Radial/Circular bar chart is a bar chart displayed on a polar coordinate system. The difference between radial column chart is that base axis of series is y axis of a radar chart making columns circular. You can easily adjust start/end angles of a chart by setting startAngle and endAngle of your RadarChart component.

@@ -2,7 +2,7 @@
 title: "Grouped and Sorted Columns"
 source: "https://www.amcharts.com/demos/grouped-and-sorted-columns/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts libraries are flexible in a way that even when something is not a special feature in the library, you can still easily implement it with amCharts. In this case we have a 2-level deep dataset but we want to represent it as a column chart you see here - no problem with amCharts 5!
@@ -89,7 +89,9 @@ var series = chart.series.push(
     categoryXField: "category",
     tooltip: am5.Tooltip.new(root, {
       labelText: "{provider} {realName}: {valueY}"
-    })
+    }),
+    // Each column takes its own color from the series palette
+    colorByDataItem: true
   })
 );
 
@@ -97,14 +99,6 @@ series.columns.template.setAll({
   fillOpacity: 0.9,
   strokeOpacity: 0
 });
-series.columns.template.adapters.add("fill", (fill, target) => {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
-series.columns.template.adapters.add("stroke", (stroke, target) => {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
-
 var lineSeries = chart.series.push(
   am5xy.LineSeries.new(root, {
     name: "Series 2",

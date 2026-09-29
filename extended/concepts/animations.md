@@ -102,6 +102,124 @@ handDataItem.animate({
 });
 
 
+## Declarative animations (`animations` setting)
+
+Since 5.20.8 every element has an `animations` setting: a list of animations described as data instead of started with `animate()`. Being a plain setting, it can be set like any other — on an element, a template, a bullet's sprite, or in a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/) — and a [serialized](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/) chart keeps it.
+
+NOTE The typings (and API reference) mark `animations` as `@since 5.21.0`, but it shipped in 5.20.8.
+
+Each entry in the list is an object with these fields:
+
+Field
+
+Default
+
+Comment
+
+`key`
+
+(required)
+
+Setting to animate. With `target: "dataItem"`, a value of the element's data item.
+
+`from`
+
+current value
+
+Value to start from.
+
+`to`
+
+(required)
+
+Value to animate to.
+
+`duration`
+
+(required)
+
+Duration in milliseconds. With `yoyo`, it is the duration of one way, so a full there-and-back takes twice as long.
+
+`delay`
+
+`0`
+
+Milliseconds to wait before starting.
+
+`loops`
+
+`1`
+
+How many times to play the animation. `0` plays it forever (`Infinity` works too in JavaScript).
+
+`yoyo`
+
+`false`
+
+Go back to `from` after reaching `to`, rather than jumping back.
+
+`easing`
+
+`"linear"`
+
+Easing **by name**: `"linear"`, `"quad"`, `"cubic"`, `"exp"`, `"sine"`, `"circle"`, `"bounce"` or `"elastic"`. An unknown name silently falls back to linear. Functions are not accepted here.
+
+`ease`
+
+`"in"`
+
+Which way the easing applies: `"in"`, `"out"` or `"inOut"` — the same as wrapping the function in `am5.ease.out()` or `am5.ease.inOut()`.
+
+`target`
+
+`"self"`
+
+`"self"` animates a setting of the element; `"dataItem"` animates a value of the element's data item.
+
+The following makes each bullet pulse, for ever:
+
+```javascript
+series.bullets.push(function (root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 6,
+      animations: [
+        { key: "scale", from: 1, to: 1.6, duration: 800, loops: 0, yoyo: true, easing: "sine" },
+        { key: "opacity", from: 1, to: 0.3, duration: 800, loops: 0, yoyo: true }
+      ]
+    })
+  });
+});
+```
+
+The animations start when the setting is applied, restart when it changes (the settings they animated are put back to what they held first), and stop when the element is disposed.
+
+IMPORTANT With `from` omitted, the animation starts from the setting's current value. If that value is `undefined`, the element jumps straight to `to` and nothing animates. `scale`, `opacity` and `rotation` are fine (the theme gives them a value), but settings like `dx` or `fill`, or a data item value that is not set yet (e.g. a map point without `positionOnLine`), need an explicit `from`.
+
+With `target: "dataItem"`, the entry animates the data item the element belongs to — for example, a map point's `positionOnLine`, which flies the point along its line. See "[Map point series: Points on a line](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/#Points_on_a_line)".
+
+In a JSON config, colors and percents in `from`/`to` are written in their object form:
+
+```json
+{
+  "type": "Circle",
+  "settings": {
+    "radius": 6,
+    "animations": [{
+      "key": "fill",
+      "from": { "type": "Color", "value": "#ff0000" },
+      "to": { "type": "Color", "value": "#0000ff" },
+      "duration": 1000,
+      "loops": 0,
+      "yoyo": true
+    }]
+  }
+}
+```
+
+A serialized chart keeps the values the animated settings were configured with, never ones caught mid-animation. `ChartSerializer` can also turn a never-ending animation started in code with `animate()` into an `animations` entry — see its `runningAnimations` setting in "[Chart serializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)".
+
+
 ## Animating between states
 
 When element [state](https://www.amcharts.com/docs/v5/concepts/settings/states/) is applied, its values will replace current setting values.
@@ -328,11 +446,11 @@ Will overshoot end value, then bounce back a few times before settling down at t
 
 Constant speed during all duration.
 
-`am5.ease.pow`
-
 `am5.ease.quad`
 
 `am5.ease.sine`
+
+NOTE `am5.ease.pow` is not a ready-to-use easing: it is `pow(t, e)` and needs an exponent as its second parameter. Passed directly as `easing`, the exponent is `undefined` and the animation produces `NaN`. Wrap it in a function instead: `easing: function(t) { return am5.ease.pow(t, 3); }`.
 
 Below demo shows the behavior of various basic easing functions:
 
@@ -374,5 +492,21 @@ The basic easing function is applied at the end animation.
 `am5.ease.yoyo`
 
 Plays animation to the end value, then returns back to the starting value, using supplied basic function.
+
+### Easing functions by name (5.20.8)
+
+The eight basic easing functions listed above carry a name, which is what lets the [`animations` setting](#Declarative_animations_animations_setting) and JSON configs refer to them as strings.
+
+`am5.ease.byName(name, mode)` returns an easing function by its name — `"linear"`, `"quad"`, `"cubic"`, `"exp"`, `"sine"`, `"circle"`, `"bounce"` or `"elastic"` — optionally wrapped by `mode`: `"in"` (default), `"out"` or `"inOut"`. An unknown name gives `linear`.
+
+`am5.ease.easingInfo(easing)` does the opposite: it returns `{ easing, ease?, yoyo? }` describing a function, or `undefined` for one that cannot be named. Functions made with `out()`, `inOut()` and `yoyo()` keep the name of the function they wrap; a function of your own, a wrapped `pow`, or a combination like `out(yoyo(...))` has none.
+
+```javascript
+am5.ease.byName("cubic", "out");                     // same as am5.ease.out(am5.ease.cubic)
+am5.ease.easingInfo(am5.ease.yoyo(am5.ease.sine));   // { easing: "sine", yoyo: true }
+am5.ease.easingInfo(function(t) { return t * t; });  // undefined
+```
+
+NOTE The typings mark `byName()`, `easingInfo()` and `IEasingInfo` as `@since 5.21.0`, but they shipped in 5.20.8.
 
 

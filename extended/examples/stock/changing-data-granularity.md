@@ -2,7 +2,7 @@
 title: "Changing Data Granularity"
 source: "https://www.amcharts.com/demos/changing-data-granularity/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 amCharts Stock Chart comes with an interval control helping viewers switch data granularity with just two clicks (see the control in action in the toolbar at the top).

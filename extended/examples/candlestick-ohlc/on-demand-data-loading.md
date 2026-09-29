@@ -2,18 +2,18 @@
 title: "On-Demand Data Loading"
 source: "https://www.amcharts.com/demos/on-demand-data-loading/"
 category: "candlestick-ohlc"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo shows a sample Stock chart setup which can load its data on-demand.
 Try panning the chart chart, zooming, switching granularity. The code will gracefully handle loading missing data from the backend.
 It relies on a few of the technologies implemented in amCharts 5:
- 	Incremental data loading
- 	CSV data loading and parsing
- 	Stacked axes
- 	Incremental on-demand data loading (commentary about the code behind this demo)
- 	Stacked axes
- 	XY chart
+Incremental data loading
+CSV data loading and parsing
+Stacked axes
+Incremental on-demand data loading (commentary about the code behind this demo)
+Stacked axes
+XY chart
 
 ## JavaScript
 

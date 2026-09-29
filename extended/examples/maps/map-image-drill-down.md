@@ -2,21 +2,21 @@
 title: "Map Image Drill-Down"
 source: "https://www.amcharts.com/demos/map-image-drill-down/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Map image drill-down is a typical scenario for widely used functionality such as "store locator" and alike.
 This demo shows multiple aspects of complex map solution:
- 	External data with post-processing.
- 	Multiple map image series.
- 	Event handling with API manipulations toggling series and controlling map zoom.
- 	Heat rule functionality.
+External data with post-processing.
+Multiple map image series.
+Event handling with API manipulations toggling series and controlling map zoom.
+Heat rule functionality.
 Click on any bubbles for drill-down effect.
- 	Map chart
- 	Map point series
- 	External data loading and parsing
- 	Heat rules
- 	Events
+Map chart
+Map point series
+External data loading and parsing
+Heat rules
+Events
 
 ## JavaScript
 
@@ -239,8 +239,7 @@ function createSeries(heatfield) {
       fill: am5.color(0x000000),
       fillOpacity: 0.7,
       cursorOverStyle: "pointer",
-      tooltipText: "{name}:
-[bold]{stores} stores[/]"
+      tooltipText: "{name}:\n[bold]{stores} stores[/]"
     }, circleTemplate));
     
     var label = container.children.push(am5.Label.new(root, {

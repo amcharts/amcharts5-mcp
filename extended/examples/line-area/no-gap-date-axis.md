@@ -2,7 +2,7 @@
 title: "No-gap Date Axis"
 source: "https://www.amcharts.com/demos/no-gap-date-axis/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 It's a common scenario, especially in financial data, that you have non-continuous data - there are gaps at night or on weekends or holidays. And it is a widespread practice that these gaps are not displayed on the axis, showing only the dates that have data. For this purpose, we created a GaplessDateAxis class, which addresses this use-case. Just replace your DateAxis with this class and that's it - no more gaps in your chart.

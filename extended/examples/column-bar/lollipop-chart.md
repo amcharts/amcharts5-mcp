@@ -2,7 +2,7 @@
 title: "Lollipop Chart"
 source: "https://www.amcharts.com/demos/lollipop-chart/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A variation of column chart, also known as lollipop plot. As you can see, the name probably doesn't need an explanation. So, let's get straight to how to make it.

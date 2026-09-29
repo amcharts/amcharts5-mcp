@@ -2,7 +2,7 @@
 title: "Pictorial Fraction Chart"
 source: "https://www.amcharts.com/demos/pictorial-fraction-chart/"
 category: "funnel-pyramid"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Pictorial fraction chart is a great way to visualize fractions of a whole using an image depicting that whole as a visual aid. For example, you can visually demonstrate the ingredients of a product using the product's image as a container.

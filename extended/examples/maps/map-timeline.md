@@ -2,7 +2,7 @@
 title: "Map Timeline"
 source: "https://www.amcharts.com/demos/map-timeline/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This is a demo visualizing event timeline on a map. Drag the year slider below the map and countries on a map light up as the slider crosses the year when that country joined a [fictional] treaty.

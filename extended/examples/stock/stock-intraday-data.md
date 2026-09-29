@@ -2,7 +2,7 @@
 title: "Stock Intraday Data"
 source: "https://www.amcharts.com/demos/stock-intraday-data/"
 category: "stock"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 You can use amCharts Stock Chart to display financial data over a lengthy period of time or just the data from within one day. By using a gapless date axis, you can skip the "holes" in your data to display only the times when there was activity.

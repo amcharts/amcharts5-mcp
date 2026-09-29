@@ -2,7 +2,7 @@
 title: "Mixed Daily and Intra-Day Chart"
 source: "https://www.amcharts.com/demos/mixed-daily-and-intra-day-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Displaying both daily and hourly data on the same chart is a great way to provide an overview high-level data and more granular details at a glance.

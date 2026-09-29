@@ -2,7 +2,7 @@
 title: "Pacific-Centered Map"
 source: "https://www.amcharts.com/demos/pacific-centered-map/"
 category: "maps"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 World map in amCharts 5 can be Pacific-centered, this is useful for Asian countries which often use this kind of map. Actually you can center the map at any longitude - drag the map to change its center.
@@ -31,6 +31,7 @@ root.setThemes([
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",
   panY: "none",
+  boxZoom: "shift",
   projection: am5map.geoNaturalEarth1(),
   rotationX: -154.8
 }));

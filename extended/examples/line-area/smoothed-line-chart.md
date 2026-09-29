@@ -2,7 +2,7 @@
 title: "Smoothed Line Chart"
 source: "https://www.amcharts.com/demos/smoothed-line-chart/"
 category: "line-area"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 Smoothing algorithms

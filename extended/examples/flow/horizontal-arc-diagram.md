@@ -2,7 +2,7 @@
 title: "Horizontal Arc Diagram"
 source: "https://www.amcharts.com/demos/horizontal-arc-diagram/"
 category: "flow"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 An arc diagram is a data visualization technique that represents relationships between entities. It consists of a series of arcs or lines connecting the entities. Arc diagrams are often used to visualize social networks, genealogical relationships, or connections between elements in a complex system. By displaying the connections in a visually intuitive way, arc diagrams help uncover patterns and insights within the data, facilitating analysis and understanding.
@@ -26,7 +26,9 @@ root.setThemes([
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/
-var series = root.container.children.push(am5flow.ArcDiagram.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5flow.ArcDiagram.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
   valueField: "value",

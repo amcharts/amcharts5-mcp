@@ -2,7 +2,7 @@
 title: "Pareto Diagram"
 source: "https://www.amcharts.com/demos/pareto-diagram/"
 category: "column-bar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A Pareto chart or Pareto diagram, is a type of chart that contains both column and a line series, where individual values are represented in descending order by columns, and the cumulative total is represented by the line.
@@ -142,7 +142,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "visits",
-  categoryXField: "country"
+  categoryXField: "country",
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 series.columns.template.setAll({
@@ -152,11 +154,6 @@ series.columns.template.setAll({
   cornerRadiusTL: 6,
   cornerRadiusTR: 6
 });
-
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
-})
-
 
 // pareto series
 var paretoSeries = chart.series.push(am5xy.LineSeries.new(root, {

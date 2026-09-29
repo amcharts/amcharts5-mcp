@@ -2,7 +2,7 @@
 title: "Rectangular Drill-down Voronoi Tree Map"
 source: "https://www.amcharts.com/demos/rectangular-voronoi-tree-map/"
 category: "hierarchy"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 A weighted Voronoi treemap is a specialized data visualization technique that combines the concepts of Voronoi diagrams and treemaps. It partitions a given space into regions based on a set of weighted data points. Each region represents a data item or category, and its size is proportional to the weight associated with that item. By using Voronoi tessellation, which ensures that each data point is associated with the nearest region, weighted Voronoi treemaps offer an effective way to visually represent hierarchical and weighted data structures. These treemaps are particularly useful in areas such as financial analysis, resource allocation, and data visualization, where both hierarchy and weight are important factors to consider.
@@ -1242,7 +1242,9 @@ am5.array.each(data.children, function (continent) {
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = root.container.children.push(am5hierarchy.VoronoiTreemap.new(root, {
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+
+var series = chart.series.push(am5hierarchy.VoronoiTreemap.new(root, {
   singleBranchOnly: true,
   downDepth: 2,
   upDepth: 0,

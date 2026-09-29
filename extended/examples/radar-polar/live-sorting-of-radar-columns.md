@@ -2,7 +2,7 @@
 title: "Live Sorting of Radar Columns"
 source: "https://www.amcharts.com/demos/live-sorting-of-radar-columns/"
 category: "radar-polar"
-scraped: "2026-03-15"
+scraped: "2026-09-29"
 ---
 
 This demo showcases a radar chart with real-time data and columns sorted by value.
@@ -69,22 +69,15 @@ var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "value",
-  categoryXField: "country"
+  categoryXField: "country",
+  // Each column takes its own color from the series palette
+  colorByDataItem: true
 }));
 
 // Rounded corners for columns
 series.columns.template.setAll({
   cornerRadius: 5,
   tooltipText:"{categoryX}: {valueY}"
-});
-
-// Make each column to be of a different color
-series.columns.template.adapters.add("fill", function (fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target ));
-});
-
-series.columns.template.adapters.add("stroke", function (stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target ));
 });
 
 // Set data
