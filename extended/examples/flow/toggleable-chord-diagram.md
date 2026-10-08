@@ -2,12 +2,24 @@
 title: "Directed Chord Diagram"
 source: "https://www.amcharts.com/demos/toggleable-chord-diagram/"
 category: "flow"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A Directed Chord Diagram is a specialized type of data visualization that represents directed relationships or flows between different entities or categories. It combines the elements of chord diagrams and flow diagrams to show the connections and directional flow between pairs of items. The diagram consists of arcs or chords that connect the entities, with the width or thickness of the arc indicating the strength or intensity of the relationship. The direction of the flow is represented by arrows along the chords. Directed Chord Diagrams are commonly used to visualize complex systems, such as migration patterns, trade flows, or communication networks, where understanding the directional relationships is crucial. They provide a clear and comprehensive representation of the flow and directionality of interactions between various entities, facilitating analysis and insights into the data.
-Flow charts
-Chord diagram
+A directed chord diagram: every ribbon runs from one person to another and takes the color of the one it starts from. Here, the six Friends characters and everyone linked to them.
+
+When direction matters: A plain chord diagram shows that two things are connected; a directed one also shows which way. Each ribbon leaves its source as wide as its value, and switching people off shows how the rest of the network holds together without them.
+
+Good for:
+- Migration between countries or regions
+- Trade, money or messages that flow one way
+- Networks with a few big players and many small ones
+
+Think twice when:
+- Dozens of tiny nodes: their names crowd the ring
+- Exact values: ribbon widths are hard to measure, add a table
+- Flows through several stages: use a Sankey diagram
+
+Prompt: Create a directed chord diagram of the connections between the six friends of the TV show Friends and the people linked to them. Clicking a node switches its ribbons off and on, and dragging a node turns the ring. Use the Animated and Responsive themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -16,35 +28,42 @@ Chord diagram
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
+// Create a container for the series
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
-
+// a click on a name switches that person's links off and on again (the nodes' default toggle)
 var series = chart.series.push(am5flow.ChordDirected.new(root, {
-  startAngle: 80,
-  padAngle: 1,
+  startAngle: 80, // the first name starts at 80 degrees (0 is 3 o'clock), near the bottom
+  padAngle: 1,    // a 1-degree gap between neighboring names
+  // a smaller circle leaves room for the names around it
+  radius: am5.percent(72),
+  // no arrowheads at the ends of the links
   linkHeadRadius: undefined,
+  // every name gets at least 1% of the ring, so the many small ones spread out instead of printing over each other
+  minSize: 0.01,
   sourceIdField: "from",
   targetIdField: "to",
   valueField: "value"
 }));
 
+// names point outward from the circle instead of following its curve
 series.nodes.labels.template.setAll({
   textType: "radial",
-  centerX: 0,
-  fontSize: 9
+  centerX: 0, // each name starts at the circle and runs outward
+  fontSize: 9 // small, so the many names fit around the circle
 });
 
+// each link takes the color of the person it starts from
 series.links.template.set("fillStyle", "source");
-
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
@@ -64,7 +83,7 @@ series.data.setAll([
   { "from": "Monica", "to": "Fun Bobby", "value": 3 },
   { "from": "Monica", "to": "Richard", "value": 16 },
   { "from": "Monica", "to": "Mrs Green", "value": 1 },
-  { "from": "Monica", "to": "Paolo2", "value": 1 },
+  { "from": "Monica", "to": "Paolo", "value": 1 },
   { "from": "Monica", "to": "Pete", "value": 10 },
   { "from": "Monica", "to": "Chip", "value": 1 },
   { "from": "Monica", "to": "Timothy (Burke)", "value": 1 },
@@ -79,7 +98,7 @@ series.data.setAll([
   { "from": "Rachel", "to": "Mrs Geller", "value": 1 },
   { "from": "Rachel", "to": "Barry", "value": 1 },
   { "from": "Rachel", "to": "Dr Green", "value": 3 },
-  { "from": "Rachel", "to": "Mark3", "value": 1 },
+  { "from": "Rachel", "to": "Mark", "value": 1 },
   { "from": "Rachel", "to": "Josh", "value": 2 },
   { "from": "Rachel", "to": "Gunther", "value": 1 },
   { "from": "Rachel", "to": "Joshua", "value": 3 },
@@ -160,7 +179,6 @@ series.data.setAll([
   { "from": "Frank", "to": "Alice", "value": 5 }
 ]);
 
-
 // Make stuff animate on load
 series.appear(1000, 100);
 ```
@@ -176,7 +194,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -185,3 +204,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

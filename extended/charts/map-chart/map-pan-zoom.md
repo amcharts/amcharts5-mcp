@@ -1,7 +1,7 @@
 ---
 title: "Panning and zooming the map"
 source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial looks at all the ways we can configure map panning and zooming.
@@ -105,7 +105,37 @@ chart.zoomToGeoPoint({ longitude: 10, latitude: 52 }, 3.5);
 
 ### Zooming to clicked object
 
-We can also add a `click` event to map polygons to zoom in on them automatically, by using map polygon series' method `zoomToDataItem()`:
+To zoom the map to a polygon when it is clicked, set polygon series' `clickZoom` setting to `true`:
+
+let polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata\_worldLow,
+    clickZoom: true
+  })
+);
+
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata\_worldLow,
+    clickZoom: true
+  })
+);
+
+Clicking the same polygon again, or the map's background, zooms back to the [home position](#Initial_position_and_zoom). On a rotating map, such as a globe, the map also turns to bring the polygon to the center.
+
+The polygon zoomed to is set as active, so we can highlight it with an "active" [state](https://www.amcharts.com/docs/v5/concepts/settings/states/):
+
+polygonSeries.mapPolygons.template.states.create("active", {
+  fill: am5.color(0x297373)
+});
+
+polygonSeries.mapPolygons.template.states.create("active", {
+  fill: am5.color(0x297373)
+});
+
+NOTE`clickZoom` is available since version 5.21.0.
+
+For custom behavior, we can instead add a `click` event to map polygons, and zoom in on them by using map polygon series' method `zoomToDataItem()`:
 
 polygonSeries.mapPolygons.template.events.on("click", function(ev) {
   polygonSeries.zoomToDataItem(ev.target.dataItem);
@@ -366,6 +396,86 @@ var chart = root.container.children.push(
   })
 );
 
+## Double-click zoom
+
+Double-clicking will zoom in the map centered on the pointer's position.
+
+Double-clicking while holding SHIFT key down, will zoom out.
+
+To disable this behavior, set Map chart's setting `doubleClickZoom: false`.
+
+let chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    doubleClickZoom: false
+  })
+);
+
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    doubleClickZoom: false
+  })
+);
+
+## Box-selection zoom
+
+To enable zooming by selecting a box on the map, use `boxZoom` setting (default: `"none"`).
+
+The following `boxZoom` values are available:
+
+Value
+
+Comment
+
+`"none"`
+
+Box-zoom is disabled (default).
+
+`"drag"`
+
+Select by pushing down on the map area and dragging.  
+  
+To use this option, `panX` and `panY` should be set to `"none"`.
+
+`"shift"`
+
+Box-select will be active when SHIFT key is down.
+
+`"ctrl"`
+
+Box-select will be active when CTRL key is down.
+
+`"alt"`
+
+Box-select will be active when ALT key is down.
+
+let chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    boxZoom: "shift"
+  })
+);
+
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    boxZoom: "shift"
+  })
+);
+
+To configure the box rectangle, use Map chart's `boxZoomSelection` property which is an instance of `Rectangle`:
+
+chart.boxZoomSelection.setAll({
+  fill: am5.color(0xff0000),
+  fillOpacity: 0.2
+});
+
+chart.boxZoomSelection.setAll({
+  fill: am5.color(0xff0000),
+  fillOpacity: 0.2
+});
+
 ## Panning outside viewport
 
 Chart will restrict how far outside its viewport map can be dragged out.
@@ -392,9 +502,12 @@ var chart = root.container.children.push(
   })
 );
 
+
 `maxPanout: 0.4` (default)
 
+
 `maxPanout: 1`
+
 
 `maxPanout: 0`
 
@@ -408,37 +521,27 @@ Map chart has two options for setting its initial/default position and zoom leve
 
 We can use those to set those to center around some latitude/longitude coordinates and zoom in automatically on start.
 
-The following will position and zoom in the map to focus on Europe:
+To have the map go to this home position once it loads, set `autoHome: true`. The following will position and zoom in the map to focus on Europe:
 
 let chart = root.container.children.push(
   am5map.MapChart.new(root, {
     homeZoomLevel: 3.5,
-    homeGeoPoint: { longitude: 10, latitude: 52 }
+    homeGeoPoint: { longitude: 10, latitude: 52 },
+    autoHome: true
   })
 );
-
-// We need at least one PolygonSeries created before map can zoom
-// ...
-
-polygonSeries.events.on("datavalidated", function() {
-  chart.goHome();
-});
 
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     homeZoomLevel: 3.5,
-    homeGeoPoint: { longitude: 10, latitude: 52 }
+    homeGeoPoint: { longitude: 10, latitude: 52 },
+    autoHome: true
   })
 );
 
-// We need at least one PolygonSeries created before map can zoom
-// ...
+The move is animated if the chart has an animation duration set, e.g. by the Animated theme, and instant otherwise. Since it needs no code, it also works in [JSON configs](https://www.amcharts.com/docs/v5/concepts/serializing/).
 
-polygonSeries.events.on("datavalidated", function() {
-  chart.goHome();
-});
-
-NOTE Note the `goHome()` call in the code snippet above. It is required to make the chart respect `homeZoomLevel` and `homeGeoPoint` settings on first load. Please also note, that it needs to be called only when `MapPolygonSeries` has its data loaded, so that map has its bounds.
+NOTE`autoHome` is available since version 5.21.0. In earlier versions, call `chart.goHome()` in polygon series' `datavalidated` event instead.
 
 ### Initial rotation
 
@@ -472,7 +575,9 @@ chart.goHome();
 
 #### Via background click
 
-We can add `click` event to the chart's background and invoke `goHome()` method in it to zoom out the chart when user clicks on background (water):
+If polygon series has [`clickZoom`](#Zooming_to_clicked_object) enabled, clicking the background already zooms the map out.
+
+Otherwise, we can add `click` event to the chart's background and invoke `goHome()` method in it to zoom out the chart when user clicks on background (water):
 
 chart.chartContainer.get("background").events.on("click", function() {
   chart.goHome();

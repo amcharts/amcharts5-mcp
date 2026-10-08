@@ -2,33 +2,31 @@
 title: "AxisRendererRadial"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrendererradial/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Renderer for radial axes.
+Renderer for an axis that runs out from the center of a `RadarChart`.
 
 ## Import
 
-```javascript
-// Import AxisRendererRadial
-import * as am5radar from "@amcharts/amcharts5/radar"
+```js
+import * as am5radar from "@amcharts/amcharts5/radar";
+
+am5radar.AxisRendererRadial.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: AxisRenderer
+Extends: AxisRenderer → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from AxisRenderer (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **axisAngle** (`undefined | number`) — @todo am: needs description
-- **endAngle** (`undefined | number`) — Series end angle. If not set, will use chart's endAngle. Click here for more info
-- **innerRadius** (`number | Percent`) — Inner radius of the axis. If set in percent, it will be relative to chart's own innerRadius. If value is negative, inner radius will be calculated from the outer edge. Click here for more info
-- **radius** (`number | Percent`) — Outer radius of the axis. If set in percent, it will be relative to chart's own radius. Click here for more info
-- **startAngle** (`undefined | number`) — Series start angle. If not set, will use chart's startAngle. Click here for more info
+- Settings: `IAxisRendererRadialSettings` — get_api_reference shows it after this page
+- Private settings: `IAxisRendererRadialPrivate`
 
 ## Properties
 
-- **chart** (`RadarChart | undefined`) — Chart this renderer is for.
-- **labels** (`ListTemplate`) — Default new ListTemplate<AxisLabelRadial> A TemplateList with all the labels attached to the axis. labels.template can be used to configure appearance of the labels.
+Public properties (not settings):
+
+- **chart** (`RadarChart`) — The chart this renderer is for.
+- **labels** (`ListTemplate<AxisLabelRadial>`) — default `new ListTemplate<AxisLabelRadial>` — Labels of the axis. Configure them through `labels.template`.

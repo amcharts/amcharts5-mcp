@@ -2,28 +2,33 @@
 title: "BreadcrumbBar"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/breadcrumbbar/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a breadcrumb navigation control.
+A breadcrumb bar for a hierarchy series: a label for each node on the path from the root to the selected node. Clicking a label selects that node.
+
+Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/breadcrumbs/
 
 ## Import
 
-```javascript
-// Import BreadcrumbBar
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.BreadcrumbBar.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **series** (`Hierarchy`) — A hierarchy series bar will use to build current selection path.
+- Settings: `IBreadcrumbBarSettings` — get_api_reference shows it after this page
+- Private settings: `IBreadcrumbBarPrivate`
+- Events: `IBreadcrumbBarEvents`
 
 ## Properties
 
-- **labels** (`ListTemplate`) — Default new ListTemplate<Label> A list of labels in the bar. labels.template can be used to configure label apperance and behavior.
+Public properties (not settings):
+
+- **labels** (`ListTemplate<Label>`) — List of the bar's labels; configure them all through `labels.template`.

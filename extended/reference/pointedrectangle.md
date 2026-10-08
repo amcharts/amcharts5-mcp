@@ -2,28 +2,26 @@
 title: "PointedRectangle"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pointedrectangle/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a rectangle with a pointer.
+Draws a rectangle with a pointer, such as a tooltip's background. The pointer comes out of the side facing `pointerX` and `pointerY`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
 
 ## Import
 
-```javascript
-// Import PointedRectangle
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.PointedRectangle.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **cornerRadius** (`undefined | number`) — Corner radius in pixels.
-- **pointerBaseWidth** (`undefined | number`) — A width of the pinter's (stem's) thick end (base) in pixels.
-- **pointerLength** (`undefined | number`) — A length of the pinter (stem) in pixels.
-- **pointerX** (`undefined | number`) — X coordinate the shape is pointing to.
-- **pointerY** (`undefined | number`) — Y coordinate the shape is pointing to.
+- Settings: `IPointedRectangleSettings` — get_api_reference shows it after this page
+- Private settings: `IPointedRectanglePrivate`

@@ -2,65 +2,32 @@
 title: "IEntitySettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ientitysettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IEntitySettings does not extend any other symbol.
-IEntitySettings is extended by IColorSetSettings, ILayoutSettings, ISpriteSettings, IPatternSettings, IGradientSettings, IInterfaceColorsSettings, INumberFormatterSettings, IDateFormatterSettings, IDurationFormatterSettings, ILanguageSettings, IModalSettings, IBulletSettings, IPatternSetSettings, IDataProcessorSettings, IAxisBulletSettings, IStockControlSettings, IDropdownSettings, IStockToolbarSettings, ISerializerSettings, IExportingSettings, IExportingMenuSettings, IAnnotatorSettings, ISliceGrouperSettings.
-Properties
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
-Extended by: IColorSetSettings, ILayoutSettings, ISpriteSettings, IPatternSettings, IGradientSettings, IInterfaceColorsSettings, INumberFormatterSettings, IDateFormatterSettings, IDurationFormatterSettings, ILanguageSettings, IModalSettings, IBulletSettings, IPatternSetSettings, IDataProcessorSettings, IAxisBulletSettings, IStockControlSettings, IDropdownSettings, IStockToolbarSettings, ISerializerSettings, IExportingSettings, IExportingMenuSettings, IAnnotatorSettings, ISliceGrouperSettings
+Extends: (none)
+Settings of: `am5.Entity` (see its page for the class)
+TypeScript: `am5.IEntitySettings` (`import type { IEntitySettings } from "@amcharts/amcharts5"`)
 
-## Properties
+## Settings
 
-- **animations** (`Array<IDeclaredAnimation>`) — Animations the element plays on its own, described as data - so they can be set from a JSON config and saved with it. Each one animates a setting of the element (or, with `target: "dataItem"`, a value of its data item - a map point's `positionOnLine`, say). They start when the setting is applied, restart when it changes, and stop when the element is disposed. A saved config keeps what was configured, never a value caught half way through an animation. E.g. `sprite.set("animations", [{ key: "rotation", to: 360, duration: 4000, loops: 0 }, { key: "scale", from: 1, to: 1.3, duration: 800, loops: 0, yoyo: true, easing: "sine" }])`. Entry fields (key, from, to, duration, delay, loops, yoyo, easing, ease, target): see IDeclaredAnimation. @since 5.20.8 (typings say 5.21.0)
-- **id** (`undefined | string`) — A custom string ID for the element. If set, element can be looked up via root.entitiesById. Will raise error if an element with the same ID already exists.
-- **ignoreThemes** (`undefined | false | true`) — Default false If set to true the themes will be ignored when applying settings. @since 5.15.6
-- **stateAnimationDuration** (`undefined | number`) — Default 0 Duration of transition from one state to another.
-- **stateAnimationEasing** (`$ease.Easing`) — Default out(cubic) Easing of transition from one state to another.
-- **themeTags** (`Array`) — Tags which can be used by the theme rules. Click here for more info
-- **themeTagsSelf** (`Array`) — Tags which can be used by the theme rules. These tags only apply to this object, not any children. Click here for more info
-- **themes** (`Array`) — A list of themes applied to the element.
-- **userData** (`any`) — A storage for any custom user data that needs to be associated with the element.
+- **ignoreThemes** (`boolean`) — default `false` — Ignores themes: no theme rule applies to the element, not even one of the default theme. _Since 5.15.6._
+- **themeTags** (`string[]`) — default `[]` _(code fallback)_ — Tags that theme rules can target. They also count for the element's children, so a rule can match a child by a tag of its parent. Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+- **themeTagsSelf** (`string[]`) — Tags that theme rules can target, like `themeTags`, but only for this element, not its children. Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+- **themes** (`Theme[]`) — Themes applied to the element and everything inside it.
+- **stateAnimationDuration** (`number`) — default `0` _(theme)_ — How long, in milliseconds, a switch from one state to another animates. `0` switches at once.
+- **stateAnimationEasing** (`$ease.Easing`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing of the animated switch from one state to another.
+- **id** (`string`) — A unique ID for looking the element up in `root.entitiesById`. Setting an ID that another element already has throws an error.
+- **userData** (`any`) — Any data of your own to keep with the element.
+- **animations** (`IDeclaredAnimation[]`) — Animations the element plays on its own, described as data - so they can be set from a JSON config and saved with it. Each one animates a setting of the element (or, with `target: "dataItem"`, a value of its data item - a map point's `positionOnLine`, say). They start when the setting is applied, restart when it changes, and stop when the element is disposed. A saved config keeps what was configured, never a value caught half way through an animation.
 
+  ```ts
+  sprite.set("animations", [
+    { key: "rotation", to: 360, duration: 4000, loops: 0 },
+    { key: "scale", from: 1, to: 1.3, duration: 800, loops: 0, yoyo: true, easing: "sine" }
+  ]);
+  ```
+
+  _Since 5.20.8._

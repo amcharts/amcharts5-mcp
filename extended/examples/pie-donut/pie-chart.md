@@ -2,14 +2,24 @@
 title: "Pie Chart"
 source: "https://www.amcharts.com/demos/pie-chart/"
 category: "pie-donut"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Pie charts are the most commonly used chart type to represent qualitative data (values in relation to the whole). This JavaScript pie chart shows values for seven countries, with tooltips on hover and an animated entrance.
-Key implementation details
-We create an instance of PieChart and add a PieSeries to it with data fields configured. The chart's startAngle and endAngle settings (-90 and 270 by default, which draws a full circle) control how much of the circle the pie covers. See the Semi-Circle Pie Chart demo for a half pie, or the Simple Pie Chart demo for the minimal setup.
-Pie chart
-Pie series
+The classic way to show parts of a whole: one circle, cut into slices sized by their share. Here, seven countries.
+
+When a pie chart works: A pie chart shows how one total splits into parts. People read it at a glance when there are only a few slices and one or two clearly lead. It struggles when slices are close in size, because angles are hard to compare.
+
+Good for:
+- Market share or votes, with a few clear leaders
+- Where a budget or a day goes
+- One headline split for a slide or a report
+
+Think twice when:
+- Slices of nearly the same size: a bar chart ranks them better
+- Values that don’t add up to a whole, like ratings or averages
+- More than six or seven parts: group the small ones as Other
+
+Prompt: Create a pie chart comparing seven countries, each slice sized by its value, with tooltips showing the country and its share of the total. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,14 +31,15 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
-    endAngle: 270
+    endAngle: 270 // a full circle, from the top (-90, the default start) back to the top
   })
 );
 
@@ -38,10 +49,11 @@ var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     valueField: "value",
     categoryField: "category",
-    endAngle: 270
+    endAngle: 270 // the slices fill the full circle too
   })
 );
 
+// hidden, the pie closes up to its start angle, so appear() sweeps it open
 series.states.create("hidden", {
   endAngle: -90
 });
@@ -86,6 +98,7 @@ series.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -94,3 +107,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

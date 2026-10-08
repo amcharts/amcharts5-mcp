@@ -96,6 +96,14 @@ Image
 
 [Available options](https://www.amcharts.com/docs/v5/reference/iexportingimageoptions/)
 
+SVG *(5.21.0)*
+
+Image (vector)
+
+`svgOptions`
+
+[Available options](https://www.amcharts.com/docs/v5/reference/iexportingsvgoptions/)
+
 PDF
 
 Image + data
@@ -172,9 +180,13 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 The above will effectively remove HTML export from the menu.
 
+NOTE Since 5.21.0 the default menu also has an "SVG" image item (after "JPG"). To leave it out, set `svgOptions: { disabled: true }` the same way.
+
 ## Exporting images
 
 For information on how to set up and configure exporting of chart snapshots, refer to "[Exporting to image formats](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/)" tutorial.
+
+For exporting the chart as an SVG vector image *(5.21.0)*, refer to "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)".
 
 ## Exporting data
 

@@ -1,12 +1,25 @@
 ---
-title: "Gantt chart in read-only mode"
+title: "Gantt Chart in Read-Only Mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This is a Gantt chart in read-only mode, where all interactions are disabled except for zooming and hovering over the columns. To enable editing, click the pencil icon in the top-right corner. Once editing is enabled, you can add or remove categories, move columns, and perform all the usual editing actions.
-Gantt Chart
+A Gantt chart locked for viewing: no dragging and no editing, just the plan to read, scroll and point at. The pencil button in the toolbar unlocks it for whoever needs to make changes.
+
+When to lock a Gantt chart: Most people who open a plan only need to read it. Read-only mode hides the grips, buttons and connector dots that invite changes, so the chart is calmer and nobody moves a task by accident, while the people who plan can still switch editing on.
+
+Good for:
+- Status pages and reports
+- Sharing a plan with clients or the whole team
+- A schedule inside a dashboard
+
+Think twice when:
+- Everyone needs to edit: leave editing on
+- Keeping changes out for real: check them on your server, a hidden button is not access control
+- A printed plan: export an image instead
+
+Prompt: Create a read-only Gantt chart of seven project phases, from idea to release, each with its progress and linked in order, with an edit button that lets users switch editing on. Use the amCharts 5 library.
 
 ## JavaScript
 
@@ -22,9 +35,13 @@ root.setThemes([
 // Create Gantt chart
 // https://www.amcharts.com/docs/v5/charts/gantt/
 var gantt = root.container.children.push(am5gantt.Gantt.new(root, {}));
-gantt.get("colors").set("step", 3);
-gantt.editButton.set("visible", true);
+gantt.get("colors").set("step", 3);    // each new color three steps along the palette, so neighbors contrast
+gantt.editButton.set("visible", true); // show the edit button (hidden by default)
+// the chart starts read-only; the edit button turns editing on
 gantt.set("editable", false);
+
+// Hide a date label that would be cut off at the left edge of the timeline
+gantt.xAxis.get("renderer").labels.template.set("minPosition", 0.08);
 
 // Set category data
 // https://www.amcharts.com/docs/v5/charts/gantt/#Category_data
@@ -54,14 +71,15 @@ gantt.yAxis.data.setAll([{
 // Set series data
 // https://www.amcharts.com/docs/v5/charts/gantt/#Series_data
 gantt.series.data.setAll([{
-  start: 1758142800000,
+  start: 1758142800000, // a timestamp in milliseconds
+  // duration 0 draws a milestone
   duration: 0,
-  progress: 1,
+  progress: 1,          // how much is done: 0 not started, 1 finished
   id: "gantt_0",
-  linkTo: ["gantt_1"]
+  linkTo: ["gantt_1"]   // an arrow to the task that follows
 }, {
   start: 1758142800000,
-  duration: 2,
+  duration: 2, // 2 working days: weekends don't count by default
   progress: 1,
   id: "gantt_1",
   linkTo: ["gantt_2"]
@@ -111,6 +129,7 @@ gantt.appear();
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 

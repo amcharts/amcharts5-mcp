@@ -2,31 +2,34 @@
 title: "MovingAverage"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/movingaverage/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Moving Average indicator: a line over the main series, averaging `field` over the last `period` data items.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import MovingAverage
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.MovingAverage.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Indicator
+Extends: Indicator → Container → Sprite → Entity → Settings
 Extended by: BollingerBands, MovingAverageEnvelope
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Indicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **offset** (`undefined | number`) — Default 0 Offset.
-- **maType** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — Default "simple" Type of the moving average. (Renamed from `type` in 5.18.0.)
-- **type** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — *Deprecated since 5.18.0 — use `maType` (still works).* Default "simple" Type of the moving average.
+- Settings: `IMovingAverageSettings` — get_api_reference shows it after this page
+- Private settings: `IMovingAveragePrivate`
+- Events: `IMovingAverageEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

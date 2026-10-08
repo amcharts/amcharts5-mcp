@@ -2,22 +2,23 @@
 title: "PercentChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/percentchart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Base class for PieChart.
- Also used for percent-based series, like FunnelSeries, PyramidSeries, etc.
+Base class for the charts of percent series: `PieChart` and `SlicedChart` (for `FunnelSeries`, `PyramidSeries` and `PictorialStackedSeries`).
 
 ## Import
 
-```javascript
-// Import PercentChart
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
 ```
 
 ## Inheritance
 
-Extends: SerialChart
-Extended by: SlicedChart, PieChart
+Extends: SerialChart → Chart → Container → Sprite → Entity → Settings
+Extended by: PieChart, SlicedChart
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SerialChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IPercentChartSettings` — get_api_reference shows it after this page
+- Private settings: `IPercentChartPrivate`

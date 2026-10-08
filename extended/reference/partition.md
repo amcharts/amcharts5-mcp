@@ -2,30 +2,34 @@
 title: "Partition"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/partition/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Partition series.
+A partition (icicle) diagram: each level is a row of rectangles (a column, when horizontal), and each node spans as much of it as its value. A click on a node zooms into it.
+
+Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/partition/
 
 ## Import
 
-```javascript
-// Import Partition
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.Partition.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Hierarchy
+Extends: Hierarchy → Series → Component → Container → Sprite → Entity → Settings
 Extended by: Sunburst
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Hierarchy (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **nodePadding** (`undefined | number`) — Default 0 Gap between nodes in pixels.
-- **orientation** (`"horizontal" | "vertical"`) — Default "vertical" Orientation of the diagram.
+- Settings: `IPartitionSettings` — get_api_reference shows it after this page
+- Private settings: `IPartitionPrivate`
+- Data item fields: `IPartitionDataItem`
 
 ## Properties
 
-- **rectangles** (`ListTemplate`) — Default new ListTemplate<RoundedRectangle> A list of node rectangle elements in a Partition chart.
+Public properties (not settings):
+
+- **rectangles** (`ListTemplate<RoundedRectangle>`) — List of node rectangles; configure them all through `rectangles.template`.

@@ -2,11 +2,24 @@
 title: "Rotating Globe with Circles"
 source: "https://www.amcharts.com/demos/rotating-globe-with-circles/"
 category: "maps"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-With amCharts 5 you can create amazing Map charts and you don't have to be limited to flattened representation of Earth. As you can see in this demo, you can use an orthographic projection to display the planet as an interactive globe.
-Learn more about map projections in our documentation.
+A spinning globe with circles on 169 countries, each sized by the country's population and colored by its continent.
+
+Circles drawn on the globe: These circles are polygons a set number of degrees across, drawn on the globe itself, so they curve with the surface and shrink toward the edge like the countries under them. Each circle's area, not its width, grows with the population, the fair way to size a circle by value. The spin catches the eye; to compare values, a flat map shows every circle at once.
+
+Good for:
+- An eye-catching world overview on a landing page
+- Values per country where the biggest should stand out
+- Countries grouped by color, like continents
+
+Think twice when:
+- Close values: circles hide small differences, a bar chart shows them
+- Every country at once: switch Projection to a flat map
+- Exact numbers: keep them in tooltips or a table
+
+Prompt: Create a globe that spins slowly on its own and can be dragged in any direction. Draw a circle on the surface of each country, sized by its population and colored by continent, with the country and population in a tooltip. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -15,21 +28,29 @@ Learn more about map projections in our documentation.
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
-  panX: "rotateX",
-  panY: "rotateY",
+  // near-black space behind the satellite picture, shown only with it
+  background: am5.Rectangle.new(root, {
+    fill: am5.color(0x101318),
+    fillOpacity: 0 // transparent until the satellite picture shows
+  }),
+  minZoomLevel: 0.5,                   // zoom out to half the fitted size at most
+  // go to the home view once the map is fitted
+  autoHome: true,
+  panX: "rotateX",                     // a sideways drag spins the globe
+  panY: "rotateY",                     // an up or down drag tilts it
+  // hold shift and drag a box to zoom into it
   boxZoom: "shift",
-  projection: am5map.geoOrthographic()
+  projection: am5map.geoOrthographic() // a globe, seen from space
 }));
 
 // Zoom control
@@ -45,38 +66,58 @@ var backgroundSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {})
 );
 backgroundSeries.mapPolygons.template.setAll({
-  fill: root.interfaceColors.get("alternativeBackground"),
-  fillOpacity: 0.1,
-  strokeOpacity: 0
+  fill: root.interfaceColors.get("alternativeBackground"), // the theme's text color: works in light and dark
+  fillOpacity: 0.1, // a faint tint for the ocean
+  strokeOpacity: 0 // no outline
 });
+// one polygon that covers the whole Earth: the ocean
 backgroundSeries.data.push({
   geometry:
     am5map.getGeoRectangle(90, 180, -90, -180)
 });
 
+// Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
+// (visible: false): make it visible for the satellite view
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
+  visible: false,
+  // the map fits the countries, not the whole picture
+  affectsBounds: false
+}));
+
+// Create graticule series: grid lines every 10 degrees
+// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
+  step: 10
+}));
+
+graticuleSeries.mapLines.template.setAll({
+  stroke: root.interfaceColors.get("alternativeBackground"), // lines in the theme's text color
+  strokeOpacity: 0.08 // barely visible
+});
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-  geoJSON: am5geodata_worldLow 
+  geoJSON: am5geodata_worldLow // country shapes from the low-detail world map
 }));
 polygonSeries.mapPolygons.template.setAll({
-  fill: root.interfaceColors.get("alternativeBackground"),
-  fillOpacity: 0.15,
-  strokeWidth: 0.5,
-  stroke: root.interfaceColors.get("background")
+  fill: root.interfaceColors.get("alternativeBackground"), // countries in the theme's text color...
+  fillOpacity: 0.15, // ...a little stronger than the ocean
+  strokeWidth: 0.5, // thin borders
+  stroke: root.interfaceColors.get("background") // borders in the background color, so they read as gaps
 });
-
 
 // Create polygon series for projected circles
 var circleSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 circleSeries.mapPolygons.template.setAll({
+  // each circle takes its fill from the polygonTemplate object in its data
   templateField: "polygonTemplate",
-  tooltipText: "{name}:{value}"
+  tooltipText: "{name}: {value}" // hover a circle for the country and its population
 });
 
 // Define data
-var colors = am5.ColorSet.new(root, {});
+var colors = am5.ColorSet.new(root, {}); // the theme's colors; each country below picks one for its continent
 
 var data = [
   { "id": "AF", "name": "Afghanistan", "value": 32358260, polygonTemplate: { fill: colors.getIndex(0) } },
@@ -119,7 +160,7 @@ var data = [
   { "id": "HR", "name": "Croatia", "value": 4395560, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "CU", "name": "Cuba", "value": 11253665, polygonTemplate: { fill: colors.getIndex(4) } },
   { "id": "CY", "name": "Cyprus", "value": 1116564, polygonTemplate: { fill: colors.getIndex(8) } },
-  { "id": "CZ", "name": "Czech Rep.", "value": 10534293, polygonTemplate: { fill: colors.getIndex(8) } },
+  { "id": "CZ", "name": "Czechia", "value": 10534293, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "DK", "name": "Denmark", "value": 5572594, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "DJ", "name": "Djibouti", "value": 905564, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "DO", "name": "Dominican Rep.", "value": 10056181, polygonTemplate: { fill: colors.getIndex(4) } },
@@ -160,7 +201,7 @@ var data = [
   { "id": "JO", "name": "Jordan", "value": 6330169, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "KZ", "name": "Kazakhstan", "value": 16206750, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "KE", "name": "Kenya", "value": 41609728, polygonTemplate: { fill: colors.getIndex(2) } },
-  { "id": "KP", "name": "Korea, Dem. Rep.", "value": 24451285, polygonTemplate: { fill: colors.getIndex(0) } },
+  { "id": "KP", "name": "North Korea", "value": 24451285, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "KR", "name": "Korea, Rep.", "value": 48391343, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "KW", "name": "Kuwait", "value": 2818042, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "KG", "name": "Kyrgyzstan", "value": 5392580, polygonTemplate: { fill: colors.getIndex(0) } },
@@ -172,7 +213,7 @@ var data = [
   { "id": "LY", "name": "Libya", "value": 6422772, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "LT", "name": "Lithuania", "value": 3307481, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "LU", "name": "Luxembourg", "value": 515941, polygonTemplate: { fill: colors.getIndex(8) } },
-  { "id": "MK", "name": "Macedonia, FYR", "value": 2063893, polygonTemplate: { fill: colors.getIndex(8) } },
+  { "id": "MK", "name": "North Macedonia", "value": 2063893, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "MG", "name": "Madagascar", "value": 21315135, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "MW", "name": "Malawi", "value": 15380888, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "MY", "name": "Malaysia", "value": 28859154, polygonTemplate: { fill: colors.getIndex(0) } },
@@ -222,7 +263,7 @@ var data = [
   { "id": "LK", "name": "Sri Lanka", "value": 21045394, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "SD", "name": "Sudan", "value": 34735288, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "SR", "name": "Suriname", "value": 529419, polygonTemplate: { fill: colors.getIndex(3) } },
-  { "id": "SZ", "name": "Swaziland", "value": 1203330, polygonTemplate: { fill: colors.getIndex(2) } },
+  { "id": "SZ", "name": "Eswatini", "value": 1203330, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "SE", "name": "Sweden", "value": 9440747, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "CH", "name": "Switzerland", "value": 7701690, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "SY", "name": "Syria", "value": 20766037, polygonTemplate: { fill: colors.getIndex(0) } },
@@ -233,7 +274,7 @@ var data = [
   { "id": "TG", "name": "Togo", "value": 6154813, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "TT", "name": "Trinidad and Tobago", "value": 1346350, polygonTemplate: { fill: colors.getIndex(4) } },
   { "id": "TN", "name": "Tunisia", "value": 10594057, polygonTemplate: { fill: colors.getIndex(2) } },
-  { "id": "TR", "name": "Turkey", "value": 73639596, polygonTemplate: { fill: colors.getIndex(8) } },
+  { "id": "TR", "name": "Türkiye", "value": 73639596, polygonTemplate: { fill: colors.getIndex(8) } },
   { "id": "TM", "name": "Turkmenistan", "value": 5105301, polygonTemplate: { fill: colors.getIndex(0) } },
   { "id": "UG", "name": "Uganda", "value": 34509205, polygonTemplate: { fill: colors.getIndex(2) } },
   { "id": "UA", "name": "Ukraine", "value": 45190180, polygonTemplate: { fill: colors.getIndex(8) } },
@@ -250,26 +291,21 @@ var data = [
   { "id": "ZW", "name": "Zimbabwe", "value": 12754378, polygonTemplate: { fill: colors.getIndex(2) } }
 ];
 
-var valueLow = Infinity;
-var valueHigh = -Infinity;
+// the largest population: every circle is sized against it
+var valueHigh = 0;
 
 for (var i = 0; i < data.length; i++) {
-  var value = data[i].value;
-  if (value < valueLow) {
-    valueLow = value;
-  }
-  if (value > valueHigh) {
-    valueHigh = value;
-  }
+  valueHigh = Math.max(valueHigh, data[i].value);
 }
 
-// radius in degrees
+// Radius in degrees. The circle's area grows with the population, so a country
+// with twice the people gets a circle twice the size, not four times.
 var minRadius = 0.5;
-var maxRadius = 5;
+var maxRadius = 6;
 
 // Create circles when data for countries is fully loaded.
 polygonSeries.events.on("datavalidated", function () {
-  circleSeries.data.clear();
+  circleSeries.data.clear(); // the event can fire again, so drop the old circles first
 
   for (var i = 0; i < data.length; i++) {
     var dataContext = data[i];
@@ -278,9 +314,10 @@ polygonSeries.events.on("datavalidated", function () {
 
     var value = dataContext.value;
 
-    var radius = minRadius + maxRadius * (value - valueLow) / (valueHigh - valueLow);
+    var radius = Math.max(minRadius, maxRadius * Math.sqrt(value / valueHigh));
 
     if (countryPolygon) {
+      // the main trick: a circle drawn on the globe's surface around the country's center, so it bends with it
       var geometry = am5map.getGeoCircle(countryPolygon.visualCentroid(), radius);
       circleSeries.data.push({
         name: dataContext.name,
@@ -294,14 +331,60 @@ polygonSeries.events.on("datavalidated", function () {
 
 // Rotate animation
 var spin = chart.animate({
-  key: "rotationX",
+  key: "rotationX", // spin around the vertical axis...
   from: 0,
-  to: 360,
-  duration: 30000,
-  loops: Infinity
+  to: 360,          // ...one full turn
+  duration: 30000,  // every 30 seconds
+  loops: Infinity   // forever
 });
 
+// a drag turns the globe itself and so stops the spin: once the globe is let go, a new endless spin starts from
+// wherever it was left
+var dragging = false;
+chart.chartContainer.events.on("pointerdown", function () {
+  dragging = true;
+});
+chart.chartContainer.events.on("globalpointerup", function () {
+  if (dragging) {
+    dragging = false;
+    spin.stop();
+    var from = chart.get("rotationX", 0);
+    spin = chart.animate({ key: "rotationX", from: from, to: from + 360, duration: 30000, loops: Infinity });
+  }
+});
 
+// The image credit
+var credit = chart.children.push(am5.Label.new(root, {
+  text: "Imagery: NASA Earth Observatory",
+  fontSize: 12,              // small print
+  fill: am5.color(0xffffff), // white, over the dark picture
+  fillOpacity: 0.6,          // a little see-through
+  x: am5.p100,               // at the chart's right edge...
+  centerX: am5.p100,         // ...lined up by the label's own right side
+  dx: -10,                   // 10px in from the edge
+  y: 10,                     // 10px from the top
+  visible: false             // shown only with the satellite picture
+}));
+
+// The countries' own look, to go back to
+var landTemplate = polygonSeries.mapPolygons.template;
+var landLook = {
+  fillOpacity: landTemplate.get("fillOpacity", 1),
+  stroke: landTemplate.get("stroke", root.interfaceColors.get("background")),
+  strokeOpacity: landTemplate.get("strokeOpacity", 1)
+};
+
+// The picture loads the first time it shows. Then the countries turn to white outlines over it, the grid lines
+// turn white, the credit shows and the map sits in near-black space
+satelliteSeries.on("visible", function(visible) {
+  if (visible) {
+    satelliteSeries.set("src", "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg");
+  }
+  credit.set("visible", visible);
+  chart.get("background").set("fillOpacity", visible ? 1 : 0);
+  landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
+  graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);
@@ -318,7 +401,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -328,3 +412,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

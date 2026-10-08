@@ -2,34 +2,29 @@
 title: "Chord"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chord/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Regular chord series.
+Chord diagram: nodes as arcs around a circle, linked by ribbons. A node's arc shows its outgoing total, and a ribbon is as wide at each end as the flow out of that end, so a one-way link narrows to a point at its target. For one-way flows, see `ChordDirected`.
+
+Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
 
 ## Import
 
-```javascript
-// Import Chord
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.Chord.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Flow
+Extends: Flow → Series → Component → Container → Sprite → Entity → Settings
 Extended by: ChordDirected, ChordNonRibbon
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Flow (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **nodeWidth** (`undefined | number`) — Default 10 The thickness of node strip in pixels.
-- **padAngle** (`undefined | number`) — Default 1 Angle of a gap between each node, in degrees.
-- **radius** (`number | Percent`) — Default 90% Radius of the diagram in percent or pixels. If set in percent, it will be relative to the whole area available for the series.
-- **sort** (`"ascending" | "descending" | "none"`) — Default "descending" How to sort nodes by their value.
-- **startAngle** (`undefined | number`) — Default 0 Starting angle in degrees.
-
-## Properties
-
-- **links** (`ListTemplate`) — Default new ListTemplate<ChordLink> List of link elements.
-- **nodes** (`ChordNodes`) — Default ChordNodes.new() A series for all chord nodes.
+- Settings: `IChordSettings` — get_api_reference shows it after this page
+- Private settings: `IChordPrivate`
+- Events: `IChordEvents`
+- Data item fields: `IChordDataItem`

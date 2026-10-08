@@ -2,13 +2,16 @@
 title: "IColorSetStepOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolorsetstepoptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
 
-## Properties
+Extends: (none)
+TypeScript: `am5.IColorSetStepOptions` (`import type { IColorSetStepOptions } from "@amcharts/amcharts5"`)
 
-- **hue** (`undefined | number`) — Value to add to "hue".
-- **lightness** (`undefined | number`) — Value to add to "lightness".
+## Options
 
+- **hue** (`number`) — Added to the hue on each pass. `1` is a full turn of the color wheel.
+- **saturation** (`number`) — Added to the saturation (`0` to `1`) on each pass.
+- **lightness** (`number`) — Added to the lightness (`0` to `1`) on each pass.

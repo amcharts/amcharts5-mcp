@@ -2,35 +2,35 @@
 title: "MACD"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/macd/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+MACD (Moving Average Convergence Divergence) indicator: the fast minus the slow exponential moving average of `field`, with a signal line and columns of the difference between the two. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import MACD
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.MACD.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **decreasingColor** (`Color`) — Decreasing color.
-- **fastPeriod** (`undefined | number`) — A value for "fast" period.
-- **increasingColor** (`Color`) — Increasing color.
-- **signalColor** (`Color`) — Signal color.
-- **signalPeriod** (`undefined | number`) — A value for "signal" period.
-- **slowPeriod** (`undefined | number`) — A value for "slow" period.
+- Settings: `IMACDSettings` — get_api_reference shows it after this page
+- Private settings: `IMACDPrivate`
+- Events: `IMACDEvents`
 
 ## Properties
 
-- **differenceSeries** (`ColumnSeries`) — Indicator series for the difference.
-- **series** (`LineSeries`) — Indicator series.
-- **signalSeries** (`LineSeries`) — Indicator series for the signal.
+Public properties (not settings):
+
+- **differenceSeries** (`ColumnSeries`) — Columns of the difference between the MACD and signal lines.
+- **series** (`LineSeries`) — Series of the MACD line.
+- **signalSeries** (`LineSeries`) — Series of the signal line.

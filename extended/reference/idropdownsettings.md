@@ -2,89 +2,23 @@
 title: "IDropdownSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdownsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IDropdownSettings extends IEntitySettings.
-IDropdownSettings is extended by IDropdownColorsSettings, IDropdownListSettings.
-Properties
-
-
-        control        
-        #
-      
-
-
-                          Type StockControl                      
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        parent        
-        #
-      
-
-
-                          Type HTMLElement                      
-
-
-        scrollable        
-        #
-      
-
-
-                          Type undefined | false | true                      
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
-Extended by: IDropdownColorsSettings, IDropdownListSettings
+Settings of: `am5stock.Dropdown` (see its page for the class)
+TypeScript: `am5stock.IDropdownSettings` (`import type { IDropdownSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **control** (`StockControl`) — The control the dropdown belongs to.
+- **parent** (`HTMLElement`) — Element the dropdown is placed in.
+- **scrollable** (`boolean`) — Limits the dropdown's height to the chart's height minus 100 pixels, scrolling the rest.
 
-- **control** (`StockControl`) — (no description)
-- **parent** (`HTMLElement`) — (no description)
-- **scrollable** (`undefined | false | true`) — (no description)
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,13 +2,15 @@
 title: "IPathPatternPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipathpatternprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IPatternPrivate
+All ancestors: IPatternPrivate, IEntityPrivate
+TypeScript: `am5.IPathPatternPrivate` (`import type { IPathPatternPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPatternPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
+
+_(none)_

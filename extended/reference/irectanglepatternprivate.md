@@ -2,13 +2,15 @@
 title: "IRectanglePatternPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/irectanglepatternprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IPatternPrivate
+All ancestors: IPatternPrivate, IEntityPrivate
+TypeScript: `am5.IRectanglePatternPrivate` (`import type { IRectanglePatternPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPatternPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
+
+_(none)_

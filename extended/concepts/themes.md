@@ -1,7 +1,7 @@
 ---
 title: "Themes"
 source: "https://www.amcharts.com/docs/v5/concepts/themes/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
@@ -24,9 +24,21 @@ Theme name
 
 Comment
 
+`Adaptive`
+
+A configurable theme that generates a series palette (and, in dark mode, interface colors) from one or two base colors.
+
 `Animated`
 
 Using will turn on animations on chart, including zoom, fading in and out, color cross-fades, etc.
+
+`Colorblind`
+
+A color-vision-deficiency-safe palette based on the Okabe-Ito set, distinguishable under common forms of color blindness. Sets series colors only.
+
+`ColorblindDark`
+
+Dark-background variant of the `Colorblind` theme.
 
 `Dark`
 
@@ -36,75 +48,105 @@ A theme suitable for dark backgrounds.
 
 A theme that adds alternative default colors.
 
+`DatavizDark`
+
+Dark-background variant of the `Dataviz` theme.
+
+`Ember`
+
+A warm dark theme on a near-black ground, with a palette biased toward ambers, oranges, and reds.
+
 `Frozen`
 
 A "cold" color-oriented theme.
+
+`FrozenDark`
+
+Dark-background variant of the `Frozen` theme.
 
 `Kelly`
 
 A theme that uses highly-contrasting colors.
 
+`KellyDark`
+
+Dark-background variant of the `Kelly` theme.
+
 `Material`
 
 A theme that uses [Material design](https://material.io/design) color palette.
+
+`MaterialDark`
+
+Dark-background variant of the `Material` theme.
 
 `Micro`
 
 A theme for creating "micro charts" - charts stripped down to a bare minimum (no labels, axes, etc.). Suitable creating charts with very minimal space requirements.
 
+`Midnight`
+
+A dark theme on a deep-navy ground, with a series palette tuned to read well on it.
+
+`Monochrome`
+
+A configurable single-hue theme that builds the series palette from one base color, with an optional accent and a dark variant.
+
 `Moonrise`
 
 A theme that adds alternative default colors.
+
+`MoonriseDark`
+
+Dark-background variant of the `Moonrise` theme.
+
+`Nord`
+
+A cool, desaturated, low-contrast theme based on the [Nord](https://www.nordtheme.com/) palette. Pairs with `NordDark`.
+
+`NordDark`
+
+Dark variant of the `Nord` theme.
+
+`Pastel`
+
+A soft, low-saturation light theme with a muted pastel series palette. Pairs with `PastelDark`.
+
+`PastelDark`
+
+Dark variant of the `Pastel` theme.
+
+`Patterns`
+
+A theme that fills series with patterns (hatches, dots, stars, triangles, grids) instead of solid colors, so series stay distinguishable by shape alone.
+
+`PatternsDark`
+
+Dark-background variant of the `Patterns` theme.
+
+`Petroleum`
+
+A restrained, near-monochrome dark theme: gold on a near-black ground, with a tight gold palette and a single green accent.
 
 `Responsive`
 
 A theme that can be used to enable responsive features of the chart - adapting settings based on available space. More info [here](https://www.amcharts.com/docs/v5/concepts/responsive/).
 
+`Savanna`
+
+A warm, editorial light theme: a cream/sepia ground with a muted palette of natural accents.
+
 `Spirited`
 
 A theme that adds alternative default colors.
 
+`SpiritedDark`
+
+Dark-background variant of the `Spirited` theme.
+
 ## Themes added in 5.20.0
 
-The list above is the pre-5.20 set. Version 5.20.0 added a large batch of palette themes, dark variants, and two parameterized themes. All live in `/themes` and load exactly like the others.
-
-### New palette themes
-
-Theme name
-
-Comment
-
-`Colorblind`
-
-A color-blindness-safe palette based on the Okabe-Ito color set.
-
-`Ember`
-
-A warm, fire-oriented palette.
-
-`Midnight`
-
-A dark theme.
-
-`Nord`
-
-A palette based on the Nord color scheme.
-
-`Pastel`
-
-A soft, low-saturation palette.
-
-`Patterns`
-
-Uses pattern fills instead of flat colors — useful for print, monochrome output, and accessibility.
-
-`Petroleum`
-
-A deep blue-green palette.
-
-`Savanna`
-
-A warm, earthy palette.
+Version 5.20.0 added a large batch of palette themes, dark variants, and two parameterized themes - all of them are in the table above. They live in `/themes` and load exactly like the others.
 
 ### New dark variants
 

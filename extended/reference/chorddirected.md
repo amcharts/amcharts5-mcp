@@ -2,28 +2,28 @@
 title: "ChordDirected"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chorddirected/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Directed chord series.
+Chord diagram for one-way flows: a node's arc shows its incoming and outgoing totals together, and each link keeps its width all the way to the target, where it ends in an arrowhead.
+
+Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
 
 ## Import
 
-```javascript
-// Import ChordDirected
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ChordDirected.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Chord
+Extends: Chord → Flow → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Chord (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **linkHeadRadius** (`number | undefined`) — Default 10 Length of the link arrow in pixels. Set to null to disable arrowheads.
-
-## Properties
-
-- **links** (`ListTemplate`) — Default new ListTemplate<ChordLinkDirected> List of link elements.
+- Settings: `IChordDirectedSettings` — get_api_reference shows it after this page
+- Private settings: `IChordDirectedPrivate`
+- Events: `IChordDirectedEvents`
+- Data item fields: `IChordDirectedDataItem`

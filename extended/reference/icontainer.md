@@ -2,17 +2,26 @@
 title: "IContainer"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icontainer/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IDisplayObject
-
-> **Note:** This class also inherits all settings, properties, methods, and events from IDisplayObject (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+All ancestors: IDisplayObject, IDisposer
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **interactiveChildren** (`boolean`) — (no description)
+- **interactiveChildren** (`boolean`)
+- **_renderer** (`IRenderer`)
+- **addChild** (`(child: IDisplayObject) => void`)
+- **addChildAt** (`(child: IDisplayObject, index: number) => void`)
+- **removeChild** (`(child: IDisplayObject) => void`)
+
+## Other inherited properties
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IDisplayObject")`) for types, defaults and descriptions.
+
+- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, visible, wheelable, x, y
+- _IDisposer_: dispose, isDisposed

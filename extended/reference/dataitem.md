@@ -2,28 +2,27 @@
 title: "DataItem"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base element that holds data bit (data item) for any Component.
+One item of a `Component`'s data, holding its values and settings.
 
 ## Import
 
-```javascript
-// Import DataItem
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
 
 ## Inheritance
 
 Extends: Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Settings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
-
 ## Properties
 
-- **bullets** (`Array | undefined`) — 
-- **close** (`object | undefined`) — A set of "close" values.
-- **component** (`Component`) — A data item's owener Component.
-- **dataContext** (`unknown`) — A reference to actual item in source data this item is based on.
-- **open** (`object | undefined`) — A set of "open" values.
+Public properties (not settings):
+
+- **bullets** (`Bullet[]`) — Bullets shown for this data item.
+- **close** (`{ [index: string]: any; }`) — End of the base interval each date field's value falls in, by field. Set by a `DateAxis`.
+- **component** (`Component`) — The `Component` the data item belongs to.
+- **dataContext** (`unknown`) — The object in the source data this data item was made from.
+- **open** (`{ [index: string]: any; }`) — Start of the base interval each date field's value falls in, by field. Set by a `DateAxis`.

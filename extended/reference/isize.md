@@ -2,12 +2,15 @@
 title: "ISize"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/isize/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **height** (`number`) — (no description)
-
+- **width** (`number`)
+- **height** (`number`)

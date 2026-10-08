@@ -1,15 +1,25 @@
 ---
-title: "Tile map"
+title: "Tile Map"
 source: "https://www.amcharts.com/demos/tile-map/"
 category: "miscellaneous"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Tile map is a simple XYChart with bullets arranged so that they resemble true map.
-XY chart
-Value axis
-Line series
-Bullets
+Every state gets one same-size tile, roughly where it lies, so small states count as much as big ones. Here, the 50 states and D.C., by population.
+
+When to use a tile map: On a real map, big states dominate and small ones vanish, although each counts once. A tile map gives every state the same space, so the colors compare fairly, at the cost of shape and size. It works where readers know the geography well enough to find their state.
+
+Good for:
+- Values per state, where each state counts equally
+- Elections, rates and rankings
+- Small multiples: one tile map per year or measure
+
+Think twice when:
+- Values tied to area, like land use: use a real map
+- Readers who don’t know the layout: the codes need a key
+- Exact values: add a sorted bar chart
+
+Prompt: Create a tile map of the US states as an XY chart: each state is a circle in a grid that follows the map, colored by population with its state code, and stays round at any size. A heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,8 +31,12 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
+
+// Short numbers: 39,250,000 shows as 39.3M
+root.numberFormatter.set("numberFormat", "#.#a");
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
@@ -30,45 +44,55 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {}));
 // hide grid
 chart.gridContainer.set("opacity", 0)
 
-
-// Create axes
+// Create axes: hidden, they only place the tiles in columns (x) and rows (y)
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+  // labels inside the plot, so the hidden axes take no room at its edges
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50, inside: true }),
-  min: 0,
+  min: 0, // columns 0 to 12; the handler below fits this to the plot
   max: 12,
-  strictMinMax: true,
-  opacity:0
+  strictMinMax: true, // exactly this range, not rounded to nicer numbers
+  opacity:0           // the axis is there to place the tiles, but not drawn
 }));
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererY.new(root, { inside: true, inversed: true }),
-  min: -1,
+  renderer: am5xy.AxisRendererY.new(root, { inside: true, inversed: true }), // row 0 at the top
+  min: -1, // rows 0 to 8 with a margin; the handler below fits it too
   max: 9,
   strictMinMax: true,
   opacity:0
 }));
 
+// Keep the tiles round at any chart size: a column is as wide as a row is tall, and the map (12 columns and
+// 9 rows, plus a margin) sits in the middle of the plot
+chart.plotContainer.events.on("boundschanged", function() {
+  var w = chart.plotContainer.width();
+  var h = chart.plotContainer.height();
+  var unit = Math.min(w / 13, h / 10);
+  xAxis.setAll({ min: 5.75 - w / unit / 2, max: 5.75 + w / unit / 2 });
+  yAxis.setAll({ min: 4 - h / unit / 2, max: 4 + h / unit / 2 });
+});
+
 // Create series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
+  // works out the lowest and highest population, for the heat rules and the heat legend
   calculateAggregates: true,
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "y",
   valueXField: "x",
-  valueField: "value"
+  valueField: "value" // the population, which the heat rule reads
 }));
 
-
-// Add bullet
+// Add bullet: a circle for each state
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
-var circleTemplate = am5.Template.new({});
+var circleTemplate = am5.Template.new({}); // shared by all the circles, so the heat rule can color each one
 series.bullets.push(function() {
   var graphics = am5.Circle.new(root, {
-    fill: series.get("fill"),
-    tooltipText: "{name} {value}",
-    tooltipY: -am5.p50,
+    fill: series.get("fill"), // the series color, until the heat rule colors the circle
+    tooltipText: "{name}: {value}",
+    tooltipY: 0, // the tooltip points at the top of the circle
   }, circleTemplate);
 
   // we use adapter for x as radius will be called only once and x will be called each time position changes
@@ -84,32 +108,71 @@ series.bullets.push(function() {
   });
 });
 
-// another bullet for label
+// another bullet for label: the state's code, black or white to stand out on its tile (a heat rule below
+// picks which)
+var labelTemplate = am5.Template.new({
+  text: "{short}", // the state's two-letter code from the data
+  textAlign: "center"
+});
 series.bullets.push(function() {
   var label = am5.Label.new(root, {
-    populateText: true,
-    centerX: am5.p50,
-    centerY: am5.p50,
-    text: "{short}"
-  });
+    populateText: true, // fills in {short} from the state's data
+    centerX: am5.p50,   // centered on the tile
+    centerY: am5.p50
+  }, labelTemplate);
 
   return am5.Bullet.new(root, {
     sprite: label
   });
 });
 
-  series.set("heatRules", [{
-    target: circleTemplate,
-    min: am5.color(0xfffb77),
-    max: am5.color(0xfe131a),
-    dataField: "value",
-    key: "fill"
-  }]);
+// Color the tiles by population, in shades of the theme's first color
+// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+var colors = chart.get("colors"); // the theme's colors
+var lowColor = am5.Color.lighten(colors.getIndex(0), 0.6); // a light tint of the first color...
+var highColor = am5.Color.brighten(colors.getIndex(0), -0.5); // ...and a dark shade of it
 
+series.set("heatRules", [{
+  target: circleTemplate,
+  min: lowColor,      // the least populous state in the light tint...
+  max: highColor,     // ...the most populous in the dark shade
+  dataField: "value", // by the series' valueField, the population
+  key: "fill"         // the setting the rule changes
+}, {
+  // the state codes: black on the light tiles, white on the dark ones
+  target: labelTemplate,
+  dataField: "value",
+  customFunction: function(label, min, max, value) {
+    // the tile's color, worked out as the rule above does
+    var tileColor = am5.Color.interpolate((value - min) / (max - min), lowColor, highColor);
+    label.set("fill", am5.Color.alternative(tileColor, am5.color(0xffffff), am5.color(0x000000)));
+  }
+}]);
 
-
+// no line between the tiles: only the circles show
 series.strokes.template.set("strokeOpacity", 0);
 
+// Add a heat legend under the map
+// https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root, {
+  orientation: "horizontal", // a bar that runs left to right
+  startColor: lowColor,      // the same colors as the heat rule
+  endColor: highColor,
+  width: am5.percent(40), // 40% of the chart's width...
+  x: am5.p50,             // ...centered
+  centerX: am5.p50
+}));
+
+// once the data is in, the legend runs from the lowest to the highest population
+series.events.on("datavalidated", function() {
+  heatLegend.set("startValue", series.getPrivate("valueLow"));
+  heatLegend.set("endValue", series.getPrivate("valueHigh"));
+});
+
+// point at a state to see where it sits on the legend
+circleTemplate.events.on("pointerover", function(ev) {
+  heatLegend.showValue(ev.target.dataItem.get("value"));
+});
 
 var data = [{
   short: "AL",
@@ -164,7 +227,7 @@ var data = [{
   name: "District of Columbia",
   y: 4,
   x: 10,
-  value: 7288000
+  value: 658900
 }, {
   short: "FL",
   name: "Florida",
@@ -419,7 +482,7 @@ var data = [{
   value: 584150
 }]
 
-// loop through all items and add 0,5 to all items in odd rows
+// loop through all items and move the even rows half a column to the right
 am5.array.each(data, function(di) {
   if (di.y / 2 == Math.round(di.y / 2)) {
     di.x += 0.5;
@@ -433,9 +496,6 @@ series.data.setAll(data);
 series.appear(1000);
 
 chart.appear(1000, 100);
-
-
-
 ```
 
 ## HTML
@@ -448,8 +508,9 @@ chart.appear(1000, 100);
 
 ```css
 #chartdiv {
-  width: 650px;
+  width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -458,3 +519,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

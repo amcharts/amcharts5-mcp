@@ -2,29 +2,33 @@
 title: "ZigZag"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/zigzag/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+ZigZag indicator: straight lines between the price's turning points, ignoring moves smaller than `deviation`. Drawn over the main series.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import ZigZag
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.ZigZag.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Indicator
+Extends: Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Indicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **depth** (`undefined | number`) — The minimum number of price bars required where there is no secondary high or low.
-- **deviation** (`undefined | number`) — Percentage of price movement you want to set as your threshold
+- Settings: `IZigZagSettings` — get_api_reference shows it after this page
+- Private settings: `IZigZagPrivate`
+- Events: `IZigZagEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

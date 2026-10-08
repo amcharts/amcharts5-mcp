@@ -2,22 +2,27 @@
 title: "IMapLineSeriesDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/imaplineseriesdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IMapSeriesDataItem
-Extended by: IGraticuleSeriesDataItem
+All ancestors: IMapSeriesDataItem, ISeriesDataItem, IComponentDataItem
+TypeScript: `am5map.IMapLineSeriesDataItem` (`import type { IMapLineSeriesDataItem } from "@amcharts/amcharts5/map"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IMapSeriesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
-
+- **mapLine** (`MapLine`) — The line that shows the data item.
 - **geometry** (`LineString | MultiLineString`) — GeoJSON geometry of the line.
-- **lineType** (`"curved" | "straight"`) — Default "curved" A line type. "curved" (default) - connects points using shortest distance, which will result in curved lines based on map projection. "straight" - connects points using visually straight lines, and will not cross the -180/180 longitude. @since 5.2.32
-- **mapLine** (`MapLine`) — Related MapLine object.
-- **pointsToConnect** (`Array`) — An array of data items from MapPointSeries to use as line end-points. Note, fixed points can not be used here.
-- **pointIds** (`Array<string>`) — Ids of the points (data items of the series set in pointSeries, matched by their id) a line connects, e.g. `{ pointIds: ["JFK", "LAX"] }`. The line waits for every id to match a point before it is drawn, so it is never drawn short. Fixed points cannot be used, same as with pointsToConnect. Ignored if pointsToConnect is set on the same data item. @since 5.20.3
+- **pointsToConnect** (`DataItem<IMapPointSeriesDataItem>[]`) — Data items of a `MapPointSeries` for the line to connect, in order. The line follows them when they move. Fixed points can't be used.
+- **pointIds** (`string[]`) — Ids of the points for the line to connect, looked up in `pointSeries`. The line follows the points, and a config holds just the ids. The line isn't drawn until every id matches a point, so it is never drawn short. Fixed points can't be used. Ignored if `pointsToConnect` is set. _Since 5.20.3._
+- **lineType** (`"curved" | "straight"`) — default `"curved"` — How the line runs between its points, instead of the series' `lineType`: • `"curved"` - along the shortest path on the globe, which the projection may bend. • `"straight"` - in straight lines on screen, never across the 180th meridian. _Since 5.2.32._
+
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IMapSeriesDataItem")`) for types, defaults and descriptions.
+
+- _IMapSeriesDataItem_: geometryType, value
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

@@ -2,21 +2,25 @@
 title: "QuadrantLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/quadrantlineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-QuadrantLineSeries uses data items of type IQuadrantLineSeriesDataItem.
+A `SimpleLineSeries` subclass.
 
 ## Import
 
-```javascript
-// Import QuadrantLineSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.QuadrantLineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: SimpleLineSeries
+Extends: SimpleLineSeries → DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SimpleLineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IQuadrantLineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IQuadrantLineSeriesPrivate`
+- Data item fields: `IQuadrantLineSeriesDataItem`

@@ -2,27 +2,29 @@
 title: "DropdownControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dropdowncontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A generic control which creates a searchable list of items in a dropdown.
- Can be used in a StockToolbar.
+A control with a dropdown that shows custom HTML (`html`).
+
+Can be used in a `StockToolbar`.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/
 
 ## Import
 
-```javascript
-// Import DropdownControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.DropdownControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: StockControl
+Extends: StockControl → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from StockControl (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **fixedLabel** (`undefined | false | true`) — (no description)
-- **html** (`undefined | string`) — (no description)
-- **scrollable** (`undefined | false | true`) — (no description)
+- Settings: `IDropdownControlSettings` — get_api_reference shows it after this page
+- Private settings: `IDropdownControlPrivate`
+- Events: `IDropdownControlEvents`

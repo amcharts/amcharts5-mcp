@@ -2,49 +2,33 @@
 title: "Series"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/series/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base class for all series.
-Data item
-Series uses data items of type ISeriesDataItem.
+Base class of all series.
 
 ## Import
 
-```javascript
-// Import Series
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
 
 ## Inheritance
 
-Extends: Component
-Extended by: Flow, FlowNodes, PercentSeries, Legend, XYSeries, Hierarchy, MapSeries, Venn, WordCloud
+Extends: Component → Container → Sprite → Entity → Settings
+Extended by: Flow, FlowNodes, Hierarchy, Legend, MapSankeyNodes, MapSeries, PercentSeries, Venn, WordCloud, XYSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Component (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **calculateAggregates** (`undefined | false | true`) — If set to true, series will calculate aggregate values, e.g. change percent, high, low, etc. Do not enable unless you are using such aggregate values in tooltips, display data fields, heat rules, or similar.
-- **customValueField** (`undefined | string`) — A key to look up in data for a numeric customValue of the data item. Usually used for storing additional numeric information and heat rules.
-- **excludeFromAggregate** (`Array`) — A list of field names to exclude from automatic aggregation when calculateAggregates is enabled. Use it to optimize performance by disabling automatic aggregation for data fields where aggregate values are not needed. @since 5.14.4
-- **fill** (`Color`) — Series fill color. Click here for more info
-- **fillPattern** (`Pattern`) — Series fill pattern. Click here for more info @since 5.10.0
-- **heatRules** (`IHeatRule[]`) — A list of heat rules to apply on series elements. Click here for more info
-- **idField** (`undefined | string`) — A key to look up in data for an id of the data item.
-- **legendDataItem** (`DataItem`) — A data item representing series in a Legend. @readonly
-- **legendLabelText** (`undefined | string`) — A text template to be used for label in legend.
-- **legendValueText** (`undefined | string`) — A text template to be used for value label in legend.
-- **linkTarget** (`undefined | string`) — Default "_self" Where a data item's URL (see urlField) opens: `"_self"` for the same window, `"_blank"` for a new tab (opened with `noopener`), or a named window / frame. A chart embedded in an iframe usually wants `"_blank"` or `"_top"`. @since 5.20.7
-- **name** (`undefined | string`) — Name of the series.
-- **sequencedDelay** (`undefined | number`) — A delay in milliseconds to wait before starting animation of next data item. Click here for more info
-- **sequencedInterpolation** (`undefined | false | true`) — If set to true the series initial animation will be played item by item rather than all at once. Click here for more info
-- **stroke** (`Color`) — Series stroke color. Click here for more info
-- **urlField** (`undefined | string`) — A key to look up in data for a URL to open when the data item's element (a bullet, column, slice, map polygon or map line) is clicked. Links are off until this is set. Linked elements: bullet sprites of every series; BaseColumnSeries columns (column, candlestick, OHLC, Gantt…); PercentSeries slices (pie, funnel, pyramid, pictorial); Venn slices; MapPolygon; MapLine — not hierarchy nodes, flow nodes/links, word-cloud labels or MapSankey nodes. A linked element gets `cursorOverStyle: "pointer"` unless you set one yourself. Script URLs (`javascript:`, `data:`, `vbscript:`) are never opened. Can be set after the data; a URL added later (e.g. `data.setIndex()`) links too. Clicks go through the public `series.openUrl(dataItem)` method, which opens the data item's `url` in linkTarget — override it to intercept links. @since 5.20.7
-- **valueField** (`undefined | string`) — A key to look up in data for a numeric value of the data item. Some series use it to display its elements. It can also be used in heat rules.
+- Settings: `ISeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ISeriesPrivate`
+- Events: `ISeriesEvents`
+- Data item fields: `ISeriesDataItem`
 
 ## Properties
 
-- **bullets** (`List`) — Default new List() List of bullets to use for the series. Click here for more info
-- **bulletsContainer** (`Container`) — Default Container.new() A Container series' bullets are stored in.
-- **chart** (`Chart | undefined`) — A chart series belongs to.
+Public properties (not settings):
+
+- **bullets** (`List<(<D extends DataItem<this["_dataItemSettings"]>>(root: Root, series: Series, dataItem: D) => Bullet | undefined)>`) — Functions that make the series' bullets: each is called for every data item and returns a `Bullet`, or nothing for no bullet. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/
+- **bulletsContainer** (`Container`) — The `Container` that holds the series' bullets.
+- **chart** (`Chart`) — The chart the series belongs to.

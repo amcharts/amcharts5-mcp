@@ -2,25 +2,26 @@
 title: "GridLayout"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/gridlayout/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A grid children layout for Container.
+Lays out a `Container`'s children in rows from left to right, with as many columns as fit its width.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout
 
 ## Import
 
-```javascript
-// Import GridLayout
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.GridLayout.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Layout
+Extends: Layout → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Layout (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **fixedWidthGrid** (`undefined | false | true`) — Default false If set to true all columns in the grid will be equal width.
-- **maxColumns** (`undefined | number`) — Maximum number of columns in the grid.
+- Settings: `IGridLayoutSettings` — get_api_reference shows it after this page
+- Private settings: `IGridLayoutPrivate`

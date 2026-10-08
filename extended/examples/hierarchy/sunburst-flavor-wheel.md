@@ -2,19 +2,28 @@
 title: "Sunburst Flavor Wheel"
 source: "https://www.amcharts.com/demos/sunburst-flavor-wheel/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-The demo shows off two-level Sunburst chart. The data uses all same values because the purpose of this chart is displaying hierarchy of types rather than their quantitative distribution.
-We also are using "template fields" technique to assign individual color to each chart via data.
-This chart is added to a Zoomable Container, so you can pan, zoom-in and zoom-out this chart using mouse wheel, pinch-zoom or zoom tools on the bottom-right.
-Sunburst
-Template fields
+A sunburst chart shows a hierarchy as rings: the inner ring holds the groups, the outer ring what each is made of. This one is a coffee aroma wheel, 75 aromas in 13 families, each with its own color.
+
+When a sunburst works: A sunburst suits hierarchies people browse rather than measure: flavor wheels, file folders, product ranges. Each ring is one level, so the structure reads at a glance, and clicking a family gives its aromas the whole wheel.
+
+Good for:
+- Flavor and aroma wheels
+- Two or three levels of categories
+- Data where the names matter more than the numbers
+
+Think twice when:
+- Comparing slices across rings: outer slices look bigger than they are
+- Many levels: the outer rings get too thin
+- Exact values: a treemap or bar chart is clearer
+
+Prompt: Create a sunburst chart styled as a coffee aroma wheel, inspired by the CoffeeMind Aroma Wheel, with flavor families in the inner ring, their aromas in the outer ring and a title in the hole. Clicking a family opens it to fill the wheel, and clicking it again goes back. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
-
 /**
  * This chart is inspired by:
  * https://coffee-mind.com/product/coffeemind-aroma-wheel/
@@ -24,68 +33,71 @@ Template fields
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 var chart = root.container.children.push(
   am5.SerialChartContainer.new(root, {
-    width: am5.p100,
+    width: am5.p100, // the container fills the whole chart div
     height: am5.p100
   })
 );
 
 chart.zoomableContainer.setAll({
-  wheelable: true,
-  pinchZoom: true
+  wheelable: true, // the mouse wheel zooms in on the wheel
+  pinchZoom: true  // and so does pinching on a touch screen
 });
 
-var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // zoom in, zoom out and reset buttons
 
-// Add title
+// Add title, in the theme's text color so it reads on light and dark backgrounds
 var title = chart.zoomableContainer.contents.children.push(am5.Label.new(root, {
   text: "COFFEE\n[#63bdc5]AROMA[/]\n[#63bdc5]WHEEL[/]",
-  textAlign: "center",
-  x: am5.p50,
+  textAlign: "center", // each of the three lines centered
+  x: am5.p50,          // in the middle of the ring's hole
   y: am5.p50,
-  centerX: am5.p50,
+  centerX: am5.p50, // measured from the label's own center
   centerY: am5.p50,
   fontSize: 25,
-  fontWeight: "500",
-  fill: am5.color(0x385d63)
+  fontWeight: "500", // medium weight
+  fill: root.interfaceColors.get("text")
 }));
 
+// a credit link in the top right corner
 var credits = chart.children.push(am5.Label.new(root, {
   text: "Inspired by\n[bold]CoffeeMind",
-  x: am5.p100,
+  x: am5.p100, // at the right edge...
   y: 0,
-  centerX: am5.p100,
+  centerX: am5.p100, // ...measured from the label's right end
   centerY: 0,
   fontSize: 15,
-  fill: am5.color(0x385d63),
-  cursorOverStyle: "pointer",
+  fill: root.interfaceColors.get("text"), // the theme's text color, readable on light and dark
+  cursorOverStyle: "pointer",             // a hand cursor shows it's a link
+  // an invisible background makes the whole label clickable, not just its letters
   background: am5.Rectangle.new(root, {
     fill: am5.color(0x000000),
     fillOpacity: 0
   })
 }));
 
+// clicking the credit opens the original aroma wheel
 credits.events.on("click", function() {
   window.open("https://coffee-mind.com/product/coffeemind-aroma-wheel/");
 });
 
-
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
-  singleBranchOnly: true,
-  downDepth: 2,
-  initialDepth: 2,
+  singleBranchOnly: true, // only one branch open at a time; a sunburst always works this way
+  downDepth: 2,           // a click on a slice opens two levels below it
+  initialDepth: 2,        // two rings on load: the flavor groups and the flavors
+  // leave out the top "COFFEE" node: the rings start with its children
   topDepth: 1,
+  // a 100px hole in the middle for the title
   innerRadius: 100,
   valueField: "value",
   categoryField: "name",
@@ -93,26 +105,33 @@ var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
 }));
 
 series.nodes.template.setAll({
-  tooltipText: "{category}"
+  tooltipText: "{category}" // the flavor's name on hover
 });
 
 series.slices.template.setAll({
-  templateField: "nodeSettings"
+  templateField: "nodeSettings" // each slice takes its color from nodeSettings in its data
 });
 
 series.labels.template.setAll({
-  paddingLeft: 10,
+  paddingLeft: 10, // room between the text and the slice's edges
   paddingRight: 10,
   paddingTop: 5,
   paddingBottom: 5,
-  baseRadius: am5.p100,
-  centerX: am5.p100,
+  baseRadius: am5.p100, // labels line up along the outer edge of their ring...
+  centerX: am5.p100,    // ...held by their end, so the text runs inward from it
   textAlign: "start"
 });
 
+// Dark text on light slices, white text on dark ones
+series.labels.template.adapters.add("fill", function (fill, target) {
+  var slice = target.dataItem && target.dataItem.get("slice");
+  var sliceFill = slice && slice.get("fill");
+  return sliceFill ? am5.Color.alternative(sliceFill, am5.color(0xffffff), am5.color(0x000000)) : fill;
+});
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// the nameless white nodes with a value of 0.1 are thin gaps between the flavor groups
 var data = [{
   name: "COFFEE",
   nodeSettings: { fill: am5.color(0xaaaaaa) },
@@ -124,12 +143,12 @@ var data = [{
       { name: "Raspberry", nodeSettings: { fill: am5.color(0xbc366a) }, value: 1 },
       { name: "Blueberry", nodeSettings: { fill: am5.color(0x565585) }, value: 1 },
       { name: "Black currant", nodeSettings: { fill: am5.color(0x473e58) }, value: 1 },
-      { name: "Strawberry", nodeSettings: { fill: am5.color(0x2e3245) }, value: 1 }
+      { name: "Blackberry", nodeSettings: { fill: am5.color(0x2e3245) }, value: 1 }
     ]
   }, {
     value: 0.1, nodeSettings: { fill: am5.color(0xffffff) }
   }, {
-    name: "Fruitty",
+    name: "Fruity",
     nodeSettings: { fill: am5.color(0xe16858) },
     children: [
       { name: "Pear", nodeSettings: { fill: am5.color(0xbbc395) }, value: 1 },
@@ -189,7 +208,7 @@ var data = [{
       { name: "Almond", nodeSettings: { fill: am5.color(0x776756) }, value: 1 },
       { name: "Peanut", nodeSettings: { fill: am5.color(0xddc2a5) }, value: 1 },
       { name: "Walnut", nodeSettings: { fill: am5.color(0x937a5b) }, value: 1 },
-      { name: "Peacan", nodeSettings: { fill: am5.color(0x947e61) }, value: 1 },
+      { name: "Pecan", nodeSettings: { fill: am5.color(0x947e61) }, value: 1 },
       { name: "Cashew", nodeSettings: { fill: am5.color(0xe5cdb7) }, value: 1 },
       { name: "Brazil nut", nodeSettings: { fill: am5.color(0xa88a74) }, value: 1 }
     ]
@@ -227,10 +246,10 @@ var data = [{
       { name: "Cinnamon", nodeSettings: { fill: am5.color(0x96794c) }, value: 1 },
       { name: "Clove", nodeSettings: { fill: am5.color(0x453c2a) }, value: 1 },
       { name: "Nutmeg", nodeSettings: { fill: am5.color(0x705c3e) }, value: 1 },
-      { name: "Cardamon", nodeSettings: { fill: am5.color(0x8b7b6c) }, value: 1 },
+      { name: "Cardamom", nodeSettings: { fill: am5.color(0x8b7b6c) }, value: 1 },
       { name: "Pepper", nodeSettings: { fill: am5.color(0x463c28) }, value: 1 },
       { name: "Coriander seeds", nodeSettings: { fill: am5.color(0xbea585) }, value: 1 },
-      { name: "Liquorice", nodeSettings: { fill: am5.color(0x201a15) }, value: 1 }
+      { name: "Licorice", nodeSettings: { fill: am5.color(0x201a15) }, value: 1 }
     ]
   }, {
     value: 0.1, nodeSettings: { fill: am5.color(0xffffff) }
@@ -277,7 +296,7 @@ var data = [{
       { name: "Hibiscus", nodeSettings: { fill: am5.color(0xae4360) }, value: 1 },
       { name: "Jasmine", nodeSettings: { fill: am5.color(0xe7d0dd) }, value: 1 },
       { name: "Coffee blossom", nodeSettings: { fill: am5.color(0xe7d1db) }, value: 1 },
-      { name: "Camomile", nodeSettings: { fill: am5.color(0xe5d9b6) }, value: 1 },
+      { name: "Chamomile", nodeSettings: { fill: am5.color(0xe5d9b6) }, value: 1 },
       { name: "Elderflower", nodeSettings: { fill: am5.color(0xe0e0dc) }, value: 1 }
     ]
   }, {
@@ -286,7 +305,7 @@ var data = [{
 }];
 
 series.data.setAll(data);
-series.set("selectedDataItem", series.dataItems[0]);
+series.set("selectedDataItem", series.dataItems[0]); // start with the whole wheel showing
 
 // Make stuff animate on load
 series.appear(1000, 100);
@@ -303,7 +322,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 650px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -312,3 +332,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

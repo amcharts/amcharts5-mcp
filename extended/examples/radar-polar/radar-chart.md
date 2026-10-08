@@ -2,15 +2,24 @@
 title: "Radar Chart"
 source: "https://www.amcharts.com/demos/radar-chart/"
 category: "radar-polar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Radar chart (also known as web chart, spider chart, star chart, etc.) is used to display data as circular two-dimensional plots. In the scope of amCharts you can think of radar charts as circular XY charts with a lot of the same concepts applicable throughout.
-Key implementation details
-We start by creating an instance of RadarChart. The key point when adding axes to a radar chart is using special axis renderers. For the circular X axis (countries in this example) we use AxisRendererCircular and for the value axis (Y) we use AxisRendererRadial. Then we use RadarLineSeries for the actual plot.
-Radar chart
-Radar axes
-Radar series
+A radar chart, also called a spider or web chart, puts each category on its own spoke and joins the values into one shape. Here, nine countries, one value each.
+
+When a radar chart works: A radar chart turns a row of values into a shape, so one item’s strong and weak points show at a glance. It works best with five to ten categories that share one scale, like scores or ratings. The order of the spokes changes the shape, so the shape alone shouldn’t carry the message.
+
+Good for:
+- Ratings or scores on several criteria
+- One profile against a target or an average
+- Showing balance: which values stick out
+
+Think twice when:
+- Categories on different scales: the shape means nothing
+- Ranking many items: a bar chart is easier to read
+- More than three shapes on top of each other
+
+Prompt: Create a radar (spider) chart comparing nine countries around the circle, drawn as one line with a light filled area and round bullets at each point, with a cursor and value tooltips. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -19,50 +28,51 @@ Radar series
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
-  panX: false,
+  panX: false,    // no dragging the plot around
   panY: false,
-  wheelX: "panX",
-  wheelY: "zoomX"
+  wheelX: "panX", // a horizontal wheel or trackpad swipe moves a zoomed view around...
+  wheelY: "zoomX" // ...and the vertical wheel zooms in on some countries
 }));
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
+  // drag around the circle to zoom in on a few countries
   behavior: "zoomX"
 }));
 
-cursor.lineY.set("visible", false);
-
+cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-var xRenderer = am5radar.AxisRendererCircular.new(root, {});
+// a small minGridDistance keeps every country's name, also on a small chart
+var xRenderer = am5radar.AxisRendererCircular.new(root, {
+  minGridDistance: 20
+});
 xRenderer.labels.template.setAll({
-  radius: 10
+  radius: 10 // the country names sit 10px outside the circle
 });
 
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0,
+  maxDeviation: 0, // can't be zoomed or panned past the first or last country
   categoryField: "country",
   renderer: xRenderer,
-  tooltip: am5.Tooltip.new(root, {})
+  tooltip: am5.Tooltip.new(root, {}) // shows the country under the pointer at the edge
 }));
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5radar.AxisRendererRadial.new(root, {})
 }));
-
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
@@ -73,23 +83,29 @@ var series = chart.series.push(am5radar.RadarLineSeries.new(root, {
   valueYField: "litres",
   categoryXField: "country",
   tooltip:am5.Tooltip.new(root, {
-    labelText:"{valueY}"
+    labelText:"{valueY}" // just the value
   })
 }));
 
 series.strokes.template.setAll({
-  strokeWidth: 2
+  strokeWidth: 2 // a 2px line
 });
 
+// a light fill inside the line, so the shape reads at a glance
+series.fills.template.setAll({
+  visible: true,
+  fillOpacity: 0.2
+});
+
+// a dot on each country's value
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: series.get("fill")
+      radius: 5,               // 5px dots
+      fill: series.get("fill") // the series color
     })
   });
 });
-
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
@@ -124,7 +140,6 @@ var data = [{
 series.data.setAll(data);
 xAxis.data.setAll(data);
 
-
 // Animate chart and series in
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
 series.appear(1000);
@@ -143,6 +158,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -152,3 +168,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

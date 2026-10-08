@@ -2,28 +2,27 @@
 title: "PicturePattern"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/picturepattern/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Picture pattern.
-@since 5.2.15
+
+_Since 5.2.15._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
 
 ## Import
 
-```javascript
-// Import PicturePattern
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.PicturePattern.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Pattern
+Extends: Pattern → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Pattern (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **canvas** (`HTMLCanvasElement`) — (no description)
-- **centered** (`undefined | false | true`) — Default true Center images.
-- **fit** (`"image" | "pattern" | "none"`) — Default "image" How pattern should be sized: "image" (default) - pattern will be sized to actual image dimensions. "pattern" - image will sized to image dimensions. "none" - image will be placed in the pattern, regardless of either dimensions.
-- **src** (`undefined | string`) — A source URI of the image. Can be relative or absolute URL, or data-uri.
+- Settings: `IPicturePatternSettings` — get_api_reference shows it after this page
+- Private settings: `IPicturePatternPrivate`
+- Events: `IPicturePatternEvents`

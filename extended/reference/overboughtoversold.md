@@ -2,37 +2,39 @@
 title: "OverboughtOversold"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/overboughtoversold/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Base class for indicators with overbought and oversold levels, drawn in a panel of their own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import OverboughtOversold
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.OverboughtOversold.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 Extended by: CommodityChannelIndex, RelativeStrengthIndex, StochasticMomentumIndex, StochasticOscillator, WilliamsR
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **overBought** (`undefined | number`) — A value for "overbought" threshold.
-- **overBoughtColor** (`Color`) — A color for "overbought" section.
-- **overSold** (`undefined | number`) — A value for "oversold" threshold.
-- **overSoldColor** (`Color`) — A color for "oversold" section.
+- Settings: `IOverboughtOversoldSettings` — get_api_reference shows it after this page
+- Private settings: `IOverboughtOversoldPrivate`
+- Events: `IOverboughtOversoldEvents`
 
 ## Properties
 
-- **middle** (`DataItem`) — (no description)
-- **overBought** (`DataItem`) — (no description)
-- **overBoughtRange** (`ILineSeriesAxisRange`) — (no description)
-- **overSold** (`DataItem`) — (no description)
-- **overSoldRange** (`ILineSeriesAxisRange`) — (no description)
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **middle** (`DataItem<IValueAxisDataItem>`) — Y axis data item of the middle line, halfway between the two levels.
+- **overBought** (`DataItem<IValueAxisDataItem>`) — Y axis data item of the overbought line.
+- **overBoughtRange** (`ILineSeriesAxisRange`) — Axis range that colors the part of the series above `overBought`.
+- **overSold** (`DataItem<IValueAxisDataItem>`) — Y axis data item of the oversold line.
+- **overSoldRange** (`ILineSeriesAxisRange`) — Axis range that colors the part of the series below `overSold`.
+- **series** (`LineSeries`) — The indicator's series.

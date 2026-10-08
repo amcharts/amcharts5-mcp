@@ -1,7 +1,7 @@
 ---
 title: "Tree"
 source: "https://www.amcharts.com/docs/v5/charts/hierarchy/tree/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial focuses on the configuration of a tree diagram.
@@ -30,7 +30,9 @@ var series = root.container.children.push(
   })
 );
 
+
 `orientation: "vertical"` (default)
+
 
 `orientation: "horizontal"`
 
@@ -152,10 +154,47 @@ series.outerCircles.template.setAll({
   radius: 20
 });
 
+
 `radius: 15` (default)
+
 
 `radius: 20`
 
+
+### Fitting visible nodes
+
+By default, Tree will reserve space for all nodes, even if they are invisible.
+
+If we'd like to free up the space of the nodes that are hidden, we can set `fitNodes` to `true`:
+
+let series = root.container.children.push(
+  am5hierarchy.Tree.new(root, {
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children",
+    orientation: "horizontal",
+    fitNodes: true
+  })
+);
+
+var series = root.container.children.push(
+  am5hierarchy.Tree.new(root, {
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children",
+    orientation: "horizontal",
+    fitNodes: true
+  })
+);
+
+
+Fully expanded
+
+
+`fitNodes: false` (default)
+
+
+`fitNodes: true`
 
 ### Disabling dragging
 
@@ -317,6 +356,41 @@ series.nodes.template.setup = function(target) {
 
 
 IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Setup_handler).
+
+## Layout
+
+By default, Tree will divide the space and arrange the nodes in perfect columns.
+
+While that works for smaller structures, having more complicated ones might not use the available space efficiently.
+
+Here's when clustered mode comes in play. To enable it, simply set `clustered: false` in your Tree settings:
+
+var series = zoomableContainer.contents.children.push(am5hierarchy.Tree.new(root, {
+  singleBranchOnly: false,
+  downDepth: 1,
+  initialDepth: 10,
+  valueField: "value",
+  categoryField: "name",
+  childDataField: "children",
+  clustered: true
+}));
+
+let series = zoomableContainer.contents.children.push(am5hierarchy.Tree.new(root, {
+  singleBranchOnly: false,
+  downDepth: 1,
+  initialDepth: 10,
+  valueField: "value",
+  categoryField: "name",
+  childDataField: "children",
+  clustered: true
+}));
+
+
+`clustered: false` (default)
+
+
+`clustered: true`
+
 
 ## Links
 

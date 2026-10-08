@@ -2,199 +2,32 @@
 title: "IDateRangeSelectorSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idaterangeselectorsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IDateRangeSelectorSettings extends IStockControlSettings.
-IDateRangeSelectorSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IStockControlSettings
-Indicates if control is active.
-
-
-        align        
-        #
-      
-
-
-                          Type "left" | "right"                      
-Default "left"
-
-Inherited from IStockControlSettings
-Alignment of the control in a toolbar.
-
-
-        allowInput        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-If set to false, typing into date fields will be disabled. Instead, user will be able to select a day using arrow keys.
-@since 5.12.3
-
-
-        dateFormat        
-        #
-      
-
-
-                          Type undefined | string                      
-Date format to use for date input fields.
- Will use global date format if not set.
-
-
-        description        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Description of what the button does.
-
-
-        disableWeekDays        
-        #
-      
-
-
-                          Type number[]                      
-Default []
-Set to array of days to disable in date picker dropdowns, with Sunday starting at 0, Monday - 1, etc.
-@since 5.11.1
-
-
-        forceHidden        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IStockControlSettings
-Force this control to always be invisible.
-@since 5.8.5
-@defaul false
-
-
-        icon        
-        #
-      
-
-
-                          Type HTMLElement | SVGElement | "none"                      
-Inherited from IStockControlSettings
-An element with control icon. If not set, each control will aytomatically create an icon.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        maxDate        
-        #
-      
-
-
-                          Type Date | "auto" | null                      
-Default "auto"
-Maximum date to allow for selection.
- Accepts either a Date object or "auto" (latest date available in chart).
-@since 5.3.7
-
-
-        minDate        
-        #
-      
-
-
-                          Type Date | "auto" | null                      
-Default "auto"
-Minimum date to allow for selection.
- Accepts either a Date object or "auto" (smallest date available in chart).
-@since 5.3.7
-
-
-        name        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Name of the control. Used for the label.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stockChart        
-        #
-      
-
-
-                          Type StockChart                      
-Inherited from IStockControlSettings
-A StockChart the toolbar is for.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IStockControlSettings
+All ancestors: IStockControlSettings, IEntitySettings
+Settings of: `am5stock.DateRangeSelector` (see its page for the class)
+TypeScript: `am5stock.IDateRangeSelectorSettings` (`import type { IDateRangeSelectorSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **dateFormat** (`string`) — Date format of the input fields and the button label, such as `"yyyy-MM-dd"`. Uses the format of the root's date formatter if not set.
+- **useDefaultCSS** (`boolean`) — default `true` — Loads the default CSS of the date pickers (Flatpickr). Without it, they need CSS of your own. _Since 5.2.4._
+- **minDate** (`"auto" | Date`) — default `"auto"` _(theme)_ — Earliest date that can be picked: a `Date`, `"auto"` for the first date of the data, or `null` for no limit. _Since 5.3.7._
+- **maxDate** (`"auto" | Date`) — default `"auto"` _(theme)_ — Latest date that can be picked: a `Date`, `"auto"` for the last date of the data, or `null` for no limit. _Since 5.3.7._
+- **disableWeekDays** (`number[]`) — default `[]` — Days of the week that can't be picked: `0` is Sunday, `1` Monday, and so on. _Since 5.11.1._
+- **allowInput** (`boolean`) — default `true` _(theme)_ — Lets the user type dates into the fields. When `false`, a day can only be picked in the calendar. _Since 5.12.3._
 
-- **allowInput** (`undefined | false | true`) — Default true If set to false, typing into date fields will be disabled. Instead, user will be able to select a day using arrow keys. @since 5.12.3
-- **dateFormat** (`undefined | string`) — Date format to use for date input fields. Will use global date format if not set.
-- **disableWeekDays** (`number[]`) — Default [] Set to array of days to disable in date picker dropdowns, with Sunday starting at 0, Monday - 1, etc. @since 5.11.1
-- **maxDate** (`Date | "auto" | null`) — Default "auto" Maximum date to allow for selection. Accepts either a Date object or "auto" (latest date available in chart). @since 5.3.7
-- **minDate** (`Date | "auto" | null`) — Default "auto" Minimum date to allow for selection. Accepts either a Date object or "auto" (smallest date available in chart). @since 5.3.7
-- **useDefaultCSS** (`undefined | false | true`) — Default true If set to false the control will not load default CSS for Flatpickr component. This would mean it would be unstyled, and would require custom CSS present on the page. @since 5.2.4
+## Inherited settings with a different default on DateRangeSelector
+
+- **description** (`string`) — default `root.language.translateAny("Date Range")` _(theme)_ — _from IStockControlSettings_ — What the control does, shown as the button's tooltip. Falls back to `name`.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlSettings")`) for types, defaults and descriptions.
+
+- _IStockControlSettings_: active, align, forceHidden, icon, name, stockChart, togglable, visible
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

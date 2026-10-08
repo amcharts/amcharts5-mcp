@@ -2,28 +2,27 @@
 title: "DataProcessor"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dataprocessor/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A tool that can process the data before it is being used in charts.
+Converts data values, such as string dates and numbers, as data is added to a component.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
 
 ## Import
 
-```javascript
-// Import DataProcessor
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.DataProcessor.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **colorFields** (`string[]`) — A list of fields in data that need to be converted to Color objects.
-- **dateFields** (`string[]`) — A list of fields in data that need to be converted to tiemstamps.
-- **dateFormat** (`undefined | string`) — Date format used for parsing string-based dates.
-- **emptyAs** (`any`) — Replace empty values with this.
-- **numericFields** (`string[]`) — A list of fields in data that need to be converted to numbers.
+- Settings: `IDataProcessorSettings` — get_api_reference shows it after this page
+- Private settings: `IDataProcessorPrivate`
+- Events: `IDataProcessorEvents`

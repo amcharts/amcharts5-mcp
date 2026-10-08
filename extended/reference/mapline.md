@@ -2,25 +2,25 @@
 title: "MapLine"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/mapline/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A line object in a MapLineSeries.
+A line in a `MapLineSeries`.
 
 ## Import
 
-```javascript
-// Import MapLine
-import * as am5map from "@amcharts/amcharts5/map"
+```js
+import * as am5map from "@amcharts/amcharts5/map";
+
+am5map.MapLine.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **geometry** (`LineString | MultiLineString`) — A GeoJSON representation of the polygons geometry.
-- **precision** (`undefined | number`) — Default 0.5 
+- Settings: `IMapLineSettings` — get_api_reference shows it after this page
+- Private settings: `IMapLinePrivate`
+- Events: `IMapLineEvents`

@@ -2,91 +2,43 @@
 title: "IValueAxisSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ivalueaxissettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IValueAxisSettings extends IAxisSettings.
-IValueAxisSettings is extended by IDateAxisSettings, IDurationAxisSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IAxisSettings
-Extended by: IDateAxisSettings, IDurationAxisSettings
+All ancestors: IAxisSettings, IComponentSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5xy.ValueAxis` (see its page for the class)
+TypeScript: `am5xy.IValueAxisSettings` (`import type { IValueAxisSettings } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IAxisSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **min** (`number`) — Lowest value of the axis scale, instead of the lowest series value. The axis may round it to fit its grid, unless `strictMinMax` is `true`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Custom_scope
+- **max** (`number`) — Highest value of the axis scale, instead of the highest series value. The axis may round it to fit its grid, unless `strictMinMax` is `true`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Custom_scope
+- **strictMinMax** (`boolean`) — default `false` _(theme)_ — Makes the scale start and end exactly at `min` and `max`, or where they aren't set, at the lowest and highest series values, without rounding. The axis then also stops rescaling to the values in view as the chart zooms. To rescale to the exact values in view, use `strictMinMaxSelection` instead. `extraMin` and `extraMax` still add padding. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Custom_scope
+- **strictMinMaxSelection** (`boolean`) — default `false` _(code fallback)_ — Rescales the axis to exactly the lowest and highest values in view as the chart zooms, without rounding. Keeps series of derived values, such as `valueYChangeSelection`, from jumping around. Has no effect with `strictMinMax`, which stops the rescaling. `extraMin` and `extraMax` still add padding. _Since 5.1.11._
+- **logarithmic** (`boolean`) — default `false` _(theme)_ — Uses a logarithmic scale. It can show only values above zero; see `treatZeroAs`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Logarithmic_scale
+- **treatZeroAs** (`number`) — On a `logarithmic` axis, the value to plot zero and negative values at, since the scale can't show them. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Logarithmic_scale
+- **extraMin** (`number`) — default `0` _(code fallback)_ — Extends the scale below the lowest value by this share of the value range: with values from `0` to `1000`, `0.1` starts the axis at `-100` (before rounding to the grid). If not set, a `logarithmic` axis without `strictMinMax` uses `0.1`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Relative_scope_extension
+- **extraMax** (`number`) — default `0` _(code fallback)_ — Extends the scale above the highest value by this share of the value range: with values from `0` to `1000`, `0.1` ends the axis at `1100` (before rounding to the grid). If not set, a `logarithmic` axis without `strictMinMax` uses `0.2`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Relative_scope_extension
+- **baseValue** (`number`) — default `0` _(theme)_ — The value columns grow from, splitting "positive" from "negative" values. Its grid line gets the `"base"` theme tag. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Base_value
+- **maxPrecision** (`number`) — Most decimal places the labels may have. It also limits the grid step: `0` allows whole-number steps only. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Label_format
+- **fillRule** (`(dataItem: DataItem<IValueAxisDataItem>) => void`) — default `(function)` _(theme)_ — Function that decides which axis fills show; it is called for each grid step. The default fills every other step. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Axis_fills
+- **numberFormat** (`string`) — Number format for the labels. If not set, the number formatter's default format is used, with as many decimals as the grid step needs. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Label_format
+- **tooltipNumberFormat** (`string | Intl.NumberFormatOptions`) — Number format for the axis tooltip. If not set, `numberFormat` is used. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Tooltip_number_format
+- **extraTooltipPrecision** (`number`) — default `0` _(code fallback)_ — Extra decimal places for the axis tooltip, beyond those of the labels: with labels like `1.1` and `1.2`, `1` lets the tooltip show `1.15`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Tooltip_number_format
+- **calculateTotals** (`boolean`) — Calculates totals across the axis's series for each data item in view: `valueYTotal`, `valueYSum` and `valueYTotalPercent` (or the `valueX` ones on an X axis), as used by 100% stacked charts. Series with `excludeFromTotal` are left out. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Calculated_values
+- **syncWithAxis** (`ValueAxis<AxisRenderer>`) — Another `ValueAxis` whose grid this axis lines up with, by adjusting its own scale. A perfect match isn't always possible. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Syncing_grid
+- **syncZeros** (`boolean`) — default `false` — Lines up this axis's zero with the zero of `syncWithAxis`, spreading the other grid lines above and below it. Needs zero within the range of `syncWithAxis`, which has to extend to each side where this axis has values. _Since 5.16.2._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Syncing_grid
+- **autoZoom** (`boolean`) — default `true` _(theme)_ — Rescales the axis to fit the values in view as the chart zooms along the other axis. Works only when that axis is not a plain `ValueAxis`: a `DateAxis` or a `CategoryAxis`, for example. _Since 5.2.20._
 
-- **autoZoom** (`undefined | false | true`) — Default true If set to false, the axis won't be auto-zoomed to a selection (this works only if the other axis is a DateAxis or a CategoryAxis). IMPORTANT: This setting will be ignored if both X and Y axes are a ValueAxis. @since 5.2.20
-- **baseValue** (`undefined | number`) — Default 0 Base value, which indicates the threshold between "positive" and "negative" values. Click here for more info
-- **calculateTotals** (`undefined | false | true`) — If your series relies on dynamically calculated values, like value changes, percents, or total sums, set this to true. Click here for more info
-- **extraMax** (`undefined | number`) — Relative extension to the automatically-calculated maximum value of the axis scale. E..g. 0.1 will extend the scale by 10%, so if max value is 1000, the axis will now show maximum value of 1100. Click here for more info
-- **extraMin** (`undefined | number`) — Relative extension to the automatically-calculated minimum value of the axis scale. E..g. 0.1 will extend the scale by 10%, so if max value is 1000 and minimum value is 0, the new minimum value will be -100. Click here for more info
-- **extraTooltipPrecision** (`undefined | number`) — If set, will use greater precision for the axis tooltip than the one for axis' actual labels. E.g. if axis displays labels with one decimal (1.0, 1.1, 1.2) setting this setting to 1 would allow two decimals in axis tooltip, e.g. 1.15. Click here for more info
-- **fillRule** (`undefined | ( dataItem: DataItem) => void`) — A function that can be used to specify how to configure axis fills. Click here for more info
-- **logarithmic** (`undefined | false | true`) — If set to true axis will use logarithmic scale. Click here for more info
-- **max** (`undefined | number`) — Override maximum value for the axis scale. NOTE: the axis might modify the maximum value to fit into its scale better, unless strictMinMax is set to true. Click here for more info
-- **maxPrecision** (`undefined | number`) — Maximum number of decimals to allow in axis labels. This setting not only affects formatting of the labels, but also where and how many grid/labels are placed on the axis. Click here for more info
-- **min** (`undefined | number`) — Override minimum value for the axis scale. NOTE: the axis might modify the minimum value to fit into its scale better, unless strictMinMax is set to true. Click here for more info
-- **numberFormat** (`undefined | string`) — Number format to use for axis labels. If not set, will use format set in global number formatter. Click here for more info
-- **strictMinMax** (`undefined | false | true`) — Force axis scale to be precisely at values as set in min and/or max. In case min and/or max is not set, the axis will fix its scale to precise lowest and highest values available through all of the series attached to it. This effectively locks the axis from auto-zooming itself when chart is zoomed in. If you need to zoom to actual low/high values within currently visible scope, use strictMinMaxSelection instead. Use extraMin and extraMax to add extra "padding". Click here for more info
-- **strictMinMaxSelection** (`undefined | false | true`) — Force axis to auto-zoom to exact lowest and highest values from attached series' data items within currently visible range. This is a good feature when your series is plotted from derivative values, like valueYChangeSelection as it helps to avoid frequent jumping of series to adjusted min and max of the axis. This will not work if strictMinMax is set to true (the axis will not zoom at all in this case). Use extraMin and extraMax to add extra "padding". @since 5.1.11
-- **syncWithAxis** (`ValueAxis`) — This setting can be set to an instance of another ValueAxis. If set the grid of this axis will be synced with grid of the target axis. NOTE: this is not 100% guaranteed to work. In some rare cases perfect sync might not be possible. Click here for more info
-- **syncZeros** (`undefined | false | true`) — Aligns the zero baseline across synced axes. Works only if `syncWithAxis` is set and zero is within the min/max of the axis. @since 5.16.2
-- **tooltipNumberFormat** (`string | NumberFormatOptions`) — A numeric format used for numbers displayed in axis tooltip. Click here for more info
-- **treatZeroAs** (`undefined | number`) — Treat zero values as some other value. Useful in situations where zero would result in error, i.e. logarithmic scale. Click here for more info
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IAxisSettings")`) for types, defaults and descriptions.
+
+- _IAxisSettings_: bullet, end, fixAxisSize, maxDeviation, maxZoomCount, maxZoomFactor, minorAxisFillsEnabled, minZoomCount, panX, panY, renderer, snapTooltip, start, tooltip, tooltipLocation, zoomable, zoomOut, zoomX, zoomY
+- _IComponentSettings_: interpolationDuration, interpolationEasing
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

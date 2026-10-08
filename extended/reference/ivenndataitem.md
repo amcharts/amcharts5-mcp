@@ -2,125 +2,28 @@
 title: "IVennDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ivenndataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IVennDataItem extends ISeriesDataItem.
-IVennDataItem is not extended by any other symbol.
-Properties
-
-
-        category        
-        #
-      
-
-
-                          Type string                      
-Category.
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Fill color used for the slice and related elements, e.g. legend marker.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Fill pattern used for the slice and related elements, e.g. legend marker.
 
 ## Inheritance
 
 Extends: ISeriesDataItem
+All ancestors: ISeriesDataItem, IComponentDataItem
+TypeScript: `am5venn.IVennDataItem` (`import type { IVennDataItem } from "@amcharts/amcharts5/venn"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISeriesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
-
-- **category** (`string`) — Category.
+- **intersections** (`string[]`) — Categories of the circles this data item is the overlap of. Set only for overlaps.
+- **category** (`string`) — The circle's category, which overlaps refer to in `intersections`.
+- **slice** (`Graphics`) — The shape that shows the data item: a circle, or the area where circles overlap.
+- **label** (`Label`) — The slice's label.
+- **legendDataItem** (`DataItem<ILegendDataItem>`) — The data item's entry in a legend.
 - **fill** (`Color`) — Fill color used for the slice and related elements, e.g. legend marker.
-- **fillPattern** (`Pattern`) — Fill pattern used for the slice and related elements, e.g. legend marker. Click here for more info @since 5.10.0
-- **intersections** (`Array`) — Array of categories that this data item is an intersection for.
-- **label** (`Label`) — Slice label.
-- **legendDataItem** (`DataItem`) — A related legend data item.
-- **slice** (`Graphics`) — Slice visaul element.
+- **fillPattern** (`Pattern`) — Fill pattern used for the slice and related elements, e.g. legend marker. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISeriesDataItem")`) for types, defaults and descriptions.
+
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, value, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

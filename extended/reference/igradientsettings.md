@@ -2,63 +2,22 @@
 title: "IGradientSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/igradientsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IGradientSettings extends IEntitySettings.
-IGradientSettings is extended by ILinearGradientSettings, IRadialGradientSettings.
-Properties
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stops        
-        #
-      
-
-
-                          Type Array                      
-A list of color steps for the gradient.
 
 ## Inheritance
 
 Extends: IEntitySettings
-Extended by: ILinearGradientSettings, IRadialGradientSettings
+Settings of: `am5.Gradient` (see its page for the class)
+TypeScript: `am5.IGradientSettings` (`import type { IGradientSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **stops** (`IGradientStop[]`) — The gradient's colors, in order. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **target** (`Sprite`) — An element whose bounds the gradient spans, instead of the element it fills, so that one gradient can run across several elements.
 
-- **stops** (`Array`) — A list of color steps for the gradient. Click here for more info
-- **target** (`Sprite`) — Gradient target.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

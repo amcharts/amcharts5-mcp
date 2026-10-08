@@ -2,76 +2,35 @@
 title: "ILineSeriesSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilineseriessettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ILineSeriesSettings extends IXYSeriesSettings.
-ILineSeriesSettings is extended by IRadarLineSeriesSettings, IDrawingSeriesSettings, ISmoothedYLineSeriesSettings, ISmoothedXLineSeriesSettings, SmoothedXYLineSeriesProperties, IStepLineSeriesSettings, ICurveLineSeriesSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IXYSeriesSettings
-Extended by: IRadarLineSeriesSettings, IDrawingSeriesSettings, ISmoothedYLineSeriesSettings, ISmoothedXLineSeriesSettings, SmoothedXYLineSeriesProperties, IStepLineSeriesSettings, ICurveLineSeriesSettings
+All ancestors: IXYSeriesSettings, ISeriesSettings, IComponentSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5xy.LineSeries` (see its page for the class)
+TypeScript: `am5xy.ILineSeriesSettings` (`import type { ILineSeriesSettings } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IXYSeriesSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **connect** (`boolean`) — default `true` _(theme)_ — Draws the line across data items that have no value. With `false`, the line breaks there, and also at time gaps longer than `autoGapCount`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Gaps
+- **autoGapCount** (`number`) — default `1.1` _(theme)_ — With `connect` set to `false` and a `DateAxis` as the base axis, breaks the line where neighboring data items are more than this many base intervals (e.g. days) apart. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Auto_gaps_with_dates
+- **curveFactory** (`CurveFactory`) — _(internal)_
+- **minDistance** (`number`) — default `0` — Skips points closer than this many pixels to the last point drawn, which simplifies lines with many data points. _Since 5.2.7._
 
-- **autoGapCount** (`undefined | number`) — Default 1.1 If there are more than autoGapCount base time intervals (e.g. days) with no data, the line will break and will display gap. Click here for more info
-- **connect** (`undefined | false | true`) — Default true If set to true the line will connect over "gaps" - categories or time intervals with no data. Click here for more info
-- **minDistance** (`undefined | number`) — Default 0 Allows simplifying the line with many points. If set, the series will skip points that are closer than X pixels to each other. With many data points, this allows having smoother, less cluttered lines. @since 5.2.7
+## Inherited settings with a different default on LineSeries
+
+- **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IXYSeriesSettings")`) for types, defaults and descriptions.
+
+- _IXYSeriesSettings_: baseAxis, categoryXField, categoryYField, exactLocationX, exactLocationY, excludeFromTotal, groupDataCallback, groupDataDisabled, groupDataWithOriginals, highLocationX, highLocationY, highValueXField, highValueXGrouped, highValueXShow, highValueYField, highValueYGrouped, highValueYShow, ignoreMinMax, legendRangeLabelText, legendRangeValueText, locationX, locationY, lowLocationX, lowLocationY, lowValueXField, lowValueXGrouped, lowValueXShow, lowValueYField, lowValueYGrouped, lowValueYShow, maskBullets, minBulletDistance, openCategoryXField, openCategoryYField, openLocationX, openLocationY, openValueXField, openValueXGrouped, openValueXShow, openValueYField, openValueYGrouped, openValueYShow, seriesTooltipTarget, snapTooltip, stacked, tooltipDataItem, tooltipPositionX, tooltipPositionY, useSelectionExtremes, valueXField, valueXGrouped, valueXShow, valueYField, valueYGrouped, valueYShow, vcx, vcy, xAxis, yAxis
+- _ISeriesSettings_: calculateAggregates, customValueField, excludeFromAggregate, fill, fillGradient, fillPattern, heatRules, idField, legendDataItem, legendValueText, linkTarget, name, sequencedDelay, sequencedInterpolation, stroke, strokeGradient, urlField, valueField
+- _IComponentSettings_: interpolationDuration, interpolationEasing
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

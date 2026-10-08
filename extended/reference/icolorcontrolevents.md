@@ -2,13 +2,22 @@
 title: "IColorControlEvents"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolorcontrolevents/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IStockControlEvents
+All ancestors: IStockControlEvents, IEntityEvents
+TypeScript: `am5stock.IColorControlEvents` (`import type { IColorControlEvents } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlEvents (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Events
+
+- **selected** (`{ color: Color; }`) — A color was picked, or set with `setColor()`.
+- **selectedOpacity** (`{ opacity: number; }`) — An opacity was picked, or set with `setOpacity()`.
+
+## Other inherited events
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlEvents")`) for types, defaults and descriptions.
+
+- _IStockControlEvents_: click

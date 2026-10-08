@@ -2,31 +2,32 @@
 title: "FibonacciSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/fibonacciseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-FibonacciSeries uses data items of type IFibonacciSeriesDataItem.
+Draws Fibonacci retracement levels between two points.
 
 ## Import
 
-```javascript
-// Import FibonacciSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.FibonacciSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: SimpleLineSeries
+Extends: SimpleLineSeries → DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 Extended by: FibonacciTimezoneSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SimpleLineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **colors** (`Array`) — Array of colors to use for bands.
-- **sequence** (`Array`) — Sequence.
+- Settings: `IFibonacciSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IFibonacciSeriesPrivate`
+- Data item fields: `IFibonacciSeriesDataItem`
 
 ## Properties
 
-- **labels** (`ListTemplate`) — Default new ListTemplate<Label> A list of labels. labels.template can be used to configure axis labels.
+Public properties (not settings):
+
+- **labels** (`ListTemplate<Label>`) — Labels of the levels. Settings on `labels.template` apply to all of them.

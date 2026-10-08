@@ -2,141 +2,29 @@
 title: "IExportingMenuSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iexportingmenusettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IExportingMenuSettings extends IEntitySettings.
-IExportingMenuSettings is not extended by any other symbol.
-Properties
-
-
-        align        
-        #
-      
-
-
-                          Type "left" | "right"                      
-Default "right"
-
-Horizontal alignment of the menu.
-
-
-        ariaLabel        
-        #
-      
-
-
-                          Type undefined | string                      
-ARIA label for the menu.
-@since 5.14.4
-
-
-        autoClose        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-
-If set to true the menu will close automatically when export operation is initiated.
-
-
-        container        
-        #
-      
-
-
-                          Type HTMLElement                      
-A reference to an element in the document to place export menu in.
- If not set, will use root element's container.
-
-
-        deactivateRoot        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-
-Menu will disable all interactions for the underlying chart when browsing the menu.
-
-
-        exporting        
-        #
-      
-
-
-                          Type Exporting                      
-A reference to related Exporting object.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        items        
-        #
-      
-
-
-                          Type IExportingMenuItem[]                      
-A list of menu items.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5plugins_exporting.ExportingMenu` (see its page for the class)
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **align** (`"left" | "right"`) — default `"right"` _(class default)_ — Horizontal alignment of the menu.
+- **valign** (`"top" | "bottom"`) — default `"top"` _(class default)_ — Vertical alignment of the menu.
+- **container** (`HTMLElement`) — default `root._inner` _(class default)_ — Element in the document to place the menu in. If not set, the menu goes into the chart's own element.
+- **items** (`IExportingMenuItem[]`) — default computed at runtime _(class default)_ — Items of the menu. By default, all image and data formats and print.
+- **exporting** (`Exporting`) — The `Exporting` the menu exports with.
+- **useDefaultCSS** (`boolean`) — default `true` _(class default)_ — Loads the menu's default CSS. Set to `false` to style the menu with your own CSS.
+- **autoClose** (`boolean`) — default `true` _(class default)_ — Closes the menu when an export starts from it.
+- **deactivateRoot** (`boolean`) — default `true` _(class default)_ — Disables interaction with the chart while the menu is open or the pointer is over it.
+- **ariaLabel** (`string`) — ARIA label for the menu. _Since 5.14.4._
 
-- **align** (`"left" | "right"`) — Default "right" Horizontal alignment of the menu.
-- **ariaLabel** (`undefined | string`) — ARIA label for the menu. @since 5.14.4
-- **autoClose** (`undefined | false | true`) — Default true If set to true the menu will close automatically when export operation is initiated.
-- **container** (`HTMLElement`) — A reference to an element in the document to place export menu in. If not set, will use root element's container.
-- **deactivateRoot** (`undefined | false | true`) — Default true Menu will disable all interactions for the underlying chart when browsing the menu.
-- **exporting** (`Exporting`) — A reference to related Exporting object.
-- **items** (`IExportingMenuItem[]`) — A list of menu items.
-- **useDefaultCSS** (`undefined | false | true`) — Default true If set to false the legend will not load default CSS.
+## Other inherited settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

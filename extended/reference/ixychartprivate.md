@@ -2,19 +2,23 @@
 title: "IXYChartPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ixychartprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: ISerialChartPrivate
-Extended by: IRadarChartPrivate, IStockPanelPrivate, ICurveChartPrivate
+All ancestors: ISerialChartPrivate, IChartPrivate, IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5xy.IXYChartPrivate` (`import type { IXYChartPrivate } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISerialChartPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **tooltipSeries** (`XYSeries[]`) — Series whose tooltips the cursor currently shows.
+- **otherCharts** (`XYChart[]`) — Other charts whose plot areas count as this chart's when checking if the pointer is over the plot, such as the other panels of a stock chart.
 
-- **otherCharts** (`Array`) — Array of other XYChart objects that cursors should be synced with. Note: cursors will be synced across the vertically stacked charts only.
-- **tooltipSeries** (`Array`) — A list of Series that currently have their tooltip being displayed.
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerPrivate")`) for types, defaults and descriptions.
+
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

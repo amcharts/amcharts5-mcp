@@ -2,37 +2,42 @@
 title: "ISeriesPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iseriesprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IComponentPrivate
-Extended by: IFlowPrivate, IFlowNodesPrivate, IPercentSeriesPrivate, ILegendPrivate, IXYSeriesPrivate, IHierarchyPrivate, IMapSeriesPrivate, IVennPrivate, IWordCloudPrivate
+All ancestors: IComponentPrivate, IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5.ISeriesPrivate` (`import type { ISeriesPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IComponentPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **chart** (`Chart`) — _(internal)_
+- **startIndex** (`number`)
+- **endIndex** (`number`)
+- **adjustedStartIndex** (`number`)
+- **valueAverage** (`number`) — Average of all data items' values (with `calculateAggregates`).
+- **valueCount** (`number`) — Number of data items with a value (with `calculateAggregates`).
+- **valueSum** (`number`) — Sum of all data items' values (with `calculateAggregates`).
+- **valueAbsoluteSum** (`number`) — Sum of the absolute values of all data items (with `calculateAggregates`).
+- **valueLow** (`number`) — Lowest value of all data items (with `calculateAggregates`).
+- **valueHigh** (`number`) — Highest value of all data items (with `calculateAggregates`).
+- **valueOpen** (`number`) — Value of the first data item that has one (with `calculateAggregates`).
+- **valueClose** (`number`) — Value of the last data item that has one (with `calculateAggregates`).
+- **customValueAverage** (`number`)
+- **customValueCount** (`number`)
+- **customValueSum** (`number`)
+- **customValueAbsoluteSum** (`number`)
+- **customValueLow** (`number`)
+- **customValueHigh** (`number`)
+- **customValueOpen** (`number`)
+- **customValueClose** (`number`)
+- **baseValueSeries** (`Series`)
 
-- **adjustedStartIndex** (`undefined | number`) — (no description)
-- **baseValueSeries** (`Series`) — (no description)
-- **customValueAbsoluteSum** (`undefined | number`) — (no description)
-- **customValueAverage** (`undefined | number`) — (no description)
-- **customValueClose** (`undefined | number`) — (no description)
-- **customValueCount** (`undefined | number`) — (no description)
-- **customValueHigh** (`undefined | number`) — (no description)
-- **customValueLow** (`undefined | number`) — (no description)
-- **customValueOpen** (`undefined | number`) — (no description)
-- **customValueSum** (`undefined | number`) — (no description)
-- **endIndex** (`undefined | number`) — (no description)
-- **startIndex** (`undefined | number`) — (no description)
-- **valueAbsoluteSum** (`undefined | number`) — (no description)
-- **valueAverage** (`undefined | number`) — (no description)
-- **valueClose** (`undefined | number`) — (no description)
-- **valueCount** (`undefined | number`) — (no description)
-- **valueHigh** (`undefined | number`) — (no description)
-- **valueLow** (`undefined | number`) — (no description)
-- **valueOpen** (`undefined | number`) — (no description)
+## Other inherited private settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerPrivate")`) for types, defaults and descriptions.
+
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

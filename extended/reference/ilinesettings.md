@@ -2,75 +2,25 @@
 title: "ILineSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilinesettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ILineSettings extends IGraphicsSettings.
-ILineSettings is extended by ITickSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IGraphicsSettings
-Extended by: ITickSettings
+All ancestors: IGraphicsSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5.Line` (see its page for the class)
+TypeScript: `am5.ILineSettings` (`import type { ILineSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IGraphicsSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **points** (`IPoint[]`) — Points the line goes through, in pixels from the line's position.
+- **segments** (`IPoint[][][]`) — Separate pieces of the line, used when `points` is not set. Each piece is a list of point arrays drawn as one continuous stroke. _Since 5.1.4._
 
-- **points** (`Array`) — A list of IPoint (x/y coordinates) points for the line.
-- **segments** (`Array`) — A list of IPoint arrays for different segments of the line. @since 5.1.4
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IGraphicsSettings")`) for types, defaults and descriptions.
+
+- _IGraphicsSettings_: blendMode, draw, fill, fillGradient, fillOpacity, fillPattern, lineCap, lineJoin, nonScalingStroke, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, stroke, strokeDasharray, strokeDashoffset, strokeGradient, strokeOpacity, strokePattern, strokeWidth, svgPath
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

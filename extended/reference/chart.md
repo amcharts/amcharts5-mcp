@@ -2,26 +2,31 @@
 title: "Chart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 A base class for all charts.
 
 ## Import
 
-```javascript
-// Import Chart
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 Extended by: SerialChart
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IChartSettings` — get_api_reference shows it after this page
+- Private settings: `IChartPrivate`
+- Events: `IChartEvents`
 
 ## Properties
 
-- **bulletsContainer** (`Container`) — Default Container.new() A Container chart places its bullets in.
-- **chartContainer** (`Container`) — Default Container.new() A Container chart places its elements in.
+Public properties (not settings):
+
+- **bulletsContainer** (`Container`) — default `Container.new()` — The `Container` the chart places its bullets in.
+- **chartContainer** (`Container`) — default `Container.new()` — The `Container` the chart places its elements in.

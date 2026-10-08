@@ -2,14 +2,21 @@
 title: "IRoundedRectanglePrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iroundedrectangleprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IRectanglePrivate
-Extended by: ICandlestickPrivate
+All ancestors: IRectanglePrivate, IGraphicsPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5.IRoundedRectanglePrivate` (`import type { IRoundedRectanglePrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IRectanglePrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
+
+_(none declared here — all inherited)_
+
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISpritePrivate")`) for types, defaults and descriptions.
+
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

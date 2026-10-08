@@ -2,13 +2,22 @@
 title: "GhostLayer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ghostlayer/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Sources
-This information about GhostLayer is provided for reference only and is not available through exported packages and thus should not be imported or used on its own.
+## Import
+
+Not exported from any `@amcharts/amcharts5` entry point (internal class).
+
+## Inheritance
+
+Extends: (none)
 
 ## Properties
 
-- **context** (`CanvasRenderingContext2D`) — (no description)
-- **imageArray** (`Uint8ClampedArray`) — (no description)
+Public properties (not settings):
+
+- **context** (`CanvasRenderingContext2D`)
+- **imageArray** (`Uint8ClampedArray<ArrayBufferLike>`)
+- **margin** (`IMargin`)
+- **view** (`HTMLCanvasElement`)

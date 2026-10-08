@@ -2,80 +2,41 @@
 title: "IRadialLabelSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iradiallabelsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IRadialLabelSettings extends ILabelSettings.
-IRadialLabelSettings is extended by IAxisLabelRadialSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: ILabelSettings
-Extended by: IAxisLabelRadialSettings
+All ancestors: ILabelSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5.RadialLabel` (see its page for the class)
+TypeScript: `am5.IRadialLabelSettings` (`import type { IRadialLabelSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ILabelSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **radius** (`number`) — default `0` _(theme)_ — Distance in pixels from `baseRadius`: outward, or inward when `inside` is `true`. A negative value goes the other way.
+- **baseRadius** (`number | Percent`) — default `am5.p100` _(theme)_ — Where the label sits across the arc it belongs to, such as a slice: a percent, `0%` being the inner edge and `100%` the outer one, or pixels from the inner edge.
+- **labelAngle** (`number`) — default `0` _(code fallback)_ — Angle in degrees of the label's position around the center: `0` points right, and angles grow clockwise. Usually set by the series.
+- **orientation** (`"inward" | "outward" | "auto"`) — default `"auto"` _(theme)_ — Which way the text faces with `textType` `"circular"`: `"inward"`, `"outward"`, or `"auto"` to pick whichever reads better at its angle. With `"radial"`, `"auto"` turns text on the left half so that it does not read upside down.
+- **inside** (`boolean`) — default `false` _(theme)_ — Places the label inside the arc instead of outside: `radius` then counts inward.
+- **textType** (`"regular" | "circular" | "radial" | "aligned" | "adjusted"`) — default `"regular"` _(theme)_ — How the label is placed: • `"regular"` - horizontal, at its position on the arc. • `"circular"` - curved along the arc. • `"radial"` - rotated to run along the radius. • `"aligned"` - horizontal, lined up in columns with the other labels. • `"adjusted"` - horizontal, moved outward so that its edge, not its center, is at its position. **IMPORTANT!** In a `PieSeries`, `alignLabels` (`true` by default) overrides `textType`. To use a type other than `"aligned"`, also set `alignLabels: false` on the series.
+- **kerning** (`number`) — default `0` — Extra spacing between characters in pixels, for `"circular"` text.
 
-- **baseRadius** (`number | Percent`) — Default 100% Radius of the label's position. Can be either set in absolute pixel value, or percent. Relative value, depending on the situation, will most often mean its position within certain circular object, like a slice: 0% meaning inner edge, and 100% - the outer edge.
-- **inside** (`undefined | false | true`) — Default false Should label be drawn inside (true) or outside (false) the arc.
-- **kerning** (`undefined | number`) — Default 0 Extra spacing between characters, in pixels.
-- **labelAngle** (`undefined | number`) — Label anngle in degrees. In most cases it will be set by the chart/series and does not need to be set manually.
-- **orientation** (`"inward" | "outward" | "auto"`) — Default "auto" Should the text "face" inward or outward from the arc the text is following. "auto" means that facing will be chosen automatically based on the angle to enhance readbility. Only applies if type = "circluar".
-- **radius** (`undefined | number`) — Pixel value to adjust radius with. Will add to (or subtract from if negative) whatever value baseRadius evaluates to.
-- **textType** (`"regular" | "circular" | "radial" | "aligned" | "adjusted"`) — Default "regular" Label type. "regular" (default) - normal horizontal label. "circular" - arched label. "radial" - label radiating from the center of the arc. "aligned" - horizontal label aligned with other labels horizontally. "adjusted" - horizontal label adjusted in postion. IMPORTANT!** If the label is used in a PieSeries, its alignLabels setting (default: true) takes precedence over textType. If you need to set this to anything else than regular, make sure you also set alignLabels: falese on PieSeries.
+## Inherited settings with a different default on RadialLabel
+
+- **centerX** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `x` position, and that it rotates and scales around: pixels from its left edge, or a percent of its width.
+- **centerY** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `y` position, and that it rotates and scales around: pixels from its top edge, or a percent of its height.
+- **paddingBottom** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
+- **paddingLeft** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
+- **paddingRight** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
+- **paddingTop** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
+- **textAlign** (`"start" | "end" | "left" | "right" | "center"`) — default `"center"` _(theme)_ — _from ILabelSettings_ — Horizontal alignment of the text's lines.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ILabelSettings")`) for types, defaults and descriptions.
+
+- _ILabelSettings_: baselineRatio, breakWords, direction, ellipsis, fill, fillGradient, fillOpacity, fontFamily, fontSize, fontStyle, fontVariant, fontWeight, ignoreFormatting, lineHeight, maxChars, minScale, opacity, oversizedBehavior, populateText, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, text, textBaseline, textDecoration
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,28 +2,26 @@
 title: "PolylineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/polylineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a multi-point line (polyline).
-Data item
-PolylineSeries uses data items of type IPolylineSeriesDataItem.
+Draws a line through any number of points (a polyline).
 
 ## Import
 
-```javascript
-// Import PolylineSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.PolylineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: DrawingSeries
-Extended by: LabelSeries, IconSeries
+Extends: DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
+Extended by: IconSeries, LabelSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from DrawingSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **fillShape** (`undefined | false | true`) — Default false Show a closed color-filled shape instead of polyline. @since 5.9.0
-- **pointCount** (`undefined | number`) — Number of pre-defined points in a shape. The shape will finish drawing once number is reached. @since 5.9.0
+- Settings: `IPolylineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IPolylineSeriesPrivate`
+- Data item fields: `IPolylineSeriesDataItem`

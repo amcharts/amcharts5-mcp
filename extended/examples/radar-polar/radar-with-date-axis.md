@@ -2,17 +2,24 @@
 title: "Radar with Date Axis"
 source: "https://www.amcharts.com/demos/radar-with-date-axis/"
 category: "radar-polar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Date-based data for cyclical periods (months, years, etc.) is well suited to be depicted in a Radar Chart. amCharts flexibility enables you to use date axes in a circular fashion with little effort.
-Key implementation details
-We add our regular DateAxis to the Radar Chart and just set its renderer to AxisRendererCircular.
-Radar chart
-Radar axes
-Radar series
-Date axis
-Axis renderer
+A timeline wrapped into a ring: the year runs clockwise from the top, and each ring is one row of date ranges. Here, when five holiday homes were booked in 2025.
+
+When a circular timeline works: Bent into a ring, a year has no edge: December runs into January, so the ski chalet’s winter season reads as one stretch across the top. Each ring is a row, like a lane in a Gantt chart. For projects with exact dates over several years, a straight timeline is easier to read.
+
+Good for:
+- Seasons: bookings, opening times, harvests
+- Schedules that repeat every year
+- A year at a glance on a square tile
+
+Think twice when:
+- Exact start and end dates: a Gantt chart lines them up
+- Many rows: the inner rings get short
+- Spans of several years: use a straight timeline
+
+Prompt: Create a radar chart with the year around the circle as a date axis and one ring per holiday home, showing the periods each home was booked (sample data) as bars from start to end date. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -23,145 +30,119 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/radar-chart/
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
-    panX: false,
+    panX: false,                 // no dragging the plot around
     panY: false,
-    wheelX: "panX",
-    wheelY: "zoomX",
-    innerRadius: am5.percent(40)
+    wheelX: "panX",              // a horizontal wheel or trackpad swipe moves a zoomed view around...
+    wheelY: "zoomX",             // ...and the vertical wheel zooms in on some dates
+    innerRadius: am5.percent(40) // a hole in the middle, 40% of the radius
   })
 );
 
+// every other color of the palette, so neighboring rings stand apart
 chart.get("colors").set("step", 2);
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
 var cursor = chart.set("cursor",
 am5radar.RadarCursor.new(root, {
-  behavior: "zoomX"
+  behavior: "zoomX" // drag around the circle to zoom in on some dates
 }));
 
-cursor.lineY.set("visible", false);
+cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-var yRenderer = am5radar.AxisRendererRadial.new(root, { minGridDistance: 20 });
+// One ring per holiday home, from the middle out
+var yRenderer = am5radar.AxisRendererRadial.new(root, {
+  minGridDistance: 10 // small, so every home keeps its label
+});
+
+yRenderer.labels.template.setAll({
+  fontSize: 12 // small text, in pixels
+});
 
 var yAxis = chart.yAxes.push(
   am5xy.CategoryAxis.new(root, {
-    maxDeviation: 0,
-    categoryField: "category",
+    maxDeviation: 0, // can't be panned past the first or last ring
+    categoryField: "home",
     renderer: yRenderer
   })
 );
 
+// The year runs clockwise around the circle, from January 1 at the top
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
-    min: new Date("2021-01-01 00:00:00").getTime(),
-    max: new Date("2022-01-01 00:00:00").getTime(),
-    baseInterval: { timeUnit: "day", count: 1 },
+    min: new Date(2025, 0, 1).getTime(),         // the circle is exactly 2025: January 1...
+    max: new Date(2026, 0, 1).getTime(),         // ...to January 1, 2026
+    baseInterval: { timeUnit: "day", count: 1 }, // the dates are whole days
     renderer: am5radar.AxisRendererCircular.new(root, {})
   })
 );
 
+// Data: when five holiday homes were booked in 2025, one row per booking (sample data).
+// The ski chalet's winter bookings run across New Year, so they show at both ends of the year.
 var data = [
-  {
-    category: "One",
-    startDate1: new Date("2021-01-01").getTime(),
-    endDate1: new Date("2021-03-01").getTime()
-  },
-  {
-    category: "One",
-    startDate1: new Date("2021-04-01").getTime(),
-    endDate1: new Date("2021-08-15").getTime()
-  },
-  {
-    category: "Two",
-    startDate2: new Date("2021-03-01").getTime(),
-    endDate2: new Date("2021-06-01").getTime()
-  },
-  {
-    category: "Two",
-    startDate2: new Date("2021-08-01").getTime(),
-    endDate2: new Date("2021-10-01").getTime()
-  },
-  {
-    category: "Three",
-    startDate3: new Date("2021-02-01").getTime(),
-    endDate3: new Date("2021-07-01").getTime()
-  },
-  {
-    category: "Four",
-    startDate4: new Date("2021-06-09").getTime(),
-    endDate4: new Date("2021-09-01").getTime()
-  },
-  {
-    category: "Four",
-    startDate4: new Date("2021-10-01").getTime(),
-    endDate4: new Date("2021-12-15").getTime()
-  },
-  {
-    category: "Five",
-    startDate5: new Date("2021-02-01").getTime(),
-    endDate5: new Date("2021-04-15").getTime()
-  },
-  {
-    category: "Five",
-    startDate5: new Date("2021-10-01").getTime(),
-    endDate5: new Date("2021-12-31").getTime()
-  }
+  { home: "Ski chalet", start: new Date(2025, 0, 1).getTime(), end: new Date(2025, 2, 31).getTime() },
+  { home: "Ski chalet", start: new Date(2025, 11, 18).getTime(), end: new Date(2025, 11, 31).getTime() },
+  { home: "Beach house", start: new Date(2025, 3, 2).getTime(), end: new Date(2025, 3, 18).getTime() },
+  { home: "Beach house", start: new Date(2025, 5, 1).getTime(), end: new Date(2025, 8, 15).getTime() },
+  { home: "Lake cabin", start: new Date(2025, 4, 1).getTime(), end: new Date(2025, 5, 20).getTime() },
+  { home: "Lake cabin", start: new Date(2025, 6, 10).getTime(), end: new Date(2025, 7, 31).getTime() },
+  { home: "Farmhouse", start: new Date(2025, 2, 20).getTime(), end: new Date(2025, 4, 31).getTime() },
+  { home: "Farmhouse", start: new Date(2025, 7, 5).getTime(), end: new Date(2025, 9, 20).getTime() },
+  { home: "City flat", start: new Date(2025, 1, 1).getTime(), end: new Date(2025, 3, 30).getTime() },
+  { home: "City flat", start: new Date(2025, 7, 20).getTime(), end: new Date(2025, 9, 25).getTime() }
 ];
 
-// Set date fields
-// https://www.amcharts.com/docs/v5/concepts/data/#Parsing_dates
+// Dates in tooltips
+// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
 root.dateFormatter.setAll({
-  dateFormat: "yyyy-MM-dd",
-  dateFields: ["valueX", "openValueX"]
+  dateFormat: "MMM d",                 // dates shown as "Jun 1"
+  dateFields: ["valueX", "openValueX"] // the fields that hold dates, so they're formatted as dates
 });
 
-// Create series
+// Create series: one per home, so each ring gets its own color
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
-for (var i = 1; i < 6; i++) {
+var homes = ["City flat", "Farmhouse", "Lake cabin", "Beach house", "Ski chalet"]; // middle ring out
+
+homes.forEach(function(home) {
   var series = chart.series.push(
     am5radar.RadarColumnSeries.new(root, {
+      // each home keeps its whole ring, instead of sharing every ring with the other series
       clustered: false,
-      name: "Series",
+      name: home,
       xAxis: xAxis,
       yAxis: yAxis,
-      categoryYField: "category",
-      valueXField: "endDate" + i,
-      openValueXField: "startDate" + i
+      categoryYField: "home",
+      valueXField: "end",
+      openValueXField: "start" // each bar runs from the booking's start date, not from the axis start
     })
   );
 
-  series.columns.template.set("cornerRadius", 25);
-  series.columns.template.set(
-    "tooltipText",
-    "{category}: {openValueX} - {valueX}"
-  );
+  series.columns.template.setAll({
+    cornerRadius: 20, // rounded ends, up to 20px
+    tooltipText: "{categoryY}: {openValueX} - {valueX}" // the home and the booking's dates
+  });
 
-  series.data.setAll(data);
+  series.data.setAll(data.filter(function(booking) { // only this home's bookings
+    return booking.home === home;
+  }));
   series.appear(2000, 100);
-  series.data.setAll(data);
-}
+});
 
-yAxis.data.setAll([
-  { category: "One" },
-  { category: "Two" },
-  { category: "Three" },
-  { category: "Four" },
-  { category: "Five" }
-]);
+yAxis.data.setAll(homes.map(function(home) {
+  return { home: home };
+}));
 
-chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", exportable: false }));
-chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical", exportable: false }));
-
-xAxis.data.setAll(data);
+// Add scrollbar: it zooms the dates. It starts hidden
+// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", exportable: false, forceHidden: true }));
 
 // Animate chart and series in
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
@@ -179,7 +160,8 @@ chart.appear(2000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -189,3 +171,4 @@ chart.appear(2000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

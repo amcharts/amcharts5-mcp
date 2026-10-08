@@ -2,33 +2,33 @@
 title: "SerialChartContainer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/serialchartcontainer/"
-scraped: "2026-09-14"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A `SerialChart` whose `seriesContainer` is a `ZoomableContainer`, so that the chart contents can be zoomed and panned.
+A chart for series of any kind, such as a force-directed tree, that can be zoomed and panned: its series sit in a `ZoomableContainer`.
 
-Unlike the abstract `SerialChart`, this chart attaches its `seriesContainer` to the display tree on its own, so it can be instantiated and used directly — e.g. to make a `ForceDirected`, `Tree` or `Pack` series zoomable/pannable. Bullets sit alongside the series inside the zoomable container, so they zoom and pan with it.
-
-@since 5.20.2
+_Since 5.20.2._
 
 ## Import
 
-```javascript
-// Import SerialChartContainer — exported from the root module, not a chart package
-import * as am5 from "@amcharts/amcharts5"
-const chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.SerialChartContainer.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: SerialChart
+Extends: SerialChart → Chart → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SerialChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **zoomTools** (`ZoomTools`) — A ZoomTools instance to add to the chart. When set, its `target` is automatically pointed at the chart's `seriesContainer`.
+- Settings: `ISerialChartContainerSettings` — get_api_reference shows it after this page
+- Private settings: `ISerialChartContainerPrivate`
+- Events: `ISerialChartContainerEvents`
 
 ## Properties
 
-- **zoomableContainer** (`ZoomableContainer`) — Default ZoomableContainer.new() A ZoomableContainer which holds chart's `seriesContainer` so it can be zoomed and panned. Theme tag `serialchartcontainer` (default theme: `wheelable: false`, `pinchZoom: false`, `maskContent: true`).
+Public properties (not settings):
+
+- **zoomableContainer** (`ZoomableContainer`) — The `ZoomableContainer` that holds the series and their bullets, so they can be zoomed and panned. _Note:_ Theme tag `serialchartcontainer`: the default theme sets `wheelable: false`, `pinchZoom: false` and `maskContent: true` on it.

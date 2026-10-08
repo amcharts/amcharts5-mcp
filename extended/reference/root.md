@@ -2,39 +2,54 @@
 title: "Root"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/root/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Root element of the chart.
+The root of a chart: it ties the chart to an HTML element and holds its global settings, formatters, locale and themes.
+
+Docs: https://www.amcharts.com/docs/v5/getting-started/#Root_element
 
 ## Import
 
-```javascript
-// Import Root
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
+
+## Inheritance
+
+Extends: (none)
+
+## Settings and related interfaces
+
+- Settings: `IRootSettings` — get_api_reference shows it after this page
+- Events: `IRootEvents`
 
 ## Properties
 
-- **autoResize** (`boolean`) — Default true Indicates whether chart should resized automatically when parent container width and/or height changes. If disabled (autoResize = false) you can make the chart resize manually by calling root element's resize() method.
-- **container** (`Container`) — Main content container.
-- **dateFormatter** (`DateFormatter`) — Default DateFormatter.new(this, { }) Date/time formatter. Click here for more info
-- **dom** (`HTMLElement`) — A reference to original chart container (div element).
-- **durationFormatter** (`DurationFormatter`) — Default DurationFormatter.new(this, { }) Duration formatter. Click here for more info
-- **entitiesById** (`object`) — Entities that have their id setting set. @since 5.11.0
-- **events** (`EventDispatcher`) — Default new EventDispatcher() Root's event dispatcher. Click here for more info
-- **fps** (`number | undefined`) — The maximum FPS that the Root will run at. If undefined it will run at the highest FPS. Click here for more info
-- **gridLayout** (`VerticalLayout`) — Default VerticalLayout.new() An instance of grid layout object that can be used to set layout setting of a Container.
-- **horizontalLayout** (`VerticalLayout`) — Default HorizontalLayout.new() An instance of horizontal layout object that can be used to set layout setting of a Container.
-- **interfaceColors** (`InterfaceColors`) — Special color set to be used for various controls. Click here for more info
-- **locale** (`ILocale`) — Default en Locale used by the chart. Click here
-- **nonce** (`undefined | string`) — Used for dynamically-created CSS and JavaScript with strict source policies.
-- **numberFormatter** (`NumberFormatter`) — Default NumberFormatter.new(this, { }) Number formatter. Click here for more info
-- **systemTooltip** (`Tooltip`) — Returns an instance of a universal Tooltip instance. @since 5.14.0
-- **tabindex** (`number`) — Default 0 Global tab index for using for the whole chart Click here for more info
-- **tapToActivate** (`boolean`) — Default false Set this to true if you need chart to require first a tap onto it before touch gesture related functionality like zoom/pan is turned on. Click here for more info @since 5.2.9
-- **tapToActivateTimeout** (`number`) — Default 3000 If tapToActivate is set to true, this setting will determine number of milliseconds the chart will stay "active", before releasing the controls back to the page. Click here for more info @since 5.2.9
-- **timezone** (`Timezone`) — If set, will format date/time in specific time zone. The value should be named time zone, e.g.: "America/Vancouver", "Australia/Sydney", "UTC". NOTE: Using time zone feature may noticeable affect performance of the chart, especially with large data sets, since every single date will need to be recalculated. Click here for more info @since 5.1.0
-- **tooltipContainer** (`Container`) — A Container used to display tooltips in.
-- **updateTick** (`boolean`) — Returns whether the root is updating or not. Enables or disables the root updating.
-- **utc** (`boolean`) — Default false Use UTC when formatting date/time. Click here for more info
+Public properties (not settings):
+
+- **autoResize** (`boolean`) — Resizes the chart automatically when its container's size changes. With `false`, call `resize()` to resize it.
+- **container** (`Container`) — The main container: charts and other elements go into its `children`.
+- **dateFormatter** (`DateFormatter`) — Date/time formatter. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
+- **dom** (`HTMLElement`) — The HTML element the chart is in.
+- **durationFormatter** (`DurationFormatter`) — Duration formatter. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
+- **entitiesById** (`{ [index: string]: any; }`) — Objects of this root that have an `id` setting, by that `id`. _Since 5.11.0._
+- **events** (`EventDispatcher<Events<this, IRootEvents>>`) — Root's event dispatcher. Docs: https://www.amcharts.com/docs/v5/concepts/events/
+- **fps** (`number`) — Maximum frames per second. When not set, the chart renders on every animation frame of the browser. Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#Performance
+- **gridLayout** (`GridLayout`) — default `GridLayout.new()` — A shared `GridLayout` for a `Container`'s `layout` setting.
+- **horizontalLayout** (`HorizontalLayout`) — default `HorizontalLayout.new()` — A shared `HorizontalLayout` for a `Container`'s `layout` setting.
+- **interfaceColors** (`InterfaceColors`) — Colors of the chart's interface: text, grid, buttons and other controls. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Interface_colors
+- **locale** (`ILocale`) — Locale for the chart's texts and formatting. English by default. Docs: https://www.amcharts.com/docs/v5/concepts/locales/
+- **nonce** (`string`) — Nonce for the `<style>` elements the chart adds to the page, for pages with a strict Content Security Policy.
+- **numberFormatter** (`NumberFormatter`) — Number formatter. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/
+- **settings** (`IRootSettings`) — The Root's settings.
+- **skipRenderFrame** (`boolean`)
+- **systemTooltip** (`Tooltip`) — A shared `Tooltip` (theme tag `"system"`) for interface elements such as the logo and buttons, created on first use. _Since 5.14.0._
+- **tabindex** (`number`) — Tab index for the whole chart. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/
+- **tapToActivate** (`boolean`) — default `false` — Makes touch gestures such as zoom and pan work only after a tap on the chart, so the page can still be scrolled over it. _Since 5.2.9._ Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#Touch_related_options
+- **tapToActivateTimeout** (`number`) — default `3000` — How long in milliseconds the chart stays active after the last touch, with `tapToActivate`, before handing touch gestures back to the page. `0` keeps it active until a tap outside the chart. _Since 5.2.9._ Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#Touch_related_options
+- **timezone** (`Timezone`) — Time zone to show dates in, instead of the user's local one. Set it to a `Timezone` with an IANA name, e.g. `am5.Timezone.new("America/Vancouver")`. For UTC, `utc` is faster. Every date is converted, which can slow down charts with large data sets. _Since 5.1.0._ Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#time-zone
+- **tooltipContainer** (`Container`) — The `Container` tooltips are drawn in, above the chart.
+- **updateTick** (`boolean`) — Whether the chart updates and redraws. Stops the chart from updating and redrawing with `false`, until set back to `true`.
+- **utc** (`boolean`) — Treats dates as UTC instead of the user's local time, when formatting and parsing them and when placing date axis grid. It takes precedence over `timezone`. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/#utc-and-time-zones
+- **verticalLayout** (`VerticalLayout`) — default `VerticalLayout.new()` — A shared `VerticalLayout` for a `Container`'s `layout` setting.

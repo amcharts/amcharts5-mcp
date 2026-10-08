@@ -2,14 +2,15 @@
 title: "IDropdownEvents"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdownevents/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IEntityEvents
-Extended by: IDropdownColorsEvents, IDropdownListEvents
+TypeScript: `am5stock.IDropdownEvents` (`import type { IDropdownEvents } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntityEvents (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Events
+
+- **opened** (`{}`) — The dropdown was opened.
+- **closed** (`{}`) — The dropdown was closed.

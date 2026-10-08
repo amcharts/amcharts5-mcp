@@ -2,36 +2,35 @@
 title: "VolumeProfile"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/volumeprofile/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a Volume Profile indicator for a StockChart.
+Volume Profile indicator: horizontal rows over the main series showing how much volume traded at each price in the visible range, split into up and down volume.
+
+_Since 5.7.0._ Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import VolumeProfile
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.VolumeProfile.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Indicator
+Extends: Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Indicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **axisWidth** (`undefined | number`) — Default 40 Max width of columns in percent (%).
-- **count** (`undefined | number`) — Default 24 Number of rows or number of ticks, depending on the countType.
-- **countType** (`"rows" | "ticks"`) — Type of count.
-- **downColor** (`Color`) — Volume down color.
-- **upColor** (`Color`) — Volume up color.
-- **valueArea** (`undefined | number`) — Default 70 Specifies what percentage of all volume for the trading session should be highlighted by Value Area.
-- **valueAreaOpacity** (`undefined | number`) — Default .7 Opacity of columns which fall withing value area.
-- **volumeSeries** (`XYSeries`) — Chart's main volume series.
+- Settings: `IVolumeProfileSettings` — get_api_reference shows it after this page
+- Private settings: `IVolumeProfilePrivate`
+- Events: `IVolumeProfileEvents`
 
 ## Properties
 
-- **series** (`ColumnSeries`) — Indicator series.
-- **upSeries** (`ColumnSeries`) — (no description)
+Public properties (not settings):
+
+- **series** (`ColumnSeries`) — Series of the down volume columns.
+- **upSeries** (`ColumnSeries`) — Series of the up volume columns, drawn after the down volume.
+- **xAxis** (`ValueAxis<AxisRendererX>`) — Horizontal axis the rows' volume is measured on.

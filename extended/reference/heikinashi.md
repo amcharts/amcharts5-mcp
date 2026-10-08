@@ -2,29 +2,33 @@
 title: "HeikinAshi"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/heikinashi/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Heikin Ashi indicator: candlesticks of averaged prices, which smooth out noise and show the trend more clearly. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import HeikinAshi
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.HeikinAshi.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **decreasingColor** (`Color`) — Decreasing color.
-- **increasingColor** (`Color`) — Increasing color.
+- Settings: `IHeikinAshiSettings` — get_api_reference shows it after this page
+- Private settings: `IHeikinAshiPrivate`
+- Events: `IHeikinAshiEvents`
 
 ## Properties
 
-- **series** (`CandlestickSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`CandlestickSeries`) — The indicator's series.

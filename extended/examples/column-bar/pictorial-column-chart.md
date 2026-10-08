@@ -2,13 +2,24 @@
 title: "Pictorial Column Chart"
 source: "https://www.amcharts.com/demos/pictorial-column-chart/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Pictorial Column Chart (also known as Pictorial Bar Chart) is a visually spiced up version of a regular bar chart using images to display bars. It is harder to compare values in a pictorial chart but it could be much easier to identify objects portrayed when their shape has a distinct recognizable meaning (like in this demo).
-Key implementation details
-In this demo, we create a column chart, but we set the opacity of its actual columns to zero. Instead, we use bullets to render images in place of the columns representing values in the chart. We scale the images by calculating the height of the "invisible" columns.
-BulletsImagesSettings
+A column chart where each column is a picture of what it measures: five famous skyscrapers, each drawn to its height against a sunset sky.
+
+When pictures replace columns: A silhouette tells the reader what is measured before they read a label, and a picture drawn to scale makes the comparison feel real. It suits a handful of well-known things with a clear shape, like buildings, bottles or animals, where the height of the picture is the value.
+
+Good for:
+- Infographics and posters
+- A handful of things with a shape people know
+- Heights and lengths, where the picture is the measure
+
+Think twice when:
+- Values that aren’t heights: a picture grows in width too, and its area overstates the difference
+- Many items or close values: plain columns compare better
+- Dashboards read every day: the pictures get in the way
+
+Prompt: Create a pictorial column chart of the heights of five famous skyscrapers, from the Burj Khalifa to the Empire State Building, each drawn as a silhouette that grows to its height, with its height in meters above it, over a vertical gradient. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -28,171 +39,184 @@ var icon5 = "data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTQ0IiBoZWl
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
-var gradient = am5.LinearGradient.new(root, {
-  stops: [{
-    color: am5.color(0xf0b24f)
-  }, {
-    color: am5.color(0xca6c46)
-  }, {
-    color: am5.color(0x0c0524)
-  }]
-});
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
-  panY: false,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  layout: root.verticalLayout,
-  background: am5.Rectangle.new(root, {
-    fillGradient: gradient
-  })
+  panX: false,    // no dragging to pan...
+  panY: false,    // ...in either direction...
+  wheelX: "none", // ...and no wheel zooming...
+  wheelY: "none"  // ...at all
 }));
 
-
-// Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legend = chart.children.push(
-  am5.Legend.new(root, {
-    centerX: am5.p50,
-    x: am5.p50
+// A sky behind the plot in the theme's colors: its first color at the top, through its fourth, to a deep shade of
+// its seventh at the bottom. The axis labels outside it stay on the page background, so they read in light and dark
+// mode alike.
+var colors = chart.get("colors");
+chart.plotContainer.set("background", am5.Rectangle.new(root, {
+  fillGradient: am5.LinearGradient.new(root, {
+    stops: [
+      { color: colors.getIndex(0) },
+      { color: colors.getIndex(3) },
+      { color: am5.Color.brighten(colors.getIndex(6), -0.7) } // darkened by 70%
+    ]
   })
-);
+}));
 
 var data = [{
   category: "Burj Khalifa",
   height: 828,
-  ratio: 1 / 5.12,
   pictureSettings: {
     src: icon1
   }
 }, {
   category: "Willis Tower",
   height: 527,
-  ratio: 1 / 5.06,
   pictureSettings: {
-  src: icon2
-}
+    src: icon2
+  }
 }, {
   category: "Taipei 101",
   height: 508,
-  ratio: 1 / 6.73,
   pictureSettings: {
     src: icon3
   }
 }, {
   category: "Petronas Towers",
   height: 452,
-  ratio: 1 / 2.76,
   pictureSettings: {
     src: icon4
   }
 }, {
   category: "Empire State Building",
   height: 449,
-  ratio: 1 / 3.41,
   pictureSettings: {
     src: icon5
   }
 }];
-
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
   renderer: am5xy.AxisRendererX.new(root, {
+    // the names sit inside the plot, on the sky at the foot of the towers
     inside: true
   }),
-  tooltip: am5.Tooltip.new(root, {})
+  tooltip: am5.Tooltip.new(root, {}) // a name label follows the cursor along the axis
 }));
 
 var xRenderer = xAxis.get("renderer");
 
 xRenderer.labels.template.setAll({
-  fill: am5.color(0xffffff),
-  fillOpacity: 0.5
+  fill: am5.color(0xffffff), // white...
+  fillOpacity: 0.5,          // ...half see-through...
+  // long names wrap onto a second line instead of running into the next one
+  oversizedBehavior: "wrap-no-break",
+  textAlign: "center" // ...with wrapped lines centered
 });
 
-xRenderer.grid.template.set("forceHidden", true);
+// each label may be as wide as its category's cell
+xAxis.onPrivate("cellWidth", function (cellWidth) {
+  xRenderer.labels.template.set("maxWidth", cellWidth);
+});
+
+xRenderer.grid.template.set("forceHidden", true); // no grid lines between the towers
 
 xAxis.data.setAll(data);
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  min: 0,
-  max: 1000,
+  min: 0,    // the scale runs from 0...
+  max: 1000, // ...to 1000 meters
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
 
 var yRenderer = yAxis.get("renderer");
 
 yRenderer.grid.template.setAll({
-  strokeDasharray: [4, 4]
+  strokeDasharray: [4, 4] // dashed: 4px dashes, 4px gaps
 });
 
+// the vertical grid lines get the same dash, for when they are shown
+xRenderer.grid.template.set("strokeDasharray", [4, 4]);
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// The tooltip gets the theme's text color as its background: the invisible columns have no color to lend it
+var tooltip = am5.Tooltip.new(root, {
+  getFillFromSprite: false,
+  autoTextColor: false
+});
+tooltip.get("background").setAll({
+  fill: root.interfaceColors.get("alternativeBackground"), // dark on light, light on dark...
+  fillOpacity: 0.9                                         // ...almost solid
+});
+tooltip.label.set("fill", root.interfaceColors.get("background")); // text in the background color
+
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "height",
-  categoryXField: "category"
+  categoryXField: "category",
+  tooltip: tooltip
 }));
 
+// The columns are invisible: the tower pictures stand in for them.
+// They still catch the pointer, so each tower shows its height on hover.
 series.columns.template.setAll({
   width: am5.percent(100),
   strokeOpacity: 0,
-  fillOpacity: 0
+  fillOpacity: 0,
+  tooltipText: "{categoryX}: {valueY} meters" // the tower's name and height
 });
 
+// the tower picture, standing on the axis
 series.bullets.push(function(root, series, dataItem) {
   var tower = am5.Picture.new(root, {
-    height: 100,
-    centerX: am5.p50,
-    centerY: am5.p100,
-    opacity: 0.5,
-    templateField: "pictureSettings"
+    height: 100,                     // a starting height; the adapter below sets the real one
+    centerX: am5.p50,                // centered on the column...
+    centerY: am5.p100,               // ...and standing on its bottom edge
+    opacity: 0.5,                    // half see-through
+    templateField: "pictureSettings" // the picture's src from the data
   });
-  
+
+  // each picture is as tall as its column, from the axis up to the tower's height
   tower.adapters.add("height", function(height, target) {
     if (dataItem) {
       height = dataItem.get("bottom") - dataItem.get("top");
     }
     return height;
   });
-  
+
   return am5.Bullet.new(root, {
-    locationY: 0,
+    locationY: 0, // at the bottom of the column
     sprite: tower,
-    dynamic:true
+    dynamic:true  // redrawn when the series changes, so the height keeps up
   });
 });
 
+// the height above each tower
 series.bullets.push(function() {
   return am5.Bullet.new(root, {
-    locationY: 1,
+    locationY: 1, // at the top of the column
     sprite: am5.Label.new(root, {
-      centerX: am5.p50,
-      centerY: am5.p100,
-      text: "{height} metres",
-      populateText: true
+      centerX: am5.p50,        // centered over it...
+      centerY: am5.p100,       // ...and resting on it
+      text: "{height} meters", // the height from the data...
+      // the sky behind the label is a mid-tone theme color in light and dark mode, so the label is always dark
+      fill: am5.color(0x000000),
+      populateText: true // ...filled in from the data item
     })
   })
 })
 
 series.data.setAll(data);
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -213,6 +237,7 @@ chart.appear(1000, 100);
   width: 100%;
   height: 500px;
   overflow: hidden;
+  font-size: 0.875rem;
 }
 ```
 
@@ -221,3 +246,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

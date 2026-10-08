@@ -2,19 +2,23 @@
 title: "IDropdownColorsPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdowncolorsprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IDropdownPrivate
+All ancestors: IDropdownPrivate, IEntityPrivate
+TypeScript: `am5stock.IDropdownColorsPrivate` (`import type { IDropdownColorsPrivate } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IDropdownPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **list** (`HTMLUListElement`)
+- **color** (`Color`)
+- **opacity** (`number`)
 
-- **color** (`Color`) — (no description)
-- **list** (`HTMLUListElement`) — (no description)
+## Other inherited private settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IDropdownPrivate")`) for types, defaults and descriptions.
+
+- _IDropdownPrivate_: arrow, container

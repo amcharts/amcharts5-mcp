@@ -2,32 +2,35 @@
 title: "LineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/lineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Used to plot line and/or area series.
+A series drawn as a line, with an optional fill below it for an area chart.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/
 
 ## Import
 
-```javascript
-// Import LineSeries
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.LineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: XYSeries
-Extended by: RadarLineSeries, DrawingSeries, SmoothedYLineSeries, SmoothedXLineSeries, SmoothedXYLineSeries, StepLineSeries, CurveLineSeries
+Extends: XYSeries → Series → Component → Container → Sprite → Entity → Settings
+Extended by: CurveLineSeries, DrawingSeries, RadarLineSeries, SmoothedXLineSeries, SmoothedXYLineSeries, SmoothedYLineSeries, StepLineSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from XYSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **autoGapCount** (`undefined | number`) — Default 1.1 If there are more than autoGapCount base time intervals (e.g. days) with no data, the line will break and will display gap. Click here for more info
-- **connect** (`undefined | false | true`) — Default true If set to true the line will connect over "gaps" - categories or time intervals with no data. Click here for more info
-- **minDistance** (`undefined | number`) — Default 0 Allows simplifying the line with many points. If set, the series will skip points that are closer than X pixels to each other. With many data points, this allows having smoother, less cluttered lines. @since 5.2.7
+- Settings: `ILineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ILineSeriesPrivate`
+- Data item fields: `ILineSeriesDataItem`
 
 ## Properties
 
-- **fills** (`ListTemplate`) — Default new ListTemplate<Graphics> A TemplateList of all segment fills in series. fills.template can be used to set default settings for all segment fills, or to change on existing ones.
-- **strokes** (`ListTemplate`) — Default new ListTemplate<Graphics> A TemplateList of all line segments in series. strokes.template can be used to set default settings for all line segments, or to change on existing ones.
+Public properties (not settings):
+
+- **fills** (`ListTemplate<Graphics>`) — default `new ListTemplate<Graphics>` — Fills below the line segments. They are hidden by default: set `visible` and `fillOpacity` on `fills.template` to show them.
+- **strokes** (`ListTemplate<Graphics>`) — default `new ListTemplate<Graphics>` — Line segments of the series. Configure them all, existing ones included, through `strokes.template`.

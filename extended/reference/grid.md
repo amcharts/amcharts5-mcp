@@ -2,24 +2,26 @@
 title: "Grid"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/grid/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates an axis grid line.
+A grid line of an axis, drawn across the plot area.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Grid
 
 ## Import
 
-```javascript
-// Import Grid
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.Grid.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **location** (`undefined | number`) — Relative location of the grid line within the cell. 0 - beginning, 0.5 - middle, 1 - end. Click here for more info
+- Settings: `IGridSettings` — get_api_reference shows it after this page
+- Private settings: `IGridPrivate`

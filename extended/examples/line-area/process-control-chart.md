@@ -2,13 +2,24 @@
 title: "Process Control Chart"
 source: "https://www.amcharts.com/demos/process-control-chart/"
 category: "line-area"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo shows an implementation of a Process control chart.
-It uses simple XYChart with a LineSeries, with axis ranges to denote limits.
-XY chart
-Axis ranges
+A process control chart: 23 samples against an upper and a lower limit, with the zone between them shaded. Three fall outside, the signal to look for a cause.
+
+When to shade the limits: Shading the space between the limits turns the chart into a simple test: inside the band is normal variation, outside it is a signal. That reads at a glance on a wall screen or in a report, even for people who never learned the rules of process control.
+
+Good for:
+- Shop-floor and wall-screen dashboards
+- Quality reports for non-specialists
+- Any safe range: temperature, pressure, stock levels
+
+Think twice when:
+- Limits that change over time: draw them as series from your data
+- Several processes at once: give each its own small chart
+- Subtle drifts inside the band: flag runs of points too
+
+Prompt: Create a process control chart of 23 samples, with a shaded band between the lower and upper control limits, solid lines for both limits and a dashed line for the process average, each labeled inside the plot. Add round markers, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -20,7 +31,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 var data = [
@@ -53,10 +65,10 @@ var data = [
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    panX: true,
-    panY: true,
-    wheelX: "panX",
-    wheelY: "zoomX"
+    panX: true,     // drag the plot to pan sideways...
+    panY: true,     // ...and up and down
+    wheelX: "panX", // a horizontal wheel or trackpad swipe pans...
+    wheelY: "zoomX" // ...and the vertical wheel zooms in along x
   })
 );
 
@@ -65,9 +77,9 @@ var chart = root.container.children.push(
 var xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     renderer: am5xy.AxisRendererX.new(root, {
-      minGridDistance: 50
+      minGridDistance: 50 // at least 50px between the x labels
     }),
-    tooltip: am5.Tooltip.new(root, {})
+    tooltip: am5.Tooltip.new(root, {}) // shows the x value under the cursor on the axis
   })
 );
 
@@ -81,32 +93,38 @@ var yAxis = chart.yAxes.push(
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.LineSeries.new(root, {
+    // bullets hide when points get closer than 10px, so they don't crowd a zoomed-out line
     minBulletDistance: 10,
     xAxis: xAxis,
     yAxis: yAxis,
     valueYField: "value",
     valueXField: "x",
     tooltip: am5.Tooltip.new(root, {
-      pointerOrientation: "horizontal",
-      labelText: "{valueY}"
+      pointerOrientation: "horizontal", // the tooltip sits beside the point, not above it
+      labelText: "{valueY}"             // just the value
     })
   })
 );
 
 series.strokes.template.setAll({
-  strokeWidth: 3
+  strokeWidth: 3 // a 3px line
 });
 
 series.data.setAll(data);
 
+// All bullets share one template, so setting its radius resizes them at once
+var bulletTemplate = am5.Template.new({
+  radius: 6
+});
+
+// a dot on every point
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
-      radius: 6,
-      fill: series.get("fill"),
-      stroke: root.interfaceColors.get("background"),
-      strokeWidth: 2
-    })
+      fill: series.get("fill"), // the series color
+      stroke: root.interfaceColors.get("background"), // a ring in the background color...
+      strokeWidth: 2 // ...2px wide, sets each dot off the line
+    }, bulletTemplate)
   });
 });
 
@@ -115,11 +133,11 @@ series.bullets.push(function () {
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis
 }));
-cursor.lineY.set("visible", false);
+cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // add scrollbar
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
+  orientation: "horizontal" // a scrollbar along the top, to zoom in on part of the line
 }));
 
 // Make stuff animate on load
@@ -129,43 +147,50 @@ chart.appear(1000, 100);
 
 // Function to add process control ranges
 function addLimits(lower, upper) {
+  // Colors from the theme, so the chart follows the theme
+  var colors = chart.get("colors");
+
   // Add range fill
-  createRange(lower, upper, undefined, am5.color(0xffce00));
-  
+  createRange(lower, upper, undefined, colors.getIndex(4));
+
   // Add upper/average/lower lines
-  createRange(lower, undefined, "Lower control limit", am5.color(0x4d00ff));
-  createRange(upper, undefined, "Upper control limit", am5.color(0x4d00ff));
-  createRange(lower + (upper - lower) / 2, undefined, "Process average", am5.color(0x4d00ff), true);
-  
+  var lowerRange = createRange(lower, undefined, "Lower control limit", colors.getIndex(10));
+  createRange(upper, undefined, "Upper control limit", colors.getIndex(10));
+  createRange(lower + (upper - lower) / 2, undefined, "Process average", colors.getIndex(10), true);
+
+  // The lower label goes under its line, clear of the data inside the limits
+  lowerRange.get("label").set("centerY", am5.p0);
 }
 
-addLimits(10, 20)
+addLimits(10, 20);
 
+// an axis range: a filled band when it has an end value, otherwise a line, with an optional label
 function createRange(value, endValue, label, color, dashed) {
   var rangeDataItem = yAxis.makeDataItem({
     value: value,
     endValue: endValue
   });
-  
+
   var range = yAxis.createAxisRange(rangeDataItem);
-  
+
   if (endValue) {
     range.get("axisFill").setAll({
       fill: color,
-      fillOpacity: 0.2,
-      visible: true
+      fillOpacity: 0.2, // a light band between the limits
+      visible: true     // an axis range's fill is hidden until set visible
     });
   }
   else {
     range.get("grid").setAll({
       stroke: color,
-      strokeOpacity: 1,
-      strokeWidth: 2,
-      location: 1
+      strokeOpacity: 1, // fully opaque, unlike the regular grid
+      strokeWidth: 2,   // 2px wide
+      location: 1,
+      forceHidden: false // shown even with the regular grid hidden, whose template this grid copies
     });
-    
+
     if (dashed) {
-      range.get("grid").set("strokeDasharray", [5, 3]);
+      range.get("grid").set("strokeDasharray", [5, 3]); // 5px dashes, 3px gaps
     }
   }
 
@@ -173,12 +198,15 @@ function createRange(value, endValue, label, color, dashed) {
     range.get("label").setAll({
       text: label,
       location: 1,
-      fontSize: 19,
-      inside: true,
-      centerX: am5.p0,
+      fontSize: 19,    // large text, in pixels
+      inside: true,    // inside the plot, not next to the axis
+      centerX: am5.p0, // the label starts at the left edge of the plot and runs right
+      // the label's bottom on the line, so the text sits just above it
       centerY: am5.p100
     });
   }
+
+  return range;
 }
 ```
 
@@ -194,6 +222,7 @@ function createRange(value, endValue, label, color, dashed) {
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -202,3 +231,4 @@ function createRange(value, endValue, label, color, dashed) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

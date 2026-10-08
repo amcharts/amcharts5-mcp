@@ -2,95 +2,39 @@
 title: "IXYCursorSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ixycursorsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IXYCursorSettings extends IContainerSettings.
-IXYCursorSettings is extended by IRadarCursorSettings, ICurveCursorSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        alwaysShow        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-If set to true, cursor will not be hidden when mouse cursor moves out of the plot area.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IContainerSettings
-Extended by: IRadarCursorSettings, ICurveCursorSettings
+All ancestors: IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5xy.XYCursor` (see its page for the class)
+TypeScript: `am5xy.IXYCursorSettings` (`import type { IXYCursorSettings } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IContainerSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **xAxis** (`Axis<AxisRenderer>`) — X axis for the vertical line to snap to. When that axis has a `tooltip`, the line follows it from cell to cell, such as from category to category.
+- **yAxis** (`Axis<AxisRenderer>`) — Y axis for the horizontal line to snap to. When that axis has a `tooltip`, the line follows it from cell to cell.
+- **behavior** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "selectX" | "selectY" | "selectXY"`) — default `"none"` _(theme)_ — What dragging across the plot area does: zoom or select along X, Y or both. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Behavior
+- **positionX** (`number`) — Pins the cursor at this horizontal position in the plot area: `0` is the left edge, `1` the right. While set, the cursor ignores the pointer.
+- **positionY** (`number`) — Pins the cursor at this vertical position in the plot area: `0` is the top edge, `1` the bottom. While set, the cursor ignores the pointer.
+- **alwaysShow** (`boolean`) — default `false` — Keeps the cursor visible when the pointer leaves the plot area.
+- **snapToSeries** (`XYSeries[]`) — Series to snap to: the cursor jumps to the nearest data item among them.
+- **snapToSeriesBy** (`"xy" | "x" | "y" | "x!" | "y!"`) — default `"xy"` _(theme)_ — How `snapToSeries` measures "nearest": `"xy"` by straight distance, `"x"` or `"y"` along one direction only. `"x!"` and `"y!"` do the same, but only among the items under the pointer, one per series. _Since 5.0.6._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#snapping-to-series
+- **syncWith** (`XYCursor[]`) — Cursors of other charts that move along with this one. They sync by position on the page, not by axis value, so vertical lines follow each other only between charts stacked one above another, and horizontal lines only between charts side by side. _Since 5.1.4._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#syncing-cursors
+- **moveThreshold** (`number`) — default `1` _(theme)_ — How far in pixels the pointer must move between press and release for a drag to zoom or select. A shorter move counts as a click. _Since 5.2.20._
+- **clickTolerance** (`number`) — default `0` — How far in pixels outside the plot area a press may start and still begin a zoom or selection, which then starts at the plot area's edge. Makes it easier to select from the very edge. _Since 5.20.0._
 
-- **alwaysShow** (`undefined | false | true`) — Default false If set to true, cursor will not be hidden when mouse cursor moves out of the plot area.
-- **behavior** (`"zoomX" | "zoomY" | "zoomXY" | "selectX" | "selectY" | "selectXY" | "none"`) — Default "none" What should cursor do when dragged across plot area. Click here for more info
-- **clickTolerance** (`undefined | number`) — Default 0 *(since 5.20.0)* How far (in pixels) outside the plot area a press can start and still begin a zoom/selection, when behavior is set to a zoom or select mode. Makes it easier to start selecting near the edges of the plot area. The selection still starts on the edge of the plot area (the press point is clamped into it). A value of 0 (default) disables this and keeps the original behavior: a selection can only start within the plot area.
-- **moveThreshold** (`undefined | number`) — Default 1 Minimum distance in pixels between down and up points. If a distance is less than the value of moveThreshold, the zoom or selection won't happen. @since 5.2.20
-- **positionX** (`undefined | number`) — Cursor's horizontal position relative to plot area. If this setting is set, cursor will not react to mouse/touch and will just sit at specified position until positionX is reset to undefined. 0 - left, 1 - right.
-- **positionY** (`undefined | number`) — Cursor's vertical position relative to plot area. If this setting is set, cursor will not react to mouse/touch and will just sit at specified position until positionY is reset to undefined. 0 - left, 1 - right.
-- **snapToSeries** (`Array`) — A list of series to snap cursor to. If set, the cursor will always snap to the closest data item of listed series.
-- **snapToSeriesBy** (`"xy" | "x" | "y" | "x!" | "y!"`) — Default "xy" Defines in which direction to look when searching for the nearest data item to snap to. Possible values: "xy" (default), "x", "y", "x!", "y!". Click here for more info @since 5.0.6
-- **syncWith** (`Array`) — An array of other XYCursor objects to sync this cursor with. If set will automatically move synced cursors to the same position within their respective axes as the this cursor assumin same XY coordinates of the pointer. NOTE: Syncing is performed using actual X/Y coordinates of the point of mouse cursor's position or touch. It means that they will not sync by axis positions, but rather by screen coordinates. For example vertical lines will not sync across horizontally laid out charts, and vice versa. Click here for more info @since 5.1.4
-- **xAxis** (`Axis`) — Cursor's X axis. If set, cursor will snap to that axis' cells.
+## Inherited settings with a different default on XYCursor
 
+- **exportable** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element is left out of exported images of the chart.
+- **layer** (`number`) — default `30` _(theme)_ — _from ISpriteSettings_ — Layer to draw the element on: elements on higher layers show in front of those on lower ones. If not set, the element is on its parent's layer.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
+
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,71 +2,28 @@
 title: "IBulletSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ibulletsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IBulletSettings extends IEntitySettings.
-IBulletSettings is not extended by any other symbol.
-Properties
-
-
-        autoRotate        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-If set to true, the bullet will be automatically rotated to face direction of line it is attached to.
- NOTE: Works only in Flow and MapPointSeries (when MapPoint is attached to a MapLine).
-
-
-        autoRotateAngle        
-        #
-      
-
-
-                          Type undefined | number                      
-If autoRotate is set to true, value of autoRotateAngle will be added to the automatically-calculated angle.
-
-
-        dynamic        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-If set to true, the bullet will redraw its sprite element whenever anything in its parent series changes.
-
-
-        field        
-        #
-      
-
-
-                          Type "open" | "high" | "low" | "value"                      
-If a field will be set, the bullet will be located at exact value of that field, not paying atention to locationY/locationX. Works with XYSeries only.
-If field is set, bullet will be placed at the specific data value, ignoring any locationX and locationY settings.
-
-IMPORTANT: this setting works with XYSeries only.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.Bullet` (see its page for the class)
+TypeScript: `am5.IBulletSettings` (`import type { IBulletSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **locationX** (`number`) — default `0.5` _(theme)_ — Horizontal location within the target element, from `0` (left) to `1` (right). In a pie slice it runs along the arc.
+- **locationY** (`number`) — default `0.5` _(theme)_ — Vertical location within the target element, from `0` (top) to `1` (bottom). On XY columns `0` is the column's base and `1` its value end; in a pie slice it runs from the inner to the outer radius.
+- **sprite** (`Sprite`) — The element the bullet shows.
+- **dynamic** (`boolean`) — default `false` — Refreshes the `sprite` (its fill, size and label text, and those of its children) each time the series positions its bullets.
+- **autoRotate** (`boolean`) — default `false` — Rotates the bullet to follow the direction of the line it sits on. Works on links of `Flow` charts, `HierarchyLink` and `MapSankeySeries`, and in `MapPointSeries` for points placed on a `MapLine`.
+- **autoRotateAngle** (`number`) — Degrees added to the angle that `autoRotate` sets.
+- **field** (`"open" | "high" | "low" | "value"`) — Places the bullet at this value of the data item along the value axis, in place of the location on that axis. The location across it still applies. **IMPORTANT: this setting works with `XYSeries` only.** _Since 5.6.0._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/#By_data_field
+- **stacked** (`"auto" | "up" | "down"`) — Stacks bullets at the same spot instead of overlapping them. • `"up"` - stacks bullets upwards (rightwards on a horizontal series). • `"down"` - stacks bullets downwards (leftwards on a horizontal series). • `"auto"` - stacks bullets in the direction that offers more space. **IMPORTANT: this setting works with `XYSeries` only.** _Since 5.6.0._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/#Stacked_bullets
 
-- **autoRotate** (`undefined | false | true`) — Default false If set to true, the bullet will be automatically rotated to face direction of line it is attached to. NOTE: Works only in Flow and MapPointSeries (when MapPoint is attached to a MapLine).
-- **autoRotateAngle** (`undefined | number`) — If autoRotate is set to true, value of autoRotateAngle will be added to the automatically-calculated angle.
-- **dynamic** (`undefined | false | true`) — Default false If set to true, the bullet will redraw its sprite element whenever anything in its parent series changes.
-- **field** (`"open" | "high" | "low" | "value"`) — If a field will be set, the bullet will be located at exact value of that field, not paying atention to locationY/locationX. Works with XYSeries only. If field is set, bullet will be placed at the specific data value, ignoring any locationX and locationY settings. IMPORTANT: this setting works with XYSeries only. Click here for more info @since 5.6.0
-- **locationX** (`undefined | number`) — Horizontal location within target element. 0 - left, 1 - right, or anything inbetweeen.
-- **locationY** (`undefined | number`) — Vertical location within target element. 0 - top, 1 - bottom, or anything inbetweeen.
-- **sprite** (`Sprite`) — A visual element of the bullet.
-- **stacked** (`"up" | "down" | "auto"`) — If set, will stack bullets instead of overlapping them. "up - stacks bullets upwards. "down - stacks bullets downwards. "auto - stacks bullets in the direction that offers more space. IMPORTANT: this setting works with XYSeries only. Click here for more info @since 5.6.0
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

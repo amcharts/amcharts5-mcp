@@ -1,7 +1,7 @@
 ---
 title: "Value axis"
 source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Value axis is used for plotting numeric values.
@@ -162,7 +162,9 @@ var yAxis = chart.yAxes.push(
   })
 );
 
+
 Regular scale (default)
+
 
 Logarithmic scale
 
@@ -258,7 +260,9 @@ var yAxis = chart.yAxes.push(
   })
 );
 
+
 Default behavior
+
 
 `maxPrecision: 0`
 
@@ -282,7 +286,9 @@ var yAxis = chart.yAxes.push(
   })
 );
 
+
 Default behavior
+
 
 `numberFormat: "#.000'%'"`
 
@@ -316,7 +322,9 @@ var yAxis = chart.yAxes.push(
   })
 );
 
+
 Default behavior (uses label format)
+
 
 `extraTooltipPrecision: 1`
 
@@ -396,12 +404,48 @@ var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   })
 }));
 
+
 Default behavior
+
 
 Synced value axes
 
 NOTE`syncWithAxis` setting is experimental and is not guaranteed to work perfectly in 100% of scenarios.
 
+
+### Syncing zero lines
+
+Sometimes, it makes sense to not just sync grid but also the zero-value line.
+
+To enable it, set `syncZeros` to `true` in axis' settings. Please note, that `syncWithAxis` still needs to be set for it to work properly.
+
+It will only work if both synced axes include zero in their range.
+
+let yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+  renderer: am5xy.AxisRendererY.new(root, {})
+}));
+
+
+let yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+  syncWithAxis: yAxis1,
+  syncZeros: true,
+  renderer: am5xy.AxisRendererY.new(root, {
+    opposite: true
+  })
+}));
+
+var yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+  renderer: am5xy.AxisRendererY.new(root, {})
+}));
+
+
+var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+  syncWithAxis: yAxis1,
+  syncZeros: true,
+  renderer: am5xy.AxisRendererY.new(root, {
+    opposite: true
+  })
+}));
 
 ## Events
 

@@ -2,17 +2,20 @@
 title: "ILegendItemSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilegenditemsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
-Extends: any
+Extends: IEntitySettings
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from any (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **visible** (`boolean`)
 
+## Other inherited settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,32 +2,26 @@
 title: "StockControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stockcontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base class for controls on StockToolbar.
+Base class for the controls of a `StockToolbar`.
 
 ## Import
 
-```javascript
-// Import StockControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.StockControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
-Extended by: ColorControl, DrawingToolControl, DropdownListControl, DropdownControl, IconControl, DrawingControl, DateRangeSelector, PeriodSelector, ResetControl
+Extends: Entity → Settings
+Extended by: ColorControl, DateRangeSelector, DrawingControl, DrawingToolControl, DropdownControl, DropdownListControl, IconControl, PeriodSelector, ResetControl
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **active** (`undefined | false | true`) — Default false Indicates if control is active.
-- **align** (`"left" | "right"`) — Default "left" Alignment of the control in a toolbar.
-- **description** (`undefined | string`) — Description of what the button does.
-- **forceHidden** (`undefined | false | true`) — Force this control to always be invisible. @since 5.8.5 @defaul false
-- **icon** (`HTMLElement | SVGElement | "none"`) — An element with control icon. If not set, each control will aytomatically create an icon.
-- **name** (`undefined | string`) — Name of the control. Used for the label.
-- **stockChart** (`StockChart`) — A StockChart the toolbar is for.
-- **togglable** (`undefined | false | true`) — Default true If set to true, control can be toggle on and off by clicking on it.
+- Settings: `IStockControlSettings` — get_api_reference shows it after this page
+- Private settings: `IStockControlPrivate`
+- Events: `IStockControlEvents`

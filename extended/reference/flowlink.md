@@ -2,32 +2,29 @@
 title: "FlowLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/flowlink/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base class for a flow link.
+Base class for the links of flow series.
 
 ## Import
 
-```javascript
-// Import FlowLink
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 Extended by: ArcDiagramLink, ChordLink, SankeyLink
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **fillStyle** (`"solid" | "source" | "target" | "gradient" | "none"`) — Type of fill to use for links.
-- **source** (`DataItem`) — Source node data item.
-- **strokeStyle** (`"solid" | "source" | "target" | "gradient" | "none"`) — Type of outline to use for links.
-- **target** (`DataItem`) — Source node data item.
+- Settings: `IFlowLinkSettings` — get_api_reference shows it after this page
+- Private settings: `IFlowLinkPrivate`
 
 ## Properties
 
-- **series** (`Flow | undefined`) — (no description)
+Public properties (not settings):
+
+- **series** (`Flow`)

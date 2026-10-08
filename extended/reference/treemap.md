@@ -2,35 +2,34 @@
 title: "Treemap"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/treemap/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Treemap series.
+A treemap: nodes as rectangles sized by value, each inside its parent's rectangle. A click on a node zooms into it.
+
+Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/
 
 ## Import
 
-```javascript
-// Import Treemap
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.Treemap.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Hierarchy
+Extends: Hierarchy → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Hierarchy (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **layoutAlgorithm** (`"binary" | "squarify" | "slice" | "dice" | "sliceDice"`) — Default "squarify" An algorithm to use when laying out node rectangles. ...
-- **nodePaddingBottom** (`undefined | number`) — Gap between nodes and bottomedge. Will be ignored if nodePaddingOuter is set. Click here
-- **nodePaddingInner** (`undefined | number`) — Gap between nodes. In pixels. Click here
-- **nodePaddingLeft** (`undefined | number`) — Gap between nodes and left edge. Will be ignored if nodePaddingOuter is set. Click here
-- **nodePaddingOuter** (`undefined | number`) — Gap between nodes and outer edge of the chart. In pixels. Click here
-- **nodePaddingRight** (`undefined | number`) — Gap between nodes and bottom edge. Will be ignored if nodePaddingOuter is set. Click here
-- **nodePaddingTop** (`undefined | number`) — Gap between nodes and top edge. Will be ignored if nodePaddingOuter is set. Click here
+- Settings: `ITreemapSettings` — get_api_reference shows it after this page
+- Private settings: `ITreemapPrivate`
+- Data item fields: `ITreemapDataItem`
 
 ## Properties
 
-- **rectangleTemplate** (`Template`) — Default Template.new({ })
-- **rectangles** (`ListTemplate`) — Default new ListTemplate<RoundedRectangle> A list of node rectangle elements in a Treemap chart.
+Public properties (not settings):
+
+- **rectangles** (`ListTemplate<RoundedRectangle>`) — List of node rectangles; configure them all through `rectangles.template`.
+- **rectangleTemplate** (`Template<RoundedRectangle>`)

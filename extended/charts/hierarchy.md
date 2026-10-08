@@ -1,7 +1,7 @@
 ---
 title: "Hierarchy charts"
 source: "https://www.amcharts.com/docs/v5/charts/hierarchy/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Hierarchy charts (Treemap, Sunburst, Force-directed tree, etc.) are used to display multi-level data, in a branching parent-child tree.
@@ -314,6 +314,45 @@ IMPORTANT It's a good practice to make sure that setting data happens as late i
 
 MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
 
+### Flat data
+
+Hierarchy charts can handle "flat data" — data items in a single array that define their parent-child relations via IDs rather than `children`.
+
+There are two elements to using flat data:
+
+1.  `parentIdField` needs to be specified, so that Hierarchy knows which field to use in looking up for a parent ID.
+2.  Instead of `series.data.setAll()`, we need to use `series.setFlatData()`.
+
+let tree = root.container.children.push(am5hierarchy.Tree.new(root, {
+  valueField: "value",
+  categoryField: "name",
+  childDataField: "children",
+  idField: "id",
+  parentIdField: "parentId"
+}));
+
+tree.setFlatData(\[
+  { id: "root", name: "Root", value: 100 },
+  { id: "a",    name: "A",    value: 50,  parentId: "root" },
+  { id: "a1",   name: "A1",   value: 20,  parentId: "a" },
+  { id: "b",    name: "B",    value: 30,  parentId: "root" }
+\]);
+
+var tree = root.container.children.push(am5hierarchy.Tree.new(root, {
+  valueField: "value",
+  categoryField: "name",
+  childDataField: "children",
+  idField: "id",
+  parentIdField: "parentId"
+}));
+
+tree.setFlatData(\[
+  { id: "root", name: "Root", value: 100 },
+  { id: "a",    name: "A",    value: 50,  parentId: "root" },
+  { id: "a1",   name: "A1",   value: 20,  parentId: "a" },
+  { id: "b",    name: "B",    value: 30,  parentId: "root" }
+\]);
+
 ## Pre-selected branch
 
 In order for our chart to function properly, we need to tell series which node is currently selected.
@@ -406,14 +445,18 @@ var series = root.container.children.push(
   })
 );
 
+
 `topDepth: 0`  
 `initialDepth: 1`
+
 
 `topDepth: 0`  
 `initialDepth: 2`
 
+
 `topDepth: 0`  
 `initialDepth: 3`
+
 
 `topDepth: 1`  
 `initialDepth: 1`

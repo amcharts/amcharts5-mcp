@@ -2,7 +2,17 @@
 title: "States"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/states/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Collection of State objects for an element.
+The `State` objects of an element, by name, such as `"hover"` or `"hidden"`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/settings/states/
+
+## Import
+
+Not exported from any `@amcharts/amcharts5` entry point (internal class).
+
+## Inheritance
+
+Extends: (none)

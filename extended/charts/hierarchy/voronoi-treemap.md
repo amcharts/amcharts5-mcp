@@ -1,7 +1,7 @@
 ---
 title: "Voronoi Treemap"
 source: "https://www.amcharts.com/docs/v5/charts/hierarchy/voronoi-treemap/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial provides information on how to create Weighted Voronoi Treemaps.
@@ -14,14 +14,14 @@ Voronoi treemaps are a method of visualizing hierarchical data using Voronoi dia
 
 Voronoi treemap can either take rectangular or polygon shape.
 
-It's controlled by setting `type`, with two possible values: `"rectangle"`, and `"polygon"` (default).
+It's controlled by setting `shapeType`, with two possible values: `"rectangle"`, and `"polygon"` (default).
 
 let series = root.container.children.push(
   am5hierarchy.VoronoiTreemap.new(root, {
     valueField: "value",
     categoryField: "name",
     childDataField: "children",
-    type: "rectangle"
+    shapeType: "rectangle"
   })
 );
 
@@ -30,7 +30,7 @@ var series = root.container.children.push(
     valueField: "value",
     categoryField: "name",
     childDataField: "children",
-    type: "rectangle"
+    shapeType: "rectangle"
   })
 );
 
@@ -44,13 +44,16 @@ Example
 
 ### Corner count
 
-For the `"polygon"` type, we can also control the shape by setting `cornerCount` setting.
+For the `"polygon"` shape type, we can also control the shape by setting `cornerCount` setting.
 
 The bigger the value, the more corners, the rounder the shape, with `120` (default) resulting in a perfect circle.
 
+
 `cornerCount: 120 (default)`
 
+
 `cornerCount: 10`
+
 
 `cornerCount: 3`
 

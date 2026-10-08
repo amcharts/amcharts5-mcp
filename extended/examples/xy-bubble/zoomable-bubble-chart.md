@@ -2,14 +2,24 @@
 title: "Zoomable Bubble Chart"
 source: "https://www.amcharts.com/demos/zoomable-bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A great thing about interactive charts is that you can put a lot of information into one chart and let users zoom in and out to see the data with varying level of detail. This demo shows a bubble chart with all the zooming features enabled.
-Key implementation details
-The key here is to enable all of the zooming and panning features on the XYChart itself: panX, panY, pinchZoomX, pinchZoomY are all set to true. And mouse-wheel behavior is set to zoom on both X and Y axes with wheelY: "zoomXY". Finally, we add both horizontal and vertical scrollbars to enable manual zooming and panning on each axis.
-XY chart: Zoom and pan
-Scrollbars
+Each bubble is a country: wealth along the bottom, life expectancy up the side, population as size, continent as color. Zoom in where they crowd.
+
+When a bubble chart works: A bubble chart compares things on three measures at once, two positions and a size, with color for a group. It shows a pattern well, like life expectancy rising with wealth, and the countries that break it. Sizes are its weak spot: people judge areas less precisely than positions, so put exact figures in the tooltip.
+
+Good for:
+- Countries, products or projects compared on three measures
+- Spotting outliers, like rich countries with short lives
+- Large datasets that need zoom to explore
+
+Think twice when:
+- Exact comparisons of size: use a bar chart for that measure
+- A handful of items: a labeled scatter chart or a table is clearer
+- Change over the years: animate it, as in the motion chart
+
+Prompt: Create a zoomable bubble chart of 168 countries, GDP per capita against life expectancy, with a series per continent and the bubbles sized by population on one scale for all countries, and a legend that shows and hides continents. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -18,111 +28,50 @@ Scrollbars
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
+  panX: true, // drag the plot to pan in any direction
   panY: true,
-  wheelY: "zoomXY",
-  pinchZoomX:true,
-  pinchZoomY:true
+  wheelY: "zoomXY",           // the mouse wheel zooms both axes at once
+  pinchZoomX: true,           // pinch on a touch screen to zoom...
+  pinchZoomY: true,           // ...either axis
+  layout: root.verticalLayout // the legend goes under the plot
 }));
 
+// Every other theme color, so the continents are easy to tell apart
+chart.get("colors").set("step", 2);
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// The X axis runs along the top, the legend along the bottom
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererX.new(root, {}),
-  tooltip: am5.Tooltip.new(root, {})
+  renderer: am5xy.AxisRendererX.new(root, {
+    opposite: true
+  }),
+  tooltip: am5.Tooltip.new(root, {}) // shows the cursor's GDP per capita on the axis
 }));
 
-xAxis.children.moveValue(am5.Label.new(root, {
-  text: "GDP per Capita, USD",
-  x: am5.p50,
-  centerX: am5.p50
-}), xAxis.children.length - 1);
+// Hide a label that would stick out past the right edge of the chart
+xAxis.get("renderer").labels.template.set("maxPosition", 0.98);
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererY.new(root, {
-    inversed: false
-  }),
-  tooltip: am5.Tooltip.new(root, {})
+  renderer: am5xy.AxisRendererY.new(root, {}),
+  tooltip: am5.Tooltip.new(root, {}) // shows the cursor's life expectancy on the axis
 }));
 
-yAxis.children.moveValue(am5.Label.new(root, {
-  rotation: -90,
-  text: "Life expectancy, years",
-  y: am5.p50,
-  centerX: am5.p50
-}), 0);
-
-
-// Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var series = chart.series.push(am5xy.LineSeries.new(root, {
-  calculateAggregates: true,
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "y",
-  valueXField: "x",
-  valueField: "value",
-  seriesTooltipTarget:"bullet",
-  tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "horizontal",
-    labelText: "[bold]{title}[/]\nLife expectancy: {valueY.formatNumber('#.0')}\nGDP: {valueX.formatNumber('#,###.')}\nPopulation: {value.formatNumber('#,###.')}"
-  })
-}));
-
-series.strokes.template.set("visible", false);
-
-
-// Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
-var circleTemplate = am5.Template.new({});
-circleTemplate.adapters.add("fill", function(fill, target) {
-  var dataItem = target.dataItem;
-  if (dataItem) {
-    return am5.Color.fromString(dataItem.dataContext.color);
-  }
-  return fill
-});
-series.bullets.push(function() {
-  var bulletCircle = am5.Circle.new(root, {
-    radius: 5,
-    fill: series.get("fill"),
-    fillOpacity: 0.8
-  }, circleTemplate);
-  return am5.Bullet.new(root, {
-    sprite: bulletCircle
-  });
-});
-
-
-// Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
-series.set("heatRules", [{
-  target: circleTemplate,
-  min: 3,
-  max: 60,
-  dataField: "value",
-  key: "radius"
-}]);
-
-// Set data
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
-series.data.setAll([
+// Data: GDP per capita (x), life expectancy (y) and population (value) of 168 countries
+var data = [
   {
     "title": "Afghanistan",
     "id": "AF",
-    "color": "#eea638",
     "continent": "asia",
     "x": 1349.69694102398,
     "y": 60.524,
@@ -131,7 +80,6 @@ series.data.setAll([
   {
     "title": "Albania",
     "id": "AL",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 6969.30628256456,
     "y": 77.185,
@@ -140,7 +88,6 @@ series.data.setAll([
   {
     "title": "Algeria",
     "id": "DZ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 6419.12782939372,
     "y": 70.874,
@@ -149,7 +96,6 @@ series.data.setAll([
   {
     "title": "Angola",
     "id": "AO",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 5838.15537582502,
     "y": 51.498,
@@ -158,7 +104,6 @@ series.data.setAll([
   {
     "title": "Argentina",
     "id": "AR",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 15714.1031814398,
     "y": 76.128,
@@ -167,7 +112,6 @@ series.data.setAll([
   {
     "title": "Armenia",
     "id": "AM",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 5059.0879636443,
     "y": 74.469,
@@ -176,7 +120,6 @@ series.data.setAll([
   {
     "title": "Australia",
     "id": "AU",
-    "color": "#8aabb0",
     "continent": "australia",
     "x": 36064.7372768548,
     "y": 82.364,
@@ -185,7 +128,6 @@ series.data.setAll([
   {
     "title": "Austria",
     "id": "AT",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 36731.6287741081,
     "y": 80.965,
@@ -194,7 +136,6 @@ series.data.setAll([
   {
     "title": "Azerbaijan",
     "id": "AZ",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 9291.02626998762,
     "y": 70.686,
@@ -203,7 +144,6 @@ series.data.setAll([
   {
     "title": "Bahrain",
     "id": "BH",
-    "color": "#eea638",
     "continent": "asia",
     "x": 24472.896235865,
     "y": 76.474,
@@ -212,7 +152,6 @@ series.data.setAll([
   {
     "title": "Bangladesh",
     "id": "BD",
-    "color": "#eea638",
     "continent": "asia",
     "x": 1792.55023464123,
     "y": 70.258,
@@ -221,7 +160,6 @@ series.data.setAll([
   {
     "title": "Belarus",
     "id": "BY",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 13515.1610255056,
     "y": 69.829,
@@ -230,7 +168,6 @@ series.data.setAll([
   {
     "title": "Belgium",
     "id": "BE",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 32585.0119650436,
     "y": 80.373,
@@ -239,7 +176,6 @@ series.data.setAll([
   {
     "title": "Benin",
     "id": "BJ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1464.13825459126,
     "y": 59.165,
@@ -248,7 +184,6 @@ series.data.setAll([
   {
     "title": "Bhutan",
     "id": "BT",
-    "color": "#eea638",
     "continent": "asia",
     "x": 6130.86235464324,
     "y": 67.888,
@@ -257,7 +192,6 @@ series.data.setAll([
   {
     "title": "Bolivia",
     "id": "BO",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 4363.43264453337,
     "y": 66.969,
@@ -266,7 +200,6 @@ series.data.setAll([
   {
     "title": "Bosnia and Herzegovina",
     "id": "BA",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 7664.15281166303,
     "y": 76.211,
@@ -275,7 +208,6 @@ series.data.setAll([
   {
     "title": "Botswana",
     "id": "BW",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 14045.9403255843,
     "y": 47.152,
@@ -284,7 +216,6 @@ series.data.setAll([
   {
     "title": "Brazil",
     "id": "BR",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 10383.5405937283,
     "y": 73.667,
@@ -293,7 +224,6 @@ series.data.setAll([
   {
     "title": "Brunei",
     "id": "BN",
-    "color": "#eea638",
     "continent": "asia",
     "x": 45658.2532642054,
     "y": 78.35,
@@ -302,7 +232,6 @@ series.data.setAll([
   {
     "title": "Bulgaria",
     "id": "BG",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 11669.7223127119,
     "y": 73.448,
@@ -311,7 +240,6 @@ series.data.setAll([
   {
     "title": "Burkina Faso",
     "id": "BF",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1363.77981282077,
     "y": 55.932,
@@ -320,7 +248,6 @@ series.data.setAll([
   {
     "title": "Burundi",
     "id": "BI",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 484.090924612833,
     "y": 53.637,
@@ -329,7 +256,6 @@ series.data.setAll([
   {
     "title": "Cambodia",
     "id": "KH",
-    "color": "#eea638",
     "continent": "asia",
     "x": 2076.68958647462,
     "y": 71.577,
@@ -338,7 +264,6 @@ series.data.setAll([
   {
     "title": "Cameroon",
     "id": "CM",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 2094.09541317011,
     "y": 54.61,
@@ -347,7 +272,6 @@ series.data.setAll([
   {
     "title": "Canada",
     "id": "CA",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 35992.8327204722,
     "y": 81.323,
@@ -356,7 +280,6 @@ series.data.setAll([
   {
     "title": "Cape Verde",
     "id": "CV",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 3896.04113919638,
     "y": 74.771,
@@ -365,7 +288,6 @@ series.data.setAll([
   {
     "title": "Central African Rep.",
     "id": "CF",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 718.264633200085,
     "y": 49.517,
@@ -374,7 +296,6 @@ series.data.setAll([
   {
     "title": "Chad",
     "id": "TD",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1768.88201756553,
     "y": 50.724,
@@ -383,7 +304,6 @@ series.data.setAll([
   {
     "title": "Chile",
     "id": "CL",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 15403.7608144625,
     "y": 79.691,
@@ -392,7 +312,6 @@ series.data.setAll([
   {
     "title": "China",
     "id": "CN",
-    "color": "#eea638",
     "continent": "asia",
     "x": 9501.57424554247,
     "y": 75.178,
@@ -401,7 +320,6 @@ series.data.setAll([
   {
     "title": "Colombia",
     "id": "CO",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 8035.65638212719,
     "y": 73.835,
@@ -410,7 +328,6 @@ series.data.setAll([
   {
     "title": "Comoros",
     "id": "KM",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1027.40854349726,
     "y": 60.661,
@@ -419,7 +336,6 @@ series.data.setAll([
   {
     "title": "Congo, Dem. Rep.",
     "id": "CD",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 403.164594003407,
     "y": 49.643,
@@ -428,7 +344,6 @@ series.data.setAll([
   {
     "title": "Congo, Rep.",
     "id": "CG",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 4106.51173855966,
     "y": 58.32,
@@ -437,7 +352,6 @@ series.data.setAll([
   {
     "title": "Costa Rica",
     "id": "CR",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 10827.6787293035,
     "y": 79.712,
@@ -446,7 +360,6 @@ series.data.setAll([
   {
     "title": "Cote d'Ivoire",
     "id": "CI",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1491.51631215108,
     "y": 50.367,
@@ -455,7 +368,6 @@ series.data.setAll([
   {
     "title": "Croatia",
     "id": "HR",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 13388.9902780816,
     "y": 76.881,
@@ -464,7 +376,6 @@ series.data.setAll([
   {
     "title": "Cuba",
     "id": "CU",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 10197.4191892126,
     "y": 79.088,
@@ -473,7 +384,6 @@ series.data.setAll([
   {
     "title": "Cyprus",
     "id": "CY",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 23092.089792339,
     "y": 79.674,
@@ -482,7 +392,6 @@ series.data.setAll([
   {
     "title": "Czech Rep.",
     "id": "CZ",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 22565.2975367042,
     "y": 77.552,
@@ -491,7 +400,6 @@ series.data.setAll([
   {
     "title": "Denmark",
     "id": "DK",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 32731.2903910132,
     "y": 79.251,
@@ -500,7 +408,6 @@ series.data.setAll([
   {
     "title": "Djibouti",
     "id": "DJ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 2244.60241376688,
     "y": 61.319,
@@ -509,7 +416,6 @@ series.data.setAll([
   {
     "title": "Dominican Rep.",
     "id": "DO",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 6978.89657264408,
     "y": 73.181,
@@ -518,7 +424,6 @@ series.data.setAll([
   {
     "title": "Ecuador",
     "id": "EC",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 7903.09487034651,
     "y": 76.195,
@@ -527,7 +432,6 @@ series.data.setAll([
   {
     "title": "Egypt",
     "id": "EG",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 6013.821462967,
     "y": 70.933,
@@ -536,7 +440,6 @@ series.data.setAll([
   {
     "title": "El Salvador",
     "id": "SV",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 5833.63022804714,
     "y": 72.361,
@@ -545,7 +448,6 @@ series.data.setAll([
   {
     "title": "Equatorial Guinea",
     "id": "GQ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 13499.2115504397,
     "y": 52.562,
@@ -554,7 +456,6 @@ series.data.setAll([
   {
     "title": "Eritrea",
     "id": "ER",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 613.716963797415,
     "y": 62.329,
@@ -563,7 +464,6 @@ series.data.setAll([
   {
     "title": "Estonia",
     "id": "EE",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 18858.0538247661,
     "y": 74.335,
@@ -572,7 +472,6 @@ series.data.setAll([
   {
     "title": "Ethiopia",
     "id": "ET",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 958.694705985043,
     "y": 62.983,
@@ -581,7 +480,6 @@ series.data.setAll([
   {
     "title": "Fiji",
     "id": "FJ",
-    "color": "#8aabb0",
     "continent": "australia",
     "x": 4195.03497178682,
     "y": 69.626,
@@ -590,7 +488,6 @@ series.data.setAll([
   {
     "title": "Finland",
     "id": "FI",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 31551.9534459533,
     "y": 80.362,
@@ -599,7 +496,6 @@ series.data.setAll([
   {
     "title": "France",
     "id": "FR",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 29896.4182238854,
     "y": 81.663,
@@ -608,7 +504,6 @@ series.data.setAll([
   {
     "title": "Gabon",
     "id": "GA",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 13853.4616556007,
     "y": 63.115,
@@ -617,7 +512,6 @@ series.data.setAll([
   {
     "title": "Gambia",
     "id": "GM",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 747.68096900917,
     "y": 58.59,
@@ -626,7 +520,6 @@ series.data.setAll([
   {
     "title": "Georgia",
     "id": "GE",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 4943.23814339098,
     "y": 74.162,
@@ -635,7 +528,6 @@ series.data.setAll([
   {
     "title": "Germany",
     "id": "DE",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 34131.8745974324,
     "y": 80.578,
@@ -644,7 +536,6 @@ series.data.setAll([
   {
     "title": "Ghana",
     "id": "GH",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1728.47847396661,
     "y": 60.979,
@@ -653,7 +544,6 @@ series.data.setAll([
   {
     "title": "Greece",
     "id": "GR",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 21811.3302462212,
     "y": 80.593,
@@ -662,7 +552,6 @@ series.data.setAll([
   {
     "title": "Guatemala",
     "id": "GT",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 5290.75202738533,
     "y": 71.77,
@@ -671,7 +560,6 @@ series.data.setAll([
   {
     "title": "Guinea",
     "id": "GN",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 965.699260160386,
     "y": 55.865,
@@ -680,7 +568,6 @@ series.data.setAll([
   {
     "title": "Guinea-Bissau",
     "id": "GW",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 593.074251034428,
     "y": 54.054,
@@ -689,7 +576,6 @@ series.data.setAll([
   {
     "title": "Guyana",
     "id": "GY",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 4265.10644905906,
     "y": 66.134,
@@ -698,7 +584,6 @@ series.data.setAll([
   {
     "title": "Haiti",
     "id": "HT",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 1180.36719611488,
     "y": 62.746,
@@ -707,7 +592,6 @@ series.data.setAll([
   {
     "title": "Honduras",
     "id": "HN",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 3615.1565803195,
     "y": 73.503,
@@ -716,7 +600,6 @@ series.data.setAll([
   {
     "title": "Hong Kong, China",
     "id": "HK",
-    "color": "#eea638",
     "continent": "asia",
     "x": 43854.4129062733,
     "y": 83.199,
@@ -725,7 +608,6 @@ series.data.setAll([
   {
     "title": "Hungary",
     "id": "HU",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 17065.6047342876,
     "y": 74.491,
@@ -734,7 +616,6 @@ series.data.setAll([
   {
     "title": "Iceland",
     "id": "IS",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 34371.1793657215,
     "y": 81.96,
@@ -743,7 +624,6 @@ series.data.setAll([
   {
     "title": "India",
     "id": "IN",
-    "color": "#eea638",
     "continent": "asia",
     "x": 3229.14788745778,
     "y": 66.168,
@@ -752,7 +632,6 @@ series.data.setAll([
   {
     "title": "Indonesia",
     "id": "ID",
-    "color": "#eea638",
     "continent": "asia",
     "x": 4379.69981934714,
     "y": 70.624,
@@ -761,7 +640,6 @@ series.data.setAll([
   {
     "title": "Iran",
     "id": "IR",
-    "color": "#eea638",
     "continent": "asia",
     "x": 12325.1280322371,
     "y": 73.736,
@@ -770,7 +648,6 @@ series.data.setAll([
   {
     "title": "Iraq",
     "id": "IQ",
-    "color": "#eea638",
     "continent": "asia",
     "x": 4160.84708826172,
     "y": 69.181,
@@ -779,7 +656,6 @@ series.data.setAll([
   {
     "title": "Ireland",
     "id": "IE",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 35856.1099094562,
     "y": 80.531,
@@ -788,7 +664,6 @@ series.data.setAll([
   {
     "title": "Israel",
     "id": "IL",
-    "color": "#eea638",
     "continent": "asia",
     "x": 27321.205182135,
     "y": 81.641,
@@ -797,7 +672,6 @@ series.data.setAll([
   {
     "title": "Italy",
     "id": "IT",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 25811.7393303661,
     "y": 82.235,
@@ -806,7 +680,6 @@ series.data.setAll([
   {
     "title": "Jamaica",
     "id": "JM",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 6945.70274711582,
     "y": 73.338,
@@ -815,7 +688,6 @@ series.data.setAll([
   {
     "title": "Japan",
     "id": "JP",
-    "color": "#eea638",
     "continent": "asia",
     "x": 31273.9932002261,
     "y": 83.418,
@@ -824,7 +696,6 @@ series.data.setAll([
   {
     "title": "Jordan",
     "id": "JO",
-    "color": "#eea638",
     "continent": "asia",
     "x": 5242.51826246118,
     "y": 73.7,
@@ -833,7 +704,6 @@ series.data.setAll([
   {
     "title": "Kazakhstan",
     "id": "KZ",
-    "color": "#eea638",
     "continent": "asia",
     "x": 11982.6526657273,
     "y": 66.394,
@@ -842,7 +712,6 @@ series.data.setAll([
   {
     "title": "Kenya",
     "id": "KE",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1517.69754383602,
     "y": 61.115,
@@ -851,7 +720,6 @@ series.data.setAll([
   {
     "title": "Korea, Dem. Rep.",
     "id": "KP",
-    "color": "#eea638",
     "continent": "asia",
     "x": 1540.44018783769,
     "y": 69.701,
@@ -860,7 +728,6 @@ series.data.setAll([
   {
     "title": "Korea, Rep.",
     "id": "KR",
-    "color": "#eea638",
     "continent": "asia",
     "x": 26199.4035642374,
     "y": 81.294,
@@ -869,7 +736,6 @@ series.data.setAll([
   {
     "title": "Kuwait",
     "id": "KW",
-    "color": "#eea638",
     "continent": "asia",
     "x": 42045.05923634,
     "y": 74.186,
@@ -878,7 +744,6 @@ series.data.setAll([
   {
     "title": "Kyrgyzstan",
     "id": "KG",
-    "color": "#eea638",
     "continent": "asia",
     "x": 2078.20824171434,
     "y": 67.37,
@@ -887,7 +752,6 @@ series.data.setAll([
   {
     "title": "Laos",
     "id": "LA",
-    "color": "#eea638",
     "continent": "asia",
     "x": 2807.04752629832,
     "y": 67.865,
@@ -896,7 +760,6 @@ series.data.setAll([
   {
     "title": "Latvia",
     "id": "LV",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 15575.2762808015,
     "y": 72.045,
@@ -905,7 +768,6 @@ series.data.setAll([
   {
     "title": "Lebanon",
     "id": "LB",
-    "color": "#eea638",
     "continent": "asia",
     "x": 13711.975683994,
     "y": 79.716,
@@ -914,7 +776,6 @@ series.data.setAll([
   {
     "title": "Lesotho",
     "id": "LS",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1970.47114938861,
     "y": 48.947,
@@ -923,7 +784,6 @@ series.data.setAll([
   {
     "title": "Liberia",
     "id": "LR",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 499.809082037359,
     "y": 60.23,
@@ -932,7 +792,6 @@ series.data.setAll([
   {
     "title": "Libya",
     "id": "LY",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 9136.34462458268,
     "y": 75.13,
@@ -941,7 +800,6 @@ series.data.setAll([
   {
     "title": "Lithuania",
     "id": "LT",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 18469.9748244583,
     "y": 71.942,
@@ -950,7 +808,6 @@ series.data.setAll([
   {
     "title": "Macedonia, FYR",
     "id": "MK",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 8918.81131421927,
     "y": 75.041,
@@ -959,7 +816,6 @@ series.data.setAll([
   {
     "title": "Madagascar",
     "id": "MG",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 981.478674981018,
     "y": 64.28,
@@ -968,7 +824,6 @@ series.data.setAll([
   {
     "title": "Malawi",
     "id": "MW",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 848.191013907702,
     "y": 54.798,
@@ -977,7 +832,6 @@ series.data.setAll([
   {
     "title": "Malaysia",
     "id": "MY",
-    "color": "#eea638",
     "continent": "asia",
     "x": 14202.2119391177,
     "y": 74.836,
@@ -986,7 +840,6 @@ series.data.setAll([
   {
     "title": "Mali",
     "id": "ML",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1070.55152828447,
     "y": 54.622,
@@ -995,7 +848,6 @@ series.data.setAll([
   {
     "title": "Mauritania",
     "id": "MR",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1898.35192059663,
     "y": 61.39,
@@ -1004,7 +856,6 @@ series.data.setAll([
   {
     "title": "Mauritius",
     "id": "MU",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 13082.7750766535,
     "y": 73.453,
@@ -1013,7 +864,6 @@ series.data.setAll([
   {
     "title": "Mexico",
     "id": "MX",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 12030.3862129571,
     "y": 77.281,
@@ -1022,7 +872,6 @@ series.data.setAll([
   {
     "title": "Moldova",
     "id": "MD",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 2963.99305976246,
     "y": 68.779,
@@ -1031,7 +880,6 @@ series.data.setAll([
   {
     "title": "Mongolia",
     "id": "MN",
-    "color": "#eea638",
     "continent": "asia",
     "x": 4300.13326887206,
     "y": 67.286,
@@ -1040,7 +888,6 @@ series.data.setAll([
   {
     "title": "Montenegro",
     "id": "ME",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 10064.1609429569,
     "y": 74.715,
@@ -1049,7 +896,6 @@ series.data.setAll([
   {
     "title": "Morocco",
     "id": "MA",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 4514.51993561297,
     "y": 70.714,
@@ -1058,7 +904,6 @@ series.data.setAll([
   {
     "title": "Mozambique",
     "id": "MZ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1058.44192915498,
     "y": 49.91,
@@ -1067,7 +912,6 @@ series.data.setAll([
   {
     "title": "Myanmar",
     "id": "MM",
-    "color": "#eea638",
     "continent": "asia",
     "x": 1657.04593430092,
     "y": 65.009,
@@ -1076,7 +920,6 @@ series.data.setAll([
   {
     "title": "Namibia",
     "id": "NA",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 5535.83674233219,
     "y": 64.014,
@@ -1085,7 +928,6 @@ series.data.setAll([
   {
     "title": "Nepal",
     "id": "NP",
-    "color": "#eea638",
     "continent": "asia",
     "x": 1264.49264527071,
     "y": 67.989,
@@ -1094,7 +936,6 @@ series.data.setAll([
   {
     "title": "Netherlands",
     "id": "NL",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 36257.0874018501,
     "y": 80.906,
@@ -1103,7 +944,6 @@ series.data.setAll([
   {
     "title": "New Zealand",
     "id": "NZ",
-    "color": "#8aabb0",
     "continent": "australia",
     "x": 25223.5351395532,
     "y": 80.982,
@@ -1112,7 +952,6 @@ series.data.setAll([
   {
     "title": "Nicaragua",
     "id": "NI",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 3098.48351674394,
     "y": 74.515,
@@ -1121,7 +960,6 @@ series.data.setAll([
   {
     "title": "Niger",
     "id": "NE",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 706.79424834157,
     "y": 57.934,
@@ -1130,7 +968,6 @@ series.data.setAll([
   {
     "title": "Nigeria",
     "id": "NG",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 2483.98940927953,
     "y": 52.116,
@@ -1139,7 +976,6 @@ series.data.setAll([
   {
     "title": "Norway",
     "id": "NO",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 47383.6245293861,
     "y": 81.367,
@@ -1148,7 +984,6 @@ series.data.setAll([
   {
     "title": "Oman",
     "id": "OM",
-    "color": "#eea638",
     "continent": "asia",
     "x": 26292.8480723207,
     "y": 76.287,
@@ -1157,7 +992,6 @@ series.data.setAll([
   {
     "title": "Pakistan",
     "id": "PK",
-    "color": "#eea638",
     "continent": "asia",
     "x": 2681.12078190231,
     "y": 66.42,
@@ -1166,7 +1000,6 @@ series.data.setAll([
   {
     "title": "Panama",
     "id": "PA",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 13607.1433621853,
     "y": 77.342,
@@ -1175,7 +1008,6 @@ series.data.setAll([
   {
     "title": "Papua New Guinea",
     "id": "PG",
-    "color": "#8aabb0",
     "continent": "australia",
     "x": 2391.5795121997,
     "y": 62.288,
@@ -1184,7 +1016,6 @@ series.data.setAll([
   {
     "title": "Paraguay",
     "id": "PY",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 4467.15872465943,
     "y": 72.181,
@@ -1193,7 +1024,6 @@ series.data.setAll([
   {
     "title": "Peru",
     "id": "PE",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 9277.57076044381,
     "y": 74.525,
@@ -1202,7 +1032,6 @@ series.data.setAll([
   {
     "title": "Philippines",
     "id": "PH",
-    "color": "#eea638",
     "continent": "asia",
     "x": 3677.10197520058,
     "y": 68.538,
@@ -1211,7 +1040,6 @@ series.data.setAll([
   {
     "title": "Poland",
     "id": "PL",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 17851.9477668397,
     "y": 76.239,
@@ -1220,7 +1048,6 @@ series.data.setAll([
   {
     "title": "Portugal",
     "id": "PT",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 19576.4108427574,
     "y": 79.732,
@@ -1229,7 +1056,6 @@ series.data.setAll([
   {
     "title": "Romania",
     "id": "RO",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 11058.1809744544,
     "y": 73.718,
@@ -1238,7 +1064,6 @@ series.data.setAll([
   {
     "title": "Russia",
     "id": "RU",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 15427.6167470064,
     "y": 67.874,
@@ -1247,7 +1072,6 @@ series.data.setAll([
   {
     "title": "Rwanda",
     "id": "RW",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1223.52570881561,
     "y": 63.563,
@@ -1256,7 +1080,6 @@ series.data.setAll([
   {
     "title": "Saudi Arabia",
     "id": "SA",
-    "color": "#eea638",
     "continent": "asia",
     "x": 26259.6213479005,
     "y": 75.264,
@@ -1265,7 +1088,6 @@ series.data.setAll([
   {
     "title": "Senegal",
     "id": "SN",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1753.48800936096,
     "y": 63.3,
@@ -1274,7 +1096,6 @@ series.data.setAll([
   {
     "title": "Serbia",
     "id": "RS",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 9335.95911484282,
     "y": 73.934,
@@ -1283,7 +1104,6 @@ series.data.setAll([
   {
     "title": "Sierra Leone",
     "id": "SL",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1072.95787930719,
     "y": 45.338,
@@ -1292,7 +1112,6 @@ series.data.setAll([
   {
     "title": "Singapore",
     "id": "SG",
-    "color": "#eea638",
     "continent": "asia",
     "x": 49381.9560054179,
     "y": 82.155,
@@ -1301,7 +1120,6 @@ series.data.setAll([
   {
     "title": "Slovak Republic",
     "id": "SK",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 20780.9857840812,
     "y": 75.272,
@@ -1310,7 +1128,6 @@ series.data.setAll([
   {
     "title": "Slovenia",
     "id": "SI",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 23986.8506836646,
     "y": 79.444,
@@ -1319,7 +1136,6 @@ series.data.setAll([
   {
     "title": "Solomon Islands",
     "id": "SB",
-    "color": "#8aabb0",
     "continent": "australia",
     "x": 2024.23067334134,
     "y": 67.465,
@@ -1328,7 +1144,6 @@ series.data.setAll([
   {
     "title": "Somalia",
     "id": "SO",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 953.275713662563,
     "y": 54,
@@ -1337,7 +1152,6 @@ series.data.setAll([
   {
     "title": "South Africa",
     "id": "ZA",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 9657.25275417241,
     "y": 56.271,
@@ -1346,7 +1160,6 @@ series.data.setAll([
   {
     "title": "South Sudan",
     "id": "SS",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1433.03720057714,
     "y": 54.666,
@@ -1355,7 +1168,6 @@ series.data.setAll([
   {
     "title": "Spain",
     "id": "ES",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 26457.7572559653,
     "y": 81.958,
@@ -1364,7 +1176,6 @@ series.data.setAll([
   {
     "title": "Sri Lanka",
     "id": "LK",
-    "color": "#eea638",
     "continent": "asia",
     "x": 5182.66658831813,
     "y": 74.116,
@@ -1373,7 +1184,6 @@ series.data.setAll([
   {
     "title": "Sudan",
     "id": "SD",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 2917.61641581811,
     "y": 61.875,
@@ -1382,7 +1192,6 @@ series.data.setAll([
   {
     "title": "Suriname",
     "id": "SR",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 8979.80549248675,
     "y": 70.794,
@@ -1391,7 +1200,6 @@ series.data.setAll([
   {
     "title": "Swaziland",
     "id": "SZ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 4979.704126513,
     "y": 48.91,
@@ -1400,7 +1208,6 @@ series.data.setAll([
   {
     "title": "Sweden",
     "id": "SE",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 34530.2628238397,
     "y": 81.69,
@@ -1409,7 +1216,6 @@ series.data.setAll([
   {
     "title": "Switzerland",
     "id": "CH",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 37678.3928108684,
     "y": 82.471,
@@ -1418,7 +1224,6 @@ series.data.setAll([
   {
     "title": "Syria",
     "id": "SY",
-    "color": "#eea638",
     "continent": "asia",
     "x": 4432.01553897559,
     "y": 71,
@@ -1427,7 +1232,6 @@ series.data.setAll([
   {
     "title": "Taiwan",
     "id": "TW",
-    "color": "#eea638",
     "continent": "asia",
     "x": 32840.8623523232,
     "y": 79.45,
@@ -1436,7 +1240,6 @@ series.data.setAll([
   {
     "title": "Tajikistan",
     "id": "TJ",
-    "color": "#eea638",
     "continent": "asia",
     "x": 1952.10042735043,
     "y": 67.118,
@@ -1445,7 +1248,6 @@ series.data.setAll([
   {
     "title": "Tanzania",
     "id": "TZ",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1330.05614548839,
     "y": 60.885,
@@ -1454,7 +1256,6 @@ series.data.setAll([
   {
     "title": "Thailand",
     "id": "TH",
-    "color": "#eea638",
     "continent": "asia",
     "x": 8451.15964058768,
     "y": 74.225,
@@ -1463,7 +1264,6 @@ series.data.setAll([
   {
     "title": "Timor-Leste",
     "id": "TL",
-    "color": "#eea638",
     "continent": "asia",
     "x": 3466.08281224683,
     "y": 67.033,
@@ -1472,7 +1272,6 @@ series.data.setAll([
   {
     "title": "Togo",
     "id": "TG",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 975.396852535221,
     "y": 56.198,
@@ -1481,7 +1280,6 @@ series.data.setAll([
   {
     "title": "Trinidad and Tobago",
     "id": "TT",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 17182.0954558471,
     "y": 69.761,
@@ -1490,7 +1288,6 @@ series.data.setAll([
   {
     "title": "Tunisia",
     "id": "TN",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 7620.47056462131,
     "y": 75.632,
@@ -1499,7 +1296,6 @@ series.data.setAll([
   {
     "title": "Turkey",
     "id": "TR",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 9287.29312549815,
     "y": 74.938,
@@ -1508,7 +1304,6 @@ series.data.setAll([
   {
     "title": "Turkmenistan",
     "id": "TM",
-    "color": "#eea638",
     "continent": "asia",
     "x": 7921.2740619558,
     "y": 65.299,
@@ -1517,7 +1312,6 @@ series.data.setAll([
   {
     "title": "Uganda",
     "id": "UG",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1251.09807015907,
     "y": 58.668,
@@ -1526,7 +1320,6 @@ series.data.setAll([
   {
     "title": "Ukraine",
     "id": "UA",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 6389.58597273257,
     "y": 68.414,
@@ -1535,7 +1328,6 @@ series.data.setAll([
   {
     "title": "United Arab Emirates",
     "id": "AE",
-    "color": "#eea638",
     "continent": "asia",
     "x": 31980.24143802,
     "y": 76.671,
@@ -1544,7 +1336,6 @@ series.data.setAll([
   {
     "title": "United Kingdom",
     "id": "GB",
-    "color": "#d8854f",
     "continent": "europe",
     "x": 31295.1431522074,
     "y": 80.396,
@@ -1553,7 +1344,6 @@ series.data.setAll([
   {
     "title": "United States",
     "id": "US",
-    "color": "#a7a737",
     "continent": "north_america",
     "x": 42296.2316492477,
     "y": 78.797,
@@ -1562,7 +1352,6 @@ series.data.setAll([
   {
     "title": "Uruguay",
     "id": "UY",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 13179.2310803465,
     "y": 77.084,
@@ -1571,7 +1360,6 @@ series.data.setAll([
   {
     "title": "Uzbekistan",
     "id": "UZ",
-    "color": "#eea638",
     "continent": "asia",
     "x": 3117.27386553102,
     "y": 68.117,
@@ -1580,7 +1368,6 @@ series.data.setAll([
   {
     "title": "Venezuela",
     "id": "VE",
-    "color": "#86a965",
     "continent": "south_america",
     "x": 11685.1771941737,
     "y": 74.477,
@@ -1589,7 +1376,6 @@ series.data.setAll([
   {
     "title": "West Bank and Gaza",
     "id": "PS",
-    "color": "#eea638",
     "continent": "asia",
     "x": 4328.39115760087,
     "y": 73.018,
@@ -1598,7 +1384,6 @@ series.data.setAll([
   {
     "title": "Vietnam",
     "id": "VN",
-    "color": "#eea638",
     "continent": "asia",
     "x": 3073.64961158389,
     "y": 75.793,
@@ -1607,7 +1392,6 @@ series.data.setAll([
   {
     "title": "Yemen, Rep.",
     "id": "YE",
-    "color": "#eea638",
     "continent": "asia",
     "x": 2043.7877761328,
     "y": 62.923,
@@ -1616,7 +1400,6 @@ series.data.setAll([
   {
     "title": "Zambia",
     "id": "ZM",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 1550.92385858124,
     "y": 57.037,
@@ -1625,38 +1408,153 @@ series.data.setAll([
   {
     "title": "Zimbabwe",
     "id": "ZW",
-    "color": "#de4c4f",
     "continent": "africa",
     "x": 545.344601005788,
     "y": 58.142,
     "value": 13013678
   }
-]);
+];
 
+// Bubble size follows population on one scale for all continents:
+// from 3 px for the smallest country to 40 px for the largest
+function populations(items) {
+  return items.map(function(item) {
+    return item.value;
+  });
+}
+// the smallest and largest population in all the data
+var minPopulation = Math.min.apply(null, populations(data));
+var maxPopulation = Math.max.apply(null, populations(data));
+
+// a population's radius on that scale
+function radius(population) {
+  var r = 3 + 37 * (population - minPopulation) / (maxPopulation - minPopulation);
+  return Math.round(r * 10) / 10;
+}
+
+// One series per continent, so the legend can show and hide them
+var continents = [
+  { id: "africa", name: "Africa" },
+  { id: "asia", name: "Asia" },
+  { id: "europe", name: "Europe" },
+  { id: "north_america", name: "North America" },
+  { id: "south_america", name: "South America" },
+  { id: "australia", name: "Oceania" }
+];
+
+continents.forEach(function(continent) {
+  var continentData = data.filter(function(item) { // this continent's countries
+    return item.continent == continent.id;
+  });
+
+  // Create series
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  var series = chart.series.push(am5xy.LineSeries.new(root, {
+    name: continent.name,
+    calculateAggregates: true, // the continent's lowest and highest population, for the heat rule
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "y",
+    valueXField: "x",
+    valueField: "value", // the population, which the heat rule reads
+    // the tooltip takes its color from the bubble rather than from the series
+    seriesTooltipTarget: "bullet",
+    tooltip: am5.Tooltip.new(root, {
+      pointerOrientation: "horizontal", // the tooltip sits beside the bubble
+      labelText: "[bold]{title}[/]\nLife expectancy: {valueY.formatNumber('#.0')} years\nGDP per capita: ${valueX.formatNumber('#,###.')}\nPopulation: {value.formatNumber('#,###.')}"
+    })
+  }));
+
+  // No lines between the points: only bubbles
+  series.strokes.template.set("visible", false);
+
+  // Add bullet
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+  // Settings shared by all bubbles of the continent go in a template
+  var circleTemplate = am5.Template.new({
+    fillOpacity: 0.8, // slightly see-through, so overlapping bubbles show
+    stroke: root.interfaceColors.get("background"), // a thin ring in the background color between bubbles
+    strokeWidth: 1
+  });
+
+  series.bullets.push(function() {
+    var bulletCircle = am5.Circle.new(root, {
+      radius: 5,               // the starting size; the heat rule sets the real one
+      fill: series.get("fill") // the continent's color
+    }, circleTemplate);
+    return am5.Bullet.new(root, {
+      sprite: bulletCircle
+    });
+  });
+
+  // Add heat rule: the radius grows with population
+  // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+  // A heat rule spreads its radii between the smallest and the largest country of the
+  // series, so it gets the radii those two countries have on the common scale
+  series.set("heatRules", [{
+    target: circleTemplate,
+    min: radius(Math.min.apply(null, populations(continentData))),
+    max: radius(Math.max.apply(null, populations(continentData))),
+    dataField: "value", // sized by the series' valueField, the population
+    key: "radius"       // the setting the rule changes
+  }]);
+
+  // Set data
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+  series.data.setAll(continentData);
+
+  series.appear(1000);
+});
+
+// Add legend under the chart: click a continent to hide or show it
+// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.p50, // centered under the plot
+  x: am5.p50,
+  marginTop: 10,         // 10px of room above
+  useDefaultMarker: true // a plain marker, made round below
+}));
+
+// Tighter items, so the legend takes little height
+legend.itemContainers.template.setAll({
+  paddingTop: 2,
+  paddingBottom: 2
+});
+
+// Round markers, like the bubbles, and no empty value labels taking up room
+legend.markerRectangles.template.setAll({
+  cornerRadiusTL: 10,
+  cornerRadiusTR: 10,
+  cornerRadiusBL: 10,
+  cornerRadiusBR: 10
+});
+legend.valueLabels.template.set("forceHidden", true);
+
+legend.data.setAll(chart.series.values);
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
-  snapToSeries: [series]
+  // the cursor always jumps to the nearest bubble, of any continent
+  snapToSeries: chart.series.values
 }));
-
 
 // Add scrollbars
 // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
+  orientation: "horizontal",
+  // above the X axis labels at the top, not between them and the bubbles
+  outsideAxes: true
 }));
 
 chart.set("scrollbarY", am5.Scrollbar.new(root, {
   orientation: "vertical"
 }));
 
-
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
-series.appear(1000);
 chart.appear(1000, 100);
 ```
 
@@ -1671,7 +1569,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 500px
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -1680,3 +1579,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,24 +2,26 @@
 title: "LinearGradient"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/lineargradient/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Linear gradient.
+A gradient that changes color along a straight line.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
 
 ## Import
 
-```javascript
-// Import LinearGradient
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.LinearGradient.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Gradient
+Extends: Gradient → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Gradient (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **rotation** (`undefined | number`) — Default 90 Gradient rotation, in degrees.
+- Settings: `ILinearGradientSettings` — get_api_reference shows it after this page
+- Private settings: `ILinearGradientPrivate`

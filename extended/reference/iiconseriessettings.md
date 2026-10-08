@@ -2,77 +2,40 @@
 title: "IIconSeriesSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iiconseriessettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IIconSeriesSettings extends IPolylineSeriesSettings.
-IIconSeriesSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IPolylineSeriesSettings
+All ancestors: IPolylineSeriesSettings, IDrawingSeriesSettings, ILineSeriesSettings, IXYSeriesSettings, ISeriesSettings, IComponentSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5stock.IconSeries` (see its page for the class)
+TypeScript: `am5stock.IIconSeriesSettings` (`import type { IIconSeriesSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPolylineSeriesSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **iconSvgPath** (`string`) — SVG path of new icons and, when changed, of the selected ones.
+- **iconScale** (`number`) — Scale of new icons: `1` is the path's own size.
+- **iconCenterX** (`Percent`) — Horizontal point of the icon placed on the clicked spot: `0%` is its left edge, `100%` its right.
+- **iconCenterY** (`Percent`) — Vertical point of the icon placed on the clicked spot: `0%` is its top edge, `100%` its bottom.
+- **snapToData** (`boolean`) — _(internal)_ Places new icons at the value (`field`) of the nearest data item of `series`, instead of where clicked.
 
-- **iconCenterX** (`Percent`) — Relative horizontal center.
-- **iconCenterY** (`Percent`) — Relative vertical center.
-- **iconScale** (`undefined | number`) — Scale (0-X).
-- **iconSvgPath** (`string`) — An SVG path of the icon.
-- **snapToData** (`undefined | false | true`) — Should icon snap to closest data item?
+## Inherited settings with a different default on IconSeries
+
+- **excludeFromAggregate** (`string[]`) — default `["valueX"]` _(theme)_ — _from ISeriesSettings_ — Fields to leave out of `calculateAggregates`, to save work where their aggregates are not needed. _Since 5.14.4._
+- **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IPolylineSeriesSettings")`) for types, defaults and descriptions.
+
+- _IPolylineSeriesSettings_: fillShape, pointCount
+- _IDrawingSeriesSettings_: field, fillColor, fillOpacity, selectorPadding, series, strokeColor, strokeDasharray, strokeOpacity, strokeWidth, xAxis, yAxis
+- _ILineSeriesSettings_: autoGapCount, connect, curveFactory, minDistance
+- _IXYSeriesSettings_: baseAxis, categoryXField, categoryYField, exactLocationX, exactLocationY, excludeFromTotal, groupDataCallback, groupDataDisabled, groupDataWithOriginals, highLocationX, highLocationY, highValueXField, highValueXGrouped, highValueXShow, highValueYField, highValueYGrouped, highValueYShow, ignoreMinMax, legendRangeLabelText, legendRangeValueText, locationX, locationY, lowLocationX, lowLocationY, lowValueXField, lowValueXGrouped, lowValueXShow, lowValueYField, lowValueYGrouped, lowValueYShow, maskBullets, minBulletDistance, openCategoryXField, openCategoryYField, openLocationX, openLocationY, openValueXField, openValueXGrouped, openValueXShow, openValueYField, openValueYGrouped, openValueYShow, seriesTooltipTarget, snapTooltip, stacked, tooltipDataItem, tooltipPositionX, tooltipPositionY, useSelectionExtremes, valueXField, valueXGrouped, valueXShow, valueYField, valueYGrouped, valueYShow, vcx, vcy
+- _ISeriesSettings_: calculateAggregates, customValueField, fill, fillGradient, fillPattern, heatRules, idField, legendDataItem, legendValueText, linkTarget, name, sequencedDelay, sequencedInterpolation, stroke, strokeGradient, urlField, valueField
+- _IComponentSettings_: interpolationDuration, interpolationEasing
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

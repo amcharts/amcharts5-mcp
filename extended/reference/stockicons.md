@@ -2,14 +2,17 @@
 title: "StockIcons"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stockicons/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A collection of icons used in StockChart.
+The icons of the `StockChart` toolbar controls.
 
 ## Import
 
-```javascript
-// Import StockIcons
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
 ```
+
+## Inheritance
+
+Extends: (none)

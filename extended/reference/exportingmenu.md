@@ -2,35 +2,33 @@
 title: "ExportingMenu"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/exportingmenu/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Displays a menu for Exporting.
+The export menu: an icon on the chart that opens a list of formats to export with `Exporting`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/exporting/
 
 ## Import
 
-```javascript
-// Import ExportingMenu
-import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting"
+```js
+import * as am5plugins_exporting from "@amcharts/amcharts5/plugins/exporting";
+
+am5plugins_exporting.ExportingMenu.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **align** (`"left" | "right"`) — Default "right" Horizontal alignment of the menu.
-- **ariaLabel** (`undefined | string`) — ARIA label for the menu. @since 5.14.4
-- **autoClose** (`undefined | false | true`) — Default true If set to true the menu will close automatically when export operation is initiated.
-- **container** (`HTMLElement`) — A reference to an element in the document to place export menu in. If not set, will use root element's container.
-- **deactivateRoot** (`undefined | false | true`) — Default true Menu will disable all interactions for the underlying chart when browsing the menu.
-- **exporting** (`Exporting`) — A reference to related Exporting object.
-- **items** (`IExportingMenuItem[]`) — A list of menu items.
-- **useDefaultCSS** (`undefined | false | true`) — Default true If set to false the legend will not load default CSS.
+- Settings: `IExportingMenuSettings` — get_api_reference shows it after this page
+- Private settings: `IExportingMenuPrivate`
+- Events: `IExportingMenuEvents`
 
 ## Properties
 
-- **isOpen** (`boolean`) — Default false
+Public properties (not settings):
+
+- **isOpen** (`boolean`) — Whether the menu is open.

@@ -2,15 +2,24 @@
 title: "Area with Time Based Data"
 source: "https://www.amcharts.com/demos/area-with-time-based-data/"
 category: "line-area"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo shows you how to create a time-based area chart with amCharts 5.
-Key implementation details
-We create an XY chart with DateAxis as its X axis. The base interval on it is set to minutes, as this is the type of data we have. We add a LineSeries to the chart and set its fills.template to visible so we get an area chart as a result.
-XY chart
-Date axis
-Line series - Line/fill settings
+An area chart of minute-by-minute visits over the last eight hours, opening on the latest hour. The small chart above it shows the whole range: drag it to move along.
+
+Time series with fine detail: Minute-level data is too dense to show all at once, so the chart opens on the latest hour and keeps the rest a drag away. The date axis picks its labels to fit the zoom, from minutes to hours.
+
+Good for:
+- Website visits or server load by the minute
+- Sensor readings and live measurements
+- Long series where the latest data matters most
+
+Think twice when:
+- A few dozen points: show them all, no zoom needed
+- Several series at once: areas hide each other, use lines
+- Readers who need the whole day at a glance: open zoomed out
+
+Prompt: Create an area chart of about eight hours of minute-by-minute visits ending now, zoomed to the last hour when it opens. Add tooltips, a cursor and a horizontal scrollbar with a preview of the whole series. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -19,39 +28,39 @@ Line series - Line/fill settings
 var root = am5.Root.new("chartdiv");
 
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
-  panY: true,
-  wheelY: "zoomX",
+  panX: true,      // drag the plot sideways to pan...
+  panY: true,      // ...or up and down
+  wheelY: "zoomX", // the mouse wheel zooms in on the time
   layout: root.verticalLayout,
-  pinchZoomX: true
+  pinchZoomX: true // pinch to zoom on touch screens
 }));
 
 // Create Y-axis
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  maxDeviation: 1,
+  maxDeviation: 1, // pan or zoom out up to a whole visible range past the values
   renderer: am5xy.AxisRendererY.new(root, {
+    // drag along the axis labels to zoom the axis in and out
     pan: "zoom"
   })
 }));
 
 // Create X-Axis
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+  // zoomed out, the minutes are combined into longer periods, so fewer points are drawn
   groupData: true,
-  maxDeviation: 0.5,
-  baseInterval: { timeUnit: "minute", count: 1 },
+  maxDeviation: 0.5, // pan up to half the visible range past the first and last minute
+  baseInterval: { timeUnit: "minute", count: 1 }, // one data point per minute
   renderer: am5xy.AxisRendererX.new(root, {
-    minGridDistance: 60,
-    pan: "zoom",
-    minorGridEnabled: true
+    minGridDistance: 60,   // at least 60px between labels; on narrow screens some are skipped
+    pan: "zoom",           // drag along the time labels to zoom too
+    minorGridEnabled: true // fainter grid lines between the labeled times
   })
 }));
-
-// xAxis.get("dateFormats")["day"] = "MM/dd";
-// xAxis.get("periodChangeDateFormats")["day"] = "MMMM";
 
 // Generate random data
 function generateChartData() {
@@ -59,7 +68,7 @@ function generateChartData() {
   // current date
   var firstDate = new Date();
   // now set 500 minutes back
-  firstDate.setMinutes(firstDate.getDate() - 500, 0, 0);
+  firstDate.setMinutes(firstDate.getMinutes() - 500, 0, 0);
 
   // and generate 500 data items
   var visits = 500;
@@ -81,21 +90,22 @@ var data = generateChartData();
 
 // Create series
 var series = chart.series.push(am5xy.LineSeries.new(root, {
-  name: "Series",
+  name: "Visits",
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "visits",
   valueXField: "date",
   tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "horizontal",
+    pointerOrientation: "horizontal", // the tooltip points sideways at the line
+    // the series name in bold, then the time and the value
     labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
   })
 }));
 
-series.strokes.template.set("strokeWidth", 2);
+series.strokes.template.set("strokeWidth", 2); // a 2px line
 series.fills.template.setAll({
-  visible: true,
-  fillOpacity: 0.4
+  visible: true,   // line series don't fill by default; this turns it on
+  fillOpacity: 0.4 // a see-through fill
 });
 
 series.data.setAll(data);
@@ -103,33 +113,33 @@ series.data.setAll(data);
 // Pre-zoom X axis to last hour
 series.events.once("datavalidated", function (ev, target) {
   var lastDate = new Date(data[data.length - 1].date);
-  var firstDate = new Date(lastDate.getTime() - 3600000);
+  var firstDate = new Date(lastDate.getTime() - 3600000); // an hour before the last point
   xAxis.zoomToDates(firstDate, lastDate);
 })
 
 // Add cursor
 chart.set("cursor", am5xy.XYCursor.new(root, {
-  behavior: "none",
-  xAxis: xAxis
+  behavior: "none", // dragging pans the plot instead of selecting a range
+  xAxis: xAxis      // the cursor snaps to the time axis's cells, one per point
 }));
 
-xAxis.set("tooltip", am5.Tooltip.new(root, {}));
+xAxis.set("tooltip", am5.Tooltip.new(root, {})); // the cursor shows the time on the axis...
 
-yAxis.set("tooltip", am5.Tooltip.new(root, {}));
-
+yAxis.set("tooltip", am5.Tooltip.new(root, {})); // ...and the value on this one
 
 var scrollbarX = am5xy.XYChartScrollbar.new(root, {
-  orientation: "horizontal",
-  height: 50
+  orientation: "horizontal", // drag its grips to zoom in on a stretch of time
+  height: 50                 // 50px tall, with a preview of the line
 });
 
 chart.set("scrollbarX", scrollbarX);
 
+// the scrollbar has a chart of its own: these axes and series draw the preview inside it
 var sbxAxis = scrollbarX.chart.xAxes.push(am5xy.DateAxis.new(root, {
   baseInterval: { timeUnit: "minute", count: 1 },
   renderer: am5xy.AxisRendererX.new(root, {
-    opposite: false,
-    strokeOpacity: 0,
+    opposite: false,  // labels under the preview
+    strokeOpacity: 0, // no axis line
     minorGridEnabled: true,
     minGridDistance: 60
   })
@@ -139,6 +149,7 @@ var sbyAxis = scrollbarX.chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
 
+// the preview line
 var sbseries = scrollbarX.chart.series.push(am5xy.LineSeries.new(root, {
   xAxis: sbxAxis,
   yAxis: sbyAxis,
@@ -160,6 +171,7 @@ sbseries.data.setAll(data);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -168,3 +180,4 @@ sbseries.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

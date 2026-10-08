@@ -2,33 +2,33 @@
 title: "ZoomableContainer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/zoomablecontainer/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A version of Container which adds zooming capabilities.
+A `Container` whose `contents` can be zoomed with the wheel, a pinch or `ZoomTools`, and panned by dragging.
+
+_Since 5.8.0._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Zoomable_container
 
 ## Import
 
-```javascript
-// Import ZoomableContainer
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.ZoomableContainer.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **animationDuration** (`undefined | number`) — Default 600 Animation duration (ms) for zoom animations.
-- **animationEasing** (`undefined | ( t: Time) => Time`) — Default am5.ease.out(am5.ease.cubic) Easing function to use for zoom animations.
-- **maxPanOut** (`undefined | number`) — Default 0.4 How much of a content can go outside the viewport.
-- **maxZoomLevel** (`undefined | number`) — Default 32 Maximum zoom-in level.
-- **minZoomLevel** (`undefined | number`) — Default 1 Maximum zoom-out level.
-- **pinchZoom** (`undefined | false | true`) — Default true Pinch-zooming is enabled on touch devices.
+- Settings: `IZoomableContainerSettings` — get_api_reference shows it after this page
+- Private settings: `IZoomableContainerPrivate`
+- Events: `IZoomableContainerEvents`
 
 ## Properties
 
-- **contents** (`Container`) — Default this.children.push(Container.new(this._root, { width: p100, height: p100, x: 0, y: 0, draggable: true, background: Rectangle.new(this._root, { fill: color(0xffffff), fillOpacity: 0 }) })) All elements must be added to contents.children instead of children of ZoomableContainer. Click here for more info
+Public properties (not settings):
+
+- **contents** (`Container`) — The container that zooms and pans. Add elements to `contents.children`, not to the ZoomableContainer's own `children`. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Zoomable_container

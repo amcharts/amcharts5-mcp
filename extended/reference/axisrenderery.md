@@ -2,31 +2,34 @@
 title: "AxisRendererY"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrenderery/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Used to render vertical axis.
+Renderer for a vertical (Y) axis.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/#Axis_renderer
 
 ## Import
 
-```javascript
-// Import AxisRendererY
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.AxisRendererY.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: AxisRenderer
+Extends: AxisRenderer → Graphics → Sprite → Entity → Settings
 Extended by: GanttCategoryAxisRenderer
 
-> **Note:** This class also inherits all settings, properties, methods, and events from AxisRenderer (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **inside** (`undefined | false | true`) — Default false If set to true, all axis elements (ticks, labels) will be drawn inside plot area.
-- **opposite** (`undefined | false | true`) — Default false If set to true the axis will be drawn on the opposite side of the plot area. Click here for more info
+- Settings: `IAxisRendererYSettings` — get_api_reference shows it after this page
+- Private settings: `IAxisRendererYPrivate`
 
 ## Properties
 
-- **labelTemplate** (`Template`) — (no description)
-- **thumb** (`Rectangle`) — Default Rectangle.new(this._root, { height: p100, isMeasured: false, themeTags: ["axis", "y", "thumb", "zoomgrip"] })
+Public properties (not settings):
+
+- **labelTemplate** (`Template<AxisLabel>`)
+- **thumb** (`Rectangle`) — The area over the labels that the user drags to zoom the axis when `pan` is `"zoom"`. It shows on hover.

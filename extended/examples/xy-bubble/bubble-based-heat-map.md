@@ -2,12 +2,24 @@
 title: "Bubble-Based Heat Map"
 source: "https://www.amcharts.com/demos/bubble-based-heat-map/"
 category: "xy-bubble"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo utilizes heat rules to automatically size bubble bullets based on their value.
-Heat rules
-Bullets
+A heat map drawn with bubbles instead of colored cells: a week of hourly values, one row per day, and the bigger the bubble, the higher the value. The values change every second.
+
+Bubbles or colored cells?: A heat map shows one value for every pair of two categories, here day and hour. Colored cells are compact, but people compare sizes more easily than shades, so bubbles make the busy and quiet times stand out. Each bubble is sized between the smallest and the largest value on the chart.
+
+Good for:
+- Activity by weekday and hour: visits, orders, calls
+- Spotting busy and quiet times at a glance
+- Live dashboards where the values keep changing
+
+Think twice when:
+- Reading exact values: a table works better
+- Dozens of rows and columns: the bubbles shrink to dots
+- Negative values: use colored cells with a two-color scale
+
+Prompt: Create a bubble heat map of days of the week by hours of the day, with a circle in each cell sized by its value that fits its cell at any chart size. Every second, the values change a little and the bubbles grow and shrink smoothly. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -19,16 +31,17 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    panX: false,
+    panX: false,    // the plot doesn't pan when dragged
     panY: false,
-    wheelX: "none",
+    wheelX: "none", // the mouse wheel doesn't zoom or pan
     wheelY: "none",
     layout: root.verticalLayout
   })
@@ -36,28 +49,29 @@ var chart = root.container.children.push(
 
 // Create axes and their renderers
 var yRenderer = am5xy.AxisRendererY.new(root, {
-  visible: false,
-  minGridDistance: 20,
+  visible: false,      // no axis line
+  minGridDistance: 20, // a label for every day down to 20px apart
+  // the first day, Sunday, at the top
   inversed: true
 });
 
-yRenderer.grid.template.set("visible", false);
+yRenderer.grid.template.set("visible", false); // no grid lines
 
 var yAxis = chart.yAxes.push(
   am5xy.CategoryAxis.new(root, {
-    maxDeviation: 0,
+    maxDeviation: 0, // no panning past the first and last day
     renderer: yRenderer,
     categoryField: "weekday"
   })
 );
 
 var xRenderer = am5xy.AxisRendererX.new(root, {
-  visible: false,
-  minGridDistance: 30,
-  opposite: true
+  visible: false,      // no axis line
+  minGridDistance: 40, // at least 40px between hour labels; some are skipped when tighter
+  opposite: true       // the hours along the top
 });
 
-xRenderer.grid.template.set("visible", false);
+xRenderer.grid.template.set("visible", false); // no grid lines
 
 var xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
@@ -70,8 +84,10 @@ var xAxis = chart.xAxes.push(
 // https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_series
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
+    // finds the lowest and highest value, which the heat rule below sizes the bubbles by
     calculateAggregates: true,
-    stroke: am5.color(0xffffff),
+    // bubbles are outlined in the background color, so touching bubbles stay apart in light and dark mode
+    stroke: root.interfaceColors.get("background"),
     clustered: false,
     xAxis: xAxis,
     yAxis: yAxis,
@@ -81,10 +97,12 @@ var series = chart.series.push(
   })
 );
 
+// the columns only place the bubbles in their cells, so they stay hidden
 series.columns.template.setAll({
   forceHidden: true
 });
 
+// one template for all bubbles, so the heat rule can size them
 var circleTemplate = am5.Template.new({ radius: 5 });
 
 // Add circle bullet
@@ -92,8 +110,11 @@ var circleTemplate = am5.Template.new({ radius: 5 });
 series.bullets.push(function () {
   var graphics = am5.Circle.new(
     root, {
-      stroke: series.get("stroke"),
-      fill: series.get("fill")
+      stroke: series.get("stroke"), // the background-colored outline...
+      strokeWidth: 2,               // ...2px wide
+      fill: series.get("fill"),     // the series color
+      // day, hour and the value in bold
+      tooltipText: "{categoryY}, {categoryX}: [bold]{value.formatNumber('#,###.')}[/]"
     }, circleTemplate
   );
   return am5.Bullet.new(root, {
@@ -103,18 +124,28 @@ series.bullets.push(function () {
 
 // Set up heat rules
 // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
-series.set("heatRules", [{
+var heatRule = {
   target: circleTemplate,
-  min: 5,
-  max: 35,
+  min: 3,  // the smallest bubble has a 3px radius
+  max: 18, // replaced below to fit the cells
   dataField: "value",
   key: "radius"
-}]);
+};
+series.set("heatRules", [heatRule]);
+
+// Size the biggest bubble to its cell (24 hours by 7 days), whatever the size of the chart:
+// it may overlap its neighbors a little, and the outline keeps them apart
+chart.plotContainer.events.on("boundschanged", function () {
+  // the smaller side of one cell
+  var cellSize = Math.min(chart.plotContainer.width() / 24, chart.plotContainer.height() / 7);
+  heatRule.max = Math.max(4, cellSize * 0.7); // a radius of 70% of the cell, at least 4px
+  series.set("heatRules", [heatRule]);        // set the rule again, so the bubbles take the new size
+});
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/xy-chart/#Setting_data
 var data = [{
-  hour: "12pm",
+  hour: "12am",
   weekday: "Sunday",
   value: 2990
 }, {
@@ -162,7 +193,7 @@ var data = [{
   weekday: "Sunday",
   value: 3018
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Sunday",
   value: 3154
 }, {
@@ -210,7 +241,7 @@ var data = [{
   weekday: "Sunday",
   value: 3323
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Monday",
   value: 3346
 }, {
@@ -258,7 +289,7 @@ var data = [{
   weekday: "Monday",
   value: 9313
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Monday",
   value: 9011
 }, {
@@ -306,7 +337,7 @@ var data = [{
   weekday: "Monday",
   value: 4851
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Tuesday",
   value: 4468
 }, {
@@ -354,7 +385,7 @@ var data = [{
   weekday: "Tuesday",
   value: 10425
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Tuesday",
   value: 10137
 }, {
@@ -402,7 +433,7 @@ var data = [{
   weekday: "Tuesday",
   value: 8581
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Wednesday",
   value: 8145
 }, {
@@ -450,7 +481,7 @@ var data = [{
   weekday: "Wednesday",
   value: 9928
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Wednesday",
   value: 9644
 }, {
@@ -498,7 +529,7 @@ var data = [{
   weekday: "Wednesday",
   value: 4118
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Thursday",
   value: 3689
 }, {
@@ -546,7 +577,7 @@ var data = [{
   weekday: "Thursday",
   value: 9420
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Thursday",
   value: 8966
 }, {
@@ -594,7 +625,7 @@ var data = [{
   weekday: "Thursday",
   value: 4017
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Friday",
   value: 4022
 }, {
@@ -642,7 +673,7 @@ var data = [{
   weekday: "Friday",
   value: 8615
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Friday",
   value: 8218
 }, {
@@ -690,7 +721,7 @@ var data = [{
   weekday: "Friday",
   value: 3833
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Saturday",
   value: 3503
 }, {
@@ -738,7 +769,7 @@ var data = [{
   weekday: "Saturday",
   value: 3416
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Saturday",
   value: 3432
 }, {
@@ -800,7 +831,7 @@ yAxis.data.setAll([
 ]);
 
 xAxis.data.setAll([
-  { hour: "12pm" },
+  { hour: "12am" },
   { hour: "1am" },
   { hour: "2am" },
   { hour: "3am" },
@@ -812,7 +843,7 @@ xAxis.data.setAll([
   { hour: "9am" },
   { hour: "10am" },
   { hour: "11am" },
-  { hour: "12am" },
+  { hour: "12pm" },
   { hour: "1pm" },
   { hour: "2pm" },
   { hour: "3pm" },
@@ -830,16 +861,14 @@ xAxis.data.setAll([
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
 chart.appear(1000, 100);
 
+// Every second, move each value up to 20% above or below its starting value
 setInterval(function () {
-  var i = 0;
-  series.data.each(function (d) {
-    var n = {
-      value: d.value + d.value * Math.random() * 0.5,
+  am5.array.each(data, function (d, i) {
+    series.data.setIndex(i, {
+      value: d.value * (0.8 + Math.random() * 0.4), // 80% to 120% of the starting value
       hour: d.hour,
       weekday: d.weekday
-    };
-    series.data.setIndex(i, n);
-    i++;
+    });
   });
 }, 1000);
 ```
@@ -856,6 +885,7 @@ setInterval(function () {
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -864,3 +894,4 @@ setInterval(function () {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

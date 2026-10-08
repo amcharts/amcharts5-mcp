@@ -2,26 +2,25 @@
 title: "SmoothedRadarLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/smoothedradarlineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a smoothed line series for use in a RadarChart.
-Data item
-SmoothedRadarLineSeries uses data items of type ISmoothedRadarLineSeriesDataItem.
+A line series for a `RadarChart` that draws a smooth curve through its data points.
 
 ## Import
 
-```javascript
-// Import SmoothedRadarLineSeries
-import * as am5radar from "@amcharts/amcharts5/radar"
+```js
+import * as am5radar from "@amcharts/amcharts5/radar";
+
+am5radar.SmoothedRadarLineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: RadarLineSeries
+Extends: RadarLineSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from RadarLineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **tension** (`undefined | number`) — Default 0.5 Tension of curve. Click here for more info
+- Settings: `ISmoothedRadarLineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ISmoothedRadarLineSeriesPrivate`
+- Data item fields: `ISmoothedRadarLineSeriesDataItem`

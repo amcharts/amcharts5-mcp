@@ -2,32 +2,35 @@
 title: "Link"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/link/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Click here for more info
+A connector made of horizontal and vertical segments through `points`, with an arrow at each end, such as a dependency line in a Gantt chart.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
 
 ## Import
 
-```javascript
-// Import Link
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Link.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **cornerRadius** (`undefined | number`) — (no description)
-- **points** (`Array`) — (no description)
+- Settings: `ILinkSettings` — get_api_reference shows it after this page
+- Private settings: `ILinkPrivate`
 
 ## Properties
 
-- **endArrow** (`Triangle`) — Default this.children.push(Triangle.new(this._root, { themeTags: ["end", "arrow"], }))
-- **hitLine** (`OrthogonalLine`) — Default this.children.push(OrthogonalLine.new(this._root, { themeTags: ["hit"] }))
-- **line** (`OrthogonalLine`) — Default this.children.push(OrthogonalLine.new(this._root, { themeTags: ["line"] }))
-- **startArrow** (`Triangle`) — Default this.children.push(Triangle.new(this._root, { themeTags: ["start", "arrow"], }))
+Public properties (not settings):
+
+- **endArrow** (`Triangle`) — The arrow at the last point.
+- **hitLine** (`OrthogonalLine`) — A wider, invisible copy of the line that makes the link easier to hover and click.
+- **line** (`OrthogonalLine`) — The visible line.
+- **startArrow** (`Triangle`) — The arrow at the first point.

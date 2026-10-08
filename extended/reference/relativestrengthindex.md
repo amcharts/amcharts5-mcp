@@ -2,29 +2,33 @@
 title: "RelativeStrengthIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/relativestrengthindex/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Relative Strength Index indicator: momentum from `0` to `100`, comparing average gains with average losses over `period`. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import RelativeStrengthIndex
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.RelativeStrengthIndex.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: OverboughtOversold
+Extends: OverboughtOversold → ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from OverboughtOversold (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **smaColor** (`Color`) — A color for "ema" line.
-- **smaPeriod** (`undefined | number`) — EMA period.
+- Settings: `IRelativeStrengthIndexSettings` — get_api_reference shows it after this page
+- Private settings: `IRelativeStrengthIndexPrivate`
+- Events: `IRelativeStrengthIndexEvents`
 
 ## Properties
 
-- **smaSeries** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **smaSeries** (`LineSeries`) — Series of the RSI's moving average (`smaPeriod`).

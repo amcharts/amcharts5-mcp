@@ -4,7 +4,19 @@
  * Scrapes amCharts 5 documentation pages and saves them as clean markdown
  * in the extended/ directory.
  *
- * Usage: node scripts/scrape-docs.js
+ * Usage: node scripts/scrape-docs.js [url-or-path ...]
+ *
+ *   With no arguments, scrapes every page in URLS.
+ *   With arguments, scrapes only those pages. Each one can be a full docs URL,
+ *   a docs path, or the output file, e.g. all of these pick the same page:
+ *     https://www.amcharts.com/docs/v5/charts/map-chart/night-series/
+ *     charts/map-chart/night-series
+ *     extended/charts/map-chart/night-series.md
+ *   A full docs URL that is not in URLS is scraped too (with a warning).
+ *
+ *   Output goes to extended/ under the current working directory, so running
+ *   it from another directory scrapes there without touching the repo copy.
+ *   Run scripts/clean-all.js on the output afterwards.
  *
  * Dependencies: npm install turndown jsdom
  */
@@ -30,6 +42,7 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-sveltekit/",
   "https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-remix/",
   "https://www.amcharts.com/docs/v5/getting-started/integrations/cypress/",
+  "https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/",
 
   // Charts - XY
   "https://www.amcharts.com/docs/v5/charts/xy-chart/",
@@ -37,6 +50,7 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/",
   "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/",
   "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/",
+  "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/",
   "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/gapless-date-axis/",
   "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/duration-axis/",
   "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/",
@@ -56,6 +70,7 @@ const URLS = [
   // Charts - Percent/Pie
   "https://www.amcharts.com/docs/v5/charts/percent-charts/",
   "https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/",
+  "https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/pie-series/",
   "https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/",
   "https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/funnel-series/",
   "https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/",
@@ -75,6 +90,10 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/",
   "https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/",
   "https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/",
+  "https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/",
+  "https://www.amcharts.com/docs/v5/charts/map-chart/pixel-map-series/",
+  "https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/",
+  "https://www.amcharts.com/docs/v5/charts/map-chart/night-series/",
   "https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/",
   "https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/",
   "https://www.amcharts.com/docs/v5/charts/map-chart/map-drill-down/",
@@ -117,6 +136,19 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/charts/stock/",
   "https://www.amcharts.com/docs/v5/charts/stock/panels/",
   "https://www.amcharts.com/docs/v5/charts/stock/stock-legend/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/period-selector/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/interval-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/date-range-selector/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/comparison-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/indicator-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/series-type-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/reset-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/settings-control/",
+  "https://www.amcharts.com/docs/v5/charts/stock/toolbar/data-save-control/",
   "https://www.amcharts.com/docs/v5/charts/stock/indicators/",
   "https://www.amcharts.com/docs/v5/charts/stock/percent-mode/",
   "https://www.amcharts.com/docs/v5/charts/stock/stock-annotations/",
@@ -148,7 +180,7 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/concepts/common-elements/buttons/",
   "https://www.amcharts.com/docs/v5/concepts/common-elements/containers/",
   "https://www.amcharts.com/docs/v5/concepts/common-elements/tooltips/",
-  "https://www.amcharts.com/docs/v5/concepts/common-elements/modals/",
+  "https://www.amcharts.com/docs/v5/concepts/common-elements/modal-popups/",
   "https://www.amcharts.com/docs/v5/concepts/common-elements/layers/",
   "https://www.amcharts.com/docs/v5/concepts/common-elements/html-content/",
   "https://www.amcharts.com/docs/v5/concepts/formatters/",
@@ -168,6 +200,7 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/",
   "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-data/",
   "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/",
+  "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/",
   "https://www.amcharts.com/docs/v5/concepts/exporting/printing/",
   "https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/",
   "https://www.amcharts.com/docs/v5/concepts/exporting/annotator/",
@@ -176,9 +209,14 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/concepts/animations/",
   "https://www.amcharts.com/docs/v5/concepts/serializing/",
   "https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/",
+  "https://www.amcharts.com/docs/v5/concepts/serializing/json-editor/",
 
   // Migration & Reference
   "https://www.amcharts.com/docs/v5/migrating-from-amcharts-4/",
+
+  // AI
+  "https://www.amcharts.com/docs/v5/ai/",
+  "https://www.amcharts.com/docs/v5/ai/mcp/",
 ];
 
 const DELAY_MS = 1000;
@@ -215,6 +253,61 @@ function urlToFilePath(url) {
   }
 
   return path.join(OUTPUT_DIR, pathname + ".md");
+}
+
+/**
+ * Normalize a CLI argument (docs URL, docs path, or output file) to the docs
+ * path it names, e.g. "charts/map-chart/night-series"; "" for the docs root.
+ */
+function argToDocsPath(arg) {
+  let p = arg.trim().replace(/\\/g, "/");
+  if (/^https?:\/\//i.test(p)) {
+    p = new URL(p).pathname;
+  }
+  const prefixIndex = p.indexOf(BASE_URL_PREFIX);
+  if (prefixIndex !== -1) {
+    p = p.substring(prefixIndex + BASE_URL_PREFIX.length);
+  }
+  const extIndex = p.lastIndexOf("extended/");
+  if (extIndex !== -1) {
+    p = p.substring(extIndex + "extended/".length);
+  }
+  p = p.replace(/^\.?\/+/, "").replace(/\.md$/, "");
+  p = p.replace(/\/+$/, "");
+  return p === "index" ? "" : p;
+}
+
+/**
+ * Pick the URLs to scrape for the given CLI arguments (all of URLS when none).
+ */
+function selectUrls(args) {
+  if (args.length === 0) return URLS;
+
+  const byPath = new Map(URLS.map((url) => [argToDocsPath(url), url]));
+  const selected = [];
+  const unknown = [];
+
+  for (const arg of args) {
+    const docsPath = argToDocsPath(arg);
+    let url = byPath.get(docsPath);
+    if (!url && /^https?:\/\//i.test(arg) && arg.includes(BASE_URL_PREFIX)) {
+      url = `https://www.amcharts.com${BASE_URL_PREFIX}${docsPath ? docsPath + "/" : ""}`;
+      console.warn(`Note: ${url} is not in URLS; scraping it anyway.`);
+    }
+    if (!url) {
+      unknown.push(arg);
+    } else if (!selected.includes(url)) {
+      selected.push(url);
+    }
+  }
+
+  if (unknown.length > 0) {
+    console.error(`Not in URLS (pass a full docs URL to scrape a page that is not listed):`);
+    for (const arg of unknown) console.error(`  - ${arg}`);
+    process.exit(1);
+  }
+
+  return selected;
 }
 
 /**
@@ -432,9 +525,11 @@ async function processUrl(url, turndown) {
  * Main entry point.
  */
 async function main() {
+  const urls = selectUrls(process.argv.slice(2));
+
   console.log(`amCharts 5 Documentation Scraper`);
   console.log(`================================`);
-  console.log(`Total pages to scrape: ${URLS.length}`);
+  console.log(`Total pages to scrape: ${urls.length}`);
   console.log(`Output directory: ${OUTPUT_DIR}`);
   console.log();
 
@@ -444,9 +539,9 @@ async function main() {
   let failed = 0;
   const errors = [];
 
-  for (let i = 0; i < URLS.length; i++) {
-    const url = URLS[i];
-    const progress = `[${i + 1}/${URLS.length}]`;
+  for (let i = 0; i < urls.length; i++) {
+    const url = urls[i];
+    const progress = `[${i + 1}/${urls.length}]`;
 
     try {
       const result = await processUrl(url, turndown);
@@ -461,7 +556,7 @@ async function main() {
     }
 
     // Polite delay between requests (skip after last one)
-    if (i < URLS.length - 1) {
+    if (i < urls.length - 1) {
       await sleep(DELAY_MS);
     }
   }

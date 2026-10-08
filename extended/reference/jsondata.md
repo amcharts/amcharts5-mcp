@@ -2,15 +2,23 @@
 title: "JsonData"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/jsondata/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-@deprecated
-@todo remove
+**Deprecated:** yes
 
 ## Import
 
-```javascript
-// Import JsonData
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
+
+## Inheritance
+
+Extends: (none)
+
+## Properties
+
+Public properties (not settings):
+
+- **processor** (`DataProcessor`) — An optional processor for data. Docs: https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data

@@ -2,18 +2,21 @@
 title: "ParsedDate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/parseddate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **day** (`number`) — (no description)
-- **hour** (`number`) — (no description)
-- **millisecond** (`number`) — (no description)
-- **minute** (`number`) — (no description)
-- **month** (`number`) — (no description)
-- **second** (`number`) — (no description)
-- **weekday** (`number`) — (no description)
-
+- **year** (`number`)
+- **month** (`number`)
+- **day** (`number`)
+- **hour** (`number`)
+- **minute** (`number`)
+- **second** (`number`)
+- **millisecond** (`number`)
+- **weekday** (`number`)

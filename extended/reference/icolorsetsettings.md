@@ -2,136 +2,27 @@
 title: "IColorSetSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolorsetsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IColorSetSettings extends IEntitySettings.
-IColorSetSettings is not extended by any other symbol.
-Properties
-
-
-        baseColor        
-        #
-      
-
-
-                          Type Color                      
-A base color to generate new colors from if colors is not specified.
-
-
-        colors        
-        #
-      
-
-
-                          Type Color[]                      
-List of colors in the set.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        passOptions        
-        #
-      
-
-
-                          Type IColorSetStepOptions                      
-A set of tranformation to apply to base list of colors when the set runs out of colors and generates additional ones.
-
-
-        reuse        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-If set to true, color set will reuse existing colors from the list inestead of generating new ones.
-
-
-        saturation        
-        #
-      
-
-
-                          Type undefined | number                      
-If set, each returned color will be applied saturation.
-
-
-        startIndex        
-        #
-      
-
-
-                          Type undefined | number                      
-Start iterating colors from specific index.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        step        
-        #
-      
-
-
-                          Type undefined | number                      
-Default 1
-
-A step size when using next().
- E.g. setting to 2 will make it return every second color in the list.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.ColorSet` (see its page for the class)
+TypeScript: `am5.IColorSetSettings` (`import type { IColorSetSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **colors** (`Color[]`) — default `[am5.Color.fromHex(0x67b7dc)]` _(theme)_ — The colors in the set. Generated colors are added to this list.
+- **step** (`number`) — default `1` _(theme)_ — How many positions `next()` moves each time: `2` returns every second color.
+- **startIndex** (`number`) — default `0` _(theme)_ — Index of the color the first `next()` returns, and `reset()` goes back to.
+- **reuse** (`boolean`) — default `false` _(theme)_ — Repeats the list from the start when it runs out, instead of generating new colors.
+- **baseColor** (`Color`) — A base color to generate new colors from if `colors` is not set.
+- **passOptions** (`IColorSetStepOptions`) — default `{ hue: 0.05, saturation: 0, lightness: 0 }` _(theme)_ — How the colors generated when the list runs out differ from the original list. Each time the list runs out, a new pass of colors is added, shifted by these amounts once more.
+- **saturation** (`number`) — Saturation for every color the set returns, from `0` (grey) to `1`.
 
-- **baseColor** (`Color`) — A base color to generate new colors from if colors is not specified.
-- **colors** (`Color[]`) — List of colors in the set.
-- **passOptions** (`IColorSetStepOptions`) — A set of tranformation to apply to base list of colors when the set runs out of colors and generates additional ones.
-- **reuse** (`undefined | false | true`) — Default false If set to true, color set will reuse existing colors from the list inestead of generating new ones.
-- **saturation** (`undefined | number`) — If set, each returned color will be applied saturation.
-- **startIndex** (`undefined | number`) — Start iterating colors from specific index.
-- **step** (`undefined | number`) — Default 1 A step size when using next(). E.g. setting to 2 will make it return every second color in the list.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

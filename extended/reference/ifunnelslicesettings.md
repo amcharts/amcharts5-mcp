@@ -2,80 +2,31 @@
 title: "IFunnelSliceSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ifunnelslicesettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IFunnelSliceSettings extends IGraphicsSettings.
-IFunnelSliceSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IGraphicsSettings
+All ancestors: IGraphicsSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5percent.FunnelSlice` (see its page for the class)
+TypeScript: `am5percent.IFunnelSliceSettings` (`import type { IFunnelSliceSettings } from "@amcharts/amcharts5/percent"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IGraphicsSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **topWidth** (`number`) — default `0` _(code fallback)_ — Width of the slice's top edge (its left edge when horizontal), in pixels.
+- **bottomWidth** (`number`) — default `0` _(code fallback)_ — Width of the slice's bottom edge (its right edge when horizontal), in pixels.
+- **orientation** (`"horizontal" | "vertical"`) — `"vertical"` for a slice of a top-to-bottom series, `"horizontal"` for one of a left-to-right series.
+- **expandDistance** (`number`) — default `0` _(code fallback)_ — Curves the slice's sides outward, by a fraction of its height (its width when horizontal); a negative value curves them inward. `0` keeps them straight.
+- **cornerRadiusTL** (`number`) — Radius of the top-left corner in pixels. _Since 5.11.2._
+- **cornerRadiusTR** (`number`) — Radius of the top-right corner in pixels. _Since 5.11.2._
+- **cornerRadiusBR** (`number`) — Radius of the bottom-right corner in pixels. _Since 5.11.2._
+- **cornerRadiusBL** (`number`) — Radius of the bottom-left corner in pixels. _Since 5.11.2._
 
-- **bottomWidth** (`undefined | number`) — Bottom width in pixels.
-- **cornerRadiusBL** (`undefined | number`) — Radius of the bottom-left corner in pixels. @since 5.11.2
-- **cornerRadiusBR** (`undefined | number`) — Radius of the botttom-right corner in pixels. @since 5.11.2
-- **cornerRadiusTL** (`undefined | number`) — Radius of the top-left corner in pixels. @since 5.11.2
-- **cornerRadiusTR** (`undefined | number`) — Radius of the top-right corner in pixels. @since 5.11.2
-- **expandDistance** (`undefined | number`) — A distance in pixels the slice should "puff up". Any non-zero value will make sides of the slide curved.
-- **orientation** (`"vertical" | "horizontal"`) — Orientation.
-- **topWidth** (`undefined | number`) — Top width in pixels.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IGraphicsSettings")`) for types, defaults and descriptions.
+
+- _IGraphicsSettings_: blendMode, draw, fill, fillGradient, fillOpacity, fillPattern, lineCap, lineJoin, nonScalingStroke, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, stroke, strokeDasharray, strokeDashoffset, strokeGradient, strokeOpacity, strokePattern, strokeWidth, svgPath
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

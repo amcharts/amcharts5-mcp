@@ -2,32 +2,28 @@
 title: "Sankey"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/sankey/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Sankey series.
+Sankey diagram: nodes in columns, linked by bands as wide as the values they carry.
+
+Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
 
 ## Import
 
-```javascript
-// Import Sankey
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.Sankey.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Flow
+Extends: Flow → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Flow (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **linkSort** (`null | ( a: SankeyLinkMinimal, b: SankeyLinkMinimal) => number | null`) — A custom function to use when sorting links. Use null to sort links exactly the way they are presented in data. @since 5.4.4
-- **linkTension** (`undefined | number`) — Default 0.5 Tension setting of the link curve. Accepts values from 0 to 1. 1 will result in perfectly straight lines.
-- **nodeAlign** (`"left" | "right" | "justify" | "center"`) — Default "left" Alignment of nodes.
-- **orientation** (`"horizontal" | "vertical"`) — Default "horizontal" Orientation of the series.
-
-## Properties
-
-- **links** (`ListTemplate`) — Default new ListTemplate<SankeyLink> List of link elements.
-- **nodes** (`SankeyNodes`) — Default SankeyNodes.new() A series representing sankey nodes.
+- Settings: `ISankeySettings` — get_api_reference shows it after this page
+- Private settings: `ISankeyPrivate`
+- Events: `ISankeyEvents`
+- Data item fields: `ISankeyDataItem`

@@ -2,32 +2,31 @@
 title: "ChordLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chordlink/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A link element used in Chord chart.
+A link element of a `Chord` series.
 
 ## Import
 
-```javascript
-// Import ChordLink
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ChordLink.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: FlowLink
+Extends: FlowLink → Graphics → Sprite → Entity → Settings
 Extended by: ChordLinkDirected
 
-> **Note:** This class also inherits all settings, properties, methods, and events from FlowLink (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **source** (`DataItem`) — Source data item.
-- **sourceRadius** (`number | Percent`) — Radius of the link at the source.
-- **target** (`DataItem`) — target data item.
-- **targetRadius** (`number | Percent`) — Radius of the link at the end (target).
+- Settings: `IChordLinkSettings` — get_api_reference shows it after this page
+- Private settings: `IChordLinkPrivate`
 
 ## Properties
 
-- **series** (`Chord | undefined`) — (no description)
+Public properties (not settings):
+
+- **series** (`Chord`)

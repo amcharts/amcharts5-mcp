@@ -2,32 +2,36 @@
 title: "ZoomTools"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/zoomtools/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A tool that displays button for zoomable targets.
-@since 5.8.0
+Home, zoom-in and zoom-out buttons for a zoomable `target`.
+
+_Since 5.8.0._
 
 ## Import
 
-```javascript
-// Import ZoomTools
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.ZoomTools.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 Extended by: ZoomControl
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **target** (`IZoomable`) — A target element that zoom tools will control, e.g. ZoomableContainer.
+- Settings: `IZoomToolsSettings` — get_api_reference shows it after this page
+- Private settings: `IZoomToolsPrivate`
+- Events: `IZoomToolsEvents`
 
 ## Properties
 
-- **homeButton** (`Button`) — Default this.children.push(Button.new(this._root, { width: 35, height: 35, themeTags: ["home"] })) A Button for home.
-- **minusButton** (`Button`) — Default this.children.push(Button.new(this._root, { width: 35, height: 35, themeTags: ["minus"] })) A Button for zoom out.
-- **plusButton** (`Button`) — Default this.children.push(Button.new(this._root, { width: 35, height: 35, themeTags: ["plus"] })) A Button for zoom in.
+Public properties (not settings):
+
+- **homeButton** (`Button`) — The `Button` that takes the target back to its home view.
+- **minusButton** (`Button`) — The `Button` that zooms out.
+- **plusButton** (`Button`) — The `Button` that zooms in.

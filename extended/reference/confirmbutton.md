@@ -2,20 +2,27 @@
 title: "ConfirmButton"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/confirmbutton/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws an interactive button, which displays a confirmation when clicked.
+A button that asks for confirmation: the first click shows "Confirm", and a second click dispatches `"confirmed"`. A click elsewhere or the ESC key cancels.
+
+_Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/buttons/
 
 ## Import
 
-```javascript
-// Import ConfirmButton
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.ConfirmButton.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Button
+Extends: Button → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Button (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IConfirmButtonSettings` — get_api_reference shows it after this page
+- Private settings: `IConfirmButtonPrivate`
+- Events: `IConfirmButtonEvents`

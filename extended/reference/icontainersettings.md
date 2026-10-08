@@ -2,86 +2,35 @@
 title: "IContainerSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icontainersettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IContainerSettings extends ISpriteSettings.
-IContainerSettings is extended by ILabelSettings, IComponentSettings, IFlowNodeSettings, IChartSettings, IButtonSettings, ITooltipSettings, IZoomableContainerSettings, IHeatLegendSettings, ILinkSettings, IScrollbarSettings, IZoomToolsSettings, ISpriteResizerSettings, INumericStepperSettings, IProgressPieSettings, IXYCursorSettings, IColorPickerSettings, IColorPickerButtonSettings, IGanttSettings, IBreadcrumbBarSettings, IHierarchyNodeSettings, IClockHandSettings, IIndicatorSettings, IPanelControlsSettings, IStockChartSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: ISpriteSettings
-Extended by: ILabelSettings, IComponentSettings, IFlowNodeSettings, IChartSettings, IButtonSettings, ITooltipSettings, IZoomableContainerSettings, IHeatLegendSettings, ILinkSettings, IScrollbarSettings, IZoomToolsSettings, ISpriteResizerSettings, INumericStepperSettings, IProgressPieSettings, IXYCursorSettings, IColorPickerSettings, IColorPickerButtonSettings, IGanttSettings, IBreadcrumbBarSettings, IHierarchyNodeSettings, IClockHandSettings, IIndicatorSettings, IPanelControlsSettings, IStockChartSettings
+All ancestors: ISpriteSettings, IEntitySettings
+Settings of: `am5.Container` (see its page for the class)
+TypeScript: `am5.IContainerSettings` (`import type { IContainerSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISpriteSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **paddingLeft** (`number`) — default `0` _(code fallback)_ — Left padding in pixels.
+- **paddingRight** (`number`) — default `0` _(code fallback)_ — Right padding in pixels.
+- **paddingTop** (`number`) — default `0` _(code fallback)_ — Top padding in pixels.
+- **paddingBottom** (`number`) — default `0` _(code fallback)_ — Bottom padding in pixels.
+- **background** (`Graphics`) — Element drawn behind the container's content, sized to fill the container. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Background
+- **layout** (`Layout`) — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Layout
+- **mask** (`Graphics`) — An element whose shape clips the container's children. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Masks
+- **maskContent** (`boolean`) — Clips all content that goes outside the container's bounds.
+- **interactiveChildren** (`boolean`) — default `true` _(theme)_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
+- **setStateOnChildren** (`boolean`) — default `false` _(theme)_ — Applies every state set on the container to its children too. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#States
+- **verticalScrollbar** (`Scrollbar`) — A `Scrollbar` that scrolls the content vertically when it does not fit in the container. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Scrollbar
+- **reverseChildren** (`boolean`) — Lays out the children in reverse order. _Since 5.1.1._
+- **html** (`string`) — default `""` _(code fallback)_ — HTML content of the container. It can hold data placeholders, such as `{category}`. _Since 5.2.11._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/html-content/
 
-- **background** (`Graphics`) — Background element. Click here for more info
-- **html** (`undefined | string`) — HTML content of the container. Click here for more info @since 5.2.11
-- **interactiveChildren** (`undefined | false | true`) — If set to true all descendants - not just direct children, but every element in it - will become "interactive".
-- **layout** (`Layout | null`) — A method to layout Click here for more info
-- **mask** (`Graphics | null`) — An element to use as a container's mask (clipping region). Click here for more info
-- **maskContent** (`undefined | false | true`) — If set to true all content going outside the bounds of the container will be clipped.
-- **paddingBottom** (`undefined | number`) — Bottom padding in pixels.
-- **paddingLeft** (`undefined | number`) — Left padding in pixels.
-- **paddingRight** (`undefined | number`) — Right padding in pixels.
-- **paddingTop** (`undefined | number`) — Top padding in pixels.
-- **reverseChildren** (`undefined | false | true`) — If set to true its children will be laid out in opposite order. @since 5.1.1
-- **setStateOnChildren** (`undefined | false | true`) — If set to true, applying a state on a container will also apply the same state on its children. Click here for more info
-- **verticalScrollbar** (`Scrollbar`) — Setting this to an instance of Scrollbar will enable vertical scrolling of content if it does not fit into the Container. Click here for more info
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISpriteSettings")`) for types, defaults and descriptions.
+
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

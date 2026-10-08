@@ -2,20 +2,27 @@
 title: "CommodityChannelIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/commoditychannelindex/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Commodity Channel Index indicator: how far the typical price (average of high, low and close) is from its `period` average, relative to its mean deviation. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import CommodityChannelIndex
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.CommodityChannelIndex.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: OverboughtOversold
+Extends: OverboughtOversold → ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from OverboughtOversold (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ICommodityChannelIndexSettings` — get_api_reference shows it after this page
+- Private settings: `ICommodityChannelIndexPrivate`
+- Events: `ICommodityChannelIndexEvents`

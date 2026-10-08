@@ -2,30 +2,34 @@
 title: "Aroon"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/aroon/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Aroon indicator: two lines from `0` to `100` showing how recent the highest high (Aroon Up) and the lowest low (Aroon Down) of the last `period` data items are. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import Aroon
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.Aroon.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **downColor** (`Color`) — Color for downs.
-- **upColor** (`Color`) — Color for ups.
+- Settings: `IAroonSettings` — get_api_reference shows it after this page
+- Private settings: `IAroonPrivate`
+- Events: `IAroonEvents`
 
 ## Properties
 
-- **downSeries** (`LineSeries`) — Indicator series for downs.
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **downSeries** (`LineSeries`) — Series of the Aroon Down line.
+- **series** (`LineSeries`) — Series of the Aroon Up line.

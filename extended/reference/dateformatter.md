@@ -2,27 +2,26 @@
 title: "DateFormatter"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dateformatter/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Date formatter class.
+Formats dates in labels, tooltips and other text, and parses date strings.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
 
 ## Import
 
-```javascript
-// Import DateFormatter
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.DateFormatter.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **capitalize** (`undefined | false | true`) — Default true Should the first letter of the formatted date be capitalized?
-- **dateFields** (`string[]`) — An array of data fields that hold date values and should be formatted with a DateFormatter. Click here for more info
-- **dateFormat** (`string | DateTimeFormatOptions`) — A date format to be used when formatting dates. Click here for more info
-- **intlLocales** (`undefined | string`) — Locales to use when formatting using Intl.DateFormatter.
+- Settings: `IDateFormatterSettings` — get_api_reference shows it after this page
+- Private settings: `IDateFormatterPrivate`

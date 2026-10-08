@@ -2,13 +2,14 @@
 title: "IStockToolbarEvents"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/istocktoolbarevents/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IEntityEvents
+TypeScript: `am5stock.IStockToolbarEvents` (`import type { IStockToolbarEvents } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntityEvents (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Events
+
+- **created** (`{}`) — The toolbar was built, with its controls added.

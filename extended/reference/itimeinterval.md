@@ -2,12 +2,17 @@
 title: "ITimeInterval"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itimeinterval/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+A span of time, such as 5 minutes: `{ timeUnit: "minute", count: 5 }`.
+
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **count** (`number`) — (no description)
-
+- **timeUnit** (`TimeUnit`) — Unit of the interval.
+- **count** (`number`) — How many units the interval spans.

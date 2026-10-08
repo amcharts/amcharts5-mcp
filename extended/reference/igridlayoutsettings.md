@@ -2,83 +2,23 @@
 title: "IGridLayoutSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/igridlayoutsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IGridLayoutSettings extends ILayoutSettings.
-IGridLayoutSettings is not extended by any other symbol.
-Properties
-
-
-        fixedWidthGrid        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-If set to true all columns in the grid will be equal width.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        maxColumns        
-        #
-      
-
-
-                          Type undefined | number                      
-Maximum number of columns in the grid.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: ILayoutSettings
+All ancestors: ILayoutSettings, IEntitySettings
+Settings of: `am5.GridLayout` (see its page for the class)
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ILayoutSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **fixedWidthGrid** (`boolean`) — default `false` — Makes all columns as wide as the widest child.
+- **maxColumns** (`number`) — default `Number.MAX_VALUE` _(class default)_ — Maximum number of columns. No limit if not set.
 
-- **fixedWidthGrid** (`undefined | false | true`) — Default false If set to true all columns in the grid will be equal width.
-- **maxColumns** (`undefined | number`) — Maximum number of columns in the grid.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,24 +2,28 @@
 title: "DurationAxis"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/durationaxis/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a duration axis.
+A value axis whose values are amounts of `baseUnit`, with labels formatted as durations.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/duration-axis/
 
 ## Import
 
-```javascript
-// Import DurationAxis
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.DurationAxis.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ValueAxis
+Extends: ValueAxis → Axis → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ValueAxis (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **baseUnit** (`TimeUnit`) — Default "second" A base unit (granularity) of data. Used to indicate what are the base units of your data. Available options: "millisecond", "second" (default), "minute", "hour", "day", "week", "month", and "year". Click here for more info
+- Settings: `IDurationAxisSettings` — get_api_reference shows it after this page
+- Private settings: `IDurationAxisPrivate`
+- Events: `IDurationAxisEvents`
+- Data item fields: `IDurationAxisDataItem`

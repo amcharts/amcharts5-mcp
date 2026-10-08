@@ -2,16 +2,24 @@
 title: "Single-Level Packed Circles"
 source: "https://www.amcharts.com/demos/single-level-packed-circles/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo shows a packed circle chart as a visual representation of single-level data, where each circle corresponds to a distinct category, and the size of each circle reflects the quantitative value associated with that category. This chart allows for a clear and compact presentation of data distribution, making it easy to compare the relative magnitudes of individual data points within a single level.
-Key implementation details
-This chart still uses hierarchy-based data with "Root" level and the second level containing the rest of the nodes.
-The root level is hidden by using topDepth: 1 setting.
-This chart is added to a Zoomable Container, so you can pan, zoom-in and zoom-out this chart using mouse wheel, pinch-zoom or zoom tools on the bottom-right.
-Hierarchy charts
-Pack
+Five hundred circles, each sized by its value, packed as tight as they fit. One level and no groups: a quick way to spot the few big items among hundreds of small ones.
+
+When packed circles work: Packed circles trade precision for overview: circle areas are hard to compare exactly, but the biggest items jump out even among hundreds. With one level and no groups, the chart works like a bubble cloud for finding the leaders and seeing the long tail.
+
+Good for:
+- Hundreds of items, a few of them big
+- Sales per product, posts per topic, files by size
+- A striking overview for a landing page
+
+Think twice when:
+- Precise comparisons: a sorted bar chart is better
+- Items that belong to groups: nest them in a packed circle chart
+- Small screens without zoom: the small circles disappear
+
+Prompt: Create a packed circle chart of 500 items on a single level, each circle sized by its value and labeled with it, inside a container that can be zoomed and panned. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -20,39 +28,45 @@ Pack
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 var chart = root.container.children.push(
   am5.SerialChartContainer.new(root, {
-    width: am5.p100,
-    height: am5.p100
+    width: am5.p100, // the whole width...
+    height: am5.p100 // ...and height of the chart's div
   })
 );
 
+// the mouse wheel and a two-finger pinch zoom the circles in and out
 chart.zoomableContainer.setAll({
   wheelable: true,
   pinchZoom: true
 });
 
+// buttons to zoom in and out
 var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
-var series = chart.series.push(am5hierarchy.Pack.new(root, {
+var series = chart.series.push(am5hierarchy.Pack.new(root, { // circles sized by their values, packed tightly
   maskContent:false, //!important with zoomable containers
+  // leave out the root circle around everything: only its 500 children show
   topDepth: 1,
   valueField: "value",
   categoryField: "name",
   childDataField: "children"
 }));
 
-// Generate and set data
+// Show each circle's value in it; the tooltip adds the item's number
+series.labels.template.set("text", "{sum}");
+series.nodes.template.set("tooltipText", "Item {category}: [bold]{sum}[/]");
+
+// Set data
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
 var data = {
   name: "Root",
@@ -577,7 +591,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 550px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -586,3 +601,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

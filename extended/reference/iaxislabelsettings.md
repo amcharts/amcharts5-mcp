@@ -2,77 +2,38 @@
 title: "IAxisLabelSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iaxislabelsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IAxisLabelSettings extends ILabelSettings.
-IAxisLabelSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: ILabelSettings
+All ancestors: ILabelSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5xy.AxisLabel` (see its page for the class)
+TypeScript: `am5xy.IAxisLabelSettings` (`import type { IAxisLabelSettings } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ILabelSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **location** (`number`) — default `0.5` _(theme)_ — Where the label sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Location_of_axis_elements
+- **multiLocation** (`number`) — default `0` _(theme)_ — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a label. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Multi_location
+- **inside** (`boolean`) — Shows the label inside the plot area. If not set, the renderer's `inside` applies. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels_ticks_inside_plot_area
+- **minPosition** (`number`) — default `0` — Hides the label when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides labels in the first 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Start_end_labels_and_ticks
+- **maxPosition** (`number`) — default `1` — Hides the label when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides labels in the last 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Start_end_labels_and_ticks
 
-- **inside** (`boolean | undefined`) — Default false If set to true the label will be shown inside plot area. Click here for more info
-- **location** (`undefined | number`) — Relative location of the label within the cell. 0 - beginning, 0.5 - middle, 1 - end. Click here for more info
-- **maxPosition** (`undefined | number`) — Default 1 The maximum relative position within visible axis scope the label can appear on. E.g. 0.9 will mean that label will not be shown if it's closer to the end of the axis than 10%. Click here for more info
-- **minPosition** (`undefined | number`) — Default 0 The minimum relative position within visible axis scope the label can appear on. E.g. 0.1 will mean that label will not be shown if it's closer to the beginning of the axis than 10%. Click here for more info
-- **multiLocation** (`undefined | number`) — Relative location of the label within the cell when it spans multiple intervals. 0 - beginning, 0.5 - middle, 1 - end. Click here for more info
+## Inherited settings with a different default on AxisLabel
+
+- **centerX** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `x` position, and that it rotates and scales around: pixels from its left edge, or a percent of its width.
+- **centerY** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `y` position, and that it rotates and scales around: pixels from its top edge, or a percent of its height.
+- **paddingBottom** (`number`) — default `3` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
+- **paddingLeft** (`number`) — default `5` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
+- **paddingRight** (`number`) — default `5` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
+- **paddingTop** (`number`) — default `3` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ILabelSettings")`) for types, defaults and descriptions.
+
+- _ILabelSettings_: baselineRatio, breakWords, direction, ellipsis, fill, fillGradient, fillOpacity, fontFamily, fontSize, fontStyle, fontVariant, fontWeight, ignoreFormatting, lineHeight, maxChars, minScale, opacity, oversizedBehavior, populateText, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, text, textAlign, textBaseline, textDecoration
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

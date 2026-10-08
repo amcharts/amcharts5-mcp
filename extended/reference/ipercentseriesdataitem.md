@@ -2,127 +2,29 @@
 title: "IPercentSeriesDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipercentseriesdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IPercentSeriesDataItem extends ISeriesDataItem.
-IPercentSeriesDataItem is extended by IFunnelSeriesDataItem, IPieSeriesDataItem.
-Properties
-
-
-        category        
-        #
-      
-
-
-                          Type string                      
-Category.
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Fill color used for the slice and related elements, e.g. legend marker.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Pattern used for the slice and related elements, e.g. legend marker.
 
 ## Inheritance
 
 Extends: ISeriesDataItem
-Extended by: IFunnelSeriesDataItem, IPieSeriesDataItem
+All ancestors: ISeriesDataItem, IComponentDataItem
+TypeScript: `am5percent.IPercentSeriesDataItem` (`import type { IPercentSeriesDataItem } from "@amcharts/amcharts5/percent"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISeriesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
-
-- **category** (`string`) — Category.
-- **fill** (`Color`) — Fill color used for the slice and related elements, e.g. legend marker.
-- **fillPattern** (`Pattern`) — Pattern used for the slice and related elements, e.g. legend marker. Click here for more info @since 5.10.0
-- **label** (`Label`) — Slice label.
-- **legendDataItem** (`DataItem`) — A related legend data item.
+- **valuePercentTotal** (`number`) — The item's share of the series total, in percent (`25` for 25%).
+- **category** (`string`) — The item's category name.
 - **slice** (`Graphics`) — Slice visual element.
+- **label** (`Label`) — Slice label.
 - **tick** (`Tick`) — Slice tick.
-- **valuePercentTotal** (`number`) — Percent of the series value total.
+- **legendDataItem** (`DataItem<ILegendDataItem>`) — The item's entry in a legend.
+- **fill** (`Color`) — Color of the slice and the elements that follow it, such as the legend marker.
+- **fillPattern** (`Pattern`) — Pattern used for the slice and related elements, e.g. legend marker. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISeriesDataItem")`) for types, defaults and descriptions.
+
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, value, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

@@ -2,24 +2,27 @@
 title: "SmoothedYLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/smoothedylineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Smoothed line series suitable for vertical plots.
+A line series drawn as a smooth curve, for data that runs along the Y axis.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/
 
 ## Import
 
-```javascript
-// Import SmoothedYLineSeries
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.SmoothedYLineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: LineSeries
+Extends: LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from LineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **tension** (`undefined | number`) — Default 0.5 A tension force for the smoothing (0-1). The smaller the value the more curvy the line will be.
+- Settings: `ISmoothedYLineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ISmoothedYLineSeriesPrivate`
+- Data item fields: `ISmoothedYLineSeriesDataItem`

@@ -2,93 +2,44 @@
 title: "IAxisSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iaxissettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IAxisSettings extends IComponentSettings.
-IAxisSettings is extended by IValueAxisSettings, ICategoryAxisSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IComponentSettings
-Extended by: IValueAxisSettings, ICategoryAxisSettings
+All ancestors: IComponentSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5xy.Axis` (see its page for the class)
+TypeScript: `am5xy.IAxisSettings` (`import type { IAxisSettings } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IComponentSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **renderer** (`R`) — The renderer that draws the axis line, labels, ticks, grid and fills: `AxisRendererX` for a horizontal axis, `AxisRendererY` for a vertical one. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/#Axis_renderer
+- **start** (`number`) — default `0` _(theme)_ — Start of the visible (zoomed) part of the axis: `0` is the start of the axis, `1` the end. Set it to pre-zoom: `0.1` hides the first 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pre_zooming_axes
+- **end** (`number`) — default `1` _(theme)_ — End of the visible (zoomed) part of the axis: `0` is the start of the axis, `1` the end. Set it to pre-zoom: `0.9` hides the last 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pre_zooming_axes
+- **maxZoomFactor** (`number`) — default `1000` _(theme)_ — Roughly how many times the axis can be zoomed in. A `CategoryAxis` ignores it and zooms in as far as `minZoomCount` categories; a `DateAxis` set to `null` (its default) zooms in as far as `minZoomCount` base intervals.
+- **maxZoomCount** (`number`) — default `Infinity` _(theme)_ — Most cells to show at a time, such as categories on a `CategoryAxis` or `baseInterval` periods on a `DateAxis`. The axis can't be zoomed out any further. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Limiting_zoom_scope
+- **minZoomCount** (`number`) — default `1` _(theme)_ — Fewest cells to show at a time, such as categories on a `CategoryAxis` or `baseInterval` periods on a `DateAxis`. The axis can't be zoomed in any further. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Limiting_zoom_scope
+- **baseValue** (`number`) — Base value of the axis.
+- **panX** (`boolean`) — default `true` _(theme)_ — `false` keeps this axis in place when the chart is panned horizontally, by dragging or with the mouse wheel. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Excluding_axes_from_pan_or_zoom
+- **panY** (`boolean`) — default `true` _(theme)_ — `false` keeps this axis in place when the chart is panned vertically, by dragging or with the mouse wheel. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Excluding_axes_from_pan_or_zoom
+- **zoomX** (`boolean`) — default `true` _(theme)_ — `false` keeps this axis as it is when the mouse wheel zooms the chart horizontally. The cursor, scrollbars and pinch still zoom it; use `zoomable` to stop those too. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Excluding_axes_from_pan_or_zoom
+- **zoomY** (`boolean`) — default `true` _(theme)_ — `false` keeps this axis as it is when the mouse wheel zooms the chart vertically. The cursor, scrollbars and pinch still zoom it; use `zoomable` to stop those too. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Excluding_axes_from_pan_or_zoom
+- **zoomable** (`boolean`) — default `true` _(code fallback)_ — `false` makes `zoom()` do nothing, so the cursor, scrollbars, pinch and mouse wheel can't zoom or scroll the axis. Dragging the plot area still pans it.
+- **maxDeviation** (`number`) — default `0.1` _(theme)_ — How far past its ends the axis can be zoomed or panned, as a share of the visible range: `0.1` is 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Over_zooming
+- **tooltip** (`Tooltip`) — Tooltip that shows the axis value at the cursor's position.
+- **tooltipLocation** (`number`) — default `0.5` _(theme)_ — Where within a cell the tooltip snaps to when `snapTooltip` is on: `0` the cell's start, `0.5` its middle, `1` its end.
+- **snapTooltip** (`boolean`) — default `true` _(theme)_ — Snaps the tooltip to `tooltipLocation` in the cell under the cursor, instead of following the cursor exactly.
+- **fixAxisSize** (`boolean`) — default `true` _(theme)_ — Keeps the axis from shrinking as zooming changes the visible labels: it keeps room for the widest label shown so far.
+- **bullet** (`(root: Root, axis: Axis<AxisRenderer>, dataItem: DataItem<IAxisDataItem>) => AxisBullet`) — Function that creates an `AxisBullet` for each of the axis's cells, such as each category. Axis ranges get none. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Axis_bullets
+- **minorAxisFillsEnabled** (`boolean`) — Creates axis fills for the cells of the minor grid too, not only the main one. The `fillRule` still decides which of them show. _Since 5.14.0._
+- **zoomOut** (`boolean`) — default `true` _(theme)_ — `false` leaves the axis out of the chart's zoom-out: the zoom-out button doesn't reset it, and zooming it doesn't show the button. _Since 5.14.0._
 
-- **baseValue** (`undefined | number`) — Base value of the axis.
-- **bullet** (`undefined | ( root: Root, axis: Axis, dataItem: DataItem) => AxisBullet`) — A function that will be used to create bullets on each cell. Click here for more info
-- **end** (`undefined | number`) — The initial relative zoom end position of the axis. E.g. stting it to 0.9 will pre-zoom axis to 10% from the end. Click here for more info
-- **fixAxisSize** (`undefined | false | true`) — Default true If set to true (default) the axis width will stay constant across all zooms, even if actual length of all visible labels changes.
-- **maxDeviation** (`undefined | number`) — Default 0.1 A relative distance the axis is allowed to be zoomed/panned beyond its actual scope. Click here for more info
-- **maxZoomCount** (`undefined | number`) — Maximum number of axis elements to show at a time. E.g. for a CategoryAxis that would be number of categories. For a DateAxis it would be number of baseInterval. The axis will not allow to be zoomed out beyond this number. Click here for more info
-- **maxZoomFactor** (`number | null`) — Default 1000 Maximum number of times the scope of the axis could auto-zoom-in. This is to prevent axis jumping too drastically when scrolling/zooming.
-- **minZoomCount** (`undefined | number`) — Minimum number of axis elements to show at a time. E.g. for a CategoryAxis that would be number of categories. For a DateAxis it would be number of baseInterval. The axis will not allow to be zoomed in beyond this number. Click here for more info
-- **minorAxisFillsEnabled** (`undefined | false | true`) — Specifies how axis fill should be drawn (if fill rule allows it). @since 5.14.0
-- **panX** (`undefined | false | true`) — If set to false the axis will be exempt when chart is panned horizontally, and will keep its current position.` Click here for more info
-- **panY** (`undefined | false | true`) — If set to false the axis will be exempt when chart is panned vertically, and will keep its current position.` Click here for more info
-- **renderer** (`R`) — A renderer object which is responsible of rendering visible axis elements. Click here for more info
-- **snapTooltip** (`undefined | false | true`) — Default true Should tooltip snap to the tooltipLocation (true) or follow cursor.
-- **start** (`undefined | number`) — The initial relative zoom start position of the axis. E.g. stting it to 0.1 will pre-zoom axis to 10% from the start. Click here for more info
-- **tooltip** (`Tooltip`) — Tooltip element to use for axis.
-- **tooltipLocation** (`undefined | number`) — Default 0.5 tooltipLocation indicates which relative place to snap to: 0 beginning, 0.5 - middle, 1 - end.
-- **zoomOut** (`undefined | false | true`) — Default true If set to false, the axis will not be zoomed out when the chart's zoom out button is pressed, and vice versa when axis is zoomed, it will not trigger the button to appear. @since 5.14.0
-- **zoomX** (`undefined | false | true`) — If set to false the axis will be exempt when chart is zoomed horizontally, and will keep its current zoom/position.` Click here for more info
-- **zoomY** (`undefined | false | true`) — If set to false the axis will be exempt when chart is zoomed vertically, and will keep its current zoom/position.` Click here for more info
+## Other inherited settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IComponentSettings")`) for types, defaults and descriptions.
+
+- _IComponentSettings_: interpolationDuration, interpolationEasing
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

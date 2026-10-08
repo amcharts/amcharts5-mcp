@@ -2,24 +2,33 @@
 title: "OHLCSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ohlcseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-OHLC series.
+A series that shows open, high, low and close values as OHLC bars (`OHLC`).
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/
 
 ## Import
 
-```javascript
-// Import OHLCSeries
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.OHLCSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: CandlestickSeries
+Extends: CandlestickSeries → ColumnSeries → BaseColumnSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from CandlestickSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IOHLCSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IOHLCSeriesPrivate`
+- Data item fields: `IOHLCSeriesDataItem`
 
 ## Properties
 
-- **columns** (`ListTemplate`) — Default new ListTemplate<OHLC> A list of OHLC bars in the series. columns.template can be used to configure OHLC bars.
+Public properties (not settings):
+
+- **columns** (`ListTemplate<OHLC>`) — default `new ListTemplate<OHLC>` — OHLC bars of the series. Configure them all through `columns.template`.

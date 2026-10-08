@@ -2,32 +2,24 @@
 title: "IPatternSetSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipatternsetsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IPatternSetSettings extends IEntitySettings.
-IPatternSetSettings is not extended by any other symbol.
-Properties
-
-
-        color        
-        #
-      
-
-
-                          Type Color                      
-A base color to use for all patterns.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.PatternSet` (see its page for the class)
+TypeScript: `am5.IPatternSetSettings` (`import type { IPatternSetSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **patterns** (`Pattern[]`) — default `[]` _(code fallback)_ — The patterns in the set. A built-in list of 16 patterns if not set.
+- **step** (`number`) — default `1` _(theme)_ — How many positions `next()` moves each time: `2` returns every second pattern.
+- **color** (`Color`) — default `root.interfaceColors.get("stroke")` _(theme)_ — Color of the built-in patterns, used when `patterns` is not set. Changing it after the set is created has no effect. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Colors
+- **startIndex** (`number`) — default `0` — Index of the pattern the first `next()` returns, and `reset()` goes back to.
 
-- **color** (`Color`) — A base color to use for all patterns. Click here for more info
-- **patterns** (`Pattern[]`) — List of colors in the set.
-- **startIndex** (`undefined | number`) — Start iterating patterns from specific index.
-- **step** (`undefined | number`) — Default 1 A step size when using next(). E.g. setting to 2 will make it return every second pattern in the list.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

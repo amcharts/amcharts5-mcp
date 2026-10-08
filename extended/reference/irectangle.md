@@ -2,14 +2,17 @@
 title: "IRectangle"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/irectangle/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: `am5.IRectangle` (`import type { IRectangle } from "@amcharts/amcharts5"`)
 
 ## Properties
 
-- **height** (`number`) — (no description)
-- **width** (`number`) — (no description)
-- **x** (`number`) — (no description)
-
+- **x** (`number`)
+- **y** (`number`)
+- **width** (`number`)
+- **height** (`number`)

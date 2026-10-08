@@ -2,25 +2,26 @@
 title: "LinePattern"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/linepattern/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Line pattern.
 
+Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+
 ## Import
 
-```javascript
-// Import LinePattern
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.LinePattern.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Pattern
+Extends: Pattern → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Pattern (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **angle** (`undefined | number`) — Default 0 Line drawing angle in degrees. For line patterns it's better than using rotation of the whole pattern, allowing smaller pattern sized. @since 5.14.
-- **gap** (`undefined | number`) — Default 6 Gap between lines, in pixels.
+- Settings: `ILinePatternSettings` — get_api_reference shows it after this page
+- Private settings: `ILinePatternPrivate`

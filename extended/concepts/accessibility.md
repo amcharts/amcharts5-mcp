@@ -1,7 +1,7 @@
 ---
 title: "Accessibility"
 source: "https://www.amcharts.com/docs/v5/concepts/accessibility/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial will go through amCharts 5 built-in accessibility features as well as how to configure them.
@@ -20,16 +20,16 @@ Whenever element is focused, it will show a contrasting outline around it. It wi
 
 We can control if element is focusable via its `focusable` setting.
 
-Elements that make sense to be focusable are so y default. For example legend items and all buttons.
+Elements that make sense to be focusable are so by default. For example legend items and all buttons.
 
 If for example we would like to disable focusing, we can do so by setting `focusable` to `false`:
 
-scrollbar.stratGrip.set("focusable", false);
+scrollbar.startGrip.set("focusable", false);
 scrollbar.endGrip.set("focusable", false);
 
 columnSeries.columns.template.set("focusable", false);
 
-scrollbar.stratGrip.set("focusable", false);
+scrollbar.startGrip.set("focusable", false);
 scrollbar.endGrip.set("focusable", false);
 
 columnSeries.columns.template.set("focusable", false);
@@ -50,21 +50,19 @@ var chart = root.container.children.push(
   })
 );
 
-Some series elements are not measured by default and would not place the outline correctly, e.g. `PieSeries` slices.
-
-For outline to work correctly we will also need to enable measuring of such elements:
+Series elements such as `PieSeries` slices or map polygons are made focusable the same way:
 
 series.slices.template.setAll({
   focusable: true,
-  isMeasured: true,
   ariaLabel: "Slice; {category} {value}"
 });
 
 series.slices.template.setAll({
   focusable: true,
-  isMeasured: true,
   ariaLabel: "Slice; {category} {value}"
 });
+
+NOTEBefore version 5.21.0, slices and polygons also needed `isMeasured: true` to be focused and outlined correctly. It is no longer needed.
 
 ### Tab index
 
@@ -79,13 +77,13 @@ amCharts 5 offers two levels of such ordering:
 
 #### Root element tab index
 
-Tab index of the root element is set via its `tabindex` poperty:
+Tab index of the root element is set via its `tabindex` property:
 
 root.tabindex = 10;
 
 root.tabindex = 10;
 
-If set like the above, the chart's focusable elements will be selected after any other element on the chart that has its own tab index set to 9 or lower, or does not have any tab index set (which works the same way as if it was set to zero).
+If set like the above, the chart's focusable elements will be selected after any other element on the page that has its own tab index set between 1 and 9. Note that elements with no tab index set (or tab index of 0) are focused last by the browser, so they will come after the chart, not before it.
 
 #### Chart element internal tab index
 
@@ -119,7 +117,7 @@ This is where grouped focus elements come in.
 
 To group elements, besides setting `focusable`, we can also set `focusableGroup`, which can be any text or number.
 
-When groups are enabled, only the first element in the group is selected using TAB key, whereas other elements are selectable using arrow keys.
+A group is a single TAB stop. TAB lands on the member that was focused last (or the first one, if none was), and arrow keys move between the members.
 
 Naturally, `ariaLabel` must contain additional instructions, exposing such capability.
 
@@ -135,7 +133,9 @@ series.columns.template.setAll({
   ariaLabel: "{name}. {categoryX} {valueY}. Use arrow keys to select other columns in this series"
 });
 
-IMPORTANTApple introduced a "Quick Nav" feature in its Voiceover assistive utility in macOS 13. It will prevent navigation of elements within the group, and make the arrow keys work as regular TAB. To disable this feature press the left and right arrow keys simultaneously. [More info](https://support.apple.com/guide/voiceover/with-quick-nav-vo27943/mac).
+If group members can also be dragged, e.g. nodes in a [flow](https://www.amcharts.com/docs/v5/charts/flow-charts/) or [hierarchy](https://www.amcharts.com/docs/v5/charts/hierarchy/) chart, arrow keys still move between them. To drag the focused member, hold SHIFT while pressing arrow keys.
+
+IMPORTANTApple introduced a "Quick Nav" feature in its VoiceOver assistive utility in macOS 13. It will prevent navigation of elements within the group, and make the arrow keys work as regular TAB. To disable this feature press the left and right arrow keys simultaneously. [More info](https://support.apple.com/guide/voiceover/with-quick-nav-vo27943/mac).
 
 ### Simulating hover on focus
 
@@ -157,10 +157,14 @@ series.columns.template.setAll({
   tooltipY: 0
 });
 
+A tooltip shown this way is also read out by screen readers, unless its text repeats the element's `ariaLabel`. Tooltips shown by mouse hover are not read out.
+
+Pressing ESC hides the tooltip, while the element stays focused.
+
 
 ### Focus outline margin
 
-Normally, the outline of the focused element will show detracted from the focused element by 2 pixels.
+Normally, the outline of the focused element will be offset from it by 2 pixels.
 
 We can control that using Root element's `focusPadding` setting:
 
@@ -220,7 +224,7 @@ MORE INFOFor more information on binding data to text, refer to "[Data placehold
 
 ## Accessibility of Root element
 
-We can also make the Root (or more like its inner `<div>`) element accessible using two additional settings in Root: `focusable`, `ariaLabel`, and `role`.
+We can also make the Root (or more like its inner `<div>`) element accessible using three additional settings in Root: `focusable`, `ariaLabel`, and `role`.
 
 let root = am5.Root.new("chartdiv", {
   focusable: true,
@@ -234,13 +238,29 @@ var root = am5.Root.new("chartdiv", {
   role: "document"
 });
 
+## High contrast mode
+
+When the system is in a forced colors mode, such as Windows High Contrast, charts follow the system colors: labels, grid, axes, and buttons take the colors the user has chosen, so they stay visible. Series colors are kept, so the data can still be told apart.
+
+This works automatically. To keep the chart's own colors instead, set Root's `forcedColors` setting to `false`:
+
+let root = am5.Root.new("chartdiv", {
+  forcedColors: false
+});
+
+var root = am5.Root.new("chartdiv", {
+  forcedColors: false
+});
+
+NOTEHigh contrast support is available since version 5.21.0.
+
 ## Roles
 
 In order to help assistive technologies, amCharts automatically assigns roles to some of the interactive elements.
 
 It comes in a form of a `role` attribute of the related DOM element.
 
-For example, a grip button of a scrollbar will gave `"slider"` role assigned, indicating that this element that can be used to adjust position/zoom.
+For example, a grip button of a scrollbar will have `"slider"` role assigned, indicating that this element can be used to adjust position/zoom.
 
 Similarly, a focusable column in a column series will have a role of `"figure"`.
 
@@ -251,6 +271,8 @@ series.columns.template.set("role", "img");
 series.columns.template.set("role", "img");
 
 The above will change role of columns in series to `"img"`.
+
+A focusable element that toggles a state when clicked (one with `toggleKey`), such as a pie slice that pulls out, is exposed as a toggle button, so screen readers can tell whether it is on or off.
 
 MORE INFOFor a full list of available ARIA roles, refer to [this Mozilla article](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#roles).
 
@@ -315,6 +337,8 @@ series.bullets.push(function() {
   });
 });
 
+If the bullet's sprite has no role, it gets `"figure"`. A sprite that has its own role, such as a button, keeps it.
+
 
 ## Tooltips
 
@@ -336,7 +360,7 @@ let series = chart.series.push(
     tooltip: am5.Tooltip.new(root, {
       labelText: "{valueY}",
       readerAnnounce: true,
-      labelArialLabel: "Value: {valueY}"
+      labelAriaLabel: "Value: {valueY}"
     })
   })
 );
@@ -350,10 +374,12 @@ var series = chart.series.push(
     tooltip: am5.Tooltip.new(root, {
       labelText: "{valueY}",
       readerAnnounce: true,
-      labelArialLabel: "Value: {valueY}"
+      labelAriaLabel: "Value: {valueY}"
     })
   })
 );
+
+Tooltips shown for a focused element (with `hoverOnFocus`) are read out without this setting. See "[Simulating hover on focus](#Simulating_hover_on_focus)".
 
 ## Legend
 
@@ -361,12 +387,12 @@ Chart's legend has own fuzzy logic of applying `ariaLabel` content to its toggla
 
 The only way to override it, is via an adapter:
 
-legend.itemContainers.template.adapters.add("ariaLabel", function(label, target) {
+legend.itemContainers.template.adapters.add("ariaLabel", function(value, target) {
   let label = target.dataItem.get("label");
   return "Click: " + label.get("text");
 });
 
-legend.itemContainers.template.adapters.add("ariaLabel", function(label, target) {
+legend.itemContainers.template.adapters.add("ariaLabel", function(value, target) {
   var label = target.dataItem.get("label");
   return "Click: " + label.get("text");
 });
@@ -384,7 +410,45 @@ cursor.lineX.set("focusable", true);
 cursor.lineY.set("focusable", true);
 
 
+## Maps
+
+When a map is zoomed, screen readers announce the new zoom level once zooming stops.
+
+Focusable map objects (polygons, points, lines) that are panned or zoomed out of view are skipped by TAB, so the focus outline never ends up outside the chart. They become TAB stops again once at least partly in view. Screen readers can still reach all of them.
+
+Objects left out with a series' `include` or `exclude` settings are not focusable at all.
+
 ## Keyboard interactions
+
+Here's a summary of keys that work on focused chart elements:
+
+Key
+
+Action
+
+TAB / SHIFT+TAB
+
+Moves focus to the next / previous element or group.
+
+Arrow keys
+
+Drag a draggable element, or move between members of a group.
+
+SHIFT + arrow keys
+
+Drag a draggable element that is in a group.
+
+ENTER
+
+Clicks the focused element.
+
+SPACE
+
+Clicks the focused element, if it acts as a button (see below).
+
+ESC
+
+Hides the focused element's tooltip and ends a keyboard drag. Focus stays on the element.
 
 There are two types of objects on charts that can be interacted with with mouse/touch as well as with keyboard:
 
@@ -393,7 +457,7 @@ There are two types of objects on charts that can be interacted with with mouse/
 
 ### Draggable elements
 
-All draggable elements on chart can also be moved using keyboard arrow keys.
+All draggable elements on chart can also be moved using keyboard arrow keys. If the element is in a [focusable group](#Grouping_focusable_elements), hold SHIFT while pressing arrow keys.
 
 Some of them have reader text attached to read out instructions or current value when element is focused using TAB key.
 
@@ -413,11 +477,17 @@ scrollbar.startGrip.setAll({
 
 Using TAB key, when we focus an element that has `"click"` event attached to it, we can press ENTER to actually trigger that event.
 
+SPACE does the same for elements that act as buttons: those with a `role` of `"button"`, `"checkbox"`, `"switch"`, `"radio"`, `"tab"`, `"option"`, or one of the menu item roles. This is how such controls work elsewhere on a page.
+
 For example, focusing on a legend item and pressing ENTER will toggle related series or item.
 
 Some built-in controls have also default reader text with toggling instructions pre-set.
 
 E.g. the legend items we already mentioned: they will read out "Press ENTER to toggle".
+
+Toggles also tell screen readers their current state. A button with `toggleKey` is read out as pressed or not pressed. For elements that show or hide other content, the `ariaExpanded` setting tells whether it is expanded. It is set automatically on [Gantt](https://www.amcharts.com/docs/v5/charts/gantt/) tasks with subtasks and on hierarchy nodes with children.
+
+MORE INFOSome controls built with HTML have their own keyboard support: [export menu](https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/#Accessibility), [modal popups](https://www.amcharts.com/docs/v5/concepts/common-elements/modal-popups/), and [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/#Accessibility).
 
 ## Events
 

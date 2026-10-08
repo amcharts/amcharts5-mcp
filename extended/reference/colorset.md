@@ -2,30 +2,26 @@
 title: "ColorSet"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/colorset/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An object which holds list of colors and can generate new ones.
+A list of colors that series and other elements take in turn. When the list runs out, it generates more.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Color_sets
 
 ## Import
 
-```javascript
-// Import ColorSet
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.ColorSet.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **baseColor** (`Color`) — A base color to generate new colors from if colors is not specified.
-- **colors** (`Color[]`) — List of colors in the set.
-- **passOptions** (`IColorSetStepOptions`) — A set of tranformation to apply to base list of colors when the set runs out of colors and generates additional ones.
-- **reuse** (`undefined | false | true`) — Default false If set to true, color set will reuse existing colors from the list inestead of generating new ones.
-- **saturation** (`undefined | number`) — If set, each returned color will be applied saturation.
-- **startIndex** (`undefined | number`) — Start iterating colors from specific index.
-- **step** (`undefined | number`) — Default 1 A step size when using next(). E.g. setting to 2 will make it return every second color in the list.
+- Settings: `IColorSetSettings` — get_api_reference shows it after this page
+- Private settings: `IColorSetPrivate`

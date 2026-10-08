@@ -2,21 +2,25 @@
 title: "DoodleSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/doodleseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-DoodleSeries uses data items of type IDoodleSeriesDataItem.
+A `DrawingSeries` subclass.
 
 ## Import
 
-```javascript
-// Import DoodleSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.DoodleSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: DrawingSeries
+Extends: DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from DrawingSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IDoodleSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IDoodleSeriesPrivate`
+- Data item fields: `IDoodleSeriesDataItem`

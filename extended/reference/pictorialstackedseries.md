@@ -2,29 +2,34 @@
 title: "PictorialStackedSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pictorialstackedseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a pictorial series for use in a SlicedChart.
+A series for a `SlicedChart` that fills a shape (`svgPath`) with stacked slices, each as tall as its share of the total. It sets `valueIs` to `"height"` and `topWidth` and `bottomWidth` to `100%`.
+
+Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pictorial-stacked-series/
 
 ## Import
 
-```javascript
-// Import PictorialStackedSeries
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
+
+am5percent.PictorialStackedSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: PyramidSeries
+Extends: PyramidSeries → FunnelSeries → PercentSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from PyramidSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **svgPath** (`undefined | string`) — An SVG path that will define the shape of the pictorial series. Click here for more info
+- Settings: `IPictorialStackedSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IPictorialStackedSeriesPrivate`
+- Data item fields: `IPictorialStackedSeriesDataItem`
 
 ## Properties
 
-- **seriesGraphics** (`Graphics`) — Default this.slicesContainer.children.push(Graphics.new(this._root, { themeTags: ["pictorial", "background"], position: "absolute", x: p50, y: p50, centerX: p50, centerY: p50 }))
-- **seriesMask** (`Graphics`) — Default Graphics.new(this._root, { position: "absolute", x: p50, y: p50, centerX: p50, centerY: p50 }) A Graphics element to used as a mask (shape) for the series. This element is read-only. To modify the mask/shape, use the svgPath setting.
+Public properties (not settings):
+
+- **seriesGraphics** (`Graphics`) — The `svgPath` shape drawn behind the slices, as a faint background.
+- **seriesMask** (`Graphics`) — The shape that masks the slices, drawn from `svgPath`. To change it, set `svgPath` on the series.

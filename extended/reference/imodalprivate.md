@@ -2,21 +2,17 @@
 title: "IModalPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/imodalprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IEntityPrivate
-Extended by: ISettingsModalPrivate
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntityPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
-
-- **container** (`HTMLDivElement`) — (no description)
-- **content** (`HTMLDivElement`) — (no description)
-- **curtain** (`HTMLDivElement`) — (no description)
-
+- **container** (`HTMLDivElement`)
+- **curtain** (`HTMLDivElement`)
+- **wrapper** (`HTMLDivElement`)
+- **content** (`HTMLDivElement`)

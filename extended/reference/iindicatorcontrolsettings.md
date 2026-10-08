@@ -2,236 +2,32 @@
 title: "IIndicatorControlSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iindicatorcontrolsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IIndicatorControlSettings extends IDropdownListControlSettings.
-IIndicatorControlSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IStockControlSettings
-Indicates if control is active.
-
-
-        align        
-        #
-      
-
-
-                          Type "left" | "right"                      
-Default "left"
-
-Inherited from IStockControlSettings
-Alignment of the control in a toolbar.
-
-
-        currentItem        
-        #
-      
-
-
-                          Type string | IDropdownListItem                      
-Inherited from IDropdownListControlSettings
-Currently selected item.
-
-
-        description        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Description of what the button does.
-
-
-        exclude        
-        #
-      
-
-
-                          Type string[]                      
-Inherited from IDropdownListControlSettings
-An array of item IDs to now show in the list.
-@since 5.7.0
-
-
-        fixedLabel        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IDropdownListControlSettings
-Label does not change when item is selected in the list.
-
-
-        forceHidden        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IStockControlSettings
-Force this control to always be invisible.
-@since 5.8.5
-@defaul false
-
-
-        icon        
-        #
-      
-
-
-                          Type HTMLElement | SVGElement | "none"                      
-Inherited from IStockControlSettings
-An element with control icon. If not set, each control will aytomatically create an icon.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        indicators        
-        #
-      
-
-
-                          Type Array                      
-
-
-        items        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IDropdownListControlSettings
-A list of items in the dropdown.
-
-
-        legend        
-        #
-      
-
-
-                          Type StockLegend                      
-
-
-        maxSearchItems        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IDropdownListControlSettings
-Maximum search items to show.
-
-
-        name        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Name of the control. Used for the label.
-
-
-        scrollable        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IDropdownListControlSettings
-If set to true, the dropdown will fix the height to fit within chart's area, with scroll if the contents do not fit.
-
-
-        searchCallback        
-        #
-      
-
-
-                          Type undefined | ( query: string) => IDropdownListItem[]                      
-Inherited from IDropdownListControlSettings
-A callback function which returns a list of items based on a search query.
-
-
-        searchable        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IDropdownListControlSettings
-Is the list searchable? If true shows search field and calls searchCallback function for a list of items.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stockChart        
-        #
-      
-
-
-                          Type StockChart                      
-Inherited from IStockControlSettings
-A StockChart the toolbar is for.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IDropdownListControlSettings
+All ancestors: IDropdownListControlSettings, IStockControlSettings, IEntitySettings
+Settings of: `am5stock.IndicatorControl` (see its page for the class)
+TypeScript: `am5stock.IIndicatorControlSettings` (`import type { IIndicatorControlSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IDropdownListControlSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **indicators** (`(IIndicator | Indicators)[]`) — default `["Acceleration Bands", "Accumulation Distribution", "Accumulative Swing Index", "Aroon", "Average True Range", "Awesome Oscillator", "Bollinger Bands", "Bull Bear Power", "Chaikin Money Flow", "Cha…` _(theme)_ — Indicators to list: names of built-in ones, or `IIndicator` objects for custom ones. Those that need volume are listed only while the chart has a `volumeSeries`.
+- **legend** (`StockLegend`) — The `StockLegend` that indicators drawn over the main series are added to.
 
-- **indicators** (`Array`) — (no description)
-- **legend** (`StockLegend`) — (no description)
+## Inherited settings with a different default on IndicatorControl
+
+- **fixedLabel** (`boolean`) — default `true` _(theme)_ — _from IDropdownListControlSettings_ — Keeps the button's label and icon when an item is picked, instead of showing that item.
+- **name** (`string`) — default `root.language.translateAny("Indicators")` _(theme)_ — _from IStockControlSettings_ — Label text of the control's button.
+- **scrollable** (`boolean`) — default `true` _(theme)_ — _from IDropdownListControlSettings_ — Limits the list's height to the chart's height minus 100 pixels, scrolling the rest.
+- **searchable** (`boolean`) — default `true` _(theme)_ — _from IDropdownListControlSettings_ — Shows a search field above the list. Typing filters the items or, with `searchCallback`, replaces them with its results.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IDropdownListControlSettings")`) for types, defaults and descriptions.
+
+- _IDropdownListControlSettings_: currentItem, exclude, items, maxSearchItems, searchCallback
+- _IStockControlSettings_: active, align, description, forceHidden, icon, stockChart, togglable, visible
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -395,6 +395,8 @@ Whether category should start off collapsed.
 
 A category color.
 
+NOTE `nameField` and `colorField` work since 5.21.0. In earlier versions they had no effect: the `name` and `color` fields were always used.
+
 #### Using same field for id and name
 
 If we can assure that we can keep category names unique, we can reuse the same field in data for both the ids and names, by setting `nameField` to the same value as `idField`, e.g. `"id"`:

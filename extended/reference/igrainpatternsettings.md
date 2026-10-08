@@ -2,36 +2,34 @@
 title: "IGrainPatternSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/igrainpatternsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IGrainPatternSettings extends IPatternSettings.
-IGrainPatternSettings is not extended by any other symbol.
-Properties
-
-
-        color        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IPatternSettings
-Color of the pattern shape.
 
 ## Inheritance
 
 Extends: IPatternSettings
+All ancestors: IPatternSettings, IEntitySettings
+Settings of: `am5.GrainPattern` (see its page for the class)
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPatternSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **size** (`number`) — default `1` _(theme)_ — Size of a grain in pixels.
+- **density** (`number`) — default `1` _(theme)_ — Density of noise. Value range: `0` (no noise applied) to `1` (noise is applied to every pixel). The bigger the value, the higher chance that pixel will have another pixel painted over with random opacity from `minOpacity` to `maxOpacity`.
+- **minOpacity** (`number`) — default `0` _(theme)_ — Minimum opacity of a noise pixel.
+- **maxOpacity** (`number`) — default `0.2` _(theme)_ — Maximum opacity of a noise pixel.
+- **colors** (`Color[]`) — default `[am5.Color.fromHex(0x000000)]` _(theme)_ — An array of colors to randomly use for pixels.
+- **horizontalGap** (`number`) — default `0` _(theme)_ — Horizontal gap between noise pixels measured in `size`.
+- **verticalGap** (`number`) — default `0` _(theme)_ — Vertical gap between noise pixels measured in `size`.
 
-- **colors** (`Array`) — Default [color(0x000000)] An array of colors to randomly use for pixels.
-- **density** (`undefined | number`) — Default 1 Density of noise. Value range: 0 (no noise applied) to 1 (noise is applied to every pixel). The bigger the value, the higher chance that pixel will have another pixel painted over with random opacity from minOpacity to maxOpacity.
-- **horizontalGap** (`undefined | number`) — Default 0 Horizontal gap between noise pixels measured in size.
-- **maxOpacity** (`undefined | number`) — Default 0.3 Maximum opacity of a noise pixel.
-- **minOpacity** (`undefined | number`) — Default 0 Minimum opacity of a noise pixel.
-- **size** (`undefined | number`) — Default 1 Size of a grain in pixels.
-- **verticalGap** (`undefined | number`) — Default 0 Vertical gap between noise pixels measured in size.
+## Inherited settings with a different default on GrainPattern
+
+- **height** (`number`) — default `200` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+- **width** (`number`) — default `200` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IPatternSettings")`) for types, defaults and descriptions.
+
+- _IPatternSettings_: color, colorInherited, colorOpacity, fill, fillInherited, fillOpacity, repetition, rotation, strokeDasharray, strokeDashoffset, strokeWidth
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

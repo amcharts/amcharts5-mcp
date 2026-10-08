@@ -2,32 +2,33 @@
 title: "AxisRendererCurveY"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrenderercurvey/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Renderer for CurveChart "vertical" axes.
+Renderer for the Y axis of a `CurveChart`, which runs across the X axis line all along it.
+
+_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
 
 ## Import
 
-```javascript
-// Import AxisRendererCurveY
-import * as am5timeline from "@amcharts/amcharts5/timeline"
+```js
+import * as am5timeline from "@amcharts/amcharts5/timeline";
+
+am5timeline.AxisRendererCurveY.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: AxisRenderer
+Extends: AxisRenderer → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from AxisRenderer (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **axisLength** (`undefined | number`) — Default 60 Axis length in pixels. SerpentineChart and SpiralChart will ignore this setting as they calculate axis length by the yAxisRadius setting of a chart itself.
-- **axisLocation** (`undefined | number`) — Default 0.5 Relative location of the axis on the chart: 0-1. 0 - start 1 - end
-- **rotateLabels** (`undefined | false | true`) — Default false Should axis labels rotation should be adjusted to the axis rotation?
-- **xRenderer** (`AxisRendererCurveX`) — X-axis renderer. This setting is required.
+- Settings: `IAxisRendererCurveYSettings` — get_api_reference shows it after this page
+- Private settings: `IAxisRendererCurveYPrivate`
 
 ## Properties
 
-- **chart** (`CurveChart | undefined`) — Chart this renderer is for.
-- **labels** (`ListTemplate`) — Default new ListTemplate<AxisLabelRadial> A TemplateList with all the labels attached to the axis. labels.template can be used to configure appearance of the labels.
+Public properties (not settings):
+
+- **chart** (`CurveChart`) — Chart this renderer is for.
+- **labels** (`ListTemplate<AxisLabelRadial>`) — The axis labels, placed at the start of the X axis line. Configure them through `labels.template`.

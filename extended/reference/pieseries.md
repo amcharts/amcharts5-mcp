@@ -2,31 +2,33 @@
 title: "PieSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pieseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a series for a PieChart.
+A series of pie slices for a `PieChart`. With `alignLabels: false`, the labels sit around the pie next to their slices instead of in two columns.
+
+Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
 
 ## Import
 
-```javascript
-// Import PieSeries
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
+
+am5percent.PieSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: PercentSeries
+Extends: PercentSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from PercentSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **endAngle** (`undefined | number`) — Default 270 End angle of the series in degrees.
-- **innerRadius** (`Percent | number`) — Radius of the series in pixels or percent. Setting to negative number will mean pixels from outer radius.
-- **radius** (`Percent | number`) — Radius of the series in pixels or percent.
-- **startAngle** (`undefined | number`) — Default -90 Start angle of the series in degrees.
+- Settings: `IPieSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IPieSeriesPrivate`
+- Data item fields: `IPieSeriesDataItem`
 
 ## Properties
 
-- **chart** (`PieChart | undefined`) — (no description)
+Public properties (not settings):
+
+- **chart** (`PieChart`) — The chart the series belongs to.

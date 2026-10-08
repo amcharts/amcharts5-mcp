@@ -2,20 +2,26 @@
 title: "GanttDateAxisRenderer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ganttdateaxisrenderer/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Renderer for GanttDateAxis axes.
+Renderer for a `GanttDateAxis`.
+
+_Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Timeline_horizontal_axis
 
 ## Import
 
-```javascript
-// Import GanttDateAxisRenderer
-import * as am5gantt from "@amcharts/amcharts5/gantt"
+```js
+import * as am5gantt from "@amcharts/amcharts5/gantt";
+
+am5gantt.GanttDateAxisRenderer.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: AxisRendererX
+Extends: AxisRendererX → AxisRenderer → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from AxisRendererX (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IGanttDateAxisRendererSettings` — get_api_reference shows it after this page
+- Private settings: `IGanttDateAxisRendererPrivate`

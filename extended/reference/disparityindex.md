@@ -2,28 +2,33 @@
 title: "DisparityIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/disparityindex/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Disparity Index indicator: how far `field` is from its moving average over `period`, in percent of the average. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import DisparityIndex
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.DisparityIndex.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **movingAverageType** (`"simple" | "weighted" | "exponential" | "dema" | "tema"`) — Default "simple" Type of the moving average.
+- Settings: `IDisparityIndexSettings` — get_api_reference shows it after this page
+- Private settings: `IDisparityIndexPrivate`
+- Events: `IDisparityIndexEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

@@ -1,7 +1,7 @@
 ---
 title: "Export menu"
 source: "https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial looks at configuration options for [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin menu.
@@ -185,7 +185,7 @@ Menu item object must follow `[IExportingMenuItem](https://www.amcharts.com/docs
 
 The object should at the very least have `type` key, with one of the possible values:
 
--   `"format"` - export to specific format. If this type is used, `format` key must also be set (`"png"`, `"jpg"`, `"pdf"`, `"xlsx"`, `"csv"`, `"json"`, `"html"`, `"pdfdata"`, `"print"`).
+-   `"format"` - export to specific format. If this type is used, `format` key must also be set (`"png"`, `"jpg"`, `"svg"`, `"pdf"`, `"xlsx"`, `"csv"`, `"json"`, `"html"`, `"pdfdata"`, `"print"`).
 -   `"separator"` - a separator line.
 -   `"custom"` - a custom function will be called when clicked. `callback` must also be set if this type is used.
 
@@ -255,6 +255,48 @@ exporting.get("menu").set("items", \[{
   label: "Print"
 }\]);
 
+
+## Accessibility
+
+The menu can be used with a keyboard:
+
+Key
+
+Action
+
+TAB
+
+Focuses the menu button.
+
+ENTER
+
+Opens the menu, or picks the focused item.
+
+Up / Down arrows
+
+Move between items.
+
+ESC
+
+Closes the menu.
+
+When the menu closes, focus goes back to the menu button.
+
+Screen readers announce the button as a menu button, along with whether the menu is open or closed, and the items as menu items.
+
+By default, the button is read out as "Export; Press ENTER to open". To change it, use menu's `ariaLabel` setting:
+
+let exporting = am5plugins\_exporting.Exporting.new(root, {
+  menu: am5plugins\_exporting.ExportingMenu.new(root, {
+    ariaLabel: "Download or print the chart"
+  })
+});
+
+var exporting = am5plugins\_exporting.Exporting.new(root, {
+  menu: am5plugins\_exporting.ExportingMenu.new(root, {
+    ariaLabel: "Download or print the chart"
+  })
+});
 
 ## Menu API
 

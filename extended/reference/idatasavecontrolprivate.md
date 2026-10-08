@@ -2,19 +2,24 @@
 title: "IDataSaveControlPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idatasavecontrolprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IDropdownListControlPrivate
+All ancestors: IDropdownListControlPrivate, IStockControlPrivate, IEntityPrivate
+TypeScript: `am5stock.IDataSaveControlPrivate` (`import type { IDataSaveControlPrivate } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IDropdownListControlPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **drawingControl** (`DrawingControl`)
+- **indicatorControl** (`IndicatorControl`)
+- **storageId** (`string`)
 
-- **drawingControl** (`DrawingControl`) — (no description)
-- **indicatorControl** (`IndicatorControl`) — (no description)
-- **storageId** (`undefined | string`) — (no description)
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IDropdownListControlPrivate")`) for types, defaults and descriptions.
+
+- _IDropdownListControlPrivate_: dropdown
+- _IStockControlPrivate_: button, icon, label, toolbar

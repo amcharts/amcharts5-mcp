@@ -2,19 +2,23 @@
 title: "IContainerPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icontainerprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: ISpritePrivate
-Extended by: ILabelPrivate, IComponentPrivate, IFlowNodePrivate, IChartPrivate, IButtonPrivate, ITooltipPrivate, IZoomableContainerPrivate, IHeatLegendPrivate, ILinkPrivate, IScrollbarPrivate, IZoomToolsPrivate, ISpriteResizerPrivate, INumericStepperPrivate, IProgressPiePrivate, IXYCursorPrivate, IColorPickerPrivate, IColorPickerButtonPrivate, IGanttPrivate, IBreadcrumbBarPrivate, IHierarchyNodePrivate, IClockHandPrivate, IIndicatorPrivate, IPanelControlsPrivate, IStockChartPrivate
+All ancestors: ISpritePrivate, IEntityPrivate
+TypeScript: `am5.IContainerPrivate` (`import type { IContainerPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISpritePrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **htmlElement** (`HTMLDivElement`) — The `<div>` element that holds the container's `html` content.
+- **htmlElementWrapper** (`HTMLDivElement`) — A wrapper `<div>` for `htmlElement`. _Since 5.11.2._
+- **wrapperContainer** (`Container`) — _(internal)_
 
-- **htmlElement** (`HTMLDivElement`) — A <div> element used for HTML content of the Container.
-- **htmlElementWrapper** (`HTMLDivElement`) — A wrapper <div> for htmlElement. @since 5.11.2
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISpritePrivate")`) for types, defaults and descriptions.
+
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

@@ -2,27 +2,28 @@
 title: "PyramidSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pyramidseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a pyramid series for use in a SlicedChart.
+A pyramid series for a `SlicedChart`: one shape, `topWidth` wide at the top and `bottomWidth` at the bottom, cut into slices by value. `bottomRatio` has no effect here.
+
+Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/
 
 ## Import
 
-```javascript
-// Import PyramidSeries
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
+
+am5percent.PyramidSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: FunnelSeries
+Extends: FunnelSeries → PercentSeries → Series → Component → Container → Sprite → Entity → Settings
 Extended by: PictorialStackedSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from FunnelSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **bottomWidth** (`number | Percent`) — Default 0 The width of the base of the pyramid. Can either be a fixed pixel value or percent relative to the space available to the series. Click here for more info
-- **topWidth** (`number | Percent`) — Default 0 The width of the tip of the pyramid. Can either be a fixed pixel value or percent relative to the space available to the series. Click here for more info
-- **valueIs** (`"area" | "height"`) — Default "area" Determines calculation mechanism for the slice area based on value. Click here for more info
+- Settings: `IPyramidSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IPyramidSeriesPrivate`
+- Data item fields: `IPyramidSeriesDataItem`

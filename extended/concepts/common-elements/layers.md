@@ -12,6 +12,8 @@ All visual elements in amCharts 5 are drawn in a `<canvas>` element, which is a 
 
 amCharts 5 supports having multiple `<canvas>` elements, overlaid over each other.
 
+NOTE Since 5.21.0 a chart can also be drawn as SVG, by setting `renderer: am5.SVGRenderer` on the root element (see "[Root element: Renderer](https://www.amcharts.com/docs/v5/getting-started/root-element/#Renderer)"). Layers work the same way there: each layer is a nested `<svg>` element (class `am5-layer-<number>`), stacked in layer order inside one `<svg>`, instead of a separate `<canvas>`.
+
 Any element in the chart can go to any of the layers, and developers are free to create as many layers as needed.
 
 There is a couple of reasons for moving elements to other layers:
@@ -118,6 +120,8 @@ With `layerMargin`
 ## Precautions
 
 Important thing to know when using layers is that each new layer will create a full-size `<canvas>` element.
+
+(With the SVG renderer, *(5.21.0)*, a layer is an `<svg>` element rather than a canvas.)
 
 Those elements will take up memory, and in some browsers (e.g. Safari) might hit a hardcoded RAM usage limit, resulting in chart render anomalies.
 

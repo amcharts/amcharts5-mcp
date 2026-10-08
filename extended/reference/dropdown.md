@@ -2,27 +2,26 @@
 title: "Dropdown"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dropdown/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A dropdown control for StockToolbar.
+Base class for the dropdowns of `StockToolbar` controls.
 
 ## Import
 
-```javascript
-// Import Dropdown
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.Dropdown.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 Extended by: DropdownColors, DropdownList
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **control** (`StockControl`) — (no description)
-- **parent** (`HTMLElement`) — (no description)
-- **scrollable** (`undefined | false | true`) — (no description)
+- Settings: `IDropdownSettings` — get_api_reference shows it after this page
+- Private settings: `IDropdownPrivate`
+- Events: `IDropdownEvents`

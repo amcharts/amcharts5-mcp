@@ -2,21 +2,27 @@
 title: "ResetControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/resetcontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Reset control.
- Removes all drawings and indicators when clicked.
+A control that removes all drawings and indicators when clicked.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/reset-control/
 
 ## Import
 
-```javascript
-// Import ResetControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.ResetControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: StockControl
+Extends: StockControl → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from StockControl (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IResetControlSettings` — get_api_reference shows it after this page
+- Private settings: `IResetControlPrivate`
+- Events: `IResetControlEvents`

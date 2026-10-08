@@ -1,7 +1,7 @@
 ---
 title: "Exporting PDF"
 source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial looks at configuration options for export of charts to PDF documents with [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin.
@@ -252,10 +252,9 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
   }
 });
 
--   `font` not set (default)
-    
--   `font: am5fonts_notosans_kr`
-    
+`font` not set (default)
+
+`font: am5fonts_notosans_kr`
 
 
 ### Using multiple fonts
@@ -431,3 +430,10 @@ exporting.events.on("pdfdocready", function(event) {
 Notice two additional settings we have here: `columnGap` and `alignment`. Those are pretty self-explanatory.
 
 
+## Note about pdfmake
+
+amCharts 5 Exporting plugin uses pdfmake library for PDF document generation. Starting with version 5.18.0, amCharts 5 now bundles and uses pdfmake 0.3 (was 0.2) which introduces some breaking changes to the API.
+
+If you are just using amCharts 5 Exporting API, you don't need to do anything.
+
+If you are accessing pdfmake object directly to use its API, please [read here](https://www.amcharts.com/docs/v5/tutorials/pdfmake-upgrade-notice-02-03/).

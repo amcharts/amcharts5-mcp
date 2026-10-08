@@ -1,7 +1,7 @@
 ---
 title: "Map chart"
 source: "https://www.amcharts.com/docs/v5/charts/map-chart/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Map chart is a chart type used to display geographical maps. This tutorial walks through the basics of creating such charts.
@@ -107,7 +107,7 @@ NOTE A `MapPolygonSeries` requires its `geoJSON` setting to bet set to a geodata
 
 ### Available series types
 
-Map chart currently supports these four types of series:
+Map chart supports these types of series:
 
 Class
 
@@ -131,13 +131,43 @@ Used to put markers on the map.
 
 [More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/)
 
+`ClusteredPointSeries`
+
+Markers that group into clusters when close together.
+
+[More info](https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/)
+
+`MapSankeySeries`
+
+Flows between places, with width showing the amount.
+
+[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/)
+
+`PixelMapSeries`
+
+Map polygons drawn as a grid of pixels (squares, circles, diamonds, or hexagons).
+
+[More info](https://www.amcharts.com/docs/v5/charts/map-chart/pixel-map-series/)
+
+`MapRasterSeries`
+
+A whole-world image, such as a satellite photo, fitted to the map.
+
+[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/)
+
+`NightSeries`
+
+Shades the part of the map where it is night, and shows the sun.
+
+[More info](https://www.amcharts.com/docs/v5/charts/map-chart/night-series/)
+
 `GraticuleSeries`
 
 Used to display a map grid.
 
 [More info](https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/)
 
-For most of the map chart setups, it will require at least one polygon series to make sense.
+For most of the map chart setups, it will require at least one polygon series to make sense. A map that only needs to show the Earth itself can use a raster series instead.
 
 ## Projections
 
@@ -246,7 +276,7 @@ For more information, refer to "[Panning and zooming the map](https://www.amchar
 
 ## Zooming
 
-Zooming of the map can be done in a number of ways: zoom control, mouse wheel or pinch gestures, API, or custom events.
+Zooming of the map can be done in a number of ways: zoom control, mouse wheel or pinch gestures, clicking on polygons, API, or custom events.
 
 For more information, refer to "[Panning and zooming the map](https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/)" tutorial.
 

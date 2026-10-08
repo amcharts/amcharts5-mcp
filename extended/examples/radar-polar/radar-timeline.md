@@ -2,14 +2,24 @@
 title: "Radar Timeline"
 source: "https://www.amcharts.com/demos/radar-timeline/"
 category: "radar-polar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-In this demo we use a Radar chart to display data changing over time.
-Key implementation details
-We use a Slider element (a specialized version of a scrollbar) at the bottom of the chart to trigger changes in the radar's underlying data. The value (position) on the slider is animated when start button is clicked. Alternatively, the user can manipulate the position manually.
-Radar chart
-Scrollbars
+Temperature anomalies for 104 countries around a circle, grouped by continent, and a play button that runs through the years from 1973 to 2016.
+
+When to animate a radar chart: A circle fits a hundred countries in one view, and the year slider turns them into a short film: warm and cold years ripple around the ring. Grouping the countries by continent gives the eye somewhere to start. To compare two years closely, stop the animation and use the slider.
+
+Good for:
+- Many categories over many years
+- Telling a story on a screen or in a talk
+- Spotting regions that move together
+
+Think twice when:
+- Exact values for one country: use a line chart
+- Readers who can’t interact, like in print
+- A few categories: a bar chart race is clearer
+
+Prompt: Create a radar timeline of temperature anomalies for about a hundred countries grouped by continent, with columns colored from cold to warm and the year in large text in the middle. Clicking a continent band zooms to its countries, and switching the year animates the columns to its values. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,14 +31,15 @@ var root = am5.Root.new("chartdiv");
 // Create custom theme
 // https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme
 const myTheme = am5.Theme.new(root);
-myTheme.rule("Label").set("fontSize", 10);
-myTheme.rule("Grid").set("strokeOpacity", 0.06);
+myTheme.rule("Label").set("fontSize", 10);       // all labels 10px
+myTheme.rule("Grid").set("strokeOpacity", 0.06); // very faint grid lines
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  myTheme
+  myTheme,
+  am5themes_Responsive.new(root)
 ]);
 
 // Data
@@ -150,116 +161,103 @@ var temperatures = {
 }
 
 // Modify defaults
+// separate formats for positive, negative and zero values: positive ones get a plus sign
 root.numberFormatter.set("numberFormat", "+#.0°C|#.0°C|0.0°C");
 
-var startYear = 1973;
-var endYear = 2016;
-var currentYear = 1995;
+var startYear = 1973;   // the first year in the data
+var currentYear = 1995; // the year shown first
 
-var div = document.getElementById("chartdiv");
 
-var colorSet = am5.ColorSet.new(root, {});
-
+var colorSet = am5.ColorSet.new(root, {}); // colors for the continent bands
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
-  panX: false,
+  panX: false,                  // no dragging the plot around
   panY: false,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  innerRadius: am5.percent(40),
-  radius: am5.percent(65),
+  wheelX: "panX",               // a horizontal wheel or trackpad swipe moves a zoomed view around...
+  wheelY: "zoomX",              // ...and the vertical wheel zooms in on some countries
+  innerRadius: am5.percent(40), // a hole in the middle, 40% of the radius, for the year
+  // a 340-degree ring with a gap at the bottom, where the value axis shows its labels
   startAngle: 270 - 170,
   endAngle: 270 + 170
 }));
 
-
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
-  behavior: "zoomX",
-  radius: am5.percent(40),
-  innerRadius: -25
+  behavior: "zoomX",       // drag around the ring to zoom in on some countries
+  radius: am5.percent(40), // the cursor line ends at the inner edge of the ring...
+  innerRadius: -25         // ...and is 25px long, inside the hole
 }));
-cursor.lineY.set("visible", false);
-
+cursor.lineY.set("visible", false); // no circle through the pointer
 
 // Create axes and their renderers
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
-  minGridDistance: 10
+  minGridDistance: 10 // small, so every country keeps its name
 });
 
 xRenderer.labels.template.setAll({
-  radius: 10,
-  textType: "radial",
-  centerY: am5.p50
+  radius: 10,         // the country names sit 10px outside the ring
+  textType: "radial", // names point out from the center
+  centerY: am5.p50    // each name centered on its column
 });
 
 var yRenderer = am5radar.AxisRendererRadial.new(root, {
-  axisAngle: 90
+  axisAngle: 90 // the value labels run straight down, into the gap at the bottom
 });
 
 yRenderer.labels.template.setAll({
-  centerX: am5.p50
+  centerX: am5.p50 // labels centered on the axis line
 });
 
 var categoryAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0,
+  maxDeviation: 0, // can't be zoomed or panned past the first or last country
   categoryField: "country",
   renderer: xRenderer
 }));
 
 var valueAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  min: -3,
-  max: 6,
-  extraMax: 0.1,
+  min: -3,       // a fixed scale from -3...
+  max: 6,        // ...to 6, so it stays the same in every year
+  extraMax: 0.1, // 10% more room above the max
   renderer: yRenderer
 }));
-
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
 var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
-  calculateAggregates: true,
+  calculateAggregates: true, // works out the lowest and highest values, which the heat rules need
   name: "Series",
   xAxis: categoryAxis,
   yAxis: valueAxis,
-  valueYField: "value" + currentYear,
+  valueYField: "value" + currentYear, // the year shown first, as the field "value1995"
   categoryXField: "country",
   tooltip: am5.Tooltip.new(root, {
-    labelText: "{categoryX}: {valueY}"
+    labelText: "{categoryX}: {valueY}" // the country and its value
   })
 }));
 
-series.columns.template.set("strokeOpacity", 0);
-
+series.columns.template.set("strokeOpacity", 0); // no column outlines
 
 // Set up heat rules
 // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: series.columns.template,
   key: "fill",
-  min: am5.color(0x673AB7),
-  max: am5.color(0xF44336),
+  min: am5.color(0x673AB7), // the lowest value purple...
+  max: am5.color(0xF44336), // ...the highest red
   dataField: "valueY"
 }]);
 
-// Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
-chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
-
 // Add year label
 var yearLabel = chart.radarContainer.children.push(am5.Label.new(root, {
-  fontSize: "2em",
+  fontSize: "2em",          // twice the base text size
   text: currentYear.toString(),
-  centerX: am5.p50,
-  centerY: am5.p50,
-  fill: am5.color(0x673AB7)
+  centerX: am5.p50,         // the label's middle...
+  centerY: am5.p50          // ...at the center of the ring, in the theme's text color
 }));
-
 
 // Generate and set data
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
@@ -270,6 +268,7 @@ categoryAxis.data.setAll(data);
 series.appear(1000);
 chart.appear(1000, 100);
 
+// one row per country with a field for each year, and a colored band for each continent
 function generateRadarData() {
   var data = [];
   var i = 0;
@@ -279,6 +278,7 @@ function generateRadarData() {
     continentData.forEach(function(country) {
       var rawDataItem = { "country": country[0] }
 
+      // from the third entry on, one value per year, starting with 1973
       for (var y = 2; y < country.length; y++) {
         rawDataItem["value" + (startYear + y - 2)] = country[y];
       }
@@ -293,8 +293,8 @@ function generateRadarData() {
   return data;
 }
 
-
 function createRange(name, continentData, index) {
+  // above: true draws the band over the columns
   var axisRange = categoryAxis.createAxisRange(categoryAxis.makeDataItem({above:true}));
   axisRange.get("label").setAll({ text: name });
   // first country
@@ -302,24 +302,27 @@ function createRange(name, continentData, index) {
   // last country
   axisRange.set("endCategory", continentData[continentData.length - 1][0]);
 
-  // every 3rd color for a bigger contrast
+  // every 2nd color, from the third on: different enough side by side, and dark enough for the white names in
+  // the default theme and in most others (the first two colors are light in some)
   var fill = axisRange.get("axisFill");
   fill.setAll({
-    toggleKey: "active",
-    cursorOverStyle: "pointer",
-    fill: colorSet.getIndex(index * 3),
-    visible: true,
-    innerRadius: -25
+    toggleKey: "active",        // a click toggles the band's active state
+    cursorOverStyle: "pointer", // a hand cursor over the band
+    fill: colorSet.getIndex(index * 2 + 2),
+    visible: true,              // an axis range's fill is hidden until set visible
+    innerRadius: -25            // a 25px band along the inside of the ring's outer edge
   });
-  axisRange.get("grid").set("visible", false);
+  axisRange.get("grid").set("visible", false); // no grid line at the start of the band
 
   var label = axisRange.get("label");
   label.setAll({
-    fill: am5.color(0xffffff),
-    textType: "circular",
-    radius: -16
+    fill: am5.color(0xffffff), // white text on the colored band
+    textType: "circular",      // the name bends along the band
+    radius: -16,               // 16px in from the ring's edge, on the band
+    forceHidden: false         // shown even with the country names hidden, whose template this label copies
   });
 
+  // a click on a band zooms in on its countries; a second click zooms back out
   fill.events.on("click", function(event) {
     var dataItem = event.target.dataItem;
     if (event.target.get("active")) {
@@ -331,54 +334,7 @@ function createRange(name, continentData, index) {
   });
 }
 
-
-// Create controls
-var container = chart.children.push(am5.Container.new(root, {
-  y: am5.percent(95),
-  centerX: am5.p50,
-  x: am5.p50,
-  width: am5.percent(80),
-  layout: root.horizontalLayout
-}));
-
-var playButton = container.children.push(am5.Button.new(root, {
-  themeTags: ["play"],
-  centerY: am5.p50,
-  marginRight: 15,
-  icon: am5.Graphics.new(root, {
-    themeTags: ["icon"]
-  })
-}));
-
-playButton.events.on("click", function () {
-  if (playButton.get("active")) {
-    slider.set("start", slider.get("start") + 0.0001);
-  }
-  else {
-    slider.animate({
-      key: "start",
-      to: 1,
-      duration: 15000 * (1 - slider.get("start"))
-    });
-  }
-})
-
-var slider = container.children.push(am5.Slider.new(root, {
-  orientation: "horizontal",
-  start: 0.5,
-  centerY: am5.p50
-}));
-
-slider.on("start", function (start) {
-  if (start === 1) {
-    playButton.set("active", false);
-  }
-});
-
-slider.events.on("rangechanged", function () {
-  updateRadarData(startYear + Math.round(slider.get("start", 0) * (endYear - startYear)));
-});
-
+// Show a year, 1973 to 2016: the columns grow or shrink to its values
 function updateRadarData(year) {
   if (currentYear != year) {
     currentYear = year;
@@ -386,6 +342,7 @@ function updateRadarData(year) {
     am5.array.each(series.dataItems, function (dataItem) {
       var newValue = dataItem.dataContext["value" + year];
       dataItem.set("valueY", newValue);
+      // animate the drawn value, so the column grows or shrinks instead of jumping
       dataItem.animate({ key: "valueYWorking", to: newValue, duration: 500 });
     });
   }
@@ -403,7 +360,8 @@ function updateRadarData(year) {
 ```css
 #chartdiv {
   width: 100%;
-  height: 700px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -413,3 +371,4 @@ function updateRadarData(year) {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

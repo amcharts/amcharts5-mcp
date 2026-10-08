@@ -2,147 +2,24 @@
 title: "IColorControlSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolorcontrolsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IColorControlSettings extends IStockControlSettings.
-IColorControlSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IStockControlSettings
-Indicates if control is active.
-
-
-        align        
-        #
-      
-
-
-                          Type "left" | "right"                      
-Default "left"
-
-Inherited from IStockControlSettings
-Alignment of the control in a toolbar.
-
-
-        colors        
-        #
-      
-
-
-                          Type ColorSet                      
-
-
-        description        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Description of what the button does.
-
-
-        forceHidden        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IStockControlSettings
-Force this control to always be invisible.
-@since 5.8.5
-@defaul false
-
-
-        icon        
-        #
-      
-
-
-                          Type HTMLElement | SVGElement | "none"                      
-Inherited from IStockControlSettings
-An element with control icon. If not set, each control will aytomatically create an icon.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        name        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Name of the control. Used for the label.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stockChart        
-        #
-      
-
-
-                          Type StockChart                      
-Inherited from IStockControlSettings
-A StockChart the toolbar is for.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IStockControlSettings
+All ancestors: IStockControlSettings, IEntitySettings
+Settings of: `am5stock.ColorControl` (see its page for the class)
+TypeScript: `am5stock.IColorControlSettings` (`import type { IColorControlSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **colors** (`ColorSet`) — Colors to pick from. Without it, the default palette of `DropdownColors` is used.
+- **useOpacity** (`boolean`) — default `true` _(theme)_ — Adds opacity choices, from `100%` to `0%`, below the colors.
 
-- **colors** (`ColorSet`) — (no description)
-- **useOpacity** (`undefined | false | true`) — (no description)
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlSettings")`) for types, defaults and descriptions.
+
+- _IStockControlSettings_: active, align, description, forceHidden, icon, name, stockChart, togglable, visible
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

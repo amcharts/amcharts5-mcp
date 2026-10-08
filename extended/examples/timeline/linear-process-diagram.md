@@ -2,15 +2,29 @@
 title: "Linear Process Diagram"
 source: "https://www.amcharts.com/demos/linear-process-diagram/"
 category: "timeline"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A linear process diagram is a clear and intuitive way to visualize a sequence of steps or stages in a process. Traditionally arranged in a straight line, this type of diagram is ideal for showing workflows, progressions, life cycles, or any step-by-step structure.
-With amCharts, you’re not limited to straight lines—linear process diagrams can be arranged in various shapes to better fit your design or storytelling needs. You can even define a fully custom path by providing an array of points, allowing for curved, angled, or uniquely shaped flows. This flexibility makes it easy to tailor the visual to match your content, whether you're illustrating a simple process or a complex journey.
+A day from 6 a.m. to 2 a.m. drawn as a winding road, with an icon card for each activity. Things done alongside the main routine, like coffee and reading, run on a second track.
+
+When a process diagram works: Laying steps along a road turns a schedule into a story: people follow it from start to finish, and the icons say what happens without a legend. Time runs at an even pace along the road, so long steps take up more of it than short ones.
+
+Good for:
+- Daily routines, onboarding steps, customer journeys
+- Infographics and landing pages
+- Showing what happens side by side, on a second track
+
+Think twice when:
+- Many short steps close together: their cards crowd
+- Comparing exact durations: a Gantt chart does it better
+- Data that changes a lot: this road is drawn for this one day
+
+Prompt: Create a process diagram of one day along a custom winding path, with the main routine on one track and things done alongside it on a second. Draw each event as a colored stretch of the path with an icon card at its start. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
+// the card icons, as SVG images written inline as data URLs
 var alarm = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjQ1Ljc3M3B4IiBoZWlnaHQ9IjQ1Ljc3M3B4IiB2aWV3Qm94PSIwIDAgNDUuNzczIDQ1Ljc3MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDUuNzczIDQ1Ljc3MzsiDQoJIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik01LjA4MSwxMy43MzdjMi41ODItMy45NDIsNi42MDktNi44NDksMTEuMzItNy45ODhjMC4zNjMtMC4wODcsMC42NjItMC4zNDQsMC44MDItMC42ODkNCgkJCWMwLjE0MS0wLjM0NiwwLjEwNy0wLjczOC0wLjA5MS0xLjA1NUMxNS42MDQsMS42MDEsMTIuOTM2LDAsOS44ODgsMEM1LjE3NiwwLDEuMzU0LDMuODIsMS4zNTQsOC41MzJjMCwyLDAuNjkxLDMuODM3LDEuODQ1LDUuMjkNCgkJCWMwLjIzMSwwLjI5MywwLjU4OSwwLjQ1NSwwLjk2MiwwLjQzOFM0Ljg3NywxNC4wNDgsNS4wODEsMTMuNzM3eiIvPg0KCQk8cGF0aCBkPSJNMzUuODg2LDBjLTMuMDM0LDAtNS42OTMsMS41ODYtNy4yMDQsMy45NzRjLTAuMiwwLjMxNi0wLjIzNSwwLjcxMS0wLjA5NCwxLjA1OWMwLjE0MiwwLjM0OSwwLjQ0MiwwLjYwNSwwLjgwOSwwLjY5MQ0KCQkJYzQuNzI0LDEuMTEyLDguNzY1LDMuOTk5LDExLjM2OSw3LjkyOGMwLjIwNywwLjMxMiwwLjU1MiwwLjUwNSwwLjkyNywwLjUxOGMwLjM3NSwwLjAxNCwwLjczMS0wLjE1NCwwLjk2MS0wLjQ1MQ0KCQkJYzEuMTA1LTEuNDM2LDEuNzY2LTMuMjMyLDEuNzY2LTUuMTg2QzQ0LjQxNywzLjgyLDQwLjU5OCwwLDM1Ljg4NiwweiIvPg0KCQk8cGF0aCBkPSJNNDEuNzUyLDI2LjEzMmMwLTMuMjk0LTAuODU3LTYuMzktMi4zNTEtOS4wODRjLTIuNzY5LTQuOTktNy43NDItOC41NzctMTMuNTk1LTkuNDc1Yy0wLjkzMy0wLjE0My0xLjg4LTAuMjQtMi44NTMtMC4yNA0KCQkJYy0xLjAxNiwwLTIuMDA2LDAuMTA0LTIuOTc5LDAuMjZDMTQuMTQ2LDguNTI4LDkuMTk4LDEyLjEzLDYuNDU4LDE3LjEyNmMtMS40NjcsMi42NzYtMi4zMDQsNS43NDQtMi4zMDQsOS4wMDYNCgkJCWMwLDUuNTg2LDIuNDYzLDEwLjU5Nyw2LjM0MywxNC4wNDFsLTEuNTg0LDIuMjMxYy0wLjY4MiwwLjk2MS0wLjQ1NiwyLjI5MSwwLjUwNSwyLjk3NWMwLjM3NSwwLjI2NiwwLjgwNiwwLjM5NSwxLjIzMywwLjM5NQ0KCQkJYzAuNjY4LDAsMS4zMjYtMC4zMTMsMS43NDEtMC44OThsMS41ODMtMi4yM2MyLjY2OSwxLjQ1Nyw1LjcyOCwyLjI4Nyw4Ljk3OCwyLjI4N2MzLjI0OSwwLDYuMzA4LTAuODMsOC45NzctMi4yODdsMS41ODMsMi4yMw0KCQkJYzAuNDE2LDAuNTg2LDEuMDczLDAuODk4LDEuNzQxLDAuODk4YzAuNDI3LDAsMC44NTctMC4xMjksMS4yMzItMC4zOTVjMC45NjEtMC42ODQsMS4xODgtMi4wMTQsMC41MDYtMi45NzVsLTEuNTg0LTIuMjMxDQoJCQlDMzkuMjg4LDM2LjcyOSw0MS43NTIsMzEuNzE4LDQxLjc1MiwyNi4xMzJ6IE0yMi45NTQsMzkuNjc0Yy03LjQ2OCwwLTEzLjU0Mi02LjA3NC0xMy41NDItMTMuNTQyDQoJCQljMC0yLjMyOCwwLjU5MS00LjUxOSwxLjYyOS02LjQzNWMxLjk3Ni0zLjY0NCw1LjU4LTYuMjY5LDkuODI2LTYuOTNjMC42ODItMC4xMDYsMS4zNzUtMC4xNzgsMi4wODctMC4xNzgNCgkJCWMwLjY3LDAsMS4zMjUsMC4wNjUsMS45NywwLjE2YzQuMjgyLDAuNjI4LDcuOTI1LDMuMjUzLDkuOTI0LDYuOTEzYzEuMDUsMS45MjMsMS42NDcsNC4xMjYsMS42NDcsNi40NjkNCgkJCUMzNi40OTUsMzMuNiwzMC40MjEsMzkuNjc0LDIyLjk1NCwzOS42NzR6Ii8+DQoJCTxwYXRoIGQ9Ik0zMC41NCwyOS4zbC01LjE2Ni0zLjE5Yy0wLjEwNy0wLjYwNC0wLjQzNC0xLjEyNS0wLjg5My0xLjQ5NGwwLjIzNi02LjQ4MmMwLjAyOS0wLjgyOC0wLjYxNy0xLjUyMy0xLjQ0NC0xLjU1NA0KCQkJYy0wLjgyNS0wLjAzOC0xLjUyMywwLjYxNi0xLjU1NCwxLjQ0NGwtMC4yMzcsNi40ODljLTAuNjQxLDAuNDUyLTEuMDYzLDEuMTk2LTEuMDYzLDIuMDQxYzAsMS4zODEsMS4xMTksMi40OTksMi41LDIuNDk5DQoJCQljMC4zOTMsMCwwLjc2LTAuMDk5LDEuMDktMC4yNmw0Ljk1NSwzLjA2MmMwLjI0NiwwLjE1LDAuNTE5LDAuMjIzLDAuNzg3LDAuMjIzYzAuNTAzLDAsMC45OTMtMC4yNTIsMS4yNzgtMC43MTENCgkJCUMzMS40NjUsMzAuNjYsMzEuMjQ1LDI5LjczNiwzMC41NCwyOS4zeiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K";
 var water = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik00NDMuODgyLDUuMjhDNDQwLjg0MiwxLjkyLDQzNi41NTQsMCw0MzIuMDEsMGgtMzUyYy00LjUxMiwwLTguODMyLDEuOTItMTEuODcyLDUuMjgNCgkJCWMtMy4wMDgsMy4zMjgtNC41MTIsNy44MDgtNC4wNjQsMTIuMzJsNDgsNDgwYzAuODMyLDguMTkyLDcuNzEyLDE0LjQsMTUuOTM2LDE0LjRoMjU2YzguMjI0LDAsMTUuMTA0LTYuMjA4LDE1LjkwNC0xNC40bDQ4LTQ4MA0KCQkJQzQ0OC4zOTQsMTMuMDg4LDQ0Ni45MjIsOC42MDgsNDQzLjg4Miw1LjI4eiBNNDAxLjI5LDE2Mi40OTZjLTQwLjY3MiwxMy4xNTItOTMuNiwxOS4yMzItMTM1LjEzNi0xNC44NDgNCgkJCWMtNTIuMDY0LTQyLjcyLTExNS44NzItMzUuMzYtMTU5LjEzNi0yMi40OTZMOTcuNzA2LDMyaDMxNi42MDhMNDAxLjI5LDE2Mi40OTZ6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=";
 var exercise = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE4LjEuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNjEuODU4IDYxLjg1OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNjEuODU4IDYxLjg1ODsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIHN0eWxlPSJmaWxsOiMwMTAwMDI7IiBkPSJNNTAuMDk3LDAuMDE0Yy05LjkxNywwLjg3NC0xNy4yMzUsNS44MjQtMjEuNTAxLDEyLjk4Yy0yLjg1OSwzLjU4NC04LjU3LDE0LjUyNi0xMC42NDcsMjAuMjU0DQoJCQljLTMuNzY2LDcuMTIzLTcuMDUsMTUuNTk4LTkuNjIsMjMuMjM4Yy0xLjU3MSw0LjY3Miw1LjQ4Myw3LjcyLDcuMDYzLDMuMDI3YzEuOTIyLTUuNzE2LDQuMjQ0LTExLjg5Niw2Ljg2OC0xNy42MzENCgkJCWMyLjYwNCw1LjgyOCw1LjI1LDExLjYzNyw4LjA5MSwxNy4zNTRjMi4yMDIsNC40MzgsOC44MjgsMC41NDYsNi42MzQtMy44NzdjLTIuOTI1LTUuODg1LTUuNjQyLTExLjg2NC04LjMxOS0xNy44NjMNCgkJCWMwLjAzNC0wLjExNiwwLjA3Ny0wLjIyOSwwLjExMy0wLjM0NGMwLjQ0NiwwLjEyNywwLjkzOCwwLjE2NiwxLjQ4LDAuMDYzYzQuMDk2LTAuNzY5LDguMTkyLTEuNTM2LDEyLjI5MS0yLjMwNQ0KCQkJYzEuNzUxLTAuMzI5LDIuNDIyLTIuMjQ1LDIuMTQ2LTMuNzc5Yy0wLjgyOC00LjU5Ny0zLjQ0Ny03Ljc5NS02LjcwNy0xMC44MjFjLTAuNDg0LTEuNjQ2LTIuMDk4LTMuMTAyLTMuODg5LTQuNTQ5DQoJCQljMy42MzEtNS44Nyw5LjU1OS05LjA1NiwxNy4yNzUtOS43MzZDNTUuMzEzLDUuNjgsNTQuMDAxLTAuMzI5LDUwLjA5NywwLjAxNHogTTM1LjE3MywyNi4xNDMNCgkJCWMxLjAxMywxLjA1NCwxLjg3NSwyLjE2MywyLjUyNiwzLjQ0N2MtMS45ODIsMC4zNzItMy45NjUsMC43NDMtNS45NDcsMS4xMTVDMzIuNzUyLDI5LjA5NSwzMy45MDMsMjcuNTc1LDM1LjE3MywyNi4xNDN6Ii8+DQoJCTxjaXJjbGUgc3R5bGU9ImZpbGw6IzAxMDAwMjsiIGN4PSI0My42NTMiIGN5PSIxNS42MzUiIHI9IjUuMjc1Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=";
@@ -27,280 +41,288 @@ var drink = "data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMyIgZW5hYmxlLWJhY2tnc
 var drunk = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDI5OS40NTMgMjk5LjQ1MyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjk5LjQ1MyAyOTkuNDUzOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8ZyBpZD0iWE1MSURfMTQ1NF8iPg0KCTxnPg0KCQk8Zz4NCgkJCTxjaXJjbGUgY3g9IjE3Ny42NjciIGN5PSIzMy41MDciIHI9IjMzLjUwOCIvPg0KCQkJPHBhdGggZD0iTTIzNC4xOTQsOTYuNjE1bC00OS43MzIsMTYuODY2bC0zOC45Ny0zMC4wNzZsMzQuMjI0LDE0LjQxMmMtMC4xMDctOS44ODUtNi43MjMtMTguODk3LTE2LjczNi0yMS41OTlsLTM4Ljk3Mi0xMC41MTUNCgkJCQljLTEyLjA2OS0zLjI1Ny0yNC40OTMsMy44ODgtMjcuNzUsMTUuOTU4Yy0wLjY5NCwyLjU3Mi0xNi44NDQsNjEuMjktMjcuMDgzLDk4LjU0MmMtMi40MTEsOC43NzQtMi41MDEsMTguMDY0LTAuMjE4LDI2Ljg3Mw0KCQkJCWMzLjMxOCwxMi44MDQsNy45NzksMzAuNzk0LDE0LjQ2NCw1NS44MTlsLTUxLjc1NS0wLjI3MWMtMC4wMzIsMC0wLjA2NSwwLTAuMDk3LDBjLTEwLjAxNiwwLTE4LjE2Miw4LjA5My0xOC4yMTUsMTguMTIxDQoJCQkJYy0wLjA1MywxMC4wNjEsOC4wNjEsMTguMjYsMTguMTIxLDE4LjMxMmw3NS40MjEsMC4zOTVjMC4wMzEsMCwwLjA2NCwwLDAuMDk1LDBjMTEuOTE3LTAuMDAxLDIwLjYxOS0xMS4yNjksMTcuNjM1LTIyLjc4Ng0KCQkJCWwtMTguNjg0LTcyLjEwNmwxMi42ODYsMy40MjNsMTcuMDU1LDY1LjgxOGMyLjI4LDguOCwwLjMyNSwxOC4zMzMtNS4yMjMsMjUuNTMxbDIyLjc5NiwwLjEyYzAuMDMxLDAsMC4wNjQsMCwwLjA5NSwwDQoJCQkJYzExLjkxNi0wLjAwMSwyMC42MTktMTEuMjY5LDE3LjYzNS0yMi43ODZsLTE4LjkzMS03My4wNjJsMTIuNzI5LTQ3LjE3OWMtMS40MTktMS40MTksMS40NDcsMi4xODUtMzcuODQtNDguOTg1bDQ1LjQxMywzNS4wNDkNCgkJCQljNC4wMjksMy4xMSw5LjM0MSwzLjk4OSwxNC4xNTEsMi4zNTlsNTcuNDM5LTE5LjQ4MWM3Ljk0MS0yLjY5MiwxMi4xOTUtMTEuMzExLDkuNTAyLTE5LjI1Mg0KCQkJCUMyNTAuNzUzLDk4LjE3NywyNDIuMTM0LDkzLjkyMywyMzQuMTk0LDk2LjYxNXoiLz4NCgkJCTxwYXRoIGQ9Ik0yODAuNzI2LDYzLjgxM2gtNDEuNjU3Yy0yLjk2OSwwLTUuMzc1LDIuNDA2LTUuMzc1LDUuMzc1YzAsMi45NjksMi40MDcsNS4zNzUsNS4zNzUsNS4zNzVoMC40NjRsMC41MjYsNi4wODENCgkJCQljMTIuMjc1LDAuNDAzLDIzLjU4NSw4LjI3OSwyNy43NjMsMjAuNTk3YzMuNjYxLDEwLjc5NiwwLjg5NiwyMi4yMTYtNi4yMzYsMzAuMTE3aDEwLjA2NmMyLjA5MiwwLDMuODM2LTEuNiw0LjAxNi0zLjY4NA0KCQkJCWw0LjU5Mi01My4xMTFoMC40NjVjMi45NjksMCw1LjM3NS0yLjQwNiw1LjM3NS01LjM3NVMyODMuNjk0LDYzLjgxMywyODAuNzI2LDYzLjgxM3oiLz4NCgkJPC9nPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K";
 var bed = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNDkwLjcgNDkwLjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ5MC43IDQ5MC43OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8Zz4NCgkJPHBhdGggZD0iTTQzNi4yLDE1NC42SDE4Mi40Yy0xMi40LDAtMzMuMSw0LjctMzMuMSwzNi42VjI0MGgzMjB2LTQ4LjhDNDY5LjMsMTU5LjQsNDQ4LjYsMTU0LjYsNDM2LjIsMTU0LjZ6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQoJPGc+DQoJCTxwb2x5Z29uIHBvaW50cz0iODAuMywyNTAuNiAzMiwyNTAuNiAzMiw4MCAwLDgwIDAsNDEwLjcgMzIsNDEwLjcgMzIsMzI1LjMgNDU4LjcsMzI1LjMgNDU4LjcsNDEwLjYgNDkwLjcsNDEwLjYgNDkwLjcsMjUwLjYgCQkNCgkJCSIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KCTxnPg0KCQk8Y2lyY2xlIGN4PSI4NS4zIiBjeT0iMTk3LjMiIHI9IjQ0LjciLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==";
 
-
 var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 var chart = root.container.children.push(am5timeline.CurveChart.new(root, {
-  wheelY: "zoomX"
+  wheelY: "zoomX" // the mouse wheel zooms in on part of the day
 }));
 
+// the time axis scrollbar stands upright at the left edge of the curve area
 var scrollbarX = chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "vertical",
   height: am5.percent(40),
-  position: "absolute",
-  centerY: am5.p50,
+  position: "absolute", // placed by x and y, not by the layout
+  centerY: am5.p50,     // centered on the middle of the curve area
   x: 20
 }));
 
-chart.curveContainer.children.push(scrollbarX);
+chart.curveContainer.children.push(scrollbarX); // inside the curve area, so its x and y are relative to it
 
 var yRenderer = am5timeline.AxisRendererCurveY.new(root, {
   axisLocation: -0.1
 })
 
 yRenderer.labels.template.setAll({
-  forceHidden: true
+  forceHidden: true // no category labels...
 });
 
-yRenderer.grid.template.set("forceHidden", true);
+yRenderer.grid.template.set("forceHidden", true); // ...and no grid lines for the two rows
 
 // Create axes and their renderers
 var xRenderer = am5timeline.AxisRendererCurveX.new(root, {
+  // the winding path the time axis follows, built by getPoints() below
   points: getPoints(),
   yRenderer: yRenderer,
-  strokeDasharray: [2, 3],
-  strokeOpacity: 0.5,
-  stroke: am5.color(0x000000)
+  strokeDasharray: [2, 3], // a dashed line: 2px dashes, 3px gaps...
+  strokeOpacity: 0.5,      // ...half see-through...
+  stroke: root.interfaceColors.get("alternativeBackground") // ...in a color contrasting with the background
 });
 
 xRenderer.labels.template.setAll({
-  centerY: am5.p50,
-  fontSize: 11,
-  minPosition: 0.01
+  centerY: am5.p50, // time labels centered on the line
+  fontSize: 11,     // small text
+  minPosition: 0.01 // hide a label at the very start of the line
 });
 
+// Time labels sit on the dashed line, with the chart's background color behind them
 xRenderer.labels.template.setup = function (target) {
-  target.set("layer", 30);
+  target.set("layer", 30); // above the columns
   target.set("background", am5.Rectangle.new(root, {
-    fill: am5.color(0xffffff),
-    fillOpacity: 1
+    fill: root.interfaceColors.get("background"),
+    fillOpacity: 1 // solid, so the dashed line doesn't show through
   }));
 }
 
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0,
+  maxDeviation: 0, // the two rows can't be panned past their ends
   categoryField: "category",
   renderer: yRenderer
 }));
 
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  baseInterval: { timeUnit: "minute", count: 1 },
+  baseInterval: { timeUnit: "minute", count: 1 }, // the times are in whole minutes
   renderer: xRenderer,
   tooltip: am5.Tooltip.new(root, {})
 }));
 
 // Data
-var colorSet = chart.get("colors");
+var colorSet = chart.get("colors"); // the chart's colors; the data picks one per event by index
 
 var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
-  baseAxis: yAxis,
+  baseAxis: yAxis,          // the bars run along the time line, one row per category
   categoryYField: "category",
-  valueXField: "end",
-  openValueXField: "start",
-  maskBullets: false
+  valueXField: "end",       // each bar ends at the event's end time...
+  openValueXField: "start", // ...and starts at its start time
+  maskBullets: false        // cards near the edges are not cut off
 }));
 
 series.columns.template.setAll({
-  height: am5.percent(20),
-  templateField: "settings",
-  strokeOpacity: 0
+  height: am5.percent(20),   // a bar takes 20% of its row's thickness
+  templateField: "settings", // fill color from the event's settings in the data
+  strokeOpacity: 0           // no outline
 })
 
+// An icon card at the start of each event, pointing at the line
 series.bullets.push(function (root, series, dataItem) {
-  var container = am5.Container.new(root, {
-    centerY: am5.p100
-  });
+  // Some cards stand higher ("lift" in the data), so they don't cover the card just before them
+  var lift = dataItem.dataContext.lift || 0;
+
+  // Above the time labels, so no icon is cut
+  var container = am5.Container.new(root, { layer: 31 });
 
   container.children.push(am5.PointedRectangle.new(root, {
-    cornerRadius: 5,
-    width: 32,
-    height: 32,
-    pointerBaseWidth: 16,
-    centerY: am5.p100,
-    centerX: am5.p50,
-    templateField: "settings",
-    pointerX: 16,
-    pointerY: 40,
-    strokeOpacity: 0,
-    shadowColor: am5.color(0x000000),
-    shadowBlur: 5,
-    shadowOffsetX: 2,
-    shadowOffsetY: 2,
-    tooltipText: dataItem.dataContext.text,
-    tooltipY: 0
+    cornerRadius: 5,           // rounded corners
+    width: 28,                 // 28px wide...
+    height: 28,                // ...and 28px high
+    pointerBaseWidth: 12,      // the pointer is 12px wide at its base
+    centerX: am5.p50,          // centered on the start of the event
+    y: -36 - lift,             // 36px above the line, plus the lift
+    templateField: "settings", // the event's color
+    pointerX: 14,              // the pointer's tip: the middle of the card...
+    pointerY: 36 + lift,       // ...down on the line
+    strokeOpacity: 0,          // no outline
+    shadowColor: am5.color(0x000000), // a soft black shadow...
+    shadowBlur: 5,                    // ...blurred 5px...
+    shadowOffsetX: 2,                 // ...and shifted 2px right...
+    shadowOffsetY: 2,                 // ...and 2px down
+    tooltipText: dataItem.dataContext.text, // the event's text shows on hover
+    tooltipY: 0 // the tooltip points at the top of the card
   }))
 
   container.children.push(am5.Picture.new(root, {
-    centerY: 32,
-    centerX: am5.p50,
-    width: 20,
-    height: 20,
-    src: dataItem.dataContext.icon
+    centerX: am5.p50,              // the icon is centered on the card...
+    y: -31 - lift,                 // ...5px below its top edge
+    width: 18,                     // 18px wide...
+    height: 18,                    // ...and 18px high
+    src: dataItem.dataContext.icon // the event's icon
   }));
 
   return am5.Bullet.new(root, {
+    locationX: 0, // at the start of the event
     sprite: container
   });
 })
 
 series.data.setAll([{
   "category": "a",
-  "start": new Date("2019-01-10 06:00").getTime(),
-  "end": new Date("2019-01-10 06:15").getTime(),
+  "start": new Date("2026-01-15 06:00").getTime(),
+  "end": new Date("2026-01-15 06:15").getTime(),
   "settings": { "fill": colorSet.getIndex(15) },
   "icon": alarm,
   "text": "Wake up!"
 }, {
   "category": "a",
-  "start": new Date("2019-01-10 06:15").getTime(),
-  "end": new Date("2019-01-10 06:30").getTime(),
+  "start": new Date("2026-01-15 06:15").getTime(),
+  "end": new Date("2026-01-15 06:30").getTime(),
   "settings": { "fill": colorSet.getIndex(14) },
   "icon": water,
-  "text": "Drink water"
+  "text": "Drink water",
+  "lift": 30
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 06:30").getTime(),
-  "end": new Date("2019-01-10 07:00").getTime(),
+  "start": new Date("2026-01-15 06:30").getTime(),
+  "end": new Date("2026-01-15 07:00").getTime(),
   "settings": { "fill": colorSet.getIndex(13) },
   "icon": exercise,
   "text": "Exercise"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 07:00").getTime(),
-  "end": new Date("2019-01-10 07:30").getTime(),
+  "start": new Date("2026-01-15 07:00").getTime(),
+  "end": new Date("2026-01-15 07:30").getTime(),
   "settings": { "fill": colorSet.getIndex(12) },
   "icon": breakfast,
   "text": "Have breakfast"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 07:30").getTime(),
-  "end": new Date("2019-01-10 08:00").getTime(),
+  "start": new Date("2026-01-15 07:30").getTime(),
+  "end": new Date("2026-01-15 08:00").getTime(),
   "settings": { "fill": colorSet.getIndex(11) },
   "icon": car,
   "text": "Drive to work"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 08:00").getTime(),
-  "end": new Date("2019-01-10 17:30").getTime(),
+  "start": new Date("2026-01-15 08:00").getTime(),
+  "end": new Date("2026-01-15 17:30").getTime(),
   "settings": { "fill": colorSet.getIndex(10) },
   "icon": work,
   "text": "Work"
 },
 {
   "category": "b",
-  "start": new Date("2019-01-10 10:00").getTime(),
-  "end": new Date("2019-01-10 10:15").getTime(),
+  "start": new Date("2026-01-15 10:00").getTime(),
+  "end": new Date("2026-01-15 10:15").getTime(),
   "settings": { "fill": colorSet.getIndex(10) },
   "icon": coffee,
   "text": "Coffee"
 },
 {
   "category": "b",
-  "start": new Date("2019-01-10 12:00").getTime(),
-  "end": new Date("2019-01-10 13:00").getTime(),
+  "start": new Date("2026-01-15 12:00").getTime(),
+  "end": new Date("2026-01-15 13:00").getTime(),
   "settings": { "fill": colorSet.getIndex(10) },
   "icon": dinner,
-  "text": "Dinner"
+  "text": "Lunch"
 },
 {
   "category": "b",
-  "start": new Date("2019-01-10 14:00").getTime(),
-  "end": new Date("2019-01-10 14:15").getTime(),
+  "start": new Date("2026-01-15 14:00").getTime(),
+  "end": new Date("2026-01-15 14:15").getTime(),
   "settings": { "fill": colorSet.getIndex(10) },
   "icon": coffee,
   "text": "Coffee"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 17:30").getTime(),
-  "end": new Date("2019-01-10 18:00").getTime(),
+  "start": new Date("2026-01-15 17:30").getTime(),
+  "end": new Date("2026-01-15 18:00").getTime(),
   "settings": { "fill": colorSet.getIndex(8) },
   "icon": car,
-  "text": "Drive home"
+  "text": "Drive home",
+  "lift": 30
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 18:00").getTime(),
-  "end": new Date("2019-01-10 21:30").getTime(),
+  "start": new Date("2026-01-15 18:00").getTime(),
+  "end": new Date("2026-01-15 21:30").getTime(),
   "settings": { "fill": colorSet.getIndex(7) },
   "icon": home,
   "text": "Home!"
 },
 {
   "category": "b",
-  "start": new Date("2019-01-10 19:30").getTime(),
-  "end": new Date("2019-01-10 20:30").getTime(),
+  "start": new Date("2026-01-15 19:30").getTime(),
+  "end": new Date("2026-01-15 20:30").getTime(),
   "settings": { "fill": colorSet.getIndex(7) },
   "icon": book,
   "text": "Read a bit"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 21:30").getTime(),
-  "end": new Date("2019-01-10 22:00").getTime(),
+  "start": new Date("2026-01-15 21:30").getTime(),
+  "end": new Date("2026-01-15 22:00").getTime(),
   "settings": { "fill": colorSet.getIndex(6) },
   "icon": beer,
   "text": "Have a beer"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 22:00").getTime(),
-  "end": new Date("2019-01-10 22:15").getTime(),
+  "start": new Date("2026-01-15 22:00").getTime(),
+  "end": new Date("2026-01-15 22:15").getTime(),
   "settings": { "fill": colorSet.getIndex(5) },
   "icon": beer,
-  "text": "Have another beer"
+  "text": "Have another beer",
+  "lift": 30
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 22:15").getTime(),
-  "end": new Date("2019-01-10 23:00").getTime(),
+  "start": new Date("2026-01-15 22:15").getTime(),
+  "end": new Date("2026-01-15 23:00").getTime(),
   "settings": { "fill": colorSet.getIndex(4) },
   "icon": dance,
   "text": "Dance!"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-10 23:00").getTime(),
-  "end": new Date("2019-01-11 00:00").getTime(),
+  "start": new Date("2026-01-15 23:00").getTime(),
+  "end": new Date("2026-01-16 00:00").getTime(),
   "settings": { "fill": colorSet.getIndex(4) },
   "icon": drink,
   "text": "Martini!"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-11 00:00").getTime(),
-  "end": new Date("2019-01-11 01:00").getTime(),
+  "start": new Date("2026-01-16 00:00").getTime(),
+  "end": new Date("2026-01-16 01:00").getTime(),
   "settings": { "fill": colorSet.getIndex(2) },
   "icon": drunk,
-  "text": "Damn..."
+  "text": "One too many"
 },
 {
   "category": "a",
-  "start": new Date("2019-01-11 01:00").getTime(),
-  "end": new Date("2019-01-11 02:00").getTime(),
+  "start": new Date("2026-01-16 01:00").getTime(),
+  "end": new Date("2026-01-16 02:00").getTime(),
   "settings": { "fill": colorSet.getIndex(1) },
   "icon": bed,
   "text": "Bye bye"
-}].sort(function (a, b) {
+}].sort(function (a, b) { // all events of row a first, then those of row b
   return (a.category < b.category) ? -1 : (a.category > b.category) ? 1 : 0;
 }))
 
-
-yAxis.data.setAll([{ category: "a" }, { category: "b" }]);
+yAxis.data.setAll([{ category: "a" }, { category: "b" }]); // a: the day's main events, b: short ones in between
 
 // Animate chart and series in
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
@@ -310,23 +332,25 @@ chart.appear(1000, 100);
 // function which generates points for the chart
 function getPoints() {
 
-  var points = [{ x: -600, y: 200 }, { x: 0, y: 200 }];
+  var points = [{ x: -600, y: 200 }, { x: 0, y: 200 }]; // a straight lead-in along the bottom
 
-  var w = 400;
-  var h = 400;
-  var levelCount = 4;
+  var w = 400;        // the winding part is 400px wide...
+  var h = 400;        // ...and 400px high...
+  var levelCount = 4; // ...with 4 runs up and down
 
-  var radius = Math.min(w / (levelCount - 1) / 2, h / 2);
-  var startX = radius;
+  var radius = Math.min(w / (levelCount - 1) / 2, h / 2); // radius of the turns between the runs
+  var startX = radius; // the first run starts one radius to the right
 
+  // a quarter turn from the lead-in up into the first run
   for (var i = 0; i < 25; i++) {
     var angle = 0 + i / 25 * 90;
     var centerPoint = { y: 200 - radius, x: 0 }
     points.push({ y: centerPoint.y + radius * am5.math.cos(angle), x: centerPoint.x + radius * am5.math.sin(angle) });
   }
 
+  // the runs, going up and down by turns, joined by half-circle turns
   for (var i = 0; i < levelCount; i++) {
-    if (i % 2 != 0) {
+    if (i % 2 != 0) { // odd runs go down, with a turn under the bottom
       points.push({ y: -h / 2 + radius, x: startX + w / (levelCount - 1) * i })
       points.push({ y: h / 2 - radius, x: startX + w / (levelCount - 1) * i })
 
@@ -338,7 +362,7 @@ function getPoints() {
         }
       }
 
-      if (i == levelCount - 1) {
+      if (i == levelCount - 1) { // the last run stops halfway and turns right into a lead-out
         points.pop();
         points.push({ y: -radius, x: startX + w / (levelCount - 1) * i })
         var centerPoint = { y: -radius, x: startX + w / (levelCount - 1) * (i + 0.5) }
@@ -350,7 +374,7 @@ function getPoints() {
       }
 
     }
-    else {
+    else { // even runs go up, with a turn over the top
       points.push({ y: h / 2 - radius, x: startX + w / (levelCount - 1) * i })
       points.push({ y: -h / 2 + radius, x: startX + w / (levelCount - 1) * i })
       var centerPoint = { y: -h / 2 + radius, x: startX + w / (levelCount - 1) * (i + 0.5) }
@@ -379,7 +403,8 @@ function getPoints() {
 #chartdiv {
   width: 100%;
   height: 600px;
-max-width:100%
+  max-width: 100%;
+  font-size: 0.875rem;
 }
 ```
 
@@ -389,3 +414,4 @@ max-width:100%
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

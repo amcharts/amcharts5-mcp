@@ -2,28 +2,34 @@
 title: "ArcDiagramNodes"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/arcdiagramnodes/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Holds instances of nodes for a ArcDiagram series.
-Data item
-ArcDiagramNodes uses data items of type IArcDiagramNodesDataItem.
+Holds the nodes of an `ArcDiagram` series.
 
 ## Import
 
-```javascript
-// Import ArcDiagramNodes
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ArcDiagramNodes.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: FlowNodes
+Extends: FlowNodes → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from FlowNodes (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IArcDiagramNodesSettings` — get_api_reference shows it after this page
+- Private settings: `IArcDiagramNodesPrivate`
+- Events: `IArcDiagramNodesEvents`
+- Data item fields: `IArcDiagramNodesDataItem`
 
 ## Properties
 
-- **circles** (`ListTemplate`) — Default new ListTemplate<Slice> List of slice elements.
-- **flow** (`ArcDiagram | undefined`) — Related ArcDiagram series.
-- **labels** (`ListTemplate`) — Default new ListTemplate<Label> List of label elements.
+Public properties (not settings):
+
+- **circles** (`ListTemplate<Circle>`) — List of node circles; configure them all through `circles.template`.
+- **flow** (`ArcDiagram`) — Related `ArcDiagram` series.
+- **labels** (`ListTemplate<Label>`) — List of node labels; configure them all through `labels.template`.

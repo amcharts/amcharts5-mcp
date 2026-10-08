@@ -2,24 +2,33 @@
 title: "MedianPrice"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/medianprice/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Median Price indicator: `field`, by default the median price (`"hl/2"`), averaged over `period`. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import MedianPrice
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.MedianPrice.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IMedianPriceSettings` — get_api_reference shows it after this page
+- Private settings: `IMedianPricePrivate`
+- Events: `IMedianPriceEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

@@ -2,13 +2,24 @@
 title: "XY Chart with Fills to the Axis"
 source: "https://www.amcharts.com/demos/xy-chart-fills-axis/"
 category: "xy-bubble"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo shows how to create area chart series with fills going to different axes. As you can see, the fill of the lower series goes to the X axis, while the upper series is filled to the Y axis.
-Key implementation details
-To achieve this all we need to do is set baseAxis on the series. The series is then filled towards that axis.
-Base axis
+An area chart on two number axes, where the shading can face either way: the lower line fills down to the X axis, the upper one across to the Y axis.
+
+When to fill toward an axis: Shading under a line turns its values into an area, and the direction of the fill tells the reader which axis the values are measured from. Filling to the Y axis suits profiles where height runs up the side, like temperature by altitude, and one fill each way lets two curves share a chart without their areas piling up.
+
+Good for:
+- Two curves on number axes, shaded in different directions
+- Profiles by depth or altitude, filled to the Y axis
+- Showing how much ground each curve covers
+
+Think twice when:
+- Values over time: an area chart on a date axis reads better
+- Fills that cross each other: lower the opacity or drop one
+- Many series: shade one or two and draw the rest as lines
+
+Prompt: Create an XY chart with two value axes and two line series with semi-transparent area fills: one fills down to the X axis and the other across to the Y axis, so the shaded areas face different directions. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -96,31 +107,33 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    panX: false,
+    panX: false, // no panning by dragging
     panY: false,
-    wheelY: "none"
+    wheelY: "none" // the mouse wheel doesn't zoom
   })
 );
 
+// every second color of the palette, so the two series stand apart
 chart.get("colors").set("step", 2);
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
+    // the axis ends exactly at the lowest and highest values, not at rounded numbers
     strictMinMax: true,
-    maxDeviation: 0,
-    renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }),
+    maxDeviation: 0, // no panning past the data
+    renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }), // at least 50px between labels
     tooltip: am5.Tooltip.new(root, {
-      themeTags: ["axis"],
-      animationDuration: 300
+      animationDuration: 300 // the axis tooltip glides to the cursor in 300ms
     })
   })
 );
@@ -131,7 +144,6 @@ var yAxis = chart.yAxes.push(
     maxDeviation: 0,
     renderer: am5xy.AxisRendererY.new(root, {}),
     tooltip: am5.Tooltip.new(root, {
-      themeTags: ["axis"],
       animationDuration: 300
     })
   })
@@ -145,16 +157,16 @@ var series0 = chart.series.push(
     yAxis: yAxis,
     valueYField: "ay",
     valueXField: "ax",
-    baseAxis: xAxis,
+    baseAxis: xAxis, // the fill goes down to the X axis
     tooltip: am5.Tooltip.new(root, {
-      labelText: "x:{valueX}, y:{valueY}"
+      labelText: "x: {valueX}, y: {valueY}"
     })
   })
 );
 
 series0.fills.template.setAll({
-  fillOpacity: 0.5,
-  visible: true
+  fillOpacity: 0.5, // half see-through, so the fills show where they overlap
+  visible: true     // a line series' fill is hidden until shown
 });
 
 // Create series
@@ -165,16 +177,16 @@ var series1 = chart.series.push(
     yAxis: yAxis,
     valueYField: "by",
     valueXField: "bx",
-    baseAxis: yAxis,
+    baseAxis: yAxis, // the fill goes across to the Y axis
     tooltip: am5.Tooltip.new(root, {
-      labelText: "x:{valueX}, y:{valueY}"
+      labelText: "x: {valueX}, y: {valueY}"
     })
   })
 );
 
 series1.fills.template.setAll({
-  fillOpacity: 0.5,
-  visible: true
+  fillOpacity: 0.5, // half see-through, so the fills show where they overlap
+  visible: true     // a line series' fill is hidden until shown
 });
 
 // Add cursor
@@ -182,7 +194,7 @@ series1.fills.template.setAll({
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
-  snapToSeries: [series0, series1]
+  snapToSeries: [series0, series1] // the cursor jumps to the nearest point of either series
 }));
 
 // Add scrollbars
@@ -217,6 +229,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -225,3 +238,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,33 +2,31 @@
 title: "IconSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/iconseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-IconSeries uses data items of type IIconSeriesDataItem.
+Draws icons, for the Arrows & Icons tool of a `StockChart`.
 
 ## Import
 
-```javascript
-// Import IconSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.IconSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: PolylineSeries
+Extends: PolylineSeries → DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from PolylineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **iconCenterX** (`Percent`) — Relative horizontal center.
-- **iconCenterY** (`Percent`) — Relative vertical center.
-- **iconScale** (`undefined | number`) — Scale (0-X).
-- **iconSvgPath** (`string`) — An SVG path of the icon.
-- **snapToData** (`undefined | false | true`) — Should icon snap to closest data item?
+- Settings: `IIconSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IIconSeriesPrivate`
+- Data item fields: `IIconSeriesDataItem`
 
 ## Properties
 
-- **spriteResizer** (`SpriteResizer`) — (no description)
+Public properties (not settings):
+
+- **spriteResizer** (`SpriteResizer`) — The chart's `SpriteResizer`, which resizes and rotates icons.

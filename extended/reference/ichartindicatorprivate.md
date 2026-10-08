@@ -2,14 +2,22 @@
 title: "IChartIndicatorPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichartindicatorprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IIndicatorPrivate
-Extended by: IAccumulationDistributionPrivate, IAccumulativeSwingIndexPrivate, IAroonPrivate, IAverageTrueRangePrivate, IAwesomeOscillatorPrivate, IBullBearPowerPrivate, IChaikinMoneyFlowPrivate, IChaikinOscillatorPrivate, IOverboughtOversoldPrivate, IDisparityIndexPrivate, IHeikinAshiPrivate, IMACDPrivate, IMedianPricePrivate, IMomentumPrivate, IMovingAverageDeviationPrivate, IOnBalanceVolumePrivate, IPVTPrivate, IStandardDeviationPrivate, ITrixPrivate, ITypicalPricePrivate, IVolumePrivate
+All ancestors: IIndicatorPrivate, IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5stock.IChartIndicatorPrivate` (`import type { IChartIndicatorPrivate } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IIndicatorPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
+
+_(none declared here — all inherited)_
+
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerPrivate")`) for types, defaults and descriptions.
+
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

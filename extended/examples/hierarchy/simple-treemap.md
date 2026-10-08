@@ -2,12 +2,24 @@
 title: "Simple Treemap"
 source: "https://www.amcharts.com/demos/simple-treemap/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Simple Treemap displays hierarchical data in the shape of rectangles proportional in size to their value as part of the whole. Each rectangle, in turn, can be divided into sub-items according to the values of its children in the hierarchy.
-Hierarchy charts
-Treemaps
+A treemap shows a total as nested rectangles, each sized by its value and colored by its group. Here, a $4,000 monthly budget split into six groups and 20 items.
+
+When a treemap works: A treemap fits a lot into a small space: every item is a box sized by its value, and the boxes of one group sit together in one color. It is best at showing which parts dominate a total; for small differences between similar boxes, a bar chart is easier to read.
+
+Good for:
+- Budgets and spending by category
+- Sales, stock or disk space by group
+- Dozens of items in one rectangle
+
+Think twice when:
+- Values that are close: the boxes look the same
+- Negative numbers: a box can’t have negative area
+- Change over time: use a line or stacked column chart
+
+Prompt: Create a treemap of a monthly household budget, with items such as rent, groceries and savings grouped into six groups and colored by their group. Clicking an item zooms to its group, and clicking again zooms back out. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -19,14 +31,15 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create wrapper container
 var chart = root.container.children.push(
   am5.SerialChartContainer.new(root, {
-    width: am5.percent(100),
-    height: am5.percent(100),
+    width: am5.percent(100),  // the whole width...
+    height: am5.percent(100), // ...and height of the chart's div
     layout: root.verticalLayout
   })
 );
@@ -35,124 +48,88 @@ var chart = root.container.children.push(
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
-    singleBranchOnly: false,
-    downDepth: 1,
-    upDepth: -1,
-    initialDepth: 2,
+    singleBranchOnly: false, // opening a group leaves the others open
+    downDepth: 2,            // a click shows the levels below the clicked box: a group's items, or from the top, groups and items
+    upDepth: -1,             // hides the zoomed-in group's own box and the levels above it
+    initialDepth: 2,         // at first, show two levels: the groups and their items
     valueField: "value",
     categoryField: "name",
     childDataField: "children",
-    nodePaddingOuter: 0,
-    nodePaddingInner: 0
+    nodePaddingOuter: 0,     // no gap at the chart's edges...
+    nodePaddingInner: 0      // ...or between the boxes
   })
 );
 
 series.rectangles.template.setAll({
-  strokeWidth: 2
+  strokeWidth: 2 // 2px outlines around the boxes
 });
 
-// Generate and set data
+// Show the amount in tooltips
+series.nodes.template.set("tooltipText", "{category}: [bold]${sum}[/]");
+
+// Click a box to zoom into its group; click again to zoom back out
+// https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-drill-down/
+series.nodes.template.set("cursorOverStyle", "pointer"); // a hand cursor over the boxes
+series.nodes.template.events.on("click", function (e) {
+  var dataItem = e.target.dataItem;
+  if (dataItem && !dataItem.get("children")) {
+    series.selectDataItem(dataItem.get("parent"));
+  }
+});
+
+// Set data: a $4,000 monthly budget, by group and item
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
 var data = {
-  name: "Root",
-  children: [
-    {
-      name: "First",
-      children: [
-        {
-          name: "A1",
-          value: 100
-        },
-        {
-          name: "A2",
-          value: 60
-        },
-        {
-          name: "A3",
-          value: 30
-        }
-      ]
-    },
-    {
-      name: "Second",
-      children: [
-        {
-          name: "B1",
-          value: 135
-        },
-        {
-          name: "B2",
-          value: 98
-        },
-        {
-          name: "B3",
-          value: 56
-        }
-      ]
-    },
-    {
-      name: "Third",
-      children: [
-        {
-          name: "C1",
-          value: 335
-        },
-        {
-          name: "C2",
-          value: 148
-        },
-        {
-          name: "C3",
-          value: 126
-        },
-        {
-          name: "C4",
-          value: 26
-        }
-      ]
-    },
-    {
-      name: "Fourth",
-      children: [
-        {
-          name: "D1",
-          value: 415
-        },
-        {
-          name: "D2",
-          value: 148
-        },
-        {
-          name: "D3",
-          value: 89
-        },
-        {
-          name: "D4",
-          value: 64
-        },
-        {
-          name: "D5",
-          value: 16
-        }
-      ]
-    },
-    {
-      name: "Fifth",
-      children: [
-        {
-          name: "E1",
-          value: 687
-        },
-        {
-          name: "E2",
-          value: 148
-        }
-      ]
-    }
-  ]
+  name: "Budget",
+  children: [{
+    name: "Housing",
+    children: [
+      { name: "Rent", value: 1100 },
+      { name: "Utilities", value: 180 },
+      { name: "Internet & phone", value: 90 },
+      { name: "Home insurance", value: 60 }
+    ]
+  }, {
+    name: "Food",
+    children: [
+      { name: "Groceries", value: 520 },
+      { name: "Eating out", value: 210 },
+      { name: "Coffee", value: 35 }
+    ]
+  }, {
+    name: "Savings",
+    children: [
+      { name: "Retirement", value: 400 },
+      { name: "Emergency fund", value: 200 }
+    ]
+  }, {
+    name: "Transport",
+    children: [
+      { name: "Car payment", value: 320 },
+      { name: "Fuel", value: 140 },
+      { name: "Transit", value: 60 },
+      { name: "Parking", value: 40 }
+    ]
+  }, {
+    name: "Leisure",
+    children: [
+      { name: "Travel", value: 150 },
+      { name: "Hobbies", value: 90 },
+      { name: "Gifts", value: 70 },
+      { name: "Streaming", value: 35 }
+    ]
+  }, {
+    name: "Health",
+    children: [
+      { name: "Health insurance", value: 220 },
+      { name: "Gym", value: 45 },
+      { name: "Pharmacy", value: 35 }
+    ]
+  }]
 };
 
 series.data.setAll([data]);
+// start at the top node, showing the whole budget
 series.set("selectedDataItem", series.dataItems[0]);
 
 // Make stuff animate on load
@@ -171,6 +148,7 @@ series.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -179,3 +157,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

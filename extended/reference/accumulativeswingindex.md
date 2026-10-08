@@ -2,30 +2,33 @@
 title: "AccumulativeSwingIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/accumulativeswingindex/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Accumulative Swing Index indicator: a running total of Wilder's swing index, which compares each data item's open, high, low and close with the previous one's. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import AccumulativeSwingIndex
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.AccumulativeSwingIndex.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **limitMoveValue** (`undefined | number`) — A "limit move" value.
-- **negativeColor** (`Color`) — Negative color.
-- **positiveColor** (`Color`) — Positive color.
+- Settings: `IAccumulativeSwingIndexSettings` — get_api_reference shows it after this page
+- Private settings: `IAccumulativeSwingIndexPrivate`
+- Events: `IAccumulativeSwingIndexEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

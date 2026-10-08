@@ -2,12 +2,24 @@
 title: "Changing Data of Word Cloud"
 source: "https://www.amcharts.com/demos/changing-data-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Word cloud (or tag cloud, or weighted list) is a visual representation of text data where word size shows the frequency of the word in text or some other word value.
-Word cloud
-Animations
+A word cloud with live data: every five seconds each language gets a new weight, and the words grow, shrink and move to new places. It starts from the share of developers using each language in the 2021 Stack Overflow survey.
+
+When the cloud should move: A cloud that redraws itself suits values that change while people watch: trending topics, votes coming in, the busiest product pages. The words glide to their new places, so a word that suddenly grows catches the eye.
+
+Good for:
+- Trending topics and live polls
+- Wall screens and event displays
+- Keywords from a live feed
+
+Think twice when:
+- Comparing values: the layout changes too often to read them
+- Fast updates: give each layout a few seconds
+- Values that barely change: a still cloud is calmer
+
+Prompt: Create a word cloud of programming languages weighted by how many developers used them in the 2021 Stack Overflow survey. Every few seconds, give the words new random weights, so they glide to new sizes and places. Use the Animated and Responsive themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -16,39 +28,47 @@ Animations
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
-
-// Add series
+// Create a container for the series
 // https://www.amcharts.com/docs/v5/charts/word-cloud/
+// holds the word cloud and zooms it
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
+// Zoom with the mouse wheel or by pinching, and with the zoom buttons
+chart.zoomableContainer.setAll({
+  wheelable: true,
+  pinchZoom: true
+});
+
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
+
+// Add series
 var series = chart.series.push(am5wc.WordCloud.new(root, {
   categoryField: "tag",
   valueField: "weight",
-  maxFontSize: am5.percent(15)
+  maxFontSize: am5.percent(15) // the biggest word's size, 15% of the chart's smaller side
 }));
 
 // Configure labels
 series.labels.template.setAll({
-  fontFamily: "Courier New"
+  fontFamily: "Courier New" // a monospaced font for every word
 });
 
-
-setInterval(function() {  
+// every 5 seconds each word gets a random weight; font sizes follow valueWorking, so both are set
+setInterval(function() {
   am5.array.each(series.dataItems, function(dataItem) {
-    var value = Math.random() * 65;
-    value = value - Math.random() * value;
+    var value = Math.random() * 65;        // a random weight up to 65...
+    value = value - Math.random() * value; // ...more often a small one
     dataItem.set("value", value);
     dataItem.set("valueWorking", value);
   })
 }, 5000)
-
 
 // Data from:
 // https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-programming-scripting-and-markup-languages
@@ -106,6 +126,7 @@ series.data.setAll([
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -114,3 +135,4 @@ series.data.setAll([
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

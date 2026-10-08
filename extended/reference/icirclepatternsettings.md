@@ -2,55 +2,32 @@
 title: "ICirclePatternSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icirclepatternsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ICirclePatternSettings extends IPatternSettings.
-ICirclePatternSettings is not extended by any other symbol.
-Properties
-
-
-        centered        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-
-Center circles.
-
-
-        checkered        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-If set to true, will place every second circle, creating checkered pattern.
-
-
-        color        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IPatternSettings
-Color of the pattern shape.
 
 ## Inheritance
 
 Extends: IPatternSettings
+All ancestors: IPatternSettings, IEntitySettings
+Settings of: `am5.CirclePattern` (see its page for the class)
+TypeScript: `am5.ICirclePatternSettings` (`import type { ICirclePatternSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPatternSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **gap** (`number`) — default `5` _(theme)_ — Gap between circles, in pixels.
+- **radius** (`number`) — default `3` _(theme)_ — Radius of the circles, in pixels.
+- **checkered** (`boolean`) — default `false` _(theme)_ — If set to `true`, will place every second circle, creating checkered pattern.
+- **centered** (`boolean`) — default `false` _(theme)_ — Center circles.
 
-- **centered** (`undefined | false | true`) — Default true Center circles.
-- **checkered** (`undefined | false | true`) — Default false If set to true, will place every second circle, creating checkered pattern.
-- **gap** (`undefined | number`) — Default 3 Gap between circles, in pixels.
-- **radius** (`undefined | number`) — Default 3 Radius of the circles, in pixels.
+## Inherited settings with a different default on CirclePattern
+
+- **height** (`number`) — default `45` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+- **strokeWidth** (`number`) — default `0` _(theme)_ — _from IPatternSettings_ — Width of the pattern's line elements.
+- **width** (`number`) — default `45` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IPatternSettings")`) for types, defaults and descriptions.
+
+- _IPatternSettings_: color, colorInherited, colorOpacity, fill, fillInherited, fillOpacity, repetition, rotation, strokeDasharray, strokeDashoffset
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,14 +2,24 @@
 title: "Horizontal Funnel"
 source: "https://www.amcharts.com/demos/horizontal-funnel/"
 category: "funnel-pyramid"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Normally, Funnel charts are depicted vertically as a representation of actual physical funnels. Having said that, there's no reason why funnels can't be horizontal when a situation calls for it. It's very easy to achieve this with amCharts 5.
-Key implementation details
-The only thing we need to do to create a horizontal funnel is to set orientation: "horizontal" on our FunnelSeries.
-Funnel, pyramid, and pictorial charts
-Funnel series
+A funnel turned on its side, so the stages read left to right like a timeline. The slices slope into each other and carry their own labels.
+
+When to turn a funnel sideways: A horizontal funnel fits wide, short spaces, like a strip across a dashboard or the top of a report, and reads left to right like a timeline. The labels turn to fit the slices, so keep the stage names short.
+
+Good for:
+- Wide dashboard rows
+- Processes people think of as a timeline
+- A few stages with short names
+
+Think twice when:
+- Long stage names: a vertical funnel has room for them
+- Phones held upright: the funnel gets very thin
+- Many stages: the last slices get too narrow to label
+
+Prompt: Create a horizontal funnel chart of seven sample categories running from left to right, with each slice sloping to the height of the next one, labels on the slices and a legend. Use the Animated and Responsive themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -20,13 +30,13 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/
 var chart = root.container.children.push(
   am5percent.SlicedChart.new(root, {
-    layout: root.verticalLayout
+    layout: root.verticalLayout // the legend goes below the funnel
   })
 );
 
@@ -34,10 +44,12 @@ var chart = root.container.children.push(
 // https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/#Series
 var series = chart.series.push(
   am5percent.FunnelSeries.new(root, {
+    // labels sit on the slices instead of in a row beside the funnel
     alignLabels: false,
-    orientation: "horizontal",
+    orientation: "horizontal", // the funnel runs from left to right
     valueField: "value",
     categoryField: "category",
+    // each slice narrows to the height of the next one, giving the funnel its shape
     bottomRatio: 1
   })
 );
@@ -62,10 +74,10 @@ series.appear();
 // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
 var legend = chart.children.push(
   am5.Legend.new(root, {
-    centerX: am5.p50,
-    x: am5.p50,
-    marginTop: 15,
-    marginBottom: 15
+    centerX: am5.p50, // the legend's middle...
+    x: am5.p50,       // ...at the middle of the chart
+    marginTop: 15,    // 15px of space above...
+    marginBottom: 15  // ...and below the legend
   })
 );
 
@@ -88,6 +100,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -96,3 +109,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

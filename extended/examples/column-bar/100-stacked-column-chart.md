@@ -2,15 +2,24 @@
 title: "100% Stacked Column Chart"
 source: "https://www.amcharts.com/demos/100-stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-100% stacked column or bar chart is a good way to display some categories of a whole changing over time. For example, a company may use 100% stacked column chart to display what product lines contributed to its revenue by calendar quarter. The downside is that in such a chart it is quite difficult to visually compare the changes over time (except for the first item/series).
-Key implementation details
-You don't need to perform percentage calculations in your code. You can pass your real values to amCharts and the chart will do the rest. For this purpose, we enable calculateTotals (more info here) on the value axis (the Y-axis in this case) and set its range to 0 to 100 (plus enforce it with strictMinMax to disable "smart" min/max features).
-Then, in our series we set the valueYField to our real value, as usual. But after that we take advantage of the "Display fields" feature in amCharts. Display fields allow us to reference derivative calculated values instead of raw values from our data set. In this case we want to set our respective display field (valueYFieldShow) to display the percentage share of our real value. For this we set it to the valueYTotalPercent calculated field.
-Calculated values on value axes
-Display fields - a way to show alternative values
+In a 100% stacked column chart every column is a whole, split into shares. Here, six regions over three years: the chart works out the percentages from the raw numbers in the data.
+
+When to stack to 100%: A 100% stacked chart answers one question: how is each whole split, and how does the split change? Every column is the same height, so shares compare easily from year to year, while the totals are left out. Only the bottom segment sits on a common baseline, so read the middle ones by their labels.
+
+Good for:
+- Market or revenue share over time
+- Survey answers by group or year
+- Budgets split by department
+
+Think twice when:
+- Totals that matter: a plain stacked chart keeps them
+- Many small shares: they become slivers, so group them as Other
+- Following one middle segment over time: give it its own line
+
+Prompt: Create a 100% stacked column chart of six world regions over three years, where the chart works out each region’s share of the year from raw values. Label every segment with its percentage, and add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -19,33 +28,24 @@ Display fields - a way to show alternative values
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
+  panX: false,                // the plot doesn't pan when dragged
   panY: false,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  paddingLeft: 0,
-  layout: root.verticalLayout
-}));
-
-// Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
+  paddingLeft: 0,             // the value labels sit at the chart's left edge
+  layout: root.verticalLayout // the plot on top, the legend under it
 }));
 
 var data = [{
-  "year": "2021",
+  "year": "2023",
   "europe": 2.5,
   "namerica": 2.5,
   "asia": 2.1,
@@ -53,7 +53,7 @@ var data = [{
   "meast": 0.8,
   "africa": 0.4
 }, {
-  "year": "2022",
+  "year": "2024",
   "europe": 2.6,
   "namerica": 2.7,
   "asia": 2.2,
@@ -61,7 +61,7 @@ var data = [{
   "meast": 0.4,
   "africa": 0.3
 }, {
-  "year": "2023",
+  "year": "2025",
   "europe": 2.8,
   "namerica": 2.9,
   "asia": 2.4,
@@ -70,60 +70,69 @@ var data = [{
   "africa": 0.5
 }]
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// The years run along the top, the legend along the bottom
 var xRenderer = am5xy.AxisRendererX.new(root, {
-  minorGridEnabled: true
+  opposite: true,        // the year labels go above the plot
+  minorGridEnabled: true // a grid line for every year, even one whose label is skipped
 });
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "year",
-  renderer: xRenderer,
-  tooltip: am5.Tooltip.new(root, {})
+  renderer: xRenderer
 }));
 
 xRenderer.grid.template.setAll({
+  // draw each grid line at the end of its year's cell instead of at its start
   location: 1
 })
 
 xAxis.data.setAll(data);
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  min: 0,
-  max: 100,
-  numberFormat: "#'%'",
+  min: 0,               // the axis runs from 0%...
+  max: 100,             // ...to 100%
+  numberFormat: "#'%'", // whole numbers with a % sign
+  // keep the axis at exactly 0 to 100%, with no extra room added past them
   strictMinMax: true,
-  calculateTotals: true,
+  calculateTotals: true, // sums each year's values for valueYTotalPercent
   renderer: am5xy.AxisRendererY.new(root, {
-    strokeOpacity: 0.1
+    strokeOpacity: 0.1 // a faint line along the axis
   })
 }));
 
-
-// Add legend
+// Add legend, under the plot
 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50,
-  x: am5.p50
+  x: am5.p50,
+  marginTop: 15 // space between the plot and the legend
 }));
 
+// no cursor, so no values for the legend: without the empty value labels its items stay compact
+legend.valueLabels.template.set("forceHidden", true);
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 function makeSeries(name, fieldName) {
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
     name: name,
-    stacked: true,
+    stacked: true, // each segment sits on top of the one before it
     xAxis: xAxis,
     yAxis: yAxis,
     valueYField: fieldName,
+    // plot each value as its share of the year's total (calculateTotals on the Y axis sums them)
     valueYShow: "valueYTotalPercent",
     categoryXField: "year"
   }));
 
   series.columns.template.setAll({
-    tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
-    tooltipY: am5.percent(10)
+    // region, year and its share with one decimal
+    tooltipText: "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#')}%",
+    tooltipY: am5.percent(10), // the tooltip points near the top of the segment
+    // a thin line in the background color between segments
+    stroke: root.interfaceColors.get("background"),
+    strokeWidth: 1
   });
   series.data.setAll(data);
 
@@ -131,15 +140,27 @@ function makeSeries(name, fieldName) {
   // https://www.amcharts.com/docs/v5/concepts/animations/
   series.appear();
 
+  // a label with the share in the middle of each segment
   series.bullets.push(function () {
     return am5.Bullet.new(root, {
       sprite: am5.Label.new(root, {
-        text: "{valueYTotalPercent.formatNumber('#.#')}%",
-        fill: root.interfaceColors.get("alternativeText"),
-        centerY: am5.p50,
+        text: "{valueYTotalPercent.formatNumber('#.#')}%", // the segment's share with one decimal
+        fill: root.interfaceColors.get("alternativeText"), // a text color that reads on the colored columns
+        centerY: am5.p50, // center the label on the segment
         centerX: am5.p50,
-        populateText: true
+        populateText: true // fill in the {placeholders} from the data item
       })
+    });
+  });
+
+  // hide the label of a segment too short to hold it; its tooltip still shows the value
+  series.columns.template.onPrivate("height", function (height, target) {
+    am5.array.each(target.dataItem.bullets || [], function (bullet) {
+      if (height > 20) {
+        bullet.get("sprite").show();
+      } else {
+        bullet.get("sprite").hide();
+      }
     });
   });
 
@@ -152,7 +173,6 @@ makeSeries("Asia", "asia");
 makeSeries("Latin America", "lamerica");
 makeSeries("Middle East", "meast");
 makeSeries("Africa", "africa");
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -171,6 +191,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -179,3 +200,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

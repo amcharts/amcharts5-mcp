@@ -2,25 +2,25 @@
 title: "IntervalControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/intervalcontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A control that is used to change type of the main series of the StockChart.
+A dropdown control for picking the data interval of a `StockChart`, such as 1 day or 1 week. Applying the picked interval is up to a `selected` event handler.
 
 ## Import
 
-```javascript
-// Import IntervalControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.IntervalControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: DropdownListControl
+Extends: DropdownListControl → StockControl → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from DropdownListControl (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **currentItem** (`string | IIntervalControlItem`) — (no description)
-- **items** (`Array`) — (no description)
+- Settings: `IIntervalControlSettings` — get_api_reference shows it after this page
+- Private settings: `IIntervalControlPrivate`
+- Events: `IIntervalControlEvents`

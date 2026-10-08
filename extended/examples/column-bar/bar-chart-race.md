@@ -2,14 +2,24 @@
 title: "Bar Chart Race"
 source: "https://www.amcharts.com/demos/bar-chart-race/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Bar Chart Race is a great and highly visual way to display data changing over time in the form of an animated bar chart. It's a very comprehensible representation of time-based changes in data.
-Key implementation details
-In this demo we have year-based data, and we interpolate the values in a linear fashion inside the year to show smooth continuous growth. We [re]sort series on the category (Y) axis from high to low and then we calculate the necessary zoom level to zoom-in to a point where only the non-zero items are visible.
-Finally, on each step we calculate the series position delta and set an animation on the data-item, so when its position changes it doesn't jump into its new place immediately but goes there in a smooth animation.
-AnimationsCategory axis
+A bar chart that plays like a race. Bars grow, shrink and overtake each other as the years tick by: here, 19 social networks from 2002 to 2018.
+
+When a bar chart race works: A bar chart race turns a ranking that changes over time into a short film. It is less precise than a table, but it holds attention.
+
+Good for:
+- Rankings that change over many years: brands, cities, countries, players
+- Social posts, talks and video
+- Showing who overtook whom, and when
+
+Think twice when:
+- Readers need exact values for one year: add a table or a line chart
+- Only a few time steps: the animation has nothing to show
+- More than about twenty bars: the race becomes hard to follow
+
+Prompt: Create an animated bar chart race of the users of social networks from 2002 to 2018: horizontal bars that grow to each year’s values and slide into place as they overtake each other, with the year in large faint text. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -375,13 +385,12 @@ var allData = {
   }
 };
 
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
 root.numberFormatter.setAll({
-  numberFormat: "#a",
+  numberFormat: "#a", // whole numbers with a size suffix: 4M, 1B
 
   // Group only into M (millions), and B (billions)
   bigNumberPrefixes: [
@@ -393,33 +402,30 @@ root.numberFormatter.setAll({
   smallNumberPrefixes: []
 });
 
-var stepDuration = 2000;
-
+var stepDuration = 2000; // each year takes 2 seconds
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
-
+root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
+  panX: true,     // drag the plot to pan
   panY: true,
-  wheelX: "none",
+  wheelX: "none", // the mouse wheel doesn't zoom or pan
   wheelY: "none",
-  paddingLeft: 0
+  paddingLeft: 0  // the names sit at the chart's left edge
 }));
-
 
 // We don't want zoom-out button to appear while animating, so we hide it at all
 chart.zoomOutButton.set("forceHidden", true);
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
-  minGridDistance: 20,
+  minGridDistance: 20, // a label on every row down to 20px apart
+  // the first category at the top, so the leader is on top after sorting
   inversed: true,
   minorGridEnabled: true
 });
@@ -427,22 +433,22 @@ var yRenderer = am5xy.AxisRendererY.new(root, {
 yRenderer.grid.template.set("visible", false);
 
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0,
+  maxDeviation: 0, // no panning past the first and last rows
   categoryField: "network",
   renderer: yRenderer
 }));
 
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-  maxDeviation: 0,
-  min: 0,
-  strictMinMax: true,
+  maxDeviation: 0,    // no panning past the ends of the scale
+  min: 0,             // the bars start at zero
+  strictMinMax: true, // not rounded out to nice numbers, so the scale follows the bars
+  // 10% of room past the longest bar
   extraMax: 0.1,
   renderer: am5xy.AxisRendererX.new(root, {})
 }));
 
-xAxis.set("interpolationDuration", stepDuration / 10);
-xAxis.set("interpolationEasing", am5.ease.linear);
-
+xAxis.set("interpolationDuration", stepDuration / 10); // the scale catches up with the bars in 0.2 seconds...
+xAxis.set("interpolationEasing", am5.ease.linear);     // ...at a steady speed
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -461,24 +467,25 @@ series.columns.template.setAll({ cornerRadiusBR: 5, cornerRadiusTR: 5 });
 // Add label bullet
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
-    locationX: 1,
+    locationX: 1, // at the end of the bar
     sprite: am5.Label.new(root, {
-      text: "{valueXWorking.formatNumber('#.# a')}",
-      fill: root.interfaceColors.get("alternativeText"),
-      centerX: am5.p100,
+      text: "{valueXWorking.formatNumber('#.# a')}", // the bar's value as it animates, like 4.5M
+      fill: root.interfaceColors.get("alternativeText"), // a text color that reads on the colored bars
+      centerX: am5.p100, // inside the bar, against its end
       centerY: am5.p50,
-      populateText: true
+      populateText: true // fill in the {placeholders} from the data item
     })
   });
 });
 
+// the year, big and faint in the bottom right corner of the plot
 var label = chart.plotContainer.children.push(am5.Label.new(root, {
   text: "2002",
-  fontSize: "8em",
-  opacity: 0.2,
-  x: am5.p100,
-  y: am5.p100,
-  centerY: am5.p100,
+  fontSize: "5em",   // five times the chart's text size
+  opacity: 0.2,      // faint
+  x: am5.p100,       // at the plot's right edge...
+  y: am5.p100,       // ...and bottom...
+  centerY: am5.p100, // ...measured from the label's bottom right corner
   centerX: am5.p100
 }));
 
@@ -514,7 +521,7 @@ function sortCategoryAxis() {
       // set index to be the same as series data item index
       if (dataItem.get("index") != index) {
         dataItem.set("index", index);
-        // set deltaPosition instanlty
+        // set deltaPosition instantly
         dataItem.set("deltaPosition", -deltaPosition);
         // animate delta position to 0
         dataItem.animate({
@@ -533,24 +540,26 @@ function sortCategoryAxis() {
   });
 }
 
-var year = 2002;
+var year = 2002; // the year on show
 
-// update data with values each 1.5 sec
+// update data with values every 2 seconds
 var interval = setInterval(function () {
   year++;
 
   if (year > 2018) {
-    clearInterval(interval);
+    clearInterval(interval); // stop after the last year
     clearInterval(sortInterval);
   }
 
   updateData();
 }, stepDuration);
 
+// sort ten times a second, so a bar moves up as soon as it overtakes another
 var sortInterval = setInterval(function () {
   sortCategoryAxis();
 }, 100);
 
+// a bar and an axis row for every network, with the first year's values
 function setInitialData() {
   var d = allData[year];
 
@@ -560,6 +569,7 @@ function setInitialData() {
   }
 }
 
+// animate every bar to the new year's value over the 2 seconds
 function updateData() {
   var itemsWithNonZero = 0;
 
@@ -575,24 +585,26 @@ function updateData() {
       }
 
       dataItem.animate({
-        key: "valueX",
+        key: "valueX", // the value the sorting reads...
         to: value,
         duration: stepDuration,
         easing: am5.ease.linear
       });
       dataItem.animate({
-        key: "valueXWorking",
+        key: "valueXWorking", // ...and the one the bar and its label are drawn from
         to: value,
         duration: stepDuration,
         easing: am5.ease.linear
       });
     });
 
+    // show only the rows of networks that have users that year
     yAxis.zoom(0, itemsWithNonZero / yAxis.dataItems.length);
   }
 }
 
 setInitialData();
+// go to the next year right away, so the bars start growing
 setTimeout(function () {
   year++;
   updateData();
@@ -616,6 +628,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -624,3 +637,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

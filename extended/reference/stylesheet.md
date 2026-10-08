@@ -2,14 +2,17 @@
 title: "StyleSheet"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stylesheet/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Defines a class for an entire CSS style sheet.
- Can be used to dynamically add CSS to the document.
+
+Can be used to dynamically add CSS to the document.
+
+## Import
+
+Not exported from any `@amcharts/amcharts5` entry point (internal class).
 
 ## Inheritance
 
 Extends: DisposerClass
-
-> **Note:** This class also inherits all settings, properties, methods, and events from DisposerClass (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.

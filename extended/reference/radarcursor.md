@@ -2,31 +2,33 @@
 title: "RadarCursor"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/radarcursor/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a cursor for a RadarChart.
+Cursor for a `RadarChart`: a line out from the center and an arc around it that follow the pointer and show the axis and series tooltips.
+
+Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
 
 ## Import
 
-```javascript
-// Import RadarCursor
-import * as am5radar from "@amcharts/amcharts5/radar"
+```js
+import * as am5radar from "@amcharts/amcharts5/radar";
+
+am5radar.RadarCursor.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: XYCursor
+Extends: XYCursor → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from XYCursor (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **endAngle** (`undefined | number`) — Cursor's selection end angle in degrees.
-- **innerRadius** (`number | Percent`) — Cursor's inner radius.
-- **radius** (`number | Percent`) — Cursor's inner radius.
-- **startAngle** (`undefined | number`) — Cursor's position angle in degrees.
+- Settings: `IRadarCursorSettings` — get_api_reference shows it after this page
+- Private settings: `IRadarCursorPrivate`
+- Events: `IRadarCursorEvents`
 
 ## Properties
 
-- **chart** (`RadarChart | undefined`) — A chart cursor is attached to.
+Public properties (not settings):
+
+- **chart** (`RadarChart`) — The chart the cursor belongs to.

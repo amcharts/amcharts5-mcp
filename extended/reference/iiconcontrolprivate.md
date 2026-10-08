@@ -2,17 +2,21 @@
 title: "IIconControlPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iiconcontrolprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IStockControlPrivate
+All ancestors: IStockControlPrivate, IEntityPrivate
+TypeScript: `am5stock.IIconControlPrivate` (`import type { IIconControlPrivate } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **list** (`DropdownList`)
 
-- **list** (`DropdownList`) — (no description)
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlPrivate")`) for types, defaults and descriptions.
+
+- _IStockControlPrivate_: button, icon, label, toolbar

@@ -2,25 +2,31 @@
 title: "HierarchyNode"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/hierarchynode/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Base class for hierarchy nodes.
 
 ## Import
 
-```javascript
-// Import HierarchyNode
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.HierarchyNode.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 Extended by: LinkedHierarchyNode
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IHierarchyNodeSettings` — get_api_reference shows it after this page
+- Private settings: `IHierarchyNodePrivate`
 
 ## Properties
 
-- **series** (`Hierarchy | undefined`) — Related series.
+Public properties (not settings):
+
+- **series** (`Hierarchy`) — The series the node belongs to.

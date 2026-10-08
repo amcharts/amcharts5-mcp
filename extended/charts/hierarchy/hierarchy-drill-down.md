@@ -58,6 +58,8 @@ Normally, a user can open and close any number of branches at will.
 
 We can limit number of branches open at any given time to one by setting series' `singleBranchOnly` to `true`.
 
+NOTE The default depends on the series: `true` for `Treemap`, `Pack`, `Partition`, `VoronoiTreemap` and `Sunburst`, `false` for `ForceDirected` and `Tree`. `Sunburst` ignores the setting since 5.21.0 and always works as if it is `true`, because other open branches would overlap the zoomed-in one.
+
 var series = container.children.push(
   am5hierarchy.ForceDirected.new(root, {
     downDepth: 1,

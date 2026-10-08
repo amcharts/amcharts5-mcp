@@ -2,33 +2,36 @@
 title: "AxisRendererCurveX"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrenderercurvex/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Renderer for CurveChart "horizontal" axes.
+Renderer for the X axis of a `CurveChart`, which runs along the line given in `points`.
+
+_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
 
 ## Import
 
-```javascript
-// Import AxisRendererCurveX
-import * as am5timeline from "@amcharts/amcharts5/timeline"
+```js
+import * as am5timeline from "@amcharts/amcharts5/timeline";
+
+am5timeline.AxisRendererCurveX.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: AxisRenderer
+Extends: AxisRenderer → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from AxisRenderer (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **points** (`Array`) — Array of control points to draw axis along.
-- **rotateLabels** (`undefined | false | true`) — If labels rotation should be adjusted to the axis rotation
+- Settings: `IAxisRendererCurveXSettings` — get_api_reference shows it after this page
+- Private settings: `IAxisRendererCurveXPrivate`
 
 ## Properties
 
-- **axisFills** (`ListTemplate`) — Default new ListTemplate<Slice> A list of fills in the axis. axisFills.template can be used to configure axis fills.
-- **chart** (`CurveChart | undefined`) — Chart this renderer is for.
-- **labels** (`ListTemplate`) — Default new ListTemplate<AxisLabelRadial> A list of labels in the axis. labels.template can be used to configure labels.
-- **pointDistance** (`Array`) — Default []
-- **pointPostion** (`Array`) — Default []
+Public properties (not settings):
+
+- **axisFills** (`ListTemplate<Slice>`) — The axis fills: bands between neighboring grid lines, across the whole Y axis. Configure them through `axisFills.template`.
+- **chart** (`CurveChart`) — Chart this renderer is for.
+- **labels** (`ListTemplate<AxisLabel>`) — The axis labels. Configure them through `labels.template`.
+- **pointDistance** (`number[]`)
+- **pointPostion** (`number[]`)

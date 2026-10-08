@@ -2,20 +2,21 @@
 title: "VerticalLayout"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/verticallayout/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A vertical children layout for Container.
+Stacks a `Container`'s children from top to bottom. Children with a percent height share the height the others leave, in proportion to their percents.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout
 
 ## Import
 
-```javascript
-// Import VerticalLayout
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.VerticalLayout.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Layout
-
-> **Note:** This class also inherits all settings, properties, methods, and events from Layout (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+Extends: Layout → Entity → Settings

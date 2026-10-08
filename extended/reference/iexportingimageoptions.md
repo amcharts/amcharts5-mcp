@@ -2,47 +2,25 @@
 title: "IExportingImageOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iexportingimageoptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IExportingImageOptions extends IExportingFormatOptions.
-IExportingImageOptions is extended by IExportingPrintOptions, IExportingPDFOptions.
-Properties
-
-
-        disabled        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IExportingFormatOptions
-If set to true, this format will not appear in ExportMenu.
-
-
-        maintainPixelRatio        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Export images with hardware resolution (false), or the way they appear on screen (true).
 
 ## Inheritance
 
 Extends: IExportingFormatOptions
-Extended by: IExportingPrintOptions, IExportingPDFOptions
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IExportingFormatOptions (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Options
 
-## Properties
+- **quality** (`number`) — Quality of the image, `0` to `1`: `1` by default, `0.8` for JPG. Only JPEG images use it.
+- **maintainPixelRatio** (`boolean`) — default `false` — Exports the image at the chart's size in CSS pixels. When `false`, it is exported at the screen's resolution: larger on high-density screens. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Pixel_ratio
+- **minWidth** (`number`) — Minimal width of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
+- **maxWidth** (`number`) — Maximal width of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
+- **minHeight** (`number`) — Minimal height of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
+- **maxHeight** (`number`) — Maximal height of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
 
-- **maintainPixelRatio** (`undefined | false | true`) — Default false Export images with hardware resolution (false), or the way they appear on screen (true). Click here for more info
-- **maxHeight** (`undefined | number`) — Maximal height of exported image, in pixels. Click here for more info
-- **maxWidth** (`undefined | number`) — Maximal width of exported image, in pixels. Click here for more info
-- **minHeight** (`undefined | number`) — Minimal height of exported image, in pixels. Click here for more info
-- **minWidth** (`undefined | number`) — Minimal width of exported image, in pixels. Click here for more info
+## Other inherited options
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IExportingFormatOptions")`) for types, defaults and descriptions.
+
+- _IExportingFormatOptions_: disabled

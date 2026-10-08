@@ -2,13 +2,16 @@
 title: "IMinMaxStep"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iminmaxstep/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: `am5xy.IMinMaxStep` (`import type { IMinMaxStep } from "@amcharts/amcharts5/xy"`)
 
 ## Properties
 
-- **max** (`number`) — (no description)
-- **min** (`number`) — (no description)
-
+- **min** (`number`)
+- **max** (`number`)
+- **step** (`number`)

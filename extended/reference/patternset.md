@@ -2,27 +2,26 @@
 title: "PatternSet"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/patternset/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An object which holds list of Pattern objects and can serve them up in an interative way.
+A list of `Pattern` objects that series and other elements take in turn.
+
+_Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets
 
 ## Import
 
-```javascript
-// Import PatternSet
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.PatternSet.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **color** (`Color`) — A base color to use for all patterns. Click here for more info
-- **patterns** (`Pattern[]`) — List of colors in the set.
-- **startIndex** (`undefined | number`) — Start iterating patterns from specific index.
-- **step** (`undefined | number`) — Default 1 A step size when using next(). E.g. setting to 2 will make it return every second pattern in the list.
+- Settings: `IPatternSetSettings` — get_api_reference shows it after this page
+- Private settings: `IPatternSetPrivate`

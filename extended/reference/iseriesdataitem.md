@@ -2,37 +2,39 @@
 title: "ISeriesDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iseriesdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IComponentDataItem
-Extended by: IFlowDataItem, IFlowNodesDataItem, IPercentSeriesDataItem, ILegendDataItem, IXYSeriesDataItem, IHierarchyDataItem, IMapSeriesDataItem, IVennDataItem, IWordCloudDataItem
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IComponentDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **id** (`string`)
+- **url** (`string`) — A URL to open when the data item's element is clicked. _Since 5.20.7._ _Note:_ Filled from data by the series' `urlField`; opened in the series' `linkTarget`.
+- **value** (`number`)
+- **valueWorking** (`number`)
+- **valueChange** (`number`)
+- **valueChangePercent** (`number`)
+- **valueChangeSelection** (`number`)
+- **valueChangeSelectionPercent** (`number`)
+- **valueChangePrevious** (`number`)
+- **valueChangePreviousPercent** (`number`)
+- **valueWorkingOpen** (`number`)
+- **valueWorkingClose** (`number`)
+- **customValue** (`number`)
+- **customValueWorking** (`number`)
+- **customValueChange** (`number`)
+- **customValueChangePercent** (`number`)
+- **customValueChangeSelection** (`number`)
+- **customValueChangeSelectionPercent** (`number`)
+- **customValueChangePrevious** (`number`)
+- **customValueChangePreviousPercent** (`number`)
 
-- **customValue** (`undefined | number`) — (no description)
-- **customValueChange** (`undefined | number`) — (no description)
-- **customValueChangePercent** (`undefined | number`) — (no description)
-- **customValueChangePrevious** (`undefined | number`) — (no description)
-- **customValueChangePreviousPercent** (`undefined | number`) — (no description)
-- **customValueChangeSelection** (`undefined | number`) — (no description)
-- **customValueChangeSelectionPercent** (`undefined | number`) — (no description)
-- **customValueWorking** (`undefined | number`) — (no description)
-- **id** (`undefined | string`) — (no description)
-- **url** (`undefined | string`) — A URL to open when the data item's element is clicked. Filled from data by the series' urlField; opened in the series' linkTarget. @since 5.20.7
-- **value** (`undefined | number`) — (no description)
-- **valueChange** (`undefined | number`) — (no description)
-- **valueChangePercent** (`undefined | number`) — (no description)
-- **valueChangePrevious** (`undefined | number`) — (no description)
-- **valueChangePreviousPercent** (`undefined | number`) — (no description)
-- **valueChangeSelection** (`undefined | number`) — (no description)
-- **valueChangeSelectionPercent** (`undefined | number`) — (no description)
-- **valueWorking** (`undefined | number`) — (no description)
-- **valueWorkingClose** (`undefined | number`) — (no description)
-- **valueWorkingOpen** (`undefined | number`) — (no description)
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IComponentDataItem")`) for types, defaults and descriptions.
+
+- _IComponentDataItem_: visible

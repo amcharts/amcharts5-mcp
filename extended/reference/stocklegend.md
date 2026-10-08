@@ -2,29 +2,35 @@
 title: "StockLegend"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stocklegend/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A legend, specifically designed for use in a StockChart.
+A legend for a `StockChart` panel, with settings and close buttons on its items.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/#Legend
 
 ## Import
 
-```javascript
-// Import StockLegend
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.StockLegend.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Legend
+Extends: Legend → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Legend (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **stockChart** (`StockChart`) — A target StockChart.
+- Settings: `IStockLegendSettings` — get_api_reference shows it after this page
+- Private settings: `IStockLegendPrivate`
+- Events: `IStockLegendEvents`
+- Data item fields: `IStockLegendDataItem`
 
 ## Properties
 
-- **closeButtons** (`ListTemplate`) — Default new ListTemplate<Button>() A list of "close" buttons in legend items.
-- **settingsButtons** (`ListTemplate`) — Default new ListTemplate<Button>() A list of "settings" buttons in legend items.
+Public properties (not settings):
+
+- **closeButtons** (`ListTemplate<Button>`) — The items' close buttons. Settings on `closeButtons.template` apply to all of them.
+- **settingsButtons** (`ListTemplate<Button>`) — The items' settings buttons. Settings on `settingsButtons.template` apply to all of them.

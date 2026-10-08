@@ -2,11 +2,14 @@
 title: "IJSONParserOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ijsonparseroptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
 
-## Properties
+Extends: (none)
+TypeScript: `am5.IJSONParserOptions` (`import type { IJSONParserOptions } from "@amcharts/amcharts5"`)
 
+## Options
 
+- **reverse** (`boolean`) — Reverses the order of items when the parsed data is an array.

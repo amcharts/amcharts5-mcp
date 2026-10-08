@@ -2,26 +2,26 @@
 title: "OrthogonalLine"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/orthogonalline/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws an Orthogonal line.
-@since 5.14.0
+Draws a line of horizontal and vertical segments through `points`, with rounded corners.
+
+_Since 5.14.0._
 
 ## Import
 
-```javascript
-// Import OrthogonalLine
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.OrthogonalLine.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **cornerRadius** (`undefined | number`) — Corner radius between segments.
-- **points** (`Array`) — A list of IPoint (x/y coordinates) points for the Orthogonal Line.
+- Settings: `IOrthogonalLineSettings` — get_api_reference shows it after this page
+- Private settings: `IOrthogonalLinePrivate`

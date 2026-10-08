@@ -2,33 +2,30 @@
 title: "BaseColumnSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/basecolumnseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Base class for all "column-based" series
-Data item
-BaseColumnSeries uses data items of type IBaseColumnSeriesDataItem.
+Base class for column-based series: `ColumnSeries`, `CandlestickSeries`, `OHLCSeries` and `RadarColumnSeries`.
 
 ## Import
 
-```javascript
-// Import BaseColumnSeries
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
 ```
 
 ## Inheritance
 
-Extends: XYSeries
-Extended by: ColumnSeries, RadarColumnSeries, CurveColumnSeries
+Extends: XYSeries → Series → Component → Container → Sprite → Entity → Settings
+Extended by: ColumnSeries, CurveColumnSeries, RadarColumnSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from XYSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **adjustBulletPosition** (`undefined | false | true`) — Default true Whether positions of bullets should be calculated based on portion of column currently visual (true) or the whole length/height of the column (false).
-- **clustered** (`undefined | false | true`) — Default true Indicates if series must divvy up available space with other column series (true; default) or take up the whole available space (false). Click here for more info
-- **useLastColorForLegendMarker** (`undefined | false | true`) — If set to true will use color of the last visible column for legend marker. Otherwise, series fill/stroke will be used. @since 5.1.13
+- Settings: `IBaseColumnSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IBaseColumnSeriesPrivate`
+- Data item fields: `IBaseColumnSeriesDataItem`
 
 ## Properties
 
-- **columns** (`ListTemplate`) — ListTemplate of columns in series.
+Public properties (not settings):
+
+- **columns** (`ListTemplate<Graphics>`) — Columns of the series. Configure them all through `columns.template`.

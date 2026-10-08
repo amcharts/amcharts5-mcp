@@ -2,55 +2,47 @@
 title: "XYChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/xychart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates an XY chart.
+A chart with X and Y axes, for line, column, scatter and other XY series.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/
 
 ## Import
 
-```javascript
-// Import XYChart
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.XYChart.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: SerialChart
-Extended by: RadarChart, StockPanel, CurveChart
+Extends: SerialChart → Chart → Container → Sprite → Entity → Settings
+Extended by: CurveChart, RadarChart, StockPanel
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SerialChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **arrangeTooltips** (`undefined | false | true`) — Default true If set to false the chart will not check for overlapping of multiple tooltips, and will not arrange them to not overlap. Will work only if chart has an XYCursor enabled. Click here for more info
-- **cursor** (`XYCursor`) — Chart's cursor. Click here for more info
-- **maxTooltipDistance** (`undefined | number`) — If not set (default), cursor will show tooltips for all data items in the same category/date. If set, cursor will select closest data item to pointer (mouse or touch) and show tooltip for it. It will also show tooltips for all data items that are within X pixels range (as set in maxTooltipDistance). Tooltips for data items farther then X pixels, will not be shown. NOTE: set it to -1 to ensure only one tooltip is displayed, even if there are multiple data items in the same place. Click here for more info
-- **maxTooltipDistanceBy** (`"xy" | "x" | "y"`) — Indicates how the distance should be measured when assessing distance between tooltips as set in maxTooltipDistance. Click here for more info @since 5.2.6
-- **panX** (`undefined | false | true`) — If this is set to true, users will be able to pan the chart horizontally by dragging plot area. Click here for more info
-- **panY** (`undefined | false | true`) — If this is set to true, users will be able to pan the chart vertically by dragging plot area. Click here for more info
-- **pinchZoomX** (`undefined | false | true`) — Default false If set to true, using pinch gesture on the chart's plot area will zoom chart horizontally. NOTE: this setting is not supported in a RadarChart. Click here for more info @since 5.1.8
-- **pinchZoomY** (`undefined | false | true`) — Default false If set to true, using pinch gesture on the chart's plot area will zoom chart vertically. NOTE: this setting is not supported in a RadarChart. Click here for more info @since 5.1.8
-- **scrollbarX** (`Scrollbar`) — horizontal scrollbar. Click here for more info
-- **scrollbarY** (`Scrollbar`) — Vertical scrollbar.
-- **wheelStep** (`undefined | number`) — Default 0.25 Indicates the relative "speed" of the mouse wheel.
-- **wheelX** (`"zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY" | "none"`) — Indicates what happens when mouse wheel is spinned horizontally while over plot area. Click here for more info
-- **wheelY** (`"zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY" | "none"`) — Indicates what happens when mouse wheel is spinned vertically while over plot area. Click here for more info
-- **wheelZoomPositionX** (`undefined | number`) — If set, will use this relative position as a "center" for mouse wheel horizontal zooming instead of actual cursor position. Click here for more info @since 5.2.11
-- **wheelZoomPositionY** (`undefined | number`) — If set, will use this relative position as a "center" for mouse wheel vertical zooming instead of actual cursor position. Click here for more info @since 5.2.11
+- Settings: `IXYChartSettings` — get_api_reference shows it after this page
+- Private settings: `IXYChartPrivate`
+- Events: `IXYChartEvents`
 
 ## Properties
 
-- **axisHeadersContainer** (`Container`) — Default Container.new() A Container axis headers are stored in. Click here for more info
-- **bottomAxesContainer** (`Container`) — Default Container.new() A Container located on bottom of the chart, used to store bottom horizontal axes. Click here for more info
-- **gridContainer** (`Container`) — Default Container.new() A Container axis grid elements are stored in. Click here for more info
-- **leftAxesContainer** (`Container`) — Default Container.new() A Container located on left of the chart, used to store left-hand vertical axes. Click here for more info
-- **plotContainer** (`Container`) — Default Container.new() A Container located in the middle of the chart, used to store actual plots (series). NOTE: plotContainer will automatically have its background preset. If you need to modify background or outline for chart's plot area, you can use plotContainer.get("background") for that.* Click here for more info
-- **plotsContainer** (`Container`) — Default Container.new() A Container located in the middle of the chart, used to store plotContainer and topPlotContainer Click here for more info
-- **rightAxesContainer** (`Container`) — Default Container.new() A Container located on right of the chart, used to store right-hand vertical axes. Click here for more info
-- **topAxesContainer** (`Container`) — Default Container.new() A Container located on top of the chart, used to store top horizontal axes. Click here for more info
-- **topGridContainer** (`Container`) — Default Container.new() A Container axis background grid elements are stored in. Click here for more info
-- **topPlotContainer** (`Container`) — Default Container.new() A Container used for any elements that need to be displayed over regular plotContainer. Click here for more info
-- **xAxes** (`ListAutoDispose`) — Default new ListAutoDispose() A list of horizontal axes.
-- **yAxes** (`ListAutoDispose`) — Default new ListAutoDispose() A list of vertical axes.
-- **yAxesAndPlotContainer** (`Container`) — Default Container.new() A Container located in the middle the chart, used to store vertical axes and plot area container. Click here for more info
+Public properties (not settings):
+
+- **axisHeadersContainer** (`Container`) — default `Container.new()` — Container that holds the axis headers. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-headers/
+- **bottomAxesContainer** (`Container`) — default `Container.new()` — Container below the plot area that holds the X axes. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **gridContainer** (`Container`) — default `Container.new()` — Container in the plot area that holds the axes' grid, below the series. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **leftAxesContainer** (`Container`) — default `Container.new()` — Container left of the plot area that holds the Y axes. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **plotContainer** (`Container`) — default `Container.new()` — The plot area, which holds the series, grid and bullets. It comes with a `background` already set: to change the plot area's fill or outline, configure `plotContainer.get("background")`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **plotsContainer** (`Container`) — default `Container.new()` — Container that holds `plotContainer` and, over it, `topPlotContainer`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **rightAxesContainer** (`Container`) — default `Container.new()` — Container right of the plot area that holds the Y axes with `opposite` renderers. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **topAxesContainer** (`Container`) — default `Container.new()` — Container above the plot area that holds the X axes with `opposite` renderers. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **topGridContainer** (`Container`) — default `Container.new()` — Container in the plot area that holds the axis grid drawn above the series, such as axis ranges with `above` set. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **topPlotContainer** (`Container`) — default `Container.new()` — Container over `plotContainer` for elements drawn on top of the plot area, such as the zoom-out button. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **xAxes** (`ListAutoDispose<Axis<AxisRenderer>>`) — The chart's X (horizontal) axes.
+- **yAxes** (`ListAutoDispose<Axis<AxisRenderer>>`) — The chart's Y (vertical) axes.
+- **yAxesAndPlotContainer** (`Container`) — default `Container.new()` — Container in the middle of the chart that holds the Y axes and the plot area. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/
+- **zoomOutButton** (`Button`) — default `Button.new()` — Button that zooms the chart out, shown while any axis is zoomed in. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Zoom_out_button

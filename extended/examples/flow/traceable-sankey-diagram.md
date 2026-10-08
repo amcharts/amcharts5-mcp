@@ -2,12 +2,24 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Traceable Sankey Diagram is a specific version of the regular Sankey Diagram enabling viewers to see the whole path of some data by hovering over the chart.
-Flow charts
-Sankey diagram
+A Sankey diagram you can follow one path through: point at a band and every step of that path lights up, from the first column to the last. Here, thirteen paths through four stages.
+
+When tracing helps: In a busy Sankey diagram the bands cross and merge, and a single route gets lost. Tracing lets people pick one band and see where it came from and where it goes, so the chart can stay dense without hiding the paths.
+
+Good for:
+- Customer journeys across several steps
+- Shipments through hubs and warehouses
+- Students or patients moving through stages
+
+Think twice when:
+- Touch screens: without hover, add a tap to trace
+- A handful of paths: a plain Sankey already shows them
+- Data with no id for each path: the chart can’t tell which bands belong together
+
+Prompt: Create a traceable Sankey diagram of 13 paths through four columns of nodes, with faint bands: pointing at a band lights up its whole path from the first column to the last. Nodes can be dragged. Use the Animated and Responsive themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -18,22 +30,25 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+
+// Create a container for the series
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/
-var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
-
 var series = chart.series.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
     targetIdField: "to",
     valueField: "value",
-    paddingRight: 50,
+    paddingRight: 50, // room on the right for the last column's names
+    // each link keeps the id from its data, which the hover code below reads
     idField: "id"
   })
 );
 
+// one color for all links, faint until hovered
 series.links.template.setAll({ fillStyle: "solid", fillOpacity: 0.15 });
 
 // highlight all links with the same id beginning
@@ -48,6 +63,7 @@ series.links.template.events.on("pointerover", function (event) {
   });
 });
 
+// moving off a link takes every highlight away again
 series.links.template.events.on("pointerout", function (event) {
   am5.array.each(series.dataItems, function (dataItem) {
     dataItem.get("link").unhover();
@@ -56,6 +72,7 @@ series.links.template.events.on("pointerout", function (event) {
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// an id is a path and a step: "A0-1" is the second link of path A0
 series.data.setAll([
   { from: "A", to: "E", value: 1, id: "A0-0" },
   { from: "A", to: "F", value: 1, id: "A1-0" },
@@ -126,6 +143,7 @@ series.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -134,3 +152,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,188 +2,32 @@
 title: "ILinkedHierarchyDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilinkedhierarchydataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ILinkedHierarchyDataItem extends IHierarchyDataItem.
-ILinkedHierarchyDataItem is extended by IForceDirectedDataItem, ITreeDataItem.
-Properties
-
-
-        category        
-        #
-      
-
-
-                          Type string                      
-Inherited from IHierarchyDataItem
-Category.
-
-
-        childData        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IHierarchyDataItem
-Raw data of the node's children.
-
-
-        childLinks        
-        #
-      
-
-
-                          Type Array                      
-An array of HierarchyLink objects leading to child nodes.
-
-
-        children        
-        #
-      
-
-
-                          Type Array                      
-An array of child data items.
-
-
-        circle        
-        #
-      
-
-
-                          Type Circle                      
-Circle element of the related node.
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        depth        
-        #
-      
-
-
-                          Type number                      
-Inherited from IHierarchyDataItem
-Node's depth within the hierarchy.
-
-
-        disabled        
-        #
-      
-
-
-                          Type boolean                      
-Inherited from IHierarchyDataItem
-Indicates if node is currently disabled.
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IHierarchyDataItem
-Node's auto-assigned color.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Inherited from IHierarchyDataItem
-Node's auto-assigned pattern.
 
 ## Inheritance
 
 Extends: IHierarchyDataItem
-Extended by: IForceDirectedDataItem, ITreeDataItem
+All ancestors: IHierarchyDataItem, ISeriesDataItem, IComponentDataItem
+TypeScript: `am5hierarchy.ILinkedHierarchyDataItem` (`import type { ILinkedHierarchyDataItem } from "@amcharts/amcharts5/hierarchy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IHierarchyDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **children** (`DataItem<ILinkedHierarchyDataItem>[]`) — Data items of the child nodes.
+- **parent** (`DataItem<ILinkedHierarchyDataItem>`) — Data item of the parent node.
+- **node** (`LinkedHierarchyNode`) — The node element.
+- **circle** (`Circle`) — The node's circle.
+- **outerCircle** (`Circle`) — The ring around the node's circle, shown when the node has children.
+- **parentLink** (`HierarchyLink`) — The link to the parent node.
+- **links** (`HierarchyLink[]`) — All links that start or end at this node, `linkWith` ones included.
+- **childLinks** (`HierarchyLink[]`) — Links that start at this node: to its children and to the nodes in its `linkWith`.
+- **linkWith** (`string[]`) — IDs of other nodes this node is linked with, besides its parent and children.
+- **d3HierarchyNode** (`d3hierarchy.HierarchyPointNode<ILinkedHierarchyDataObject>`) — _(internal)_
 
-- **childLinks** (`Array`) — An array of HierarchyLink objects leading to child nodes.
-- **children** (`Array`) — An array of child data items.
-- **circle** (`Circle`) — Circle element of the related node.
-- **linkWith** (`Array`) — An array of IDs of directly linked nodes.
-- **links** (`Array`) — An HierarchyLink leading to parent node.
-- **node** (`LinkedHierarchyNode`) — A related node.
-- **outerCircle** (`Circle`) — Circle element of the related node, representing outer circle.
-- **parent** (`DataItem`) — A data item of a parent node.
-- **parentLink** (`HierarchyLink`) — A HierarchyLink leading to parent node.
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IHierarchyDataItem")`) for types, defaults and descriptions.
+
+- _IHierarchyDataItem_: category, childData, depth, disabled, fill, fillPattern, label, sum, value, valuePercent, valuePercentTotal, valueWorking
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

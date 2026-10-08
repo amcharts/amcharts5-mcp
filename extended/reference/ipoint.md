@@ -2,16 +2,15 @@
 title: "IPoint"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipoint/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
-Extended by: IOrientationPoint
+Extends: (none)
+TypeScript: `am5.IPoint` (`import type { IPoint } from "@amcharts/amcharts5"`)
 
 ## Properties
 
-- **x** (`number`) — (no description)
-
+- **x** (`number`)
+- **y** (`number`)

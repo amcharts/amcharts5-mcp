@@ -2,17 +2,24 @@
 title: "Variance Indicators"
 source: "https://www.amcharts.com/demos/variance-indicators/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A clever use of highly configurable clustered Column series and adapters enables us to create automatically-calculated variance indicators.
-Key implementation details
-While from the viewer's perspective we see one column series and arrows next to it, from the developer's perspective these are two column series. One is your regular column series, and the other cleverly uses openValueYField with the current value to make "columns" start off-axis, and valueYField with calculated (next column's value) values.
-Then we create custom graphics arrow bullets and rotate them in the bullet's adapter based on the calculated variance.
-Column series
-Bullets
-Graphics
-Adapters
+A column chart that shows the change from each year to the next: an arrow runs from one column’s height to the next one’s, with the change in percent, green for a rise and red for a fall.
+
+When to show the change: The columns show each year’s level; the arrows answer the next question, by how much it changed. Writing the percent on the chart saves readers from working it out, and the color tells rises from falls at a glance. It suits a handful of periods, where every arrow has room.
+
+Good for:
+- Year-over-year revenue or sales
+- This year’s budget against last year’s
+- A handful of periods
+
+Think twice when:
+- Many periods: the arrows crowd, so chart the change on its own
+- Changes that build on each other: a waterfall adds them up
+- Small base values: a big percent can mislead, so show the amounts too
+
+Prompt: Create a column chart of seven yearly values with variance indicators between neighboring years: a thin line from each value to the next, topped by an arrow and the percent change, green and pointing up for a rise, red and pointing down for a fall. Add tooltips. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,62 +28,78 @@ Adapters
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
+  panX: false, // no panning or zooming: every year stays in view
   panY: false,
   wheelX: "none",
   wheelY: "none",
   layout: root.verticalLayout,
-  paddingLeft: 0
+  paddingLeft: 0 // the value labels sit at the chart's left edge
 }));
-
 
 // Data
 var data = [{
-  year: "2015",
-  value: 600000
-}, {
-  year: "2016",
-  value: 900000
-}, {
-  year: "2017",
-  value: 180000
-}, {
-  year: "2018",
-  value: 600000
-}, {
   year: "2019",
-  value: 350000
+  value: 600000
 }, {
   year: "2020",
-  value: 600000
+  value: 900000
 }, {
   year: "2021",
+  value: 180000
+}, {
+  year: "2022",
+  value: 600000
+}, {
+  year: "2023",
+  value: 350000
+}, {
+  year: "2024",
+  value: 600000
+}, {
+  year: "2025",
   value: 670000
 }];
 
-// Populate data
-for (var i = 0; i < (data.length - 1); i++) {
-  data[i].valueNext = data[i + 1].value;
-}
+// Work out the change from each year to the next. The labels and arrows take their text, color and
+// direction from these fields: a rise gets a green label over an arrow pointing up, a fall a red label
+// under an arrow pointing down (the theme's positive and negative colors)
+var positiveColor = root.interfaceColors.get("positive");
+var negativeColor = root.interfaceColors.get("negative");
+// the fall labels: the theme's dark red reads poorly on a dark background, so there they take a lighter red
+var negativeLabelColor = am5.Color.alternative(root.interfaceColors.get("background"), am5.Color.lighten(negativeColor, 0.4), negativeColor);
 
+for (var i = 0; i < (data.length - 1); i++) {
+  // the change in percent, rounded
+  var change = Math.round((data[i + 1].value - data[i].value) / data[i].value * 100);
+  data[i].valueNext = data[i + 1].value; // where the indicator line ends
+  data[i].change = change;
+  if (change < 0) {
+    data[i].labelSettings = { fill: negativeLabelColor, centerY: 0 }; // red, hanging below the end of the line
+    data[i].arrowSettings = { rotation: 180, dy: -4 }; // pointing down, 4px up so its tip meets the line's end
+  }
+  else {
+    data[i].labelSettings = { fill: positiveColor, centerY: am5.p100 }; // green, sitting above it
+    data[i].arrowSettings = { rotation: 0, dy: 4 }; // pointing up, 4px down so its tip meets the line's end
+  }
+}
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
+  // the gap between years: each year's columns get the middle 80% of its cell
   cellStartLocation: 0.1,
   cellEndLocation: 0.9,
-  minGridDistance: 30,
+  minGridDistance: 30, // years can be 30px apart before labels are skipped
   minorGridEnabled: true
 });
 
@@ -87,18 +110,17 @@ var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
 }));
 
 xRenderer.grid.template.setAll({
-  location: 1
+  location: 1 // grid lines between the years, not through the middle of each
 })
 
 xAxis.data.setAll(data);
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  min: 0,
+  min: 0, // start at zero, so the column heights compare fairly
   renderer: am5xy.AxisRendererY.new(root, {
-    strokeOpacity: 0.1
+    strokeOpacity: 0.1 // a faint axis line
   })
 }));
-
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -113,107 +135,60 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 
 series.columns.template.setAll({
   tooltipText: "{categoryX}: {valueY}",
-  width: am5.percent(90),
-  tooltipY: 0
+  width: am5.percent(90), // columns fill 90% of the year's space
+  tooltipY: 0             // the tooltip points at the top of the column
 });
 
 series.data.setAll(data);
 
-// Variance indicator series
+// Variance indicator series: a thin column from each year's value to the next one's
 var series2 = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
-  valueYField: "valueNext",
-  openValueYField: "value",
+  valueYField: "valueNext", // each line runs up or down to the next year's value...
+  openValueYField: "value", // ...from this year's
   categoryXField: "year",
-  fill: am5.color(0x555555),
-  stroke: am5.color(0x555555)
+  fill: root.interfaceColors.get("text"), // in the text color, so it shows on light and dark
+  stroke: root.interfaceColors.get("text")
 }));
 
 series2.columns.template.setAll({
-  width: 1
+  width: 1 // 1px wide: a line
 });
 
 series2.data.setAll(data);
 
+// The percent change at the end of the line
 series2.bullets.push(function () {
-  var label = am5.Label.new(root, {
-    text: "{valueY}",
-    fontWeight: "500",
-    fill: am5.color(0x00cc00),
-    centerY: am5.p100,
-    centerX: am5.p50,
-    populateText: true
-  });
-
-  // Modify text of the bullet with percent
-  label.adapters.add("text", function (text, target) {
-    var percent = getVariancePercent(target.dataItem);
-    return percent ? percent + "%" : text;
-  });
-
-  // Set dynamic color of the bullet
-  label.adapters.add("centerY", function (center, target) {
-    return getVariancePercent(target.dataItem) < 0 ? 0 : center;
-  });
-
-  // Set dynamic color of the bullet
-  label.adapters.add("fill", function (fill, target) {
-    return getVariancePercent(target.dataItem) < 0 ? am5.color(0xcc0000) : fill;
-  });
-
   return am5.Bullet.new(root, {
-    locationY: 1,
-    sprite: label
+    locationY: 1, // at the end of the line, the next year's value
+    sprite: am5.Label.new(root, {
+      text: "{change}%",
+      fontWeight: "500",             // medium weight
+      centerX: am5.p50,              // centered over the line
+      populateText: true,            // fills in {change} from the data
+      templateField: "labelSettings" // color and side (above or below) from the data
+    })
   });
 });
 
+// The arrowhead, turned down for a fall
 series2.bullets.push(function () {
-  var arrow = am5.Graphics.new(root, {
-    rotation: -90,
-    centerX: am5.p50,
-    centerY: am5.p50,
-    dy: 3,
-    fill: am5.color(0x555555),
-    stroke: am5.color(0x555555),
-    draw: function (display) {
-      display.moveTo(0, -3);
-      display.lineTo(8, 0);
-      display.lineTo(0, 3);
-      display.lineTo(0, -3);
-    }
-  });
-
-  arrow.adapters.add("rotation", function (rotation, target) {
-    return getVariancePercent(target.dataItem) < 0 ? 90 : rotation;
-  });
-
-  arrow.adapters.add("dy", function (dy, target) {
-    return getVariancePercent(target.dataItem) < 0 ? -3 : dy;
-  });
-
   return am5.Bullet.new(root, {
-    locationY: 1,
-    sprite: arrow
-  })
-})
-
+    locationY: 1, // also at the end of the line
+    sprite: am5.Triangle.new(root, {
+      width: 7, // a small 7x8px triangle
+      height: 8,
+      fill: root.interfaceColors.get("text"), // in the text color, like the line
+      templateField: "arrowSettings"          // direction from the data
+    })
+  });
+});
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
-
-
-function getVariancePercent(dataItem) {
-  if (dataItem) {
-    var value = dataItem.get("valueY");
-    var openValue = dataItem.get("openValueY");
-    var change = value - openValue;
-    return Math.round(change / openValue * 100);
-  }
-  return 0;
-}
 ```
 
 ## HTML
@@ -227,7 +202,8 @@ function getVariancePercent(dataItem) {
 ```css
 #chartdiv {
   width: 100%;
-  height: 350px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -236,3 +212,4 @@ function getVariancePercent(dataItem) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

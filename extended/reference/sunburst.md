@@ -2,32 +2,34 @@
 title: "Sunburst"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/sunburst/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Builds a sunburst diagram.
+A sunburst diagram: the hierarchy as rings of slices, each level a ring further out, each node spanning as much of its ring as its value. A click on a node zooms into it.
+
+Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/sunburst/
 
 ## Import
 
-```javascript
-// Import Sunburst
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.Sunburst.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Partition
+Extends: Partition → Hierarchy → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Partition (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **endAngle** (`undefined | number`) — Default 270 End angle of the series.
-- **innerRadius** (`number | Percent`) — Default 0 Inner radius of the suburst pie. Setting to negative number will mean pixels from outer radius.
-- **radius** (`number | Percent`) — Default 100% Outer radius of the sunburst pie.
-- **startAngle** (`undefined | number`) — Default -90 Start angle of the series.
+- Settings: `ISunburstSettings` — get_api_reference shows it after this page
+- Private settings: `ISunburstPrivate`
+- Data item fields: `ISunburstDataItem`
 
 ## Properties
 
-- **labels** (`ListTemplate`) — Default new ListTemplate<RadialLabel> A list of label elements in a Hierarchy chart.
-- **slices** (`ListTemplate`) — Default new ListTemplate<Slice> A list of node slice elements in a Sunburst chart.
+Public properties (not settings):
+
+- **labels** (`ListTemplate<RadialLabel>`) — List of node labels; configure them all through `labels.template`.
+- **slices** (`ListTemplate<Slice>`) — List of node slices; configure them all through `slices.template`.

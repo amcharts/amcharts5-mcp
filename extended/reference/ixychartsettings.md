@@ -2,90 +2,52 @@
 title: "IXYChartSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ixychartsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IXYChartSettings extends ISerialChartSettings.
-IXYChartSettings is extended by IRadarChartSettings, IStockPanelSettings, ICurveChartSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: ISerialChartSettings
-Extended by: IRadarChartSettings, IStockPanelSettings, ICurveChartSettings
+All ancestors: ISerialChartSettings, IChartSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5xy.XYChart` (see its page for the class)
+TypeScript: `am5xy.IXYChartSettings` (`import type { IXYChartSettings } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISerialChartSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **scrollbarX** (`Scrollbar`) — Horizontal scrollbar that zooms and pans the X axes. It goes above the plot area, or below it with the scrollbar's `opposite` set. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+- **scrollbarY** (`Scrollbar`) — Vertical scrollbar that zooms and pans the Y axes. It goes right of the plot area, or left of it with the scrollbar's `opposite` set.
+- **strokeWidths** (`number[]`) — Stroke widths in pixels for line series to cycle through, by each series' index in `series`. Helps tell lines apart without color. _Since 5.20.0._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
+- **strokeDasharrays** (`(number | number[])[]`) — Dash patterns for line series to cycle through, by each series' index in `series`. Each entry is a `strokeDasharray` value; `0` or an empty array draws a solid line. _Since 5.20.0._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
+- **panX** (`boolean`) — default `false` _(theme)_ — Lets the user pan the chart horizontally by dragging the plot area. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Panning
+- **panY** (`boolean`) — default `false` _(theme)_ — Lets the user pan the chart vertically by dragging the plot area. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Panning
+- **wheelX** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY"`) — What scrolling the wheel horizontally over the plot area does: zoom or pan along X, Y or both. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Mouse_wheel_behavior
+- **wheelY** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY"`) — What scrolling the wheel vertically over the plot area does: zoom or pan along X, Y or both. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Mouse_wheel_behavior
+- **wheelStep** (`number`) — default `0.25` _(theme)_ — How far one wheel step zooms or pans, as a share of the visible range.
+- **cursor** (`XYCursor`) — The chart's cursor. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+- **maxTooltipDistance** (`number`) — Limits the cursor's series tooltips to the one closest to the pointer, plus any within this many pixels of it. `-1` shows only the closest one, even when others are at the same spot. If not set, every series shows its tooltip. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#tooltips
+- **maxTooltipDistanceBy** (`"xy" | "x" | "y"`) — default `"xy"` _(code fallback)_ — How `maxTooltipDistance` measures distance: `"xy"` by straight distance, `"x"` or `"y"` along one direction only. _Since 5.2.6._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#tooltips
+- **arrangeTooltips** (`boolean`) — default `true` _(theme)_ — Moves the series tooltips shown by the cursor apart vertically so they don't overlap. Works only with a `cursor`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#tooltips
+- **pinchZoomX** (`boolean`) — default `false` _(theme)_ — Zooms the chart horizontally with a pinch gesture on the plot area. Not supported in a `RadarChart`. _Since 5.1.8._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pinch_zoom
+- **pinchZoomY** (`boolean`) — default `false` _(theme)_ — Zooms the chart vertically with a pinch gesture on the plot area. Not supported in a `RadarChart`. _Since 5.1.8._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pinch_zoom
+- **wheelZoomPositionX** (`number`) — Position (0-1) to zoom the X axes around with the wheel, instead of the pointer's position: `0` keeps the start of the visible range in place, `1` the end. _Since 5.2.11._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Mouse_wheel_behavior
+- **wheelZoomPositionY** (`number`) — Position (0-1) to zoom the Y axes around with the wheel, instead of the pointer's position: `0` keeps the start of the visible range in place, `1` the end. _Since 5.2.11._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Mouse_wheel_behavior
 
-- **arrangeTooltips** (`undefined | false | true`) — Default true If set to false the chart will not check for overlapping of multiple tooltips, and will not arrange them to not overlap. Will work only if chart has an XYCursor enabled. Click here for more info
-- **cursor** (`XYCursor`) — Chart's cursor. Click here for more info
-- **maxTooltipDistance** (`undefined | number`) — If not set (default), cursor will show tooltips for all data items in the same category/date. If set, cursor will select closest data item to pointer (mouse or touch) and show tooltip for it. It will also show tooltips for all data items that are within X pixels range (as set in maxTooltipDistance). Tooltips for data items farther then X pixels, will not be shown. NOTE: set it to -1 to ensure only one tooltip is displayed, even if there are multiple data items in the same place. Click here for more info
-- **maxTooltipDistanceBy** (`"xy" | "x" | "y"`) — Indicates how the distance should be measured when assessing distance between tooltips as set in maxTooltipDistance. Click here for more info @since 5.2.6
-- **panX** (`undefined | false | true`) — If this is set to true, users will be able to pan the chart horizontally by dragging plot area. Click here for more info
-- **panY** (`undefined | false | true`) — If this is set to true, users will be able to pan the chart vertically by dragging plot area. Click here for more info
-- **pinchZoomX** (`undefined | false | true`) — Default false If set to true, using pinch gesture on the chart's plot area will zoom chart horizontally. NOTE: this setting is not supported in a RadarChart. Click here for more info @since 5.1.8
-- **pinchZoomY** (`undefined | false | true`) — Default false If set to true, using pinch gesture on the chart's plot area will zoom chart vertically. NOTE: this setting is not supported in a RadarChart. Click here for more info @since 5.1.8
-- **scrollbarX** (`Scrollbar`) — horizontal scrollbar. Click here for more info
-- **scrollbarY** (`Scrollbar`) — Vertical scrollbar.
-- **strokeDasharrays** (`Array<number | Array<number>>`) — *(since 5.20.0)* A list of stroke dash arrays to cycle through for line series as they are added, the same way colors cycles series colors. Each entry is a strokeDasharray value (an array of dash/gap lengths, or a single number); 0 or an empty array is a solid line.
-- **strokeWidths** (`Array<number>`) — *(since 5.20.0)* A list of stroke widths (in pixels) to cycle through for line series as they are added, the same way colors cycles series colors. Each added line series is given the next width based on its position. Useful for telling line series apart without relying on color (e.g. the "Patterns" theme).
-- **wheelStep** (`undefined | number`) — Default 0.25 Indicates the relative "speed" of the mouse wheel.
-- **wheelX** (`"zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY" | "none"`) — Indicates what happens when mouse wheel is spinned horizontally while over plot area. Click here for more info
-- **wheelY** (`"zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY" | "none"`) — Indicates what happens when mouse wheel is spinned vertically while over plot area. Click here for more info
-- **wheelZoomPositionX** (`undefined | number`) — If set, will use this relative position as a "center" for mouse wheel horizontal zooming instead of actual cursor position. Click here for more info @since 5.2.11
-- **wheelZoomPositionY** (`undefined | number`) — If set, will use this relative position as a "center" for mouse wheel vertical zooming instead of actual cursor position. Click here for more info @since 5.2.11
+## Inherited settings with a different default on XYChart
+
+- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
+- **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
+- **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
+- **paddingBottom** (`number`) — default `16` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
+- **paddingLeft** (`number`) — default `20` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
+- **paddingRight** (`number`) — default `20` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
+- **paddingTop** (`number`) — default `16` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
+- **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISerialChartSettings")`) for types, defaults and descriptions.
+
+- _ISerialChartSettings_: patterns
+- _IContainerSettings_: background, html, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

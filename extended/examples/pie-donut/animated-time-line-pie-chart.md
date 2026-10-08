@@ -2,14 +2,24 @@
 title: "Animated Time-Line Pie Chart"
 source: "https://www.amcharts.com/demos/animated-time-line-pie-chart/"
 category: "pie-donut"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Animated timelines are a great type of infographic. This demo shows how to create a pie chart cycling through datasets from a timeline.
-Key implementation details
-The only thing we need to do manually is set new data items in a loop. And then iterated to the next year. By using the Animated theme you get these nice transitions absolutely free and code-free.
-Data
-Animations
+A donut that plays through 1995 to 2014: every four seconds it moves on a year, and each slice grows or shrinks with its sector’s share of the economy.
+
+When to animate a pie: Animation shows how a split changes over time without a second chart. It catches the eye and tells a story, but people remember the motion more than the numbers. For a careful comparison of years, a stacked column chart works better.
+
+Good for:
+- Telling how an economy or a market shifted
+- Screens and presentations that run on their own
+- One big change over many years
+
+Think twice when:
+- Comparing two exact years: use stacked columns or lines
+- Readers who need to stop and look: show a still chart too
+- Small shifts from year to year: the motion hides them
+
+Prompt: Create a donut chart of an economy’s sectors that plays through twenty years of data on its own, changing to the next year every 4 seconds and looping, with the year in large text in the hole. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -202,21 +212,18 @@ var chartData = {
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
-  innerRadius: 100,
-  layout: root.verticalLayout
+  innerRadius: am5.percent(50) // a donut: the hole is half the radius
 }));
-
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
@@ -225,6 +232,10 @@ var series = chart.series.push(am5percent.PieSeries.new(root, {
   categoryField: "sector"
 }));
 
+series.labels.template.setAll({
+  maxWidth: 150,            // labels at most 150px wide...
+  oversizedBehavior: "wrap" // ...longer names wrap onto more lines
+});
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
@@ -239,25 +250,21 @@ series.data.setAll([
   { sector: "Finance, real estate and business services", size: 22.5 }
 ]);
 
-
 // Play initial series animation
 // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
 series.appear(1000, 100);
 
-
 // Add label
-var label = root.tooltipContainer.children.push(am5.Label.new(root, {
-  x: am5.p50,
-  y: am5.p50,
-  centerX: am5.p50,
+// in the series, so the year stays centered in the donut's hole when the angles move the donut
+var label = series.children.push(am5.Label.new(root, {
+  centerX: am5.p50, // the label's own middle on the pie's center
   centerY: am5.p50,
-  fill: am5.color(0x000000),
-  fontSize: 50
+  fontSize: 50      // 50px digits
 }));
 
-
 // Animate chart data
-var currentYear = 1995;
+var currentYear = 1995; // the year whose data comes next
+// returns that year's data and moves on, back to 1995 after 2014
 function getCurrentData() {
   var data = chartData[currentYear];
   currentYear++;
@@ -266,12 +273,15 @@ function getCurrentData() {
   return data;
 }
 
+// show the year and its data, then again 4 seconds later
 function loop() {
   label.set("text", currentYear);
   var data = getCurrentData();
+  // replace each slice's data in place, so the slices animate to their new sizes
   for(var i = 0; i < data.length; i++) {
     series.data.setIndex(i, data[i]);
   }
+  // the chart's own timer stops when the chart is disposed
   chart.setTimeout( loop, 4000 );
 }
 
@@ -290,6 +300,7 @@ loop();
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -298,3 +309,4 @@ loop();
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,77 +2,28 @@
 title: "IPointedRectangleSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipointedrectanglesettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IPointedRectangleSettings extends IGraphicsSettings.
-IPointedRectangleSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IGraphicsSettings
+All ancestors: IGraphicsSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5.PointedRectangle` (see its page for the class)
+TypeScript: `am5.IPointedRectangleSettings` (`import type { IPointedRectangleSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IGraphicsSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **pointerBaseWidth** (`number`) — default `15` _(theme)_ — Width in pixels of the pointer where it joins the rectangle.
+- **pointerLength** (`number`) — default `10` _(theme)_ — Length of the pointer in pixels. A `Tooltip` keeps its box this far from the point; the shape itself always points to `pointerX` and `pointerY`.
+- **pointerX** (`number`) — default `0` _(code fallback)_ — X of the point the pointer points to, in pixels from the shape's left edge.
+- **pointerY** (`number`) — default `0` _(code fallback)_ — Y of the point the pointer points to, in pixels from the shape's top edge.
+- **cornerRadius** (`number`) — default `8` _(theme)_ — Corner radius in pixels.
 
-- **cornerRadius** (`undefined | number`) — Corner radius in pixels.
-- **pointerBaseWidth** (`undefined | number`) — A width of the pinter's (stem's) thick end (base) in pixels.
-- **pointerLength** (`undefined | number`) — A length of the pinter (stem) in pixels.
-- **pointerX** (`undefined | number`) — X coordinate the shape is pointing to.
-- **pointerY** (`undefined | number`) — Y coordinate the shape is pointing to.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IGraphicsSettings")`) for types, defaults and descriptions.
+
+- _IGraphicsSettings_: blendMode, draw, fill, fillGradient, fillOpacity, fillPattern, lineCap, lineJoin, nonScalingStroke, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, stroke, strokeDasharray, strokeDashoffset, strokeGradient, strokeOpacity, strokePattern, strokeWidth, svgPath
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

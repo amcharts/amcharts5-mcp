@@ -2,44 +2,34 @@
 title: "WordCloud"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/wordcloud/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a WordlCloud series.
+A word cloud: words sized by their values, from `data` or counted in `text`.
+
+Docs: https://www.amcharts.com/docs/v5/charts/word-cloud/
 
 ## Import
 
-```javascript
-// Import WordCloud
-import * as am5wc from "@amcharts/amcharts5/wc"
+```js
+import * as am5wc from "@amcharts/amcharts5/wc";
+
+am5wc.WordCloud.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Series
+Extends: Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Series (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **angles** (`number[]`) — An array of possible rotation angles for words.
-- **animationDuration** (`undefined | number`) — Duration of word animation when chart resizes.
-- **animationEasing** (`undefined | ( t: Time) => Time`) — Default am5.ease.out($ease.cubic) An easing function to use for word animations. Click here for more info
-- **autoFit** (`undefined | false | true`) — Default false
-- **categoryField** (`undefined | string`) — A field in data that holds category names.
-- **colors** (`ColorSet`) — A ColorSet to use when asigning colors for slices.
-- **excludeWords** (`Array`) — Array of words exclude from cloud.
-- **fillField** (`undefined | string`) — A field that holds color for label fill.
-- **maxCount** (`undefined | number`) — Maximum number of words to show.
-- **maxFontSize** (`number | Percent`) — Absolute or relative font size for the biggest words.
-- **minFontSize** (`number | Percent`) — Absolute or relative font size for the smallest words.
-- **minValue** (`undefined | number`) — Minimum occurances for a word to be included into cloud.
-- **minWordLength** (`undefined | number`) — Minimum number of characters for a word to be included in the cloud.
-- **progress** (`undefined | number`) — Progress of current word layout animation. (0-1) @readonly
-- **randomness** (`undefined | number`) — Randomness of word placement (0-1).
-- **step** (`undefined | number`) — Step for next word placement.
-- **text** (`undefined | string`) — Source text from which words are extracted.
+- Settings: `IWordCloudSettings` — get_api_reference shows it after this page
+- Private settings: `IWordCloudPrivate`
+- Data item fields: `IWordCloudDataItem`
 
 ## Properties
 
-- **labels** (`ListTemplate`) — Default this.addDisposer(this._makeLabels()) A ListTemplate of all labels in series. labels.template can also be used to configure labels.
+Public properties (not settings):
+
+- **labels** (`ListTemplate<Label>`) — Labels of all words. Configure them through `labels.template`.
+- **shape** (`Graphics`) — Draws the `svgPath` shape behind the words, while it is set: a faint silhouette by default. Style it with `series.shape.setAll({ ... })`; its geometry and visibility are the series'. _Since 5.20.1._

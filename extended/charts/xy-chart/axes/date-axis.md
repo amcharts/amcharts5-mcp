@@ -1,7 +1,7 @@
 ---
 title: "Date axis"
 source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Date axis is used to display date-based data with a natural time scale.
@@ -38,6 +38,8 @@ var xAxis = chart.xAxes.push(
 The `timeUnit` can be one of the following: `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, `"year"`.
 
 NOTE A lot of of other aspects and functionality of a date axis depends on a value of `baseInterval` as we will see throughout this tutorial.
+
+IMPORTANT For month-based date axes, the value of `count` for `baseInterval` must be a divider of 12, i.e. `1`, `2`, `3`, `4`, `6`, `12`, `24`, etc.
 
 ## Grid granularity
 
@@ -187,7 +189,9 @@ xAxis.get("dateFormats")\["day"\] = "MM/dd";
 
 xAxis.get("dateFormats")\["day"\] = "MM/dd";
 
+
 Default format
+
 
 `dateFormats` modified
 
@@ -223,7 +227,9 @@ xAxis.get("periodChangeDateFormats")\["day"\] = "MMM";
 
 xAxis.get("periodChangeDateFormats")\["day"\] = "MMM";
 
+
 Default format
+
 
 Both label and period label formats customized
 
@@ -325,9 +331,12 @@ The default of `-0.5` ensures that the tooltip uses a cell's beginning timestamp
 
 Resetting it to `0` (zero) would make it display timestamp from the actual position of the cursor's line.
 
+
 `tooltipIntervalOffset: -0.5` (default)
 
+
 `tooltipIntervalOffset: 0`
+
 
 `tooltipIntervalOffset: 0.5`
 

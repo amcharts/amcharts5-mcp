@@ -2,20 +2,26 @@
 title: "ZoomControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/zoomcontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A control that displays button for zooming MapChart in and out.
+Buttons that zoom a `MapChart` in and out, set as its `zoomControl`. A home button is there too, hidden by default.
+
+Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
 
 ## Import
 
-```javascript
-// Import ZoomControl
-import * as am5map from "@amcharts/amcharts5/map"
+```js
+import * as am5map from "@amcharts/amcharts5/map";
+
+am5map.ZoomControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ZoomTools
+Extends: ZoomTools → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ZoomTools (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IZoomControlSettings` — get_api_reference shows it after this page
+- Private settings: `IZoomControlPrivate`

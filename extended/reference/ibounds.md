@@ -2,20 +2,17 @@
 title: "IBounds"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ibounds/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
-Extends: any
-
-> **Note:** This class also inherits all settings, properties, methods, and events from any (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+Extends: (none)
+TypeScript: `am5.IBounds` (`import type { IBounds } from "@amcharts/amcharts5"`)
 
 ## Properties
 
-- **bottom** (`number`) — (no description)
-- **left** (`number`) — (no description)
-- **right** (`number`) — (no description)
-
+- **left** (`number`)
+- **right** (`number`)
+- **top** (`number`)
+- **bottom** (`number`)

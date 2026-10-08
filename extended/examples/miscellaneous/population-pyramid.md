@@ -2,16 +2,24 @@
 title: "Population Pyramid"
 source: "https://www.amcharts.com/demos/population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A population pyramid, also called an "age-sex-pyramid" or "mirror bar chart", is a graphical illustration that shows the distribution of various age groups in a population.
-Combined and linked with a map chart we get a great interactive visual that lets viewers easily analyze the data across regions.
-XY chart
-Column series
-Map chart
-Map polygon series
-Events
+A population pyramid puts men and women back to back, one bar per age group, the youngest at the bottom: its shape shows how old a population is. Here, the United States; click a state on the map for its own pyramid.
+
+When a population pyramid works: A pyramid shows a whole population at a glance: a wide base means many children, a straight column an aging population, and the two halves show where men and women differ. Shares rather than counts let a small state be compared with the whole country.
+
+Good for:
+- Age and sex of a country, state or city
+- Comparing regions of very different size
+- Customers or staff by age group
+
+Think twice when:
+- Change over time: link it to a timeline, or show two pyramids
+- Uneven age groups: a 3-year group looks short next to a 5-year one
+- More than two groups per age: use a stacked bar chart
+
+Prompt: Create a population pyramid of US census data by sex and age group next to a map of the United States. Clicking a state shows that state’s pyramid, and clicking it again goes back to the whole country. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -97,7 +105,6 @@ var usData = [{
   "male": 2000771,
   "female": 3937981
 }];
-
 
 var stateData = {
   "AK": [{
@@ -4080,6 +4087,7 @@ var stateData = {
   ]
 };
 
+// each age group's share of its sex in %, with males negative so their bars go left
 function aggregateData(list) {
   var maleTotal = 0;
   var femaleTotal = 0;
@@ -4099,33 +4107,32 @@ function aggregateData(list) {
   return list;
 }
 
-usData = aggregateData(usData);
-
+usData = aggregateData(usData); // shares for the whole country, shown first
 
 // ===========================================================
 // Root and wrapper container
 // ===========================================================
 
-// Create root and chart
+// Create root
 var root = am5.Root.new("chartdiv");
 
 // Set themes
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create wrapper container
 var container = root.container.children.push(am5.Container.new(root, {
-  layout: root.horizontalLayout,
-  width: am5.p100,
-  height: am5.p100
+  layout: root.horizontalLayout, // the pyramid and the map side by side
+  width: am5.p100,               // filling the chart div
+  height: am5.p100               // in both directions
 }))
 
 // Set up formats
 root.numberFormatter.setAll({
-  numberFormat: "#.##as"
+  numberFormat: "#.##as" // big numbers shortened (1.2M), and no minus sign
 });
-
 
 // ===========================================================
 // XY chart
@@ -4133,41 +4140,45 @@ root.numberFormatter.setAll({
 
 // Create chart
 var chart = container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
+  panX: false, // no dragging the plot around
   panY: false,
   wheelX: "none",
   wheelY: "none",
   layout: root.verticalLayout,
-  width: am5.percent(60)
+  width: am5.percent(60) // the pyramid takes 60% of the width, the map the rest
 }));
 
 // Create axes
 var yAxis1 = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "age",
   renderer: am5xy.AxisRendererY.new(root, {
-    minorGridEnabled: true,
-    minGridDistance: 15
+    minorGridEnabled: true, // age groups whose label is skipped still get a faint grid line
+    minGridDistance: 15     // at least 15px between labels; when rows get short, some are skipped
   })
 }));
-yAxis1.get("renderer").grid.template.set("location", 1);
-yAxis1.get("renderer").labels.template.set("fontSize", 12);
+yAxis1.get("renderer").grid.template.set("location", 1); // grid lines between the age groups, not mid-row
+yAxis1.get("renderer").labels.template.set("fontSize", 12); // smaller labels, so more of them fit
 yAxis1.data.setAll(usData);
 
+// The same age groups on the right, for the female side: every label, and no second set of grid lines
 var yAxis2 = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "age",
   renderer: am5xy.AxisRendererY.new(root, {
-    opposite: true
+    opposite: true,
+    minGridDistance: 15
   })
 }));
-yAxis2.get("renderer").labels.template.set("fontSize", 12);
+yAxis2.get("renderer").grid.template.set("forceHidden", true);
+yAxis2.get("renderer").labels.template.set("fontSize", 12); // the same smaller labels as on the left
 yAxis2.data.setAll(usData);
 
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-  min: -10,
-  max: 10,
+  min: -10, // males to the left, down to -10%...
+  max: 10,  // ...females to the right, up to 10%
+  // s drops the minus sign, so the male side reads 5% rather than -5%
   numberFormat: "#.s'%'",
   renderer: am5xy.AxisRendererX.new(root, {
-    minGridDistance: 40
+    minGridDistance: 40 // at least 40px between the % labels
   })
 }));
 
@@ -4178,62 +4189,59 @@ var maleSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
   yAxis: yAxis1,
   valueXField: "malePercent",
   categoryYField: "age",
+  // males and females share each row at full height, instead of half a row each
   clustered: false
 }));
 
-
 maleSeries.columns.template.setAll({
   tooltipText: "Males, age {categoryY}: {male} ({malePercent.formatNumber('#.0s')}%)",
-  tooltipX: am5.p100
+  tooltipX: am5.p100 // the tooltip points at the bar's right end, on the center line
 });
 
 maleSeries.data.setAll(usData);
 
 var femaleSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
-  name: "Males",
+  name: "Females",
   xAxis: xAxis,
   yAxis: yAxis1,
   valueXField: "femalePercent",
   categoryYField: "age",
-  clustered: false
+  clustered: false // full row height too, on the same row as the males
 }));
 
 femaleSeries.columns.template.setAll({
-  tooltipText: "Males, age {categoryY}: {female} ({femalePercent.formatNumber('#.0s')}%)",
-  tooltipX: am5.p100
+  tooltipText: "Females, age {categoryY}: {female} ({femalePercent.formatNumber('#.0s')}%)",
+  tooltipX: am5.p100 // the tooltip points at the bar's right end, its tip
 });
 
 femaleSeries.data.setAll(usData);
 
-// Add labels
+// Add labels, on a see-through background in the chart's own color, so the text stays readable over the bars
 var maleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
   text: "Males",
-  fontSize: 20,
-  y: 5,
-  x: 5,
-  //centerX: am5.p50,
-  fill: maleSeries.get("fill"),
+  fontSize: 20, // large text, in pixels
+  y: 5, // 5px from the top of the plot
+  x: 5, // and 5px from its left edge
+  fill: maleSeries.get("fill"), // the color of the male bars
   background: am5.RoundedRectangle.new(root, {
-    fill: am5.color(0xffffff),
-    fillOpacity: 0.5
+    fill: root.interfaceColors.get("background"),
+    fillOpacity: 0.7
   })
 }));
 
 var femaleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
   text: "Females",
-  fontSize: 20,
-  y: 5,
-  x: am5.p100,
-  centerX: am5.p100,
-  dx: -5,
-  fill: femaleSeries.get("fill"),
+  fontSize: 20, // large text, in pixels
+  y: 5, // 5px from the top of the plot
+  x: am5.p100, // at the plot's right edge...
+  centerX: am5.p100, // ...measured to the label's right edge...
+  dx: -5, // ...then 5px back in
+  fill: femaleSeries.get("fill"), // the color of the female bars
   background: am5.RoundedRectangle.new(root, {
-    fill: am5.color(0xffffff),
-    fillOpacity: 0.5
+    fill: root.interfaceColors.get("background"),
+    fillOpacity: 0.7
   })
 }));
-
-
 
 // ===========================================================
 // Map chart
@@ -4242,68 +4250,87 @@ var femaleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
 // Create chart
 var map = container.children.push(
   am5map.MapChart.new(root, {
-    panX: "none",
+    minZoomLevel: 0.5, // can zoom out to half the size of the fitted map
+    // go to the home view once the map is fitted
+    autoHome: true,
+    panX: "none",                      // the map doesn't move when dragged...
     panY: "none",
-    wheelY: "none",
-    projection: am5map.geoAlbersUsa(),
-    width: am5.percent(40)
+    wheelY: "none",                    // ...and the wheel scrolls the page instead of zooming
+    projection: am5map.geoAlbersUsa(), // Albers USA: Alaska and Hawaii moved in below the other states
+    width: am5.percent(40)             // the right 40% of the width
   })
 );
 
-chart.getTooltip().set("autoTextColor", false);
+chart.getTooltip().set("autoTextColor", false); // tooltip text keeps the theme's text color
 
 // Title
 var title = map.children.push(am5.Label.new(root, {
   text: "United States",
-  fontSize: 20,
-  y: 20,
-  x: am5.p50,
-  centerX: am5.p50,
-  background: am5.Rectangle.new(root, {
-    fill: am5.color(0xffffff),
-    fillOpacity: 0.5
+  fontSize: 20, // large text, in pixels
+  y: 20, // 20px from the top
+  x: am5.p50, // centered: the label's middle...
+  centerX: am5.p50, // ...at the middle of the map
+  background: am5.Rectangle.new(root, { // a see-through backing keeps the title readable over the states
+    fill: root.interfaceColors.get("background"),
+    fillOpacity: 0.7
   })
 }));
 
 // Create polygon series
 var polygonSeries = map.series.push(
   am5map.MapPolygonSeries.new(root, {
-    fill: am5.color(0x999999),
+    fill: root.interfaceColors.get("disabled"), // the theme's gray for the states
     geoJSON: am5geodata_usaLow
   })
 );
 
 polygonSeries.mapPolygons.template.setAll({
-  tooltipText: "{name}",
-  interactive: true
+  tooltipText: "{name}", // the state's name, from the map data
+  interactive: true      // reacts to hover and clicks
 });
 
 polygonSeries.mapPolygons.template.states.create("hover", {
-  fill: chart.get("colors").getIndex(2)
+  fill: chart.get("colors").getIndex(2) // the state under the pointer turns the third chart color
 });
 
 polygonSeries.mapPolygons.template.states.create("active", {
-  fill: chart.get("colors").getIndex(3)
+  fill: chart.get("colors").getIndex(3) // the picked state keeps the fourth color
 });
 
+// Show the age groups of a state, or of the whole country. The state data lists the age groups in
+// alphabetical order, so each row goes to the place of its age group in the pyramid
+function showData(list, name) {
+  var data = aggregateData(list);
+  for (var i = 0; i < usData.length; i++) {
+    var row = data.find(function(item) { return item.age == usData[i].age; });
+    maleSeries.data.setIndex(i, row);
+    femaleSeries.data.setIndex(i, row);
+  }
+  title.set("text", name);
+}
+
+// Click a state to show its pyramid; click it again to go back to the whole country
 var activePolygon;
 polygonSeries.mapPolygons.template.events.on("click", function (ev) {
   if (activePolygon) {
     activePolygon.set("active", false);
   }
+  if (activePolygon == ev.target) {
+    activePolygon = undefined;
+    showData(usData, "United States");
+    return;
+  }
   activePolygon = ev.target;
   activePolygon.set("active", true);
+  // map ids look like US-CA: the state data uses only the part after the dash
   var state = ev.target.dataItem.dataContext.id.split("-").pop();
-  var data = aggregateData(stateData[state]);
-
-  for (var i = 0; i < data.length; i++) {
-    maleSeries.data.setIndex(i, data[i]);
-    femaleSeries.data.setIndex(i, data[i]);
-  }
-
-
-  title.set("text", ev.target.dataItem.dataContext.name);
+  showData(stateData[state], ev.target.dataItem.dataContext.name);
 });
+
+// Make stuff animate on load
+// https://www.amcharts.com/docs/v5/concepts/animations/
+chart.appear(1000, 100);
+map.appear(1000, 100);
 ```
 
 ## HTML
@@ -4318,6 +4345,7 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -4328,3 +4356,4 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/usaLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

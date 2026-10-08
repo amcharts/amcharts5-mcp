@@ -2,75 +2,37 @@
 title: "IFibonacciSeriesSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ifibonacciseriessettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IFibonacciSeriesSettings extends ISimpleLineSeriesSettings.
-IFibonacciSeriesSettings is extended by IFibonacciTimezoneSeriesSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: ISimpleLineSeriesSettings
-Extended by: IFibonacciTimezoneSeriesSettings
+All ancestors: ISimpleLineSeriesSettings, IDrawingSeriesSettings, ILineSeriesSettings, IXYSeriesSettings, ISeriesSettings, IComponentSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5stock.FibonacciSeries` (see its page for the class)
+TypeScript: `am5stock.IFibonacciSeriesSettings` (`import type { IFibonacciSeriesSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISimpleLineSeriesSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **sequence** (`number[]`) — default `[0, 0.236, 0.382, 0.5, 0.618, 0.768, 1, 1.618, 2.618, 3.618, 4.236]` _(theme)_ — Levels to draw, as fractions of the drawn move: `0` is at the second point, `1` at the first, and higher values go beyond it.
+- **colors** (`Color[]`) — default `[am5.color(0x868686), am5.color(0xed483c), am5.color(0x83c486), am5.color(0x4fab53), am5.color(0x059183), am5.color(0x69b4f1), am5.color(0x868686), am5.color(0x3065f8), am5.color(0xed483c), am5.col…` _(theme)_ — Colors of the levels' lines and bands, in the order of `sequence`.
 
-- **colors** (`Array`) — Array of colors to use for bands.
-- **sequence** (`Array`) — Sequence.
+## Inherited settings with a different default on FibonacciSeries
+
+- **excludeFromAggregate** (`string[]`) — default `["valueX"]` _(theme)_ — _from ISeriesSettings_ — Fields to leave out of `calculateAggregates`, to save work where their aggregates are not needed. _Since 5.14.4._
+- **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISimpleLineSeriesSettings")`) for types, defaults and descriptions.
+
+- _ISimpleLineSeriesSettings_: showExtension
+- _IDrawingSeriesSettings_: field, fillColor, fillOpacity, selectorPadding, series, snapToData, strokeColor, strokeDasharray, strokeOpacity, strokeWidth, xAxis, yAxis
+- _ILineSeriesSettings_: autoGapCount, connect, curveFactory, minDistance
+- _IXYSeriesSettings_: baseAxis, categoryXField, categoryYField, exactLocationX, exactLocationY, excludeFromTotal, groupDataCallback, groupDataDisabled, groupDataWithOriginals, highLocationX, highLocationY, highValueXField, highValueXGrouped, highValueXShow, highValueYField, highValueYGrouped, highValueYShow, ignoreMinMax, legendRangeLabelText, legendRangeValueText, locationX, locationY, lowLocationX, lowLocationY, lowValueXField, lowValueXGrouped, lowValueXShow, lowValueYField, lowValueYGrouped, lowValueYShow, maskBullets, minBulletDistance, openCategoryXField, openCategoryYField, openLocationX, openLocationY, openValueXField, openValueXGrouped, openValueXShow, openValueYField, openValueYGrouped, openValueYShow, seriesTooltipTarget, snapTooltip, stacked, tooltipDataItem, tooltipPositionX, tooltipPositionY, useSelectionExtremes, valueXField, valueXGrouped, valueXShow, valueYField, valueYGrouped, valueYShow, vcx, vcy
+- _ISeriesSettings_: calculateAggregates, customValueField, fill, fillGradient, fillPattern, heatRules, idField, legendDataItem, legendValueText, linkTarget, name, sequencedDelay, sequencedInterpolation, stroke, strokeGradient, urlField, valueField
+- _IComponentSettings_: interpolationDuration, interpolationEasing
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,13 +2,17 @@
 title: "Children"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/children/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A version of List to hold children of the Container.
+A version of `List` to hold children of the `Container`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/
+
+## Import
+
+Not exported from any `@amcharts/amcharts5` entry point (internal class).
 
 ## Inheritance
 
 Extends: List
-
-> **Note:** This class also inherits all settings, properties, methods, and events from List (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.

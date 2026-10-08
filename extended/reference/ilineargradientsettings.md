@@ -2,73 +2,23 @@
 title: "ILinearGradientSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilineargradientsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ILinearGradientSettings extends IGradientSettings.
-ILinearGradientSettings is not extended by any other symbol.
-Properties
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        rotation        
-        #
-      
-
-
-                          Type undefined | number                      
-Default 90
-
-Gradient rotation, in degrees.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stops        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IGradientSettings
-A list of color steps for the gradient.
 
 ## Inheritance
 
 Extends: IGradientSettings
+All ancestors: IGradientSettings, IEntitySettings
+Settings of: `am5.LinearGradient` (see its page for the class)
+TypeScript: `am5.ILinearGradientSettings` (`import type { ILinearGradientSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IGradientSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **rotation** (`number`) — default `90` _(theme)_ — Direction of the gradient in degrees: `0` runs from left to right, `90` from top to bottom.
 
-- **rotation** (`undefined | number`) — Default 90 Gradient rotation, in degrees.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IGradientSettings")`) for types, defaults and descriptions.
+
+- _IGradientSettings_: stops, target
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

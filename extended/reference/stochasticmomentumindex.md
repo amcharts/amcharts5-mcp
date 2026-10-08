@@ -2,32 +2,33 @@
 title: "StochasticMomentumIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stochasticmomentumindex/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
-@since 5.5.3
+Stochastic Momentum Index indicator: where the price is relative to the middle of the high-low range of the last `period` data items, smoothed and scaled to `-100` to `100`. Drawn in a panel of its own.
+
+_Since 5.5.3._ Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import StochasticMomentumIndex
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.StochasticMomentumIndex.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: OverboughtOversold
+Extends: OverboughtOversold → ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from OverboughtOversold (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **dPeriod** (`undefined | number`) — D period.
-- **emaColor** (`Color`) — A color for "ema" line.
-- **emaPeriod** (`undefined | number`) — EMA period.
-- **kPeriod** (`undefined | number`) — K period.
+- Settings: `IStochasticMomentumIndexSettings` — get_api_reference shows it after this page
+- Private settings: `IStochasticMomentumIndexPrivate`
+- Events: `IStochasticMomentumIndexEvents`
 
 ## Properties
 
-- **emaSeries** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **emaSeries** (`LineSeries`) — Series of the signal line (`emaPeriod`).

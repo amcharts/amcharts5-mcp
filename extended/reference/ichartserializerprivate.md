@@ -2,13 +2,15 @@
 title: "IChartSerializerPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichartserializerprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: ISerializerPrivate
+All ancestors: ISerializerPrivate, IEntityPrivate
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISerializerPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
+
+_(none)_

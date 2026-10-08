@@ -2,14 +2,24 @@
 title: "Crypto Order Book Depth Chart"
 source: "https://www.amcharts.com/demos/live-order-book-depth-chart/"
 category: "line-area"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This order book depth chart (market depth chart) is built in JavaScript with a standard amCharts 5 XYChart. It plots cumulative bids and asks as step lines, with the volume at each price level as columns, using live order book data for the ETH/BTC pair (Ether priced in bitcoin).
-Live data loading and processing
-The chart uses amCharts 5 built-in external data loading (am5.net.load()) to fetch the top 50 bids and asks from the public Binance market data API. The endpoint allows cross-origin requests and needs no API key, so the data loads directly in the browser.
-Each price/volume pair is sorted and accumulated into running totals before it is set as chart data. The order book reloads every 30 seconds; if a request fails, the demo falls back to a built-in sample order book.
-More about loading external data
+A market depth chart built from the live ETH/BTC order book on Binance and reloaded every 30 seconds: buy orders in green, sell orders in red.
+
+Reading market depth: Each line is a running total: the green one adds up buy orders from the best bid outward, the red one sell orders from the best ask outward. Steep walls are large orders that could hold the price back, the gap in the middle is the spread, and the faint columns show the volume at each single price.
+
+Good for:
+- Crypto and stock trading dashboards
+- Spotting large orders that act as support or resistance
+- Showing how much can trade near the current price
+
+Think twice when:
+- Price history: use a candlestick or line chart
+- Thin markets with few orders: the steps say little
+- Audiences new to trading: explain bids and asks first
+
+Prompt: Create a live market depth chart for ETH/BTC from Binance’s public order book API (https://data-api.binance.vision/api/v3/depth?symbol=ETHBTC&limit=50), reloaded every 30 seconds. Show the cumulative bids and asks as step lines with faint fills, and the volume at each price as faint columns. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,46 +31,50 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true,
-    panX: false,
-    panY: false,
-    wheelX: "none",
-    wheelY: "none"
+    focusable: true, // the chart can be reached with the Tab key
+    panX: false,     // no dragging to pan, sideways...
+    panY: false,     // ...or up and down...
+    wheelX: "none",  // ...and the mouse wheel...
+    wheelY: "none"   // ...does nothing: the whole order book stays in view
   })
 );
 
-// Chart title
-var title = chart.plotContainer.children.push(am5.Label.new(root, {
-  text: "Price (BTC/ETH)",
-  fontSize: 20,
-  fontWeight: "400",
-  x: am5.p50,
-  centerX: am5.p50
-}))
+// Add scrollbar, hidden at first
+// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "value",
   renderer: am5xy.AxisRendererX.new(root, {
-    minGridDistance: 70
+    minGridDistance: 70 // at least 70px between labels; on narrow screens some are skipped
   }),
-  tooltip: am5.Tooltip.new(root, {})
+  tooltip: am5.Tooltip.new(root, {}) // a price label follows the cursor along the axis
 }));
 
+// Prices come in as text: show them as numbers with five decimals
 xAxis.get("renderer").labels.template.adapters.add("text", function(text, target) {
   if (target.dataItem) {
-    return root.numberFormatter.format(Number(target.dataItem.get("category")), "#.####");
+    return root.numberFormatter.format(Number(target.dataItem.get("category")), "#.00000");
   }
   return text;
 });
+
+// Axis title
+xAxis.children.push(am5.Label.new(root, {
+  text: "Price (BTC per ETH)",
+  x: am5.p50,      // in the middle of the axis...
+  centerX: am5.p50 // ...anchored by its center
+}));
 
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -68,6 +82,15 @@ var yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+
+// Axis title
+// unshift makes the title the axis's first child, so it sits left of the labels
+yAxis.children.unshift(am5.Label.new(root, {
+  text: "Volume (ETH)",
+  rotation: -90,   // reads bottom to top
+  y: am5.p50,      // halfway up the axis...
+  centerX: am5.p50 // ...centered on that point (the label is turned)
+}));
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -78,17 +101,18 @@ var bidsTotalVolume = chart.series.push(am5xy.StepLineSeries.new(root, {
   yAxis: yAxis,
   valueYField: "bidstotalvolume",
   categoryXField: "value",
-  stroke: am5.color(0x00ff00),
-  fill: am5.color(0x00ff00),
+  stroke: root.interfaceColors.get("positive"), // the theme's color for positive values, green by default
+  fill: root.interfaceColors.get("positive"),   // the area below the steps in the same color
   tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "horizontal",
-    labelText: "[width: 120px]Ask:[/][bold]{categoryX}[/]\n[width: 120px]Total volume:[/][bold]{valueY}[/]\n[width: 120px]Volume:[/][bold]{bidsvolume}[/]"
+    pointerOrientation: "horizontal", // the tooltip sits beside the cursor point, not above it
+    // [width: 120px] gives each caption the same width, so the values line up
+    labelText: "[width: 120px]Bid:[/][bold]{categoryX}[/]\n[width: 120px]Total volume:[/][bold]{valueY}[/]\n[width: 120px]Volume:[/][bold]{bidsvolume}[/]"
   })
 }));
-bidsTotalVolume.strokes.template.set("strokeWidth", 2)
+bidsTotalVolume.strokes.template.set("strokeWidth", 2) // a 2px line
 bidsTotalVolume.fills.template.setAll({
-  visible: true,
-  fillOpacity: 0.2
+  visible: true,   // fill the area under the steps...
+  fillOpacity: 0.2 // ...faintly
 });
 
 var asksTotalVolume = chart.series.push(am5xy.StepLineSeries.new(root, {
@@ -97,26 +121,28 @@ var asksTotalVolume = chart.series.push(am5xy.StepLineSeries.new(root, {
   yAxis: yAxis,
   valueYField: "askstotalvolume",
   categoryXField: "value",
-  stroke: am5.color(0xf00f00),
-  fill: am5.color(0xff0000),
+  stroke: root.interfaceColors.get("negative"), // the theme's color for negative values, red by default
+  fill: root.interfaceColors.get("negative"),   // the area below the steps in the same color
   tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "horizontal",
+    pointerOrientation: "horizontal", // the tooltip sits beside the cursor point, not above it
     labelText: "[width: 120px]Ask:[/][bold]{categoryX}[/]\n[width: 120px]Total volume:[/][bold]{valueY}[/]\n[width: 120px]Volume:[/][bold]{asksvolume}[/]"
   })
 }));
-asksTotalVolume.strokes.template.set("strokeWidth", 2)
+asksTotalVolume.strokes.template.set("strokeWidth", 2) // a 2px line
 asksTotalVolume.fills.template.setAll({
-  visible: true,
-  fillOpacity: 0.2
+  visible: true,   // fill the area under the steps...
+  fillOpacity: 0.2 // ...faintly
 });
 
+// Volume at each price. The fill is the theme's contrast color (black, or white in
+// dark mode), faded, so the columns show on any background.
 var bidVolume = chart.series.push(am5xy.ColumnSeries.new(root, {
   minBulletDistance: 10,
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "bidsvolume",
   categoryXField: "value",
-  fill: am5.color(0x000000)
+  fill: root.interfaceColors.get("alternativeBackground")
 }));
 bidVolume.columns.template.set("fillOpacity", 0.2);
 
@@ -126,21 +152,22 @@ var asksVolume = chart.series.push(am5xy.ColumnSeries.new(root, {
   yAxis: yAxis,
   valueYField: "asksvolume",
   categoryXField: "value",
-  fill: am5.color(0x000000)
+  fill: root.interfaceColors.get("alternativeBackground")
 }));
 asksVolume.columns.template.set("fillOpacity", 0.2);
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-  xAxis: xAxis
+  xAxis: xAxis // the cursor snaps to the prices on this axis
 }));
-cursor.lineY.set("visible", false);
+cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // Data loader
 function loadData() {
+  // the top 50 bids and asks for ETH/BTC from Binance's public API
   am5.net.load("https://data-api.binance.vision/api/v3/depth?symbol=ETHBTC&limit=50").then(function(result) {
-    var data = am5.JSONParser.parse(result.response);
+    var data = am5.JSONParser.parse(result.response); // turn the response text into an object
     parseData(data);
   }).catch(function() {
     // Failed to load
@@ -155,11 +182,16 @@ function loadData() {
   });
 }
 
+// one data row per price, from both bids and asks, for the axis and all four series
 function parseData(data) {
+  // The chart may have been removed while the data was on its way
+  if (root.isDisposed()) {
+    return;
+  }
   var res = [];
-  processData(data.bids, "bids", true, res);
-  processData(data.asks, "asks", false, res);
-  xAxis.data.setAll(res);
+  processData(data.bids, "bids", true, res);  // bids first, in rising price order...
+  processData(data.asks, "asks", false, res); // ...then the asks above them
+  xAxis.data.setAll(res);                     // one category per price
   bidsTotalVolume.data.setAll(res);
   asksTotalVolume.data.setAll(res);
   bidVolume.data.setAll(res);
@@ -168,10 +200,10 @@ function parseData(data) {
 
 loadData();
 
+// Load fresh data every 30 seconds
 setInterval(loadData, 30000);
 
-
-// Function to process (sort and calculate cummulative volume)
+// Function to process (sort and calculate cumulative volume)
 function processData(list, type, desc, res) {
 
   // Convert to data points
@@ -195,8 +227,9 @@ function processData(list, type, desc, res) {
     }
   });
 
-  // Calculate cummulative volume
+  // Calculate cumulative volume
   if (desc) {
+    // bids add up from the highest price down, each one put in front of the last
     for(var i = list.length - 1; i >= 0; i--) {
       if (i < (list.length - 1)) {
         list[i].totalvolume = list[i+1].totalvolume + list[i].volume;
@@ -212,6 +245,7 @@ function processData(list, type, desc, res) {
     }
   }
   else {
+    // asks add up from the lowest price up, each one put after the last
     for(var i = 0; i < list.length; i++) {
       if (i > 0) {
         list[i].totalvolume = list[i-1].totalvolume + list[i].volume;
@@ -242,6 +276,7 @@ function processData(list, type, desc, res) {
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -250,3 +285,4 @@ function processData(list, type, desc, res) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

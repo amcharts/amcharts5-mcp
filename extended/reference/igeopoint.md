@@ -2,12 +2,15 @@
 title: "IGeoPoint"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/igeopoint/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: `am5.IGeoPoint` (`import type { IGeoPoint } from "@amcharts/amcharts5"`)
 
 ## Properties
 
-- **latitude** (`number`) — (no description)
-
+- **longitude** (`number`)
+- **latitude** (`number`)

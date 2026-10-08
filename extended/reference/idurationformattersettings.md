@@ -2,36 +2,25 @@
 title: "IDurationFormatterSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idurationformattersettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IDurationFormatterSettings extends IEntitySettings.
-IDurationFormatterSettings is not extended by any other symbol.
-Properties
-
-
-        baseUnit        
-        #
-      
-
-
-                          Type TimeUnit                      
-Default "second"
-
-Identifies what values are used in duration.
- Available options: "millisecond", "second" (default), "minute", "hour", "day", "week", "month", and "year".
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.DurationFormatter` (see its page for the class)
+TypeScript: `am5.IDurationFormatterSettings` (`import type { IDurationFormatterSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **durationFormat** (`string`) — Format for every duration that is not given its own format. Overrides `durationFormats`.
+- **negativeBase** (`number`) — default `0` — Values below this are negative: they use the negative part of the format (after the first `|`) and get a minus sign. A value equal to it uses the zero part (after the second `|`).
+- **baseUnit** (`TimeUnit`) — default `"second"` — Unit of the numbers being formatted: `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"` or `"year"`. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-durations/#Base_unit
+- **durationFormats** (`Partial<Record<TimeUnit, Partial<Record<TimeUnit, string>>>>`) — Formats picked when `durationFormat` is not set, by base unit and by the largest unit the value reaches: `durationFormats[baseUnit][unit]`. Also used by `DurationAxis`.
+- **durationFields** (`string[]`) — Data fields that hold durations. Text placeholders with these fields are formatted as durations even without `formatDuration()`. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/#Formatting_placeholders
 
-- **baseUnit** (`TimeUnit`) — Default "second" Identifies what values are used in duration. Available options: "millisecond", "second" (default), "minute", "hour", "day", "week", "month", and "year". Click here for more info
-- **durationFields** (`string[]`) — An array of data fields that hold duration values and should be formatted with a DurationFormatter. Click here for more info
-- **durationFormat** (`undefined | string`) — A universal duration format to use wherever number needs to be formatted as a duration.
-- **durationFormats** (`Partial`) — Time unit dependent duration formats. Used be DurationAxis.
-- **negativeBase** (`undefined | number`) — Default 0 A base value. Any number below it will be considered "negative".
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

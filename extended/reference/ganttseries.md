@@ -2,45 +2,46 @@
 title: "GanttSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ganttseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A series used in Gantt chart to display tasks and their progress.
+Series of a `Gantt` chart: draws the task bars, their progress and the links between tasks, and lets the user drag and resize them.
+
+_Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Gantt_series
 
 ## Import
 
-```javascript
-// Import GanttSeries
-import * as am5gantt from "@amcharts/amcharts5/gantt"
+```js
+import * as am5gantt from "@amcharts/amcharts5/gantt";
+
+am5gantt.GanttSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ColumnSeries
+Extends: ColumnSeries → BaseColumnSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ColumnSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **durationField** (`undefined | string`) — Default "duration" A field in data that holds duration of the task. Click here for more info
-- **linkHorizontalOffset** (`undefined | number`) — Default 25 A distance in pixels that link should be protracted from the edge of the task bars.
-- **linkToField** (`undefined | string`) — Default "linkTo" A field in data that holds and ID of the task it is linked to. Click here for more info
-- **progressField** (`undefined | string`) — Default "progress" A field in data that holds progress of the task. Click here for more info
-- **snapCount** (`undefined | number`) — Default 1 When dragging/resizing a column, how many units should it snap to.
-- **xAxis** (`GanttDateAxis`) — A reference to the x-axis of the Gantt chart.
+- Settings: `IGanttSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IGanttSeriesPrivate`
+- Data item fields: `IGanttSeriesDataItem`
 
 ## Properties
 
-- **connectorArrow** (`Triangle`) — Default this.children.push(Triangle.new(this._root, { themeTags: ["connectorarrow"], visible: false, forceInactive: true })) A triangle that is shown at the end of the connector line, while creating a connector.
-- **connectorLine** (`Line`) — Default this.children.push(Line.new(this._root, { themeTags: ["connectorline"], visible: false, forceInactive: true })) A line which is shown while creating a connector between two tasks.
-- **containers** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Container._new(this._root, { position: "absolute", themeTagsSelf: ["columncontainer"] }, [this.containers.template]) )) ListTemplate of Containers that hold all the elements of series items, such as grips, bullets, etc.
-- **endBullets** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Circle._new(this._root, { x: - 1000, themeTagsSelf: ["connectorbullet", "end"] }, [this.endBullets.template]) )) ListTemplate of Circles that are used as end bullets.
-- **endGrips** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Rectangle._new(this._root, { themeTagsSelf: ["resizegrip", "end"] }, [this.endGrips.template]) )) ListTemplate of Rectangles that are used to resize task bars.
-- **gantt** (`Gantt`) — A reference to the parent Gantt chart.
-- **links** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Link._new(this._root, { themeTags: $utils.mergeTags(this.containers.template.get("themeTags", []), ["link"]) }, [this.links.template]) )) ListTemplate of Link that connect tasks.
-- **linksContainer** (`Container`) — Default this.children.push(Container.new(this._root, { })) A container that holds all the links between tasks.
-- **maskedContainers** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Container._new(this._root, { position: "absolute", themeTagsSelf: ["maskedcontainer"] }, [this.maskedContainers.template]) )) ListTemplate of Containers that are used to mask elements, such as progress rectangles.
-- **progressGrips** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Triangle._new(this._root, { themeTagsSelf: ["progressgrip"] }, [this.progressGrips.template]) )) ListTemplate of Triangles that are used to resize progress rectangles.
-- **progressRectangles** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Rectangle._new(this._root, { themeTagsSelf: ["progressrectangle"] }, [this.progressRectangles.template]) )) ListTemplate of Rectangles that are used to show progress of the task. It is actually a remaining part of the task and is filled with diagonal line pattern.
-- **startBullets** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Circle._new(this._root, { x: - 1000, themeTagsSelf: ["connectorbullet", "start"], }, [this.startBullets.template]) )) ListTemplate of Circles that are used as start bullets.
-- **startGrips** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ }), () => Rectangle._new(this._root, { themeTagsSelf: ["resizegrip", "start"] }, [this.startGrips.template]) )) ListTemplate of Rectangles that are used to resize task bars.
+Public properties (not settings):
+
+- **connectorArrow** (`Triangle`) — Arrowhead at the pointer end of `connectorLine`, while the user draws a link.
+- **connectorLine** (`Line`) — Dashed line shown while the user draws a link between two tasks.
+- **containers** (`ListTemplate<Container>`) — Containers, one per task, with the grips, bullets and progress elements of its bar.
+- **endBullets** (`ListTemplate<Circle>`) — Circles at the end of the bars; dragging from one draws a link to another task.
+- **endGrips** (`ListTemplate<Rectangle>`) — Grips for dragging the end of the bars.
+- **gantt** (`Gantt`) — A reference to the parent `Gantt` chart.
+- **links** (`ListTemplate<Link>`) — The `Link` lines between tasks. Clicking a link selects it, and a second click deletes it.
+- **linksContainer** (`Container`) — A container that holds all the links between tasks.
+- **maskedContainers** (`ListTemplate<Container>`) — Containers, masked to the bar's shape, with each task's progress rectangle and progress grip.
+- **progressGrips** (`ListTemplate<Triangle>`) — Triangles at the bottom of the bars, dragged to set each task's progress.
+- **progressRectangles** (`ListTemplate<Rectangle>`) — Rectangles that show progress by covering the part of each bar not yet done with a diagonal line pattern.
+- **startBullets** (`ListTemplate<Circle>`) — Circles at the start of the bars. Hidden until a link being drawn hovers a task it can end on.
+- **startGrips** (`ListTemplate<Rectangle>`) — Grips for dragging the start of the bars.
+- **zeroRectangles** (`ListTemplate<RoundedRectangle>`) — Diamonds shown instead of bars for tasks with zero duration.

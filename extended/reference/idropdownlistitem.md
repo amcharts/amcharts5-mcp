@@ -2,20 +2,23 @@
 title: "IDropdownListItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdownlistitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: `am5stock.IDropdownListItem` (`import type { IDropdownListItem } from "@amcharts/amcharts5/stock"`)
 
 ## Properties
 
-- **checked** (`undefined | false | true`) — (no description)
-- **className** (`undefined | string`) — (no description)
-- **disabled** (`undefined | false | true`) — (no description)
-- **form** (`"radio" | "checkbox"`) — (no description)
-- **icon** (`SVGElement`) — (no description)
-- **id** (`string`) — (no description)
-- **label** (`string`) — (no description)
-- **options** (`IDropdownListItem[]`) — (no description)
-- **subLabel** (`undefined | string`) — (no description)
-
+- **id** (`string`) — ID of the item. `"separator"` draws a separator line instead.
+- **label** (`string`) — Text of the item.
+- **subLabel** (`string`) — Second line of text, also used as the item's tooltip.
+- **className** (`string`) — Extra CSS class of the item.
+- **icon** (`SVGElement`) — Icon shown before the label.
+- **form** (`"checkbox" | "radio"`) — Adds a radio button or a checkbox to the item. Toggling it dispatches `changed`.
+- **value** (`string`) — Value of the radio button or checkbox.
+- **checked** (`boolean`) — Checks the radio button or checkbox at the start.
+- **options** (`IDropdownListItem[]`)
+- **disabled** (`boolean`) — Shows the item as disabled, so it can't be picked.

@@ -2,28 +2,34 @@
 title: "MapPolygonSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/mappolygonseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a map series for displaying polygons.
+A map series of polygons, such as countries or regions.
+
+Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 
 ## Import
 
-```javascript
-// Import MapPolygonSeries
-import * as am5map from "@amcharts/amcharts5/map"
+```js
+import * as am5map from "@amcharts/amcharts5/map";
+
+am5map.MapPolygonSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: MapSeries
+Extends: MapSeries → Series → Component → Container → Sprite → Entity → Settings
+Extended by: MapSankeySeries, NightSeries, PixelMapSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from MapSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **reverseGeodata** (`undefined | false | true`) — Default false If set to true, the order of coordinates in GeoJSON will be flipped. Some GeoJSON software produces those in reverse order, so if your custom map appears garbled, try this setting. @since 5.2.42
+- Settings: `IMapPolygonSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IMapPolygonSeriesPrivate`
+- Data item fields: `IMapPolygonSeriesDataItem`
 
 ## Properties
 
-- **mapPolygons** (`ListTemplate`) — Default new ListTemplate<MapPolygon> A ListTemplate of all polygons in series. mapPolygons.template can also be used to configure polygons.
+Public properties (not settings):
+
+- **mapPolygons** (`ListTemplate<MapPolygon>`) — default `new ListTemplate<MapPolygon>` — All polygons of the series. Configure them through `mapPolygons.template`.

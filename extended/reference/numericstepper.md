@@ -2,32 +2,35 @@
 title: "NumericStepper"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/numericstepper/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws an interactive NumericStepper.
-@since 5.14.0
+A number field with up and down arrows. The number can also be typed in.
+
+_Since 5.14.0._
 
 ## Import
 
-```javascript
-// Import NumericStepper
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.NumericStepper.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **value** (`undefined | number`) — (no description)
+- Settings: `INumericStepperSettings` — get_api_reference shows it after this page
+- Private settings: `INumericStepperPrivate`
 
 ## Properties
 
-- **buttonsContainer** (`Container`) — Default this.children.push(Container.new(this._root, { themeTags: ["buttons"] }))
-- **downButton** (`Triangle`) — Default this.buttonsContainer.children.push(Triangle.new(this._root, { themeTags: ["downbutton"] }))
-- **label** (`EditableLabel`) — Default this.children.push(EditableLabel.new(this._root, { }))
-- **upButton** (`Triangle`) — Default this.buttonsContainer.children.push(Triangle.new(this._root, { themeTags: ["upbutton"] }))
+Public properties (not settings):
+
+- **buttonsContainer** (`Container`) — The container of the up and down arrows, shown while the pointer is over the stepper.
+- **downButton** (`Triangle`) — The arrow that decreases the value.
+- **label** (`EditableLabel`) — The editable label that shows the number.
+- **upButton** (`Triangle`) — The arrow that increases the value.

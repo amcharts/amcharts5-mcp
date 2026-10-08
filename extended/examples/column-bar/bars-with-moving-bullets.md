@@ -2,14 +2,24 @@
 title: "Bars with Moving Bullets"
 source: "https://www.amcharts.com/demos/bars-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Interactivity is a great way to direct viewers attention in visualizations. amCharts 5 helps you implement moving bullets in a conservative but effective bar chart to make it way more appealing without sacrificing the maximum comprehension level of this classic chart type.
-Key implementation details
-We setup bullets by first creating a Container and adding a Circle to it for the border. Then we add another container for the image. To make an image round we create another circle and set it as a mask on the image container. Then we add our first container to a new Bullet and position it at the bottom (left) of the parent element (locationX: 0).
-On hover we animate the bullet to the top value (right) of the parent column (locationX: 1).
-BulletsContainersMasksAnimations
+A bar chart with a photo on each bar. Point at a bar and the photo slides along it to the end. Here, step counts for six friends, the bars darker the more they walked.
+
+When to add motion and faces: Photos make a ranking personal, and a small movement on hover invites people to explore it. It suits a team leaderboard or a social post more than a report, where the motion adds nothing to the numbers.
+
+Good for:
+- Team leaderboards and challenges
+- Rankings of people, products or brands
+- Social posts and presentations
+
+Think twice when:
+- More than about ten bars: the photos crowd each other
+- Reports and printouts: nothing moves on paper
+- Values close together: label them, the bars alone won’t tell them apart
+
+Prompt: Create a horizontal bar chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the start of their bar. Hovering a bar slides its photo along to the bar’s end. Add tooltips. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,7 +31,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 var data = [
@@ -29,42 +40,42 @@ var data = [
     name: "Monica",
     steps: 45688,
     pictureSettings: {
-      src: "https://www.amcharts.com/wp-content/uploads/2019/04/monica.jpg"
+      src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/monica.jpg"
     }
   },
   {
     name: "Joey",
     steps: 35781,
     pictureSettings: {
-      src: "https://www.amcharts.com/wp-content/uploads/2019/04/joey.jpg"
+      src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/joey.jpg"
     }
   },
   {
     name: "Ross",
     steps: 25464,
     pictureSettings: {
-      src: "https://www.amcharts.com/wp-content/uploads/2019/04/ross.jpg"
+      src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/ross.jpg"
     }
   },
   {
     name: "Phoebe",
     steps: 18788,
     pictureSettings: {
-      src: "https://www.amcharts.com/wp-content/uploads/2019/04/phoebe.jpg"
+      src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/phoebe.jpg"
     }
   },
   {
     name: "Rachel",
     steps: 15465,
     pictureSettings: {
-      src: "https://www.amcharts.com/wp-content/uploads/2019/04/rachel.jpg"
+      src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/rachel.jpg"
     }
   },
   {
     name: "Chandler",
     steps: 11561,
     pictureSettings: {
-      src: "https://www.amcharts.com/wp-content/uploads/2019/04/chandler.jpg"
+      src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/chandler.jpg"
     }
   }
 ];
@@ -73,11 +84,11 @@ var data = [
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    panX: false,
+    panX: false,     // the plot doesn't pan when dragged
     panY: false,
-    paddingLeft:0,
-    paddingRight:30,
-    wheelX: "none",
+    paddingLeft:0,   // the names sit at the chart's left edge
+    paddingRight:30, // room for a photo at the end of the longest bar
+    wheelX: "none",  // the mouse wheel doesn't zoom or pan
     wheelY: "none"
   })
 );
@@ -88,24 +99,24 @@ var chart = root.container.children.push(
 var yRenderer = am5xy.AxisRendererY.new(root, {
   minorGridEnabled:true
 });
-yRenderer.grid.template.set("visible", false);
+yRenderer.grid.template.set("visible", false); // no grid lines across the rows
 
 var yAxis = chart.yAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "name",
     renderer: yRenderer,
-    paddingRight:40
+    paddingRight:40 // room between the names and the bars, for the photos
   })
 );
 
 var xRenderer = am5xy.AxisRendererX.new(root, {
-  minGridDistance:80,
-  minorGridEnabled:true
+  minGridDistance:80,   // at least 80px between labels; on narrow screens some are skipped
+  minorGridEnabled:true // fainter grid lines between the labeled ones
 });
 
 var xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
-    min: 0,
+    min: 0, // the bars start at zero
     renderer: xRenderer
   })
 );
@@ -114,34 +125,37 @@ var xAxis = chart.xAxes.push(
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
-    name: "Income",
+    name: "Steps",
     xAxis: xAxis,
     yAxis: yAxis,
     valueXField: "steps",
     categoryYField: "name",
-    sequencedInterpolation: true,
+    sequencedInterpolation: true, // the bars grow one after another
+    // finds the lowest and highest steps, which the heat rules below color by
     calculateAggregates: true,
+    // let the photos stick out past the plot area's edges
     maskBullets: false,
     tooltip: am5.Tooltip.new(root, {
-      dy: -30,
-      pointerOrientation: "vertical",
-      labelText: "{valueX}"
+      dy: -30,                        // 30px higher, above the photo
+      pointerOrientation: "vertical", // it points up or down at the bar
+      labelText: "{valueX}"           // the steps
     })
   })
 );
 
 series.columns.template.setAll({
-  strokeOpacity: 0,
-  cornerRadiusBR: 10,
+  strokeOpacity: 0,   // no outline
+  cornerRadiusBR: 10, // fully rounded ends
   cornerRadiusTR: 10,
   cornerRadiusBL: 10,
   cornerRadiusTL: 10,
-  maxHeight: 50,
-  fillOpacity: 0.8
+  maxHeight: 50,      // bars no thicker than 50px
+  fillOpacity: 0.8    // a little see-through
 });
 
-var currentlyHovered;
+var currentlyHovered; // the bar whose photo is out at its end
 
+// on hover, the photo slides from the start of its bar to the end, and back when the pointer leaves
 series.columns.template.events.on("pointerover", function(e) {
   handleHover(e.target.dataItem);
 });
@@ -150,6 +164,7 @@ series.columns.template.events.on("pointerout", function(e) {
   handleOut();
 });
 
+// slide the hovered bar's photo to its end, after sending the last one back
 function handleHover(dataItem) {
   if (dataItem && currentlyHovered != dataItem) {
     handleOut();
@@ -157,13 +172,14 @@ function handleHover(dataItem) {
     var bullet = dataItem.bullets[0];
     bullet.animate({
       key: "locationX",
-      to: 1,
-      duration: 600,
+      to: 1,         // to the end of the bar
+      duration: 600, // in 0.6 seconds
       easing: am5.ease.out(am5.ease.cubic)
     });
   }
 }
 
+// slide the photo back to the start of its bar
 function handleOut() {
   if (currentlyHovered) {
     var bullet = currentlyHovered.bullets[0];
@@ -176,8 +192,7 @@ function handleOut() {
   }
 }
 
-
-var circleTemplate = am5.Template.new({});
+var circleTemplate = am5.Template.new({}); // one template for all the circles, so the heat rule can color them
 
 series.bullets.push(function(root, series, dataItem) {
   var bulletContainer = am5.Container.new(root, {});
@@ -185,14 +200,14 @@ series.bullets.push(function(root, series, dataItem) {
     am5.Circle.new(
       root,
       {
-        radius: 34
+        radius: 34 // a colored ring around the photo
       },
       circleTemplate
     )
   );
 
   var maskCircle = bulletContainer.children.push(
-    am5.Circle.new(root, { radius: 27 })
+    am5.Circle.new(root, { radius: 27 }) // the photo is cut to this circle
   );
 
   // only containers can be masked, so we add image to another container
@@ -202,37 +217,38 @@ series.bullets.push(function(root, series, dataItem) {
     })
   );
 
-  // not working
   var image = imageContainer.children.push(
     am5.Picture.new(root, {
-      templateField: "pictureSettings",
-      centerX: am5.p50,
+      templateField: "pictureSettings", // the photo's src from each data item's pictureSettings
+      centerX: am5.p50,                 // centered on the bullet
       centerY: am5.p50,
-      width: 60,
+      width: 60,                        // a 60px photo, cut to the circle above
       height: 60
     })
   );
 
   return am5.Bullet.new(root, {
-    locationX: 0,
+    locationX: 0, // the photo starts at the beginning of the bar
     sprite: bulletContainer
   });
 });
 
-// heatrule
+// heatrule: the series' color from the theme, a light tint for the fewest steps and the full color for the most
+var heatMax = series.get("fill");
+var heatMin = am5.Color.lighten(heatMax, 0.6);
 series.set("heatRules", [
   {
     dataField: "valueX",
-    min: am5.color(0xe5dc36),
-    max: am5.color(0x5faa46),
+    min: heatMin, // the fewest steps get the light tint...
+    max: heatMax, // ...the most, the full color
     target: series.columns.template,
     key: "fill"
   },
   {
     dataField: "valueX",
-    min: am5.color(0xe5dc36),
-    max: am5.color(0x5faa46),
-    target: circleTemplate,
+    min: heatMin,
+    max: heatMax,
+    target: circleTemplate, // the rings get the same colors
     key: "fill"
   }
 ]);
@@ -241,9 +257,10 @@ series.data.setAll(data);
 yAxis.data.setAll(data);
 
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-cursor.lineX.set("visible", false);
+cursor.lineX.set("visible", false); // no cursor lines
 cursor.lineY.set("visible", false);
 
+// the row under the cursor counts as hovered too, even where the pointer misses the bar
 cursor.events.on("cursormoved", function() {
   var dataItem = series.get("tooltip").dataItem;
   if (dataItem) {
@@ -271,7 +288,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -280,3 +298,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

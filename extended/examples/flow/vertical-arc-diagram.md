@@ -2,12 +2,24 @@
 title: "Vertical Arc Diagram"
 source: "https://www.amcharts.com/demos/vertical-arc-diagram/"
 category: "flow"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-An arc diagram is a powerful visual representation that depicts relationships and connections between entities. It employs curved lines or arcs to illustrate these connections. Arc diagrams are extensively used in various fields, such as network analysis, biology, and information visualization. By presenting complex relationships in a simplified and intuitive manner, arc diagrams enable researchers and analysts to identify patterns, explore interdependencies, and gain valuable insights from the data at hand.
-Flow charts
-Arc Diagram
+An arc diagram standing up: the nodes in a column with their names beside them, the arcs bulging out to the right. Here, 23 links between the friends of the TV show Friends and people around them, with dots running along each arc.
+
+When to stand an arc diagram up: A vertical arc diagram leaves room for long names, written straight beside the nodes instead of tilted under them. It suits ordered lists where the links between items matter, like a ranking or a timeline read from top to bottom.
+
+Good for:
+- Long names that would need tilting in a row
+- Ordered lists: rankings, timelines, chapters
+- Narrow spaces beside text
+
+Think twice when:
+- Many nodes: the column grows taller than the screen
+- Links with amounts people must compare
+- Dense networks: try a chord diagram
+
+Prompt: Create a vertical arc diagram of the connections between the six friends of the TV show Friends and people around them, with the nodes in a column, sized by their totals, and the arcs to one side. Small dots travel along every arc in endless loops. Use the Animated and Responsive themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -16,45 +28,58 @@ Arc Diagram
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
+// Create a container for the series
+var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/
-var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
-
 var series = chart.series.push(am5flow.ArcDiagram.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
   valueField: "value",
-  orientation: "vertical"
+  orientation: "vertical" // nodes in a column, arcs curving out to the side
 }));
+
+// Put the column of nodes in the middle: names to the left of it, arcs to the right
+series.nodes.setAll({
+  x: am5.p50,
+  centerX: am5.p100 // the nodes' right edge at the middle; the arcs get the right half
+});
 
 // Configure labels
 // https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Labels
 series.nodes.labels.template.setAll({
-  fontSize: "0.85em",
-  paddingLeft: 20,
+  fontSize: "0.85em", // 85% of the chart's text size
+  paddingLeft: 20,    // 20px of room on both sides of each name
   paddingRight: 20,
-  width: 160
+  width: 160 // every name gets the same 160px of width
 });
 
+// Arcs take the color of the node they start from
+// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Color_mode
+series.links.template.setAll({
+  strokeStyle: "source",
+  strokeOpacity: 0.4 // see-through, so crossing arcs show
+});
 
 // Animated bullets
 series.bullets.push(function(_root, _series, dataItem) {
   var bullet = am5.Bullet.new(root, {
-    locationY: Math.random(),
+    locationY: Math.random(), // each dot starts at a random point on its arc
     sprite: am5.Circle.new(root, {
-      radius: 2,
-      fill: dataItem.get("source").get("fill")
+      radius: 2, // a small dot, 4px across
+      fill: dataItem.get("source").get("fill") // in the color of the node the arc starts from
     })
   });
 
+  // each dot runs along its arc from start to end every 2 to 3 seconds, over and over
   bullet.animate({
     key: "locationY",
     to: 1,
@@ -65,7 +90,6 @@ series.bullets.push(function(_root, _series, dataItem) {
 
   return bullet;
 });
-
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
@@ -95,7 +119,6 @@ series.data.setAll([
   { "from": "Phoebe", "to": "Mike", "value": 18 }
 ]);
 
-
 // Make stuff animate on load
 series.appear(1000, 100);
 ```
@@ -112,6 +135,7 @@ series.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -120,3 +144,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

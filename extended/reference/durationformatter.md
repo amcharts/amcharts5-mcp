@@ -2,28 +2,26 @@
 title: "DurationFormatter"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/durationformatter/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A class used to format numberic values as time duration.
+Formats numbers as durations, such as `125` seconds as `"02:05"`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-durations/
 
 ## Import
 
-```javascript
-// Import DurationFormatter
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.DurationFormatter.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **baseUnit** (`TimeUnit`) — Default "second" Identifies what values are used in duration. Available options: "millisecond", "second" (default), "minute", "hour", "day", "week", "month", and "year". Click here for more info
-- **durationFields** (`string[]`) — An array of data fields that hold duration values and should be formatted with a DurationFormatter. Click here for more info
-- **durationFormat** (`undefined | string`) — A universal duration format to use wherever number needs to be formatted as a duration.
-- **durationFormats** (`Partial`) — Time unit dependent duration formats. Used be DurationAxis.
-- **negativeBase** (`undefined | number`) — Default 0 A base value. Any number below it will be considered "negative".
+- Settings: `IDurationFormatterSettings` — get_api_reference shows it after this page
+- Private settings: `IDurationFormatterPrivate`

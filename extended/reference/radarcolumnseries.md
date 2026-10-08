@@ -2,27 +2,32 @@
 title: "RadarColumnSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/radarcolumnseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A column series for use in a RadarChart.
-Data item
-RadarColumnSeries uses data items of type IRadarColumnSeriesDataItem.
+A column series for a `RadarChart`, with each column drawn as a ring segment (`Slice`).
 
 ## Import
 
-```javascript
-// Import RadarColumnSeries
-import * as am5radar from "@amcharts/amcharts5/radar"
+```js
+import * as am5radar from "@amcharts/amcharts5/radar";
+
+am5radar.RadarColumnSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: BaseColumnSeries
+Extends: BaseColumnSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from BaseColumnSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IRadarColumnSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IRadarColumnSeriesPrivate`
+- Data item fields: `IRadarColumnSeriesDataItem`
 
 ## Properties
 
-- **chart** (`RadarChart | undefined`) — A chart series belongs to.
-- **columns** (`ListTemplate`) — Default new ListTemplate<Slice> A TemplateList of all columns in series. columns.template can be used to set default settings for all columns, or to change on existing ones.
+Public properties (not settings):
+
+- **chart** (`RadarChart`) — The chart the series belongs to.
+- **columns** (`ListTemplate<Slice>`) — default `new ListTemplate<Slice>` — Columns of the series. Configure them all through `columns.template`.

@@ -2,14 +2,21 @@
 title: "IDropdownListControlEvents"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdownlistcontrolevents/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IStockControlEvents
-Extended by: IIndicatorControlEvents, ISeriesTypeControlEvents, IIntervalControlEvents, IDataSaveControlEvents, ISettingsControlEvents, IComparisonControlEvents
+All ancestors: IStockControlEvents, IEntityEvents
+TypeScript: `am5stock.IDropdownListControlEvents` (`import type { IDropdownListControlEvents } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlEvents (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Events
+
+- **selected** (`{ item: string | IDropdownListItem; }`) — An item was picked from the list, or selected with `setItemById()`.
+
+## Other inherited events
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlEvents")`) for types, defaults and descriptions.
+
+- _IStockControlEvents_: click

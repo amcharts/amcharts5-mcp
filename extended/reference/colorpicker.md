@@ -2,59 +2,40 @@
 title: "ColorPicker"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/colorpicker/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Sources
-ColorPicker can be used (imported) via one of the following packages.
-// Import ColorPicker
-import * as am5plugins_colorPicker from "@amcharts/amcharts5/plugins/colorPicker";
-
-am5plugins_colorPicker.ColorPicker.new(root, {
-  // ... config if applicable
-});
-
-<!-- Load ColorPicker -->
-<script src="plugins/colorPicker.js">
-
-<script>
-// Create ColorPicker
-am5plugins_colorPicker.ColorPicker.new(root, {
-  // ... config if applicable
-});
-</script>
+A color picker with a color square, a hue slider, an eyedropper, a hex input and an opacity slider. It opens for the `ColorPickerButton` set as its `colorButton`.
 
 ## Import
 
-```javascript
-// Import ColorPicker
-import * as am5plugins_colorPicker from "@amcharts/amcharts5/plugins/colorPicker"
+```js
+import * as am5plugins_colorPicker from "@amcharts/amcharts5/plugins/colorPicker";
+
+am5plugins_colorPicker.ColorPicker.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **backgroundColor** (`Color`) — Background color of the color picker.
-- **color** (`Color`) — Color of the color picker.
-- **colorButton** (`ColorPickerButton`) — Color picker button to use.
-- **colorOpacity** (`undefined | number`) — Opacity of the color.
-- **hue** (`undefined | number`) — (no description)
+- Settings: `IColorPickerSettings` — get_api_reference shows it after this page
+- Private settings: `IColorPickerPrivate`
+- Events: `IColorPickerEvents`
 
 ## Properties
 
-- **cancelButton** (`Button`) — Default this.buttonsContainer.children.push(Button.new(this._root, { themeTags: ["cancel"], label: Label.new(this._root, { }) })) Button that allows to cancel color selection.
-- **colorInput** (`EditableLabel`) — Default this.inputContainer.children.push(EditableLabel.new(this._root, { themeTags: ["input", "color"] })) Editable label that allows to input color in hex format.
-- **colorRectangleWhiteOverlay** (`Rectangle`) — Default this.colorGradientsContainer.children.push(Rectangle.new(this._root, { crisp: true, forceInactive: true, width: p100, height: p100 })) Rectangle that displays the white overlay. @ignore*
-- **gradientsContainer** (`Container`) — Default this.children.push(Container.new(this._root, { themeTagsSelf: ["gradientscontainer"], width: p100, layout: this._root.horizontalLayout })) Container for color gradients.
-- **noColorButton** (`Button`) — Default this.inputContainer.children.push(Button.new(this._root, { themeTags: ["nocolor", "pickertool"], icon: Graphics.new(this._root, { themeTags: ["icon"] }) })) Button that allows to remove color.
-- **okButton** (`Button`) — Default this.buttonsContainer.children.push(Button.new(this._root, { themeTags: ["ok"], label: Label.new(this._root, { }) })) Button that allows to confirm color selection.
-- **opacitySlider** (`Slider`) — Default this.opacityContainer.children.push(Slider.new(this._root, { themeTags: ["opacity"], orientation: "horizontal" })) Slider that allows to change opacity of the color.
-- **pickerButton** (`Button`) — Default this.inputContainer.children.push(Button.new(this._root, { themeTags: ["picker", "pickertool"], toggleKey: "active", icon: Graphics.new(this._root, { themeTags: ["icon"] }) })) Button that shows color picker button.
-- **rectangles** (`ListTemplate`) — Default new ListTemplate( Template.new({ }), () => RoundedRectangle._new(this._root, { }, [this.rectangles.template]) )
-- **slider** (`Slider`) — Default this.gradientsContainer.children.push(Slider.new(this._root, { orientation: "vertical", themeTags: ["gradient"] })) Slider that displays the hue of the color.
-- **targetCircle** (`Circle`) — Default this.colorGradientsContainer.children.push(Circle.new(this._root, { themeTags: ["circle", "target"], isMeasured: false, forceInactive: true, position: "absolute", layer: 30 })) Circle that indicates the target color.
+Public properties (not settings):
+
+- **cancelButton** (`Button`) — Button that restores the previous color and closes the picker.
+- **colorInput** (`EditableLabel`) — Editable label that shows the color in hex and takes a typed one.
+- **gradientsContainer** (`Container`) — Container with the color square and the hue slider.
+- **noColorButton** (`Button`) — Button that removes the color and closes the picker.
+- **okButton** (`Button`) — Button that confirms the color, dispatching `colorchanged`, and closes the picker.
+- **opacitySlider** (`Slider`) — Slider that sets the color's opacity. Hidden when the `colorButton` has `disableOpacity`.
+- **pickerButton** (`Button`) — Toggle button for the eyedropper: while it is on, the color follows the chart pixel under the pointer, and a click keeps it.
+- **rectangles** (`ListTemplate<RoundedRectangle>`)
+- **slider** (`Slider`) — Vertical slider that sets the hue.
+- **targetCircle** (`Circle`) — Circle that marks the selected color on the color square.

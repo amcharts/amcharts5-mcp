@@ -2,29 +2,30 @@
 title: "MapPolygon"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/mappolygon/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A polygon in a MapPolygonSeries.
+A polygon in a `MapPolygonSeries`.
 
 ## Import
 
-```javascript
-// Import MapPolygon
-import * as am5map from "@amcharts/amcharts5/map"
+```js
+import * as am5map from "@amcharts/amcharts5/map";
+
+am5map.MapPolygon.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **geometry** (`MultiPolygon | Polygon`) — A GeoJSON representation of the polygons geometry.
-- **precision** (`undefined | number`) — Default 0.5 
+- Settings: `IMapPolygonSettings` — get_api_reference shows it after this page
+- Private settings: `IMapPolygonPrivate`
 
 ## Properties
 
-- **series** (`MapPolygonSeries | undefined`) — A MapPolygonSeries polygon belongs to.
+Public properties (not settings):
+
+- **series** (`MapPolygonSeries`) — The series the polygon belongs to.

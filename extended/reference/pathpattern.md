@@ -2,25 +2,37 @@
 title: "PathPattern"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pathpattern/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A pattern that uses an SVG path.
-@since 5.2.33
+A pattern that repeats an SVG path as a motif on a grid.
+
+Note: `rotation` rotates each motif around its own centre (the grid stays axis-aligned), so the pattern tiles seamlessly at any angle.
+
+The tile is one grid cell, unless `width` and `height` are set: then that is the tile, as before 5.20.0.
+
+_Since 5.2.33._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
 
 ## Import
 
-```javascript
-// Import PathPattern
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.PathPattern.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Pattern
+Extends: Pattern → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Pattern (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
+- Settings: `IPathPatternSettings` — get_api_reference shows it after this page
+- Private settings: `IPathPatternPrivate`
 
-- **svgPath** (`undefined | string`) — Use an SVG path as pattern. Click here for more information
+## Properties
+
+Public properties (not settings):
+
+- **canvas** (`HTMLCanvasElement`)
+- **context** (`CanvasRenderingContext2D`)

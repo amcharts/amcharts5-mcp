@@ -2,26 +2,25 @@
 title: "DrawingToolControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/drawingtoolcontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Control which allows selecting drawing tool.
- Should not be instantiated directly. Use DrawingControl instead.
+A dropdown for picking a drawing tool. Created by `DrawingControl`; not meant to be used on its own.
 
 ## Import
 
-```javascript
-// Import DrawingToolControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.DrawingToolControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: StockControl
+Extends: StockControl → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from StockControl (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **scrollable** (`undefined | false | true`) — If set to true, the dropdown will fix the height to fit within chart's area, with scroll if the contents do not fit. @since 5.9.5
-- **tools** (`DrawingTools[]`) — (no description)
+- Settings: `IDrawingToolControlSettings` — get_api_reference shows it after this page
+- Private settings: `IDrawingToolControlPrivate`
+- Events: `IDrawingToolControlEvents`

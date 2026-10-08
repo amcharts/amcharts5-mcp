@@ -2,16 +2,24 @@
 title: "Map with Curved Lines"
 source: "https://www.amcharts.com/demos/map-with-curved-lines/"
 category: "maps"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-As you probably know, flat maps are not exactly geometrically accurate and we use different projections to transform our globe onto a flat surface. For this reason a straight (shortest path) line going from point A to point B wouldn't be straight on a projected map. amCharts Maps takes care of this and enables you to create lines curved according to the current projection without doing any work to get there.
-Key implementation details
-To get the curved trajectory lines we just add a MapLineSeries to our chart, add data items to it with points to connect and amCharts Maps takes care of the rest.
-Another interesting point in this demo is those map grid lines. You also get them for free by adding a GraticuleSeries to your map chart.
-Map line series
-Graticule series
-Map chart
+Lines from London to ten cities in Europe and North America, with an arrow pointing to each destination. They take the shortest way over the globe, which bends them on a flat map.
+
+Why the lines curve: Map lines follow great circles by default, the shortest route between two points on a sphere. On a flat Mercator map these routes bow toward the pole, which is why the line to New York arcs north over the Atlantic; on the globe they run straight. Set lineType to "straight" for lines that are straight on the flat map instead.
+
+Good for:
+- Flight routes and connections from a hub
+- True distances and directions
+- Networks of offices, partners or customers
+
+Think twice when:
+- Hundreds of lines: they tangle, so bundle them or show counts
+- Volumes on each route: a map Sankey sizes the bands
+- Short local trips: straight and curved look the same
+
+Prompt: Create a map of Europe and the North Atlantic with cities as circles and lines from London to ten of them that follow great circles, so they curve on the flat map, each with an arrow in the middle pointing to its destination. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -20,91 +28,93 @@ Map chart
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
+// Colors from the theme, so the map follows the theme
+var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
-  panX: "translateX",
-  panY: "translateY",
-    "homeZoomLevel": 3,
-    "homeRotationY": 0,
-    "homeGeoPoint": {
-      "latitude": 39,
-      "longitude": -24.3
-    },
-  minZoomLevel:0.5,
-  projection: am5map.geoMercator()
+  // near-black space behind the satellite picture, shown only with it
+  background: am5.Rectangle.new(root, {
+    fill: am5.color(0x101318),
+    fillOpacity: 0
+  }),
+  // go to the home view once the map is fitted
+  autoHome: true,
+  panX: "translateX", // dragging moves the map sideways...
+  panY: "translateY", // ...and up and down
+  // start zoomed in on Europe and the North Atlantic
+  homeZoomLevel: 3,
+  homeGeoPoint: { latitude: 39, longitude: -24.3 }, // centered over the Atlantic, west of Portugal
+  minZoomLevel: 0.5,               // can zoom out to half the fitted size
+  projection: am5map.geoMercator() // the familiar flat world map
 }));
 
-var cont = chart.children.push(am5.Container.new(root, {
-  layout: root.horizontalLayout,
-  x: 20,
-  y: 40
+// Add zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {})); // + and - zoom buttons
+
+// the home button is hidden by default
+zoomControl.homeButton.set("visible", true);
+
+// Create series for the water: a faint fill behind the countries
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  // the map fits the countries, not this rectangle around the whole world
+  affectsBounds: false
 }));
 
-
-// Add labels and controls
-cont.children.push(am5.Label.new(root, {
-  centerY: am5.p50,
-  text: "Map"
-}));
-
-var switchButton = cont.children.push(am5.Button.new(root, {
-  themeTags: ["switch"],
-  centerY: am5.p50,
-  icon: am5.Circle.new(root, {
-    themeTags: ["icon"]
-  })
-}));
-
-switchButton.on("active", function() {
-  if (!switchButton.get("active")) {
-    chart.set("projection", am5map.geoMercator());
-    chart.set("panX", "translateX");
-    chart.set("panY", "translateY");
-  }
-  else {
-    chart.set("projection", am5map.geoOrthographic());
-    chart.set("panX", "rotateX");
-    chart.set("panY", "rotateY");
-  }
+waterSeries.mapPolygons.template.setAll({
+  fill: root.interfaceColors.get("alternativeBackground"), // the color that contrasts with the background...
+  fillOpacity: 0.05, // ...barely there
+  strokeOpacity: 0   // no outline
 });
 
-cont.children.push(am5.Label.new(root, {
-  centerY: am5.p50,
-  text: "Globe"
+waterSeries.data.push({
+  geometry: am5map.getGeoRectangle(90, 180, -90, -180) // a rectangle over the whole globe
+});
+
+// Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
+// (visible: false): make it visible for the satellite view
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
+  visible: false,
+  // the map fits the countries, not the whole picture
+  affectsBounds: false
 }));
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   name: "Polygon Series",
-  geoJSON: am5geodata_worldLow
+  geoJSON: am5geodata_worldLow // the world's countries, in low detail
 }));
 
+// grid lines every 10 degrees
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   name: "Graticule Series"
 }));
 graticuleSeries.mapLines.template.setAll({
-  stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.08
+  stroke: root.interfaceColors.get("alternativeBackground"), // contrasting with the background...
+  strokeOpacity: 0.08 // ...and very faint
 });
 
 // Create line series for trajectory lines
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+// each line takes the shortest way over the globe, which looks curved on a flat map
 var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
   name: "Line Series"
 }));
 lineSeries.mapLines.template.setAll({
-  stroke: root.interfaceColors.get("alternativeBackground"),
-  strokeOpacity: 0.6
+  stroke: root.interfaceColors.get("alternativeBackground"), // contrasting with the background...
+  strokeOpacity: 0.6 // ...slightly faded
 });
 
 // destination series
@@ -116,12 +126,12 @@ var citySeries = chart.series.push(
 
 citySeries.bullets.push(function() {
   var circle = am5.Circle.new(root, {
-    radius: 5,
-    tooltipText: "{title}",
-    tooltipY: 0,
-    fill: am5.color(0xffba00),
-    stroke: root.interfaceColors.get("background"),
-    strokeWidth: 2
+    radius: 5,                 // 5px radius
+    tooltipText: "{title}",    // the city's name on hover
+    tooltipY: 0,               // the tooltip points at the top of the dot
+    fill: colors.getIndex(10), // a theme color
+    stroke: root.interfaceColors.get("background"), // a ring in the background color...
+    strokeWidth: 2 // ...2px wide
   });
 
   return am5.Bullet.new(root, {
@@ -136,12 +146,17 @@ var arrowSeries = chart.series.push(
   })
 );
 
+// the arrows, kept to color them with the lines
+var arrows = [];
+
 arrowSeries.bullets.push(function() {
   var arrow = am5.Graphics.new(root, {
-    fill: am5.color(0x000000),
-    stroke: am5.color(0x000000),
+    fill: root.interfaceColors.get("alternativeBackground"),   // filled...
+    stroke: root.interfaceColors.get("alternativeBackground"), // ...and outlined in the contrast color
+    // a small triangle pointing right; autoRotate in the data turns it along its line
     svgPath: "M0,-3 L8,0 L0,3 Z"
   });
+  arrows.push(arrow);
 
   return am5.Bullet.new(root, {
     sprite: arrow
@@ -195,7 +210,7 @@ var cities = [
     title: "Bratislava",
     geometry: { type: "Point", coordinates: [17.1547, 48.2116] }
   }, {
-    id: "ljublana",
+    id: "ljubljana",
     title: "Ljubljana",
     geometry: { type: "Point", coordinates: [14.5060, 46.0514] }
   }, {
@@ -211,8 +226,8 @@ var cities = [
     title: "Bern",
     geometry: { type: "Point", coordinates: [7.4481, 46.9480] }
   }, {
-    id: "kiev",
-    title: "Kiev",
+    id: "kyiv",
+    title: "Kyiv",
     geometry: { type: "Point", coordinates: [30.5367, 50.4422] }
   }, {
     id: "paris",
@@ -227,28 +242,61 @@ var cities = [
 citySeries.data.setAll(cities);
 
 // prepare line series data
-var destinations = ["reykjavik", "lisbon", "moscow", "belgrade", "ljublana", "madrid", "stockholm", "bern", "kiev", "new york"];
+var destinations = ["reykjavik", "lisbon", "moscow", "belgrade", "ljubljana", "madrid", "stockholm", "bern", "kyiv", "new york"];
 
 // lines connect cities by their ids
 lineSeries.set("pointSeries", citySeries);
 
 lineSeries.data.setAll(destinations.map(function (did) {
-  return { id: did, pointIds: ["london", did] };
+  return { id: did, pointIds: ["london", did] }; // each line runs from London to a destination
 }));
 
 // arrows sit in the middle of the line with the same id
 arrowSeries.data.setAll(destinations.map(function (did) {
-  return { lineId: did, positionOnLine: 0.5, autoRotate: true };
+  return { lineId: did, positionOnLine: 0.5, autoRotate: true }; // halfway, turned along the line
 }));
 
-polygonSeries.events.on("datavalidated", function () {
-  chart.goHome();
-})
+// The image credit
+var credit = chart.children.push(am5.Label.new(root, {
+  text: "Imagery: NASA Earth Observatory",
+  fontSize: 12,              // small...
+  fill: am5.color(0xffffff), // ...white...
+  fillOpacity: 0.6,          // ...slightly faded text
+  x: am5.p100,               // at the right edge...
+  centerX: am5.p100,         // ...anchored by its right end...
+  dx: -10,                   // ...10px in from it
+  y: 10,                     // 10px from the top
+  visible: false             // shown only with the satellite picture
+}));
 
+// The countries' own look, to go back to
+var landTemplate = polygonSeries.mapPolygons.template;
+var landLook = {
+  fillOpacity: landTemplate.get("fillOpacity", 1),
+  stroke: landTemplate.get("stroke", root.interfaceColors.get("background")),
+  strokeOpacity: landTemplate.get("strokeOpacity", 1)
+};
+
+// The picture loads the first time it shows. Then the countries turn to white outlines over it, the grid lines, the
+// lines and the arrows turn white, the credit shows and the map sits in near-black space
+satelliteSeries.on("visible", function(visible) {
+  if (visible) {
+    satelliteSeries.set("src", "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg");
+  }
+  credit.set("visible", visible);
+  chart.get("background").set("fillOpacity", visible ? 1 : 0);
+  landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
+  // white over the picture, otherwise the color that contrasts with the background
+  var lineColor = visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground");
+  graticuleSeries.mapLines.template.set("stroke", lineColor);
+  lineSeries.mapLines.template.set("stroke", lineColor);
+  am5.array.each(arrows, function(arrow) {
+    arrow.setAll({ fill: lineColor, stroke: lineColor });
+  });
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);
-
 ```
 
 ## HTML
@@ -263,6 +311,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -272,3 +321,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

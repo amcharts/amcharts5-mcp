@@ -2,15 +2,24 @@
 title: "Drill-Down Treemap"
 source: "https://www.amcharts.com/demos/drill-down-treemap/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Drill-Down Treemap is a great way to cleanly display high-level information without losing the ability to analyze the underlying details. Try clicking on one of the squares to see the sales of different models of that brand. You can also compare this demo to the multi-level treemap demo where the same data is displayed in full detail from the get-go.
-Key implementation details
-To make Treemap display only the first level on load we set its initialDepth to 1. In a drill-down chart it is also a good idea to provide a way to get back to a higher level. In this demo we use BreadcrumbBar for the commonly implemented breadcrumb navigation functionality.
-Hierarchy charts
-Treemap
-Breadcrumb navigation
+A treemap you explore one level at a time: the first view shows the 18 brands that sold over 200,000 vehicles in the US in 2017, and clicking a brand opens its models. The breadcrumb bar on top leads back.
+
+When a drill-down treemap works: Drilling down keeps the first view readable when there are too many items to show at once: here, 18 brands instead of nearly 200 models. Each click trades the overview for detail, and the breadcrumbs keep the way back one click away.
+
+Good for:
+- Sales by brand and product
+- Budgets by department and line item
+- Any two-level breakdown with many items
+
+Think twice when:
+- Comparing models of different brands: they never share a view
+- Printed reports, where nobody can click
+- Just a few items: a simple treemap shows them all
+
+Prompt: Create a drill-down treemap of 2017 US car sales that shows one level at a time: the best-selling brands first, then a brand’s models when it is clicked. Add a breadcrumb bar that leads back up, and put each brand’s logo faintly in its box. Use the Animated and Responsive themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -19,37 +28,40 @@ Breadcrumb navigation
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
+// a theme of our own, with rules for the treemap's rectangles and labels
 const myTheme = am5.Theme.new(root);
 
 myTheme.rule("RoundedRectangle", ["hierarchy", "node", "shape", "depth1"]).setAll({
-  strokeWidth: 2
+  strokeWidth: 2 // brand rectangles get a 2px outline
 });
 
 myTheme.rule("RoundedRectangle", ["hierarchy", "node", "shape", "depth2"]).setAll({
-  fillOpacity: 0,
-  strokeWidth: 1,
-  strokeOpacity: 0.2
+  fillOpacity: 0,    // model rectangles have no fill: the brand's color shows through...
+  strokeWidth: 1,    // ...and thin...
+  strokeOpacity: 0.2 // ...faint outlines
 });
 
+// brand names are hidden: the brand logos show which brand is which
 myTheme.rule("Label", ["node", "depth1"]).setAll({
   forceHidden: true
 });
 
 myTheme.rule("Label", ["node", "depth2"]).setAll({
-  fontSize: 10
+  fontSize: 10 // small model names
 });
 
 root.setThemes([
   am5themes_Animated.new(root),
-  myTheme
+  myTheme,
+  am5themes_Responsive.new(root)
 ]);
 
 // Create wrapper container
 var chart = root.container.children.push(
   am5.SerialChartContainer.new(root, {
-    width: am5.percent(100),
+    width: am5.percent(100),    // fills the whole chart area
     height: am5.percent(100),
-    layout: root.verticalLayout
+    layout: root.verticalLayout // the breadcrumbs above the treemap
   })
 );
 
@@ -57,28 +69,28 @@ var chart = root.container.children.push(
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
-    sort: "descending",
+    sort: "descending",  // biggest rectangles first, at the top left
     singleBranchOnly: false,
+    // one level at a time: the brands first, then the models of a clicked brand
     downDepth: 1,
     upDepth: 0,
     initialDepth: 1,
     valueField: "value",
     categoryField: "name",
     childDataField: "children",
-    nodePaddingOuter: 0,
-    nodePaddingInner: 0
+    nodePaddingOuter: 0, // no space around the rectangles...
+    nodePaddingInner: 0  // ...or between them
   })
 );
 series.nodes.template.setPrivate("trustBounds", true);
-series.get("colors").set("step", 1);
+series.get("colors").set("step", 1); // each brand takes the next palette color, none skipped
 
-
+// breadcrumbs above the treemap show where you are and lead back up
 chart.children.moveValue(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
   }), 0
 );
-
 
 // Generate and set data
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
@@ -413,10 +425,10 @@ var data = {
   Volvo: { S60: 16825, S80: 7, S90: 11090, XC60: 22516, XC90: 30996 }
 };
 
+// turns the brand > model sales object into a tree of children, biggest brands first
 function processData(data) {
   var treeData = [];
 
-  var smallBrands = { name: "Other", children: [] };
 
   am5.object.eachOrdered(
     data,
@@ -439,7 +451,7 @@ function processData(data) {
         treeData.push(brandData);
       }
     },
-    (a, b) => {
+    (a, b) => { // brands in order of total sales, biggest first
       let aval = 0;
       let bval = 0;
       am5.object.each(data[a], (key, val) => (aval += val));
@@ -457,21 +469,22 @@ function processData(data) {
 }
 
 series.data.setAll(processData(data));
-series.set("selectedDataItem", series.dataItems[0]);
+series.set("selectedDataItem", series.dataItems[0]); // start at the top, with the breadcrumbs showing "Home"
 
+// a faint brand logo in the middle of each brand's rectangle
 series.bullets.push(function (root, series, dataItem) {
   var depth = dataItem.get("depth");
 
   if (depth == 1) {
     var picture = am5.Picture.new(root, {
       src: "https://www.amcharts.com/wp-content/uploads/assets/logos/" + dataItem.dataContext.name.toLowerCase() + ".png",
-      centerX: am5.p50,
+      centerX: am5.p50,       // the logo's middle on the rectangle's middle
       centerY: am5.p50,
-      width: am5.percent(30),
+      width: am5.percent(30), // 30% of the rectangle's width
       isMeasured: true
     });
 
-    picture.states.lookup("default").setAll({ opacity: 0.15 });
+    picture.states.lookup("default").setAll({ opacity: 0.15 }); // faint, so the model names read over it
 
     return am5.Bullet.new(root, { sprite: picture });
   }
@@ -490,6 +503,7 @@ series.bullets.push(function (root, series, dataItem) {
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -498,3 +512,4 @@ series.bullets.push(function (root, series, dataItem) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

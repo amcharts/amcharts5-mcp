@@ -1,7 +1,7 @@
 ---
 title: "Map polygon series"
 source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Map polygon series are responsible for drawing actual map areas (countries, regions, etc.). This tutorial takes a look at various angles we can use them.
@@ -326,6 +326,92 @@ polygonSeries.mapPolygons.template.states.create("hover", {
 NOTE Adding a "hover" state does not automatically turn on interactivity for the element, so we need to do that manually by setting its `interactive` setting to `true`.
 
 
+## Adding links to polygons
+
+Polygons can act as links, navigating to a URL when clicked. To enable it, set series' `urlField` to the name of a data field that holds the target URL. Links are off until `urlField` is set.
+
+let polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata\_worldLow,
+    urlField: "url"
+  })
+);
+
+polygonSeries.data.setAll(\[{
+  id: "US",
+  url: "https://en.wikipedia.org/wiki/United\_States"
+}, {
+  id: "CA",
+  url: "https://en.wikipedia.org/wiki/Canada"
+}, {
+  id: "MX",
+  url: "https://en.wikipedia.org/wiki/Mexico"
+}\]);
+
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata\_worldLow,
+    urlField: "url"
+  })
+);
+
+polygonSeries.data.setAll(\[{
+  id: "US",
+  url: "https://en.wikipedia.org/wiki/United\_States"
+}, {
+  id: "CA",
+  url: "https://en.wikipedia.org/wiki/Canada"
+}, {
+  id: "MX",
+  url: "https://en.wikipedia.org/wiki/Mexico"
+}\]);
+
+Polygons with a URL in their data are automatically made clickable and show a pointer cursor. Those without a URL stay unaffected.
+
+By default the URL opens in the same window. Use `linkTarget` to control where it opens, e.g. `"_blank"` for a new tab (handy when the chart is embedded in an iframe):
+
+let polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata\_worldLow,
+    urlField: "url",
+    linkTarget: "\_blank"
+  })
+);
+
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata\_worldLow,
+    urlField: "url",
+    linkTarget: "\_blank"
+  })
+);
+
+### More about `urlField` (5.20.7)
+
+`urlField` and `linkTarget` are available since 5.20.7.
+
+Setting
+
+Default
+
+Comment
+
+`urlField`
+
+(none)
+
+A data field holding the URL to open when the data item's element is clicked. Links are off until this is set.
+
+`linkTarget`
+
+`"_self"`
+
+Where the URL opens: `"_self"` (same window, like a plain link), `"_blank"` (new tab, opened with `noopener`), or a named window/frame. A chart embedded in an iframe usually wants `"_blank"` or `"_top"`.
+
+Polygons with a URL get a pointer cursor automatically, unless you set a `cursorOverStyle` yourself. `urlField` can be set after the data, and a URL added to an item later (e.g. via `data.setIndex()`) links too. Script URLs (`javascript:`, `data:`, `vbscript:`) are not opened. To intercept links (e.g. in an editor), override the series' `openUrl(dataItem)` method.
+
+The same settings work on other series: they link bullets of any series, columns (including candlesticks, OHLC and Gantt bars), pie/funnel/pyramid/pictorial slices, Venn slices, and map lines. Hierarchy nodes, flow nodes and links, word cloud words and map Sankey nodes are not linked — use a click handler for those.
+
 ## Click events
 
 If we need to handle a click event on series' polygons, we can add it to its template, too:
@@ -338,7 +424,7 @@ polygonSeries.mapPolygons.template.events.on("click", function(ev) {
   console.log("Clicked on", ev.target.dataItem.get("name"));
 });
 
-This can be used to add click-through to polygons, by adding target URL into data:
+As an example, this can be used to add click-through to polygons, by adding target URL into data:
 
 polygonSeries.data.setAll(\[{
   id: "US",
@@ -378,52 +464,7 @@ polygonSeries.mapPolygons.template.events.on("click", function(ev) {
   }
 });
 
-### Linking via `urlField` (5.20.7)
-
-Since 5.20.7 a click handler is not needed: set series' `urlField` to the data field holding the URL, and clicking a polygon that has one opens it. `linkTarget` sets where it opens.
-
-```javascript
-var polygonSeries = chart.series.push(
-  am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata_worldLow,
-    urlField: "url",
-    linkTarget: "_blank"
-  })
-);
-
-polygonSeries.data.setAll([{
-  id: "US",
-  url: "https://en.wikipedia.org/wiki/United_States"
-}, {
-  id: "CA",
-  url: "https://en.wikipedia.org/wiki/Canada"
-}, {
-  id: "MX",
-  url: "https://en.wikipedia.org/wiki/Mexico"
-}]);
-```
-
-Setting
-
-Default
-
-Comment
-
-`urlField`
-
-(none)
-
-A data field holding the URL to open when the data item's element is clicked. Links are off until this is set.
-
-`linkTarget`
-
-`"_self"`
-
-Where the URL opens: `"_self"` (same window, like a plain link), `"_blank"` (new tab, opened with `noopener`), or a named window/frame. A chart embedded in an iframe usually wants `"_blank"` or `"_top"`.
-
-Polygons with a URL get a pointer cursor automatically, unless you set a `cursorOverStyle` yourself. `urlField` can be set after the data, and a URL added to an item later (e.g. via `data.setIndex()`) links too. Script URLs (`javascript:`, `data:`, `vbscript:`) are not opened. To intercept links (e.g. in an editor), override the series' `openUrl(dataItem)` method.
-
-The same settings work on other series: they link bullets of any series, columns (including candlesticks, OHLC and Gantt bars), pie/funnel/pyramid/pictorial slices, Venn slices, and map lines. Hierarchy nodes, flow nodes and links, word cloud words and map Sankey nodes are not linked — use a click handler for those.
+NOTE The above is just an example of handling clicks manually. If all you need is to open a URL, use the built-in `urlField` setting instead - see "[Adding links to polygons](#Adding_links_to_polygons)".
 
 ## Excluding or including polygons
 

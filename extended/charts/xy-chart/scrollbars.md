@@ -1,7 +1,7 @@
 ---
 title: "Scrollbars"
 source: "https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Scrollbars are useful controls that allow zooming chart's axis.
@@ -219,49 +219,82 @@ The nice thing about this approach is that we can configure the output down to l
 
 Normally, vertical scrollbar will be placed on chart's right, while horizontal one will be positioned on the top.
 
-To put it another way, when you assign a `Scrollbar` instance to chart's `scrollbarY` setting, it is automatically assigned as a child of chart's `rightAxesContainer`, whereas assigning it to `scrollbarX` will put it into `topAxesContainer`.
+### Opposite side
+
+To move a scrollbar to the other side of the chart, set its `opposite` setting to `true`. A horizontal scrollbar will go below the plot, and a vertical one to the left of it:
+
+chart.set("scrollbarX", am5.Scrollbar.new(root, {
+  orientation: "horizontal",
+  opposite: true
+}));
+
+chart.set("scrollbarY", am5.Scrollbar.new(root, {
+  orientation: "vertical",
+  opposite: true
+}));
+
+chart.set("scrollbarX", am5.Scrollbar.new(root, {
+  orientation: "horizontal",
+  opposite: true
+}));
+
+chart.set("scrollbarY", am5.Scrollbar.new(root, {
+  orientation: "vertical",
+  opposite: true
+}));
+
+### Inside or outside the axes
+
+If there are axes on the same side as the scrollbar, `outsideAxes` sets where the scrollbar goes relative to them:
+
+-   `true` - beyond the axes, at the outer edge of the chart.
+-   `false` - between the axes and the plot area.
+
+If not set, the chart picks the position itself.
+
+chart.set("scrollbarX", am5.Scrollbar.new(root, {
+  orientation: "horizontal",
+  opposite: true,
+  outsideAxes: true
+}));
+
+chart.set("scrollbarX", am5.Scrollbar.new(root, {
+  orientation: "horizontal",
+  opposite: true,
+  outsideAxes: true
+}));
+
+The above puts the horizontal scrollbar at the very bottom of the chart, below the X axis labels.
+
+Both `opposite` and `outsideAxes` can be changed at any time, and the scrollbar will move. They also work in [JSON configs](https://www.amcharts.com/docs/v5/concepts/serializing/).
+
+NOTE`opposite` is available since version 5.20.2, and `outsideAxes` since 5.21.0.
+
+### Other containers
+
+When you assign a `Scrollbar` instance to chart's `scrollbarY` setting, it is automatically assigned as a child of chart's `rightAxesContainer` (or `leftAxesContainer` if `opposite` is set), whereas assigning it to `scrollbarX` will put it into `topAxesContainer` (or `bottomAxesContainer`).
 
 Read more about build in XY chart containers in "[Containers of an XY chart](https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/)" tutorial.
 
-Re-positioning scrollbars is as easy as moving them to some other container.
+For a placement the settings above don't cover, we can move the scrollbar to some other container ourselves. `opposite` and `outsideAxes` do not apply to a scrollbar moved this way.
 
-For example, the following code will move vertical scrollbar to the left of the chart, and horizontal one to bottom:
+let scrollbarX = am5.Scrollbar.new(root, {
+  orientation: "horizontal"
+});
 
-// Scrollbar X
+chart.set("scrollbarX", scrollbarX);
+chart.plotContainer.children.push(scrollbarX);
+
 var scrollbarX = am5.Scrollbar.new(root, {
   orientation: "horizontal"
 });
 
 chart.set("scrollbarX", scrollbarX);
-chart.bottomAxesContainer.children.push(scrollbarX);
-
-// Scrollbar Y
-var scrollbarY = am5.Scrollbar.new(root, {
-  orientation: "vertical"
-});
-
-chart.set("scrollbarY", scrollbarX);
-chart.leftAxesContainer.children.push(scrollbarY);
-
-// Scrollbar X
-var scrollbarX = am5.Scrollbar.new(root, {
-  orientation: "horizontal"
-});
-
-chart.set("scrollbarX", scrollbarX);
-chart.bottomAxesContainer.children.push(scrollbarX);
-
-// Scrollbar Y
-var scrollbarY = am5.Scrollbar.new(root, {
-  orientation: "vertical"
-});
-
-chart.set("scrollbarY", scrollbarX);
-chart.leftAxesContainer.children.push(scrollbarY);
+chart.plotContainer.children.push(scrollbarX);
 
 
 ## Related tutorials
 
 -   [Start/end labels on scrollbar grips](https://www.amcharts.com/docs/v5/tutorials/start-end-labels-on-scrollbar-grips/)
 -   [Start/end labels on a scrollbar](https://www.amcharts.com/docs/v5/tutorials/adding-start-and-end-labels-to-a-scrollbar/)
--   [Customizing scrollbar grips](https://www.amcharts.com/docs/v5/tutorials/customizing-scrollbar-grips/)
+-   [Containers of an XY chart](https://www.amcharts.com/docs/v5/tutorials/xy-chart-containers/)

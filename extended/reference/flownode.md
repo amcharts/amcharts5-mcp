@@ -2,24 +2,30 @@
 title: "FlowNode"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/flownode/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Base class for flow chart nodes.
 
 ## Import
 
-```javascript
-// Import FlowNode
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.FlowNode.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IFlowNodeSettings` — get_api_reference shows it after this page
+- Private settings: `IFlowNodePrivate`
 
 ## Properties
 
-- **series** (`FlowNodes | undefined`) — Related series.
+Public properties (not settings):
+
+- **series** (`FlowNodes`) — The nodes series this node belongs to.

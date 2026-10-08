@@ -2,31 +2,34 @@
 title: "BollingerBands"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/bollingerbands/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Bollinger Bands indicator: a moving average of `field` over `period`, with bands `standardDeviations` standard deviations above and below it. Drawn over the main series.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import BollingerBands
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.BollingerBands.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: MovingAverage
+Extends: MovingAverage → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from MovingAverage (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **lowerColor** (`Color`) — A color for lower section.
-- **standardDeviations** (`undefined | number`) — A value of standard deviations.
-- **upperColor** (`Color`) — A color for upper section.
+- Settings: `IBollingerBandsSettings` — get_api_reference shows it after this page
+- Private settings: `IBollingerBandsPrivate`
+- Events: `IBollingerBandsEvents`
 
 ## Properties
 
-- **lowerBandSeries** (`LineSeries`) — Indicator series for the lower band.
-- **upperBandSeries** (`LineSeries`) — Indicator series for the upper band.
+Public properties (not settings):
+
+- **lowerBandSeries** (`LineSeries`) — Series of the lower band.
+- **upperBandSeries** (`LineSeries`) — Series of the upper band.

@@ -2,17 +2,24 @@
 title: "Heat Map with Legend"
 source: "https://www.amcharts.com/demos/heat-map-with-legend/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Heat map (also known as Heatmap, Heat table, Shading matrix) represents data in a rectangular matrix where individual values are differentiated by color.
-Heat rules
-Heat rules allow modifying element's properties based on its related value in data, like for instance, color of the columns on this charts.
-[More about head rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/)
-Heat legend
-A perfect companion for any color-based heat maps, a head legend can show the spectrum of values and their relation to colors.
-Furthermore, utilizing chart events, it's possible to further enhance UX by showing exact position of hovered element in the whole spectrum.
-[More about head legend](https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/)
+A week, hour by hour: each cell is colored from yellow to red by its value, and the legend below gives the scale. Weekday working hours glow red, while the weekend stays pale.
+
+When a heat map works: A heat map swaps numbers for colors, so a table of 168 values becomes a pattern you see at once: busy hours, quiet days, the odd spike. It suits two categories that cross, like days and hours, where a line or column chart would need a series for every row.
+
+Good for:
+- Website traffic or sales by day and hour
+- Schedules, bookings and occupancy
+- Spotting patterns in a big table
+
+Think twice when:
+- Exact values: colors give a rough reading, so add tooltips or labels
+- Readers with color vision deficiency: pick a scale that also changes in lightness
+- A trend over weeks or months: a line chart shows it better
+
+Prompt: Create a heat map of values by weekday and hour of the day, highest in weekday working hours, with the cells colored by value and a heat legend that marks a cell’s value when the pointer is over it. Add tooltips. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,78 +28,80 @@ Furthermore, utilizing chart events, it's possible to further enhance UX by show
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
+  panX: false,    // no dragging the plot
   panY: false,
-  wheelX: "none",
+  wheelX: "none", // the mouse wheel scrolls the page, not the chart
   wheelY: "none",
-  paddingLeft: 0,
+  paddingLeft: 0, // the weekday labels sit at the chart's left edge
   layout: root.verticalLayout
 }));
 
-
 // Create axes and their renderers
 var yRenderer = am5xy.AxisRendererY.new(root, {
-  visible: false,
-  minGridDistance: 20,
+  visible: false,      // no axis line
+  minGridDistance: 20, // at least 20px between labels
+  // the first day in the data, Sunday, at the top
   inversed: true,
   minorGridEnabled: true
 });
 
-yRenderer.grid.template.set("visible", false);
+yRenderer.grid.template.set("visible", false); // no grid lines
 
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0,
+  maxDeviation: 0, // no panning past the first or last day
   renderer: yRenderer,
   categoryField: "weekday"
 }));
 
 var xRenderer = am5xy.AxisRendererX.new(root, {
-  visible: false,
-  minGridDistance: 30,
-  opposite:true,
+  visible: false, // no axis line
+  // every second hour, so the labels don't run into each other
+  minGridDistance: 50,
+  opposite: true, // the hours along the top
   minorGridEnabled: true
 });
 
-xRenderer.grid.template.set("visible", false);
+xRenderer.grid.template.set("visible", false); // no grid lines
 
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   renderer: xRenderer,
   categoryField: "hour"
 }));
 
-
 // Create series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_series
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+  // works out valueLow and valueHigh, which the heat rules and the legend use
   calculateAggregates: true,
-  stroke: am5.color(0xffffff),
-  clustered: false,
+  // gaps between the cells in the chart's background color
+  stroke: root.interfaceColors.get("background"),
+  clustered: false,   // a cell never shares its space with other series' columns
   xAxis: xAxis,
   yAxis: yAxis,
   categoryXField: "hour",
   categoryYField: "weekday",
-  valueField: "value"
+  valueField: "value" // the value the heat rules color the cells by
 }));
 
 series.columns.template.setAll({
-  tooltipText: "{value}",
-  strokeOpacity: 1,
-  strokeWidth: 2,
-  width: am5.percent(100),
-  height: am5.percent(100)
+  tooltipText: "{categoryY}, {categoryX}: {value}", // as "Sunday, 12am: 2,990"
+  strokeOpacity: 1,        // solid...
+  strokeWidth: 2,          // ...2px gaps
+  width: am5.percent(100), // each cell fills its hour...
+  height: am5.percent(100) // ...and its day
 });
 
+// hovering a cell marks its value on the heat legend
 series.columns.template.events.on("pointerover", function(event) {
   var di = event.target.dataItem;
   if (di) {
@@ -100,36 +109,35 @@ series.columns.template.events.on("pointerover", function(event) {
   }
 });
 
+// the legend runs from the lowest value on the left to the highest on the right
 series.events.on("datavalidated", function() {
-  heatLegend.set("startValue", series.getPrivate("valueHigh"));
-  heatLegend.set("endValue", series.getPrivate("valueLow"));
+  heatLegend.set("startValue", series.getPrivate("valueLow"));
+  heatLegend.set("endValue", series.getPrivate("valueHigh"));
 });
-
 
 // Set up heat rules
 // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: series.columns.template,
-  min: am5.color(0xfffb77),
-  max: am5.color(0xfe131a),
+  min: am5.color(0xfffb77), // light yellow for the lowest value...
+  max: am5.color(0xfe131a), // ...red for the highest
   dataField: "value",
-  key: "fill"
+  key: "fill"               // the heat rule sets each cell's fill
 }]);
-
 
 // Add heat legend
 // https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
 var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root, {
-  orientation: "horizontal",
-  endColor: am5.color(0xfffb77),
-  startColor: am5.color(0xfe131a)
+  orientation: "horizontal",       // a color bar along the bottom
+  marginTop: 10,                   // 10px below the plot
+  startColor: am5.color(0xfffb77), // the same colors as the heat rule
+  endColor: am5.color(0xfe131a)
 }));
-
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/xy-chart/#Setting_data
 var data = [{
-  hour: "12pm",
+  hour: "12am",
   weekday: "Sunday",
   value: 2990
 }, {
@@ -177,7 +185,7 @@ var data = [{
   weekday: "Sunday",
   value: 3018
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Sunday",
   value: 3154
 }, {
@@ -225,7 +233,7 @@ var data = [{
   weekday: "Sunday",
   value: 3323
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Monday",
   value: 3346
 }, {
@@ -273,7 +281,7 @@ var data = [{
   weekday: "Monday",
   value: 9313
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Monday",
   value: 9011
 }, {
@@ -321,7 +329,7 @@ var data = [{
   weekday: "Monday",
   value: 4851
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Tuesday",
   value: 4468
 }, {
@@ -369,7 +377,7 @@ var data = [{
   weekday: "Tuesday",
   value: 10425
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Tuesday",
   value: 10137
 }, {
@@ -417,7 +425,7 @@ var data = [{
   weekday: "Tuesday",
   value: 8581
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Wednesday",
   value: 8145
 }, {
@@ -465,7 +473,7 @@ var data = [{
   weekday: "Wednesday",
   value: 9928
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Wednesday",
   value: 9644
 }, {
@@ -513,7 +521,7 @@ var data = [{
   weekday: "Wednesday",
   value: 4118
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Thursday",
   value: 3689
 }, {
@@ -561,7 +569,7 @@ var data = [{
   weekday: "Thursday",
   value: 9420
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Thursday",
   value: 8966
 }, {
@@ -609,7 +617,7 @@ var data = [{
   weekday: "Thursday",
   value: 4017
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Friday",
   value: 4022
 }, {
@@ -657,7 +665,7 @@ var data = [{
   weekday: "Friday",
   value: 8615
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Friday",
   value: 8218
 }, {
@@ -705,7 +713,7 @@ var data = [{
   weekday: "Friday",
   value: 3833
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Saturday",
   value: 3503
 }, {
@@ -753,7 +761,7 @@ var data = [{
   weekday: "Saturday",
   value: 3416
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Saturday",
   value: 3432
 }, {
@@ -817,16 +825,13 @@ am5.array.each(data, function(row) {
   }
 });
 
-
 yAxis.data.setAll(weekdays.map(function(item) {
   return { weekday: item }
 }));
 
-
 xAxis.data.setAll(hours.map(function(item) {
   return { hour: item }
 }));
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
@@ -845,6 +850,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -853,3 +859,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

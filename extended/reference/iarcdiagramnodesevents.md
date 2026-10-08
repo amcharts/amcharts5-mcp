@@ -2,13 +2,22 @@
 title: "IArcDiagramNodesEvents"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iarcdiagramnodesevents/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IFlowNodesEvents
+All ancestors: IFlowNodesEvents, ISeriesEvents, IComponentEvents, IContainerEvents, ISpriteEvents, IEntityEvents
+TypeScript: `am5flow.IArcDiagramNodesEvents` (`import type { IArcDiagramNodesEvents } from "@amcharts/amcharts5/flow"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IFlowNodesEvents (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Events
+
+_(none declared here — all inherited)_
+
+## Other inherited events
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IComponentEvents")`) for types, defaults and descriptions.
+
+- _IComponentEvents_: datavalidated, valueschanged
+- _ISpriteEvents_: blur, boundschanged, click, dataitemchanged, dblclick, dragged, dragstart, dragstop, focus, globalpointerdown, globalpointermove, globalpointerup, middleclick, pointerdown, pointerout, pointerover, pointerup, positionchanged, rightclick, wheel

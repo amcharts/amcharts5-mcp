@@ -2,34 +2,37 @@
 title: "ITextStyle"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itextstyle/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **baselineRatio** (`undefined | number`) — (no description)
-- **breakWords** (`undefined | false | true`) — (no description)
-- **direction** (`"ltr" | "rtl"`) — (no description)
-- **ellipsis** (`undefined | string`) — (no description)
-- **fill** (`Color | IGradient | IPattern`) — (no description)
-- **fontFamily** (`undefined | string`) — (no description)
-- **fontSize** (`string | number`) — (no description)
-- **fontStyle** (`"normal" | "italic" | "oblique"`) — (no description)
-- **fontVariant** (`"normal" | "small-caps"`) — (no description)
-- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — (no description)
-- **lineHeight** (`number | Percent`) — (no description)
-- **maxHeight** (`undefined | number`) — (no description)
-- **maxWidth** (`undefined | number`) — (no description)
-- **minScale** (`undefined | number`) — (no description)
-- **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`) — (no description)
-- **shadowBlur** (`undefined | number`) — (no description)
-- **shadowColor** (`Color | null`) — (no description)
-- **shadowOffsetX** (`undefined | number`) — (no description)
-- **shadowOffsetY** (`undefined | number`) — (no description)
-- **shadowOpacity** (`undefined | number`) — (no description)
-- **textAlign** (`"start" | "end" | "left" | "right" | "center"`) — (no description)
-- **textBaseline** (`"top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"`) — (no description)
-- **textDecoration** (`"underline" | "line-through"`) — (no description)
-
+- **fill** (`IGradient | Color | IPattern`)
+- **textAlign** (`"start" | "end" | "left" | "right" | "center"`)
+- **verticalAlign** (`"baseline" | "sub" | "super"`)
+- **fontFamily** (`string`)
+- **fontSize** (`string | number`)
+- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`)
+- **fontStyle** (`"normal" | "italic" | "oblique"`)
+- **fontVariant** (`"normal" | "small-caps"`)
+- **textDecoration** (`"underline" | "line-through"`)
+- **shadowColor** (`Color`)
+- **shadowBlur** (`number`)
+- **shadowOffsetX** (`number`)
+- **shadowOffsetY** (`number`)
+- **shadowOpacity** (`number`)
+- **lineHeight** (`number | Percent`)
+- **baselineRatio** (`number`)
+- **direction** (`"ltr" | "rtl"`)
+- **textBaseline** (`"top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"`)
+- **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`)
+- **breakWords** (`boolean`)
+- **ellipsis** (`string`)
+- **maxWidth** (`number`)
+- **maxHeight** (`number`)
+- **minScale** (`number`)

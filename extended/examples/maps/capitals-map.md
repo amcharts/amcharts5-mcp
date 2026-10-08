@@ -2,29 +2,24 @@
 title: "Capitals Map"
 source: "https://www.amcharts.com/demos/capitals-map/"
 category: "maps"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This world map shows the capital city of every country, 196 in all. Hover over a red star to see the capital and its country, zoom in to see all the capital names right on the map, or switch to the globe to spin the Earth.
-Hover over a star to see the capital and its country
-Zoom in (scroll, double-click or the + button) and the capital names appear on the map
-Use the Map / Globe switch in the top-left corner to turn the map into a 3D globe
-Drag to move around, hold Shift and drag to zoom into an area, and use the home button to see the whole world again
-More to explore on DataViz Dojo
-Spot the CountryHow fast can you find it? A world map geography quiz with five difficulty levels.
-SVG Map GeneratorNeed a world or country map for a document or a website? Pick a projection and colors, then download a clean SVG.
-PAC-WORLDThe classic arcade game played on a 3D globe: eat the dots and dodge the ghosts across the continents.
-Make it your own
-Want your own version of this map? Click Edit this chart to open it in the amCharts Editor. Change the colors, add your own cities or pins, highlight countries or map your own data, then export it or share it with a link. No coding needed.
-For developers
-This is an amCharts 5 MapChart with the Natural Earth projection (am5map.geoNaturalEarth1()). The Map / Globe switch swaps it for am5map.geoOrthographic() and makes vertical dragging rotate the globe. The capitals are a MapPointSeries fed with plain latitude and longitude data, each drawn as an am5.Star with a label. All the labels share one Template, so a single chart.on("zoomLevel") handler shows them once the map is zoomed in to level 3. The list of capitals comes from Natural Earth, a public-domain map dataset. The full JavaScript, TypeScript and JSON source is below.
-Related demos
-Zooming to Countries Map
-Rotate Globe to a Selected Country
-World Map With Clustered Points
-Map chart
-Map point series
-Templates
+A world map with the capital of every country, 196 in all, each marked with a star as in a printed atlas. Zoom in and the names appear.
+
+When a point map works: Marking places with one symbol answers where things are, not how much: here, every capital at a glance, with the names saved for when you zoom in, so the world view stays readable. Point maps suit any list of places with coordinates, from offices to airports.
+
+Good for:
+- Locations: offices, stores, airports, cities
+- Atlases and reference maps
+- Any list of places with coordinates
+
+Think twice when:
+- A value for each place: size the points as bubbles
+- Thousands of points: cluster them
+- Data for whole countries: color the countries instead
+
+Prompt: Create a world map in the style of a printed atlas that marks every country’s capital with a star, with the capital and its country in a tooltip. The capitals’ names appear next to their stars once the map is zoomed in. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -33,43 +28,38 @@ Templates
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
-// Atlas-style buttons and text
-var myTheme = am5.Theme.new(root);
-
-myTheme.rule("InterfaceColors").setAll({
-  primaryButton: am5.color(0x3d6a8c),
-  primaryButtonHover: am5.color(0x2f5673),
-  primaryButtonDown: am5.color(0x25465e),
-  primaryButtonActive: am5.color(0xc0392b),
-  text: am5.color(0x2d3b45)
-});
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root), myTheme
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
+// Colors from the theme, so the map follows the theme
+var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
+  // near-black space behind the satellite picture, shown only with it
+  background: am5.Rectangle.new(root, {
+    fill: am5.color(0x101318),
+    fillOpacity: 0 // invisible until the satellite view turns it on
+  }),
+  // go to the home view once the map is fitted
+  autoHome: true,
+  // dragging sideways turns the world around, dragging up and down moves it
   panX: "rotateX",
   panY: "translateY",
+  // hold Shift and drag a box to zoom into it
   boxZoom: "shift",
-  minZoomLevel: 0.5,
-  projection: am5map.geoNaturalEarth1(),
-  paddingBottom: 20,
+  minZoomLevel: 0.5,                  // zoom out to half the fitted size at most
+  projection: am5map.geoEqualEarth(), // the Equal Earth projection
+  paddingBottom: 20,                  // 20px of room around the map
   paddingTop: 20,
   paddingLeft: 20,
-  paddingRight: 20,
-  background: am5.Rectangle.new(root, {
-    fill: am5.color(0xeef3f5),
-    fillOpacity: 1
-  })
+  paddingRight: 20
 }));
-
 
 // Zoom control
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
@@ -78,124 +68,90 @@ var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
-
-// Map / Globe switch
-var cont = chart.children.push(am5.Container.new(root, {
-  layout: root.horizontalLayout,
-  x: 20,
-  y: 40
-}));
-
-cont.children.push(am5.Label.new(root, {
-  centerY: am5.p50,
-  text: "Map"
-}));
-
-var switchButton = cont.children.push(am5.Button.new(root, {
-  themeTags: ["switch"],
-  centerY: am5.p50,
-  icon: am5.Circle.new(root, {
-    themeTags: ["icon"]
-  })
-}));
-
-cont.children.push(am5.Label.new(root, {
-  centerY: am5.p50,
-  text: "Globe"
-}));
-
-switchButton.on("active", function () {
-  if (switchButton.get("active")) {
-    chart.set("projection", am5map.geoOrthographic());
-    chart.set("panY", "rotateY");
-  }
-  else {
-    chart.set("projection", am5map.geoNaturalEarth1());
-    chart.set("panY", "translateY");
-    chart.set("rotationY", 0);
-  }
-});
-
-
 // Create series for the ocean
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
 var oceanSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 
 oceanSeries.mapPolygons.template.setAll({
-  fill: am5.color(0xcfe2ec),
-  fillOpacity: 1,
-  strokeOpacity: 0
+  fill: root.interfaceColors.get("alternativeBackground"), // a color that contrasts with the background...
+  fillOpacity: 0.05, // ...as a faint tint for the oceans
+  strokeOpacity: 0 // no outline
 });
 
 oceanSeries.data.push({
-  geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+  geometry: am5map.getGeoRectangle(90, 180, -90, -180) // a rectangle around the whole world
 });
 
+// Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
+// (visible: false): make it visible for the satellite view
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
+  visible: false,
+  // the map fits the countries, not the whole picture
+  affectsBounds: false
+}));
 
 // Create graticule series
 // https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
-  step: 10
+  step: 10 // a grid line every 10 degrees
 }));
 
 graticuleSeries.mapLines.template.setAll({
-  stroke: am5.color(0xffffff),
-  strokeOpacity: 0.5
+  stroke: root.interfaceColors.get("alternativeBackground"), // a color that contrasts with the background...
+  strokeOpacity: 0.08 // ...very faint
 });
-
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-  geoJSON: am5geodata_worldLow
+  geoJSON: am5geodata_worldLow // low-detail world countries
 }));
 
 polygonSeries.mapPolygons.template.setAll({
-  tooltipText: "{name}",
-  fill: am5.color(0xf7f4ea),
-  stroke: am5.color(0xb8c3c7),
-  strokeWidth: 0.5
+  tooltipText: "{name}", // the country's name
+  strokeWidth: 0.5       // thin borders
 });
 
 polygonSeries.mapPolygons.template.states.create("hover", {
-  fill: am5.color(0xefe6cf)
+  fill: root.interfaceColors.get("primaryButtonHover") // a hovered country takes the theme's hover color
 });
-
 
 // Create point series for the capitals
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
 var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+// A star, the usual atlas symbol for a capital. All stars share this template, so they can be changed at once.
+var starTemplate = am5.Template.new({
+  radius: 6, // 6px from the center to the tips...
+  innerRadius: am5.percent(45), // ...with the dents at 45% of that
+  spikes: 5, // five points
+  fill: colors.getIndex(10),
+  stroke: root.interfaceColors.get("background"), // outlined in the background color...
+  strokeWidth: 1, // ...1px wide
+  centerX: am5.p50, // centered on the capital
+  centerY: am5.p50
+});
 
 // All capital name labels share this template, so they can be shown or hidden together
 var labelTemplate = am5.Template.new({});
 
 pointSeries.bullets.push(function () {
   var container = am5.Container.new(root, {
-    tooltipText: "[bold]{title}[/]\n{country}",
-    tooltipY: 0
+    tooltipText: "[bold]{title}[/]\n{country}", // the capital in bold, its country under it
+    tooltipY: 0 // the tooltip points at the star
   });
 
-  // A red star, the usual atlas symbol for a capital
-  container.children.push(am5.Star.new(root, {
-    radius: 6,
-    innerRadius: am5.percent(45),
-    spikes: 5,
-    fill: am5.color(0xc0392b),
-    stroke: am5.color(0xffffff),
-    strokeWidth: 1,
-    centerX: am5.p50,
-    centerY: am5.p50
-  }));
+  container.children.push(am5.Star.new(root, {}, starTemplate));
 
   container.children.push(am5.Label.new(root, {
-    text: "{title}",
-    populateText: true,
-    fontSize: 11,
-    fontWeight: "600",
-    fill: am5.color(0x2d3b45),
-    centerY: am5.p50,
-    dx: 6,
-    paddingTop: 0,
+    text: "{title}",    // the capital's name
+    populateText: true, // fill in {title} from the data
+    fontSize: 11,       // 11px
+    fontWeight: "600",  // semi-bold
+    centerY: am5.p50,   // level with the star...
+    dx: 6,              // ...starting 6px right of its center
+    paddingTop: 0,      // no padding above and below
     paddingBottom: 0
   }, labelTemplate));
 
@@ -208,9 +164,8 @@ pointSeries.bullets.push(function () {
 labelTemplate.set("forceHidden", true);
 
 chart.on("zoomLevel", function (zoomLevel) {
-  labelTemplate.set("forceHidden", zoomLevel < 3);
+  labelTemplate.set("forceHidden", zoomLevel < 3); // the names show from zoom level 3
 });
-
 
 // Capitals of the world's countries
 // (Natural Earth populated places, public domain)
@@ -415,10 +370,66 @@ var capitals = [
 
 pointSeries.data.setAll(capitals);
 
+// The image credit
+var credit = chart.children.push(am5.Label.new(root, {
+  text: "Imagery: NASA Earth Observatory",
+  fontSize: 12,              // 12px text
+  fill: am5.color(0xffffff), // white, over the dark picture
+  fillOpacity: 0.6,
+  x: am5.p100,               // at the right edge...
+  centerX: am5.p100,         // ...measured from the label's right end...
+  dx: -10,                   // ...10px in from it
+  y: 10,                     // 10px from the top
+  visible: false             // shown with the satellite view only
+}));
+
+// The countries' own look, to go back to
+var landTemplate = polygonSeries.mapPolygons.template;
+var landLook = {
+  fillOpacity: landTemplate.get("fillOpacity", 1),
+  stroke: landTemplate.get("stroke", root.interfaceColors.get("background")),
+  strokeOpacity: landTemplate.get("strokeOpacity", 1)
+};
+
+// Hovered countries: their own look on the map, only a bright outline over the satellite picture
+var outlineLook = { fillOpacity: 0, strokeOpacity: 1, strokeWidth: 2 };
+var hoverState = landTemplate.states.lookup("hover");
+var hoverLook = stateLook(hoverState);
+
+// the settings of a state that the outline changes, as they are on the map
+function stateLook(state) {
+  return {
+    fillOpacity: state.get("fillOpacity", landLook.fillOpacity),
+    strokeOpacity: state.get("strokeOpacity", landLook.strokeOpacity),
+    strokeWidth: state.get("strokeWidth", landTemplate.get("strokeWidth", 1))
+  };
+}
+
+// The picture loads the first time it shows. Then the countries turn to white outlines over it, the grid lines
+// turn white, the credit shows and the map sits in near-black space
+satelliteSeries.on("visible", function(visible) {
+  if (visible) {
+    // NASA's 2048px picture of the Earth
+    satelliteSeries.set("src", "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg");
+  }
+  credit.set("visible", visible);
+  chart.get("background").set("fillOpacity", visible ? 1 : 0); // the near-black space behind the map
+  var look = visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook;
+  landTemplate.setAll(look);
+  hoverState.setAll(visible ? outlineLook : hoverLook);
+  // a country hovered before kept the look it had then as its own and as its default one: give it the new look
+  polygonSeries.mapPolygons.each(function (polygon) {
+    var defaultState = polygon.states.lookup("default");
+    if (defaultState) {
+      defaultState.setAll(look);
+    }
+    polygon.setAll(look);
+  });
+  graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);
-
 ```
 
 ## HTML
@@ -432,13 +443,10 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  max-width:100%;
+  max-width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
-
-.single-demo .demo-background{background:#eef3f5;}
-.single-demo .demo-body.extended{background:#eef3f5;padding:0;border-radius:0;border-top:none;}
-
 ```
 
 ## Required resources
@@ -447,3 +455,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

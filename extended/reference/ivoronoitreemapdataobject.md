@@ -2,14 +2,17 @@
 title: "IVoronoiTreemapDataObject"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ivoronoitreemapdataobject/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: `am5hierarchy.IVoronoiTreemapDataObject` (`import type { IVoronoiTreemapDataObject } from "@amcharts/amcharts5/hierarchy"`)
 
 ## Properties
 
-- **children** (`IVoronoiTreemapDataObject[]`) — (no description)
-- **dataItem** (`DataItem`) — (no description)
-- **name** (`undefined | string`) — (no description)
-
+- **name** (`string`)
+- **value** (`number`)
+- **children** (`IVoronoiTreemapDataObject[]`)
+- **dataItem** (`DataItem<IVoronoiTreemapDataItem>`)

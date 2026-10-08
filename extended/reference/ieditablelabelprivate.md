@@ -2,19 +2,23 @@
 title: "IEditableLabelPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ieditablelabelprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: ILabelPrivate
-Extended by: IEditableAxisLabelPrivate
+All ancestors: ILabelPrivate, IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5.IEditableLabelPrivate` (`import type { IEditableLabelPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ILabelPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **input** (`Container`)
+- **textarea** (`HTMLTextAreaElement`)
 
-- **input** (`Container`) — (no description)
-- **textarea** (`HTMLTextAreaElement`) — (no description)
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerPrivate")`) for types, defaults and descriptions.
+
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

@@ -2,29 +2,33 @@
 title: "Volume"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/volume/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Volume indicator: columns of `volumeSeries`, colored by whether the price closed up or down. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import Volume
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.Volume.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **decreasingColor** (`Color`) — A decreasing color.
-- **increasingColor** (`Color`) — An icreasing color.
+- Settings: `IVolumeSettings` — get_api_reference shows it after this page
+- Private settings: `IVolumePrivate`
+- Events: `IVolumeEvents`
 
 ## Properties
 
-- **series** (`ColumnSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`ColumnSeries`) — The indicator's series.

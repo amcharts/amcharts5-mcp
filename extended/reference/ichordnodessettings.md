@@ -2,89 +2,34 @@
 title: "IChordNodesSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichordnodessettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IChordNodesSettings extends IFlowNodesSettings.
-IChordNodesSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        animationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IFlowNodesSettings
-Animation duration in ms.
-
-
-        animationEasing        
-        #
-      
-
-
-                          Type undefined | ( t: Time) => Time                      
-Inherited from IFlowNodesSettings
-Easing function to use for node animations.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IFlowNodesSettings
+All ancestors: IFlowNodesSettings, ISeriesSettings, IComponentSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5flow.ChordNodes` (see its page for the class)
+TypeScript: `am5flow.IChordNodesSettings` (`import type { IChordNodesSettings } from "@amcharts/amcharts5/flow"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IFlowNodesSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
+
+_(none declared here — all inherited)_
+
+## Inherited settings with a different default on ChordNodes
+
+- **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
+- **legendValueText** (`string`) — default `"{sumOutgoing.formatNumber('#.#')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
+- **x** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — X position in the parent: pixels from its left edge, or a `Percent` of its inner width, measured from inside its left padding.
+- **y** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — Y position in the parent: pixels from its top edge, or a `Percent` of its inner height, measured from inside its top padding.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IFlowNodesSettings")`) for types, defaults and descriptions.
+
+- _IFlowNodesSettings_: animationDuration, animationEasing, colors, disabledField, fillField, nameField, patterns, unknownField
+- _ISeriesSettings_: calculateAggregates, customValueField, excludeFromAggregate, fill, fillGradient, fillPattern, heatRules, idField, legendDataItem, linkTarget, name, sequencedDelay, sequencedInterpolation, stroke, strokeGradient, urlField, valueField
+- _IComponentSettings_: interpolationDuration, interpolationEasing
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

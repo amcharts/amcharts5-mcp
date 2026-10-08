@@ -2,29 +2,30 @@
 title: "ArcDiagramLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/arcdiagramlink/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A link element used in ArcDiagram chart.
+A link element of an `ArcDiagram` series: an arc from one node to another.
 
 ## Import
 
-```javascript
-// Import ArcDiagramLink
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ArcDiagramLink.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: FlowLink
+Extends: FlowLink → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from FlowLink (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **source** (`DataItem`) — Source data item.
-- **target** (`DataItem`) — target data item.
+- Settings: `IArcDiagramLinkSettings` — get_api_reference shows it after this page
+- Private settings: `IArcDiagramLinkPrivate`
 
 ## Properties
 
-- **series** (`ArcDiagram | undefined`) — (no description)
+Public properties (not settings):
+
+- **series** (`ArcDiagram`)

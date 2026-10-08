@@ -2,94 +2,44 @@
 title: "IGraphicsSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/igraphicssettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IGraphicsSettings extends ISpriteSettings.
-IGraphicsSettings is extended by IRectangleSettings, ICircleSettings, IFlowLinkSettings, ISliceSettings, IFunnelSliceSettings, ILineSettings, IPointedRectangleSettings, IPolygonSettings, IEllipseSettings, IStarSettings, ITriangleSettings, IOrthogonalLineSettings, IGridSettings, IAxisRendererSettings, IHierarchyLinkSettings, IMapLineSettings, IMapPolygonSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: ISpriteSettings
-Extended by: IRectangleSettings, ICircleSettings, IFlowLinkSettings, ISliceSettings, IFunnelSliceSettings, ILineSettings, IPointedRectangleSettings, IPolygonSettings, IEllipseSettings, IStarSettings, ITriangleSettings, IOrthogonalLineSettings, IGridSettings, IAxisRendererSettings, IHierarchyLinkSettings, IMapLineSettings, IMapPolygonSettings
+All ancestors: ISpriteSettings, IEntitySettings
+Settings of: `am5.Graphics` (see its page for the class)
+TypeScript: `am5.IGraphicsSettings` (`import type { IGraphicsSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISpriteSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **fill** (`Color`) — Fill color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **stroke** (`Color`) — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **fillPattern** (`Pattern`) — Fill pattern. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+- **strokePattern** (`Pattern`) — Stroke (border or line) pattern. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+- **fillGradient** (`Gradient`) — Fill gradient. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **strokeGradient** (`Gradient`) — Stroke (border or line) gradient. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **strokeDasharray** (`number | number[]`) — Dash pattern of the stroke (border or line): lengths in pixels of dashes and gaps, e.g. `[4, 2]`. A single number makes dashes and gaps of that length. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Dashed_lines
+- **strokeDashoffset** (`number`) — Stroke (border or line) dash offset. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Dashed_lines
+- **fillOpacity** (`number`) — Opacity of the fill, from `0` (transparent) to `1` (opaque).
+- **strokeOpacity** (`number`) — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
+- **strokeWidth** (`number`) — default `1` _(theme)_ — Width of the stroke (border or line) in pixels.
+- **nonScalingStroke** (`boolean`) — default `false` — Keeps the stroke width the same when the element's `scale` changes. A parent's scale still affects it.
+- **draw** (`(display: IGraphics, graphics: Graphics) => void`) — Drawing function. Must use renderer (`display` parameter) methods to draw. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/#Custom_draw_functions
+- **blendMode** (`BlendMode`) — default `BlendMode.NORMAL ("source-over")` — _(internal)_ Rendering mode. Docs: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+- **svgPath** (`string`) — SVG path data (as in the `d` attribute of a `<path>`) to draw the shape from. Docs: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+- **shadowColor** (`Color`) — Color of the element's shadow. It shows only when `shadowBlur`, `shadowOffsetX` or `shadowOffsetY` is set too. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowBlur** (`number`) — Blurriness of the shadow: the bigger the number, the blurrier the shadow. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetX** (`number`) — Horizontal shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetY** (`number`) — Vertical shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOpacity** (`number`) — Opacity of the shadow, from `0` to `1`. If not set, the shadow takes the opacity of the element's fill. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **lineJoin** (`"miter" | "round" | "bevel"`) — default `"miter"` — Shape of the joints of a multi-point line. _Since 5.2.10._ Docs: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineJoin
+- **lineCap** (`"round" | "butt" | "square"`) — default `"butt"` — Shape of the end points of lines. _Since 5.10.8._ Docs: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineCap
 
-- **draw** (`undefined | ( display: IGraphics, graphics: Graphics) => void`) — Drawing function. Must use renderer (display parameter) methods to draw. Click here for more info
-- **fill** (`Color`) — Fill color. Click here for more information
-- **fillGradient** (`Gradient`) — Fill gradient. Click here for more information
-- **fillOpacity** (`undefined | number`) — Opacity of the fill. 0 - fully transparent; 1 - fully opaque.
-- **fillPattern** (`Pattern`) — Fill pattern. Click here for more information
-- **lineCap** (`"butt" | "round" | "square"`) — Default "butt" This setting determines the shape used to draw the end points of lines. Click here for more info @since 5.10.8
-- **lineJoin** (`"miter" | "round" | "bevel"`) — Default "miter" A method to be used on anchor points (joints) of the multi-point line. Click here for more info @since 5.2.10
-- **nonScalingStroke** (`undefined | false | true`) — Default false Indicates if stroke of a Graphics should stay the same when it's scale changes. Note, this doesn't take into account parent container scale changes.
-- **shadowBlur** (`undefined | number`) — Blurriness of the the shadow. The bigger the number, the more blurry shadow will be. Click here for more info
-- **shadowColor** (`Color | null`) — Color of the element's shadow. For this to work at least one of the following needs to be set as well: shadowBlur, shadowOffsetX, shadowOffsetY. Click here for more info
-- **shadowOffsetX** (`undefined | number`) — Horizontal shadow offset in pixels. Click here for more info
-- **shadowOffsetY** (`undefined | number`) — Vertical shadow offset in pixels. Click here for more info
-- **shadowOpacity** (`undefined | number`) — Opacity of the shadow (0-1). If not set, will use the same as fillOpacity of the element. Click here for more info
-- **stroke** (`Color`) — Stroke (border or line) color. Click here for more information
-- **strokeDasharray** (`number[] | number`) — Stroke (border or line) dash settings. Click here for more information
-- **strokeDashoffset** (`undefined | number`) — Stroke (border or line) dash offset. Click here for more information
-- **strokeGradient** (`Gradient`) — Stroke (border or line) gradient. Click here for more information
-- **strokeOpacity** (`undefined | number`) — Opacity of the stroke (border or line). 0 - fully transparent; 1 - fully opaque.
-- **strokePattern** (`Pattern`) — Stroke (border or line) pattern. Click here for more information
-- **strokeWidth** (`undefined | number`) — Width of the stroke (border or line) in pixels.
-- **svgPath** (`undefined | string`) — Draw a shape using an SVG path. Click here for more information
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISpriteSettings")`) for types, defaults and descriptions.
+
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -1,7 +1,7 @@
 ---
 title: "Cursor"
 source: "https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Cursor is an optional functional component of an XY chart. It can be used to display crosshair over the hover/touch area, tooltips for some or all nearby series data items, as well as tooltips on axes.
@@ -50,9 +50,12 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "zoomX"
 }));
 
+
 `behavior: "zoomX"`
 
+
 `behavior: "zoomY"`
+
 
 `behavior: "zoomXY"`
 
@@ -79,6 +82,24 @@ Enables bi-directional selection.
 It will work the same way as zooming, except the selection area will stay selected after user releases mouse/touch.
 
 It can be useful in conjunction with selection-related [event handlers](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Events).
+
+### Selection tolerance
+
+Normally, cursor selection can start only within the plot area, which may make it hard to include full range very near the edge.
+
+We can enable selection to start outside the plot area using Cursor's `clickTolerance` setting, which accepts numeric pixel values.
+
+chart.set("cursor", am5xy.XYCursor.new(root, {
+  behavior: "zoomX",
+  clickTolerance: 30
+}));
+
+chart.set("cursor", am5xy.XYCursor.new(root, {
+  behavior: "zoomX",
+  clickTolerance: 30
+}));
+
+The above will allow the original pointer down event to originate 30 pixels around the perimeter of the plot area, albeit the selection rectangle itself will still be constrained.
 
 ## Relation to series
 
@@ -115,7 +136,9 @@ var chart = root.container.children.push(
 
 `maxTooltipDistance` also has a special value: `-1`. Setting it will ensure that only one tooltip will be shown, no matter what. Even in case there are multiple data items in exact space spot.
 
+
 Default behavior
+
 
 `maxTooltipDisatnce: 0`
 
@@ -258,7 +281,9 @@ xAxis.set("tooltip", am5.Tooltip.new(root, {}));
 
 yAxis.set("tooltip", am5.Tooltip.new(root, {}));
 
+
 Without axis tooltips
+
 
 With axis tooltips
 

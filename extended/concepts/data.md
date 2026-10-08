@@ -678,6 +678,8 @@ series.data.setAll(\[{
 
 In the above, without the processor, a data point for "Marketing" would be not plotted. With data processor, it will be replaced with a zero, which is a proper numeric value and thus will plot the data point.
 
+NOTE Since 5.21.0, `emptyAs` replaces only `null`, `undefined` and `""` (empty string). Before, it also replaced `0` and `false` values.
+
 ## External data
 
 ### Loading

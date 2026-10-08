@@ -2,29 +2,28 @@
 title: "CategoryDateAxis"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/categorydateaxis/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Category-based date axis.
+A category axis whose categories are timestamps. Each data item takes an equal share of the axis, so periods without data leave no gaps.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/
 
 ## Import
 
-```javascript
-// Import CategoryDateAxis
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.CategoryDateAxis.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: CategoryAxis
+Extends: CategoryAxis → Axis → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from CategoryAxis (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **baseInterval** (`ITimeInterval`) — Indicates granularity of data. Click here for more info
-- **dateFormats** (`undefined | object`) — Date formats used for intermediate labels. Click here for more info
-- **gridIntervals** (`Array`) — A list of intervals the axis is allowed to show grid/labels on. Click here for more info
-- **markUnitChange** (`undefined | false | true`) — Default true Display "period change" labels using different format. If set to true, will use periodChangeDateFormats instead of dateFormats for such labels, e.g. for month start.
-- **periodChangeDateFormats** (`undefined | object`) — Date formats used for "period change" labels. Click here for more info
-- **tooltipDateFormat** (`undefined | string`) — A date format to use for axis tooltip. Click here for more info
+- Settings: `ICategoryDateAxisSettings` — get_api_reference shows it after this page
+- Private settings: `ICategoryDateAxisPrivate`
+- Events: `ICategoryDateAxisEvents`
+- Data item fields: `ICategoryDateAxisDataItem`

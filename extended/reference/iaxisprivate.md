@@ -2,19 +2,26 @@
 title: "IAxisPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iaxisprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IComponentPrivate
-Extended by: IValueAxisPrivate, ICategoryAxisPrivate
+All ancestors: IComponentPrivate, IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5xy.IAxisPrivate` (`import type { IAxisPrivate } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IComponentPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **name** (`"value" | "date" | "category"`) — _(internal)_
+- **updateScrollbar** (`boolean`) — _(internal)_
+- **maxZoomFactor** (`number`) — _(internal)_
+- **tooltipPosition** (`number`) — Position on the axis (`0` to `1`) the tooltip points to.
+- **cellWidth** (`number`) — Distance in pixels between grid lines (read-only). Approximate on a `DateAxis`, whose grid can be uneven. Watch it to resize or hide labels so they don't overlap.
 
-- **cellWidth** (`undefined | number`) — Width in pixels between grid lines (read-only). It might not be exact, as DateAxis can have grids at irregular intervals. Could be used to detect when size changes and to adjust labels for them not to overlap.
-- **tooltipPosition** (`undefined | number`) — Saves position to which tooltip points.
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerPrivate")`) for types, defaults and descriptions.
+
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

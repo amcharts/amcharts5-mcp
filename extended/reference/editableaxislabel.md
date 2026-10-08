@@ -2,20 +2,26 @@
 title: "EditableAxisLabel"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/editableaxislabel/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws an axis label.
+An axis label whose text the user can edit in place, as on a Gantt chart's task axis.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels
 
 ## Import
 
-```javascript
-// Import EditableAxisLabel
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.EditableAxisLabel.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: EditableLabel
+Extends: EditableLabel → Label → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from EditableLabel (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IEditableAxisLabelSettings` — get_api_reference shows it after this page
+- Private settings: `IEditableAxisLabelPrivate`

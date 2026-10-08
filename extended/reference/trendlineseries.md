@@ -2,21 +2,25 @@
 title: "TrendLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/trendlineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-TrendLineSeries uses data items of type ITrendLineSeriesDataItem.
+A `SimpleLineSeries` subclass.
 
 ## Import
 
-```javascript
-// Import TrendLineSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.TrendLineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: SimpleLineSeries
+Extends: SimpleLineSeries → DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SimpleLineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ITrendLineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ITrendLineSeriesPrivate`
+- Data item fields: `ITrendLineSeriesDataItem`

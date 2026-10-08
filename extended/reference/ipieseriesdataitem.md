@@ -2,123 +2,24 @@
 title: "IPieSeriesDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipieseriesdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IPieSeriesDataItem extends IPercentSeriesDataItem.
-IPieSeriesDataItem is not extended by any other symbol.
-Properties
-
-
-        category        
-        #
-      
-
-
-                          Type string                      
-Inherited from IPercentSeriesDataItem
-Category.
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IPercentSeriesDataItem
-Fill color used for the slice and related elements, e.g. legend marker.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Inherited from IPercentSeriesDataItem
-Pattern used for the slice and related elements, e.g. legend marker.
 
 ## Inheritance
 
 Extends: IPercentSeriesDataItem
+All ancestors: IPercentSeriesDataItem, ISeriesDataItem, IComponentDataItem
+TypeScript: `am5percent.IPieSeriesDataItem` (`import type { IPieSeriesDataItem } from "@amcharts/amcharts5/percent"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPercentSeriesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **slice** (`Slice`) — The slice element.
+- **label** (`RadialLabel`) — The slice's label.
 
-- **label** (`RadialLabel`) — (no description)
-- **slice** (`Slice`) — (no description)
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IPercentSeriesDataItem")`) for types, defaults and descriptions.
+
+- _IPercentSeriesDataItem_: category, fill, fillPattern, legendDataItem, tick, valuePercentTotal
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, value, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

@@ -2,301 +2,44 @@
 title: "IInterfaceColorsSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iinterfacecolorssettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IInterfaceColorsSettings extends IEntitySettings.
-IInterfaceColorsSettings is not extended by any other symbol.
-Properties
-
-
-        alternativeBackground        
-        #
-      
-
-
-                          Type Color                      
-Alternative background, for elements that need to contrast with primary background.
-
-
-        alternativeText        
-        #
-      
-
-
-                          Type Color                      
-Alternative text color, used for inverted (dark) backgrounds.
-
-
-        background        
-        #
-      
-
-
-                          Type Color                      
-Chart background color.
-
-
-        disabled        
-        #
-      
-
-
-                          Type Color                      
-Color for disabled elements.
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Used for generic fills.
-
-
-        grid        
-        #
-      
-
-
-                          Type Color                      
-Grid color.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        negative        
-        #
-      
-
-
-                          Type Color                      
-Color to indicate negative value.
-
-
-        positive        
-        #
-      
-
-
-                          Type Color                      
-Color to indicate positive value.
-
-
-        primaryButton        
-        #
-      
-
-
-                          Type Color                      
-Primary button fill color.
-
-
-        primaryButtonActive        
-        #
-      
-
-
-                          Type Color                      
-Primary button fill color when it is set as active.
-
-
-        primaryButtonDisabled        
-        #
-      
-
-
-                          Type Color                      
-Primary button fill color when it is set as disabled.
-
-
-        primaryButtonDown        
-        #
-      
-
-
-                          Type Color                      
-Primary button fill color when pressing down on it.
-
-
-        primaryButtonHover        
-        #
-      
-
-
-                          Type Color                      
-Primary button fill color on hover.
-
-
-        primaryButtonStroke        
-        #
-      
-
-
-                          Type Color                      
-Primary button stroke (outline) color.
-
-
-        primaryButtonText        
-        #
-      
-
-
-                          Type Color                      
-Primary button text color.
-
-
-        primaryButtonTextDisabled        
-        #
-      
-
-
-                          Type Color                      
-Primary button text color when it is set as disabled.
-
-
-        secondaryButton        
-        #
-      
-
-
-                          Type Color                      
-Secondary button fill color.
-
-
-        secondaryButtonActive        
-        #
-      
-
-
-                          Type Color                      
-Secondary button fill color when it is set as active.
-
-
-        secondaryButtonDown        
-        #
-      
-
-
-                          Type Color                      
-Secondary button fill color when pressing down on it.
-
-
-        secondaryButtonHover        
-        #
-      
-
-
-                          Type Color                      
-Secondary button fill color on hover.
-
-
-        secondaryButtonStroke        
-        #
-      
-
-
-                          Type Color                      
-Secondary button stroke (outline) color.
-
-
-        secondaryButtonText        
-        #
-      
-
-
-                          Type Color                      
-Secondary button text color.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stroke        
-        #
-      
-
-
-                          Type Color                      
-Used for generic outlines.
-
-
-        text        
-        #
-      
-
-
-                          Type Color                      
-Label text color.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.InterfaceColors` (see its page for the class)
+TypeScript: `am5.IInterfaceColorsSettings` (`import type { IInterfaceColorsSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **stroke** (`Color`) — default `am5.Color.fromHex(0xe5e5e5)` _(theme)_ — Color for general outlines.
+- **fill** (`Color`) — default `am5.Color.fromHex(0xf3f3f3)` _(theme)_ — Color for general fills, such as a scrollbar's background.
+- **primaryButton** (`Color`) — default `am5.Color.fromHex(0x6794dc)` _(theme)_ — Primary button fill color.
+- **primaryButtonHover** (`Color`) — default `am5.Color.fromHex(0x6771dc)` _(theme)_ — Primary button fill color on hover.
+- **primaryButtonDown** (`Color`) — default `am5.Color.fromHex(0x68dc76)` _(theme)_ — Primary button fill color while pressed.
+- **primaryButtonActive** (`Color`) — default `am5.Color.fromHex(0x68dc76)` _(theme)_ — Primary button fill color when active.
+- **primaryButtonDisabled** (`Color`) — default `am5.Color.fromHex(0xdadada)` _(theme)_ — Primary button fill color when disabled.
+- **primaryButtonTextDisabled** (`Color`) — default `am5.Color.fromHex(0xffffff)` _(theme)_ — Primary button text color when disabled.
+- **primaryButtonText** (`Color`) — default `am5.Color.fromHex(0xffffff)` _(theme)_ — Primary button text color.
+- **primaryButtonStroke** (`Color`) — default `am5.Color.fromHex(0xffffff)` _(theme)_ — Primary button stroke (outline) color.
+- **secondaryButton** (`Color`) — default `am5.Color.fromHex(0xd9d9d9)` _(theme)_ — Secondary button fill color.
+- **secondaryButtonHover** (`Color`) — default `am5.Color.fromHex(0xa3a3a3)` _(theme)_ — Secondary button fill color on hover.
+- **secondaryButtonDown** (`Color`) — default `am5.Color.fromHex(0x8d8d8d)` _(theme)_ — Secondary button fill color while pressed.
+- **secondaryButtonActive** (`Color`) — default `am5.Color.fromHex(0xe6e6e6)` _(theme)_ — Secondary button fill color when active.
+- **secondaryButtonText** (`Color`) — default `am5.Color.fromHex(0x000000)` _(theme)_ — Secondary button text color.
+- **secondaryButtonStroke** (`Color`) — default `am5.Color.fromHex(0xffffff)` _(theme)_ — Secondary button stroke (outline) color.
+- **grid** (`Color`) — default `am5.Color.fromHex(0x000000)` _(theme)_ — Color of grid lines.
+- **background** (`Color`) — default `am5.Color.fromHex(0xffffff)` _(theme)_ — Background color, for elements that should blend with what is behind the chart, such as legend item backgrounds.
+- **alternativeBackground** (`Color`) — default `am5.Color.fromHex(0x000000)` _(theme)_ — A color that contrasts with `background`, for elements that should stand out from it, such as tooltips.
+- **text** (`Color`) — default `am5.Color.fromHex(0x000000)` _(theme)_ — Label text color.
+- **alternativeText** (`Color`) — default `am5.Color.fromHex(0xffffff)` _(theme)_ — Text color over `alternativeBackground`, such as in tooltips.
+- **disabled** (`Color`) — default `am5.Color.fromHex(0xadadad)` _(theme)_ — Color for disabled elements.
+- **positive** (`Color`) — default `am5.Color.fromHex(0x50b300)` _(theme)_ — Color for positive values, such as a rise.
+- **negative** (`Color`) — default `am5.Color.fromHex(0xb30000)` _(theme)_ — Color for negative values, such as a fall.
 
-- **alternativeBackground** (`Color`) — Alternative background, for elements that need to contrast with primary background.
-- **alternativeText** (`Color`) — Alternative text color, used for inverted (dark) backgrounds.
-- **background** (`Color`) — Chart background color.
-- **disabled** (`Color`) — Color for disabled elements.
-- **fill** (`Color`) — Used for generic fills.
-- **grid** (`Color`) — Grid color.
-- **negative** (`Color`) — Color to indicate negative value.
-- **positive** (`Color`) — Color to indicate positive value.
-- **primaryButton** (`Color`) — Primary button fill color.
-- **primaryButtonActive** (`Color`) — Primary button fill color when it is set as active.
-- **primaryButtonDisabled** (`Color`) — Primary button fill color when it is set as disabled.
-- **primaryButtonDown** (`Color`) — Primary button fill color when pressing down on it.
-- **primaryButtonHover** (`Color`) — Primary button fill color on hover.
-- **primaryButtonStroke** (`Color`) — Primary button stroke (outline) color.
-- **primaryButtonText** (`Color`) — Primary button text color.
-- **primaryButtonTextDisabled** (`Color`) — Primary button text color when it is set as disabled.
-- **secondaryButton** (`Color`) — Secondary button fill color.
-- **secondaryButtonActive** (`Color`) — Secondary button fill color when it is set as active.
-- **secondaryButtonDown** (`Color`) — Secondary button fill color when pressing down on it.
-- **secondaryButtonHover** (`Color`) — Secondary button fill color on hover.
-- **secondaryButtonStroke** (`Color`) — Secondary button stroke (outline) color.
-- **secondaryButtonText** (`Color`) — Secondary button text color.
-- **stroke** (`Color`) — Used for generic outlines.
-- **text** (`Color`) — Label text color.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

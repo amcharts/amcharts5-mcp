@@ -2,20 +2,27 @@
 title: "IHeatRule"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iheatrule/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Defines interface for a heat rule.
+A rule that sets a setting of each series element, such as its color or size, by its data item's value: from `min` at the lowest value to `max` at the highest.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **customFunction** (`undefined | ( target: Sprite, minValue: number, maxValue: number, value: any) => void`) — A custom function that will set target element's settings. Can be used to do custom manipulation on complex objects requiring more than modifying a setting.
-- **dataField** (`string`) — Which data field to use when determining item's value.
-- **key** (`undefined | string`) — A setting key to set.
-- **logarithmic** (`undefined | false | true`) — Default false Use logarithmic scale when calculating intermediate setting values.
-- **max** (`any`) — The setting value to use for items if the highest value.
-- **maxValue** (`undefined | number`) — Custom highest value.
-- **min** (`any`) — The setting value to use for items if the lowest value.
-- **minValue** (`undefined | number`) — Custom lowest value.
-- **neutral** (`any`) — The setting value to use for items which do not have value at all.
-
+- **target** (`Template<any>`) — Template of the elements to set, e.g. `series.columns.template`.
+- **min** (`any`) — Setting value for the element with the lowest value.
+- **max** (`any`) — Setting value for the element with the highest value.
+- **neutral** (`any`) — Setting value for elements whose data item has no value.
+- **dataField** (`string`) — Data item field that holds the value, e.g. `"value"` or `"valueY"`.
+- **key** (`string`) — The setting to set, e.g. `"fill"`.
+- **minValue** (`number`) — Lowest value of the range. If not set, the series' lowest value is used, which needs `calculateAggregates`.
+- **maxValue** (`number`) — Highest value of the range. If not set, the series' highest value is used, which needs `calculateAggregates`.
+- **logarithmic** (`boolean`) — default `false` — Spreads the values between `min` and `max` on a logarithmic scale.
+- **customFunction** (`(target: Sprite, minValue: number, maxValue: number, value?: any) => void`) — A function that sets the element's settings itself, in place of `min`, `max` and `key`. It is called for each element, also for one with no value.

@@ -2,16 +2,21 @@
 title: "INetLoadResult"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/inetloadresult/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Defines an interface for objects that hold a net request result.
 
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
+
 ## Properties
 
-- **blob** (`Blob`) — Request response as Blob. (if set responseType = "blob")
+- **xhr** (`XMLHttpRequest`) — A reference to original `XMLHttpRequest`.
+- **response** (`string`) — Request response body.
+- **blob** (`Blob`) — Response as a `Blob`, when `responseType` is `"blob"`. `response` then holds its text.
+- **type** (`string`) — Response `Content-Type`.
 - **error** (`boolean`) — Was there an error?
-- **response** (`undefined | string`) — Request response body.
-- **target** (`A`) — A target object that made the net load request.
-- **type** (`string | null`) — Response Content-Type.
-
+- **target** (`A`) — The `target` passed to `load()`.

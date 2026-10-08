@@ -2,28 +2,30 @@
 title: "ChordLinkDirected"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chordlinkdirected/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A link element used in ChordDirected chart.
+A link element of a `ChordDirected` series.
 
 ## Import
 
-```javascript
-// Import ChordLinkDirected
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ChordLinkDirected.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChordLink
+Extends: ChordLink → FlowLink → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChordLink (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **headRadius** (`undefined | number`) — Default 10 Length of the link arrow in pixels.
+- Settings: `IChordLinkDirectedSettings` — get_api_reference shows it after this page
+- Private settings: `IChordLinkDirectedPrivate`
 
 ## Properties
 
-- **series** (`ChordDirected | undefined`) — (no description)
+Public properties (not settings):
+
+- **series** (`ChordDirected`)

@@ -2,13 +2,16 @@
 title: "StockIcon"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/stockicon/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **path** (`string`) — (no description)
-- **style** (`undefined | string`) — (no description)
-
+- **viewbox** (`string`)
+- **path** (`string`)
+- **style** (`string`)

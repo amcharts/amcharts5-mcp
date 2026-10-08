@@ -2,28 +2,36 @@
 title: "ChartIndicator"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chartindicator/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base class for chart-based StockChart indicators.
+Base class for `StockChart` indicators drawn in a panel of their own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import ChartIndicator
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
 ```
 
 ## Inheritance
 
-Extends: Indicator
-Extended by: AccumulationDistribution, AccumulativeSwingIndex, Aroon, AverageTrueRange, AwesomeOscillator, BullBearPower, ChaikinMoneyFlow, ChaikinOscillator, OverboughtOversold, DisparityIndex, HeikinAshi, MACD, MedianPrice, Momentum, MovingAverageDeviation, OnBalanceVolume, PVT, StandardDeviation, Trix, TypicalPrice, Volume
+Extends: Indicator → Container → Sprite → Entity → Settings
+Extended by: AccumulationDistribution, AccumulativeSwingIndex, Aroon, AverageTrueRange, AwesomeOscillator, BullBearPower, ChaikinMoneyFlow, ChaikinOscillator, DisparityIndex, HeikinAshi, MACD, MedianPrice, Momentum, MovingAverageDeviation, OnBalanceVolume, OverboughtOversold, PVT, StandardDeviation, Trix, TypicalPrice, Volume
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Indicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IChartIndicatorSettings` — get_api_reference shows it after this page
+- Private settings: `IChartIndicatorPrivate`
+- Events: `IChartIndicatorEvents`
 
 ## Properties
 
-- **cursor** (`XYCursor`) — (no description)
-- **legend** (`StockLegend`) — (no description)
-- **panel** (`StockPanel`) — (no description)
-- **xAxis** (`DateAxis`) — (no description)
+Public properties (not settings):
+
+- **cursor** (`XYCursor`)
+- **legend** (`StockLegend`)
+- **panel** (`StockPanel`) — The panel the indicator is drawn in.
+- **xAxis** (`DateAxis<AxisRenderer>`) — X axis of the indicator's panel.
+- **yAxis** (`ValueAxis<AxisRenderer>`) — Y axis of the indicator's panel.

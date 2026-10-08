@@ -1,72 +1,78 @@
 ---
-title: "Real-time Data Sorting"
+title: "Real-Time Data Sorting"
 source: "https://www.amcharts.com/demos/real-time-data-sorting/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Sorting a column or bar chart by column's value is a common scenario that is easily implemented by sorting the underlying data beforehand. But what if data is constantly updated? This demo shows an approach to solving the real-time sorting problem that is both functional and visually appealing.
-Key implementation details
-On each data update we calculate the item's position delta and set an animation on the data-item. Then we instantly change its position based on the sort order. But when the position changes the column doesn’t jump into its new place immediately - it goes there in a smooth animation.
-Animations
-Category axis
+A column chart that keeps itself sorted. Every second and a half, eleven countries get new values, and the columns slide into their new order, tallest first, with the numbers counting as they go.
+
+When to sort live: When values keep changing, a fixed order hides the story: the reader has to hunt for the leader after every update. Re-sorting keeps the ranking readable, and the slide shows who moved up and who fell back.
+
+Good for:
+- Live leaderboards: sales teams, votes, games
+- Rankings on monitoring screens
+- Results coming in on election night
+
+Think twice when:
+- Values people look up by name: a fixed order is easier
+- Updates faster than the slide: the columns never settle
+- Trends over time: a line chart keeps the history
+
+Prompt: Create a column chart of eleven countries that re-sorts itself live: every second or two the values change at random, and the columns slide into their new order, largest first, with value labels counting up or down. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
-  panY: true,
-  wheelX: "none",
-  wheelY: "none",
-  paddingLeft: 0
+  panX: true,     // drag the plot to pan sideways...
+  panY: true,     // ...and up and down
+  wheelX: "none", // the wheel doesn't zoom...
+  wheelY: "none", // ...so the page scrolls past the chart
+  paddingLeft: 0  // the value labels sit at the chart's left edge
 }));
 
 // We don't want zoom-out button to appear while animating, so we hide it
 chart.zoomOutButton.set("forceHidden", true);
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
-  minGridDistance: 30,
+  minGridDistance: 30, // at least 30px between labels; on narrow screens some are skipped
   minorGridEnabled: true
 });
 xRenderer.labels.template.setAll({
-  rotation: -90,
-  centerY: am5.p50,
+  rotation: -90,    // labels turned on their side
+  centerY: am5.p50, // each label centered on its column
   centerX: 0,
   paddingRight: 15
 });
-xRenderer.grid.template.set("visible", false);
+xRenderer.grid.template.set("visible", false); // no vertical grid lines
 
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0.3,
+  maxDeviation: 0.3, // can be panned 30% past the first or last column
   categoryField: "country",
   renderer: xRenderer
 }));
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   maxDeviation: 0.3,
-  min: 0,
+  min: 0, // the columns start at zero
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
-
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -84,23 +90,30 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 series.columns.template.setAll({
   cornerRadiusTL: 5,
   cornerRadiusTR: 5,
-  strokeOpacity: 0
+  strokeOpacity: 0, // no outline
+  // a soft shadow under each column
+  shadowColor: am5.color(0x000000),
+  shadowOpacity: 0.3, // 30% opaque
+  shadowBlur: 6,      // blurred over 6px
+  shadowOffsetX: 2,   // moved 2px to the right...
+  shadowOffsetY: 2    // ...and 2px down
 });
 
 // Add Label bullet
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
+    // at the top of the column, with the text hanging down inside it (centerY: 0)
     locationY: 1,
     sprite: am5.Label.new(root, {
+      // the animated value, so the number counts along as the column grows or shrinks
       text: "{valueYWorking.formatNumber('#.')}",
-      fill: root.interfaceColors.get("alternativeText"),
+      fill: root.interfaceColors.get("alternativeText"), // white by default, for text on colored fills
       centerY: 0,
-      centerX: am5.p50,
-      populateText: true
+      centerX: am5.p50,  // centered on the column
+      populateText: true // fills in the {valueYWorking} placeholder from the column's data
     })
   });
 });
-
 
 // Set data
 var data = [{
@@ -146,25 +159,25 @@ setInterval(function () {
   updateData();
 }, 1500)
 
+// a random change for every column, then sort the axis by the new values
 function updateData() {
   am5.array.each(series.dataItems, function (dataItem) {
     var value = dataItem.get("valueY") + Math.round(Math.random() * 300 - 150);
-    if (value < 0) {
+    if (value < 0) { // a negative value becomes 10
       value = 10;
     }
-    // both valueY and workingValueY should be changed, we only animate workingValueY
+    // both valueY and valueYWorking change; only valueYWorking is animated
     dataItem.set("valueY", value);
     dataItem.animate({
       key: "valueYWorking",
       to: value,
-      duration: 600,
-      easing: am5.ease.out(am5.ease.cubic)
+      duration: 600,                       // the value animates over 0.6 seconds...
+      easing: am5.ease.out(am5.ease.cubic) // ...slowing down at the end
     });
   })
 
   sortCategoryAxis();
 }
-
 
 // Get series item by category
 function getSeriesItem(category) {
@@ -176,14 +189,12 @@ function getSeriesItem(category) {
   }
 }
 
-
 // Axis sorting
 function sortCategoryAxis() {
 
   // Sort by value
   series.dataItems.sort(function (x, y) {
     return y.get("valueY") - x.get("valueY"); // descending
-    //return y.get("valueY") - x.get("valueY"); // ascending
   })
 
   // Go through each axis item
@@ -198,14 +209,14 @@ function sortCategoryAxis() {
       var deltaPosition = (index - dataItem.get("index", 0)) / series.dataItems.length;
       // set index to be the same as series data item index
       dataItem.set("index", index);
-      // set deltaPosition instanlty
+      // set deltaPosition instantly
       dataItem.set("deltaPosition", -deltaPosition);
       // animate delta position to 0
       dataItem.animate({
         key: "deltaPosition",
         to: 0,
-        duration: 1000,
-        easing: am5.ease.out(am5.ease.cubic)
+        duration: 1000,                      // the columns slide to their new places in one second...
+        easing: am5.ease.out(am5.ease.cubic) // ...slowing down at the end
       })
     }
   });
@@ -217,7 +228,6 @@ function sortCategoryAxis() {
     return x.get("index") - y.get("index");
   });
 }
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -237,6 +247,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -245,3 +256,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

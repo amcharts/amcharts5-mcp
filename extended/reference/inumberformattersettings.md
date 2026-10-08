@@ -2,165 +2,29 @@
 title: "INumberFormatterSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/inumberformattersettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-INumberFormatterSettings extends IEntitySettings.
-INumberFormatterSettings is not extended by any other symbol.
-Properties
-
-
-        bigNumberPrefixes        
-        #
-      
-
-
-                          Type INumberSuffix[]                      
-Prefixes and thresholds to group big numbers into, e.g. 1M.
- Used in conjunction with a modifier of the number format.
-
-
-        bytePrefixes        
-        #
-      
-
-
-                          Type INumberSuffix[]                      
-Prefixes to and thresholds to use when grouping data size numbers, e.g. 1MB.
- Used in conjunction with b modifier of the number format.
-
-
-        forceLTR        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-If set to true will force the number string to be LTR, even if RTL is enabled.
-@since 5.3.13
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        intlLocales        
-        #
-      
-
-
-                          Type undefined | string                      
-Locales if you are using date formats in Intl.NumberFormatOptions syntax.
-@see (@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) about using Intl for number formatting
-@param Locales
-
-
-        negativeBase        
-        #
-      
-
-
-                          Type undefined | number                      
-Default 0
-
-A threshold value for negative numbers.
-
-
-        numberFormat        
-        #
-      
-
-
-                          Type string | NumberFormatOptions                      
-Default "#,###.#####"
-
-Number format to be used when formatting numbers.
-
-
-        numericFields        
-        #
-      
-
-
-                          Type string[]                      
-Indicates which fields in data should be considered numeric.
- It is used when formatting data placeholder values.
-
-
-        smallNumberPrefixes        
-        #
-      
-
-
-                          Type INumberSuffix[]                      
-Prefixes and thresholds to group small numbers into, e.g. 1m.
- Used in conjunction with a modifier of the number format.
-
-
-        smallNumberThreshold        
-        #
-      
-
-
-                          Type undefined | number                      
-Default 1
-
-All numbers below this value are considered small.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.NumberFormatter` (see its page for the class)
+TypeScript: `am5.INumberFormatterSettings` (`import type { INumberFormatterSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **numberFormat** (`string | Intl.NumberFormatOptions`) — default `"#,###.#####"` — Format used when no other format is given: a format string, or options for `Intl.NumberFormat`.
+- **negativeBase** (`number`) — default `0` — Values below this use the negative part of the format (after the first `|`), and a value equal to it the zero part (after the second `|`). The minus sign still shows only for values below `0`.
+- **bigNumberPrefixes** (`INumberSuffix[]`) — Suffixes for big numbers and the values they stand for, such as `"M"` for a million. Used by the `a` modifier of the number format.
+- **smallNumberPrefixes** (`INumberSuffix[]`) — Suffixes for small numbers and the values they stand for, such as `"m"` for a thousandth. Used by the `a` modifier of the number format.
+- **smallNumberThreshold** (`number`) — default `1` — Numbers below this use `smallNumberPrefixes` with the `a` modifier; others use `bigNumberPrefixes`.
+- **bytePrefixes** (`INumberSuffix[]`) — Suffixes for data sizes and the byte counts they stand for, such as `"KB"` for 1024. Used by the `b` modifier of the number format.
+- **numericFields** (`string[]`) — Data fields that hold numbers. Text placeholders with these fields are formatted as numbers even without `formatNumber()`.
+- **intlLocales** (`string`) — Locale for formats given as `Intl.NumberFormat` options, such as `"de-DE"`. The browser's locale if not set. Docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+- **forceLTR** (`boolean`) — default `false` — Forces formatted numbers to read left to right, even in a right-to-left layout. _Since 5.3.13._
 
-- **bigNumberPrefixes** (`INumberSuffix[]`) — Prefixes and thresholds to group big numbers into, e.g. 1M. Used in conjunction with a modifier of the number format.
-- **bytePrefixes** (`INumberSuffix[]`) — Prefixes to and thresholds to use when grouping data size numbers, e.g. 1MB. Used in conjunction with b modifier of the number format.
-- **forceLTR** (`undefined | false | true`) — Default false If set to true will force the number string to be LTR, even if RTL is enabled. @since 5.3.13
-- **intlLocales** (`undefined | string`) — Locales if you are using date formats in Intl.NumberFormatOptions syntax. @see (@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) about using Intl for number formatting @param Locales
-- **negativeBase** (`undefined | number`) — Default 0 A threshold value for negative numbers.
-- **numberFormat** (`string | NumberFormatOptions`) — Default "#,###.#####" Number format to be used when formatting numbers.
-- **numericFields** (`string[]`) — Indicates which fields in data should be considered numeric. It is used when formatting data placeholder values.
-- **smallNumberPrefixes** (`INumberSuffix[]`) — Prefixes and thresholds to group small numbers into, e.g. 1m. Used in conjunction with a modifier of the number format.
-- **smallNumberThreshold** (`undefined | number`) — Default 1 All numbers below this value are considered small.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

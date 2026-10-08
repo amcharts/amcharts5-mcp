@@ -2,18 +2,21 @@
 title: "IColumnSeriesAxisRange"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolumnseriesaxisrange/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IBaseColumnSeriesAxisRange
-Extended by: IGanttSeriesAxisRange, ICandlestickSeriesAxisRange
+All ancestors: IBaseColumnSeriesAxisRange, IXYSeriesAxisRange
+TypeScript: `am5xy.IColumnSeriesAxisRange` (`import type { IColumnSeriesAxisRange } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IBaseColumnSeriesAxisRange (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Axis range settings
 
-## Properties
+- **columns** (`ListTemplate<RoundedRectangle>`) — Columns of the series within the range.
 
-- **columns** (`ListTemplate`) — A list of actual columns in a range.
+## Other inherited axis range settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IXYSeriesAxisRange")`) for types, defaults and descriptions.
+
+- _IXYSeriesAxisRange_: axisDataItem, container, series

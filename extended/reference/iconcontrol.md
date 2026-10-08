@@ -2,25 +2,25 @@
 title: "IconControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/iconcontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Shows selection of icons to choose from for annotating StockChart.
- This class is instantiated automatically, and should not be used standalone.
+A dropdown of icons for the icon drawing tool. Created by `DrawingControl`; not meant to be used on its own.
 
 ## Import
 
-```javascript
-// Import IconControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.IconControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: StockControl
+Extends: StockControl → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from StockControl (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **icons** (`IIcon[]`) — (no description)
+- Settings: `IIconControlSettings` — get_api_reference shows it after this page
+- Private settings: `IIconControlPrivate`
+- Events: `IIconControlEvents`

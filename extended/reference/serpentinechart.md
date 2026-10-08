@@ -2,29 +2,28 @@
 title: "SerpentineChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/serpentinechart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A Serpentine chart.
- For this chart to work, it needs curve points provided via renderer of its X-axis.
- Note: it is an experimental chart type and does not support all the functionality of the XYChart.
+A timeline that winds back and forth in runs joined by half-circle turns. It builds the X axis line itself, so the X renderer needs no `points`.
+
+It is experimental and does not support everything an `XYChart` does.
+
+_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
 
 ## Import
 
-```javascript
-// Import SerpentineChart
-import * as am5timeline from "@amcharts/amcharts5/timeline"
+```js
+import * as am5timeline from "@amcharts/amcharts5/timeline";
+
+am5timeline.SerpentineChart.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: CurveChart
+Extends: CurveChart → XYChart → SerialChart → Chart → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from CurveChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **endLocation** (`undefined | number`) — Relative location (0-1) of the end position. @defult 1
-- **levelCount** (`undefined | number`) — Default 3 Number of levels in the chart.
-- **orientation** (`"horizontal" | "vertical"`) — Default "vertical" Orientation of the serpatine.
-- **startLocation** (`undefined | number`) — Relative location (0-1) of the start postion. @defult 0
+- Settings: `ISerpentineChartSettings` — get_api_reference shows it after this page
+- Private settings: `ISerpentineChartPrivate`

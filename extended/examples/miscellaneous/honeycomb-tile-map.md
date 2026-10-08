@@ -1,15 +1,25 @@
 ---
-title: "Honeycomb tile map"
+title: "Honeycomb Tile Map"
 source: "https://www.amcharts.com/demos/honeycomb-tile-map/"
 category: "miscellaneous"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This Honeycomb or hex map is a simple XYChart with bullets arranged so that they resemble true map.
-XY chart
-Value axis
-Line series
-Bullets
+A tile map made of hexagons, which fit together like a honeycomb and give each state up to six neighbors, so the layout follows the real map more closely than squares or circles can.
+
+Why hexagons: Hexagons tile a plane with no gaps and touch six neighbors each, two more than squares, so states keep more of their real borders. The map still gives every state the same space, which keeps a big state from outweighing a small one.
+
+Good for:
+- State or country values where each counts equally
+- Election maps
+- A compact map for a dashboard
+
+Think twice when:
+- Values tied to area: use a real map
+- Many small regions, like counties: the layout gets hard to read
+- Exact values: add a table or a bar chart
+
+Prompt: Create a honeycomb tile map of the US states as an XY chart: each state is a hexagon in a layout that follows the map, colored by population with its state code, and a heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -17,10 +27,10 @@ Bullets
 /**
  * ---------------------------------------
  * This demo was created using amCharts 5.
- * 
+ *
  * For more information visit:
  * https://www.amcharts.com/
- * 
+ *
  * Documentation is available at:
  * https://www.amcharts.com/docs/v5/
  * ---------------------------------------
@@ -33,8 +43,12 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
+
+// Short numbers: 39,250,000 shows as 39.3M
+root.numberFormatter.set("numberFormat", "#.#a");
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
@@ -42,56 +56,66 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {}));
 // hide grid
 chart.gridContainer.set("opacity", 0)
 
-
-// Create axes
+// Create axes: hidden, they only place the tiles in columns (x) and rows (y)
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50, inside: true }),
-  min: 0,
+  min: 0,    // first values: the handler below fits min and max to the plot
   max: 12,
   strictMinMax: true,
-  opacity: 0
+  opacity: 0 // invisible
 }));
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererY.new(root, { inside: true, inversed: true }),
+  renderer: am5xy.AxisRendererY.new(root, { inside: true, inversed: true }), // row 0 at the top
   min: -1,
   max: 7,
   strictMinMax: true,
-  opacity: 0
+  opacity: 0 // invisible
 }));
+
+// Keep the hexagons regular at any chart size: a column is sqrt(3)/2 as wide as a hexagon is tall, and the map
+// (12 columns and 7 units of rows, plus a margin) sits in the middle of the plot
+chart.plotContainer.events.on("boundschanged", function() {
+  var w = chart.plotContainer.width();
+  var h = chart.plotContainer.height();
+  var ratio = Math.sqrt(3) / 2;
+  var unit = Math.min(h / 8, w / 13 / ratio);
+  xAxis.setAll({ min: 5.75 - w / (unit * ratio) / 2, max: 5.75 + w / (unit * ratio) / 2 });
+  yAxis.setAll({ min: 3 - h / unit / 2, max: 3 + h / unit / 2 });
+});
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
+  // works out valueLow and valueHigh, which the heat rules and the legend use
   calculateAggregates: true,
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "y",
   valueXField: "x",
-  valueField: "value"
+  valueField: "value" // the value the heat rules color the tiles by
 }));
 
-
-// Add bullet
+// Add bullet: a hexagon for each state, outlined in the background color, which leaves a gap between them
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
-var template = am5.Template.new({});
+var template = am5.Template.new({
+  stroke: root.interfaceColors.get("background"),
+  strokeWidth: 2 // 2px gaps
+});
 series.bullets.push(function() {
   var graphics = am5.Line.new(root, {
-    fill: series.get("fill"),
-    tooltipText: "{name} {value}",
-    tooltipY: -am5.p50,
-    stroke: am5.color(0xffffff),
-    strokeWidth: 2
+    fill: series.get("fill"),       // replaced by the heat rule's color
+    tooltipText: "{name}: {value}", // as "California: 39.3M"
+    tooltipY: 0 // the tooltip points at the top of the hexagon
   }, template);
 
-
-
-  // we use adapter for x as radius will be called only once and x will be called each time position changes
+  // an adapter on x runs each time the bullet moves, so the hexagon is redrawn to the size of an axis cell
   graphics.adapters.add("x", function(x, target) {
-    var w = Math.abs(xAxis.getX(0, 1, 0) - xAxis.getX(1, 1, 0)) / 2;
-    var h = Math.abs(yAxis.getY(0, 1, 0) - yAxis.getY(1, 1, 0)) / 2;
+    var w = Math.abs(xAxis.getX(0, 1, 0) - xAxis.getX(1, 1, 0)) / 2; // half a column's width, in pixels
+    var h = Math.abs(yAxis.getY(0, 1, 0) - yAxis.getY(1, 1, 0)) / 2; // half a row's height
 
+    // the hexagon's corners, pointy at the top and bottom, ending where it starts
     var p0 = { x: 0, y: -h };
     var p1 = { x: w, y: -h / 2 };
     var p2 = { x: w, y: h / 2 };
@@ -100,7 +124,7 @@ series.bullets.push(function() {
     var p5 = { x: -w, y: -h / 2 };
     var p6 = { x: 0, y: -h };
 
-    target.set("segments", [[[p0, p1, p2, p3, p4, p5, p6]]])
+    target.set("segments", [[[p0, p1, p2, p3, p4, p5, p6]]]) // draw the outline through them
 
     // return original x
     return x;
@@ -111,31 +135,70 @@ series.bullets.push(function() {
   });
 });
 
-// another bullet for label
+// another bullet for label: the state's code, black or white to stand out on its tile (set by a heat rule below)
+var labelTemplate = am5.Template.new({
+  text: "{short}",
+  textAlign: "center"
+});
 series.bullets.push(function() {
   var label = am5.Label.new(root, {
-    populateText: true,
-    centerX: am5.p50,
-    centerY: am5.p50,
-    text: "{short}"
-  });
+    populateText: true, // fills in {short} from the data
+    centerX: am5.p50,   // centered on the hexagon
+    centerY: am5.p50
+  }, labelTemplate);
 
   return am5.Bullet.new(root, {
     sprite: label
   });
 });
 
+// Color the tiles by population, in shades of the theme's first color
+// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+var colors = chart.get("colors"); // the theme's colors
+var lowColor = am5.Color.lighten(colors.getIndex(0), 0.6); // a light tint of the first color...
+var highColor = am5.Color.brighten(colors.getIndex(0), -0.5); // ...and a dark shade of it
+
 series.set("heatRules", [{
   target: template,
-  min: am5.color(0xfffb77),
-  max: am5.color(0xfe131a),
+  min: lowColor,      // the least populous state in the light tint...
+  max: highColor,     // ...the most populous in the dark shade
   dataField: "value",
-  key: "fill"
+  key: "fill"         // the heat rule sets each hexagon's fill
+}, {
+  // the state codes: black on the light tiles, white on the dark ones
+  target: labelTemplate,
+  dataField: "value",
+  customFunction: function(label, min, max, value) {
+    // the tile's color, worked out as the rule above does
+    var tileColor = am5.Color.interpolate((value - min) / (max - min), lowColor, highColor);
+    label.set("fill", am5.Color.alternative(tileColor, am5.color(0xffffff), am5.color(0x000000)));
+  }
 }]);
 
-
+// the line series shows only its bullets, with no line between them
 series.strokes.template.set("strokeOpacity", 0);
 
+// Add a color scale under the map
+// https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root, {
+  orientation: "horizontal",       // a color bar along the bottom...
+  startColor: lowColor,            // ...in the heat rule's colors...
+  endColor: highColor,
+  width: am5.percent(40),          // ...40% of the chart's width...
+  x: am5.p50,                      // ...centered...
+  centerX: am5.p50                 // ...by its own middle
+}));
+
+// the scale runs from the smallest state's population to the biggest's
+series.events.on("datavalidated", function() {
+  heatLegend.set("startValue", series.getPrivate("valueLow"));
+  heatLegend.set("endValue", series.getPrivate("valueHigh"));
+});
+
+// point at a state to see where it sits on the scale
+template.events.on("pointerover", function(ev) {
+  heatLegend.showValue(ev.target.dataItem.get("value"));
+});
 
 var data = [{
   short: "AL",
@@ -190,7 +253,7 @@ var data = [{
   name: "District of Columbia",
   y: 4,
   x: 10,
-  value: 7288000
+  value: 658900
 }, {
   short: "FL",
   name: "Florida",
@@ -445,14 +508,15 @@ var data = [{
   value: 584150
 }]
 
-// loop through all items and add 0,5 to all items in odd rows
+// loop through all items and move the even rows half a column to the right
+// each row sits 3/4 of a hexagon's height below the last, so the rows overlap
 var vStep = (1 + am5.math.sin(30)) / 2;
 am5.array.each(data, function(di) {
-  var dx = 0;
+  // every other row moves half a column right, so the rows interlock
   if (di.y / 2 == Math.round(di.y / 2)) {
     di.x += 0.5;
   }
-  // shift y for the hext to stick to each other
+  // shift y for the hexagons to stick to each other
   di.y = vStep * di.y;
 })
 
@@ -463,9 +527,6 @@ series.data.setAll(data);
 series.appear(1000);
 
 chart.appear(1000, 100);
-
-
-
 ```
 
 ## HTML
@@ -478,8 +539,9 @@ chart.appear(1000, 100);
 
 ```css
 #chartdiv {
-  width: 650px;
+  width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -488,3 +550,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

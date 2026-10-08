@@ -1,7 +1,7 @@
 ---
 title: "Serializing / JSON config"
 source: "https://www.amcharts.com/docs/v5/concepts/serializing/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 amCharts 5 charts or individual objects can be serialized into and parsed back from simple JavaScript objects or JSON-compatible strings. This tutorial explains how those features can be used.
@@ -14,7 +14,7 @@ Serialization features have been introduced in version 5.3.0. This is the earlie
 
 ## Limitations
 
-At this time, serialization and parsing of chart/object configs is limited to just their properties and settings.
+At this time, serialization and parsing of chart/object configs covers their settings and properties, along with a few related aspects listed below.
 
 Supported features:
 
@@ -22,6 +22,7 @@ Supported features:
 -   Properties
 -   Settings
 -   Adapters
+-   States
 -   Declared animations — the `animations` setting *(5.20.8)*, see "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)". In a JSON config, colors and percents in an entry's `from`/`to` use the object form (`{ "type": "Color", "value": "#f00" }`, `{ "type": "Percent", "value": 50 }`).
 
 Unsupported features:
@@ -206,6 +207,20 @@ Colors in JSON configs can be defined like any other object:
   value: 0xff0000
 }
 
+To use one of the theme's interface colors instead of a fixed one, refer to it via `@root`. The color will then come from whatever theme the chart is parsed with:
+
+{
+  type: "Label",
+  settings: {
+    text: "Hello",
+    fill: "@root.interfaceColors.get('alternativeText')"
+  }
+}
+
+MORE INFO[ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/#Theme_colors) saves such colors this way, too.
+
+NOTE `@root` can be used in any config since 5.21.0: `JsonParser` makes it available as a global ref (a ref of the config's own named `@root` takes precedence). Earlier versions do not know `@root`.
+
 ### Gradients
 
 Same goes for gradients:
@@ -214,9 +229,9 @@ Same goes for gradients:
   type: "LinearGradient",
   settings: {
     stops: \[{
-      color: am5.color(0xFF621F)
+      color: { type: "Color", value: 0xFF621F }
     }, {
-      color: am5.color(0x946B49)
+      color: { type: "Color", value: 0x946B49 }
     }\],
     rotation: 0
   }
@@ -414,6 +429,8 @@ To access object's setting, use `get()` syntax:
   }
 }
 
+A `@self` reference points to the object being configured, and is resolved after it is built — handy for a setting that needs to refer back to its own object.
+
 ### Child elements
 
 If we want to push some elements in to `children` of the chart (or any other element for that matter), we will need to use `children` key in the serialized object.
@@ -438,6 +455,99 @@ Omitting `index` would push the element as the last child of a target container.
     }
   }\]
 }
+
+### Root settings
+
+A top-level `root` section applies settings and properties to the chart's `Root` object, such as formatters or a named locale. It is applied before the rest of the config is parsed, and is what [ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)'s `includeRoot` option produces.
+
+{
+  type: "XYChart",
+  root: {
+    settings: {
+      // Root settings
+    },
+    properties: {
+      // e.g. numberFormatter, dateFormatter, or a named locale
+    }
+  },
+  // ...
+}
+
+### Opening animation
+
+In code, a chart's opening animation is played by calling `appear()` on the chart and its series. A config can't call methods, so it uses the `autoAppear` setting instead: the element plays the same animation when it is first drawn.
+
+{
+  type: "XYChart",
+  settings: {
+    autoAppear: true,
+    appearDuration: 1000,
+    appearDelay: 100
+  },
+  properties: {
+    series: \[{
+      type: "LineSeries",
+      settings: {
+        autoAppear: true,
+        appearDuration: 1000
+        // ...
+      }
+    }\]
+  }
+}
+
+A series waits for its data before playing the animation.
+
+MORE INFOFor more details, see "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)".
+
+### Map chart projection
+
+In a `MapChart`, the `projection` setting is a function, which means it's not compatible with JSON format.
+
+Use `projectionName` setting instead, e.g.:
+
+{
+  type: "MapChart",
+  projectionName: "geoEquirectangular",
+  // ...
+}
+
+The following built-in projections are available:
+
+Regular use
+
+`projectionName` equivalent
+
+`am5map.geoMercator`
+
+`"geoMercator"`
+
+`am5map.geoOrthographic`
+
+`"geoOrthographic"`
+
+`am5map.geoEquirectangular`
+
+`"geoEquirectangular"`
+
+`am5map.geoAlbersUsa`
+
+`"geoAlbersUsa"`
+
+`am5map.geoEqualEarth`
+
+`"geoEqualEarth"`
+
+`am5map.geoNaturalEarth1`
+
+`"geoNaturalEarth1"`
+
+For non-bundled projections, you will need to register your own projection name / projection factory function:
+
+import { geoConicConformal } from "d3-geo";
+am5map.registerProjection("geoConicConformal", geoConicConformal);
+
+am5map.registerProjection("geoConicConformal", d3.geoConicConformal);
 
 ## Series
 
@@ -643,6 +753,8 @@ Axis bullets can also be added via axis' `bullet` property:
   }
 }
 
+Within the bullet, the axis can be referenced via `@axis`, the same way `@series` works for series bullets.
+
 [Scroll to the example](#XY_Chart_with_axis_bullets).
 
 ## Adapters
@@ -663,6 +775,23 @@ Since adapters are functions, they can't technically be part of a serialized JSO
 }
 
 **Adapters and JSON round-trips:** a function reference works only when the config is a JavaScript object in the same scope. Once the config has been through `JSON.stringify` (or `ChartSerializer` with `functionsAs: "string"`), the callback is a string — `JsonParser` does not evaluate it, and since 5.20.4 such an adapter is skipped (before that it was registered as-is and crashed the chart with `i[s] is not a function`). Effects that must survive a round-trip need a declarative equivalent: `colorByDataItem` on column series (5.20.4), a per-item `fill` field with `templateField`, or `heatRules`.
+
+## States
+
+Element [states](https://www.amcharts.com/docs/v5/concepts/states/) can be defined via a `states` array, where each item has a `key` and its `settings`:
+
+{
+  type: "Circle",
+  settings: {
+    radius: 5
+  },
+  states: \[{
+    key: "hover",
+    settings: {
+      radius: 8
+    }
+  }\]
+}
 
 ## Parsing
 
@@ -749,6 +878,20 @@ parser.parse({
   chart.appear(1000, 100);
 });
 
+### Updating existing objects
+
+By default, a config that specifies a `type` replaces the existing object in its place. With `updateTargets: "soft"` in parse options, if the existing object is already of that same type, the config is merged into it (only settings and properties are applied) instead of replacing it:
+
+parser.parse(config, {
+  parent: root.container,
+  updateTargets: "soft"
+});
+
+parser.parse(config, {
+  parent: root.container,
+  updateTargets: "soft"
+});
+
 ### Adding events
 
 The `then()` callback will kick in when the chart and related objects are created, which means that we can use it to add events to chart's elements.
@@ -833,9 +976,23 @@ function handleClick(ev) {
   console.log(new Date(ev.target.dataItem.get("valueX")));
 }
 
+### Without code
+
+To put a chart from a config on a page without writing any code, use the `<am5-chart>` HTML element. It creates the root element, parses the config, and builds the chart:
+
+<am5-chart src="chart.json"></am5-chart>
+
+MORE INFOFor more details, see "[The <am5-chart> element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/)".
+
 ## Serializing
 
 To serialize charts, use the [ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/) class. [More info](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/).
+
+## Visual JSON config editor
+
+You can create and edit JSON configs using [amCharts Editor](https://live.amcharts.com/).
+
+For more info, refer to "[JSON Editor](https://www.amcharts.com/docs/v5/concepts/serializing/json-editor/)".
 
 ## Examples
 

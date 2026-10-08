@@ -2,23 +2,28 @@
 title: "List"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/list/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A List class is used to hold a number of indexed items of the same type.
+An ordered list of items that dispatches events as items are added, removed or moved.
 
 ## Import
 
-```javascript
-// Import List
-import * as am5 from "@amcharts/amcharts5"
-```
+Not exported from any `@amcharts/amcharts5` entry point (internal class).
 
 ## Inheritance
 
-Extended by: ListAutoDispose, Children, ListData
+Extends: (none)
+Extended by: Children, ListAutoDispose, ListData
+
+## Settings and related interfaces
+
+- Events: `IListEvents`
 
 ## Properties
 
-- **events** (`EventDispatcher`) — Default new EventDispatcher()
-- **length** (`number`) — Number of items in list. @readonly
+Public properties (not settings):
+
+- **events** (`EventDispatcher<Events<this, IListEvents<T>>>`)
+- **length** (`number`) — Number of items in list.
+- **values** (`T[]`) — An array of values in the list. Don't change this array directly: use methods like `push()` and `removeIndex()`, which dispatch the list's events.

@@ -2,14 +2,24 @@
 title: "Collapsible Force-Directed Tree"
 source: "https://www.amcharts.com/demos/collapsible-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Force Directed Tree is a special kind of chart used to display of multi-item data related in hierarchical, linear or mixed way, as a series of linked bubbles.
-This demo shows how to implement collapsing and expanding of tree nodes in a force-directed tree.
-For a deep dive into force-directed tree charts check out the Force-directed tree docs.
-Hierarchy charts
-Force-directed trees
+A force-directed tree links bubbles with lines and lets them push and pull until they settle. This one maps the flavors of coffee, from families like Fruity down to single notes, and opens a branch when you click it.
+
+When to fold a tree: A big hierarchy shown all at once turns into a hairball. Starting folded shows the main groups first, and each click opens just the branch someone cares about, so the picture grows with their interest. A dashed outline marks a bubble with more inside.
+
+Good for:
+- Flavor wheels, taxonomies and skill maps
+- Exploring a big hierarchy step by step
+- Talks that reveal detail as they go
+
+Think twice when:
+- Readers who need every level: a tree chart shows it all in order
+- Exact sizes: bubbles are hard to compare
+- Printed pages, where nothing opens
+
+Prompt: Create a collapsible force-directed tree of the coffee taster’s flavor wheel, with bubbles sized by how many flavors they hold. Show the first two levels at first; clicking a bubble opens the levels below it, or folds it. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,14 +31,15 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 var data = {
   value: 0,
   children: [
     {
-      name: "Flora",
+      name: "Floral",
       children: [
         {
           name: "Black Tea",
@@ -183,7 +194,7 @@ var data = {
           ]
         },
         {
-          name: "Alcohol/Fremented",
+          name: "Alcohol/Fermented",
           children: [
             {
               name: "Winey",
@@ -194,7 +205,7 @@ var data = {
               value: 1
             },
             {
-              name: "Fremented",
+              name: "Fermented",
               value: 1
             },
             {
@@ -497,7 +508,7 @@ var data = {
 
 // Create wrapper container
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
-  width: am5.percent(100),
+  width: am5.percent(100), // the container fills the whole chart area
   height: am5.percent(100),
   layout: root.verticalLayout
 }));
@@ -505,7 +516,8 @@ var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
-  singleBranchOnly: false,
+  singleBranchOnly: false, // opening a node leaves the other branches open
+  // a click opens two levels; the unnamed root is hidden and only the main flavors show at first
   downDepth: 2,
   topDepth: 1,
   initialDepth: 1,
@@ -513,21 +525,33 @@ var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
   categoryField: "name",
   childDataField: "children",
   idField: "name",
-  linkWithField: "linkWith",
+  linkWithField: "linkWith", // extra links to the nodes named in a node's linkWith
+  // the nodes push each other apart less and are pulled to the center harder than by default
   manyBodyStrength: -10,
   centerStrength: 0.8
 }));
 
 series.get("colors").setAll({
-  step: 2
+  step: 2 // skip every other color, so neighboring branches differ more
 });
 
-series.links.template.set("strength", 0.5);
+series.links.template.set("strength", 0.5); // links pull their nodes together half as hard as by default
+
+// A soft shadow under each circle
+series.circles.template.setAll({
+  shadowColor: am5.color(0x000000),
+  shadowOpacity: 0.3,
+  shadowBlur: 6,
+  shadowOffsetX: 2,
+  shadowOffsetY: 2
+});
+
+// The tooltip names the flavor: the smallest circles are too small for a label
+series.nodes.template.set("tooltipText", "{category}");
 
 series.data.setAll([data]);
 
-series.set("selectedDataItem", series.dataItems[0]);
-
+series.set("selectedDataItem", series.dataItems[0]); // start at the top of the tree
 
 // Make stuff animate on load
 series.appear(1000, 100);
@@ -544,8 +568,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  max-width: 100%;
-  height: 550px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -554,3 +578,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

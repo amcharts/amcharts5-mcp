@@ -2,31 +2,39 @@
 title: "GanttCategoryAxisRenderer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ganttcategoryaxisrenderer/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Renderer for GanttCategoryAxis axes.
+Renderer for a `GanttCategoryAxis`: draws each task's row with its grip, task bullet, editable label, duration stepper and progress pie.
+
+_Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Category_vertical_axis
 
 ## Import
 
-```javascript
-// Import GanttCategoryAxisRenderer
-import * as am5gantt from "@amcharts/amcharts5/gantt"
+```js
+import * as am5gantt from "@amcharts/amcharts5/gantt";
+
+am5gantt.GanttCategoryAxisRenderer.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: AxisRendererY
+Extends: AxisRendererY → AxisRenderer → Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from AxisRendererY (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IGanttCategoryAxisRendererSettings` — get_api_reference shows it after this page
+- Private settings: `IGanttCategoryAxisRendererPrivate`
 
 ## Properties
 
-- **axis** (`GanttCategoryAxis`) — (no description)
-- **containers** (`ListTemplate`) — Default new ListTemplate<Container> A TemplateList with all the containers attached to the axis. This container holds all the elements of axis item - label, grip, task bullet, controls, etc.
-- **controlsContainers** (`ListTemplate`) — Default new ListTemplate<Container> A TemplateList with all the controls containers attached to the axis. This container holds all the controls of axis item - duration stepper, progress pie, etc.
-- **durationSteppers** (`ListTemplate`) — Default new ListTemplate<NumericStepper> A TemplateList with all the duration steppers attached to the axis. Duration steppers are used to set and show duration of tasks.
-- **grips** (`ListTemplate`) — Default new ListTemplate<Rectangle> A TemplateList with all the grips attached to the axis. Dragging by the grips allows to rearrange the axis items.
-- **labels** (`ListTemplate`) — Default new ListTemplate<AxisLabelRadial> A TemplateList with all the labels attached to the axis. labels.template can be used to configure appearance of the labels.
-- **progressPies** (`ListTemplate`) — Default new ListTemplate<ProgressPie> A TemplateList with all the progress pies attached to the axis. Progress pies are used to show progress of tasks.
-- **taskBullets** (`ListTemplate`) — Default new ListTemplate<Button> A TemplateList with all the task bullets attached to the axis. Task bullets are shown to the left of the label. If a task doesn't have children it will show circle. Otherwise it will show rectangle which is clickable and can be used to toggle collapse/expand of the task.
+Public properties (not settings):
+
+- **axis** (`GanttCategoryAxis<this>`) — The axis this renderer draws.
+- **containers** (`ListTemplate<Container>`) — Row containers, each holding a task's grip, task bullet, label and controls. Dragging one moves the task in the list.
+- **controlsContainers** (`ListTemplate<Container>`) — Containers for each task's duration stepper and progress pie.
+- **durationSteppers** (`ListTemplate<NumericStepper>`) — Steppers that show and set each task's duration, in `durationUnit` units.
+- **grips** (`ListTemplate<Rectangle>`) — Grips at the left of the rows, for dragging tasks to reorder them or to move them under another task.
+- **labels** (`ListTemplate<EditableAxisLabel>`) — The task name labels, which the user can edit. Configure them through `labels.template`.
+- **progressPies** (`ListTemplate<ProgressPie>`) — Pies that show each task's progress. Clicking one toggles the task between done and its previous progress.
+- **taskBullets** (`ListTemplate<Button>`) — Bullets left of the labels: a triangle that collapses and expands a task's subtasks, or a circle for a task without any.

@@ -2,24 +2,25 @@
 title: "ComparisonControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/comparisoncontrol/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A control that is used to change type of the main series of the StockChart.
+A dropdown control for picking series to compare with the main series of a `StockChart`. Adding the picked series is up to a `selected` event handler, usually with `addComparingSeries()`.
 
 ## Import
 
-```javascript
-// Import ComparisonControl
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.ComparisonControl.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: DropdownListControl
+Extends: DropdownListControl → StockControl → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from DropdownListControl (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **items** (`Array`) — (no description)
+- Settings: `IComparisonControlSettings` — get_api_reference shows it after this page
+- Private settings: `IComparisonControlPrivate`
+- Events: `IComparisonControlEvents`

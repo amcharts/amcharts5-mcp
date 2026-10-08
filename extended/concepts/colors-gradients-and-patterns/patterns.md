@@ -1,7 +1,7 @@
 ---
 title: "Patterns"
 source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
@@ -43,11 +43,13 @@ Example
 
 `[CirclePattern](https://www.amcharts.com/docs/v5/reference/circlepattern/)`
 
-`[PathPattern](https://www.amcharts.com/docs/v5/reference/pathpattern/)`
-
 `[StarPattern](https://www.amcharts.com/docs/v5/reference/starpattern/)` (5.20.0)
 
 `[TrianglePattern](https://www.amcharts.com/docs/v5/reference/trianglepattern/)` (5.20.0)
+
+`[PathPattern](https://www.amcharts.com/docs/v5/reference/pathpattern/)`
+
+`[GrainPattern](https://www.amcharts.com/docs/v5/reference/grainpattern/)`
 
 Patterns can be customized by applying rotation, gap, stroke, and other settings, which we'll explore in a bit.
 
@@ -104,14 +106,14 @@ Similarly, to assign it to element's stroke (line), we can use `strokePattern`.
 
 columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {
   color: am5.color(0xffffff),
-  rotation: 45,
+  angle: 45,
   width: 200,
   height: 200
 }));
 
 columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {
   color: am5.color(0xffffff),
-  rotation: 45,
+  angle: 45,
   width: 200,
   height: 200
 }));
@@ -134,11 +136,14 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
   colorOpacity: 0.5
 }));
 
+
 `color: am5.color(0xffffff)`  
 `colorOpacity: 1`
 
+
 `color: am5.color(0xffffff)`  
 `colorOpacity: 0.5`
+
 
 `color: am5.color(0x85ffc7)`  
 `colorOpacity: 1`
@@ -161,11 +166,14 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
   fillOpacity: 1
 }));
 
+
 `color: am5.color(0xffffff)`  
 `fill` not set
 
+
 `color` not set  
 `fill: am5.color(0xffffff)`
+
 
 `color: am5.color(0x297373)`  
 `fill: am5.color(0xffffff)`
@@ -178,11 +186,9 @@ In such case, any original fill that target object has - either via its own `fil
 
 ## Sizing patterns
 
-Normally, patterns are constructed as 50x50 pixel squares.
+Most patterns will try to auto-size themselves to fit the target element.
 
-However, in some cases (for example rotated line pattern) they might not tile nicely.
-
-In such cases, we might need to increase the size of the pattern using `width` and `height` settings:
+However, in some cases, you might need to manually size them. In such cases, we can use `width` and `height` settings:
 
 columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, {
   color: am5.color(0x297373),
@@ -199,8 +205,10 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
   width: 400,
   height: 400,
 }));
+
 
 `width: 50, height: 50` (default)
+
 
 `width: 400, height: 400`
 
@@ -220,19 +228,61 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
   rotation: 45
 }));
 
+
 `rotation: 0` (default)
+
 
 `rotation: 45`
 
+
 `rotation: 90`
+
 
 `rotation: -45`
 
+
 `rotation: 0` (default)
+
 
 `rotation: 45`
 
 NOTE Some rotated patterns will tile well. Some tweaking of `gap`, `width`, `height`, and possibly other settings might be required.
+
+### Rotating line pattern
+
+A better way to rotate a `LinePattern` is to use its `angle` setting (instead of `rotation`). It's faster than basic rotation as it will draw lines at specific angle instead of rotating the numerous tiles.
+
+columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {  
+  color: am5.color(0xffffff),  
+  angle: 45,  
+  width: 200,  
+  height: 200  
+}));
+
+columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {  
+  color: am5.color(0xffffff),  
+  angle: 45,  
+  width: 200,  
+  height: 200  
+}));
+
+### Rotating rectangles
+
+To turn rectangles into diamonds (or place them at any other angle than 0), set its `rotateShapes: true` in addition to `rotation`. It will rotate each individual rectangle rather than the whole pattern tile, which is faster.
+
+columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, {
+  fill: am5.color(0xffffff),
+  fillOpacity: 1,
+  rotation: 45,
+  rotateShapes: true
+}));
+
+columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, {
+  fill: am5.color(0xffffff),
+  fillOpacity: 1,
+  rotation: 45,
+  rotateShapes: true
+}));
 
 ## Repetition
 
@@ -252,7 +302,7 @@ For example, `gap` setting is available in all pattern types, and is used to set
 
 columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {
   color: am5.color(0xffffff),
-  rotation: 45,
+  angle: 45,
   width: 200,
   height: 200,
   gap: 10
@@ -260,15 +310,18 @@ columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {
 
 columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {
   color: am5.color(0xffffff),
-  rotation: 45,
+  angle: 45,
   width: 200,
   height: 200,
   gap: 10
 }));
 
+
 `gap: 6` (default)
 
+
 `gap: 3`
+
 
 `gap: 20`
 
@@ -284,7 +337,9 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
   checkered: true
 }));
 
+
 `checkered: false`
+
 
 `checkered: true`
 

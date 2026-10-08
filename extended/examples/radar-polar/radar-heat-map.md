@@ -2,16 +2,24 @@
 title: "Radar Heat Map"
 source: "https://www.amcharts.com/demos/radar-heat-map/"
 category: "radar-polar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Generally, Heat maps represent data in rectangular matrices where individual values are differentiated by color. In this case, we apply this concept to a radial shape which could be useful for visualizing repeating activities, for example.
-Key implementation details
-Heat map is basically a bar chart with two category axes instead of one category and one value axis seen in the most most common XY charts. We then create our RadarColumnSeries and set both categoryXField (hour) and categoryYField (weekday). The one thing left is to define a "heat rule" on the series based on the value field.
-To complete the picture we add a heat legend at the bottom.
-Radar chart
-Heat rules
-Heat legend
+A heat map bent into a ring: the 24 hours run around the circle, the seven days of the week from the outside in, and color shows how busy each hour was.
+
+When a radial heat map works: A week of hours is a cycle: midnight follows 11 pm, and Sunday follows Saturday. A ring keeps those neighbors side by side, so daily rhythms read as bands of color. Here the busiest hours fall on weekdays, with a peak on Wednesday morning.
+
+Good for:
+- Activity by hour and weekday: traffic, sales, calls
+- Finding quiet and busy times at a glance
+- Repeating cycles of any kind
+
+Think twice when:
+- Exact values: color is hard to read precisely
+- Long day names on small charts: the rings get thin
+- Comparing far-apart cells: a grid heat map lines them up
+
+Prompt: Create a radar heat map with the 24 hours of the day around the circle and the seven weekdays as rings around a hole in the middle. Color each cell by its value, and add a heat legend that marks the value of the cell under the pointer. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -20,89 +28,102 @@ Heat legend
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/radar-chart/
 var chart = root.container.children.push(  am5radar.RadarChart.new(root, {
-    innerRadius: am5.percent(50),
-    panX: false,
+    innerRadius: am5.percent(35), // a hole in the middle, 35% of the radius
+    panX: false,                  // no dragging the plot around
     panY: false,
-    wheelX: "panX",
-    wheelY: "zoomX",
-    maxTooltipDistance: 0,
-    layout: root.verticalLayout
+    wheelX: "panX",               // a horizontal wheel or trackpad swipe moves a zoomed view around...
+    wheelY: "zoomX",              // ...and the vertical wheel zooms in on some hours
+    maxTooltipDistance: 0,        // only the tooltip closest to the pointer
+    layout: root.verticalLayout   // the heat legend goes under the chart
   }));
 
+// Add cursor: drag around the ring to zoom in on a few hours
+// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
+  behavior: "zoomX"
+}));
+cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
 var yRenderer = am5radar.AxisRendererRadial.new(root, {
-  visible: false,
-  axisAngle: 90,
-  minGridDistance: 10,
+  visible: false,      // no axis line; the labels still show
+  axisAngle: 90,       // the weekday names sit at the bottom of their rings
+  minGridDistance: 10, // small, so every weekday keeps its label
+  // Sunday on the outer ring, Saturday on the inner one
   inversed: true
 });
 
+// Weekday names run along their rings, small enough to fit inside a row
 yRenderer.labels.template.setAll({
   textType: "circular",
   textAlign: "center",
-  radius: -8
+  fontSize: 12,
+  radius: -6,
+  // dark text in light and dark mode, as the cells under it keep their yellow to red
+  fill: am5.color(0x000000),
+  fillOpacity: 0.75
 });
 
-yRenderer.grid.template.set("visible", false);
+yRenderer.grid.template.set("visible", false); // no ring lines between the weekdays
 
 var yAxis = chart.yAxes.push(  am5xy.CategoryAxis.new(root, {
-    maxDeviation: 0,
+    maxDeviation: 0, // can't be zoomed or panned past the first or last weekday
     renderer: yRenderer,
     categoryField: "weekday"
   }));
 
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
-  visible: false,
-  minGridDistance: 30
+  visible: false,     // no outer circle line
+  minGridDistance: 30 // at least 30px between the hour labels
 });
 
 xRenderer.labels.template.setAll({
-  textType: "circular",
-  radius: 10
+  textType: "circular", // the hour labels bend along the circle
+  fontSize: 12,         // small text, in pixels
+  radius: 10            // 10px outside the circle
 });
 
-xRenderer.grid.template.set("visible", false);
+xRenderer.grid.template.set("visible", false); // no lines between the hours
 
 var xAxis = chart.xAxes.push(  am5xy.CategoryAxis.new(root, {
     renderer: xRenderer,
     categoryField: "hour"
   }));
 
-
 // Create series
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
 var series = chart.series.push(  am5radar.RadarColumnSeries.new(root, {
-    calculateAggregates: true,
-    stroke: am5.color(0xffffff),
+    calculateAggregates: true, // works out the lowest and highest values, for the heat rules and legend
+    // gaps between the cells in the background color, so they work in light and dark mode
+    stroke: root.interfaceColors.get("background"),
     clustered: false,
     xAxis: xAxis,
     yAxis: yAxis,
-    categoryXField: "hour",
-    categoryYField: "weekday",
+    categoryXField: "hour",    // one cell per hour around the circle...
+    categoryYField: "weekday", // ...and per weekday ring: the heat map's grid
     valueField: "value"
   }));
 
 series.columns.template.setAll({
-  tooltipText: "{value}",
-  strokeOpacity: 1,
-  strokeWidth: 2,
-  width: am5.percent(100),
-  height: am5.percent(100)
+  tooltipText: "{categoryY}, {categoryX}: {value}", // the weekday, the hour and its value
+  strokeOpacity: 1,        // a solid outline...
+  strokeWidth: 2,          // ...2px wide, in the background color set above
+  width: am5.percent(100), // each cell fills its hour...
+  height: am5.percent(100) // ...and its weekday ring
 });
 
+// hovering a cell marks its value on the heat legend
 series.columns.template.events.on("pointerover", function (event) {
   var di = event.target.dataItem ;
   if (di) {
@@ -110,36 +131,34 @@ series.columns.template.events.on("pointerover", function (event) {
   }
 });
 
+// The legend runs from the lowest value to the highest
 series.events.on("datavalidated", function () {
-  heatLegend.set("startValue", series.getPrivate("valueHigh"));
-  heatLegend.set("endValue", series.getPrivate("valueLow"));
+  heatLegend.set("startValue", series.getPrivate("valueLow"));
+  heatLegend.set("endValue", series.getPrivate("valueHigh"));
 });
-
 
 // Set up heat rules
 // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: series.columns.template,
-  min: am5.color(0xfffb77),
-  max: am5.color(0xfe131a),
+  min: am5.color(0xfffb77), // the lowest value light yellow...
+  max: am5.color(0xfe131a), // ...the highest red
   dataField: "value",
   key: "fill"
 }]);
 
-
 // Add heat legend
 // https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
 var heatLegend = chart.children.push(  am5.HeatLegend.new(root, {
-    orientation: "horizontal",
-    endColor: am5.color(0xfffb77),
-    startColor: am5.color(0xfe131a)
+    orientation: "horizontal",       // a horizontal color bar
+    startColor: am5.color(0xfffb77), // the same colors as the heat rules
+    endColor: am5.color(0xfe131a)
   }));
-
 
 // Set data
 // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
 var data = [{
-  hour: "12pm",
+  hour: "12am",
   weekday: "Sunday",
   value: 2990
 }, {
@@ -187,7 +206,7 @@ var data = [{
   weekday: "Sunday",
   value: 3018
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Sunday",
   value: 3154
 }, {
@@ -235,7 +254,7 @@ var data = [{
   weekday: "Sunday",
   value: 3323
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Monday",
   value: 3346
 }, {
@@ -283,7 +302,7 @@ var data = [{
   weekday: "Monday",
   value: 9313
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Monday",
   value: 9011
 }, {
@@ -331,7 +350,7 @@ var data = [{
   weekday: "Monday",
   value: 4851
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Tuesday",
   value: 4468
 }, {
@@ -379,7 +398,7 @@ var data = [{
   weekday: "Tuesday",
   value: 10425
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Tuesday",
   value: 10137
 }, {
@@ -427,7 +446,7 @@ var data = [{
   weekday: "Tuesday",
   value: 8581
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Wednesday",
   value: 8145
 }, {
@@ -475,7 +494,7 @@ var data = [{
   weekday: "Wednesday",
   value: 9928
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Wednesday",
   value: 9644
 }, {
@@ -523,7 +542,7 @@ var data = [{
   weekday: "Wednesday",
   value: 4118
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Thursday",
   value: 3689
 }, {
@@ -571,7 +590,7 @@ var data = [{
   weekday: "Thursday",
   value: 9420
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Thursday",
   value: 8966
 }, {
@@ -619,7 +638,7 @@ var data = [{
   weekday: "Thursday",
   value: 4017
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Friday",
   value: 4022
 }, {
@@ -667,7 +686,7 @@ var data = [{
   weekday: "Friday",
   value: 8615
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Friday",
   value: 8218
 }, {
@@ -715,7 +734,7 @@ var data = [{
   weekday: "Friday",
   value: 3833
 }, {
-  hour: "12pm",
+  hour: "12am",
   weekday: "Saturday",
   value: 3503
 }, {
@@ -763,7 +782,7 @@ var data = [{
   weekday: "Saturday",
   value: 3416
 }, {
-  hour: "12am",
+  hour: "12pm",
   weekday: "Saturday",
   value: 3432
 }, {
@@ -826,7 +845,7 @@ yAxis.data.setAll([
 ]);
 
 xAxis.data.setAll([
-  { hour: "12pm" },
+  { hour: "12am" },
   { hour: "1am" },
   { hour: "2am" },
   { hour: "3am" },
@@ -838,7 +857,7 @@ xAxis.data.setAll([
   { hour: "9am" },
   { hour: "10am" },
   { hour: "11am" },
-  { hour: "12am" },
+  { hour: "12pm" },
   { hour: "1pm" },
   { hour: "2pm" },
   { hour: "3pm" },
@@ -868,7 +887,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -878,3 +898,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

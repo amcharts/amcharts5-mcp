@@ -2,20 +2,26 @@
 title: "SlicedChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/slicedchart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a sliced chart for use with FunnelSeries, PyramidSeries, or PictorialStackedSeries.
+A chart for `FunnelSeries`, `PyramidSeries` and `PictorialStackedSeries`. Several series in it sit side by side.
+
+Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/
 
 ## Import
 
-```javascript
-// Import SlicedChart
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
+
+am5percent.SlicedChart.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: PercentChart
+Extends: PercentChart → SerialChart → Chart → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from PercentChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ISlicedChartSettings` — get_api_reference shows it after this page
+- Private settings: `ISlicedChartPrivate`

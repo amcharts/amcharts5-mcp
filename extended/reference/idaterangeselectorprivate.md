@@ -2,23 +2,27 @@
 title: "IDateRangeSelectorPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idaterangeselectorprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IStockControlPrivate
+All ancestors: IStockControlPrivate, IEntityPrivate
+TypeScript: `am5stock.IDateRangeSelectorPrivate` (`import type { IDateRangeSelectorPrivate } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **dropdown** (`Dropdown`)
+- **fromField** (`HTMLInputElement`)
+- **fromPicker** (`any`)
+- **fromDate** (`Date`)
+- **toField** (`HTMLInputElement`)
+- **toPicker** (`any`)
+- **toDate** (`Date`)
 
-- **dropdown** (`Dropdown`) — (no description)
-- **fromDate** (`Date`) — (no description)
-- **fromField** (`HTMLInputElement`) — (no description)
-- **fromPicker** (`any`) — (no description)
-- **toDate** (`Date`) — (no description)
-- **toField** (`HTMLInputElement`) — (no description)
-- **toPicker** (`any`) — (no description)
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlPrivate")`) for types, defaults and descriptions.
+
+- _IStockControlPrivate_: button, icon, label, toolbar

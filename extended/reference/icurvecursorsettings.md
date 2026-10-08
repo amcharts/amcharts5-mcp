@@ -2,86 +2,31 @@
 title: "ICurveCursorSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icurvecursorsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ICurveCursorSettings extends IXYCursorSettings.
-ICurveCursorSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        alwaysShow        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IXYCursorSettings
-If set to true, cursor will not be hidden when mouse cursor moves out of the plot area.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IXYCursorSettings
+All ancestors: IXYCursorSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5timeline.CurveCursor` (see its page for the class)
+TypeScript: `am5timeline.ICurveCursorSettings` (`import type { ICurveCursorSettings } from "@amcharts/amcharts5/timeline"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IXYCursorSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **xAxis** (`Axis<AxisRendererCurveX>`) — X axis the cursor works along. Unlike on an `XYChart`, it is required.
+- **yAxis** (`Axis<AxisRendererCurveY>`) — Y axis the cursor works along. Unlike on an `XYChart`, it is required.
 
-- **xAxis** (`Axis`) — A target X-axis. Differently from the XYChart, this setting is required for cursor to work.
+## Inherited settings with a different default on CurveCursor
 
+- **exportable** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element is left out of exported images of the chart.
+- **layer** (`number`) — default `30` _(theme)_ — _from ISpriteSettings_ — Layer to draw the element on: elements on higher layers show in front of those on lower ones. If not set, the element is on its parent's layer.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IXYCursorSettings")`) for types, defaults and descriptions.
+
+- _IXYCursorSettings_: alwaysShow, behavior, clickTolerance, moveThreshold, positionX, positionY, snapToSeries, snapToSeriesBy, syncWith
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,35 +2,35 @@
 title: "ProgressPie"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/progresspie/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws an interactive progress pie.
-@since 5.14.0
+A ring that fills clockwise from the top as `value` goes from `0` to `1`, with the percent shown in the middle.
+
+_Since 5.14.0._
 
 ## Import
 
-```javascript
-// Import ProgressPie
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.ProgressPie.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **innerRadius** (`number | Percent`) — (no description)
-- **numberFormat** (`undefined | string`) — (no description)
-- **radius** (`number | Percent`) — (no description)
-- **value** (`undefined | number`) — (no description)
+- Settings: `IProgressPieSettings` — get_api_reference shows it after this page
+- Private settings: `IProgressPiePrivate`
 
 ## Properties
 
-- **backgroundSlice** (`Slice`) — Default this.children.push(Slice.new(this._root, { themeTags: ["background"] }))
-- **circle** (`Circle`) — Default this.children.push(Circle.new(this._root, { themeTags: ["background"] }))
-- **label** (`Label`) — Default this.children.push(Label.new(this._root, { }))
-- **slice** (`Slice`) — Default this.children.push(Slice.new(this._root, { isMeasured: false }))
+Public properties (not settings):
+
+- **backgroundSlice** (`Slice`) — The full ring behind `slice`.
+- **circle** (`Circle`) — The circle behind the ring.
+- **label** (`Label`) — The label in the middle that shows the percent.
+- **slice** (`Slice`) — The slice that shows the progress.

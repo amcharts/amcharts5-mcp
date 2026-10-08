@@ -2,34 +2,23 @@
 title: "IGaplessDateAxisDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/igaplessdateaxisdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IGaplessDateAxisDataItem extends IDateAxisDataItem.
-IGaplessDateAxisDataItem is not extended by any other symbol.
-Properties
-
-
-        above        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IAxisDataItem
-If set to true, the grid and axis fill of this data item will be drawn above series.
- NOTE: this needs to be set before crating an axis range. Updating this dynamically won't have any effect.
- NOTE: if you need all grid to be drawn above series, you can brig it to front with chart.gridContainer.toFront();.
 
 ## Inheritance
 
 Extends: IDateAxisDataItem
+All ancestors: IDateAxisDataItem, IValueAxisDataItem, IAxisDataItem, IComponentDataItem
+TypeScript: `am5xy.IGaplessDateAxisDataItem` (`import type { IGaplessDateAxisDataItem } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IDateAxisDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **index** (`number`) — An index of a data item.
 
-- **index** (`undefined | number`) — An index of a data item.
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IValueAxisDataItem")`) for types, defaults and descriptions.
+
+- _IValueAxisDataItem_: affectsMinMax, endValue, labelEndValue, value
+- _IAxisDataItem_: above, axisFill, bullet, grid, isRange, label, tick
+- _IComponentDataItem_: visible

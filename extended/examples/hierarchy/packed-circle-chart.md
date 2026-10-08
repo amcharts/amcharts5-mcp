@@ -2,14 +2,24 @@
 title: "Packed Circle Chart"
 source: "https://www.amcharts.com/demos/packed-circle-chart/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Packed Circle Chart is great for visualizing hierarchical data. Circles on the bottom (leaf) level represent the values on that level and then they are packed (hence the name) into parent circles and determine their size. This way you can see a birds-eye view of the values in your data and also drill down for the details. Try clicking on the circles in the demo.
-Key implementation details
-Packed Circle Chart along with other hierarchical charts is covered by the hierarchy module of amCharts Charts. To add a Packed Circle chart we just create a Container and add a Pack child into it. Then we just need to add hierarchical data and configure the appropriate value fields.
-Hierarchy charts
-Pack
+A packed circle chart nests circles inside circles, each sized by its value. Here, one listener’s year of music: 1,000 hours, grouped by genre and style.
+
+When packed circles work: Packed circles show sizes and groups at the same time: the big circles stand out, and the nesting shows what belongs together. People judge areas less precisely than lengths, so they make a striking overview rather than a ranking.
+
+Good for:
+- Time, money or votes split by group and item
+- An overview where the biggest items should stand out
+- Groups of very different size
+
+Think twice when:
+- Exact comparisons: a bar chart ranks values better
+- Using all the space: a treemap fills the rectangle
+- Values close in size: the circles look alike
+
+Prompt: Create a packed circle chart of one listener’s year of music in hours, with each genre holding its styles, and a legend of the genres that can hide them. Clicking a genre zooms into it, and clicking it again zooms back out. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -18,79 +28,109 @@ Pack
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
+// Only the styles are labeled: a genre's name would sit behind its styles,
+// so the genres are named in the legend instead
+var myTheme = am5.Theme.new(root);
+
+myTheme.rule("Label", ["pack", "node", "depth0"]).set("forceHidden", true);
+myTheme.rule("Label", ["pack", "node", "depth1"]).set("forceHidden", true);
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  myTheme,
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create wrapper container
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
-  width: am5.percent(100),
-  height: am5.percent(100),
-  layout: root.verticalLayout
+  width: am5.percent(100),    // full width...
+  height: am5.percent(100),   // ...and height
+  layout: root.verticalLayout // the circles and the legend stacked top to bottom
 }));
-
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(am5hierarchy.Pack.new(root, {
-  singleBranchOnly: false,
-  downDepth: 1,
+  singleBranchOnly: false, // other branches stay open when one opens
+  // every level opens at once: 10 is more levels than the data has
+  downDepth: 10,
   initialDepth: 10,
   valueField: "value",
   categoryField: "name",
-  childDataField: "children"
+  childDataField: "children",
+  legendValueText: "{sum} h" // the legend shows each genre's total hours
 }));
 
+// Hours; {sum} adds up a genre's styles
+series.nodes.template.set("tooltipText", "{category}: [bold]{sum} hours[/]");
 
-// Generate and set data
+// Set data: one listener's year of music, 1,000 hours by genre and style
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
-var maxLevels = 2;
-var maxNodes = 3;
-var maxValue = 100;
+series.data.setAll([{
+  name: "Music",
+  children: [{
+    name: "Rock",
+    children: [
+      { name: "Indie", value: 120 },
+      { name: "Classic rock", value: 80 },
+      { name: "Punk", value: 35 },
+      { name: "Metal", value: 25 }
+    ]
+  }, {
+    name: "Pop",
+    children: [
+      { name: "Synth-pop", value: 90 },
+      { name: "Dance", value: 70 },
+      { name: "K-pop", value: 40 }
+    ]
+  }, {
+    name: "Electronic",
+    children: [
+      { name: "House", value: 85 },
+      { name: "Ambient", value: 60 },
+      { name: "Techno", value: 45 }
+    ]
+  }, {
+    name: "Hip-hop",
+    children: [
+      { name: "Lo-fi", value: 60 },
+      { name: "Trap", value: 50 },
+      { name: "Boom bap", value: 40 }
+    ]
+  }, {
+    name: "Jazz",
+    children: [
+      { name: "Swing", value: 30 },
+      { name: "Bebop", value: 25 },
+      { name: "Fusion", value: 20 }
+    ]
+  }, {
+    name: "Classical",
+    children: [
+      { name: "Baroque", value: 40 },
+      { name: "Romantic", value: 35 }
+    ]
+  }, {
+    name: "Folk",
+    children: [
+      { name: "Americana", value: 30 },
+      { name: "Celtic", value: 20 }
+    ]
+  }]
+}]);
 
-var data = {
-  name: "Root",
-  children: []
-}
-generateLevel(data, "", 0);
+series.set("selectedDataItem", series.dataItems[0]); // start with the root selected, so everything shows
 
-series.data.setAll([data]);
-series.set("selectedDataItem", series.dataItems[0]);
+// Legend of the genres: click one to hide it
+// https://www.amcharts.com/docs/v5/charts/hierarchy/#Legend
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.percent(50), // the legend's middle...
+  x: am5.percent(50)        // ...at the middle of the chart's width
+}));
 
-function generateLevel(data, name, level) {
-  for (var i = 0; i < Math.ceil(maxNodes * Math.random()) + 1; i++) {
-    var nodeName = name + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
-    var child;
-    if (level < maxLevels) {
-      child = {
-        name: nodeName + level
-      }
-
-      if (level > 0 && Math.random() < 0.5) {
-        child.value = Math.round(Math.random() * maxValue);
-      }
-      else {
-        child.children = [];
-        generateLevel(child, nodeName + i, level + 1)
-      }
-    }
-    else {
-      child = {
-        name: name + i,
-        value: Math.round(Math.random() * maxValue)
-      }
-    }
-    data.children.push(child);
-  }
-
-  level++;
-  return data;
-}
-
+legend.data.setAll(series.dataItems[0].get("children")); // one legend item per genre
 
 // Make stuff animate on load
 series.appear(1000, 100);
@@ -107,7 +147,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 550px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -116,3 +157,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

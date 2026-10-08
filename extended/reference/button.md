@@ -2,26 +2,28 @@
 title: "Button"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/button/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Draws an interactive button.
 
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/buttons/
+
 ## Import
 
-```javascript
-// Import Button
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Button.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 Extended by: ConfirmButton
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **icon** (`Graphics`) — A Graphics element for the button to show as icon.
-- **label** (`Label`) — A Label element for the button to show as a label.
+- Settings: `IButtonSettings` — get_api_reference shows it after this page
+- Private settings: `IButtonPrivate`
+- Events: `IButtonEvents`

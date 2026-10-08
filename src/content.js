@@ -161,6 +161,16 @@ export function buildContent({ skillFiles = {}, extendedFiles = {} } = {}) {
 }
 
 /**
+ * API reference pages end with a names-only "Other inherited …" list (every
+ * settings page repeats e.g. ISpriteSettings' names). Searching it would rank
+ * hundreds of pages equal to the one that declares the setting, so search
+ * skips it; get_api_reference / get_section still return it.
+ */
+export function isUnsearchedSection(key, section) {
+  return key.startsWith("reference/") && section.heading.startsWith("Other inherited ");
+}
+
+/**
  * Keyword search over the skill docs and (optionally) the extended docs.
  * @param {{docs: Map, extendedDocs: Map}} content
  */
@@ -193,6 +203,7 @@ export function searchDocs(content, query, maxResults = 10, scope = "skill") {
   if (scope === "all") {
     for (const [key, doc] of content.extendedDocs) {
       for (const section of doc.sections) {
+        if (isUnsearchedSection(key, section)) continue;
         const text = (section.heading + " " + section.body).toLowerCase();
         const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
         if (score > 0) {

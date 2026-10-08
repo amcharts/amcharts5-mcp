@@ -2,14 +2,17 @@
 title: "ITreemapDataObject"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itreemapdataobject/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: `am5hierarchy.ITreemapDataObject` (`import type { ITreemapDataObject } from "@amcharts/amcharts5/hierarchy"`)
 
 ## Properties
 
-- **children** (`ITreemapDataObject[]`) — (no description)
-- **dataItem** (`DataItem`) — (no description)
-- **name** (`undefined | string`) — (no description)
-
+- **name** (`string`)
+- **value** (`number`)
+- **children** (`ITreemapDataObject[]`)
+- **dataItem** (`DataItem<ITreemapDataItem>`)

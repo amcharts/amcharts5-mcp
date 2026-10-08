@@ -2,14 +2,24 @@
 title: "Sorted Bar Chart"
 source: "https://www.amcharts.com/demos/sorted-bar-chart/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Sorting a bar chart by bar’s value is a common scenario that is easily implemented by sorting the underlying data beforehand. But what if data is constantly updated? This demo shows an approach to solving the real-time sorting problem that is both functional and visually appealing.
-Key implementation details
-On each data update we calculate the item’s position delta and set an animation on the data-item. Then we instantly change its position based on the sort order. But when the position changes the bar doesn’t jump into its new place immediately – it goes there in a smooth animation.
-Animations
-Category axis
+A bar chart that keeps its ranking up to date. Every second and a half, twelve social networks get new user counts, and the bars slide into their new order, the longest on top.
+
+When a sorted bar chart works: Sorting turns a bar chart into a ranking: the leader is on top, and each bar’s place says as much as its length. Horizontal bars leave room for names of any length, and sorting again after each update keeps the ranking true while the numbers move.
+
+Good for:
+- Rankings that change: users, sales, votes
+- Long names, like products or networks
+- Leaderboards on monitoring screens
+
+Think twice when:
+- Items people look up by name: a fixed order is easier to scan
+- Updates faster than the slide: the bars never settle
+- How the ranking changed over time: a bar chart race keeps the history
+
+Prompt: Create a horizontal bar chart of user counts for twelve social networks that re-sorts itself live: every second or two the values change at random and the bars slide into their new order, longest on top, each in its own color. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -18,58 +28,66 @@ Category axis
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
+// Group large numbers into M (millions) and B (billions)
+var bigNumberPrefixes = [
+  { number: 1e6, suffix: "M" },
+  { number: 1e9, suffix: "B" }
+];
+root.numberFormatter.setAll({
+  bigNumberPrefixes: bigNumberPrefixes
+});
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
+  panX: false,    // no panning...
   panY: false,
-  wheelX: "none",
+  wheelX: "none", // ...and no zooming with the mouse wheel
   wheelY: "none",
-  paddingLeft: 0
+  paddingLeft: 0  // no gap at the chart's left edge
 }));
 
 // We don't want zoom-out button to appear while animating, so we hide it
 chart.zoomOutButton.set("forceHidden", true);
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
-  minGridDistance: 30,
-  minorGridEnabled: true
+  minGridDistance: 30,   // at least 30px between the names
+  minorGridEnabled: true // fainter grid lines between the main ones
 });
 
-yRenderer.grid.template.set("location", 1);
+yRenderer.grid.template.set("location", 1); // grid lines between the bars, not through the middle of each
 
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-  maxDeviation: 0,
+  maxDeviation: 0,                   // no panning past the first and last bar
   categoryField: "network",
   renderer: yRenderer,
-  tooltip: am5.Tooltip.new(root, { themeTags: ["axis"] })
+  tooltip: am5.Tooltip.new(root, {}) // shows the name at the cursor on the axis
 }));
 
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-  maxDeviation: 0,
-  min: 0,
+  maxDeviation: 0, // no panning past the data
+  min: 0,          // bars start at zero, so their lengths compare fairly
   numberFormatter: am5.NumberFormatter.new(root, {
-    "numberFormat": "#,###a"
+    "numberFormat": "#,###a",              // short numbers: 2B, 430M
+    "bigNumberPrefixes": bigNumberPrefixes // with the M and B prefixes from the top
   }),
+  // 10% more room past the longest bar
   extraMax: 0.1,
   renderer: am5xy.AxisRendererX.new(root, {
-    strokeOpacity: 0.1,
-    minGridDistance: 80
+    strokeOpacity: 0.1, // a faint axis line
+    minGridDistance: 80 // at least 80px between the labels
 
   })
 }));
-
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -80,19 +98,18 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   valueXField: "value",
   categoryYField: "network",
   tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "left",
-    labelText: "{valueX}"
+    pointerOrientation: "left", // the tooltip sits right of the bar's end, pointing left at it
+    labelText: "{valueX}"       // the value
   }),
   // Each column takes its own color from the series palette
   colorByDataItem: true
 }));
 
-
 // Rounded corners for columns
 series.columns.template.setAll({
-  cornerRadiusTR: 5,
-  cornerRadiusBR: 5,
-  strokeOpacity: 0
+  cornerRadiusTR: 5, // rounded top right...
+  cornerRadiusBR: 5, // ...and bottom right corners: the bar's end
+  strokeOpacity: 0   // no outline
 });
 
 // Set data
@@ -100,10 +117,6 @@ var data = [
   {
     "network": "Facebook",
     "value": 2255250000
-  },
-  {
-    "network": "Google+",
-    "value": 430000000
   },
   {
     "network": "Instagram",
@@ -116,6 +129,10 @@ var data = [
   {
     "network": "Reddit",
     "value": 355000000
+  },
+  {
+    "network": "Snapchat",
+    "value": 430000000
   },
   {
     "network": "TikTok",
@@ -149,7 +166,7 @@ var data = [
 
 yAxis.data.setAll(data);
 series.data.setAll(data);
-sortCategoryAxis();
+sortCategoryAxis(); // put the bars in order right away
 
 // Get series item by category
 function getSeriesItem(category) {
@@ -162,20 +179,19 @@ function getSeriesItem(category) {
 }
 
 chart.set("cursor", am5xy.XYCursor.new(root, {
-  behavior: "none",
+  behavior: "none", // a drag does nothing; the cursor only shows the axis tooltips
   xAxis: xAxis,
   yAxis: yAxis
 }));
 
-
 // Axis sorting
 function sortCategoryAxis() {
 
-  // Sort by value
+  // Sort by value, smallest first: the axis counts up from the bottom,
+  // so the longest bar ends up on top
   series.dataItems.sort(function (x, y) {
-    return x.get("valueX") - y.get("valueX"); // descending
-    //return y.get("valueY") - x.get("valueX"); // ascending
-  })
+    return x.get("valueX") - y.get("valueX");
+  });
 
   // Go through each axis item
   am5.array.each(yAxis.dataItems, function (dataItem) {
@@ -189,7 +205,7 @@ function sortCategoryAxis() {
       var deltaPosition = (index - dataItem.get("index", 0)) / series.dataItems.length;
       // set index to be the same as series data item index
       dataItem.set("index", index);
-      // set deltaPosition instanlty
+      // set deltaPosition instantly
       dataItem.set("deltaPosition", -deltaPosition);
       // animate delta position to 0
       dataItem.animate({
@@ -209,7 +225,6 @@ function sortCategoryAxis() {
   });
 }
 
-
 // update data with random values each 1.5 sec
 setInterval(function () {
   updateData();
@@ -217,23 +232,23 @@ setInterval(function () {
 
 function updateData() {
   am5.array.each(series.dataItems, function (dataItem) {
+    // a random change of up to 500 million either way
     var value = dataItem.get("valueX") + Math.round(Math.random() * 1000000000 - 500000000);
     if (value < 0) {
-      value = 500000000;
+      value = 500000000; // a value below zero starts again at 500 million
     }
-    // both valueY and workingValueY should be changed, we only animate workingValueY
+    // both valueX and valueXWorking should be changed, we only animate valueXWorking
     dataItem.set("valueX", value);
     dataItem.animate({
       key: "valueXWorking",
       to: value,
-      duration: 600,
+      duration: 600, // the bars grow or shrink over 0.6 seconds
       easing: am5.ease.out(am5.ease.cubic)
     });
   })
 
   sortCategoryAxis();
 }
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -253,6 +268,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -261,3 +277,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,26 +2,25 @@
 title: "SettingsModal"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/settingsmodal/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Used to display a modal dialog with HTML content.
+The modal dialog where the settings of an indicator or series are edited.
 
 ## Import
 
-```javascript
-// Import SettingsModal
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.SettingsModal.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Modal
+Extends: Modal → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Modal (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **showResetLink** (`undefined | false | true`) — Default true Show the "Reset to default" link? @since 5.9.0
-- **stockChart** (`StockChart`) — A target StockChart.
-- **strokeWidths** (`number[]`) — Default [1, 2, 4, 10] Available line widths for user to choose from. @since 5.11.2
+- Settings: `ISettingsModalSettings` — get_api_reference shows it after this page
+- Private settings: `ISettingsModalPrivate`
+- Events: `ISettingsModalEvents`

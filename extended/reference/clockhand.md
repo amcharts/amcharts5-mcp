@@ -2,33 +2,33 @@
 title: "ClockHand"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/clockhand/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A clock hand for use with RadarChart.
+A gauge needle for a `RadarChart`. Set it as the `sprite` of an axis data item's `AxisBullet`, and it points at that data item's value.
+
+Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Clock_hands
 
 ## Import
 
-```javascript
-// Import ClockHand
-import * as am5radar from "@amcharts/amcharts5/radar"
+```js
+import * as am5radar from "@amcharts/amcharts5/radar";
+
+am5radar.ClockHand.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **bottomWidth** (`undefined | number`) — Default 10 A width of the base of the clock hand, in pixels.
-- **innerRadius** (`number | Percent`) — Default 0 Inner radius of the hand, in pixels, or percent (relative to the axis radius). If set to negative number, will mean number of pixels inwards from the axis.
-- **pinRadius** (`number | Percent`) — Default 10 Radius of the hand pin (circle at the base of the hand), in pixels, or in percent (relative to the axis radius.)
-- **radius** (`number | Percent`) — Default 90% Radius of the hand, in pixels, or percent (relative to the axis radius). If set to negative number, will mean number of pixels inwards from the axis.
-- **topWidth** (`undefined | number`) — Default 1 A width of the tip of the clock hand, in pixels.
+- Settings: `IClockHandSettings` — get_api_reference shows it after this page
+- Private settings: `IClockHandPrivate`
 
 ## Properties
 
-- **hand** (`Graphics`) — Default Graphics.new() A "hand" element.
-- **pin** (`Graphics`) — Default Graphics.new() A "pin" element (hand's base).
+Public properties (not settings):
+
+- **hand** (`Graphics`) — default `Graphics.new()` — The hand itself, a tapered shape from `innerRadius` to `radius`.
+- **pin** (`Graphics`) — default `Graphics.new()` — The pin: a circle at the center, of `pinRadius`.

@@ -2,15 +2,24 @@
 title: "Live Sorting of Radar Columns"
 source: "https://www.amcharts.com/demos/live-sorting-of-radar-columns/"
 category: "radar-polar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo showcases a radar chart with real-time data and columns sorted by value.
-Key implementation details
-When the values change we sort the data by value. Then we need to rearrange our category axis (countries) accordingly. We find corresponding indices between the newly sorted data and previous category position on the axis and change and animate the axis positions accordingly. See the comments in the demo code for the exact details on how to implement this.
-Radar axes
-Animations
-deltaPosition property
+A column chart bent into a ring that keeps itself sorted. Every 1.5 seconds, eleven countries get new values, and the columns slide into their new places, biggest first.
+
+Why sort a chart live: Sorting turns values that keep changing into a ranking people can follow: the leader always starts at the top, and a column that climbs or falls slides past its neighbors. It suits scores, votes or sales that update while people watch. Bent into a ring, the chart also fits a square space, like a dashboard tile.
+
+Good for:
+- Live rankings: votes, scores, sales
+- Dashboards on a wall screen
+- Showing who overtakes whom
+
+Think twice when:
+- Reading exact values: the columns keep moving
+- Long names: there is little room around the ring
+- Printed reports: use a sorted bar chart
+
+Prompt: Create a radar column chart of eleven countries around most of a circle that sorts itself live: every 1.5 seconds the values change at random, the columns grow or shrink, and then they move into their new order, largest first. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -19,35 +28,36 @@ deltaPosition property
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
-  panX: true,
-  panY: true,
-  wheelX: "none",
-  wheelY: "none",
-  innerRadius:am5.percent(40)
+  panX: false,    // no dragging to pan, sideways...
+  panY: false,    // ...or up and down...
+  wheelX: "none", // ...and the mouse wheel...
+  wheelY: "none", // ...does nothing
+  // a gap at the top leaves room for the value labels
+  startAngle: -84,
+  endAngle: 264,               // the circle runs 348 degrees, leaving a 12-degree gap
+  innerRadius: am5.percent(40) // a hole in the middle, 40% of the radius
 }));
 
 // We don't want zoom-out button to appear while animating, so we hide it
 chart.zoomOutButton.set("forceHidden", true);
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
-  minGridDistance: 30
+  minGridDistance: 30 // at least 30px between the country labels around the circle
 });
 
-xRenderer.grid.template.set("visible", false);
+xRenderer.grid.template.set("visible", false); // no lines from the center between the countries
 
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   maxDeviation: 0.3,
@@ -55,12 +65,15 @@ var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   renderer: xRenderer
 }));
 
+var yRenderer = am5radar.AxisRendererRadial.new(root, {});
+// value labels centered in the gap at the top
+yRenderer.labels.template.set("centerX", am5.p50);
+
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   maxDeviation: 0.3,
-  min: 0,
-  renderer: am5radar.AxisRendererRadial.new(root, {})
+  min: 0, // the columns start at zero
+  renderer: yRenderer
 }));
-
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -77,7 +90,7 @@ var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
 // Rounded corners for columns
 series.columns.template.setAll({
   cornerRadius: 5,
-  tooltipText:"{categoryX}: {valueY}"
+  tooltipText:"{categoryX}: {valueY}" // hover a column to see its country and value
 });
 
 // Set data
@@ -124,25 +137,25 @@ setInterval(function () {
   updateData();
 }, 1500)
 
+// moves every value randomly by up to 200, then re-sorts the columns
 function updateData() {
   am5.array.each(series.dataItems, function (dataItem) {
     var value = dataItem.get("valueY") + Math.round(Math.random() * 400 - 200);
-    if (value < 0) {
+    if (value < 0) { // no negative values
       value = 10;
     }
-    // both valueY and workingValueY should be changed, we only animate workingValueY
+    // both valueY and valueYWorking change; only valueYWorking is animated
     dataItem.set("valueY", value);
     dataItem.animate({
       key: "valueYWorking",
       to: value,
-      duration: 600,
-      easing: am5.ease.out(am5.ease.cubic)
+      duration: 600,                       // 0.6 seconds...
+      easing: am5.ease.out(am5.ease.cubic) // ...slowing down at the end
     });
   })
 
   sortCategoryAxis();
 }
-
 
 // Get series item by category
 function getSeriesItem(category) {
@@ -154,14 +167,12 @@ function getSeriesItem(category) {
   }
 }
 
-
 // Axis sorting
 function sortCategoryAxis() {
 
   // Sort by value
   series.dataItems.sort(function (x, y) {
     return y.get("valueY") - x.get("valueY"); // descending
-    //return y.get("valueY") - x.get("valueY"); // ascending
   })
 
   // Go through each axis item
@@ -176,7 +187,7 @@ function sortCategoryAxis() {
       var deltaPosition = (index - dataItem.get("index", 0)) / series.dataItems.length;
       // set index to be the same as series data item index
       dataItem.set("index", index);
-      // set deltaPosition instanlty
+      // set deltaPosition instantly
       dataItem.set("deltaPosition", -deltaPosition);
       // animate delta position to 0
       dataItem.animate({
@@ -196,7 +207,6 @@ function sortCategoryAxis() {
   });
 }
 
-
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
 series.appear(1000);
@@ -214,7 +224,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -224,3 +235,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,20 +2,27 @@
 title: "IWordCloudDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iwordclouddataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: ISeriesDataItem
+All ancestors: ISeriesDataItem, IComponentDataItem
+TypeScript: `am5wc.IWordCloudDataItem` (`import type { IWordCloudDataItem } from "@amcharts/amcharts5/wc"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISeriesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **category** (`string`) — The word.
+- **label** (`Label`) — The label that shows the word.
+- **fill** (`Color`) — The word's color.
+- **set** (`number`) — _(internal)_
+- **angle** (`number`) — _(internal)_
+- **fontSize** (`number`) — _(internal)_
 
-- **category** (`string`) — Category.
-- **fill** (`Color`) — Fill color used for the slice and related elements, e.g. legend marker.
-- **ghostLabel** (`Label`) — Label.
-- **label** (`Label`) — Label.
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISeriesDataItem")`) for types, defaults and descriptions.
+
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, value, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

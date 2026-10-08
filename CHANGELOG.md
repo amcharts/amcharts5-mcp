@@ -7,6 +7,66 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.7.0] - 2026-10-08
+
+### Added
+- **amCharts 5.21.0** (2026-10-08) in `SKILL.md`, `cursorrules`, the chart references, the served docs and the API reference. Every identifier was checked against the 5.21.0 source and typings, and every new skill snippet was run in a browser against the 5.21.0 CDN.
+  - **Rendering and export:**
+    - SVG rendering: `renderer: am5.SVGRenderer` and `am5.Root.defaultRenderer`; canvas stays the default and some blend modes are canvas-only.
+    - `am5.renderToSVG(root | element)`; the ExportingMenu SVG item.
+    - The `<am5-chart>` HTML element.
+  - **Maps:**
+    - `MapRasterSeries` (satellite images, day/night), `NightSeries` and `getSunPosition()`.
+    - `PixelMapSeries`, including `pixelHeight`, `columnHeight` and the pixel budget.
+    - MapLine `altitude`; MapPointSeries `altitudeField` and `surfaceBullets`; MapChart `autoHome`; MapPolygonSeries `clickZoom`.
+  - **Core:**
+    - `autoAppear` / `appearDuration` / `appearDelay`, which put the opening animation in JSON configs.
+    - Root `forcedColors`, plus the keyboard and ARIA changes (`ariaExpanded`, Modal `ariaLabel`).
+    - Scrollbar `outsideAxes`.
+    - Serializer `@root.interfaceColors` references.
+  - **Behavior changes:** a "Behavior changes (5.21.0)" list covers the Changed section and the fixes that change what code should do:
+    - hidden elements no longer take space;
+    - `emptyAs` leaves `0` / `false` alone;
+    - Label `fillOpacity: 0`, `strokeWidth: 0` and `shadowOpacity: 0` now hide what they should;
+    - heat rule `minValue` / `maxValue: 0` are honored;
+    - Sunburst ignores `singleBranchOnly`;
+    - StockToolbar `focusable` now defaults to `true`;
+    - and others.
+- **25 new docs pages.** Six cover 5.21.0: map raster, night and pixel series, SVG export, `<am5-chart>`, and the AI page. The other 19 were found in the site's sitemap and had never been scraped: the MCP page, the JSON editor, MapSankeySeries, the stock toolbar and its 12 tools, PieSeries, the category-date axis and modal popups. 27 existing pages were re-scraped: those with earlier hand edits were merged three-way, keeping every hand-added section. 9 more got hand-written 5.21.0 notes, each checked in the source.
+- **9 new examples:**
+  - `pixel-map`, `satellite-image-globe`, `globe-with-raised-arcs`, `globe-with-surface-bullets`, `globe-with-projected-circles`, `sankey-map-with-waypoints` and `star-atlas`;
+  - `shaped-word-cloud` and `angled-word-cloud`.
+- **API reference generated from the release's typings.** `npm run build:reference` (`scripts/generate-reference.cjs`) writes all 1,386 pages from the installed `@amcharts/amcharts5` package in about 10 s.
+  - **Settings and defaults:** every own setting is listed. Defaults follow the library's real precedence: `_setSoft`, then theme rules (chart themes only for their own classes), then class defaults, then JSDoc `@default`, then the code fallback. Inherited settings are listed in full where the class changes their default, and by name otherwise.
+  - **Also on each page:** `@since`, the import line, and pages for functions (`renderToSVG`, `getSunPosition`, `ease.*`).
+  - **Facts the typings lack:** these are kept in `scripts/reference-notes.md`.
+  - **Pre-existing errors corrected:**
+    - 22 wrong defaults, e.g. Sankey `nodeAlign` is `"justify"`, Chord `sort` is `"none"`, Funnel `bottomRatio` is `0`, and ForceDirected strengths;
+    - settings that were missing, including ISpriteSettings `y` and every 5.21.0 setting;
+    - leftover raw text that sat at the top of the interface pages.
+  - **Search:** it skips the names-only inherited lists, so a setting's own page ranks first.
+- `npm test` gains 4 reference tests, 32 in total.
+
+### Changed
+- **All 292 demo-based examples were refreshed.** amcharts.com has rewritten its demos with a comment on almost every setting. Each demo description now has "Good for" / "Think twice when" guidance and the one-line prompt the demo answers, which helps search match requests. The one hand-written example, `maps/map-sankey-series`, is unchanged.
+- **`scripts/scrape-demos.js`** reads the redesigned demo pages: the `demo-config` JSON plus `#code-out`, with HTML entities decoded. If a demo's resource list leaves out a script its code uses, the scraper adds it in load order. Five demos omitted `themes/Responsive.js`.
+- **`npm run check:examples`** also fails when the code uses an amCharts global (`am5themes_X`, `am5geodata_X`, …) whose script isn't listed. The shared mapping lives in `scripts/am5-scripts.js`.
+- **`scripts/scrape-docs.js`** scrapes 166 URLs, up from 142, and takes an optional list of pages to refresh only those.
+- **Removed:** `scripts/scrape-reference.js`, `clean-reference.js` and `add-inheritance-notes.js`, replaced by the generator.
+- **New devDependencies:** `typescript` and `@amcharts/amcharts5`, pinned to exact versions for the generator. Nothing is added to the published package.
+
+### Fixed
+- **Skill and docs claims disproved at runtime on 5.20.8 and 5.21.0:**
+  - a bullet heat rule never broke `ChartSerializer`, so that caveat is removed;
+  - Venn slice hover states do round-trip, and only `hoverGraphics` is lost;
+  - a `ZoomableContainer`'s contents are saved since 5.21.0, but its `ZoomTools` then targets a copy.
+- **Serializer notes updated for 5.21.0:** endless data-item loops, hidden series, plot-container elements, `Date` values and a series placed straight in `root.container` are now saved.
+
+### Security
+- **Lockfile updates:** `proxy-addr` 2.0.8 (GHSA-jqcg-44mw-7w3h, critical) and `source-map-js` 1.2.2 (GHSA-68fv-2mgg-jv7q), both runtime dependencies.
+- **`@modelcontextprotocol/sdk` left at 1.29.0 in the lockfile.** GHSA-6qxp-vccf-f47h affects the SDK's OAuth client, which this server does not use. The Worker's `agents` dependency pins the SDK exactly (0.16.2 needs 1.29.0, and the latest 0.27 needs 1.30.0), so bumping the SDK alone would split it into two copies inside the Worker. npm installs are unaffected, because the published package declares `^1.12.1` and fresh installs get the latest SDK.
+- **Remaining dev-only advisories** (`sharp` and `sprintf-js` via wrangler/miniflare and `agents`) need breaking upgrades of those tools and are not part of this release.
+
 ## [1.6.0] - 2026-09-29
 
 ### Fixed

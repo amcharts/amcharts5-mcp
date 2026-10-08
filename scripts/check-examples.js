@@ -6,7 +6,9 @@
  *   turn escapes inside the demo code into raw line breaks or bare quotes,
  *   which get_example would otherwise serve as code that throws a SyntaxError;
  * - it lists its required resources and holds no leftover `var demoData`
- *   blob, i.e. it went through the cleaning passes rather than shipping raw.
+ *   blob, i.e. it went through the cleaning passes rather than shipping raw;
+ * - the resources load every amCharts script the code uses (am5themes_X needs
+ *   themes/X.js, and so on), or the example throws "X is not defined".
  *
  * Usage: node scripts/check-examples.js   (exits 1 on any failure)
  */
@@ -14,6 +16,7 @@
 import { readdirSync, readFileSync } from "fs";
 import path from "path";
 import vm from "vm";
+import { CDN, requiredScripts } from "./am5-scripts.js";
 
 const EXAMPLES_DIR = path.resolve("extended/examples");
 
@@ -48,6 +51,11 @@ for (const file of files) {
   } catch (err) {
     failures.push(`${id}: ${err.message}`);
   }
+
+  const resourcesAt = md.indexOf("## Required resources");
+  const listed = resourcesAt === -1 ? "" : md.slice(resourcesAt);
+  const missing = [...requiredScripts(match[1])].filter((file) => !listed.includes(CDN + file));
+  if (missing.length) failures.push(`${id}: the code needs ${missing.join(", ")}, not in "## Required resources"`);
 }
 
 const failed = new Set(failures.map((f) => f.slice(0, f.indexOf(":")))).size;

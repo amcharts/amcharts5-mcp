@@ -2,15 +2,18 @@
 title: "ICanvasOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icanvasoptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
 
-## Properties
+Extends: (none)
+TypeScript: not exported by name from the package.
 
-- **maintainPixelRatio** (`undefined | false | true`) — (no description)
-- **maxHeight** (`undefined | number`) — (no description)
-- **maxWidth** (`undefined | number`) — (no description)
-- **minHeight** (`undefined | number`) — (no description)
+## Options
 
+- **maintainPixelRatio** (`boolean`)
+- **minWidth** (`number`)
+- **maxWidth** (`number`)
+- **minHeight** (`number`)
+- **maxHeight** (`number`)

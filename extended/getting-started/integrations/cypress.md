@@ -57,6 +57,8 @@ describe("Check Legend", () => {
 
 amCharts 5 is rendered using Canvas, and thus does not have DOM elements for each of its internal objects.
 
+NOTE Since 5.21.0 a chart can be drawn as SVG instead (`renderer: am5.SVGRenderer` in `Root.new()` settings). Its shapes are then SVG nodes in the page, but they are not tagged per chart object, they are hidden from screen readers (`aria-hidden`), and pointer input is still resolved by the chart by position, not by the nodes. So the approach below - testing chart objects via their API, and focusable elements via the focus container - applies to both renderers.
+
 That being said, some of the elements in amCharts 5 are focusable by default, or can be made so by setting `focusable: true`.
 
 For example, all buttons and legend items are focusable by default.

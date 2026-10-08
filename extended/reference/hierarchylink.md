@@ -2,32 +2,31 @@
 title: "HierarchyLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/hierarchylink/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a link between nodes in a hierarchy series.
+A line linking two nodes of a `LinkedHierarchy` series.
 
 ## Import
 
-```javascript
-// Import HierarchyLink
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.HierarchyLink.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **distance** (`undefined | number`) — Distance in pixels.
-- **source** (`DataItem`) — Source node data item.
-- **strength** (`undefined | number`) — Strength of the link.
-- **target** (`DataItem`) — Target node data item.
+- Settings: `IHierarchyLinkSettings` — get_api_reference shows it after this page
+- Private settings: `IHierarchyLinkPrivate`
 
 ## Properties
 
-- **bullets** (`Array`) — Default []
-- **series** (`LinkedHierarchy`) — (no description)
+Public properties (not settings):
+
+- **bullets** (`Bullet[]`)
+- **series** (`LinkedHierarchy`)

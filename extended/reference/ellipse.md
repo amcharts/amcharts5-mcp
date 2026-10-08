@@ -2,25 +2,26 @@
 title: "Ellipse"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ellipse/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a Ellipse.
+Draws an ellipse centered on its `x` and `y`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
 
 ## Import
 
-```javascript
-// Import Ellipse
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Ellipse.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **radiusX** (`number`) — The ellipse's major-axis radius. Must be non-negative.
-- **radiusY** (`number`) — The ellipse's minor-axis radius. Must be non-negative.
+- Settings: `IEllipseSettings` — get_api_reference shows it after this page
+- Private settings: `IEllipsePrivate`

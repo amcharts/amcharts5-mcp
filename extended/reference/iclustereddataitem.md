@@ -2,21 +2,25 @@
 title: "IClusteredDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iclustereddataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IComponentDataItem
+TypeScript: `am5map.IClusteredDataItem` (`import type { IClusteredDataItem } from "@amcharts/amcharts5/map"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IComponentDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **children** (`DataItem<IMapPointSeriesDataItem>[]`) — Data items of the points in the cluster.
+- **bullet** (`Bullet`) — The bullet that shows the cluster.
+- **groupId** (`string`) — Group id of the cluster's points.
+- **longitude** (`number`) — Longitude of the cluster, in degrees.
+- **latitude** (`number`) — Latitude of the cluster, in degrees.
+- **altitude** (`number`) — Average altitude of the cluster's data items, in metres. _Since 5.21.0._
 
-- **bullet** (`Bullet`) — Bullet of clustered data item
-- **children** (`Array`) — All the data items of this cluster
-- **groupId** (`undefined | string`) — An ID of a group.
-- **latitude** (`undefined | number`) — Latitude.
-- **longitude** (`undefined | number`) — Longitude.
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IComponentDataItem")`) for types, defaults and descriptions.
+
+- _IComponentDataItem_: visible

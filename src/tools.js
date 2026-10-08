@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { z } from "zod";
-import { CHART_TYPE_MAP, extractImportBlock, searchDocs } from "./content.js";
+import { CHART_TYPE_MAP, extractImportBlock, isUnsearchedSection, searchDocs } from "./content.js";
 
 export function registerTools(server, content) {
   const { docs, extendedDocs, examples } = content;
@@ -255,6 +255,7 @@ export function registerTools(server, content) {
       // Search extended docs
       for (const [key, doc] of extendedDocs) {
         for (const section of doc.sections) {
+          if (isUnsearchedSection(key, section)) continue;
           const text = (section.heading + " " + section.body).toLowerCase();
           const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
           if (score > 0) {

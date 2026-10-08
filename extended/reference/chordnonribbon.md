@@ -2,24 +2,28 @@
 title: "ChordNonRibbon"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chordnonribbon/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Chord series with think line links.
+Chord diagram with thin lines for links instead of ribbons. All nodes get arcs of the same size, whatever the link values.
+
+Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
 
 ## Import
 
-```javascript
-// Import ChordNonRibbon
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ChordNonRibbon.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Chord
+Extends: Chord → Flow → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Chord (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **linkType** (`"curve" | "line"`) — Default "curve" Type of the link: "curve" (default) will display link as a curved line. "line" will display link as a straight line.
+- Settings: `IChordNonRibbonSettings` — get_api_reference shows it after this page
+- Private settings: `IChordNonRibbonPrivate`
+- Events: `IChordNonRibbonEvents`
+- Data item fields: `IChordNonRibbonDataItem`

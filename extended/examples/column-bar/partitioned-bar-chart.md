@@ -2,14 +2,24 @@
 title: "Partitioned Bar Chart"
 source: "https://www.amcharts.com/demos/partitioned-bar-chart/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Sometimes you need to group and partition parts of your bar chart. amCharts XY Chart has all the tools for you to address that need.
-Key implementation details
-We use a feature called axis ranges to create these partitions next to "boundary" items by setting range's category field to the state's name next to which the range should be created.
-Axis ranges
-XY Chart
+A bar chart split into groups along its axis: sales in the 48 mainland states and DC, grouped into four regions. Each region has its own color and its name on a line across the axis.
+
+When to partition the bars: Grouping the bars by region, and sorting them within each group, answers two questions at once: which states sell most, and how the regions compare. The lines across the axis keep each group together, even where the colors are hard to tell apart. With values this uneven, a log scale shows the small states a plain scale squashes.
+
+Good for:
+- Sales by state, store or product line
+- Long lists that fall into groups
+- Rankings within each group
+
+Think twice when:
+- Comparing the group totals: one bar per group does it
+- More than about 50 bars: the labels thin out
+- A log scale for a general audience: say so on the chart
+
+Prompt: Create a horizontal bar chart of sales in the mainland US states, grouped into four regions, sorted by sales within each region and colored by region, with each region’s name beside its group. Add a cursor, tooltips and a legend of the regions. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -18,38 +28,37 @@ XY Chart
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
-  panY: false,
-  wheelX: "none",
-  wheelY: "none",
-  layout: root.horizontalLayout,
-  paddingLeft: 0
+  panX: false,                 // no dragging to pan...
+  panY: false,                 // ...in either direction...
+  wheelX: "none",              // ...and no wheel zooming...
+  wheelY: "none",              // ...at all
+  layout: root.verticalLayout, // the legend and the plot stacked top to bottom
+  paddingLeft: 0,              // the state names sit at the chart's left edge
+  paddingRight: 25             // room for the last sales label, centered on the axis end
 }));
 
-
-// Add legend
+// Add legend above the chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-var legendData = [];
-var legend = chart.children.push(
+var legendData = []; // filled by createRange() below
+var legend = chart.children.unshift(
+  // a legend of plain data (names and colors), not series; its items don't react to clicks
   am5.Legend.new(root, {
-    nameField: "name",
-    fillField: "color",
+    nameField: "name",  // item names from the data's name field...
+    fillField: "color", // ...and marker colors from its color field
     strokeField: "color",
-    //centerY: am5.p50,
-    marginLeft: 20,
-    y: 20,
-    layout: root.verticalLayout,
+    centerX: am5.p50,   // the legend's middle...
+    x: am5.p50,         // ...at the middle of the chart's width
+    marginBottom: 15,   // 15px above the plot
     clickTarget: "none"
   })
 );
@@ -252,30 +261,28 @@ var data = [{
   sales: 457731
 }];
 
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "state",
   renderer: am5xy.AxisRendererY.new(root, {
-    minGridDistance: 10,
-    minorGridEnabled: true
+    minGridDistance: 10,   // labels as close as 10px apart, so every state fits
+    minorGridEnabled: true // fainter grid lines between the labeled ones
   }),
-  tooltip: am5.Tooltip.new(root, {})
+  tooltip: am5.Tooltip.new(root, {}) // a state label follows the cursor along the axis
 }));
 
 yAxis.get("renderer").labels.template.setAll({
-  fontSize: 12,
-  location: 0.5
+  fontSize: 12, // small labels...
+  location: 0.5 // ...in the middle of each state's row
 })
 
 yAxis.data.setAll(data);
 
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, {}),
-  tooltip: am5.Tooltip.new(root, {})
+  tooltip: am5.Tooltip.new(root, {}) // a sales label follows the cursor along the axis
 }));
-
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -285,75 +292,69 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   valueXField: "sales",
   categoryYField: "state",
   tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "horizontal"
+    pointerOrientation: "horizontal" // the tooltip sits beside the bar
   })
 }));
 
 series.columns.template.setAll({
-  tooltipText: "{categoryY}: [bold]{valueX}[/]",
-  width: am5.percent(90),
-  strokeOpacity: 0
+  tooltipText: "{categoryY}: [bold]{valueX}[/]", // the state and its sales on hover
+  height: am5.percent(80), // each bar fills 80% of its row
+  strokeOpacity: 0, // no outline
+  templateField: "columnSettings" // the fill color from the data's columnSettings
 });
 
-series.columns.template.adapters.add("fill", function(fill, target) {
-  if (target.dataItem) {
-    switch(target.dataItem.dataContext.region) {
-      case "Central":
-        return chart.get("colors").getIndex(0);
-        break;
-      case "East":
-        return chart.get("colors").getIndex(1);
-        break;
-      case "South":
-        return chart.get("colors").getIndex(2);
-        break;
-      case "West":
-        return chart.get("colors").getIndex(3);
-        break;
-    }
-  }
-  return fill;
-})
+// Each bar takes its region's color, through the columnSettings field in its data
+var regionColors = {
+  Central: chart.get("colors").getIndex(0),
+  East: chart.get("colors").getIndex(1),
+  South: chart.get("colors").getIndex(2),
+  West: chart.get("colors").getIndex(3)
+};
+
+am5.array.each(data, function(item) {
+  item.columnSettings = { fill: regionColors[item.region] };
+});
 
 series.data.setAll(data);
 
+// a line after a region's last state, with a tick and the region's name 130px out to the left
 function createRange(label, category, color) {
   var rangeDataItem = yAxis.makeDataItem({
-    category: category
+    category: category // the region's last state
   });
-  
+
   var range = yAxis.createAxisRange(rangeDataItem);
-  
+
   rangeDataItem.get("label").setAll({
-    fill: color,
+    fill: color,        // in the region's color...
     text: label,
-    location: 1,
-    fontWeight: "bold",
-    dx: -130
+    location: 1,        // ...at the far edge of the state's row...
+    fontWeight: "bold", // ...in bold...
+    dx: -130            // ...130px out to the left
   });
 
   rangeDataItem.get("grid").setAll({
-    stroke: color,
+    stroke: color, // a solid line in the region's color...
     strokeOpacity: 1,
-    location: 1
+    location: 1    // ...on the edge between the regions
   });
-  
+
   rangeDataItem.get("tick").setAll({
-    stroke: color,
+    stroke: color, // a tick in the region's color...
     strokeOpacity: 1,
     location: 1,
-    visible: true,
-    length: 130
+    visible: true, // ...shown (ticks are hidden by default)...
+    length: 130    // ...130px long, out to the region's name
   });
-  
-  legendData.push({ name: label, color: color });
-  
+
+  legendData.push({ name: label, color: color }); // a legend item for the region
+
 }
 
-createRange("Central", "Texas", chart.get("colors").getIndex(0));
-createRange("East", "New York", chart.get("colors").getIndex(1));
-createRange("South", "Florida", chart.get("colors").getIndex(2));
-createRange("West", "California", chart.get("colors").getIndex(3));
+createRange("Central", "Texas", regionColors.Central);
+createRange("East", "New York", regionColors.East);
+createRange("South", "Florida", regionColors.South);
+createRange("West", "California", regionColors.West);
 
 legend.data.setAll(legendData);
 
@@ -361,9 +362,8 @@ legend.data.setAll(legendData);
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
-  yAxis: yAxis
+  yAxis: yAxis // the cursor snaps to the states
 }));
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -382,7 +382,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 800px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -391,3 +392,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

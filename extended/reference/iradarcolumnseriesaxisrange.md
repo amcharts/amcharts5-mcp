@@ -2,17 +2,21 @@
 title: "IRadarColumnSeriesAxisRange"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iradarcolumnseriesaxisrange/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IBaseColumnSeriesAxisRange
+All ancestors: IBaseColumnSeriesAxisRange, IXYSeriesAxisRange
+TypeScript: `am5radar.IRadarColumnSeriesAxisRange` (`import type { IRadarColumnSeriesAxisRange } from "@amcharts/amcharts5/radar"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IBaseColumnSeriesAxisRange (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Axis range settings
 
-## Properties
+- **columns** (`ListTemplate<Slice>`) — Columns of the series within the range.
 
-- **columns** (`ListTemplate`) — List of columns in a range.
+## Other inherited axis range settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IXYSeriesAxisRange")`) for types, defaults and descriptions.
+
+- _IXYSeriesAxisRange_: axisDataItem, container, series

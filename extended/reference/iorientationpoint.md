@@ -2,17 +2,20 @@
 title: "IOrientationPoint"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iorientationpoint/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IPoint
-
-> **Note:** This class also inherits all settings, properties, methods, and events from IPoint (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **angle** (`number`) — (no description)
+- **angle** (`number`)
+
+## Other inherited properties
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IPoint")`) for types, defaults and descriptions.
+
+- _IPoint_: x, y

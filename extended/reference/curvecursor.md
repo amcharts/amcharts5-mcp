@@ -2,28 +2,33 @@
 title: "CurveCursor"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/curvecursor/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A chart cursor for use in a CurveChart, SerpetineChart, or a SpiralChart.
+Cursor for a `CurveChart`, `SerpentineChart` or `SpiralChart`: one line across the curve and one along it.
+
+_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
 
 ## Import
 
-```javascript
-// Import CurveCursor
-import * as am5timeline from "@amcharts/amcharts5/timeline"
+```js
+import * as am5timeline from "@amcharts/amcharts5/timeline";
+
+am5timeline.CurveCursor.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: XYCursor
+Extends: XYCursor → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from XYCursor (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **xAxis** (`Axis`) — A target X-axis. Differently from the XYChart, this setting is required for cursor to work.
+- Settings: `ICurveCursorSettings` — get_api_reference shows it after this page
+- Private settings: `ICurveCursorPrivate`
+- Events: `ICurveCursorEvents`
 
 ## Properties
 
-- **chart** (`CurveChart | undefined`) — A chart cursor is attached to.
+Public properties (not settings):
+
+- **chart** (`CurveChart`) — The chart the cursor belongs to.

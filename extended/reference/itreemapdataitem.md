@@ -2,171 +2,26 @@
 title: "ITreemapDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itreemapdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ITreemapDataItem extends IHierarchyDataItem.
-ITreemapDataItem is not extended by any other symbol.
-Properties
-
-
-        category        
-        #
-      
-
-
-                          Type string                      
-Inherited from IHierarchyDataItem
-Category.
-
-
-        childData        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IHierarchyDataItem
-Raw data of the node's children.
-
-
-        children        
-        #
-      
-
-
-                          Type Array                      
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        d3HierarchyNode        
-        #
-      
-
-
-                          Type HierarchyRectangularNode                      
-
-
-        depth        
-        #
-      
-
-
-                          Type number                      
-Inherited from IHierarchyDataItem
-Node's depth within the hierarchy.
-
-
-        disabled        
-        #
-      
-
-
-                          Type boolean                      
-Inherited from IHierarchyDataItem
-Indicates if node is currently disabled.
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IHierarchyDataItem
-Node's auto-assigned color.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Inherited from IHierarchyDataItem
-Node's auto-assigned pattern.
 
 ## Inheritance
 
 Extends: IHierarchyDataItem
+All ancestors: IHierarchyDataItem, ISeriesDataItem, IComponentDataItem
+TypeScript: `am5hierarchy.ITreemapDataItem` (`import type { ITreemapDataItem } from "@amcharts/amcharts5/hierarchy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IHierarchyDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **children** (`DataItem<ITreemapDataItem>[]`) — List of child node data items.
+- **parent** (`DataItem<ITreemapDataItem>`) — Data item of parent node.
+- **d3HierarchyNode** (`d3hierarchy.HierarchyRectangularNode<IHierarchyDataObject>`) — _(internal)_
+- **rectangle** (`RoundedRectangle`) — The node's rectangle.
 
-- **children** (`Array`) — (no description)
-- **d3HierarchyNode** (`HierarchyRectangularNode`) — (no description)
-- **parent** (`DataItem`) — (no description)
-- **rectangle** (`RoundedRectangle`) — (no description)
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IHierarchyDataItem")`) for types, defaults and descriptions.
+
+- _IHierarchyDataItem_: category, childData, depth, disabled, fill, fillPattern, label, node, sum, value, valuePercent, valuePercentTotal, valueWorking
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

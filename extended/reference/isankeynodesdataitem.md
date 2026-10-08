@@ -2,122 +2,23 @@
 title: "ISankeyNodesDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/isankeynodesdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ISankeyNodesDataItem extends IFlowNodesDataItem.
-ISankeyNodesDataItem is not extended by any other symbol.
-Properties
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        depth        
-        #
-      
-
-
-                          Type number                      
-Inherited from IFlowNodesDataItem
-Depth of the node.
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IFlowNodesDataItem
-Node color.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Inherited from IFlowNodesDataItem
-Node pattern.
 
 ## Inheritance
 
 Extends: IFlowNodesDataItem
+All ancestors: IFlowNodesDataItem, ISeriesDataItem, IComponentDataItem
+TypeScript: `am5flow.ISankeyNodesDataItem` (`import type { ISankeyNodesDataItem } from "@amcharts/amcharts5/flow"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IFlowNodesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **rectangle** (`RoundedRectangle`) — The node's rectangle.
 
-- **rectangle** (`RoundedRectangle`) — (no description)
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IFlowNodesDataItem")`) for types, defaults and descriptions.
+
+- _IFlowNodesDataItem_: d3SankeyNode, depth, fill, fillPattern, incomingLinks, label, name, node, outgoingLinks, sum, sumIncoming, sumIncomingWorking, sumOutgoing, sumOutgoingWorking, sumWorking, unknown
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, value, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

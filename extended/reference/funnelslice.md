@@ -2,31 +2,24 @@
 title: "FunnelSlice"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/funnelslice/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a slice for FunnelSeries.
+A slice of a `FunnelSeries` or `PyramidSeries`: a trapezoid whose sides can curve. The links between slices are also drawn with it.
 
 ## Import
 
-```javascript
-// Import FunnelSlice
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
+
+am5percent.FunnelSlice.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **bottomWidth** (`undefined | number`) — Bottom width in pixels.
-- **cornerRadiusBL** (`undefined | number`) — Radius of the bottom-left corner in pixels. @since 5.11.2
-- **cornerRadiusBR** (`undefined | number`) — Radius of the botttom-right corner in pixels. @since 5.11.2
-- **cornerRadiusTL** (`undefined | number`) — Radius of the top-left corner in pixels. @since 5.11.2
-- **cornerRadiusTR** (`undefined | number`) — Radius of the top-right corner in pixels. @since 5.11.2
-- **expandDistance** (`undefined | number`) — A distance in pixels the slice should "puff up". Any non-zero value will make sides of the slide curved.
-- **orientation** (`"vertical" | "horizontal"`) — Orientation.
-- **topWidth** (`undefined | number`) — Top width in pixels.
+- Settings: `IFunnelSliceSettings` — get_api_reference shows it after this page
+- Private settings: `IFunnelSlicePrivate`

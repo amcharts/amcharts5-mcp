@@ -2,24 +2,33 @@
 title: "CurveLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/curvelineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A line series for use in a CurveChart, SerpetineChart, or a SpiralChart.
+A line series for a `CurveChart`, `SerpentineChart` or `SpiralChart`.
+
+_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
 
 ## Import
 
-```javascript
-// Import CurveLineSeries
-import * as am5timeline from "@amcharts/amcharts5/timeline"
+```js
+import * as am5timeline from "@amcharts/amcharts5/timeline";
+
+am5timeline.CurveLineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: LineSeries
+Extends: LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from LineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ICurveLineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ICurveLineSeriesPrivate`
+- Data item fields: `ICurveLineSeriesDataItem`
 
 ## Properties
 
-- **chart** (`CurveChart | undefined`) — A chart series belongs to.
+Public properties (not settings):
+
+- **chart** (`CurveChart`) — The chart the series belongs to.

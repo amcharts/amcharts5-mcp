@@ -2,26 +2,27 @@
 title: "Line"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/line/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a line.
+Draws a line through `points` or `segments`. With neither, it draws a straight line from its top-left corner to its bottom-right one, at its `width` and `height`.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
 
 ## Import
 
-```javascript
-// Import Line
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Line.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 Extended by: Tick
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **points** (`Array`) — A list of IPoint (x/y coordinates) points for the line.
-- **segments** (`Array`) — A list of IPoint arrays for different segments of the line. @since 5.1.4
+- Settings: `ILineSettings` — get_api_reference shows it after this page
+- Private settings: `ILinePrivate`

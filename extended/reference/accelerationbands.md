@@ -2,31 +2,34 @@
 title: "AccelerationBands"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/accelerationbands/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Acceleration Bands indicator: bands above the high and below the low that widen as the high-low range grows, and their middle line, each averaged over `period`. Drawn over the main series.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import AccelerationBands
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.AccelerationBands.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Indicator
+Extends: Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Indicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **factor** (`undefined | number`) — (no description)
-- **lowerColor** (`Color`) — A color for lower section.
-- **upperColor** (`Color`) — A color for upper section.
+- Settings: `IAccelerationBandsSettings` — get_api_reference shows it after this page
+- Private settings: `IAccelerationBandsPrivate`
+- Events: `IAccelerationBandsEvents`
 
 ## Properties
 
-- **lowerBandSeries** (`LineSeries`) — Indicator series for the lower band.
-- **upperBandSeries** (`LineSeries`) — Indicator series for the upper band.
+Public properties (not settings):
+
+- **lowerBandSeries** (`LineSeries`) — Series of the lower band.
+- **upperBandSeries** (`LineSeries`) — Series of the upper band.

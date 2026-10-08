@@ -2,84 +2,23 @@
 title: "IModalSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/imodalsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IModalSettings extends IEntitySettings.
-IModalSettings is extended by ISettingsModalSettings.
-Properties
-
-
-        content        
-        #
-      
-
-
-                          Type undefined | string                      
-HTML content of the modal.
-
-
-        deactivateRoot        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-When modal is open, all interactions for the underlying chart will be disabled.
-@since 5.2.11
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
-Extended by: ISettingsModalSettings
+Settings of: `am5.Modal` (see its page for the class)
+TypeScript: `am5.IModalSettings` (`import type { IModalSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **content** (`string`) — HTML content of the modal.
+- **deactivateRoot** (`boolean`) — default `true` _(class default)_ — Disables interaction with the chart while the modal is open. _Since 5.2.11._
+- **ariaLabel** (`string`) — Name of the dialog for screen readers. If not set, the first heading (`<h1>` - `<h6>`) in the content is used. _Since 5.21.0._
 
-- **content** (`undefined | string`) — HTML content of the modal.
-- **deactivateRoot** (`undefined | false | true`) — Default true When modal is open, all interactions for the underlying chart will be disabled. @since 5.2.11
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,22 +2,26 @@
 title: "RectangleSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/rectangleseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-RectangleSeries uses data items of type IRectangleSeriesDataItem.
+A `SimpleLineSeries` subclass.
 
 ## Import
 
-```javascript
-// Import RectangleSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.RectangleSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: SimpleLineSeries
+Extends: SimpleLineSeries → DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 Extended by: Measure
 
-> **Note:** This class also inherits all settings, properties, methods, and events from SimpleLineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IRectangleSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IRectangleSeriesPrivate`
+- Data item fields: `IRectangleSeriesDataItem`

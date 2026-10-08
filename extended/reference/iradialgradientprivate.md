@@ -2,13 +2,15 @@
 title: "IRadialGradientPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iradialgradientprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IGradientPrivate
+All ancestors: IGradientPrivate, IEntityPrivate
+TypeScript: `am5.IRadialGradientPrivate` (`import type { IRadialGradientPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IGradientPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
+
+_(none)_

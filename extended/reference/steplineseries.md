@@ -2,25 +2,27 @@
 title: "StepLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/steplineseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Used to plot stepped line and/or area series.
+A line series drawn as steps: flat across each cell, with risers joining one step to the next. Its fill below makes a stepped area.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/
 
 ## Import
 
-```javascript
-// Import StepLineSeries
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.StepLineSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: LineSeries
+Extends: LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from LineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **noRisers** (`undefined | false | true`) — Default false Disables vertical connecting lines for the steps. Click here for more info
-- **stepWidth** (`Percent`) — Default 100% Width of the step in percent relative to the cell width. NOTE: setting this to less than 100% makes sense only when risers are disabled: noRisers: true Click here for more info
+- Settings: `IStepLineSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IStepLineSeriesPrivate`
+- Data item fields: `IStepLineSeriesDataItem`

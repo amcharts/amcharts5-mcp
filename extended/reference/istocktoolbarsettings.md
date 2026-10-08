@@ -2,117 +2,26 @@
 title: "IStockToolbarSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/istocktoolbarsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IStockToolbarSettings extends IEntitySettings.
-IStockToolbarSettings is not extended by any other symbol.
-Properties
-
-
-        container        
-        #
-      
-
-
-                          Type HTMLElement                      
-A reference to an element in the document to place tools in.
-
-
-        controls        
-        #
-      
-
-
-                          Type StockControl[]                      
-A list of tools to show in toolbar.
-
-
-        deactivateRoot        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-
-Menu will disable all interactions for the underlying chart when using tools.
-
-
-        focusable        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Setting this to true will essentially enable accessibility for the toolbar items.
- E.g. buttons will be focusable using TAB key. Lists navigable using arrow keys, etc.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stockChart        
-        #
-      
-
-
-                          Type StockChart                      
-A StockChart the toolbar is for.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5stock.StockToolbar` (see its page for the class)
+TypeScript: `am5stock.IStockToolbarSettings` (`import type { IStockToolbarSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **stockChart** (`StockChart`) — The `StockChart` the toolbar is for.
+- **container** (`HTMLElement`) — The HTML element the toolbar's buttons are placed in.
+- **controls** (`StockControl[]`) — default `[]` _(code fallback)_ — Controls to show in the toolbar, in order.
+- **useDefaultCSS** (`boolean`) — default `true` — Loads the toolbar's default CSS. Set to `false` to style it yourself.
+- **deactivateRoot** (`boolean`) — Has no effect: the toolbar does not use it.
+- **focusable** (`boolean`) — default `true` — Setting this to `true` will essentially enable accessibility for the toolbar items. E.g. buttons will be focusable using TAB key. Lists navigable using arrow keys, etc.
 
-- **container** (`HTMLElement`) — A reference to an element in the document to place tools in.
-- **controls** (`StockControl[]`) — A list of tools to show in toolbar.
-- **deactivateRoot** (`undefined | false | true`) — Default true Menu will disable all interactions for the underlying chart when using tools.
-- **focusable** (`undefined | false | true`) — Default false Setting this to true will essentially enable accessibility for the toolbar items. E.g. buttons will be focusable using TAB key. Lists navigable using arrow keys, etc.
-- **stockChart** (`StockChart`) — A StockChart the toolbar is for.
-- **useDefaultCSS** (`undefined | false | true`) — Default true If set to false the toolbar will not load default CSS.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

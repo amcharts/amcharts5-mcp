@@ -2,34 +2,33 @@
 title: "Component"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/component/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base class for elements that make use of data.
-Data item
-Component uses data items of type IComponentDataItem.
+Base class for elements that use data.
 
 ## Import
 
-```javascript
-// Import Component
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
 
 ## Inheritance
 
-Extends: Container
-Extended by: Series, Axis
+Extends: Container → Sprite → Entity → Settings
+Extended by: Axis, Series
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **interpolationDuration** (`undefined | number`) — A duration of the animation from one setting value to another, in milliseconds. Click here for more info
-- **interpolationEasing** (`$ease.Easing`) — Easing function to use for cross setting value animations. Click here for more info
+- Settings: `IComponentSettings` — get_api_reference shows it after this page
+- Private settings: `IComponentPrivate`
+- Events: `IComponentEvents`
+- Data item fields: `IComponentDataItem`
 
 ## Properties
 
-- **data** (`ListData`) — Component's data. Click here for more info
-- **dataItems** (`Array`) — A list of component's data items.
-- **inited** (`boolean`) — Default false Indicates if the component has already been initialized.
+Public properties (not settings):
+
+- **data** (`ListData<unknown>`) — The component's data: a list of data objects, each made into a data item. Docs: https://www.amcharts.com/docs/v5/concepts/data/
+- **dataItems** (`DataItem<this["_dataItemSettings"]>[]`) — The component's data items.
+- **inited** (`boolean`) — Becomes `true` after the component's first update.

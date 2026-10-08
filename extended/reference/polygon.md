@@ -2,31 +2,32 @@
 title: "Polygon"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/polygon/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a polygon.
+Draws a closed polygon through `points`.
+
+_Since 5.4.0._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/polygon/
 
 ## Import
 
-```javascript
-// Import Polygon
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Polygon.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **animationDuration** (`undefined | number`) — Number of milliseconds to play morph animation.
-- **animationEasing** (`undefined | ( t: Time) => Time`) — Easing function to use for animations. Click here for more info
-- **coordinates** (`Array`) — Corodinates.
-- **points** (`Array`) — An array of polygon corner coordinates.
+- Settings: `IPolygonSettings` — get_api_reference shows it after this page
+- Private settings: `IPolygonPrivate`
 
 ## Properties
 
-- **morphAnimation** (`Animation`) — (no description)
+Public properties (not settings):
+
+- **morphAnimation** (`Animation<this["_privateSettings"]["morphProgress"]>`)

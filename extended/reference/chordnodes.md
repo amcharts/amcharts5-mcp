@@ -2,28 +2,34 @@
 title: "ChordNodes"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chordnodes/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Holds instances of nodes for a Chord series.
-Data item
-ChordNodes uses data items of type IChordNodesDataItem.
+Holds the nodes of a `Chord` series. Dragging a node rotates the whole chord.
 
 ## Import
 
-```javascript
-// Import ChordNodes
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.ChordNodes.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: FlowNodes
+Extends: FlowNodes → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from FlowNodes (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IChordNodesSettings` — get_api_reference shows it after this page
+- Private settings: `IChordNodesPrivate`
+- Events: `IChordNodesEvents`
+- Data item fields: `IChordNodesDataItem`
 
 ## Properties
 
-- **flow** (`Chord | undefined`) — Related Chord series.
-- **labels** (`ListTemplate`) — Default new ListTemplate<RadialLabel> List of label elements.
-- **slices** (`ListTemplate`) — Default new ListTemplate<Slice> List of slice elements.
+Public properties (not settings):
+
+- **flow** (`Chord`) — Related `Chord` series.
+- **labels** (`ListTemplate<RadialLabel>`) — List of node labels; configure them all through `labels.template`.
+- **slices** (`ListTemplate<Slice>`) — List of the nodes' arcs; configure them all through `slices.template`.

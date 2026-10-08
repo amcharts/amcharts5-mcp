@@ -2,15 +2,24 @@
 title: "Pie of a Pie (Exploding Pie Chart)"
 source: "https://www.amcharts.com/demos/pie-of-a-pie/"
 category: "pie-donut"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Two pie charts, one showing the drill-down data of a selected slice. Click on a slice of a big pie to explode/expand the slice. This chart type is sometimes called exploding pie chart.
-Pie chart
-Pie series
-Events
-Animations
-Graphics
+Two pies joined by lines: click a slice of the big pie and it turns to face the small one, which shows what that slice is made of.
+
+When to break out a slice: A pie of pie keeps the overview and the detail of one part on screen together. It helps when a slice is made of many small pieces that would be unreadable inside the main pie.
+
+Good for:
+- One category everyone asks about, like Other
+- An overview plus the detail of a selected item
+- Presentations where you go through items one by one
+
+Think twice when:
+- Comparing the breakdown of two slices at once: use stacked bars
+- Many slices with their own breakdown: a sunburst chart shows them all
+- Printed reports, where nobody can click
+
+Prompt: Create a pie-of-a-pie chart comparing six countries: clicking a slice turns the main pie until that slice faces a smaller pie beside it, which shows that country’s breakdown, with two lines joining the slice to the smaller pie. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -21,13 +30,13 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 var container = root.container.children.push(
   am5.Container.new(root, {
-    width: am5.p100,
-    height: am5.p100,
-    layout: root.horizontalLayout
+    width: am5.p100,              // the container fills the chart div
+    height: am5.p100,             // in both directions
+    layout: root.horizontalLayout // main pie on the left, sub pie on the right
   })
 );
 
@@ -45,15 +54,16 @@ var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     valueField: "value",
     categoryField: "category",
-    alignLabels: false
+    alignLabels: false // labels stay by their slices instead of lining up in columns
   })
 );
 
 series.labels.template.setAll({
-  textType: "circular",
-  radius: 4
+  textType: "circular", // labels bend along the edge of the pie
+  radius: 4             // 4px out from the slice
 });
-series.ticks.template.set("visible", false);
+series.ticks.template.set("visible", false); // no lines from the slices to their labels
+// a click picks the slice for the sub pie instead of pulling it out
 series.slices.template.set("toggleKey", "none");
 
 // add events
@@ -65,7 +75,7 @@ series.slices.template.events.on("click", function(e) {
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
 var subChart = container.children.push(
   am5percent.PieChart.new(root, {
-    radius: am5.percent(50),
+    radius: am5.percent(50), // half the radius it could take, so the sub pie is smaller
     tooltip: am5.Tooltip.new(root, {})
   })
 );
@@ -79,6 +89,7 @@ var subSeries = subChart.series.push(
   })
 );
 
+// seven empty slices that selectSlice fills from the picked slice's subData
 subSeries.data.setAll([
   { category: "A", value: 0 },
   { category: "B", value: 0 },
@@ -88,10 +99,11 @@ subSeries.data.setAll([
   { category: "F", value: 0 },
   { category: "G", value: 0 }
 ]);
-subSeries.slices.template.set("toggleKey", "none");
+subSeries.slices.template.set("toggleKey", "none"); // clicking a sub pie slice does nothing
 
 var selectedSlice;
 
+// keep the connecting lines on the slice while the pie turns and when the chart resizes
 series.on("startAngle", function() {
   updateLines();
 });
@@ -102,6 +114,7 @@ container.events.on("boundschanged", function() {
    })
 });
 
+// draw the two dashed lines from the edges of the picked slice to the top and bottom of the sub pie
 function updateLines() {
   if (selectedSlice) {
     var startAngle = selectedSlice.get("startAngle");
@@ -135,9 +148,9 @@ function updateLines() {
 // lines
 var line0 = container.children.push(
   am5.Line.new(root, {
-    position: "absolute",
-    stroke: root.interfaceColors.get("text"),
-    strokeDasharray: [2, 2]
+    position: "absolute",                     // placed by its points, outside the container's layout
+    stroke: root.interfaceColors.get("text"), // the text color, so the lines show on any background
+    strokeDasharray: [2, 2]                   // dashed: 2px dash, 2px gap
   })
 );
 var line1 = container.children.push(
@@ -206,6 +219,7 @@ series.data.setAll([
   }
 ]);
 
+// the pie of a pie: show the picked slice's subData in the sub pie and turn the slice toward it
 function selectSlice(slice) {
   selectedSlice = slice;
   var dataItem = slice.dataItem;
@@ -213,6 +227,7 @@ function selectSlice(slice) {
 
   if (dataContext) {
     var i = 0;
+    // copy subData into the sub pie's slices and hide the slices it has no value for
     subSeries.data.each(function(dataObject) {
       var dataObj = dataContext.subData[i];
       if(dataObj){
@@ -224,19 +239,20 @@ function selectSlice(slice) {
       else{
           subSeries.dataItems[i].hide();
       }
-      
+
       i++;
     });
   }
 
+  // turn the pie so the middle of the picked slice faces right, toward the sub pie
   var middleAngle = slice.get("startAngle") + slice.get("arc") / 2;
   var firstAngle = series.dataItems[0].get("slice").get("startAngle");
 
   series.animate({
     key: "startAngle",
     to: firstAngle - middleAngle,
-    duration: 1000,
-    easing: am5.ease.out(am5.ease.cubic)
+    duration: 1000,                      // one second
+    easing: am5.ease.out(am5.ease.cubic) // slows down at the end
   });
   series.animate({
     key: "endAngle",
@@ -248,6 +264,7 @@ function selectSlice(slice) {
 
 container.appear(1000, 10);
 
+// pick the first slice once the data is in
 series.events.on("datavalidated", function() {
   selectSlice(series.slices.getIndex(0));
 });
@@ -265,6 +282,7 @@ series.events.on("datavalidated", function() {
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -273,3 +291,4 @@ series.events.on("datavalidated", function() {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

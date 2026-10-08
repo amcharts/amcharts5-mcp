@@ -2,48 +2,39 @@
 title: "IRootSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/irootsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
-IRootSettings does not extend any other symbol.
-IRootSettings is not extended by any other symbol.
-Properties
+## Inheritance
 
+Extends: (none)
+Settings of: `am5.Root` (see its page for the class)
+TypeScript: not exported by name from the package.
 
-        accessible        
-        #
-      
+## Settings
 
+- **useSafeResolution** (`boolean`) — default `true` — Draws the chart at a resolution of `1` on iOS and iPadOS devices instead of the screen's pixel ratio, to stay within their memory limits. Set to `false` for sharper charts there.
+- **tooltipContainerBounds** (`{ top: number; left: number; right: number; bottom: number; }`) — Extra space in pixels on each side of the chart where tooltips can still be drawn, letting them go outside the chart's container. _Since 5.2.24._
+- **accessible** (`boolean`) — default `true` — Set to `false` to disable all accessibility features. NOTE: once disabled, accessibility cannot be re-enabled on a live `Root` object. _Since 5.3.0._
+- **focusable** (`boolean`) — default `false` — If set to `true`, the parent inner `<div>` element will become a focusable element. _Since 5.3.17._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Accessibility_of_Root_element
+- **focusPadding** (`number`) — default `2` — Distance between focused element and its highlight square in pixels. _Since 5.6.0._
+- **ariaLabel** (`string`) — If set to some string, it will be used as inner `<div>` ARIA-LABEL. Should be used in conjunction with `focusable`. _Since 5.3.17._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Accessibility_of_Root_element
+- **role** (`string`) — Allows setting a "role" for the inner `<div>`. _Since 5.3.17._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Accessibility_of_Root_element
+- **calculateSize** (`(dimensions: DOMRect) => ISize`) — A function that returns the width and height in pixels to draw the chart at, given the container's measured box. It runs when the chart is created and on every resize.
+- **sanitizeHTML** (`boolean`) — default `true` — Cleans potentially malicious code out of HTML content (`html` and `labelHTML` settings, HTML tooltips, modals, export menu labels) before it goes on the page. Turn it off only if you trust all HTML content: unsanitized HTML from untrusted data can lead to XSS attacks. _Since 5.19.0._
+- **fontFamily** (`string`) — Font family for all labels. It overrides the theme's, but not a `fontFamily` set on a label itself. _Since 5.20.2._
+- **fontSize** (`string | number`) — Font size for all labels: a number in pixels, or a CSS size such as `"1.2em"`. It overrides the theme's, but not a `fontSize` set on a label itself. _Since 5.20.2._
+- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Font weight for all labels. It overrides the theme's, but not a `fontWeight` set on a label itself. _Since 5.20.2._
+- **renderer** (`IRendererClass`) — The renderer that draws the chart. Defaults to `Root.defaultRenderer`, which is `CanvasRenderer` unless changed. To draw with SVG, use `am5.SVGRenderer`:
 
-                          Type undefined | false | true                      
-Default true
-Set to false to disable all accessibility features.
- NOTE: once disabled, accessibility cannot be re-enabled on a live Root object.
-@since 5.3.0
+  ```ts
+  const root = am5.Root.new("chartdiv", {
+    renderer: am5.SVGRenderer
+  });
+  ```
 
+  Can only be set when the Root is created.
 
-        ariaLabel        
-        #
-      
+  _Since 5.21.0._
 
-
-                          Type undefined | string                      
-If set to some string, it will be used as inner <div> ARIA-LABEL.
- Should be used in conjuction with focusable.
-@since 5.3.17
-
-## Properties
-
-- **accessible** (`undefined | false | true`) — Default true Set to false to disable all accessibility features. NOTE: once disabled, accessibility cannot be re-enabled on a live Root object. @since 5.3.0
-- **ariaLabel** (`undefined | string`) — If set to some string, it will be used as inner <div> ARIA-LABEL. Should be used in conjuction with focusable. @since 5.3.17 Click here for more info
-- **calculateSize** (`undefined | ( dimensions: DOMRect) => ISize`) — Allows for specifying a custom width / height for the chart. This function will be called automatically when the chart is resized.
-- **focusPadding** (`undefined | number`) — Default 2 Distance between focused element and its highlight square in pixels. @since 5.6.0
-- **focusable** (`undefined | false | true`) — Default false If set to true, the parent inner <div> element will become a focusable element. @since 5.3.17 Click here for more info
-- **role** (`undefined | string`) — Allows setting a "role" for the inner <div>. @since 5.3.17 Click here for more info
-- **tooltipContainerBounds** (`undefined | { bottom: number,  left: number,  right: number,  top: number }`) — Allows defining margins around chart area for tooltips to go outside the chart itself. @since 5.2.24
-
-- **fontFamily** (`undefined | string`) — Default font family for all text elements, unless overridden on an element. @since 5.20.2
-- **fontSize** (`undefined | number | string`) — Default font size for all text elements, unless overridden on an element. @since 5.20.2
-- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Default font weight for all text elements, unless overridden on an element. @since 5.20.2
-- **sanitizeHTML** (`undefined | false | true`) — Default true If set to true, dynamically-set HTML (html/labelHTML, HTML tooltips, modal content) is sanitized. Set to false to opt out. @since 5.19.0
+- **forcedColors** (`boolean`) — default `true` — Makes the chart's interface colors (labels, grid, axes, buttons) follow the system colors when the page is in a forced colors mode, such as Windows High Contrast, so they stay visible. Series colors are kept. _Since 5.21.0._

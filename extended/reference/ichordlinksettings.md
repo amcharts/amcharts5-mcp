@@ -2,77 +2,33 @@
 title: "IChordLinkSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichordlinksettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IChordLinkSettings extends IFlowLinkSettings.
-IChordLinkSettings is extended by IChordLinkDirectedSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IFlowLinkSettings
-Extended by: IChordLinkDirectedSettings
+All ancestors: IFlowLinkSettings, IGraphicsSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5flow.ChordLink` (see its page for the class)
+TypeScript: `am5flow.IChordLinkSettings` (`import type { IChordLinkSettings } from "@amcharts/amcharts5/flow"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IFlowLinkSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **source** (`DataItem<IChordNodesDataItem>`) — Source node data item.
+- **target** (`DataItem<IChordNodesDataItem>`) — Target node data item.
+- **sourceRadius** (`number | Percent`) — default `am5.p100` _(theme)_ — Radius at which the ribbon meets its source node, in pixels or percent of the node ring's inner radius. Not used by `ChordNonRibbon`.
+- **targetRadius** (`number | Percent`) — default `am5.p100` _(theme)_ — Radius at which the ribbon meets its target node, in pixels or percent of the node ring's inner radius. Not used by `ChordNonRibbon`.
 
-- **source** (`DataItem`) — Source data item.
-- **sourceRadius** (`number | Percent`) — Radius of the link at the source.
-- **target** (`DataItem`) — target data item.
-- **targetRadius** (`number | Percent`) — Radius of the link at the end (target).
+## Inherited settings with a different default on ChordLink
+
+- **fillStyle** (`"none" | "solid" | "source" | "target" | "gradient"`) — default `"solid"` _(theme)_ — _from IFlowLinkSettings_ — How the link is filled: `"solid"` with its own `fill`, `"source"` or `"target"` with that node's color, `"gradient"` from the source color to the target color, or `"none"`.
+- **strokeStyle** (`"none" | "solid" | "source" | "target" | "gradient"`) — default `"solid"` _(theme)_ — _from IFlowLinkSettings_ — How the link's outline is colored: `"solid"` with its own `stroke`, `"source"` or `"target"` with that node's color, `"gradient"` from the source color to the target color, or `"none"`.
+- **tooltipText** (`string`) — default `"{sourceId} - {targetId}: {value}"` _(theme)_ — _from ISpriteSettings_ — Text of the element's tooltip. It can hold data placeholders, such as `{value}`.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IGraphicsSettings")`) for types, defaults and descriptions.
+
+- _IGraphicsSettings_: blendMode, draw, fill, fillGradient, fillOpacity, fillPattern, lineCap, lineJoin, nonScalingStroke, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, stroke, strokeDasharray, strokeDashoffset, strokeGradient, strokeOpacity, strokePattern, strokeWidth, svgPath
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

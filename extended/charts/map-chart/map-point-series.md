@@ -1,7 +1,7 @@
 ---
 title: "Map point series"
 source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Map point series can be used to add points (markers) at specific coordinates on the map.
@@ -69,6 +69,28 @@ var pointSeries = chart.series.push(
     autoScale: true
   })
 );
+
+### Surface bullets
+
+Normally, markers face the viewer, whatever the projection. With `surfaceBullets: true`, they are laid onto the map instead, as if painted on it: each one turns, squashes, and stretches with the map at its location.
+
+On a globe, such markers flatten towards its edge. On a Mercator map, they grow towards the poles, just like the countries do.
+
+let pointSeries = chart.series.push(
+  am5map.MapPointSeries.new(root, {
+    // ...
+    surfaceBullets: true
+  })
+);
+
+var pointSeries = chart.series.push(
+  am5map.MapPointSeries.new(root, {
+    // ...
+    surfaceBullets: true
+  })
+);
+
+NOTE`surfaceBullets` is available since version 5.21.0.
 
 ## Data
 
@@ -539,6 +561,50 @@ If set, this will be added to the angle calculated by `autoRotate`. Can be used 
 
 The below example uses above code, albeit with the slightly more sophisticated image as a point bullet:
 
+#### Via data
+
+Points can be put on lines via series data, too. Give the line an `id`, and refer to it in the point's `lineId`:
+
+lineSeries.data.setAll(\[{
+  id: "route",
+  geometry: {
+    type: "LineString",
+    coordinates: \[
+      \[ -73.778137, 40.641312 \],
+      \[ -0.454296, 51.470020 \],
+      \[ 116.597504, 40.072498 \]
+    \]
+  }
+}\]);
+
+pointSeries.data.setAll(\[{
+  lineId: "route",
+  positionOnLine: 0.7,
+  autoRotate: true
+}\]);
+
+lineSeries.data.setAll(\[{
+  id: "route",
+  geometry: {
+    type: "LineString",
+    coordinates: \[
+      \[ -73.778137, 40.641312 \],
+      \[ -0.454296, 51.470020 \],
+      \[ 116.597504, 40.072498 \]
+    \]
+  }
+}\]);
+
+pointSeries.data.setAll(\[{
+  lineId: "route",
+  positionOnLine: 0.7,
+  autoRotate: true
+}\]);
+
+If the data uses other names for these keys, set them with series' `lineIdField`, `positionOnLineField`, `autoRotateField`, and `autoRotateAngleField` settings.
+
+Points follow their line when it changes, e.g. when it is moved or given a new `altitude`.
+
 ### Points on a line via data (5.20.6)
 
 Since 5.20.6, `lineId`, `positionOnLine`, `autoRotate` and `autoRotateAngle` can be given in point series' data, so a point placed on a line no longer needs to be created with `pushDataItem()` and a `lineDataItem`. `lineId` is the `id` of a line in a map line series' data (the line series' `idField`, `"id"` by default). Pushing the line series to the chart before the point series is a safe precaution.
@@ -610,7 +676,7 @@ NOTE This matters when the chart is [serialized](https://www.amcharts.com/docs/v
 
 #### Animating a point along a line (5.20.8)
 
-To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization.
+To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
 
 ```javascript
 var planeSeries = chart.series.push(
@@ -648,6 +714,56 @@ planeSeries.data.setAll([{
 
 Since 5.20.8, an auto-rotating point turns round (180° is added to its angle) while such an `animations` entry moves it back toward the start of the line — e.g. on the way back of a `yoyo` — so the plane faces the way it is travelling. This applies only to an `animations` entry on the bullet's sprite; a point moved from code with `dataItem.animate()` is not turned round, and that code is expected to turn it itself (e.g. via `autoRotateAngle`).
 
+
+## Altitude
+
+Points can float above the ground, e.g. satellites or aircraft. The height is in metres: `400000` is about the height of the International Space Station.
+
+To read heights from data, set series' `altitudeField`:
+
+let pointSeries = chart.series.push(
+  am5map.MapPointSeries.new(root, {
+    latitudeField: "lat",
+    longitudeField: "long",
+    altitudeField: "altitude"
+  })
+);
+
+pointSeries.data.setAll(\[{
+  name: "ISS",
+  long: -73.778137,
+  lat: 40.641312,
+  altitude: 400000
+}\]);
+
+var pointSeries = chart.series.push(
+  am5map.MapPointSeries.new(root, {
+    latitudeField: "lat",
+    longitudeField: "long",
+    altitudeField: "altitude"
+  })
+);
+
+pointSeries.data.setAll(\[{
+  name: "ISS",
+  long: -73.778137,
+  lat: 40.641312,
+  altitude: 400000
+}\]);
+
+`altitudeField` is not set by default, so data that happens to have an "altitude" key (e.g. elevation above sea level, or a value in feet) is not used as height by accident.
+
+When adding points one by one, set `altitude` on the data item:
+
+pointSeries.pushDataItem({ latitude: 40.641312, longitude: -73.778137, altitude: 400000 });
+
+pointSeries.pushDataItem({ latitude: 40.641312, longitude: -73.778137, altitude: 400000 });
+
+On a globe, raised points rise away from its surface. On flat maps they rise up the screen.
+
+A point on a line takes the line's altitude instead. For lines that arc above the ground, see "[Map line series](https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/)".
+
+NOTEAltitude is available since version 5.21.0.
 
 ## Hover behavior
 

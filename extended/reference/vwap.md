@@ -2,24 +2,33 @@
 title: "VWAP"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/vwap/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Volume-Weighted Average Price indicator: `field` averaged over the last `period` data items, weighted by volume. Drawn over the main series; needs a `volumeSeries`.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import VWAP
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.VWAP.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Indicator
+Extends: Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Indicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IVWAPSettings` — get_api_reference shows it after this page
+- Private settings: `IVWAPPrivate`
+- Events: `IVWAPEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

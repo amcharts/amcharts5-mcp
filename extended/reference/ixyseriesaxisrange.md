@@ -2,17 +2,20 @@
 title: "IXYSeriesAxisRange"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ixyseriesaxisrange/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Interface representing a series axis range.
+An axis range of a series: a stretch of an axis within which the series can look different.
+
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Series_axis_ranges
 
 ## Inheritance
 
-Extended by: IBaseColumnSeriesAxisRange, ILineSeriesAxisRange
+Extends: (none)
+TypeScript: `am5xy.IXYSeriesAxisRange` (`import type { IXYSeriesAxisRange } from "@amcharts/amcharts5/xy"`)
 
-## Properties
+## Axis range settings
 
-- **axisDataItem** (`DataItem`) — Related axis data item.
-- **container** (`Container`) — A Container element that range's elements are placed in.
-
+- **axisDataItem** (`DataItem<IAxisDataItem>`) — The axis data item that sets where the range starts and ends.
+- **container** (`Container`) — Container that holds the range's elements.
+- **series** (`XYSeries`) — The series the range belongs to.

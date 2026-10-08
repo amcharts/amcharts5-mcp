@@ -2,32 +2,32 @@
 title: "RadarChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/radarchart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Radar chart.
+An XY chart drawn in a circle: one axis runs around it (`AxisRendererCircular`), the other out from the center (`AxisRendererRadial`). Also used for gauges.
+
+Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/
 
 ## Import
 
-```javascript
-// Import RadarChart
-import * as am5radar from "@amcharts/amcharts5/radar"
+```js
+import * as am5radar from "@amcharts/amcharts5/radar";
+
+am5radar.RadarChart.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: XYChart
+Extends: XYChart → SerialChart → Chart → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from XYChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **cursor** (`RadarCursor`) — RadarCursor instance. Click here for more info
-- **endAngle** (`undefined | number`) — Default 270 Chart end angle in degress. Click here for more info
-- **innerRadius** (`number | Percent`) — Inner radius of the chart. Can be set in pixels or percent, relative to outer radius. Setting to negative number will mean pixels from outer radius. Click here for more info
-- **radius** (`number | Percent`) — Default 80% Outer radius of the chart. Can be set in pixels or percent, relative to available space. Click here for more info
-- **startAngle** (`undefined | number`) — Default -90 Chart start angle in degress. Click here for more info
+- Settings: `IRadarChartSettings` — get_api_reference shows it after this page
+- Private settings: `IRadarChartPrivate`
 
 ## Properties
 
-- **radarContainer** (`Container`) — Default Container.new() Container where radar-related elements go.
+Public properties (not settings):
+
+- **radarContainer** (`Container`) — default `Container.new()` — Container at the chart's center that holds its axes, grid, series and cursor.

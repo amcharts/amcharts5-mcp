@@ -2,27 +2,33 @@
 title: "SankeyNodes"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/sankeynodes/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Holds instances of nodes for a Sankey series.
-Data item
-SankeyNodes uses data items of type ISankeyNodesDataItem.
+Holds the nodes of a `Sankey` series. Nodes can be dragged.
 
 ## Import
 
-```javascript
-// Import SankeyNodes
-import * as am5flow from "@amcharts/amcharts5/flow"
+```js
+import * as am5flow from "@amcharts/amcharts5/flow";
+
+am5flow.SankeyNodes.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: FlowNodes
+Extends: FlowNodes → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from FlowNodes (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ISankeyNodesSettings` — get_api_reference shows it after this page
+- Private settings: `ISankeyNodesPrivate`
+- Events: `ISankeyNodesEvents`
+- Data item fields: `ISankeyNodesDataItem`
 
 ## Properties
 
-- **flow** (`Sankey | undefined`) — Related Sankey series.
-- **rectangles** (`ListTemplate`) — Default new ListTemplate<RoundedRectangle> List of rectangle elements.
+Public properties (not settings):
+
+- **flow** (`Sankey`) — Related `Sankey` series.
+- **rectangles** (`ListTemplate<RoundedRectangle>`) — List of node rectangles; configure them all through `rectangles.template`.

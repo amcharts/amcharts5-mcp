@@ -2,14 +2,24 @@
 title: "Vertical Partition Chart"
 source: "https://www.amcharts.com/demos/vertical-partition-chart/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Vertical Partition Chart displays hierarchical data in vertically distributed levels. While not the most visually appealing, the chart gives a very clear view into the values comprising the higher levels.
-Key implementation details
-Partition charts are part of the hierarchy module of amCharts Charts package. To create a partition chart we just add a Container and then add a Partition object into it. orientation: "vertical" setting makes the partition vertical. All that’s left is to specify the valueField, categoryField, and childDataField to bind the chart to the data.
-Hierarchy charts
-Partition
+A partition chart, or icicle chart, stacks a hierarchy in rows: the whole on top, each row one level deeper, each box as wide as its share. Here, the 168 hours of one person’s week.
+
+Rows or columns?: A vertical partition reads from the top down, like icicles, and fits a wide space such as the top of a dashboard. In narrow boxes the labels turn sideways, so it suits short names; for long ones, the horizontal layout keeps them level.
+
+Good for:
+- Time or money split into groups and items
+- Wide spaces, like a dashboard header
+- Showing which group a small item belongs to
+
+Think twice when:
+- Long names: use the horizontal layout
+- Many levels: the rows get short
+- Comparing items from different groups: a bar chart lines them up
+
+Prompt: Create a vertical partition (icicle) chart of the 168 hours of one person’s week by activity, with the levels running top to bottom. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -18,80 +28,87 @@ Partition
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create wrapper container
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
-  width: am5.percent(100),
+  width: am5.percent(100), // the container fills the whole chart div
   height: am5.percent(100),
   layout: root.verticalLayout
 }));
 
-
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(am5hierarchy.Partition.new(root, {
-  singleBranchOnly: false,
-  orientation: "vertical",
-  downDepth: 1,
+  singleBranchOnly: false, // opening one branch leaves the others open
+  orientation: "vertical", // levels stack top to bottom, the whole week at the top
+  // show up to 10 levels on load and on each click: more than this data has, so all of them show
+  downDepth: 10,
   initialDepth: 10,
   valueField: "value",
   categoryField: "name",
   childDataField: "children"
 }));
 
-
-// Generate and set data
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
-var maxLevels = 2;
-var maxNodes = 3;
-var maxValue = 100;
-
-var data = {
-  name: "Root",
-  children: []
-}
-generateLevel(data, "", 0);
-
-series.data.setAll([data]);
-series.set("selectedDataItem", series.dataItems[0]);
-
-function generateLevel(data, name, level) {
-  for (var i = 0; i < Math.ceil(maxNodes * Math.random()) + 1; i++) {
-    var nodeName = name + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
-    var child;
-    if (level < maxLevels) {
-      child = {
-        name: nodeName + level
-      }
-
-      if (level > 0 && Math.random() < 0.5) {
-        child.value = Math.round(Math.random() * maxValue);
-      }
-      else {
-        child.children = [];
-        generateLevel(child, nodeName + i, level + 1)
-      }
-    }
-    else {
-      child = {
-        name: name + i,
-        value: Math.round(Math.random() * maxValue)
-      }
-    }
-    data.children.push(child);
+// Labels turn sideways only in narrow boxes that are taller than they are wide,
+// checked again whenever a box changes size (when zooming in and out)
+function turnLabel(width, rectangle) {
+  var label = rectangle.dataItem && rectangle.dataItem.get("label");
+  if (label) {
+    label.set("rotation", rectangle.width() < 100 && rectangle.width() < rectangle.height() ? 90 : 0);
   }
-
-  level++;
-  return data;
 }
+series.rectangles.template.on("width", turnLabel);  // runs whenever a box's width changes...
+series.rectangles.template.on("height", turnLabel); // ...or its height
 
+// Hours; {sum} adds up everything inside a group
+series.nodes.template.set("tooltipText", "{category}: [bold]{sum} hours[/]");
+
+// Set data: the 168 hours of one person's week
+// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+series.data.setAll([{
+  name: "Week",
+  children: [{
+    name: "Sleep",
+    value: 56
+  }, {
+    name: "Work",
+    children: [
+      { name: "Focus work", value: 20 },
+      { name: "Meetings", value: 12 },
+      { name: "Email", value: 8 }
+    ]
+  }, {
+    name: "Free time",
+    children: [
+      { name: "Screens", value: 15 },
+      { name: "Friends", value: 8 },
+      { name: "Sport", value: 6 },
+      { name: "Reading", value: 6 }
+    ]
+  }, {
+    name: "Home",
+    children: [
+      { name: "Cooking", value: 8 },
+      { name: "Cleaning", value: 7 },
+      { name: "Shopping", value: 5 }
+    ]
+  }, {
+    name: "Meals",
+    value: 10
+  }, {
+    name: "Commute",
+    value: 7
+  }]
+}]);
+
+// start at the top node, so the whole week shows
+series.set("selectedDataItem", series.dataItems[0]);
 
 // Make stuff animate on load
 series.appear(1000, 100);
@@ -108,7 +125,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 550px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -117,3 +135,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

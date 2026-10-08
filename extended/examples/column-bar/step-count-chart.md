@@ -2,19 +2,28 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo is inspired by the chart used in Samsung health app. The cursor always stays in the same position but you can pan the chart to the position you want.
-XY chart
-Column series
-Cursor
-Axis ranges
+A step counter in the style of a fitness app: one column per day, gray below the 6,000-step goal and colored above it. Drag the chart sideways, and the day under the fixed cursor shows its count.
+
+When a goal line helps: Daily figures mean more next to a goal: the reader sees at once which days made it, and the gray columns show the misses without a single number. A fixed cursor with the chart sliding under it is a pattern people know from phone apps, and it works well with touch.
+
+Good for:
+- Steps, calories or sleep per day
+- Daily sales against a quota
+- Charts on phones that people swipe through
+
+Think twice when:
+- Long periods: weekly totals or a line give the overview
+- Exact comparisons between days: switch on value labels
+- Desktop readers: a cursor that follows the mouse is quicker than dragging
+
+Prompt: Create a fitness-app-style step count chart: a month of daily steps as columns, about ten days in view and dragged sideways to scroll, with days under the goal grayed out and lines at the goal and twice the goal. A cursor fixed in the middle shows the day under it. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
@@ -22,137 +31,133 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
-root.dateFormatter.setAll({
-  dateFormat: "yyyy-MM-dd",
-  dateFields: ["valueX"]
-});
 
 var data = [
   {
-    date: "2021-01-01",
+    date: "2026-01-02",
     steps: 4561
   },
   {
-    date: "2021-01-02",
+    date: "2026-01-03",
     steps: 5687
   },
   {
-    date: "2021-01-03",
+    date: "2026-01-04",
     steps: 6348
   },
   {
-    date: "2021-01-04",
+    date: "2026-01-05",
     steps: 4878
   },
   {
-    date: "2021-01-05",
+    date: "2026-01-06",
     steps: 9867
   },
   {
-    date: "2021-01-06",
+    date: "2026-01-07",
     steps: 7561
   },
   {
-    date: "2021-01-07",
+    date: "2026-01-08",
     steps: 1287
   },
   {
-    date: "2021-01-08",
+    date: "2026-01-09",
     steps: 3298
   },
   {
-    date: "2021-01-09",
+    date: "2026-01-10",
     steps: 5697
   },
   {
-    date: "2021-01-10",
+    date: "2026-01-11",
     steps: 4878
   },
   {
-    date: "2021-01-11",
+    date: "2026-01-12",
     steps: 8788
   },
   {
-    date: "2021-01-12",
+    date: "2026-01-13",
     steps: 9560
   },
   {
-    date: "2021-01-13",
+    date: "2026-01-14",
     steps: 11687
   },
   {
-    date: "2021-01-14",
+    date: "2026-01-15",
     steps: 5878
   },
   {
-    date: "2021-01-15",
+    date: "2026-01-16",
     steps: 9789
   },
   {
-    date: "2021-01-16",
+    date: "2026-01-17",
     steps: 3987
   },
   {
-    date: "2021-01-17",
+    date: "2026-01-18",
     steps: 5898
   },
   {
-    date: "2021-01-18",
+    date: "2026-01-19",
     steps: 9878
   },
   {
-    date: "2021-01-19",
+    date: "2026-01-20",
     steps: 13687
   },
   {
-    date: "2021-01-20",
+    date: "2026-01-21",
     steps: 6789
   },
   {
-    date: "2021-01-21",
+    date: "2026-01-22",
     steps: 4531
   },
   {
-    date: "2021-01-22",
+    date: "2026-01-23",
     steps: 5856
   },
   {
-    date: "2021-01-23",
+    date: "2026-01-24",
     steps: 5737
   },
   {
-    date: "2021-01-24",
+    date: "2026-01-25",
     steps: 9987
   },
   {
-    date: "2021-01-25",
+    date: "2026-01-26",
     steps: 16457
   },
   {
-    date: "2021-01-26",
+    date: "2026-01-27",
     steps: 7878
   },
   {
-    date: "2021-01-27",
+    date: "2026-01-28",
     steps: 6845
   },
   {
-    date: "2021-01-28",
+    date: "2026-01-29",
     steps: 4659
   },
   {
-    date: "2021-01-29",
+    date: "2026-01-30",
     steps: 7892
   },
   {
-    date: "2021-01-30",
+    date: "2026-01-31",
     steps: 7362
   },
   {
-    date: "2021-01-31",
+    date: "2026-02-01",
     steps: 3268
   }
 ];
@@ -161,54 +166,54 @@ var data = [
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true,
-    panX: true,
+    focusable: true, // the chart can be reached with the Tab key
+    panX: true,      // a drag scrolls through the days
     panY: false,
-    wheelX: "panX",
-    wheelY: "none",
-    paddingLeft: 0,
-    paddingRight: 0
+    wheelX: "panX",  // a horizontal wheel or trackpad swipe scrolls too...
+    wheelY: "none",  // ...but the vertical wheel scrolls the page, not the chart
+    paddingLeft: 0,  // no gap at the left edge...
+    paddingRight: 0  // ...or the right edge
   })
 );
 
-var easing = am5.ease.linear;
 
 // hide zoomout button
 chart.zoomOutButton.set("forceHidden", true);
 
-// add label
-chart.plotContainer.children.push(
-  am5.Label.new(root, { text: "Pan chart to change date", x: 100, y: 50 })
-);
-
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
-  minGridDistance: 50,
-  strokeOpacity: 0.2,
+  minGridDistance: 50, // at least 50px between the date labels
+  strokeOpacity: 0.2,  // a faint axis line
   minorGridEnabled: true
 });
-xRenderer.grid.template.set("forceHidden", true);
+xRenderer.grid.template.set("forceHidden", true); // no vertical grid lines
 
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
-    maxDeviation: 0.49,
-    snapTooltip: false,
-    baseInterval: {
+    maxDeviation: 0.49, // the first and last day can be panned almost to the middle, under the cursor
+    snapTooltip: false, // the date tooltip follows the cursor instead of snapping to the day
+    baseInterval: {     // one column a day
       timeUnit: "day",
       count: 1
     },
     renderer: xRenderer,
-    tooltip: am5.Tooltip.new(root, {})
+    tooltip: am5.Tooltip.new(root, {}) // shows the cursor's date on the axis
   })
 );
 
+// labels inside the plot: the goal labels below are placed by the plot's width
 var yRenderer = am5xy.AxisRendererY.new(root, { inside: true });
-yRenderer.grid.template.set("forceHidden", true);
+yRenderer.grid.template.set("forceHidden", true); // no horizontal grid lines
+// no value labels, which the first column would cover: the goal lines give the scale,
+// the tooltip the exact count
+yRenderer.labels.template.set("forceHidden", true);
 
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
-    maxDeviation: 0,
+    maxDeviation: 0, // no panning up or down past the data
+    // columns start at zero, so their heights compare truly
+    min: 0,
     renderer: yRenderer
   })
 );
@@ -222,22 +227,24 @@ var series = chart.series.push(
     valueYField: "steps",
     valueXField: "date",
     tooltip: am5.Tooltip.new(root, {
-      pointerOrientation: "vertical",
-      labelText: "{valueY}"
+      pointerOrientation: "vertical", // the tooltip sits above or below its point
+      labelText: "{valueY}"           // the day's step count
     })
   })
 );
 
 series.columns.template.setAll({
-  cornerRadiusTL: 15,
-  cornerRadiusTR: 15,
-  maxWidth: 30,
-  strokeOpacity: 0
+  cornerRadiusTL: 15, // rounded top corners...
+  cornerRadiusTR: 15, // ...on both sides
+  maxWidth: 30,       // columns at most 30px wide
+  strokeOpacity: 0    // no outline
 });
 
+// days under the 6,000-step goal are gray
 series.columns.template.adapters.add("fill", function (fill, target) {
   if (target.dataItem.get("valueY") < 6000) {
-    return am5.color(0xdadada);
+    // the theme's disabled color, so the misses stay gray in dark mode too
+    return root.interfaceColors.get("disabled");
   }
   return fill;
 });
@@ -261,19 +268,20 @@ series.get("tooltip").adapters.add("x", function (x) {
 
 // add ranges
 var goalRange = yAxis.createAxisRange(yAxis.makeDataItem({
-  value: 6000
+  value: 6000 // a goal line at 6,000 steps
 }));
 
 goalRange.get("grid").setAll({
-  forceHidden: false,
-  strokeOpacity: 0.2
+  forceHidden: false, // shown, though the axis grid lines are hidden
+  strokeOpacity: 0.2  // faint
 });
 
 var goalLabel = goalRange.get("label");
 
 goalLabel.setAll({
-  centerY: am5.p100,
-  centerX: am5.p100,
+  forceHidden: false, // shown, though the axis labels are hidden
+  centerY: am5.p100,  // the label sits on the line...
+  centerX: am5.p100,  // ...and ends where it is placed: at the plot's right edge, by the adapter below
   text: "Goal"
 });
 
@@ -283,17 +291,18 @@ goalLabel.adapters.add("x", function (x) {
 });
 
 var goalRange2 = yAxis.createAxisRange(yAxis.makeDataItem({
-  value: 12000
+  value: 12000 // a second line at twice the goal
 }));
 
 goalRange2.get("grid").setAll({
-  forceHidden: false,
-  strokeOpacity: 0.2
+  forceHidden: false, // shown...
+  strokeOpacity: 0.2  // ...and faint
 });
 
 var goalLabel2 = goalRange2.get("label");
 
 goalLabel2.setAll({
+  forceHidden: false, // shown, on the line, ending at the plot's right edge
   centerY: am5.p100,
   centerX: am5.p100,
   text: "2 x Goal"
@@ -313,11 +322,12 @@ chart.plotContainer.onPrivate("width", function () {
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+  // the cursor stays on when the pointer leaves the chart, so the middle day's tooltip always shows
   alwaysShow: true,
-  behavior: "none",
+  behavior: "none", // a drag pans the chart; the cursor doesn't zoom
   positionX: 0.5 // make it always be at the center
 }));
-cursor.lineY.set("visible", false);
+cursor.lineY.set("visible", false); // no horizontal cursor line
 
 // zoom to last 11 days
 series.events.on("datavalidated", function () {
@@ -329,7 +339,7 @@ series.events.on("datavalidated", function () {
   xAxis.zoomToValues(fromTime, toTime);
 });
 
-// when plot are is released, round zoom to nearest days
+// when plot area is released, round zoom to nearest days
 chart.plotContainer.events.on("globalpointerup", function () {
   var dayDuration = am5.time.getDuration("day", 1);
 
@@ -342,9 +352,9 @@ chart.plotContainer.events.on("globalpointerup", function () {
   var days = totalTime / dayDuration;
 
   var roundedStart =
-    firstTime + Math.round(days * xAxis.get("start")) * dayDuration;
+    firstTime + Math.round(days * xAxis.get("start")) * dayDuration; // start rounded to a whole day...
   var roundedEnd =
-    firstTime + Math.round(days * xAxis.get("end")) * dayDuration;
+    firstTime + Math.round(days * xAxis.get("end")) * dayDuration; // ...and the end too
 
   xAxis.zoomToValues(roundedStart, roundedEnd);
 });
@@ -366,6 +376,7 @@ chart.appear(1000, 50);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -374,3 +385,4 @@ chart.appear(1000, 50);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

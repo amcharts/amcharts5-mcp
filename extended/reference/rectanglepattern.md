@@ -2,28 +2,26 @@
 title: "RectanglePattern"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/rectanglepattern/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Rectangle pattern.
 
+Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+
 ## Import
 
-```javascript
-// Import RectanglePattern
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.RectanglePattern.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Pattern
+Extends: Pattern → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Pattern (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **centered** (`undefined | false | true`) — Default true Center rectangles.
-- **checkered** (`undefined | false | true`) — Default false If set to true, will place every second rectangle, creating checkered pattern.
-- **gap** (`undefined | number`) — Default 6 Gap between rectangles, in pixels.
-- **maxHeight** (`undefined | number`) — Default 5 Maximum height of the rectangle, in pixels.
-- **maxWidth** (`undefined | number`) — Default 5 Maximum width of the rectangle, in pixels.
+- Settings: `IRectanglePatternSettings` — get_api_reference shows it after this page
+- Private settings: `IRectanglePatternPrivate`

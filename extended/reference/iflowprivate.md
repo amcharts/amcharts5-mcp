@@ -2,20 +2,25 @@
 title: "IFlowPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iflowprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: ISeriesPrivate
-Extended by: IArcDiagramPrivate, IChordPrivate, ISankeyPrivate
+All ancestors: ISeriesPrivate, IComponentPrivate, IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5flow.IFlowPrivate` (`import type { IFlowPrivate } from "@amcharts/amcharts5/flow"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ISeriesPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **valueSum** (`number`) — Sum of all data items' values (with `calculateAggregates`).
+- **valueLow** (`number`) — Lowest value of all data items (with `calculateAggregates`).
+- **valueHigh** (`number`) — Highest value of all data items (with `calculateAggregates`).
 
-- **valueHigh** (`undefined | number`) — (no description)
-- **valueLow** (`undefined | number`) — (no description)
+## Other inherited private settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("ISeriesPrivate")`) for types, defaults and descriptions.
+
+- _ISeriesPrivate_: adjustedStartIndex, baseValueSeries, chart, customValueAbsoluteSum, customValueAverage, customValueClose, customValueCount, customValueHigh, customValueLow, customValueOpen, customValueSum, endIndex, startIndex, valueAbsoluteSum, valueAverage, valueClose, valueCount, valueOpen
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

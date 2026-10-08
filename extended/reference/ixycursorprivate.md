@@ -2,23 +2,27 @@
 title: "IXYCursorPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ixycursorprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IContainerPrivate
-Extended by: IRadarCursorPrivate, ICurveCursorPrivate
+All ancestors: IContainerPrivate, ISpritePrivate, IEntityPrivate
+TypeScript: `am5xy.IXYCursorPrivate` (`import type { IXYCursorPrivate } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IContainerPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
-
-- **downPositionX** (`undefined | number`) — Horizontal cursor position on the moment when selection started.
-- **downPositionY** (`undefined | number`) — Vertical cursor position on the moment when selection started.
-- **lastPoint** (`IPoint`) — Last global point to which cursor moved
 - **point** (`IPoint`) — Current X/Y coordinates of the cursor.
-- **positionX** (`undefined | number`) — Current horizontal position relative to the plot area (0-1).
-- **positionY** (`undefined | number`) — Current vertical position relative to the plot area (0-1).
+- **positionX** (`number`) — Current horizontal position relative to the plot area (0-1).
+- **positionY** (`number`) — Current vertical position relative to the plot area (0-1).
+- **downPositionX** (`number`) — Horizontal position (0-1) where the current selection started.
+- **downPositionY** (`number`) — Vertical position (0-1) where the current selection started.
+- **lastPoint** (`IPoint`) — The last point the cursor moved to, relative to the root.
+
+## Other inherited private settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerPrivate")`) for types, defaults and descriptions.
+
+- _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
+- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

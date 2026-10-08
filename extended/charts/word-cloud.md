@@ -1,7 +1,7 @@
 ---
 title: "Word cloud"
 source: "https://www.amcharts.com/docs/v5/charts/word-cloud/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
@@ -231,6 +231,14 @@ Zero means no randomness - all biggest words will be concentrated in the middle 
 
 `1` means complete randomness, or each word can appear anywhere, regardless of its weight.
 
+`allowNesting`
+
+`boolean`
+
+`true`
+
+When `true` (default) a word is packed against its neighbors' letters, so small words tuck into the concavities of bigger ones and the cloud packs tightly — but bounding boxes may overlap. Set to `false` to pack whole bounding boxes instead, so they never overlap (useful when labels have an opaque `background`, whose rectangles would otherwise slide into a neighbor's gaps).
+
 Below figures show how `randomness` affects the layout of the cloud:
 
 `randomness = 0`
@@ -292,6 +300,39 @@ var series = root.container.children.push(
     text: sourceText
   })
 );
+
+### Using custom shapes
+
+The cloud can be arranged in any shape. For that, you need to set the `svgPath` setting, which accepts any [SVG path](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths) value.
+
+let series = root.container.children.push(
+  am5wc.WordCloud.new(root, {
+    text: sourceText,
+    svgPath: "M 120 15 C 176 15 216 56 217 105 C 218 116 215 125 216 126 C 219 137 228 148 229 154 C 230 158 226 161 219 163 C 213 163 210 165 210 171 C 221 183 205 187 206 193 C 203 204 201 209 200 213 L 166 213 L 166 236 L 62 236 C 62 162 35 197 24 110 C 20 58 64 15 120 15 Z"
+  })
+);
+
+var series = root.container.children.push(
+  am5wc.WordCloud.new(root, {
+    text: sourceText,
+    svgPath: "M 120 15 C 176 15 216 56 217 105 C 218 116 215 125 216 126 C 219 137 228 148 229 154 C 230 158 226 161 219 163 C 213 163 210 165 210 171 C 221 183 205 187 206 193 C 203 204 201 209 200 213 L 166 213 L 166 236 L 62 236 C 62 162 35 197 24 110 C 20 58 64 15 120 15 Z"
+  })
+);
+
+If we'd like to outline the shape itself, we can use the `series.shape` element:
+
+series.shape.setAll({
+  strokeWidth: 10,
+  nonScalingStroke: true,
+  stroke: am5.color(0x000000)
+})
+
+series.shape.setAll({
+  strokeWidth: 10,
+  nonScalingStroke: true,
+  stroke: am5.color(0x000000)
+})
+
 
 ## Colors
 

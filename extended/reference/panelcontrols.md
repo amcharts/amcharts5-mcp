@@ -2,32 +2,35 @@
 title: "PanelControls"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/panelcontrols/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a button set for StockChart panels (move up/down, close, etc.)
+Buttons on a `StockChart` panel that move it up or down, expand it and close it.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/panels/#Panel_controls
 
 ## Import
 
-```javascript
-// Import PanelControls
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.PanelControls.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Container
+Extends: Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Container (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **stockChart** (`StockChart`) — A target StockChart.
-- **stockPanel** (`StockPanel`) — A target StockPanel.
+- Settings: `IPanelControlsSettings` — get_api_reference shows it after this page
+- Private settings: `IPanelControlsPrivate`
 
 ## Properties
 
-- **closeButton** (`Button`) — Default Button.new() A Button which closes the panel.
-- **downButton** (`Button`) — Default Button.new() A Button which moves panel down.
-- **expandButton** (`Button`) — Default Button.new() A Button which expands/collapses the panel.
-- **upButton** (`Button`) — Default Button.new() A Button which moves panel up.
+Public properties (not settings):
+
+- **closeButton** (`Button`) — The `Button` that closes the panel.
+- **downButton** (`Button`) — The `Button` that moves the panel one place down.
+- **expandButton** (`Button`) — The `Button` that expands the panel to fill the chart, or shows the other panels again.
+- **upButton** (`Button`) — The `Button` that moves the panel one place up.

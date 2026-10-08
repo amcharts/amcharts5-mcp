@@ -292,6 +292,49 @@ const tests = [
     },
     label: "search_docs — truncated excerpt carries fetch hint and matching lines",
   },
+  // Step 26: the reference is generated from the installed package, so a class
+  // added in 5.21.0 has its settings.
+  {
+    send: { jsonrpc: "2.0", id: 27, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "NightSeries" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("**twilightSteps**") ? "PASS (NightSeries settings)" : "FAIL (no twilightSteps)";
+    },
+    label: "get_api_reference('NightSeries') — new 5.21.0 class has its settings",
+  },
+  // Step 27: defaults follow the theme, including block-form rules on the class
+  // (`const rule = r("Label"); rule.setAll({ paddingTop: 8, … })`), which win
+  // over IContainerSettings' own default.
+  {
+    send: { jsonrpc: "2.0", id: 28, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "Label" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return /\*\*paddingTop\*\* \(`number`\) — default `8` _\(theme\)_/.test(text) ? "PASS (paddingTop 8 from theme)" : "FAIL (Label paddingTop default not 8)";
+    },
+    label: "get_api_reference('Label') — paddingTop default 8 from the theme",
+  },
+  // Step 28: names-only inherited lists stay out of search, so the page that
+  // declares a setting is the first reference hit (not every settings page).
+  {
+    send: { jsonrpc: "2.0", id: 29, method: "tools/call", params: { name: "search_docs", arguments: { query: "autoAppear", maxResults: 50, scope: "all" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const first = (text.match(/source: extended\/reference\/([^.]+)\.md/) || [])[1];
+      return first === "ispritesettings" ? "PASS (ispritesettings first)" : `FAIL (first reference hit: ${first})`;
+    },
+    label: "search_docs('autoAppear', scope:all) — declaring page is the first reference hit",
+  },
+  // Step 29: an interface that is not a class's settings (and not exported by
+  // name) still resolves.
+  {
+    send: { jsonrpc: "2.0", id: 30, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "IDeclaredAnimation" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (text.includes("No API reference found")) return "FAIL (not found)";
+      return text.includes("IDeclaredAnimation") && text.includes("**loops**") ? "PASS (resolves)" : "FAIL (unexpected content)";
+    },
+    label: "get_api_reference('IDeclaredAnimation') — resolves",
+  },
 ];
 
 let failed = 0;

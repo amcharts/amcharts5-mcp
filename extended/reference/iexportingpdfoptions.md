@@ -2,71 +2,31 @@
 title: "IExportingPDFOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iexportingpdfoptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IExportingPDFOptions extends IExportingImageOptions.
-IExportingPDFOptions is not extended by any other symbol.
-Properties
-
-
-        addURL        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-
-Whether to add a URL of the web page the chart has been exported from.
-
-
-        align        
-        #
-      
-
-
-                          Type "left" | "center" | "middle"                      
-Default left
-
-Alignment of the chart image in PDF.
- Supported options: "left" (default), "center", "right".
-
-
-        disabled        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IExportingFormatOptions
-If set to true, this format will not appear in ExportMenu.
-
-
-        extraFonts        
-        #
-      
-
-
-                          Type Array                      
-Additional optional fonts which can be used on individual elements.
 
 ## Inheritance
 
 Extends: IExportingImageOptions
+All ancestors: IExportingImageOptions, IExportingFormatOptions
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IExportingImageOptions (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Options
 
-## Properties
+- **includeData** (`boolean`) — Adds a table of the `dataSource` data below the chart image.
+- **imageFormat** (`"png" | "jpg"`) — default `"png"` — Format of the chart image in the PDF.
+- **fontSize** (`number`) — default `14` — Font size of the title, the page URL and the data table.
+- **align** (`"left" | "center" | "middle"`) — default `"left"` — Horizontal alignment of the chart image on the page: `"left"`, `"center"` or `"right"`.
+- **addURL** (`boolean`) — default `true` — Adds the URL of the page the chart was exported from.
+- **pageSize** (`pageSizes`) — default `"A4"` — Page size.
+- **pageOrientation** (`"landscape" | "portrait"`) — default `"portrait"` — Page orientation.
+- **pageMargins** (`number | number[]`) — default `30` — Page margins in points (1/72 inch): one number for all four edges, `[horizontal, vertical]`, or `[left, top, right, bottom]`.
+- **font** (`IFont`) — Font of the PDF's text. The default font has only Latin and Cyrillic characters, so text in other scripts needs a font that has them. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/#Fonts
+- **extraFonts** (`IFont[]`) — More fonts to register, for use by individual elements of the document, e.g. from a `pdfdocready` listener. Used only together with `font`. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/#Fonts
 
-- **addURL** (`undefined | false | true`) — Default true Whether to add a URL of the web page the chart has been exported from.
-- **align** (`"left" | "center" | "middle"`) — Default left Alignment of the chart image in PDF. Supported options: "left" (default), "center", "right".
-- **extraFonts** (`Array`) — Additional optional fonts which can be used on individual elements. Click here for more info
-- **font** (`IFont`) — Font which should be used for the export. Default font used for PDF includes only Latin-based and Cyrilic characters. If you are exporting text in other languages, you might need to use some other export font. Click here for more info
-- **fontSize** (`undefined | number`) — Font size to use for all texts.
-- **imageFormat** (`"png" | "jpg"`) — An image format to use for embedded images in PDF. See imageFormats in Export_module.
-- **includeData** (`undefined | false | true`) — Include data into PDF
-- **pageMargins** (`number | number[]`) — Page margins. Can be one of the following: A single number, in which case it will act as margin setting for all four edges of the page. An array of two numbers [ horizontal, vertical ]. An array of four numbers [ left, top, right, bottom ].
-- **pageOrientation** (`"landscape" | "portrait"`) — Page orientation.
-- **pageSize** (`pageSizes`) — Page size of the exported PDF.
+## Other inherited options
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IExportingImageOptions")`) for types, defaults and descriptions.
+
+- _IExportingImageOptions_: maintainPixelRatio, maxHeight, maxWidth, minHeight, minWidth, quality
+- _IExportingFormatOptions_: disabled

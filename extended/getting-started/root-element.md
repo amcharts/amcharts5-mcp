@@ -1,7 +1,7 @@
 ---
 title: "Root element"
 source: "https://www.amcharts.com/docs/v5/getting-started/root-element/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 All charts and their controls are created in a root element. This tutorial examines some of its functionality and configuration options.
@@ -176,6 +176,32 @@ root.locale.firstDayOfWeek = 0;
 
 It's possible to pass in a root element settings object as a second parameter to its `new()` call.
 
+### Renderer
+
+Charts are drawn on canvas by default. They can also be drawn as SVG, by setting `renderer` to `am5.SVGRenderer`:
+
+const root = am5.Root.new("chartdiv", {
+  renderer: am5.SVGRenderer
+});
+
+var root = am5.Root.new("chartdiv", {
+  renderer: am5.SVGRenderer
+});
+
+To draw every chart on the page as SVG, set the default once, before creating any root elements:
+
+am5.Root.defaultRenderer = am5.SVGRenderer;
+
+am5.Root.defaultRenderer = am5.SVGRenderer;
+
+The renderer can only be chosen when the root element is created. Charts look and behave the same with either one: text is measured the same way, so labels wrap and truncate identically, and all interactions work as usual.
+
+The only difference: blend modes `DST_OVER`, `SRC_ATOP`, and `XOR` are canvas-only. In SVG they are drawn as normal, with a warning in the console.
+
+MORE INFOTo save a chart as an SVG file, whichever renderer draws it, see "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)". The [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/) uses SVG with its `renderer="svg"` attribute.
+
+NOTESVG renderer is available since version 5.21.0.
+
 ### Safe resolution
 
 This section deals with the setting: `useSafeResolution: boolean` (default: `true`).
@@ -279,6 +305,44 @@ var root = am5.Root.new("chartdiv", {
     };
   },
 });
+
+### HTML sanitation
+
+This section deals with the setting: `sanitizeHTML: boolean` (default: `true`).
+
+A number of chart elements can display arbitrary HTML content - e.g. `html` and `labelHTML` label settings, HTML-based tooltips, [modal popups](https://www.amcharts.com/docs/v5/concepts/common-elements/modal-popups/), and [export](https://www.amcharts.com/docs/v5/concepts/exporting/) menu labels. This content is injected directly into the page.
+
+Since such content often includes values coming from chart data, which in turn frequently originates from an untrusted back-end, amCharts sanitizes it before displaying.
+
+Sanitation strips out constructs that are practically only used for cross-site scripting (XSS) attacks - e.g. `<script>` tags, inline event handlers like `onerror`, and `javascript:` URLs - while leaving legitimate markup such as formatting, links, and styles intact.
+
+If you fully control all HTML content used in your charts, you can disable sanitation by setting `sanitizeHTML` to `false`:
+
+const root = am5.Root.new("chartdiv", {
+  sanitizeHTML: false
+});
+
+var root = am5.Root.new("chartdiv", {
+  sanitizeHTML: false
+});
+
+IMPORTANTDisable sanitation only if you fully trust the source of all HTML content. Displaying unsanitized HTML that contains values from untrusted sources can expose your users to XSS attacks.
+
+### High contrast mode
+
+When the system is in a forced colors mode, such as Windows High Contrast, chart's labels, grid, axes, and buttons follow the system colors, so they stay visible. Series colors are kept.
+
+To keep the chart's own colors instead, set `forcedColors` to `false`:
+
+const root = am5.Root.new("chartdiv", {
+  forcedColors: false
+});
+
+var root = am5.Root.new("chartdiv", {
+  forcedColors: false
+});
+
+MORE INFOFor more information, see "[Accessibility: High contrast mode](https://www.amcharts.com/docs/v5/concepts/accessibility/#High_contrast_mode)".
 
 ### Other configuration options
 
@@ -402,6 +466,38 @@ Each time something is updated on the chart and some elements are repainted, its
 
 Our code waits until there's an idle moment of at least 100ms, before "deciding" the chart is fully functional and initial animations are played out.
 
+For an even safer approach, we can use a [debounced](https://www.amcharts.com/docs/v5/concepts/events/#Debounced_events) `frameended` event:
+
+let timeout;
+
+root.events.onDebounced("frameended", exportChart, 500);
+
+function exportChart() {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  timeout = setTimeout(function() {
+    root.events.off("frameended", exportChart);
+    console.log("Chart ready!");
+  }, 100)
+}
+
+var timeout;
+
+root.events.onDebounced("frameended", exportChart, 500);
+
+function exportChart() {
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  timeout = setTimeout(function() {
+    root.events.off("frameended", exportChart);
+    console.log("Chart ready!");
+  }, 100)
+}
+
+This will ensure that the code will not kick in until the chart building is done, including initial animations.
+
 ## Using in a Web Component
 
 We can wrap chart as an `HTMLElement`.
@@ -423,3 +519,5 @@ class MyChart extends HTMLElement {
     // Rest of chart code...
   }
 }
+
+MORE INFOamCharts also comes with a ready-made element, `<am5-chart>`, which builds a chart from a JSON config without any chart code. See "[The <am5-chart> element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/)".

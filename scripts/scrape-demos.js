@@ -15,6 +15,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { JSDOM } from "jsdom";
+import { CDN, requiredScripts } from "./am5-scripts.js";
 
 // All demo slugs organized by category
 const DEMOS_BY_CATEGORY = {
@@ -190,6 +191,13 @@ const DEMOS_BY_CATEGORY = {
     "us-congressional-districts",
     "drill-down-congressional-map",
     "map-with-animated-lines",
+    "pixel-map",
+    "satellite-image-globe",
+    "globe-with-raised-arcs",
+    "globe-with-surface-bullets",
+    "globe-with-projected-circles",
+    "sankey-map-with-waypoints",
+    "star-atlas",
   ],
 
   "candlestick-ohlc": [
@@ -342,6 +350,8 @@ const DEMOS_BY_CATEGORY = {
     "progress-chart",
     "forest-plot",
     "range-bullet-chart",
+    "shaped-word-cloud",
+    "angled-word-cloud",
   ],
 
   "dashboards": [
@@ -573,6 +583,73 @@ async function fetchPage(url) {
 }
 
 /**
+ * Demo pages redesigned in October 2026 carry the demo in a JSON block
+ * (<script type="application/json" id="demo-config">: name, lead, prompt,
+ * resources, html, css) and the code in <code id="code-out">. They need no
+ * cleaning pass, so this returns the parts of the final example, or null for
+ * an old-style page (which holds a `var demoData` blob for clean-examples2).
+ */
+function extractDemoConfigPage(doc) {
+  const configEl = doc.querySelector('script#demo-config[type="application/json"]');
+  const codeEl = doc.querySelector("#code-out");
+  if (!configEl || !codeEl) return null;
+
+  const config = JSON.parse(configEl.textContent);
+  const text = (el) => el.textContent.replace(/\s+/g, " ").trim();
+  // The JSON's strings are HTML-escaped ("Micro Charts &amp; Sparklines")
+  const decode = (s) => {
+    const el = doc.createElement("textarea");
+    el.innerHTML = s;
+    return el.value;
+  };
+  for (const key of ["name", "lead", "prompt"]) if (typeof config[key] === "string") config[key] = decode(config[key]);
+
+  // Lead, then the "About this chart" block and its "Good for" / "Think twice
+  // when" cards, then the request the demo answers
+  const description = [];
+  if (config.lead) description.push(config.lead);
+  const about = doc.querySelector(".about-text");
+  if (about) {
+    const heading = about.querySelector("h2");
+    const paragraphs = [...about.querySelectorAll("p")].map(text).filter(Boolean);
+    if (paragraphs.length) description.push((heading ? `${text(heading)}: ` : "") + paragraphs.join("\n\n"));
+  }
+  for (const card of doc.querySelectorAll(".about-card")) {
+    const heading = card.querySelector("h3");
+    const items = [...card.querySelectorAll("li")].map((li) => `- ${text(li)}`);
+    if (heading && items.length) description.push(`${text(heading)}:\n${items.join("\n")}`);
+  }
+  if (config.prompt) description.push(`Prompt: ${config.prompt}`);
+
+  const javascript = codeEl.textContent.replace(/\s+$/, "");
+
+  // The live pages load some scripts (e.g. themes/Responsive.js) on every
+  // demo, so a demo's own list can miss one its code uses: add it, ahead of
+  // any file that needs it loaded first (index.js, then chart modules, then
+  // the rest)
+  const resources = (config.resources || []).map((r) => (/^https?:\/\//.test(r) ? r : CDN + r));
+  const rank = (url) => {
+    const file = url.startsWith(CDN) ? url.slice(CDN.length) : url;
+    return file === "index.js" ? 0 : /^[a-z]+\.js$/.test(file) ? 1 : 2;
+  };
+  for (const file of requiredScripts(javascript)) {
+    if (resources.includes(CDN + file)) continue;
+    const at = resources.findIndex((r) => rank(r) >= rank(CDN + file));
+    resources.splice(at === -1 ? resources.length : at, 0, CDN + file);
+    console.warn(`       added ${file}: the code uses it but the demo's resources leave it out`);
+  }
+
+  return {
+    title: config.name,
+    description: description.join("\n\n"),
+    javascript,
+    html: config.html || "",
+    css: config.css || "",
+    resources,
+  };
+}
+
+/**
  * Process a single demo URL: fetch, extract, save as markdown.
  */
 async function processDemo(demo) {
@@ -582,9 +659,10 @@ async function processDemo(demo) {
   const dom = new JSDOM(html);
   const doc = dom.window.document;
 
-  const title = extractTitle(doc);
-  const description = extractDescription(doc);
-  const code = extractCode(doc);
+  const page = extractDemoConfigPage(doc);
+  const title = page?.title || extractTitle(doc);
+  const description = page ? page.description : extractDescription(doc);
+  const code = page || extractCode(doc);
 
   // Build the markdown content
   const lines = [
@@ -613,7 +691,11 @@ async function processDemo(demo) {
     lines.push("## CSS", "", "```css", code.css, "```", "");
   }
 
-  const content = lines.join("\n") + "\n";
+  if (page?.resources.length) {
+    lines.push("## Required resources", "", ...page.resources.map((r) => `- ${r}`), "");
+  }
+
+  const content = lines.join("\n").replace(/\n*$/, "\n");
 
   // Save to extended/examples/{category}/{slug}.md
   const filePath = path.join(OUTPUT_DIR, category, slug + ".md");

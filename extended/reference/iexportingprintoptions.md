@@ -2,67 +2,24 @@
 title: "IExportingPrintOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iexportingprintoptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IExportingPrintOptions extends IExportingImageOptions.
-IExportingPrintOptions is not extended by any other symbol.
-Properties
-
-
-        delay        
-        #
-      
-
-
-                          Type undefined | number                      
-Default 500
-
-A delay in milliseconds to wait before initiating print.
- This delay is necessary to ensure DOM is prepared and repainted before print dialog kicks in.
-
-
-        disabled        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IExportingFormatOptions
-If set to true, this format will not appear in ExportMenu.
-
-
-        imageFormat        
-        #
-      
-
-
-                          Type "png" | "jpg"                      
-Default "png"
-
-Image format to use for printing.
-
-
-        maintainPixelRatio        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IExportingImageOptions
-Export images with hardware resolution (false), or the way they appear on screen (true).
 
 ## Inheritance
 
 Extends: IExportingImageOptions
+All ancestors: IExportingImageOptions, IExportingFormatOptions
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IExportingImageOptions (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Options
 
-## Properties
+- **delay** (`number`) — default `500` — With `"iframe"` printing, how long in milliseconds to wait before opening the print dialog, so the image is ready. With `"css"`, how long the page stays hidden for printing.
+- **printMethod** (`"css" | "iframe"`) — default `"iframe"` — How to print. If one doesn't work in your setup, try the other. • `"iframe"`: prints the image from a hidden `<iframe>`. • `"css"`: hides the rest of the page with CSS while it prints.
+- **imageFormat** (`"png" | "jpg"`) — default `"png"` — Image format to print.
 
-- **delay** (`undefined | number`) — Default 500 A delay in milliseconds to wait before initiating print. This delay is necessary to ensure DOM is prepared and repainted before print dialog kicks in.
-- **imageFormat** (`"png" | "jpg"`) — Default "png" Image format to use for printing.
-- **printMethod** (`"css" | "iframe"`) — Default "iframe" Method to use for printing. If one fails for your particular setup, try the other. "css" - inserts dynamic CSS that hides everything, except the image being printed. "iframe" - creates a dynamic <iframe> with the image, then prints it.
+## Other inherited options
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IExportingImageOptions")`) for types, defaults and descriptions.
+
+- _IExportingImageOptions_: maintainPixelRatio, maxHeight, maxWidth, minHeight, minWidth, quality
+- _IExportingFormatOptions_: disabled

@@ -2,118 +2,24 @@
 title: "IPictorialStackedSeriesDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipictorialstackedseriesdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IPictorialStackedSeriesDataItem extends IPyramidSeriesDataItem.
-IPictorialStackedSeriesDataItem is not extended by any other symbol.
-Properties
-
-
-        category        
-        #
-      
-
-
-                          Type string                      
-Inherited from IPercentSeriesDataItem
-Category.
-
-
-        customValue        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChange        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePrevious        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangePreviousPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelection        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueChangeSelectionPercent        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        customValueWorking        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from ISeriesDataItem
-
-
-        fill        
-        #
-      
-
-
-                          Type Color                      
-Inherited from IPercentSeriesDataItem
-Fill color used for the slice and related elements, e.g. legend marker.
-
-
-        fillPattern        
-        #
-      
-
-
-                          Type Pattern                      
-Inherited from IPercentSeriesDataItem
-Pattern used for the slice and related elements, e.g. legend marker.
 
 ## Inheritance
 
 Extends: IPyramidSeriesDataItem
+All ancestors: IPyramidSeriesDataItem, IFunnelSeriesDataItem, IPercentSeriesDataItem, ISeriesDataItem, IComponentDataItem
+TypeScript: `am5percent.IPictorialStackedSeriesDataItem` (`import type { IPictorialStackedSeriesDataItem } from "@amcharts/amcharts5/percent"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IPyramidSeriesDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
+
+_(none declared here — all inherited)_
+
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IFunnelSeriesDataItem")`) for types, defaults and descriptions.
+
+- _IFunnelSeriesDataItem_: index, link, slice
+- _IPercentSeriesDataItem_: category, fill, fillPattern, label, legendDataItem, tick, valuePercentTotal
+- _ISeriesDataItem_: customValue, customValueChange, customValueChangePercent, customValueChangePrevious, customValueChangePreviousPercent, customValueChangeSelection, customValueChangeSelectionPercent, customValueWorking, id, url, value, valueChange, valueChangePercent, valueChangePrevious, valueChangePreviousPercent, valueChangeSelection, valueChangeSelectionPercent, valueWorking, valueWorkingClose, valueWorkingOpen
+- _IComponentDataItem_: visible

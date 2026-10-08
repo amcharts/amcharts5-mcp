@@ -2,29 +2,33 @@
 title: "AccumulationDistribution"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/accumulationdistribution/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Accumulation/Distribution indicator: a running total of where each close is within its high-low range, weighted by volume. Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import AccumulationDistribution
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.AccumulationDistribution.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: ChartIndicator
+Extends: ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from ChartIndicator (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **useVolume** (`undefined | false | true`) — Use volume series (if set)?
-- **volumeSeries** (`XYSeries`) — Main volume series of the StockChart.
+- Settings: `IAccumulationDistributionSettings` — get_api_reference shows it after this page
+- Private settings: `IAccumulationDistributionPrivate`
+- Events: `IAccumulationDistributionEvents`
 
 ## Properties
 
-- **series** (`LineSeries`) — Indicator series.
+Public properties (not settings):
+
+- **series** (`LineSeries`) — The indicator's series.

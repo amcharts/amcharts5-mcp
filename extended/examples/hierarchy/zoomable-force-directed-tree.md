@@ -2,10 +2,24 @@
 title: "Zoomable Force Directed Tree"
 source: "https://www.amcharts.com/demos/zoomable-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This chart is added to a Zoomable Container, so you can pan, zoom-in and zoom-out this chart using mouse wheel, pinch-zoom or zoom tools on the bottom-right.
+A force-directed tree lays out a hierarchy as linked bubbles that push apart until they settle. This one holds the coffee flavor wheel, 85 flavors in nine families, in a view you can zoom and pan.
+
+When to zoom a force-directed tree: A big tree squeezed into one view turns into a cloud of dots. Zooming lets the whole structure stay on screen while people move in on one branch to read its names, which suits taxonomies and catalogs with a hundred items or more.
+
+Good for:
+- Taxonomies: flavors, species, skills
+- Product catalogs with many small items
+- Exploring a structure rather than reading numbers
+
+Think twice when:
+- Exact values: a treemap or bar chart is easier to read
+- A strict top-down order: use a tree chart
+- Printed pages, where nobody can zoom
+
+Prompt: Create a zoomable force-directed tree of the coffee flavor wheel, with the flavor families, their subgroups and about 85 flavors as linked colored circles. The chart can be zoomed and panned, and clicking a node folds or unfolds its branch. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -17,14 +31,15 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 var data = {
   value: 0,
   children: [
     {
-      name: "Flora",
+      name: "Floral",
       children: [
         {
           name: "Black Tea",
@@ -179,7 +194,7 @@ var data = {
           ]
         },
         {
-          name: "Alcohol/Fremented",
+          name: "Alcohol/Fermented",
           children: [
             {
               name: "Winey",
@@ -190,7 +205,7 @@ var data = {
               value: 1
             },
             {
-              name: "Fremented",
+              name: "Fermented",
               value: 1
             },
             {
@@ -493,46 +508,60 @@ var data = {
 
 var chart = root.container.children.push(
   am5.SerialChartContainer.new(root, {
-    width: am5.p100,
+    width: am5.p100, // the container fills the whole chart div
     height: am5.p100
   })
 );
 
 chart.zoomableContainer.setAll({
-  wheelable: true,
-  pinchZoom: true
+  wheelable: true, // the mouse wheel zooms in on the tree
+  pinchZoom: true  // and so does pinching on a touch screen
 });
 
-var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // zoom in, zoom out and reset buttons
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
   maskContent:false, //!important with zoomable containers
-  singleBranchOnly: false,
-  downDepth: 2,
+  singleBranchOnly: false, // opening one branch leaves the others open
+  downDepth: 2,            // a click on a node opens two levels below it
+  // leave out the nameless top node: the flavor groups start the tree
   topDepth: 1,
-  initialDepth: 3,
+  initialDepth: 3, // three levels on load, from the flavor groups down
   valueField: "value",
   categoryField: "name",
   childDataField: "children",
   idField: "name",
   linkWithField: "linkWith",
+  // nodes push each other apart less and are pulled to the center harder than by default
   manyBodyStrength: -10,
   centerStrength: 0.8
 }));
 
 series.get("colors").setAll({
-  step: 2
+  step: 2 // every second color of the set, so neighbors differ more
 });
 
-series.links.template.set("strength", 0.5);
+series.links.template.set("strength", 0.5); // links hold their nodes more loosely than the default 0.9
+// names shrink as far as needed to fit their circle instead of hiding
 series.labels.template.set("minScale", 0);
+
+// A soft shadow under each circle
+series.circles.template.setAll({
+  shadowColor: am5.color(0x000000), // a black shadow...
+  shadowOpacity: 0.3,               // ...at 30%...
+  shadowBlur: 6,                    // ...blurred 6px...
+  shadowOffsetX: 2,                 // ...and moved 2px right and down
+  shadowOffsetY: 2
+});
+
+// Every flavor counts as 1, so the tooltip shows just the name
+series.nodes.template.set("tooltipText", "{category}");
 
 series.data.setAll([data]);
 
-series.set("selectedDataItem", series.dataItems[0]);
-
+series.set("selectedDataItem", series.dataItems[0]); // start at the top node, so the whole tree shows
 
 // Make stuff animate on load
 series.appear(1000, 100);
@@ -549,8 +578,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  max-width: 100%;
-  height: 550px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -559,3 +588,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

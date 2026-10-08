@@ -2,18 +2,21 @@
 title: "IExportingMenuItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iexportingmenuitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **callback** (`undefined | ( menuItem: any) => any`) — If type is set to "custom", this needs to be set to a function.
-- **callbackTarget** (`any`) — A target for callback function.
-- **element** (`HTMLAnchorElement`) — A DOM element for the menu item. @readonly
-- **exportType** (`ExportingTypes`) — Indicates export type: "image", "data", or "print".
-- **format** (`ExportingFormats`) — If type is set to "format", clicking item will initiate export in that format.
-- **label** (`undefined | string`) — Menu label.
-- **sublabel** (`undefined | string`) — Additional information.
-
+- **type** (`"separator" | "format" | "custom"`) — Type of the item: • `"format"`: exports in `format` when clicked. • `"separator"`: a divider, with `label` as a heading if set. • `"custom"`: calls `callback` when clicked.
+- **format** (`ExportingFormats`) — Format to export in, for a `"format"` item. `"print"` prints the chart.
+- **exportType** (`ExportingTypes`) — Export type of the item: `"image"`, `"data"` or `"print"`. An item whose type is not available, such as `"data"` without data, is left out.
+- **label** (`string`) — Text of the item.
+- **sublabel** (`string`) — Smaller text after the label, such as `"Image"`.
+- **callback** (`(menuItem?: any) => any`) — Function to call when a `"custom"` item is clicked.
+- **callbackTarget** (`any`) — `this` inside `callback`; the menu if not set.
+- **element** (`HTMLAnchorElement`) — The item's DOM element.

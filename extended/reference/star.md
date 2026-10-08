@@ -2,26 +2,26 @@
 title: "Star"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/star/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Draws a Star.
+Draws a star centered on its `x` and `y`, with a spike pointing up.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
 
 ## Import
 
-```javascript
-// Import Star
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Star.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Graphics
+Extends: Graphics → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Graphics (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **innerRadius** (`number | Percent`) — Star's inner radius in pixels.
-- **radius** (`undefined | number`) — Star's radius in pixels.
-- **spikes** (`undefined | number`) — Number of spikes
+- Settings: `IStarSettings` — get_api_reference shows it after this page
+- Private settings: `IStarPrivate`

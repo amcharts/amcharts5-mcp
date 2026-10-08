@@ -2,120 +2,25 @@
 title: "ISettingsModalSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/isettingsmodalsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ISettingsModalSettings extends IModalSettings.
-ISettingsModalSettings is not extended by any other symbol.
-Properties
-
-
-        content        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IModalSettings
-HTML content of the modal.
-
-
-        deactivateRoot        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-Inherited from IModalSettings
-When modal is open, all interactions for the underlying chart will be disabled.
-@since 5.2.11
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        showResetLink        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default true
-Show the "Reset to default" link?
-@since 5.9.0
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stockChart        
-        #
-      
-
-
-                          Type StockChart                      
-A target StockChart.
-
-
-        strokeWidths        
-        #
-      
-
-
-                          Type number[]                      
-Default [1,
- 2,
- 4,
- 10]
-Available line widths for user to choose from.
-@since 5.11.2
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IModalSettings
+All ancestors: IModalSettings, IEntitySettings
+Settings of: `am5stock.SettingsModal` (see its page for the class)
+TypeScript: `am5stock.ISettingsModalSettings` (`import type { ISettingsModalSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IModalSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **stockChart** (`StockChart`) — The `StockChart` the modal belongs to.
+- **showResetLink** (`boolean`) — default `true` — Shows a "Reset to default" link, which puts back the values the fields had when the modal was first opened for that indicator or series. _Since 5.9.0._
+- **strokeWidths** (`number[]`) — default `[1, 2, 4, 10]` — Line widths to choose from when editing a line series. _Since 5.11.2._
 
-- **showResetLink** (`undefined | false | true`) — Default true Show the "Reset to default" link? @since 5.9.0
-- **stockChart** (`StockChart`) — A target StockChart.
-- **strokeWidths** (`number[]`) — Default [1, 2, 4, 10] Available line widths for user to choose from. @since 5.11.2
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IModalSettings")`) for types, defaults and descriptions.
+
+- _IModalSettings_: ariaLabel, content, deactivateRoot
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

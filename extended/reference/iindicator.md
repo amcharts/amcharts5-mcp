@@ -2,13 +2,16 @@
 title: "IIndicator"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iindicator/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Inheritance
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **callback** (`() => Indicator`) — (no description)
-- **id** (`string`) — (no description)
-
+- **id** (`string`) — ID of the indicator in the list.
+- **name** (`string`) — Name shown in the list.
+- **callback** (`() => Indicator`) — Creates and returns the indicator when it is picked.

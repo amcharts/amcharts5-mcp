@@ -2,20 +2,25 @@
 title: "Slider"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/slider/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A control that allows zooming chart's axes, or other uses requiring range selection.
+A slider with a single grip, for picking one value from `0` to `1`, which it keeps in `start`.
 
 ## Import
 
-```javascript
-// Import Slider
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Slider.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Scrollbar
+Extends: Scrollbar → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Scrollbar (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ISliderSettings` — get_api_reference shows it after this page
+- Private settings: `ISliderPrivate`
+- Events: `ISliderEvents`

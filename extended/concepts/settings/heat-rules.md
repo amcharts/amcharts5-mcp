@@ -246,6 +246,8 @@ series.set("heatRules", \[{
 
 NOTE If we set `minValue` and `maxValue` we don't need series to aggregate values, so the `calculateAggregates` does not need to be set.
 
+NOTE Before 5.21.0, `minValue: 0` and `maxValue: 0` were ignored, and the series' lowest or highest value was used instead. Since 5.21.0 a `0` is used like any other value.
+
 ## Custom functions
 
 If we need to do something fancier than just set value of a setting, we can use heat rule's `customFunction` property.

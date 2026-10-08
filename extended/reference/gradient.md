@@ -2,26 +2,25 @@
 title: "Gradient"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/gradient/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Base class for gradients.
 
+Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+
 ## Import
 
-```javascript
-// Import Gradient
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 Extended by: LinearGradient, RadialGradient
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **stops** (`Array`) — A list of color steps for the gradient. Click here for more info
-- **target** (`Sprite`) — Gradient target.
+- Settings: `IGradientSettings` — get_api_reference shows it after this page
+- Private settings: `IGradientPrivate`

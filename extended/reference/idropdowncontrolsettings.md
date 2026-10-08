@@ -2,164 +2,25 @@
 title: "IDropdownControlSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdowncontrolsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IDropdownControlSettings extends IStockControlSettings.
-IDropdownControlSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IStockControlSettings
-Indicates if control is active.
-
-
-        align        
-        #
-      
-
-
-                          Type "left" | "right"                      
-Default "left"
-
-Inherited from IStockControlSettings
-Alignment of the control in a toolbar.
-
-
-        description        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Description of what the button does.
-
-
-        fixedLabel        
-        #
-      
-
-
-                          Type undefined | false | true                      
-
-
-        forceHidden        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from IStockControlSettings
-Force this control to always be invisible.
-@since 5.8.5
-@defaul false
-
-
-        html        
-        #
-      
-
-
-                          Type undefined | string                      
-
-
-        icon        
-        #
-      
-
-
-                          Type HTMLElement | SVGElement | "none"                      
-Inherited from IStockControlSettings
-An element with control icon. If not set, each control will aytomatically create an icon.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        name        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IStockControlSettings
-Name of the control. Used for the label.
-
-
-        scrollable        
-        #
-      
-
-
-                          Type undefined | false | true                      
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        stockChart        
-        #
-      
-
-
-                          Type StockChart                      
-Inherited from IStockControlSettings
-A StockChart the toolbar is for.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IStockControlSettings
+All ancestors: IStockControlSettings, IEntitySettings
+Settings of: `am5stock.DropdownControl` (see its page for the class)
+TypeScript: `am5stock.IDropdownControlSettings` (`import type { IDropdownControlSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **fixedLabel** (`boolean`) — Not used by this control.
+- **scrollable** (`boolean`) — default `false` _(code fallback)_ — Limits the dropdown's height to the chart's height minus 100 pixels, scrolling the rest.
+- **html** (`string`) — default `""` _(code fallback)_ — HTML content of the dropdown.
 
-- **fixedLabel** (`undefined | false | true`) — (no description)
-- **html** (`undefined | string`) — (no description)
-- **scrollable** (`undefined | false | true`) — (no description)
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlSettings")`) for types, defaults and descriptions.
+
+- _IStockControlSettings_: active, align, description, forceHidden, icon, name, stockChart, togglable, visible
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -1,7 +1,7 @@
 ---
 title: "Map line series"
 source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 Map line series are used to plot projected lines on the map.
@@ -77,9 +77,83 @@ var lineSeries = chart.series.push(
   })
 );
 
+
 `lineType: "curved"` (default)
 
+
 `lineType: "straight"`
+
+### Altitude
+
+Lines can be raised above the ground, so they arc like a flight path or a trajectory. The `altitude` setting of a line sets how high, in metres, each leg of the line (from one point to the next) rises in its middle. Each leg lands on its points at both ends.
+
+lineSeries.mapLines.template.setAll({
+  altitude: 800000
+});
+
+lineSeries.mapLines.template.setAll({
+  altitude: 800000
+});
+
+For scale: `400000` is about the height of the International Space Station. On a globe, lines rise away from its surface. On flat maps they rise up the screen.
+
+Once `altitude` is set (even to `0`), the ends of each leg are placed at the height of the points they connect: the [altitude](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/#Altitude) of points in `pointsToConnect`, or the third value of the coordinates in `geometry` (in metres, as in GeoJSON). Lines without `altitude` stay on the ground, whatever their coordinates hold.
+
+To give each line its own height, set it via data using [template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/):
+
+lineSeries.mapLines.template.set("templateField", "lineSettings");
+
+lineSeries.data.setAll(\[{
+  geometry: {
+    type: "LineString",
+    coordinates: \[
+      \[ -73.778137, 40.641312 \],
+      \[ -0.454296, 51.470020 \]
+    \]
+  },
+  lineSettings: {
+    altitude: 500000
+  }
+}, {
+  geometry: {
+    type: "LineString",
+    coordinates: \[
+      \[ -0.454296, 51.470020 \],
+      \[ 116.597504, 40.072498 \]
+    \]
+  },
+  lineSettings: {
+    altitude: 1200000
+  }
+}\]);
+
+lineSeries.mapLines.template.set("templateField", "lineSettings");
+
+lineSeries.data.setAll(\[{
+  geometry: {
+    type: "LineString",
+    coordinates: \[
+      \[ -73.778137, 40.641312 \],
+      \[ -0.454296, 51.470020 \]
+    \]
+  },
+  lineSettings: {
+    altitude: 500000
+  }
+}, {
+  geometry: {
+    type: "LineString",
+    coordinates: \[
+      \[ -0.454296, 51.470020 \],
+      \[ 116.597504, 40.072498 \]
+    \]
+  },
+  lineSettings: {
+    altitude: 1200000
+  }
+}\]);
+
+NOTE`altitude` is available since version 5.21.0. It has no effect on lines with `lineType: "straight"`.
 
 ## Data
 
@@ -367,6 +441,8 @@ If set to `true`, point bullet will be automatically rotated to the angle of the
 
 If set, this will be added to the angle calculated by `autoRotate`. Can be used to reverse the direction.
 
+If the line has an [altitude](#Altitude), the point rides along the arc at the line's height.
+
 The below example uses above code, albeit with the slightly more sophisticated image as a point bullet:
 
 ### Points on a line via data (5.20.6)
@@ -440,7 +516,7 @@ NOTE This matters when the chart is [serialized](https://www.amcharts.com/docs/v
 
 #### Animating a point along a line (5.20.8)
 
-To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization.
+To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
 
 ```javascript
 var planeSeries = chart.series.push(

@@ -1,7 +1,7 @@
 ---
 title: "Events"
 source: "https://www.amcharts.com/docs/v5/concepts/events/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
 ---
@@ -22,7 +22,11 @@ columnSeries.columns.template.events.on("click", function(ev) {
   console.log("Clicked on a column", ev.target);
 });
 
-Or, if we want the event to execute only once, we can use `once()` instead:
+### Executing a handler only once
+
+Sometimes we need a handler to run only the first time an event happens - reacting to the very first click, or waiting for something to become ready. For that we use `once()` instead of `on()`.
+
+It works exactly like `on()`, except the handler is automatically removed right after it is invoked for the first time:
 
 columnSeries.columns.template.events.once("click", function(ev) {
   console.log("Clicked on a column", ev.target);
@@ -31,6 +35,8 @@ columnSeries.columns.template.events.once("click", function(ev) {
 columnSeries.columns.template.events.once("click", function(ev) {
   console.log("Clicked on a column", ev.target);
 });
+
+Like `on()`, `once()` returns a disposer, so we can still remove the handler manually before it ever fires.
 
 ### Removing a handler
 
@@ -166,19 +172,45 @@ xAxis.onPrivate("selectionMax", function(value, target) {
   console.log("End date changed:", end);
 });
 
-### One-shot handlers (5.20.4)
+### Executing only once
 
-`once(key, callback)` works like `on()` but fires only the first time that setting changes (or is set), then removes itself. `onceDebounced(key, callback, delay)` is the debounced version. Both return an `IDisposer`.
+Starting with version `5.20.4`, we can invoke a settings-change handler only once, using the `once()` method. It works just like `on()`, but removes itself after the setting changes for the first time:
 
 series.once("visible", function(visible, target) {
-  console.log("First visibility change", visible);
+  console.log("Series visibility changed for the first time:", visible, target);
 });
 
-xAxis.onceDebounced("start", function(start) {
-  console.log("Zoom settled at", start);
-}, 300);
+series.once("visible", function(visible, target) {
+  console.log("Series visibility changed for the first time:", visible, target);
+});
 
-(Do not confuse with `events.once("eventName", …)`, which has existed for regular events all along.)
+`once()` returns a disposer, so the handler can also be removed manually before it fires.
+
+### Debounced settings changes
+
+Starting with version `5.17.3`, settings-change handlers can be debounced, too - so that the handler is invoked only once after a burst of rapid changes settles. This works similarly to [debounced events](#Debounced_events): instead of `on()`, we use `onDebounced()`, passing a timeout in milliseconds as the third parameter:
+
+xAxis.onDebounced("start", function(value, target) {
+  // Runs 500ms after the zoom stops changing
+  console.log("Zoom settled at:", value, target);
+}, 500);
+
+xAxis.onDebounced("start", function(value, target) {
+  // Runs 500ms after the zoom stops changing
+  console.log("Zoom settled at:", value, target);
+}, 500);
+
+Starting with version `5.20.4`, we can combine both behaviors with `onceDebounced()` - a debounced handler that fires only once, then removes itself:
+
+series.onceDebounced("visible", function(visible, target) {
+  console.log("Series visibility settled once:", visible, target);
+}, 500);
+
+series.onceDebounced("visible", function(visible, target) {
+  console.log("Series visibility settled once:", visible, target);
+}, 500);
+
+(Do not confuse settings-change `once()` with `events.once("eventName", …)`, which has existed for regular events all along.)
 
 ### Removing
 

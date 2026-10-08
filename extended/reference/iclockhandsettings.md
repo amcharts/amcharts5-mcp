@@ -2,77 +2,28 @@
 title: "IClockHandSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iclockhandsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IClockHandSettings extends IContainerSettings.
-IClockHandSettings is not extended by any other symbol.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IContainerSettings
+All ancestors: IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5radar.ClockHand` (see its page for the class)
+TypeScript: `am5radar.IClockHandSettings` (`import type { IClockHandSettings } from "@amcharts/amcharts5/radar"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IContainerSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **topWidth** (`number`) — default `1` _(theme)_ — Width of the hand's tip in pixels.
+- **bottomWidth** (`number`) — default `10` _(theme)_ — Width of the hand's base in pixels.
+- **radius** (`number | Percent`) — default `am5.percent(90)` _(theme)_ — Distance from the center to the hand's tip, in pixels or as a percent of the chart's radius. A negative value is measured in from the chart's radius.
+- **innerRadius** (`number | Percent`) — default `0` — Distance from the center to the hand's base, in pixels or as a percent of the chart's radius. A negative number of pixels is measured back from the tip.
+- **pinRadius** (`number | Percent`) — default `10` _(theme)_ — Radius of the pin, the circle at the center, in pixels or as a percent of the chart's radius.
 
-- **bottomWidth** (`undefined | number`) — Default 10 A width of the base of the clock hand, in pixels.
-- **innerRadius** (`number | Percent`) — Default 0 Inner radius of the hand, in pixels, or percent (relative to the axis radius). If set to negative number, will mean number of pixels inwards from the axis.
-- **pinRadius** (`number | Percent`) — Default 10 Radius of the hand pin (circle at the base of the hand), in pixels, or in percent (relative to the axis radius.)
-- **radius** (`number | Percent`) — Default 90% Radius of the hand, in pixels, or percent (relative to the axis radius). If set to negative number, will mean number of pixels inwards from the axis.
-- **topWidth** (`undefined | number`) — Default 1 A width of the tip of the clock hand, in pixels.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
+
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

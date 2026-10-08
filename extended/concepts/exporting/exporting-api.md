@@ -1,7 +1,7 @@
 ---
 title: "Exporting API"
 source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-api/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 All export operations are accessible not only via export menu, but also via plugin API.
@@ -64,6 +64,8 @@ exporting.export("png").then(function(imgData) {
   document.getElementById("myImage").src = imgData;
 });
 
+The same works for SVG: use `export("svg")` or `exportSVG()`.
+
 
 ## Raw data
 
@@ -78,6 +80,18 @@ exporting.getCSV().then(function(csvData) {
 exporting.getCSV().then(function(csvData) {
   document.getElementById("myData").innerHTML = csvData;
 });
+
+`getSVG()` returns the chart as SVG markup, which can be placed straight into the page:
+
+exporting.getSVG().then(function(svg) {
+  document.getElementById("mySnapshot").innerHTML = svg;
+});
+
+exporting.getSVG().then(function(svg) {
+  document.getElementById("mySnapshot").innerHTML = svg;
+});
+
+MORE INFOFor SVG options, and exporting SVG without the plugin, see "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)".
 
 
 ## Data as an HTML table

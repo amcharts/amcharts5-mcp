@@ -1,16 +1,25 @@
 ---
-title: "World Map With Clustered Points"
+title: "World Map with Clustered Points"
 source: "https://www.amcharts.com/demos/world-map-with-clustered-points/"
 category: "maps"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A map with a lot of markers can appear cluttered. It's also not easy to use and make a sense of.
-amCharts 5 has a built-in way to dynamically cluster points (bullets/markers) into groups, effectively solving the issue.
-Related documentation
-Clustered pointer series
-Map point series
-Map chart
+The capitals of 165 countries on a world map. Where the dots crowd, they merge into groups with a count, and the groups break up into single cities as you zoom in.
+
+When to cluster points: Hundreds of markers turn into a blot where places sit close together. A clustered point series groups the markers that are closer than a set distance on screen, shows how many each group holds, and splits the groups again as the map zooms in. Readers see the overall pattern first and the single places when they look closer.
+
+Good for:
+- Stores, offices or events around the world
+- Customer or user locations
+- Many points crowded into a few areas
+
+Think twice when:
+- A value for each place: sized bubbles show it, counts don't
+- Density over a region: color the regions instead
+- A few dozen points: plain markers are clearer
+
+Prompt: Create a world map of the capital cities as points that cluster: points close together merge into a group showing their count, and clicking a group zooms in until it breaks up into single cities, each with its name in a tooltip. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -22,79 +31,135 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
+
+// Colors from the theme, so the map follows the theme
+var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
 // https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
-    panX: "rotateX",
-    panY: "translateY",
+    // near-black space behind the satellite picture, shown only with it
+    background: am5.Rectangle.new(root, {
+      fill: am5.color(0x101318),
+      fillOpacity: 0 // invisible until the satellite view turns it on
+    }),
+    minZoomLevel: 0.5, // the map can zoom out to half its fitted size
+    // go to the home view once the map is fitted
+    autoHome: true,
+    panX: "rotateX",    // drag sideways to turn the world around...
+    panY: "translateY", // ...and up and down to move it
+    // hold Shift and drag to zoom into the area you draw
     boxZoom: "shift",
-    projection: am5map.geoMercator(),
+    projection: am5map.geoEqualEarth(), // equal-area: countries keep their true relative size
   })
 );
 
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-zoomControl.homeButton.set("visible", true);
+zoomControl.homeButton.set("visible", true); // a button that goes back to the home view
 
+// Create series for the water: a faint fill behind the countries
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  // the map fits the countries, not this rectangle around the whole world
+  affectsBounds: false
+}));
+
+waterSeries.mapPolygons.template.setAll({
+  fill: root.interfaceColors.get("alternativeBackground"), // the theme's contrast color...
+  fillOpacity: 0.05, // ...at 5%, a faint tint
+  strokeOpacity: 0 // no outline
+});
+
+waterSeries.data.push({
+  geometry: am5map.getGeoRectangle(90, 180, -90, -180) // north, east, south and west edges: the whole world
+});
+
+// Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
+// (visible: false): make it visible for the satellite view
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
+  visible: false,
+  // the map fits the countries, not the whole picture
+  affectsBounds: false
+}));
+
+// Create graticule series: grid lines every 10 degrees
+// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
+  step: 10
+}));
+
+graticuleSeries.mapLines.template.setAll({
+  stroke: root.interfaceColors.get("alternativeBackground"), // the theme's contrast color...
+  strokeOpacity: 0.08 // ...very faint
+});
 
 // Create main polygon series for countries
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata_worldLow,
-    exclude: ["AQ"]
+    geoJSON: am5geodata_worldLow // the world's countries, in low detail
   })
 );
 
+// Light gray countries, a little darker than the background in dark mode too
 polygonSeries.mapPolygons.template.setAll({
-  fill:am5.color(0xdadada)
+  fill: root.interfaceColors.get("alternativeBackground"),
+  fillOpacity: 0.15
 });
 
-
 // Create point series for markers
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/
+// cities close together on screen merge into one group, which splits up as the map zooms in
 var pointSeries = chart.series.push(am5map.ClusteredPointSeries.new(root, {}));
 
+// All the circles share a template, so a change to it reaches every point.
+// The circles of a group set a radius of their own; single points take the
+// template's.
+var circleTemplate = am5.Template.new({
+  fill: colors.getIndex(10), // the theme's 11th color
+  radius: 6
+});
 
 // Set clustered bullet
 // https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Group_bullet
 pointSeries.set("clusteredBullet", function(root) {
   var container = am5.Container.new(root, {
-    cursorOverStyle:"pointer"
+    cursorOverStyle: "pointer" // a hand cursor: a group can be clicked
   });
 
+  // a solid dot inside two faint rings, with the group's number of cities on top
   var circle1 = container.children.push(am5.Circle.new(root, {
-    radius: 8,
-    tooltipY: 0,
-    fill: am5.color(0xff8c00)
-  }));
+    radius: 8, // the solid dot...
+    tooltipY: 0
+  }, circleTemplate));
 
   var circle2 = container.children.push(am5.Circle.new(root, {
-    radius: 12,
+    radius: 12, // ...a faint ring around it...
     fillOpacity: 0.3,
-    tooltipY: 0,
-    fill: am5.color(0xff8c00)
-  }));
+    tooltipY: 0
+  }, circleTemplate));
 
   var circle3 = container.children.push(am5.Circle.new(root, {
-    radius: 16,
+    radius: 16, // ...and a wider one
     fillOpacity: 0.3,
-    tooltipY: 0,
-    fill: am5.color(0xff8c00)
-  }));
+    tooltipY: 0
+  }, circleTemplate));
 
   var label = container.children.push(am5.Label.new(root, {
-    centerX: am5.p50,
+    centerX: am5.p50, // centered on the dot
     centerY: am5.p50,
-    fill: am5.color(0xffffff),
+    fill: am5.color(0xffffff), // white text
     populateText: true,
-    fontSize: "8",
-    text: "{value}"
+    fontSize: "8",  // 8px
+    text: "{value}" // the number of cities in the group
   }));
 
+  // clicking a group zooms in to the cities in it
   container.events.on("click", function(e) {
     pointSeries.zoomToCluster(e.target.dataItem);
   });
@@ -107,17 +172,14 @@ pointSeries.set("clusteredBullet", function(root) {
 // Create regular bullets
 pointSeries.bullets.push(function() {
   var circle = am5.Circle.new(root, {
-    radius: 6,
-    tooltipY: 0,
-    fill: am5.color(0xff8c00),
-    tooltipText: "{title}"
-  });
+    tooltipY: 0,           // the tooltip points at the top of the dot
+    tooltipText: "{title}" // the city's name
+  }, circleTemplate);
 
   return am5.Bullet.new(root, {
     sprite: circle
   });
 });
-
 
 // Set data
 var cities = [
@@ -161,7 +223,7 @@ var cities = [
   { title: "Madrid", latitude: 40.4167, longitude: -3.7033 },
   { title: "Stockholm", latitude: 59.3328, longitude: 18.0645 },
   { title: "Bern", latitude: 46.948, longitude: 7.4481 },
-  { title: "Kiev", latitude: 50.4422, longitude: 30.5367 },
+  { title: "Kyiv", latitude: 50.4422, longitude: 30.5367 },
   { title: "London", latitude: 51.5002, longitude: -0.1262 },
   { title: "Gibraltar", latitude: 36.1377, longitude: -5.3453 },
   { title: "Saint Peter Port", latitude: 49.466, longitude: -2.5522 },
@@ -176,12 +238,12 @@ var cities = [
   { title: "Thimphu", latitude: 27.4405, longitude: 89.673 },
   { title: "Bandar Seri Begawan", latitude: 4.9431, longitude: 114.9425 },
   { title: "Phnom Penh", latitude: 11.5434, longitude: 104.8984 },
-  { title: "Peking", latitude: 39.9056, longitude: 116.3958 },
+  { title: "Beijing", latitude: 39.9056, longitude: 116.3958 },
   { title: "Nicosia", latitude: 35.1676, longitude: 33.3736 },
-  { title: "T'bilisi", latitude: 41.701, longitude: 44.793 },
+  { title: "Tbilisi", latitude: 41.701, longitude: 44.793 },
   { title: "New Delhi", latitude: 28.6353, longitude: 77.225 },
   { title: "Jakarta", latitude: -6.1862, longitude: 106.8063 },
-  { title: "Teheran", latitude: 35.7061, longitude: 51.4358 },
+  { title: "Tehran", latitude: 35.7061, longitude: 51.4358 },
   { title: "Baghdad", latitude: 33.3157, longitude: 44.3922 },
   { title: "Jerusalem", latitude: 31.76, longitude: 35.17 },
   { title: "Tokyo", latitude: 35.6785, longitude: 139.6823 },
@@ -192,8 +254,8 @@ var cities = [
   { title: "Vientiane", latitude: 17.9689, longitude: 102.6137 },
   { title: "Beyrouth / Beirut", latitude: 33.8872, longitude: 35.5134 },
   { title: "Kuala Lumpur", latitude: 3.1502, longitude: 101.7077 },
-  { title: "Ulan Bator", latitude: 47.9138, longitude: 106.922 },
-  { title: "Pyinmana", latitude: 19.7378, longitude: 96.2083 },
+  { title: "Ulaanbaatar", latitude: 47.9138, longitude: 106.922 },
+  { title: "Naypyidaw", latitude: 19.7378, longitude: 96.2083 },
   { title: "Kathmandu", latitude: 27.7058, longitude: 85.3157 },
   { title: "Muscat", latitude: 23.6086, longitude: 58.5922 },
   { title: "Islamabad", latitude: 33.6751, longitude: 73.0946 },
@@ -241,7 +303,7 @@ var cities = [
   { title: "Caracas", latitude: 10.4961, longitude: -66.8983 },
   { title: "Oranjestad", latitude: 12.5246, longitude: -70.0265 },
   { title: "Cayenne", latitude: 4.9346, longitude: -52.3303 },
-  { title: "Plymouth", latitude: 16.6802, longitude: -62.2014 },
+  { title: "Brades", latitude: 16.6802, longitude: -62.2014 },
   { title: "San Juan", latitude: 18.45, longitude: -66.0667 },
   { title: "Algiers", latitude: 36.7755, longitude: 3.0597 },
   { title: "Luanda", latitude: -8.8159, longitude: 13.2306 },
@@ -288,17 +350,52 @@ var cities = [
   { title: "Tunis", latitude: 36.8117, longitude: 10.1761 }
 ];
 
+// add every city as a point
 for (var i = 0; i < cities.length; i++) {
   var city = cities[i];
   addCity(city.longitude, city.latitude, city.title);
 }
 
+// a point's geometry is GeoJSON: coordinates are [longitude, latitude]
 function addCity(longitude, latitude, title) {
   pointSeries.data.push({
     geometry: { type: "Point", coordinates: [longitude, latitude] },
     title: title
   });
 }
+
+// The image credit
+var credit = chart.children.push(am5.Label.new(root, {
+  text: "Imagery: NASA Earth Observatory",
+  fontSize: 12,              // in pixels
+  fill: am5.color(0xffffff), // white, over the dark satellite picture
+  fillOpacity: 0.6,          // slightly faded
+  x: am5.p100,               // at the right edge...
+  centerX: am5.p100,
+  dx: -10,       // ...10px in from it
+  y: 10,         // 10px from the top
+  visible: false // shown only with the satellite view
+}));
+
+// The countries' own look, to go back to
+var landTemplate = polygonSeries.mapPolygons.template;
+var landLook = {
+  fillOpacity: landTemplate.get("fillOpacity", 1),
+  stroke: landTemplate.get("stroke", root.interfaceColors.get("background")),
+  strokeOpacity: landTemplate.get("strokeOpacity", 1)
+};
+
+// The picture loads the first time it shows. Then the countries turn to white outlines over it, the grid lines
+// turn white, the credit shows and the map sits in near-black space
+satelliteSeries.on("visible", function(visible) {
+  if (visible) {
+    satelliteSeries.set("src", "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg");
+  }
+  credit.set("visible", visible);
+  chart.get("background").set("fillOpacity", visible ? 1 : 0);
+  landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
+  graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);
@@ -315,7 +412,8 @@ chart.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 550px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -325,3 +423,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,34 +2,38 @@
 title: "IDrawingControlPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idrawingcontrolprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IStockControlPrivate
+All ancestors: IStockControlPrivate, IEntityPrivate
+TypeScript: `am5stock.IDrawingControlPrivate` (`import type { IDrawingControlPrivate } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IStockControlPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
+- **toolsContainer** (`HTMLDivElement`)
+- **toolControl** (`DrawingToolControl`)
+- **eraserControl** (`StockControl`)
+- **selectControl** (`StockControl`) — The control that turns drawing selection on and off. _Since 5.9.1._
+- **clearControl** (`StockControl`)
+- **strokeControl** (`ColorControl`)
+- **strokeWidthControl** (`DropdownListControl`)
+- **strokeDasharrayControl** (`DropdownListControl`)
+- **fillControl** (`ColorControl`)
+- **extensionControl** (`StockControl`)
+- **labelFillControl** (`ColorControl`)
+- **labelFontSizeControl** (`DropdownListControl`)
+- **labelFontFamilyControl** (`DropdownListControl`)
+- **boldControl** (`StockControl`)
+- **italicControl** (`StockControl`)
+- **iconControl** (`IconControl`)
+- **snapControl** (`StockControl`)
+- **toolTemplates** (`{ [index: string]: Template<any>; }`)
 
-- **boldControl** (`StockControl`) — (no description)
-- **clearControl** (`StockControl`) — (no description)
-- **eraserControl** (`StockControl`) — (no description)
-- **extensionControl** (`StockControl`) — (no description)
-- **fillControl** (`ColorControl`) — (no description)
-- **iconControl** (`IconControl`) — (no description)
-- **italicControl** (`StockControl`) — (no description)
-- **labelFillControl** (`ColorControl`) — (no description)
-- **labelFontFamilyControl** (`DropdownListControl`) — (no description)
-- **labelFontSizeControl** (`DropdownListControl`) — (no description)
-- **selectControl** (`StockControl`) — Selector mode toggler. @since 5.9.1
-- **snapControl** (`StockControl`) — (no description)
-- **strokeControl** (`ColorControl`) — (no description)
-- **strokeDasharrayControl** (`DropdownListControl`) — (no description)
-- **strokeWidthControl** (`DropdownListControl`) — (no description)
-- **toolControl** (`DrawingToolControl`) — (no description)
-- **toolTemplates** (`undefined | object`) — (no description)
+## Other inherited private settings
 
+Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlPrivate")`) for types, defaults and descriptions.
+
+- _IStockControlPrivate_: button, icon, label, toolbar

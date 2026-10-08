@@ -2,36 +2,36 @@
 title: "LinkedHierarchy"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/linkedhierarchy/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-A base class for linked hierarchy series.
-Data item
-LinkedHierarchy uses data items of type ILinkedHierarchyDataItem.
+Base class for the hierarchy series that draw nodes as circles joined by links: `ForceDirected` and `Tree`.
 
 ## Import
 
-```javascript
-// Import LinkedHierarchy
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 ```
 
 ## Inheritance
 
-Extends: Hierarchy
+Extends: Hierarchy → Series → Component → Container → Sprite → Entity → Settings
 Extended by: ForceDirected, Tree
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Hierarchy (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **linkWithField** (`undefined | string`) — A field in data which holds IDs of nodes to link with.
+- Settings: `ILinkedHierarchySettings` — get_api_reference shows it after this page
+- Private settings: `ILinkedHierarchyPrivate`
+- Events: `ILinkedHierarchyEvents`
+- Data item fields: `ILinkedHierarchyDataItem`
 
 ## Properties
 
-- **circles** (`ListTemplate`) — Default new ListTemplate<Circle> A list of node circle elements in a LinkedHierarchy chart.
-- **linkBullets** (`List`) — Default new List()
-- **links** (`ListTemplate`) — Default new ListTemplate<HierarchyLink> A list of link elements in a LinkedHierarchy chart.
-- **linksContainer** (`Container`) — Default Container.new() A Container that link elements are placed in.
-- **nodes** (`ListTemplate`) — Default new ListTemplate<LinkedHierarchyNode> A list of nodes in a LinkedHierarchy chart.
-- **outerCircles** (`ListTemplate`) — Default new ListTemplate<Circle> A list of node outer circle elements in a LinkedHierarchy chart.
+Public properties (not settings):
+
+- **circles** (`ListTemplate<Circle>`) — List of node circles; configure them all through `circles.template`.
+- **linkBullets** (`List<(<D extends DataItem<IHierarchyDataItem>>(root: Root, source: D, target: D) => Bullet | undefined)>`) — Bullets for the links: functions that get the root and the link's source and target data items, and return a `Bullet`.
+- **links** (`ListTemplate<HierarchyLink>`) — List of link elements; configure them all through `links.template`.
+- **linksContainer** (`Container`) — Container that holds the link elements, behind the nodes.
+- **nodes** (`ListTemplate<LinkedHierarchyNode>`) — List of node elements; configure them all through `nodes.template`.
+- **outerCircles** (`ListTemplate<Circle>`) — List of the rings around nodes that have children; configure them all through `outerCircles.template`.

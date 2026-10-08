@@ -2,18 +2,23 @@
 title: "IExportingJSONOptions"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iexportingjsonoptions/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IExportingDataOptions
+All ancestors: IExportingDataOptions, IExportingFormatOptions
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IExportingDataOptions (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Options
 
-## Properties
+- **indent** (`string | number`) — default `2` — Indentation of the JSON: a number of spaces, or a string to indent with.
+- **renameFields** (`boolean`) — default `true` — Uses the column names from `dataFields` as keys, instead of the field names. Has no effect without `dataFields`.
 
-- **indent** (`string | number`) — Default 2 If set to a number, each line will be indented by X spaces, maintaining hierarchy. If set to a string, will use that string to indent.
-- **renameFields** (`undefined | false | true`) — Default true If set to true and dataFields are set to true, will rename keys in data.
+## Other inherited options
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IExportingDataOptions")`) for types, defaults and descriptions.
+
+- _IExportingDataOptions_: addColumnNames, emptyAs, pivot, useLocale, useTimestamps
+- _IExportingFormatOptions_: disabled

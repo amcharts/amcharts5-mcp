@@ -2,26 +2,27 @@
 title: "Tick"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/tick/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Draws a tick element (mostly used on axes).
 
+Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
+
 ## Import
 
-```javascript
-// Import Tick
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.Tick.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Line
+Extends: Line → Graphics → Sprite → Entity → Settings
 Extended by: AxisTick
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Line (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **length** (`undefined | number`) — Length in pixels.
-- **location** (`undefined | number`) — Location within target space. 0 - beginning, 1 - end.
+- Settings: `ITickSettings` — get_api_reference shows it after this page
+- Private settings: `ITickPrivate`

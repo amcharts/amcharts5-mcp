@@ -2,17 +2,14 @@
 title: "IBulletPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ibulletprivate/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IEntityPrivate
+TypeScript: `am5.IBulletPrivate` (`import type { IBulletPrivate } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntityPrivate (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Private settings
 
-## Properties
-
-
+- **hidden** (`boolean`)

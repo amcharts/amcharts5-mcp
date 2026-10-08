@@ -2,29 +2,27 @@
 title: "StockToolbar"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stocktoolbar/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Builds a toolbar for StockChart.
+A toolbar of `StockControl` buttons for a `StockChart`, placed in an HTML element outside the chart.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/
 
 ## Import
 
-```javascript
-// Import StockToolbar
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.StockToolbar.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **container** (`HTMLElement`) — A reference to an element in the document to place tools in.
-- **controls** (`StockControl[]`) — A list of tools to show in toolbar.
-- **deactivateRoot** (`undefined | false | true`) — Default true Menu will disable all interactions for the underlying chart when using tools.
-- **focusable** (`undefined | false | true`) — Default false Setting this to true will essentially enable accessibility for the toolbar items. E.g. buttons will be focusable using TAB key. Lists navigable using arrow keys, etc.
-- **stockChart** (`StockChart`) — A StockChart the toolbar is for.
-- **useDefaultCSS** (`undefined | false | true`) — Default true If set to false the toolbar will not load default CSS.
+- Settings: `IStockToolbarSettings` — get_api_reference shows it after this page
+- Private settings: `IStockToolbarPrivate`
+- Events: `IStockToolbarEvents`

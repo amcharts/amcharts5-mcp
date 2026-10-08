@@ -2,37 +2,25 @@
 title: "IValueAxisDataItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ivalueaxisdataitem/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IValueAxisDataItem extends IAxisDataItem.
-IValueAxisDataItem is extended by IDateAxisDataItem, IDurationAxisDataItem.
-Properties
-
-
-        above        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Default false
-
-Inherited from IAxisDataItem
-If set to true, the grid and axis fill of this data item will be drawn above series.
- NOTE: this needs to be set before crating an axis range. Updating this dynamically won't have any effect.
- NOTE: if you need all grid to be drawn above series, you can brig it to front with chart.gridContainer.toFront();.
 
 ## Inheritance
 
 Extends: IAxisDataItem
-Extended by: IDateAxisDataItem, IDurationAxisDataItem
+All ancestors: IAxisDataItem, IComponentDataItem
+TypeScript: `am5xy.IValueAxisDataItem` (`import type { IValueAxisDataItem } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IAxisDataItem (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Data item fields
 
-## Properties
+- **value** (`number`) — Value of the data item.
+- **endValue** (`number`) — End value for axis items that span a range of values, like axis ranges.
+- **labelEndValue** (`number`) — _(internal)_
+- **affectsMinMax** (`boolean`) — Widens the axis scale to include this axis range's `value` and `endValue`. _Since 5.1.4._
 
-- **affectsMinMax** (`undefined | false | true`) — If set to true the values fo this data item will be factored in when calculating scale of the ValueAxis. Useful for axis ranges. @since 5.1.4
-- **endValue** (`undefined | number`) — End value for axis items that span multiple values, like axis ranges.
-- **value** (`undefined | number`) — Value of the data item.
+## Other inherited data item fields
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IAxisDataItem")`) for types, defaults and descriptions.
+
+- _IAxisDataItem_: above, axisFill, bullet, grid, isRange, label, tick
+- _IComponentDataItem_: visible

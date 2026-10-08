@@ -2,70 +2,29 @@
 title: "IChartIndicatorSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichartindicatorsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IChartIndicatorSettings extends IIndicatorSettings.
-IChartIndicatorSettings is extended by IAccumulationDistributionSettings, IAccumulativeSwingIndexSettings, IAroonSettings, IAverageTrueRangeSettings, IAwesomeOscillatorSettings, IBullBearPowerSettings, IChaikinMoneyFlowSettings, IChaikinOscillatorSettings, IOverboughtOversoldSettings, IDisparityIndexSettings, IHeikinAshiSettings, IMACDSettings, IMedianPriceSettings, IMomentumSettings, IMovingAverageDeviationSettings, IOnBalanceVolumeSettings, IPVTSettings, IStandardDeviationSettings, ITrixSettings, ITypicalPriceSettings, IVolumeSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IIndicatorSettings
-Extended by: IAccumulationDistributionSettings, IAccumulativeSwingIndexSettings, IAroonSettings, IAverageTrueRangeSettings, IAwesomeOscillatorSettings, IBullBearPowerSettings, IChaikinMoneyFlowSettings, IChaikinOscillatorSettings, IOverboughtOversoldSettings, IDisparityIndexSettings, IHeikinAshiSettings, IMACDSettings, IMedianPriceSettings, IMomentumSettings, IMovingAverageDeviationSettings, IOnBalanceVolumeSettings, IPVTSettings, IStandardDeviationSettings, ITrixSettings, ITypicalPriceSettings, IVolumeSettings
+All ancestors: IIndicatorSettings, IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5stock.ChartIndicator` (see its page for the class)
+TypeScript: `am5stock.IChartIndicatorSettings` (`import type { IChartIndicatorSettings } from "@amcharts/amcharts5/stock"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IIndicatorSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
+
+_(none declared here — all inherited)_
+
+## Inherited settings with a different default on ChartIndicator
+
+- **position** (`"absolute" | "relative"`) — default `"absolute"` _(theme)_ — _from ISpriteSettings_ — Positioning of the element. `"absolute"` leaves the element out of its parent's layout and size: it is placed by its `x` and `y` only.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IIndicatorSettings")`) for types, defaults and descriptions.
+
+- _IIndicatorSettings_: autoOpenSettings, field, legend, name, period, seriesColor, shortName, stockChart, stockSeries, volumeSeries
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

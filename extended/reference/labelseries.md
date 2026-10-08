@@ -2,34 +2,32 @@
 title: "LabelSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/labelseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-LabelSeries uses data items of type ILabelSeriesDataItem.
+Draws text labels typed in on the chart, for the Label tool of a `StockChart`.
 
 ## Import
 
-```javascript
-// Import LabelSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.LabelSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: PolylineSeries
+Extends: PolylineSeries → DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 Extended by: CalloutSeries
 
-> **Note:** This class also inherits all settings, properties, methods, and events from PolylineSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **labelFill** (`Color`) — Label color.
-- **labelFontFamily** (`undefined | string`) — Label font damily.
-- **labelFontSize** (`number | string | undefined`) — Label font size.
-- **labelFontStyle** (`"normal" | "italic" | "oblique"`) — Font style.
-- **labelFontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Font weight.
+- Settings: `ILabelSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `ILabelSeriesPrivate`
+- Data item fields: `ILabelSeriesDataItem`
 
 ## Properties
 
-- **spriteResizer** (`SpriteResizer`) — (no description)
+Public properties (not settings):
+
+- **spriteResizer** (`SpriteResizer`) — The chart's `SpriteResizer`, which resizes and rotates labels.

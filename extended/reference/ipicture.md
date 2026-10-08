@@ -2,24 +2,29 @@
 title: "IPicture"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ipicture/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IDisplayObject
-
-> **Note:** This class also inherits all settings, properties, methods, and events from IDisplayObject (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+All ancestors: IDisplayObject, IDisposer
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **height** (`number | undefined`) — (no description)
-- **image** (`HTMLImageElement | undefined`) — (no description)
-- **shadowBlur** (`undefined | number`) — (no description)
-- **shadowColor** (`Color`) — (no description)
-- **shadowOffsetX** (`undefined | number`) — (no description)
-- **shadowOffsetY** (`undefined | number`) — (no description)
-- **shadowOpacity** (`undefined | number`) — (no description)
-- **width** (`number | undefined`) — (no description)
+- **image** (`HTMLImageElement`)
+- **width** (`number`)
+- **height** (`number`)
+- **shadowColor** (`Color`)
+- **shadowBlur** (`number`)
+- **shadowOffsetX** (`number`)
+- **shadowOffsetY** (`number`)
+- **shadowOpacity** (`number`)
+
+## Other inherited properties
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IDisplayObject")`) for types, defaults and descriptions.
+
+- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, visible, wheelable, x, y
+- _IDisposer_: dispose, isDisposed

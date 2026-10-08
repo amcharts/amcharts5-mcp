@@ -2,18 +2,26 @@
 title: "IResponsiveRule"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iresponsiverule/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An interface describing resonsive rule.
+A responsive rule: settings for matching elements that apply while the chart's size meets a condition.
+
+Docs: https://www.amcharts.com/docs/v5/concepts/responsive/
+
+## Inheritance
+
+Extends: (none)
+TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **applied** (`undefined | false | true`) — Indicates if rule is currently applied. @readonly
-- **applying** (`undefined | () => void`) — A custom callback function which is called when applying the rule.
-- **name** (`undefined | string`) — A class name of the elements to apply rule to.
-- **relevant** (`( width: number, height: number) => boolean`) — A callback function which should check and return true if rule is applicable for current situation.
-- **removing** (`undefined | () => void`) — A custom callback function which is called when removing the rule.
-- **settings** (`any`) — Settings to apply when activating the responsive rule.
-- **tags** (`string | string[]`) — A class group of the elements to apply rule to.
-
+- **name** (`string`) — Class name of the elements the rule applies to, such as `"AxisLabel"`.
+- **tags** (`string | string[]`) — Theme tags the elements must also have.
+- **settings** (`any`) — Settings for the elements while the rule applies. Needs `name`.
+- **relevant** (`(width: number, height: number) => boolean`) — Returns `true` while the rule should apply. Gets the root's width and height in pixels; the breakpoint functions of `ResponsiveTheme`, such as `ResponsiveTheme.widthM`, fit here.
+- **applying** (`() => void`) — Called when the rule starts to apply.
+- **removing** (`() => void`) — Called when the rule stops applying.
+- **applied** (`boolean`) — Whether the rule currently applies.
+- **template** (`Template<any>`) — The theme rule's `Template` that `settings` are set on.
+- **_dp** (`MultiDisposer`) — _(internal)_

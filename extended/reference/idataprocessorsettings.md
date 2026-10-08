@@ -2,111 +2,25 @@
 title: "IDataProcessorSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idataprocessorsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-IDataProcessorSettings extends IEntitySettings.
-IDataProcessorSettings is not extended by any other symbol.
-Properties
-
-
-        colorFields        
-        #
-      
-
-
-                          Type string[]                      
-A list of fields in data that need to be converted to Color objects.
-
-
-        dateFields        
-        #
-      
-
-
-                          Type string[]                      
-A list of fields in data that need to be converted to tiemstamps.
-
-
-        dateFormat        
-        #
-      
-
-
-                          Type undefined | string                      
-Date format used for parsing string-based dates.
-
-
-        emptyAs        
-        #
-      
-
-
-                          Type any                      
-Replace empty values with this.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        numericFields        
-        #
-      
-
-
-                          Type string[]                      
-A list of fields in data that need to be converted to numbers.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5.DataProcessor` (see its page for the class)
+TypeScript: `am5.IDataProcessorSettings` (`import type { IDataProcessorSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **dateFormat** (`string`) — Format of the string dates in `dateFields`, such as `"yyyy-MM-dd"`. Set it whenever those fields hold strings.
+- **dateFields** (`string[]`) — Data fields to convert to timestamps. A nested field is written as a path, such as `"values.date"`.
+- **numericFields** (`string[]`) — Data fields to convert to numbers. A nested field is written as a path, such as `"values.value"`.
+- **colorFields** (`string[]`) — Data fields to convert to `Color` objects. A nested field is written as a path, such as `"values.color"`.
+- **emptyAs** (`any`) — Replaces empty values (`null`, `undefined` or `""`) in any field with this value.
 
-- **colorFields** (`string[]`) — A list of fields in data that need to be converted to Color objects.
-- **dateFields** (`string[]`) — A list of fields in data that need to be converted to tiemstamps.
-- **dateFormat** (`undefined | string`) — Date format used for parsing string-based dates.
-- **emptyAs** (`any`) — Replace empty values with this.
-- **numericFields** (`string[]`) — A list of fields in data that need to be converted to numbers.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

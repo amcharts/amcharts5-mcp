@@ -1,7 +1,7 @@
 ---
 title: "Column series"
 source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial looks at various aspects of creating column series.
@@ -91,11 +91,15 @@ Normally, multiple column series will "cluster", i.e. will show their columns re
 
 We can use setting `clustered` to disable clustering for particular series. It can be useful in a number of situations, most commonly when creating Gantt or similar charts using [floating columns](#Floating_columns).
 
+
 Regular clustered columns
+
 
 Clustering disabled
 
+
 Floating clustered columns
+
 
 Floating columns with clustering disabled
 
@@ -155,11 +159,15 @@ series.columns.template.setAll({
   width: 5
 });
 
+
 `width: am5.percent(80)` (default)
+
 
 `width: am5.percent(100)`
 
+
 `width: 20`
+
 
 `width: 5`
 
@@ -246,6 +254,88 @@ root.defaultTheme.rule("RoundedRectangle", \["series", "column"\]).create("dropF
   stroke: am5.color(0xe4572e)
 });
 
+
+## Adding links to columns
+
+Columns can act as links, navigating to a URL when clicked. To enable it, set series' `urlField` to the name of a data field that holds the target URL. Links are off until `urlField` is set.
+
+let series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date",
+    urlField: "url"
+  })
+);
+
+series.data.setAll(\[{
+  date: 1672531200000,
+  value: 100,
+  url: "https://en.wikipedia.org/wiki/January"
+}, {
+  date: 1675209600000,
+  value: 120,
+  url: "https://en.wikipedia.org/wiki/February"
+}, {
+  date: 1677628800000,
+  value: 90,
+  url: "https://en.wikipedia.org/wiki/March"
+}\]);
+
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date",
+    urlField: "url"
+  })
+);
+
+series.data.setAll(\[{
+  date: 1672531200000,
+  value: 100,
+  url: "https://en.wikipedia.org/wiki/January"
+}, {
+  date: 1675209600000,
+  value: 120,
+  url: "https://en.wikipedia.org/wiki/February"
+}, {
+  date: 1677628800000,
+  value: 90,
+  url: "https://en.wikipedia.org/wiki/March"
+}\]);
+
+Columns with a URL in their data are automatically made clickable and show a pointer cursor. Those without a URL stay unaffected.
+
+By default the URL opens in the same window. Use `linkTarget` to control where it opens, e.g. `"_blank"` for a new tab (handy when the chart is embedded in an iframe):
+
+let series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date",
+    urlField: "url",
+    linkTarget: "\_blank"
+  })
+);
+
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date",
+    urlField: "url",
+    linkTarget: "\_blank"
+  })
+);
 
 ## Events
 

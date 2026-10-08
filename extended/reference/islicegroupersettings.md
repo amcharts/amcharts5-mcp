@@ -2,120 +2,26 @@
 title: "ISliceGrouperSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/islicegroupersettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ISliceGrouperSettings extends IEntitySettings.
-ISliceGrouperSettings is not extended by any other symbol.
-Properties
-
-
-        clickBehavior        
-        #
-      
-
-
-                          Type "none" | "break" | "zoom"                      
-What happens when group slice is clicked.
-
-"none" (default) - nothing.
-
-"break" - underlying small slices are shown.
-
-"zoom" - series shows only small slies (big ones are hidden).
-
-
-        groupName        
-        #
-      
-
-
-                          Type undefined | string                      
-Default "Other"
-
-Name (category) of the group slice.
-
-
-        id        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from IEntitySettings
-A custom string ID for the element.
- If set, element can be looked up via root.entitiesById.
- Will raise error if an element with the same ID already exists.
-
-
-        legend        
-        #
-      
-
-
-                          Type Legend                      
-If set, plugin will try to manipulate the items in legend, such as adding group slice, hiding items for small slices, etc.
-
-
-        limit        
-        #
-      
-
-
-                          Type undefined | number                      
-If set, only X first slices will be left as they are. The rest of the slices will be grouped.
-
-
-        series        
-        #
-      
-
-
-                          Type PercentSeries                      
-A series that will be used to group slices on.
-
-
-        stateAnimationDuration        
-        #
-      
-
-
-                          Type undefined | number                      
-Inherited from IEntitySettings
-Duration of transition from one state to another.
-
-
-        stateAnimationEasing        
-        #
-      
-
-
-                          Type $ease.Easing                      
-Inherited from IEntitySettings
-Easing of transition from one state to another.
-
-
-        themeTags        
-        #
-      
-
-
-                          Type Array                      
-Inherited from IEntitySettings
-Tags which can be used by the theme rules.
 
 ## Inheritance
 
 Extends: IEntitySettings
+Settings of: `am5plugins_sliceGrouper.SliceGrouper` (see its page for the class)
+TypeScript: not exported by name from the package.
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IEntitySettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
+- **series** (`PercentSeries`) — The series whose small slices are grouped.
+- **legend** (`Legend`) — Legend to keep in step with the grouping: it gets an item for the group slice, and the items of the grouped slices are hidden.
+- **threshold** (`number`) — default `5` _(class default)_ — Slices whose share of the total is at or below this percent are grouped.
+- **limit** (`number`) — default `1000` _(code fallback)_ — Keeps only this many first slices; the rest are grouped.
+- **groupName** (`string`) — default `"Other"` _(class default)_ — Name (category) of the group slice.
+- **clickBehavior** (`"none" | "zoom" | "break"`) — default `"none"` _(class default)_ — What a click on the group slice does: • `"none"`: nothing. • `"break"`: replaces the group slice with the small slices. • `"zoom"`: shows only the small slices, hiding the others.
 
-- **clickBehavior** (`"none" | "break" | "zoom"`) — What happens when group slice is clicked. "none" (default) - nothing. "break" - underlying small slices are shown. "zoom" - series shows only small slies (big ones are hidden).
-- **groupName** (`undefined | string`) — Default "Other" Name (category) of the group slice.
-- **legend** (`Legend`) — If set, plugin will try to manipulate the items in legend, such as adding group slice, hiding items for small slices, etc.
-- **limit** (`undefined | number`) — If set, only X first slices will be left as they are. The rest of the slices will be grouped.
-- **series** (`PercentSeries`) — A series that will be used to group slices on.
-- **threshold** (`undefined | number`) — Default 5 Any slice which has percent value less than this setting will be grouped.
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IEntitySettings")`) for types, defaults and descriptions.
+
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

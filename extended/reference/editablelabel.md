@@ -2,27 +2,28 @@
 title: "EditableLabel"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/editablelabel/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Editable label.
-@since 5.9.5
+A label the user can edit in place. Editing starts on `editOn` and ends when the label loses focus or ESC is pressed; `active` is `true` while it lasts.
+
+_Since 5.9.5._
 
 ## Import
 
-```javascript
-// Import EditableLabel
-import * as am5 from "@amcharts/amcharts5"
+```js
+import * as am5 from "@amcharts/amcharts5";
+
+am5.EditableLabel.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Label
+Extends: Label → Container → Sprite → Entity → Settings
 Extended by: EditableAxisLabel
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Label (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **editOn** (`"click" | "dblclick" | "rightclick" | "middleclick" | "none"`) — Default "click" Start editing on click ("click"; default) or double-click ('"dblclick"'). All available options: "click" (default) "dblclick" "rightclick" "middleclick" "none"
-- **multiLine** (`undefined | false | true`) — Default true Allow multiple lines (true - dfault) or no (false). @since 5.9.6
+- Settings: `IEditableLabelSettings` — get_api_reference shows it after this page
+- Private settings: `IEditableLabelPrivate`
+- Events: `IEditableLabelEvents`

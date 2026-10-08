@@ -1,14 +1,25 @@
 ---
-title: "Drill-down, zoomable Voronoi Treemap"
+title: "Drill-Down, Zoomable Voronoi Treemap"
 source: "https://www.amcharts.com/demos/voronoi-treemap/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Voronoi treemaps (diagrams) are a data visualization technique that combines the concepts of Voronoi diagrams and treemaps to represent hierarchical data. In a Voronoi treemap, the available space is divided into cells based on the Voronoi diagram, where each cell represents a portion of the data. The hierarchical structure is encoded by nesting cells within each other, with larger cells containing smaller cells. The size of each cell corresponds to a quantitative value associated with the data element it represents. By employing this approach, Voronoi treemaps offer a visually appealing and space-filling representation of hierarchical data, allowing users to explore the data's structure and proportions in a hierarchical context.
-This chart is added to a Zoomable Container, so you can pan, zoom-in and zoom-out this chart using mouse wheel, pinch-zoom or zoom tools on the bottom-right.
-Hierarchy charts
-Voronoi Treemap
+A Voronoi treemap in a circle: every country is a cell sized by its population, grouped by continent. Zoom in to read the small ones.
+
+When a round treemap works: A circular Voronoi treemap shows the same split of a total as a rectangular one, in a shape that stands on its own on a page. The big parts stand out at once, and zooming lets people read the small ones without losing the whole.
+
+Good for:
+- Infographics and posters
+- A world-sized total with many small parts
+- Layouts where a round shape fits better than a box
+
+Think twice when:
+- Dashboards with a tight grid: a rectangle fills it better
+- Exact comparisons: use a bar chart
+- Printed pages, where nobody can zoom
+
+Prompt: Create a circular Voronoi treemap of world population, with the continents divided into their countries and each continent’s smallest countries grouped into an Others cell. Clicking a country zooms to its continent, clicking again zooms back out, and the chart can be zoomed and panned. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -16,7 +27,6 @@ Voronoi Treemap
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
-
 
 // Create custom theme...
 var myTheme = am5.Theme.new(root);
@@ -27,29 +37,29 @@ myTheme.rule("Polygon", ["hierarchy", "node", "shape", "depth0"]).setAll({
   fillOpacity: 0
 });
 
-// ... thick stroke and full opacity on first level
+// ... thick stroke and full opacity on first level (the stroke in the text color: black, or white in dark mode)
 myTheme.rule("Polygon", ["hierarchy", "node", "shape", "depth1"]).setAll({
   strokeWidth: 5,
   fillOpacity: 1,
-  stroke: am5.color(0x000000)
+  stroke: root.interfaceColors.get("text")
 });
 
 // ... no fill and thin stroke on second level
 myTheme.rule("Polygon", ["hierarchy", "node", "shape", "depth2"]).setAll({
   fillOpacity: 0,
   strokeWidth: 1,
-  stroke: am5.color(0x000000)
+  stroke: root.interfaceColors.get("text")
 });
 
-//  ... by default last lever is not clickable, but we change it here, so, add pointer on the last level
+// the last level isn't clickable by default; here it is, so it gets the pointer cursor
 myTheme.rule("HierarchyNode", ["last"]).setAll({
   cursorOverStyle: "pointer"
 });
 
 // ... set global settings for all labels
 myTheme.rule("Label", ["node"]).setAll({
-  fontSize: 11,
-  minScale: 0.7
+  fontSize: 11, // 11px
+  minScale: 0.7 // a label can shrink to 70% to fit its cell
 });
 
 // ... hide label of zero level
@@ -62,14 +72,13 @@ myTheme.rule("Label", ["node", "depth1"]).setAll({
   forceHidden: true
 });
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  myTheme
+  myTheme,
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Prepare data
 var data = {
@@ -511,11 +520,6 @@ var data = {
           "id": "QA",
           "name": "Qatar",
           "population": 2587564
-        },
-        {
-          "id": "RU",
-          "name": "Russia",
-          "population": 146599183
         },
         {
           "id": "SA",
@@ -1230,9 +1234,10 @@ am5.array.each(data.children, function (continent) {
     population: 0
   };
 
+  // backwards, so removing a country doesn't skip the next
   for (var i = continent.children.length - 1; i >= 0; i--) {
     var country = continent.children[i];
-    if (country.population < 5000000) {
+    if (country.population < 5000000) { // countries with fewer than 5 million people
       others.population += country.population
       am5.array.remove(continent.children, country);
     }
@@ -1240,37 +1245,36 @@ am5.array.each(data.children, function (continent) {
   continent.children.push(others);
 });
 
-
 var chart = root.container.children.push(
   am5.SerialChartContainer.new(root, {
-    width: am5.p100,
+    width: am5.p100, // the container fills the whole chart div
     height: am5.p100
   })
 );
 
 chart.zoomableContainer.setAll({
-  wheelable: true,
-  pinchZoom: true
+  wheelable: true, // the mouse wheel zooms in on the treemap
+  pinchZoom: true  // and so does pinching on a touch screen
 });
 
-
-var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // zoom in, zoom out and reset buttons
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(am5hierarchy.VoronoiTreemap.new(root, {
-  paddingLeft: 5,
+  paddingLeft: 5, // 5px of room on every side
   paddingRight: 5,
   paddingTop: 5,
   paddingBottom: 5,
-  singleBranchOnly: true,
-  downDepth: 2,
-  upDepth: 0,
-  initialDepth: 2,
+  singleBranchOnly: true, // only one continent open at a time
+  downDepth: 2,           // a click opens two levels below the clicked node
+  upDepth: 0,             // no levels shown above the selected node
+  initialDepth: 2,        // continents and countries on load
   valueField: "population",
   categoryField: "name",
   childDataField: "children",
   idField: "name",
+  // the outer shape: a polygon with 120 corners, which looks like a circle
   type: "polygon",
   cornerCount: 120
 }));
@@ -1286,7 +1290,7 @@ series.labels.template.adapters.add("x", function (x, target) {
       var dataContext = dataItem.dataContext;
 
       if (dataContext) {
-        if (maxX - minX < 50) {
+        if (maxX - minX < 50) { // a cell narrower than 50px gets just the country code
           target.set("text", dataContext.id);
         }
         else {
@@ -1308,16 +1312,13 @@ series.nodes.template.events.on("click", function (e) {
   }
 });
 
-
 // Set data
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
 series.data.setAll([data]);
 
-
 // Select root node
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Pre_selected_branch
 series.set("selectedDataItem", series.dataItems[0]);
-
 
 // Make stuff animate on load
 series.appear(1000, 100);
@@ -1334,7 +1335,8 @@ series.appear(1000, 100);
 ```css
 #chartdiv {
   width: 100%;
-  height: 600px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -1343,3 +1345,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

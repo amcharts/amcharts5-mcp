@@ -2,14 +2,24 @@
 title: "U.S. Congressional Districts"
 source: "https://www.amcharts.com/demos/us-congressional-districts/"
 category: "maps"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-This demo uses a U.S. Congressional Districts map (120th Congress version, 2027–2029) and colors each district by party using "template fields".
-The party colors are example data from an earlier Congress, and districts without data are shown in gray. Replace the data array with your own to map election results or any other district-level values.
-MapChart
-Using regional maps
-Template fields
+The 435 U.S. congressional districts, colored by party: blue for Democrats, red for Republicans, gray where there is no data. The party data is example data from an earlier Congress.
+
+Mapping election results: Coloring each district by its winner is the classic election map, and it shows where each party is strong. But districts hold about the same number of people, so the big rural ones look more important than they are, while dense city districts all but vanish. Zoom in, or pair the map with a seat count.
+
+Good for:
+- Election results by district
+- Any district-level data, like turnout
+- Showing where each party is strong
+
+Think twice when:
+- Comparing seat totals: a bar or parliament chart
+- Dense cities: add insets or zoom in
+- Margins of victory: shade by margin, not only by winner
+
+Prompt: Create a map of the US congressional districts colored by party with example data (Democrats, Republicans or no data), with the state, party and district in a tooltip and a legend of the three. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -28,7 +38,7 @@ var partyNames = {
   N: "No data"
 }
 
-// Data
+// Example data: the party of each district's representative in an earlier Congress
 var data = [
 	{ id: "0200", state: "AK", statename: "Alaska", party: "D" },
 	{ id: "0101", state: "AL", statename: "Alabama", party: "R" },
@@ -470,63 +480,69 @@ var data = [
 
 // Populate colors and party names
 for(var i = 0; i < data.length; i++) {
-  data[i].polygonSettings = {
+  data[i].polygonSettings = { // the district's fill, read through templateField below
     fill: colors[data[i].party]
   }
   data[i].partyName = partyNames[data[i].party];
 }
 
 // Create root and chart
-var root = am5.Root.new("chartdiv"); 
+var root = am5.Root.new("chartdiv");
 
 // Set themes
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
-    //panX: "rotateX",
-    projection: am5map.geoAlbersUsa()
+    minZoomLevel: 0.5, // the map can zoom out to half its fitted size
+    // go to the home view once the map is fitted
+    autoHome: true,
+    projection: am5map.geoAlbersUsa() // Alaska and Hawaii shown below the lower 48 states
   })
 );
 
 // Create polygon series
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
+    // the congressional districts, in low detail
     geoJSON: am5geodata_region_usa_congressional120_usaCongressionalLow
   })
 );
 
-
 polygonSeries.mapPolygons.template.setAll({
+  // {STATENAME} and {name} come from the map's geodata, {partyName} from the data above
   tooltipText: "[bold]{STATENAME} ({partyName})[/]\n{name}",
-  templateField: "polygonSettings",
-  fillOpacity: 0.9
+  templateField: "polygonSettings", // each district takes its party color from the data
+  fillOpacity: 0.9, // slightly see-through...
+  stroke: root.interfaceColors.get("background") // borders in the background color
 });
 
 polygonSeries.mapPolygons.template.states.create("hover", {
-  fillOpacity: 1
+  fillOpacity: 1 // ...and full color under the mouse
 });
 
 polygonSeries.data.setAll(data);
 
 // Legend
+// built from its own data, one item per party, not from a series
 var legend = chart.children.push(am5.Legend.new(root, {
   nameField: "name",
-  fillField: "color",
+  fillField: "color", // each marker takes its item's color
   strokeField: "color",
-  useDefaultMarker: true,
-  centerX: am5.p100,
-  maxWidth: 100,
+  useDefaultMarker: true, // a plain square marker
+  centerX: am5.p100,      // in the bottom right corner
+  maxWidth: 100,          // no wider than 100px
   x: am5.p100,
   centerY: am5.p100,
   y: am5.p100,
-  dx: -20,
+  dx: -20, // 20px in from the corner
   dy: -20,
   background: am5.RoundedRectangle.new(root, {
-    fill: am5.color(0xffffff),
-    fillOpacity: 0.3
+    fill: root.interfaceColors.get("background"),
+    fillOpacity: 0.7 // a see-through panel, so the map shows behind
   })
 }));
 
@@ -554,6 +570,7 @@ legend.data.setAll([{
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -563,3 +580,4 @@ legend.data.setAll([{
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional120/usaCongressionalLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

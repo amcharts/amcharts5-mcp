@@ -2,52 +2,61 @@
 title: "Step Line Chart"
 source: "https://www.amcharts.com/demos/step-line-chart/"
 category: "line-area"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Step Line Chart (also known as Step Chart, Stepped Line Chart) is useful when you want to show changes happening at specific points. In contrast to Line Chart, which connects data points with the shortest possible line thus creating an appearance of values changing gradually, Step Line Chart highlights that values change discretely at specific points.
-XY chart
-Step line series
+A line that moves in steps: each value stays flat until the next one, then jumps straight up or down. Here, yearly temperature anomalies from 1950 to 2005.
+
+When to use a step line: A step line says a value held until it changed. That fits things set in jumps, like prices, interest rates or stock levels, and yearly figures, where a sloping line would invent values in between. Switch off the risers above and only the flat steps remain.
+
+Good for:
+- Prices, fees and interest rates that change on set dates
+- Stock levels and headcounts
+- Yearly or monthly figures, one flat step each
+
+Think twice when:
+- Readings that change smoothly, like temperature through a day: use a line
+- Hundreds of points close together: the steps turn into a jagged blur
+- Separate totals you want to compare: columns read better
+
+Prompt: Create a step line chart of yearly temperature anomalies from 1950 to 2005, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
-
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
+// {valueX} in text is a timestamp: show it as a year
 root.dateFormatter.setAll({
   dateFormat: "yyyy",
   dateFields: ["valueX"]
 });
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
-
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: true,
-  panY: true,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  pinchZoomX:true
+  panX: true,      // a drag pans the years...
+  panY: true,      // ...and the values
+  wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
+  wheelY: "zoomX", // ...and the vertical wheel zooms in on the years
+  pinchZoomX:true  // pinch to zoom the years on a touch screen
 }));
-
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-  behavior: "none"
+  behavior: "none" // a drag pans the chart instead of zooming
 }));
-cursor.lineY.set("visible", false);
-
+cursor.lineY.set("visible", false); // no horizontal cursor line, only the vertical one
 
 // Data
 var data = [
@@ -112,33 +121,38 @@ var data = [
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  maxDeviation:0.5,
-  baseInterval: { timeUnit: "year", count: 1 },
-  renderer: am5xy.AxisRendererX.new(root, {pan:"zoom", minorGridEnabled: true}),
-  tooltip: am5.Tooltip.new(root, {})
+  maxDeviation:0.5, // pan or zoom out past the data's ends by up to 50% of the view
+  baseInterval: { timeUnit: "year", count: 1 }, // one data point a year
+  // dragging an axis zooms it instead of panning (on both axes)
+  renderer: am5xy.AxisRendererX.new(root, {pan:"zoom"}),
+  tooltip: am5.Tooltip.new(root, {}) // shows the cursor's year on the axis
 }));
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  maxDeviation:1,
+  maxDeviation:1, // pan up or down past the data by up to a whole view
   renderer: am5xy.AxisRendererY.new(root, {pan:"zoom"})
 }));
 
+// Hide the label at the very bottom of the value axis: it would run into
+// the first date label in the corner
+yAxis.get("renderer").labels.template.set("minPosition", 0.05);
+
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// the main trick: the line steps flat from one year's value to the next instead of sloping
 var series = chart.series.push(am5xy.StepLineSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
   valueYField: "value",
   valueXField: "year",
   tooltip: am5.Tooltip.new(root, {
-    labelText: "{valueX}: {valueY}"
+    labelText: "{valueX}: {valueY}" // hover for the year and its value
   })
 }));
 
 series.strokes.template.setAll({
-  strokeWidth: 3
+  strokeWidth: 3 // a 3px line
 });
-
 
 // Set up data processor to parse string dates
 // https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
@@ -149,13 +163,11 @@ series.data.processor = am5.DataProcessor.new(root, {
 
 series.data.setAll(data);
 
-
 // Add scrollbar
 // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
+  orientation: "horizontal" // above the plot; zooms the years
 }));
-
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -175,6 +187,7 @@ chart.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -183,3 +196,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

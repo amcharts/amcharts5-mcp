@@ -2,28 +2,34 @@
 title: "Pack"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pack/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Builds a pack diagram.
+A pack diagram: nodes as circles sized by value, each inside its parent's circle. A click on a node zooms into it.
+
+Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/pack/
 
 ## Import
 
-```javascript
-// Import Pack
-import * as am5hierarchy from "@amcharts/amcharts5/hierarchy"
+```js
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
+
+am5hierarchy.Pack.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Hierarchy
+Extends: Hierarchy → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Hierarchy (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **nodePadding** (`undefined | number`) — Gap between nodes, in pixels. @since 5.2.6
+- Settings: `IPackSettings` — get_api_reference shows it after this page
+- Private settings: `IPackPrivate`
+- Events: `IPackEvents`
+- Data item fields: `IPackDataItem`
 
 ## Properties
 
-- **circles** (`ListTemplate`) — Default new ListTemplate<Circle> A list of node circle elements in a Pack chart.
+Public properties (not settings):
+
+- **circles** (`ListTemplate<Circle>`) — List of node circles; configure them all through `circles.template`.

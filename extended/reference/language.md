@@ -2,20 +2,20 @@
 title: "Language"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/language/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Add localization functionality.
+Translates the text prompts of charts into the root's locale. Available as `root.language`.
 
 ## Import
 
-```javascript
-// Import Language
-import * as am5 from "@amcharts/amcharts5"
-```
+Not exported from any `@amcharts/amcharts5` entry point (internal class).
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `ILanguageSettings` — get_api_reference shows it after this page
+- Private settings: `ILanguagePrivate`

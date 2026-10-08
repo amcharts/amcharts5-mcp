@@ -2,13 +2,24 @@
 title: "Nested Donut Chart"
 source: "https://www.amcharts.com/demos/nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-Nested donut chart (also known as Multi-level doughnut chart, Multi-series doughnut chart) allows you to display multiple series in a single visualization. The series are usually related but represent different categories or slices of data (like the distribution of some category values over different years, etc.)
-Support for multiple series
-You can add any number of pie series to the pie chart. The chart will automatically nest them dividing available radius between each series, creating nested donuts.
-[More about nested donut charts](https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Nested_pie_series)
+Two rings, one inside the other, for two measures of the same countries: bottles sold inside, litres outside. Where the rings don’t line up, the measures disagree.
+
+When to nest donuts: Nesting puts two splits of the same items side by side, so you can see where they differ: a country that sells many bottles but few litres sells small bottles. Two rings read well; by the third, the inner ones get too thin to compare.
+
+Good for:
+- Two measures of the same categories
+- This year against last year
+- Planned against actual
+
+Think twice when:
+- More than two or three rings
+- Rings with different categories: use two separate charts
+- Exact differences between rings: a grouped bar chart shows them better
+
+Prompt: Create a nested donut chart comparing nine countries in two rings, the inner ring by bottles and the outer ring by liters, with labels on the outer ring only and tooltips showing each share and amount. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -20,48 +31,50 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
 ]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
-// start and end angle must be set both for chart and series
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
-  layout: root.verticalLayout,
-  innerRadius: am5.percent(40)
+  layout: root.verticalLayout, // the chart's parts are stacked top to bottom
+  innerRadius: am5.percent(40) // a hole in the middle, 40% of the radius
 }));
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
-// start and end angle must be set both for chart and series
+// two series in one pie chart make two rings: bottles inside, litres outside
 var series0 = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "bottles",
   categoryField: "country",
   alignLabels: false
 }));
 
-var bgColor = root.interfaceColors.get("background");
+var bgColor = root.interfaceColors.get("background"); // the background color, for the gaps between slices
 
-series0.ticks.template.setAll({ forceHidden: true });
-series0.labels.template.setAll({ forceHidden: true });
+series0.ticks.template.setAll({ forceHidden: true });  // no ticks...
+series0.labels.template.setAll({ forceHidden: true }); // ...and no labels on the inner ring
 series0.slices.template.setAll({
-  stroke: bgColor,
-  strokeWidth: 2,
-  tooltipText:
+  stroke: bgColor, // a 2px outline in the background color...
+  strokeWidth: 2,  // ...looks like a gap between the slices
+  tooltipText:     // the country, its share with two decimals, and the bottles
     "{category}: {valuePercentTotal.formatNumber('0.00')}% ({value} bottles)"
 });
+// a hovered inner slice shrinks a little instead of growing into the outer ring
 series0.slices.template.states.create("hover", { scale: 0.95 });
 
 var series1 = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "litres",
   categoryField: "country",
+  // labels line up in columns on both sides instead of sitting next to their slices
   alignLabels: true
 }));
 
 series1.slices.template.setAll({
-  stroke: bgColor,
-  strokeWidth: 2,
-  tooltipText:
+  stroke: bgColor, // a 2px outline in the background color...
+  strokeWidth: 2,  // ...looks like a gap between the slices
+  tooltipText:     // the country, its share with two decimals, and the litres
     "{category}: {valuePercentTotal.formatNumber('0.00')}% ({value} litres)"
 });
 
@@ -70,7 +83,7 @@ var data = [{
   litres: 501.9,
   bottles: 1500
 }, {
-  country: "Czech Republic",
+  country: "Czechia",
   litres: 301.9,
   bottles: 990
 }, {
@@ -126,6 +139,7 @@ series1.appear(1000, 100);
 #chartdiv {
   width: 100%;
   height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -134,3 +148,4 @@ series1.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

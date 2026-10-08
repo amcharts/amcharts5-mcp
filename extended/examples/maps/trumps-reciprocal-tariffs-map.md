@@ -2,1220 +2,1170 @@
 title: "Trump’s Reciprocal Tariffs Map"
 source: "https://www.amcharts.com/demos/trumps-reciprocal-tariffs-map/"
 category: "maps"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-A real world application of a heat map, featuring amCharts 5 features like heat rules, heat legend, globe (orthographic) projection, animations and custom controls.
-DISCLAIMER: The data, provided in this demo is not being updated to reflect actual dynamic situation and should be treated as a sample, not basis of an actual research or decision making.
-Related documentation
-Map charts
-Map projections
-Heat rules
-Heat legend
+A world heat map of US reciprocal tariff rates by country from April 2025, as first announced and as updated: the darker the color, the higher the rate.
+
+One number per country: A heat map, or choropleth, colors each country by its value, so the pattern across the world shows at a glance, and the heat legend ties the colors back to numbers. Two sets of data on one map make a before-and-after view: in the updated set, every rate is 10% except China's, which rises to 125%. Countries that are not in the data stay a plain gray.
+
+Good for:
+- Rates, shares and scores by country
+- Before-and-after views on one map
+- Rules that differ from country to country
+
+Think twice when:
+- Big countries catch the eye whatever their value: add a ranked bar chart
+- Small island countries: hard to see, list them as well
+- Counts like population: bubbles suit totals better
+
+Prompt: Create a world heat map of the US reciprocal tariff rates announced in April 2025, shading each country from light to dark by its rate, with the rate in a tooltip and a heat legend that marks the rate of the country under the pointer. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
-var bulletColor = am5.color(0xc83830);
-var polygonColor = am5.color(0xd9cec8);
-
+// US reciprocal tariff rates by country, in percent, from April 2025: the rates
+// as first announced, and as updated
 var data = [
   {
     "id": "CN",
-    "threatened": 34,
+    "announced": 34,
     "updated": 125
   },
   {
     "id": "AT",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "BE",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "BG",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "HR",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "CY",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "CZ",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "DK",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "EE",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "FI",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "FR",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "DE",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "GR",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "HU",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "IE",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "IT",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "LV",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "LT",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "LU",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "MT",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "NL",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "PL",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "PT",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "RO",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "SK",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "SI",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "ES",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "SE",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "VN",
-    "threatened": 46,
+    "announced": 46,
     "updated": 10
   },
   {
     "id": "TW",
-    "threatened": 32,
+    "announced": 32,
     "updated": 10
   },
   {
     "id": "JP",
-    "threatened": 24,
+    "announced": 24,
     "updated": 10
   },
   {
     "id": "IN",
-    "threatened": 26,
+    "announced": 26,
     "updated": 10
   },
   {
     "id": "TH",
-    "threatened": 36,
+    "announced": 36,
     "updated": 10
   },
   {
     "id": "CH",
-    "threatened": 31,
+    "announced": 31,
     "updated": 10
   },
   {
     "id": "ID",
-    "threatened": 32,
+    "announced": 32,
     "updated": 10
   },
   {
     "id": "MY",
-    "threatened": 24,
+    "announced": 24,
     "updated": 10
   },
   {
     "id": "KH",
-    "threatened": 49,
+    "announced": 49,
     "updated": 10
   },
   {
     "id": "GB",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "ZA",
-    "threatened": 30,
+    "announced": 30,
     "updated": 10
   },
   {
     "id": "BR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BD",
-    "threatened": 37,
+    "announced": 37,
     "updated": 10
   },
   {
     "id": "SG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "IL",
-    "threatened": 17,
+    "announced": 17,
     "updated": 10
   },
   {
     "id": "PH",
-    "threatened": 17,
+    "announced": 17,
     "updated": 10
   },
   {
     "id": "CL",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AU",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "PK",
-    "threatened": 29,
+    "announced": 29,
     "updated": 10
   },
   {
     "id": "TR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "LK",
-    "threatened": 44,
+    "announced": 44,
     "updated": 10
   },
   {
     "id": "CO",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "PE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "NI",
-    "threatened": 18,
+    "announced": 18,
     "updated": 10
   },
   {
     "id": "NO",
-    "threatened": 15,
+    "announced": 15,
     "updated": 10
   },
   {
     "id": "CR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "JO",
-    "threatened": 20,
+    "announced": 20,
     "updated": 10
   },
   {
     "id": "DO",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "NZ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "EC",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GT",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "HN",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MG",
-    "threatened": 47,
+    "announced": 47,
     "updated": 10
   },
   {
     "id": "MM",
-    "threatened": 44,
+    "announced": 44,
     "updated": 10
   },
   {
     "id": "TN",
-    "threatened": 28,
+    "announced": 28,
     "updated": 10
   },
   {
     "id": "KZ",
-    "threatened": 27,
+    "announced": 27,
     "updated": 10
   },
   {
     "id": "RS",
-    "threatened": 37,
+    "announced": 37,
     "updated": 10
   },
   {
     "id": "EG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SA",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SV",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BW",
-    "threatened": 37,
+    "announced": 37,
     "updated": 10
   },
   {
     "id": "TT",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MA",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "DZ",
-    "threatened": 30,
+    "announced": 30,
     "updated": 10
   },
   {
     "id": "OM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "UY",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BS",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "LS",
-    "threatened": 50,
+    "announced": 50,
     "updated": 10
   },
   {
     "id": "UA",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BH",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "QA",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MU",
-    "threatened": 40,
+    "announced": 40,
     "updated": 10
   },
   {
     "id": "FJ",
-    "threatened": 32,
+    "announced": 32,
     "updated": 10
   },
   {
     "id": "IS",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "LI",
-    "threatened": 37,
+    "announced": 37,
     "updated": 10
   },
   {
     "id": "GY",
-    "threatened": 38,
+    "announced": 38,
     "updated": 10
   },
   {
     "id": "HT",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BA",
-    "threatened": 35,
+    "announced": 35,
     "updated": 10
   },
   {
     "id": "NG",
-    "threatened": 14,
+    "announced": 14,
     "updated": 10
   },
   {
     "id": "NA",
-    "threatened": 21,
+    "announced": 21,
     "updated": 10
   },
   {
     "id": "BO",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "PA",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "VE",
-    "threatened": 15,
+    "announced": 15,
     "updated": 10
   },
   {
     "id": "MK",
-    "threatened": 33,
+    "announced": 33,
     "updated": 10
   },
   {
     "id": "ET",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GH",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MD",
-    "threatened": 31,
+    "announced": 31,
     "updated": 10
   },
   {
     "id": "AO",
-    "threatened": 32,
+    "announced": 32,
     "updated": 10
   },
   {
     "id": "JM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MZ",
-    "threatened": 16,
+    "announced": 16,
     "updated": 10
   },
   {
     "id": "PY",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "ZM",
-    "threatened": 17,
+    "announced": 17,
     "updated": 10
   },
   {
     "id": "LB",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CD",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BF",
-    "threatened": 10,
-    "updated": 10
-  },
-  {
-    "id": "BF",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CI",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TZ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "IQ",
-    "threatened": 39,
+    "announced": 39,
     "updated": 10
   },
   {
     "id": "GE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SN",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AZ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CM",
-    "threatened": 11,
+    "announced": 11,
     "updated": 10
   },
   {
     "id": "UG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AL",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "NP",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GA",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KW",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BZ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "PG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MW",
-    "threatened": 17,
+    "announced": 17,
     "updated": 10
   },
   {
     "id": "LR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "VG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AF",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "ZW",
-    "threatened": 18,
+    "announced": 18,
     "updated": 10
   },
   {
     "id": "BJ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BB",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MC",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "UZ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "DJ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "PF",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KY",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CW",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "VU",
-    "threatened": 22,
+    "announced": 22,
     "updated": 10
   },
   {
     "id": "RW",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SL",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MN",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SZ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MH",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "PM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KN",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GD",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SD",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TC",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AW",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "ME",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KG",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "YE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "VC",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "NE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "LC",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "NR",
-    "threatened": 30,
+    "announced": 30,
     "updated": 10
   },
   {
     "id": "GQ",
-    "threatened": 13,
+    "announced": 13,
     "updated": 10
   },
   {
     "id": "LY",
-    "threatened": 31,
+    "announced": 31,
     "updated": 10
   },
   {
     "id": "WS",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GN",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TL",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MS",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TD",
-    "threatened": 13,
+    "announced": 13,
     "updated": 10
   },
   {
     "id": "ML",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MV",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TJ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CV",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BI",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GP",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "BT",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MQ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TO",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "MR",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "DM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GF",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CX",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AD",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CF",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SB",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "YT",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "AI",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CC",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "ER",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "CK",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SS",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KM",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "KI",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "NF",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GI",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TV",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "IO",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "TK",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "GW",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "SJ",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   },
   {
     "id": "RE",
-    "threatened": 10,
+    "announced": 10,
     "updated": 10
   }
 ]
 
-
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
+// a theme of its own, for the label size below
 var myTheme = am5.Theme.new(root);
 
-myTheme.rule("InterfaceColors").setAll({
-  primaryButton: am5.color(0xc83830),
-  primaryButtonHover: am5.Color.lighten(am5.color(0xc83830), 0.2),
-  primaryButtonDown: am5.Color.lighten(am5.color(0xc83830), -0.2),
-  primaryButtonActive: am5.color(0xd9cec8),
-});
-
-
 myTheme.rule("Label").setAll({
-  fontSize: "0.8em"
+  fontSize: "0.8em" // every label at 80% of the chart's text size
 });
 
-root.setThemes([am5themes_Animated.new(root), myTheme]);
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_Responsive.new(root)]);
 
+// Colors from the theme, so the map follows the theme: the rates and the buttons in its first color
+var colors = am5.ColorSet.new(root, {});
+var mainColor = colors.getIndex(0); // the theme's first color
+
+// Button colors in the main color, for any buttons on the map (a zoom control, for one)
+root.interfaceColors.setAll({
+  primaryButton: mainColor, // a button at rest...
+  primaryButtonHover: am5.Color.lighten(mainColor, 0.2), // ...lighter under the mouse...
+  primaryButtonDown: am5.Color.lighten(mainColor, -0.2), // ...darker while pressed...
+  primaryButtonActive: am5.Color.lighten(mainColor, 0.7) // ...and much lighter while switched on
+});
+
+// Every number on the map is a rate in percent: in tooltips and on the heat legend
+// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/
+root.numberFormatter.set("numberFormat", "#'%'");
+
+// Create the map chart
+// https://www.amcharts.com/docs/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
-  projection: am5map.geoMercator()
+  // the map can zoom out to half its fitted size
+  minZoomLevel: 0.5,
+  // go to the home view once the map is fitted
+  autoHome: true,
+  projection: am5map.geoEqualEarth() // equal-area: countries keep their true relative size
 }));
 
-var graticuleSeries = chart.series.unshift(
-  am5map.GraticuleSeries.new(root, {
-    step: 10
-  })
-);
-
-graticuleSeries.mapLines.template.set("strokeOpacity", 0.05)
-
-
-var cont = chart.children.push(am5.Container.new(root, {
-  layout: root.horizontalLayout,
-  x: am5.percent(15),
-  centerX: 0,
-  y: am5.percent(100),
-  dy: -40
+// Create series for the water: a faint fill behind the countries
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  // the map fits the countries, not this rectangle around the whole world
+  affectsBounds: false
 }));
 
-// Add labels and controls
-cont.children.push(am5.Label.new(root, {
-  centerY: am5.p50,
-  text: "Map"
-}));
-
-var switchButton = cont.children.push(am5.Button.new(root, {
-  themeTags: ["switch"],
-  centerY: am5.p50,
-  icon: am5.Circle.new(root, {
-    themeTags: ["icon"]
-  })
-}));
-
-switchButton.on("active", function () {
-  if (!switchButton.get("active")) {
-    chart.set("projection", am5map.geoMercator());
-    chart.set("panY", "translateY");
-    chart.set("rotationY", 0);
-    polygonSeries.set("exclude", ["AQ"]);
-    
-  } else {
-    chart.set("projection", am5map.geoOrthographic());
-    chart.set("panY", "rotateY")
-    chart.set("panX", "rotateX");
-    polygonSeries.set("exclude", []);
-    chart.animate({ key: "rotationX", to: chart.get("rotationX") + 360, duration: 15000, easing: am5.ease.inOut(am5.ease.cubic) });
-  }
+waterSeries.mapPolygons.template.setAll({
+  fill: root.interfaceColors.get("alternativeBackground"), // the theme's contrast color...
+  fillOpacity: 0.05, // ...at 5%, a faint tint
+  strokeOpacity: 0 // no outline
 });
 
-cont.children.push(
-  am5.Label.new(root, {
-    centerY: am5.p50,
-    text: "Globe"
-  })
-);
-
-
-// proposed switch button
-
-
-var cont2 = chart.children.push(am5.Container.new(root, {
-  layout: root.horizontalLayout,
-  x: am5.percent(85),
-  centerX: am5.p100,
-  y: am5.percent(100),
-  dy: -40
-}));
-
-// Add labels and controls
-cont2.children.push(am5.Label.new(root, {
-  centerY: am5.p50,
-  text: "Threatened"
-}));
-
-var switchButton2 = cont2.children.push(am5.Button.new(root, {
-  themeTags: ["switch"],
-  centerY: am5.p50,
-  icon: am5.Circle.new(root, {
-    themeTags: ["icon"]
-  })
-}));
-
-switchButton2.on("active", function () {
-  if (!switchButton2.get("active")) {
-    polygonSeries.set("valueField", "threatened");
-    polygonSeries.data.setAll(data);
-
-  } else {
-    polygonSeries.set("valueField", "updated");    
-    polygonSeries.data.setAll(data);
-  }
+waterSeries.data.push({
+  geometry: am5map.getGeoRectangle(90, 180, -90, -180) // north, east, south and west edges: the whole world
 });
 
-cont2.children.push(
-  am5.Label.new(root, {
-    centerY: am5.p50,
-    text: "Updated"
-  })
-);
+// Create graticule series
+// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
+  step: 10 // a line every 10 degrees
+}));
 
-var polygonSeries = chart.series.push(
-  am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata_worldLow,
-    valueField: "threatened",
-    calculateAggregates: true,
-    exclude: ["AQ"]
-  })
-);
+graticuleSeries.mapLines.template.set("strokeOpacity", 0.05); // faint lines
 
-polygonSeries.mapPolygons.template.events.on("pointerover", function (ev) {
-  heatLegend.showValue(ev.target.dataItem.get("value"));
-});
-
-polygonSeries.set("heatRules", [{
-  target: polygonSeries.mapPolygons.template,
-  dataField: "value",
-  min: am5.color(0xd3a29f),
-  max: am5.color(0x6f0600),
-  key: "fill"
-}]);
+// Create main polygon series for countries
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+  geoJSON: am5geodata_worldLow, // the world's countries, in low detail
+  valueField: "announced",      // the rates as first announced color the map
+  // works out the lowest and highest rate, for the heat rule and the legend
+  calculateAggregates: true
+}));
 
 polygonSeries.mapPolygons.template.setAll({
-  tooltipText: "{name} {value}%",
-  fill: polygonColor,
-  stroke: am5.color(0xffffff)
+  tooltipText: "{name}: {value}",
+  // countries that are not in the data: a gray close to the background
+  fill: am5.Color.interpolate(0.15, root.interfaceColors.get("background"), root.interfaceColors.get("alternativeBackground")),
+  stroke: root.interfaceColors.get("background") // borders in the background color
 });
+
+// Countries that are not in the data say so
+polygonSeries.mapPolygons.template.adapters.add("tooltipText", function (text, target) {
+  return target.dataItem.get("value") == null ? "{name}: not in the data" : text;
+});
+
+// The higher the rate, the darker the color
+// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+polygonSeries.set("heatRules", [{
+  target: polygonSeries.mapPolygons.template,
+  dataField: "value", // by each country's value, the rate
+  min: am5.Color.lighten(mainColor, 0.6), // the lowest rate in a light tint of the main color...
+  max: am5.Color.brighten(mainColor, -0.5), // ...the highest in a dark shade of it
+  key: "fill" // the setting the rule changes
+}]);
 
 polygonSeries.data.setAll(data);
 
-
+// Create heat legend
+// https://www.amcharts.com/docs/v5/charts/map-chart/#Heat_legend
 var heatLegend = chart.children.push(am5.HeatLegend.new(root, {
-  orientation: "vertical",
-  startColor: am5.color(0xd3a29f),
-  endColor: am5.color(0x6f0600),
-  startText: "Lowest",
-  endText: "Highest",
+  orientation: "vertical",                       // a bar that runs up and down
+  startColor: am5.Color.lighten(mainColor, 0.6), // the same colors as the heat rule
+  endColor: am5.Color.brighten(mainColor, -0.5),
+  // 8 blocks of color instead of a smooth gradient
   stepCount: 8,
-  x: am5.p100,
+  x: am5.p100, // at the right edge...
   centerX: am5.p100,
-  paddingRight: 20,
-  paddingTop: 20,
-  paddingBottom: 20
+  y: am5.percent(10), // ...from 10% down
+  height: am5.percent(60), // 60% of the map's height, which leaves the zoom buttons room below it
+  paddingRight: 20         // a little room from the edge
 }));
 
 heatLegend.startLabel.setAll({
-  fontSize: 12,
-  fill: heatLegend.get("startColor")
+  fontSize: 12
 });
 
 heatLegend.endLabel.setAll({
-  fontSize: 12,
-  fill: heatLegend.get("endColor")
+  fontSize: 12
 });
 
-// change this to template when possible
+// The legend runs from the lowest rate to the highest
 polygonSeries.events.on("datavalidated", function () {
   heatLegend.set("startValue", polygonSeries.getPrivate("valueLow"));
   heatLegend.set("endValue", polygonSeries.getPrivate("valueHigh"));
 });
 
+// Point at a country to see where its rate sits on the legend
+polygonSeries.mapPolygons.template.events.on("pointerover", function (ev) {
+  heatLegend.showValue(ev.target.dataItem.get("value"));
+});
 
-var title = chart.children.push(am5.Label.new(root, {
-  text: "Trump's tariffs on world countries",
-  fontSize: 20,
-  x: am5.percent(50),
-  centerX: am5.p50,
-  y: 40
-}));
+// Add zoom control
+// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+zoomControl.homeButton.set("visible", true); // a button that goes back to the home view
 ```
 
 ## HTML
@@ -1229,7 +1179,8 @@ var title = chart.children.push(am5.Label.new(root, {
 ```css
 #chartdiv {
   width: 100%;
-  height: 650px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -1239,3 +1190,4 @@ var title = chart.children.push(am5.Label.new(root, {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

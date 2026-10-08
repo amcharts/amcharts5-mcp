@@ -2,27 +2,26 @@
 title: "PieChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/piechart/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Creates a pie chart.
+A pie or donut chart. Several `PieSeries` in one chart split the space between `innerRadius` and `radius` into concentric rings, unless they set their own radii.
+
+Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
 
 ## Import
 
-```javascript
-// Import PieChart
-import * as am5percent from "@amcharts/amcharts5/percent"
+```js
+import * as am5percent from "@amcharts/amcharts5/percent";
+
+am5percent.PieChart.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: PercentChart
+Extends: PercentChart → SerialChart → Chart → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from PercentChart (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **endAngle** (`undefined | number`) — Default 270 An end angle of the chart in degrees. Click here for more info
-- **innerRadius** (`number | Percent`) — Inner radius of the pie chart. Setting to any non-zero value will result in a donut chart. Can be set in fixed pixel value, or relative to chart container size in percent. Setting to negative number will mean pixels from outer radius. Click here for more info
-- **radius** (`number | Percent`) — Default 80% Outer radius of the pie chart. Can be set in fixed pixel value, or relative to chart container size in percent. Click here for more info
-- **startAngle** (`undefined | number`) — Default -90 A start angle of the chart in degrees. Click here for more info
+- Settings: `IPieChartSettings` — get_api_reference shows it after this page
+- Private settings: `IPieChartPrivate`

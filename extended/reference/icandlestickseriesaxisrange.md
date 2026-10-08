@@ -2,18 +2,21 @@
 title: "ICandlestickSeriesAxisRange"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icandlestickseriesaxisrange/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
 
 ## Inheritance
 
 Extends: IColumnSeriesAxisRange
-Extended by: IOHLCSeriesAxisRange
+All ancestors: IColumnSeriesAxisRange, IBaseColumnSeriesAxisRange, IXYSeriesAxisRange
+TypeScript: `am5xy.ICandlestickSeriesAxisRange` (`import type { ICandlestickSeriesAxisRange } from "@amcharts/amcharts5/xy"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IColumnSeriesAxisRange (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Axis range settings
 
-## Properties
+- **columns** (`ListTemplate<Candlestick>`) — Candles of the series within the range.
 
-- **columns** (`ListTemplate`) — A list of Candlestick element in series. @readonly
+## Other inherited axis range settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IXYSeriesAxisRange")`) for types, defaults and descriptions.
+
+- _IXYSeriesAxisRange_: axisDataItem, container, series

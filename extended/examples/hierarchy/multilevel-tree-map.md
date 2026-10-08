@@ -2,16 +2,24 @@
 title: "Zoomable Multilevel Tree Map"
 source: "https://www.amcharts.com/demos/multilevel-tree-map/"
 category: "hierarchy"
-scraped: "2026-09-29"
+scraped: "2026-10-08"
 ---
 
-In a Tree Map the rectangle is divided into smaller rectangles with their size representing the value of each data item. Those smaller rectangles can in turn be divided into even smaller ones creating a sub-treemap.
-Key implementation details
-Treemap is part of the hierarchy module of amCharts. We configure all the data fields on the Treemap and set its initialDepth to 2 to display two levels of data. We then process our dataset into a structure suitable for a hierarchy chart. And, finally, we add logos as bullets for the top level items.
-This chart is added to a Zoomable Container, so you can pan, zoom-in and zoom-out this chart using mouse wheel, pinch-zoom or zoom tools on the bottom-right.
-Hierarchy charts
-Treemap
-Bullets
+A treemap splits one rectangle into boxes sized by value. This one has two levels, car brands and their models, from a year of US car sales, with each brand’s logo behind its models.
+
+When a treemap works: A treemap uses every pixel, so it can show dozens of items and their groups in one view: here each brand’s share of the market and the models that carry it. Boxes are harder to compare than bars, so it works best for spotting the big blocks rather than ranking close values.
+
+Good for:
+- Sales or market share by brand and product
+- Budgets and portfolios with many items
+- Disk usage and other nested sizes
+
+Think twice when:
+- Ranking items of similar size: a bar chart is clearer
+- Negative values: a box can’t be smaller than nothing
+- A handful of items: a pie or bar chart reads faster
+
+Prompt: Create a treemap of a year of US car sales by brand and model, with each brand in its own color and its logo faintly in the middle of its box. Clicking a model zooms into its brand, and clicking again zooms back out. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -20,8 +28,9 @@ Bullets
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
 var root = am5.Root.new("chartdiv");
 
-const myTheme = am5.Theme.new(root);
+const myTheme = am5.Theme.new(root); // a theme of our own, for the rules below
 
+// brand boxes (depth 1) get a thicker outline, model boxes (depth 2) a faint one and no fill
 myTheme.rule("RoundedRectangle", ["hierarchy", "node", "shape", "depth1"]).setAll({
   strokeWidth: 2
 });
@@ -32,6 +41,7 @@ myTheme.rule("RoundedRectangle", ["hierarchy", "node", "shape", "depth2"]).setAl
   strokeOpacity: 0.2
 });
 
+// no brand names (the logos stand in for them), small model names
 myTheme.rule("Label", ["node", "depth1"]).setAll({
   forceHidden: true
 });
@@ -42,41 +52,44 @@ myTheme.rule("Label", ["node", "depth2"]).setAll({
 
 root.setThemes([
   am5themes_Animated.new(root),
-  myTheme
+  myTheme,
+  am5themes_Responsive.new(root)
 ]);
 
 var chart = root.container.children.push(
-  am5.SerialChartContainer.new(root, {
-    width: am5.p100,
-    height: am5.p100
+  am5.SerialChartContainer.new(root, { // a chart whose contents can be zoomed and panned
+    width: am5.p100, // full width...
+    height: am5.p100 // ...and height
   })
 );
 
 chart.zoomableContainer.setAll({
-  wheelable: true,
-  pinchZoom: true
+  wheelable: true, // the mouse wheel zooms in and out...
+  pinchZoom: true  // ...and so does pinching on a touch screen
 });
 
-var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
+var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // + and - zoom buttons
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     maskContent:false, //!important with zoomable containers
-    sort: "descending",
-    singleBranchOnly: false,
+    sort: "descending",      // biggest boxes first
+    singleBranchOnly: false, // other branches stay open when one opens
+    // brands and their models show together: two levels open, none above the selected node
     downDepth: 2,
     upDepth: 0,
-    initialDepth: 2,
+    initialDepth: 2, // both levels show from the start
     valueField: "value",
     categoryField: "name",
     childDataField: "children",
-    nodePaddingOuter: 0,
-    nodePaddingInner: 0
+    nodePaddingOuter: 0, // no space around...
+    nodePaddingInner: 0  // ...or between the boxes
   })
 );
 
+// a click on a model drills into its brand rather than into the model alone
 series.nodes.template.events.on("click", function (ev) {
   var depth = ev.target.dataItem.get("depth");
   if(depth == 2){
@@ -84,8 +97,8 @@ series.nodes.template.events.on("click", function (ev) {
   }
 })
 
-series.labels.template.set("minScale", 0);
-series.get("colors").set("step", 1);
+series.labels.template.set("minScale", 0); // labels shrink as much as they need to fit, instead of hiding
+series.get("colors").set("step", 1);       // every theme color in turn, not every second one
 
 // Generate and set data
 // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
@@ -420,17 +433,17 @@ var data = {
   Volvo: { S60: 16825, S80: 7, S90: 11090, XC60: 22516, XC90: 30996 }
 };
 
+// turns { brand: { model: sales } } into the tree the treemap reads, biggest brands first
 function processData(data) {
   var treeData = [];
 
-  var smallBrands = { name: "Other", children: [] };
 
   am5.object.eachOrdered(
     data,
     (brand) => {
-      var brandData = { name: brand, children: [] };
+      var brandData = { name: brand, children: [] }; // a brand, with its models as children
       var brandTotal = 0;
-      for (var model in data[brand]) {
+      for (var model in data[brand]) {               // add up the brand's sales
         brandTotal += data[brand][model];
       }
 
@@ -446,7 +459,7 @@ function processData(data) {
         treeData.push(brandData);
       }
     },
-    (a, b) => {
+    (a, b) => { // brands in order of total sales, biggest first
       let aval = 0;
       let bval = 0;
       am5.object.each(data[a], (key, val) => (aval += val));
@@ -457,34 +470,33 @@ function processData(data) {
     }
   );
 
-  return [{
+  return [{ // one root node holding all the brands
     name: "Root",
     children: treeData
   }];
 }
 
 series.data.setAll(processData(data));
-series.set("selectedDataItem", series.dataItems[0]);
+series.set("selectedDataItem", series.dataItems[0]); // start with the root selected, so all brands show
 
+// a faint logo in the middle of each brand's box
 series.bullets.push(function (root, series, dataItem) {
   var depth = dataItem.get("depth");
 
-  if (depth == 1) {
+  if (depth == 1) { // brands only, not models
     var picture = am5.Picture.new(root, {
       src: "https://www.amcharts.com/wp-content/uploads/assets/logos/" + dataItem.dataContext.name.toLowerCase() + ".png",
-      centerX: am5.p50,
-      centerY: am5.p50,
-      width: am5.percent(30),
+      centerX: am5.p50,       // centered in the box...
+      centerY: am5.p50,       // ...both ways...
+      width: am5.percent(30), // ...30% of its width
       isMeasured: true
     });
 
-    picture.states.lookup("default").setAll({ opacity: 0.15 });
+    picture.states.lookup("default").setAll({ opacity: 0.15 }); // the logo at 15% opacity
 
     return am5.Bullet.new(root, { sprite: picture });
   }
 });
-
-
 ```
 
 ## HTML
@@ -498,7 +510,8 @@ series.bullets.push(function (root, series, dataItem) {
 ```css
 #chartdiv {
   width: 100%;
-  height: 700px;
+  height: 500px;
+  font-size: 0.875rem;
 }
 ```
 
@@ -507,3 +520,4 @@ series.bullets.push(function (root, series, dataItem) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

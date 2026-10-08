@@ -1,10 +1,12 @@
 ---
 title: "Exporting to image formats"
 source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/"
-scraped: "2026-03-15"
+scraped: "2026-10-08"
 ---
 
 This tutorial looks at configuration options for chart snapshot export with [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin.
+
+NOTECharts can also be exported as SVG vector images. Quality, pixel ratio, and size options below do not apply to SVG, while combining images and modifying the export do. For more, see "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)".
 
 ## Image quality
 
@@ -161,6 +163,8 @@ var exporting = am5plugins\_exporting.Exporting.new(chartRoot, {
     marginTop: 20
   }\]
 });
+
+Extra images are included in SVG export, too.
 
 Here's a working example:
 

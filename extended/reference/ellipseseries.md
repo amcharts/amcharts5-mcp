@@ -2,25 +2,31 @@
 title: "EllipseSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ellipseseries/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-Data item
-EllipseSeries uses data items of type IEllipseSeriesDataItem.
+Draws ellipses, for the Ellipse tool of a `StockChart`.
 
 ## Import
 
-```javascript
-// Import EllipseSeries
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.EllipseSeries.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: DrawingSeries
+Extends: DrawingSeries → LineSeries → XYSeries → Series → Component → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from DrawingSeries (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IEllipseSeriesSettings` — get_api_reference shows it after this page
+- Private settings: `IEllipseSeriesPrivate`
+- Data item fields: `IEllipseSeriesDataItem`
 
 ## Properties
 
-- **ellipses** (`ListTemplate`) — Default this.addDisposer(new ListTemplate( Template.new({ radiusX: 0, radiusY: 0 }), () => Ellipse._new(this._root, { radiusX: 0, radiusY: 0, templateField: "settings" }, [this.ellipses.template]) ))
+Public properties (not settings):
+
+- **ellipses** (`ListTemplate<Ellipse>`) — The drawn ellipses.

@@ -2,30 +2,32 @@
 title: "AxisBullet"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisbullet/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
 Draws a bullet on an axis.
 
+Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Axis_bullets
+
 ## Import
 
-```javascript
-// Import AxisBullet
-import * as am5xy from "@amcharts/amcharts5/xy"
+```js
+import * as am5xy from "@amcharts/amcharts5/xy";
+
+am5xy.AxisBullet.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: Entity
+Extends: Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from Entity (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
 
-## Settings
-
-- **location** (`undefined | number`) — Relative location of the bullet within the cell. 0 - beginning, 0.5 - middle, 1 - end.
-- **sprite** (`Sprite`) — A visual element of the bullet.
-- **stacked** (`undefined | false | true`) — Default false Indicates if the bullet should be stacked on top of another bullet if it's on the same position. Will work on horizontal or vertical axes only. @since 5.2.28
+- Settings: `IAxisBulletSettings` — get_api_reference shows it after this page
+- Private settings: `IAxisBulletPrivate`
 
 ## Properties
 
-- **axis** (`Axis | undefined`) — Target axis object.
+Public properties (not settings):
+
+- **axis** (`Axis<AxisRenderer>`) — The axis the bullet is on.

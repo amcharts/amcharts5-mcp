@@ -2,101 +2,63 @@
 title: "ILabelSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilabelsettings/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
-
-Inheritance
-ILabelSettings extends IContainerSettings.
-ILabelSettings is extended by IRadialLabelSettings, IEditableLabelSettings, IAxisLabelSettings.
-Properties
-
-
-        active        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-Indicates if element is currently active.
-
-
-        ariaChecked        
-        #
-      
-
-
-                          Type undefined | false | true                      
-Inherited from ISpriteSettings
-aria-checked setting.
- This setting is ignored unless role is one of the following:
-
-"checkbox"
-
-"option"
-
-"radio"
-
-"menuitemcheckbox"
-
-"menuitemradio"
-
-"treeitem"
-
-
-        ariaControls        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-controls setting.
-
-
-        ariaCurrent        
-        #
-      
-
-
-                          Type undefined | string                      
-Inherited from ISpriteSettings
-aria-current setting.
 
 ## Inheritance
 
 Extends: IContainerSettings
-Extended by: IRadialLabelSettings, IEditableLabelSettings, IAxisLabelSettings
+All ancestors: IContainerSettings, ISpriteSettings, IEntitySettings
+Settings of: `am5.Label` (see its page for the class)
+TypeScript: `am5.ILabelSettings` (`import type { ILabelSettings } from "@amcharts/amcharts5"`)
 
-> **Note:** This class also inherits all settings, properties, methods, and events from IContainerSettings (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings
 
-## Properties
-
-- **baselineRatio** (`undefined | number`) — Default 0.19 How mouch of the height should be considered to go below baseline.
-- **breakWords** (`undefined | false | true`) — Default false Whether words can be broken when truncating or wrapping text.
-- **direction** (`"ltr" | "rtl"`) — Default "ltr" Text direction.
-- **ellipsis** (`undefined | string`) — Default "…" Ellipsis characters to use when truncating text. Will use Unicode ellipsis symbol ("…") by default, which might not be available in all fonts. If ellipsis looks broken, use different characters. E.g.: label.set("ellipsis", "..."); label.set("ellipsis", "...");
-- **fill** (`Color`) — Text color.
-- **fillGradient** (`Gradient`) — Fill gradient. Click here for more information @since 5.10.1
-- **fillOpacity** (`undefined | number`) — Default 1 Text opacity. @ince 5.2.39
-- **fontFamily** (`undefined | string`) — Font family to use for the label. Multiple fonts can be separated by commas.
-- **fontSize** (`string | number`) — Font size in misc any supported CSS format (pixel, point, em, etc.).
+- **text** (`string`) — The label's text. It can hold in-line formatting and, with `populateText`, data placeholders. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/
+- **fill** (`Color`) — default `root.interfaceColors.get("text")` _(theme)_ — Text color.
+- **fillOpacity** (`number`) — default `1` — Text opacity, from `0` (transparent) to `1` (opaque). _Since 5.2.39._
+- **fillGradient** (`Gradient`) — Fill gradient. _Since 5.10.1._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **textAlign** (`"start" | "end" | "left" | "right" | "center"`) — Horizontal alignment of the text's lines.
+- **fontFamily** (`string`) — default `"-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\""` _(theme)_ — Font family, or a comma-separated list of them. `"inherit"` uses the font of the chart's container element (since `5.17.3`).
+- **fontSize** (`string | number`) — default `"1em"` _(theme)_ — Font size: a number in pixels, or any CSS size, such as `"1em"` or `"12pt"`.
+- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Font weight.
 - **fontStyle** (`"normal" | "italic" | "oblique"`) — Font style.
 - **fontVariant** (`"normal" | "small-caps"`) — Font variant.
-- **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Font weight.
-- **ignoreFormatting** (`undefined | false | true`) — Default false If set to true, will ignore in-line formatting blocks and will display text exactly as it is.
-- **lineHeight** (`Percent | number`) — Line height in percent or absolute pixels.
-- **maxChars** (`undefined | number`) — Maximum number of characters to allow in label. If the text is longer than maxChars, the text will be truncated using the breakWords and ellipsis settings. @since 5.7.2
-- **minScale** (`undefined | number`) — Minimum relative scale allowed for label when scaling down when oversizedBehavior is set to "fit". If fitting the label would require it to scale beyond minScale it would be hidden instead.
-- **opacity** (`undefined | number`) — Opacity of the label. 0 - fully transparent; 1 - fully opaque.
-- **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`) — How to handle labels that do not fit into its designated space. LIMITATIONS: on circular labels, the only values supported are "hide" and "truncate". The latter will ignore breakWords setting. Click here for more info
-- **populateText** (`undefined | false | true`) — If set to true the label will parse text for data placeholders and will try to populate them with actual data. Click here for more info
-- **shadowBlur** (`undefined | number`) — Blurriness of the the shadow. The bigger the number, the more blurry shadow will be. Click here for more info
-- **shadowColor** (`Color | null`) — Color of the element's shadow. For this to work at least one of the following needs to be set as well: shadowBlur, shadowOffsetX, shadowOffsetY. Click here for more info
-- **shadowOffsetX** (`undefined | number`) — Horizontal shadow offset in pixels. Click here for more info
-- **shadowOffsetY** (`undefined | number`) — Vertical shadow offset in pixels. Click here for more info
-- **shadowOpacity** (`undefined | number`) — Opacity of the shadow (0-1). If not set, will use the same as fillOpacity of the element. Click here for more info
-- **text** (`undefined | string`) — Labels' text. Click here for text styling info
-- **textAlign** (`"start" | "end" | "left" | "right" | "center"`) — Alignment.
-- **textBaseline** (`"top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"`) — A base line to use when aligning text chunks vertically.
-- **textDecoration** (`"underline" | "line-through"`) — Text decoration. Supported options "underline", "line-through". @since 5.0.15
+- **textDecoration** (`"underline" | "line-through"`) — Text decoration: `"underline"` or `"line-through"`. _Since 5.0.15._
+- **lineHeight** (`number | Percent`) — Line height as a multiple of the font's line height: a number, such as `1.5`, or a percent, such as `am5.percent(150)`. If not set, it is `1.2`.
+- **baselineRatio** (`number`) — default `0.19` — Share of the line height that lies below the text's baseline.
+- **opacity** (`number`) — default `1` _(theme)_ — Opacity of the label, from `0` (transparent) to `1` (opaque).
+- **direction** (`"ltr" | "rtl"`) — default `"ltr"` — Text direction.
+- **textBaseline** (`"top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"`) — The baseline the text is aligned to vertically, as in the canvas `textBaseline`.
+- **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`) — What to do with text that does not fit the label's `maxWidth` (or `maxHeight`): `"hide"` it, `"fit"` it by scaling it down, `"wrap"` it onto more lines, wrap it without breaking words (`"wrap-no-break"`), or `"truncate"` it with an ellipsis. LIMITATIONS: on circular labels, the only values supported are `"hide"` and `"truncate"`. The latter will ignore `breakWords` setting. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#Oversized_text
+- **breakWords** (`boolean`) — default `false` — Lets truncation cut words in the middle. Wrapping does not use it.
+- **ellipsis** (`string`) — default `"…"` — Characters added at the end of truncated text. The default Unicode ellipsis (`"…"`) is missing from some fonts. If it looks broken, use other characters, e.g.:
+
+  ```ts
+  label.set("ellipsis", "...");
+  ```
+
+- **minScale** (`number`) — Smallest scale, from `0` to `1`, that `oversizedBehavior: "fit"` may shrink the text to. Text that would need to shrink more is hidden.
+- **populateText** (`boolean`) — default `false` _(theme)_ — Fills data placeholders in `text`, such as `{value}`, with values from the label's data item. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#Data_placeholders
+- **ignoreFormatting** (`boolean`) — default `false` — Shows `text` exactly as it is, without applying in-line formatting blocks such as `[bold]`.
+- **shadowColor** (`Color`) — Color of the text's shadow. It shows only when `shadowBlur`, `shadowOffsetX` or `shadowOffsetY` is set too. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowBlur** (`number`) — Blurriness of the shadow: the bigger the number, the blurrier the shadow. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetX** (`number`) — Horizontal shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetY** (`number`) — Vertical shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOpacity** (`number`) — Opacity of the shadow, from `0` to `1`. If not set, the shadow takes the opacity of the text. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **maxChars** (`number`) — Maximum number of characters in the label. A longer `text` is cut, using the `breakWords` and `ellipsis` settings. _Since 5.7.2._
+
+## Inherited settings with a different default on Label
+
+- **paddingBottom** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
+- **paddingLeft** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
+- **paddingRight** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
+- **paddingTop** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
+
+## Other inherited settings
+
+Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
+
+- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

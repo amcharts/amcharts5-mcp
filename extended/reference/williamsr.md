@@ -2,20 +2,27 @@
 title: "WilliamsR"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/williamsr/"
-scraped: "2026-03-15"
+generatedFrom: "@amcharts/amcharts5@5.21.0"
 ---
 
-An implementation of a StockChart indicator.
+Williams %R indicator: where the close is within the high-low range of the last `period` data items, from `0` (at the high) to `-100` (at the low). Drawn in a panel of its own.
+
+Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
 
 ## Import
 
-```javascript
-// Import WilliamsR
-import * as am5stock from "@amcharts/amcharts5/stock"
+```js
+import * as am5stock from "@amcharts/amcharts5/stock";
+
+am5stock.WilliamsR.new(root, { /* settings */ });
 ```
 
 ## Inheritance
 
-Extends: OverboughtOversold
+Extends: OverboughtOversold → ChartIndicator → Indicator → Container → Sprite → Entity → Settings
 
-> **Note:** This class also inherits all settings, properties, methods, and events from OverboughtOversold (and its ancestors). Use `get_doc` or `get_core_reference` with the parent class name to see inherited members.
+## Settings and related interfaces
+
+- Settings: `IWilliamsRSettings` — get_api_reference shows it after this page
+- Private settings: `IWilliamsRPrivate`
+- Events: `IWilliamsREvents`
