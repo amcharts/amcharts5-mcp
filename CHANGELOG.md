@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.7.1] - 2026-10-08
+
+### Security
+- **`@modelcontextprotocol/sdk` raised to `^1.32.1`** (was `^1.12.1`). Security scanners judge a package by the oldest version its range allows, and 1.12.1 has four high advisories: GHSA-345p-7cg4-v4c7, GHSA-w48q-cv73-mx4w, GHSA-8r9q-7v3j-jr4g and GHSA-6qxp-vccf-f47h. 1.32.1 has none.
+- **The Worker uses the same SDK.** An npm `overrides` entry makes the Worker's `agents` dependency, which pins the SDK exactly, use 1.32.1 too. Tested locally with `wrangler dev`: all 11 tools and the SSE endpoint behave as on 1.29.0.
+- **Smaller runtime surface:**
+  - `jsdom` and `turndown` moved to devDependencies, since only the maintainer scrapers use them.
+  - `zod`, imported by the server but previously not declared, is now declared (`^3.25 || ^4.0`, as the SDK requires).
+  - The runtime dependencies are now just the SDK and `zod`; `npm audit --omit=dev` reports 0 vulnerabilities.
+- **`generate-reference.cjs` no longer takes `--force`.** It never deletes a file it did not write, and stops if the output folder holds one.
+
+### Added
+- **A "Security" section in the README:**
+  - every tool is read-only;
+  - the hosted endpoint has no authentication by design: public documentation, no accounts or user data;
+  - what the Worker keeps: Durable Object session state, and Cloudflare request logs;
+  - the local package makes no network requests;
+  - the scripts are not shipped;
+  - where to report a vulnerability.
+
+### Fixed
+- **README:** the tools table now lists `get_api_reference`, and its counts are current.
+- **Skill:** the PatternSet note says "elements after the 17th got no pattern" again, which was exact. 1.7.0 had changed it wrongly.
+
 ## [1.7.0] - 2026-10-08
 
 ### Added

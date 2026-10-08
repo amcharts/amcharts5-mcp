@@ -212,8 +212,9 @@ npm start
 | `get_doc` | Get a full documentation page (e.g. "charts/xy-chart/axes", "concepts/events") |
 | `get_section` | Get a specific section from a reference file by heading |
 | `get_quick_start` | Get a minimal working template for any chart type |
-| `list_examples` | Browse all 283 examples, optionally filtered by category |
+| `list_examples` | Browse all 290+ examples, optionally filtered by category |
 | `get_example` | Get the full code for a specific example |
+| `get_api_reference` | Get the API reference for a class, interface or function — settings with their defaults, events, inheritance and the import line |
 
 ## Example Usage
 
@@ -228,12 +229,23 @@ Once connected, your AI assistant can:
 
 ## Content
 
-The server includes **1,500+ documents**:
+The server includes **1,800+ documents**:
 
 - **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides (React, Angular, Vue, Next.js, Svelte, and more)
 - **290+ code examples** — working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more
 - **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), events, properties, data item fields, the inheritance chain and the import line
 - **Curated skill reference** — quick-start templates and chart-specific guides from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
+
+## Security
+
+- **Read-only tools.** Every tool reads the bundled amCharts documentation and returns text. No tool writes files, runs commands or fetches URLs.
+- **The hosted endpoint has no authentication, by design.** `https://mcp.amcharts.com/mcp` serves the same public documentation as amcharts.com. There are no accounts, API keys, user data or write operations behind it.
+  - It runs on Cloudflare Workers.
+  - MCP session state is kept in a Durable Object, as the MCP agents framework requires.
+  - Cloudflare's standard request logs are enabled. The server itself does not log tool arguments.
+- **Local install.** The npm package runs over stdio on your machine and reads only the content bundled in it; it makes no network requests. Its only runtime dependencies are `@modelcontextprotocol/sdk` and `zod`.
+- **Maintainer scripts.** The scripts in `scripts/` (the demo and docs scrapers, the API reference generator) are not part of the npm package and never run in the server.
+- **Reporting a vulnerability:** https://www.amcharts.com/report-vulnerability/
 
 ## License
 

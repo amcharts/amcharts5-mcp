@@ -1,6 +1,6 @@
 {
   "name": "@amcharts/amcharts5-mcp",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "mcpName": "io.github.amcharts/amcharts5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
   "type": "module",
@@ -54,14 +54,18 @@
   "author": "amCharts",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.1",
-    "jsdom": "^29.0.0",
-    "turndown": "^7.2.2"
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^3.25 || ^4.0"
   },
   "devDependencies": {
     "@amcharts/amcharts5": "5.21.0",
     "agents": "^0.16.2",
+    "jsdom": "^29.0.0",
+    "turndown": "^7.2.2",
     "typescript": "5.9.3",
     "wrangler": "^4.102.0"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "$@modelcontextprotocol/sdk"
   }
 }

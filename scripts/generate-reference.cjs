@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Usage: npm run build:reference [-- --force] — regenerates extended/reference/*.md from the installed @amcharts/amcharts5 (optional env: AMCHARTS_PKG, OUT_DIR, TS_PATH, NOTES_FILE).
+// Usage: npm run build:reference — regenerates extended/reference/*.md from the installed @amcharts/amcharts5 (optional env: AMCHARTS_PKG, OUT_DIR, TS_PATH, NOTES_FILE).
 // ---------------------------------------------------------------------------
 // generate-reference.cjs — builds the per-class API reference served by the
 // get_api_reference tool, straight from the INSTALLED @amcharts/amcharts5
@@ -41,7 +41,7 @@
 //
 // Output: only pages this generator wrote (frontmatter `generatedFrom:
 // "@amcharts/amcharts5@…"`) are replaced. If OUT_DIR holds other .md files the
-// run stops, unless `--force` is given, which removes those too.
+// run stops: it never deletes a file it did not write.
 // Third-party typings bundled in the package (.internal/bundled, e.g. SheetJS)
 // are not documented.
 // ---------------------------------------------------------------------------
@@ -62,7 +62,6 @@ const NOTES_FILE = path.resolve(process.env.NOTES_FILE || path.join(__dirname, "
 const VERSION = JSON.parse(fs.readFileSync(path.join(PKG, "package.json"), "utf8")).version;
 const GENERATED_FROM = `@amcharts/amcharts5@${VERSION}`;
 const SITE = "https://www.amcharts.com/docs/v5/reference/";
-const FORCE = process.argv.includes("--force");
 
 const stats = {
   themeRules: 0, themeTaggedRules: 0, classDefaults: 0, conditionalClassDefaults: 0,
@@ -77,9 +76,9 @@ const isGeneratedPage = (file) => /^---\n(?:.*\n)*?generatedFrom: "@amcharts\/am
   .test(fs.readFileSync(file, "utf8").slice(0, 4000).replace(/\r\n/g, "\n"));
 const existingPages = fs.existsSync(OUT) ? fs.readdirSync(OUT).filter((f) => f.endsWith(".md")) : [];
 const foreignPages = existingPages.filter((f) => !isGeneratedPage(path.join(OUT, f)));
-if (foreignPages.length && !FORCE) {
+if (foreignPages.length) {
   console.error(`Refusing to write to ${OUT}: ${foreignPages.length} .md file(s) there were not made by this generator ` +
-    `(e.g. ${foreignPages.slice(0, 3).join(", ")}). Check OUT_DIR, or re-run with --force to replace them too.`);
+    `(e.g. ${foreignPages.slice(0, 3).join(", ")}). Check OUT_DIR, or move those files out of it first.`);
   process.exit(1);
 }
 
@@ -1066,7 +1065,7 @@ for (const [cname, ci] of classIndex) {
 // Only pages this generator made are replaced (see the check at the top).
 fs.mkdirSync(OUT, { recursive: true });
 for (const f of existingPages) {
-  if (FORCE || isGeneratedPage(path.join(OUT, f))) fs.unlinkSync(path.join(OUT, f));
+  if (isGeneratedPage(path.join(OUT, f))) fs.unlinkSync(path.join(OUT, f));
 }
 let bytes = 0;
 for (const [file, p] of [...pages].sort((a, b) => a[0].localeCompare(b[0]))) {
