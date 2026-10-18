@@ -2,7 +2,7 @@
 title: "Clock with Two Faces"
 source: "https://www.amcharts.com/demos/clock-with-two-faces/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A clock with a dial inside a dial: hours and minutes on the outer face, seconds on a small inner face, and today’s date in the middle.
@@ -158,8 +158,8 @@ var secondsHand = am5radar.ClockHand.new(root, {
   layer: 5
 })
 
-secondsHand.hand.set("fill", am5.color(0xff0000)); // red
-secondsHand.pin.set("fill", am5.color(0xff0000));
+secondsHand.hand.set("fill", root.interfaceColors.get("negative")); // the theme's red
+secondsHand.pin.set("fill", root.interfaceColors.get("negative"));
 
 secondsDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: secondsHand

@@ -2,7 +2,7 @@
 title: "ISliceGrouperPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/islicegrouperprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -17,3 +17,4 @@ TypeScript: not exported by name from the package.
 - **smallDataItems** (`DataItem<IPercentSeriesDataItem>[]`)
 - **currentStep** (`number`)
 - **currentPass** (`number`)
+- **currentCount** (`number`)

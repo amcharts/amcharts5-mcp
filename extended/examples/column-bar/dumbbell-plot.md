@@ -2,7 +2,7 @@
 title: "Dumbbell Plot"
 source: "https://www.amcharts.com/demos/dumbbell-plot/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The dumbbell plot standing up: for each of 29 people, two dots on a vertical line, the lower one a start value and the upper one an end value. The longer the line, the bigger the change.

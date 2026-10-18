@@ -2,7 +2,7 @@
 title: "Stadium Track Chart"
 source: "https://www.amcharts.com/demos/stadium-track-chart/"
 category: "timeline"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Six values as a race: each runner has a lane on an oval track, and their bar runs from the start line around the oval as far as their value takes it. Photos in the middle name the runners.
@@ -38,6 +38,10 @@ var chart = root.container.children.push(am5timeline.CurveChart.new(root, {
   wheelY: "zoomX" // the mouse wheel zooms along the track
 }));
 
+// The track's markings (the lines, the names and distances, the bars and dots) in the theme's background color: white,
+// or dark in dark mode, where the theme makes the lanes lighter
+var markColor = root.interfaceColors.get("background");
+
 var yRenderer = am5timeline.AxisRendererCurveY.new(root, {
   axisLength: 250,     // the lanes take 250px across the track
   minGridDistance: 10, // lanes close together: let every name show
@@ -46,22 +50,22 @@ var yRenderer = am5timeline.AxisRendererCurveY.new(root, {
 
 yRenderer.labels.template.setAll({
   fontSize: 11,              // small text...
-  layer: 30,                 // ...drawn on layer 30, over the track...
-  fill: am5.color(0xffffff), // ...in white
+  layer: 30,        // ...drawn on layer 30, over the track...
+  fill: markColor,  // ...in the markings' color
   fontWeight: "bold",
   centerX: am5.p100
 });
 
 yRenderer.grid.template.setAll({
-  stroke: am5.color(0xffffff), // white lines between the lanes...
-  strokeOpacity: 1,            // ...fully opaque...
-  layer: 30                    // ...over the track
+  stroke: markColor, // lines between the lanes...
+  strokeOpacity: 1,  // ...fully opaque...
+  layer: 30          // ...over the track
 })
 
+// the lanes: each in its own color of the theme, set in the axis's fillRule below
 yRenderer.axisFills.template.setAll({
-  fill: am5.color(0xb84f49), // track red for every lane...
-  forceHidden: false,        // ...shown even if a theme hides axis fills...
-  fillOpacity: 1,            // ...solid
+  forceHidden: false, // shown even if a theme hides axis fills...
+  fillOpacity: 1,     // ...solid
   visible: true
 });
 
@@ -71,22 +75,22 @@ var xRenderer = am5timeline.AxisRendererCurveX.new(root, {
   rotateLabels: true,          // the labels turn with the track
   points: getPoints(),         // the track's shape, from getPoints at the bottom
   minGridDistance: 200,        // at least 200px between the distance marks
-  stroke: am5.color(0x000000), // a dark band along the track...
-  strokeOpacity:0.1,           // ...faint...
-  strokeWidth:20               // ...and 20px wide
+  stroke: root.interfaceColors.get("alternativeBackground"), // a band along the track, in the theme's text color...
+  strokeOpacity: 0.1, // ...faint...
+  strokeWidth: 20     // ...and 20px wide
 });
 
 xRenderer.grid.template.setAll({
-  stroke: am5.color(0xffffff), // white distance lines across the lanes...
-  strokeOpacity: 1,            // ...fully opaque...
-  layer: 30                    // ...over the track
+  stroke: markColor, // distance lines across the lanes...
+  strokeOpacity: 1,  // ...fully opaque...
+  layer: 30          // ...over the track
 })
 
 xRenderer.labels.template.setAll({
-  maxPosition: 0.98,         // no label at the very end, where the loop meets its start
+  maxPosition: 0.98, // no label at the very end, where the loop meets its start
   fontSize: 13,
-  layer: 30,                 // over the track
-  fill: am5.color(0xffffff), // white
+  layer: 30,         // over the track
+  fill: markColor,   // in the markings' color
   fontWeight: "bold",
   centerY: am5.p100
 });
@@ -104,11 +108,14 @@ xRenderer.labels.template.adapters.add("rotation", function (rotation, target) {
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "name",
   renderer: yRenderer,
-  // every lane gets a fill, not only every other one
+  // every lane gets a fill, not only every other one, each in the next color of the chart's color set
   fillRule: function (dataItem) {
     const axisFill = dataItem.get("axisFill");
     if (axisFill) {
-      axisFill.set("visible", true);
+      axisFill.setAll({
+        visible: true,
+        fill: chart.get("colors").getIndex(yAxis.dataItems.indexOf(dataItem))
+      });
     }
   }
 }));
@@ -130,24 +137,24 @@ var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
 }))
 
 series.columns.template.setAll({
-  fill: am5.color(0xffffff), // white bars...
-  strokeOpacity: 0,          // ...with no outline...
-  fillOpacity: 0.5,          // ...half see-through...
-  layer: 30,                 // ...over the track
+  fill: markColor,   // bars in the markings' color...
+  strokeOpacity: 0,  // ...with no outline...
+  fillOpacity: 0.5,  // ...half see-through...
+  layer: 30,         // ...over the track
   tooltipText: "{categoryY}: {valueX}" // hover a bar for the runner and the distance
 });
 
 series.columns.template.states.create("hover", {
-  fillOpacity: 1 // solid white under the pointer
+  fillOpacity: 1 // solid under the pointer
 });
 
-// a white dot at the end of each bar
+// a dot at the end of each bar
 series.bullets.push(function (root, series, dataItem) {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
       radius: 5, // a 5px dot
       fillOpacity: 1,
-      fill: am5.color(0xffffff)
+      fill: markColor
     })
   })
 })

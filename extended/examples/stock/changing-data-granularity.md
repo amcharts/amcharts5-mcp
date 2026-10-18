@@ -2,7 +2,7 @@
 title: "Changing Data Granularity"
 source: "https://www.amcharts.com/demos/changing-data-granularity/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A stock chart that loads new data when you change the interval: a year of Microsoft prices as daily, weekly or monthly candles, or a single day in one-minute candles. Each interval is its own file, fetched when you pick it.

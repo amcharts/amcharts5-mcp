@@ -2,7 +2,7 @@
 title: "Vertical Arc Diagram"
 source: "https://www.amcharts.com/demos/vertical-arc-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 An arc diagram standing up: the nodes in a column with their names beside them, the arcs bulging out to the right. Here, 23 links between the friends of the TV show Friends and people around them, with dots running along each arc.

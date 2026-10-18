@@ -2,7 +2,7 @@
 title: "Stock Data Grouping"
 source: "https://www.amcharts.com/demos/stock-data-grouping/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 More than six years of daily Microsoft prices, about 1,600 trading days, in one chart. Zoomed out, the days merge into monthly candles so that no more than 150 are on screen; zoom in and they split into weeks, then single days.

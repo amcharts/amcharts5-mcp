@@ -2,7 +2,7 @@
 title: "Duration on Value Axis"
 source: "https://www.amcharts.com/demos/duration-on-value-axis/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A two-week road trip in one chart: miles driven each day, hours behind the wheel and how far north each stop is. The right-hand axis is a duration axis: the data is in minutes, the labels read as hours and minutes.

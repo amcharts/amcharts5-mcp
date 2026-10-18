@@ -2,7 +2,7 @@
 title: "Stock Chart with Bollinger Bands Indicator"
 source: "https://www.amcharts.com/demos/stock-chart-with-bollinger-bands-indicator/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Bollinger Bands wrap the price in a channel: a 20-day moving average in the middle, with bands two standard deviations above and below it. The bands widen when prices swing hard and narrow when they calm down.

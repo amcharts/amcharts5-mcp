@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart"
 source: "https://www.amcharts.com/demos/stacked-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A stacked chart on its side: each bar is a year’s total, split into six regions and labeled segment by segment. Bars leave room for long names and long lists.

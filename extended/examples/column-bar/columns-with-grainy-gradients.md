@@ -2,7 +2,7 @@
 title: "Columns with Grainy Gradients"
 source: "https://www.amcharts.com/demos/columns-with-grainy-gradients/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Columns styled like a poster: each one fades from its own color to a dark shade of it, with a film-grain texture, a fully rounded top and a soft shadow that grows on hover.

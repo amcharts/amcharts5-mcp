@@ -2,7 +2,7 @@
 title: "Sorted Bar Chart"
 source: "https://www.amcharts.com/demos/sorted-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bar chart that keeps its ranking up to date. Every second and a half, twelve social networks get new user counts, and the bars slide into their new order, the longest on top.

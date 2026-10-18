@@ -2,7 +2,7 @@
 title: "Floating Bar Chart"
 source: "https://www.amcharts.com/demos/floating-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Floating bars start and end wherever the data says, not at zero: here, four people’s working hours on one day, from John’s 8:00 start to Eaton’s 19:00 finish.

@@ -2,7 +2,7 @@
 title: "LabelSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/labelseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Draws text labels typed in on the chart, for the Label tool of a `StockChart`.

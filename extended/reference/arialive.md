@@ -2,7 +2,7 @@
 title: "AriaLive"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/arialive/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Values of the `aria-live` attribute.

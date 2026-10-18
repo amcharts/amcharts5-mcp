@@ -2,7 +2,7 @@
 title: "Range Bullet Chart"
 source: "https://www.amcharts.com/demos/range-bullet-chart/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A range bullet chart shows the spread of a score as a bar from its lowest to its highest value, with a marker for the average. Here, the scores two options got: a circle at each end and a triangle at the average.

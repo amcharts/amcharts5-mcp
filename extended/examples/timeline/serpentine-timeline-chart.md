@@ -2,7 +2,7 @@
 title: "Serpentine Timeline Chart"
 source: "https://www.amcharts.com/demos/serpentine-timeline-chart/"
 category: "timeline"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A project plan on a winding road, so four months fit on one screen. Each module has its own lane and color, and lettered badges mark the milestones.

@@ -2,7 +2,7 @@
 title: "Id"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/id/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 TypeScript: not exported by name from the package.

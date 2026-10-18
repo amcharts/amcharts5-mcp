@@ -2,7 +2,7 @@
 title: "Data Grouping 50K Points"
 source: "https://www.amcharts.com/demos/data-grouping-50k-points/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 50,000 daily values, about 137 years, in one line chart. Zoomed out, it shows one point per year; zoom in and it switches to months, weeks and finally days.

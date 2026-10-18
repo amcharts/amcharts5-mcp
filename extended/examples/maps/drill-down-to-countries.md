@@ -2,7 +2,7 @@
 title: "Drill-Down to Countries"
 source: "https://www.amcharts.com/demos/drill-down-to-countries/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map colored by continent that loads a country's regions when you click it. The detailed map is fetched only then, so the page stays light.
@@ -103,7 +103,7 @@ var worldSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
 worldSeries.mapPolygons.template.setAll({
   tooltipText: "{name}",     // the country's name on hover
   interactive: true,         // reacts to hover and clicks
-  fill: am5.color(0xaaaaaa), // gray, for countries without a map to drill into
+  fill: root.interfaceColors.get("disabled"), // the theme's gray, for countries without a map to drill into
   // countries with a map of their own take their continent's color from polygonSettings in the data
   templateField: "polygonSettings"
 });
@@ -145,7 +145,7 @@ var countrySeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
 countrySeries.mapPolygons.template.setAll({
   tooltipText: "{name}",    // the region's name on hover
   interactive: true,        // reacts to hover
-  fill: am5.color(0xaaaaaa) // gray until a click sets the continent's color
+  fill: root.interfaceColors.get("disabled") // the theme's gray until a click sets the continent's color
 });
 
 countrySeries.mapPolygons.template.states.create("hover", {

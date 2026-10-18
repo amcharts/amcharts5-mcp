@@ -2,7 +2,7 @@
 title: "pageSizes"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/pagesizes/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Available PDF page sizes.

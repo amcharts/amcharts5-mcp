@@ -2,7 +2,7 @@
 title: "Stacked Waterfall Chart"
 source: "https://www.amcharts.com/demos/stacked-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A waterfall with two budgets in every column: the first column is the whole budget of 128, and each stage after it takes its share from both, stepping down to zero. The number above a column is what its stage cost.

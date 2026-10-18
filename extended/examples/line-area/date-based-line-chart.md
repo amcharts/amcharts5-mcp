@@ -2,10 +2,10 @@
 title: "Line with Different Negative Color"
 source: "https://www.amcharts.com/demos/date-based-line-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
-A line chart that turns orange where it drops below zero, line and fill alike. The same trick works for any threshold, not just zero.
+A line chart that turns red where it drops below zero, line and fill alike. The same trick works for any threshold, not just zero.
 
 When to color by threshold: Coloring the part of a line beyond a threshold shows at a glance when a value was good or bad, without reading the axis. Zero is the natural line for profit and loss or temperatures; a target, a limit or an average works the same way.
 
@@ -116,15 +116,18 @@ var rangeDataItem = yAxis.makeDataItem({
 
 var range = series.createAxisRange(rangeDataItem);
 
+// below zero in the theme's color for negative values (red by default), so it suits every theme and dark mode
+var negativeColor = root.interfaceColors.get("negative");
+
 range.strokes.template.setAll({
-  stroke: am5.color(0xff621f), // orange below zero...
-  strokeWidth: 3               // ...as thick as the main line
+  stroke: negativeColor, // that color below zero...
+  strokeWidth: 3         // ...as thick as the main line
 });
 
 range.fills.template.setAll({
-  fill: am5.color(0xff621f), // and an orange fill
+  fill: negativeColor, // and a fill in it
   fillOpacity: 0.5,
-  visible: true              // line fills are hidden by default
+  visible: true        // line fills are hidden by default
 });
 
 // Add cursor
@@ -177,5 +180,5 @@ chart.appear(1000, 100);
 
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

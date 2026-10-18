@@ -2,7 +2,7 @@
 title: "Template"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/template/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Settings, states, adapters and events shared by many objects, such as all columns of a series. A setting on the template reaches every object that uses it, unless the object has its own value.

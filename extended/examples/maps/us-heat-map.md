@@ -2,7 +2,7 @@
 title: "US Heat (Choropleth) Map"
 source: "https://www.amcharts.com/demos/us-heat-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A heat map of the United States, also called a choropleth: each state is colored by its population in the 2000 census, from a light shade for the fewest people to a dark one for the most.

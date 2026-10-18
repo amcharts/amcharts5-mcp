@@ -2,7 +2,7 @@
 title: "StockIcons"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stockicons/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 The icons of the `StockChart` toolbar controls.

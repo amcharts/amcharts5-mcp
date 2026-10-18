@@ -2,7 +2,7 @@
 title: "Stock Chart with Volume Profile"
 source: "https://www.amcharts.com/demos/stock-chart-with-volume-profile/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A volume profile turns trading volume sideways: each bar shows how many shares changed hands at that price level, over the dates in view. Yellow is volume on rising days, blue on falling days.

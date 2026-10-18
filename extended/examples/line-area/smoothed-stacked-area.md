@@ -2,7 +2,7 @@
 title: "Smoothed Stacked Area"
 source: "https://www.amcharts.com/demos/smoothed-stacked-area/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A stacked area chart with soft curves and a grain texture: cars, motorcycles and bicycles from 2014 to 2025. Each layer’s thickness is its value.

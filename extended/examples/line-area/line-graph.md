@@ -2,7 +2,7 @@
 title: "Line Graph"
 source: "https://www.amcharts.com/demos/line-graph/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart joins values in time order, so the trend shows at a glance. This one holds 1,200 days of values, and you can zoom into any stretch of them.

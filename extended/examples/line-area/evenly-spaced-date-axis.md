@@ -2,7 +2,7 @@
 title: "Evenly Spaced Date Axis"
 source: "https://www.amcharts.com/demos/evenly-spaced-date-axis/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart of weekdays only: Saturdays and Sundays have no values, so the axis leaves them out and Friday sits right next to Monday, with no empty gap.

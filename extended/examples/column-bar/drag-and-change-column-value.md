@@ -2,7 +2,7 @@
 title: "Drag and Change Column Value"
 source: "https://www.amcharts.com/demos/drag-and-change-column-value/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart you can edit by hand: press anywhere on the plot and drag up or down, and the column under the pointer follows. The chart becomes an input.

@@ -39,8 +39,8 @@ const tests = [
   // Step 1: List tools
   {
     send: { jsonrpc: "2.0", id: 2, method: "tools/list", params: {} },
-    check: (r) => r.result?.tools?.length === 11 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
-    label: "List tools (expect 11)",
+    check: (r) => r.result?.tools?.length === 12 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
+    label: "List tools (expect 12)",
   },
   // Step 2: list_chart_types
   {
@@ -223,30 +223,38 @@ const tests = [
     },
     label: "search_docs('legend') — default scope skill-only",
   },
-  // Step 20: get_doc not-found lists available sections — and must NOT advertise
-  // any work-in-progress dir. `extended/reference-generated/` (output of
-  // scripts/generate-reference.cjs) once loaded alongside reference/, which made
-  // search return every class twice and would have shipped in the npm tarball.
-  // src/content-fs.js EXTENDED_SKIP_DIRS excludes it; this guards that.
+  // Step 20: get_doc not-found lists the top-level sections it can serve,
+  // including the API reference.
   {
     send: { jsonrpc: "2.0", id: 21, method: "tools/call", params: { name: "get_doc", arguments: { path: "no/such/doc" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      if (!text.includes("not found") || !text.includes("Available top-level sections")) return "FAIL (no graceful error)";
-      if (text.includes("reference-generated")) return "FAIL (serving WIP reference-generated/)";
-      return "PASS (graceful error, no WIP sections)";
+      const sections = (text.match(/Available top-level sections: ([^\n]+)/) || [])[1];
+      if (!text.includes("not found") || !sections) return "FAIL (no graceful error)";
+      return /\breference\b/.test(sections) ? "PASS (graceful error, lists sections)" : `FAIL (no reference section: ${sections})`;
     },
-    label: "get_doc(bad path) — graceful error, no work-in-progress sections",
+    label: "get_doc(bad path) — graceful error listing the top-level sections",
   },
-  // Step 21: the served reference must be the scraped/curated one only — a stray
-  // duplicate set would return each class twice in scope:'all' searches.
+  // Step 21: every page is loaded once. A second copy of a doc set under
+  // extended/ (a stray generated reference once did this) shows up as the same
+  // heading under two sources — or the same source twice.
   {
-    send: { jsonrpc: "2.0", id: 22, method: "tools/call", params: { name: "search_all", arguments: { query: "pointerBaseWidth", maxResults: 10 } } },
+    send: { jsonrpc: "2.0", id: 22, method: "tools/call", params: { name: "search_all", arguments: { query: "tooltip pointer settings", maxResults: 40 } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes("reference-generated") ? "FAIL (duplicate reference set served)" : "PASS (no duplicate reference set)";
+      const hits = [...text.matchAll(/^## \[(\w+)\] (.+)\n\*Source: (\S+) \|/gm)].map(m => ({ title: m[2], source: m[3] }));
+      if (!hits.length) return "FAIL (no results)";
+      // The same page and heading twice. Different folders can hold pages
+      // with the same file name (concepts/exporting, reference/exporting).
+      const seen = new Set();
+      for (const h of hits) {
+        const key = `${h.source}|${h.title}`;
+        if (seen.has(key)) return `FAIL (duplicate result: ${h.source} → ${h.title})`;
+        seen.add(key);
+      }
+      return `PASS (${hits.length} distinct results)`;
     },
-    label: "search_all — no duplicate results from a stray reference set",
+    label: "search_all — no duplicate results (each page loaded once)",
   },
   // Step 22: get_section accepts the source label exactly as search results
   // print it ("skill/SKILL.md"). Previously every such form was rejected, so a
@@ -335,7 +343,81 @@ const tests = [
     },
     label: "get_api_reference('IDeclaredAnimation') — resolves",
   },
+  // Steps 30–34: search ranking. Queries real users asked, each with the page
+  // that answers it. Before the shared BM25 ranking these ranked 36th, 5th
+  // (after four generic sections), 1st and 4th (after three skill sections).
+  // An identifier from an example's code (strokeSettings) must pin the example.
+  {
+    send: { jsonrpc: "2.0", id: 31, method: "tools/call", params: { name: "search_all", arguments: { query: "line series change color of line segments via data strokeSettings", maxResults: 10 } } },
+    check: (r) => searchRank(r, /^examples\/line-area\/line-with-changing-color$/, 3),
+    label: "search_all(strokeSettings segments) — exact example in the top 3",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 32, method: "tools/call", params: { name: "search_all", arguments: { query: "draggable playhead on date axis", maxResults: 10 } } },
+    check: (r) => searchRank(r, /^examples\/line-area\/line-chart-with-range-slider$/, 5),
+    label: "search_all('draggable playhead on date axis') — range-slider example in the top 5",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 33, method: "tools/call", params: { name: "search_all", arguments: { query: "pixel map dots", maxResults: 10 } } },
+    check: (r) => searchRank(r, /^examples\/maps\/pixel-map$/, 3),
+    label: "search_all('pixel map dots') — pixel-map example in the top 3",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 34, method: "tools/call", params: { name: "search_all", arguments: { query: "PixelMapSeries", maxResults: 10 } } },
+    check: (r) => searchRank(r, /^(reference\/pixelmapseries|reference\/ipixelmapseriessettings|charts\/map-chart\/pixel-map-series)$/, 1),
+    label: "search_all('PixelMapSeries') — class reference or docs page first",
+  },
+  // search_docs scope:'all' reaches examples too, and points at get_example.
+  {
+    send: { jsonrpc: "2.0", id: 35, method: "tools/call", params: { name: "search_docs", arguments: { query: "line series segment color from data strokeSettings templateField", maxResults: 3, scope: "all" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("source: examples/line-area/line-with-changing-color.md")) return "FAIL (example not in the top 3)";
+      return text.includes('get_example(path: "examples/line-area/line-with-changing-color")') ? "PASS (example + get_example hint)" : "FAIL (no get_example hint)";
+    },
+    label: "search_docs(scope:all) — finds the example and points at get_example",
+  },
+  // Steps 35–36: list_geodata. The US congressional packs are versioned per
+  // Congress and the folder names don't say which; the newest must be found.
+  {
+    send: { jsonrpc: "2.0", id: 36, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "congressional120 whole country" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const want = [
+        "geodata/region/usa/congressional120/usaCongressionalLow.js",
+        "am5geodata_region_usa_congressional120_usaCongressionalLow",
+        "@amcharts/amcharts5-geodata/region/usa/congressional120/usaCongressionalLow",
+        "120th Congress",
+      ];
+      const missing = want.filter(w => !text.includes(w));
+      return missing.length ? `FAIL (missing ${missing.join(", ")})` : "PASS (CDN path, global, ESM, Congress)";
+    },
+    label: "list_geodata('congressional120 whole country') — path, global name, import",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 37, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "congressional" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!/more, refine the filter/.test(text)) return "FAIL (not capped)";
+      const packs = ["congressional120/", "congressional2025/", "congressional2022/", "congressional/"].filter(p => text.includes(`region/usa/${p}`));
+      if (packs.length !== 4) return `FAIL (packs listed: ${packs.join(", ")})`;
+      // The newest pack's whole-country map comes first.
+      const first = (text.match(/^- \*\*(\S+)\*\*/m) || [])[1];
+      return first === "region/usa/congressional120/usaCongressional" ? "PASS (capped, 4 packs, newest first)" : `FAIL (first entry: ${first})`;
+    },
+    label: "list_geodata('congressional') — capped, all four packs, newest first",
+  },
 ];
+
+// Rank of the first search_all result whose source matches `want`; PASS if
+// it is within `within`.
+function searchRank(r, want, within) {
+  const text = r.result?.content?.[0]?.text || "";
+  const sources = [...text.matchAll(/\*Source: (\S+) \| Relevance/g)].map(m => m[1]);
+  const rank = sources.findIndex(s => want.test(s)) + 1;
+  if (!rank) return `FAIL (not in the top ${sources.length}: ${sources.slice(0, 3).join(", ")})`;
+  return rank <= within ? `PASS (rank ${rank})` : `FAIL (rank ${rank}, want ≤ ${within})`;
+}
 
 let failed = 0;
 
@@ -368,9 +450,10 @@ function sendNext() {
 // Start
 sendNext();
 
-// Timeout
+// Timeout. Generous: the first search builds the ranking index (about a
+// second on an idle machine, several on a loaded CI runner).
 setTimeout(() => {
   console.error(`\nTimeout — stuck at test ${step + 1}/${tests.length}: ${tests[step]?.label}`);
   server.kill();
   process.exit(1);
-}, 15000);
+}, 60000);

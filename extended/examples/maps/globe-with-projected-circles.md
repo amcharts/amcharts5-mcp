@@ -2,7 +2,7 @@
 title: "Globe with Projected Circles"
 source: "https://www.amcharts.com/demos/globe-with-projected-circles/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Circles sized by the population of 40 countries in 2011, lying on the surface of the globe: they flatten into ovals as they near its edge, like the land under them.

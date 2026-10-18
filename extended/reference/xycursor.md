@@ -2,7 +2,7 @@
 title: "XYCursor"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/xycursor/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Crosshair lines over an `XYChart` that follow the pointer and show the axis and series tooltips. Dragging can zoom or select (`behavior`).

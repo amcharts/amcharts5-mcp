@@ -2,7 +2,7 @@
 title: "XY Chart with Date-Based Axis"
 source: "https://www.amcharts.com/demos/xy-chart-date-based-axis/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bubble chart over time: the horizontal axis holds dates, here 12 days in January 2026, and each point is sized by a third value. Circles and diamonds mark two series.

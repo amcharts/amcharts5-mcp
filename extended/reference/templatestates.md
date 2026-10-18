@@ -2,7 +2,7 @@
 title: "TemplateStates"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/templatestates/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 The states of a `Template`, by name.

@@ -2,7 +2,7 @@
 title: "Changing Data of Word Cloud"
 source: "https://www.amcharts.com/demos/changing-data-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A word cloud with live data: every five seconds each language gets a new weight, and the words grow, shrink and move to new places. It starts from the share of developers using each language in the 2021 Stack Overflow survey.

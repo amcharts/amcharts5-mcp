@@ -2,7 +2,7 @@
 title: "Candlestick Chart"
 source: "https://www.amcharts.com/demos/candlestick-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A candlestick chart packs a day of trading into one mark: the body spans the opening and closing price, the wick the day’s low and high. This one holds 2,000 days; zoom out and they merge into weekly, then monthly candles.

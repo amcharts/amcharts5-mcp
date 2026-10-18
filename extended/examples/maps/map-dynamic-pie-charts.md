@@ -2,7 +2,7 @@
 title: "Map with Dynamic Pie Charts"
 source: "https://www.amcharts.com/demos/map-dynamic-pie-charts/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Pie charts on a map: each of four regions gets its own pie of made-up sales by product line, sized by the region’s total sales.

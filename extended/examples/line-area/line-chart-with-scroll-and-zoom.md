@@ -2,7 +2,7 @@
 title: "Line Chart with Scroll and Zoom"
 source: "https://www.amcharts.com/demos/line-chart-with-scroll-and-zoom/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Five and a half years of daily values. The scrollbar on top holds a small copy of the whole line, so you can see where you are while you zoom into a few weeks.

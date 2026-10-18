@@ -2,7 +2,7 @@
 title: "Animations Along Lines"
 source: "https://www.amcharts.com/demos/animations-along-lines/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A plane flies back and forth along a route from Paris to Toronto, Los Angeles and Havana. Drag a city and the route and the plane follow it.

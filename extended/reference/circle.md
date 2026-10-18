@@ -2,7 +2,7 @@
 title: "Circle"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/circle/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Draws a circle centered on its `x` and `y`.

@@ -2,7 +2,7 @@
 title: "Multi-Series Map"
 source: "https://www.amcharts.com/demos/multi-series-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One map, two layers: a polygon series of world countries, and a second one of US states drawn on top in a color of its own.

@@ -2,7 +2,7 @@
 title: "Animated Sankey Diagram"
 source: "https://www.amcharts.com/demos/animated-sankey-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Sankey diagram with amounts that keep floating along the bands, bigger numbers on bigger flows. Here, an example of $1.77 trillion in company cash, split by industry and by where it is held.
@@ -78,9 +78,12 @@ series.links.template.states.create("hover", {
 	fillOpacity: 0.8 // a hovered band turns a little see-through
 });
 
-// Colors from the theme: one for the companies, two more for where the cash is held
+// Colors from the theme: where the cash is held at the two ends of its color set (its first and sixth colors, far
+// apart in any theme), and the companies halfway between them, so the bands to each place turn clearly its way
 var colors = am5.ColorSet.new(root, {});
-var companyColor = colors.getIndex(0);
+var usColor = colors.getIndex(0);
+var overseasColor = colors.getIndex(5);
+var companyColor = am5.Color.interpolate(0.5, usColor, overseasColor);
 // of the theme's text color and its alternative, the one that stands out on the companies' color
 var textColor = am5.Color.alternative(companyColor, root.interfaceColors.get("text"), root.interfaceColors.get("alternativeText"));
 
@@ -109,7 +112,7 @@ series.nodes.data.setAll([
 	{ id: "Tech companies", fill: companyColor },
 	{
 		id: "Cash in the U.S.",
-		fill: colors.getIndex(1), // the bands into it fade to the next theme color
+		fill: usColor, // the bands into it turn to the theme's first color
 		labelSettings: {
 			text: "CASH IN THE U.S.\n[bold]$459 BILLION",
 			forceHidden: false,
@@ -118,7 +121,7 @@ series.nodes.data.setAll([
 	},
 	{
 		id: "Cash overseas",
-		fill: colors.getIndex(2), // and these to the one after
+		fill: overseasColor, // and these to its sixth
 		labelSettings: {
 			text: "CASH OVERSEAS\n[bold]$1.31 TRILLION",
 			forceHidden: false,

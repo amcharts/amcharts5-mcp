@@ -2,7 +2,7 @@
 title: "Line Chart with Range Slider"
 source: "https://www.amcharts.com/demos/line-chart-with-range-slider/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart split in two by a handle you can drag. Everything past the handle changes color and turns striped: a way to mark a forecast, a target period or figures still to be confirmed.

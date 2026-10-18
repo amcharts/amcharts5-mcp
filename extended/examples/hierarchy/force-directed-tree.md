@@ -2,7 +2,7 @@
 title: "Force-Directed Tree"
 source: "https://www.amcharts.com/demos/force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A force-directed tree draws a hierarchy as bubbles linked to their parents, placed by a physics simulation. Here, a company of 118 people: departments around it, teams around them, sized by headcount.

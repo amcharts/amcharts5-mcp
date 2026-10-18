@@ -2,7 +2,7 @@
 title: "Spiral Timeline"
 source: "https://www.amcharts.com/demos/spiral-timeline/"
 category: "timeline"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The same project plan wound into a spiral: time starts in the middle and turns outward, two laps from January to early May. Each module keeps its lane and color all the way round.
@@ -28,9 +28,10 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
+var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Create chart
@@ -304,6 +305,34 @@ legend.data.setAll([
   { name: "Module #3", color: module3.fill },
   { name: "Module #4", color: module4.fill }
 ]);
+
+// On a narrow chart (a phone) a legend beside the spiral would take half its width: it goes below it,
+// two modules a row. The rule is undone on a wider chart
+var twoColumns = am5.GridLayout.new(root, { maxColumns: 2 });
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    chart.set("layout", root.verticalLayout); // the legend under the spiral
+    legend.setAll({
+      layout: twoColumns,                  // two items a row
+      x: am5.p50, centerX: am5.p50,        // centered across the chart
+      y: undefined, centerY: undefined,    // placed by the chart's layout
+      marginTop: 10                        // 10px below the spiral
+    });
+    // the empty value labels keep 50px each, which two items a row don't have to spare
+    legend.valueLabels.template.set("forceHidden", true);
+  },
+  removing: function () {
+    chart.set("layout", root.horizontalLayout); // back to the right of the spiral
+    legend.setAll({
+      layout: root.verticalLayout,
+      x: undefined, centerX: undefined,
+      y: am5.p50, centerY: am5.p50,
+      marginTop: 0
+    });
+    legend.valueLabels.template.set("forceHidden", false);
+  }
+});
 
 // Animate chart and series in
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation

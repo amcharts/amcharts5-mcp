@@ -2,7 +2,7 @@
 title: "Pictorial Stacked Chart"
 source: "https://www.amcharts.com/demos/pictorial-stacked-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Seven values stacked inside the outline of a person, from head to feet, each band sized by its share. An infographic look for data about people.

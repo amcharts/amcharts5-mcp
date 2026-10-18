@@ -2,7 +2,7 @@
 title: "Divergent Lines"
 source: "https://www.amcharts.com/demos/divergent-lines/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One solid line for what has happened, then three dashed lines for what might: a projection, and what easing or tightening the rules could do by December.

@@ -2,7 +2,7 @@
 title: "Divergent Stacked Bars"
 source: "https://www.amcharts.com/demos/divergent-stacked-bars/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A diverging stacked bar chart, the usual way to show answers on a scale: negative answers stack to the left of zero, positive ones to the right. Here, how often people turn to eleven sources of information.

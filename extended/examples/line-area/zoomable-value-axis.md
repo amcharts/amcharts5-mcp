@@ -2,7 +2,7 @@
 title: "Zoomable Value Axis"
 source: "https://www.amcharts.com/demos/zoomable-value-axis/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart that zooms up and down as well as across. Pick a band of values to see the small moves inside it; the scrollbar on the right shows where you are.

@@ -2,7 +2,7 @@
 title: "Zoomable Multilevel Tree Map"
 source: "https://www.amcharts.com/demos/multilevel-tree-map/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A treemap splits one rectangle into boxes sized by value. This one has two levels, car brands and their models, from a year of US car sales, with each brand’s logo behind its models.

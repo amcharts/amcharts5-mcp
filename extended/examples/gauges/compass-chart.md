@@ -2,7 +2,7 @@
 title: "Compass Chart"
 source: "https://www.amcharts.com/demos/compass-chart/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A compass made from a gauge: the dial with N, E, S and W turns, while the needle stays put and points at the heading. Every two seconds it swings to a new direction.
@@ -83,7 +83,7 @@ var clockHandN = am5radar.ClockHand.new(root, {
   bottomWidth: 40          // 40px wide at the base: one half of the needle
 });
 
-clockHandN.hand.set("fill", am5.color(0xff0000)); // the north half is red
+clockHandN.hand.set("fill", root.interfaceColors.get("negative")); // the north half in the theme's red
 // do not change angle at all
 clockHandN.adapters.add("rotation", function () {
   return -90;

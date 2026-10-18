@@ -2,7 +2,7 @@
 title: "XY Chart with Fills to the Axis"
 source: "https://www.amcharts.com/demos/xy-chart-fills-axis/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 An area chart on two number axes, where the shading can face either way: the lower line fills down to the X axis, the upper one across to the Y axis.

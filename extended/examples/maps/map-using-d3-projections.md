@@ -2,7 +2,7 @@
 title: "Map Using D3 Projections"
 source: "https://www.amcharts.com/demos/map-using-d3-projections/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One world map, 104 projections. The Projection list holds the projections of the d3-geo-projection library: pick one, or step through them with the arrows.

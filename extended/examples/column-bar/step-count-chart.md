@@ -2,7 +2,7 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A step counter in the style of a fitness app: one column per day, gray below the 6,000-step goal and colored above it. Drag the chart sideways, and the day under the fixed cursor shows its count.

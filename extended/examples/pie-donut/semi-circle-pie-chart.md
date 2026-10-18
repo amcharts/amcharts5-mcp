@@ -2,7 +2,7 @@
 title: "Semi-Circle Pie Chart"
 source: "https://www.amcharts.com/demos/semi-circle-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Half a donut: the same shares as a pie, in half the height. It fits in a dashboard row or across the top of a report.

@@ -2,7 +2,7 @@
 title: "Grainy Gradient Pie"
 source: "https://www.amcharts.com/demos/grained-gradient-pie/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A donut with a fine grain over soft gradients, rounded slices and shadows that deepen on hover. A printed, tactile look instead of flat color.

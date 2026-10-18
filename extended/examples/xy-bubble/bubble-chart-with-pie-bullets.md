@@ -2,7 +2,7 @@
 title: "Bubble Chart with Pie Bullets"
 source: "https://www.amcharts.com/demos/bubble-chart-with-pie-bullets/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bubble chart where every bubble is a small pie chart: its place and size show three values, and its slices show what it is made of.

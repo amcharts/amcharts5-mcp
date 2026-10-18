@@ -2,7 +2,7 @@
 title: "Changing Map Projection"
 source: "https://www.amcharts.com/demos/changing-map-projection/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One world map, three projections: every 4 seconds it morphs from Equal Earth to Equirectangular to a globe and back, until you pick one with the Projection buttons. Drag the map to spin the world.

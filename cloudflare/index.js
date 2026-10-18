@@ -16,10 +16,10 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { McpAgent } from "agents/mcp";
 import { buildContent } from "../src/content.js";
 import { registerTools } from "../src/tools.js";
-import { version, skillFiles, extendedFiles } from "./content.generated.js";
+import { version, skillFiles, extendedFiles, geodata } from "./content.generated.js";
 
 // Parse once per isolate (module scope), not per request.
-const content = buildContent({ skillFiles, extendedFiles });
+const content = buildContent({ skillFiles, extendedFiles, geodata });
 
 export class AmCharts5MCP extends McpAgent {
   server = new McpServer({

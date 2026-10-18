@@ -2,7 +2,7 @@
 title: "Drill-Down Congressional Map"
 source: "https://www.amcharts.com/demos/drill-down-congressional-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A map of the United States that drills down to congressional districts: click a state to zoom in and load the map of its districts.

@@ -2,7 +2,7 @@
 title: "Donut with Radial Gradient"
 source: "https://www.amcharts.com/demos/donut-with-radial-gradient/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A donut where every slice is softly shaded, darker at its edges than in the middle of the ring. The shade is made from the slice colors, so it follows any theme.

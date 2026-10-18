@@ -2,7 +2,7 @@
 title: "Globe with Surface Bullets"
 source: "https://www.amcharts.com/demos/globe-with-surface-bullets/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Twelve city pins that lie on the surface of the globe, as if painted on it: they turn with the globe and flatten towards its edge.

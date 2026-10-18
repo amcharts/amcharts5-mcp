@@ -2,7 +2,7 @@
 title: "Images as Categories"
 source: "https://www.amcharts.com/demos/images-as-categories/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart with a flag above each country name on the axis. Any picture can go there, like logos, product shots or faces: here, visits from eleven countries.

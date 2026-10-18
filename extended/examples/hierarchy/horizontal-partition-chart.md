@@ -2,7 +2,7 @@
 title: "Horizontal Partition Chart"
 source: "https://www.amcharts.com/demos/horizontal-partition-chart/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A partition chart, also called an icicle chart, lays a hierarchy out in columns: the whole on the left, each column one level deeper, each box as tall as its share. Here, a 100-person company by department and team.

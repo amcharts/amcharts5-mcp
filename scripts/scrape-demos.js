@@ -196,6 +196,7 @@ const DEMOS_BY_CATEGORY = {
     "globe-with-raised-arcs",
     "globe-with-surface-bullets",
     "globe-with-projected-circles",
+    "globe-with-raised-parallels",
     "sankey-map-with-waypoints",
     "star-atlas",
   ],

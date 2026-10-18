@@ -2,7 +2,7 @@
 title: "Complex Venn Diagram"
 source: "https://www.amcharts.com/demos/complex-venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Venn diagram with four circles for coffee’s ingredients, and the drinks where they overlap: espresso and milk make a flat white, espresso and water an Americano, espresso, milk and foam a cappuccino or a latte.

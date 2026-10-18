@@ -2,7 +2,7 @@
 title: "Lollipop Chart"
 source: "https://www.amcharts.com/demos/lollipop-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A lollipop chart is a column chart drawn with thin stems and a dot on top, lighter on the eye when there are many categories. Here, made-up values for 28 people, with a scrollbar to zoom in on a few names.

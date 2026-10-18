@@ -2,7 +2,7 @@
 title: "Rotating Globe"
 source: "https://www.amcharts.com/demos/rotating-globe/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A 3D globe of the world that turns on its own. Satellite view shows the Earth from space.

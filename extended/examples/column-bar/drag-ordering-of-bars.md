@@ -2,7 +2,7 @@
 title: "Drag-Ordering of Bars"
 source: "https://www.amcharts.com/demos/drag-ordering-of-bars/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bar chart you put in order by hand: grab a bar, drag it above or below the others and let go, and the bars settle into their new order.

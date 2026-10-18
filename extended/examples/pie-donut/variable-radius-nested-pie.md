@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Pie"
 source: "https://www.amcharts.com/demos/variable-radius-nested-pie/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 How the EU grew: the inner ring is each enlargement, from the founding members in 1957 to 2007, and the outer ring the countries that joined, sized by their population today.

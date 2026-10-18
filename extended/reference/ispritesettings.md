@@ -2,7 +2,7 @@
 title: "ISpriteSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ispritesettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -21,7 +21,7 @@ TypeScript: `am5.ISpriteSettings` (`import type { ISpriteSettings } from "@amcha
 - **maxHeight** (`number`) — Maximum allowed height in pixels.
 - **minWidth** (`number`) — Minimum allowed width in pixels.
 - **minHeight** (`number`) — Minimum allowed height in pixels.
-- **opacity** (`number`) — default `1` _(theme)_ — Opacity, from `0` (transparent) to `1` (opaque).
+- **opacity** (`number`) — default `1` _(theme)_ — Opacity, from `0` (transparent) to `1` (opaque). The theme's `"default"` state has `opacity: 1`, so `show()`, and leaving a state that changes `opacity`, bring it back to `1`, not to a value set here. To come back to another value, set it in the `"default"` state too: `sprite.states.create("default", { opacity: 0.5 })`.
 - **rotation** (`number`) — default `0` _(theme)_ — Rotation in degrees, clockwise, around the point set by `centerX` and `centerY`.
 - **scale** (`number`) — default `1` _(theme)_ — Scale, around the point set by `centerX` and `centerY`: below `1` shrinks the element, above `1` enlarges it.
 - **centerX** (`number | Percent`) — The point of the element that is placed at its `x` position, and that it rotates and scales around: pixels from its left edge, or a percent of its width.

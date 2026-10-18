@@ -2,7 +2,7 @@
 title: "Flight Routes Map"
 source: "https://www.amcharts.com/demos/flight-routes-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Flight routes drawn as lines from London to eleven cities, with the destinations as dots. Origin switches to the routes from Vilnius.
@@ -304,12 +304,14 @@ function setHome() {
 }
 
 // Show the routes from an origin, "london" or "vilnius", and go to their area; a click on an origin calls it
-function selectOrigin(id) {
+function selectOrigin(id, first) {
   currentId = id;
   var dataItem = originSeries.getDataItemById(id);
   var dataContext = dataItem.dataContext;
   setHome();
-  chart.goHome();
+  if (!first) {
+    chart.goHome(); // a picked origin flies to its area; the first view comes from autoHome
+  }
 
   var destinations = dataContext.destinations;
   var lineSeriesData = [];
@@ -342,7 +344,7 @@ var currentId = "london";
 
 // draw the first origin's routes once all the cities have their positions
 destinationSeries.events.on("datavalidated", function () {
-  selectOrigin(currentId);
+  selectOrigin(currentId, true);
 });
 
 // The image credit

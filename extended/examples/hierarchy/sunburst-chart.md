@@ -2,7 +2,7 @@
 title: "Sunburst Chart"
 source: "https://www.amcharts.com/demos/sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A sunburst chart draws a hierarchy as rings: the whole in the middle, each ring one level deeper. Here, what fills a laptop’s drive, folder by folder.

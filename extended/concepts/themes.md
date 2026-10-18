@@ -185,12 +185,34 @@ root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Adaptive(root, {
     baseColor: 0x2c6e91,   // primary base color. The FIRST generated color is this color,
-                           // so a brand color always appears in the chart.
+                           // so a brand color always appears in the chart
+                           // (unless keepContrast has to change it, see below).
                            // Default: green-to-yellow (#4b8e39 first, #ffdd00 last)
     baseColor2: 0xffdd00,  // optional: palette spans the two colors, interpolated in OKLCH,
                            // instead of fanning out from a single hue
     count: 10,             // number of series colors to generate. Default: 10
     dark: false            // true = faintly base-tinted dark background + matching interface colors
+  })
+]);
+```
+
+#### More settings (5.21.2)
+
+Both themes also take these settings, all off by default:
+
+- `interleave: true` takes the colors in an alternating order (1, 4, 2, 5, 3, 6), so series next to each other differ more. It helps most with Adaptive's `baseColor2`, whose gradient puts similar colors side by side. In Monochrome, the `accent` stays first.
+- `mapShade: true` fills map polygons with a mid shade of the base color (`baseColor` in Adaptive, `color` in Monochrome), about as light as a map's default land, instead of the base color itself.
+- `keepContrast` lightens (in dark mode) or darkens colors that would have too little contrast with the background, keeping their hue: `true` for at least 3:1, or a ratio, e.g. `4.5`. It applies to the series colors and the primary buttons. In Adaptive it also covers `baseColor` and `baseColor2`, so the first color may no longer be exactly `baseColor`. In Monochrome it also covers the `accent`, and the end of the ramp nearest the background moves, with the other shades spread evenly up to it.
+
+```javascript
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_Adaptive(root, {
+    baseColor: 0xffee88,   // too light on white: keepContrast darkens it to 3:1
+    baseColor2: 0x2c6e91,
+    interleave: true,
+    mapShade: true,
+    keepContrast: true     // or a ratio, e.g. 4.5
   })
 ]);
 ```

@@ -2,7 +2,7 @@
 title: "Smoothed Line Chart"
 source: "https://www.amcharts.com/demos/smoothed-line-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart with the corners rounded off. The curve makes a trend easier to follow, and a soft fill under it gives the shape some weight.

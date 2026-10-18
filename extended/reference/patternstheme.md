@@ -2,7 +2,7 @@
 title: "PatternsTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/patternstheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 "Patterns": a black-and-white light theme in the spirit of engraved or newspaper charts. Filled series take shades of gray, each with its own white pattern (hatches, dots, stars, triangles, grids) on top. Line series take the grays too, told apart by stroke width and dash.

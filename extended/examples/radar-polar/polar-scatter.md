@@ -2,7 +2,7 @@
 title: "Polar Scatter"
 source: "https://www.amcharts.com/demos/polar-scatter/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A scatter plot on a 24-hour clock: each dot is one commuter trip, placed by the time it started and how long it took. Car trips stretch out at rush hour; train trips take about the same time all day.

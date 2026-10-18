@@ -2,7 +2,7 @@
 title: "Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart/"
 category: "gantt"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Gantt chart lays a project out on a calendar: one bar per task, grouped into phases, with arrows for the order the work must follow. Diamonds mark milestones, and the striped part of a bar is the work still to do.
@@ -37,6 +37,21 @@ root.setThemes([
 // Create Gantt chart
 // https://www.amcharts.com/docs/v5/charts/gantt/
 var gantt = root.container.children.push(am5gantt.Gantt.new(root, {}));
+
+// A phone-sized chart: more room for the task names, lower rows so more of the plan shows,
+// and only the main toolbar buttons, so the toolbar fits above the names instead of over the dates
+var narrow = root.dom.offsetWidth < 600;
+if (narrow) {
+  gantt.set("sidebarWidth", am5.percent(45)); // the task list takes 45% of the width, not 30%
+  gantt.yAxis.set("minCellHeight", 40); // rows as low as 40px, not 70px
+  // no duration field and progress circle beside each name
+  gantt.yAxis.get("renderer").controlsContainers.template.set("forceHidden", true);
+  // keep add, color and edit: expand all, collapse all, link and clear leave the toolbar
+  // (taken out, as the Gantt shows some of them again when editing turns on)
+  am5.array.each([gantt.expandButton, gantt.collapseButton, gantt.linkButton, gantt.clearButton], function (button) {
+    gantt.controls.children.removeValue(button);
+  });
+}
 
 // Hide a date label that would be cut off at the left edge of the timeline
 gantt.xAxis.get("renderer").labels.template.set("minPosition", 0.08);
@@ -186,6 +201,18 @@ gantt.series.data.setAll(seriesData);
 am5.array.each(markedDates, function (date) {
   gantt.markDate(date);
 });
+
+// On a phone-sized chart the timeline opens on the first two weeks, as the whole month is too tight
+// to read; the scrollbar below it moves on to the rest
+if (narrow) {
+  gantt.series.events.once("datavalidated", function () {
+    setTimeout(function () { // once the Gantt has set its own range
+      var day = am5.time.getDuration("day", 1);
+      var first = seriesData[0].start; // the start milestone
+      gantt.xAxis.zoomToDates(new Date(first - day), new Date(first + 13 * day)); // a day before, 13 after
+    }, 500);
+  });
+}
 
 gantt.appear();
 ```

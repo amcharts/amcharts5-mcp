@@ -2,7 +2,7 @@
 title: "Funnel Chart with Rounded Corners"
 source: "https://www.amcharts.com/demos/funnel-chart-with-rounded-corners/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A funnel of four rounded, evenly spaced slices, with the labels lined up at the side. Each slice slopes to the width of the next, so the outline stays smooth.

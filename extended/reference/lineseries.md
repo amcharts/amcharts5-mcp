@@ -2,7 +2,7 @@
 title: "LineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/lineseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A series drawn as a line, with an optional fill below it for an area chart.

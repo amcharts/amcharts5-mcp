@@ -1,7 +1,7 @@
 ---
 title: "utils"
 type: "namespace"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Helpers exported as `am5.utils`.
@@ -43,8 +43,8 @@ am5.utils.…
 - `getStyle(dom: HTMLElement, property: string): string | undefined` — Gets style property value on a DOM element.
 - `getTimeZone(date: Date, long?: boolean, savings?: boolean, utc?: boolean, timezone?: string): string` — Returns a string name of the time zone.
 - `getTimezoneOffset(timezone: string, targetDate?: Date): number` — Returns the UTC offset in minutes for a given timezone, positive west of UTC, as with `Date.getTimezoneOffset()`.
-- `getWeek(date: Date, _utc?: boolean): number` — Returns the ISO 8601 week number of a date: weeks start on Monday, and week 1 is the one with the year's first Thursday.
-- `getWeekYear(date: Date, _utc?: boolean): number` — Returns the year that the ISO 8601 week of the date belongs to. Around January 1 it can differ from the calendar year. _Since 5.3.0._
+- `getWeek(date: Date, utc?: boolean): number` — Returns the ISO 8601 week number of a date: weeks start on Monday, and week 1 is the one with the year's first Thursday.
+- `getWeekYear(date: Date, utc?: boolean): number` — Returns the year that the ISO 8601 week of the date belongs to. Around January 1 it can differ from the calendar year. _Since 5.3.0._
 - `getYearDay(date: Date, utc?: boolean): number` — Returns the day of the year, `1` being January 1.
 - `hslToHsv(hsl: iHSL): iHSV` — Converts HSL to HSV.
 - `hslToRgb(color: iHSL): iRGB` — Converts an HSL color to RGB: `h`, `s` and `l` from `0` to `1` in, `r`, `g` and `b` from `0` to `255` out. Alpha is not carried over.

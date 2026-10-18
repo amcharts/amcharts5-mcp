@@ -2,7 +2,7 @@
 title: "Layered Column Chart"
 source: "https://www.amcharts.com/demos/layered-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two years in one column: 2024 as a wide column at the back, 2025 as a narrower, striped one in front. Where the front column rises above the back one, the country grew.

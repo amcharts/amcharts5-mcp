@@ -2,7 +2,7 @@
 title: "Stacked Area Radar"
 source: "https://www.amcharts.com/demos/stacked-area-radar/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A radar chart with stacked areas: the inner area is one part, and the outer edge is the total. Here, the cash 24 companies hold abroad and in the US.

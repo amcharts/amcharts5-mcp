@@ -2,7 +2,7 @@
 title: "ResponsiveTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/responsivetheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A theme that changes chart settings as the chart's size changes, so charts fit small spaces. `new()` comes with built-in rules for the common chart types; `newEmpty()` starts with none, for rules of your own.

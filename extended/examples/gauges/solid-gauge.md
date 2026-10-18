@@ -2,7 +2,7 @@
 title: "Solid Gauge"
 source: "https://www.amcharts.com/demos/solid-gauge/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Four progress bars bent into rings, one inside the other, each filling its track up to a percentage. Here, four departments from 35% to 92%.

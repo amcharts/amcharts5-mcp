@@ -2,7 +2,7 @@
 title: "Line Chart Adding Data Every Second"
 source: "https://www.amcharts.com/demos/line-chart-adding-data-every-second/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart fed live: every second a new point slides in on the right, the oldest drops off the left, and a pulsing dot marks the latest value.

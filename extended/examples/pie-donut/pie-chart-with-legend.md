@@ -2,7 +2,7 @@
 title: "Pie Chart with Legend"
 source: "https://www.amcharts.com/demos/pie-chart-with-legend/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pie chart with a legend under it. The legend names every slice and works as a switch: click an item and the pie redraws without it.

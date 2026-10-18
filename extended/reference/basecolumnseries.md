@@ -2,7 +2,7 @@
 title: "BaseColumnSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/basecolumnseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Base class for column-based series: `ColumnSeries`, `CandlestickSeries`, `OHLCSeries` and `RadarColumnSeries`.

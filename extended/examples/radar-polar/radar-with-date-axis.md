@@ -2,7 +2,7 @@
 title: "Radar with Date Axis"
 source: "https://www.amcharts.com/demos/radar-with-date-axis/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A timeline wrapped into a ring: the year runs clockwise from the top, and each ring is one row of date ranges. Here, when five holiday homes were booked in 2025.

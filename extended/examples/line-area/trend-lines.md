@@ -2,7 +2,7 @@
 title: "Trend Lines"
 source: "https://www.amcharts.com/demos/trend-lines/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart with two trend lines drawn over it: green along a rise, red along a fall. Each trend line is simply its own line series with two points.

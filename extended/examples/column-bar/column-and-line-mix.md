@@ -2,7 +2,7 @@
 title: "Column and Line Mix"
 source: "https://www.amcharts.com/demos/column-and-line-mix/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Income as columns and expenses as a line on one chart, so the gap between them shows year by year. The last year is a projection, drawn faint and dashed.

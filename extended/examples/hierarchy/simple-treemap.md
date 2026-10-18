@@ -2,7 +2,7 @@
 title: "Simple Treemap"
 source: "https://www.amcharts.com/demos/simple-treemap/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A treemap shows a total as nested rectangles, each sized by its value and colored by its group. Here, a $4,000 monthly budget split into six groups and 20 items.

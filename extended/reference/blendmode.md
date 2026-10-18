@@ -2,7 +2,7 @@
 title: "BlendMode"
 type: "enum"
 source: "https://www.amcharts.com/docs/v5/reference/blendmode/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Blend modes for the `blendMode` setting of a `Graphics`. Each value is a canvas composite operation.

@@ -2,7 +2,7 @@
 title: "Manipulate Chart Data with Mouse"
 source: "https://www.amcharts.com/demos/manipulate-chart-data-with-mouse/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart you can edit by hand: press anywhere on the plot and drag up or down, and the nearest point follows. Handy for what-if plans and rough forecasts.

@@ -2,7 +2,7 @@
 title: "HierarchyLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/hierarchylink/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A line linking two nodes of a `LinkedHierarchy` series.

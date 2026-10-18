@@ -2,7 +2,7 @@
 title: "Column with Rotated Labels"
 source: "https://www.amcharts.com/demos/column-with-rotated-series/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart with its axis labels turned on their side, so eleven country names fit under narrow columns without overlapping. Each column has its own color.

@@ -2,7 +2,7 @@
 title: "Pictorial Column Chart"
 source: "https://www.amcharts.com/demos/pictorial-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart where each column is a picture of what it measures: five famous skyscrapers, each drawn to its height against a sunset sky.

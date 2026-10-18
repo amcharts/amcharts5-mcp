@@ -2,7 +2,7 @@
 title: "StochasticMomentumIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stochasticmomentumindex/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Stochastic Momentum Index indicator: where the price is relative to the middle of the high-low range of the last `period` data items, smoothed and scaled to `-100` to `100`. Drawn in a panel of its own.

@@ -2,7 +2,7 @@
 title: "Two Linked Pie Charts with a Legend"
 source: "https://www.amcharts.com/demos/two-pie-charts-with-single-legend/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two donuts, one legend: the same four countries in two groups side by side, each with its total in the middle. Point at a slice and its twin lights up in the other donut.

@@ -159,6 +159,8 @@ NOTEPlease note that if you are using `"UTC"` it's better to use `root.utc = tru
 
 IMPORTANTUsing time zone feature may noticeable affect performance of the chart, especially with large data sets, since every single date will need to be recalculated.
 
+NOTE Before 5.21.1, a chart with `root.timezone` could be up to 16 times slower than without it. Since 5.21.1 the time zone's offset is worked out once per day and reused (except on days when the clocks change), so the cost is much smaller. 5.21.1 also fixed grid lines, labels, data groups and date math being an hour off around daylight saving changes with `root.timezone`, and `PeriodSelector` and `DateRangeSelector` now follow `root.timezone` and `root.utc` instead of the viewer's time zone. *(5.21.1)*
+
 ### First day of week
 
 Normally, the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) we are using will determine which week day is considered start of the week.

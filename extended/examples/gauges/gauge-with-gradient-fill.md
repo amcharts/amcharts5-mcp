@@ -2,10 +2,10 @@
 title: "Gauge with Gradient Fill"
 source: "https://www.amcharts.com/demos/gauge-with-gradient-fill/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
-A gauge shows one value as a needle on a dial. Here the dial is one arc fading from green to orange, so you see at once how close the value is to its maximum.
+A gauge shows one value as a needle on a dial. Here the dial is one arc fading from green to red, so you see at once how close the value is to its maximum.
 
 When a gradient gauge works: A gradient scale suits values that get gradually better or worse, like load, temperature or risk, where there is no sharp line between good and bad. The eye reads the color under the needle before the number. When fixed thresholds matter, use separate bands instead.
 
@@ -16,7 +16,7 @@ Good for:
 
 Think twice when:
 - Thresholds people act on: clear bands show them better
-- Readers who can’t tell green from orange: add a number
+- Readers who can’t tell green from red: add a number
 - Several values: a bar chart fits more in less space
 
 Prompt: Create a half-circle gauge from 0 to 100 whose scale is a thick band with a gradient running from safe to dangerous colors, and a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its Responsive theme.
@@ -47,6 +47,16 @@ var chart = root.container.children.push(
   })
 );
 
+// A color on the theme's scale from its color for negative values (red, 0) through its warning color (yellow, 0.5) to
+// its positive one (green, 1), so the arc follows the theme and dark mode
+function scaleColor(position) {
+  return am5.Color.interpolateColors(position, [
+    root.interfaceColors.get("negative"),
+    root.interfaceColors.get("warning"),
+    root.interfaceColors.get("positive")
+  ]);
+}
+
 // Create axis and its renderer
 // https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Axes
 var axisRenderer = am5radar.AxisRendererCircular.new(root, {
@@ -55,12 +65,12 @@ var axisRenderer = am5radar.AxisRendererCircular.new(root, {
   strokeOpacity: 1,
   strokeWidth: 15,
   strokeGradient: am5.LinearGradient.new(root, {
-    rotation: 0, // left to right: green to orange
+    rotation: 0, // left to right: green to red
     stops: [
-      { color: am5.color(0x19d228) },
-      { color: am5.color(0xf4fb16) },
-      { color: am5.color(0xf6d32b) },
-      { color: am5.color(0xfb7116) }
+      { color: scaleColor(1) },
+      { color: scaleColor(0.67) },
+      { color: scaleColor(0.33) },
+      { color: scaleColor(0) }
     ]
   })
 });

@@ -2,7 +2,7 @@
 title: "Radar Heat Map"
 source: "https://www.amcharts.com/demos/radar-heat-map/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A heat map bent into a ring: the 24 hours run around the circle, the seven days of the week from the outside in, and color shows how busy each hour was.
@@ -70,9 +70,7 @@ yRenderer.labels.template.setAll({
   textAlign: "center",
   fontSize: 12,
   radius: -6,
-  // dark text in light and dark mode, as the cells under it keep their yellow to red
-  fill: am5.color(0x000000),
-  fillOpacity: 0.75
+  fillOpacity: 0.75 // the theme's text color, a little faded
 });
 
 yRenderer.grid.template.set("visible", false); // no ring lines between the weekdays
@@ -141,8 +139,8 @@ series.events.on("datavalidated", function () {
 // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: series.columns.template,
-  min: am5.color(0xfffb77), // the lowest value light yellow...
-  max: am5.color(0xfe131a), // ...the highest red
+  min: chart.get("colors").getIndex(0), // the lowest value in the theme's first color...
+  max: chart.get("colors").getIndex(5), // ...the highest in a later one
   dataField: "value",
   key: "fill"
 }]);
@@ -151,8 +149,8 @@ series.set("heatRules", [{
 // https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
 var heatLegend = chart.children.push(  am5.HeatLegend.new(root, {
     orientation: "horizontal",       // a horizontal color bar
-    startColor: am5.color(0xfffb77), // the same colors as the heat rules
-    endColor: am5.color(0xfe131a)
+    startColor: chart.get("colors").getIndex(0), // the same colors as the heat rules
+    endColor: chart.get("colors").getIndex(5)
   }));
 
 // Set data

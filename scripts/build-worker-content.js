@@ -3,9 +3,9 @@
 // Build step for the Cloudflare Worker.
 //
 // The Worker has no filesystem, so we pre-bundle every skill + extended
-// markdown file into cloudflare/content.generated.js. The Worker imports that
-// module and runs the SAME buildContent() the stdio server uses, so both
-// deployments serve identical content.
+// markdown file (and the geodata index) into cloudflare/content.generated.js.
+// The Worker imports that module and runs the SAME buildContent() the stdio
+// server uses, so both deployments serve identical content.
 //
 // Run automatically in CI before `wrangler deploy` (see package.json
 // "build:worker" + .github/workflows/deploy.yml). The generated file is
@@ -22,7 +22,7 @@ const ROOT = join(__dirname, "..");
 const OUT = join(ROOT, "cloudflare", "content.generated.js");
 
 const PKG = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf-8"));
-const { skillFiles, extendedFiles } = readRawFiles();
+const { skillFiles, extendedFiles, geodata } = readRawFiles();
 
 const skillCount = Object.keys(skillFiles).length;
 const extendedCount = Object.keys(extendedFiles).length;
@@ -43,7 +43,8 @@ const out =
   banner +
   `export const version = ${JSON.stringify(PKG.version)};\n` +
   `export const skillFiles = ${JSON.stringify(skillFiles)};\n` +
-  `export const extendedFiles = ${JSON.stringify(extendedFiles)};\n`;
+  `export const extendedFiles = ${JSON.stringify(extendedFiles)};\n` +
+  `export const geodata = ${JSON.stringify(geodata)};\n`;
 
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, out, "utf-8");
@@ -53,5 +54,6 @@ console.log(
   `Wrote ${OUT}\n` +
   `  skill files:    ${skillCount}\n` +
   `  extended files: ${extendedCount}\n` +
+  `  geodata maps:   ${geodata ? geodata.maps.length : "none (run npm run build:geodata)"}\n` +
   `  raw bundle:     ${(bytes / 1024 / 1024).toFixed(2)} MB (pre-compression)`
 );

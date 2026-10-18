@@ -2,7 +2,7 @@
 title: "Spectrum Chart"
 source: "https://www.amcharts.com/demos/spectrum-chart/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A spectrum chart is a single bar split into periods and colored by status, like a strip of colored tape along a time line. Here, a machine’s afternoon from 11:00 to 17:30: normal running, alarms, anomalies and one critical error.
@@ -43,12 +43,14 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   layout: root.verticalLayout // the legend goes below the plot
 }));
 
-// Status colors, shared by the bars and the legend
+// Status colors, shared by the bars and the legend, from the theme so they follow it and dark mode: its colors for
+// positive values (green), warnings (yellow) and negative values (red), and the chart's first series color for an
+// anomaly, which is off that good-to-bad scale
 var colors = {
-  "Normal operation": am5.color(0x69a74f),
-  "Minor alarm": am5.color(0xfb9900),
-  "Anomaly": am5.color(0x664ea6),
-  "Critical error": am5.color(0xcc0c00)
+  "Normal operation": root.interfaceColors.get("positive"),
+  "Minor alarm": root.interfaceColors.get("warning"),
+  "Anomaly": chart.get("colors").getIndex(0),
+  "Critical error": root.interfaceColors.get("negative")
 };
 
 // One entry per period: when it started and ended, and the machine's status

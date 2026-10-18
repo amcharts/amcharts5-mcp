@@ -2,7 +2,7 @@
 title: "Carbon-Zero Progress"
 source: "https://www.amcharts.com/demos/carbon-zero-progress/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A progress bar toward net zero, built from a column chart: fifteen cells from red at 20+ through yellow to green, a pin on the current level, 10, and a GOAL ZERO badge at the end.
@@ -49,96 +49,102 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   centerY: am5.p50
 }));
 
+// The cells' colors: the theme's color for negative values (red) for the years furthest from the goal, its positive
+// one (green) for the nearest, and its warning color (yellow) in the middle, so they follow the theme and dark mode
+var far = root.interfaceColors.get("negative");
+var near = root.interfaceColors.get("positive");
+var between = root.interfaceColors.get("warning");
+
 var data = [{
   category: "15",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xc6251a)
+    fill: far
   }
 }, {
   category: "14",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xc6251a)
+    fill: far
   }
 }, {
   category: "13",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xc6251a)
+    fill: far
   }
 }, {
   category: "12",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xc6251a)
+    fill: far
   }
 }, {
   category: "11",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xc6251a)
+    fill: far
   }
 }, {
   category: "10",
   value: 100,
   currentBullet: true,
   columnSettings: {
-    fill: am5.color(0xfcc034)
+    fill: between
   }
 }, {
   category: "9",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xfcc034)
+    fill: between
   }
 }, {
   category: "8",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xfcc034)
+    fill: between
   }
 }, {
   category: "7",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xfcc034)
+    fill: between
   }
 }, {
   category: "6",
   value: 100,
   columnSettings: {
-    fill: am5.color(0xfcc034)
+    fill: between
   }
 }, {
   category: "5",
   value: 100,
   columnSettings: {
-    fill: am5.color(0x6bc352)
+    fill: near
   }
 }, {
   category: "4",
   value: 100,
   columnSettings: {
-    fill: am5.color(0x6bc352)
+    fill: near
   }
 }, {
   category: "3",
   value: 100,
   columnSettings: {
-    fill: am5.color(0x6bc352)
+    fill: near
   }
 }, {
   category: "2",
   value: 100,
   columnSettings: {
-    fill: am5.color(0x6bc352)
+    fill: near
   }
 }, {
   category: "1",
   value: 100,
   columnSettings: {
-    fill: am5.color(0x6bc352)
+    fill: near
   }
 }, {
   category: "0",
@@ -245,14 +251,15 @@ series.bullets.push(function(root, target, dataItem) {
     });
 
     var circle = container.children.push(am5.Circle.new(root, {
-      radius: 34,                // a 34px radius
-      fill: am5.color(0x11326d), // dark blue
+      radius: 34, // a 34px radius
+      // the theme's text color (dark, or light in dark mode), so the badge stands out in any theme
+      fill: root.interfaceColors.get("alternativeBackground"),
     }));
 
     var label = container.children.push(am5.Label.new(root, {
       text: "GOAL\n[bold]ZERO[/]", // two lines, the second in bold
       textAlign: "center",         // both lines centered
-      fill: am5.color(0xffffff),   // white text
+      fill: root.interfaceColors.get("background"), // text in the background color, on the badge
       centerY: am5.p50,
       centerX: am5.p50,
       populateText: true,

@@ -2,7 +2,7 @@
 title: "Horizontal Funnel"
 source: "https://www.amcharts.com/demos/horizontal-funnel/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A funnel turned on its side, so the stages read left to right like a timeline. The slices slope into each other and carry their own labels.

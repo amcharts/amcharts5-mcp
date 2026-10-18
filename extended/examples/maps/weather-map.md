@@ -2,7 +2,7 @@
 title: "Weather Map"
 source: "https://www.amcharts.com/demos/weather-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A weather map of Europe: an animated icon and the temperature for seven capitals, picked from the data through template fields. The weather is made up.

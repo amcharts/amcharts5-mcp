@@ -2,7 +2,7 @@
 title: "Micro Charts & Sparklines"
 source: "https://www.amcharts.com/demos/micro-charts-sparklines/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Micro charts are tiny charts with no axes, grid or labels, small enough for a table row. Here, 40 made-up stock tickers, each with a price line and volume columns.
@@ -32,9 +32,6 @@ var tickers = [
   "SONY", "STX", "T", "TSLA", "TSM", "TXN", "U", "UBER", "WDC", "ZM"
 ];
 
-var positive = am5.color(0x50b300); // green for rising...
-var negative = am5.color(0xdc3545); // ...red for falling
-
 // The rows scroll inside the chart's div
 var div = document.getElementById("chartdiv");
 div.style.overflow = "auto";
@@ -46,7 +43,7 @@ for (var i = 0; i < tickers.length; i++) {
   var data = generateData(20);                  // 20 days of random prices and volumes
   // the change from the first day to the last, in percent with one decimal
   var change = Math.round((data[data.length - 1].value / data[0].value - 1) * 1000) / 10;
-  var color = change < 0 ? negative : positive; // red when falling, green when rising
+  var rising = change >= 0;
 
   // One row per ticker: name, change, price line, volume columns, laid out
   // as a grid so the columns line up from row to row
@@ -65,22 +62,22 @@ for (var i = 0; i < tickers.length; i++) {
 
   var col2 = document.createElement("div");
   col2.innerHTML = change + "%";
-  col2.style.color = color.toCSSHex(); // the change in red or green...
-  col2.style.textAlign = "right";      // ...right-aligned, so the numbers end in line
+  col2.style.textAlign = "right"; // right-aligned, so the numbers end in line
   row.appendChild(col2);
 
   var col3 = document.createElement("div");
   col3.style.height = "35px";                     // the micro chart is 35px tall
   row.appendChild(col3);
-  var root = createValueChart(col3, data, color); // a price line in the row's color
+  var root = createValueChart(col3, data, rising); // a price line, green when rising, red when falling
 
   var col4 = document.createElement("div");
   col4.style.height = "35px";    // 35px tall too
   row.appendChild(col4);
   createVolumeChart(col4, data); // gray volume columns
 
-  // The ticker and the line under the row take the chart theme's text color,
-  // so they show on light and dark backgrounds
+  // The change takes the theme's color for rising or falling values (green or red by default); the ticker and
+  // the line under the row take its text color, so they show on light and dark backgrounds
+  col2.style.color = root.interfaceColors.get(rising ? "positive" : "negative").toCSSHex();
   var textColor = root.interfaceColors.get("text");
   col1.style.color = textColor.toCSSHex();
   row.style.borderBottom = "1px solid " + textColor.toCSS(0.12);
@@ -112,7 +109,7 @@ function generateData(count) {
 }
 
 // a tiny line chart of the price in the given div
-function createValueChart(div, data, color) {
+function createValueChart(div, data, rising) {
   var root = am5.Root.new(div); // each micro chart is a root of its own, in its own div
 
   // the Micro theme drops axis labels, grid and padding, to suit a tiny chart
@@ -151,7 +148,7 @@ function createValueChart(div, data, color) {
     yAxis: yAxis,
     valueYField: "value",
     valueXField: "date",
-    stroke: color // red or green, by the change
+    stroke: root.interfaceColors.get(rising ? "positive" : "negative") // the theme's green or red, by the change
   }));
 
   series.strokes.template.setAll({

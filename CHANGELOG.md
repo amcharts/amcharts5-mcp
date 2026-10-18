@@ -7,6 +7,68 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.8.0] - 2026-10-18
+
+### Added
+- **amCharts 5.21.1 and 5.21.2** (2026-10-13 and 2026-10-14) in `SKILL.md`, `cursorrules`, the chart references, the served docs and the API reference. Every new skill snippet was run in a browser against the 5.21.2 CDN.
+  - **New API:**
+    - the `warning` interface color;
+    - `am5.Color.interpolateColors()`, for scales through any number of colors;
+    - heat-rule `stops` and HeatLegend `colors`;
+    - the Adaptive/Monochrome settings `interleave`, `mapShade` and `keepContrast`;
+    - the ColorSet `step` fix for themes that reuse their colors.
+  - **5.21.1 fixes that change what code should do:** `root.timezone` speed and daylight-saving fixes. Also: string dates in `dateFields` without a `dateFormat` were all read as 1 January 1970 before 5.21.1; PeriodSelector/DateRangeSelector now follow `root.timezone`; and fixes for charts in CSS-scaled containers, a `zoomLevel` set before the map loads, MapSankeySeries `linkColorMode`, and `RadialGradient`.
+- **`list_geodata(filter?)` tool (12 tools).** It finds map files by name, with each map's CDN path, global name, ES import and Low/High/Ultra variants. It covers 671 maps, including the region packs and all four US congressional packs (`congressional`, `congressional2022`, `congressional2025` and `congressional120`).
+  - `npm run build:geodata` builds the index (`extended/geodata/index.json`) from `@amcharts/amcharts5-geodata` 5.1.6. The script fetches the package on demand; it is not a devDependency, because it unpacks to 355 MB.
+- **22 suggestions in the skill**, each verified against the 5.21.2 source or in a browser first. Among them:
+  - pie and XY data items redraw from `valueWorking` / `valueXWorking`, so to move a point set those too, or use `data.setIndex()`;
+  - `dataItem.bullets` is a property, not a setting;
+  - a Label needs `populateText: true` for `{placeholders}`;
+  - a state's `"default"` keeps the value it first replaced;
+  - `LinearGradient` `rotation` only renders correctly from 0 to 90, which is a library bug; reverse the stops instead;
+  - `goHome()` on a globe needs `homeRotationX` / `homeRotationY`, and `autoHome` needs `homeZoomLevel`;
+  - `zoomStep` is a multiplier, and wheel zoom uses it;
+  - `zoomToValues()` right after changing `min` / `max` uses the old range;
+  - the candlestick wick on a ValueAxis X;
+  - the equal-scale XY pattern;
+  - map lines carry a height per coordinate;
+  - where a raised map point lands on screen;
+  - day and night on the Moon;
+  - the corrected US congressional geodata paths.
+- **New example:** `maps/globe-with-raised-parallels` (294 examples).
+- **API reference** generated from 5.21.2. The `Color` page now lists its static methods, including `interpolateColors`.
+
+### Changed
+- **Search ranking rewritten.** `search_docs` and `search_all` now share one ranking:
+  - rare terms weigh more than common words;
+  - identifiers in example code are indexed (`strokeSettings`, `createAxisRange`, …);
+  - a title that matches most of the query lifts its page or example;
+  - long sections no longer win on length, and one page can't take every slot;
+  - `search_docs(scope: "all")` now includes examples.
+
+  For example, the exact strokeSettings example moved from rank 36 to 1, "stacked column chart" from 32 to 1, and "template fields" from 55 to 1. A search takes 1–6 ms after a one-time index build.
+- **Examples refreshed from amcharts.com.** About 40 demos changed upstream.
+- **Docs:** the heat rules and heat legend pages were refreshed, with notes for the 5.21.2 colors and themes and the 5.21.1 timezone changes.
+- **Dev tooling:** wrangler `^4.151.1` and agents `^0.28.1`. `npm audit` now reports 0 vulnerabilities, dev included. The Worker was tested locally over `/mcp` and `/sse`.
+- **Removed:** the unused `extended/reference-generated/` and its mentions.
+
+### Fixed
+- **Skill settings audit.** Every setting the skill uses was checked mechanically against the generated reference; 2,396 uses were checked and 11 real problems fixed:
+  - **Never drew:** the timeline milestone bullet passed `children` as a setting.
+  - **Wrong example:** the "CORRECT" `XYChartScrollbar` example passed axes the scrollbar has no settings for.
+  - **Settings that don't exist:** corner radii on radar `Slice` and timeline `Polygon` columns.
+  - **Wrong defaults:** Gantt `excludeWeekends` is `true`, SpiralChart radii are 20% / 60%, PieSeries angles are −90 / 270, FunnelSeries `bottomRatio` is 0 (and its meaning was inverted), and FunnelSeries `orientation` has a default.
+  - **False claim:** that MapChart has no `colors` setting.
+- **Skill:** a series-level `fillGradient` only reaches bullets, so the area/column example is rewritten to use `fills.template`.
+- **Docs:**
+  - String dates without `dateFormat` are parsed by the browser's `Date` (the upstream text said otherwise).
+  - The congressional-map example loaded a file that does not exist.
+  - The interface-colors table lacked `primaryButtonDisabled` and `primaryButtonTextDisabled`.
+
+### Not adopted
+- **Two suggestions dropped as false on 5.21.x:** "`visible: false` on a map bullet doesn't stick", and "don't combine `clickZoom` with `toggleKey`".
+- **On hold until published:** the framework packages (React, Vue, Angular, Svelte, React Native).
+
 ## [1.7.1] - 2026-10-08
 
 ### Security

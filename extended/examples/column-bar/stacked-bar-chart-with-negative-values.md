@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart with Negative Values"
 source: "https://www.amcharts.com/demos/stacked-bar-chart-with-negative-values/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A population pyramid: men to the left, women to the right, one pair of bars for each age group, from 0–4 at the bottom to 85+ at the top. The men’s values are negative in the data, and the labels show them without the minus sign.

@@ -2,7 +2,7 @@
 title: "Pixel Map"
 source: "https://www.amcharts.com/demos/pixel-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map drawn as a grid of dots, each colored by its country's approximate median age: the older the population, the darker.

@@ -2,7 +2,7 @@
 title: "Sentence Cloud"
 source: "https://www.amcharts.com/demos/sentence-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A word cloud of whole phrases, each in its own colored box and sized by how often it comes up. Here, what a café’s customers say most in their reviews.

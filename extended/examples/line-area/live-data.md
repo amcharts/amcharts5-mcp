@@ -2,7 +2,7 @@
 title: "Live Data"
 source: "https://www.amcharts.com/demos/live-data/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart that never sits still: every second a new point slides in on the right and the oldest one drops off the left.

@@ -7,7 +7,16 @@
 // ---------------------------------------------------------------------------
 
 import { z } from "zod";
-import { CHART_TYPE_MAP, extractImportBlock, isUnsearchedSection, searchDocs } from "./content.js";
+import { CHART_TYPE_MAP, extractImportBlock, lineMatchesQuery, rankContent, searchDocs } from "./content.js";
+import { listGeodata } from "./geodata.js";
+
+// User text echoed back in a reply, capped so a huge query can't balloon it
+const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
+
+// Searches about map files get pointed at list_geodata, which has every name.
+const GEODATA_QUERY_RE = /geo ?data|congressional|am5geodata|\b(?:low|high)\.js\b/i;
+const GEODATA_HINT = "\n\n> Looking for a map file? list_geodata(filter) lists every geodata file (world, countries, regions, US congressional packs per Congress) with its CDN path, global name and ES import.";
+const geodataHint = (query) => (GEODATA_QUERY_RE.test(query) ? GEODATA_HINT : "");
 
 export function registerTools(server, content) {
   const { docs, extendedDocs, examples } = content;
@@ -67,7 +76,7 @@ export function registerTools(server, content) {
       if (!doc) {
         const available = [...new Set(Object.values(CHART_TYPE_MAP))].sort().join(", ");
         return {
-          content: [{ type: "text", text: `No reference found for "${chartType}". Available: ${available}` }],
+          content: [{ type: "text", text: `No reference found for "${echo(chartType)}". Available: ${available}` }],
         };
       }
       return { content: [{ type: "text", text: doc.content }] };
@@ -91,11 +100,11 @@ export function registerTools(server, content) {
   // --- Tool: search_docs ---
   server.tool(
     "search_docs",
-    "Search the curated amCharts 5 skill docs (SKILL.md + chart references) for a keyword or topic, returning matching sections ranked by relevance. NOTE: by default this scans ONLY the skill layer. The per-class API reference and per-setting DEFAULTS (e.g. tooltip background cornerRadius, axis tick `visible` default, cursor line strokeDasharray) live in the extended docs — pass scope:'all' here, or use search_all / get_api_reference / get_doc, to reach them.",
+    "Search the curated amCharts 5 skill docs (SKILL.md + chart references) for a keyword or topic, returning matching sections ranked by relevance. NOTE: by default this scans ONLY the skill layer. The per-class API reference and per-setting DEFAULTS (e.g. tooltip background cornerRadius, axis tick `visible` default, cursor line strokeDasharray) live in the extended docs — pass scope:'all' here (which also searches the code examples), or use search_all / get_api_reference / get_doc, to reach them.",
     {
       query: z.string().describe("Search query, e.g. 'legend', 'axis label rotation', 'tooltip format', 'data processor'"),
       maxResults: z.number().optional().default(5).describe("Maximum number of results to return (default 5)"),
-      scope: z.enum(["skill", "all"]).optional().default("skill").describe("'skill' (default) searches only the curated skill docs; 'all' also searches the extended docs / per-class API reference where settings and defaults live."),
+      scope: z.enum(["skill", "all"]).optional().default("skill").describe("'skill' (default) searches only the curated skill docs; 'all' also searches the extended docs / per-class API reference where settings and defaults live, and the code examples."),
     },
     async ({ query, maxResults, scope }) => {
       const results = searchDocs(content, query, maxResults, scope);
@@ -103,19 +112,21 @@ export function registerTools(server, content) {
         const hint = scope === "skill"
           ? ` Nothing in the skill docs — retry with scope:'all' to include the API reference, or use search_all.`
           : "";
-        return { content: [{ type: "text", text: `No results found for "${query}".${hint}` }] };
+        return { content: [{ type: "text", text: `No results found for "${echo(query)}".${hint}${geodataHint(query)}` }] };
       }
 
       // Per-result excerpt budget. When only one or two sections match, the
       // whole point is to read them — grow the budget instead of cutting the
       // answer off.
       const budget = results.length <= 2 ? 6000 : 2000;
-      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
 
-      let text = `# Search results for "${query}" (scope: ${scope})\n\n`;
+      let text = `# Search results for "${echo(query)}" (scope: ${scope})\n\n`;
       for (const r of results) {
-        const id = `${r.source}/${r.file}`;
-        text += `## ${r.docTitle} → ${r.heading}\n`;
+        // Examples aren't sections of a doc: label them by their example path
+        // and point at get_example for the full code.
+        const isExample = r.kind === "example";
+        const id = isExample ? r.file : `${r.kind}/${r.file}`;
+        text += isExample ? `## [example] ${r.docTitle}\n` : `## ${r.docTitle} → ${r.heading}\n`;
         text += `*(source: ${id}.md, relevance: ${r.score})*\n\n`;
         let body = r.body;
         if (body.length > budget) {
@@ -130,18 +141,19 @@ export function registerTools(server, content) {
             const start = offset;
             offset += line.length + 1;
             if (start < budget) continue;
-            const l = line.toLowerCase();
-            if (terms.some(t => l.includes(t))) beyond.push(line.trim().slice(0, 400));
+            if (lineMatchesQuery(line, query)) beyond.push(line.trim().slice(0, 400));
             if (beyond.length >= 8) break;
           }
-          body = head + `\n\n...(truncated — full section: get_section(file: "${id}", heading: "${r.heading}"))`;
+          body = head + (isExample
+            ? `\n\n...(truncated — full example: get_example(path: "${r.file}"))`
+            : `\n\n...(truncated — full section: get_section(file: "${id}", heading: "${r.heading}"))`);
           if (beyond.length) {
             body += `\n\nMatching lines beyond the excerpt:\n` + beyond.map(l => `> ${l}`).join("\n");
           }
         }
         text += body + "\n\n---\n\n";
       }
-      return { content: [{ type: "text", text }] };
+      return { content: [{ type: "text", text: text + geodataHint(query) }] };
     }
   );
 
@@ -188,7 +200,7 @@ export function registerTools(server, content) {
       const doc = docs.get(key);
       if (!doc) {
         return {
-          content: [{ type: "text", text: `No reference found for "${chartType}". Use list_chart_types to see available types.` }],
+          content: [{ type: "text", text: `No reference found for "${echo(chartType)}". Use list_chart_types to see available types.` }],
         };
       }
 
@@ -238,55 +250,20 @@ export function registerTools(server, content) {
       maxResults: z.number().optional().default(10).describe("Maximum results (default 10)"),
     },
     async ({ query, maxResults }) => {
-      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-      const results = [];
-
-      // Search skill docs
-      for (const [name, doc] of docs) {
-        for (const section of doc.sections) {
-          const text = (section.heading + " " + section.body).toLowerCase();
-          const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
-          if (score > 0) {
-            results.push({ source: `skill/${name}`, title: doc.title, heading: section.heading, preview: section.body.slice(0, 300), score: score + 0.1, type: "skill" });
-          }
-        }
+      const { total, results } = rankContent(content, query, { maxResults });
+      if (results.length === 0) {
+        return { content: [{ type: "text", text: `No results found for "${echo(query)}".${geodataHint(query)}` }] };
       }
 
-      // Search extended docs
-      for (const [key, doc] of extendedDocs) {
-        for (const section of doc.sections) {
-          if (isUnsearchedSection(key, section)) continue;
-          const text = (section.heading + " " + section.body).toLowerCase();
-          const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
-          if (score > 0) {
-            results.push({ source: key, title: doc.title, heading: section.heading, preview: section.body.slice(0, 300), score, type: "docs" });
-          }
-        }
+      const TYPE_LABEL = { skill: "skill", extended: "docs", example: "example" };
+      let text = `# Search results for "${echo(query)}" (${total} total, showing ${results.length})\n\n`;
+      for (const r of results) {
+        const source = r.kind === "skill" ? `skill/${r.file}` : r.file;
+        text += `## [${TYPE_LABEL[r.kind]}] ${r.docTitle}${r.heading ? ` → ${r.heading}` : ""}\n`;
+        text += `*Source: ${source} | Relevance: ${r.score}*\n\n`;
+        text += r.body.slice(0, 300) + "\n\n---\n\n";
       }
-
-      // Search examples
-      for (const [key, ex] of examples) {
-        const text = (ex.title + " " + ex.category + " " + ex.content).toLowerCase();
-        const score = terms.reduce((s, t) => s + (text.includes(t) ? 1 : 0), 0);
-        if (score > 0) {
-          results.push({ source: key, title: ex.title, heading: ex.category, preview: ex.content.slice(0, 300), score, type: "example" });
-        }
-      }
-
-      results.sort((a, b) => b.score - a.score);
-      const top = results.slice(0, maxResults);
-
-      if (top.length === 0) {
-        return { content: [{ type: "text", text: `No results found for "${query}".` }] };
-      }
-
-      let text = `# Search results for "${query}" (${results.length} total, showing ${top.length})\n\n`;
-      for (const r of top) {
-        text += `## [${r.type}] ${r.title}${r.heading ? ` → ${r.heading}` : ""}\n`;
-        text += `*Source: ${r.source} | Relevance: ${r.score}*\n\n`;
-        text += r.preview + "\n\n---\n\n";
-      }
-      return { content: [{ type: "text", text }] };
+      return { content: [{ type: "text", text: text + geodataHint(query) }] };
     }
   );
 
@@ -341,7 +318,7 @@ export function registerTools(server, content) {
         const suggestions = classKeys
           .filter(k => k.includes(norm) || norm.includes(k))
           .slice(0, 10);
-        let msg = `No API reference found for "${className}" (normalized "${norm}").`;
+        let msg = `No API reference found for "${echo(className)}" (normalized "${norm}").`;
         if (suggestions.length) {
           msg += `\n\nDid you mean: ${suggestions.join(", ")}?`;
         }
@@ -360,7 +337,7 @@ export function registerTools(server, content) {
         text += `\n---\n\n# ${privateDoc.title} (private / read-only)\n\n${privateDoc.content}\n\n`;
       }
       if (!includePrivate && privateDoc) {
-        text += `\n---\n\n*Private/read-only settings also exist — call get_api_reference("${className}", includePrivate: true) to include them.*\n`;
+        text += `\n---\n\n*Private/read-only settings also exist — call get_api_reference("${echo(className)}", includePrivate: true) to include them.*\n`;
       }
       return { content: [{ type: "text", text: text.trim() }] };
     }
@@ -426,6 +403,16 @@ export function registerTools(server, content) {
       text += `\n${ex.content}`;
       return { content: [{ type: "text", text }] };
     }
+  );
+
+  // --- Tool: list_geodata ---
+  server.tool(
+    "list_geodata",
+    "List amCharts 5 geodata (map) files with each one's CDN path, script global name and ES module import: world maps, continents, every country map, regional packs (US states and counties, Canada, Mexico) and the US congressional-district packs, which are versioned per Congress (congressional120 = 120th Congress is the newest). Also the data/countries2 and lang/* helper files. Use it before writing map code instead of guessing a file or global name.",
+    {
+      filter: z.string().optional().describe("Words that must all match (case-insensitive) a map's path, label, group, ISO code or pack, e.g. 'germany', 'FR', 'region/canada', 'usa counties', 'congressional120', 'congressional whole country', 'continents', 'countries2'. A file or global name ('usaCongressionalLow', 'am5geodata_worldLow') works too. Omit for an overview."),
+    },
+    async ({ filter }) => ({ content: [{ type: "text", text: listGeodata(content.geodata, filter) }] })
   );
 
   // -------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 title: "Tag Cloud"
 source: "https://www.amcharts.com/demos/tag-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Tags sized and colored by weight, each one a link: the languages most used in the 2021 Stack Overflow survey. Click one to open its questions.

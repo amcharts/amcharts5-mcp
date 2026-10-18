@@ -2,7 +2,7 @@
 title: "Road Trip Dashboard with Map"
 source: "https://www.amcharts.com/demos/road-trip-dashboard-with-map/"
 category: "dashboards"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A road trip from Vilnius to Palermo told twice: on a timeline that winds like a road, measured in kilometers driven, and on a map of Europe. Circles are sized by population, and pointing at a city in either chart highlights it in the other.
@@ -138,9 +138,10 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
+var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Colors from the theme, so the dashboard follows the theme: a main color and a pale one for the rest
@@ -155,11 +156,41 @@ root.interfaceColors.setAll({
   primaryButtonDown: am5.Color.lighten(mainColor, -0.2)  // ...and darker when pressed
 });
 
+// The city names on the road and on the map, as templates, so a rule below can change them all at once
+// (a label's own settings would win over its template, so the font size is set here)
+var timelineLabels = am5.Template.new({ fontSize: 13 }); // 13px text
+var mapLabels = am5.Template.new({ fontSize: 13 });
+
 // One root holds both charts, side by side: the timeline on the left, the map on the right
 root.container.set("layout", root.horizontalLayout);
 
 var serpentineSeries = makeSerpentineChart(); // the timeline's city series...
 var pointSeries = makeMapChart();             // ...and the map's, which cityCircle looks through
+
+// On a narrow chart (a phone) the timeline goes above the map instead of beside it, so its road gets the
+// whole width: smaller names on the road, none on the map (the road names the cities), and the zoom
+// buttons in a row along the bottom. The rule is undone on a wider chart
+var timeline = serpentineSeries.chart;
+var map = pointSeries.chart;
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    root.container.set("layout", root.verticalLayout); // one above the other
+    timeline.setAll({ width: am5.p100, height: am5.percent(62) }); // the road on top, 62% of the height
+    map.setAll({ width: am5.p100, height: am5.percent(38) });      // the map in the rest
+    timelineLabels.set("fontSize", 11); // 11px names on the road
+    mapLabels.set("forceHidden", true); // no names on the map
+    map.get("zoomControl").set("layout", root.horizontalLayout); // the buttons side by side
+  },
+  removing: function () {
+    root.container.set("layout", root.horizontalLayout); // back side by side
+    timeline.setAll({ width: am5.percent(50), height: am5.p100 });
+    map.setAll({ width: am5.percent(50), height: am5.p100 });
+    timelineLabels.set("fontSize", 13);
+    mapLabels.set("forceHidden", false);
+    map.get("zoomControl").set("layout", root.verticalLayout);
+  }
+});
 
 // The circle of a city in the given series, so hovering a city in one chart can highlight it in the other.
 // Each bullet keeps its circle in userData.
@@ -320,11 +351,10 @@ function makeSerpentineChart() {
 
     var label = container.children.push(am5.Label.new(root, {
       text: "{name}",
-      fontSize: 13,      // 13px text
       centerY: am5.p100, // the label's bottom...
       centerX: am5.p50,  // ...centered over the circle
       populateText: true // fills in {name} from the city's data
-    }));
+    }, timelineLabels)); // the font size comes from the template
 
     // the name sits just above the circle, whatever its size
     label.adapters.add("dy", function (dy, target) {
@@ -503,12 +533,11 @@ function makeMapChart() {
 
     var label = container.children.push(am5.Label.new(root, {
       text: "{name}",
-      fontSize: 13,       // 13px text
       centerY: am5.p50,   // centered on the circle's height...
       centerX: am5.p100,  // ...with the label's right end at the circle
       populateText: true, // fills in {name} from the city's data
       paddingRight: 4     // a 4px gap before the circle
-    }));
+    }, mapLabels)); // the font size, and on a phone the hiding, come from the template
 
     // the name sits just left of the circle, whatever its size
     label.adapters.add("dx", function (dx, target) {
@@ -560,6 +589,6 @@ function makeMapChart() {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/map.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
 - https://cdn.amcharts.com/lib/5/geodata/region/world/europeLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

@@ -2,7 +2,7 @@
 title: "Crypto Order Book Depth Chart"
 source: "https://www.amcharts.com/demos/live-order-book-depth-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A market depth chart built from the live ETH/BTC order book on Binance and reloaded every 30 seconds: buy orders in green, sell orders in red.

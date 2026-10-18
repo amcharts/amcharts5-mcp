@@ -2,7 +2,7 @@
 title: "OHLC Chart"
 source: "https://www.amcharts.com/demos/ohlc-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 An OHLC chart shows the same four prices as a candlestick, drawn as a bar: a line from low to high, a tick to the left for the open and one to the right for the close. Zoom out and 2,000 days group into weeks and months.

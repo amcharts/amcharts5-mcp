@@ -2,7 +2,7 @@
 title: "Word Cloud"
 source: "https://www.amcharts.com/demos/word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A word cloud sizes each word by how often it appears in a text, so the words used most stand out at once. Here, the king’s first speech in Shakespeare’s Hamlet.

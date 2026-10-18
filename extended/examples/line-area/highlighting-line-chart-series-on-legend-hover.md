@@ -2,7 +2,7 @@
 title: "Highlighting Line Chart Series on Legend Hover"
 source: "https://www.amcharts.com/demos/highlighting-line-chart-series-on-legend-hover/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Ten lines on one chart get tangled. Point at a name in the legend and that line thickens while the others fade, so you can follow it from start to end.

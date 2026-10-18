@@ -2,7 +2,7 @@
 title: "Gauge with Bands"
 source: "https://www.amcharts.com/demos/gauge-with-bands/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A gauge split into seven colored bands, from Unsustainable to High Performing. The needle takes the color of the band it points at, and the score sits in its pin.
@@ -124,46 +124,49 @@ setInterval(function () {
   });
 }, 2000)
 
-// Create axis ranges bands
+// Create axis ranges bands, colored on the theme's scale from its color for negative values (red) through its warning
+// color (yellow) to its positive one (green), so they follow the theme and dark mode
 // https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Bands
+function scaleColor(position) {
+  return am5.Color.interpolateColors(position, [
+    root.interfaceColors.get("negative"),
+    root.interfaceColors.get("warning"),
+    root.interfaceColors.get("positive")
+  ]);
+}
+
 var bandsData = [{
   title: "Unsustainable",
-  color: "#ee1f25",
   lowScore: -40,
   highScore: -20
 }, {
   title: "Volatile",
-  color: "#f04922",
   lowScore: -20,
   highScore: 0
 }, {
   title: "Foundational",
-  color: "#fdae19",
   lowScore: 0,
   highScore: 20
 }, {
   title: "Developing",
-  color: "#f3eb0c",
   lowScore: 20,
   highScore: 40
 }, {
   title: "Maturing",
-  color: "#b0d136",
   lowScore: 40,
   highScore: 60
 }, {
   title: "Sustainable",
-  color: "#54b947",
   lowScore: 60,
   highScore: 80
 }, {
   title: "High Performing",
-  color: "#0f9747",
   lowScore: 80,
   highScore: 100
 }];
 
-am5.array.each(bandsData, function (data) {
+am5.array.each(bandsData, function (data, i) {
+  var color = scaleColor(i / (bandsData.length - 1)); // the first band red, the last green
   var axisRange = xAxis.createAxisRange(xAxis.makeDataItem({}));
 
   axisRange.setAll({
@@ -173,7 +176,7 @@ am5.array.each(bandsData, function (data) {
 
   axisRange.get("axisFill").setAll({
     visible: true,               // shown (axis fills are hidden by default)
-    fill: am5.color(data.color), // the band's color...
+    fill: color,                 // the band's color...
     fillOpacity: 0.8             // ...slightly see-through
   });
 
@@ -182,7 +185,7 @@ am5.array.each(bandsData, function (data) {
     inside: true,                          // the label sits inside the ring
     radius: 15,
     fontSize: "0.9em",                     // a little smaller
-    fill: textColor(am5.color(data.color)) // white or black, whichever reads better on the band
+    fill: textColor(color)                 // white or black, whichever reads better on the band
   });
 });
 

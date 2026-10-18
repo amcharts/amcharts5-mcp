@@ -2,7 +2,7 @@
 title: "Root"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/root/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 The root of a chart: it ties the chart to an HTML element and holds its global settings, formatters, locale and themes.
@@ -35,7 +35,7 @@ Public properties (not settings):
 - **durationFormatter** (`DurationFormatter`) — Duration formatter. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
 - **entitiesById** (`{ [index: string]: any; }`) — Objects of this root that have an `id` setting, by that `id`. _Since 5.11.0._
 - **events** (`EventDispatcher<Events<this, IRootEvents>>`) — Root's event dispatcher. Docs: https://www.amcharts.com/docs/v5/concepts/events/
-- **fps** (`number`) — Maximum frames per second. When not set, the chart renders on every animation frame of the browser. Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#Performance
+- **fps** (`number`) — Maximum frames per second. When not set, the chart renders on every animation frame of the browser. Each frame waits `1000 / fps` milliseconds after the previous one is drawn, then for the screen's next refresh, so the rate achieved is lower: `fps: 30` gives about 20 on a 60 Hz screen. Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#Performance
 - **gridLayout** (`GridLayout`) — default `GridLayout.new()` — A shared `GridLayout` for a `Container`'s `layout` setting.
 - **horizontalLayout** (`HorizontalLayout`) — default `HorizontalLayout.new()` — A shared `HorizontalLayout` for a `Container`'s `layout` setting.
 - **interfaceColors** (`InterfaceColors`) — Colors of the chart's interface: text, grid, buttons and other controls. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Interface_colors

@@ -2,7 +2,7 @@
 title: "IDropdownListItem"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idropdownlistitem/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance

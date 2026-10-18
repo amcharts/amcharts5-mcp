@@ -2,7 +2,7 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Sankey diagram you can follow one path through: point at a band and every step of that path lights up, from the first column to the last. Here, thirteen paths through four stages.

@@ -2,7 +2,7 @@
 title: "Collapsible Force-Directed Tree"
 source: "https://www.amcharts.com/demos/collapsible-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A force-directed tree links bubbles with lines and lets them push and pull until they settle. This one maps the flavors of coffee, from families like Fruity down to single notes, and opens a branch when you click it.

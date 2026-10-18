@@ -2,7 +2,7 @@
 title: "Approximate Working Hours Map"
 source: "https://www.amcharts.com/demos/approximate-working-hours-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map of where it’s working hours right now: the band between the 9 AM and 5 PM lines stays clear, the rest is shaded, and the sun marks where it’s overhead. The Time slider goes up to a day back or forward.

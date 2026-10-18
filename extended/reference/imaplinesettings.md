@@ -2,7 +2,7 @@
 title: "IMapLineSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/imaplinesettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -14,9 +14,9 @@ TypeScript: `am5map.IMapLineSettings` (`import type { IMapLineSettings } from "@
 
 ## Settings
 
-- **geometry** (`LineString | MultiLineString`) — The line's path, as GeoJSON geometry.
+- **geometry** (`LineString | MultiLineString`) — The line's path, as GeoJSON geometry. A third value in a point's coordinates is its height in metres, used once `altitude` is set.
 - **precision** (`number`) — default `0.5` _(theme)_ — How far, in pixels, the drawn line may stray from the curve the projection bends it into (d3-geo's resampling precision). Smaller is more accurate but slower.
-- **altitude** (`number`) — default `0` _(code fallback)_ — Raises the line above the surface so it arcs like a trajectory: each leg, from one point to the next, rises this many metres in its middle. `400000` is about the height of the International Space Station. Once it is set (`0` included), the ends sit at the `altitude` of the points the line connects, or at the third value of their coordinates, in metres too. Without it, the line stays on the surface. On flat maps it rises up the screen. Does not apply to `lineType: "straight"`. _Since 5.21.0._
+- **altitude** (`number`) — default `0` _(code fallback)_ — Raises the line above the surface so it arcs like a trajectory: each leg, from one point to the next, rises this many metres in its middle. `400000` is about the height of the International Space Station. Once it is set (`0` included), every point of the line sits at its own height: the third value of its coordinates, or the `altitude` of the map point it connects, in metres too. Between points the height changes evenly, and this arc is added on top, so `0` follows the heights alone. A negative height goes below the surface: inside a globe, hidden where the globe covers it. Without `altitude`, the line stays on the surface. On flat maps height goes up the screen. Does not apply to `lineType: "straight"`. _Since 5.21.0._
 
 ## Inherited settings with a different default on MapLine
 

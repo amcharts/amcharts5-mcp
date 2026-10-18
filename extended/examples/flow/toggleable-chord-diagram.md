@@ -2,7 +2,7 @@
 title: "Directed Chord Diagram"
 source: "https://www.amcharts.com/demos/toggleable-chord-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A directed chord diagram: every ribbon runs from one person to another and takes the color of the one it starts from. Here, the six Friends characters and everyone linked to them.

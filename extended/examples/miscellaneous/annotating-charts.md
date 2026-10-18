@@ -2,7 +2,7 @@
 title: "Annotating Charts"
 source: "https://www.amcharts.com/demos/annotating-charts/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pie chart with notes drawn on it: a callout and arrows saying which slices need work. They come from the exporting menu’s Annotate tool, which lets anyone draw on a chart and save the result.

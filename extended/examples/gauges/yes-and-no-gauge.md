@@ -2,7 +2,7 @@
 title: "Yes and No Gauge"
 source: "https://www.amcharts.com/demos/yes-and-no-gauge/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A gauge with only two answers: a green YES half and a red NO half. The needle swings from one to the other every two seconds.

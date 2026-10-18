@@ -2,7 +2,7 @@
 title: "Pie Chart"
 source: "https://www.amcharts.com/demos/pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The classic way to show parts of a whole: one circle, cut into slices sized by their share. Here, seven countries.

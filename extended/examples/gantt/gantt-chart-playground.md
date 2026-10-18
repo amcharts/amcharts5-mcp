@@ -2,7 +2,7 @@
 title: "Gantt Chart Playground"
 source: "https://www.amcharts.com/demos/gantt-chart-playground/"
 category: "gantt"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Gantt chart to try things on. It starts with a small sample plan: add tasks with the + button and drag them around, or clear everything with the bin and start from nothing. Your plan is saved in this browser.

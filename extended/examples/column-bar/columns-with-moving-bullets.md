@@ -2,7 +2,7 @@
 title: "Columns with Moving Bullets"
 source: "https://www.amcharts.com/demos/columns-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The column version of moving photos: each column has a photo at its foot, and when you point at a column, the photo climbs to its top. Step counts for six friends, darker the higher.

@@ -2,7 +2,7 @@
 title: "Separate Volume Panel"
 source: "https://www.amcharts.com/demos/separate-volume-panel/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Candlesticks on top and trading volume in a panel of its own below. The two panels zoom, scroll and follow the cursor together, and volume gets its own scale instead of a strip under the candles.

@@ -2,7 +2,7 @@
 title: "Stock Intraday Data"
 source: "https://www.amcharts.com/demos/stock-intraday-data/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One trading day in 390 one-minute candles, 9:30 to 16:00, with each minute’s volume below. The axis shows New York time, wherever you are.

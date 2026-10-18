@@ -2,7 +2,7 @@
 title: "IMapSankeySeriesSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/imapsankeyseriessettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -37,7 +37,7 @@ TypeScript: `am5map.IMapSankeySeriesSettings` (`import type { IMapSankeySeriesSe
 
 ## Inherited settings with a different default on MapSankeySeries
 
-- **affectsBounds** (`boolean`) — default `false` _(theme)_ — _from IMapSeriesSettings_ — Counts the series' geometries when the chart fits the map to its area. Turn it off for a background series, so the map fits the rest. Point, line and sankey series have it off by default. _Since 5.2.36._
+- **affectsBounds** (`boolean`) — default `false` _(theme)_ — _from IMapSeriesSettings_ — Counts the series' geometries when the chart fits the map to its area. Turn it off for a background series, so the map fits the rest. Point, line and sankey series have it off by default. When it is on, adding or removing data fits the map again, so keep it off for data that changes often. _Since 5.2.36._
 - **idField** (`string`) — default `"id"` _(class default)_ — _from ISeriesSettings_ — A key to look up in data for an id of the data item.
 - **valueField** (`string`) — default `"value"` _(class default)_ — _from IMapSeriesSettings_ — Field in `data` that holds each map object's numeric value, for use in tooltips, heat rules and such.
 

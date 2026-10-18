@@ -2,7 +2,7 @@
 title: "Line with Different Colors for Ups and Downs"
 source: "https://www.amcharts.com/demos/line-different-colors-ups-downs/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line that turns green where the value rises and red where it falls, so every move up or down stands out. The tooltip takes the color of the move too.

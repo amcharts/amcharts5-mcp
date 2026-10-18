@@ -2,7 +2,7 @@
 title: "Stream / ThemeRiver Chart"
 source: "https://www.amcharts.com/demos/stream-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A streamgraph: layers that flow around a center line instead of stacking up from zero. Here, Olympic medal counts for five countries from 1896 to 2008.

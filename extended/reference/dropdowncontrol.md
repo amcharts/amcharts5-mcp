@@ -2,7 +2,7 @@
 title: "DropdownControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dropdowncontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A control with a dropdown that shows custom HTML (`html`).

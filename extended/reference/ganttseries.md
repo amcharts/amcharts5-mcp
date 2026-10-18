@@ -2,7 +2,7 @@
 title: "GanttSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ganttseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Series of a `Gantt` chart: draws the task bars, their progress and the links between tasks, and lets the user drag and resize them.

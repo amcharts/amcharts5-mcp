@@ -2,7 +2,7 @@
 title: "Drill-Down Map"
 source: "https://www.amcharts.com/demos/drill-down-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map of the continents that drills down to countries: click a continent to zoom in and see its countries, then click the house to go back.

@@ -1,7 +1,7 @@
 ---
 title: "getRootById"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Returns the `Root` whose container element has this `id`.

@@ -2,7 +2,7 @@
 title: "ClusteredPointSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/clusteredpointseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A `MapPointSeries` that groups points close together on screen into clusters. Clusters are worked out again whenever the zoom level changes.

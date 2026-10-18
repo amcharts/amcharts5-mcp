@@ -2,7 +2,7 @@
 title: "Radar Chart Visualizing Yearly Activities"
 source: "https://www.amcharts.com/demos/radar-chart-visualizing-yearly-activities/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A year of bike rides in one circle: weekly distances as columns, every ride as a bubble sized by its length, and the year’s total in the middle.
@@ -875,8 +875,8 @@ distanceSeries.columns.template.set("strokeOpacity", 0); // no column outlines
 distanceSeries.set("heatRules", [{
   target: distanceSeries.columns.template,
   key: "fill",
-  min: am5.color(0x673ab7), // the shortest weeks purple...
-  max: am5.color(0xf44336), // ...the longest red
+  min: chart.get("colors").getIndex(0), // the shortest weeks in the theme's first color...
+  max: chart.get("colors").getIndex(5), // ...the longest in a later one
   dataField: "valueY"
 }]);
 

@@ -2,7 +2,7 @@
 title: "Button"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/button/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Draws an interactive button.

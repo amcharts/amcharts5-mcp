@@ -2,7 +2,7 @@
 title: "Scatter Plot with Tens of Thousands Points"
 source: "https://www.amcharts.com/demos/scatter-plot-with-tens-of-thousands-points/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A scatter plot with 20,000 points in four clusters, all drawn in one go, so the chart stays quick to zoom and pan. This is where the Canvas renderer shines: switch to SVG under the chart and every move has to rebuild one huge shape.

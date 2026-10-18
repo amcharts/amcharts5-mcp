@@ -2,7 +2,7 @@
 title: "Beeswarm"
 source: "https://www.amcharts.com/demos/beeswarm/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A beeswarm chart shows every value as a dot along one axis, nudging dots up and down so none overlap. The shape of the swarm shows where values bunch up: here, 500 random values, most of them near zero.

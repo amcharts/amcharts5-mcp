@@ -2,7 +2,7 @@
 title: "Vertical Line Chart"
 source: "https://www.amcharts.com/demos/vertical-line-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart turned on its side: dates run up the left edge and values across, so the line climbs the page. Two colored zones split the values below and above 70.

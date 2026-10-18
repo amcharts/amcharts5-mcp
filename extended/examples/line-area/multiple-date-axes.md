@@ -2,7 +2,7 @@
 title: "Multiple Date Axes"
 source: "https://www.amcharts.com/demos/multiple-date-axes/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two years on one chart: 2023 and 2025 each get their own date axis, so both start at the left edge and line up day by day. Each axis is labeled in the color of its line.

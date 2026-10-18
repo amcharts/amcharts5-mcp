@@ -2,7 +2,7 @@
 title: "PanelControls"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/panelcontrols/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Buttons on a `StockChart` panel that move it up or down, expand it and close it.

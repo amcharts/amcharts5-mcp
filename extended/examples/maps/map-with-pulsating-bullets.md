@@ -2,7 +2,7 @@
 title: "Map with Pulsating Bullets"
 source: "https://www.amcharts.com/demos/map-with-pulsating-bullets/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Eighteen capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again at random moments, to draw the eye.

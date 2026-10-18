@@ -2,7 +2,7 @@
 title: "Spline Graph"
 source: "https://www.amcharts.com/demos/spline-graph/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A spline graph draws a smooth curve through every point instead of straight segments. The Smoothing slider sets how much the curve may bend, from straight lines to a loose wave.

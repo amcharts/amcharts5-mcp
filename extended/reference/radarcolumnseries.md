@@ -2,7 +2,7 @@
 title: "RadarColumnSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/radarcolumnseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A column series for a `RadarChart`, with each column drawn as a ring segment (`Slice`).

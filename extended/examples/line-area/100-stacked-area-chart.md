@@ -2,7 +2,7 @@
 title: "100% Stacked Area Chart"
 source: "https://www.amcharts.com/demos/100-stacked-area-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Every year adds up to 100%, so the chart shows shares instead of amounts: how a total splits between cars, motorcycles and bicycles from 2007 to 2025.

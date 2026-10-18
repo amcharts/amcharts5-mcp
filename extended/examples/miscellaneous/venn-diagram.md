@@ -2,7 +2,7 @@
 title: "Venn Diagram"
 source: "https://www.amcharts.com/demos/venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Venn diagram draws each group as a circle and puts what groups share where the circles overlap. Here, three sets, A, B and C, with areas sized by how many items each part holds.
@@ -69,7 +69,7 @@ series.slices.template.set("tooltipText", "{category}: {value}");
 // Set up hover appearance
 series.hoverGraphics.setAll({
   strokeDasharray: [3, 3],     // a dashed outline around the area under the mouse...
-  stroke: am5.color(0xffffff), // ...in white...
+  stroke: root.interfaceColors.get("background"), // ...in the background's color (white, or dark in dark mode)...
   strokeWidth: 2               // ...2px wide
 });
 

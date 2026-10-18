@@ -2,7 +2,7 @@
 title: "IOKLCH"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ioklch/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 OKLCH color helpers.

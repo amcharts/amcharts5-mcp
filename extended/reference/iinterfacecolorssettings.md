@@ -2,7 +2,7 @@
 title: "IInterfaceColorsSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iinterfacecolorssettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -37,6 +37,7 @@ TypeScript: `am5.IInterfaceColorsSettings` (`import type { IInterfaceColorsSetti
 - **disabled** (`Color`) — default `am5.Color.fromHex(0xadadad)` _(theme)_ — Color for disabled elements.
 - **positive** (`Color`) — default `am5.Color.fromHex(0x50b300)` _(theme)_ — Color for positive values, such as a rise.
 - **negative** (`Color`) — default `am5.Color.fromHex(0xb30000)` _(theme)_ — Color for negative values, such as a fall.
+- **warning** (`Color`) — default `am5.Color.fromHex(0xf2c230)` _(theme)_ — Color between `negative` and `positive`, such as a warning or the middle of a scale from bad to good.
 
 ## Other inherited settings
 

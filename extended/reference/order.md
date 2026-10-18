@@ -2,7 +2,7 @@
 title: "Order"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/order/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 TypeScript: not exported by name from the package.

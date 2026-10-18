@@ -2,7 +2,7 @@
 title: "Editable Multilevel Gantt Chart"
 source: "https://www.amcharts.com/demos/editable-multilevel-gantt-chart/"
 category: "gantt"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Gantt chart with tasks grouped under their stage. Each stage’s bar covers its tasks, its progress comes from theirs, and a click folds it away.

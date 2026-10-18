@@ -2,7 +2,7 @@
 title: "Horizontal Pictorial Chart"
 source: "https://www.amcharts.com/demos/horizontal-pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Seven values fill a sausage-shaped outline from left to right, each slice as wide as its share. Any SVG path can be the outline.

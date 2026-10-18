@@ -2,7 +2,7 @@
 title: "Curved Columns"
 source: "https://www.amcharts.com/demos/curved-columns/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Columns with a shape of their own: each is drawn as two curves meeting at a peak, wider than its slot, so neighbors overlap like a row of hills. Nine countries, each in its own color.

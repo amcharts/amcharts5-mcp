@@ -2,7 +2,7 @@
 title: "Line Chart with Horizontal Target"
 source: "https://www.amcharts.com/demos/line-chart-with-horizontal-target/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart with a dotted target line at 40. Whatever falls below the target changes color, so the days that missed it stand out at once.

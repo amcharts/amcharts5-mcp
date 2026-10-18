@@ -2,7 +2,7 @@
 title: "Flower Chart"
 source: "https://www.amcharts.com/demos/flower-chart/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A radar column chart where the columns fill only the middle of each slice, so they stand apart like petals. Here, two coffees scored on eight tasting notes.

@@ -207,7 +207,7 @@ npm start
 | `get_core_reference` | Get core amCharts 5 docs — setup, themes, colors, events, common pitfalls |
 | `get_chart_reference` | Get full reference for a chart type (e.g. "pie", "sankey", "xy") |
 | `list_chart_types` | List all available chart types and their keywords |
-| `search_docs` | Search the skill reference docs by keyword |
+| `search_docs` | Search the skill reference docs by keyword (`scope: "all"` adds the full docs, API reference and examples) |
 | `search_all` | Search across **everything** — skill docs, full documentation, and code examples |
 | `get_doc` | Get a full documentation page (e.g. "charts/xy-chart/axes", "concepts/events") |
 | `get_section` | Get a specific section from a reference file by heading |
@@ -215,6 +215,7 @@ npm start
 | `list_examples` | Browse all 290+ examples, optionally filtered by category |
 | `get_example` | Get the full code for a specific example |
 | `get_api_reference` | Get the API reference for a class, interface or function — settings with their defaults, events, inheritance and the import line |
+| `list_geodata` | Find map (geodata) files — world, continents, countries, regional packs and the per-Congress US congressional district packs — with each file's CDN path, script global and ES import |
 
 ## Example Usage
 
@@ -226,6 +227,7 @@ Once connected, your AI assistant can:
 - **"What settings does XYChart support?"** → AI calls `get_doc("reference/xychart")`
 - **"How do I integrate with React?"** → AI calls `get_doc("getting-started/integrations/react")`
 - **"What chart types are available?"** → AI calls `list_chart_types()`
+- **"Map the current US congressional districts"** → AI calls `list_geodata("congressional whole country")`
 
 ## Content
 
@@ -234,6 +236,7 @@ The server includes **1,800+ documents**:
 - **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides (React, Angular, Vue, Next.js, Svelte, and more)
 - **290+ code examples** — working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more
 - **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), events, properties, data item fields, the inheritance chain and the import line
+- **670+ geodata entries** — every map in `@amcharts/amcharts5-geodata`, for `list_geodata`
 - **Curated skill reference** — quick-start templates and chart-specific guides from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
 
 ## Security

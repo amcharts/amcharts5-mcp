@@ -2,7 +2,7 @@
 title: "Horizontal Serpentine Timeline"
 source: "https://www.amcharts.com/demos/horizontal-serpentine-timeline/"
 category: "timeline"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A timeline that winds up and down in six columns across the page, for a wide, short space. Four project modules keep their lanes and colors at every turn.

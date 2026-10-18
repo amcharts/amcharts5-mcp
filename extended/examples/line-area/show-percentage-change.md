@@ -2,7 +2,7 @@
 title: "Show Percentage Change"
 source: "https://www.amcharts.com/demos/show-percentage-change/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two prices drawn as percent change, so both start from the same zero and you see which grew faster. Change since sets where the change is counted from: the first day in view, or the first day of the data.

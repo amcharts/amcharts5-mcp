@@ -2,7 +2,7 @@
 title: "Star Atlas"
 source: "https://www.amcharts.com/demos/star-atlas/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A star atlas: the night sky drawn on a map chart, with the brightest stars, about 25 constellations and the path of the sun. It can be shown flat or as a globe.
@@ -543,5 +543,5 @@ chart.appear(1000, 100);
 
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

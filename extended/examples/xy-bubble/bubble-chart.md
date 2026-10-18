@@ -2,7 +2,7 @@
 title: "Bubble Chart"
 source: "https://www.amcharts.com/demos/bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bubble chart places each item on two axes and sizes it by a third value. Here two series share the plot: one drawn as circles, the other as eight-pointed stars.

@@ -2,7 +2,7 @@
 title: "Pacific-Centered Map"
 source: "https://www.amcharts.com/demos/pacific-centered-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map turned to put the Pacific Ocean in the middle, so Asia, Australia and the Americas sit side by side. Each country takes the next color of the palette.

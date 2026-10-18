@@ -2,7 +2,7 @@
 title: "Partitioned Bar Chart"
 source: "https://www.amcharts.com/demos/partitioned-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bar chart split into groups along its axis: sales in the 48 mainland states and DC, grouped into four regions. Each region has its own color and its name on a line across the axis.

@@ -2,7 +2,7 @@
 title: "DropdownListControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dropdownlistcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A control with a dropdown list of items, which can be searchable.

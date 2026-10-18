@@ -1,7 +1,7 @@
 ---
 title: "normalizeGeoPoint"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Brings a point's longitude within `-180` to `180` and its latitude within `-90` to `90`: a latitude past a pole comes back down on the other side. Changes `geoPoint` itself and returns it.

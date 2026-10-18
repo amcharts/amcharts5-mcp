@@ -2,7 +2,7 @@
 title: "IHeatLegendSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iheatlegendsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -16,6 +16,7 @@ TypeScript: `am5.IHeatLegendSettings` (`import type { IHeatLegendSettings } from
 
 - **startColor** (`Color`) — Color at the start of the scale (the lowest value).
 - **endColor** (`Color`) — Color at the end of the scale (the highest value).
+- **colors** (`Color[]`) — Colors for a scale through more than two colors, in place of `startColor` and `endColor`. As a gradient (`stepCount` of `1`), they are spread evenly along it; as steps, there is one step per color and `stepCount` is ignored. _Since 5.21.2._
 - **startOpacity** (`number`) — default `1` — Opacity at the start of the scale (the lowest value). _Since 5.14.0._
 - **endOpacity** (`number`) — default `1` — Opacity at the end of the scale (the highest value). _Since 5.14.0._
 - **startValue** (`number`) — default `0` _(code fallback)_ — The lowest value, at the start of the scale.

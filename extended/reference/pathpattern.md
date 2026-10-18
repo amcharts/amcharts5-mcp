@@ -2,7 +2,7 @@
 title: "PathPattern"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pathpattern/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A pattern that repeats an SVG path as a motif on a grid.

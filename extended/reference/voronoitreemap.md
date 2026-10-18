@@ -2,7 +2,7 @@
 title: "VoronoiTreemap"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/voronoitreemap/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A weighted Voronoi treemap: nodes as polygon cells sized by value, each inside its parent's cell. Many items with very different values lay out poorly; group the small ones into an "Other" item.

@@ -2,7 +2,7 @@
 title: "Real-Time Data Sorting"
 source: "https://www.amcharts.com/demos/real-time-data-sorting/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart that keeps itself sorted. Every second and a half, eleven countries get new values, and the columns slide into their new order, tallest first, with the numbers counting as they go.

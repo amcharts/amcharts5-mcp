@@ -2,7 +2,7 @@
 title: "IColorSetPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolorsetprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -14,4 +14,5 @@ TypeScript: `am5.IColorSetPrivate` (`import type { IColorSetPrivate } from "@amc
 
 - **currentStep** (`number`)
 - **currentPass** (`number`)
+- **currentCount** (`number`) — _(internal)_
 - **numColors** (`number`) — _(internal)_

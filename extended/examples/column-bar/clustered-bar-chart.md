@@ -2,7 +2,7 @@
 title: "Clustered Bar Chart"
 source: "https://www.amcharts.com/demos/clustered-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A clustered bar chart lays the series side by side for each category. Here, income and expenses for five years: each bar carries its name inside its end and its value just past it.

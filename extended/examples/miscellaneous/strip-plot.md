@@ -2,7 +2,7 @@
 title: "Strip Plot"
 source: "https://www.amcharts.com/demos/strip-plot/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A strip plot puts every value of a group on one line, so you see how they spread instead of a single average. Here, made-up posts on twelve social networks: when each went out and, by its size, how many likes it got.

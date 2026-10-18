@@ -2,7 +2,7 @@
 title: "Gantt with Hundreds of Items"
 source: "https://www.amcharts.com/demos/gantt-with-hundreds-of-items/"
 category: "gantt"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 About 200 tasks in 40 groups, generated from today’s date, to show the Gantt chart keeps up with a big plan. Scroll through the list, fold groups away, or press the fit button to zoom the timeline to the tasks in view.
@@ -37,6 +37,20 @@ root.setThemes([
 // Create Gantt chart
 // https://www.amcharts.com/docs/v5/charts/gantt/
 var gantt = root.container.children.push(am5gantt.Gantt.new(root, {}));
+
+// A phone-sized chart: more room for the task names, lower rows so more of the plan shows,
+// and only the main toolbar buttons, so the toolbar fits above the names instead of over the dates
+if (root.dom.offsetWidth < 600) {
+  gantt.set("sidebarWidth", am5.percent(45)); // the task list takes 45% of the width, not 30%
+  gantt.yAxis.set("minCellHeight", 40); // rows as low as 40px, not 70px
+  // no duration field and progress circle beside each name
+  gantt.yAxis.get("renderer").controlsContainers.template.set("forceHidden", true);
+  // keep add, color and edit: expand all, collapse all, link and clear leave the toolbar
+  // (taken out, as the Gantt shows some of them again when editing turns on)
+  am5.array.each([gantt.expandButton, gantt.collapseButton, gantt.linkButton, gantt.clearButton], function (button) {
+    gantt.controls.children.removeValue(button);
+  });
+}
 
 // Hide a date label that would be cut off at the left edge of the timeline
 gantt.xAxis.get("renderer").labels.template.set("minPosition", 0.08);

@@ -2,7 +2,7 @@
 title: "IDataProcessorSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idataprocessorsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -13,7 +13,7 @@ TypeScript: `am5.IDataProcessorSettings` (`import type { IDataProcessorSettings 
 
 ## Settings
 
-- **dateFormat** (`string`) — Format of the string dates in `dateFields`, such as `"yyyy-MM-dd"`. Set it whenever those fields hold strings.
+- **dateFormat** (`string`) — Format of the string dates in `dateFields`, such as `"yyyy-MM-dd"`. Without it, strings are read by the browser's `Date`, which takes a date-only string such as `"2024-03-15"` as midnight UTC.
 - **dateFields** (`string[]`) — Data fields to convert to timestamps. A nested field is written as a path, such as `"values.date"`.
 - **numericFields** (`string[]`) — Data fields to convert to numbers. A nested field is written as a path, such as `"values.value"`.
 - **colorFields** (`string[]`) — Data fields to convert to `Color` objects. A nested field is written as a path, such as `"values.color"`.

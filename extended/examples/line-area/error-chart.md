@@ -2,7 +2,7 @@
 title: "Error Chart"
 source: "https://www.amcharts.com/demos/error-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart with error bars: each country’s value comes with a bar showing how far off it could be. Where two bars overlap, the two values could be the same.

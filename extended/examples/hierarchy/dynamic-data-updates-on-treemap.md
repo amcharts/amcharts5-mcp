@@ -2,7 +2,7 @@
 title: "Dynamic Data Updates on Treemap"
 source: "https://www.amcharts.com/demos/dynamic-data-updates-on-treemap/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A treemap that keeps changing: every two seconds the values move and the boxes slide to new sizes. Here, made-up visits to an online store’s pages.

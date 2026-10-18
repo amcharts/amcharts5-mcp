@@ -2,7 +2,7 @@
 title: "Map with Sized Pin Bullets"
 source: "https://www.amcharts.com/demos/map-with-sized-pin-bullets/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Pins on a map, each sized by its value: a head with the number on it, on a pole that fades toward the ground. Here, made-up yearly sales growth in four markets.
@@ -193,6 +193,6 @@ for (var i = 0; i < data.length; i++) {
 
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

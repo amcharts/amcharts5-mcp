@@ -2,7 +2,7 @@
 title: "Vertically Stacked Axes Chart"
 source: "https://www.amcharts.com/demos/vertically-stacked-axes-chart/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One chart split into three panes stacked on top of each other, each with its own value axis, and one row of names along the bottom for all three. Here, a sales team’s quarter: deals closed, calls made and revenue per person.

@@ -2,7 +2,7 @@
 title: "OverboughtOversold"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/overboughtoversold/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Base class for indicators with overbought and oversold levels, drawn in a panel of their own.

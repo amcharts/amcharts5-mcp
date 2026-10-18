@@ -2,7 +2,7 @@
 title: "XY Error Chart"
 source: "https://www.amcharts.com/demos/xy-error-chart/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Error bars show how sure a measurement is: the point is the value measured, the bars the range the true value may lie in. Here seven points, each with an error in both x and y.

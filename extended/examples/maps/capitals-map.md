@@ -2,7 +2,7 @@
 title: "Capitals Map"
 source: "https://www.amcharts.com/demos/capitals-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map with the capital of every country, 196 in all, each marked with a star as in a printed atlas. Zoom in and the names appear.

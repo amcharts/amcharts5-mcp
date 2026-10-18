@@ -2,7 +2,7 @@
 title: "JSONParser"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/jsonparser/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Parses a JSON string into data.

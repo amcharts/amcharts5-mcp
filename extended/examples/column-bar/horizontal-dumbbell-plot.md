@@ -2,7 +2,7 @@
 title: "Horizontal Dumbbell Plot"
 source: "https://www.amcharts.com/demos/horizontal-dumbbell-plot/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A dumbbell plot puts two values on one row, a dot for each joined by a bar, so the gap between them is what you see first. Here, a made-up start and end value for each of 18 people.

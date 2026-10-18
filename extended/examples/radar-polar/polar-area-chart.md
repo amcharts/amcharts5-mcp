@@ -2,7 +2,7 @@
 title: "Polar Area Chart"
 source: "https://www.amcharts.com/demos/polar-area-chart/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A polar area chart, also called a rose or coxcomb chart, draws a stacked column for every direction around a circle. Here, a wind rose: where the wind comes from, and how strong.

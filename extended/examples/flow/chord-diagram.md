@@ -2,7 +2,7 @@
 title: "Chord Diagram"
 source: "https://www.amcharts.com/demos/chord-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A chord diagram puts the items around a circle and joins them with ribbons, each as wide as the flow between them. Here, five European cities and the flows between every pair, which are rarely the same both ways.

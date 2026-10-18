@@ -2,7 +2,7 @@
 title: "Clock"
 source: "https://www.amcharts.com/demos/clock/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 An analog clock made from a gauge: the dial is a circular axis from 0 to 12, and the hours, minutes and seconds are three clock hands. It shows the time on your device, live.
@@ -124,8 +124,8 @@ var secondsHand = am5radar.ClockHand.new(root, {
   layer:5
 })
 
-secondsHand.hand.set("fill", am5.color(0xff0000)); // a red hand...
-secondsHand.pin.set("fill", am5.color(0xff0000));  // ...with a red pin
+secondsHand.hand.set("fill", root.interfaceColors.get("negative")); // a hand in the theme's red...
+secondsHand.pin.set("fill", root.interfaceColors.get("negative"));  // ...with a pin in it too
 
 secondsDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: secondsHand

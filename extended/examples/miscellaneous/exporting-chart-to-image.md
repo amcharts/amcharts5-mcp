@@ -2,7 +2,7 @@
 title: "Exporting Chart to Image"
 source: "https://www.amcharts.com/demos/exporting-chart-to-image/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart with an export menu: the icon at the top right saves the chart as an image or a PDF, saves its data as a spreadsheet, or prints it. Change the chart with the controls first, and the export shows it as changed.

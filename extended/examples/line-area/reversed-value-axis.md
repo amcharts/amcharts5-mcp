@@ -2,7 +2,7 @@
 title: "Reversed Value Axis"
 source: "https://www.amcharts.com/demos/reversed-value-axis/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A ranking chart: the value axis is flipped so first place sits at the top, where people look for the winner. Here, where three teams finished in a league each year (sample data).

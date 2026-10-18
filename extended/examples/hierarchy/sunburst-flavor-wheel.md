@@ -2,7 +2,7 @@
 title: "Sunburst Flavor Wheel"
 source: "https://www.amcharts.com/demos/sunburst-flavor-wheel/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A sunburst chart shows a hierarchy as rings: the inner ring holds the groups, the outer ring what each is made of. This one is a coffee aroma wheel, 75 aromas in 13 families, each with its own color.

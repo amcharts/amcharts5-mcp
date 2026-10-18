@@ -2,7 +2,7 @@
 title: "Variable-Radius Radar"
 source: "https://www.amcharts.com/demos/variable-radius-radar/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One chart, three shapes: the Arc slider bends stacked columns from a flat bar chart into a half circle or a full ring. Here, a shop’s sales of six products, by quarter.

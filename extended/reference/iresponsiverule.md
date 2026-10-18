@@ -2,7 +2,7 @@
 title: "IResponsiveRule"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iresponsiverule/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A responsive rule: settings for matching elements that apply while the chart's size meets a condition.

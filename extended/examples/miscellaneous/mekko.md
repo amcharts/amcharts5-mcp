@@ -2,7 +2,7 @@
 title: "Mekko Chart"
 source: "https://www.amcharts.com/demos/mekko/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Mekko chart is a stacked column chart whose columns have different widths: the width shows how big each column is, the height how it splits up. Here, five columns of different sizes, each stacked from trucks, SUVs and cars.

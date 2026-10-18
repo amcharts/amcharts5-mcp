@@ -2,7 +2,7 @@
 title: "Violin Chart"
 source: "https://www.amcharts.com/demos/violin-chart/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A violin chart shows how values are spread: the shape is widest where most values fall and thin where few do, mirrored around its middle line. Here, about 200 values in each of four regions, one violin per row.

@@ -2,7 +2,7 @@
 title: "ITextSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itextsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 ## Inheritance
@@ -32,7 +32,7 @@ TypeScript: `am5.ITextSettings` (`import type { ITextSettings } from "@amcharts/
 - **shadowOpacity** (`number`)
 - **lineHeight** (`number | Percent`)
 - **baselineRatio** (`number`)
-- **opacity** (`number`) — default `1` _(theme)_ — Opacity, from `0` (transparent) to `1` (opaque).
+- **opacity** (`number`) — default `1` _(theme)_ — Opacity, from `0` (transparent) to `1` (opaque). The theme's `"default"` state has `opacity: 1`, so `show()`, and leaving a state that changes `opacity`, bring it back to `1`, not to a value set here. To come back to another value, set it in the `"default"` state too: `sprite.states.create("default", { opacity: 0.5 })`.
 - **direction** (`"ltr" | "rtl"`)
 - **textBaseline** (`"top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"`)
 - **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`) — default `"none"` _(code fallback)_

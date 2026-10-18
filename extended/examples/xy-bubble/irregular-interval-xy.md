@@ -2,7 +2,7 @@
 title: "Irregular Interval XY"
 source: "https://www.amcharts.com/demos/irregular-interval-xy/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart where each column is as wide as the stretch it covers: the elevation profile of a 50 km route, in six stretches of different lengths.

@@ -2,7 +2,7 @@
 title: "Motion Chart"
 source: "https://www.amcharts.com/demos/motion-chart/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Gapminder-style motion chart of made-up data: each bubble is a country, colored by continent and sized by a third value. Press play for 1903 to 2025.

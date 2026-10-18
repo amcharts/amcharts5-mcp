@@ -2,7 +2,7 @@
 title: "Force-Directed Tree with Animated Bullets"
 source: "https://www.amcharts.com/demos/force-directed-tree-with-animated-bullets/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A force-directed tree with arrows running along every link, from parent to child, to show that something flows. Here, power flows from a plant through four substations to the city’s districts, sized by their demand.

@@ -2,7 +2,7 @@
 title: "Pictorial Fraction Chart"
 source: "https://www.amcharts.com/demos/pictorial-fraction-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A fraction shown as a picture: the cup is the whole, filled 60% coffee and 40% milk. The shape says what the numbers are about before anyone reads a label.

@@ -2,7 +2,7 @@
 title: "Chart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chart/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A base class for all charts.

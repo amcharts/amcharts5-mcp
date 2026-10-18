@@ -2,7 +2,7 @@
 title: "IconControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/iconcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A dropdown of icons for the icon drawing tool. Created by `DrawingControl`; not meant to be used on its own.

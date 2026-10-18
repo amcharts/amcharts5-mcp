@@ -2,7 +2,7 @@
 title: "Pie of a Pie (Exploding Pie Chart)"
 source: "https://www.amcharts.com/demos/pie-of-a-pie/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two pies joined by lines: click a slice of the big pie and it turns to face the small one, which shows what that slice is made of.

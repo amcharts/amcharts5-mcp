@@ -2,7 +2,7 @@
 title: "Date Axis with Labels Near Minor Grid Lines"
 source: "https://www.amcharts.com/demos/date-axis-with-labels-near-minor-grid-lines/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart where every day gets a number on the axis: small day numbers along the bottom, week labels under them, so each point’s date is easy to read.

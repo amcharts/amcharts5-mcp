@@ -2,7 +2,7 @@
 title: "INetLoadResult"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/inetloadresult/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Defines an interface for objects that hold a net request result.

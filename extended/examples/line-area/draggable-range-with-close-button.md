@@ -2,7 +2,7 @@
 title: "Draggable Range with a Close Button"
 source: "https://www.amcharts.com/demos/draggable-range-with-close-button/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A stop-loss line you can move: drag the box up or down and the value in it follows. Click the X and the line is gone.
@@ -163,11 +163,14 @@ rangeDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: container
 }));
 
-// decorate grid of a range: a red dashed line, the same red as the box around the label
+// the range's color: the theme's warning red ("negative"), so it suits every theme and dark mode
+var rangeColor = root.interfaceColors.get("negative");
+
+// decorate grid of a range: a dashed line, the same color as the box around the label
 rangeDataItem.get("grid").setAll({
   strokeOpacity: 1,
   visible: true,
-  stroke: am5.color(0xff0000),
+  stroke: rangeColor,
   strokeDasharray: [2, 2]
 })
 
@@ -179,7 +182,7 @@ var background = am5.RoundedRectangle.new(root, {
   cornerRadiusTL: 0,            // square left corners, flush with the axis...
   cornerRadiusBL: 0,            // ...the right ones stay rounded
   cursorOverStyle: "ns-resize", // an up-down arrow pointer over the box
-  stroke: am5.color(0xff0000)   // red, like the range line
+  stroke: rangeColor            // the range line's color
 })
 
 container.set("background", background);
@@ -217,7 +220,7 @@ xButton.set("label", am5.Label.new(root, {
   paddingTop: 0,
   paddingRight: 0,
   paddingLeft: 0,
-  fill: am5.color(0xff0000) // a red X
+  fill: rangeColor          // an X in the range's color
 }))
 
 // modify background of x button

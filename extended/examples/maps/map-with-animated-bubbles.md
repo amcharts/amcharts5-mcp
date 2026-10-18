@@ -2,7 +2,7 @@
 title: "Map with Animated Bubbles"
 source: "https://www.amcharts.com/demos/map-with-animated-bubbles/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Bubbles on eight countries that grow and shrink as their values change every two seconds, with the value inside each bubble and the country's name beside it.

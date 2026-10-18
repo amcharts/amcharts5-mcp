@@ -2,7 +2,7 @@
 title: "Radial Bar Chart"
 source: "https://www.amcharts.com/demos/radial-bar-chart/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A stacked bar chart bent into rings: each ring is an age group, and its bar runs around the circle, split by activity. Here, minutes a day spent on the phone.

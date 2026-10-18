@@ -2,7 +2,7 @@
 title: "Process Control Chart"
 source: "https://www.amcharts.com/demos/process-control-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A process control chart: 23 samples against an upper and a lower limit, with the zone between them shaded. Three fall outside, the signal to look for a cause.

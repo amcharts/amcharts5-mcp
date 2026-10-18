@@ -2,7 +2,7 @@
 title: "Zoomable Bubble Chart"
 source: "https://www.amcharts.com/demos/zoomable-bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Each bubble is a country: wealth along the bottom, life expectancy up the side, population as size, continent as color. Zoom in where they crowd.

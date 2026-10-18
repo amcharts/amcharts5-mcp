@@ -2,7 +2,7 @@
 title: "DisparityIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/disparityindex/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Disparity Index indicator: how far `field` is from its moving average over `period`, in percent of the average. Drawn in a panel of its own.

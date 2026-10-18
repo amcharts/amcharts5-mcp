@@ -2,7 +2,7 @@
 title: "Animated Time-Line Pie Chart"
 source: "https://www.amcharts.com/demos/animated-time-line-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A donut that plays through 1995 to 2014: every four seconds it moves on a year, and each slice grows or shrinks with its sector’s share of the economy.

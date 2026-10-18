@@ -2,7 +2,7 @@
 title: "Waterfall Chart"
 source: "https://www.amcharts.com/demos/waterfall-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A waterfall chart walks from one total to another a step at a time: here, from net revenue to operating income. Decreases hang down in red, increases climb in green, and dashed lines carry each level on.

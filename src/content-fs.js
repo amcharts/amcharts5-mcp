@@ -24,18 +24,12 @@ const REFERENCES_DIR = existsSync(join(SKILL_DIR, "references"))
   ? join(SKILL_DIR, "references")
   : SKILL_DIR;
 const EXTENDED_DIR = join(ROOT, "extended");
-
-// Directories under extended/ that must never be served. `reference-generated/`
-// is work-in-progress output from scripts/generate-reference.cjs: it duplicates
-// every page in reference/ under a second key, which makes search return each
-// class twice and advertises an unfinished section via get_doc. It is untracked,
-// but untracked does NOT mean unpublished — `files: ["extended/"]` packs from the
-// filesystem, so without this it also ships in the npm tarball.
-const EXTENDED_SKIP_DIRS = new Set(["reference-generated"]);
+// Geodata map list (scripts/generate-geodata-index.cjs), served by list_geodata.
+const GEODATA_INDEX = join(EXTENDED_DIR, "geodata", "index.json");
 
 /**
- * Read all skill + extended markdown into the raw { skillFiles, extendedFiles }
- * shape that buildContent() expects.
+ * Read all skill + extended markdown (and the geodata index) into the raw
+ * { skillFiles, extendedFiles, geodata } shape that buildContent() expects.
  */
 export function readRawFiles() {
   const skillFiles = {};
@@ -58,7 +52,9 @@ export function readRawFiles() {
   // Extended docs + examples (recursive)
   walkExtended(EXTENDED_DIR, "", extendedFiles);
 
-  return { skillFiles, extendedFiles };
+  const geodata = existsSync(GEODATA_INDEX) ? JSON.parse(readFileSync(GEODATA_INDEX, "utf-8")) : null;
+
+  return { skillFiles, extendedFiles, geodata };
 }
 
 function walkExtended(dir, prefix, out) {
@@ -66,8 +62,6 @@ function walkExtended(dir, prefix, out) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
-      // Only skip at the top level — a nested dir of the same name is fine.
-      if (!prefix && EXTENDED_SKIP_DIRS.has(entry.name)) continue;
       walkExtended(fullPath, prefix ? `${prefix}/${entry.name}` : entry.name, out);
     } else if (entry.name.endsWith(".md")) {
       const key = prefix

@@ -2,7 +2,7 @@
 title: "Grouped Stacks"
 source: "https://www.amcharts.com/demos/grouped-stacks/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Stacked columns in groups: sales in three regions over four years, each year split into store and online sales. Each region has its own pair of colors, its name under its years and a gap before the next.

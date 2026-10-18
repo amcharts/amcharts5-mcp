@@ -2,7 +2,7 @@
 title: "Live Sorting of Radar Columns"
 source: "https://www.amcharts.com/demos/live-sorting-of-radar-columns/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart bent into a ring that keeps itself sorted. Every 1.5 seconds, eleven countries get new values, and the columns slide into their new places, biggest first.

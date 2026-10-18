@@ -2,7 +2,7 @@
 title: "Step Line Without Risers"
 source: "https://www.amcharts.com/demos/step-line-without-risers/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A step chart with only the flat parts: each day is a short level line over a light fill, with nothing joining one day to the next.

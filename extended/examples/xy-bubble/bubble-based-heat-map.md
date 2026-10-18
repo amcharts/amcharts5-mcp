@@ -2,7 +2,7 @@
 title: "Bubble-Based Heat Map"
 source: "https://www.amcharts.com/demos/bubble-based-heat-map/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A heat map drawn with bubbles instead of colored cells: a week of hourly values, one row per day, and the bigger the bubble, the higher the value. The values change every second.

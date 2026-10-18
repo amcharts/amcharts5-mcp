@@ -2,7 +2,7 @@
 title: "Angled Word Cloud"
 source: "https://www.amcharts.com/demos/angled-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A word cloud made from the plain text of a speech, with every word tilted to one side or the other, packed into a curved shape. Here, the king’s first speech in Shakespeare’s Hamlet: the more often a word appears, the bigger it is.

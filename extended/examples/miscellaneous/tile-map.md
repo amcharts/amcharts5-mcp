@@ -2,7 +2,7 @@
 title: "Tile Map"
 source: "https://www.amcharts.com/demos/tile-map/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Every state gets one same-size tile, roughly where it lies, so small states count as much as big ones. Here, the 50 states and D.C., by population.

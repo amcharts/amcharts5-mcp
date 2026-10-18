@@ -2,7 +2,7 @@
 title: "Globe with Raised Arcs"
 source: "https://www.amcharts.com/demos/globe-with-raised-arcs/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two routes around the world on a globe, one through the north and one through the south, drawn as arcs that rise above the surface like flight paths. Where a route runs over the edge of the globe, its arc stays in view.

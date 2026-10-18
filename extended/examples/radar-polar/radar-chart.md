@@ -2,7 +2,7 @@
 title: "Radar Chart"
 source: "https://www.amcharts.com/demos/radar-chart/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A radar chart, also called a spider or web chart, puts each category on its own spoke and joins the values into one shape. Here, nine countries, one value each.

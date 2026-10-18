@@ -2,7 +2,7 @@
 title: "Pareto Diagram"
 source: "https://www.amcharts.com/demos/pareto-diagram/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Pareto chart sorts the columns from largest to smallest and adds a line that sums them up as it goes. Here, visits from 10 countries: the first four bring two thirds of all visits.

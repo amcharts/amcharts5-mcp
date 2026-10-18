@@ -2,7 +2,7 @@
 title: "Map Timeline"
 source: "https://www.amcharts.com/demos/map-timeline/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A map with a year slider: drag it, or press play, and countries light up as the slider passes the year they joined a treaty. The treaty is fictional.

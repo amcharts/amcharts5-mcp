@@ -2,7 +2,7 @@
 title: "ILineSeriesAxisRange"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilineseriesaxisrange/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 An axis range of a `LineSeries`.

@@ -2,7 +2,7 @@
 title: "Date Based Data"
 source: "https://www.amcharts.com/demos/date-based-data/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Half a year of daily values, July 2025 to January 2026. The dates come in as plain text, like 2025-07-27, and the chart turns them into a real timeline.

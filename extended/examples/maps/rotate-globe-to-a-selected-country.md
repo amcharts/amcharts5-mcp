@@ -2,7 +2,7 @@
 title: "Rotate Globe to a Selected Country"
 source: "https://www.amcharts.com/demos/rotate-globe-to-a-selected-country/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A globe that turns to any country you click, with a plane flying a route around the world through eight cities. Satellite view shows the Earth from space.

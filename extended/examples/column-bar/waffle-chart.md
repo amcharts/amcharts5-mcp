@@ -2,7 +2,7 @@
 title: "Waffle Chart"
 source: "https://www.amcharts.com/demos/waffle-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A waffle chart shows parts of a whole as a grid of 100 squares, one per percent. Here, how visitors reached a website: 52 squares for search, 28 direct, 12 social and 8 email.

@@ -2,7 +2,7 @@
 title: "Variance Indicators"
 source: "https://www.amcharts.com/demos/variance-indicators/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart that shows the change from each year to the next: an arrow runs from one column’s height to the next one’s, with the change in percent, green for a rise and red for a fall.

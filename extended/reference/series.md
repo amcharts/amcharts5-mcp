@@ -2,7 +2,7 @@
 title: "Series"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/series/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Base class of all series.

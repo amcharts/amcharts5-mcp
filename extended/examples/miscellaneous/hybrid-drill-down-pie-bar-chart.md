@@ -2,7 +2,7 @@
 title: "Hybrid Drill-Down Pie/Bar Chart"
 source: "https://www.amcharts.com/demos/hybrid-drill-down-pie-bar-chart/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A donut that drives a bar chart: click a slice and the bars show what it’s made of. Here, 280 support tickets rated Critical, Acceptable or Good, split by type.
@@ -28,9 +28,6 @@ Prompt: Create a donut chart of support tickets by rating (Critical, Acceptable,
 var data = [{
   category: "Critical",
   value: 89,
-  sliceSettings: {
-    fill: am5.color(0xdc4534),
-  },
   breakdown: [{
     category: "Sales inquiries",
     value: 29
@@ -47,9 +44,6 @@ var data = [{
 }, {
   category: "Acceptable",
   value: 71,
-  sliceSettings: {
-    fill: am5.color(0xd7a700),
-  },
   breakdown: [{
     category: "Sales inquiries",
     value: 22
@@ -66,9 +60,6 @@ var data = [{
 }, {
   category: "Good",
   value: 120,
-  sliceSettings: {
-    fill: am5.color(0x68ad5c),
-  },
   breakdown: [{
     category: "Sales inquiries",
     value: 60
@@ -216,6 +207,15 @@ pieSeries.slices.template.on("active", function(active, slice) {
 
 pieSeries.labels.template.set("forceHidden", true); // no labels around the donut...
 pieSeries.ticks.template.set("forceHidden", true);  // ...and no ticks
+
+// Each slice's color, by how good it is: the theme's color for negative values (red) for Critical, its warning color
+// (yellow) for Acceptable and its positive one (green) for Good, so they follow the theme and dark mode
+var goodness = { Critical: "negative", Acceptable: "warning", Good: "positive" };
+data.forEach(function(item) {
+  item.sliceSettings = {
+    fill: root.interfaceColors.get(goodness[item.category])
+  };
+});
 
 pieSeries.data.setAll(data);
 

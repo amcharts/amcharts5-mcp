@@ -2,7 +2,7 @@
 title: "Grouped and Sorted Columns"
 source: "https://www.amcharts.com/demos/grouped-and-sorted-columns/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Columns grouped by provider and sorted from smallest to largest within each group, with the provider names on a second row of labels. A line marks each provider’s quantity, centered over its group.

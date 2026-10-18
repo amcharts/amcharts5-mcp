@@ -2,7 +2,7 @@
 title: "Linear Process Diagram"
 source: "https://www.amcharts.com/demos/linear-process-diagram/"
 category: "timeline"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A day from 6 a.m. to 2 a.m. drawn as a winding road, with an icon card for each activity. Things done alongside the main routine, like coffee and reading, run on a second track.

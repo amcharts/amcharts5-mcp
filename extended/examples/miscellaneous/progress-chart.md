@@ -2,7 +2,7 @@
 title: "Progress Chart"
 source: "https://www.amcharts.com/demos/progress-chart/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A progress chart shows how far something has come on one bar from 0 to 100%, here in five stages of different lengths, each with its own color and start mark.
@@ -48,13 +48,23 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   centerY: am5.p50
 }));
 
+// A color on the theme's scale from its color for negative values (red, 0) through its warning color (yellow, 0.5) to
+// its positive one (green, 1), so the stages follow the theme and dark mode
+function scaleColor(position) {
+  return am5.Color.interpolateColors(position, [
+    root.interfaceColors.get("negative"),
+    root.interfaceColors.get("warning"),
+    root.interfaceColors.get("positive")
+  ]);
+}
+
 var data = [{
   category: "",
   from: 0,
   to: 15,
   name: "Stage #1",
   columnSettings: {
-    fill: am5.color(0x0ca948)
+    fill: scaleColor(1)    // green
   }
 }, {
   category: "",
@@ -62,7 +72,7 @@ var data = [{
   to: 75,
   name: "Stage #2",
   columnSettings: {
-    fill: am5.color(0x93da49)
+    fill: scaleColor(0.75) // yellow-green
   }
 }, {
   category: "",
@@ -70,7 +80,7 @@ var data = [{
   to: 90,
   name: "Stage #3",
   columnSettings: {
-    fill: am5.color(0xffd100)
+    fill: scaleColor(0.5)  // yellow
   }
 }, {
   category: "",
@@ -78,7 +88,7 @@ var data = [{
   to: 95,
   name: "Stage #4",
   columnSettings: {
-    fill: am5.color(0xcd213b)
+    fill: scaleColor(0)    // red
   }
 }, {
   category: "",
@@ -86,7 +96,7 @@ var data = [{
   to: 100,
   name: "Stage #5",
   columnSettings: {
-    fill: am5.color(0x9e9e9e)
+    fill: root.interfaceColors.get("disabled") // the theme's gray
   }
 }];
 

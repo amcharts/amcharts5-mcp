@@ -2,7 +2,7 @@
 title: "Bars with Moving Bullets"
 source: "https://www.amcharts.com/demos/bars-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bar chart with a photo on each bar. Point at a bar and the photo slides along it to the end. Here, step counts for six friends, the bars darker the more they walked.

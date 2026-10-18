@@ -2,7 +2,7 @@
 title: "Maps and Charts Dashboard"
 source: "https://www.amcharts.com/demos/maps-and-charts-dashboard/"
 category: "dashboards"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Five charts in one dashboard: a world heat map of sample rates for 200 countries, a donut, a radar chart, a line and a column chart. The donut and the radar chart sum up the map; point at a country and its continent lights up.
@@ -976,7 +976,7 @@ function makeMapChart(parent) {
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/map.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/geodata/data/countries2.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/Responsive.js

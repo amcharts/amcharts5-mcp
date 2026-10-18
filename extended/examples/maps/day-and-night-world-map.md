@@ -2,7 +2,7 @@
 title: "Day and Night World Map"
 source: "https://www.amcharts.com/demos/day-and-night-world-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A live map of where it is day and where it is night right now, with the twilight in between, the sun where it stands overhead and the moon in its phase. The Time slider moves it up to a day either way, Date picks another day, and Satellite view shows the Earth from space.

@@ -2,7 +2,7 @@
 title: "Line with Data Labels"
 source: "https://www.amcharts.com/demos/line-with-data-labels/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart that writes the value above every point, so the numbers are there without hovering. Here, sixteen readings half an hour apart through one night.

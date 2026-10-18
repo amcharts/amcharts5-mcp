@@ -2,7 +2,7 @@
 title: "ArcDiagramLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/arcdiagramlink/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A link element of an `ArcDiagram` series: an arc from one node to another.

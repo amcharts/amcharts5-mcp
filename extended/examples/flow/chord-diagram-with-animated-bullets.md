@@ -2,7 +2,7 @@
 title: "Chord Diagram with Animated Bullets"
 source: "https://www.amcharts.com/demos/chord-diagram-with-animated-bullets/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A directed chord diagram with dots that keep running along the ribbons, so the direction of every flow is plain to see. Here, six nodes and nine flows.

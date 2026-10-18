@@ -2,7 +2,7 @@
 title: "Drill-Down Sunburst Chart"
 source: "https://www.amcharts.com/demos/drill-down-sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A sunburst you explore one branch at a time: click a category and it becomes the inner ring, with its own breakdown around it. Here, a year of an online store’s sales.

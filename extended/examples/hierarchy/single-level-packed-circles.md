@@ -2,7 +2,7 @@
 title: "Single-Level Packed Circles"
 source: "https://www.amcharts.com/demos/single-level-packed-circles/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Five hundred circles, each sized by its value, packed as tight as they fit. One level and no groups: a quick way to spot the few big items among hundreds of small ones.

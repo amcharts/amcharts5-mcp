@@ -2,7 +2,7 @@
 title: "IHeatRule"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iheatrule/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A rule that sets a setting of each series element, such as its color or size, by its data item's value: from `min` at the lowest value to `max` at the highest.
@@ -20,6 +20,7 @@ TypeScript: not exported by name from the package.
 - **min** (`any`) — Setting value for the element with the lowest value.
 - **max** (`any`) — Setting value for the element with the highest value.
 - **neutral** (`any`) — Setting value for elements whose data item has no value.
+- **stops** (`any[]`) — Setting values for a scale through more than two, in place of `min` and `max`: the element with the lowest value gets the first, the one with the highest the last, and the ones between blend through the stops between. Numbers, percents or colors, all of one kind, e.g. `[negative, warning, positive]` from the interface colors. Values outside `minValue` and `maxValue` get the first or last stop. _Since 5.21.2._
 - **dataField** (`string`) — Data item field that holds the value, e.g. `"value"` or `"valueY"`.
 - **key** (`string`) — The setting to set, e.g. `"fill"`.
 - **minValue** (`number`) — Lowest value of the range. If not set, the series' lowest value is used, which needs `calculateAggregates`.

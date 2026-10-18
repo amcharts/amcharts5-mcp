@@ -2,7 +2,7 @@
 title: "100% Stacked Column Chart"
 source: "https://www.amcharts.com/demos/100-stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 In a 100% stacked column chart every column is a whole, split into shares. Here, six regions over three years: the chart works out the percentages from the raw numbers in the data.

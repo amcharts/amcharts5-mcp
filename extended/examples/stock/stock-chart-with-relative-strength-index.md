@@ -2,7 +2,7 @@
 title: "Stock Chart with Relative Strength Index"
 source: "https://www.amcharts.com/demos/stock-chart-with-relative-strength-index/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The Relative Strength Index rates how strongly a price has risen or fallen over the last 14 days, on a scale of 0 to 100. It has its own panel under the candles, with lines at 80 for overbought and 20 for oversold.

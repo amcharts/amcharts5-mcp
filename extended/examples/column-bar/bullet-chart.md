@@ -2,10 +2,10 @@
 title: "Bullet Chart"
 source: "https://www.amcharts.com/demos/bullet-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
-A bullet chart says what a gauge says in a strip: the black bar is the actual value, the short line is the target, and the colors behind say how good each level is. Two styles: a smooth gradient and five bands.
+A bullet chart says what a gauge says in a strip: the bar is the actual value, the short line is the target, and the colors behind say how good each level is. Two styles: a smooth gradient and five bands.
 
 When a bullet chart works: Bullet charts do what dashboard gauges do in a fraction of the space: one value, its target and the ranges that say good or bad, all read along one scale. Several of them stack neatly, one measure per row, where gauges would need a grid of circles.
 
@@ -38,14 +38,16 @@ root.setThemes([
 // Two bullet charts in one root, one above the other
 root.container.set("layout", root.verticalLayout);
 
-// The qualitative ranges, from poor (orange) to good (green): the higher, the better
-var colors = [
-  am5.color(0xfb7116),
-  am5.color(0xf6d32b),
-  am5.color(0xf4fb16),
-  am5.color(0xb4dd1e),
-  am5.color(0x19d228)
-];
+// The qualitative ranges, from poor to good: the higher, the better. Five colors on the theme's scale from its color
+// for negative values (red) through its warning color (yellow) to its positive one (green), so they follow the theme
+// and dark mode
+var colors = [0, 0.25, 0.5, 0.75, 1].map(function(position) {
+  return am5.Color.interpolateColors(position, [
+    root.interfaceColors.get("negative"),
+    root.interfaceColors.get("warning"),
+    root.interfaceColors.get("positive")
+  ]);
+});
 
 // one bullet chart: a gradient behind the bar when gradient is true, solid bands if not
 function createBulletChart(gradient) {
@@ -134,8 +136,9 @@ function createBulletChart(gradient) {
       yAxis: yAxis,
       valueXField: "value",
       categoryYField: "category",
-      fill: am5.color(0x000000), // a black bar
-      stroke: am5.color(0x000000),
+      // a bar in the theme's text color: black, or light in dark mode
+      fill: root.interfaceColors.get("alternativeBackground"),
+      stroke: root.interfaceColors.get("alternativeBackground"),
       tooltip: am5.Tooltip.new(root, {
         pointerOrientation: "left",    // the tooltip sits to the right, pointing left
         labelText: "Actual: {valueX}%" // the actual value
@@ -157,8 +160,9 @@ function createBulletChart(gradient) {
       yAxis: yAxis,
       valueXField: "value",
       categoryYField: "category",
-      stroke: am5.color(0x000000), // a black line
-      fill: am5.color(0x000000),
+      // a line in the theme's text color, as the bar
+      stroke: root.interfaceColors.get("alternativeBackground"),
+      fill: root.interfaceColors.get("alternativeBackground"),
       noRisers: true,
       // half the row tall, the same as the bar
       stepWidth: am5.p50,

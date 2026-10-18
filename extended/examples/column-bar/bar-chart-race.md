@@ -2,7 +2,7 @@
 title: "Bar Chart Race"
 source: "https://www.amcharts.com/demos/bar-chart-race/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bar chart that plays like a race. Bars grow, shrink and overtake each other as the years tick by: here, 19 social networks from 2002 to 2018.

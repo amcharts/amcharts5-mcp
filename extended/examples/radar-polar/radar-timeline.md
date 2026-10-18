@@ -2,7 +2,7 @@
 title: "Radar Timeline"
 source: "https://www.amcharts.com/demos/radar-timeline/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Temperature anomalies for 104 countries around a circle, grouped by continent, and a play button that runs through the years from 1973 to 2016.
@@ -246,8 +246,8 @@ series.columns.template.set("strokeOpacity", 0); // no column outlines
 series.set("heatRules", [{
   target: series.columns.template,
   key: "fill",
-  min: am5.color(0x673AB7), // the lowest value purple...
-  max: am5.color(0xF44336), // ...the highest red
+  min: chart.get("colors").getIndex(0), // the lowest value in the theme's first color...
+  max: chart.get("colors").getIndex(5), // ...the highest in a later one
   dataField: "valueY"
 }]);
 

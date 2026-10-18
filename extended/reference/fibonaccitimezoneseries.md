@@ -2,7 +2,7 @@
 title: "FibonacciTimezoneSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/fibonaccitimezoneseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A `FibonacciSeries` subclass.

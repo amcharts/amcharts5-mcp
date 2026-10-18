@@ -2,7 +2,7 @@
 title: "States"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/states/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 The `State` objects of an element, by name, such as `"hover"` or `"hidden"`.

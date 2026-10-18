@@ -2,7 +2,7 @@
 title: "Stock Chart Comparing Prices"
 source: "https://www.amcharts.com/demos/stock-chart-comparing-prices/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A year of Microsoft prices as candles, with Apple added as a line for comparison. With two stocks on the chart, the axis switches from dollars to percent change, so both start from the same zero line.

@@ -2,7 +2,7 @@
 title: "Range Area Chart"
 source: "https://www.amcharts.com/demos/range-area-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A band instead of a line: the shaded area runs between a low and a high value for each day, so you see the spread as well as the trend.

@@ -2,7 +2,7 @@
 title: "Stock Chart"
 source: "https://www.amcharts.com/demos/stock-chart/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 amCharts Stock Chart is a complete trading chart: candlesticks with volume, a scrollbar, and a toolbar with 34 indicators, 22 drawing tools and period buttons. Circled letters on the date axis mark a stock split and two dividend dates.

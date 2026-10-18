@@ -2,7 +2,7 @@
 title: "Clustered Column Chart"
 source: "https://www.amcharts.com/demos/clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A clustered column chart puts the series side by side in each category, so you compare them group by group. Here, six regions over three years, each column labeled with its value.

@@ -1,7 +1,7 @@
 ---
 title: "getSunPosition"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Returns the point where the sun is directly overhead at a given time, such as for the `sunPosition` of a `MapRasterSeries`. Accurate to a fraction of a degree.

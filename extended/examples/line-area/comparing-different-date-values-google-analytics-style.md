@@ -2,7 +2,7 @@
 title: "Comparing Different Date Values Google Analytics Style"
 source: "https://www.amcharts.com/demos/comparing-different-date-values-google-analytics-style/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 This week against last week, the way analytics dashboards show it: a solid line for the current days, a dotted line for the same weekdays a week earlier, and both dates in one tooltip.

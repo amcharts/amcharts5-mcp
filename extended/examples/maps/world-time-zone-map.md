@@ -2,7 +2,7 @@
 title: "World Time Zone Map"
 source: "https://www.amcharts.com/demos/world-time-zone-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The world's time zones in two layers: colored areas show the zone each piece of land keeps, and faint bands run from pole to pole, with each whole-hour offset from UTC labeled along the bottom.
@@ -30,9 +30,10 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
+var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Create the map chart
@@ -137,19 +138,40 @@ labelSeries.bullets.push(function () {
   });
 });
 
-for (var hours = -12; hours <= 12; hours++) {
-  labelSeries.data.push({
-    offset: hours > 0 ? "+" + hours : String(hours), // a plus sign before positive hours
-    // the bands of UTC-12 and UTC+12 are half as wide, at the date line
-    longitude: Math.max(-176, Math.min(176, hours * 15)),
-    latitude: -50 // 50 degrees south, below most of the land
-  });
+// The offsets, every step hours from -12 to +12
+function offsetData(step) {
+  var data = [];
+  for (var hours = -12; hours <= 12; hours += step) {
+    data.push({
+      offset: hours > 0 ? "+" + hours : String(hours), // a plus sign before positive hours
+      // the bands of UTC-12 and UTC+12 are half as wide, at the date line
+      longitude: Math.max(-176, Math.min(176, hours * 15)),
+      latitude: -50 // 50 degrees south, below most of the land
+    });
+  }
+  return data;
 }
+labelSeries.data.setAll(offsetData(1)); // every whole hour
 
 // Add zoom control
 // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 zoomControl.homeButton.set("visible", true); // a button that goes back to the home view
+
+// On a narrow chart (a phone) whole hours run together: the row shows every third offset, and the
+// zoom buttons line up across the bottom corner instead of standing over the end of the row.
+// The rule is undone on a wider chart
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    labelSeries.data.setAll(offsetData(3)); // -12, -9, -6 and so on
+    zoomControl.set("layout", root.horizontalLayout); // the buttons side by side
+  },
+  removing: function () {
+    labelSeries.data.setAll(offsetData(1));
+    zoomControl.set("layout", root.verticalLayout);
+  }
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

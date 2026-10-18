@@ -2,7 +2,7 @@
 title: "BezierCurveTo"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/beziercurveto/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 An `Op` subclass.

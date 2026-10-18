@@ -2,7 +2,7 @@
 title: "Map Image Drill-Down"
 source: "https://www.amcharts.com/demos/map-image-drill-down/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A store locator that drills down: bubbles count the stores of a U.S. retail chain in each state. Click a state’s bubble to see its cities, then a city’s to see each store.

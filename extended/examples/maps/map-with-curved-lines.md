@@ -2,7 +2,7 @@
 title: "Map with Curved Lines"
 source: "https://www.amcharts.com/demos/map-with-curved-lines/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Lines from London to ten cities in Europe and North America, with an arrow pointing to each destination. They take the shortest way over the globe, which bends them on a flat map.

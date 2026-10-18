@@ -2,7 +2,7 @@
 title: "SpiritedDarkTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/spiriteddarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 "Spirited Dark": the `Spirited` palette on a dark background, with neutral dark interface colors. Colors too dark to show on the background are lightened. Use it in place of `Spirited`.

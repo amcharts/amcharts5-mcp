@@ -2,7 +2,7 @@
 title: "InterfaceColors"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/interfacecolors/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Colors of common interface elements: buttons, grid, text and backgrounds. The root's is `root.interfaceColors`.

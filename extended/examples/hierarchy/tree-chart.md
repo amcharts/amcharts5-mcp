@@ -2,7 +2,7 @@
 title: "Tree Chart"
 source: "https://www.amcharts.com/demos/tree-chart/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A tree chart draws a hierarchy as nodes and lines, each parent above its children. Here, a family tree from a grandmother to her great-grandchildren.

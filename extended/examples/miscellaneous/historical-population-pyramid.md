@@ -2,7 +2,7 @@
 title: "Historical Population Pyramid"
 source: "https://www.amcharts.com/demos/historical-population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A population pyramid tied to a timeline: hover a year in the U.S. population chart and the pyramid redraws its age groups for that year, from 1950 to the UN projection for 2100.

@@ -2,7 +2,7 @@
 title: "Pictorial Chart"
 source: "https://www.amcharts.com/demos/pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pictorial chart that fills only the bowl of a wine glass, with two wines in their own colors. The slider under it drinks the glass down, and the shares follow.

@@ -2,7 +2,7 @@
 title: "ColorblindTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/colorblindtheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 "Colorblind": a series palette that stays distinguishable under the common forms of color blindness. It uses the eight Okabe-Ito colors, reordered so that black comes last, and repeats them rather than making new ones.

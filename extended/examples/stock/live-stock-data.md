@@ -2,7 +2,7 @@
 title: "Live Stock Data"
 source: "https://www.amcharts.com/demos/live-stock-data/"
 category: "stock"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A candlestick chart fed by a simulated live feed: a new price every second, a new candle every minute. The label on the price axis follows the latest price, green while it is above the minute’s open and red below.

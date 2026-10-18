@@ -2,7 +2,7 @@
 title: "Map with Animated Lines"
 source: "https://www.amcharts.com/demos/map-with-animated-lines/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Lines from London that draw themselves to ten cities, over and over, all at the same speed, so the long route to New York takes longest.

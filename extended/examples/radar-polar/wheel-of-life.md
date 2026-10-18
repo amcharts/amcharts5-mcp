@@ -2,7 +2,7 @@
 title: "Interactive Wheel of Life"
 source: "https://www.amcharts.com/demos/wheel-of-life/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A wheel of life asks how satisfied you are with eight areas of life and draws the answers as a ring of slices. Pick a score for each area and watch the wheel fill in.

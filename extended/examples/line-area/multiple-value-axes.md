@@ -2,7 +2,7 @@
 title: "Multiple Value Axes"
 source: "https://www.amcharts.com/demos/multiple-value-axes/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Three series with very different ranges, each with its own axis in its color and one shared set of grid lines, so every line gets the full height.

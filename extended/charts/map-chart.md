@@ -60,10 +60,16 @@ The global name of the regional map will reflect its sub-directory structure.
 
 For example, congressional district map of Florida would load like this:
 
-import am5geodata\_region\_usa\_congressional2022\_worldLow from "@amcharts/amcharts5-geodata/region/usa/congressional2022/flLow";
+```javascript
+import am5geodata_region_usa_congressional120_flLow from "@amcharts/amcharts5-geodata/region/usa/congressional120/flLow";
+```
 
-<!-- Will load as a global <span style="background-color: inherit;font-family: inherit;font-size: inherit;color: initial">am5geodata\_region\_usa\_congressional\_worldLo</span>w variable -->
-<script src="https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional2022/worldLow.js"></script>
+```html
+<!-- Loads as the global am5geodata_region_usa_congressional120_flLow -->
+<script src="https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional120/flLow.js"></script>
+```
+
+NOTE The global name is `am5geodata_` plus the path below `geodata/` with `/` turned into `_`. The US congressional maps come in versioned packs: `congressional` (117th Congress, the original set), `congressional2022` (118th), `congressional2025` (119th) and `congressional120` (120th, the newest, in geodata 5.1.6). Each pack has `usaCongressionalLow`/`High` and one map per state (`flLow`, `caLow`, …). The MCP server's `list_geodata` tool lists every map with its path, global name and import. *(Corrected: the published example loads `congressional2022/worldLow.js`, which does not exist.)*
 
 MORE INFOFor more information on how to use regional maps, visit "[Using regional maps](https://www.amcharts.com/docs/v5/tutorials/using-regional-maps/)" tutorial.
 

@@ -2,7 +2,7 @@
 title: "CurveColumnSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/curvecolumnseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A column series for a `CurveChart`, `SerpentineChart` or `SpiralChart`. Its columns bend along the curve.

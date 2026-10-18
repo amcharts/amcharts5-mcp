@@ -2,7 +2,7 @@
 title: "Forest Plot"
 source: "https://www.amcharts.com/demos/forest-plot/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A forest plot sums up the studies on one question: each row shows a study’s result as a square, sized by how much it counts, with a line for its range of uncertainty. The diamond at the bottom is all the studies combined.

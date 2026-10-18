@@ -2,7 +2,7 @@
 title: "Force-Directed Network"
 source: "https://www.amcharts.com/demos/force-directed-network/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A network graph: nodes joined by lines, laid out by forces that push them apart and pull linked ones together. Here, three separate trees held together by two cross-links.

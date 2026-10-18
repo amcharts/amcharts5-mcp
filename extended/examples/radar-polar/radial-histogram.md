@@ -2,7 +2,7 @@
 title: "Radial Histogram"
 source: "https://www.amcharts.com/demos/radial-histogram/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart bent into a ring: twenty bars stand around an open middle, each in its own color, with a gap at the top for the scale.

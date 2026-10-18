@@ -2,10 +2,10 @@
 title: "Heat Map with Legend"
 source: "https://www.amcharts.com/demos/heat-map-with-legend/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
-A week, hour by hour: each cell is colored from yellow to red by its value, and the legend below gives the scale. Weekday working hours glow red, while the weekend stays pale.
+A week, hour by hour: each cell is colored by its value, and the legend below gives the scale. Weekday working hours stand out, while the weekend stays quiet.
 
 When a heat map works: A heat map swaps numbers for colors, so a table of 168 values becomes a pattern you see at once: busy hours, quiet days, the odd spike. It suits two categories that cross, like days and hours, where a line or column chart would need a series for every row.
 
@@ -115,12 +115,16 @@ series.events.on("datavalidated", function() {
   heatLegend.set("endValue", series.getPrivate("valueHigh"));
 });
 
-// Set up heat rules
+// Set up heat rules: from the theme's first color for the lowest value to a later one for the highest, so the cells
+// follow the theme and dark mode
 // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+var lowColor = chart.get("colors").getIndex(0);
+var highColor = chart.get("colors").getIndex(5);
+
 series.set("heatRules", [{
   target: series.columns.template,
-  min: am5.color(0xfffb77), // light yellow for the lowest value...
-  max: am5.color(0xfe131a), // ...red for the highest
+  min: lowColor,
+  max: highColor,
   dataField: "value",
   key: "fill"               // the heat rule sets each cell's fill
 }]);
@@ -130,8 +134,8 @@ series.set("heatRules", [{
 var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root, {
   orientation: "horizontal",       // a color bar along the bottom
   marginTop: 10,                   // 10px below the plot
-  startColor: am5.color(0xfffb77), // the same colors as the heat rule
-  endColor: am5.color(0xfe131a)
+  startColor: lowColor,            // the same colors as the heat rule
+  endColor: highColor
 }));
 
 // Set data

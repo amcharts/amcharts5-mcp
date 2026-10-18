@@ -2,7 +2,7 @@
 title: "Zooming to Countries Map"
 source: "https://www.amcharts.com/demos/zooming-to-countries-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map that zooms to any country you click. Click the country again, or the sea, to zoom back out.

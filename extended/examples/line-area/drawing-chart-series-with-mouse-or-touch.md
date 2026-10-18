@@ -2,7 +2,7 @@
 title: "Drawing Chart Series with Mouse or Touch"
 source: "https://www.amcharts.com/demos/drawing-chart-series-with-mouse-or-touch/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart you can draw on: click anywhere to place a point, and your points join into a second line, drawn over three years of data.

@@ -2,7 +2,7 @@
 title: "Map with Bubbles"
 source: "https://www.amcharts.com/demos/map-bubbles/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A bubble map of world population in 2011: each country gets a bubble at its center, sized by its population and colored by continent.

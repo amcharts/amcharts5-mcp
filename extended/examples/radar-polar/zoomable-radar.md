@@ -2,7 +2,7 @@
 title: "Zoomable Radar"
 source: "https://www.amcharts.com/demos/zoomable-radar/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A radar chart of stacked columns that zooms every way: drag around the ring, scroll, or use the two scrollbars. Here, a year of website visits by where they came from.

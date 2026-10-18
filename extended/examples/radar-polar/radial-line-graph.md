@@ -2,7 +2,7 @@
 title: "Radial Line Graph"
 source: "https://www.amcharts.com/demos/radial-line-graph/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart wrapped around a circle, January at the top and the months running clockwise. Heating and cooling at home peak in opposite seasons, so the two lines point opposite ways.

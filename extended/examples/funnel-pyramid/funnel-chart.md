@@ -2,7 +2,7 @@
 title: "Funnel Chart"
 source: "https://www.amcharts.com/demos/funnel-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A funnel chart shows how a number shrinks as people move through the steps of a process. Here, a month in an online store, from 10,000 visits to 2,300 payments.

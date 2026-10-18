@@ -2,7 +2,7 @@
 title: "Location-Sensitive Map"
 source: "https://www.amcharts.com/demos/location-sensitive-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A map that loads the visitor’s own country: it looks up your country from your IP address, then loads that country’s map with a random value for each region. Where the lookup can’t answer, it goes by your browser’s language setting.

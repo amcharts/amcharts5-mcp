@@ -2,7 +2,7 @@
 title: "Animated Bullet at the End of the Series"
 source: "https://www.amcharts.com/demos/animated-bullet-at-the-end-of-the-series/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart that draws the eye to its latest value: the last point pulses like a live signal, while the dashed line keeps the history in the background.
@@ -100,13 +100,13 @@ series.bullets.push(function(root, series, dataItem) {
   if (dataItem.dataContext.bullet) {
     var container = am5.Container.new(root, {});
     var circle0 = container.children.push(am5.Circle.new(root, {
-      radius: 5, // a 5px red dot that stays put
-      fill: am5.color(0xff0000)
+      radius: 5,                  // a 5px dot that stays put...
+      fill: series.get("stroke")  // ...in the line's color, from the theme
     }));
     // a second dot on top of it, which grows and fades out
     var circle1 = container.children.push(am5.Circle.new(root, {
       radius: 5,
-      fill: am5.color(0xff0000)
+      fill: series.get("stroke")
     }));
 
     circle1.animate({

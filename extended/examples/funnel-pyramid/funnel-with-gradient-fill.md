@@ -2,7 +2,7 @@
 title: "Funnel with Gradient Fill"
 source: "https://www.amcharts.com/demos/funnel-with-gradient-fill/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A funnel where every slice is dark at the edges and light in the middle, so it looks round, like a stack of tubes. The shading is made from each slice’s own color, so it follows any theme.

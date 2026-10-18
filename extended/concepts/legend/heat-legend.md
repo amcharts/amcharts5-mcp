@@ -1,7 +1,7 @@
 ---
 title: "Heat legend"
 source: "https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/"
-scraped: "2026-03-15"
+scraped: "2026-10-18"
 ---
 
 Heat legend is a visual tool that usually compliments a chart with [heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/).
@@ -10,7 +10,7 @@ Heat legend is a visual tool that usually compliments a chart with [heat rules](
 
 We can add a heat legend like a regular legend, by pushing and instance of `[HeatLegend](https://www.amcharts.com/docs/v5/reference/heatlegend/)` into chart's children.
 
-Heat legend also requires at least two settings: `startColor` and `endColor`.
+Heat legend also requires at least two settings: `startColor` and `endColor` (or [`colors`](#More_than_two_colors) instead).
 
 Those will define colors for start (lowest value end) and end (highest value end) of the legend.
 
@@ -114,11 +114,46 @@ var heatLegend = chart.children.push(
   })
 );
 
+
 `stepCount: 1` (default)
+
 
 `stepCount: 5`
 
+
 `stepCount: 10`
+
+## More than two colors
+
+For a scale through more than two colors, e.g. red to yellow to green, use `colors` instead of `startColor` and `endColor`. The colors go from the lowest value end to the highest:
+
+let heatLegend = chart.children.push(
+  am5.HeatLegend.new(root, {
+    orientation: "vertical",
+    colors: \[
+      root.interfaceColors.get("negative"),
+      root.interfaceColors.get("warning"),
+      root.interfaceColors.get("positive")
+    \]
+  })
+);
+
+var heatLegend = chart.children.push(
+  am5.HeatLegend.new(root, {
+    orientation: "vertical",
+    colors: \[
+      root.interfaceColors.get("negative"),
+      root.interfaceColors.get("warning"),
+      root.interfaceColors.get("positive")
+    \]
+  })
+);
+
+By default, the legend shows a gradient through all the colors, spread evenly along it. With `stepCount` set to anything above `1`, it shows one step per color instead: the number itself is ignored.
+
+Tooltips shown with [`showValue()`](#Triggering_tooltip) take their color from the same scale.
+
+NOTE`colors` is available since version 5.21.2. To color chart elements on the same scale, use heat rule's [`stops`](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#multiple-stops) setting with the same colors.
 
 ## Tooltip
 
@@ -149,13 +184,13 @@ var heatLegend = chart.children.push(
 If we don't know extreme values, we can extract that from series, when its data is validated:
 
 series.events.on("datavalidated", function () {
-  heatLegend.set("startValue", series.getPrivate("valueHigh"));
-  heatLegend.set("endValue", series.getPrivate("valueLow"));
+  heatLegend.set("startValue", series.getPrivate("valueLow"));
+  heatLegend.set("endValue", series.getPrivate("valueHigh"));
 });
 
 series.events.on("datavalidated", function () {
-  heatLegend.set("startValue", series.getPrivate("valueHigh"));
-  heatLegend.set("endValue", series.getPrivate("valueLow"));
+  heatLegend.set("startValue", series.getPrivate("valueLow"));
+  heatLegend.set("endValue", series.getPrivate("valueHigh"));
 });
 
 ### Triggering tooltip

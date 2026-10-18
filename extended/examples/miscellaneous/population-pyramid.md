@@ -2,7 +2,7 @@
 title: "Population Pyramid"
 source: "https://www.amcharts.com/demos/population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A population pyramid puts men and women back to back, one bar per age group, the youngest at the bottom: its shape shows how old a population is. Here, the United States; click a state on the map for its own pyramid.
@@ -4117,9 +4117,10 @@ usData = aggregateData(usData); // shares for the whole country, shown first
 var root = am5.Root.new("chartdiv");
 
 // Set themes
+var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Create wrapper container
@@ -4275,6 +4276,29 @@ var title = map.children.push(am5.Label.new(root, {
     fillOpacity: 0.7
   })
 }));
+
+// On a narrow chart (a phone) the map goes under the pyramid instead of beside it: side by side, the
+// pyramid's two columns of age labels would leave its bars no room. The rule is undone on a wider chart
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    container.set("layout", root.verticalLayout); // one above the other
+    chart.setAll({ width: am5.p100, height: am5.percent(64) }); // the pyramid on top, 64% of the height
+    // the map in the rest, drawn below a strip for the title
+    map.setAll({ width: am5.p100, height: am5.percent(36), paddingTop: 22 });
+    title.setAll({ fontSize: 14, y: 0 }); // a smaller title, in that strip
+    maleLabel.set("fontSize", 14); // smaller Males and Females labels, which fit the narrower plot
+    femaleLabel.set("fontSize", 14);
+  },
+  removing: function () {
+    container.set("layout", root.horizontalLayout); // back side by side
+    chart.setAll({ width: am5.percent(60), height: am5.p100 });
+    map.setAll({ width: am5.percent(40), height: am5.p100, paddingTop: 0 });
+    title.setAll({ fontSize: 20, y: 20 });
+    maleLabel.set("fontSize", 20);
+    femaleLabel.set("fontSize", 20);
+  }
+});
 
 // Create polygon series
 var polygonSeries = map.series.push(

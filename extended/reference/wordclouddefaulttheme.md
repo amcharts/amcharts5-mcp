@@ -2,7 +2,7 @@
 title: "WordCloudDefaultTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/wordclouddefaulttheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Built-in theme rules: `WordCloud` adds this theme to its default themes, so its rules apply to that element and everything inside it.

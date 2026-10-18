@@ -2,7 +2,7 @@
 title: "Selecting Multiple Areas Map"
 source: "https://www.amcharts.com/demos/selecting-multiple-areas-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map where you pick countries: click a country to select it, click it again to clear it, and select as many as you like.

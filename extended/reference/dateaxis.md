@@ -2,7 +2,7 @@
 title: "DateAxis"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dateaxis/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 An axis of dates and times, placing each data item at its time.

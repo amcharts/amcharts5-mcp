@@ -2,7 +2,7 @@
 title: "Column Chart with Images on Top"
 source: "https://www.amcharts.com/demos/column-chart-images-top/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart with a face on top of each column, so the chart reads as people, not just numbers. Each picture’s address comes from the data, next to its value.

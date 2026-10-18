@@ -2,7 +2,7 @@
 title: "Step Line Chart"
 source: "https://www.amcharts.com/demos/step-line-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line that moves in steps: each value stays flat until the next one, then jumps straight up or down. Here, yearly temperature anomalies from 1950 to 2005.

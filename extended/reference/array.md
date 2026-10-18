@@ -1,7 +1,7 @@
 ---
 title: "array"
 type: "namespace"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Helpers exported as `am5.array`.
@@ -34,6 +34,7 @@ am5.array.…
 - `indexOf<A>(array: ArrayLike<A>, value: A): number` — Searches `array` for `value`.
 - `insert<A>(array: Array<A>, element: A, index: number): void` — Inserts `element` into `array` at `index`, clamped to `0` to `array.length`.
 - `insertIndex<A>(array: Array<A>, index: number, value: A): void` — Inserts a value into array at specific index.
+- `interleave<A>(array: Array<A>): Array<A>` — Returns a copy of `array` with its two halves taken in turn: 1, 4, 2, 5, 3, 6. Neighbours come from opposite halves.
 - `keepIf<A>(array: Array<A>, keep: (value: A) => boolean): void` — Removes in place every item for which `keep` returns `false`.
 - `last<A>(array: Array<A>): Optional<A>` — Returns the last item of the array.
 - `map<A, B>(array: ArrayLike<A>, fn: (value: A, index: number) => B): Array<B>` — Calls `fn` function for every member of array and returns a new array out of all outputs.

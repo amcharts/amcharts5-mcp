@@ -2,7 +2,7 @@
 title: "Vertical Partition Chart"
 source: "https://www.amcharts.com/demos/vertical-partition-chart/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A partition chart, or icicle chart, stacks a hierarchy in rows: the whole on top, each row one level deeper, each box as wide as its share. Here, the 168 hours of one person’s week.

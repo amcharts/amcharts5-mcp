@@ -2,7 +2,7 @@
 title: "Box Plot Chart"
 source: "https://www.amcharts.com/demos/box-plot-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A box plot sums up a spread of values in one mark: the box holds the middle half, the line across it is the median, and the whiskers reach the lowest and highest values. Here, nine days side by side.

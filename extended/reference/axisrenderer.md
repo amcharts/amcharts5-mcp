@@ -2,7 +2,7 @@
 title: "AxisRenderer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrenderer/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Base class for axis renderers, which draw an axis's line, labels, ticks, grid and fills. Not used on its own.

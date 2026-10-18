@@ -2,7 +2,7 @@
 title: "Logarithmic Scale"
 source: "https://www.amcharts.com/demos/logarithmic-scale/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart whose value axis climbs in multiples of ten instead of equal steps. Values from 2 to over 23,000 fit on one chart, and the small early ones stay readable.

@@ -2,7 +2,7 @@
 title: "Selecting and Marking Multiple Ranges"
 source: "https://www.amcharts.com/demos/selecting-and-marking-multiple-ranges/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Drag across this line chart to mark a stretch of dates, then mark another, and another. A new mark that runs into an old one stops at its edge, so marks never overlap.

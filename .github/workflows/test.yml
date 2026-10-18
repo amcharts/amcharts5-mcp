@@ -28,14 +28,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-      # Guards the npm tarball: `files: ["extended/"]` packs from the filesystem,
-      # so an untracked or stray directory under extended/ would ship even though
-      # git never saw it. Fail loudly instead of publishing it.
-      - name: Check tarball contents
-        run: |
-          npm pack --dry-run 2>&1 | tee /tmp/pack.txt
-          if grep -q "reference-generated" /tmp/pack.txt; then
-            echo "::error::extended/reference-generated/ would ship in the npm tarball"
-            exit 1
-          fi

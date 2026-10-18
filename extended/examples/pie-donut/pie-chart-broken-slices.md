@@ -2,7 +2,7 @@
 title: "Pie Chart with Broken Down Slices"
 source: "https://www.amcharts.com/demos/pie-chart-broken-slices/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pie that opens up when clicked: click a slice and it breaks into the parts it is made of, while the other slices stay put. Here, fossil and green energy.

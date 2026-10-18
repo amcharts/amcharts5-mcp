@@ -2,7 +2,7 @@
 title: "IChartElementEventMap"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichartelementeventmap/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 The events of `<am5-chart>`.

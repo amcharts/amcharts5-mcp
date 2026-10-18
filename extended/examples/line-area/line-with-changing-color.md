@@ -2,7 +2,7 @@
 title: "Line with Changing Color"
 source: "https://www.amcharts.com/demos/line-with-changing-color/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 One line in three colors: each stretch of years gets its own color for the line, the area under it and the points. The colors are set in the data, so you choose where each stretch begins.

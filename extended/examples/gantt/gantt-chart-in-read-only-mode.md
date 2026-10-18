@@ -2,7 +2,7 @@
 title: "Gantt Chart in Read-Only Mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Gantt chart locked for viewing: no dragging and no editing, just the plan to read, scroll and point at. The pencil button in the toolbar unlocks it for whoever needs to make changes.

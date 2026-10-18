@@ -2,7 +2,7 @@
 title: "Stacked and Clustered Column Chart"
 source: "https://www.amcharts.com/demos/stacked-clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Stacks side by side: each year, North America stacks on Europe in one column, and Latin America, the Middle East and Africa stack on Asia in the next. Two groups, and what each is made of.

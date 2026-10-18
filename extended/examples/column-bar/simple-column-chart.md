@@ -2,7 +2,7 @@
 title: "Simple Column Chart"
 source: "https://www.amcharts.com/demos/simple-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A column chart gives each period its own bar standing on the axis, so the highs and lows stand out. This one holds three weeks of daily values, with a scrollbar to zoom in on a few days.

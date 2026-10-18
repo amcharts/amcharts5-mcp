@@ -2,7 +2,7 @@
 title: "SmoothedRadarLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/smoothedradarlineseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A line series for a `RadarChart` that draws a smooth curve through its data points.

@@ -2,7 +2,7 @@
 title: "XY Chart with Value-Based Line Graphs"
 source: "https://www.amcharts.com/demos/xy-chart-value-based-line-graphs/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two lines with numbers on both axes, not dates or categories; where a line has no value, it runs on to the next point. Circle and star sizes add a third value.

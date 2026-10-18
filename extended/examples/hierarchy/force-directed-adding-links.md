@@ -2,7 +2,7 @@
 title: "Force-Directed Adding Links"
 source: "https://www.amcharts.com/demos/force-directed-adding-links/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A network you draw yourself: click one person, then another, and a line joins them; click a linked pair again to cut it. The forces pull linked people together as you go.

@@ -2,7 +2,7 @@
 title: "Stacked Area"
 source: "https://www.amcharts.com/demos/stacked-area/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Cars, motorcycles and bicycles from 2007 to 2025 as three stacked areas, so the top edge is the total. Shaded bands mark two events at the biggest drops.

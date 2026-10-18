@@ -2,7 +2,7 @@
 title: "Pyramid Chart"
 source: "https://www.amcharts.com/demos/pyramid-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pyramid stacks the parts of a whole from the largest at the base to the smallest at the top. Each level’s area matches its share; switch to height to compare.

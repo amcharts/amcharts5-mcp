@@ -2,7 +2,7 @@
 title: "ISpritePointerEvent"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ispritepointerevent/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Event object of a pointer interaction.

@@ -2,7 +2,7 @@
 title: "Sankey Diagram"
 source: "https://www.amcharts.com/demos/sankey-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Sankey diagram shows how a quantity flows from one stage to the next, each band as wide as its share. Here, an example energy budget: of every 100 units that go in, 40 end up doing useful work.

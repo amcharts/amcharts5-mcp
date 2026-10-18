@@ -2,7 +2,7 @@
 title: "Chart with Gaps in Data"
 source: "https://www.amcharts.com/demos/chart-with-gaps-in-data/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line that breaks where data is missing instead of drawing across the hole. Here, 1967 to 1970 and 1984 to 1988 have no values, and the years above zero take a second color.

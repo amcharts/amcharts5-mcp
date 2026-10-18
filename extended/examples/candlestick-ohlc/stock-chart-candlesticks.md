@@ -2,7 +2,7 @@
 title: "Stock Chart Candlesticks"
 source: "https://www.amcharts.com/demos/stock-chart-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Fifteen years of daily Microsoft prices as candlesticks over volume. It is a plain XY chart: two value axes stacked over one date axis that skips the weekends.

@@ -2,7 +2,7 @@
 title: "Polar Chart"
 source: "https://www.amcharts.com/demos/polar-chart/"
 category: "radar-polar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A polar chart places values by direction: the farther a point from the middle, the higher the value. Here, the average wind speed at a beach from eight directions, with onshore winds shaded blue and offshore winds red.
@@ -135,7 +135,7 @@ series.data.setAll(data);
 xAxis.data.setAll(data);
 
 // Shade sectors with axis ranges: the beach faces north-west, so winds from NW and N blow in from the sea
-// (onshore, blue) and winds from SE and S blow out to sea (offshore, red)
+// (onshore, in the chart's first color) and winds from SE and S blow out to sea (offshore, in the theme's red)
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
 function shadeSector(category, endCategory, color) {
   // the range runs from the start of category to the end of endCategory
@@ -148,9 +148,9 @@ function shadeSector(category, endCategory, color) {
   range.get("label").set("forceHidden", true); // no second direction name over the axis labels
 }
 
-shadeSector("NW", "NW", am5.color(0x3b82f6));
-shadeSector("N", "N", am5.color(0x3b82f6));
-shadeSector("SE", "S", am5.color(0xef4444));
+shadeSector("NW", "NW", chart.get("colors").getIndex(0));
+shadeSector("N", "N", chart.get("colors").getIndex(0));
+shadeSector("SE", "S", root.interfaceColors.get("negative"));
 
 // Animate chart
 // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation

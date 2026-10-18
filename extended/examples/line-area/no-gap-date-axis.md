@@ -2,7 +2,7 @@
 title: "No-Gap Date Axis"
 source: "https://www.amcharts.com/demos/no-gap-date-axis/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Stock markets close at weekends, leaving holes on a calendar axis. This axis skips days with no data: 200 trading days of price and volume, one after another.

@@ -2,7 +2,7 @@
 title: "AxisRendererCircular"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrenderercircular/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Renderer for an axis that runs around a `RadarChart`, from its `startAngle` to its `endAngle`.

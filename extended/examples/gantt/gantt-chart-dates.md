@@ -2,7 +2,7 @@
 title: "Editable Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart-dates/"
 category: "gantt"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Seven project phases in a Gantt chart you can change in place: drag and resize the bars, drag a bar’s small triangle to set its progress, and draw links between tasks from the dot at a bar’s end.

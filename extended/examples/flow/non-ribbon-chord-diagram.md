@@ -2,7 +2,7 @@
 title: "Non-Ribbon Chord Diagram"
 source: "https://www.amcharts.com/demos/non-ribbon-chord-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A chord diagram with thin lines instead of wide ribbons: it shows which nodes are connected rather than how much flows between them. Dots travel back and forth along each line.

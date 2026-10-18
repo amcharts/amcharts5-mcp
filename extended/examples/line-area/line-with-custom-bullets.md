@@ -2,7 +2,7 @@
 title: "Line with Custom Bullets"
 source: "https://www.amcharts.com/demos/line-with-custom-bullets/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A line chart where each point carries its own icon, so the line tells a story. Here, New Year’s Eve hour by hour: water and coffee early on, then beer, cocktails and the midnight toast.

@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Donut Chart"
 source: "https://www.amcharts.com/demos/variable-radius-nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A thin ring inside a wide one, drawn as an open arc, with the total in the gap: litres on the inner ring, bottles on the outer, for nine countries.

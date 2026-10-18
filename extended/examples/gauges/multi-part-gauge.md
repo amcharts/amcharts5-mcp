@@ -2,7 +2,7 @@
 title: "Multi-Part Gauge"
 source: "https://www.amcharts.com/demos/multi-part-gauge/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Four small gauges in one circle: each quarter is its own arc with its own scale, color and needle, so one chart shows four readings side by side.

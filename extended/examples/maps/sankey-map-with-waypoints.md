@@ -2,7 +2,7 @@
 title: "Sankey Map with Waypoints"
 source: "https://www.amcharts.com/demos/sankey-map-with-waypoints/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Oil exports from six terminals in the Gulf states to ports in Asia and Europe, drawn as Sankey bands on a globe: the wider the band, the more oil. The bands follow sea lanes through waypoints, with drops of oil traveling along them.
@@ -19,36 +19,29 @@ Think twice when:
 - Exact volumes: a table or bar chart compares them
 - Flows with no set route: plain curved lines are simpler
 
-Prompt: Create a dark-styled globe of crude oil exports through the Strait of Hormuz, drawn as a map Sankey of flows from Gulf terminals to ports in Asia and Europe. Waypoints keep the routes at sea, and small oil drops travel along each band. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a globe of crude oil exports through the Strait of Hormuz, drawn as a map Sankey of flows from Gulf terminals to ports in Asia and Europe. Waypoints keep the routes at sea, and small oil drops travel along each band. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
 ```javascript
 var root = am5.Root.new("chartdiv");
 
-var oilTheme = am5.Theme.new(root); // a custom theme: the oil colors for buttons and text
-oilTheme.rule("InterfaceColors").setAll({
-  primaryButton: am5.color(0x1e2824),       // buttons, such as the zoom control...
-  primaryButtonHover: am5.color(0x3a5040),  // ...under the pointer...
-  primaryButtonDown: am5.color(0x0a0e12),   // ...while pressed...
-  primaryButtonActive: am5.color(0xc8890a), // ...and when switched on
-  primaryButtonText: am5.color(0xf5d090),   // button icons and labels
-  secondaryButton: am5.color(0x1e2824),
-  secondaryButtonHover: am5.color(0x3a5040),
-  secondaryButtonDown: am5.color(0x141a1a),
-  secondaryButtonText: am5.color(0xf5d090),
-  background: am5.color(0x0a0e12),
-  text: am5.color(0xf5d090)                 // default text color
-});
-root.setThemes([am5themes_Animated.new(root), oilTheme, am5themes_Responsive.new(root)]);
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_Responsive.new(root)
+]);
 
-// Crude & Tar palette
-var deepCrude = am5.color(0x141a1a);      // ocean — very dark teal-black
-var slick = am5.color(0x1e2824);          // land dark — oil slick green-black
-var pipeline = am5.color(0x3a5040);       // accents — industrial dark green
-var amber = am5.color(0xc8890a);          // primary — dark amber / crude oil
-var sulfur = am5.color(0xa89050);         // secondary — sulfurous yellow-brown
-var flare = am5.color(0xf5d090);          // text/highlights — gas flare warm
+// The colors, all from the theme, so the map follows it and dark mode: the oil (bands, terminals, drops) in its
+// first color, the producing and importing countries in two others; the sea, the grid and the rest of the land in
+// faint tints of the text color
+var colors = am5.ColorSet.new(root, {});
+var oil = colors.getIndex(0);
+var producerColor = colors.getIndex(4);
+var importerColor = colors.getIndex(2);
+var ink = root.interfaceColors.get("alternativeBackground"); // the theme's text color: dark, or light in dark mode
+var oceanOpacity = 0.05; // the ocean's faint tint on the globe
 
 // ---- Chart (start zoomed out at home) ----
 var chart = root.container.children.push(am5map.MapChart.new(root, {
@@ -60,21 +53,15 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   homeRotationY: 0,  // ...not tilted...
   homeZoomLevel: 1,  // ...and at the fitted size
   minZoomLevel: 0.8, // zoom out to 80% of the fitted size at most
-  zoomLevel: 1,      // start at the fitted size
-  background: am5.Rectangle.new(root, {
-    fill: am5.color(0x0a0e12), // near-black space around the globe
-    fillOpacity: 1,
-    stroke:am5.color(0x0a0e12),
-    strokeOpacity: 1
-  })
+  zoomLevel: 1       // start at the fitted size
 }));
 
 // ---- Ocean background ----
 var bgSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 bgSeries.mapPolygons.template.setAll({
-  fill: deepCrude, // dark ocean
-  fillOpacity: 1,  // solid; the flat map views turn it off
-  strokeOpacity: 0 // no outline
+  fill: ink,                 // a faint tint for the ocean...
+  fillOpacity: oceanOpacity, // ...on the globe; the flat map views turn it off
+  strokeOpacity: 0           // no outline
 });
 // one polygon that covers the whole Earth: the ocean
 bgSeries.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
@@ -82,8 +69,8 @@ bgSeries.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
 // ---- Graticule ----
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
 graticuleSeries.mapLines.template.setAll({
-  stroke: pipeline,    // grid lines in dark green...
-  strokeOpacity: 0.25, // ...faint...
+  stroke: ink,         // grid lines in the text color...
+  strokeOpacity: 0.08, // ...faint...
   strokeWidth: 0.5     // ...and thin
 });
 
@@ -92,10 +79,10 @@ var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // country shapes from the low-detail world map
 }));
 polygonSeries.mapPolygons.template.setAll({
-  fill: slick,       // dark land
-  stroke: pipeline,  // dark green borders...
-  strokeWidth: 0.5,  // ...thin...
-  strokeOpacity: 0.6 // ...and a little see-through
+  fill: ink,                                       // the land in a light tint of the text color...
+  fillOpacity: 0.12,
+  stroke: root.interfaceColors.get("background"), // ...with borders in the background color...
+  strokeWidth: 0.5                                 // ...thin
 });
 
 // Highlight producer & importer countries
@@ -107,9 +94,9 @@ polygonSeries.events.on("datavalidated", function () {
   am5.array.each(polygonSeries.dataItems, function (di) {
     var id = di.get("id");
     if (producerIds.includes(id)) {
-      di.get("mapPolygon").setAll({ fill: am5.color(0x6b5a10), tooltipText: "{name}" });
+      di.get("mapPolygon").setAll({ fill: producerColor, fillOpacity: 0.6, tooltipText: "{name}" });
     } else if (importerIds.includes(id)) {
-      di.get("mapPolygon").setAll({ fill: am5.color(0x2a4030), tooltipText: "{name}" });
+      di.get("mapPolygon").setAll({ fill: importerColor, fillOpacity: 0.6, tooltipText: "{name}" });
     }
   });
 });
@@ -126,7 +113,7 @@ var sankeySeries = chart.series.push(am5map.MapSankeySeries.new(root, {
 }));
 
 sankeySeries.mapPolygons.template.setAll({
-  fill: amber,      // amber bands...
+  fill: oil,        // the bands in the oil color...
   fillOpacity: 0.4, // ...see-through, so overlapping routes show
   strokeOpacity: 0, // no outline
   tooltipText: "{source} > {target}\n{value}k bbl/day" // hover a band for its route and volume
@@ -134,8 +121,8 @@ sankeySeries.mapPolygons.template.setAll({
 
 // the nodes: the shapes at each terminal and port where the bands start and end
 sankeySeries.nodes.mapPolygons.template.setAll({
-  fill: amber,
-  stroke: flare,        // a light outline...
+  fill: oil,
+  stroke: root.interfaceColors.get("background"), // an outline in the background color...
   strokeWidth: 1.5,     // ...1.5px wide
   fillOpacity: 0.95,    // almost solid
   strokeOpacity: 1,
@@ -152,8 +139,8 @@ sankeySeries.bullets.push(function () {
     sprite: am5.Graphics.new(root, {
       // Oil drop shape
       svgPath: "M0,-7 C2,-4 5,0 5,3 C5,6 3,8 0,8 C-3,8 -5,6 -5,3 C-5,0 -2,-4 0,-7 Z",
-      fill: amber,                 // amber...
-      stroke: am5.color(0x8b6914), // ...with a darker outline
+      fill: oil,                          // the oil color...
+      stroke: am5.Color.brighten(oil, -0.4), // ...with a darker outline
       strokeWidth: 0.5,
       centerX: am5.p50,            // centered on its point...
       centerY: am5.p50,            // ...both ways
@@ -328,7 +315,6 @@ titleCont.children.push(am5.Label.new(root, {
   text: "Strait of Hormuz — Oil Export Flows",
   fontSize: 18,
   fontWeight: "600", // semi-bold
-  fill: amber,
   x: am5.p50,
   centerX: am5.p50
 }));
@@ -336,7 +322,7 @@ titleCont.children.push(am5.Label.new(root, {
 titleCont.children.push(am5.Label.new(root, {
   text: "Gulf Producers > Major Importers  (thousands of barrels/day)",
   fontSize: 11,
-  fill: sulfur,
+  fillOpacity: 0.6, // a little faded, under the title
   x: am5.p50,
   centerX: am5.p50
 }));
@@ -352,7 +338,7 @@ function zoomToGlobe() {
   chart.animate({ key: "rotationX", to: -74, duration, easing }); // bring longitude 74 east to the front...
   chart.animate({ key: "rotationY", to: -30, duration, easing }); // ...and latitude 30 north to the middle...
   chart.animate({ key: "zoomLevel", to: 1.6, duration, easing }); // ...and zoom in 1.6 times
-  bgSeries.mapPolygons.template.set("fillOpacity", 1);            // the ocean shows on the globe
+  bgSeries.mapPolygons.template.set("fillOpacity", oceanOpacity); // the ocean shows on the globe
 }
 
 // switches to a flat map (Mercator or Equal Earth) and zooms in on the Gulf
@@ -394,7 +380,6 @@ setTimeout(function () {
 #chartdiv {
   width: 100%;
   height: 600px;
-  background-color: #0a0e12;
   font-size: 0.875rem;
 }
 ```
@@ -406,4 +391,3 @@ setTimeout(function () {
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
 - https://cdn.amcharts.com/lib/5/themes/Responsive.js
-- https://cdn.amcharts.com/lib/5/themes/Dark.js

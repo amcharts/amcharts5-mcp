@@ -541,7 +541,7 @@ i
 
 Date/time formatted according to [ISO8601 format](http://en.wikipedia.org/wiki/ISO_8601).
 
-NOTE If `dateFormat` is not set, and processor encounters a string-based value it needs to parse, it will use chart-wide date format (`root.dateFormatter.dateFormat`).
+NOTE If `dateFormat` is not set, string dates are read by the browser's `Date` (as `new Date(string)` would), not with the chart-wide date format (`root.dateFormatter.dateFormat`). The browser takes a date-only string such as `"2024-03-15"` as midnight UTC, and a date-time string such as `"2024-03-15T10:00:00"` as local time. Before 5.21.1, string dates without a `dateFormat` were all read as 1 January 1970, so older versions need `dateFormat` set. *(5.21.1)*
 
 
 ### Parsing colors

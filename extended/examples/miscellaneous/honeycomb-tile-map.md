@@ -2,7 +2,7 @@
 title: "Honeycomb Tile Map"
 source: "https://www.amcharts.com/demos/honeycomb-tile-map/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A tile map made of hexagons, which fit together like a honeycomb and give each state up to six neighbors, so the layout follows the real map more closely than squares or circles can.

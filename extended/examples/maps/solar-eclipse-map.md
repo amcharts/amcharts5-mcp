@@ -2,7 +2,7 @@
 title: "Solar Eclipse Map"
 source: "https://www.amcharts.com/demos/solar-eclipse-map/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 The path of the total solar eclipse of August 2, 2027, on a globe: a band up to 259 km wide where the Moon covers the whole Sun, from the Atlantic across North Africa and Arabia to the Indian Ocean.

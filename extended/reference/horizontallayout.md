@@ -2,7 +2,7 @@
 title: "HorizontalLayout"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/horizontallayout/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Lays out a `Container`'s children side by side, from left to right. Children with a percent width share the width the others leave, in proportion to their percents.

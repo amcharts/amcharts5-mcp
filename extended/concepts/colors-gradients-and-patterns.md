@@ -22,6 +22,21 @@ Typical settings to use colors for is `fill` which indicates area fill color, an
 
 Text color is specified via its `fill` setting.
 
+### Blending colors (5.21.2)
+
+`am5.Color.interpolateColors(position, colors, mode)` returns a color on a scale through any number of colors, spread evenly. `position` runs from `0` (the first color) to `1` (the last), so with three colors `0.5` gives the middle one; values outside that range get the first or last color. `mode` is `"rgb"` (default) or `"hsl"`. For two colors, `am5.Color.interpolate(position, from, to, mode)` does the same.
+
+```javascript
+// Red, yellow and green, from the interface colors
+const ic = root.interfaceColors;
+const scale = [ic.get("negative"), ic.get("warning"), ic.get("positive")];
+
+am5.Color.interpolateColors(0.5, scale);  // the "warning" yellow
+am5.Color.interpolateColors(0.25, scale); // halfway between red and yellow
+```
+
+To color series elements by value on such a scale, use a heat rule's [`stops`](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#multiple-stops) setting, and show it in a heat legend with its [`colors`](https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/#More_than_two_colors) setting.
+
 ## Color sets
 
 Colors sets are basically collections of colors with ability to generate new colors according to certain rules as needed.
@@ -130,6 +145,18 @@ Primary button background when pressed.
 
 Primary button background when active.
 
+`primaryButtonDisabled`
+
+0xdadada
+
+Primary button fill color when disabled.
+
+`primaryButtonTextDisabled`
+
+0xffffff
+
+Primary button text color when disabled.
+
 `primaryButtonText`
 
 0xffffff
@@ -225,6 +252,12 @@ Color to express positive value (e.g. in candlesticks).
 0xb30000
 
 Color to express negative value (e.g. in candlesticks).
+
+`warning` *(5.21.2)*
+
+0xf2c230
+
+A yellow between `negative` and `positive`: a warning, or the middle of a scale from bad to good (e.g. heat rule [`stops`](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#multiple-stops)).
 
 NOTEDefault colors may be overridden by [themes](https://www.amcharts.com/docs/v5/concepts/themes/).
 

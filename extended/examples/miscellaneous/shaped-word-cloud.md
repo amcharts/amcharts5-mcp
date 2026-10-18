@@ -2,7 +2,7 @@
 title: "Shaped Word Cloud"
 source: "https://www.amcharts.com/demos/shaped-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A word cloud that fills a shape: the words pack into the outline of a head, each sized by its weight. Here, what might be on someone’s mind, from money, family and work down to socks and wifi.

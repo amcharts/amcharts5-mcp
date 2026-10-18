@@ -2,7 +2,7 @@
 title: "RadarChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/radarchart/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 An XY chart drawn in a circle: one axis runs around it (`AxisRendererCircular`), the other out from the center (`AxisRendererRadial`). Also used for gauges.

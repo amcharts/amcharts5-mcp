@@ -2,7 +2,7 @@
 title: "Risk Heatmap"
 source: "https://www.amcharts.com/demos/risk-heatmap/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A risk matrix on two category axes: each of the 25 cells is colored from dark green to red by its rating, with a circle sized by its value and the value written inside.
@@ -157,12 +157,22 @@ series.bullets.push(function () {
   });
 });
 
-var colors = { // the cell colors, from critical red to very good green
-  critical: am5.color(0xca0101),
-  bad: am5.color(0xe17a2d),
-  medium: am5.color(0xe1d92d),
-  good: am5.color(0x5dbe24),
-  verygood: am5.color(0x0b7d03)
+// The cell colors, from critical to very good: on the theme's scale from its color for negative values (red) through
+// its warning color (yellow) to its positive one (green), so they follow the theme and dark mode
+function scaleColor(position) {
+  return am5.Color.interpolateColors(position, [
+    root.interfaceColors.get("negative"),
+    root.interfaceColors.get("warning"),
+    root.interfaceColors.get("positive")
+  ]);
+}
+
+var colors = {
+  critical: scaleColor(0),
+  bad: scaleColor(0.25),
+  medium: scaleColor(0.5),
+  good: scaleColor(0.75),
+  verygood: scaleColor(1)
 };
 
 // Set data

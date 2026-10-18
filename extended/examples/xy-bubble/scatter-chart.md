@@ -2,7 +2,7 @@
 title: "Scatter Chart"
 source: "https://www.amcharts.com/demos/scatter-chart/"
 category: "xy-bubble"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A scatter chart places each point by two values, one along each axis. Here two sets of 12 points, one drawn as upward triangles and one as downward, each with its trend line.

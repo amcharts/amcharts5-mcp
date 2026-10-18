@@ -2,7 +2,7 @@
 title: "Mixed Daily and Intra-Day Chart"
 source: "https://www.amcharts.com/demos/mixed-daily-and-intra-day-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Hourly readings and daily averages on one chart: the line has a point for every hour, each column the average of that day. Two date axes keep them in step.

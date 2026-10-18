@@ -2,7 +2,7 @@
 title: "Horizontal Arc Diagram"
 source: "https://www.amcharts.com/demos/horizontal-arc-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 An arc diagram lines the nodes up in a row and joins them with arcs, each as thick as the link. Here, the six friends of the TV show Friends in the middle, with the people linked to each of them close by.

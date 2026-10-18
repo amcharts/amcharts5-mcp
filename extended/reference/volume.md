@@ -2,7 +2,7 @@
 title: "Volume"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/volume/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Volume indicator: columns of `volumeSeries`, colored by whether the price closed up or down. Drawn in a panel of its own.

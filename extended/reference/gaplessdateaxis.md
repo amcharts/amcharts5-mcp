@@ -2,7 +2,7 @@
 title: "GaplessDateAxis"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/gaplessdateaxis/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A `DateAxis` that leaves out periods without data, such as weekends, so the data items sit side by side.

@@ -2,7 +2,7 @@
 title: "Rotating Globe with Circles"
 source: "https://www.amcharts.com/demos/rotating-globe-with-circles/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A spinning globe with circles on 169 countries, each sized by the country's population and colored by its continent.

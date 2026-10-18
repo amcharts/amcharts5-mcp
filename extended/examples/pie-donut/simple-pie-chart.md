@@ -2,7 +2,7 @@
 title: "Simple Pie Chart"
 source: "https://www.amcharts.com/demos/simple-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pie chart with nothing extra: seven values, seven slices, and no legend or settings in the way. A clean starting point for your own.

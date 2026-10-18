@@ -2,7 +2,7 @@
 title: "ExportingMenu"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/exportingmenu/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 The export menu: an icon on the chart that opens a list of formats to export with `Exporting`.

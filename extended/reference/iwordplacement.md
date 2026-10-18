@@ -2,7 +2,7 @@
 title: "IWordPlacement"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iwordplacement/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A computed placement of a single word. No `point` means the word could not be placed (label gets hidden).

@@ -2,7 +2,7 @@
 title: "Packed Circle Chart"
 source: "https://www.amcharts.com/demos/packed-circle-chart/"
 category: "hierarchy"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A packed circle chart nests circles inside circles, each sized by its value. Here, one listener’s year of music: 1,000 hours, grouped by genre and style.

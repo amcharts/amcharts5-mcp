@@ -2,7 +2,7 @@
 title: "Map with Patterns"
 source: "https://www.amcharts.com/demos/map-with-patterns/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A world map of the continents, each filled with a pattern of its own over a color: stripes, checks, dots, triangles or stars.

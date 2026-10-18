@@ -2,7 +2,7 @@
 title: "Two-Level Pie Chart"
 source: "https://www.amcharts.com/demos/two-level-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A thin ring of parts inside a wider, see-through band that groups some of them together. Here the band shows that First and Second belong together.

@@ -2,7 +2,7 @@
 title: "On-Demand Data Loading"
 source: "https://www.amcharts.com/demos/on-demand-data-loading/"
 category: "candlestick-ohlc"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A candlestick chart with volume that fetches its data from the server only as needed: it starts with 50 days and loads more as you drag back in time. The buttons under it switch to hourly or monthly candles.

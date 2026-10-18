@@ -2,7 +2,7 @@
 title: "Satellite Image Globe"
 source: "https://www.amcharts.com/demos/satellite-image-globe/"
 category: "maps"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A 3D globe covered with a satellite image of the whole Earth, turning slowly on its own. The image is redrawn to fit the globe at every turn and zoom, with the country borders on top.
@@ -30,9 +30,10 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
+var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Create the map chart: a globe that turns once every two minutes
@@ -92,7 +93,7 @@ polygonSeries.mapPolygons.template.setAll({
 });
 
 // Add image credit, at the top right, clear of the zoom buttons
-chart.children.push(am5.Label.new(root, {
+var credit = chart.children.push(am5.Label.new(root, {
   text: "Imagery: NASA Earth Observatory",
   fontSize: 12,              // small print
   fill: am5.color(0xffffff), // white, over the picture
@@ -109,6 +110,28 @@ var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
+
+// On a narrow chart (a phone) the globe takes the whole height and the top right corner is no longer free:
+// the credit moves to the bottom left corner, in smaller type on two lines. The rule is undone on a wider chart
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    credit.setAll({
+      x: 0, centerX: 0, dx: 10,                 // 10px in from the left edge...
+      y: am5.p100, centerY: am5.p100, dy: -10,  // ...and from the bottom
+      fontSize: 10,                             // smaller print
+      maxWidth: 100, oversizedBehavior: "wrap"  // wrapped at 100px, two lines
+    });
+  },
+  removing: function () {
+    credit.setAll({
+      x: am5.p100, centerX: am5.p100, dx: -10,
+      y: 10, centerY: 0, dy: 0,
+      fontSize: 12,
+      maxWidth: undefined, oversizedBehavior: "none"
+    });
+  }
+});
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/

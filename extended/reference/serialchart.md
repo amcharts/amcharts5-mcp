@@ -2,7 +2,7 @@
 title: "SerialChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/serialchart/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A base class for all series-based charts.

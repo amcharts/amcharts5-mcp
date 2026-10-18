@@ -1,7 +1,7 @@
 ---
 title: "ease.exp"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Barely moves at first, then speeds up sharply (exponential).

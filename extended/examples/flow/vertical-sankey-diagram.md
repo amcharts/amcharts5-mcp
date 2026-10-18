@@ -2,7 +2,7 @@
 title: "Vertical Sankey Diagram"
 source: "https://www.amcharts.com/demos/vertical-sankey-diagram/"
 category: "flow"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A Sankey diagram that runs from top to bottom instead of left to right. Here, an example of how $1.77 trillion of company cash splits by industry, and how much of it is held overseas.
@@ -79,9 +79,12 @@ series.nodes.labels.template.setAll({
   templateField: "labelSettings"
 });
 
-// Colors from the theme: one for the companies, two more for where the cash is held
+// Colors from the theme: where the cash is held at the two ends of its color set (its first and sixth colors, far
+// apart in any theme), and the companies halfway between them, so the bands to each place turn clearly its way
 var colors = am5.ColorSet.new(root, {});
-var companyColor = colors.getIndex(0);
+var usColor = colors.getIndex(0);
+var overseasColor = colors.getIndex(5);
+var companyColor = am5.Color.interpolate(0.5, usColor, overseasColor);
 
 series.nodes.data.setAll([
   {
@@ -98,7 +101,7 @@ series.nodes.data.setAll([
   { id: "Tech companies", fill: companyColor },
   {
     id: "Cash in the U.S.",
-    fill: colors.getIndex(4), // the bands into it fade to the theme's fifth color
+    fill: usColor, // the bands into it turn to the theme's first color
     labelSettings: {
       text: "CASH IN THE U.S.\n[bold]$459 BILLION",
       forceHidden: false,
@@ -108,7 +111,7 @@ series.nodes.data.setAll([
   },
   {
     id: "Cash overseas",
-    fill: colors.getIndex(8), // and these to its ninth
+    fill: overseasColor, // and these to its sixth
     labelSettings: {
       text: "CASH OVERSEAS\n[bold]$1.31 TRILLION",
       forceHidden: false,

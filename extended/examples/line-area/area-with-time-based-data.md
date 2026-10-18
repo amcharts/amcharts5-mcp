@@ -2,7 +2,7 @@
 title: "Area with Time Based Data"
 source: "https://www.amcharts.com/demos/area-with-time-based-data/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 An area chart of minute-by-minute visits over the last eight hours, opening on the latest hour. The small chart above it shows the whole range: drag it to move along.

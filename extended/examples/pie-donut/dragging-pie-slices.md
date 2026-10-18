@@ -2,7 +2,7 @@
 title: "Dragging Pie Slices"
 source: "https://www.amcharts.com/demos/dragging-pie-slices/"
 category: "pie-donut"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 Two donuts with a line between them. Drag a slice across the line and it moves to the other donut; let go too early and it snaps back.
@@ -201,8 +201,8 @@ var data = [
     category: "Dummy",
     value: 1000,
     settings: {
-      fill: am5.color(0xdadada),
-      stroke: am5.color(0xdadada),
+      fill: root.interfaceColors.get("disabled"),   // the theme's gray, so it suits every theme and dark mode
+      stroke: root.interfaceColors.get("disabled"),
       fillOpacity: 0.3,
       strokeDasharray: [4, 4],
       tooltipText: null, // no tooltip

@@ -2,7 +2,7 @@
 title: "Control Chart"
 source: "https://www.amcharts.com/demos/control-chart/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A control chart tracks readings against a center line and two control limits. Readings beyond a limit turn red; a long run above the center line gets red rings, an early warning that the process is drifting.

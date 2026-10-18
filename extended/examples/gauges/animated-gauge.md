@@ -2,7 +2,7 @@
 title: "Animated Gauge"
 source: "https://www.amcharts.com/demos/animated-gauge/"
 category: "gauges"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A percentage gauge whose arc fills up to the needle: below the value one color, above it another. Every two seconds the needle, the fill and the number move to a new value together.

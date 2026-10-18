@@ -2,7 +2,7 @@
 title: "GraticuleSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/graticuleseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A grid of latitude and longitude lines (a graticule) on a `MapChart`.

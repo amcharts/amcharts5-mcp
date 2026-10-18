@@ -2,7 +2,7 @@
 title: "Star"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/star/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 Draws a star centered on its `x` and `y`, with a spike pointing up.

@@ -2,7 +2,7 @@
 title: "Stacked Column Chart"
 source: "https://www.amcharts.com/demos/stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A stacked column chart piles the series on top of each other, so each column shows a total and what it is made of. Here, six regions over three years, with each value written on its segment where it fits.

@@ -2,7 +2,7 @@
 title: "ConfirmButton"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/confirmbutton/"
-generatedFrom: "@amcharts/amcharts5@5.21.0"
+generatedFrom: "@amcharts/amcharts5@5.21.2"
 ---
 
 A button that asks for confirmation: the first click shows "Confirm", and a second click dispatches `"confirmed"`. A click elsewhere or the ESC key cancels.

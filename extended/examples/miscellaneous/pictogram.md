@@ -2,7 +2,7 @@
 title: "Pictogram"
 source: "https://www.amcharts.com/demos/pictogram/"
 category: "miscellaneous"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
 A pictogram shows a share as a grid of small figures, one for each person in a hundred, so a number becomes something you can see. Here, 58 of 100 men and 67 of 100 women, the counted figures in color over gray ones.
@@ -183,7 +183,7 @@ function makeSeries(name, yAxis, data, color, path, withTooltip) {
   return series;
 }
 
-var placeholderColor = am5.color(0x999999); // the gray of the 100 background icons
+var placeholderColor = root.interfaceColors.get("disabled"); // the theme's gray, for the 100 background icons
 
 // the icons as SVG paths, drawn in a 50px box
 var maleIcon = "M 25.1 10.7 c 2.1 0 3.7 -1.7 3.7 -3.7 c 0 -2.1 -1.7 -3.7 -3.7 -3.7 c -2.1 0 -3.7 1.7 -3.7 3.7 C 21.4 9 23 10.7 25.1 10.7 z M 28.8 11.5 H 25.1 h -3.7 c -2.8 0 -4.7 2.5 -4.7 4.8 V 27.7 c 0 2.2 3.1 2.2 3.1 0 V 17.2 h 0.6 v 28.6 c 0 3 4.2 2.9 4.3 0 V 29.3 h 0.7 h 0.1 v 16.5 c 0.2 3.1 4.3 2.8 4.3 0 V 17.2 h 0.5 v 10.5 c 0 2.2 3.2 2.2 3.2 0 V 16.3 C 33.5 14 31.6 11.5 28.8 11.5 z";

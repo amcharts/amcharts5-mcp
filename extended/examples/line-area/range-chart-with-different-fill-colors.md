@@ -2,10 +2,10 @@
 title: "Range Chart with Different Fill Colors"
 source: "https://www.amcharts.com/demos/range-chart-with-different-fill-colors/"
 category: "line-area"
-scraped: "2026-10-08"
+scraped: "2026-10-18"
 ---
 
-Two lines with the gap between them filled: green while Open is above Close, red while Close is on top. The color changes exactly where the lines cross.
+Two lines with the gap between them filled: in one color while Open is above Close, in another while Close is on top. The color changes exactly where the lines cross.
 
 When to color the gap: Coloring the space between two lines answers “which one is higher?” at a glance, and the width of the band shows by how much. It works for any pair of series in the same units, like income and spending, or a forecast and the actual figures.
 
@@ -19,7 +19,7 @@ Think twice when:
 - More than two series
 - Series in different units: they can’t share an axis
 
-Prompt: Create a range area chart of daily Open and Close values over about a year and a half. Fill the area between the two lines green where Open is above Close and red where Close is above Open, switching exactly where the lines cross. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a range area chart of daily Open and Close values over about a year and a half. Fill the area between the two lines in the Open line's color where Open is above Close and in the Close line's color where Close is above Open, switching exactly where the lines cross. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
 
 ## JavaScript
 
@@ -77,6 +77,10 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add series
+// The two colors: the chart's first and sixth, far enough apart in its color set to tell apart in any theme
+var openColor = chart.get("colors").getIndex(0);
+var closeColor = chart.get("colors").getIndex(5);
+
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
 var series1 = chart.series.push(
   am5xy.LineSeries.new(root, {
@@ -87,8 +91,8 @@ var series1 = chart.series.push(
     // filled between the open and close lines instead of down to the axis
     openValueYField: "close",
     valueXField: "date",
-    stroke: root.interfaceColors.get("positive"), // the theme's "positive" color, green by default
-    fill: root.interfaceColors.get("positive"),
+    stroke: openColor,
+    fill: openColor,
     tooltip: am5.Tooltip.new(root, {
       labelText: "{name}: {valueY}" // the series name and its value
     })
@@ -107,8 +111,8 @@ var series2 = chart.series.push(
     yAxis: yAxis,
     valueYField: "close",
     valueXField: "date",
-    stroke: root.interfaceColors.get("negative"), // the theme's "negative" color, red by default
-    fill: root.interfaceColors.get("negative"),
+    stroke: closeColor,
+    fill: closeColor,
     tooltip: am5.Tooltip.new(root, {
       labelText: "{name}: {valueY}" // the series name and its value
     })
