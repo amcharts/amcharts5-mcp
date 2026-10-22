@@ -2,7 +2,7 @@
 title: "OrthogonalLine"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/orthogonalline/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Draws a line of horizontal and vertical segments through `points`, with rounded corners.

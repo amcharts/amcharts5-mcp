@@ -2,7 +2,7 @@
 title: "Modal"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/modal/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A modal dialog with HTML content, shown over the chart.

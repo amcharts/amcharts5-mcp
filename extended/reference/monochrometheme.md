@@ -1,7 +1,7 @@
 ---
 title: "MonochromeTheme"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 "Monochrome": a single-hue theme. Its series colors are an even ramp of shades of one color, from lighter to darker, with an optional `accent` first.

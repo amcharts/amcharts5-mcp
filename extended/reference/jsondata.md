@@ -2,7 +2,7 @@
 title: "JsonData"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/jsondata/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 **Deprecated:** yes

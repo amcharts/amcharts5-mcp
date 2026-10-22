@@ -2,7 +2,7 @@
 title: "Measure"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/measure/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Measure drawing tool: a rectangle between two points that shows the price change and the time between them.

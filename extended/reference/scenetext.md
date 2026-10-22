@@ -2,7 +2,7 @@
 title: "SceneText"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/scenetext/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Text and its layout. The backend lays it out (`_measureText`) because measuring needs a text engine.

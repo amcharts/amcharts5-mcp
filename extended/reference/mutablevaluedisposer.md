@@ -2,7 +2,7 @@
 title: "MutableValueDisposer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/mutablevaluedisposer/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Holds a value together with its disposer. Setting a new value with `set()` disposes the previous disposer.

@@ -2,7 +2,7 @@
 title: "ZoomTools"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/zoomtools/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Home, zoom-in and zoom-out buttons for a zoomable `target`.

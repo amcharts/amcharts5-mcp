@@ -132,6 +132,40 @@ const tests = [
     },
     label: "get_quick_start('line','html') — CDN scripts, no ESM",
   },
+  // Step 9d: the esm quick start points to the framework packages; html does not
+  {
+    send: { jsonrpc: "2.0", id: 40, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "pie", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("@amcharts/amcharts5-react") && text.includes("useAmChart((root)") ? "PASS" : "FAIL";
+    },
+    label: "get_quick_start('pie','esm') — framework package note",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 41, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "pie", format: "html" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("Quick Start") && !text.includes("useAmChart") ? "PASS" : "FAIL";
+    },
+    label: "get_quick_start('pie','html') — no framework note",
+  },
+  // Step 9e: the framework docs and the skill's Frameworks section are served
+  {
+    send: { jsonrpc: "2.0", id: 42, method: "tools/call", params: { name: "get_doc", arguments: { path: "getting-started/integrations/react-native" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("@amcharts/amcharts5-react-native") && text.includes("| `licenses` |") ? "PASS" : "FAIL";
+    },
+    label: "get_doc('getting-started/integrations/react-native') — new page, props table",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 43, method: "tools/call", params: { name: "get_section", arguments: { file: "SKILL", heading: "Frameworks" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("attachAmChart") && text.includes("AmChartDirective") ? "PASS" : "FAIL";
+    },
+    label: "get_section('SKILL', 'Frameworks') — framework packages",
+  },
   // Step 10: List resources
   {
     send: { jsonrpc: "2.0", id: 11, method: "resources/list", params: {} },

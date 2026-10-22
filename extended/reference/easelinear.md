@@ -1,7 +1,7 @@
 ---
 title: "ease.linear"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 No easing: the animation runs at a constant speed.

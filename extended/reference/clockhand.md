@@ -2,7 +2,7 @@
 title: "ClockHand"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/clockhand/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A gauge needle for a `RadarChart`. Set it as the `sprite` of an axis data item's `AxisBullet`, and it points at that data item's value.

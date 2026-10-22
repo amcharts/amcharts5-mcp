@@ -1,80 +1,195 @@
 ---
 title: "Using amCharts 5 with Angular"
 source: "https://www.amcharts.com/docs/v5/getting-started/integrations/angular/"
-scraped: "2026-03-15"
+scraped: "2026-10-22"
 ---
 
-This tutorial will provide basic information, needed to run amCharts 5 with [Angular](https://angular.io/) framework.
+This tutorial will provide basic information, needed to run amCharts 5 with [Angular](https://angular.dev/) framework.
 
 ## Requirements
 
-amCharts 5 requires **TypeScript 4.3** or later to run. This in turn means that it will run on **Angular 12** or later.
+amCharts 5 requires **TypeScript 5.0** or later. This in turn means that it will run on **Angular 16** or later. Our Angular package needs **Angular 19** or later.
 
-For running amCharts in lower versions of Angular than 12, see "Before Angular 12" section.
+For older versions of Angular, see "[Before Angular 16](#before-angular-16)".
 
-## Using amCharts
+## Using the package
 
-First, create a new Angular project:
+Our [`@amcharts/amcharts5-angular`](https://www.npmjs.com/package/@amcharts/amcharts5-angular) package creates and disposes the chart with the element, works with server-side rendering, and keeps the chart's animations out of Angular's change detection. It needs Angular 19 or later.
 
-npx -p @angular/cli ng new my-project
-cd my-project
+```shell
+npm install @amcharts/amcharts5 @amcharts/amcharts5-angular
+```
 
-You can now run your project by using this command:
+### A chart written in code
 
-npm start
+The `[amChart]` directive gives your function a new root in the element. Build the chart in it as in any amCharts example:
 
-If you load `http://localhost:4200/` in a browser, you should see your new project!
-
-Now it's time to add in an amCharts 5 chart. First create a new chart component:
-
-npm run -- ng generate component chart --module app
-
-Then use this command to install amCharts 5:
-
-npm install @amcharts/amcharts5
-
-Then add in the following code to the `src/app/chart/chart.component.html` file:
-
-<div id="chartdiv" style="width: 100%; height: 500px"></div>
-
-And use the following code in `src/app/chart/chart.component.ts`:
-
-import { Component, Inject, NgZone, PLATFORM\_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-
-// amCharts imports
-import \* as am5 from '@amcharts/amcharts5';
-import \* as am5xy from '@amcharts/amcharts5/xy';
-import am5themes\_Animated from '@amcharts/amcharts5/themes/Animated';
+```typescript
+import { Component, input } from '@angular/core';
+import { AmChartDirective } from '@amcharts/amcharts5-angular';
+import type { Root } from '@amcharts/amcharts5';
+import * as am5xy from '@amcharts/amcharts5/xy';
+import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 
 @Component({
   selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: \['./chart.component.css'\]
+  imports: [AmChartDirective],
+  template: `<div [amChart]="buildChart" [amChartDeps]="[data()]" style="height: 500px"></div>`
 })
+export class Chart {
+  data = input.required<Array<{ category: string, value: number }>>();
 
-export class ChartComponent {
-  private root!: am5.Root;
+  // An arrow function, so that `this` is the component
+  buildChart = (root: Root) => {
+    root.setThemes([am5themes_Animated.new(root)]);
 
-  constructor(@Inject(PLATFORM\_ID) private platformId: Object, private zone: NgZone) {}
+    const chart = root.container.children.push(am5xy.XYChart.new(root, {}));
 
-  // Run the function only in the browser
-  browserOnly(f: () => void) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.zone.runOutsideAngular(() => {
-        f();
-      });
-    }
+    const xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+      categoryField: 'category',
+      renderer: am5xy.AxisRendererX.new(root, {})
+    }));
+
+    const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+      renderer: am5xy.AxisRendererY.new(root, {})
+    }));
+
+    const series = chart.series.push(am5xy.ColumnSeries.new(root, {
+      xAxis: xAxis,
+      yAxis: yAxis,
+      categoryXField: 'category',
+      valueYField: 'value'
+    }));
+
+    xAxis.data.setAll(this.data());
+    series.data.setAll(this.data());
+
+    return series;
+  };
+}
+```
+
+| Input or output | What it is |
+| --- | --- |
+| `[amChart]` | The function that builds the chart in the root it gets. |
+| `[amChartDeps]` | Values that make the chart again when one of them changes. Leave it out to make the chart once. |
+| `[amChartRenderer]` | `"svg"` draws the chart as SVG; the default is canvas. |
+| `(amChartReady)` | `{ root, result }` once the chart is built: `result` is what the function returned. To change the chart without making it again, keep what you need from it, e.g. `result.data.setAll(newData)`. |
+| `(amChartError)` | The error, when the function threw. It goes to Angular's `ErrorHandler` too. |
+
+### A chart from a JSON config
+
+`AmChartComponent` is the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/) with inputs and outputs Angular can check. It builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/), with no chart code:
+
+```typescript
+import { Component } from '@angular/core';
+import { AmChartComponent } from '@amcharts/amcharts5-angular';
+import type { IChartElementReadyEvent } from '@amcharts/amcharts5/element';
+import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+
+@Component({
+  selector: 'app-dashboard',
+  imports: [AmChartComponent],
+  template: `<am5-chart [config]="config" [themes]="themes" (amChartReady)="onReady($event)" style="height: 500px"></am5-chart>`
+})
+export class Dashboard {
+  config = { /* the chart's JSON config */ };
+  themes = [am5themes_Animated];
+
+  onReady({ root, chart }: IChartElementReadyEvent) {
+    // the chart is built
   }
+}
+```
+
+| Input or output | What it is |
+| --- | --- |
+| `[config]` | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again. |
+| `[src]` | A URL to load the config from, used when there is no `config`. |
+| `[themes]` | Theme classes, e.g. `[am5themes_Animated]`. Themes are not part of a config. |
+| `[renderer]` | `"svg"` draws the chart as SVG; the default is canvas. |
+| `(amChartReady)` | `{ root, chart }` once the chart is built. |
+| `(amChartError)` | The error, when the chart could not be built. |
+
+With a commercial license, call `am5.addLicense()` once in `main.ts`, before `bootstrapApplication()`.
+
+An [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/angular/examples/angular) with server-side rendering is on GitHub.
+
+## Without the package
+
+To manage the chart yourself, without the package:
+
+First, create a new Angular project:
+
+```shell
+npx -p @angular/cli ng new my-project
+cd my-project
+```
+
+You can now run your project by using this command:
+
+```shell
+npm start
+```
+
+If you load `http://localhost:4200/` in a browser, you should see your new project!
+
+Now it's time to add in an amCharts 5 chart. First install amCharts 5:
+
+```shell
+npm install @amcharts/amcharts5
+```
+
+Then create a new chart component:
+
+```shell
+npx ng generate component chart
+```
+
+This creates `src/app/chart/chart.ts` and `src/app/chart/chart.html`. Before Angular 20, the files are `chart.component.ts` and `chart.component.html`, and the class is `ChartComponent`.
+
+Put the chart's element in `src/app/chart/chart.html`. It needs a height:
+
+```html
+<div #chartdiv style="width: 100%; height: 500px"></div>
+```
+
+And use the following code in `src/app/chart/chart.ts`:
+
+```typescript
+import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, PLATFORM_ID, ViewChild, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
+// amCharts imports
+import * as am5 from '@amcharts/amcharts5';
+import * as am5xy from '@amcharts/amcharts5/xy';
+import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+
+@Component({
+  selector: 'app-chart',
+  templateUrl: './chart.html'
+})
+export class Chart implements AfterViewInit, OnDestroy {
+  @ViewChild('chartdiv') chartdiv!: ElementRef<HTMLDivElement>;
+
+  private platformId = inject(PLATFORM_ID);
+  private zone = inject(NgZone);
+  private root?: am5.Root;
 
   ngAfterViewInit() {
-    // Chart code goes in here
-    this.browserOnly(() => {
-      let root = am5.Root.new("chartdiv");
+    // In the browser only, not when the page is rendered on a server
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
-      root.setThemes(\[am5themes\_Animated.new(root)\]);
+    // Outside Angular's zone, so that the chart's animations do not run
+    // change detection
+    this.zone.runOutsideAngular(() => {
+      const root = am5.Root.new(this.chartdiv.nativeElement);
 
-      let chart = root.container.children.push(
+      root.setThemes([am5themes_Animated.new(root)]);
+
+      const chart = root.container.children.push(
         am5xy.XYChart.new(root, {
           panY: false,
           layout: root.verticalLayout
@@ -82,7 +197,7 @@ export class ChartComponent {
       );
 
       // Define data
-      let data = \[
+      const data = [
         {
           category: "Research",
           value1: 1000,
@@ -98,17 +213,17 @@ export class ChartComponent {
           value1: 850,
           value2: 1230
         }
-      \];
+      ];
 
       // Create Y-axis
-      let yAxis = chart.yAxes.push(
+      const yAxis = chart.yAxes.push(
         am5xy.ValueAxis.new(root, {
           renderer: am5xy.AxisRendererY.new(root, {})
         })
       );
 
-      // Create X-Axis
-      let xAxis = chart.xAxes.push(
+      // Create X-axis
+      const xAxis = chart.xAxes.push(
         am5xy.CategoryAxis.new(root, {
           renderer: am5xy.AxisRendererX.new(root, {}),
           categoryField: "category"
@@ -117,9 +232,9 @@ export class ChartComponent {
       xAxis.data.setAll(data);
 
       // Create series
-      let series1 = chart.series.push(
+      const series1 = chart.series.push(
         am5xy.ColumnSeries.new(root, {
-          name: "Series",
+          name: "Value 1",
           xAxis: xAxis,
           yAxis: yAxis,
           valueYField: "value1",
@@ -128,9 +243,9 @@ export class ChartComponent {
       );
       series1.data.setAll(data);
 
-      let series2 = chart.series.push(
+      const series2 = chart.series.push(
         am5xy.ColumnSeries.new(root, {
-          name: "Series",
+          name: "Value 2",
           xAxis: xAxis,
           yAxis: yAxis,
           valueYField: "value2",
@@ -140,7 +255,7 @@ export class ChartComponent {
       series2.data.setAll(data);
 
       // Add legend
-      let legend = chart.children.push(am5.Legend.new(root, {}));
+      const legend = chart.children.push(am5.Legend.new(root, {}));
       legend.data.setAll(chart.series.values);
 
       // Add cursor
@@ -152,38 +267,35 @@ export class ChartComponent {
 
   ngOnDestroy() {
     // Clean up chart when the component is removed
-    this.browserOnly(() => {
-      if (this.root) {
-        this.root.dispose();
-      }
-    });
+    this.root?.dispose();
   }
 }
+```
 
-The chart code goes inside the `ngAfterViewInit` method.
+The chart code goes inside the `ngAfterViewInit` method, when the chart's element is there.
 
-Lastly, add `<app-chart></app-chart>` to your `src/app.component.html` file.
+Lastly, add the component to your app: add `Chart` to the `imports` of the component in `src/app/app.ts`, and `<app-chart></app-chart>` to `src/app/app.html`.
 
 Now you can run `npm start` again and you should see a chart.
 
 ## Working example
 
-## Lazy loading amCharts
+## Before Angular 16
 
-Pardon the mess. We're still working on this section.
+If your app is using Angular version lower than 16, you will need to use script version of amCharts 5.
 
-## Before Angular 12
+Instead of importing amCharts 5 modules, add them as `<script>` tags in `src/index.html`:
 
-If your app is using Angular version lower than 12, you will need to use script version of amCharts 5.
-
-Instead of importing amCharts 5 modules, add them as a `<script>` blocks in HTML.
-
+```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+```
 
 As well as declare amCharts globals that are created by scripts:
 
+```typescript
 declare const am5: any;
 declare const am5xy: any;
-declare const am5themes\_Animated: any;
+declare const am5themes_Animated: any;
+```

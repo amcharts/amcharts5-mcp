@@ -2,7 +2,7 @@
 title: "InteractionManager"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/interactionmanager/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Pointer input for one renderer: DOM listeners, hover, drag, click, double-click, wheel, cursor and tap-to-activate. Renderer-neutral; the host supplies coordinates and the hit test.

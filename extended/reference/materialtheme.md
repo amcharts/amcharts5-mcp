@@ -2,7 +2,7 @@
 title: "MaterialTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/materialtheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A theme. Apply it with `root.setThemes([am5themes_Material.new(root)])`.

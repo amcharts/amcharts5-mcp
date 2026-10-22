@@ -2,7 +2,7 @@
 title: "Graphics"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/graphics/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 An element that draws a shape; the base class of all shapes.

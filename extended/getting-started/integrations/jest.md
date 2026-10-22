@@ -1,19 +1,20 @@
 ---
 title: "Using amCharts 5 with Jest"
 source: "https://www.amcharts.com/docs/v5/getting-started/integrations/jest/"
-scraped: "2026-03-15"
+scraped: "2026-10-22"
 ---
 
 This tutorial will show you how to create unit tests for [Jest](https://jestjs.io/).
 
 Jest does not support ES6 modules by default, but you can still use ES6 modules if you use Babel.
 
-# Installation
+## Installation
 
 You must install the following packages in your `package.json`:
 
+```json
 "dependencies": {
-  "@amcharts/amcharts5": "^5.2.17"
+  "@amcharts/amcharts5": "^5.21.0"
 },
 "devDependencies": {
   "@babel/core": "^7.18.10",
@@ -24,35 +25,41 @@ You must install the following packages in your `package.json`:
   "jest": "^28.1.3",
   "canvas": "^2.9.3"
 }
+```
 
 And you must add this `"jest"` configuration to your `package.json`:
 
+```json
 "jest": {
   "testEnvironment": "jsdom",
-  "transformIgnorePatterns": \[
-    "/node\_modules/(?!@amcharts|d3-|internmap)"
-  \]
+  "transformIgnorePatterns": [
+    "/node_modules/(?!@amcharts|d3-|internmap)"
+  ]
 }
+```
 
 Now you must do `npm install` or `yarn install`.
 
 Lastly create a `babel.config.js` file:
 
+```javascript
 module.exports = {
-  presets: \[
-    \['@babel/preset-env', {targets: {node: 'current'}}\],
+  presets: [
+    ['@babel/preset-env', {targets: {node: 'current'}}],
     '@babel/preset-typescript',
-  \],
+  ],
 };
+```
 
-# Writing tests
+## Writing tests
 
 Now that you have everything setup, you can write your unit tests.
 
 Let's say that your chart code is in a `chart.js` file:
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5xy from "@amcharts/amcharts5/xy";
+```typescript
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
 
 export function makeChart() {
   const root = am5.Root.new("chartdiv");
@@ -68,15 +75,17 @@ export function makeChart() {
 
   return { root, chart };
 }
+```
 
 You can write your unit tests in a `chart.test.js` file, like this:
 
+```typescript
 // Import chart code
 import { makeChart } from "./chart";
 
 beforeEach(() => {
   // Create <div> which is needed by the chart
-  document.body.innerHTML = \`<div id="chartdiv"></div>\`;
+  document.body.innerHTML = `<div id="chartdiv"></div>`;
 });
 
 test("chart exists", () => {
@@ -87,6 +96,20 @@ test("chart exists", () => {
   expect(chart).toBeDefined();
   expect(chart.get("wheelX")).toBe("panX");
 });
+```
+
+## Components that use our framework packages
+
+To test components that use our [framework packages](https://www.amcharts.com/docs/v5/getting-started/integrations/) without drawing their charts, mock the package. For React:
+
+```javascript
+jest.mock("@amcharts/amcharts5-react", () => ({
+  useAmChart: () => ({ ref: () => {}, root: undefined, result: undefined }),
+  AmChart: () => null
+}));
+```
+
+The packages are ES modules too: the `transformIgnorePatterns` above, which matches `@amcharts`, covers them.
 
 ## Example
 

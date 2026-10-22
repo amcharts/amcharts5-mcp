@@ -2,7 +2,7 @@
 title: "ILocale"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilocale/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Defines locale interface.

@@ -2,7 +2,7 @@
 title: "MACD"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/macd/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 MACD (Moving Average Convergence Divergence) indicator: the fast minus the slow exponential moving average of `field`, with a signal line and columns of the difference between the two. Drawn in a panel of its own.

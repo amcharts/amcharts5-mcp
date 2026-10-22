@@ -1,7 +1,7 @@
 ---
 title: "addLicense"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Adds a license key, e.g.:

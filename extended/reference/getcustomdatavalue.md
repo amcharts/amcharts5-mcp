@@ -1,7 +1,7 @@
 ---
 title: "getCustomDataValue"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Returns a value from target `Sprite`'s `customData`.

@@ -2,7 +2,7 @@
 title: "IBezierSegment"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ibeziersegment/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Parameters for a single cubic bezier segment in geographic coordinates.

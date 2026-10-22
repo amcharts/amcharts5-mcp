@@ -2,7 +2,7 @@
 title: "IColorSetSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icolorsetsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 ## Inheritance
@@ -17,6 +17,7 @@ TypeScript: `am5.IColorSetSettings` (`import type { IColorSetSettings } from "@a
 - **step** (`number`) — default `1` _(theme)_ — How many positions `next()` moves each time: `2` returns every second color.
 - **startIndex** (`number`) — default `0` _(theme)_ — Index of the color the first `next()` returns, and `reset()` goes back to.
 - **reuse** (`boolean`) — default `false` _(theme)_ — Repeats the list from the start when it runs out, instead of generating new colors.
+- **repeatLightness** (`number`) — default `0` _(code fallback)_ — With `reuse`, each repeat of the list is this much lighter (HSL lightness, `0.1` is 10%; a negative value makes it darker) instead of the same colors again. _Since 5.21.3._
 - **baseColor** (`Color`) — A base color to generate new colors from if `colors` is not set.
 - **passOptions** (`IColorSetStepOptions`) — default `{ hue: 0.05, saturation: 0, lightness: 0 }` _(theme)_ — How the colors generated when the list runs out differ from the original list. Each time the list runs out, a new pass of colors is added, shifted by these amounts once more.
 - **saturation** (`number`) — Saturation for every color the set returns, from `0` (grey) to `1`.

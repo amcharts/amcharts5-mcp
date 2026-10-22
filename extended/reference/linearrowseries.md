@@ -2,7 +2,7 @@
 title: "LineArrowSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/linearrowseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Draws a straight line with an arrowhead at its end, for the Line Arrow tool of a `StockChart`.

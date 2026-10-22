@@ -2,7 +2,7 @@
 title: "TrianglePattern"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/trianglepattern/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Triangle pattern.

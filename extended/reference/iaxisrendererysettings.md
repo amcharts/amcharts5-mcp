@@ -2,7 +2,7 @@
 title: "IAxisRendererYSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iaxisrendererysettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 ## Inheritance

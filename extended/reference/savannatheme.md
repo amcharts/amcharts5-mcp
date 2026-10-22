@@ -2,7 +2,7 @@
 title: "SavannaTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/savannatheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 "Savanna": a warm, editorial light theme on a cream background, with muted natural series colors: amber gold, terracotta, olive, plum, ochre and walnut.

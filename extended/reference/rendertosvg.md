@@ -1,7 +1,7 @@
 ---
 title: "renderToSVG"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A chart as an SVG document, whichever renderer draws it. Leaves out what image export leaves out: elements with `exportable: false` and pictures from other domains without CORS. Fully transparent elements, such as hit areas and a hidden logo, are left out too.

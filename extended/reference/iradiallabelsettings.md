@@ -2,7 +2,7 @@
 title: "IRadialLabelSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iradiallabelsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 ## Inheritance

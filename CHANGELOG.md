@@ -7,11 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
-## [1.8.1] - 2026-10-22
+## [1.9.0] - 2026-10-22
 
 ### Added
+- **amCharts' framework packages** (`@amcharts/amcharts5-react`, `-vue`, `-angular`, `-svelte` and `-react-native`, 5.0.0, released 2026-10-22):
+  - **Skill:** a new "Frameworks" section in `SKILL.md` and `cursorrules` replaces the old disposal snippets. It covers:
+    - each package's API, for a chart in code and a chart from a JSON config;
+    - deps versus updating data through `result`, and the SVG renderer;
+    - where the license key goes, and server rendering (Next.js, Nuxt, SvelteKit, Angular SSR, React Router and Astro, Remix 3);
+    - unit tests, and React Native's string code, `data` and `post()`;
+    - a fallback for apps without a package.
+
+    The "Disposal" section of each chart reference now points to it.
+  - **Verification:** the React, Vue and Svelte snippets were bundled with the published packages and run in Chromium. They draw; new data updates the chart without making it again; deps and `watch` rebuild it; teardown disposes it. The Angular and React Native APIs were checked against the packages' typings.
+  - **Docs:** the integration pages were re-scraped:
+    - Integrations, React, Vue, Angular, Next.js, Nuxt, SvelteKit, React Router (Remix 2), Jest, Cypress, Ember.js and `<am5-chart>`;
+    - two new pages, React Native and Remix 3;
+    - the SvelteKit and Remix pages moved to the site's new paths, `getting-started/integrations/sveltekit` and `getting-started/integrations/remix`.
+  - **`get_quick_start(format: "esm")`** ends with a note on putting the chart code in the framework package's setup function.
+- **amCharts 5.21.3** (2026-10-21):
+  - **Skill:**
+    - ColorSet `repeatLightness`: repeat rounds 10% lighter in the themes that reuse their colors, and how to turn it off;
+    - `"@colors.getIndex(n)"` in JSON configs;
+    - per-item data-item loops in the serializer;
+    - the map projection fixes.
+  - **API reference** regenerated from 5.21.3.
+  - **Verification:** every new claim was run in a browser against the 5.21.3 CDN.
 - **Tool titles and annotations, for the agent directories** (Claude Connectors, OpenAI). Every one of the 12 tools now has a human-readable `title`, e.g. "Search docs", "Get core reference (setup, themes, pitfalls)" or "List geodata (map files)". Each also carries `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true` and `openWorldHint: false`: every tool only reads the bundled content, with no writes and no network calls. Tools are registered with `server.registerTool()`, so `title` is top-level in `tools/list`. The Worker shares the same registration.
 - **MCP registry entry:** `server.json` lists the hosted server (`remotes`: streamable HTTP at `https://mcp.amcharts.com/mcp`) next to the npm stdio package. It also gains a display `title` ("amCharts 5"), a `websiteUrl` (the amCharts MCP docs page) and an icon (the amcharts.com tile, 558×558 PNG).
+
+### Changed
+- **`scripts/scrape-docs.js` keeps code blocks and tables:**
+  - The docs site writes code as `<pre class="wp-block-code code-TypeScript">` with no `<code>` inside, so the scraper turned every code block into escaped prose (`import \* as am5`). Code blocks are now fenced, with their language.
+  - Tables are now markdown tables (a `colspan` cell is padded with empty cells); each cell used to land on its own line.
+  - `scripts/clean-all.js` now closes a code block only on a fence as long as the one that opened it. The scraper writes 4+ backticks for code that contains ```. The split is unchanged on all 1,848 existing files.
+  - Only the integration pages are re-scraped in this release. Many other pages carry hand-written version notes that the live site lacks, so a full re-scrape needs a three-way merge.
+- Two skill notes were checked against 5.21.3 and still hold: the `LinearGradient` `rotation` bug and the empty-`ColorSet` crash.
+
+### Note
+- 1.8.1 (the tool titles, annotations and registry entry above) was never published; it ships in 1.9.0.
 
 ## [1.8.0] - 2026-10-18
 

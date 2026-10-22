@@ -2,7 +2,7 @@
 title: "GanttDateAxis"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ganttdateaxis/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A date axis of a `Gantt` chart. The Gantt has two, both above the plot area: `xAxis` with the larger time units and `xAxisMinor` below it.

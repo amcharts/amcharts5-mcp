@@ -2,7 +2,7 @@
 title: "PieSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pieseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A series of pie slices for a `PieChart`. With `alignLabels: false`, the labels sit around the pie next to their slices instead of in two columns.

@@ -2,7 +2,7 @@
 title: "TextFormatter"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/textformatter/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Splits text into chunks of plain text and style blocks, such as `[bold]`, and reads style blocks into text styles.

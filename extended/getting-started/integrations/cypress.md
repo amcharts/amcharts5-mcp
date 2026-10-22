@@ -1,7 +1,7 @@
 ---
 title: "Testing amCharts 5 with Cypress"
 source: "https://www.amcharts.com/docs/v5/getting-started/integrations/cypress/"
-scraped: "2026-03-15"
+scraped: "2026-10-22"
 ---
 
 This tutorial looks at how we can use a robust [Cypress testing framework](https://www.cypress.io/) for end-to-end testing of amCharts components.
@@ -14,6 +14,7 @@ In Cypress we can access it via `cy.window()` call, then use `am5.registry.rootE
 
 The following code will grab the first Root and its child chart of the page:
 
+```javascript
 describe("Check Legend", () => {
   it("passes", () => {
     cy.visit("https://my-test-url/");
@@ -22,12 +23,13 @@ describe("Check Legend", () => {
     cy.window().then((win) => {
 
       // Grab first chart
-      const root = win.am5.registry.rootElements\[0\];
+      const root = win.am5.registry.rootElements[0];
       const chart = root.container.children.getIndex(0);
 
       // ...
   });
 });
+```
 
 ## Throwing errors
 
@@ -35,6 +37,7 @@ We can use standard `throw` syntax to trigger errors of our custom tests.
 
 Cypress will fail the test on encountering an exception.
 
+```javascript
 describe("Check Legend", () => {
   it("passes", () => {
     cy.visit("https://my-test-url/");
@@ -43,7 +46,7 @@ describe("Check Legend", () => {
     cy.window().then((win) => {
 
       // Grab first chart
-      const root = win.am5.registry.rootElements\[0\];
+      const root = win.am5.registry.rootElements[0];
       const chart = root.container.children.getIndex(0);
 
       // Check the type
@@ -52,6 +55,7 @@ describe("Check Legend", () => {
       }
   });
 });
+```
 
 ## Testing DOM elements
 
@@ -67,7 +71,9 @@ Focusable elements have actual DOM elements created under main chart container `
 
 As an example, the following Cypress query will select the first legend item focus element of a chart contained in a div with `"chartdiv"` id.
 
-cy.get("#chartdiv .am5-focus-container div\[role=checkbox\]:first")
+```javascript
+cy.get("#chartdiv .am5-focus-container div[role=checkbox]:first")
+```
 
 ## Full code
 
@@ -82,6 +88,7 @@ The following Cypress test will:
 -   Verify that the target series is indeed hidden via API.
 -   Then toggle it back on by another simulated SPACE press.
 
+```javascript
 describe("Check Legend", () => {
   it("passes", () => {
     cy.viewport(1200, 1000);
@@ -92,12 +99,12 @@ describe("Check Legend", () => {
     cy.window().then((win) => {
 
       // Grab first chart
-      const root = win.am5.registry.rootElements\[0\];
+      const root = win.am5.registry.rootElements[0];
       const chart = root.container.children.getIndex(0);
       const series = chart.series.getIndex(0);
 
       // Select first legend item focus
-      cy.get(root.dom).get(".am5-focus-container div\[role=checkbox\]:first").focus();
+      cy.get(root.dom).get(".am5-focus-container div[role=checkbox]:first").focus();
       cy.wait(1000);
 
       // Toggle legend item off
@@ -122,3 +129,4 @@ describe("Check Legend", () => {
     })
   })
 })
+```

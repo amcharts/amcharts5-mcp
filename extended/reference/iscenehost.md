@@ -2,7 +2,7 @@
 title: "ISceneHost"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iscenehost/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 What scene nodes need from the renderer that owns them.

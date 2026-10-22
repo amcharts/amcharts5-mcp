@@ -2,7 +2,7 @@
 title: "CanvasContainer"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/canvascontainer/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 **Deprecated:** Renamed to `SceneContainer`.

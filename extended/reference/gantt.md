@@ -2,7 +2,7 @@
 title: "Gantt"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/gantt/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A Gantt chart: a task list on the left and the tasks' bars, links and progress on a timeline.

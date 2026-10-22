@@ -2,7 +2,7 @@
 title: "SVGRenderer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/svgrenderer/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Draws charts as a live SVG document instead of canvases.

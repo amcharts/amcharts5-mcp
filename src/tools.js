@@ -15,6 +15,13 @@ import { listGeodata } from "./geodata.js";
 // same input. Directories (Claude Connectors, OpenAI) check these hints.
 const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
 
+// Appended to ES-module quick starts: in a framework app the chart code goes
+// into the framework package's setup function, which gets the root.
+const FRAMEWORK_NOTE = `
+
+## In a React, Vue, Angular, Svelte or React Native app
+Use amCharts' package for the framework: \`@amcharts/amcharts5-react\`, \`-vue\`, \`-angular\` or \`-svelte\`. It creates and disposes the root, and works with server rendering. Its setup function receives \`root\`, so put the code above that follows \`am5.Root.new(...)\` inside it, e.g. in React \`const { ref, result } = useAmChart((root) => { /* the chart */ return { series }; }, []);\` with \`<div ref={ref} style={{ height: "500px" }} />\`. Deps such as \`[data]\` make the chart again from scratch; to change data in place, return what you need and update it through \`result\`. \`@amcharts/amcharts5-react-native\` takes the chart code as a string instead. Details: \`get_section("SKILL", "Frameworks")\`, and \`get_doc("getting-started/integrations/react")\` (also \`vue\`, \`angular\`, \`sveltekit\`, \`next-js\`, \`nuxt\`, \`react-native\`).`;
+
 // User text echoed back in a reply, capped so a huge query can't balloon it
 const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
 
@@ -248,7 +255,7 @@ export function registerTools(server, content) {
       if (!setupSection) {
         // Fallback: return first few sections
         const intro = doc.sections.slice(0, 4).map(s => `## ${s.heading}\n${s.body}`).join("\n\n");
-        return { content: [{ type: "text", text: intro }] };
+        return { content: [{ type: "text", text: intro + (format === "esm" ? FRAMEWORK_NOTE : "") }] };
       }
 
       let text = `# Quick Start: ${doc.title}\n\n`;
@@ -265,6 +272,7 @@ export function registerTools(server, content) {
         }
       }
       text += `## ${setupSection.heading}\n${setupSection.body}`;
+      if (format === "esm") text += FRAMEWORK_NOTE;
 
       return { content: [{ type: "text", text }] };
     }

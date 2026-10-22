@@ -1,7 +1,7 @@
 ---
 title: "ready"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Calls `f` when the DOM is ready, or right away if it already is.

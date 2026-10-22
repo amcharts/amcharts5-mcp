@@ -2,7 +2,7 @@
 title: "Partition"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/partition/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A partition (icicle) diagram: each level is a row of rectangles (a column, when horizontal), and each node spans as much of it as its value. A click on a node zooms into it.

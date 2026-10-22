@@ -2,7 +2,7 @@
 title: "ICurveCursorEvents"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icurvecursorevents/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 ## Inheritance

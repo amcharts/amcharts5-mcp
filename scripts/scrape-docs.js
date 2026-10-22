@@ -39,8 +39,10 @@ const URLS = [
   "https://www.amcharts.com/docs/v5/getting-started/integrations/jest/",
   "https://www.amcharts.com/docs/v5/getting-started/integrations/nuxt/",
   "https://www.amcharts.com/docs/v5/getting-started/integrations/ember-js/",
-  "https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-sveltekit/",
-  "https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-remix/",
+  "https://www.amcharts.com/docs/v5/getting-started/integrations/sveltekit/",
+  "https://www.amcharts.com/docs/v5/getting-started/integrations/remix/",
+  "https://www.amcharts.com/docs/v5/getting-started/integrations/remix-3/",
+  "https://www.amcharts.com/docs/v5/getting-started/integrations/react-native/",
   "https://www.amcharts.com/docs/v5/getting-started/integrations/cypress/",
   "https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/",
 
@@ -390,23 +392,25 @@ function createTurndownService() {
     strongDelimiter: "**",
   });
 
-  // Preserve code blocks with language hints
+  // Preserve code blocks with language hints. The docs site writes them as
+  // <pre class="wp-block-code code-TypeScript"> with the code right in the
+  // <pre>, no <code> inside.
   turndown.addRule("codeBlocks", {
     filter: (node) => {
       return (
         node.nodeName === "PRE" &&
-        node.querySelector("code")
+        (node.querySelector("code") || /\bwp-block-code\b/.test(node.className || ""))
       );
     },
     replacement: (content, node) => {
-      const codeEl = node.querySelector("code");
+      const codeEl = node.querySelector("code") || node;
       const code = codeEl.textContent;
 
       // Try to detect language from class names
       let lang = "";
-      const classes = (codeEl.className || "") + " " + (node.className || "");
+      const classes = (codeEl === node ? "" : codeEl.className || "") + " " + (node.className || "");
       const langMatch = classes.match(
-        /(?:language-|lang-|brush:\s*)([\w+#-]+)/i
+        /(?:language-|lang-|brush:\s*|\bcode-)([\w+#-]+)/i
       );
       if (langMatch) {
         lang = langMatch[1].toLowerCase();
@@ -415,8 +419,41 @@ function createTurndownService() {
         if (lang === "ts") lang = "typescript";
       }
 
-      return `\n\n\`\`\`${lang}\n${code.replace(/\n+$/, "")}\n\`\`\`\n\n`;
+      // A longer fence than any run of backticks in the code
+      const longest = Math.max(2, ...(code.match(/`+/g) || []).map((s) => s.length));
+      const fence = "`".repeat(longest + 1);
+      return `\n\n${fence}${lang}\n${code.replace(/\n+$/, "")}\n${fence}\n\n`;
     },
+  });
+
+  // Tables as markdown tables (turndown alone writes each cell on a line)
+  const cell = (content) => " " + content.trim().replace(/\s*\n\s*/g, " ").replace(/\|/g, "\\|") + " |";
+  // A cell spanning columns is followed by empty cells, so rows line up
+  const span = (node) => Math.max(1, parseInt(node.getAttribute("colspan"), 10) || 1);
+  turndown.addRule("tableCell", {
+    filter: ["th", "td"],
+    replacement: (content, node) => cell(content) + "  |".repeat(span(node) - 1),
+  });
+  turndown.addRule("tableRow", {
+    filter: "tr",
+    replacement: (content, node) => {
+      let row = "|" + content + "\n";
+      // A header separator after the table's first row
+      const table = node.closest("table");
+      if (table && table.querySelector("tr") === node) {
+        const columns = Array.from(node.children).reduce((n, c) => n + span(c), 0);
+        row += "|" + " --- |".repeat(columns) + "\n";
+      }
+      return row;
+    },
+  });
+  turndown.addRule("tableSection", {
+    filter: ["thead", "tbody", "tfoot"],
+    replacement: (content) => content,
+  });
+  turndown.addRule("table", {
+    filter: "table",
+    replacement: (content) => "\n\n" + content.trim() + "\n\n",
   });
 
   // Handle inline code

@@ -2,7 +2,7 @@
 title: "SvgPathSink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/svgpathsink/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Traces path ops into SVG path data (`d`), with Canvas2D semantics: arcs of 2pi or more are full circles, an arc starts with a line from the current point, `arcTo` rounds the corner between two tangents, and `lineTo` / curves without a current point start a subpath.

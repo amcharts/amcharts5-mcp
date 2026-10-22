@@ -2,7 +2,7 @@
 title: "DoodleSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/doodleseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A `DrawingSeries` subclass.

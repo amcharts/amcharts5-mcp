@@ -2,7 +2,7 @@
 title: "IMonochromeThemeSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/imonochromethemesettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Options for `MonochromeTheme`.
@@ -21,3 +21,4 @@ TypeScript: not exported by name from the package.
 - **interleave** (`boolean`) — default `false` — Takes the shades in an alternating order (1, 4, 2, 5, 3, 6), so series next to each other differ more. The `accent` stays first.
 - **mapShade** (`boolean`) — default `false` — Fills map polygons with a mid shade of `color`, as light as a map's default land, instead of `color` itself.
 - **keepContrast** (`number | boolean`) — default `false` — Keeps the shades, the `accent` and the primary buttons at a minimum contrast against the background: `true` for 3:1, or a ratio, e.g. `4.5`. The end of the ramp nearest the background moves away from it, and the other shades spread out evenly up to it.
+- **repeatLightness** (`number | boolean`) — default `0.1` — Once every color has been used, each new round of colors is this much lighter (HSL lightness: `0.1` is 10%; a negative value makes it darker) instead of the same colors again. `true` is `0.1`; `false` or `0` repeats the colors as they are.

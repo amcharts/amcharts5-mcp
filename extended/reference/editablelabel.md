@@ -2,7 +2,7 @@
 title: "EditableLabel"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/editablelabel/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A label the user can edit in place. Editing starts on `editOn` and ends when the label loses focus or ESC is pressed; `active` is `true` while it lasts.

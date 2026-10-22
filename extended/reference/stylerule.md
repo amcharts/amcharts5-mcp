@@ -2,7 +2,7 @@
 title: "StyleRule"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/stylerule/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Defines a class for a CSS rule.

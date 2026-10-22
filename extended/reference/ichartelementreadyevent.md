@@ -2,7 +2,7 @@
 title: "IChartElementReadyEvent"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichartelementreadyevent/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Details of the element's `ready` event.

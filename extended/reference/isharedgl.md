@@ -2,7 +2,7 @@
 title: "ISharedGL"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/isharedgl/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A WebGL2 context shared by every chart on the page: browsers allow only a few live contexts (8-16), and dashboards can have more charts than that. Users draw into it and copy the result out before anyone else draws, and set every piece of state they depend on: nothing is reset between users.

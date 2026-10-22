@@ -1,7 +1,7 @@
 ---
 title: "getGeoCentroid"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Returns the geographic centroid of a geometry.

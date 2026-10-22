@@ -2,7 +2,7 @@
 title: "IndicatorControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/indicatorcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A `StockToolbar` control for adding indicators to a `StockChart`.

@@ -2,7 +2,7 @@
 title: "Triangle"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/triangle/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Draws a triangle pointing up, centered on its `x` and `y`, with its `width` and `height`.

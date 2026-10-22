@@ -1,241 +1,185 @@
 ---
 title: "Using amCharts 5 with React"
 source: "https://www.amcharts.com/docs/v5/getting-started/integrations/react/"
-scraped: "2026-03-15"
+scraped: "2026-10-22"
 ---
 
-This tutorial will show you every step you need to use amCharts 5 with React + Vite.
+Use amCharts 5 in React with our [`@amcharts/amcharts5-react`](https://www.npmjs.com/package/@amcharts/amcharts5-react) package. It creates and disposes the chart with your component, and works with server rendering.
 
-## Creating a project
+## Installation
 
-npm create vite@latest my-project -- --template react
-cd my-project
-npm install
-npm install @amcharts/amcharts5
+```shell
+npm install @amcharts/amcharts5 @amcharts/amcharts5-react
+```
 
-Create a new `src/Chart.jsx` file:
+It needs React 18 or later and amCharts 5.21.0 or later.
 
-import { useLayoutEffect } from 'react';
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5xy from "@amcharts/amcharts5/xy";
-import am5themes\_Animated from "@amcharts/amcharts5/themes/Animated";
+## A chart written in code
 
-function Chart(props) {
-  useLayoutEffect(() => {
-    let root = am5.Root.new("chartdiv");
+`useAmChart()` gives your function a new root. Build the chart in it as in any amCharts example, and put the returned `ref` on an element with a height:
 
-    root.setThemes(\[
-      am5themes\_Animated.new(root)
-    \]);
+```typescript
+import { useAmChart } from "@amcharts/amcharts5-react";
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-    let chart = root.container.children.push(
+function Chart({ data }) {
+  const { ref } = useAmChart((root) => {
+    root.setThemes([am5themes_Animated.new(root)]);
+
+    const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panY: false,
         layout: root.verticalLayout
       })
     );
 
-    // Define data
-    let data = \[{
-      category: "Research",
-      value1: 1000,
-      value2: 588
-    }, {
-      category: "Marketing",
-      value1: 1200,
-      value2: 1800
-    }, {
-      category: "Sales",
-      value1: 850,
-      value2: 1230
-    }\];
-
-    // Create Y-axis
-    let yAxis = chart.yAxes.push(
+    const yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
         renderer: am5xy.AxisRendererY.new(root, {})
       })
     );
 
-    // Create X-Axis
-    let xAxis = chart.xAxes.push(
+    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
-    renderer: am5xy.AxisRendererX.new(root, {}),
+        renderer: am5xy.AxisRendererX.new(root, {}),
         categoryField: "category"
       })
     );
     xAxis.data.setAll(data);
 
-    // Create series
-    let series1 = chart.series.push(
+    const series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Series",
+        name: "Value",
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: "value1",
+        valueYField: "value",
         categoryXField: "category"
       })
     );
-    series1.data.setAll(data);
+    series.data.setAll(data);
 
-    let series2 = chart.series.push(
-      am5xy.ColumnSeries.new(root, {
-        name: "Series",
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueYField: "value2",
-        categoryXField: "category"
-      })
-    );
-    series2.data.setAll(data);
-
-    // Add legend
-    let legend = chart.children.push(am5.Legend.new(root, {}));
+    const legend = chart.children.push(am5.Legend.new(root, {}));
     legend.data.setAll(chart.series.values);
 
-    // Add cursor
     chart.set("cursor", am5xy.XYCursor.new(root, {}));
+  }, [data]);
+
+  return <div ref={ref} style={{ width: "100%", height: "500px" }}></div>;
+}
+
+export default Chart;
+```
+
+-   The chart is made again when a value in the second argument (`[data]` here) changes. Leave it out to make the chart once.
+-   The chart is disposed when the component goes away. The double mount of React's strict mode is handled.
+-   The element can be rendered later, e.g. after a loading message: the chart is made when it is there.
+-   `useAmChart(setup, deps, { renderer: "svg" })` draws the chart as SVG.
+-   If your function throws, the error goes to the nearest error boundary.
+
+### Updating without making the chart again
+
+`useAmChart()` also returns `root`, and `result`: what your function returned. Keep what you need there and change it when the data changes:
+
+```typescript
+import { useEffect } from "react";
+import { useAmChart } from "@amcharts/amcharts5-react";
+
+function Chart({ data }) {
+  const { ref, result } = useAmChart((root) => {
+    // ... the chart, as above, without setting data
+    return { xAxis, series };
+  }, []);
+
+  // New data goes to the chart that is there, with an animation
+  useEffect(() => {
+    if (result) {
+      result.xAxis.data.setAll(data);
+      result.series.data.setAll(data);
+    }
+  }, [result, data]);
+
+  return <div ref={ref} style={{ width: "100%", height: "500px" }}></div>;
+}
+```
+
+## A chart from a JSON config
+
+`<AmChart>` builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/), with no chart code:
+
+```typescript
+import { AmChart } from "@amcharts/amcharts5-react";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+
+<AmChart
+  config={config}
+  themes={[am5themes_Animated]}
+  style={{ height: "500px" }}
+  onReady={({ root, chart }) => { /* the chart is built */ }}
+/>
+```
+
+| Prop | What it is |
+| --- | --- |
+| `config` | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again; the same content written inline on every render does not. |
+| `src` | A URL to load the config from, used when there is no `config`. |
+| `themes` | Theme classes, e.g. `[am5themes_Animated]`. Themes are not part of a config. |
+| `renderer` | `"svg"` draws the chart as SVG; the default is canvas. |
+| `onReady` | Called with `{ root, chart }` when the chart is built. |
+| `onError` | Called when it could not be built. |
+| `id`, `className`, `style` | For the chart's element. Without a height, it is 400 pixels high. |
+
+It is the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/): a `ref` on it gives that element.
+
+## Server rendering
+
+Both work in pages rendered on a server: the library is loaded in the browser only. See [Next.js](https://www.amcharts.com/docs/v5/getting-started/integrations/next-js/) and [React Router](https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-remix/).
+
+## License
+
+With a commercial license, call `am5.addLicense()` once when the app starts, e.g. in `main.jsx`, before any chart is made. Not in your chart function: a chart decides on the logo when its root is made.
+
+## Without the package
+
+To manage the chart yourself, create the root in an effect and dispose it in the effect's cleanup:
+
+```typescript
+import { useLayoutEffect, useRef } from "react";
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+
+function Chart({ data }) {
+  const chartdiv = useRef(null);
+
+  useLayoutEffect(() => {
+    const root = am5.Root.new(chartdiv.current);
+
+    root.setThemes([am5themes_Animated.new(root)]);
+
+    const chart = root.container.children.push(
+      am5xy.XYChart.new(root, {})
+    );
+
+    // ... axes, series and data, as above
 
     return () => {
       root.dispose();
     };
-  }, \[\]);
+  }, [data]);
 
-  return (
-    <div id="chartdiv" style={{ width: "500px", height: "500px" }}></div>
-  );
+  return <div ref={chartdiv} style={{ width: "100%", height: "500px" }}></div>;
 }
+
 export default Chart;
-
-You can now import and use the `Chart` component inside of `src/App.jsx`:
-
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Chart from './Chart';
-import './App.css';
-
-function App() {
-  return (
-    <>
-      <Chart />
-    </>
-  )
-}
-
-export default App
-
-## Updating the chart
-
-You can update the chart by storing the amCharts objects inside of a `useRef`, and then using `useLayoutEffect` multiple times to update it:
-
-import { useRef, useLayoutEffect } from 'react';
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5xy from "@amcharts/amcharts5/xy";
-import am5themes\_Animated from "@amcharts/amcharts5/themes/Animated";
-
-function Chart(props) {
-  const chartRef = useRef(null);
-
-  // Creates the chart, this code only runs one time
-  useLayoutEffect(() => {
-    let root = am5.Root.new("chartdiv");
-
-    root.setThemes(\[
-      am5themes\_Animated.new(root)
-    \]);
-
-    let chart = root.container.children.push(
-      am5xy.XYChart.new(root, {
-        panY: false,
-        layout: root.verticalLayout
-      })
-    );
-
-    // Define data
-    let data = \[{
-      category: "Research",
-      value1: 1000,
-      value2: 588
-    }, {
-      category: "Marketing",
-      value1: 1200,
-      value2: 1800
-    }, {
-      category: "Sales",
-      value1: 850,
-      value2: 1230
-    }\];
-
-    // Create Y-axis
-    let yAxis = chart.yAxes.push(
-      am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {})
-      })
-    );
-
-    // Create X-Axis
-    let xAxis = chart.xAxes.push(
-      am5xy.CategoryAxis.new(root, {
-    renderer: am5xy.AxisRendererX.new(root, {}),
-        categoryField: "category"
-      })
-    );
-    xAxis.data.setAll(data);
-
-    // Create series
-    let series1 = chart.series.push(
-      am5xy.ColumnSeries.new(root, {
-        name: "Series",
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueYField: "value1",
-        categoryXField: "category"
-      })
-    );
-    series1.data.setAll(data);
-
-    let series2 = chart.series.push(
-      am5xy.ColumnSeries.new(root, {
-        name: "Series",
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueYField: "value2",
-        categoryXField: "category"
-      })
-    );
-    series2.data.setAll(data);
-
-    // Add legend
-    let legend = chart.children.push(am5.Legend.new(root, {}));
-    legend.data.setAll(chart.series.values);
-
-    // Add cursor
-    chart.set("cursor", am5xy.XYCursor.new(root, {}));
-
-    chartRef.current = chart;
-
-    return () => {
-      root.dispose();
-    };
-  }, \[\]);
-
-  // When the paddingRight prop changes it will update the chart
-  useLayoutEffect(() => {
-      chartRef.current.set("paddingRight", props.paddingRight);
-  }, \[props.paddingRight\]);
-
-  return (
-    <div id="chartdiv" style={{ width: "500px", height: "500px" }}></div>
-  );
-}
-export default Chart;
-
-And then you can pass in props to the Chart component:
-
-<Chart paddingRight={20} />
+```
 
 ## Examples
+
+Example apps for Vite, Next.js, React Router and Astro are [on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations/react/examples).
+
+The sandboxes below create the chart without the package.
 
 ### Simple chart
 

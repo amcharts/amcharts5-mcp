@@ -2,7 +2,7 @@
 title: "WordCloud"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/wordcloud/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A word cloud: words sized by their values, from `data` or counted in `text`.

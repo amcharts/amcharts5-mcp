@@ -1,7 +1,7 @@
 ---
 title: "object"
 type: "namespace"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Helpers exported as `am5.object`.

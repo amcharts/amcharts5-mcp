@@ -2,7 +2,7 @@
 title: "PixelMapSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pixelmapseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Shows the polygons of a map as a grid of pixels.

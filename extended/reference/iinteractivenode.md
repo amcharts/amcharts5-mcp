@@ -2,7 +2,7 @@
 title: "IInteractiveNode"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iinteractivenode/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A display object as the interaction code sees it.

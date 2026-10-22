@@ -1,7 +1,7 @@
 ---
 title: "ease.byName"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Returns the easing function called `name` (`"linear"`, `"quad"`, `"cubic"`, `"exp"`, `"sine"`, `"circle"`, `"bounce"` or `"elastic"`), eased in, out or both ways. An unknown name gives `linear`.

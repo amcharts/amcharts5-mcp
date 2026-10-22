@@ -2,7 +2,7 @@
 title: "Flow"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/flow/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Base class for the flow series: `Sankey`, `Chord` and `ArcDiagram`.

@@ -2,7 +2,7 @@
 title: "BeginGroup"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/begingroup/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Opens a named group of the shapes that follow. Draws nothing; SVG writes it as a `<g>`.

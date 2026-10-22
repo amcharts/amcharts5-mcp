@@ -1,6 +1,6 @@
 {
   "name": "@amcharts/amcharts5-mcp",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "mcpName": "io.github.amcharts/amcharts5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
   "type": "module",
@@ -58,7 +58,7 @@
     "zod": "^3.25 || ^4.0"
   },
   "devDependencies": {
-    "@amcharts/amcharts5": "5.21.2",
+    "@amcharts/amcharts5": "5.21.3",
     "agents": "^0.28.1",
     "jsdom": "^29.0.0",
     "turndown": "^7.2.2",

@@ -225,7 +225,7 @@ Once connected, your AI assistant can:
 - **"How do I format date axis labels?"** → AI calls `search_all("date axis label format")`
 - **"Show me the Sankey diagram example"** → AI calls `get_example("examples/flow/sankey-diagram")`
 - **"What settings does XYChart support?"** → AI calls `get_doc("reference/xychart")`
-- **"How do I integrate with React?"** → AI calls `get_doc("getting-started/integrations/react")`
+- **"How do I integrate with React?"** → AI calls `get_doc("getting-started/integrations/react")`, which covers the `@amcharts/amcharts5-react` package
 - **"What chart types are available?"** → AI calls `list_chart_types()`
 - **"Map the current US congressional districts"** → AI calls `list_geodata("congressional whole country")`
 
@@ -233,7 +233,7 @@ Once connected, your AI assistant can:
 
 The server includes **1,800+ documents**:
 
-- **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides (React, Angular, Vue, Next.js, Svelte, and more)
+- **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides for amCharts' React, Vue, Angular, Svelte and React Native packages (with Next.js, Nuxt, SvelteKit, React Router and Remix 3)
 - **290+ code examples** — working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more
 - **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), events, properties, data item fields, the inheritance chain and the import line
 - **670+ geodata entries** — every map in `@amcharts/amcharts5-geodata`, for `list_geodata`

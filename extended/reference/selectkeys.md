@@ -2,7 +2,7 @@
 title: "SelectKeys"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/selectkeys/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Selects all the keys of T which have a value of U.

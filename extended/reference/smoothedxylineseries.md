@@ -2,7 +2,7 @@
 title: "SmoothedXYLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/smoothedxylineseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A line series drawn as a smooth curve that can run in any direction, for XY (scatter) charts.

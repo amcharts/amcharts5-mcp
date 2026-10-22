@@ -2,7 +2,7 @@
 title: "RadialLabel"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/radiallabel/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A label placed around a center at an angle and radius, such as a pie slice's label. It can also curve along the arc (`textType`).

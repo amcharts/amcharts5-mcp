@@ -2,7 +2,7 @@
 title: "DataProcessor"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/dataprocessor/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Converts data values, such as string dates and numbers, as data is added to a component.

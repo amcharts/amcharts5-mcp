@@ -2,7 +2,7 @@
 title: "TypicalPrice"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/typicalprice/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Typical Price indicator: `field`, by default the typical price (`"hlc/3"`, the average of high, low and close), averaged over `period`. Drawn in a panel of its own.

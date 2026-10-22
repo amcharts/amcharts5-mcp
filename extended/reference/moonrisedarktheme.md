@@ -2,7 +2,7 @@
 title: "MoonriseDarkTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/moonrisedarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 "Moonrise Dark": the earthy `Moonrise` palette on a dark background, with neutral dark interface colors. Its darkest colors are lightened to show on the background. Use it in place of `Moonrise`.

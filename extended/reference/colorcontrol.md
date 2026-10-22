@@ -2,7 +2,7 @@
 title: "ColorControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/colorcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A control with a dropdown for picking a color and, with `useOpacity`, an opacity.

@@ -46,9 +46,18 @@ const PROSE_STEPS = [
 
 // Splits content into prose and fenced code blocks (odd indices are code).
 // A demo's code can hold any of the patterns below in a string or template
-// literal, and must not be rewritten.
+// literal, and must not be rewritten. A fence closes with the same run of
+// backticks it opened with (the docs scraper writes 4+ for code holding ```).
 function splitFences(content) {
-  return content.split(/(^[ \t]*```[^\n]*\n[\s\S]*?\n[ \t]*```[ \t]*\r?(?=\n|$))/m);
+  const parts = [];
+  const re = /^[ \t]*(`{3,})[^\n]*\n[\s\S]*?\n[ \t]*\1[ \t]*\r?(?=\n|$)/gm;
+  let last = 0;
+  for (const m of content.matchAll(re)) {
+    parts.push(content.slice(last, m.index), m[0]);
+    last = m.index + m[0].length;
+  }
+  parts.push(content.slice(last));
+  return parts;
 }
 
 function processFile(filePath) {

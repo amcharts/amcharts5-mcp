@@ -2,7 +2,7 @@
 title: "PolygonEvent"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/polygonevent/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 TypeScript: not exported by name from the package.

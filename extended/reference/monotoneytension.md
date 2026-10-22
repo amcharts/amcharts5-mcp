@@ -2,7 +2,7 @@
 title: "MonotoneYTension"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/monotoneytension/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 ## Import

@@ -2,7 +2,7 @@
 title: "FunnelSlice"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/funnelslice/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A slice of a `FunnelSeries` or `PyramidSeries`: a trapezoid whose sides can curve. The links between slices are also drawn with it.

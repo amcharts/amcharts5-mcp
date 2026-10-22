@@ -2,7 +2,7 @@
 title: "ITextLayoutState"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itextlayoutstate/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Layout results that belong to the text's display object. Layout reads the current values and updates them in place.

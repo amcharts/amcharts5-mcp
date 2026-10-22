@@ -2,7 +2,7 @@
 title: "EndFill"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/endfill/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 An `Op` subclass.

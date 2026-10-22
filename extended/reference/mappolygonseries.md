@@ -2,7 +2,7 @@
 title: "MapPolygonSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/mappolygonseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 A map series of polygons, such as countries or regions.

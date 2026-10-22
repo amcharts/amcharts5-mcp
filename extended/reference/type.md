@@ -2,7 +2,7 @@
 title: "Type"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/type/"
-generatedFrom: "@amcharts/amcharts5@5.21.2"
+generatedFrom: "@amcharts/amcharts5@5.21.3"
 ---
 
 Represents a type for all available JavaScript variable types.
