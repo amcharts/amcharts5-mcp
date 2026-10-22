@@ -33,6 +33,11 @@ const geodataHint = (query) => (GEODATA_QUERY_RE.test(query) ? GEODATA_HINT : ""
 export function registerTools(server, content) {
   const { docs, extendedDocs, examples } = content;
 
+  // Directories read a tool's display name from the top-level `title` or from
+  // `annotations.title` (Claude's directory portal): give both, from one title.
+  const registerTool = (name, config, handler) =>
+    server.registerTool(name, { ...config, annotations: { title: config.title, ...config.annotations } }, handler);
+
   // Resolve any identifier a search result prints — "skill/SKILL.md",
   // "skill/xy", "SKILL", "xy.md", "extended/charts/xy-chart/cursor",
   // "charts/xy-chart/cursor", "reference/xycursor" — to a doc. Search results
@@ -54,7 +59,7 @@ export function registerTools(server, content) {
   }
 
   // --- Tool: list_chart_types ---
-  server.registerTool(
+  registerTool(
     "list_chart_types",
     {
       title: "List chart types",
@@ -82,7 +87,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_chart_reference ---
-  server.registerTool(
+  registerTool(
     "get_chart_reference",
     {
       title: "Get chart reference",
@@ -104,7 +109,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_core_reference ---
-  server.registerTool(
+  registerTool(
     "get_core_reference",
     {
       title: "Get core reference (setup, themes, pitfalls)",
@@ -122,7 +127,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: search_docs ---
-  server.registerTool(
+  registerTool(
     "search_docs",
     {
       title: "Search docs",
@@ -186,7 +191,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_section ---
-  server.registerTool(
+  registerTool(
     "get_section",
     {
       title: "Get doc section",
@@ -220,7 +225,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_quick_start ---
-  server.registerTool(
+  registerTool(
     "get_quick_start",
     {
       title: "Get quick-start template",
@@ -279,7 +284,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: search_all ---
-  server.registerTool(
+  registerTool(
     "search_all",
     {
       title: "Search all content",
@@ -309,7 +314,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_doc ---
-  server.registerTool(
+  registerTool(
     "get_doc",
     {
       title: "Get doc page",
@@ -339,7 +344,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_api_reference ---
-  server.registerTool(
+  registerTool(
     "get_api_reference",
     {
       title: "Get API reference",
@@ -393,7 +398,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: list_examples ---
-  server.registerTool(
+  registerTool(
     "list_examples",
     {
       title: "List examples",
@@ -438,7 +443,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_example ---
-  server.registerTool(
+  registerTool(
     "get_example",
     {
       title: "Get example",
@@ -463,7 +468,7 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: list_geodata ---
-  server.registerTool(
+  registerTool(
     "list_geodata",
     {
       title: "List geodata (map files)",

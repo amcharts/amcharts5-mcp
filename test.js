@@ -39,8 +39,13 @@ const tests = [
   // Step 1: List tools
   {
     send: { jsonrpc: "2.0", id: 2, method: "tools/list", params: {} },
-    check: (r) => r.result?.tools?.length === 12 ? `PASS (${r.result.tools.length} tools)` : `FAIL (${r.result?.tools?.length} tools)`,
-    label: "List tools (expect 12)",
+    check: (r) => {
+      const tools = r.result?.tools || [];
+      // Directories read the display name from `title` or `annotations.title`
+      const titled = tools.filter((t) => t.title && t.annotations?.title === t.title && t.annotations.readOnlyHint === true);
+      return tools.length === 12 && titled.length === 12 ? `PASS (12 tools, all titled)` : `FAIL (${tools.length} tools, ${titled.length} titled)`;
+    },
+    label: "List tools (expect 12, each with title and annotations.title)",
   },
   // Step 2: list_chart_types
   {
