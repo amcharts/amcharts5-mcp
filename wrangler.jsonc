@@ -43,5 +43,10 @@
     "logs": {
       "invocation_logs": false
     }
+  },
+  // OpenAI's plugin directory checks the domain by fetching this token from
+  // /.well-known/openai-apps-challenge. It is public by design.
+  "vars": {
+    "OPENAI_APPS_CHALLENGE": "s2nJ4ivIteCJDkWzZ_mB6cTUwe5yserrvm7IP8htaXE"
   }
 }
