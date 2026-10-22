@@ -90,6 +90,16 @@ export default {
   fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    // OpenAI's plugin directory verifies the domain by fetching this token
+    // (the OPENAI_APPS_CHALLENGE var in wrangler.jsonc): only the token, as
+    // plain text.
+    if (url.pathname === "/.well-known/openai-apps-challenge") {
+      const token = String(env.OPENAI_APPS_CHALLENGE || "").trim();
+      return token
+        ? new Response(token, { status: 200, headers: { "content-type": "text/plain; charset=utf-8" } })
+        : new Response("Not found", { status: 404 });
+    }
+
     if (url.pathname === "/mcp") {
       return AmCharts5MCP.serve("/mcp").fetch(request, env, ctx);
     }
