@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [Unreleased]
+
+### Added
+- **`plugin/`: an amCharts plugin for Anthropic's plugin directory.** It bundles the amCharts 5 skill with the hosted MCP server (`.mcp.json` → `https://mcp.amcharts.com/mcp`). The README is provider-neutral and summarizes the Privacy section.
+  - `npm run build:plugin` generates it from the skill submodule and package.json: `plugin.json` (version = package version), `.mcp.json`, `skills/amcharts5/` and `LICENSE`. `README.md` and `icon.png` are handwritten.
+  - `npm test` fails if the copy is stale.
+  - `claude plugin validate ./plugin --strict` passes.
+  - Not part of the npm package.
+
+### Changed
+- **Tool titles are also in `annotations.title`.** Claude's directory portal reads them from there. Each tool keeps its top-level `title`, written once through a `registerTool()` wrapper. The tools/list test requires both. Deployed to the hosted server on 2026-10-22.
+- **Tool and parameter descriptions state facts, with no instructions to the model,** as Claude's connector review criteria ask. The imperative cross-tool lines ("use X first", "read this first", "prefer …", "omit to …") and the all-caps emphasis are reworded, with the same meaning. Deployed to the hosted server on 2026-10-22.
+
 ## [1.9.0] - 2026-10-22
 
 ### Added
