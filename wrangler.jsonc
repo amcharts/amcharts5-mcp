@@ -33,7 +33,15 @@
       }
     ]
   },
+  // Console output (the library's error messages) is kept; per-request
+  // invocation logs are off. Their request metadata could include the
+  // cf-mcp-message header, in which the agents library forwards each MCP
+  // request body (tool arguments) to the Durable Object. See "Privacy" in
+  // README.md.
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "logs": {
+      "invocation_logs": false
+    }
   }
 }

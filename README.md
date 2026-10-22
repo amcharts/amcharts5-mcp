@@ -244,11 +244,22 @@ The server includes **1,800+ documents**:
 - **Read-only tools.** Every tool reads the bundled amCharts documentation and returns text. No tool writes files, runs commands or fetches URLs.
 - **The hosted endpoint has no authentication, by design.** `https://mcp.amcharts.com/mcp` serves the same public documentation as amcharts.com. There are no accounts, API keys, user data or write operations behind it.
   - It runs on Cloudflare Workers.
-  - MCP session state is kept in a Durable Object, as the MCP agents framework requires.
-  - Cloudflare's standard request logs are enabled. The server itself does not log tool arguments.
+  - MCP session state is kept in a Durable Object, as the MCP agents framework requires. It is deleted when the session ends, or 24 hours after its last request.
+  - Per-request logs (Workers invocation logs) are off. Only error messages are logged, and they hold no tool arguments. See "Privacy" below.
 - **Local install.** The npm package runs over stdio on your machine and reads only the content bundled in it; it makes no network requests. Its only runtime dependencies are `@modelcontextprotocol/sdk` and `zod`.
 - **Maintainer scripts.** The scripts in `scripts/` (the demo and docs scrapers, the API reference generator) are not part of the npm package and never run in the server.
 - **Reporting a vulnerability:** https://www.amcharts.com/report-vulnerability/
+
+## Privacy
+
+Neither the hosted server nor the npm package needs an account or asks for personal data.
+
+- **Hosted server** (`https://mcp.amcharts.com/mcp`):
+  - **What your AI app sends:** a search phrase, a chart type, a doc path. These are used only to build the answer, and are not logged or stored. A response is kept in the session's storage only until it has been delivered (so a dropped stream can resume), then deleted.
+  - **Session record:** when an AI app connects, the server keeps its MCP initialize message in the session's storage. That message holds what the app says about itself (its name and version, and whatever else it puts there), the protocol version and the app's MCP capabilities. All of the session's storage is deleted when the app ends the session, or 24 hours after its last request.
+  - **Logs:** the server keeps no request logs (Workers invocation logs are off). It runs on Cloudflare Workers, and Cloudflare processes each request, including its IP address, to deliver it. Error and warning messages are logged and kept for up to 7 days; they hold no request contents or tool arguments.
+- **npm package:** it runs on your computer over stdio and sends nothing to amCharts or anyone else.
+- **Policy and questions:** see the [amCharts privacy policy](https://www.amcharts.com/privacy-policy/), or write to contact@amcharts.com.
 
 ## License
 

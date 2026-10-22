@@ -44,6 +44,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Only the integration pages are re-scraped in this release. Many other pages carry hand-written version notes that the live site lacks, so a full re-scrape needs a three-way merge.
 - Two skill notes were checked against 5.21.3 and still hold: the `LinearGradient` `rotation` bug and the empty-`ColorSet` crash.
 
+- **Hosted server: idle sessions are deleted.**
+  - A session's Durable Object storage is deleted 24 hours after its last request. This covers the stored MCP initialize message (the AI app's name and version) and stream bookkeeping.
+  - Until now, it was deleted only when the app ended the session.
+  - The cleanup ends the session the way a client's `DELETE` does, so its ID gets 404 at once. Each request re-arms it.
+  - The `IDLE_TTL_SECONDS` var overrides the 24 hours, e.g. for tests.
+  - Tested with `wrangler dev`: busy sessions stay; idle ones answer 404 and their storage is empty.
+- **Hosted server: Workers invocation logs are off.** The `agents` library forwards each MCP request body to the Durable Object in the `cf-mcp-message` header, so per-request logs could hold tool arguments. Console output (errors and warnings) is still logged. A malformed legacy SSE message is now rejected (400) before the library would log its parse error, which can name fields from the request body.
+- **README:** a new "Privacy" section on what the hosted server keeps, and for how long; the Security section matches it.
+
 ### Note
 - 1.8.1 (the tool titles, annotations and registry entry above) was never published; it ships in 1.9.0.
 
