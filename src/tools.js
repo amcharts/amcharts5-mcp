@@ -10,6 +10,11 @@ import { z } from "zod";
 import { CHART_TYPE_MAP, extractImportBlock, lineMatchesQuery, rankContent, searchDocs } from "./content.js";
 import { listGeodata } from "./geodata.js";
 
+// Every tool only reads the bundled content (skill, docs, examples, reference,
+// geodata index): no writes, no network, no side effects, same answer for the
+// same input. Directories (Claude Connectors, OpenAI) check these hints.
+const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
+
 // User text echoed back in a reply, capped so a huge query can't balloon it
 const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
 
@@ -42,10 +47,14 @@ export function registerTools(server, content) {
   }
 
   // --- Tool: list_chart_types ---
-  server.tool(
+  server.registerTool(
     "list_chart_types",
-    "List all amCharts 5 chart types with their categories and reference file names",
-    {},
+    {
+      title: "List chart types",
+      description: "List all amCharts 5 chart types with their categories and reference file names",
+      inputSchema: {},
+      annotations: READ_ONLY,
+    },
     async () => {
       const types = {};
       for (const [alias, ref] of Object.entries(CHART_TYPE_MAP)) {
@@ -66,10 +75,14 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_chart_reference ---
-  server.tool(
+  server.registerTool(
     "get_chart_reference",
-    "Get the full reference documentation for a specific amCharts 5 chart type. Use list_chart_types first to see available types.",
-    { chartType: z.string().describe("Chart type keyword, e.g. 'pie', 'sankey', 'xy', 'treemap', 'map', 'radar', 'stock', 'gantt', 'venn', 'wordcloud', 'timeline', 'flow', 'hierarchy', 'ui-elements'") },
+    {
+      title: "Get chart reference",
+      description: "Get the full reference documentation for a specific amCharts 5 chart type. Use list_chart_types first to see available types.",
+      inputSchema: { chartType: z.string().describe("Chart type keyword, e.g. 'pie', 'sankey', 'xy', 'treemap', 'map', 'radar', 'stock', 'gantt', 'venn', 'wordcloud', 'timeline', 'flow', 'hierarchy', 'ui-elements'") },
+      annotations: READ_ONLY,
+    },
     async ({ chartType }) => {
       const key = CHART_TYPE_MAP[chartType.toLowerCase()] || chartType.toLowerCase();
       const doc = docs.get(key);
@@ -84,10 +97,14 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_core_reference ---
-  server.tool(
+  server.registerTool(
     "get_core_reference",
-    "Get the core amCharts 5 reference (SKILL.md) — covers setup, colors, themes, legends, tooltips, events, data, adapters, disposal, and common pitfalls. Read this first before any chart-specific reference.",
-    {},
+    {
+      title: "Get core reference (setup, themes, pitfalls)",
+      description: "Get the core amCharts 5 reference (SKILL.md) — covers setup, colors, themes, legends, tooltips, events, data, adapters, disposal, and common pitfalls. Read this first before any chart-specific reference.",
+      inputSchema: {},
+      annotations: READ_ONLY,
+    },
     async () => {
       const doc = docs.get("SKILL");
       if (!doc) {
@@ -98,13 +115,17 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: search_docs ---
-  server.tool(
+  server.registerTool(
     "search_docs",
-    "Search the curated amCharts 5 skill docs (SKILL.md + chart references) for a keyword or topic, returning matching sections ranked by relevance. NOTE: by default this scans ONLY the skill layer. The per-class API reference and per-setting DEFAULTS (e.g. tooltip background cornerRadius, axis tick `visible` default, cursor line strokeDasharray) live in the extended docs — pass scope:'all' here (which also searches the code examples), or use search_all / get_api_reference / get_doc, to reach them.",
     {
-      query: z.string().describe("Search query, e.g. 'legend', 'axis label rotation', 'tooltip format', 'data processor'"),
-      maxResults: z.number().optional().default(5).describe("Maximum number of results to return (default 5)"),
-      scope: z.enum(["skill", "all"]).optional().default("skill").describe("'skill' (default) searches only the curated skill docs; 'all' also searches the extended docs / per-class API reference where settings and defaults live, and the code examples."),
+      title: "Search docs",
+      description: "Search the curated amCharts 5 skill docs (SKILL.md + chart references) for a keyword or topic, returning matching sections ranked by relevance. NOTE: by default this scans ONLY the skill layer. The per-class API reference and per-setting DEFAULTS (e.g. tooltip background cornerRadius, axis tick `visible` default, cursor line strokeDasharray) live in the extended docs — pass scope:'all' here (which also searches the code examples), or use search_all / get_api_reference / get_doc, to reach them.",
+      inputSchema: {
+        query: z.string().describe("Search query, e.g. 'legend', 'axis label rotation', 'tooltip format', 'data processor'"),
+        maxResults: z.number().optional().default(5).describe("Maximum number of results to return (default 5)"),
+        scope: z.enum(["skill", "all"]).optional().default("skill").describe("'skill' (default) searches only the curated skill docs; 'all' also searches the extended docs / per-class API reference where settings and defaults live, and the code examples."),
+      },
+      annotations: READ_ONLY,
     },
     async ({ query, maxResults, scope }) => {
       const results = searchDocs(content, query, maxResults, scope);
@@ -158,12 +179,16 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_section ---
-  server.tool(
+  server.registerTool(
     "get_section",
-    "Get the FULL text of one section of a doc by heading — use it to expand a truncated search_docs / search_all result. `file` accepts the source label exactly as search results print it ('skill/SKILL.md', 'skill/xy', 'extended/charts/xy-chart/cursor', 'reference/xycursor') as well as a bare skill file name ('SKILL', 'xy', 'map').",
     {
-      file: z.string().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
-      heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'"),
+      title: "Get doc section",
+      description: "Get the FULL text of one section of a doc by heading — use it to expand a truncated search_docs / search_all result. `file` accepts the source label exactly as search results print it ('skill/SKILL.md', 'skill/xy', 'extended/charts/xy-chart/cursor', 'reference/xycursor') as well as a bare skill file name ('SKILL', 'xy', 'map').",
+      inputSchema: {
+        file: z.string().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
+        heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'"),
+      },
+      annotations: READ_ONLY,
     },
     async ({ file, heading }) => {
       const resolved = resolveDoc(file);
@@ -188,12 +213,16 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_quick_start ---
-  server.tool(
+  server.registerTool(
     "get_quick_start",
-    "Get a quick-start template for a specific chart type — a minimal working example ready to customize.",
     {
-      chartType: z.string().describe("Chart type, e.g. 'pie', 'line', 'bar', 'map', 'sankey', 'treemap'"),
-      format: z.enum(["html", "esm"]).optional().default("html").describe("Output format: 'html' for a full HTML page with CDN scripts, 'esm' for ES module imports"),
+      title: "Get quick-start template",
+      description: "Get a quick-start template for a specific chart type — a minimal working example ready to customize.",
+      inputSchema: {
+        chartType: z.string().describe("Chart type, e.g. 'pie', 'line', 'bar', 'map', 'sankey', 'treemap'"),
+        format: z.enum(["html", "esm"]).optional().default("html").describe("Output format: 'html' for a full HTML page with CDN scripts, 'esm' for ES module imports"),
+      },
+      annotations: READ_ONLY,
     },
     async ({ chartType, format }) => {
       const key = CHART_TYPE_MAP[chartType.toLowerCase()] || chartType.toLowerCase();
@@ -242,12 +271,16 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: search_all ---
-  server.tool(
+  server.registerTool(
     "search_all",
-    "Search across ALL amCharts 5 content: skill references, full documentation, and code examples. Use this for broad searches across everything.",
     {
-      query: z.string().describe("Search query, e.g. 'react integration', 'date axis formatting', 'stacked bar example'"),
-      maxResults: z.number().optional().default(10).describe("Maximum results (default 10)"),
+      title: "Search all content",
+      description: "Search across ALL amCharts 5 content: skill references, full documentation, and code examples. Use this for broad searches across everything.",
+      inputSchema: {
+        query: z.string().describe("Search query, e.g. 'react integration', 'date axis formatting', 'stacked bar example'"),
+        maxResults: z.number().optional().default(10).describe("Maximum results (default 10)"),
+      },
+      annotations: READ_ONLY,
     },
     async ({ query, maxResults }) => {
       const { total, results } = rankContent(content, query, { maxResults });
@@ -268,11 +301,15 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_doc ---
-  server.tool(
+  server.registerTool(
     "get_doc",
-    "Get a full documentation page — an extended doc by path, or a skill file by 'skill/<name>'. Accepts the source label exactly as search_docs / search_all print it. Use search_all first to find the right path.",
     {
-      path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API), or a skill file such as 'skill/SKILL.md' / 'skill/xy'. For a class's full settings + defaults prefer get_api_reference."),
+      title: "Get doc page",
+      description: "Get a full documentation page — an extended doc by path, or a skill file by 'skill/<name>'. Accepts the source label exactly as search_docs / search_all print it. Use search_all first to find the right path.",
+      inputSchema: {
+        path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API), or a skill file such as 'skill/SKILL.md' / 'skill/xy'. For a class's full settings + defaults prefer get_api_reference."),
+      },
+      annotations: READ_ONLY,
     },
     async ({ path: docPath }) => {
       const key = String(docPath || "").replace(/^\/|\/$/g, "").replace(/\.md$/, "");
@@ -294,12 +331,16 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_api_reference ---
-  server.tool(
+  server.registerTool(
     "get_api_reference",
-    "Get the per-class API reference for an amCharts 5 class — the class page PLUS its settings table (with DEFAULTS) and, optionally, its private/read-only settings. This is the authoritative source for exact setting names and default values (e.g. tooltip background cornerRadius, axis tick `visible` default). Pass a class name in any casing, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'AxisRendererX'.",
     {
-      className: z.string().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored."),
-      includePrivate: z.boolean().optional().default(false).describe("Also include the private (read-only / internal) settings table. Default false."),
+      title: "Get API reference",
+      description: "Get the per-class API reference for an amCharts 5 class — the class page PLUS its settings table (with DEFAULTS) and, optionally, its private/read-only settings. This is the authoritative source for exact setting names and default values (e.g. tooltip background cornerRadius, axis tick `visible` default). Pass a class name in any casing, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'AxisRendererX'.",
+      inputSchema: {
+        className: z.string().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored."),
+        includePrivate: z.boolean().optional().default(false).describe("Also include the private (read-only / internal) settings table. Default false."),
+      },
+      annotations: READ_ONLY,
     },
     async ({ className, includePrivate }) => {
       // Normalize: "XYCursor" / "xy-cursor" / "XY Cursor" → "xycursor"
@@ -344,11 +385,15 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: list_examples ---
-  server.tool(
+  server.registerTool(
     "list_examples",
-    "List all available amCharts 5 code examples, optionally filtered by category.",
     {
-      category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid'. Omit to list all categories."),
+      title: "List examples",
+      description: "List all available amCharts 5 code examples, optionally filtered by category.",
+      inputSchema: {
+        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid'. Omit to list all categories."),
+      },
+      annotations: READ_ONLY,
     },
     async ({ category }) => {
       if (!category) {
@@ -385,11 +430,15 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: get_example ---
-  server.tool(
+  server.registerTool(
     "get_example",
-    "Get the full code for a specific amCharts 5 example/demo. Use list_examples or search_all to find the path.",
     {
-      path: z.string().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map'"),
+      title: "Get example",
+      description: "Get the full code for a specific amCharts 5 example/demo. Use list_examples or search_all to find the path.",
+      inputSchema: {
+        path: z.string().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map'"),
+      },
+      annotations: READ_ONLY,
     },
     async ({ path: exPath }) => {
       const key = exPath.replace(/^\/|\/$/g, "").replace(/\.md$/, "");
@@ -406,11 +455,15 @@ export function registerTools(server, content) {
   );
 
   // --- Tool: list_geodata ---
-  server.tool(
+  server.registerTool(
     "list_geodata",
-    "List amCharts 5 geodata (map) files with each one's CDN path, script global name and ES module import: world maps, continents, every country map, regional packs (US states and counties, Canada, Mexico) and the US congressional-district packs, which are versioned per Congress (congressional120 = 120th Congress is the newest). Also the data/countries2 and lang/* helper files. Use it before writing map code instead of guessing a file or global name.",
     {
-      filter: z.string().optional().describe("Words that must all match (case-insensitive) a map's path, label, group, ISO code or pack, e.g. 'germany', 'FR', 'region/canada', 'usa counties', 'congressional120', 'congressional whole country', 'continents', 'countries2'. A file or global name ('usaCongressionalLow', 'am5geodata_worldLow') works too. Omit for an overview."),
+      title: "List geodata (map files)",
+      description: "List amCharts 5 geodata (map) files with each one's CDN path, script global name and ES module import: world maps, continents, every country map, regional packs (US states and counties, Canada, Mexico) and the US congressional-district packs, which are versioned per Congress (congressional120 = 120th Congress is the newest). Also the data/countries2 and lang/* helper files. Use it before writing map code instead of guessing a file or global name.",
+      inputSchema: {
+        filter: z.string().optional().describe("Words that must all match (case-insensitive) a map's path, label, group, ISO code or pack, e.g. 'germany', 'FR', 'region/canada', 'usa counties', 'congressional120', 'congressional whole country', 'continents', 'countries2'. A file or global name ('usaCongressionalLow', 'am5geodata_worldLow') works too. Omit for an overview."),
+      },
+      annotations: READ_ONLY,
     },
     async ({ filter }) => ({ content: [{ type: "text", text: listGeodata(content.geodata, filter) }] })
   );

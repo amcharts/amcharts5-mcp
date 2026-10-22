@@ -1,20 +1,35 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.amcharts/amcharts5",
+  "title": "amCharts 5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
+  "websiteUrl": "https://www.amcharts.com/docs/v5/ai/mcp/",
+  "icons": [
+    {
+      "src": "https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-310x310.png",
+      "mimeType": "image/png",
+      "sizes": ["558x558"]
+    }
+  ],
   "repository": {
     "url": "https://github.com/amcharts/amcharts5-mcp",
     "source": "github"
   },
-  "version": "1.8.0",
+  "version": "1.8.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@amcharts/amcharts5-mcp",
-      "version": "1.8.0",
+      "version": "1.8.1",
       "transport": {
         "type": "stdio"
       }
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.amcharts.com/mcp"
     }
   ]
 }

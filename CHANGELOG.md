@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.8.1] - 2026-10-22
+
+### Added
+- **Tool titles and annotations, for the agent directories** (Claude Connectors, OpenAI). Every one of the 12 tools now has a human-readable `title`, e.g. "Search docs", "Get core reference (setup, themes, pitfalls)" or "List geodata (map files)". Each also carries `readOnlyHint: true`, `destructiveHint: false`, `idempotentHint: true` and `openWorldHint: false`: every tool only reads the bundled content, with no writes and no network calls. Tools are registered with `server.registerTool()`, so `title` is top-level in `tools/list`. The Worker shares the same registration.
+- **MCP registry entry:** `server.json` lists the hosted server (`remotes`: streamable HTTP at `https://mcp.amcharts.com/mcp`) next to the npm stdio package. It also gains a display `title` ("amCharts 5"), a `websiteUrl` (the amCharts MCP docs page) and an icon (the amcharts.com tile, 558×558 PNG).
+
 ## [1.8.0] - 2026-10-18
 
 ### Added
