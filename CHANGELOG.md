@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
-## [Unreleased]
+## [1.9.1] - 2026-10-23
 
 ### Added
 - **`plugin/`: an amCharts plugin for Anthropic's plugin directory.** It bundles the amCharts 5 skill with the hosted MCP server (`.mcp.json` → `https://mcp.amcharts.com/mcp`). The README is provider-neutral and summarizes the Privacy section.
@@ -15,10 +15,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `npm test` fails if the copy is stale.
   - `claude plugin validate ./plugin --strict` passes.
   - Not part of the npm package.
+- **`npm run build:openai`: the same plugin for OpenAI's plugin directory** (ChatGPT, Codex), in the portable Agent Plugins format.
+  - It writes `dist/openai-plugin/` and `dist/openai-plugin-<version>.zip` for the upload. dist/ is gitignored.
+  - Contents: a root `plugin.json`, `mcp.json` (streamable HTTP), the skill, README, LICENSE and `assets/icon.png`.
+  - `plugin.json` carries the listing (`extensions["com.openai"].interface`), the review test cases (5 positive, 3 negative) and the release notes. All of it comes from `scripts/openai-listing.json`.
+  - The script fails if a listing field breaks OpenAI's limits, a test case is incomplete, or a listing URL doesn't answer 200. It warns while the review's demo video URL is missing.
+  - Both manifests validate against the Agent Plugins 1.0.0 schemas.
+
+- **JSON configs: a new skill reference.** `references/json.md` (`get_chart_reference("json")`) teaches the exact JsonParser format:
+  - `type` / `settings` / `properties` / `children` / `refs`, templates, data, `#refs` and escaping, colors, percents and layouts, `@root` / `@colors`, bullets, maps (geodata globals, `projectionName`, heat rules), root and locales;
+  - what a config can't hold, and a table of common mistakes;
+  - one complete config each for XY, pie, Sankey and treemap, each built in the browser on 5.21.3 and opened in Chart Maker;
+  - a "Maps" section (`get_section("json", "Maps")`): a world map colored by value, and a few countries highlighted through their data rows or with a second series using `include`. Each map config was also built through `<am5-chart>`;
+  - delivery: `<am5-chart>`, Chart Maker links (also `gz.`), the framework packages' `config` prop.
+
+  It comes from a test where an assistant using the plugin invented `{ "chart": …, "series": … }`, which Chart Maker rejected. SKILL.md, every chart reference and `cursorrules` (a compact section) point to it. The `<am5-chart>` element page points to its complete configs and maps.
+- **Patterns per column.** These came from an eval where a model set `templateField` on the series, and from a ChatGPT answer whose stripes matched the column color:
+  - `references/xy.md` "Different pattern per column": a pattern per data row through `templateField` on `series.columns.template`, plus the pitfalls, each checked in a browser on 5.21.3:
+    - pattern color vs. what shows in the gaps;
+    - no `color` draws black;
+    - `angle`, not `rotation`, for LinePattern lines;
+    - patterns made in adapters;
+    - the JSON row form.
+  - A new example, `column-bar/column-chart-with-patterns`.
+  - SKILL.md Common pitfall 42: `templateField` goes on the template, not on the series.
+- **The npm package's 62 JSON configs, served as examples** (`list_examples("json-configs")`, `get_example("json-configs/flow-sankey")`).
+  - `npm run build:json-configs` makes one page per config from the pinned `@amcharts/amcharts5` (`examples/<name>/config.json`), listing the CDN scripts it needs. Gantt needs `xy.js` and `plugins/colorPicker.js`, which the npm index doesn't list.
+  - All 62 parse in the browser from only their listed scripts.
+  - `check-examples` checks that each is valid JSON with a top-level `type`.
+- **README: the amCharts 5 docs are also on Context7** (`/amcharts/amcharts5`).
+- **amCharts.com addresses work in the path-taking tools:**
+  - `get_doc`, `get_section` and `get_api_reference` take a docs URL (`https://www.amcharts.com/docs/v5/concepts/events/#…`) or a site path (`/docs/v5/…`);
+  - `get_example` takes a demo page URL (`https://www.amcharts.com/demos/sankey-diagram/`), a path without `examples/`, or a unique example name.
 
 ### Changed
+- **Long references come as an overview first.** In an eval, the references were half of all the input tokens an answer used, because every later step re-reads them.
+  - `get_chart_reference` and `get_core_reference` answer a file longer than 12,000 characters with its first parts, in order, up to 12,000 characters, then a list of the other parts with their sizes. Today these files are SKILL.md, map, xy, json, stock, pie, hierarchy, radar, flow, wordcloud, timeline and gantt. SKILL.md goes from 104k to 13k characters, and map from 95k to 14k.
+  - A part is a `##` section or, in a section over 6,000 characters, one of its `###` subsections. The worked examples are always listed, not shown.
+  - `full: true` returns the whole file, as before.
+  - `get_section` now also takes a `###` subsection heading and returns just that subsection. An exact `##` heading comes first, then an exact `###` heading in a section the overviews split, then the old substring match on `##` headings, then on `###`.
+  - `get_api_reference` is unchanged: only 2 of 854 classes pass 12,000 characters, and their settings table can't be split.
+- **Search indexes a JSON config page by its description, tags and class names, not by the config.** The configs repeat setting names dozens of times, and the boilerplate every config page shares would outrank the skill's JSON reference. Each page is still returned whole. Tests check that `search_all("amCharts JSON config")` finds the reference first and that setting searches still reach the API reference.
 - **Tool titles are also in `annotations.title`.** Claude's directory portal reads them from there. Each tool keeps its top-level `title`, written once through a `registerTool()` wrapper. The tools/list test requires both. Deployed to the hosted server on 2026-10-22.
 - **Tool and parameter descriptions state facts, with no instructions to the model,** as Claude's connector review criteria ask. The imperative cross-tool lines ("use X first", "read this first", "prefer …", "omit to …") and the all-caps emphasis are reworded, with the same meaning. Deployed to the hosted server on 2026-10-22.
+- **The `maps/map-with-patterns` example draws its line patterns with `angle`, not `rotation`.** `rotation` turned the whole pattern tile, and its seams showed as broken lines.
 
 ## [1.9.0] - 2026-10-22
 

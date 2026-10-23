@@ -1,6 +1,6 @@
 {
   "name": "@amcharts/amcharts5-mcp",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "mcpName": "io.github.amcharts/amcharts5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
   "type": "module",
@@ -26,6 +26,8 @@
     "build:reference": "node scripts/generate-reference.cjs",
     "build:geodata": "node scripts/generate-geodata-index.cjs",
     "build:plugin": "node scripts/build-plugin.js",
+    "build:openai": "node scripts/build-openai-plugin.js",
+    "build:json-configs": "node scripts/build-json-configs.js",
     "dev:worker": "npm run build:worker && wrangler dev",
     "deploy": "npm run build:worker && wrangler deploy",
     "prepublishOnly": "node -e \"const fs=require('fs');if(!fs.existsSync('content'))fs.mkdirSync('content');fs.cpSync('amcharts5-skill/amcharts5-skill/SKILL.md','content/SKILL.md');for(const f of fs.readdirSync('amcharts5-skill/amcharts5-skill/references').filter(x=>x.endsWith('.md')))fs.cpSync('amcharts5-skill/amcharts5-skill/references/'+f,'content/'+f)\"",

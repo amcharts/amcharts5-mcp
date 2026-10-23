@@ -154,6 +154,70 @@ const tests = [
     },
     label: "get_quick_start('pie','html') — no framework note",
   },
+  // Step 9f: amcharts.com addresses work where a doc path or example path goes
+  {
+    send: { jsonrpc: "2.0", id: 44, method: "tools/call", params: { name: "get_doc", arguments: { path: "https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Formatting dates") ? "PASS" : "FAIL",
+    label: "get_doc(full amcharts.com docs URL)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 45, method: "tools/call", params: { name: "get_doc", arguments: { path: "/docs/v5/concepts/events/#Global_events" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Events") ? "PASS" : "FAIL",
+    label: "get_doc(site path with docs/v5 and an anchor)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 46, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "https://www.amcharts.com/docs/v5/reference/xycursor/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# XYCursor") ? "PASS" : "FAIL",
+    label: "get_api_reference(reference page URL)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 47, method: "tools/call", params: { name: "get_example", arguments: { path: "https://www.amcharts.com/demos/sankey-diagram/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Sankey Diagram\n") ? "PASS" : "FAIL",
+    label: "get_example(demo page URL)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 48, method: "tools/call", params: { name: "get_example", arguments: { path: "flow/sankey-diagram" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Sankey Diagram\n") ? "PASS" : "FAIL",
+    label: "get_example(path without examples/)",
+  },
+  // Step 9g: the npm package's JSON configs are served as examples
+  {
+    send: { jsonrpc: "2.0", id: 49, method: "tools/call", params: { name: "get_example", arguments: { path: "examples/json-configs/flow-sankey" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const json = /```json\n([\s\S]*?)\n```/.exec(text);
+      let type = "";
+      try { type = JSON.parse(json[1]).type; } catch {}
+      return type && text.includes("plugins/json.js") ? `PASS (type ${type})` : "FAIL";
+    },
+    label: "get_example(json-configs/flow-sankey) — a parseable config with its scripts",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 50, method: "tools/call", params: { name: "list_examples", arguments: { category: "json-configs" } } },
+    check: (r) => {
+      const m = /json-configs examples \((\d+)\)/.exec(r.result?.content?.[0]?.text || "");
+      return m && Number(m[1]) >= 60 ? `PASS (${m[1]} configs)` : "FAIL";
+    },
+    label: "list_examples('json-configs') — the npm package's configs",
+  },
+  // Step 9h: the skill's JSON config reference, reachable by chart type and by search
+  {
+    send: { jsonrpc: "2.0", id: 51, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "json" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      // an overview: the rules in full, the complete configs and maps listed
+      return text.startsWith("# JSON Configs") && text.includes("### 1. Every amCharts object") && text.includes('- "Complete configs"') && text.includes('- "Maps"') ? "PASS" : "FAIL";
+    },
+    label: "get_chart_reference('json') — the JSON config reference (overview)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 52, method: "tools/call", params: { name: "search_all", arguments: { query: "amCharts JSON config", maxResults: 5 } } },
+    check: (r) => {
+      const first = ((r.result?.content?.[0]?.text || "").split("\n").find((l) => l.startsWith("## ")) || "");
+      return first.includes("[skill] JSON Configs") ? "PASS (JSON reference first)" : `FAIL (first: ${first})`;
+    },
+    label: "search_all('amCharts JSON config') — the JSON reference ranks first, not the 62 configs",
+  },
   // Step 9e: the framework docs and the skill's Frameworks section are served
   {
     send: { jsonrpc: "2.0", id: 42, method: "tools/call", params: { name: "get_doc", arguments: { path: "getting-started/integrations/react-native" } } },
@@ -178,7 +242,7 @@ const tests = [
       const count = r.result?.resources?.length || 0;
       return count >= 12 ? `PASS (${count} resources)` : `FAIL (${count} resources)`;
     },
-    label: "List resources (expect 13 doc files)",
+    label: "List resources (expect 14 doc files)",
   },
   // Step 11: search_all
   {
@@ -445,6 +509,65 @@ const tests = [
       return first === "region/usa/congressional120/usaCongressional" ? "PASS (capped, 4 packs, newest first)" : `FAIL (first entry: ${first})`;
     },
     label: "list_geodata('congressional') — capped, all four packs, newest first",
+  },
+  // Long references come as an overview; get_section returns the parts left out
+  {
+    send: { jsonrpc: "2.0", id: 53, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "map" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("## Not shown in this overview")) return `FAIL (no overview, ${text.length} chars)`;
+      if (text.length > 16000) return `FAIL (${text.length} chars)`;
+      return text.includes("## Core setup") && text.includes('- "Globe (orthographic projection)"') ? `PASS (${text.length} chars)` : "FAIL (core setup shown / globe listed)";
+    },
+    label: "get_chart_reference('map') — an overview with the rest listed",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 54, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "map", full: true } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.length > 90000 && !text.includes("## Not shown in this overview") ? `PASS (${text.length} chars)` : `FAIL (${text.length} chars)`;
+    },
+    label: "get_chart_reference('map', full: true) — the whole file",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 55, method: "tools/call", params: { name: "get_section", arguments: { file: "map", heading: "MapLineSeries" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# MapLineSeries") && text.includes('in "Series types"') && text.length < 4000 ? `PASS (${text.length} chars)` : `FAIL (${text.slice(0, 80)})`;
+    },
+    label: "get_section('map', 'MapLineSeries') — a ### subsection on its own",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 56, method: "tools/call", params: { name: "get_section", arguments: { file: "map", heading: "Series types" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Series types") && text.includes("### MapLineSeries") ? `PASS (${text.length} chars)` : "FAIL";
+    },
+    label: "get_section('map', 'Series types') — a ## heading still returns the whole section",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 57, method: "tools/call", params: { name: "get_core_reference", arguments: {} } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.length < 16000 && text.includes("## Critical rules") && text.includes('- "Common pitfalls"') ? `PASS (${text.length} chars)` : `FAIL (${text.length} chars)`;
+    },
+    label: "get_core_reference — an overview, Common pitfalls listed",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 58, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "venn" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return !text.includes("## Not shown in this overview") && text.length > 9000 ? `PASS (whole, ${text.length} chars)` : `FAIL (${text.length} chars)`;
+    },
+    label: "get_chart_reference('venn') — a short reference comes whole",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 59, method: "tools/call", params: { name: "get_section", arguments: { file: "json", heading: "Complete configs" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('"type": "PieChart"') && text.includes('"type": "Sankey"') ? `PASS (${text.length} chars)` : "FAIL";
+    },
+    label: "get_section('json', 'Complete configs') — the configs the overview lists",
   },
 ];
 

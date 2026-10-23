@@ -1,7 +1,7 @@
 {
   "name": "amcharts5",
   "displayName": "amCharts 5",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Build charts and maps with amCharts 5: the amCharts 5 skill, and the hosted amCharts MCP server for docs, code examples and the API reference",
   "author": {
     "name": "amCharts",

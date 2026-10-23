@@ -1,0 +1,250 @@
+---
+title: "Column Chart with Date Axis (JSON config)"
+category: "json-configs"
+source: "@amcharts/amcharts5@5.21.3: examples/xy-column/config.json"
+---
+
+# Column Chart with Date Axis (JSON config)
+
+A column series of daily values on a date axis, with a cursor, a scrollbar and zoom.
+
+Chart family: xy · Tags: column, date axis, cursor, scrollbar, zoom
+
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-column/config.json, version 5.21.3). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+
+Themes are not part of a config. The example is meant for: Animated, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
+
+## Required resources
+
+- https://cdn.amcharts.com/lib/5/index.js
+- https://cdn.amcharts.com/lib/5/plugins/json.js
+- https://cdn.amcharts.com/lib/5/xy.js
+- https://cdn.amcharts.com/lib/5/themes/Animated.js (theme, applied separately)
+
+## JSON config
+
+```json
+{
+  "type": "XYChart",
+  "settings": {
+    "panX": false,
+    "panY": false,
+    "wheelX": "panX",
+    "wheelY": "zoomX",
+    "cursor": {
+      "type": "XYCursor",
+      "settings": {
+        "behavior": "zoomX"
+      },
+      "properties": {
+        "lineY": {
+          "settings": {
+            "visible": false
+          }
+        }
+      }
+    },
+    "scrollbarX": {
+      "type": "Scrollbar",
+      "settings": {
+        "orientation": "horizontal"
+      }
+    },
+    "autoAppear": true,
+    "appearDuration": 1000,
+    "appearDelay": 100
+  },
+  "properties": {
+    "series": [
+      "#series-0"
+    ],
+    "xAxes": [
+      "#axis-0"
+    ],
+    "yAxes": [
+      "#axis-1"
+    ]
+  },
+  "refs": [
+    {
+      "data-0": [
+        {
+          "date": 1704060000000,
+          "value": 58
+        },
+        {
+          "date": 1704146400000,
+          "value": 57
+        },
+        {
+          "date": 1704232800000,
+          "value": 52
+        },
+        {
+          "date": 1704319200000,
+          "value": 49
+        },
+        {
+          "date": 1704405600000,
+          "value": 48
+        },
+        {
+          "date": 1704492000000,
+          "value": 57
+        },
+        {
+          "date": 1704578400000,
+          "value": 66
+        },
+        {
+          "date": 1704664800000,
+          "value": 62
+        },
+        {
+          "date": 1704751200000,
+          "value": 61
+        },
+        {
+          "date": 1704837600000,
+          "value": 68
+        },
+        {
+          "date": 1704924000000,
+          "value": 61
+        },
+        {
+          "date": 1705010400000,
+          "value": 57
+        },
+        {
+          "date": 1705096800000,
+          "value": 60
+        },
+        {
+          "date": 1705183200000,
+          "value": 56
+        },
+        {
+          "date": 1705269600000,
+          "value": 46
+        },
+        {
+          "date": 1705356000000,
+          "value": 56
+        },
+        {
+          "date": 1705442400000,
+          "value": 49
+        },
+        {
+          "date": 1705528800000,
+          "value": 50
+        },
+        {
+          "date": 1705615200000,
+          "value": 58
+        },
+        {
+          "date": 1705701600000,
+          "value": 47
+        },
+        {
+          "date": 1705788000000,
+          "value": 47
+        },
+        {
+          "date": 1705874400000,
+          "value": 41
+        },
+        {
+          "date": 1705960800000,
+          "value": 42
+        },
+        {
+          "date": 1706047200000,
+          "value": 41
+        },
+        {
+          "date": 1706133600000,
+          "value": 31
+        },
+        {
+          "date": 1706220000000,
+          "value": 35
+        },
+        {
+          "date": 1706306400000,
+          "value": 42
+        },
+        {
+          "date": 1706392800000,
+          "value": 52
+        },
+        {
+          "date": 1706479200000,
+          "value": 56
+        },
+        {
+          "date": 1706565600000,
+          "value": 58
+        }
+      ]
+    },
+    {
+      "axis-0": {
+        "type": "DateAxis",
+        "settings": {
+          "maxDeviation": 0,
+          "baseInterval": {
+            "timeUnit": "day",
+            "count": 1
+          },
+          "renderer": {
+            "type": "AxisRendererX",
+            "settings": {
+              "minorGridEnabled": true
+            }
+          },
+          "tooltip": {
+            "type": "Tooltip"
+          }
+        }
+      }
+    },
+    {
+      "axis-1": {
+        "type": "ValueAxis",
+        "settings": {
+          "min": 0,
+          "renderer": {
+            "type": "AxisRendererY"
+          }
+        }
+      }
+    },
+    {
+      "series-0": {
+        "type": "ColumnSeries",
+        "settings": {
+          "name": "Series",
+          "xAxis": "#axis-0",
+          "yAxis": "#axis-1",
+          "valueYField": "value",
+          "valueXField": "date",
+          "tooltip": {
+            "type": "Tooltip",
+            "settings": {
+              "labelText": "{valueY}"
+            }
+          },
+          "autoAppear": true,
+          "appearDuration": 1000
+        },
+        "properties": {
+          "data": "#data-0"
+        }
+      }
+    }
+  ]
+}
+```

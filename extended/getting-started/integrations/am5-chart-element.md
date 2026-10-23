@@ -111,6 +111,8 @@ Changing the config, by attribute or property, builds the chart again. Removing 
 
 MORE INFO For the config format, see "[Serializing / JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/)". To have the chart animate in when it loads, use the `autoAppear` setting in the config (more about it in "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)").
 
+NOTE Complete configs to copy into the element are in the amCharts skill's JSON guide (`skill/json` in the amCharts MCP server, `references/json.md` in the skill): section "Complete configs" for XY, pie, flow and hierarchy charts, and section "Maps" for a world map colored by value or with a few countries highlighted.
+
 
 ## Themes
 

@@ -1,6 +1,6 @@
 # amCharts 5 MCP Server
 
-An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that gives AI assistants on-demand access to the complete amCharts 5 knowledge base: **160+ documentation pages**, **290+ code examples**, and **1,300+ API reference pages**.
+An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that gives AI assistants on-demand access to the complete amCharts 5 knowledge base: **160+ documentation pages**, **350+ code examples** (including 60+ complete JSON configs), and **1,300+ API reference pages**.
 
 Works with **Claude Code**, **Claude Desktop**, **Cursor**, **Windsurf**, **VS Code + GitHub Copilot**, and any other MCP-compatible AI tool.
 
@@ -20,6 +20,8 @@ Point your AI client at:
 ```
 https://mcp.amcharts.com/mcp
 ```
+
+The amCharts 5 docs are also on [Context7](https://context7.com/amcharts/amcharts5) as `/amcharts/amcharts5`.
 
 **Claude Code**
 
@@ -204,13 +206,13 @@ npm start
 
 | Tool | Description |
 |------|-------------|
-| `get_core_reference` | Get core amCharts 5 docs — setup, themes, colors, events, common pitfalls |
-| `get_chart_reference` | Get full reference for a chart type (e.g. "pie", "sankey", "xy") |
+| `get_core_reference` | Get core amCharts 5 docs — setup, themes, colors, events, common pitfalls. An overview: its first sections, up to 12,000 characters, and a list of the others; `full: true` for the whole file |
+| `get_chart_reference` | Get the reference for a chart type (e.g. "pie", "sankey", "xy"). One longer than 12,000 characters comes as an overview with the rest listed for `get_section`; `full: true` for the whole file |
 | `list_chart_types` | List all available chart types and their keywords |
 | `search_docs` | Search the skill reference docs by keyword (`scope: "all"` adds the full docs, API reference and examples) |
 | `search_all` | Search across **everything** — skill docs, full documentation, and code examples |
 | `get_doc` | Get a full documentation page (e.g. "charts/xy-chart/axes", "concepts/events") |
-| `get_section` | Get a specific section from a reference file by heading |
+| `get_section` | Get a specific section from a reference file by heading (a `###` subsection heading returns just that subsection) |
 | `get_quick_start` | Get a minimal working template for any chart type |
 | `list_examples` | Browse all 290+ examples, optionally filtered by category |
 | `get_example` | Get the full code for a specific example |
@@ -231,13 +233,13 @@ Once connected, your AI assistant can:
 
 ## Content
 
-The server includes **1,800+ documents**:
+The server includes **1,900+ documents**:
 
 - **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides for amCharts' React, Vue, Angular, Svelte and React Native packages (with Next.js, Nuxt, SvelteKit, React Router and Remix 3)
-- **290+ code examples** — working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more
+- **350+ code examples** — 290+ working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more, plus 60+ complete JSON configs from the amCharts npm package
 - **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), events, properties, data item fields, the inheritance chain and the import line
 - **670+ geodata entries** — every map in `@amcharts/amcharts5-geodata`, for `list_geodata`
-- **Curated skill reference** — quick-start templates and chart-specific guides from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
+- **Curated skill reference** — quick-start templates, chart-specific guides and a guide to writing JSON configs, from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
 
 ## Security
 

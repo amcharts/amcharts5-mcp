@@ -26,8 +26,6 @@ Ask for a chart, for example:
 
 The assistant writes amCharts 5 code for your page or app, and looks up the documentation, examples or API reference when it needs more.
 
-amCharts 5 itself is free to use with a small amCharts logo on each chart; a [commercial license](https://www.amcharts.com/online-store/) removes the logo.
-
 ## What the plugin sends, and privacy
 
 The skill is text: it runs nothing and sends nothing. The MCP server receives the assistant's tool requests, such as a search phrase, a chart type or a doc path. Neither part needs an account or asks for personal data.
@@ -41,6 +39,6 @@ The details are in the [Privacy section of the server's README](https://github.c
 ## More
 
 - **amCharts and AI:** https://www.amcharts.com/docs/v5/ai/
-- **Source:** this folder is generated from the [amCharts 5 skill](https://github.com/amcharts/amcharts5-skill) and this repository, which also holds the MCP server.
+- **Source:** generated from the [amCharts 5 skill](https://github.com/amcharts/amcharts5-skill) and the [amcharts5-mcp repository](https://github.com/amcharts/amcharts5-mcp), which also holds the MCP server.
 - **Issues:** https://github.com/amcharts/amcharts5-mcp/issues
-- **License:** MIT (this plugin). amCharts 5 has its own license, described above.
+- **License:** MIT (this plugin). amCharts 5 has its own license: see [Licenses explained](https://www.amcharts.com/online-store/licenses-explained/).

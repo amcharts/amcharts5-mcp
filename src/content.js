@@ -45,6 +45,8 @@ export const CHART_TYPE_MAP = {
   // UI
   "ui": "ui-elements", "ui-elements": "ui-elements", "button": "ui-elements",
   "slider": "ui-elements", "controls": "ui-elements",
+  // A chart as a JSON config (JsonParser, <am5-chart>, Chart Maker links)
+  "json": "json", "json-config": "json", "config": "json", "serialized": "json",
 };
 
 export function parseSections(content) {
@@ -169,6 +171,29 @@ export function buildContent({ skillFiles = {}, extendedFiles = {}, geodata = nu
  */
 export function isUnsearchedSection(key, section) {
   return key.startsWith("reference/") && section.heading.startsWith("Other inherited ");
+}
+
+/**
+ * The text search indexes for an example. A JSON config page (json-configs/)
+ * is searched by its description and the class names its config uses, not by
+ * the config: the configs repeat setting names ("autoAppear", "valueField")
+ * dozens of times and would crowd the docs and API reference out of a search
+ * for a setting. The page itself is still returned whole.
+ */
+export function searchableExample(text) {
+  const cut = text.indexOf("## JSON config");
+  if (cut === -1) return text;
+  const types = new Set();
+  for (const m of text.slice(cut).matchAll(/"type":\s*"([A-Za-z]+)"/g)) types.add(m[1]);
+  // Only what is the page's own: the boilerplate every config page shares
+  // (JsonParser, <am5-chart>, Chart Maker) would outrank the skill's JSON reference
+  const own = text.slice(0, cut).split(/\nA complete amCharts 5 JSON config/)[0];
+  return `${own}\nJSON config: ${[...types].join(" ")}`;
+}
+
+/** An example's title as search ranks it: a config page without its "(JSON config)" suffix. */
+export function searchableTitle(title) {
+  return title.replace(/ \(JSON config\)$/, "");
 }
 
 // ---------------------------------------------------------------------------
@@ -385,7 +410,7 @@ function buildSearchIndex(content) {
     const slug = key.split("/").pop();
     add(KIND_EXAMPLE,
       { kind: "example", file: key, docTitle: ex.title, heading: ex.category, body: ex.content },
-      `${ex.title} ${slug.replace(/-/g, " ")}`, ex.category.replace(/-/g, " "), ex.content, [ex.title, slug]);
+      `${searchableTitle(ex.title)} ${slug.replace(/-/g, " ")}`, ex.category.replace(/-/g, " "), searchableExample(ex.content), [ex.title, slug]);
   }
 
   const avgLength = [0, 0, 0];

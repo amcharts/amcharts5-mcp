@@ -39,6 +39,26 @@ for (const file of files) {
   if (md.includes("var demoData =")) failures.push(`${id}: raw scrape (demoData blob left in)`);
   if (!md.includes("## Required resources")) failures.push(`${id}: no "## Required resources" section`);
 
+  // JSON configs (json-configs/, from the npm package): the config must be
+  // valid JSON, and the resources must load the core and the JSON plugin
+  if (md.includes("## JSON config")) {
+    const json = /```json\r?\n([\s\S]*?)\r?\n```/.exec(md.slice(md.indexOf("## JSON config")));
+    if (!json) {
+      failures.push(`${id}: no JSON block`);
+      continue;
+    }
+    try {
+      const config = JSON.parse(json[1]);
+      if (!config.type) failures.push(`${id}: the config has no top-level "type"`);
+    } catch (err) {
+      failures.push(`${id}: ${err.message}`);
+    }
+    for (const file of ["index.js", "plugins/json.js"]) {
+      if (!md.includes(CDN + file)) failures.push(`${id}: "## Required resources" lacks ${file}`);
+    }
+    continue;
+  }
+
   const at = md.indexOf("## JavaScript");
   // The closing fence must start a line, as in any markdown code block
   const match = at === -1 ? null : /```javascript\r?\n([\s\S]*?)\r?\n```/.exec(md.slice(at));

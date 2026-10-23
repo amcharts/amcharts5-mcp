@@ -22,8 +22,116 @@ const FRAMEWORK_NOTE = `
 ## In a React, Vue, Angular, Svelte or React Native app
 Use amCharts' package for the framework: \`@amcharts/amcharts5-react\`, \`-vue\`, \`-angular\` or \`-svelte\`. It creates and disposes the root, and works with server rendering. Its setup function receives \`root\`, so put the code above that follows \`am5.Root.new(...)\` inside it, e.g. in React \`const { ref, result } = useAmChart((root) => { /* the chart */ return { series }; }, []);\` with \`<div ref={ref} style={{ height: "500px" }} />\`. Deps such as \`[data]\` make the chart again from scratch; to change data in place, return what you need and update it through \`result\`. \`@amcharts/amcharts5-react-native\` takes the chart code as a string instead. Details: \`get_section("SKILL", "Frameworks")\`, and \`get_doc("getting-started/integrations/react")\` (also \`vue\`, \`angular\`, \`sveltekit\`, \`next-js\`, \`nuxt\`, \`react-native\`).`;
 
+// A docs path from what an agent holds: an amcharts.com address
+// ("https://www.amcharts.com/docs/v5/concepts/events/#Global_events"),
+// a site path ("/docs/v5/concepts/events") or the tools' own form
+// ("concepts/events", "skill/xy.md"). Returns the tools' form.
+function docPathFromInput(input) {
+  return String(input ?? "").trim()
+    .replace(/[?#].*$/, "")
+    .replace(/^(https?:\/\/)?(www\.)?amcharts\.com(?=\/|$)/i, "")
+    .replace(/^\/+/, "")
+    .replace(/^docs\/v5\//i, "")
+    .replace(/\/+$/, "")
+    .replace(/\.md$/i, "");
+}
+
+// The demo slug of an amcharts.com demo address ("…/demos/sankey-diagram/")
+function demoSlug(input) {
+  const m = /amcharts\.com\/demos\/([^/?#]+)/i.exec(String(input ?? ""));
+  return m ? m[1].toLowerCase() : null;
+}
+
 // User text echoed back in a reply, capped so a huge query can't balloon it
 const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
+
+// --- Overviews of long references -------------------------------------------
+// A reference longer than OVERVIEW_CAP characters is answered with an
+// overview: as many of its parts as fit in the cap, in document order, then a
+// list of the parts left out, each one fetchable by get_section. The 2026-10
+// eval measured the long references (SKILL.md, map.md) as half of all input
+// tokens, because every later step of an answer reads them again.
+export const OVERVIEW_CAP = 12000;
+// A section longer than this is offered by its ### subsections
+export const SPLIT_OVER = 6000;
+// "Example 1: …", "Example: Spiral chart", "amCharts 5 XY Charts — Working Examples"
+const isExampleSection = (heading) => /^Example\b|Working Examples$/i.test(heading || "");
+
+// A section body split at its ### headings: the text before the first one
+// (heading null), then each subsection
+export function splitSubsections(body) {
+  const parts = [{ heading: null, text: [] }];
+  for (const line of String(body).split("\n")) {
+    const m = /^###\s+(.+)/.exec(line);
+    if (m) parts.push({ heading: m[1].trim(), text: [] });
+    else parts[parts.length - 1].text.push(line);
+  }
+  return parts
+    .map((p) => ({ heading: p.heading, text: p.text.join("\n").trim() }))
+    .filter((p) => p.heading || p.text);
+}
+
+// The parts an overview is made of: each ## section, or for a long section
+// with ### subsections, its opening text and each subsection
+function overviewUnits(doc) {
+  const units = [];
+  for (const s of doc.sections) {
+    const body = s.body.trim();
+    if (!s.heading && (!body || body.startsWith("---"))) continue; // front matter
+    const subs = splitSubsections(s.body);
+    if (s.body.length > SPLIT_OVER && subs.some((p) => p.heading)) {
+      for (const p of subs) units.push({ section: s.heading, heading: p.heading, text: p.text });
+    } else if (body) {
+      // an empty section is only a divider ("Working Examples" before the examples)
+      units.push({ section: s.heading, heading: null, text: body });
+    }
+  }
+  return units;
+}
+
+// The overview text, or null when the doc fits in `cap`. `file` is what
+// get_section takes for this doc ("map", "SKILL", "reference/ixyseriessettings").
+export function overviewOf(doc, { file, label, cap = OVERVIEW_CAP, title = true }) {
+  if (doc.content.length <= cap) return null;
+  const units = overviewUnits(doc);
+  const shown = new Set();
+  let used = 0;
+  let full = false;
+  for (const u of units) {
+    // Worked examples are long code; they always go to the list
+    if (isExampleSection(u.section)) continue;
+    // The first parts, in order, until one doesn't fit; everything after is listed
+    const size = u.text.length + (u.heading || u.section).length + 8;
+    if (!full && used + size <= cap) { shown.add(u); used += size; } else full = true;
+  }
+  let text = title ? `# ${doc.title}\n` : "";
+  text += `*(source: ${label}.md. An overview: ${used.toLocaleString("en-US")} of ${doc.content.length.toLocaleString("en-US")} characters. The parts not shown are listed at the end.)*\n\n`;
+  let openSection = null;
+  for (const u of units) {
+    if (!shown.has(u)) continue;
+    if (u.section !== openSection) {
+      // the doc's own title section is already the heading above
+      if (!(u.section === doc.title && title)) text += `## ${u.section}\n`;
+      openSection = u.section;
+    }
+    text += u.heading ? `### ${u.heading}\n${u.text}\n\n` : `${u.text}\n\n`;
+  }
+  const rest = units.filter((u) => !shown.has(u) && (u.heading || u.section));
+  text += `---\n\n## Not shown in this overview\n\n`;
+  text += `get_section("${file}", heading) returns each of these in full (the heading is matched case-insensitively):\n`;
+  const chars = (n) => `${n.toLocaleString("en-US")} characters`;
+  for (const u of rest) {
+    if (u.heading) {
+      text += `- "${u.heading}" (in "${u.section}", ${chars(u.text.length)})\n`;
+    } else {
+      // get_section on a section heading returns the whole section, subsections included
+      const whole = doc.sections.find((s) => s.heading === u.section);
+      const split = whole && units.some((v) => v.section === u.section && v.heading);
+      text += `- "${u.section}" (${split ? "the whole section, " : ""}${chars(whole ? whole.body.trim().length : u.text.length)})\n`;
+    }
+  }
+  return text.trim();
+}
 
 // Searches about map files get pointed at list_geodata, which has every name.
 const GEODATA_QUERY_RE = /geo ?data|congressional|am5geodata|\b(?:low|high)\.js\b/i;
@@ -44,7 +152,7 @@ export function registerTools(server, content) {
   // label their source exactly this way, so an agent can paste the label
   // straight into get_section / get_doc.
   function resolveDoc(id) {
-    let key = String(id || "").trim().replace(/^\/+|\/+$/g, "").replace(/\.md$/i, "");
+    let key = docPathFromInput(id);
     if (!key) return null;
     let skillKey = key.startsWith("skill/") ? key.slice("skill/".length) : key;
     if (docs.has(skillKey)) return { doc: docs.get(skillKey), label: `skill/${skillKey}` };
@@ -57,6 +165,36 @@ export function registerTools(server, content) {
     }
     return null;
   }
+
+  // Examples by their amcharts.com demo slug, and by their own last path part
+  // (every key that has it: a shared name resolves only when it is unique)
+  const exampleByDemo = new Map();
+  const exampleBySlug = new Map();
+  for (const [key, ex] of examples) {
+    const demo = demoSlug(ex.source);
+    if (demo) exampleByDemo.set(demo, key);
+    const slug = key.split("/").pop().toLowerCase();
+    exampleBySlug.set(slug, [...(exampleBySlug.get(slug) || []), key]);
+  }
+
+  // Resolve an example from its key ("examples/flow/sankey-diagram"), the key
+  // without "examples/" ("flow/sankey-diagram"), its demo address
+  // ("https://www.amcharts.com/demos/sankey-diagram/"), or a unique last part
+  // ("sankey-diagram").
+  function resolveExample(input) {
+    const demo = demoSlug(input);
+    if (demo && exampleByDemo.has(demo)) return exampleByDemo.get(demo);
+    const key = String(input ?? "").trim().replace(/[?#].*$/, "").replace(/^\/+|\/+$/g, "").replace(/\.md$/i, "");
+    if (examples.has(key)) return key;
+    if (examples.has(`examples/${key}`)) return `examples/${key}`;
+    const bySlug = exampleBySlug.get(key.split("/").pop().toLowerCase()) || [];
+    return bySlug.length === 1 ? bySlug[0] : null;
+  }
+
+  // Keys sharing an example name, for a not-found message ("pie-chart" is both
+  // a demo and a JSON config)
+  const examplesNamed = (input) =>
+    exampleBySlug.get(String(input ?? "").trim().replace(/[?#].*$/, "").replace(/^\/+|\/+$/g, "").replace(/\.md$/i, "").split("/").pop().toLowerCase()) || [];
 
   // --- Tool: list_chart_types ---
   registerTool(
@@ -91,11 +229,14 @@ export function registerTools(server, content) {
     "get_chart_reference",
     {
       title: "Get chart reference",
-      description: "Get the full reference documentation for a specific amCharts 5 chart type. The chart type keywords are listed by list_chart_types.",
-      inputSchema: { chartType: z.string().describe("Chart type keyword, e.g. 'pie', 'sankey', 'xy', 'treemap', 'map', 'radar', 'stock', 'gantt', 'venn', 'wordcloud', 'timeline', 'flow', 'hierarchy', 'ui-elements'") },
+      description: `Get the reference documentation for a specific amCharts 5 chart type. A reference longer than ${OVERVIEW_CAP.toLocaleString("en-US")} characters comes as an overview: its first parts in full and a list of the others, each of which get_section returns. With \`full: true\` it is the whole file. The chart type keywords are listed by list_chart_types.`,
+      inputSchema: {
+        chartType: z.string().describe("Chart type keyword, e.g. 'pie', 'sankey', 'xy', 'treemap', 'map', 'radar', 'stock', 'gantt', 'venn', 'wordcloud', 'timeline', 'flow', 'hierarchy', 'ui-elements'"),
+        full: z.boolean().optional().default(false).describe("true: the whole reference, however long. false (default): an overview when it is long."),
+      },
       annotations: READ_ONLY,
     },
-    async ({ chartType }) => {
+    async ({ chartType, full }) => {
       const key = CHART_TYPE_MAP[chartType.toLowerCase()] || chartType.toLowerCase();
       const doc = docs.get(key);
       if (!doc) {
@@ -104,7 +245,8 @@ export function registerTools(server, content) {
           content: [{ type: "text", text: `No reference found for "${echo(chartType)}". Available: ${available}` }],
         };
       }
-      return { content: [{ type: "text", text: doc.content }] };
+      const text = (!full && overviewOf(doc, { file: key, label: `skill/${key}` })) || doc.content;
+      return { content: [{ type: "text", text }] };
     }
   );
 
@@ -113,16 +255,19 @@ export function registerTools(server, content) {
     "get_core_reference",
     {
       title: "Get core reference (setup, themes, pitfalls)",
-      description: "Get the core amCharts 5 reference (SKILL.md) — covers setup, colors, themes, legends, tooltips, events, data, adapters, disposal, and common pitfalls. It is the base for every chart type; the chart-specific references build on it.",
-      inputSchema: {},
+      description: `Get the core amCharts 5 reference (SKILL.md) — covers setup, colors, themes, legends, tooltips, events, data, adapters, disposal, and common pitfalls. It is the base for every chart type; the chart-specific references build on it. It comes as an overview: its first sections, up to ${OVERVIEW_CAP.toLocaleString("en-US")} characters, and a list of the others, each of which get_section("SKILL", heading) returns. With \`full: true\` it is the whole file.`,
+      inputSchema: {
+        full: z.boolean().optional().default(false).describe("true: the whole SKILL.md (about 105,000 characters). false (default): the overview."),
+      },
       annotations: READ_ONLY,
     },
-    async () => {
+    async ({ full }) => {
       const doc = docs.get("SKILL");
       if (!doc) {
         return { content: [{ type: "text", text: "Core SKILL.md not found." }] };
       }
-      return { content: [{ type: "text", text: doc.content }] };
+      const text = (!full && overviewOf(doc, { file: "SKILL", label: "skill/SKILL" })) || doc.content;
+      return { content: [{ type: "text", text }] };
     }
   );
 
@@ -198,7 +343,7 @@ export function registerTools(server, content) {
       description: "Get the full text of one section of a doc by heading, for example a section that a search_docs or search_all result shows truncated. `file` accepts the source label exactly as search results print it ('skill/SKILL.md', 'skill/xy', 'extended/charts/xy-chart/cursor', 'reference/xycursor') as well as a bare skill file name ('SKILL', 'xy', 'map').",
       inputSchema: {
         file: z.string().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
-        heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'"),
+        heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'. A ### subsection heading returns just that subsection."),
       },
       annotations: READ_ONLY,
     },
@@ -210,16 +355,24 @@ export function registerTools(server, content) {
       }
       const { doc, label } = resolved;
 
-      const needle = heading.toLowerCase();
-      const section = doc.sections.find(s => s.heading.toLowerCase().includes(needle));
-      if (!section) {
-        const available = doc.sections.map(s => s.heading).filter(Boolean).join("\n- ");
-        return {
-          content: [{ type: "text", text: `Section "${heading}" not found in ${label}.md.\n\nAvailable sections:\n- ${available}` }],
-        };
+      // In order: an exact ## heading; an exact ### heading in a long section
+      // (the subsections an overview lists); a ## heading containing the text;
+      // a ### heading containing it. A ### match returns just that subsection.
+      const needle = heading.trim().toLowerCase();
+      const subs = doc.sections.flatMap(s => splitSubsections(s.body).filter(p => p.heading).map(p => ({ ...p, section: s.heading, long: s.body.length > SPLIT_OVER })));
+      const exactSection = doc.sections.find(s => s.heading.toLowerCase() === needle);
+      const exactSub = !exactSection && subs.find(p => p.long && p.heading.toLowerCase() === needle);
+      const section = exactSection || (!exactSub && doc.sections.find(s => s.heading.toLowerCase().includes(needle)));
+      const sub = exactSub || (!section && subs.find(p => p.heading.toLowerCase().includes(needle)));
+      if (section) {
+        return { content: [{ type: "text", text: `# ${section.heading}\n*(source: ${label}.md)*\n\n${section.body}` }] };
       }
+      if (sub) {
+        return { content: [{ type: "text", text: `# ${sub.heading}\n*(source: ${label}.md, in "${sub.section}")*\n\n${sub.text}` }] };
+      }
+      const available = doc.sections.map(s => s.heading).filter(Boolean).join("\n- ");
       return {
-        content: [{ type: "text", text: `# ${section.heading}\n*(source: ${label}.md)*\n\n${section.body}` }],
+        content: [{ type: "text", text: `Section "${heading}" not found in ${label}.md.\n\nAvailable sections:\n- ${available}` }],
       };
     }
   );
@@ -325,7 +478,7 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ path: docPath }) => {
-      const key = String(docPath || "").replace(/^\/|\/$/g, "").replace(/\.md$/, "");
+      const key = docPathFromInput(docPath);
       // Extended docs take precedence for bare paths; 'skill/…' always means the skill layer.
       const resolved = key.startsWith("skill/")
         ? resolveDoc(key)
@@ -356,8 +509,10 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ className, includePrivate }) => {
-      // Normalize: "XYCursor" / "xy-cursor" / "XY Cursor" → "xycursor"
-      const norm = className.toLowerCase().replace(/[^a-z0-9]/g, "");
+      // Normalize: "XYCursor" / "xy-cursor" / "XY Cursor" → "xycursor"; an
+      // address or path ("…/docs/v5/reference/xycursor/") gives its last part
+      const name = /\//.test(className) ? docPathFromInput(className).split("/").pop() : className;
+      const norm = name.toLowerCase().replace(/[^a-z0-9]/g, "");
       const classDoc = extendedDocs.get(`reference/${norm}`);
       const settingsDoc = extendedDocs.get(`reference/i${norm}settings`);
       const privateDoc = extendedDocs.get(`reference/i${norm}private`);
@@ -404,7 +559,7 @@ export function registerTools(server, content) {
       title: "List examples",
       description: "List all available amCharts 5 code examples, optionally filtered by category.",
       inputSchema: {
-        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid'. Without it, all categories are listed."),
+        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid', or 'json-configs' (complete JSON configs from the amCharts npm package). Without it, all categories are listed."),
       },
       annotations: READ_ONLY,
     },
@@ -454,10 +609,14 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ path: exPath }) => {
-      const key = exPath.replace(/^\/|\/$/g, "").replace(/\.md$/, "");
-      const ex = examples.get(key);
+      const key = resolveExample(exPath);
+      const ex = key && examples.get(key);
       if (!ex) {
-        return { content: [{ type: "text", text: `Example "${key}" not found. Use list_examples to browse available examples.` }] };
+        const named = examplesNamed(exPath);
+        const text = named.length > 1
+          ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`
+          : `Example "${echo(exPath)}" not found. Use list_examples to browse available examples.`;
+        return { content: [{ type: "text", text }] };
       }
       let text = `# ${ex.title}\n`;
       text += `*Category: ${ex.category}*\n`;

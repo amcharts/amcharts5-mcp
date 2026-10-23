@@ -15,12 +15,12 @@
     "url": "https://github.com/amcharts/amcharts5-mcp",
     "source": "github"
   },
-  "version": "1.9.0",
+  "version": "1.9.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@amcharts/amcharts5-mcp",
-      "version": "1.9.0",
+      "version": "1.9.1",
       "transport": {
         "type": "stdio"
       }

@@ -1,0 +1,78 @@
+{
+  "displayName": "amCharts 5",
+  "shortDescription": "JavaScript charts and maps",
+  "developerName": "amCharts",
+  "longDescription": "amCharts 5 is a JavaScript and TypeScript library for interactive charts and maps: XY, pie, maps, stock, Gantt, Sankey and other flow charts, treemaps, radar, timelines and more. This plugin gives the assistant the library's own reference material at the version it ships, so it writes amCharts 5 code instead of guessing from older versions such as amCharts 4.\n\nWhat the assistant can look up:\n- the core rules every chart needs (root, themes, colors, data, disposal) and a reference for each chart family;\n- 160+ documentation pages and 1,300+ API reference pages, with each setting's default value where it has one;\n- 290+ working examples, each a complete chart to start from;\n- 670+ map files (world, continents, countries, regions, US counties and congressional districts) with each file's CDN path and import.\n\nThe plugin also includes the amCharts 5 skill: the conventions and common mistakes to avoid when writing chart code.\n\nTypical requests: \"Make a Sankey diagram of this data with amCharts\", \"Add a date axis with zoom to my chart\", \"Show US states colored by value\", \"Why does my amCharts legend not show?\"\n\nAll tools are read-only and return text. No account, API key or setup is needed.",
+  "category": "Developer Tools",
+  "capabilities": [
+    "Writes amCharts 5 chart and map code that follows the library's current API",
+    "Looks up the reference for any chart type: XY, pie, map, stock, Gantt, flow, hierarchy, radar, timeline",
+    "Finds and returns complete working examples to start from",
+    "Looks up exact setting names and default values in the API reference",
+    "Finds the right map file for a country or region, with its CDN path and import",
+    "Explains and fixes common amCharts 5 mistakes, such as dates, axes, themes and disposal"
+  ],
+  "websiteURL": "https://www.amcharts.com/docs/v5/ai/mcp/",
+  "supportURL": "https://github.com/amcharts/amcharts5-mcp/issues",
+  "privacyPolicyURL": "https://www.amcharts.com/privacy-policy/",
+  "termsOfServiceURL": "https://www.amcharts.com/terms-conditions/",
+  "defaultPrompt": [
+    "Using amCharts 5, make a pie chart of these values: Apples 40, Pears 35, Plums 25.",
+    "Show me a working amCharts 5 Sankey diagram example I can start from.",
+    "Which amCharts 5 map file has the regions of France, and how do I import it?"
+  ],
+  "review": {
+    "test_cases": {
+      "positive": [
+        {
+          "description": "Build a pie chart page from given values",
+          "prompt": "Using amCharts 5, make a pie chart of these values: Apples 40, Pears 35, Plums 25. Put the complete HTML page in a code block.",
+          "tools_triggered": "get_quick_start, get_chart_reference",
+          "expected_behavior": "Returns one complete HTML page that loads amCharts 5 from cdn.amcharts.com and builds an am5percent.PieChart with a PieSeries holding the three values; opened in a browser it shows the pie with labels and tooltips."
+        },
+        {
+          "description": "Build a column chart with a cursor",
+          "prompt": "Using amCharts 5, make a column chart of the GDP of the five largest economies, with each column in a different color and a cursor. Put the complete HTML page in a code block.",
+          "tools_triggered": "get_chart_reference, get_quick_start",
+          "expected_behavior": "Returns a complete HTML page with an am5xy.XYChart, a category X axis, a value Y axis, a ColumnSeries whose columns each get their own color, and an am5xy.XYCursor; hovering a column shows its tooltip."
+        },
+        {
+          "description": "Build a rotating globe with lines between cities",
+          "prompt": "Using amCharts 5, make a rotating globe, tilted toward the northern hemisphere, with lines connecting London, New York and Tokyo. Put the complete HTML page in a code block.",
+          "tools_triggered": "get_chart_reference, list_geodata",
+          "expected_behavior": "Returns a complete HTML page with an am5map.MapChart using geoOrthographic, panX rotateX and panY rotateY, a negative rotationY tilt, am5geodata_worldLow, a MapPointSeries for the three cities and a MapLineSeries connecting them; the globe rotates and can be dragged."
+        },
+        {
+          "description": "Find a map file",
+          "prompt": "Which amCharts 5 map file has the states of Germany, and how do I import it?",
+          "tools_triggered": "list_geodata",
+          "expected_behavior": "Names germanyLow (16 states), with the CDN path geodata/germanyLow.js, the global am5geodata_germanyLow and the ES module import @amcharts/amcharts5-geodata/germanyLow."
+        },
+        {
+          "description": "Find a working example",
+          "prompt": "Show me a working amCharts 5 Sankey diagram example I can start from.",
+          "tools_triggered": "list_examples (or search_all), get_example",
+          "expected_behavior": "Returns the full code of an amCharts Sankey example (for example examples/flow/sankey-diagram) using am5flow.Sankey, with its data."
+        }
+      ],
+      "negative": [
+        {
+          "description": "General question unrelated to charts",
+          "prompt": "What is the capital of Lithuania?"
+        },
+        {
+          "description": "Programming task with no charts",
+          "prompt": "Write a Python function that removes duplicates from a list while keeping the order."
+        },
+        {
+          "description": "A chart in another tool, not amCharts",
+          "prompt": "How do I insert a bar chart in Microsoft Excel?"
+        }
+      ]
+    },
+    "demo_recording_url": "https://drive.google.com/file/d/1cNVv96IurF51xnC3CxDe0wbnxKTiHfbj/view?usp=sharing"
+  },
+  "publication": {
+    "release_notes": "1.9.1: a JSON config reference for Chart Maker and the <am5-chart> element, maps included; the npm package's 62 JSON configs as examples; a recipe for a different fill pattern per column; amcharts.com docs and demo addresses accepted by the doc tools; and shorter first answers from the long references, with the rest on request."
+  }
+}
