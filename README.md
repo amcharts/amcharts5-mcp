@@ -68,7 +68,7 @@ claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
 }
 ```
 
-**ChatGPT** (Plus/Pro/Enterprise with connectors/developer mode enabled) — Settings → **Connectors** → **Add custom connector**, then paste `https://mcp.amcharts.com/mcp`.
+**ChatGPT** (also on the Free plan) — open [Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server**. Give it a name, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then **Create as a plugin**. In a chat, type **@amCharts** to use it.
 
 **Cline** (VS Code extension) — open the **MCP Servers** panel → **Remote Servers**, paste `https://mcp.amcharts.com/mcp`, or add to its MCP settings JSON:
 
