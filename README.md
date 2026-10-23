@@ -29,7 +29,7 @@ The amCharts 5 docs are also on [Context7](https://context7.com/amcharts/amchart
 claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
 ```
 
-**Claude Desktop / claude.ai** — Settings → Connectors → **Add custom connector**, then paste `https://mcp.amcharts.com/mcp`.
+**Claude (claude.ai, Desktop)** — add amCharts 5 from the [Connectors Directory](https://claude.ai/directory/amcharts). Or Settings → Connectors → **Add custom connector**, then paste `https://mcp.amcharts.com/mcp`.
 
 **Cursor** — `.cursor/mcp.json`:
 

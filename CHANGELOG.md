@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `npm run build:json-configs` makes one page per config from the pinned `@amcharts/amcharts5` (`examples/<name>/config.json`), listing the CDN scripts it needs. Gantt needs `xy.js` and `plugins/colorPicker.js`, which the npm index doesn't list.
   - All 62 parse in the browser from only their listed scripts.
   - `check-examples` checks that each is valid JSON with a top-level `type`.
-- **README: the amCharts 5 docs are also on Context7** (`/amcharts/amcharts5`).
+- **README: Claude users can add amCharts 5 from the Connectors Directory** (https://claude.ai/directory/amcharts), and the amCharts 5 docs are also on Context7 (`/amcharts/amcharts5`).
 - **amCharts.com addresses work in the path-taking tools:**
   - `get_doc`, `get_section` and `get_api_reference` take a docs URL (`https://www.amcharts.com/docs/v5/concepts/events/#…`) or a site path (`/docs/v5/…`);
   - `get_example` takes a demo page URL (`https://www.amcharts.com/demos/sankey-diagram/`), a path without `examples/`, or a unique example name.
