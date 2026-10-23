@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `type` / `settings` / `properties` / `children` / `refs`, templates, data, `#refs` and escaping, colors, percents and layouts, `@root` / `@colors`, bullets, maps (geodata globals, `projectionName`, heat rules), root and locales;
   - what a config can't hold, and a table of common mistakes;
   - one complete config each for XY, pie, Sankey and treemap, each built in the browser on 5.21.3 and opened in Chart Maker;
-  - maps with npm: the geodata goes in `resources` from amCharts 5.21.4 (the parser, `<am5-chart>` and the framework packages), or in a global before 5.21.4;
+  - with npm, the geodata and the locale a config names go in `resources` from amCharts 5.21.4 (the parser, `<am5-chart>` and the framework packages), or in a global before 5.21.4;
   - a "Maps" section (`get_section("json", "Maps")`): a world map colored by value, and a few countries highlighted through their data rows or with a second series using `include`. Each map config was also built through `<am5-chart>`;
   - delivery: `<am5-chart>`, Chart Maker links (also `gz.`), the framework packages' `config` prop.
 
