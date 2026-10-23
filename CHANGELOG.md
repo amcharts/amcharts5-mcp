@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `type` / `settings` / `properties` / `children` / `refs`, templates, data, `#refs` and escaping, colors, percents and layouts, `@root` / `@colors`, bullets, maps (geodata globals, `projectionName`, heat rules), root and locales;
   - what a config can't hold, and a table of common mistakes;
   - one complete config each for XY, pie, Sankey and treemap, each built in the browser on 5.21.3 and opened in Chart Maker;
+  - maps with npm: the geodata goes in `resources` from amCharts 5.21.4 (the parser, `<am5-chart>` and the framework packages), or in a global before 5.21.4;
   - a "Maps" section (`get_section("json", "Maps")`): a world map colored by value, and a few countries highlighted through their data rows or with a second series using `include`. Each map config was also built through `<am5-chart>`;
   - delivery: `<am5-chart>`, Chart Maker links (also `gz.`), the framework packages' `config` prop.
 
@@ -51,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **Long references come as an overview first.** In an eval, the references were half of all the input tokens an answer used, because every later step re-reads them.
-  - `get_chart_reference` and `get_core_reference` answer a file longer than 12,000 characters with its first parts, in order, up to 12,000 characters, then a list of the other parts with their sizes. Today these files are SKILL.md, map, xy, json, stock, pie, hierarchy, radar, flow, wordcloud, timeline and gantt. SKILL.md goes from 104k to 13k characters, and map from 95k to 14k.
+  - `get_chart_reference` and `get_core_reference` answer a file longer than 12,000 characters with its first parts, in order, up to 12,000 characters, then a list of the other parts with their sizes. Today these files are SKILL.md, map, xy, json, stock, pie, hierarchy, radar, flow, wordcloud, timeline and gantt. SKILL.md goes from 104k to 13k characters, and map from 95k to 13k.
   - A part is a `##` section or, in a section over 6,000 characters, one of its `###` subsections. The worked examples are always listed, not shown.
   - `full: true` returns the whole file, as before.
   - `get_section` now also takes a `###` subsection heading and returns just that subsection. An exact `##` heading comes first, then an exact `###` heading in a section the overviews split, then the old substring match on `##` headings, then on `###`.

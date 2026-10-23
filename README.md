@@ -214,7 +214,7 @@ npm start
 | `get_doc` | Get a full documentation page (e.g. "charts/xy-chart/axes", "concepts/events") |
 | `get_section` | Get a specific section from a reference file by heading (a `###` subsection heading returns just that subsection) |
 | `get_quick_start` | Get a minimal working template for any chart type |
-| `list_examples` | Browse all 290+ examples, optionally filtered by category |
+| `list_examples` | Browse all 350+ examples, optionally filtered by category |
 | `get_example` | Get the full code for a specific example |
 | `get_api_reference` | Get the API reference for a class, interface or function — settings with their defaults, events, inheritance and the import line |
 | `list_geodata` | Find map (geodata) files — world, continents, countries, regional packs and the per-Congress US congressional district packs — with each file's CDN path, script global and ES import |
