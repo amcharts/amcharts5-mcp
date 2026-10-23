@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - All 62 parse in the browser from only their listed scripts.
   - `check-examples` checks that each is valid JSON with a top-level `type`.
 - **README: Claude users can add amCharts 5 from the Connectors Directory** (https://claude.ai/directory/amcharts), and the amCharts 5 docs are also on Context7 (`/amcharts/amcharts5`).
+- **README: ChatGPT setup through Plugins** (chatgpt.com/plugins → + → Add custom MCP server, no authentication, Create as a plugin), which also works on the Free plan.
 - **amCharts.com addresses work in the path-taking tools:**
   - `get_doc`, `get_section` and `get_api_reference` take a docs URL (`https://www.amcharts.com/docs/v5/concepts/events/#…`) or a site path (`/docs/v5/…`);
   - `get_example` takes a demo page URL (`https://www.amcharts.com/demos/sankey-diagram/`), a path without `examples/`, or a unique example name.
