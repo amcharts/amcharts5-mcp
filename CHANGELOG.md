@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.9.2] - 2026-10-23
+
+### Added
+- **amCharts 5.21.4, and the framework packages' new versions** (react 5.0.1, vue 5.0.2, angular 5.0.1, svelte 5.0.3, react-native 5.0.1; the web ones need amCharts `^5.21.4`). Skill and `cursorrules`:
+  - `resources` gives a JSON config the geodata and locales it names when they aren't globals (npm imports). It works in `JsonParser.parse()`, `ChartSerializer`, `<am5-chart>` (`element.resources`) and the packages' `resources` prop.
+  - Without `resources`, `ChartSerializer` copies a pack into the config whole (about 250 KB for worldLow).
+  - Themes with settings: `[am5themes_Adaptive, { baseColor: "#4150a0" }]`, also as JSON in the element's `themes` attribute.
+  - A "New in 5.21.4" entry in Recent API changes.
+  - Common pitfall 43: a JSON-config map that draws nothing with npm imports.
+
+  Each was checked against the published 5.21.4 packages:
+  - with npm imports: esbuild bundles of React, Vue and Svelte, the element, a locale, and a serialize/parse round trip;
+  - with the CDN script version.
+- **The API reference is generated from 5.21.4.** That adds `resources` to the parse settings, the ChartSerializer settings and `ChartElement`, plus two new pages, `ChartElementTheme` and `IChartElementThemeClass`. The 62 JSON configs also come from 5.21.4.
+
+### Changed
+- **`<am5-chart>` with npm: call `defineChartElement()`.** The skill and the element's docs page now recommend `import { defineChartElement } from "@amcharts/amcharts5/element"; defineChartElement();`. esbuild drops a bare `import "@amcharts/amcharts5/element"`: it doesn't read the brace pattern the package's `sideEffects` uses, so the element was never defined. The call does nothing if the element already exists.
+- The `LinearGradient` rotation and empty-`ColorSet` notes now say "still in 5.21.4"; that code didn't change.
+
 ## [1.9.1] - 2026-10-23
 
 ### Added

@@ -2,7 +2,7 @@
 title: "StepLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/steplineseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A line series drawn as steps: flat across each cell, with risers joining one step to the next. Its fill below makes a stepped area.

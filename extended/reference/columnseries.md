@@ -2,7 +2,7 @@
 title: "ColumnSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/columnseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A series that shows values as columns or bars.

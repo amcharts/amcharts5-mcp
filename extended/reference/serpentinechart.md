@@ -2,7 +2,7 @@
 title: "SerpentineChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/serpentinechart/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A timeline that winds back and forth in runs joined by half-circle turns. It builds the X axis line itself, so the X renderer needs no `points`.

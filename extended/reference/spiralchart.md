@@ -2,7 +2,7 @@
 title: "SpiralChart"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/spiralchart/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A timeline that winds outward in a spiral, clockwise. It builds the X axis line itself, so the X renderer needs no `points`.

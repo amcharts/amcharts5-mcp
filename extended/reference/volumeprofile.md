@@ -2,7 +2,7 @@
 title: "VolumeProfile"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/volumeprofile/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Volume Profile indicator: horizontal rows over the main series showing how much volume traded at each price in the visible range, split into up and down volume.

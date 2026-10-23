@@ -2,7 +2,7 @@
 title: "ValueAxis"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/valueaxis/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An axis with a numeric scale.

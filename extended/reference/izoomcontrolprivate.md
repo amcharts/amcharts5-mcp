@@ -2,7 +2,7 @@
 title: "IZoomControlPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/izoomcontrolprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 ## Inheritance

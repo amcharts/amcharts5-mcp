@@ -2,7 +2,7 @@
 title: "GraphicsImage"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/graphicsimage/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Drawn by the backend while tracing, in op order.

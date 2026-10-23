@@ -2,7 +2,7 @@
 title: "IDisposer"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/idisposer/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Defines interface for disposable objects.

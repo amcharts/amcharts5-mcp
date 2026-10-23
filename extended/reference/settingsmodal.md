@@ -2,7 +2,7 @@
 title: "SettingsModal"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/settingsmodal/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 The modal dialog where the settings of an indicator or series are edited.

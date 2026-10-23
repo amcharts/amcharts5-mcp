@@ -2,7 +2,7 @@
 title: "CurveDefaultTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/curvedefaulttheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Built-in theme rules: `CurveChart` adds this theme to its default themes, so its rules apply to that element and everything inside it.

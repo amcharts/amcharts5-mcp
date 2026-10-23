@@ -2,7 +2,7 @@
 title: "Trix"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/trix/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Trix indicator: the percentage change of a triple exponential moving average of `field` over `period`, with a signal line. Drawn in a panel of its own.

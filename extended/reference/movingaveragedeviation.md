@@ -2,7 +2,7 @@
 title: "MovingAverageDeviation"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/movingaveragedeviation/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Moving Average Deviation indicator: columns showing how far `field` is from its moving average over `period`. Drawn in a panel of its own.

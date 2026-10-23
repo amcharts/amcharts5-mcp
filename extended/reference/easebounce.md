@@ -1,7 +1,7 @@
 ---
 title: "ease.bounce"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Bounces at the start before heading to the end. `out(bounce)` bounces at the end instead, like a dropped ball.

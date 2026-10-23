@@ -73,6 +73,6 @@
     "demo_recording_url": "https://drive.google.com/file/d/1cNVv96IurF51xnC3CxDe0wbnxKTiHfbj/view?usp=sharing"
   },
   "publication": {
-    "release_notes": "1.9.1: a JSON config reference for Chart Maker and the <am5-chart> element, maps included; the npm package's 62 JSON configs as examples; a recipe for a different fill pattern per column; amcharts.com docs and demo addresses accepted by the doc tools; and shorter first answers from the long references, with the rest on request."
+    "release_notes": "1.9.1 and 1.9.2: a JSON config reference for Chart Maker and the <am5-chart> element, maps included; the npm package's 62 JSON configs as examples; a recipe for a different fill pattern per column; amcharts.com docs and demo addresses accepted by the doc tools; shorter first answers from the long references, with the rest on request; and amCharts 5.21.4: resources for maps and locales in configs, themes with settings."
   }
 }

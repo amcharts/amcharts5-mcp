@@ -1,7 +1,7 @@
 ---
 title: "getTagValue"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Returns an abstract value from the target `Sprite`'s data item, settings, properties or parents.

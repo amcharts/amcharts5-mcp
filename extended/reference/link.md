@@ -2,7 +2,7 @@
 title: "Link"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/link/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A connector made of horizontal and vertical segments through `points`, with an arrow at each end, such as a dependency line in a Gantt chart.

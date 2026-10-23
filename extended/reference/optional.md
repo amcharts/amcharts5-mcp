@@ -2,7 +2,7 @@
 title: "Optional"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/optional/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Defines an optional value that can be of any type or `undefined`.

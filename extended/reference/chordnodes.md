@@ -2,7 +2,7 @@
 title: "ChordNodes"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/chordnodes/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Holds the nodes of a `Chord` series. Dragging a node rotates the whole chord.

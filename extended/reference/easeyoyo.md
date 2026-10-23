@@ -1,7 +1,7 @@
 ---
 title: "ease.yoyo"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Makes an easing go there and back: it reaches the end halfway through and returns to the start.

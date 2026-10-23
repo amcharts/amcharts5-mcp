@@ -1,7 +1,7 @@
 ---
 title: "ease.out"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Turns an easing around, so it starts fast and ends slowly. The easings here ease in (start slowly) unless wrapped in `out()` or `inOut()`.

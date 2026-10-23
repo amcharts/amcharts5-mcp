@@ -1,7 +1,7 @@
 ---
 title: "getGeoRectangle"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Returns the area between two latitudes and two longitudes as GeoJSON geometry, for the `geometry` of a `MapPolygon`. Its edges follow the parallels and meridians.

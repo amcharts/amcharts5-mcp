@@ -1,7 +1,7 @@
 ---
 title: "AdaptiveTheme"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 "Adaptive": makes a whole series palette from one or two colors. With one, the other colors share an even lightness and spread out over the color wheel; with two, they run as a gradient between them. The first color is `baseColor` itself, so a brand color appears in the chart (unless `keepContrast` has to change it).

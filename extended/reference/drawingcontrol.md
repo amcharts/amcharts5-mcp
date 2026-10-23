@@ -2,7 +2,7 @@
 title: "DrawingControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/drawingcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `StockToolbar` control that turns drawing mode on, with a row of controls for picking the tool and its colors, lines and fonts.

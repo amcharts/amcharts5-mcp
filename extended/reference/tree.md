@@ -2,7 +2,7 @@
 title: "Tree"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/tree/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A tree diagram: node circles joined by links, each level a row (or a column, when horizontal).

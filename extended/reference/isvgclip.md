@@ -2,7 +2,7 @@
 title: "ISvgClip"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/isvgclip/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 What a node's mask clips: `<g clip-path>` around `items`.

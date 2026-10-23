@@ -2,7 +2,7 @@
 title: "BollingerBands"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/bollingerbands/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Bollinger Bands indicator: a moving average of `field` over `period`, with bands `standardDeviations` standard deviations above and below it. Drawn over the main series.

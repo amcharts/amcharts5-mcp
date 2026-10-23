@@ -1,7 +1,7 @@
 ---
 title: "Clustered Map Points (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.21.3: examples/map-clustered-points/config.json"
+source: "@amcharts/amcharts5@5.21.4: examples/map-clustered-points/config.json"
 ---
 
 # Clustered Map Points (JSON config)
@@ -10,7 +10,7 @@ City markers that merge into clusters with a count when they are close together;
 
 Chart family: map · Tags: clustered point series, cluster, bullets, zoom
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-clustered-points/config.json, version 5.21.3). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-clustered-points/config.json, version 5.21.4). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 

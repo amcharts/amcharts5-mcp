@@ -1,7 +1,7 @@
 ---
 title: "ease.elastic"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Swings back and forth with growing swings before reaching the end, like a spring. `out(elastic)` springs past the end and settles instead.

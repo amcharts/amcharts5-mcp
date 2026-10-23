@@ -2,7 +2,7 @@
 title: "AxisRendererRadial"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/axisrendererradial/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Renderer for an axis that runs out from the center of a `RadarChart`.

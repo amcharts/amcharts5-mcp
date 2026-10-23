@@ -2,7 +2,7 @@
 title: "IWordSprite"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iwordsprite/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A bit-packed glyph mask of a single word (32 pixels per int), used by the layout for in-memory collision detection.

@@ -2,7 +2,7 @@
 title: "MovingAverage"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/movingaverage/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Moving Average indicator: a line over the main series, averaging `field` over the last `period` data items.

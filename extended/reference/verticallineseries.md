@@ -2,7 +2,7 @@
 title: "VerticalLineSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/verticallineseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `SimpleLineSeries` subclass.

@@ -2,7 +2,7 @@
 title: "SceneNode"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/scenenode/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A renderer-neutral display object: state, place in the tree, transform and bounds. Backends paint it.

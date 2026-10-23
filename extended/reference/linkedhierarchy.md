@@ -2,7 +2,7 @@
 title: "LinkedHierarchy"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/linkedhierarchy/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for the hierarchy series that draw nodes as circles joined by links: `ForceDirected` and `Tree`.

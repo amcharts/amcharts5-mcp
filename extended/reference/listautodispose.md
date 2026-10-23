@@ -2,7 +2,7 @@
 title: "ListAutoDispose"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/listautodispose/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A version of a `List` where the elements are disposed automatically when removed from the list, unless `autoDispose` is set to `false`.

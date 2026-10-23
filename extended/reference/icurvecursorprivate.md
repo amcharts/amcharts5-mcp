@@ -2,7 +2,7 @@
 title: "ICurveCursorPrivate"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/icurvecursorprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 ## Inheritance

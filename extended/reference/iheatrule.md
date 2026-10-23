@@ -2,7 +2,7 @@
 title: "IHeatRule"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iheatrule/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A rule that sets a setting of each series element, such as its color or size, by its data item's value: from `min` at the lowest value to `max` at the highest.

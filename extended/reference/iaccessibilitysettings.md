@@ -2,7 +2,7 @@
 title: "IAccessibilitySettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/iaccessibilitysettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Accessibility setting that can be applied to any visual element.

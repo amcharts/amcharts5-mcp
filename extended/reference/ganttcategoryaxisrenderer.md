@@ -2,7 +2,7 @@
 title: "GanttCategoryAxisRenderer"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/ganttcategoryaxisrenderer/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Renderer for a `GanttCategoryAxis`: draws each task's row with its grip, task bullet, editable label, duration stepper and progress pie.

@@ -2,7 +2,7 @@
 title: "Grid"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/grid/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A grid line of an axis, drawn across the plot area.

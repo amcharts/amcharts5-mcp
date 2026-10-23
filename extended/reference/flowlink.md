@@ -2,7 +2,7 @@
 title: "FlowLink"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/flowlink/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for the links of flow series.

@@ -1,7 +1,7 @@
 ---
 title: "ease.easingInfo"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Returns what an easing function is, by name, or `undefined` for one that was not made from the functions here.

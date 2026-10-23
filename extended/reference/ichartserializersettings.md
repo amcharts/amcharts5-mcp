@@ -2,7 +2,7 @@
 title: "IChartSerializerSettings"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ichartserializersettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 ## Inheritance
@@ -16,6 +16,7 @@ TypeScript: not exported by name from the package.
 
 - **removeEmptyObjects** (`boolean`) — default `true` _(class default)_ — Leaves empty objects out of the output.
 - **includeRoot** (`boolean`) — default `false` _(class default)_ — Adds a `root` section with what was configured on the `Root`, such as its settings, formatters and locale. _Since 5.20.2._ _Note:_ The `root` section holds the Root's `utc`, `fps`, `numberFormatter`, `dateFormatter`, `durationFormatter`, `tabindex` and `interfaceColors`; JsonParser applies it before parsing the chart.
+- **resources** (`{ [name: string]: unknown; }`) — Objects to write out by name instead of copying them: geodata packs and locales, under the names `JsonParser` gets them by in its `resources`, e.g. `{ am5geodata_worldLow }`. Without them, only packs loaded as globals (the script version) are written as names. _Since 5.21.4._
 
 ## Inherited settings with a different default on ChartSerializer
 

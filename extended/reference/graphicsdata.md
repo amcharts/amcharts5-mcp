@@ -2,7 +2,7 @@
 title: "GraphicsData"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/graphicsdata/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 What an `IGraphics` records: geometry and paint ops, in call order.

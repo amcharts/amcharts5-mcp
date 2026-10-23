@@ -2,7 +2,7 @@
 title: "State"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/state/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A named set of setting values, such as `"hover"`, that an element takes on when the state is applied.

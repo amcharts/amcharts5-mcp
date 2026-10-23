@@ -2,7 +2,7 @@
 title: "PictorialStackedSeries"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/pictorialstackedseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A series for a `SlicedChart` that fills a shape (`svgPath`) with stacked slices, each as tall as its share of the total. It sets `valueIs` to `"height"` and `topWidth` and `bottomWidth` to `100%`.

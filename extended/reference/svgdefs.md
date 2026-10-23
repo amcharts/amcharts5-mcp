@@ -2,7 +2,7 @@
 title: "SvgDefs"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/svgdefs/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 `<defs>` content by markup: the same markup always gets the same id, so the elements that reference it keep the same markup from frame to frame.

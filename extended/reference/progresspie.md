@@ -2,7 +2,7 @@
 title: "ProgressPie"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/progresspie/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A ring that fills clockwise from the top as `value` goes from `0` to `1`, with the percent shown in the middle.

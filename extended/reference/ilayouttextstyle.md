@@ -2,7 +2,7 @@
 title: "ILayoutTextStyle"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/ilayouttextstyle/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Style fields text layout reads beyond `ITextStyle`.

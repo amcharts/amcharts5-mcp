@@ -1,7 +1,7 @@
 ---
 title: "ease.inOut"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Applies an easing at both ends: it eases in for the first half and out for the second.

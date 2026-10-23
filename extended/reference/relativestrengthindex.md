@@ -2,7 +2,7 @@
 title: "RelativeStrengthIndex"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/relativestrengthindex/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Relative Strength Index indicator: momentum from `0` to `100`, comparing average gains with average losses over `period`. Drawn in a panel of its own.

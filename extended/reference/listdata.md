@@ -2,7 +2,7 @@
 title: "ListData"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/listdata/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `List` that holds a component's data.

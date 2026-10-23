@@ -2,7 +2,7 @@
 title: "Root"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/root/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 The root of a chart: it ties the chart to an HTML element and holds its global settings, formatters, locale and themes.

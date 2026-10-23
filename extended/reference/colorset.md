@@ -2,7 +2,7 @@
 title: "ColorSet"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/colorset/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A list of colors that series and other elements take in turn. When the list runs out, it generates more.

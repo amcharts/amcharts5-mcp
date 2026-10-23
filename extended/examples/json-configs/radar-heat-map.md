@@ -1,7 +1,7 @@
 ---
 title: "Radar Heat Map (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.21.3: examples/radar-heat-map/config.json"
+source: "@amcharts/amcharts5@5.21.4: examples/radar-heat-map/config.json"
 ---
 
 # Radar Heat Map (JSON config)
@@ -10,7 +10,7 @@ A heat map on a radar chart, hours around the circle and weekdays as rings, with
 
 Chart family: radar · Tags: radar, heat map, heat rules, heat legend, category axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/radar-heat-map/config.json, version 5.21.3). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/radar-heat-map/config.json, version 5.21.4). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 

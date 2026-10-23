@@ -1,7 +1,7 @@
 ---
 title: "getGeoBounds"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Returns the geographic bounds of a geometry, in degrees: longitudes `left` and `right`, latitudes `top` and `bottom`. Bounds across the 180th meridian take all longitudes, `-180` to `180`.

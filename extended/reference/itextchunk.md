@@ -2,7 +2,7 @@
 title: "ITextChunk"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/itextchunk/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A piece of text, as split up by `TextFormatter`.

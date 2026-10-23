@@ -2,7 +2,7 @@
 title: "ColorblindDarkTheme"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/colorblinddarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 "Colorblind Dark": the `Colorblind` palette on a dark background, with neutral dark interface colors. Colors too dark to show on the background, such as black, are lightened. Use it in place of `Colorblind`.

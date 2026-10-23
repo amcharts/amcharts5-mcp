@@ -2,7 +2,7 @@
 title: "IRasterImage"
 type: "interface"
 source: "https://www.amcharts.com/docs/v5/reference/irasterimage/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 One image: the element, its texture on the shared WebGL context, and the pixel levels the CPU path samples.

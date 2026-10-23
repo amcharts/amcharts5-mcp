@@ -2,7 +2,7 @@
 title: "DataSaveControl"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/datasavecontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A control that saves the chart's drawings and indicators to the browser's local storage, and restores them.

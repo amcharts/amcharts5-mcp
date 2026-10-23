@@ -2,7 +2,7 @@
 title: "ArcDiagramNodes"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/arcdiagramnodes/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Holds the nodes of an `ArcDiagram` series.

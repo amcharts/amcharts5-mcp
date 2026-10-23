@@ -2,7 +2,7 @@
 title: "Public"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/public/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A type with only the public members of `T`.

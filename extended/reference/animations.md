@@ -2,7 +2,7 @@
 title: "Animations"
 type: "type"
 source: "https://www.amcharts.com/docs/v5/reference/animations/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 TypeScript: not exported by name from the package.

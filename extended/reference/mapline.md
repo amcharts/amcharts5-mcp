@@ -2,7 +2,7 @@
 title: "MapLine"
 type: "class"
 source: "https://www.amcharts.com/docs/v5/reference/mapline/"
-generatedFrom: "@amcharts/amcharts5@5.21.3"
+generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A line in a `MapLineSeries`.
