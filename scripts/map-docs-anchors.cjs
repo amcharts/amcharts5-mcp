@@ -103,7 +103,8 @@ async function load(p) {
   const sorted = (o) => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
   fs.writeFileSync(path.join(__dirname, "docs-moved.json"), JSON.stringify(sorted(moved), null, 1) + "\n");
   fs.writeFileSync(path.join(__dirname, "docs-anchors.json"), JSON.stringify(sorted(anchors), null, 1) + "\n");
-  console.log(`${files.length} files, ${olds.length} pages; ${Object.keys(moved).length} redirected; ${Object.keys(anchors).length} anchors need a table entry (${gone} sections gone)`);
+  const goneSections = Object.values(anchors).filter((v) => v === "").length; // per final page, not per old path
+  console.log(`${files.length} files, ${olds.length} pages; ${Object.keys(moved).length} redirected; ${Object.keys(anchors).length} anchors need a table entry (${goneSections} sections gone)`);
   const notRef = missing.filter((p) => !p.startsWith("reference/"));
   console.log(`pages not on docs.amcharts.com: ${missing.length} (${missing.length - notRef.length} reference pages); others: ${notRef.join(" ")}`);
 })();
