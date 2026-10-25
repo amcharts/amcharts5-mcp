@@ -464,7 +464,7 @@ root.dateFormatter.set("dateFormat", "\[bold\]yyyy-MM-dd");
 
 root.dateFormatter.set("dateFormat", "\[bold\]yyyy-MM-dd");
 
-Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/in-line/)" tutorial for more info.
+Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" tutorial for more info.
 
 ## Escaping
 

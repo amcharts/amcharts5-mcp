@@ -499,5 +499,5 @@ The following demo uses ghost label to sync width between two charts:
 ## Related tutorials
 
 -   [Using axis ranges to place labels at arbitrary values or dates](https://docs.amcharts.com/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
--   [Retaining Y-axis zoom after data update](https://docs.amcharts.com/v5/retaining-y-axis-zoom-after-data-update/)
+-   [Retaining Y-axis zoom after data update](https://docs.amcharts.com/v5/tutorials/retaining-y-axis-zoom-after-data-update/)
 -   [Syncing zero grid line across multiple axes](https://docs.amcharts.com/v5/tutorials/syncing-zero-grid-line-across-multiple-axes/)

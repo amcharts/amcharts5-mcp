@@ -451,7 +451,7 @@ If you need to explicitly use a vertical bar in your formatted text, just like w
 
 Square and curly brackets have special meaning in formatting text labels as well.
 
-Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/in-line/)" tutorial for more info.
+Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" tutorial for more info.
 
 ## Using Intl object formats
 

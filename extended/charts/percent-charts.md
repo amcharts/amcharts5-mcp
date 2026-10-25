@@ -17,7 +17,7 @@ Refer to the dedicated tutorials for each chart type:
 
 ## Other topics
 
--   [Configuring percent series](https://docs.amcharts.com/v5/charts/percent-charts/percent-series/)
+-   [Configuring pie series](https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/pie-series/)
 -   [Configuring legend](https://docs.amcharts.com/v5/concepts/legend/)
 -   [Loading external data](https://docs.amcharts.com/v5/concepts/data/#external-data)
 -   [Using themes](https://docs.amcharts.com/v5/concepts/themes/)

@@ -118,4 +118,4 @@ A response type. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/X
 
 `target`
 
-A target data user object if it was specified. ([more info](https://docs.amcharts.com/v5/tutorials/advanced-use-of-net-load-utility/#specifying-data-user))
+A target data user object if it was specified. ([more info](https://docs.amcharts.com/v5/concepts/data/net-load-utility/#specifying-data-user))

@@ -157,7 +157,7 @@ series.data.setAll(\[{
   applicants: 5500
 }\]);
 
-For more information about setting data to series, refer to "[Percent series: Setting data](https://docs.amcharts.com/v5/charts/percent-charts/percent-series/#setting-data)".
+For more information about setting data to series, refer to "[Data](https://docs.amcharts.com/v5/concepts/data/)".
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
@@ -167,7 +167,7 @@ A series will automatically assign a different color to each of its slice.
 
 The colors are defined in a theme used by the chart, and can be overridden in a number of ways.
 
-For more information about it, refer to "[Percent series: Slice colors](https://docs.amcharts.com/v5/charts/percent-charts/percent-series/#slice-colors)".
+For more information about it, refer to "[Funnel series: Slice colors](https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/funnel-series/#slice-colors)".
 
 ## Legend
 
