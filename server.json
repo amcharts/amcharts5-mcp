@@ -6,21 +6,21 @@
   "websiteUrl": "https://docs.amcharts.com/v5/ai/mcp/",
   "icons": [
     {
-      "src": "https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-310x310.png",
+      "src": "https://mcp.amcharts.com/icon.png",
       "mimeType": "image/png",
-      "sizes": ["558x558"]
+      "sizes": ["256x256"]
     }
   ],
   "repository": {
     "url": "https://github.com/amcharts/amcharts5-mcp",
     "source": "github"
   },
-  "version": "1.9.3",
+  "version": "1.9.4",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@amcharts/amcharts5-mcp",
-      "version": "1.9.3",
+      "version": "1.9.4",
       "transport": {
         "type": "stdio"
       }

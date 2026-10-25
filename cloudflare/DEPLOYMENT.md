@@ -34,6 +34,11 @@ https://<your-host>/mcp    ← Streamable HTTP (modern clients)
 https://<your-host>/sse    ← SSE (legacy clients)
 ```
 
+It also serves the server's icon at `https://<your-host>/icon.png`
+(`cloudflare/icon.png`). The server's info, which clients show on a
+connector's card, points at the one on mcp.amcharts.com (`serverInfo()` in
+`src/tools.js`).
+
 where `<your-host>` is either your own custom domain or the
 `amcharts5-mcp.<your-account>.workers.dev` subdomain Cloudflare assigns.
 

@@ -70,6 +70,8 @@ claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
 
 **ChatGPT** (also on the Free plan) — open [Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server**. Give it a name, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then **Create as a plugin**. In a chat, type **@amCharts** to use it.
 
+**Figma Make and the Figma agent** (paid Figma plans) — in the chat, open **Add context** → **Connectors** → **Manage** → **Create**. Name it `amCharts`, set the URL to `https://mcp.amcharts.com/mcp` with no authentication, and set its tools to **Always run**. Then name amCharts in the prompt (Make picks Recharts otherwise), e.g. "Build a sales dashboard with amCharts: a world map colored by revenue and a line chart of monthly sales". Make installs `@amcharts/amcharts5` and looks up the code through the server. A pasted amcharts.com demo or docs link works as context too.
+
 **Cline** (VS Code extension) — open the **MCP Servers** panel → **Remote Servers**, paste `https://mcp.amcharts.com/mcp`, or add to its MCP settings JSON:
 
 ```json
@@ -211,11 +213,11 @@ npm start
 | `list_chart_types` | List all available chart types and their keywords |
 | `search_docs` | Search the skill reference docs by keyword (`scope: "all"` adds the full docs, API reference and examples) |
 | `search_all` | Search across **everything** — skill docs, full documentation, and code examples |
-| `get_doc` | Get a full documentation page (e.g. "charts/xy-chart/axes", "concepts/events") |
+| `get_doc` | Get a full documentation page by its path (e.g. "charts/xy-chart/axes", "concepts/events") or its docs.amcharts.com address |
 | `get_section` | Get a specific section from a reference file by heading (a `###` subsection heading returns just that subsection) |
 | `get_quick_start` | Get a minimal working template for any chart type |
 | `list_examples` | Browse all 350+ examples, optionally filtered by category |
-| `get_example` | Get the full code for a specific example |
+| `get_example` | Get the full code for a specific example, by its path or its amcharts.com demo address |
 | `get_api_reference` | Get the API reference for a class, interface or function — settings with their defaults, events, inheritance and the import line |
 | `list_geodata` | Find map (geodata) files — world, continents, countries, regional packs and the per-Congress US congressional district packs — with each file's CDN path, script global and ES import |
 
@@ -230,6 +232,7 @@ Once connected, your AI assistant can:
 - **"How do I integrate with React?"** → AI calls `get_doc("getting-started/integrations/react")`, which covers the `@amcharts/amcharts5-react` package
 - **"What chart types are available?"** → AI calls `list_chart_types()`
 - **"Map the current US congressional districts"** → AI calls `list_geodata("congressional whole country")`
+- **A pasted amcharts.com link**, e.g. "make one like https://www.amcharts.com/demos/sankey-diagram/" → whichever tool the AI tries with it (a search, `get_doc`, `get_example`) points to the call that returns that demo's code or that docs page or section
 
 ## Content
 

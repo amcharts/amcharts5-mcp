@@ -11,7 +11,13 @@
 //   isn't in the table gets the new site's usual form (lower case, "_" -> "-").
 // Used by the reference generator, and once over the docs, examples and skill.
 
-const ANCHORS = require("./docs-anchors.json"); // "new/path/#Old_anchor": "new-anchor" or ""
+// "new/path/#Old_anchor": "new-anchor" or "". By hand: sections renamed on the
+// new site, which scripts/map-docs-anchors.cjs can't match by their letters.
+const ANCHORS_BY_HAND = {
+  "charts/stock/#Adding_panels": "panels",
+  "charts/xy-chart/axes/axis-ranges/#Bulltet": "bullet", // a typo on the old site
+};
+const ANCHORS = { ...require("./docs-anchors.json"), ...ANCHORS_BY_HAND };
 
 // Pages at a new path. By hand: pages the new site has no redirect for (their
 // old path is a 404 there). A target with "#" replaces the old anchor too.

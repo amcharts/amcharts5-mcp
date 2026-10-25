@@ -20,6 +20,9 @@ import { CDN, requiredScripts } from "./am5-scripts.js";
 // All demo slugs organized by category
 const DEMOS_BY_CATEGORY = {
   "column-bar": [
+    "flame-chart",
+    "network-waterfall-chart",
+    "time-zones-and-daylight-saving",
     "column-with-rotated-series",
     "simple-column-chart",
     "100-stacked-column-chart",
@@ -65,6 +68,7 @@ const DEMOS_BY_CATEGORY = {
   ],
 
   "line-area": [
+    "cpu-and-memory-timeline",
     "date-axis-with-labels-near-minor-grid-lines",
     "line-with-data-labels",
     "spline-graph",
@@ -155,6 +159,10 @@ const DEMOS_BY_CATEGORY = {
   ],
 
   "maps": [
+    "rotating-moon",
+    "saturn-and-its-rings",
+    "jupiter-and-its-moons",
+    "mars-landing-sites",
     "trumps-reciprocal-tariffs-map",
     "solar-eclipse-map",
     "world-map-with-clustered-points",
@@ -247,6 +255,7 @@ const DEMOS_BY_CATEGORY = {
   ],
 
   "radar-polar": [
+    "radial-ridgeline-chart",
     "radar-chart-visualizing-yearly-activities",
     "radial-histogram",
     "zoomable-radar",

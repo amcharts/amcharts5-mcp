@@ -16,8 +16,10 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { JSONRPCMessageSchema } from "@modelcontextprotocol/sdk/types.js";
 import { McpAgent } from "agents/mcp";
 import { buildContent } from "../src/content.js";
-import { registerTools } from "../src/tools.js";
+import { registerTools, serverInfo } from "../src/tools.js";
 import { version, skillFiles, extendedFiles, geodata } from "./content.generated.js";
+// The server's icon (serverInfo, server.json), 256×256; a Data module (wrangler.jsonc rules)
+import ICON from "./icon.png";
 
 // Parse once per isolate (module scope), not per request.
 const content = buildContent({ skillFiles, extendedFiles, geodata });
@@ -28,10 +30,7 @@ const IDLE_TTL_SECONDS = 24 * 60 * 60;
 const IDLE_CLEANUP_KEY = "idleCleanupId";
 
 export class AmCharts5MCP extends McpAgent {
-  server = new McpServer({
-    name: "amcharts5",
-    version,
-  });
+  server = new McpServer(serverInfo(version));
 
   async init() {
     registerTools(this.server, content);
@@ -98,6 +97,10 @@ export default {
       return token
         ? new Response(token, { status: 200, headers: { "content-type": "text/plain; charset=utf-8" } })
         : new Response("Not found", { status: 404 });
+    }
+
+    if (url.pathname === "/icon.png") {
+      return new Response(ICON, { status: 200, headers: { "content-type": "image/png", "cache-control": "public, max-age=86400" } });
     }
 
     if (url.pathname === "/mcp") {

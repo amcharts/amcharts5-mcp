@@ -4,6 +4,10 @@
   "main": "cloudflare/index.js",
   "compatibility_date": "2025-05-01",
   "compatibility_flags": ["nodejs_compat"],
+  // PNG imports are bundled as bytes (the icon at /icon.png)
+  "rules": [
+    { "type": "Data", "globs": ["**/*.png"], "fallthrough": true }
+  ],
   // Serve on the custom domain. Requires amcharts.com to be a zone in this
   // Cloudflare account; on deploy, Cloudflare creates the DNS record + TLS
   // cert automatically. Endpoints: https://mcp.amcharts.com/mcp (+ /sse).

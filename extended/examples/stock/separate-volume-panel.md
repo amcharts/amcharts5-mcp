@@ -55,7 +55,7 @@ root.numberFormatter.set("numberFormat", "#,###.00"); // thousands separators an
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
-// https://docs.amcharts.com/v5/charts/stock/
+// https://docs.amcharts.com/v5/charts/stock/#panels
 var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",        // the mouse wheel zooms in on the dates
   panX: true,             // a drag pans through the dates
@@ -123,7 +123,7 @@ var valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new
 
 // Create a volume panel (chart)
 // -------------------------------------------------------------------------------
-// https://docs.amcharts.com/v5/charts/stock/
+// https://docs.amcharts.com/v5/charts/stock/#panels
 // the main trick: the volume gets a panel of its own; the stock chart zooms both panels together
 var volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   panX: true,              // a drag pans through the dates...

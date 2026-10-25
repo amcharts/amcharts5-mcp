@@ -33,8 +33,12 @@ const tests = [
   // Step 0: Initialize
   {
     send: { jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: "2024-11-05", capabilities: {}, clientInfo: { name: "test", version: "1.0.0" } } },
-    check: (r) => r.result?.serverInfo?.name === "amcharts5" ? "PASS" : "FAIL",
-    label: "Initialize server",
+    check: (r) => {
+      const s = r.result?.serverInfo || {};
+      return s.name === "amcharts5" && s.title === "amCharts 5" && s.websiteUrl && s.description && s.icons?.[0]?.src === "https://mcp.amcharts.com/icon.png"
+        ? "PASS" : `FAIL (${JSON.stringify(s)})`;
+    },
+    label: "Initialize server (name, title, description, website, icon)",
   },
   // Step 1: List tools
   {
@@ -175,6 +179,67 @@ const tests = [
     send: { jsonrpc: "2.0", id: 62, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "https://docs.amcharts.com/v5/reference/xycursor/" } } },
     check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# XYCursor") ? "PASS" : "FAIL",
     label: "get_api_reference(docs.amcharts.com reference URL)",
+  },
+  // Pasted amcharts.com links: each tool a model may try points at the call that has it
+  {
+    send: { jsonrpc: "2.0", id: 63, method: "tools/call", params: { name: "search_all", arguments: { query: "https://www.amcharts.com/demos/sankey-diagram/" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('get_example(path: "examples/flow/sankey-diagram")') && !text.includes("# Search results") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "search_all(a demo address) → its example",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 64, method: "tools/call", params: { name: "search_all", arguments: { query: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Date_formats" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('get_section(file: "extended/charts/xy-chart/axes/date-axis", heading: "Date formats")') ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "search_all(an old docs address with a section) → get_section",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 65, method: "tools/call", params: { name: "search_docs", arguments: { query: "https://docs.amcharts.com/v5/reference/xycursor/ line color", scope: "all" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("> ") && text.includes('get_api_reference(className: "xycursor")') && text.includes('# Search results for "line color"') ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "search_docs(a reference address and words) → pointer, then results for the words",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 66, method: "tools/call", params: { name: "get_doc", arguments: { path: "https://www.amcharts.com/demos/sankey-diagram/" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("# Sankey Diagram") && text.includes("```") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_doc(a demo address) → the demo's example",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 67, method: "tools/call", params: { name: "get_example", arguments: { path: "https://www.amcharts.com/demos-v4/sankey-diagram-v4/" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("amCharts 4 demo") && text.includes('get_example(path: "examples/flow/sankey-diagram")') ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "get_example(an amCharts 4 demo address) → its amCharts 5 version",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 68, method: "tools/call", params: { name: "get_example", arguments: { path: "https://docs.amcharts.com/v5/charts/map-chart/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").includes('get_doc(path: "extended/charts/map-chart")') ? "PASS" : "FAIL",
+    label: "get_example(a docs address) → get_doc",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 69, method: "tools/call", params: { name: "get_example", arguments: { path: "https://www.amcharts.com/demos/rotating-moon/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Rotating Moon") ? "PASS" : "FAIL",
+    label: "get_example(one of the demos added in 1.9.4)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 70, method: "tools/call", params: { name: "search_all", arguments: { query: "I load https://cdn.amcharts.com/lib/5/index.js and want `https://docs.amcharts.com/v5/concepts/events/`" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").includes('https://docs.amcharts.com/v5/concepts/events/ is the docs page "Events": get_doc(path: "extended/concepts/events")') ? "PASS" : `FAIL (${(r.result?.content?.[0]?.text || "").slice(0, 160)})`,
+    label: "search_all(a CDN link, then a docs link in backticks) → the docs link's pointer",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 71, method: "tools/call", params: { name: "get_example", arguments: { path: "https://docs.amcharts.com/v5/concepts/no-such-page/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").includes("a docs page this server doesn't have") ? "PASS" : "FAIL",
+    label: "get_example(a docs page the server lacks) → says so",
   },
   {
     send: { jsonrpc: "2.0", id: 45, method: "tools/call", params: { name: "get_doc", arguments: { path: "/docs/v5/concepts/events/#Global_events" } } },

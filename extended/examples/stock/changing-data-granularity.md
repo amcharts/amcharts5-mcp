@@ -55,7 +55,7 @@ root.numberFormatter.set("numberFormat", "#,###.00");
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
-// https://docs.amcharts.com/v5/charts/stock/
+// https://docs.amcharts.com/v5/charts/stock/#panels
 var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX", // the mouse wheel zooms in on the dates
   panX: true,      // drag the plot sideways to pan...

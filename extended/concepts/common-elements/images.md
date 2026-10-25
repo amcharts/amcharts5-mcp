@@ -43,7 +43,7 @@ am5.Picture.new(root, {
 
 ## Images as bullets
 
-Since image is as good as element as any, we can also use it as [bullet in series](https://docs.amcharts.com/v5/concepts/common-elements/bullets/) or [axes ranges](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/):
+Since image is as good as element as any, we can also use it as [bullet in series](https://docs.amcharts.com/v5/concepts/common-elements/bullets/) or [axes ranges](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#bullet):
 
 series.bullets.push(function() {
   return am5.Bullet.new(root, {

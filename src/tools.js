@@ -33,7 +33,7 @@ function docPathFromInput(input) {
     .replace(/[?#].*$/, "")
     .replace(/^(https?:\/\/)?((www|docs)\.)?amcharts\.com(?=\/|$)/i, "")
     .replace(/^\/+/, "")
-    .replace(/^(docs\/)?v5\//i, "")
+    .replace(/^(docs\/)?v5(\/|$)/i, "")
     .replace(/\/+$/, "")
     .replace(/\.md$/i, "");
 }
@@ -43,6 +43,25 @@ function demoSlug(input) {
   const m = /amcharts\.com\/demos\/([^/?#]+)/i.exec(String(input ?? ""));
   return m ? m[1].toLowerCase() : null;
 }
+
+// What the server says about itself when a client connects (MCP serverInfo;
+// title, description, icons and websiteUrl are in the 2025-11-25 spec).
+// Clients that read them can show them on a connector's card. The icon is
+// served by the Worker (cloudflare/icon.png).
+export function serverInfo(version) {
+  return {
+    name: "amcharts5",
+    title: "amCharts 5",
+    version,
+    description: "Docs, code examples and API reference for amCharts 5, the JavaScript library for charts and maps.",
+    websiteUrl: "https://docs.amcharts.com/v5/ai/mcp/",
+    icons: [{ src: "https://mcp.amcharts.com/icon.png", mimeType: "image/png", sizes: ["256x256"] }],
+  };
+}
+
+// An amcharts.com address in a text: a demo, a docs page, the docs' new host
+// (Markdown around it, a code span's backtick or bold's asterisks, ends it)
+const AMCHARTS_LINK = /(?:https?:\/\/)?(?:[\w-]+\.)*amcharts\.com\/[^\s)"'<>\]`*]*/gi;
 
 // User text echoed back in a reply, capped so a huge query can't balloon it
 const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
@@ -198,6 +217,72 @@ export function registerTools(server, content) {
   const examplesNamed = (input) =>
     exampleBySlug.get(String(input ?? "").trim().replace(/[?#].*$/, "").replace(/^\/+|\/+$/g, "").replace(/\.md$/i, "").split("/").pop().toLowerCase()) || [];
 
+  // An example as get_example returns it
+  function exampleText(key) {
+    const ex = examples.get(key);
+    let text = `# ${ex.title}\n`;
+    text += `*Category: ${ex.category}*\n`;
+    if (ex.source) text += `*Source: ${ex.source}*\n`;
+    return text + `\n${ex.content}`;
+  }
+
+  // A link someone pasted (Figma, for one, invites "a link from amCharts" as
+  // context): the first amcharts.com address in a text that is a demo or a
+  // docs page, and which call gets what it points to. Null when there is none
+  // (other amcharts.com addresses, e.g. the CDN's, are passed over).
+  function linkPointer(text) {
+    for (const m of String(text ?? "").matchAll(AMCHARTS_LINK)) {
+      const pointer = pointerFor(m[0].replace(/[.,;:!?]+$/, ""));
+      if (pointer) return pointer;
+    }
+    return null;
+  }
+
+  function pointerFor(link) {
+    if (/(?:docs\.amcharts\.com|amcharts\.com\/docs)\/v4(?:[/?#]|$)/i.test(link)) {
+      return `${link} is from the amCharts 4 docs; this server covers amCharts 5. search_all finds the amCharts 5 docs on the same topic.`;
+    }
+    const v4 = /amcharts\.com\/demos-v4\/([^/?#]+)/i.exec(link);
+    if (v4) {
+      const v5 = resolveExample(v4[1].toLowerCase().replace(/-v4$/, ""));
+      return `${link} is an amCharts 4 demo; this server covers amCharts 5.` +
+        (v5 ? ` The amCharts 5 version is get_example(path: "${v5}").` : " search_all finds the closest amCharts 5 examples.");
+    }
+    if (demoSlug(link)) {
+      const key = resolveExample(link);
+      return key
+        ? `${link} is the amCharts demo "${examples.get(key).title}": its full code is get_example(path: "${key}").`
+        : `${link} is an amCharts demo this server doesn't have; search_all finds similar examples.`;
+    }
+    if (!/(?:docs\.amcharts\.com\/v5|amcharts\.com\/docs\/v5)(?:[/?#.]|$)/i.test(link)) return null;
+    const key = docPathFromInput(link);
+    if (key.startsWith("reference/") && extendedDocs.has(key)) {
+      return `${link} is the API reference of ${extendedDocs.get(key).title}: get_api_reference(className: "${key.slice("reference/".length)}").`;
+    }
+    if (!key) return `${link} is the amCharts 5 docs home: get_core_reference gives the essentials, list_chart_types the chart types, search_all anything else.`;
+    const resolved = resolveDoc(key);
+    if (!resolved) return `${link} is a docs page this server doesn't have; search_all with the page's topic finds the nearest content.`;
+    const { doc, label } = resolved;
+    // A section anchor, new ("#date-formats") or old ("#Date_formats"): the heading it names
+    const anchor = (/#(.+)$/.exec(link) || [])[1];
+    if (anchor) {
+      const flat = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+      let a = anchor; try { a = decodeURIComponent(anchor); } catch {}
+      const heading = [...doc.content.matchAll(/^#{2,4}\s+(.+?)\s*$/gm)].map((h) => h[1]).find((h) => flat(h) === flat(a));
+      if (heading) return `${link} is the section "${heading}" of the docs page "${doc.title}": get_section(file: "${label}", heading: "${heading}"), or the whole page with get_doc(path: "${label}").`;
+    }
+    return `${link} is the docs page "${doc.title}": get_doc(path: "${label}").`;
+  }
+
+  // A search query with a pasted link in it: the link's pointer, and the
+  // words besides the link to search for ("" when the query is just the link)
+  function splitLink(query) {
+    const pointer = linkPointer(query);
+    if (!pointer) return { pointer: null, rest: query };
+    const rest = String(query).replace(AMCHARTS_LINK, " ").replace(/[()<>[\]`*]+/g, " ").replace(/\s+/g, " ").trim();
+    return { pointer, rest: /[a-z]{3}/i.test(rest) ? rest : "" };
+  }
+
   // --- Tool: list_chart_types ---
   registerTool(
     "list_chart_types",
@@ -286,13 +371,18 @@ export function registerTools(server, content) {
       },
       annotations: READ_ONLY,
     },
-    async ({ query, maxResults, scope }) => {
+    async ({ query: asked, maxResults, scope }) => {
+      // A pasted amcharts.com link: where it points comes first, then results
+      // for the words besides it, if any
+      const { pointer, rest: query } = splitLink(asked);
+      if (pointer && !query) return { content: [{ type: "text", text: pointer }] };
+      const lead = pointer ? `> ${pointer}\n\n` : "";
       const results = searchDocs(content, query, maxResults, scope);
       if (results.length === 0) {
         const hint = scope === "skill"
           ? ` Nothing in the skill docs — retry with scope:'all' to include the API reference, or use search_all.`
           : "";
-        return { content: [{ type: "text", text: `No results found for "${echo(query)}".${hint}${geodataHint(query)}` }] };
+        return { content: [{ type: "text", text: `${lead}No results found for "${echo(query)}".${hint}${geodataHint(query)}` }] };
       }
 
       // Per-result excerpt budget. When only one or two sections match, the
@@ -300,7 +390,7 @@ export function registerTools(server, content) {
       // answer off.
       const budget = results.length <= 2 ? 6000 : 2000;
 
-      let text = `# Search results for "${echo(query)}" (scope: ${scope})\n\n`;
+      let text = `${lead}# Search results for "${echo(query)}" (scope: ${scope})\n\n`;
       for (const r of results) {
         // Examples aren't sections of a doc: label them by their example path
         // and point at get_example for the full code.
@@ -445,19 +535,24 @@ export function registerTools(server, content) {
       title: "Search all content",
       description: "Search across all amCharts 5 content: skill references, full documentation, and code examples. For broad searches across everything.",
       inputSchema: {
-        query: z.string().describe("Search query, e.g. 'react integration', 'date axis formatting', 'stacked bar example'"),
+        query: z.string().describe("Search query, e.g. 'react integration', 'date axis formatting', 'stacked bar example'. An amcharts.com link (a demo or a docs page) is answered with the call that returns it."),
         maxResults: z.number().optional().default(10).describe("Maximum results (default 10)"),
       },
       annotations: READ_ONLY,
     },
-    async ({ query, maxResults }) => {
+    async ({ query: asked, maxResults }) => {
+      // A pasted amcharts.com link: where it points comes first, then results
+      // for the words besides it, if any
+      const { pointer, rest: query } = splitLink(asked);
+      if (pointer && !query) return { content: [{ type: "text", text: pointer }] };
+      const lead = pointer ? `> ${pointer}\n\n` : "";
       const { total, results } = rankContent(content, query, { maxResults });
       if (results.length === 0) {
-        return { content: [{ type: "text", text: `No results found for "${echo(query)}".${geodataHint(query)}` }] };
+        return { content: [{ type: "text", text: `${lead}No results found for "${echo(query)}".${geodataHint(query)}` }] };
       }
 
       const TYPE_LABEL = { skill: "skill", extended: "docs", example: "example" };
-      let text = `# Search results for "${echo(query)}" (${total} total, showing ${results.length})\n\n`;
+      let text = `${lead}# Search results for "${echo(query)}" (${total} total, showing ${results.length})\n\n`;
       for (const r of results) {
         const source = r.kind === "skill" ? `skill/${r.file}` : r.file;
         text += `## [${TYPE_LABEL[r.kind]}] ${r.docTitle}${r.heading ? ` → ${r.heading}` : ""}\n`;
@@ -475,17 +570,22 @@ export function registerTools(server, content) {
       title: "Get doc page",
       description: "Get a full documentation page — an extended doc by path, or a skill file by 'skill/<name>'. Paths are the source labels that search_docs and search_all print.",
       inputSchema: {
-        path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API), or a skill file such as 'skill/SKILL.md' / 'skill/xy'. A class's full settings and defaults are in its API reference (get_api_reference)."),
+        path: z.string().describe("Doc path, e.g. 'charts/xy-chart/cursor', 'concepts/events', 'getting-started/integrations/react', 'reference/xycursor' (per-class API), or a skill file such as 'skill/SKILL.md' / 'skill/xy'. A docs address works too ('https://docs.amcharts.com/v5/concepts/events/', its '.md', or the older www.amcharts.com/docs/v5/ form); a demo address returns that demo's example. A class's full settings and defaults are in its API reference (get_api_reference)."),
       },
       annotations: READ_ONLY,
     },
     async ({ path: docPath }) => {
+      // A demo address: the demo's example
+      const exampleKey = demoSlug(docPath) && resolveExample(docPath);
+      if (exampleKey) return { content: [{ type: "text", text: `*(${echo(docPath)} is a demo: its example, as get_example returns it)*\n\n${exampleText(exampleKey)}` }] };
       const key = docPathFromInput(docPath);
       // Extended docs take precedence for bare paths; 'skill/…' always means the skill layer.
       const resolved = key.startsWith("skill/")
         ? resolveDoc(key)
         : (extendedDocs.has(key) ? { doc: extendedDocs.get(key), label: `extended/${key}` } : resolveDoc(key));
       if (!resolved) {
+        const pointer = linkPointer(docPath);
+        if (pointer) return { content: [{ type: "text", text: pointer }] };
         // List available top-level paths
         const paths = [...extendedDocs.keys()];
         const topLevel = [...new Set(paths.map(p => p.split("/")[0]))].sort();
@@ -505,7 +605,7 @@ export function registerTools(server, content) {
       title: "Get API reference",
       description: "Get the per-class API reference for an amCharts 5 class: the class page plus its settings table (with defaults) and, optionally, its private/read-only settings. It is generated from the library's typings, so it has the exact setting names and default values (e.g. tooltip background cornerRadius, axis tick `visible` default). Takes a class name in any casing, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'AxisRendererX'.",
       inputSchema: {
-        className: z.string().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored."),
+        className: z.string().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored. Its reference address works too: 'https://docs.amcharts.com/v5/reference/xycursor/'."),
         includePrivate: z.boolean().optional().default(false).describe("Also include the private (read-only / internal) settings table. Default false."),
       },
       annotations: READ_ONLY,
@@ -604,27 +704,23 @@ export function registerTools(server, content) {
     "get_example",
     {
       title: "Get example",
-      description: "Get the full code for a specific amCharts 5 example/demo. Paths are listed by list_examples and printed in search results.",
+      description: "Get the full code for a specific amCharts 5 example/demo, by its path or its amcharts.com demo address. Paths are listed by list_examples and printed in search results.",
       inputSchema: {
-        path: z.string().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map'"),
+        path: z.string().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map', or a demo address such as 'https://www.amcharts.com/demos/sankey-diagram/'"),
       },
       annotations: READ_ONLY,
     },
     async ({ path: exPath }) => {
       const key = resolveExample(exPath);
-      const ex = key && examples.get(key);
-      if (!ex) {
+      if (!key) {
         const named = examplesNamed(exPath);
+        const pointer = linkPointer(exPath);
         const text = named.length > 1
           ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`
-          : `Example "${echo(exPath)}" not found. Use list_examples to browse available examples.`;
+          : pointer || `Example "${echo(exPath)}" not found. Use list_examples to browse available examples.`;
         return { content: [{ type: "text", text }] };
       }
-      let text = `# ${ex.title}\n`;
-      text += `*Category: ${ex.category}*\n`;
-      if (ex.source) text += `*Source: ${ex.source}*\n`;
-      text += `\n${ex.content}`;
-      return { content: [{ type: "text", text }] };
+      return { content: [{ type: "text", text: exampleText(key) }] };
     }
   );
 

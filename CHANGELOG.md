@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.9.4] - 2026-10-25
+
+### Added
+- **The server describes itself.** Its info now has a title ("amCharts 5"), a description, a website (the MCP docs page) and an icon, besides the name and version (fields of the MCP 2025-11-25 spec). Clients that read them can show them on a connector's card.
+  - The hosted server serves the icon at https://mcp.amcharts.com/icon.png (256×256). `server.json` uses it too, so the MCP registry no longer loads the icon from the old WordPress theme folder.
+- **Pasted amcharts.com links lead to their content.** Figma, for one, invites users to paste "a link from amCharts" as context. A model may try such a link in any tool, so each one points to the call that returns it:
+  - `search_all` and `search_docs`: a demo address answers with its `get_example` call; a docs address with its `get_doc` call, or with `get_section` when the link names a section (new `#date-formats` or old `#Date_formats`); a reference address with its `get_api_reference` call. Words besides the link are searched as usual, under the pointer.
+  - `get_doc` with a demo address returns the demo's example. `get_example` with a docs address points to `get_doc`.
+  - An amCharts 4 demo address says so, and names the amCharts 5 example of the same name if there is one. An amCharts 4 docs address says so too.
+  - A docs address the server has no page for says so, instead of searching for the address's words. The docs home (`https://docs.amcharts.com/v5/`) points to `get_core_reference`.
+  - Other amcharts.com addresses (e.g. the CDN's) are passed over: the first demo or docs link in the text counts. A link in backticks, bold or Markdown link brackets is read without them.
+  - The tool descriptions say that addresses work.
+  - Every v5 demo on amcharts.com now resolves: 302 of 302.
+- **9 new examples,** the demos added to amcharts.com since the last import: Flame Chart, Network Waterfall Chart, Time Zones & Daylight Saving, CPU and Memory Timeline, Rotating Moon, Saturn and Its Rings, Jupiter and Its Moons, Mars Landing Sites, Radial Ridgeline Chart.
+- README: how to add the server in Figma Make and the Figma agent.
+- 9 new tests (71).
+
+### Fixed
+- Two docs sections that 1.9.3 treated as gone were only renamed on the new site. Links to them now open the section again: the stock chart's "Adding panels" (now `#panels`, in 12 links in the stock examples) and the axis ranges page's "Bullet" (`#Bulltet` on the old site, a typo; in the images page). `scripts/docs-links.cjs` keeps them in a hand-made table, which `npm run map:docs-anchors` doesn't overwrite.
+
 ## [1.9.3] - 2026-10-25
 
 ### Changed
