@@ -1,7 +1,7 @@
 ---
 title: "RadarColumnSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/radarcolumnseries/"
+source: "https://docs.amcharts.com/v5/reference/radarcolumnseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

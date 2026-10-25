@@ -1,7 +1,7 @@
 ---
 title: "IArcDiagramLinkPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iarcdiagramlinkprivate/"
+source: "https://docs.amcharts.com/v5/reference/iarcdiagramlinkprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

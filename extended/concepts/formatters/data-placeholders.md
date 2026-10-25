@@ -1,6 +1,6 @@
 ---
 title: "Data placeholders"
-source: "https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/"
+source: "https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/"
 scraped: "2026-03-15"
 ---
 
@@ -65,7 +65,7 @@ Normally, placeholder will be replaced with a raw value, converted to a string, 
 
 ### Setting global formats
 
-We can use [global formatters](https://www.amcharts.com/docs/v5/concepts/formatters/#Global_formatters) to automatically apply formats to our placeholders.
+We can use [global formatters](https://docs.amcharts.com/v5/concepts/formatters/#global-formatters) to automatically apply formats to our placeholders.
 
 To make that work, we need to set up formatters for two things:
 

@@ -43,7 +43,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "source",
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 30 })
@@ -55,7 +55,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   name: "Visits",
   xAxis: xAxis,
@@ -143,7 +143,7 @@ xAxis.data.setAll(data);
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

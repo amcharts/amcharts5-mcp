@@ -1,14 +1,14 @@
 ---
 title: "Exporting data"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-data/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-data/"
 scraped: "2026-03-15"
 ---
 
-This tutorial looks at configuration options for data export with [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin.
+This tutorial looks at configuration options for data export with [Exporting](https://docs.amcharts.com/v5/concepts/exporting/) plugin.
 
 ## Setting data to export
 
-In order for exporting plugin to be able to export data, we need to set its `[dataSource](https://www.amcharts.com/docs/v5/reference/exporting/#dataSource_setting)` setting.
+In order for exporting plugin to be able to export data, we need to set its `[dataSource](https://docs.amcharts.com/v5/reference/exporting/#dataSource_setting)` setting.
 
 It can be any array of objects, but most probably we'll want to set it to the same value we are using to feed data to series.
 
@@ -50,7 +50,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 NOTE Number format will not be applied when exporting to JSON format.
 
-For available number formatting syntax, refer to "[Formatting numbers](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/)" tutorial.
+For available number formatting syntax, refer to "[Formatting numbers](https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/)" tutorial.
 
 ## Date/time
 
@@ -70,7 +70,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
   dateFormat: "yyyy-MM-dd"
 });
 
-For available date/time formatting syntax, refer to "[Formatting dates](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/)" tutorial.
+For available date/time formatting syntax, refer to "[Formatting dates](https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/)" tutorial.
 
 ## Data columns
 

@@ -25,18 +25,18 @@ Prompt: Create a polar chart of the average wind speed at a beach from eight com
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,     // no dragging the plot around
   panY: false,
@@ -45,7 +45,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "none" // a drag doesn't zoom or select
 }));
@@ -55,7 +55,7 @@ cursor.lineY.set("visible", false);
 cursor.lineX.set("visible", false);
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {});
 xRenderer.labels.template.setAll({
   radius: 10 // the direction labels sit 10px outside the circle
@@ -75,7 +75,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var series = chart.series.push(am5radar.RadarLineSeries.new(root, {
   name: "Wind speed",
   xAxis: xAxis,
@@ -136,7 +136,7 @@ xAxis.data.setAll(data);
 
 // Shade sectors with axis ranges: the beach faces north-west, so winds from NW and N blow in from the sea
 // (onshore, in the chart's first color) and winds from SE and S blow out to sea (offshore, in the theme's red)
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
 function shadeSector(category, endCategory, color) {
   // the range runs from the start of category to the end of endCategory
   var range = xAxis.createAxisRange(xAxis.makeDataItem({ category: category, endCategory: endCategory }));
@@ -153,7 +153,7 @@ shadeSector("N", "N", chart.get("colors").getIndex(0));
 shadeSector("SE", "S", root.interfaceColors.get("negative"));
 
 // Animate chart
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series.appear(1000);
 chart.appear(1000, 100);
 ```

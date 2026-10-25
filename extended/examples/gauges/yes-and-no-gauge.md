@@ -25,18 +25,18 @@ Prompt: Create a half-circle gauge split into a YES half and a NO half, with no 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,
   panY: false,
@@ -46,7 +46,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Create axis and its renderer
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Axes
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#axes
 var axisRenderer = am5radar.AxisRendererCircular.new(root, {
   // a negative inner radius counts in from the outer edge: a band 30px wide
   innerRadius: -30,
@@ -82,7 +82,7 @@ noDataItem.get("label").setAll({text: "NO", forceHidden:false});
 noDataItem.get("axisFill").setAll({visible:true, fillOpacity:1, fill:root.interfaceColors.get("negative")});
 
 // Add clock hand
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Clock_hands
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#clock-hands
 var axisDataItem = xAxis.makeDataItem({});
 axisDataItem.set("value", 0.25); // the hand starts in the middle of the YES half
 

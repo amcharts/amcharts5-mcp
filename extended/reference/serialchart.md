@@ -1,7 +1,7 @@
 ---
 title: "SerialChart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/serialchart/"
+source: "https://docs.amcharts.com/v5/reference/serialchart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IHierarchyNodePrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihierarchynodeprivate/"
+source: "https://docs.amcharts.com/v5/reference/ihierarchynodeprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

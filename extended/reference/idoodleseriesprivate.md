@@ -1,7 +1,7 @@
 ---
 title: "IDoodleSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idoodleseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/idoodleseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

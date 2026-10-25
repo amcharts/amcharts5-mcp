@@ -1,6 +1,6 @@
 ---
 title: "Hierarchy node colors"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-node-colors/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-node-colors/"
 scraped: "2026-03-15"
 ---
 
@@ -8,11 +8,11 @@ This tutorial looks at various ways we can control coloring of hierarchy nodes.
 
 ## Auto-assigned colors
 
-A series will automatically assign a unique color to each root node as well as all the first-level nodes from its own [color set](https://www.amcharts.com/docs/v5/reference/xychart/#colors_setting).
+A series will automatically assign a unique color to each root node as well as all the first-level nodes from its own [color set](https://docs.amcharts.com/v5/reference/xychart/#colors_setting).
 
 Deeper level nodes will inherit their colors from parent nodes.
 
-Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme), or a [reusable full theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/), e.g.:
+Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
 series.get("colors").setAll({
   colors: \[
@@ -38,7 +38,7 @@ series.get("colors").setAll({
 
 IMPORTANTBy default, Hierarchy takes every second color from the color list. If we are defining a list of colors and want each of those used, we also need to set `step: 1` setting as per above code.
 
-MORE INFO A "[Color sets](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Setting_own_list_of_colors)" section of our color tutorial has more details and code samples.
+MORE INFO A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 ## Manual colors
 
@@ -52,7 +52,7 @@ Setting data before adapters or template fields, will cause the those to be igno
 
 ### Via adapters
 
-It's possible to use custom functions ([adapters](https://www.amcharts.com/docs/v5/concepts/settings/adapters/)) to determine color for each node's elements, like circles or rectangles.
+It's possible to use custom functions ([adapters](https://docs.amcharts.com/v5/concepts/settings/adapters/)) to determine color for each node's elements, like circles or rectangles.
 
 Adapters are functions that are run whenever color (or any other setting) is requested for an element. They have a chance of modifying the value.
 
@@ -131,7 +131,7 @@ In the above code we are accessing data item of the node (passed in via `target`
 
 ### Via data
 
-We can also specify fill and other colors, as well as any other setting value, via data using [template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/).
+We can also specify fill and other colors, as well as any other setting value, via data using [template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/).
 
 In short, template field allows specifying field in data that holds setting values for the node.
 
@@ -196,7 +196,7 @@ series.data.setAll(\[{
 
 ### Via heat rules
 
-[Heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/) is an excellent way to automatically apply a range of setting values, e.g. fill color, based on the node's value within range of values in the whole series.
+[Heat rules](https://docs.amcharts.com/v5/concepts/settings/heat-rules/) is an excellent way to automatically apply a range of setting values, e.g. fill color, based on the node's value within range of values in the whole series.
 
 We can use values in series' `valueField` for heat rules, or we can use a set of completely different values via `customValueField`:
 

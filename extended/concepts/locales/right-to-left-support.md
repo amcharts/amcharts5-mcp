@@ -1,6 +1,6 @@
 ---
 title: "Right-to-left support"
-source: "https://www.amcharts.com/docs/v5/concepts/locales/right-to-left-support/"
+source: "https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/"
 scraped: "2026-03-15"
 ---
 
@@ -52,7 +52,7 @@ For labels with just numbers and symbols `direction` setting is ignored
 
 #### Formatting blocks
 
-Another thing that does not respect `rtl` setting is [inline formatting block syntax](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/).
+Another thing that does not respect `rtl` setting is [inline formatting block syntax](https://docs.amcharts.com/v5/concepts/formatters/text-styling/).
 
 One might expect for the RTL label the opening and closing blocks to work from right to left to right as well, e.g. `... [/]xxxxx[bold] ...`, e.g. the "xxxxx" to be bold.
 

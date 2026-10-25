@@ -1,6 +1,6 @@
 ---
 title: "Getting started"
-source: "https://www.amcharts.com/docs/v5/getting-started/"
+source: "https://docs.amcharts.com/v5/getting-started/"
 scraped: "2026-10-08"
 ---
 
@@ -61,7 +61,7 @@ Besides the library itself, both the npm package and the ZIP download include:
 -   **Examples** - ready-made charts of every type, with comments explaining most settings. In the ZIP download, open `examples/index.html` for a gallery that shows each chart above its source code, drawn on canvas or as SVG. In the npm package, they come as plain source files (`examples/<name>/index.ts`).
 -   **Docs for AI coding agents** - an `AGENTS.md` file and a `docs/` folder with a reference for every chart type. Tools like Claude Code, Cursor, or Copilot can read them, so they work from docs that match the version you installed.
 
-MORE INFO For more on using AI to build charts, see "[amCharts + AI](https://www.amcharts.com/docs/v5/ai/)".
+MORE INFO For more on using AI to build charts, see "[amCharts + AI](https://docs.amcharts.com/v5/ai/)".
 
 ## Modules
 
@@ -130,7 +130,7 @@ The container needs to have a height. The chart fills its container, so a `<div>
 
 <div id="chartdiv" style="width: 100%; height: 500px;"></div>
 
-MORE INFO For more information, refer to "[Root element](https://www.amcharts.com/docs/v5/getting-started/root-element/)" tutorial.
+MORE INFO For more information, refer to "[Root element](https://docs.amcharts.com/v5/getting-started/root-element/)" tutorial.
 
 ### New element syntax
 
@@ -282,7 +282,7 @@ series.setAll({
 
 All three approaches are correct and will produce identical output.
 
-MORE INFO For more information on this topic please refer to the "[Settings](https://www.amcharts.com/docs/v5/concepts/settings/)" tutorial.
+MORE INFO For more information on this topic please refer to the "[Settings](https://docs.amcharts.com/v5/concepts/settings/)" tutorial.
 
 ### Data
 
@@ -316,7 +316,7 @@ series.data.setAll(\[{
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There's a lot more to data in amCharts 5 than the above. For more information - dynamic data, incremental loads, external data, etc. - refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFO There's a lot more to data in amCharts 5 than the above. For more information - dynamic data, incremental loads, external data, etc. - refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Complete example
 
@@ -348,7 +348,7 @@ series.data.setAll(\[
 \]);
 </script>
 
-MORE INFO A chart can also be described as a JSON config and put on a page as an HTML element, without any chart code. See "[The <am5-chart> element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/)".
+MORE INFO A chart can also be described as a JSON config and put on a page as an HTML element, without any chart code. See "[The <am5-chart> element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/)".
 
 ## Disposing charts
 

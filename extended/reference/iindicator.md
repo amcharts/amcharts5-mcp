@@ -1,7 +1,7 @@
 ---
 title: "IIndicator"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iindicator/"
+source: "https://docs.amcharts.com/v5/reference/iindicator/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

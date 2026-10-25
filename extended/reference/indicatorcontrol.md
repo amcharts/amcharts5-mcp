@@ -1,13 +1,13 @@
 ---
 title: "IndicatorControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/indicatorcontrol/"
+source: "https://docs.amcharts.com/v5/reference/indicatorcontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `StockToolbar` control for adding indicators to a `StockChart`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/indicator-control/
+Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/indicator-control/
 
 ## Import
 

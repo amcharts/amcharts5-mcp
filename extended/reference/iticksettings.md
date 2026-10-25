@@ -1,7 +1,7 @@
 ---
 title: "ITickSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iticksettings/"
+source: "https://docs.amcharts.com/v5/reference/iticksettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -22,7 +22,7 @@ TypeScript: `am5.ITickSettings` (`import type { ITickSettings } from "@amcharts/
 - **crisp** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
 - **isMeasured** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element's bounds are not measured, so it takes no part in its parent's layout or size.
 - **position** (`"absolute" | "relative"`) — default `"absolute"` _(theme)_ — _from ISpriteSettings_ — Positioning of the element. `"absolute"` leaves the element out of its parent's layout and size: it is placed by its `x` and `y` only.
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `.15` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 
 ## Other inherited settings

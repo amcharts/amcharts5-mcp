@@ -1,13 +1,13 @@
 ---
 title: "MapPointSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/mappointseries/"
+source: "https://docs.amcharts.com/v5/reference/mappointseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A map series of points, shown as bullets. A point sits at a longitude and latitude, in a polygon, or on a line.
 
-Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+Docs: https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 
 ## Import
 

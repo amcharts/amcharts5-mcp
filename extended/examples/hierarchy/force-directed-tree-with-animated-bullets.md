@@ -25,11 +25,11 @@ Prompt: Create a force-directed tree of a city’s power network: a power plant 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -51,7 +51,7 @@ chart.zoomableContainer.setAll({
 var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
   singleBranchOnly: false,
   downDepth: 1,    // a click opens one more level
@@ -70,7 +70,7 @@ var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
 series.links.template.set("strokeOpacity", 1);
 
 // Arrows that run along each link, from parent to child
-// https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-link-bullets/
+// https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-link-bullets/
 series.linkBullets.push(function(root, source, target) {
   const bullet = am5.Bullet.new(root, {
     locationX: 0.5,   // halfway along the link, until the animation below moves it
@@ -120,7 +120,7 @@ series.nodes.template.set("tooltipText", "{category}: [bold]{sum} MW[/]");
 
 // Set data: a power plant feeds four substations, which feed the city's districts.
 // Values are each district's demand in megawatts.
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   name: "Power plant",
   children: [{

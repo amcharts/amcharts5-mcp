@@ -1,7 +1,7 @@
 ---
 title: "IExportingPDFOptions"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iexportingpdfoptions/"
+source: "https://docs.amcharts.com/v5/reference/iexportingpdfoptions/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -21,8 +21,8 @@ TypeScript: not exported by name from the package.
 - **pageSize** (`pageSizes`) — default `"A4"` — Page size.
 - **pageOrientation** (`"landscape" | "portrait"`) — default `"portrait"` — Page orientation.
 - **pageMargins** (`number | number[]`) — default `30` — Page margins in points (1/72 inch): one number for all four edges, `[horizontal, vertical]`, or `[left, top, right, bottom]`.
-- **font** (`IFont`) — Font of the PDF's text. The default font has only Latin and Cyrillic characters, so text in other scripts needs a font that has them. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/#Fonts
-- **extraFonts** (`IFont[]`) — More fonts to register, for use by individual elements of the document, e.g. from a `pdfdocready` listener. Used only together with `font`. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/#Fonts
+- **font** (`IFont`) — Font of the PDF's text. The default font has only Latin and Cyrillic characters, so text in other scripts needs a font that has them. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-pdf/#fonts
+- **extraFonts** (`IFont[]`) — More fonts to register, for use by individual elements of the document, e.g. from a `pdfdocready` listener. Used only together with `font`. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-pdf/#fonts
 
 ## Other inherited options
 

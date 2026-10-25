@@ -25,18 +25,18 @@ Prompt: Create a progress chart: one horizontal bar from 0 to 100% split into fi
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                 // no dragging the bar around
   panY: false,
@@ -101,7 +101,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
   renderer: am5xy.AxisRendererY.new(root, {})
@@ -119,7 +119,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 xAxis.get("renderer").labels.template.set("forceHidden", true); // no axis labels; addLabel adds its own
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -142,7 +142,7 @@ series.columns.template.setAll({
 series.data.setAll(data);
 
 // A percent label where each stage starts
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
 function addLabel(value) {
   var rangeDataItem = xAxis.makeDataItem({
     value: value
@@ -173,7 +173,7 @@ for (var i = 0; i < data.length; i++) {
 }
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   nameField: "categoryX",   // legend items take their name from categoryX, the stage name
   centerX: am5.percent(50), // the legend's middle...
@@ -191,7 +191,7 @@ legend.markerRectangles.template.setAll({
 legend.data.setAll(series.dataItems);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
 ```

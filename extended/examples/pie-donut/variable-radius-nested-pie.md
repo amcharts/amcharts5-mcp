@@ -25,18 +25,18 @@ Prompt: Create a nested pie chart of EU enlargement: the inner ring shows the po
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 // start and end angle must be set both for chart and series
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
   layout: root.verticalLayout,
@@ -47,7 +47,7 @@ var chart = root.container.children.push(am5percent.PieChart.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 // start and end angle must be set both for chart and series
 var series0 = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "population",
@@ -167,12 +167,12 @@ am5.object.each(data, function(year, countries) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series0.data.setAll(innerData);
 series1.data.setAll(outerData);
 
 // Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+// https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 series0.appear(1000, 100);
 series1.appear(1000, 100);
 ```

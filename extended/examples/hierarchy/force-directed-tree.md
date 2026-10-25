@@ -25,11 +25,11 @@ Prompt: Create a force-directed tree of a software company: the company in the m
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -43,7 +43,7 @@ var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.ForceDirected.new(root, {
   singleBranchOnly: false,
   downDepth: 1,        // a click opens one more level
@@ -71,7 +71,7 @@ series.circles.template.setAll({
 series.nodes.template.set("tooltipText", "{category}: [bold]{sum}[/] people");
 
 // Set data: a software company of 118 people, by department and team
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   name: "Company",
   children: [{

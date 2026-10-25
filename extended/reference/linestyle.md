@@ -1,7 +1,7 @@
 ---
 title: "LineStyle"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/linestyle/"
+source: "https://docs.amcharts.com/v5/reference/linestyle/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

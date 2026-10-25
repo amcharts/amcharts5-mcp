@@ -1,7 +1,7 @@
 ---
 title: "IFunnelSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ifunnelseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ifunnelseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,19 +14,19 @@ TypeScript: `am5percent.IFunnelSeriesSettings` (`import type { IFunnelSeriesSett
 
 ## Settings
 
-- **bottomRatio** (`number`) — default `0` — Narrows the bottom edge of each slice toward the width of the next slice: `0` keeps it as wide as the top, making a rectangle, `1` makes it as wide as the next slice, making a trapezoid. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/funnel-series/#Slice_bottom_width
-- **orientation** (`"horizontal" | "vertical"`) — default `"vertical"` _(theme)_ — Orientation of the series. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/#Series_orientation
+- **bottomRatio** (`number`) — default `0` — Narrows the bottom edge of each slice toward the width of the next slice: `0` keeps it as wide as the top, making a rectangle, `1` makes it as wide as the next slice, making a trapezoid. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/funnel-series/#slice-bottom-width
+- **orientation** (`"horizontal" | "vertical"`) — default `"vertical"` _(theme)_ — Orientation of the series. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
 - **ignoreZeroValues** (`boolean`) — default `false` — Leaves out items with a zero value: no slice, label or tick, and no space for them.
 - **alignLabels** (`boolean`) — default `true` _(theme)_ — Lines the labels up in a column to the right of the slices (a row below them when horizontal), joined to them by ticks. `false` puts each label over its slice.
-- **startLocation** (`number`) — default `0` _(theme)_ — Relative location within area available to series where it should start. `0` - beginning, `1` - end, or any intermediate value. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/funnel-series/#Start_end_locations
-- **endLocation** (`number`) — default `1` _(theme)_ — Relative location within area available to series where it should end. `0` - beginning, `1` - end, or any intermediate value. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/funnel-series/#Start_end_locations
+- **startLocation** (`number`) — default `0` _(theme)_ — Relative location within area available to series where it should start. `0` - beginning, `1` - end, or any intermediate value. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/funnel-series/#startend-locations
+- **endLocation** (`number`) — default `1` _(theme)_ — Relative location within area available to series where it should end. `0` - beginning, `1` - end, or any intermediate value. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/funnel-series/#startend-locations
 
 ## Inherited settings with a different default on FunnelSeries
 
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **legendLabelText** (`string`) — default `"{category}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
 - **legendValueText** (`string`) — default `"{valuePercentTotal.formatNumber('0.00p')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
-- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

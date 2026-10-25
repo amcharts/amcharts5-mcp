@@ -25,11 +25,11 @@ Prompt: Create a horizontal arc diagram of the connections between the six frien
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/
+// https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/
 var series = chart.series.push(am5flow.ArcDiagram.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
@@ -48,7 +48,7 @@ var series = chart.series.push(am5flow.ArcDiagram.new(root, {
 }));
 
 // Configure labels
-// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Labels
+// https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/#labels
 series.nodes.labels.template.setAll({
   fontSize: "0.85em", // a little smaller
   // the gap between a node and its label; no gap after it, so the arcs get the height
@@ -74,7 +74,7 @@ series.nodes.labels.template.adapters.add("x", function (x, target) {
 
 // Order of the nodes, left to right: the six friends in the middle, the people each of them is linked to
 // close by, so the arcs stay short enough to fit
-// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Node_data
+// https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/#node-data
 series.nodes.data.setAll([
   { id: "Frank" }, { id: "Alice" },
   { id: "Mike" }, { id: "Vince" }, { id: "Sergei" }, { id: "Rob Dohnen" }, { id: "Duncan" }, { id: "Roger" }, { id: "David" },
@@ -89,7 +89,7 @@ series.nodes.data.setAll([
 ]);
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   { "from": "Monica", "to": "Rachel", "value": 4 },
   { "from": "Monica", "to": "Chandler", "value": 63 },

@@ -1,6 +1,6 @@
 ---
 title: "Map line series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-line-series/"
 scraped: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ Map line series are used to plot projected lines on the map.
 
 ## Adding series
 
-To create a map line series we need to call its [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) and push the new object into chart's `series` list:
+To create a map line series we need to call its [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) and push the new object into chart's `series` list:
 
 let lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
@@ -26,7 +26,7 @@ var lineSeries = chart.series.push(
 
 ### Appearance
 
-Lines are configured using series' `mapLines.template`, which can be used to set any `MapLine` [setting](https://www.amcharts.com/docs/v5/reference/mapline/#Settings).
+Lines are configured using series' `mapLines.template`, which can be used to set any `MapLine` [setting](https://docs.amcharts.com/v5/reference/mapline/#settings).
 
 lineSeries.mapLines.template.setAll({
   stroke: am5.color(0xff0000),
@@ -97,9 +97,9 @@ lineSeries.mapLines.template.setAll({
 
 For scale: `400000` is about the height of the International Space Station. On a globe, lines rise away from its surface. On flat maps they rise up the screen.
 
-Once `altitude` is set (even to `0`), the ends of each leg are placed at the height of the points they connect: the [altitude](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/#Altitude) of points in `pointsToConnect`, or the third value of the coordinates in `geometry` (in metres, as in GeoJSON). Lines without `altitude` stay on the ground, whatever their coordinates hold.
+Once `altitude` is set (even to `0`), the ends of each leg are placed at the height of the points they connect: the [altitude](https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#altitude) of points in `pointsToConnect`, or the third value of the coordinates in `geometry` (in metres, as in GeoJSON). Lines without `altitude` stay on the ground, whatever their coordinates hold.
 
-To give each line its own height, set it via data using [template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/):
+To give each line its own height, set it via data using [template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/):
 
 lineSeries.mapLines.template.set("templateField", "lineSettings");
 
@@ -266,7 +266,7 @@ lineSeries.data.setAll(\[{
 
 We can also use series `pushDataItem()` method to add data lines one-by-one.
 
-The parameter is an object that adheres to `[IMapLineSeriesDataItem](https://www.amcharts.com/docs/v5/reference/imaplineseriesdataitem/)` interface.
+The parameter is an object that adheres to `[IMapLineSeriesDataItem](https://docs.amcharts.com/v5/reference/imaplineseriesdataitem/)` interface.
 
 lineSeries.pushDataItem({
   geometry: {
@@ -297,7 +297,7 @@ Or, if we have a map line series with points we'd like to connect, we can use `p
 
 ### Connecting line series points
 
-We can use actual data items from a [map point series](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/) as points for the line.
+We can use actual data items from a [map point series](https://docs.amcharts.com/v5/charts/map-chart/map-point-series/) as points for the line.
 
 This eliminates the need to define `geometry` for our lines, as we can use `pointsToConnect` setting instead, which is an array of map line series' data items:
 
@@ -512,11 +512,11 @@ pointSeries.data.setAll([{
 }]);
 ```
 
-NOTE This matters when the chart is [serialized](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/): points created with `pushDataItem()` are not data rows, so they are not part of a serialized config. Points given as data rows are.
+NOTE This matters when the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/): points created with `pushDataItem()` are not data rows, so they are not part of a serialized config. Points given as data rows are.
 
 #### Animating a point along a line (5.20.8)
 
-To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
+To make a point travel along its line, give the bullet's sprite an [`animations`](https://docs.amcharts.com/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
 
 ```javascript
 var planeSeries = chart.series.push(

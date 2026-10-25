@@ -1,13 +1,13 @@
 ---
 title: "RadarCursor"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/radarcursor/"
+source: "https://docs.amcharts.com/v5/reference/radarcursor/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Cursor for a `RadarChart`: a line out from the center and an arc around it that follow the pointer and show the axis and series tooltips.
 
-Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+Docs: https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 
 ## Import
 

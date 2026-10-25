@@ -1,7 +1,7 @@
 ---
 title: "IFlowNodesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iflownodesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iflownodesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -17,7 +17,7 @@ TypeScript: `am5flow.IFlowNodesDataItem` (`import type { IFlowNodesDataItem } fr
 - **node** (`FlowNode`) — The node element.
 - **label** (`Label`) — Node label.
 - **fill** (`Color`) — Node color.
-- **fillPattern** (`Pattern`) — Node pattern. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+- **fillPattern** (`Pattern`) — Node pattern. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
 - **unknown** (`boolean`) — Marks a placeholder node, made for a link that has no source or target ID. It is not shown, and its links fade out toward it.
 - **d3SankeyNode** (`d3sankey.SankeyNode<d3sankey.SankeyExtraProperties, d3sankey.SankeyExtraProperties>`) — _(internal)_
 - **sumIncoming** (`number`) — Sum of values of all incoming links.

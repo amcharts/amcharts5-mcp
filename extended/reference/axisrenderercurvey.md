@@ -1,13 +1,13 @@
 ---
 title: "AxisRendererCurveY"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axisrenderercurvey/"
+source: "https://docs.amcharts.com/v5/reference/axisrenderercurvey/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Renderer for the Y axis of a `CurveChart`, which runs across the X axis line all along it.
 
-_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
+_Since 5.12.0._ Docs: https://docs.amcharts.com/v5/charts/timeline/
 
 ## Import
 

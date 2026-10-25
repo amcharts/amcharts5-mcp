@@ -25,18 +25,18 @@ Prompt: Create a dashed line chart of hourly values over New Year’s Eve, from 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: true,                  // drag the plot sideways to pan through the hours
@@ -50,7 +50,7 @@ var chart = root.container.children.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set(
   "cursor",
   am5xy.XYCursor.new(root, {
@@ -109,11 +109,11 @@ var data = [
 ];
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   minorGridEnabled: true, // fainter grid lines between the labeled ones
   minGridDistance: 70     // at least 70px between labels; on narrow screens some are skipped
@@ -163,7 +163,7 @@ var series = chart.series.push(
 );
 
 // Set up data processor to parse string dates
-// https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+// https://docs.amcharts.com/v5/concepts/data/#pre-processing-data
 series.data.processor = am5.DataProcessor.new(root, {
   dateFormat: "yyyy-MM-dd HH:mm", // how the dates in the data are written
   dateFields: ["date"]            // the data fields to turn into dates
@@ -207,7 +207,7 @@ series.data.setAll(data);
 series.appear(1000);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

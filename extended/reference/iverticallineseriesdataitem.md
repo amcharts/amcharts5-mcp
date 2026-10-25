@@ -1,7 +1,7 @@
 ---
 title: "IVerticalLineSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iverticallineseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iverticallineseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

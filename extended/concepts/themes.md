@@ -1,6 +1,6 @@
 ---
 title: "Themes"
-source: "https://www.amcharts.com/docs/v5/concepts/themes/"
+source: "https://docs.amcharts.com/v5/concepts/themes/"
 scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
@@ -130,7 +130,7 @@ A restrained, near-monochrome dark theme: gold on a near-black ground, with a ti
 
 `Responsive`
 
-A theme that can be used to enable responsive features of the chart - adapting settings based on available space. More info [here](https://www.amcharts.com/docs/v5/concepts/responsive/).
+A theme that can be used to enable responsive features of the chart - adapting settings based on available space. More info [here](https://docs.amcharts.com/v5/concepts/responsive/).
 
 `Savanna`
 
@@ -221,7 +221,7 @@ root.setThemes([
 
 Each chart can have multiple themes applied to it.
 
-To apply theme(s) to a chart, we use `setThemes()` method of its [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element), supplying instances of the theme, created with their [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax):
+To apply theme(s) to a chart, we use `setThemes()` method of its [root element](https://docs.amcharts.com/v5/getting-started/#root-element), supplying instances of the theme, created with their [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax):
 
 root.setThemes(\[
   am5themes\_Animated.new(root),
@@ -239,7 +239,7 @@ NOTE The order of the themes is important. If two themes set the same setting, t
 
 We can think of themes as collection of defaults.
 
-They will not override the values of the [settings](https://www.amcharts.com/docs/v5/getting-started/#Settings), set by user code.
+They will not override the values of the [settings](https://docs.amcharts.com/v5/getting-started/#settings), set by user code.
 
 ## Quick custom theme
 
@@ -275,7 +275,7 @@ root.setThemes(\[
 
 The above will force all labels to be red and sized at `1.5em`.
 
-For more information on how to target elements, as well specify their setting values, refer to "[Rules](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/#Rules)" section of our "Creating themes" tutorial.
+For more information on how to target elements, as well specify their setting values, refer to "[Rules](https://docs.amcharts.com/v5/concepts/themes/creating-themes/#rules)" section of our "Creating themes" tutorial.
 
 ## Creating themes
 
@@ -285,7 +285,7 @@ If you need to create a full-fledged reusable theme, amCharts 5 provides a rally
 
 Themes allow targeting elements via a variety of queries to set their settings, events, and adapters.
 
-For information on how to create your own custom themes refer to the "[Creating themes](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/)" tutorial.
+For information on how to create your own custom themes refer to the "[Creating themes](https://docs.amcharts.com/v5/concepts/themes/creating-themes/)" tutorial.
 
 ## Default themes
 
@@ -321,5 +321,5 @@ legendRoot.setThemes(\[
 
 ## Additional info
 
--   [Using "Animated" theme](https://www.amcharts.com/docs/v5/concepts/animations/#Animated_theme)
--   [Using "Responsive" theme](https://www.amcharts.com/docs/v5/concepts/responsive/)
+-   [Using "Animated" theme](https://docs.amcharts.com/v5/concepts/animations/#animated-theme)
+-   [Using "Responsive" theme](https://docs.amcharts.com/v5/concepts/responsive/)

@@ -1,7 +1,7 @@
 ---
 title: "CanvasGraphics"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/canvasgraphics/"
+source: "https://docs.amcharts.com/v5/reference/canvasgraphics/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

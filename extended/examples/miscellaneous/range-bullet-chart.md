@@ -25,18 +25,18 @@ Prompt: Create a range bullet chart of the scores of two options, Reduce Expense
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // no dragging...
   panY: false,
@@ -58,7 +58,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
   renderer: am5xy.AxisRendererY.new(root, {
@@ -79,7 +79,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 xAxis.get("renderer").grid.template.set("visible", false); // no vertical grid lines
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -97,7 +97,7 @@ series.columns.template.setAll({
 series.data.setAll(data);
 
 // Add bullets: a circle at each end of the range
-// https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/
+// https://docs.amcharts.com/v5/concepts/common-elements/bullets/
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
     locationX: 0, // at the bar's start, the open value
@@ -187,7 +187,7 @@ legend.valueLabels.template.set("forceHidden", true);
 legend.data.setAll([series3, series2]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
 ```

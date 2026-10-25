@@ -25,18 +25,18 @@ Prompt: Create a radar (spider) chart comparing nine countries around the circle
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,    // no dragging the plot around
   panY: false,
@@ -45,7 +45,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   // drag around the circle to zoom in on a few countries
   behavior: "zoomX"
@@ -54,7 +54,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 // a small minGridDistance keeps every country's name, also on a small chart
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   minGridDistance: 20
@@ -75,7 +75,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var series = chart.series.push(am5radar.RadarLineSeries.new(root, {
   name: "Series",
   xAxis: xAxis,
@@ -108,7 +108,7 @@ series.bullets.push(function () {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [{
   "country": "Lithuania",
   "litres": 501
@@ -141,7 +141,7 @@ series.data.setAll(data);
 xAxis.data.setAll(data);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series.appear(1000);
 chart.appear(1000, 100);
 ```

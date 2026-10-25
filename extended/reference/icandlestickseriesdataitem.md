@@ -1,7 +1,7 @@
 ---
 title: "ICandlestickSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icandlestickseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/icandlestickseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

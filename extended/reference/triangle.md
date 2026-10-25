@@ -1,13 +1,13 @@
 ---
 title: "Triangle"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/triangle/"
+source: "https://docs.amcharts.com/v5/reference/triangle/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Draws a triangle pointing up, centered on its `x` and `y`, with its `width` and `height`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/graphics/
 
 ## Import
 

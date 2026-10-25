@@ -1,7 +1,7 @@
 ---
 title: "ISvgItem"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/isvgitem/"
+source: "https://docs.amcharts.com/v5/reference/isvgitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

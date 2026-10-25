@@ -1,7 +1,7 @@
 ---
 title: "IDisplayObject"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idisplayobject/"
+source: "https://docs.amcharts.com/v5/reference/idisplayobject/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

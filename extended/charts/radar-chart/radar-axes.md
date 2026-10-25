@@ -1,6 +1,6 @@
 ---
 title: "Radar axes"
-source: "https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/"
+source: "https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/"
 scraped: "2026-03-15"
 ---
 
@@ -8,13 +8,13 @@ Radar chart reuses same axes types as XY chart. However it uses different axis r
 
 ## Labels on a circular axis
 
-Configuration of labels on an axis is done via axis renderer's `labels.template` property. For more information about it, please refer to "[Axes: Labels](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels)" tutorial
+Configuration of labels on an axis is done via axis renderer's `labels.template` property. For more information about it, please refer to "[Axes: Labels](https://docs.amcharts.com/v5/charts/xy-chart/axes/#labels)" tutorial
 
 ### Label type
 
 Circular axis renderer positions its labels neatly curved along the axis line by default.
 
-This can be configured via label template's `[textType](https://www.amcharts.com/docs/v5/reference/radiallabel/#textType_setting)` setting.
+This can be configured via label template's `[textType](https://docs.amcharts.com/v5/reference/radiallabel/#textType_setting)` setting.
 
 Available options for use on a radar chart are: `"circular"` (default), `"radial"`, and `"adjusted"`.
 

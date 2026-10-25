@@ -25,18 +25,18 @@ Prompt: Create a zoomable line chart of about 2,000 daily values with a horizont
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,       // drag the plot to pan...
   panY: true,       // ...in any direction
@@ -47,7 +47,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none" // a drag over the plot pans the chart instead of zooming
 }));
@@ -76,7 +76,7 @@ function generateDatas(count) {
 }
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   baseInterval: { timeUnit: "day", count: 1 }, // one data point per day
   renderer: am5xy.AxisRendererX.new(root, {
@@ -90,7 +90,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   name: "Series",
   xAxis: xAxis,
@@ -103,7 +103,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = chart.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal", // a scrollbar above the plot, with a preview of the data...
   height: 60                 // ...60px tall
@@ -139,7 +139,7 @@ series.data.setAll(data);
 sbSeries.data.setAll(data); // the preview gets the same data
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

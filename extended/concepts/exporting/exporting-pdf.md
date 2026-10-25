@@ -1,10 +1,10 @@
 ---
 title: "Exporting PDF"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-pdf/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-pdf/"
 scraped: "2026-10-08"
 ---
 
-This tutorial looks at configuration options for export of charts to PDF documents with [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin.
+This tutorial looks at configuration options for export of charts to PDF documents with [Exporting](https://docs.amcharts.com/v5/concepts/exporting/) plugin.
 
 ## Page options
 
@@ -436,4 +436,4 @@ amCharts 5 Exporting plugin uses pdfmake library for PDF document generation. St
 
 If you are just using amCharts 5 Exporting API, you don't need to do anything.
 
-If you are accessing pdfmake object directly to use its API, please [read here](https://www.amcharts.com/docs/v5/tutorials/pdfmake-upgrade-notice-02-03/).
+If you are accessing pdfmake object directly to use its API, please [read here](https://docs.amcharts.com/v5/tutorials/pdfmake-upgrade-notice-02-03/).

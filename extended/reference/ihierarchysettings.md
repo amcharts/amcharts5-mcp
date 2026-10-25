@@ -1,7 +1,7 @@
 ---
 title: "IHierarchySettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihierarchysettings/"
+source: "https://docs.amcharts.com/v5/reference/ihierarchysettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -18,17 +18,17 @@ TypeScript: `am5hierarchy.IHierarchySettings` (`import type { IHierarchySettings
 - **valueField** (`string`) — Field in data that holds the node's value.
 - **categoryField** (`string`) — Field in data that holds the node's category name.
 - **childDataField** (`string`) — default `"children"` _(theme)_ — Field in data that holds the array of the node's children.
-- **parentIdField** (`string`) — default `"parentId"` _(code fallback)_ — Field in data that holds the parent node's ID, for flat data passed to `setFlatData()`. When not set, `"parentId"` is used. _Since 5.16.2._ Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Flat_data
+- **parentIdField** (`string`) — default `"parentId"` _(code fallback)_ — Field in data that holds the parent node's ID, for flat data passed to `setFlatData()`. When not set, `"parentId"` is used. _Since 5.16.2._ Docs: https://docs.amcharts.com/v5/charts/hierarchy/#flat-data
 - **disabledField** (`string`) — Field in data that, when `true`, makes the node start collapsed.
 - **fillField** (`string`) — Field in data that holds the node's color.
-- **colors** (`ColorSet`) — default `ColorSet.new(root, { step: 2 })` _(theme)_ — `ColorSet` for the node colors: each first-level node takes the next color, and the nodes below it share that color. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Node_colors
-- **patterns** (`PatternSet`) — A `PatternSet` to use when assigning patterns for nodes. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets
-- **downDepth** (`number`) — default `1` _(theme)_ — Number of child levels a click on a node opens. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Drill_down
-- **upDepth** (`number`) — default `Infinity` _(code fallback)_ — Number of parent levels that stay visible above the selected node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Drill_down
-- **initialDepth** (`number`) — default `5` _(theme)_ — Number of levels opened below the top level (`topDepth`) when the chart first loads. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Tree_depth
-- **topDepth** (`number`) — default `0` — Depth of the first level shown; the levels above it are hidden. For example, `1` hides the root node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Tree_depth
+- **colors** (`ColorSet`) — default `ColorSet.new(root, { step: 2 })` _(theme)_ — `ColorSet` for the node colors: each first-level node takes the next color, and the nodes below it share that color. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#node-colors
+- **patterns** (`PatternSet`) — A `PatternSet` to use when assigning patterns for nodes. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets
+- **downDepth** (`number`) — default `1` _(theme)_ — Number of child levels a click on a node opens. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#drill-down
+- **upDepth** (`number`) — default `Infinity` _(code fallback)_ — Number of parent levels that stay visible above the selected node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#drill-down
+- **initialDepth** (`number`) — default `5` _(theme)_ — Number of levels opened below the top level (`topDepth`) when the chart first loads. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#tree-depth
+- **topDepth** (`number`) — default `0` — Depth of the first level shown; the levels above it are hidden. For example, `1` hides the root node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#tree-depth
 - **singleBranchOnly** (`boolean`) — default `true` _(theme)_ — Collapses the other branches when a branch is opened. `Sunburst` ignores this setting and always works as if it is `true`.
-- **selectedDataItem** (`DataItem<IHierarchyDataItem>`) — The selected (drilled-into) node. Set it to drill down to a node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Pre_selected_branch
+- **selectedDataItem** (`DataItem<IHierarchyDataItem>`) — The selected (drilled-into) node. Set it to drill down to a node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#pre-selected-branch
 - **animationDuration** (`number`) — Duration of the drill-down animations, in milliseconds.
 - **animationEasing** (`Easing`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing of the drill-down animations.
 

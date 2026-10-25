@@ -1,6 +1,6 @@
 ---
 title: "Formatting dates"
-source: "https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/"
+source: "https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial takes a look at date formatter - helper object used to format date
 
 ## Formatter object
 
-Date formatter object is accessible globally via chart [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element)'s `dateFormatter` property.
+Date formatter object is accessible globally via chart [root element](https://docs.amcharts.com/v5/getting-started/#root-element)'s `dateFormatter` property.
 
 We can use it to set `dateFormat`, as well as a few of other related settings, which will be used whenever date needs to be formatted in the chart.
 
@@ -18,17 +18,17 @@ Date formatter is used in a number of places throughout the chart.
 
 Some components like date axis their own logic to apply date formatting.
 
-Labels (e.g. in tooltips) with date [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) will turn to date formatter to format their values.
+Labels (e.g. in tooltips) with date [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) will turn to date formatter to format their values.
 
 Data export functionality will also use date formatter to format its output of date values.
 
-The data processor will also use date formatter to [parse string-based dates](https://www.amcharts.com/docs/v5/concepts/data/#Parsing_dates).
+The data processor will also use date formatter to [parse string-based dates](https://docs.amcharts.com/v5/concepts/data/#parsing-dates).
 
 ## Global date format
 
 ### Default format
 
-A global date formatter will already have its `dateFormat` set to a default value, which may depend on the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) your chart is using.
+A global date formatter will already have its `dateFormat` set to a default value, which may depend on the [locale](https://docs.amcharts.com/v5/concepts/locales/) your chart is using.
 
 ### Setting default format
 
@@ -54,7 +54,7 @@ root.dateFormatter.setAll({
   dateFields: \["valueX"\]
 });
 
-For more information on how it works, please refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+For more information on how it works, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ## Format codes
 
@@ -454,7 +454,7 @@ root.utc = true;
 
 root.utc = true;
 
-For more information on setting time zones refer to "Root element: [Time zone](https://www.amcharts.com/docs/v5/getting-started/root-element/#time-zone)".
+For more information on setting time zones refer to "Root element: [Time zone](https://docs.amcharts.com/v5/getting-started/root-element/#time-zone)".
 
 ## Styling text
 
@@ -464,7 +464,7 @@ root.dateFormatter.set("dateFormat", "\[bold\]yyyy-MM-dd");
 
 root.dateFormatter.set("dateFormat", "\[bold\]yyyy-MM-dd");
 
-Please refer to the "[Text styling and data binding](https://www.amcharts.com/docs/v5/concepts/formatters/in-line/)" tutorial for more info.
+Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/in-line/)" tutorial for more info.
 
 ## Escaping
 
@@ -492,8 +492,8 @@ Will result in:
 
 A date axis has its own special relationship with date formatting. It uses own collection of date formats for various occasions, and will ignore global date settings.
 
-Please refer to "[Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/)" tutorial for details.
+Please refer to "[Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)" tutorial for details.
 
 ## Using Intl object formats
 
-Date formats can be specified using JavaScript's built-in `Intl` object. Please refer to "[Formatting date/time and numbers using “Intl” object](https://www.amcharts.com/docs/v5/tutorials/formatting-date-time-and-numbers-using-intl-object/)" for further information.
+Date formats can be specified using JavaScript's built-in `Intl` object. Please refer to "[Formatting date/time and numbers using “Intl” object](https://docs.amcharts.com/v5/tutorials/formatting-date-time-and-numbers-using-intl-object/)" for further information.

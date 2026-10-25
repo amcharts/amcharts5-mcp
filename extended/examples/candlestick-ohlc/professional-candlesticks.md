@@ -25,7 +25,7 @@ Prompt: Create a professional (hollow) candlestick chart of simulated daily pric
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root);
@@ -70,7 +70,7 @@ function generateChartData() {
 var data = generateChartData();
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     focusable: true, // the chart can be reached with the Tab key
@@ -83,7 +83,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     maxDeviation: 0.5, // can pan up to half a screen past the first and last day
@@ -110,7 +110,7 @@ var yAxis = chart.yAxes.push(
 var color = root.interfaceColors.get("background");
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.CandlestickSeries.new(root, {
     fill: color,
@@ -143,7 +143,7 @@ var series = chart.series.push(
 series.columns.template.get("themeTags").push("pro");
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set(
   "cursor",
   am5xy.XYCursor.new(root, {
@@ -153,7 +153,7 @@ var cursor = chart.set(
 cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal",
   height: 50 // 50px tall, with a small chart of the prices inside
@@ -189,7 +189,7 @@ var sbseries = scrollbar.chart.series.push(
 );
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.plotContainer.children.push(am5.Legend.new(root, {})); // inside the plot, top left
 
 legend.data.push(series);
@@ -216,7 +216,7 @@ sbseries.data.setAll(data);
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

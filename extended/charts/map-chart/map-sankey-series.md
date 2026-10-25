@@ -1,6 +1,6 @@
 ---
 title: "Map Sankey series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-sankey-series/"
 scraped: "2026-10-08"
 ---
 
@@ -693,6 +693,6 @@ The following example shows a complete multi-level coffee supply chain visualiza
 
 ## Related class references
 
--   [MapSankeySeries](https://www.amcharts.com/docs/v5/reference/mapsankeyseries
+-   [MapSankeySeries](https://docs.amcharts.com/v5/reference/mapsankeyseries/
     )
--   [MapSankeyNodes](https://www.amcharts.com/docs/v5/reference/mapsankeynodes)
+-   [MapSankeyNodes](https://docs.amcharts.com/v5/reference/mapsankeynodes/)

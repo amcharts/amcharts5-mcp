@@ -25,18 +25,18 @@ Prompt: Create a zoomable radar chart of stacked columns showing website visits 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Data: visits to a website per month, in thousands, by where the visitors came from
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [
   { month: "Jan", search: 42, direct: 18, social: 12, email: 6 },
   { month: "Feb", search: 45, direct: 19, social: 14, email: 7 },
@@ -53,7 +53,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // no panning by dragging
   panY: false,
@@ -62,7 +62,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Add cursor: dragging across the chart zooms in on the months in between
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX"
 }));
@@ -70,7 +70,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle following the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   minGridDistance: 20 // months can be 20px apart before labels are skipped
 });
@@ -90,7 +90,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series: one stacked column series per source of visits
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, field) {
   var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
     stacked: true, // each source sits on top of the one before
@@ -115,14 +115,14 @@ createSeries("Social", "social");
 createSeries("Email", "email");
 
 // Add scrollbars: the horizontal one picks months, the vertical one zooms the values
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
 xAxis.data.setAll(data);
 
 // Animate chart
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

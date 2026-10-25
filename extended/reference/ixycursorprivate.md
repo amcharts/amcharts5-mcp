@@ -1,7 +1,7 @@
 ---
 title: "IXYCursorPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ixycursorprivate/"
+source: "https://docs.amcharts.com/v5/reference/ixycursorprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

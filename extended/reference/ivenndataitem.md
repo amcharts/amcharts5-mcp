@@ -1,7 +1,7 @@
 ---
 title: "IVennDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ivenndataitem/"
+source: "https://docs.amcharts.com/v5/reference/ivenndataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,7 +19,7 @@ TypeScript: `am5venn.IVennDataItem` (`import type { IVennDataItem } from "@amcha
 - **label** (`Label`) — The slice's label.
 - **legendDataItem** (`DataItem<ILegendDataItem>`) — The data item's entry in a legend.
 - **fill** (`Color`) — Fill color used for the slice and related elements, e.g. legend marker.
-- **fillPattern** (`Pattern`) — Fill pattern used for the slice and related elements, e.g. legend marker. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+- **fillPattern** (`Pattern`) — Fill pattern used for the slice and related elements, e.g. legend marker. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
 
 ## Other inherited data item fields
 

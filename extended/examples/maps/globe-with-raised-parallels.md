@@ -25,11 +25,11 @@ Prompt: Create a slowly turning globe drawn only by its parallels, one every 1.5
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -37,7 +37,7 @@ root.setThemes([
 
 // At most 30 frames a second: plenty for a slow turn, and it leaves the browser time for the rest of the page,
 // as every turn redraws thousands of raised points
-// https://www.amcharts.com/docs/v5/getting-started/root-element/#Performance
+// https://docs.amcharts.com/v5/getting-started/root-element/#performance
 root.fps = 30;
 
 // The land's heights along the parallels, from relief-parallels.js, loaded before this code: NOAA's ETOPO1 relief
@@ -60,7 +60,7 @@ var bands = [
 ];
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   projection: am5map.geoOrthographic(), // a globe, seen from space
   panX: "rotateX",                      // a sideways drag spins the globe
@@ -76,7 +76,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 
 // The whole globe as one polygon, never seen: a map of lines alone has no outline to fit, so the map is fitted
 // to this
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var globeSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   opacity: 0 // invisible
 }));
@@ -87,7 +87,7 @@ globeSeries.data.push({
 
 // The sea: where a parallel crosses water, it lies flat on the globe. All of it is one line, in a grey between
 // the background and the text color, so it suits light and dark themes
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
 var seaColor = am5.Color.interpolate(0.2, root.interfaceColors.get("background"), root.interfaceColors.get("alternativeBackground"));
 
 var seaSeries = chart.series.push(am5map.MapLineSeries.new(root, {
@@ -223,7 +223,7 @@ drawLines();
 
 // The globe turns on its own: rotationX goes once round in 360 / speed seconds, again and again (loops: 0). Set as
 // the chart's animations, so a saved JSON config keeps it
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 function spin() {
   var from = chart.get("rotationX", 0);
   chart.set("animations", [{
@@ -252,7 +252,7 @@ root.container.children.push(am5.Label.new(root, {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

@@ -1,7 +1,7 @@
 ---
 title: "ISlicePrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isliceprivate/"
+source: "https://docs.amcharts.com/v5/reference/isliceprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -25,18 +25,18 @@ Prompt: Create a lollipop chart of about thirty people, each value a thin stem f
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   // a drag zooms (the cursor's behavior), so the chart itself doesn't pan
   panX: false,
@@ -49,7 +49,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // drag across the plot to zoom in on those stems
   behavior: "zoomX"
@@ -57,7 +57,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   minGridDistance: 15, // only 15px between labels, enough for the turned names
   minorGridEnabled: true
@@ -89,7 +89,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -163,7 +163,7 @@ xAxis.data.setAll(data);
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

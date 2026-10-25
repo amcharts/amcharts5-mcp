@@ -1,7 +1,7 @@
 ---
 title: "Select"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/select/"
+source: "https://docs.amcharts.com/v5/reference/select/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

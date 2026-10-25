@@ -1,6 +1,6 @@
 ---
 title: "Buttons"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/buttons/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/buttons/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorials takes a brief look at `Button` elements, and ways to configure th
 
 ## Button element
 
-Buttons are elements of class `[Button](https://www.amcharts.com/docs/v5/reference/button/)` or one of its derivate classes, such as `ResizeButton`.
+Buttons are elements of class `[Button](https://docs.amcharts.com/v5/reference/button/)` or one of its derivate classes, such as `ResizeButton`.
 
 They are highly configurable. We can change colors, borders, rounding, text, and icons in them.
 
@@ -141,7 +141,7 @@ var button = chart.plotContainer.children.push(am5.Button.new(root, {
 
 ### Body/background
 
-The button body can be configured via its `background` setting which holds an instance of `[RoundedRectangle](https://www.amcharts.com/docs/v5/reference/roundedrectangle/#Settings)`.
+The button body can be configured via its `background` setting which holds an instance of `[RoundedRectangle](https://docs.amcharts.com/v5/reference/roundedrectangle/#settings)`.
 
 We can set various settings like colors, corner radius, transparency, etc.
 
@@ -179,7 +179,7 @@ button.get("background").setAll({
 
 Buttons start without any labels, so it's up to us to create a `Label` object and set it to button's `label` setting. That is if we need a textual label on our button.
 
-To configure the label, we can use any setting that is available on `[Label](https://www.amcharts.com/docs/v5/reference/label/#Settings)`.
+To configure the label, we can use any setting that is available on `[Label](https://docs.amcharts.com/v5/reference/label/#settings)`.
 
 let button = chart.plotContainer.children.push(am5.Button.new(root, {
   layer: 40,

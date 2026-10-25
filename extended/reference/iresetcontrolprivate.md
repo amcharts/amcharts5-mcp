@@ -1,7 +1,7 @@
 ---
 title: "IResetControlPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iresetcontrolprivate/"
+source: "https://docs.amcharts.com/v5/reference/iresetcontrolprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

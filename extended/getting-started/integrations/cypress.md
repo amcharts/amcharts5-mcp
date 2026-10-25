@@ -1,6 +1,6 @@
 ---
 title: "Testing amCharts 5 with Cypress"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/cypress/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/cypress/"
 scraped: "2026-10-22"
 ---
 

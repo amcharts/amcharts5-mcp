@@ -1,6 +1,6 @@
 ---
 title: "Breadcrumb navigation"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/breadcrumbs/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/breadcrumbs/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ Breadcrumb bar is a control helps with the drill-down navigation of hierarchy ch
 
 ## Adding
 
-Breadcrumb control is instantiated via `[BreadcrumbBar](https://www.amcharts.com/docs/v5/reference/breadcrumbbar/)` class's `new()` method.
+Breadcrumb control is instantiated via `[BreadcrumbBar](https://docs.amcharts.com/v5/reference/breadcrumbbar/)` class's `new()` method.
 
 Like any other element or control, we can just add to the main chart's container.
 
@@ -40,7 +40,7 @@ As per code snipped above, we supply series to control using its `series` settin
 
 To configure links in the path, we can use breadcrumb bar's `labels.template`.
 
-It accepts any [`Label` setting](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+It accepts any [`Label` setting](https://docs.amcharts.com/v5/reference/label/#settings).
 
 let nav = container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {
@@ -88,7 +88,7 @@ nav.labels.template.states.create("down", {
 
 ### Handling events
 
-We can also attach [event handlers](https://www.amcharts.com/docs/v5/concepts/events/) to links via their template:
+We can also attach [event handlers](https://docs.amcharts.com/v5/concepts/events/) to links via their template:
 
 let nav = container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {

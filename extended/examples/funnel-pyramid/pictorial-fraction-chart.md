@@ -25,21 +25,21 @@ Prompt: Create a pictorial stacked chart that fills the outline of a coffee cup 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
 var chart = root.container.children.push(am5percent.SlicedChart.new(root, {
   layout: root.verticalLayout // the legend and the cup stacked top to bottom
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/#series
 var series = chart.series.push(am5percent.PictorialStackedSeries.new(root, {
   alignLabels: true,       // labels line up in a column beside the cup
   orientation: "vertical", // slices stacked top to bottom
@@ -58,14 +58,14 @@ series.labels.template.set("text", "{category}: {valuePercentTotal.formatNumber(
 series.slices.template.set("tooltipText", "{category}: {valuePercentTotal.formatNumber('0p')}");
 
 // Set data: the first item fills the top of the cup
-// https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/#setting-data
 series.data.setAll([
   { category: "Milk", value: 40 },
   { category: "Coffee", value: 60 }
 ]);
 
 // Add legend, above the cup
-// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+// https://docs.amcharts.com/v5/charts/percent-charts/legend-percent-series/
 var legend = chart.children.moveValue(am5.Legend.new(root, {
   paddingBottom: 15,  // 15px above...
   paddingTop: 15,     // ...and below the legend
@@ -87,7 +87,7 @@ legend.valueLabels.template.set("forceHidden", true);
 legend.data.setAll(series.dataItems); // one legend item per slice
 
 // Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+// https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 chart.appear(1000, 100);
 ```
 

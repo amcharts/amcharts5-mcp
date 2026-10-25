@@ -1,6 +1,6 @@
 ---
 title: "Exporting"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/"
 scraped: "2026-03-15"
 ---
 
@@ -18,11 +18,11 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 
 <script src="https://cdn.amcharts.com/lib/5/plugins/exporting.js"></script>
 
-MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Enabling
 
-Exporting plugin is instantiated just like any other object in amCharts 5: by calling [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) of its class, passing in [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element) and settings object.
+Exporting plugin is instantiated just like any other object in amCharts 5: by calling [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) of its class, passing in [root element](https://docs.amcharts.com/v5/getting-started/#root-element) and settings object.
 
 let exporting = am5plugins\_exporting.Exporting.new(root, {
   menu: am5plugins\_exporting.ExportingMenu.new(root, {})
@@ -44,7 +44,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
   menu: am5plugins\_exporting.ExportingMenu.new(root, {})
 });
 
-For more information about setting up and configuring export menu, refer to "[Export menu](https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/)" tutorial.
+For more information about setting up and configuring export menu, refer to "[Export menu](https://docs.amcharts.com/v5/concepts/exporting/export-menu/)" tutorial.
 
 ## Formats
 
@@ -86,7 +86,7 @@ Image
 
 `pngOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingimageoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingimageoptions/)
 
 JPEG
 
@@ -94,7 +94,7 @@ Image
 
 `jpgOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingimageoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingimageoptions/)
 
 SVG *(5.21.0)*
 
@@ -102,7 +102,7 @@ Image (vector)
 
 `svgOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingsvgoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingsvgoptions/)
 
 PDF
 
@@ -110,7 +110,7 @@ Image + data
 
 `pdfOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingpdfoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingpdfoptions/)
 
 PDF data
 
@@ -118,7 +118,7 @@ Data
 
 `pdfdataOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingdataoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingdataoptions/)
 
 XLSX (Excel)
 
@@ -126,7 +126,7 @@ Data
 
 `xlsxOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingxlsxoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingxlsxoptions/)
 
 CSV
 
@@ -134,7 +134,7 @@ Data
 
 `csvOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingcsvoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingcsvoptions/)
 
 JSON
 
@@ -142,7 +142,7 @@ Data
 
 `jsonOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingjsonoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingjsonoptions/)
 
 HTML
 
@@ -150,7 +150,7 @@ Data
 
 `htmlOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportinghtmloptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportinghtmloptions/)
 
 Print
 
@@ -158,7 +158,7 @@ Print
 
 `printOptions`
 
-[Available options](https://www.amcharts.com/docs/v5/reference/iexportingprintoptions/)
+[Available options](https://docs.amcharts.com/v5/reference/iexportingprintoptions/)
 
 ### Disabling formats
 
@@ -184,9 +184,9 @@ NOTE Since 5.21.0 the default menu also has an "SVG" image item (after "JPG"). T
 
 ## Exporting images
 
-For information on how to set up and configure exporting of chart snapshots, refer to "[Exporting to image formats](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/)" tutorial.
+For information on how to set up and configure exporting of chart snapshots, refer to "[Exporting to image formats](https://docs.amcharts.com/v5/concepts/exporting/exporting-images/)" tutorial.
 
-For exporting the chart as an SVG vector image *(5.21.0)*, refer to "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)".
+For exporting the chart as an SVG vector image *(5.21.0)*, refer to "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
 
 ## Exporting data
 
@@ -202,13 +202,13 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
   dataSource: data
 });
 
-For information on how to set up and configure data export, refer to "[Exporting data](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-data/)" tutorial.
+For information on how to set up and configure data export, refer to "[Exporting data](https://docs.amcharts.com/v5/concepts/exporting/exporting-data/)" tutorial.
 
 ## Name of export file
 
 Exporting plugin will export files named `chart.***` by default.
 
-We can change that using `[filePrefix](https://www.amcharts.com/docs/v5/reference/exporting/#filePrefix_setting)` setting:
+We can change that using `[filePrefix](https://docs.amcharts.com/v5/reference/exporting/#filePrefix_setting)` setting:
 
 let exporting = am5plugins\_exporting.Exporting.new(root, {
   menu: am5plugins\_exporting.ExportingMenu.new(root, {}),
@@ -222,7 +222,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 ## Printing
 
-For information on how to set up and configure chart printing, refer to "[Printing](https://www.amcharts.com/docs/v5/concepts/exporting/printing/)" tutorial.
+For information on how to set up and configure chart printing, refer to "[Printing](https://docs.amcharts.com/v5/concepts/exporting/printing/)" tutorial.
 
 ## Common pitfalls
 
@@ -242,9 +242,9 @@ In order for export to work properly, both the web page and all the images need 
 
 ## API
 
-Exporting plugin provides an extensive API. Please refer to "[Exporting API](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-api/#Data_as_an_HTML_table)" tutorial for more information.
+Exporting plugin provides an extensive API. Please refer to "[Exporting API](https://docs.amcharts.com/v5/concepts/exporting/exporting-api/#data-as-an-html-table)" tutorial for more information.
 
 ## Related tutorials
 
--   [Creating multi-content PDF export](https://www.amcharts.com/docs/v5/tutorials/creating-multi-content-pdf-export/)
--   [Adding custom buttons to Exporting Menu](https://www.amcharts.com/docs/v5/tutorials/adding-custom-buttons-to-exporting-menu/)
+-   [Creating multi-content PDF export](https://docs.amcharts.com/v5/tutorials/creating-multi-content-pdf-export/)
+-   [Adding custom buttons to Exporting Menu](https://docs.amcharts.com/v5/tutorials/adding-custom-buttons-to-exporting-menu/)

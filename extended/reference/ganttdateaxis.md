@@ -1,13 +1,13 @@
 ---
 title: "GanttDateAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/ganttdateaxis/"
+source: "https://docs.amcharts.com/v5/reference/ganttdateaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A date axis of a `Gantt` chart. The Gantt has two, both above the plot area: `xAxis` with the larger time units and `xAxisMinor` below it.
 
-_Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Timeline_horizontal_axis
+_Since 5.14.0._ Docs: https://docs.amcharts.com/v5/charts/gantt/#timeline-horizontal-axis
 
 ## Import
 

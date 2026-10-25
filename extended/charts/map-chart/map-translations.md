@@ -1,6 +1,6 @@
 ---
 title: "Map name translations"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-translations/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-translations/"
 scraped: "2026-03-15"
 ---
 

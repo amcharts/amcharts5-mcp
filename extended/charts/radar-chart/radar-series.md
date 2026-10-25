@@ -1,6 +1,6 @@
 ---
 title: "Radar series"
-source: "https://www.amcharts.com/docs/v5/charts/radar-chart/radar-series/"
+source: "https://docs.amcharts.com/v5/charts/radar-chart/radar-series/"
 scraped: "2026-03-15"
 ---
 

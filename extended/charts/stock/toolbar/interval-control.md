@@ -1,10 +1,10 @@
 ---
 title: "Interval control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/interval-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/interval-control/"
 scraped: "2026-10-08"
 ---
 
-Interval control is a dropdown list of intervals for user to choose from. Implementer can add it to a [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/), augment it with custom functionality to load/set appropriate data as well as related settings.
+Interval control is a dropdown list of intervals for user to choose from. Implementer can add it to a [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/), augment it with custom functionality to load/set appropriate data as well as related settings.
 
 ## Adding
 
@@ -113,7 +113,7 @@ function setDataInterval(interval) {
 
 NOTEIf you have a scrollbar with preview in your chart, you might also want to update data of its series, and `baseInterval` of its date axis. Please refer to a live example on this page for a demo.
 
-MORE INFOFor more information about loading and parsing external data, please refer to "[External data](https://www.amcharts.com/docs/v5/concepts/data/#External_data)" tutorial.
+MORE INFOFor more information about loading and parsing external data, please refer to "[External data](https://docs.amcharts.com/v5/concepts/data/#external-data)" tutorial.
 
 ## Interval list
 

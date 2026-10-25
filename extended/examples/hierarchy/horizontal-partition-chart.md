@@ -25,11 +25,11 @@ Prompt: Create a horizontal partition (icicle) chart of a 100-person company by 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -43,7 +43,7 @@ var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Partition.new(root, {
   singleBranchOnly: false,
   orientation: "horizontal", // the levels run from left to right
@@ -70,7 +70,7 @@ series.rectangles.template.on("height", turnLabel);
 series.nodes.template.set("tooltipText", "{category}: [bold]{sum} people[/]");
 
 // Set data: a 100-person company by department and team
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 series.data.setAll([{
   name: "Company",
   children: [{

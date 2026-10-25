@@ -1,7 +1,7 @@
 ---
 title: "IComponentDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icomponentdataitem/"
+source: "https://docs.amcharts.com/v5/reference/icomponentdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IForceDirectedSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iforcedirectedsettings/"
+source: "https://docs.amcharts.com/v5/reference/iforcedirectedsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -15,16 +15,16 @@ TypeScript: `am5hierarchy.IForceDirectedSettings` (`import type { IForceDirected
 ## Settings
 
 - **nodePadding** (`number`) — default `0` — Room in pixels kept free around each node. It applies to both nodes of a pair, so neighbouring nodes stay at least twice this far apart.
-- **centerStrength** (`number`) — default `0.8` _(theme)_ — Pull of every node toward the center of the chart; a negative value pushes nodes away from it. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation
-- **manyBodyStrength** (`number`) — default `-14` _(theme)_ — Force between all nodes, scaled by each node's radius: a negative value pushes them apart, a positive one pulls them together. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation
-- **linkWithStrength** (`number`) — default `0.5` _(theme)_ — A force that attracts (or pushes back) nodes that are linked together via `linkWithField`. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation
-- **velocityDecay** (`number`) — default `0.5` _(theme)_ — Resistance acting against node speed. The greater the value, the more "sluggish" the nodes will be. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation
-- **initialFrames** (`number`) — default `500` _(theme)_ — Length of how long initial force simulation would run in frames. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation
-- **showOnFrame** (`number`) — default `10` _(theme)_ — If set to a number will wait X number of frames before revealing the tree. Can be used to hide initial animations where nodes settle into their places. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation
-- **minRadius** (`number | Percent`) — default `am5.percent(1)` _(theme)_ — Radius of the circle of the node with the smallest value, in pixels or percent of the series' average side ((width + height) / 2). Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Sizing_nodes
-- **maxRadius** (`number | Percent`) — default `am5.percent(8)` _(theme)_ — Radius of the circle of the node with the largest value, in pixels or percent of the series' average side ((width + height) / 2). Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Sizing_nodes
-- **xField** (`string`) — Field in data that holds a fixed X position for the node, in pixels or percent of the series' width. Such a node doesn't move along X. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Fixed_nodes
-- **yField** (`string`) — Field in data that holds a fixed Y position for the node, in pixels or percent of the series' height. Such a node doesn't move along Y. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Fixed_nodes
+- **centerStrength** (`number`) — default `0.8` _(theme)_ — Pull of every node toward the center of the chart; a negative value pushes nodes away from it. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation
+- **manyBodyStrength** (`number`) — default `-14` _(theme)_ — Force between all nodes, scaled by each node's radius: a negative value pushes them apart, a positive one pulls them together. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation
+- **linkWithStrength** (`number`) — default `0.5` _(theme)_ — A force that attracts (or pushes back) nodes that are linked together via `linkWithField`. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation
+- **velocityDecay** (`number`) — default `0.5` _(theme)_ — Resistance acting against node speed. The greater the value, the more "sluggish" the nodes will be. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation
+- **initialFrames** (`number`) — default `500` _(theme)_ — Length of how long initial force simulation would run in frames. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation
+- **showOnFrame** (`number`) — default `10` _(theme)_ — If set to a number will wait X number of frames before revealing the tree. Can be used to hide initial animations where nodes settle into their places. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation
+- **minRadius** (`number | Percent`) — default `am5.percent(1)` _(theme)_ — Radius of the circle of the node with the smallest value, in pixels or percent of the series' average side ((width + height) / 2). Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#sizing-nodes
+- **maxRadius** (`number | Percent`) — default `am5.percent(8)` _(theme)_ — Radius of the circle of the node with the largest value, in pixels or percent of the series' average side ((width + height) / 2). Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#sizing-nodes
+- **xField** (`string`) — Field in data that holds a fixed X position for the node, in pixels or percent of the series' width. Such a node doesn't move along X. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#fixed-nodes
+- **yField** (`string`) — Field in data that holds a fixed Y position for the node, in pixels or percent of the series' height. Such a node doesn't move along Y. Docs: https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#fixed-nodes
 
 ## Inherited settings with a different default on ForceDirected
 
@@ -33,7 +33,7 @@ TypeScript: `am5hierarchy.IForceDirectedSettings` (`import type { IForceDirected
 - **legendValueText** (`string`) — default `"{sum.formatNumber('#.#')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
 - **maskContent** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Clips all content that goes outside the container's bounds.
 - **singleBranchOnly** (`boolean`) — default `false` _(theme)_ — _from IHierarchySettings_ — Collapses the other branches when a branch is opened. `Sunburst` ignores this setting and always works as if it is `true`.
-- **upDepth** (`number`) — default `Infinity` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Drill_down
+- **upDepth** (`number`) — default `Infinity` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#drill-down
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

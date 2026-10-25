@@ -1,7 +1,7 @@
 ---
 title: "IGridLayoutPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/igridlayoutprivate/"
+source: "https://docs.amcharts.com/v5/reference/igridlayoutprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -25,11 +25,11 @@ Prompt: Create a zoomable word cloud of the most frequent words in King Claudius
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -50,7 +50,7 @@ chart.zoomableContainer.setAll({
 var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // zoom in, zoom out and reset buttons
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/word-cloud/
+// https://docs.amcharts.com/v5/charts/word-cloud/
 var series = chart.series.push(am5wc.WordCloud.new(root, {
   // at most 100 words, each at least 2 letters long
   maxCount:100,

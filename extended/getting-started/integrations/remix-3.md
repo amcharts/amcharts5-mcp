@@ -1,14 +1,14 @@
 ---
 title: "Using amCharts 5 with Remix 3"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/remix-3/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/remix-3/"
 scraped: "2026-10-22"
 ---
 
-amCharts 5 works with [Remix 3](https://remix.run/) through Remix's own tools: there is no separate package. For Remix 2, now React Router, see [React Router](https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-remix/).
+amCharts 5 works with [Remix 3](https://remix.run/) through Remix's own tools: there is no separate package. For Remix 2, now React Router, see [React Router](https://docs.amcharts.com/v5/getting-started/integrations/remix/).
 
 ## A chart from a JSON config
 
-The simplest way: the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/). It needs no client code. Load its script files in your document's `<head>`, with the files for the chart types the config uses:
+The simplest way: the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/). It needs no client code. Load its script files in your document's `<head>`, with the files for the chart types the config uses:
 
 ```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -17,7 +17,7 @@ The simplest way: the library's [`<am5-chart>` element](https://www.amcharts.com
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 ```
 
-Then render the element with its [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/). The server renders it like any HTML, and the browser builds the chart:
+Then render the element with its [JSON config](https://docs.amcharts.com/v5/concepts/serializing/). The server renders it like any HTML, and the browser builds the chart:
 
 ```typescript
 function SalesPage() {

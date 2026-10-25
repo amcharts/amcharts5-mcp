@@ -25,11 +25,11 @@ Prompt: Create a world map in the style of a printed atlas that marks every coun
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   // near-black space behind the satellite picture, shown only with it
   background: am5.Rectangle.new(root, {
@@ -62,14 +62,14 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create series for the ocean
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var oceanSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 
 oceanSeries.mapPolygons.template.setAll({
@@ -84,7 +84,7 @@ oceanSeries.data.push({
 
 // Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
 // (visible: false): make it visible for the satellite view
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   visible: false,
   // the map fits the countries, not the whole picture
@@ -92,7 +92,7 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create graticule series
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10 // a grid line every 10 degrees
 }));
@@ -103,7 +103,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // low-detail world countries
 }));
@@ -118,7 +118,7 @@ polygonSeries.mapPolygons.template.states.create("hover", {
 });
 
 // Create point series for the capitals
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
 // A star, the usual atlas symbol for a capital. All stars share this template, so they can be changed at once.

@@ -1,7 +1,7 @@
 ---
 title: "IAverageSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaverageseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iaverageseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

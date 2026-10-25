@@ -1,7 +1,7 @@
 ---
 title: "IDropdownColorsPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idropdowncolorsprivate/"
+source: "https://docs.amcharts.com/v5/reference/idropdowncolorsprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

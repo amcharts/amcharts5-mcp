@@ -1,13 +1,13 @@
 ---
 title: "PieChart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/piechart/"
+source: "https://docs.amcharts.com/v5/reference/piechart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A pie or donut chart. Several `PieSeries` in one chart split the space between `innerRadius` and `radius` into concentric rings, unless they set their own radii.
 
-Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+Docs: https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 
 ## Import
 

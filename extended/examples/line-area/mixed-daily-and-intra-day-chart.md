@@ -25,18 +25,18 @@ Prompt: Create a chart with two time scales: a line of hourly values over ten da
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     focusable: true, // the chart can be reached with the Tab key
@@ -75,11 +75,11 @@ for (var day = 0; day < 10; day++) {
 }
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 
 // One value axis, shared by the hourly line and the daily columns
 var yAxis = chart.yAxes.push(
@@ -118,7 +118,7 @@ var xAxis2 = chart.xAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series1 = chart.series.push(
   am5xy.LineSeries.new(root, {
     xAxis: xAxis1,
@@ -158,7 +158,7 @@ series2.columns.template.set("strokeOpacity", 0);
 series2.data.setAll(dailyData);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // the cursor snaps to the hours of the line's axis
   xAxis: xAxis1
@@ -166,7 +166,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series1.appear(1000, 100);
 series2.appear(1000, 100);
 chart.appear(1000, 100);

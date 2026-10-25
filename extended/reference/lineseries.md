@@ -1,13 +1,13 @@
 ---
 title: "LineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/lineseries/"
+source: "https://docs.amcharts.com/v5/reference/lineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A series drawn as a line, with an optional fill below it for an area chart.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/
 
 ## Import
 

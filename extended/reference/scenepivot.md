@@ -1,7 +1,7 @@
 ---
 title: "ScenePivot"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/scenepivot/"
+source: "https://docs.amcharts.com/v5/reference/scenepivot/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

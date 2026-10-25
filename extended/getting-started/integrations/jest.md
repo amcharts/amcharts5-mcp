@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with Jest"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/jest/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/jest/"
 scraped: "2026-10-22"
 ---
 
@@ -100,7 +100,7 @@ test("chart exists", () => {
 
 ## Components that use our framework packages
 
-To test components that use our [framework packages](https://www.amcharts.com/docs/v5/getting-started/integrations/) without drawing their charts, mock the package. For React:
+To test components that use our [framework packages](https://docs.amcharts.com/v5/getting-started/integrations/) without drawing their charts, mock the package. For React:
 
 ```javascript
 jest.mock("@amcharts/amcharts5-react", () => ({

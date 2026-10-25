@@ -386,7 +386,7 @@ var allData = {
 };
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 root.numberFormatter.setAll({
@@ -405,11 +405,11 @@ root.numberFormatter.setAll({
 var stepDuration = 2000; // each year takes 2 seconds
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,     // drag the plot to pan
   panY: true,
@@ -422,7 +422,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.zoomOutButton.set("forceHidden", true);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
   minGridDistance: 20, // a label on every row down to 20px apart
   // the first category at the top, so the leader is on top after sorting
@@ -451,7 +451,7 @@ xAxis.set("interpolationDuration", stepDuration / 10); // the scale catches up w
 xAxis.set("interpolationEasing", am5.ease.linear);     // ...at a steady speed
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -611,7 +611,7 @@ setTimeout(function () {
 }, 50);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

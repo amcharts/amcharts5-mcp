@@ -1,7 +1,7 @@
 ---
 title: "ColorControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/colorcontrol/"
+source: "https://docs.amcharts.com/v5/reference/colorcontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

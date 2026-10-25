@@ -1,7 +1,7 @@
 ---
 title: "IBaseColumnSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ibasecolumnseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ibasecolumnseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,7 +14,7 @@ TypeScript: `am5xy.IBaseColumnSeriesSettings` (`import type { IBaseColumnSeriesS
 
 ## Settings
 
-- **clustered** (`boolean`) — default `true` — Places the columns side by side with those of the other clustered column series on the same base axis, sharing each cell. With `false`, the columns take the whole cell and can overlap the others. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/#Clustering
+- **clustered** (`boolean`) — default `true` — Places the columns side by side with those of the other clustered column series on the same base axis, sharing each cell. With `false`, the columns take the whole cell and can overlap the others. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/#clustering
 - **adjustBulletPosition** (`boolean`) — default `true` _(theme)_ — Places bullets on the visible part of a column that runs past the plot area, instead of on the whole column.
 - **colorByDataItem** (`boolean`) — default `false` — Gives each column its own color from `colors`, instead of one color for the whole series. _Since 5.20.4._
 - **colors** (`ColorSet`) — Colors for the columns when `colorByDataItem` is set. If not set, the series makes its own `ColorSet`, separate from the chart's. _Since 5.20.4._

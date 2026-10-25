@@ -25,18 +25,18 @@ Prompt: Create a half-circle radar chart of stacked columns, open at the bottom,
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Data: a shop's sales of six products, in thousands of units, by quarter (sample data)
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [
   { product: "Phones", q1: 65, q2: 58, q3: 62, q4: 88 },
   { product: "Laptops", q1: 42, q2: 38, q3: 45, q4: 61 },
@@ -47,7 +47,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     panX: false, // dragging doesn't pan the chart
@@ -63,7 +63,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {});
 // product names stay horizontal instead of curving along the arc
 xRenderer.labels.template.setAll({
@@ -89,7 +89,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Create series: one per quarter, stacked into a year
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, field) {
   var series = chart.series.push(
     am5radar.RadarColumnSeries.new(root, {
@@ -116,7 +116,7 @@ createSeries("Q3", "q3");
 createSeries("Q4", "q4");
 
 // Add legend: the quarters; click one to leave it out
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // centered under the chart
   x: am5.p50,
@@ -127,7 +127,7 @@ legend.data.setAll(chart.series.values);
 xAxis.data.setAll(data);
 
 // Animate chart
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

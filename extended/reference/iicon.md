@@ -1,7 +1,7 @@
 ---
 title: "IIcon"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iicon/"
+source: "https://docs.amcharts.com/v5/reference/iicon/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

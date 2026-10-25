@@ -25,17 +25,17 @@ Prompt: Create an editable Gantt chart playground that saves its tasks and marke
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 const root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root)
 ]);
 
 // Create Gantt chart
-// https://www.amcharts.com/docs/v5/charts/gantt/
+// https://docs.amcharts.com/v5/charts/gantt/
 const gantt = root.container.children.push(am5gantt.Gantt.new(root, {}));
 
 // Hide a date label that would be cut off at the left edge of the timeline

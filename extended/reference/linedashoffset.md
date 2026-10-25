@@ -1,7 +1,7 @@
 ---
 title: "LineDashOffset"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/linedashoffset/"
+source: "https://docs.amcharts.com/v5/reference/linedashoffset/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Series"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/series/"
+source: "https://docs.amcharts.com/v5/reference/series/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -29,6 +29,6 @@ Extended by: Flow, FlowNodes, Hierarchy, Legend, MapSankeyNodes, MapSeries, Perc
 
 Public properties (not settings):
 
-- **bullets** (`List<(<D extends DataItem<this["_dataItemSettings"]>>(root: Root, series: Series, dataItem: D) => Bullet | undefined)>`) — Functions that make the series' bullets: each is called for every data item and returns a `Bullet`, or nothing for no bullet. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/
+- **bullets** (`List<(<D extends DataItem<this["_dataItemSettings"]>>(root: Root, series: Series, dataItem: D) => Bullet | undefined)>`) — Functions that make the series' bullets: each is called for every data item and returns a `Bullet`, or nothing for no bullet. Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/
 - **bulletsContainer** (`Container`) — The `Container` that holds the series' bullets.
 - **chart** (`Chart`) — The chart the series belongs to.

@@ -25,18 +25,18 @@ Prompt: Create a chord diagram of the flows between five European cities, with a
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {})); // holds the chord diagram
 
 var series = chart.series.push(am5flow.Chord.new(root, { // ribbons between the cities, as wide as their values
@@ -48,7 +48,7 @@ var series = chart.series.push(am5flow.Chord.new(root, { // ribbons between the 
 series.nodes.get("colors").set("step", 2);
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   { source: "Berlin", target: "Amsterdam", value: 14 },
   { source: "Berlin", target: "London", value: 33 },

@@ -25,11 +25,11 @@ Prompt: Create two donut charts side by side that compare the same four countrie
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -46,7 +46,7 @@ var chartContainer = root.container.children.push(am5.Container.new(root, {
 }));
 
 // Create the 1st chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = chartContainer.children.push(
   am5percent.PieChart.new(root, {
     endAngle: 270,               // the ring ends at the top, where it starts: a full circle
@@ -88,7 +88,7 @@ series.labels.template.setAll({
 });
 
 // Create the 2nd chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart2 = chartContainer.children.push(
   am5percent.PieChart.new(root, {
     endAngle: 270,
@@ -193,7 +193,7 @@ series2.slices.template.on("active", function(active, target) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([{
   category: "Lithuania",
   value: 501
@@ -209,7 +209,7 @@ series.data.setAll([{
 }]);
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series2.data.setAll([{
   category: "Lithuania",
   value: 201

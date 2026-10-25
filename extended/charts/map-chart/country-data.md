@@ -1,6 +1,6 @@
 ---
 title: "Country data"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/country-data/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/country-data/"
 scraped: "2026-03-15"
 ---
 

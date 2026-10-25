@@ -25,7 +25,7 @@ Prompt: Create a drill-down treemap of 2017 US car sales that shows one level at
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // a theme of our own, with rules for the treemap's rectangles and labels
@@ -66,7 +66,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     sort: "descending",  // biggest rectangles first, at the top left
@@ -93,7 +93,7 @@ chart.children.moveValue(
 );
 
 // Generate and set data
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   Acura: {
     ILX: 11757,

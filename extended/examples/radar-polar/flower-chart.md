@@ -25,18 +25,18 @@ Prompt: Create a flower chart: a radar chart comparing light and dark roast coff
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Data: two coffees scored from 0 to 10 on eight tasting notes (sample data)
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [{
   note: "Acidity",
   light: 8,
@@ -72,7 +72,7 @@ var data = [{
 }];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     panX: false,    // no panning: a drag zooms in instead
@@ -88,7 +88,7 @@ var chart = root.container.children.push(
 chart.get("colors").set("step", 3);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on a few notes
 }));
@@ -96,7 +96,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no ring at the pointer's distance, just the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 // The columns fill only the middle of each slice (from 20% to 80%), so they stand apart like petals
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   cellStartLocation: 0.2,
@@ -130,7 +130,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Create series: one per coffee, side by side in each slice
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, field) {
   var series = chart.series.push(
     am5radar.RadarColumnSeries.new(root, {
@@ -157,7 +157,7 @@ createSeries("Dark roast", "dark");
 
 
 // Add legend: click a coffee to hide it
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Legend
+// https://docs.amcharts.com/v5/charts/radar-chart/#legend
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // the legend's middle...
   x: am5.p50        // ...at the middle of the chart
@@ -165,7 +165,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 // Animate chart
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

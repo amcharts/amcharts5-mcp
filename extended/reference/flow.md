@@ -1,13 +1,13 @@
 ---
 title: "Flow"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/flow/"
+source: "https://docs.amcharts.com/v5/reference/flow/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for the flow series: `Sankey`, `Chord` and `ArcDiagram`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
+Docs: https://docs.amcharts.com/v5/charts/flow-charts/
 
 ## Import
 

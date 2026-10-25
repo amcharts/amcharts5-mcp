@@ -1,6 +1,6 @@
 ---
 title: "Tooltips"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/tooltips/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/tooltips/"
 scraped: "2026-03-15"
 ---
 
@@ -30,7 +30,7 @@ series.columns.template.setAll({
   tooltipText: "{name}, {categoryX}: {valueY}"
 });
 
-`tooltipText` supports data placeholders, which means that we can use curly bracket references to related data item and element itself. For more information, please refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+`tooltipText` supports data placeholders, which means that we can use curly bracket references to related data item and element itself. For more information, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ### Shared tooltip
 
@@ -117,7 +117,7 @@ var series = chart.series.push(
 
 series.data.setAll(data);
 
-NOTESeries tooltips will only be shown if there's a cursor enabled for the chart. For more information, refer to the "[Cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/)" tutorial.
+NOTESeries tooltips will only be shown if there's a cursor enabled for the chart. For more information, refer to the "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
 
 ### Hoverable tooltips
 
@@ -326,7 +326,7 @@ series.set("tooltip", tooltip);
 
 Normally, tooltips will inherit its colors from target series' `fill` and `stroke` settings.
 
-However, we can make it inherit from bullets instead, by setting series' setting `[seriesTooltipTarget](https://www.amcharts.com/docs/v5/reference/ixyseriessettings/#seriesTooltipTarget_property)` to `"bullet"`.
+However, we can make it inherit from bullets instead, by setting series' setting `[seriesTooltipTarget](https://docs.amcharts.com/v5/reference/ixyseriessettings/#seriesTooltipTarget_property)` to `"bullet"`.
 
 In such case, tooltip will take series first bullet (if available) and use it as a source for its colors.
 
@@ -508,7 +508,7 @@ series.bullets.push(function () {
 
 Adding sticky tooltips to series elements (e.g. columns) via templates is trickier.
 
-We will need to use [template's `setup` handler](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Setup_handler) for that.
+We will need to use [template's `setup` handler](https://docs.amcharts.com/v5/concepts/settings/list-templates/#setup-handler) for that.
 
 series.columns.template.setAll({
   tooltipText: "{name}, {categoryX}:{valueY}",
@@ -560,11 +560,11 @@ series.labels.template.setup = function(target) {
 }
 
 
-MORE INFOFor more information on label interactivity refer to "[Labels as interactive elements](https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#labels-as-interactive-elements)" tutorial.
+MORE INFOFor more information on label interactivity refer to "[Labels as interactive elements](https://docs.amcharts.com/v5/concepts/common-elements/labels/#labels-as-interactive-elements)" tutorial.
 
 ## HTML in tooltips
 
-Please refer to "HTML content: [Tooltips](https://www.amcharts.com/docs/v5/concepts/common-elements/html-content/#Tooltips)" for more information.
+Please refer to "HTML content: [Tooltips](https://docs.amcharts.com/v5/concepts/common-elements/html-content/#tooltips)" for more information.
 
 ## Tooltips outside chart area
 
@@ -601,6 +601,6 @@ Using `tooltipContainerBounds`
 
 ## Related tutorials
 
--   [Combining tooltip values from multiple series](https://www.amcharts.com/docs/v5/tutorials/combining-tooltip-values-from-multiple-series/)
--   [Constraining tooltip to plot container bounds](https://www.amcharts.com/docs/v5/tutorials/constraining-tooltip-to-plot-container-bounds/)
--   [Tooltip with a pointer on the side](https://www.amcharts.com/docs/v5/tutorials/tooltip-with-a-pointer-on-the-side/)
+-   [Combining tooltip values from multiple series](https://docs.amcharts.com/v5/tutorials/combining-tooltip-values-from-multiple-series/)
+-   [Constraining tooltip to plot container bounds](https://docs.amcharts.com/v5/tutorials/constraining-tooltip-to-plot-container-bounds/)
+-   [Tooltip with a pointer on the side](https://docs.amcharts.com/v5/tutorials/tooltip-with-a-pointer-on-the-side/)

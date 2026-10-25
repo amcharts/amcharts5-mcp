@@ -1,13 +1,13 @@
 ---
 title: "DateRangeSelector"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/daterangeselector/"
+source: "https://docs.amcharts.com/v5/reference/daterangeselector/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `StockToolbar` control with two date pickers that zoom the chart to the picked date range.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/date-range-selector/
+Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/date-range-selector/
 
 ## Import
 

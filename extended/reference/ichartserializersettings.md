@@ -1,7 +1,7 @@
 ---
 title: "IChartSerializerSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichartserializersettings/"
+source: "https://docs.amcharts.com/v5/reference/ichartserializersettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

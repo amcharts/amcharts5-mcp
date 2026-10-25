@@ -1,13 +1,13 @@
 ---
 title: "Color"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/color/"
+source: "https://docs.amcharts.com/v5/reference/color/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A color. Every color setting takes a `Color` object, usually created with `am5.color()`, e.g. `am5.color(0xff0000)`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 
 ## Import
 

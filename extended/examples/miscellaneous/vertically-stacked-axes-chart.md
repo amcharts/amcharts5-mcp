@@ -73,18 +73,18 @@ for (var i = 0; i < names.length; i++) {
 }
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: true, // drag the plot to pan sideways
@@ -101,7 +101,7 @@ var chart = root.container.children.push(
 chart.leftAxesContainer.set("layout", root.verticalLayout);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 // at least 70px between names, so they don't run into each other; when they get closer, some are skipped
 var xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 70 });
 xRenderer.labels.template.setAll({
@@ -126,7 +126,7 @@ var xAxis = chart.xAxes.push(
 xAxis.data.setAll(data);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 function createSeries(field, name, margin, column) {
   var yAxis = chart.yAxes.push(
     am5xy.ValueAxis.new(root, {
@@ -211,7 +211,7 @@ createSeries("value2", "Calls made", 40, false);  // a 40px gap above this pane.
 createSeries("value3", "Revenue, $k", 40, true);  // ...and this one, which has columns
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none", // dragging pans instead of selecting a range to zoom
   xAxis: xAxis
@@ -250,7 +250,7 @@ cursor.events.on("cursormoved", function() {
 })
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

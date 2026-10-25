@@ -1,10 +1,10 @@
 ---
 title: "Settings control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/settings-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/settings-control/"
 scraped: "2026-10-08"
 ---
 
-Settings control can be added to [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/) which provides several bult-in configuration controls that user can use to modify chart behavior. It can also be enhanced with custom items.
+Settings control can be added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/) which provides several bult-in configuration controls that user can use to modify chart behavior. It can also be enhanced with custom items.
 
 ## Adding
 
@@ -75,7 +75,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 ### Getting default items
 
-A settings control is essentially a regular [dropdown list control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/) with pre-filled item list.
+A settings control is essentially a regular [dropdown list control](https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/) with pre-filled item list.
 
 To grab the default list of items from a newly-created settings control, use its `items` setting:
 
@@ -107,7 +107,7 @@ Toggles X axis fills.
 
 `y-scale`
 
-Switches between [percent](https://www.amcharts.com/docs/v5/charts/stock/percent-mode/), logarithmic, and regular scale, on an Y axis of main panel.
+Switches between [percent](https://docs.amcharts.com/v5/charts/stock/percent-mode/), logarithmic, and regular scale, on an Y axis of main panel.
 
 `autosave`
 
@@ -225,7 +225,7 @@ newSettings.unshift({
 
 settingsControl.set("items", newSettings);
 
-The list items can be forms, headings, or regular labels. Refer to "[Dropdown list control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/)" tutorial for more information.
+The list items can be forms, headings, or regular labels. Refer to "[Dropdown list control](https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/)" tutorial for more information.
 
 ### Events
 
@@ -246,4 +246,4 @@ settingsControl.getPrivate("dropdown").events.on("changed", function(ev) {
 
 Settings control does have a checkbox which enables automatically saving of all added indicators and drawings to browser's local storage for easy carry over page reloads/sessions.
 
-For more information on how this works, and how to configure it, please refer to "[Data save control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/data-save-control/)" tutorial.
+For more information on how this works, and how to configure it, please refer to "[Data save control](https://docs.amcharts.com/v5/charts/stock/toolbar/data-save-control/)" tutorial.

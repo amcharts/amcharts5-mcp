@@ -1,7 +1,7 @@
 ---
 title: "IVoronoiTreemapSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ivoronoitreemapsettings/"
+source: "https://docs.amcharts.com/v5/reference/ivoronoitreemapsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,7 +14,7 @@ TypeScript: `am5hierarchy.IVoronoiTreemapSettings` (`import type { IVoronoiTreem
 
 ## Settings
 
-- **shapeType** (`"rectangle" | "polygon"`) — default `"polygon"` _(theme)_ — Outline of the whole diagram: `"polygon"`, a round shape of `cornerCount` corners, or `"rectangle"`, which fills the series' area. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/voronoi-treemap/#Diagram_type _Note:_ Renamed from `type` in 5.18.0 (`type` still works).
+- **shapeType** (`"rectangle" | "polygon"`) — default `"polygon"` _(theme)_ — Outline of the whole diagram: `"polygon"`, a round shape of `cornerCount` corners, or `"rectangle"`, which fills the series' area. Docs: https://docs.amcharts.com/v5/charts/hierarchy/voronoi-treemap/ _Note:_ Renamed from `type` in 5.18.0 (`type` still works).
 - **type** (`"rectangle" | "polygon"`) — _(internal)_ Type of the diagram's shape. Left for backward compatibility. Please use `shapeType` instead.
 - **cornerCount** (`number`) — default `120` — Number of corners of the outline when `shapeType` is `"polygon"`. The default `120` looks like a circle.
 - **minWeightRatio** (`number`) — default `0.005` _(theme)_ — Smallest weight a cell may have, as a fraction of the largest. Lighter cells are enlarged to it, so they no longer show their true value. Very small values can make the layout flicker.

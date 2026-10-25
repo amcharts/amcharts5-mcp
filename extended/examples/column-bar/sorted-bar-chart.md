@@ -25,7 +25,7 @@ Prompt: Create a horizontal bar chart of user counts for twelve social networks 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Group large numbers into M (millions) and B (billions)
@@ -38,14 +38,14 @@ root.numberFormatter.setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,    // no panning...
   panY: false,
@@ -58,7 +58,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.zoomOutButton.set("forceHidden", true);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
   minGridDistance: 30,   // at least 30px between the names
   minorGridEnabled: true // fainter grid lines between the main ones
@@ -90,7 +90,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   name: "Series 1",
   xAxis: xAxis,
@@ -251,7 +251,7 @@ function updateData() {
 }
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

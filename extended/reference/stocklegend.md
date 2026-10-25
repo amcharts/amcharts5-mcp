@@ -1,13 +1,13 @@
 ---
 title: "StockLegend"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/stocklegend/"
+source: "https://docs.amcharts.com/v5/reference/stocklegend/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A legend for a `StockChart` panel, with settings and close buttons on its items.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/#Legend
+Docs: https://docs.amcharts.com/v5/charts/stock/#legend
 
 ## Import
 

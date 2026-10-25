@@ -125,18 +125,18 @@ var data = [{
 }];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true, // drag the plot to scroll along the dates
   panY: false,
@@ -149,7 +149,7 @@ chart.zoomOutButton.set("forceHidden", true); // no zoom-out button
 chart.get("colors").set("step", 2); // each series skips a palette color, so the three contrast more
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.2,                           // panning can go up to 20% past the first and last day
   baseInterval: { timeUnit: "day", count: 1 }, // one data point per day
@@ -188,7 +188,7 @@ var durationAxis = chart.yAxes.push(am5xy.DurationAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var distanceSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
   name: "Distance",
   xAxis: xAxis,
@@ -220,7 +220,7 @@ var latitudeSeries = chart.series.push(am5xy.LineSeries.new(root, {
 latitudeSeries.strokes.template.setAll({ strokeWidth: 2 }); // a 2px line
 
 // Add circle bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 latitudeSeries.bullets.push(function() {
   var graphics = am5.Circle.new(root, {
     strokeWidth: 2, // a 2px outline
@@ -253,7 +253,7 @@ var durationSeries = chart.series.push(am5xy.LineSeries.new(root, {
 durationSeries.strokes.template.setAll({ strokeWidth: 2 }); // a 2px line
 
 // Add square bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 durationSeries.bullets.push(function() {
   var graphics = am5.Rectangle.new(root, {
     width:10,                          // a 10px square...
@@ -269,20 +269,20 @@ durationSeries.bullets.push(function() {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: distanceAxis
 }));
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // a scrollbar above the plot, to zoom and pan the dates
 }));
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // the legend's middle...
   x: am5.p50        // ...at the middle of the chart
@@ -295,7 +295,7 @@ durationSeries.data.setAll(data);
 xAxis.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 distanceSeries.appear(1000);
 chart.appear(1000, 100);
 ```

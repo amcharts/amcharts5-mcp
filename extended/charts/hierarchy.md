@@ -1,6 +1,6 @@
 ---
 title: "Hierarchy charts"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/"
 scraped: "2026-10-08"
 ---
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Series
 
@@ -36,31 +36,31 @@ Example
 
 `ForceDirected`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/)
 
 `Pack`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/pack/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/pack/)
 
 `Partition`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/partition/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/partition/)
 
 `Sunburst`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/sunburst/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/sunburst/)
 
 `Tree`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/tree/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/tree/)
 
 `Treemap`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/treemap/)
 
 `VoronoiTreemap`
 
-[More info](https://www.amcharts.com/docs/v5/charts/hierarchy/voronoi-treemap/)
+[More info](https://docs.amcharts.com/v5/charts/hierarchy/voronoi-treemap/)
 
 Like everywhere else, we use its `new()` method to instantiate series, then push it into `series` list of the chart:
 
@@ -222,7 +222,7 @@ The above will make the chart start with "A0" and "C0" nodes collapsed, while "B
 
 ### Data structure
 
-IMORTANT A data for all hierarchy charts requires to have just one top item. Having several items on top level might break the chart. If we don't want this top item to appear on the chart itself, we can hide it by providing `topLevel: 1` in series settings. Refer to "[Tree depth](https://www.amcharts.com/docs/v5/getting-started/hierarchy/#Tree_depth)" section of this tutorial for more info.
+IMORTANT A data for all hierarchy charts requires to have just one top item. Having several items on top level might break the chart. If we don't want this top item to appear on the chart itself, we can hide it by providing `topLevel: 1` in series settings. Refer to "[Tree depth](https://docs.amcharts.com/v5/getting-started/hierarchy/#tree-depth)" section of this tutorial for more info.
 
 ### Setting data
 
@@ -312,7 +312,7 @@ series.data.setAll(\[{
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Flat data
 
@@ -374,12 +374,12 @@ IMPORTANT The `selectedDataItem` needs to be set **after** data is set to the se
 
 For more information about configuring appearance of the flow series, refer to respective tutorials:
 
--   [Configuring Force-directed series](https://www.amcharts.com/docs/v5/getting-started/hierarchy/force-directed/).
--   [Configuring Pack series](https://www.amcharts.com/docs/v5/getting-started/hierarchy/pack/).
--   [Configuring Partition](https://www.amcharts.com/docs/v5/getting-started/hierarchy/partition/).
--   [Configuring Sunburst](https://www.amcharts.com/docs/v5/getting-started/hierarchy/sunburst/).
--   [Configuring Tree](https://www.amcharts.com/docs/v5/getting-started/hierarchy/tree/).
--   [Configuring Treemap](https://www.amcharts.com/docs/v5/getting-started/hierarchy/treemap/).
+-   [Configuring Force-directed series](https://docs.amcharts.com/v5/getting-started/hierarchy/force-directed/).
+-   [Configuring Pack series](https://docs.amcharts.com/v5/getting-started/hierarchy/pack/).
+-   [Configuring Partition](https://docs.amcharts.com/v5/getting-started/hierarchy/partition/).
+-   [Configuring Sunburst](https://docs.amcharts.com/v5/getting-started/hierarchy/sunburst/).
+-   [Configuring Tree](https://docs.amcharts.com/v5/getting-started/hierarchy/tree/).
+-   [Configuring Treemap](https://docs.amcharts.com/v5/getting-started/hierarchy/treemap/).
 
 ## Node value
 
@@ -399,7 +399,7 @@ To paraphrase the above, there are two "correct" ways to set values in hierarchy
 
 There is a number of ways we can specify all colors for hierarchy nodes.
 
-For information on how to do that, refer to "[Hierarchy node colors](https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-node-colors/)" tutorial.
+For information on how to do that, refer to "[Hierarchy node colors](https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-node-colors/)" tutorial.
 
 ## Tooltips
 
@@ -411,13 +411,13 @@ series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
 series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IHierarchyDataItem](https://www.amcharts.com/docs/v5/reference/ihierarchydataitem/)` for available keys for the data placeholders.
+Refer to `[IHierarchyDataItem](https://docs.amcharts.com/v5/reference/ihierarchydataitem/)` for available keys for the data placeholders.
 
 ## Tree depth
 
-There are two hierarchy settings that control depth of the tree: `[initialDepth](https://www.amcharts.com/docs/v5/reference/hierarchy/#initialDepth_setting)` and `[topDepth](https://www.amcharts.com/docs/v5/reference/hierarchy/#topDepth_setting)`.
+There are two hierarchy settings that control depth of the tree: `[initialDepth](https://docs.amcharts.com/v5/reference/hierarchy/#initialDepth_setting)` and `[topDepth](https://docs.amcharts.com/v5/reference/hierarchy/#topDepth_setting)`.
 
 `initialDepth` specifies how mane levels to show initially, when the chart loads.
 
@@ -469,7 +469,7 @@ Hierarchy nodes that have children are clickable.
 
 Depending on series type and settings, certain drill-down actions happen, like zooming in on the node, exploding a children tree, etc.
 
-For more information about this, please refer to "[Hierarchy drill-down](https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-drill-down/)" tutorial.
+For more information about this, please refer to "[Hierarchy drill-down](https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-drill-down/)" tutorial.
 
 ## Additional controls
 
@@ -491,7 +491,7 @@ var container = root.container.children.push(am5.Container.new(root, {
   layout: root.verticalLayout
 }));
 
-NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout)".
+NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
 
 ### Chart title
 
@@ -529,7 +529,7 @@ container.children.unshift(
   })
 );
 
-For more information on how to use breadcrumb control, refer to "[Breadcrumb navigation](https://www.amcharts.com/docs/v5/getting-started/hierarchy/breadcrumbs/)" tutorial.
+For more information on how to use breadcrumb control, refer to "[Breadcrumb navigation](https://docs.amcharts.com/v5/getting-started/hierarchy/breadcrumbs/)" tutorial.
 
 ### Legend
 
@@ -555,7 +555,7 @@ var legend = container.children.push(am5.Legend.new(root, {
 
 legend.data.setAll(series.dataItems\[0\].get("children"));
 
-MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 
 ## Complete example

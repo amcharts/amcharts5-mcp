@@ -1,7 +1,7 @@
 ---
 title: "SvgDefs"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/svgdefs/"
+source: "https://docs.amcharts.com/v5/reference/svgdefs/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

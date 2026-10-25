@@ -1,7 +1,7 @@
 ---
 title: "IHeatLegendSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iheatlegendsettings/"
+source: "https://docs.amcharts.com/v5/reference/iheatlegendsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -23,8 +23,8 @@ TypeScript: `am5.IHeatLegendSettings` (`import type { IHeatLegendSettings } from
 - **endValue** (`number`) — default `1` _(code fallback)_ — The highest value, at the end of the scale.
 - **startText** (`string`) — Text of the start label. If not set, it shows `startValue`.
 - **endText** (`string`) — Text of the end label. If not set, it shows `endValue`.
-- **stepCount** (`number`) — default `1` _(theme)_ — Number of color steps. At `1` the scale is a smooth gradient. Docs: https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/#Gradient_or_steps
-- **orientation** (`"horizontal" | "vertical"`) — Orientation of the scale: `"horizontal"` runs from start on the left to end on the right, `"vertical"` from start at the bottom to end at the top. Docs: https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/#Orientation
+- **stepCount** (`number`) — default `1` _(theme)_ — Number of color steps. At `1` the scale is a smooth gradient. Docs: https://docs.amcharts.com/v5/concepts/legend/heat-legend/#gradient-or-steps
+- **orientation** (`"horizontal" | "vertical"`) — Orientation of the scale: `"horizontal"` runs from start on the left to end on the right, `"vertical"` from start at the bottom to end at the top. Docs: https://docs.amcharts.com/v5/concepts/legend/heat-legend/#orientation
 
 ## Other inherited settings
 

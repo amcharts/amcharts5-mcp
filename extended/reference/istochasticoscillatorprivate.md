@@ -1,7 +1,7 @@
 ---
 title: "IStochasticOscillatorPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istochasticoscillatorprivate/"
+source: "https://docs.amcharts.com/v5/reference/istochasticoscillatorprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

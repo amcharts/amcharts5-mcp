@@ -1,7 +1,7 @@
 ---
 title: "DrawingSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/drawingseries/"
+source: "https://docs.amcharts.com/v5/reference/drawingseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

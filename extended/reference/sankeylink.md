@@ -1,7 +1,7 @@
 ---
 title: "SankeyLink"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/sankeylink/"
+source: "https://docs.amcharts.com/v5/reference/sankeylink/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

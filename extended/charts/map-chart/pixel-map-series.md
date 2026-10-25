@@ -1,10 +1,10 @@
 ---
 title: "Pixel map series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/pixel-map-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/pixel-map-series/"
 scraped: "2026-10-08"
 ---
 
-`PixelMapSeries` draws map polygons as a grid of pixels: squares, circles, diamonds or hexagons. It works like [Map polygon series](https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/), with the same data, heat rules, states and tooltips.
+`PixelMapSeries` draws map polygons as a grid of pixels: squares, circles, diamonds or hexagons. It works like [Map polygon series](https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/), with the same data, heat rules, states and tooltips.
 
 ## Adding series
 
@@ -122,7 +122,7 @@ With `uniform: true`, `step` is measured at the center of the map, and `equalAre
 
 ## Coloring by value
 
-Since pixels take their polygon's fill, [heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/) work the same as in a polygon series:
+Since pixels take their polygon's fill, [heat rules](https://docs.amcharts.com/v5/concepts/settings/heat-rules/) work the same as in a polygon series:
 
 let pixelSeries = chart.series.push(
   am5map.PixelMapSeries.new(root, {
@@ -238,7 +238,7 @@ pixelSeries.set("pixelHeightFunction", function(dataItem, longitude, latitude) {
   return 1 - Math.abs(latitude) / 90;
 });
 
-NOTEFunctions are not saved when a chart is [serialized to JSON](https://www.amcharts.com/docs/v5/concepts/serializing/). Heights set with heat rules are.
+NOTEFunctions are not saved when a chart is [serialized to JSON](https://docs.amcharts.com/v5/concepts/serializing/). Heights set with heat rules are.
 
 ## Finding a polygon
 
@@ -250,7 +250,7 @@ var polygon = pixelSeries.getPolygonByPoint({ x: 200, y: 150 });
 
 ## SVG export
 
-When the chart is [exported as SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/), each polygon's pixels are grouped together, with the polygon's `id` and name. This makes the result easy to edit in a vector editor.
+When the chart is [exported as SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/), each polygon's pixels are grouped together, with the polygon's `id` and name. This makes the result easy to edit in a vector editor.
 
 To export just the pixels, without the rest of the chart:
 
@@ -260,7 +260,7 @@ var svg = am5.renderToSVG(pixelSeries.pixels);
 
 ## Settings
 
-Besides the settings of [Map polygon series](https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/), these are available:
+Besides the settings of [Map polygon series](https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/), these are available:
 
 Setting
 

@@ -1,7 +1,7 @@
 ---
 title: "IRendererEvent"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/irendererevent/"
+source: "https://docs.amcharts.com/v5/reference/irendererevent/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

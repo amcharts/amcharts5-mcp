@@ -1,13 +1,13 @@
 ---
 title: "Tooltip"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/tooltip/"
+source: "https://docs.amcharts.com/v5/reference/tooltip/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A label in a pointed box that points at an element or a point.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/tooltips/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/tooltips/
 
 ## Import
 

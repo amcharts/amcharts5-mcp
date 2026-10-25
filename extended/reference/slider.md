@@ -1,7 +1,7 @@
 ---
 title: "Slider"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/slider/"
+source: "https://docs.amcharts.com/v5/reference/slider/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

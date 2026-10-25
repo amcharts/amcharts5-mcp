@@ -1,7 +1,7 @@
 ---
 title: "IMACrossPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imacrossprivate/"
+source: "https://docs.amcharts.com/v5/reference/imacrossprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.9.3] - 2026-10-25
+
+### Changed
+- **Docs links point at docs.amcharts.com.** The amCharts docs moved there from www.amcharts.com/docs/v5/. The old addresses redirect, but the redirect drops the section anchor, and the new site writes its anchors differently (`#Global_events` became `#global-events`).
+  - 5,731 links in 1,817 files are rewritten: the docs, the examples, the API reference, the skill, both plugins' metadata, `server.json` and the OpenAI listing.
+  - Each anchor was checked against the live page. Most take the new form; 143 needed the page's actual id; 11 sections no longer exist, so those links open the page.
+  - A few pages moved:
+    - `charts/stock-chart/` → `charts/stock/`
+    - `charts/timeline-chart/` → `charts/timeline/`
+    - `concepts/using-formatters/` → `concepts/formatters/`
+    - `concepts/common-elements/polygon/` → `…/graphics/`
+  - `scripts/docs-links.cjs` does the rewrite, and `npm run map:docs-anchors` rebuilds its anchor table from the live pages. The reference generator uses it for the typings' `@see` links, which still point at the old address in amCharts 5.21.4.
+  - `npm test` now fails if an old docs link comes back (`scripts/check-docs-links.js`).
+- **`get_doc`, `get_section` and `get_api_reference` take docs.amcharts.com addresses:** a page (`https://docs.amcharts.com/v5/concepts/events/#adding-a-handler`), its Markdown (`…/concepts/events.md`) or a site path (`/v5/concepts/events`). The old www.amcharts.com/docs addresses still work. 3 new tests (62).
+- `scripts/scrape-docs.js` is marked out of date: it reads the old WordPress HTML. The new site serves each page as Markdown and lists them in `docs.amcharts.com/v5/llms.txt`.
+
 ## [1.9.2] - 2026-10-23
 
 ### Added

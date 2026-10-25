@@ -134,11 +134,11 @@ var data = [
 ];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -150,7 +150,7 @@ root.dateFormatter.setAll({
 });
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,                // the plot doesn't pan when dragged
@@ -162,7 +162,7 @@ var chart = root.container.children.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // drag across the plot to zoom into those days
   behavior: "zoomX"
@@ -170,7 +170,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 cursor.lineY.set("visible", false); // no horizontal cursor line, only the vertical one
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 }, // one point per day
@@ -206,7 +206,7 @@ var yAxis1 = chart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // Target sales: a wide, pale column behind
 var columnSeries1 = chart.series.push(
   am5xy.ColumnSeries.new(root, {
@@ -274,7 +274,7 @@ series0.strokes.template.setAll({
 });
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 series0.bullets.push(function () {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
@@ -309,7 +309,7 @@ var tooltip1 = series1.set("tooltip", am5.Tooltip.new(root, {
 tooltip1.label.set("text", "{name}: {valueY}");
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 series1.bullets.push(function () {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
@@ -322,7 +322,7 @@ series1.bullets.push(function () {
 });
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = chart.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal", // drag its grips to zoom in on a range of days
   height: 60                 // 60px tall, with a preview of sales and market days
@@ -389,7 +389,7 @@ sbSeries0.data.setAll(data);
 sbSeries1.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 series1.appear(1000);
 chart.appear(1000, 100);

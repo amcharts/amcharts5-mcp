@@ -1,7 +1,7 @@
 ---
 title: "IStockControlPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istockcontrolprivate/"
+source: "https://docs.amcharts.com/v5/reference/istockcontrolprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

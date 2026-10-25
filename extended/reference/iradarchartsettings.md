@@ -1,7 +1,7 @@
 ---
 title: "IRadarChartSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iradarchartsettings/"
+source: "https://docs.amcharts.com/v5/reference/iradarchartsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,15 +14,15 @@ TypeScript: `am5radar.IRadarChartSettings` (`import type { IRadarChartSettings }
 
 ## Settings
 
-- **radius** (`number | Percent`) — default `am5.percent(80)` _(theme)_ — Outer radius of the chart, in pixels or as a percent of the largest radius that fits the available space. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Chart_radius
-- **innerRadius** (`number | Percent`) — default `0` _(theme)_ — Inner radius of the chart, in pixels or as a percent of the outer radius. A negative value is measured in from the outer radius. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Chart_radius
-- **startAngle** (`number`) — default `-90` _(theme)_ — Angle in degrees where the chart's circle starts: `0` points right and angles grow clockwise, so `-90` is the top. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Start_end_angles
-- **endAngle** (`number`) — default `270` _(theme)_ — Angle in degrees where the chart's circle ends: `0` points right and angles grow clockwise. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Start_end_angles
-- **cursor** (`RadarCursor`) — The chart's cursor. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+- **radius** (`number | Percent`) — default `am5.percent(80)` _(theme)_ — Outer radius of the chart, in pixels or as a percent of the largest radius that fits the available space. Docs: https://docs.amcharts.com/v5/charts/radar-chart/#chart-radius
+- **innerRadius** (`number | Percent`) — default `0` _(theme)_ — Inner radius of the chart, in pixels or as a percent of the outer radius. A negative value is measured in from the outer radius. Docs: https://docs.amcharts.com/v5/charts/radar-chart/#chart-radius
+- **startAngle** (`number`) — default `-90` _(theme)_ — Angle in degrees where the chart's circle starts: `0` points right and angles grow clockwise, so `-90` is the top. Docs: https://docs.amcharts.com/v5/charts/radar-chart/#startend-angles
+- **endAngle** (`number`) — default `270` _(theme)_ — Angle in degrees where the chart's circle ends: `0` points right and angles grow clockwise. Docs: https://docs.amcharts.com/v5/charts/radar-chart/#startend-angles
+- **cursor** (`RadarCursor`) — The chart's cursor. Docs: https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 
 ## Inherited settings with a different default on RadarChart
 
-- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
+- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
 - **paddingBottom** (`number`) — default `16` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.

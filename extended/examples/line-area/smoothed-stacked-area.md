@@ -25,18 +25,18 @@ Prompt: Create a smoothed stacked area chart of yearly values for cars, motorcyc
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   // a drag zooms (the cursor's behavior), so the chart itself doesn't pan
   panX: false,
@@ -50,7 +50,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 2);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // drag across the plot to zoom in on those years
   behavior: "zoomX"
@@ -58,7 +58,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 cursor.lineY.set("visible", false); // no horizontal cursor line, only the vertical one
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 
 // The data
@@ -125,7 +125,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "year",
   // the axis starts and ends in the middle of the first and last year, so no half cells stay empty
@@ -147,7 +147,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 // adds one smoothed layer for a field of the data
 function createSeries(name, field) {
@@ -199,7 +199,7 @@ createSeries("Motorcycles", "motorcycles");
 createSeries("Bicycles", "bicycles");
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

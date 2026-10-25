@@ -61,7 +61,9 @@ const OUT = path.resolve(process.env.OUT_DIR || path.join(ROOT, "extended", "ref
 const NOTES_FILE = path.resolve(process.env.NOTES_FILE || path.join(__dirname, "reference-notes.md"));
 const VERSION = JSON.parse(fs.readFileSync(path.join(PKG, "package.json"), "utf8")).version;
 const GENERATED_FROM = `@amcharts/amcharts5@${VERSION}`;
-const SITE = "https://www.amcharts.com/docs/v5/reference/";
+const SITE = "https://docs.amcharts.com/v5/reference/";
+// The typings' @see links still point at the old docs address; written pages get the new one
+const { rewriteDocsLinks } = require("./docs-links.cjs");
 
 const stats = {
   themeRules: 0, themeTaggedRules: 0, classDefaults: 0, conditionalClassDefaults: 0,
@@ -1072,7 +1074,7 @@ for (const [file, p] of [...pages].sort((a, b) => a[0].localeCompare(b[0]))) {
   const fm = ["---", `title: "${p.title}"`, `type: "${p.type}"`];
   if (p.source) fm.push(`source: "${p.source}"`);
   fm.push(`generatedFrom: "${GENERATED_FROM}"`, "---", "");
-  const content = fm.join("\n") + "\n" + p.body.trim().replace(/\n{3,}/g, "\n\n") + "\n";
+  const content = rewriteDocsLinks(fm.join("\n") + "\n" + p.body.trim().replace(/\n{3,}/g, "\n\n") + "\n");
   fs.writeFileSync(path.join(OUT, file), content);
   bytes += Buffer.byteLength(content);
 }

@@ -1,6 +1,6 @@
 ---
 title: "Legend and Pie/Sliced series"
-source: "https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/"
+source: "https://docs.amcharts.com/v5/charts/percent-charts/legend-percent-series/"
 scraped: "2026-03-15"
 ---
 
@@ -16,7 +16,7 @@ legend.data.setAll(series.dataItems);
 var legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(series.dataItems);
 
-MORE INFOFor more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFOFor more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Legend label content
 
@@ -64,13 +64,13 @@ var series = chart.series.push(
   })
 );
 
-Labels support [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets) so the text will be populated with actual data and values.
+Labels support [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets) so the text will be populated with actual data and values.
 
-Since each legend item is constructed out of the series data items, their data will be used to populate it, e.g. `[PieSeriesDataItem](https://www.amcharts.com/docs/v5/reference/ipieseriesdataitem/)`.
+Since each legend item is constructed out of the series data items, their data will be used to populate it, e.g. `[PieSeriesDataItem](https://docs.amcharts.com/v5/reference/ipieseriesdataitem/)`.
 
 ### In-line formatting
 
-Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) blocks. E.g.:
+Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) blocks. E.g.:
 
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
@@ -99,8 +99,8 @@ The above will use slice's `fill` (color) for category and value, as well as mak
 
 ## Related tutorials
 
--   [Toggle pie slice pullout via legend](https://www.amcharts.com/docs/v5/tutorials/toggle-pie-slice-pullout-via-legend/)
--   [Applying custom formatting logic to PieChart legend values](https://www.amcharts.com/docs/v5/tutorials/applying-custom-formatting-logic-to-piechart-legend-values/)
--   [Toggle multiple pie slices via legend](https://www.amcharts.com/docs/v5/tutorials/toggle-multiple-pie-slices-via-legend/)
--   [Toggle slices of multiple nested Pie Series with a single legend](https://www.amcharts.com/docs/v5/tutorials/toggle-slices-of-multiple-nested-pie-series-with-a-single-legend/)
--   [Pie chart with a custom legend](https://www.amcharts.com/docs/v5/tutorials/pie-chart-with-a-custom-legend/)
+-   [Toggle pie slice pullout via legend](https://docs.amcharts.com/v5/tutorials/toggle-pie-slice-pullout-via-legend/)
+-   [Applying custom formatting logic to PieChart legend values](https://docs.amcharts.com/v5/tutorials/applying-custom-formatting-logic-to-piechart-legend-values/)
+-   [Toggle multiple pie slices via legend](https://docs.amcharts.com/v5/tutorials/toggle-multiple-pie-slices-via-legend/)
+-   [Toggle slices of multiple nested Pie Series with a single legend](https://docs.amcharts.com/v5/tutorials/toggle-slices-of-multiple-nested-pie-series-with-a-single-legend/)
+-   [Pie chart with a custom legend](https://docs.amcharts.com/v5/tutorials/pie-chart-with-a-custom-legend/)

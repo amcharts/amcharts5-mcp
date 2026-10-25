@@ -1,13 +1,13 @@
 ---
 title: "NumberFormatter"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/numberformatter/"
+source: "https://docs.amcharts.com/v5/reference/numberformatter/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Formats numbers in labels, tooltips and other text.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/
+Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
 
 ## Import
 

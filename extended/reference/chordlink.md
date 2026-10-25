@@ -1,7 +1,7 @@
 ---
 title: "ChordLink"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/chordlink/"
+source: "https://docs.amcharts.com/v5/reference/chordlink/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

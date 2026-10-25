@@ -1,7 +1,7 @@
 ---
 title: "ISerialChartSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iserialchartsettings/"
+source: "https://docs.amcharts.com/v5/reference/iserialchartsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,8 +14,8 @@ TypeScript: `am5.ISerialChartSettings` (`import type { ISerialChartSettings } fr
 
 ## Settings
 
-- **colors** (`ColorSet`) — The `ColorSet` series take their colors from. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
-- **patterns** (`PatternSet`) — The `PatternSet` series take their patterns from. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets
+- **colors** (`ColorSet`) — The `ColorSet` series take their colors from. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
+- **patterns** (`PatternSet`) — The `PatternSet` series take their patterns from. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets
 
 ## Inherited settings with a different default on SerialChart
 

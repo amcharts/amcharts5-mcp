@@ -25,18 +25,18 @@ Prompt: Create a stacked area radar chart of the cash 24 companies hold abroad a
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     panX: false,     // a drag doesn't pan: the cursor zooms with it
@@ -52,7 +52,7 @@ var chart = root.container.children.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on those companies
 }));
@@ -60,7 +60,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no curved cursor line, only the straight one from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   minGridDistance: 15 // at least 15px between the names
 });
@@ -106,7 +106,7 @@ yRenderer.grid.template.setAll({
 });
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var series1 = chart.series.push(
   am5radar.RadarLineSeries.new(root, {
     name: "Cash abroad",
@@ -152,7 +152,7 @@ series2.fills.template.setAll({
 });
 
 // Add legend in the hole: click an item to hide its series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.radarContainer.children.push(
   am5.Legend.new(root, {
     layout: root.verticalLayout, // one series per row
@@ -171,7 +171,7 @@ legend.data.setAll([series1, series2]);
 
 // Set data: cash held by 24 companies abroad and in the US, in billions of dollars (sample data).
 // The company field is not called "name": the legend would show it in place of the series names.
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [
   {
     company: "Openlane",
@@ -300,7 +300,7 @@ series2.data.setAll(data);
 xAxis.data.setAll(data);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series1.appear(1000);
 series2.appear(1000);
 chart.appear(1000, 100);

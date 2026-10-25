@@ -1,7 +1,7 @@
 ---
 title: "IComparisonControlPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icomparisoncontrolprivate/"
+source: "https://docs.amcharts.com/v5/reference/icomparisoncontrolprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

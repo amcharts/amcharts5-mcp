@@ -1,13 +1,13 @@
 ---
 title: "AccumulativeSwingIndex"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/accumulativeswingindex/"
+source: "https://docs.amcharts.com/v5/reference/accumulativeswingindex/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Accumulative Swing Index indicator: a running total of Wilder's swing index, which compares each data item's open, high, low and close with the previous one's. Drawn in a panel of its own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

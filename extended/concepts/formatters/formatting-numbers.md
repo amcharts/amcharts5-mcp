@@ -1,6 +1,6 @@
 ---
 title: "Formatting numbers"
-source: "https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/"
+source: "https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial takes a look at number formatter - helper object used to format nu
 
 ## Formatter object
 
-Number formatter object is accessible globally via chart [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element)'s `numberFormatter` property.
+Number formatter object is accessible globally via chart [root element](https://docs.amcharts.com/v5/getting-started/#root-element)'s `numberFormatter` property.
 
 We can use it to set `numberFormat`, as well as a few of other related settings, which will be used whenever number needs to be formatted in the chart.
 
@@ -18,7 +18,7 @@ Number formatter is used in a number of places throughout the chart.
 
 Some components like value axis and legend use their own logic to apply number formatting.
 
-Labels (e.g. in tooltips) with numeric [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) will turn to number formatter to format their values.
+Labels (e.g. in tooltips) with numeric [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) will turn to number formatter to format their values.
 
 Data export functionality will also use number formatter to format its output of numeric values.
 
@@ -26,7 +26,7 @@ Data export functionality will also use number formatter to format its output of
 
 ### Default format
 
-A global number formatter will already have its `numberFormat` set to a default value, which may depend on the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) your chart is using.
+A global number formatter will already have its `numberFormat` set to a default value, which may depend on the [locale](https://docs.amcharts.com/v5/concepts/locales/) your chart is using.
 
 ### Setting default format
 
@@ -52,7 +52,7 @@ root.numberFormatter.setAll({
   numericFields: \["valueY"\]
 });
 
-For more information on how it works, please refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+For more information on how it works, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ## Format codes
 
@@ -116,7 +116,7 @@ Example format: `#.0a`
 `0.0000015` > `1.5μ`  
 `0.0000000015` > `1.5n`  
   
-Refer to "[Large and small numbers](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/#Large_and_small_numbers)" section for more info.
+Refer to "[Large and small numbers](https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/#large-and-small-numbers)" section for more info.
 
 b
 
@@ -128,7 +128,7 @@ Example format: `#.0b`
 `500000` > `488.3KB`  
 `500000000` > `476.8MB`  
   
-Refer to "[Byte size modifier](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/#Byte_size_modifier)" section for more info.
+Refer to "[Byte size modifier](https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/#byte-size-modifier)" section for more info.
 
 s
 
@@ -265,7 +265,7 @@ Output
 
 1μ
 
-The actual suffixes added after formatted number may depend on the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) your chart is using.
+The actual suffixes added after formatted number may depend on the [locale](https://docs.amcharts.com/v5/concepts/locales/) your chart is using.
 
 NOTE A modifier can be preceded with a space character. If it is, the space will be added before the actual suffix as well.
 
@@ -351,7 +351,7 @@ Output
 
 476.8MB
 
-The actual suffixes added after formatted number may depend on the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) your chart is using.
+The actual suffixes added after formatted number may depend on the [locale](https://docs.amcharts.com/v5/concepts/locales/) your chart is using.
 
 ### Custom byte groups
 
@@ -415,7 +415,7 @@ Output
 
 \-
 
-Please refer to the "[Text styling](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/)" and "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorials for more info.
+Please refer to the "[Text styling](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" and "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorials for more info.
 
 ## Escaping
 
@@ -451,14 +451,14 @@ If you need to explicitly use a vertical bar in your formatted text, just like w
 
 Square and curly brackets have special meaning in formatting text labels as well.
 
-Please refer to the "[Text styling and data binding](https://www.amcharts.com/docs/v5/concepts/formatters/in-line/)" tutorial for more info.
+Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/in-line/)" tutorial for more info.
 
 ## Using Intl object formats
 
-Number formats can be specified using JavaScript's built-in `Intl` object. Please refer to "[Formatting date/time and numbers using “Intl” object](https://www.amcharts.com/docs/v5/tutorials/formatting-date-time-and-numbers-using-intl-object/)" for further information.
+Number formats can be specified using JavaScript's built-in `Intl` object. Please refer to "[Formatting date/time and numbers using “Intl” object](https://docs.amcharts.com/v5/tutorials/formatting-date-time-and-numbers-using-intl-object/)" for further information.
 
 ## Formats on a value axis
 
 Value axis has two additional settings that can be used to set number format for the axis alone, without affecting the rest of the chart: `numberFormat` and `tooltipNumberFormat`.
 
-For more information on how to use them, refer to "Value axis: [Label format](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Label_format)" and "Value axis: [Tooltip number format](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Tooltip_number_format)".
+For more information on how to use them, refer to "Value axis: [Label format](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#label-format)" and "Value axis: [Tooltip number format](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#tooltip-number-format)".

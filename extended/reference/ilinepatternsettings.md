@@ -1,7 +1,7 @@
 ---
 title: "ILinePatternSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilinepatternsettings/"
+source: "https://docs.amcharts.com/v5/reference/ilinepatternsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,9 +19,9 @@ TypeScript: `am5.ILinePatternSettings` (`import type { ILinePatternSettings } fr
 
 ## Inherited settings with a different default on LinePattern
 
-- **colorOpacity** (`number`) — default `1` _(theme)_ — _from IPatternSettings_ — Opacity of the pattern shape. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Colors
-- **height** (`number`) — default `49` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
-- **width** (`number`) — default `49` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+- **colorOpacity** (`number`) — default `1` _(theme)_ — _from IPatternSettings_ — Opacity of the pattern shape. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#colors
+- **height** (`number`) — default `49` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#sizing-patterns
+- **width** (`number`) — default `49` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#sizing-patterns
 
 ## Other inherited settings
 

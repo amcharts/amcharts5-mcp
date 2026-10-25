@@ -1,10 +1,10 @@
 ---
 title: "Series type control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/series-type-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/series-type-control/"
 scraped: "2026-10-08"
 ---
 
-Series type control allows selecting from a pre-defined list of most common series types, used in stock charts. It can be added to [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/), and relies on a user-defined event to do actual re-creation of the main series of the chart.
+Series type control allows selecting from a pre-defined list of most common series types, used in stock charts. It can be added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/), and relies on a user-defined event to do actual re-creation of the main series of the chart.
 
 ## Adding
 

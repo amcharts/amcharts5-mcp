@@ -25,18 +25,18 @@ Prompt: Create a radial histogram of 20 numbered categories with random values: 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,    // no dragging the plot around
   panY: false,
@@ -49,14 +49,14 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 const cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on some columns
 }));
 cursor.lineY.set("forceHidden", true); // no circle through the pointer, only the line from the center
 
 // Add scrollbar, under the chart (opposite), hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal",
   opposite: true,
@@ -65,7 +65,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   minGridDistance: 30 // at least 30px between the column labels
 });
@@ -88,7 +88,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
   name: "Series 1",
   // on load the columns grow one after another
@@ -119,7 +119,7 @@ xAxis.data.setAll(data);
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

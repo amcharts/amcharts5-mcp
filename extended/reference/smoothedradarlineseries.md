@@ -1,7 +1,7 @@
 ---
 title: "SmoothedRadarLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/smoothedradarlineseries/"
+source: "https://docs.amcharts.com/v5/reference/smoothedradarlineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

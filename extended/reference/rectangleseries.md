@@ -1,7 +1,7 @@
 ---
 title: "RectangleSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/rectangleseries/"
+source: "https://docs.amcharts.com/v5/reference/rectangleseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

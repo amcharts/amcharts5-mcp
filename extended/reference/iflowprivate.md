@@ -1,7 +1,7 @@
 ---
 title: "IFlowPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iflowprivate/"
+source: "https://docs.amcharts.com/v5/reference/iflowprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

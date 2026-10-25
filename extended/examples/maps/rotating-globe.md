@@ -25,18 +25,18 @@ Prompt: Create a slowly rotating globe of the world’s countries that can be dr
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   // go to the home view once the map is fitted
   autoHome: true,
@@ -58,7 +58,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Create series for background fill
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 backgroundSeries.mapPolygons.template.setAll({
   fill: root.interfaceColors.get("alternativeBackground"), // the theme's text color: works in light and dark
@@ -72,7 +72,7 @@ backgroundSeries.data.push({
 
 // Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
 // (visible: false): make it visible for the satellite view
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   visible: false,
   // the map fits the countries, not the whole picture
@@ -80,13 +80,13 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create graticule series
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
 // faint grid lines in the theme's text color
 graticuleSeries.mapLines.template.setAll({ strokeOpacity: 0.08, stroke: root.interfaceColors.get("alternativeBackground") });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // country shapes from the low-detail world map
 }));
@@ -179,7 +179,7 @@ var spin = chart.animate({
 });
 
 // Zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default

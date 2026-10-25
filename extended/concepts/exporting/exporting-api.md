@@ -1,6 +1,6 @@
 ---
 title: "Exporting API"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-api/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-api/"
 scraped: "2026-10-08"
 ---
 
@@ -10,7 +10,7 @@ All export operations are accessible not only via export menu, but also via plug
 
 Export operations are handled via export plugin instance's methods, such as `download()`, which initiates download of the exported image or data file, or via methods that return raw or encoded image/data, like `getImage()`, `getPDF()`, `getCSV()`, etc.
 
-Complete list of methods is available in [`Exporting` reference](https://www.amcharts.com/docs/v5/reference/exporting/#Methods).
+Complete list of methods is available in [`Exporting` reference](https://docs.amcharts.com/v5/reference/exporting/#methods).
 
 There are few kinds of API methods for initiating download, returning data uri representation, or raw data.
 
@@ -18,7 +18,7 @@ There are few kinds of API methods for initiating download, returning data uri r
 
 This is the same operation that happens when export menu item is clicked: a download or print is triggered.
 
-To initiate such action, we can use `[download()](https://www.amcharts.com/docs/v5/reference/exporting/#download_method)` or `[print()](https://www.amcharts.com/docs/v5/reference/exporting/#print_method)` methods.
+To initiate such action, we can use `[download()](https://docs.amcharts.com/v5/reference/exporting/#download_method)` or `[print()](https://docs.amcharts.com/v5/reference/exporting/#print_method)` methods.
 
 function downloadChartImage {
   exporting.download("png");
@@ -36,7 +36,7 @@ function printChart() {
   exporting.print();
 }
 
-Both of those methods accept parameter with format options, should we want to override defaults or [custom format options](https://www.amcharts.com/docs/v5/concepts/exporting/#Configuring_formats).
+Both of those methods accept parameter with format options, should we want to override defaults or [custom format options](https://docs.amcharts.com/v5/concepts/exporting/#configuring-formats).
 
 exporting.download("png", {
   minWidth: 1000,
@@ -91,7 +91,7 @@ exporting.getSVG().then(function(svg) {
   document.getElementById("mySnapshot").innerHTML = svg;
 });
 
-MORE INFOFor SVG options, and exporting SVG without the plugin, see "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)".
+MORE INFOFor SVG options, and exporting SVG without the plugin, see "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
 
 
 ## Data as an HTML table
@@ -120,7 +120,7 @@ Normally, `getHTML()` will return a plain table without any styling or class nam
 
 We can use HTML export format options to make it apply certain class names to specific elements of the table, namely its `<table>`, `<tr>`, `<th>`, and `<td>` tags.
 
-That can be done either by [setting format options](https://www.amcharts.com/docs/v5/concepts/exporting/#configuring-formats) on the exporting object, or passing it in via parameter in `getHTML()`.
+That can be done either by [setting format options](https://docs.amcharts.com/v5/concepts/exporting/#configuring-formats) on the exporting object, or passing it in via parameter in `getHTML()`.
 
 let exporting = am5plugins\_exporting.Exporting.new(root, {
   menu: am5plugins\_exporting.ExportingMenu.new(root, {}),

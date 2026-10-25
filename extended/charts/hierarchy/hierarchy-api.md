@@ -1,6 +1,6 @@
 ---
 title: "Hierarchy API"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-api/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-api/"
 scraped: "2026-03-15"
 ---
 

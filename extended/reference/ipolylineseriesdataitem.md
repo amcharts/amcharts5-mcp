@@ -1,7 +1,7 @@
 ---
 title: "IPolylineSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipolylineseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/ipolylineseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

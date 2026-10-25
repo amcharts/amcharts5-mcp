@@ -1,7 +1,7 @@
 ---
 title: "IExportingMenuPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iexportingmenuprivate/"
+source: "https://docs.amcharts.com/v5/reference/iexportingmenuprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

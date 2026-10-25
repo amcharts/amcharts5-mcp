@@ -1,7 +1,7 @@
 ---
 title: "ILabelSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilabelsettings/"
+source: "https://docs.amcharts.com/v5/reference/ilabelsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,10 +14,10 @@ TypeScript: `am5.ILabelSettings` (`import type { ILabelSettings } from "@amchart
 
 ## Settings
 
-- **text** (`string`) — The label's text. It can hold in-line formatting and, with `populateText`, data placeholders. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/
+- **text** (`string`) — The label's text. It can hold in-line formatting and, with `populateText`, data placeholders. Docs: https://docs.amcharts.com/v5/concepts/formatters/text-styling/
 - **fill** (`Color`) — default `root.interfaceColors.get("text")` _(theme)_ — Text color.
 - **fillOpacity** (`number`) — default `1` — Text opacity, from `0` (transparent) to `1` (opaque). _Since 5.2.39._
-- **fillGradient** (`Gradient`) — Fill gradient. _Since 5.10.1._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **fillGradient** (`Gradient`) — Fill gradient. _Since 5.10.1._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
 - **textAlign** (`"start" | "end" | "left" | "right" | "center"`) — Horizontal alignment of the text's lines.
 - **fontFamily** (`string`) — default `"-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\""` _(theme)_ — Font family, or a comma-separated list of them. `"inherit"` uses the font of the chart's container element (since `5.17.3`).
 - **fontSize** (`string | number`) — default `"1em"` _(theme)_ — Font size: a number in pixels, or any CSS size, such as `"1em"` or `"12pt"`.
@@ -30,7 +30,7 @@ TypeScript: `am5.ILabelSettings` (`import type { ILabelSettings } from "@amchart
 - **opacity** (`number`) — default `1` _(theme)_ — Opacity of the label, from `0` (transparent) to `1` (opaque).
 - **direction** (`"ltr" | "rtl"`) — default `"ltr"` — Text direction.
 - **textBaseline** (`"top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"`) — The baseline the text is aligned to vertically, as in the canvas `textBaseline`.
-- **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`) — What to do with text that does not fit the label's `maxWidth` (or `maxHeight`): `"hide"` it, `"fit"` it by scaling it down, `"wrap"` it onto more lines, wrap it without breaking words (`"wrap-no-break"`), or `"truncate"` it with an ellipsis. LIMITATIONS: on circular labels, the only values supported are `"hide"` and `"truncate"`. The latter will ignore `breakWords` setting. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#Oversized_text
+- **oversizedBehavior** (`"none" | "hide" | "fit" | "wrap" | "wrap-no-break" | "truncate"`) — What to do with text that does not fit the label's `maxWidth` (or `maxHeight`): `"hide"` it, `"fit"` it by scaling it down, `"wrap"` it onto more lines, wrap it without breaking words (`"wrap-no-break"`), or `"truncate"` it with an ellipsis. LIMITATIONS: on circular labels, the only values supported are `"hide"` and `"truncate"`. The latter will ignore `breakWords` setting. Docs: https://docs.amcharts.com/v5/concepts/common-elements/labels/#oversized-text
 - **breakWords** (`boolean`) — default `false` — Lets truncation cut words in the middle. Wrapping does not use it.
 - **ellipsis** (`string`) — default `"…"` — Characters added at the end of truncated text. The default Unicode ellipsis (`"…"`) is missing from some fonts. If it looks broken, use other characters, e.g.:
 
@@ -39,13 +39,13 @@ TypeScript: `am5.ILabelSettings` (`import type { ILabelSettings } from "@amchart
   ```
 
 - **minScale** (`number`) — Smallest scale, from `0` to `1`, that `oversizedBehavior: "fit"` may shrink the text to. Text that would need to shrink more is hidden.
-- **populateText** (`boolean`) — default `false` _(theme)_ — Fills data placeholders in `text`, such as `{value}`, with values from the label's data item. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#Data_placeholders
+- **populateText** (`boolean`) — default `false` _(theme)_ — Fills data placeholders in `text`, such as `{value}`, with values from the label's data item. Docs: https://docs.amcharts.com/v5/concepts/common-elements/labels/#data-placeholders
 - **ignoreFormatting** (`boolean`) — default `false` — Shows `text` exactly as it is, without applying in-line formatting blocks such as `[bold]`.
-- **shadowColor** (`Color`) — Color of the text's shadow. It shows only when `shadowBlur`, `shadowOffsetX` or `shadowOffsetY` is set too. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowBlur** (`number`) — Blurriness of the shadow: the bigger the number, the blurrier the shadow. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowOffsetX** (`number`) — Horizontal shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowOffsetY** (`number`) — Vertical shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowOpacity** (`number`) — Opacity of the shadow, from `0` to `1`. If not set, the shadow takes the opacity of the text. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowColor** (`Color`) — Color of the text's shadow. It shows only when `shadowBlur`, `shadowOffsetX` or `shadowOffsetY` is set too. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowBlur** (`number`) — Blurriness of the shadow: the bigger the number, the blurrier the shadow. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetX** (`number`) — Horizontal shadow offset in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetY** (`number`) — Vertical shadow offset in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOpacity** (`number`) — Opacity of the shadow, from `0` to `1`. If not set, the shadow takes the opacity of the text. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
 - **maxChars** (`number`) — Maximum number of characters in the label. A longer `text` is cut, using the `breakWords` and `ellipsis` settings. _Since 5.7.2._
 
 ## Inherited settings with a different default on Label

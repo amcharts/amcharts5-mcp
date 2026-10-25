@@ -1,7 +1,7 @@
 ---
 title: "IGanttSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iganttseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iganttseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

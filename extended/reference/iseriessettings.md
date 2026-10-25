@@ -1,7 +1,7 @@
 ---
 title: "ISeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/iseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -22,15 +22,15 @@ TypeScript: `am5.ISeriesSettings` (`import type { ISeriesSettings } from "@amcha
 - **customValueField** (`string`) — A key to look up in data for an extra numeric value of the data item (`customValue`), e.g. for heat rules.
 - **legendLabelText** (`string`) — Text template for the item's label in a `Legend`.
 - **legendValueText** (`string`) — Text template for the item's value label in a `Legend`.
-- **sequencedInterpolation** (`boolean`) — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
-- **sequencedDelay** (`number`) — Extra delay in milliseconds between the animations of consecutive data items, with `sequencedInterpolation`. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
-- **heatRules** (`IHeatRule[]`) — Heat rules to apply to the series' elements. A rule without `minValue` and `maxValue` needs `calculateAggregates` to find the value range. Docs: https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+- **sequencedInterpolation** (`boolean`) — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
+- **sequencedDelay** (`number`) — Extra delay in milliseconds between the animations of consecutive data items, with `sequencedInterpolation`. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
+- **heatRules** (`IHeatRule[]`) — Heat rules to apply to the series' elements. A rule without `minValue` and `maxValue` needs `calculateAggregates` to find the value range. Docs: https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 - **calculateAggregates** (`boolean`) — Makes the series compute aggregate values, such as sums, averages, lows, highs and changes. Enable it only if they are used, e.g. in tooltips, data fields or heat rules.
-- **stroke** (`Color`) — Series stroke color. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
-- **fill** (`Color`) — Series fill color. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
-- **fillPattern** (`Pattern`) — Series fill pattern. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
-- **fillGradient** (`Gradient`) — Series fill gradient. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
-- **strokeGradient** (`Gradient`) — Series stroke gradient. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **stroke** (`Color`) — Series stroke color. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
+- **fill** (`Color`) — Series fill color. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
+- **fillPattern** (`Pattern`) — Series fill pattern. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
+- **fillGradient** (`Gradient`) — Series fill gradient. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
+- **strokeGradient** (`Gradient`) — Series stroke gradient. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
 - **legendDataItem** (`DataItem<ILegendDataItem>`) — The series' data item in a `Legend`.
 - **excludeFromAggregate** (`string[]`) — Fields to leave out of `calculateAggregates`, to save work where their aggregates are not needed. _Since 5.14.4._
 

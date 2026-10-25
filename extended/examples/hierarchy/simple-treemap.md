@@ -25,11 +25,11 @@ Prompt: Create a treemap of a monthly household budget, with items such as rent,
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -45,7 +45,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     singleBranchOnly: false, // opening a group leaves the others open
@@ -68,7 +68,7 @@ series.rectangles.template.setAll({
 series.nodes.template.set("tooltipText", "{category}: [bold]${sum}[/]");
 
 // Click a box to zoom into its group; click again to zoom back out
-// https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-drill-down/
+// https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-drill-down/
 series.nodes.template.set("cursorOverStyle", "pointer"); // a hand cursor over the boxes
 series.nodes.template.events.on("click", function (e) {
   var dataItem = e.target.dataItem;
@@ -78,7 +78,7 @@ series.nodes.template.events.on("click", function (e) {
 });
 
 // Set data: a $4,000 monthly budget, by group and item
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   name: "Budget",
   children: [{

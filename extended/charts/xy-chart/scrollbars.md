@@ -1,6 +1,6 @@
 ---
 title: "Scrollbars"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/"
 scraped: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ Scrollbars are useful controls that allow zooming chart's axis.
 
 ## Adding scrollbars
 
-We create a scrollbar like everything else in amCharts 5: by calling `new()` [method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) of its class - `Scrollbar`.
+We create a scrollbar like everything else in amCharts 5: by calling `new()` [method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) of its class - `Scrollbar`.
 
 Please note that scrollbar requires at least one setting to be present during instantiation: `orientation`.
 
@@ -26,7 +26,7 @@ Horizontal scrollbar will zoom/pan all horizontal axes, whereas vertical one wil
 
 Scrollbar has three properties to access its three elements: `startGrip`, `endGrip`, and `thumb`.
 
-The first two are elements of type `[Button](https://www.amcharts.com/docs/v5/reference/button/)`, whereas `thumb` is a `[RoundedRectangle](https://www.amcharts.com/docs/v5/reference/roundedrectangle/)`.
+The first two are elements of type `[Button](https://docs.amcharts.com/v5/reference/button/)`, whereas `thumb` is a `[RoundedRectangle](https://docs.amcharts.com/v5/reference/roundedrectangle/)`.
 
 All three are fully customizable as we can override their default settings with our own.
 
@@ -66,7 +66,7 @@ The above will make thumb semi-transparent red, while disabling both grips.
 
 When created, scrollbar will have its setting `background` set to an element of type `RoundedRectangle`.
 
-We can modify any of its [settings](https://www.amcharts.com/docs/v5/reference/roundedrectangle/#Settings) to configure scrollbar's background.
+We can modify any of its [settings](https://docs.amcharts.com/v5/reference/roundedrectangle/#settings) to configure scrollbar's background.
 
 let scrollbarX = chart.get("scrollbarX");
 
@@ -149,7 +149,7 @@ var scrollbarX = am5xy.XYChartScrollbar.new(root, {
 
 chart.set("scrollbarX", scrollbarX);
 
-That creates a scrollbar with a standalone instance of an XY chart in it, accessible via scrollbar's `[chart](https://www.amcharts.com/docs/v5/reference/xychartscrollbar/#chart_property)` property.
+That creates a scrollbar with a standalone instance of an XY chart in it, accessible via scrollbar's `[chart](https://docs.amcharts.com/v5/reference/xychartscrollbar/#chart_property)` property.
 
 It's full on `XYChart` instance, which means that we'll need to configure it like any other XY chart:
 
@@ -212,7 +212,7 @@ let sbseries = scrollbarX.chart.series.push(
 );
 sbseries.data.setAll(data);
 
-The nice thing about this approach is that we can configure the output down to last bit, including [dynamic data point grouping](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Dynamic_data_item_grouping) of the preview series, to control its granularity.
+The nice thing about this approach is that we can configure the output down to last bit, including [dynamic data point grouping](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#dynamic-data-item-grouping) of the preview series, to control its granularity.
 
 
 ## Repositioning scrollbars
@@ -266,7 +266,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 The above puts the horizontal scrollbar at the very bottom of the chart, below the X axis labels.
 
-Both `opposite` and `outsideAxes` can be changed at any time, and the scrollbar will move. They also work in [JSON configs](https://www.amcharts.com/docs/v5/concepts/serializing/).
+Both `opposite` and `outsideAxes` can be changed at any time, and the scrollbar will move. They also work in [JSON configs](https://docs.amcharts.com/v5/concepts/serializing/).
 
 NOTE`opposite` is available since version 5.20.2, and `outsideAxes` since 5.21.0.
 
@@ -274,7 +274,7 @@ NOTE`opposite` is available since version 5.20.2, and `outsideAxes` since 5.21.0
 
 When you assign a `Scrollbar` instance to chart's `scrollbarY` setting, it is automatically assigned as a child of chart's `rightAxesContainer` (or `leftAxesContainer` if `opposite` is set), whereas assigning it to `scrollbarX` will put it into `topAxesContainer` (or `bottomAxesContainer`).
 
-Read more about build in XY chart containers in "[Containers of an XY chart](https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/)" tutorial.
+Read more about build in XY chart containers in "[Containers of an XY chart](https://docs.amcharts.com/v5/charts/xy-chart/xy-chart-containers/)" tutorial.
 
 For a placement the settings above don't cover, we can move the scrollbar to some other container ourselves. `opposite` and `outsideAxes` do not apply to a scrollbar moved this way.
 
@@ -295,6 +295,6 @@ chart.plotContainer.children.push(scrollbarX);
 
 ## Related tutorials
 
--   [Start/end labels on scrollbar grips](https://www.amcharts.com/docs/v5/tutorials/start-end-labels-on-scrollbar-grips/)
--   [Start/end labels on a scrollbar](https://www.amcharts.com/docs/v5/tutorials/adding-start-and-end-labels-to-a-scrollbar/)
--   [Containers of an XY chart](https://www.amcharts.com/docs/v5/tutorials/xy-chart-containers/)
+-   [Start/end labels on scrollbar grips](https://docs.amcharts.com/v5/tutorials/start-end-labels-on-scrollbar-grips/)
+-   [Start/end labels on a scrollbar](https://docs.amcharts.com/v5/tutorials/adding-start-and-end-labels-to-a-scrollbar/)
+-   [Containers of an XY chart](https://docs.amcharts.com/v5/tutorials/xy-chart-containers/)

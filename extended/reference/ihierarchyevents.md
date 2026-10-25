@@ -1,7 +1,7 @@
 ---
 title: "IHierarchyEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihierarchyevents/"
+source: "https://docs.amcharts.com/v5/reference/ihierarchyevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

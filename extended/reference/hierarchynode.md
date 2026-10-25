@@ -1,7 +1,7 @@
 ---
 title: "HierarchyNode"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/hierarchynode/"
+source: "https://docs.amcharts.com/v5/reference/hierarchynode/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

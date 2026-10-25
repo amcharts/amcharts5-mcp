@@ -1,6 +1,6 @@
 ---
 title: "Pack"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/pack/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/pack/"
 scraped: "2026-03-15"
 ---
 
@@ -10,7 +10,7 @@ This tutorial will look at how to configure pack series.
 
 In pack series, `circles.template` can be used to configure node circles. All nodes have them.
 
-The template accepts all [`Circle` settings](https://www.amcharts.com/docs/v5/reference/circle/#Settings).
+The template accepts all [`Circle` settings](https://docs.amcharts.com/v5/reference/circle/#settings).
 
 series.circles.template.setAll({
   fillOpacity: 0.7,
@@ -42,7 +42,7 @@ series.labels.template.setAll({
   text: "{category}"
 });
 
-Pack series uses `[Label](https://www.amcharts.com/docs/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+Pack series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -60,9 +60,9 @@ series.labels.template.setAll({
   fontSize: 14
 });
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IPackDataItem](https://www.amcharts.com/docs/v5/reference/ipackdataitem/)` for available keys for the data placeholders.
+Refer to `[IPackDataItem](https://docs.amcharts.com/v5/reference/ipackdataitem/)` for available keys for the data placeholders.
 
 ### Disabling labels
 
@@ -82,9 +82,9 @@ series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
 series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IPackDataItem](https://www.amcharts.com/docs/v5/reference/ipackdataitem/)` for available keys for the data placeholders.
+Refer to `[IPackDataItem](https://docs.amcharts.com/v5/reference/ipackdataitem/)` for available keys for the data placeholders.
 
 ## Example
 

@@ -1,7 +1,7 @@
 ---
 title: "Chart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/chart/"
+source: "https://docs.amcharts.com/v5/reference/chart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

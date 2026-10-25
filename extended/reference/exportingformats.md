@@ -1,7 +1,7 @@
 ---
 title: "ExportingFormats"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/exportingformats/"
+source: "https://docs.amcharts.com/v5/reference/exportingformats/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

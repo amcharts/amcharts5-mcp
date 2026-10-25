@@ -1,7 +1,7 @@
 ---
 title: "IDateAxisDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idateaxisdataitem/"
+source: "https://docs.amcharts.com/v5/reference/idateaxisdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

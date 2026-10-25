@@ -1,7 +1,7 @@
 ---
 title: "IWordCloudPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iwordcloudprivate/"
+source: "https://docs.amcharts.com/v5/reference/iwordcloudprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

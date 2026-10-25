@@ -1,7 +1,7 @@
 ---
 title: "MonotoneXTension"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/monotonextension/"
+source: "https://docs.amcharts.com/v5/reference/monotonextension/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

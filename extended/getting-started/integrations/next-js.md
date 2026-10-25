@@ -1,10 +1,10 @@
 ---
 title: "Using amCharts 5 with Next.js"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/next-js/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/next-js/"
 scraped: "2026-10-22"
 ---
 
-Next.js is a React framework: use our [`@amcharts/amcharts5-react`](https://www.npmjs.com/package/@amcharts/amcharts5-react) package, as in the [React tutorial](https://www.amcharts.com/docs/v5/getting-started/integrations/react/). It works with the app router and server rendering, and needs nothing in `next.config`.
+Next.js is a React framework: use our [`@amcharts/amcharts5-react`](https://www.npmjs.com/package/@amcharts/amcharts5-react) package, as in the [React tutorial](https://docs.amcharts.com/v5/getting-started/integrations/react/). It works with the app router and server rendering, and needs nothing in `next.config`.
 
 ```shell
 npm install @amcharts/amcharts5 @amcharts/amcharts5-react
@@ -58,7 +58,7 @@ An [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/
 
 ## Without the package
 
-The code from the [React tutorial](https://www.amcharts.com/docs/v5/getting-started/integrations/react/#without-the-package) works in a client component: add `"use client";` at the top of the file.
+The code from the [React tutorial](https://docs.amcharts.com/v5/getting-started/integrations/react/#without-the-package) works in a client component: add `"use client";` at the top of the file.
 
 Older versions of Next.js do not have `"use client"`, so [use `dynamic`](https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-no-ssr) to load the chart component in the browser only:
 

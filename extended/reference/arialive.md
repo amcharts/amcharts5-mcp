@@ -1,7 +1,7 @@
 ---
 title: "AriaLive"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/arialive/"
+source: "https://docs.amcharts.com/v5/reference/arialive/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

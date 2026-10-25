@@ -198,18 +198,18 @@ var data = [
 ];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   // near-black space behind the satellite picture, shown only with it
   background: am5.Rectangle.new(root, {
@@ -228,7 +228,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {})); // + and - zoom buttons
 
 // the home button is hidden by default
@@ -249,7 +249,7 @@ var title = chart.children.unshift(am5.Label.new(root, {
 }));
 
 // Create series for the water: a faint fill behind the countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   // the map fits the countries, not this rectangle around the whole world
   affectsBounds: false
@@ -267,7 +267,7 @@ waterSeries.data.push({
 
 // Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
 // (visible: false): make it visible for the satellite view
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   visible: false,
   // the map fits the countries, not the whole picture
@@ -275,7 +275,7 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create graticule series: grid lines every 10 degrees
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));
@@ -286,7 +286,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // the world's countries, in low detail
 }));

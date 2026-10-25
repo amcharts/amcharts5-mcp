@@ -25,11 +25,11 @@ Prompt: Create a world map of the capital cities as points that cluster: points 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     // near-black space behind the satellite picture, shown only with it
@@ -62,7 +62,7 @@ var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 zoomControl.homeButton.set("visible", true); // a button that goes back to the home view
 
 // Create series for the water: a faint fill behind the countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   // the map fits the countries, not this rectangle around the whole world
   affectsBounds: false
@@ -80,7 +80,7 @@ waterSeries.data.push({
 
 // Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
 // (visible: false): make it visible for the satellite view
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   visible: false,
   // the map fits the countries, not the whole picture
@@ -88,7 +88,7 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create graticule series: grid lines every 10 degrees
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));
@@ -99,7 +99,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldLow // the world's countries, in low detail
@@ -113,7 +113,7 @@ polygonSeries.mapPolygons.template.setAll({
 });
 
 // Create point series for markers
-// https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/
 // cities close together on screen merge into one group, which splits up as the map zooms in
 var pointSeries = chart.series.push(am5map.ClusteredPointSeries.new(root, {}));
 
@@ -126,7 +126,7 @@ var circleTemplate = am5.Template.new({
 });
 
 // Set clustered bullet
-// https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Group_bullet
+// https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#group-bullet
 pointSeries.set("clusteredBullet", function(root) {
   var container = am5.Container.new(root, {
     cursorOverStyle: "pointer" // a hand cursor: a group can be clicked

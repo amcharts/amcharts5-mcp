@@ -1,6 +1,6 @@
 ---
 title: "Bullets"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/bullets/"
 scraped: "2026-03-15"
 ---
 
@@ -8,9 +8,9 @@ This tutorial will look into all aspects of using bullets on series.
 
 ## Creating a series bullet
 
-Each series has a `[bullets](https://www.amcharts.com/docs/v5/reference/series/#bullets_property)` property, which is a `List` of functions.
+Each series has a `[bullets](https://docs.amcharts.com/v5/reference/series/#bullets_property)` property, which is a `List` of functions.
 
-A function is responsible for returning a `[Bullet](https://www.amcharts.com/docs/v5/reference/bullet/)` object.
+A function is responsible for returning a `[Bullet](https://docs.amcharts.com/v5/reference/bullet/)` object.
 
 Whenever series needs to create a bullet for a specific data item, it will call the function and expect it to return a new bullet, which then be displayed on actual chart.
 
@@ -55,7 +55,7 @@ The above will create a bullet with a circle.
 Please note that bullets can be complex and will not inherit series colors automatically, hence we need to explicitly set its color to series color.
 
 
-For an example of how to use images as bullets, refer to "[Images](https://www.amcharts.com/docs/v5/concepts/common-elements/images/#Images_as_bullets)" tutorial.
+For an example of how to use images as bullets, refer to "[Images](https://docs.amcharts.com/v5/concepts/common-elements/images/#images-as-bullets)" tutorial.
 
 ## Adding directly to data item
 
@@ -157,7 +157,7 @@ Below example adds several bullets at specific points on chart:
 
 ### By relative location
 
-A `Bullet` object has two properties that help position them within the parent element/data item: `[locationX](https://www.amcharts.com/docs/v5/reference/bullet/#locationX_setting)` and `[locationY](https://www.amcharts.com/docs/v5/reference/bullet/#locationY_setting)`.
+A `Bullet` object has two properties that help position them within the parent element/data item: `[locationX](https://docs.amcharts.com/v5/reference/bullet/#locationX_setting)` and `[locationY](https://docs.amcharts.com/v5/reference/bullet/#locationY_setting)`.
 
 Those accept numeric values from `0` (zero) to `1` (one) indicating relative position within target element, with zero indicating beginning and one the end.
 
@@ -260,7 +260,7 @@ It accepts three values:
 
 Among other things, series will also pass relevant data item to the bullet.
 
-That's why bullets can use [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) to populate text, as well as [heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#Bullets).
+That's why bullets can use [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) to populate text, as well as [heat rules](https://docs.amcharts.com/v5/concepts/settings/heat-rules/#bullets).
 
 ### Data placeholders
 
@@ -286,7 +286,7 @@ series.bullets.push(function(root) {
 
 The above label will be replaced by the actual Y value of the related data item.
 
-For more information on how data placeholders work, refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+For more information on how data placeholders work, refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ### Heat rules
 
@@ -294,7 +294,7 @@ Bullets can also benefit from heat rules.
 
 For example circle bullet can have its radius assigned dynamically, according to range of values in the series.
 
-For more information and examples, visit "Heat rules: [Bullets](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#bullets)".
+For more information and examples, visit "Heat rules: [Bullets](https://docs.amcharts.com/v5/concepts/settings/heat-rules/#bullets)".
 
 ### Template fields
 
@@ -302,7 +302,7 @@ Template fields are way to override some settings for a series item, such as a b
 
 It works by specifying `templateField` setting on an object, which should point to a key in data that holds that element's settings we want to override.
 
-For an in-depth explanation how this works, refer to "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+For an in-depth explanation how this works, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 That said, there are some caveats when using template fields with a bullet.
 
@@ -552,7 +552,7 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 `maskBullets: false`
 
 
-MORE INFOFor more information on how to work around bullet masking and related issues, refer to "[Handling bullet masking](https://www.amcharts.com/docs/v5/tutorials/handling-bullet-masking/)" tutorial.
+MORE INFOFor more information on how to work around bullet masking and related issues, refer to "[Handling bullet masking](https://docs.amcharts.com/v5/tutorials/handling-bullet-masking/)" tutorial.
 
 ## Event handlers
 
@@ -693,14 +693,14 @@ series.bullets.clear();
 
 ## Related tutorials
 
--   [Axis range bullets](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Bullet)
--   [Hide or relocate label bullets for small columns](https://www.amcharts.com/docs/v5/tutorials/hide-or-relocate-label-bullets-for-small-columns/)
--   [Triggering bullet hover with an XY cursor](https://www.amcharts.com/docs/v5/tutorials/triggering-bullet-hover-with-an-xy-cursor/)
--   [Totals on column stacks](https://www.amcharts.com/docs/v5/tutorials/totals-on-column-stacks/)
--   [Totals on clustered column stacks](https://www.amcharts.com/docs/v5/tutorials/totals-on-clustered-column-stacks/)
--   [Handling bullet masking](https://www.amcharts.com/docs/v5/tutorials/handling-bullet-masking/)
--   [Different bullet styling of grouped data items](https://www.amcharts.com/docs/v5/tutorials/different-bullet-styling-of-grouped-data-items/)
--   [Solving overlapping bullets](https://www.amcharts.com/docs/v5/tutorials/solving-overlapping-bullets/)
--   [Complex bullets with hover effect](https://www.amcharts.com/docs/v5/tutorials/complex-bullets-with-hover-effect/)
--   [Column labels as categories](https://www.amcharts.com/docs/v5/tutorials/column-labels-as-categories/)
--   [Map with custom markers and data-bound colors](https://www.amcharts.com/docs/v5/tutorials/map-with-custom-markers-and-data-bound-colors/)
+-   [Axis range bullets](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#bullet)
+-   [Hide or relocate label bullets for small columns](https://docs.amcharts.com/v5/tutorials/hide-or-relocate-label-bullets-for-small-columns/)
+-   [Triggering bullet hover with an XY cursor](https://docs.amcharts.com/v5/tutorials/triggering-bullet-hover-with-an-xy-cursor/)
+-   [Totals on column stacks](https://docs.amcharts.com/v5/tutorials/totals-on-column-stacks/)
+-   [Totals on clustered column stacks](https://docs.amcharts.com/v5/tutorials/totals-on-clustered-column-stacks/)
+-   [Handling bullet masking](https://docs.amcharts.com/v5/tutorials/handling-bullet-masking/)
+-   [Different bullet styling of grouped data items](https://docs.amcharts.com/v5/tutorials/different-bullet-styling-of-grouped-data-items/)
+-   [Solving overlapping bullets](https://docs.amcharts.com/v5/tutorials/solving-overlapping-bullets/)
+-   [Complex bullets with hover effect](https://docs.amcharts.com/v5/tutorials/complex-bullets-with-hover-effect/)
+-   [Column labels as categories](https://docs.amcharts.com/v5/tutorials/column-labels-as-categories/)
+-   [Map with custom markers and data-bound colors](https://docs.amcharts.com/v5/tutorials/map-with-custom-markers-and-data-bound-colors/)

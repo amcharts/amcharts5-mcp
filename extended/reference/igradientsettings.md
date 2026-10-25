@@ -1,7 +1,7 @@
 ---
 title: "IGradientSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/igradientsettings/"
+source: "https://docs.amcharts.com/v5/reference/igradientsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -13,7 +13,7 @@ TypeScript: `am5.IGradientSettings` (`import type { IGradientSettings } from "@a
 
 ## Settings
 
-- **stops** (`IGradientStop[]`) — The gradient's colors, in order. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **stops** (`IGradientStop[]`) — The gradient's colors, in order. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
 - **target** (`Sprite`) — An element whose bounds the gradient spans, instead of the element it fills, so that one gradient can run across several elements.
 
 ## Other inherited settings

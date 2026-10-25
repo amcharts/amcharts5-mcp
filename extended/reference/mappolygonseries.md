@@ -1,13 +1,13 @@
 ---
 title: "MapPolygonSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/mappolygonseries/"
+source: "https://docs.amcharts.com/v5/reference/mappolygonseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A map series of polygons, such as countries or regions.
 
-Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+Docs: https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 
 ## Import
 

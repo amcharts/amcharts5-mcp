@@ -1,7 +1,7 @@
 ---
 title: "IPeriodSelectorSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iperiodselectorsettings/"
+source: "https://docs.amcharts.com/v5/reference/iperiodselectorsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,7 +16,7 @@ TypeScript: `am5stock.IPeriodSelectorSettings` (`import type { IPeriodSelectorSe
 
 - **periods** (`IPeriod[]`) — default `[{ timeUnit: "day", count: 5, name: "5" + root.language.translateAny("D") }, { timeUnit: "month", count: 1, name: "1" + root.language.translateAny("M") }, { timeUnit: "month", count: 3, name: "3" +…` _(theme)_ — Periods to show buttons for.
 - **hideLongPeriods** (`boolean`) — default `false` — Hides the buttons of periods longer than the data. _Since 5.3.9._
-- **zoomTo** (`"start" | "end"`) — default `"end"` — Which end of the data a period is measured from: `"end"` shows the latest data, `"start"` the earliest. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/period-selector/#Zoom_anchor_point
+- **zoomTo** (`"start" | "end"`) — default `"end"` — Which end of the data a period is measured from: `"end"` shows the latest data, `"start"` the earliest. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/period-selector/#zoom-anchor-point
 
 ## Inherited settings with a different default on PeriodSelector
 

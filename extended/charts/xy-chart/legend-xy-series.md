@@ -1,6 +1,6 @@
 ---
 title: "Legend and XY series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/"
 scraped: "2026-03-15"
 ---
 
@@ -16,7 +16,7 @@ legend.data.setAll(chart.series.values);
 var legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.series.values);
 
-MORE INFO For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Legend label content
 
@@ -120,11 +120,11 @@ When cursor leaves the plot area again, the text will be replaced back with the 
 
 ### Dynamic values
 
-Since labels support [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets), text will be populated with actual data and values.
+Since labels support [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets), text will be populated with actual data and values.
 
-When there is no data cursor on chart, or cursor is not over plot area, labels will be populated from series' settings, e.g. `LineSeries` [settings](https://www.amcharts.com/docs/v5/reference/lineseries/#settings) or [private settings](https://www.amcharts.com/docs/v5/reference/lineseries/#Private_settings).
+When there is no data cursor on chart, or cursor is not over plot area, labels will be populated from series' settings, e.g. `LineSeries` [settings](https://docs.amcharts.com/v5/reference/lineseries/#settings) or [private settings](https://docs.amcharts.com/v5/reference/lineseries/#private-settings).
 
-If cursor is hovering on plot area, closest data item will be used to populate the label, e.g. `[LineSeriesDataItem](https://www.amcharts.com/docs/v5/reference/ilineseriesdataitem/)`.
+If cursor is hovering on plot area, closest data item will be used to populate the label, e.g. `[LineSeriesDataItem](https://docs.amcharts.com/v5/reference/ilineseriesdataitem/)`.
 
 let series = chart.series.push(
   am5xy.LineSeries.new(root, {
@@ -158,7 +158,7 @@ In this case, `legendRangeLabelText` is used and is populated by series data.
 
 Text formatter, when populating text `"{name}"` looks for the placeholders in a number of places.
 
-It finds `name` in `LineSeries`' [settings](https://www.amcharts.com/docs/v5/reference/lineseries/#name_setting).
+It finds `name` in `LineSeries`' [settings](https://docs.amcharts.com/v5/reference/lineseries/#name_setting).
 
 The result is a text with a text with series name, e.g.: `"Sales"`.
 
@@ -166,11 +166,11 @@ The result is a text with a text with series name, e.g.: `"Sales"`.
 
 Now, legend label text is replaced with a `"{name}: {categoryX}"`.
 
-Now, instead of series' object, a specific series data item is used. In case of line series, it's an `[ILineSeriesDataItem](https://www.amcharts.com/docs/v5/reference/ilineseriesdataitem/)`.
+Now, instead of series' object, a specific series data item is used. In case of line series, it's an `[ILineSeriesDataItem](https://docs.amcharts.com/v5/reference/ilineseriesdataitem/)`.
 
 It does not have a `name` in it, so text formatter looks in a parent, which is series, so it finds `name` in series' settings.
 
-Then it looks up `categoryX` which [does exist](https://www.amcharts.com/docs/v5/reference/ilineseriesdataitem/#categoryX_property) in series data item.
+Then it looks up `categoryX` which [does exist](https://docs.amcharts.com/v5/reference/ilineseriesdataitem/#categoryX_property) in series data item.
 
 Depending on which category cursor is closest to, we'll end up with a legend label similar to this: `Sales: Q3`.
 
@@ -179,7 +179,7 @@ As we move cursor over plot area and the closest data item changes, so does labe
 
 ### In-line formatting
 
-Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) blocks. E.g.:
+Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) blocks. E.g.:
 
 let series = chart.series.push(
   am5xy.LineSeries.new(root, {
@@ -252,4 +252,4 @@ var series = chart.series.push(
 
 ## Related tutorials
 
--   [Aligning a legend with plot container](https://www.amcharts.com/docs/v5/tutorials/aligning-a-legend-with-plot-container/)
+-   [Aligning a legend with plot container](https://docs.amcharts.com/v5/tutorials/aligning-a-legend-with-plot-container/)

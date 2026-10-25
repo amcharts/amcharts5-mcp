@@ -25,18 +25,18 @@ Prompt: Create a layered column chart comparing six countries across two years, 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,      // drag the plot sideways to pan
   panY: false,
@@ -76,7 +76,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   minGridDistance: 70,   // at least 70px between labels; on narrow screens some are skipped
   minorGridEnabled: true // a skipped country still gets a faint grid line
@@ -104,7 +104,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 // The 2024 columns: wide, at the back
 var series0 = chart.series.push(am5xy.ColumnSeries.new(root, {
@@ -161,11 +161,11 @@ series1.columns.template.setAll({
 series1.data.setAll(data);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
 // Add legend, in the top left corner of the plot area, where the columns stay low
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.plotContainer.children.push(am5.Legend.new(root, {
   x: 0,
   y: 0,
@@ -175,7 +175,7 @@ var legend = chart.plotContainer.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 series0.appear();
 series1.appear();

@@ -1,7 +1,7 @@
 ---
 title: "IComponentSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icomponentsettings/"
+source: "https://docs.amcharts.com/v5/reference/icomponentsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,8 +14,8 @@ TypeScript: `am5.IComponentSettings` (`import type { IComponentSettings } from "
 
 ## Settings
 
-- **interpolationDuration** (`number`) — default `0` _(theme)_ — Duration in milliseconds of the animation from old values to new ones, e.g. when data changes. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animating_data_values
-- **interpolationEasing** (`$ease.Easing`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of the animation from old values to new ones. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Easing_functions
+- **interpolationDuration** (`number`) — default `0` _(theme)_ — Duration in milliseconds of the animation from old values to new ones, e.g. when data changes. Docs: https://docs.amcharts.com/v5/concepts/animations/#animating-data-values
+- **interpolationEasing** (`$ease.Easing`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of the animation from old values to new ones. Docs: https://docs.amcharts.com/v5/concepts/animations/#easing-functions
 
 ## Other inherited settings
 

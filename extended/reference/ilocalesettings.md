@@ -1,7 +1,7 @@
 ---
 title: "ILocaleSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilocalesettings/"
+source: "https://docs.amcharts.com/v5/reference/ilocalesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

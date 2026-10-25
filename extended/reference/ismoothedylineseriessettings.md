@@ -1,7 +1,7 @@
 ---
 title: "ISmoothedYLineSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ismoothedylineseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ismoothedylineseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -20,7 +20,7 @@ TypeScript: `am5xy.ISmoothedYLineSeriesSettings` (`import type { ISmoothedYLineS
 
 - **curveFactory** (`CurveFactory`) — default computed at runtime _(class default)_ — _from ILineSeriesSettings_ — _(internal)_
 - **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
-- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#negative-value-stacking
 
 ## Other inherited settings
 

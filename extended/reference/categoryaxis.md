@@ -1,13 +1,13 @@
 ---
 title: "CategoryAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/categoryaxis/"
+source: "https://docs.amcharts.com/v5/reference/categoryaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An axis of named categories, each taking an equal share of the axis unless `cellSizeField` sets their sizes.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/
 
 ## Import
 

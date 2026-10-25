@@ -1,6 +1,6 @@
 ---
 title: "Value axis"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/"
 scraped: "2026-10-08"
 ---
 
@@ -12,7 +12,7 @@ Value axis is used for plotting numeric values.
 
 Value axis will automatically calculate its scope (min and max values) based on range of values of visible data items from series.
 
-We can override those values by specifying `[min](https://www.amcharts.com/docs/v5/reference/valueaxis/#min_setting)` and `[max](https://www.amcharts.com/docs/v5/reference/valueaxis/#max_setting)` settings manually:
+We can override those values by specifying `[min](https://docs.amcharts.com/v5/reference/valueaxis/#min_setting)` and `[max](https://docs.amcharts.com/v5/reference/valueaxis/#max_setting)` settings manually:
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -38,7 +38,7 @@ We can specify both `min` and `max`, or just one of them. If either `min` or `ma
 
 If we specify `min` and `max`, value axis will take it into consideration, but might still modify them in order to make scale look neater, based on available space and grid density, so that axis scale starts and ends at "nice" numbers.
 
-If we absolutely need axis to start and/or end and precise values set in `min` and/or `max`, we can set axis setting `[strictMinMax](https://www.amcharts.com/docs/v5/reference/valueaxis/#strictMinMax_setting)` to `true`:
+If we absolutely need axis to start and/or end and precise values set in `min` and/or `max`, we can set axis setting `[strictMinMax](https://docs.amcharts.com/v5/reference/valueaxis/#strictMinMax_setting)` to `true`:
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -96,7 +96,7 @@ var yAxis = chart.yAxes.push(
   })
 );
 
-NOTEStrict scale means that data items with highest and lowest values will be plotted right on the edge of the plot area. If we would like to add some relative spacing before then, we should use `extraMin` and `extraMax` settings, as explained in "[Relative scope extension](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Relative_scope_extension)" of this tutorial.
+NOTEStrict scale means that data items with highest and lowest values will be plotted right on the edge of the plot area. If we would like to add some relative spacing before then, we should use `extraMin` and `extraMax` settings, as explained in "[Relative scope extension](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#relative-scope-extension)" of this tutorial.
 
 ### Dynamic min/max
 
@@ -122,7 +122,7 @@ var yAxis = chart.yAxes.push(
 
 ### Relative scope extension
 
-We can also make value axis expand its scope relatively to automatically-calculated range, using its `[extraMin](https://www.amcharts.com/docs/v5/reference/valueaxis/#extraMin_setting)` and `[extraMax](https://www.amcharts.com/docs/v5/reference/valueaxis/#extraMax_setting)` settings.
+We can also make value axis expand its scope relatively to automatically-calculated range, using its `[extraMin](https://docs.amcharts.com/v5/reference/valueaxis/#extraMin_setting)` and `[extraMax](https://docs.amcharts.com/v5/reference/valueaxis/#extraMax_setting)` settings.
 
 Those are relative values indicating how much of the automatically-calculated value range to add to either `min` or `max`.
 
@@ -172,7 +172,7 @@ Logarithmic scale
 
 If our data contains zero values, logarithmic scale might be problematic, since logarithm of a zero is an invalid mathematical operation.
 
-To work around such cases, value axis adds a setting `[treatZeroAs](https://www.amcharts.com/docs/v5/reference/valueaxis/#treatZeroAs_setting)`.
+To work around such cases, value axis adds a setting `[treatZeroAs](https://docs.amcharts.com/v5/reference/valueaxis/#treatZeroAs_setting)`.
 
 We can set it to a small number, so when axis encounters a zero, it will consider the alternative number instead, preventing critical failure.
 
@@ -202,7 +202,7 @@ For example, column series plots columns upwards for positive numbers, and downw
 
 By default, base value is `0` (zero).
 
-Should we need to, we can change it using value axis' `[baseValue](https://www.amcharts.com/docs/v5/reference/valueaxis/#baseValue_method)` setting:
+Should we need to, we can change it using value axis' `[baseValue](https://docs.amcharts.com/v5/reference/valueaxis/#baseValue_method)` setting:
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -228,13 +228,13 @@ If our chart setup requires some derivative values, e.g. sums, changes, etc., to
 
 For that we have `calculateTotals` setting, which needs to be set to `true`.
 
-The process is described in great detail in "[XY chart series: Display data fields](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Display_fields)".
+The process is described in great detail in "[XY chart series: Display data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#display-fields)".
 
 ## Label format
 
 ### Automatic formatting
 
-Value axis will use [global number formatter](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/) and format settings set on it to format numbers in its labels, with one exception: Value axis will control number of decimals so that it represents grid steps best.
+Value axis will use [global number formatter](https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/) and format settings set on it to format numbers in its labels, with one exception: Value axis will control number of decimals so that it represents grid steps best.
 
 For example, even if our global number format is set to `"#.###"` (which means up to 3 decimals), a value axis with very fine steps, may increase decimal number to be able to effectively show grid values, e.g. : 0.0001, 0.0002, etc.
 
@@ -270,7 +270,7 @@ Default behavior
 
 We can specify a totally custom number format for the axis labels, too.
 
-For that we use `[numberFormat](https://www.amcharts.com/docs/v5/reference/valueaxis/#numberFormat_setting)` setting:
+For that we use `[numberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#numberFormat_setting)` setting:
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -302,7 +302,7 @@ There are a couple of ways to modify it.
 
 ### Extra precision
 
-We can increase precision of the numbers displayed in the tooltip using `[extraTooltipPrecision](https://www.amcharts.com/docs/v5/reference/valueaxis/#extraTooltipPrecision_setting)` setting.
+We can increase precision of the numbers displayed in the tooltip using `[extraTooltipPrecision](https://docs.amcharts.com/v5/reference/valueaxis/#extraTooltipPrecision_setting)` setting.
 
 It basically means: "use X more decimals in tooltip than we use for axis labels".
 
@@ -330,7 +330,7 @@ Default behavior (uses label format)
 
 ### Overriding format
 
-Similarly to how we can override format for axis labels using `numberFormat` setting, we can force specific format for tooltips using `[tooltipNumberFormat](https://www.amcharts.com/docs/v5/reference/valueaxis/#tooltipNumberFormat_setting)` as well:
+Similarly to how we can override format for axis labels using `numberFormat` setting, we can force specific format for tooltips using `[tooltipNumberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#tooltipNumberFormat_setting)` as well:
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -370,7 +370,7 @@ series.events.once("datavalidated", function(ev) {
   ev.target.get("xAxis").zoomToValues(100, 200);
 });
 
-Read more about pre-zooming using series events in "[XY chart axes: Pre-zooming axes](https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pre_zooming_axes)".
+Read more about pre-zooming using series events in "[XY chart axes: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
 ## Syncing grid
 
@@ -451,7 +451,7 @@ var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 
 Value axis does not have specific events that are triggered when it is zoomed.
 
-Instead, we can use private setting change events on `[selectionMin](https://www.amcharts.com/docs/v5/reference/valueaxis/#selectionMin_setting)` and `[selectionMax](https://www.amcharts.com/docs/v5/reference/valueaxis/#selectionMax_setting)` private settings:
+Instead, we can use private setting change events on `[selectionMin](https://docs.amcharts.com/v5/reference/valueaxis/#selectionMin_setting)` and `[selectionMax](https://docs.amcharts.com/v5/reference/valueaxis/#selectionMax_setting)` private settings:
 
 xAxis.onPrivate("selectionMin", function(start, target) {
   console.log("Start value changed:", start);
@@ -498,6 +498,6 @@ The following demo uses ghost label to sync width between two charts:
 
 ## Related tutorials
 
--   [Using axis ranges to place labels at arbitrary values or dates](https://www.amcharts.com/docs/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
--   [Retaining Y-axis zoom after data update](https://www.amcharts.com/docs/v5/retaining-y-axis-zoom-after-data-update/)
--   [Syncing zero grid line across multiple axes](https://www.amcharts.com/docs/v5/tutorials/syncing-zero-grid-line-across-multiple-axes/)
+-   [Using axis ranges to place labels at arbitrary values or dates](https://docs.amcharts.com/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
+-   [Retaining Y-axis zoom after data update](https://docs.amcharts.com/v5/retaining-y-axis-zoom-after-data-update/)
+-   [Syncing zero grid line across multiple axes](https://docs.amcharts.com/v5/tutorials/syncing-zero-grid-line-across-multiple-axes/)

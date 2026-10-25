@@ -1,7 +1,7 @@
 ---
 title: "IPyramidSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipyramidseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ipyramidseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,16 +14,16 @@ TypeScript: `am5percent.IPyramidSeriesSettings` (`import type { IPyramidSeriesSe
 
 ## Settings
 
-- **topWidth** (`number | Percent`) — default `0` — The width of the tip of the pyramid. Can either be a fixed pixel value or percent relative to the space available to the series. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/#Tip_and_base
-- **bottomWidth** (`number | Percent`) — default `100%` — The width of the base of the pyramid. Can either be a fixed pixel value or percent relative to the space available to the series. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/#Tip_and_base
-- **valueIs** (`"area" | "height"`) — default `"area"` _(theme)_ — Determines calculation mechanism for the slice area based on value. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/#Slice_size
+- **topWidth** (`number | Percent`) — default `0` — The width of the tip of the pyramid. Can either be a fixed pixel value or percent relative to the space available to the series. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pyramid-series/#tip-and-base
+- **bottomWidth** (`number | Percent`) — default `100%` — The width of the base of the pyramid. Can either be a fixed pixel value or percent relative to the space available to the series. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pyramid-series/#tip-and-base
+- **valueIs** (`"area" | "height"`) — default `"area"` _(theme)_ — Determines calculation mechanism for the slice area based on value. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pyramid-series/#slice-size
 
 ## Inherited settings with a different default on PyramidSeries
 
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **legendLabelText** (`string`) — default `"{category}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
 - **legendValueText** (`string`) — default `"{valuePercentTotal.formatNumber('0.00p')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
-- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

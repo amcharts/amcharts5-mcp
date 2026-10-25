@@ -1,6 +1,6 @@
 {
   "name": "@amcharts/amcharts5-mcp",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "mcpName": "io.github.amcharts/amcharts5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
   "type": "module",
@@ -18,7 +18,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "test": "node scripts/check-examples.js && node scripts/build-plugin.js --check && node test.js",
+    "test": "node scripts/check-examples.js && node scripts/check-docs-links.js && node scripts/build-plugin.js --check && node test.js",
     "check:examples": "node scripts/check-examples.js",
     "build:examples": "node scripts/build-examples.js",
     "clean:examples": "node scripts/clean-examples2.js && node scripts/clean-all.js extended/examples && node scripts/check-examples.js",
@@ -31,7 +31,8 @@
     "dev:worker": "npm run build:worker && wrangler dev",
     "deploy": "npm run build:worker && wrangler deploy",
     "prepublishOnly": "node -e \"const fs=require('fs');if(!fs.existsSync('content'))fs.mkdirSync('content');fs.cpSync('amcharts5-skill/amcharts5-skill/SKILL.md','content/SKILL.md');for(const f of fs.readdirSync('amcharts5-skill/amcharts5-skill/references').filter(x=>x.endsWith('.md')))fs.cpSync('amcharts5-skill/amcharts5-skill/references/'+f,'content/'+f)\"",
-    "postpublish": "node -e \"require('fs').rmSync('content',{recursive:true,force:true})\""
+    "postpublish": "node -e \"require('fs').rmSync('content',{recursive:true,force:true})\"",
+    "map:docs-anchors": "node scripts/map-docs-anchors.cjs"
   },
   "repository": {
     "type": "git",

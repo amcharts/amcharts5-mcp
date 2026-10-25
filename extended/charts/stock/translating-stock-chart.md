@@ -1,10 +1,10 @@
 ---
 title: "Translating Stock Chart"
-source: "https://www.amcharts.com/docs/v5/charts/stock/translating-stock-chart/"
+source: "https://docs.amcharts.com/v5/charts/stock/translating-stock-chart/"
 scraped: "2026-03-15"
 ---
 
-This tutorial will show how amCharts 5 built-in locale functionality can be used to apply [custom translations](https://www.amcharts.com/docs/v5/concepts/locales/creating-translations/#Extending_locale_with_custom_prompts) to a Stock Chart.
+This tutorial will show how amCharts 5 built-in locale functionality can be used to apply [custom translations](https://docs.amcharts.com/v5/concepts/locales/creating-translations/#extending-locale-with-custom-prompts) to a Stock Chart.
 
 ## Translating
 

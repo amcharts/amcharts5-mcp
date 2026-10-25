@@ -1,10 +1,10 @@
 ---
 title: "Category date axis"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/"
 scraped: "2026-10-08"
 ---
 
-Category date axis is being deprecated in favor of gapless date axis. [Gapless date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/gapless-date-axis/) is superior to category date axis because it supports all features of a regular date axis, like period changes, data grouping, etc. This tutorial is here for legacy information for existing installs. If you are still using `CategoryDateAxis`, please consider switcing to `GaplessDateAxis`.
+Category date axis is being deprecated in favor of gapless date axis. [Gapless date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/) is superior to category date axis because it supports all features of a regular date axis, like period changes, data grouping, etc. This tutorial is here for legacy information for existing installs. If you are still using `CategoryDateAxis`, please consider switcing to `GaplessDateAxis`.
 
 Category date axis (or evenly spaced date axis) is a mashup of a category axis and a date axis' features. It will display an evenly spaced cell for each entry in data. Perfect for displaying irregularly spaced time-based data, where plotting using real time scale is not important.
 
@@ -37,7 +37,7 @@ var xAxis = chart.xAxes.push(
 
 xAxis.data.setAll(data);
 
-For more information on how category axis relates to its data, please refer to "[Category axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/#Relation_to_data)" tutorial.
+For more information on how category axis relates to its data, please refer to "[Category axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/#relation-to-data)" tutorial.
 
 ## Data granularity
 
@@ -61,13 +61,13 @@ var xAxis = chart.xAxes.push(
   })
 );
 
-For a complete description on how it works how to configure data granularity, refer to "[Date axis: Data granularity](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Data_granularity)".
+For a complete description on how it works how to configure data granularity, refer to "[Date axis: Data granularity](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#data-granularity)".
 
 ## Grid granularity
 
 Category date axis, just like date axis, chooses where to place grid based on `minGridDistance` setting and available space.
 
-For a complete description on how it works and how to configure grid granularity, refer to "[Date axis: Grid granularity](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Grid_granularity)" tutorial.
+For a complete description on how it works and how to configure grid granularity, refer to "[Date axis: Grid granularity](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#grid-granularity)" tutorial.
 
 ## Date formats
 
@@ -83,13 +83,13 @@ xAxis.get("periodChangeDateFormats")\["day"\] = "MMM";
 xAxis.get("dateFormats")\["day"\] = "d";
 xAxis.get("periodChangeDateFormats")\["day"\] = "MMM";
 
-For more information on how labels are formatted and how to configure formats, refer to "[Date axis: Labels](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Labels)".
+For more information on how labels are formatted and how to configure formats, refer to "[Date axis: Labels](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#labels)".
 
 ### Axis tooltip
 
-Axis will use the date format suitable for the granularity of the data (as set via `baseInterval`) for its tooltip (when [used with cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Axis_tooltips)).
+Axis will use the date format suitable for the granularity of the data (as set via `baseInterval`) for its tooltip (when [used with cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/#axis-tooltips)).
 
-We can override that format using using `[tooltipDateFormat](https://www.amcharts.com/docs/v5/reference/valueaxis/#tooltipNumberFormat_setting)` setting:
+We can override that format using using `[tooltipDateFormat](https://docs.amcharts.com/v5/reference/valueaxis/#tooltipNumberFormat_setting)` setting:
 
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
@@ -131,7 +131,7 @@ series.events.once("datavalidated", function(ev) {
   ev.target.get("xAxis").zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
 });
 
-Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pre_zooming_axes)".
+Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
 ## Data item grouping
 

@@ -1,7 +1,7 @@
 ---
 title: "IPercentChartSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipercentchartsettings/"
+source: "https://docs.amcharts.com/v5/reference/ipercentchartsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

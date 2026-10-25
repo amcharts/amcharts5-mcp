@@ -1,7 +1,7 @@
 ---
 title: "GraphicsImage"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/graphicsimage/"
+source: "https://docs.amcharts.com/v5/reference/graphicsimage/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

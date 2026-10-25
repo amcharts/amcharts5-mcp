@@ -1,13 +1,13 @@
 ---
 title: "MapSankeyNodes"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/mapsankeynodes/"
+source: "https://docs.amcharts.com/v5/reference/mapsankeynodes/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 The nodes of a `MapSankeySeries`, available as its `nodes`.
 
-_Since 5.17.0._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/
+_Since 5.17.0._ Docs: https://docs.amcharts.com/v5/charts/map-chart/map-sankey-series/
 
 ## Import
 

@@ -42,18 +42,18 @@ for (var i = 1; i <= 360; i++) { // 360 days from January 1, 2025
 }
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,    // dragging the plot doesn't pan...
@@ -67,7 +67,7 @@ var chart = root.container.children.push(
 chart.get("colors").set("step", 3);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // drag across the plot to zoom into that stretch of days
   behavior: "zoomX"
@@ -75,7 +75,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis0 = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 }, // one point per day
@@ -106,7 +106,7 @@ var yAxis = chart.yAxes.push(
 yAxis.get("renderer").labels.template.set("minPosition", 0.05);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // Each series uses its own date axis, so both years start at the left edge
 var series0 = chart.series.push(
   am5xy.LineSeries.new(root, {
@@ -139,7 +139,7 @@ xAxis0.get("renderer").labels.template.set("fill", series0.get("stroke"));
 xAxis1.get("renderer").labels.template.set("fill", series1.get("stroke"));
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = chart.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal", // a bar above the plot to zoom and scroll, with a small chart in it
   height: 60                 // 60px tall
@@ -177,7 +177,7 @@ series1.data.setAll(data1);
 sbSeries.data.setAll(data0);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 series1.appear(1000);
 chart.appear(1000, 100);

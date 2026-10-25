@@ -1,6 +1,6 @@
 ---
 title: "Root element"
-source: "https://www.amcharts.com/docs/v5/getting-started/root-element/"
+source: "https://docs.amcharts.com/v5/getting-started/root-element/"
 scraped: "2026-10-08"
 ---
 
@@ -121,7 +121,7 @@ Class
 
 Those are global formatters that define formats and related options used in formatting numbers, date/time, and duration.
 
-MORE INFOFor more information, please refer to "Formatters: [Global formatters](https://www.amcharts.com/docs/v5/concepts/formatters/#Global_formatters)".
+MORE INFOFor more information, please refer to "Formatters: [Global formatters](https://docs.amcharts.com/v5/concepts/formatters/#global-formatters)".
 
 ### Performance
 
@@ -163,7 +163,7 @@ NOTE Before 5.21.1, a chart with `root.timezone` could be up to 16 times slower 
 
 ### First day of week
 
-Normally, the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) we are using will determine which week day is considered start of the week.
+Normally, the [locale](https://docs.amcharts.com/v5/concepts/locales/) we are using will determine which week day is considered start of the week.
 
 If we want to override it, we can do so by modifying `firstDayOfWeek` value in the locale:
 
@@ -200,7 +200,7 @@ The renderer can only be chosen when the root element is created. Charts look an
 
 The only difference: blend modes `DST_OVER`, `SRC_ATOP`, and `XOR` are canvas-only. In SVG they are drawn as normal, with a warning in the console.
 
-MORE INFOTo save a chart as an SVG file, whichever renderer draws it, see "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)". The [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/) uses SVG with its `renderer="svg"` attribute.
+MORE INFOTo save a chart as an SVG file, whichever renderer draws it, see "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)". The [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) uses SVG with its `renderer="svg"` attribute.
 
 NOTESVG renderer is available since version 5.21.0.
 
@@ -250,7 +250,7 @@ var root = am5.Root.new("chartdiv", {
   }
 });
 
-MORE INFOFor more information and a demo, visit "Tooltips: [Tooltips outside chart area](https://www.amcharts.com/docs/v5/concepts/common-elements/tooltips/#Tooltips_outside_chart_area)".
+MORE INFOFor more information and a demo, visit "Tooltips: [Tooltips outside chart area](https://docs.amcharts.com/v5/concepts/common-elements/tooltips/#tooltips-outside-chart-area)".
 
 ### Custom sizing function
 
@@ -312,7 +312,7 @@ var root = am5.Root.new("chartdiv", {
 
 This section deals with the setting: `sanitizeHTML: boolean` (default: `true`).
 
-A number of chart elements can display arbitrary HTML content - e.g. `html` and `labelHTML` label settings, HTML-based tooltips, [modal popups](https://www.amcharts.com/docs/v5/concepts/common-elements/modal-popups/), and [export](https://www.amcharts.com/docs/v5/concepts/exporting/) menu labels. This content is injected directly into the page.
+A number of chart elements can display arbitrary HTML content - e.g. `html` and `labelHTML` label settings, HTML-based tooltips, [modal popups](https://docs.amcharts.com/v5/concepts/common-elements/modal-popups/), and [export](https://docs.amcharts.com/v5/concepts/exporting/) menu labels. This content is injected directly into the page.
 
 Since such content often includes values coming from chart data, which in turn frequently originates from an untrusted back-end, amCharts sanitizes it before displaying.
 
@@ -344,14 +344,14 @@ var root = am5.Root.new("chartdiv", {
   forcedColors: false
 });
 
-MORE INFOFor more information, see "[Accessibility: High contrast mode](https://www.amcharts.com/docs/v5/concepts/accessibility/#High_contrast_mode)".
+MORE INFOFor more information, see "[Accessibility: High contrast mode](https://docs.amcharts.com/v5/concepts/accessibility/#high-contrast-mode)".
 
 ### Other configuration options
 
 Root element contains some other global options, too:
 
--   [Locale](https://www.amcharts.com/docs/v5/concepts/locales/)
--   [Top-level tab index](https://www.amcharts.com/docs/v5/concepts/accessibility/) (accessibility)
+-   [Locale](https://docs.amcharts.com/v5/concepts/locales/)
+-   [Top-level tab index](https://docs.amcharts.com/v5/concepts/accessibility/) (accessibility)
 
 ## Reusing
 
@@ -398,7 +398,7 @@ am5.array.each(am5.registry.rootElements, function(root) {
 
 The root element will automatically resize itself if the size of its parent `<div>` element changes.
 
-It can be disabled using `[autoResize](https://www.amcharts.com/docs/v5/reference/root/#autoResize_property)` property:
+It can be disabled using `[autoResize](https://docs.amcharts.com/v5/reference/root/#autoResize_property)` property:
 
 root.autoResize = false;
 
@@ -406,7 +406,7 @@ root.autoResize = false;
 
 If set that way, root element will ignore any size changes in its parent and will remain at the same size it was first initialized with.
 
-To manually trigger a resize for new dimensions, use `[resize()](https://www.amcharts.com/docs/v5/reference/root/#resize_method)` method:
+To manually trigger a resize for new dimensions, use `[resize()](https://docs.amcharts.com/v5/reference/root/#resize_method)` method:
 
 root.resize();
 
@@ -468,7 +468,7 @@ Each time something is updated on the chart and some elements are repainted, its
 
 Our code waits until there's an idle moment of at least 100ms, before "deciding" the chart is fully functional and initial animations are played out.
 
-For an even safer approach, we can use a [debounced](https://www.amcharts.com/docs/v5/concepts/events/#Debounced_events) `frameended` event:
+For an even safer approach, we can use a [debounced](https://docs.amcharts.com/v5/concepts/events/#debounced-events) `frameended` event:
 
 let timeout;
 
@@ -522,4 +522,4 @@ class MyChart extends HTMLElement {
   }
 }
 
-MORE INFOamCharts also comes with a ready-made element, `<am5-chart>`, which builds a chart from a JSON config without any chart code. See "[The <am5-chart> element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/)".
+MORE INFOamCharts also comes with a ready-made element, `<am5-chart>`, which builds a chart from a JSON config without any chart code. See "[The <am5-chart> element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/)".

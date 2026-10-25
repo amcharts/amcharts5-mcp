@@ -1,7 +1,7 @@
 ---
 title: "IChordDirectedEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichorddirectedevents/"
+source: "https://docs.amcharts.com/v5/reference/ichorddirectedevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

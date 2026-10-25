@@ -1,7 +1,7 @@
 ---
 title: "IFont"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ifont/"
+source: "https://docs.amcharts.com/v5/reference/ifont/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

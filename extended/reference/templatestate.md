@@ -1,7 +1,7 @@
 ---
 title: "TemplateState"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/templatestate/"
+source: "https://docs.amcharts.com/v5/reference/templatestate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

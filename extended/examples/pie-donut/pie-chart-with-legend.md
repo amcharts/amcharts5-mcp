@@ -25,31 +25,31 @@ Prompt: Create a pie chart of seven sample categories with labels around the pie
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
   layout: root.verticalLayout // the pie and the legend stacked top to bottom
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "value",
   categoryField: "category"
 }));
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([
   { value: 10, category: "One" },
   { value: 9, category: "Two" },
@@ -61,7 +61,7 @@ series.data.setAll([
 ]);
 
 // Create legend
-// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+// https://docs.amcharts.com/v5/charts/percent-charts/legend-percent-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.percent(50), // the legend's middle...
   x: am5.percent(50),       // ...at the middle of the chart's width
@@ -72,7 +72,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(series.dataItems); // one legend item per slice
 
 // Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+// https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 series.appear(1000, 100);
 ```
 

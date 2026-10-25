@@ -1,7 +1,7 @@
 ---
 title: "ITextPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itextprivate/"
+source: "https://docs.amcharts.com/v5/reference/itextprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

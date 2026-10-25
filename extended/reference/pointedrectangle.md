@@ -1,13 +1,13 @@
 ---
 title: "PointedRectangle"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/pointedrectangle/"
+source: "https://docs.amcharts.com/v5/reference/pointedrectangle/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Draws a rectangle with a pointer, such as a tooltip's background. The pointer comes out of the side facing `pointerX` and `pointerY`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/graphics/
 
 ## Import
 

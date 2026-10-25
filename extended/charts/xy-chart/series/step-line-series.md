@@ -1,10 +1,10 @@
 ---
 title: "Step line series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/"
 scraped: "2026-03-15"
 ---
 
-A step line series is basically the same thing as [line series](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/line-series/), except instead of connecting data items with direct lines, it displays a stepped plot using only horizontal and vertical lines.
+A step line series is basically the same thing as [line series](https://docs.amcharts.com/v5/getting-started/xy-chart/series/line-series/), except instead of connecting data items with direct lines, it displays a stepped plot using only horizontal and vertical lines.
 
 ## Creating
 
@@ -34,7 +34,7 @@ var series = chart.series.push(
 
 Since step line series is a version of a line series, it is configured exactly the same way: via `strokes.template` and `fills.template`.
 
-Please refer to "[Line series: configuring appearance](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/line-series/#Configuring_appearance)" for details.
+Please refer to "[Line series: configuring appearance](https://docs.amcharts.com/v5/getting-started/xy-chart/series/line-series/#configuring-appearance)" for details.
 
 ## Disabling risers
 
@@ -148,4 +148,4 @@ var series = chart.series.push(
 
 ## Related tutorials
 
--   [Clustered box-plot](https://www.amcharts.com/docs/v5/tutorials/clustered-box-plot/)
+-   [Clustered box-plot](https://docs.amcharts.com/v5/tutorials/clustered-box-plot/)

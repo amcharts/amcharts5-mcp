@@ -1,7 +1,7 @@
 ---
 title: "ILineChunk"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilinechunk/"
+source: "https://docs.amcharts.com/v5/reference/ilinechunk/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

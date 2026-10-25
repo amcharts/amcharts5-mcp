@@ -1,7 +1,7 @@
 ---
 title: "IRelativeStrengthIndexSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/irelativestrengthindexsettings/"
+source: "https://docs.amcharts.com/v5/reference/irelativestrengthindexsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

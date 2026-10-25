@@ -1,7 +1,7 @@
 ---
 title: "IRasterProgram"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/irasterprogram/"
+source: "https://docs.amcharts.com/v5/reference/irasterprogram/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IFlowNodesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iflownodessettings/"
+source: "https://docs.amcharts.com/v5/reference/iflownodessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,7 +19,7 @@ TypeScript: `am5flow.IFlowNodesSettings` (`import type { IFlowNodesSettings } fr
 - **disabledField** (`string`) — Field in data that, when `true`, makes the node start toggled off, with its links hidden. _Since 5.4.2._
 - **fillField** (`string`) — default `"fill"` — Field in data that holds the node's color.
 - **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — `ColorSet` that gives each node its color, unless the data sets one.
-- **patterns** (`PatternSet`) — A `PatternSet` that series will use to apply to its nodes. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets
+- **patterns** (`PatternSet`) — A `PatternSet` that series will use to apply to its nodes. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets
 - **animationDuration** (`number`) — Animation duration in ms.
 - **animationEasing** (`(t: Time) => Time`) — Easing function to use for node animations.
 

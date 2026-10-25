@@ -1,6 +1,6 @@
 ---
 title: "Stock legend"
-source: "https://www.amcharts.com/docs/v5/charts/stock/stock-legend/"
+source: "https://docs.amcharts.com/v5/charts/stock/stock-legend/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial looks at various aspects of using the stock chart legend.
 
 ## Adding
 
-In stock chart, we can use both the [regular legend](https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/) that we'd use in an XY chart, as well as advanced special "sock legend".
+In stock chart, we can use both the [regular legend](https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/) that we'd use in an XY chart, as well as advanced special "sock legend".
 
 The latter offers enhanced view as well as tools to edit related series/indicators.
 
@@ -54,7 +54,7 @@ valueLegend.closeButtons.template.set("forceHidden", true);
 valueLegend.settingsButtons.template.set("forceHidden", true);
 valueLegend.closeButtons.template.set("forceHidden", true);
 
-Both of the templates are of type `Button`. Refer to its [class reference](https://www.amcharts.com/docs/v5/reference/button/#Settings), for a complete list of settings and events we can set.
+Both of the templates are of type `Button`. Refer to its [class reference](https://docs.amcharts.com/v5/reference/button/#settings), for a complete list of settings and events we can set.
 
 
 ### Individual settings
@@ -82,9 +82,9 @@ valueSeries.get("legendDataItem").get("settingsButton").set("forceHidden", true)
 
 ## Related tutorials
 
--   [Moving icons of a StockLegend to left](https://www.amcharts.com/docs/v5/tutorials/moving-icons-of-a-stocklegend-to-left/)
--   [Modifying series/indicator settings modal](https://www.amcharts.com/docs/v5/tutorials/modifying-series-indicator-settings-modal/)
+-   [Moving icons of a StockLegend to left](https://docs.amcharts.com/v5/tutorials/moving-icons-of-a-stocklegend-to-left/)
+-   [Modifying series/indicator settings modal](https://docs.amcharts.com/v5/tutorials/modifying-series-indicator-settings-modal/)
 
 ## Related class references
 
--   [StockLegend](https://www.amcharts.com/docs/v5/reference/stocklegend)
+-   [StockLegend](https://docs.amcharts.com/v5/reference/stocklegend/)

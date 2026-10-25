@@ -25,11 +25,11 @@ Prompt: Create a live line chart that adds a new random value every second and d
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -62,7 +62,7 @@ function generateChartData() {
 var data = generateChartData();
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   focusable: true, // the chart can be reached with the Tab key
   panX: true,      // drag the plot sideways to pan through the days
@@ -74,11 +74,11 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 var easing = am5.ease.linear; // the new points glide in at a steady speed
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.5, // pans up to half the visible range past the first and last day
   groupData: false,  // every day stays a point of its own, never grouped into weeks
@@ -98,7 +98,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   // bullets hide when points are closer than 10px, as when zoomed out
   minBulletDistance: 10,
@@ -137,7 +137,7 @@ series.bullets.push(function () {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis // the cursor snaps to the days of this axis
 }));
@@ -145,7 +145,7 @@ cursor.lineY.set("visible", false); // only the vertical cursor line, no horizon
 
 // Hide the zoom-out button: as old points drop off, the value axis can count as
 // zoomed for a moment and the button would flash. Scroll back to zoom out.
-// https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Zoom_out_button
+// https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#zoom-out-button
 chart.zoomOutButton.set("forceHidden", true);
 
 // Update data every second
@@ -196,7 +196,7 @@ function addData() {
 }
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

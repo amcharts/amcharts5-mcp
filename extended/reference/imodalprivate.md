@@ -1,7 +1,7 @@
 ---
 title: "IModalPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imodalprivate/"
+source: "https://docs.amcharts.com/v5/reference/imodalprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

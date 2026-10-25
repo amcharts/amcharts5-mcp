@@ -25,7 +25,7 @@ Prompt: Create a horizontal bar chart of five countries where users drag the bar
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // a theme of our own: its rule applies to the zero line of the value axis
@@ -36,7 +36,7 @@ myTheme.rule("Grid", ["base"]).setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -44,7 +44,7 @@ root.setThemes([
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,    // no panning, so a drag moves a bar, not the plot
@@ -56,7 +56,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
   minGridDistance: 30,   // at least 30px between labels; on short charts some are skipped
   minorGridEnabled: true // a skipped country still gets a faint grid line
@@ -85,7 +85,7 @@ var xAxis = chart.xAxes.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series 1",
@@ -207,7 +207,7 @@ yAxis.data.setAll(data);
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

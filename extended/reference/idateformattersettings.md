@@ -1,7 +1,7 @@
 ---
 title: "IDateFormatterSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idateformattersettings/"
+source: "https://docs.amcharts.com/v5/reference/idateformattersettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,8 +14,8 @@ TypeScript: `am5.IDateFormatterSettings` (`import type { IDateFormatterSettings 
 ## Settings
 
 - **capitalize** (`boolean`) — default `true` — Capitalizes the first letter of the formatted date.
-- **dateFormat** (`string | Intl.DateTimeFormatOptions`) — default `"yyyy-MM-dd"` — Format used when no other format is given: a format string, or options for `Intl.DateTimeFormat`. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
-- **dateFields** (`string[]`) — Data fields that hold dates. Text placeholders with these fields, such as `{date}`, are formatted as dates even without `formatDate()`. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/#Formatting_placeholders
+- **dateFormat** (`string | Intl.DateTimeFormatOptions`) — default `"yyyy-MM-dd"` — Format used when no other format is given: a format string, or options for `Intl.DateTimeFormat`. Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/
+- **dateFields** (`string[]`) — Data fields that hold dates. Text placeholders with these fields, such as `{date}`, are formatted as dates even without `formatDate()`. Docs: https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/#formatting-placeholders
 - **intlLocales** (`string`) — Locale for formats given as `Intl.DateTimeFormat` options, such as `"de-DE"`. The browser's locale if not set.
 
 ## Other inherited settings

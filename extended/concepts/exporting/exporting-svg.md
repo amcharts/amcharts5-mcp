@@ -1,6 +1,6 @@
 ---
 title: "Exporting to SVG"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/"
 scraped: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ Charts can be exported as SVG: vector images that stay sharp at any size and can
 
 ## Using exporting plugin
 
-If the chart uses the [exporting plugin](https://www.amcharts.com/docs/v5/concepts/exporting/), its [export menu](https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/) has an "SVG" item by default, next to PNG and JPG.
+If the chart uses the [exporting plugin](https://docs.amcharts.com/v5/concepts/exporting/), its [export menu](https://docs.amcharts.com/v5/concepts/exporting/export-menu/) has an "SVG" item by default, next to PNG and JPG.
 
 SVG export can also be started from code:
 
@@ -163,7 +163,7 @@ A few other things to keep in mind:
 -   **Pictures** are linked by their URL, not embedded. They show only where that URL can be reached.
 -   **Blend modes** `DST_OVER`, `SRC_ATOP` and `XOR` have no SVG equivalent, and are exported as normal.
 
-NOTEIn a [Pixel map series](https://www.amcharts.com/docs/v5/charts/map-chart/pixel-map-series/), each polygon's pixels are grouped and labeled with the polygon's `id` and name, so they are easy to find in a design tool.
+NOTEIn a [Pixel map series](https://docs.amcharts.com/v5/charts/map-chart/pixel-map-series/), each polygon's pixels are grouped and labeled with the polygon's `id` and name, so they are easy to find in a design tool.
 
 ## Accessibility
 

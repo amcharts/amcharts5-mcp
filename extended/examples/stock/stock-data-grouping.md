@@ -26,7 +26,7 @@ Prompt: Create a stock chart of about six years of daily Microsoft prices from a
 ```javascript
 // Create root element
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root);
@@ -43,18 +43,18 @@ root.setThemes([
 
 // Create a stock chart
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Instantiating_the_chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
 var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
 }));
 
 // Set global number format
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
 root.numberFormatter.set("numberFormat", "#,###.00"); // thousands separators and two decimals
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Adding_panels
+// https://docs.amcharts.com/v5/charts/stock/
 var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",         // the mouse wheel zooms in on the dates
   height: am5.percent(70), // the price panel takes 70% of the height
@@ -64,7 +64,7 @@ var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 
 // Create value axis
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var valueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {
     pan: "zoom" // drag along the price axis to zoom it
@@ -91,7 +91,7 @@ var dateAxis = mainPanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
 
 // Add series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var valueSeries = mainPanel.series.push(am5xy.CandlestickSeries.new(root, {
   turboMode: true,           // draws all the candles at once, much faster with many of them
   name: "MSFT",
@@ -111,19 +111,19 @@ var valueSeries = mainPanel.series.push(am5xy.CandlestickSeries.new(root, {
 
 // Set main value series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("stockSeries", valueSeries);
 
 // Add a stock legend
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 var valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
 
 // Create a volume panel (chart)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Adding_panels
+// https://docs.amcharts.com/v5/charts/stock/
 var volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",         // the mouse wheel zooms in on the dates here too
   panX: true,              // a drag pans through the dates
@@ -157,7 +157,7 @@ volumeDateAxis.get("renderer").labels.template.set("forceHidden", true);
 
 // Create volume axis
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var volumeAxisRenderer = am5xy.AxisRendererY.new(root, {
   pan: "zoom" // drag along the axis to zoom it
 });
@@ -169,7 +169,7 @@ var volumeValueAxis = volumePanel.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
   turboMode: true,  // draws all the columns at once
   name: "Volume",
@@ -198,21 +198,21 @@ volumeSeries.columns.template.adapters.add("fill", function (fill, target) {
 
 // Add a stock legend
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 var volumeLegend = volumePanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
 
 // Set main series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("volumeSeries", volumeSeries);
 valueLegend.data.setAll([valueSeries]); // each legend lists its own panel's series
 volumeLegend.data.setAll([volumeSeries]);
 
 // Add cursor(s)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 mainPanel.set("cursor", am5xy.XYCursor.new(root, {
   yAxis: valueAxis,
   xAxis: dateAxis,
@@ -231,7 +231,7 @@ volumeCursor.lineY.set("forceHidden", true); // only the vertical line in the vo
 
 // Add scrollbar
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = mainPanel.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal",
   height: 50 // 50px tall, with a small chart of the closing prices inside
@@ -270,7 +270,7 @@ sbSeries.fills.template.setAll({
 function loadData(ticker, series, granularity) {
 
   // Load external data
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" + ticker + "_big_" + granularity + ".csv").then(function (result) {
 
     // Parse loaded data
@@ -301,7 +301,7 @@ loadData("MSFT", [valueSeries, volumeSeries, sbSeries], currentGranularity);
 
 // Stock toolbar
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/toolbar/
+// https://docs.amcharts.com/v5/charts/stock/toolbar/
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"), // the toolbar's HTML element, above the chart
   stockChart: stockChart,

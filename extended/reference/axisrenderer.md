@@ -1,13 +1,13 @@
 ---
 title: "AxisRenderer"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axisrenderer/"
+source: "https://docs.amcharts.com/v5/reference/axisrenderer/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for axis renderers, which draw an axis's line, labels, ticks, grid and fills. Not used on its own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/#Axis_renderer
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/#axis-renderer
 
 ## Import
 

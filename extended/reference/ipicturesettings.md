@@ -1,7 +1,7 @@
 ---
 title: "IPictureSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipicturesettings/"
+source: "https://docs.amcharts.com/v5/reference/ipicturesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,11 +16,11 @@ TypeScript: `am5.IPictureSettings` (`import type { IPictureSettings } from "@amc
 
 - **src** (`string`) — URL of the image: relative, absolute, or a data URI.
 - **cors** (`string`) — default `"anonymous"` — CORS setting for loading the image, as in the image element's `crossOrigin`. _Since 5.3.6._ Docs: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/crossOrigin
-- **shadowColor** (`Color`) — Color of the image's shadow. It shows only when `shadowBlur`, `shadowOffsetX` or `shadowOffsetY` is set too. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowBlur** (`number`) — Blurriness of the shadow: the bigger the number, the blurrier the shadow. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowOffsetX** (`number`) — Horizontal shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowOffsetY** (`number`) — Vertical shadow offset in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
-- **shadowOpacity** (`number`) — default `1` — Opacity of the shadow, from `0` to `1`. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowColor** (`Color`) — Color of the image's shadow. It shows only when `shadowBlur`, `shadowOffsetX` or `shadowOffsetY` is set too. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowBlur** (`number`) — Blurriness of the shadow: the bigger the number, the blurrier the shadow. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetX** (`number`) — Horizontal shadow offset in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOffsetY** (`number`) — Vertical shadow offset in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
+- **shadowOpacity** (`number`) — default `1` — Opacity of the shadow, from `0` to `1`. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/
 
 ## Other inherited settings
 

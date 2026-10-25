@@ -1,7 +1,7 @@
 ---
 title: "IIconSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iiconseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iiconseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

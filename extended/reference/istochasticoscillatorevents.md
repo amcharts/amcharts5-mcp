@@ -1,7 +1,7 @@
 ---
 title: "IStochasticOscillatorEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istochasticoscillatorevents/"
+source: "https://docs.amcharts.com/v5/reference/istochasticoscillatorevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

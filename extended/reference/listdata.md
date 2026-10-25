@@ -1,13 +1,13 @@
 ---
 title: "ListData"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/listdata/"
+source: "https://docs.amcharts.com/v5/reference/listdata/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `List` that holds a component's data.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/data/
+Docs: https://docs.amcharts.com/v5/concepts/data/
 
 ## Import
 
@@ -23,4 +23,4 @@ Extends: List
 
 Public properties (not settings):
 
-- **processor** (`DataProcessor`) — A `DataProcessor` that processes each data item as it is added or replaced. Docs: https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+- **processor** (`DataProcessor`) — A `DataProcessor` that processes each data item as it is added or replaced. Docs: https://docs.amcharts.com/v5/concepts/data/#pre-processing-data

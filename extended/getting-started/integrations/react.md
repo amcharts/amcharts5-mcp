@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with React"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/react/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/react/"
 scraped: "2026-10-22"
 ---
 
@@ -106,7 +106,7 @@ function Chart({ data }) {
 
 ## A chart from a JSON config
 
-`<AmChart>` builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/), with no chart code:
+`<AmChart>` builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/), with no chart code:
 
 ```typescript
 import { AmChart } from "@amcharts/amcharts5-react";
@@ -130,11 +130,11 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 | `onError` | Called when it could not be built. |
 | `id`, `className`, `style` | For the chart's element. Without a height, it is 400 pixels high. |
 
-It is the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/): a `ref` on it gives that element.
+It is the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/): a `ref` on it gives that element.
 
 ## Server rendering
 
-Both work in pages rendered on a server: the library is loaded in the browser only. See [Next.js](https://www.amcharts.com/docs/v5/getting-started/integrations/next-js/) and [React Router](https://www.amcharts.com/docs/v5/getting-started/integrations/using-amcharts-5-with-remix/).
+Both work in pages rendered on a server: the library is loaded in the browser only. See [Next.js](https://docs.amcharts.com/v5/getting-started/integrations/next-js/) and [React Router](https://docs.amcharts.com/v5/getting-started/integrations/remix/).
 
 ## License
 

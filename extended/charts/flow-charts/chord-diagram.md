@@ -1,12 +1,12 @@
 ---
 title: "Chord diagram"
-source: "https://www.amcharts.com/docs/v5/charts/flow-charts/chord-diagram/"
+source: "https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/"
 scraped: "2026-03-15"
 ---
 
 ## Flow chart
 
-A chord diagram is a flow chart. For generic flow chart related information, please visit "[Flow charts](https://www.amcharts.com/docs/v5/charts/flow-charts/)" tutorial.
+A chord diagram is a flow chart. For generic flow chart related information, please visit "[Flow charts](https://docs.amcharts.com/v5/charts/flow-charts/)" tutorial.
 
 ## Types of chord
 
@@ -65,7 +65,7 @@ It also indicates the direction of the link by adding an arrowhead at the target
 
 The length of the arrowhead is 10 pixels by default. We can change it by setting series' `linkHeadRadius` setting.
 
-We can also disable arrowhead altogether by setting `[linkHeadRadius](https://www.amcharts.com/docs/v5/reference/chorddirected/#linkHeadRadius_setting)` to `null`:
+We can also disable arrowhead altogether by setting `[linkHeadRadius](https://docs.amcharts.com/v5/reference/chorddirected/#linkHeadRadius_setting)` to `null`:
 
 let series = root.container.children.push(
   am5flow.ChordDirected.new(root, {
@@ -98,7 +98,7 @@ Non-ribbon chord series does not take any value into account when sizing its nod
 
 It also displays links as thin lines, that are curved from source to target node.
 
-We can make them display as straight lines by setting series `[linkType](https://www.amcharts.com/docs/v5/reference/chordnonribbon/#linkType_setting)` setting to `"line"`:
+We can make them display as straight lines by setting series `[linkType](https://docs.amcharts.com/v5/reference/chordnonribbon/#linkType_setting)` setting to `"line"`:
 
 let series = root.container.children.push(
   am5flow.ChordNonRibbon.new(root, {
@@ -129,7 +129,7 @@ var series = root.container.children.push(
 
 Nodes (colored bands) are 10 pixel wide by default.
 
-We can use series setting `[nodeWidth](https://www.amcharts.com/docs/v5/reference/chord/#nodeWidth_setting)` to change that:
+We can use series setting `[nodeWidth](https://docs.amcharts.com/v5/reference/chord/#nodeWidth_setting)` to change that:
 
 let series = root.container.children.push(
   am5flow.Chord.new(root, {
@@ -161,7 +161,7 @@ Nodes in flow diagrams are represented by their own series, accessible via read-
 
 It subsequently has a property `rectangles` which is a list of all nodes in series.
 
-Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[Slice](https://www.amcharts.com/docs/v5/reference/slice/)`:
+Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[Slice](https://docs.amcharts.com/v5/reference/slice/)`:
 
 series.nodes.rectangles.template.setAll({
   fillOpacity: 0.5,
@@ -298,7 +298,7 @@ series.nodes.data.setAll(\[
 
 Chord diagrams display a tiny gap between each node by default.
 
-We can control the size of it using series' `[padAngle](https://www.amcharts.com/docs/v5/reference/chord/#padAngle_setting)` setting.
+We can control the size of it using series' `[padAngle](https://docs.amcharts.com/v5/reference/chord/#padAngle_setting)` setting.
 
 It accepts a numeric value in degrees.
 
@@ -330,7 +330,7 @@ var series = root.container.children.push(
 
 Nodes in a chord diagram are ordered by their value: from biggest to smallest.
 
-To change the order, there's a series setting `[sort](https://www.amcharts.com/docs/v5/reference/chord/#sort_setting)` with possible values: `"descending"` (default), `"ascending"`, and `"none"`.
+To change the order, there's a series setting `[sort](https://docs.amcharts.com/v5/reference/chord/#sort_setting)` with possible values: `"descending"` (default), `"ascending"`, and `"none"`.
 
 If set to `"none"` the nodes will appear in the same order by their first appearance in data.
 
@@ -354,7 +354,7 @@ var series = root.container.children.push(
 
 ## Radius
 
-Chart's outer radius can be set using its `[radius](https://www.amcharts.com/docs/v5/reference/chord/#radius_setting)` setting.
+Chart's outer radius can be set using its `[radius](https://docs.amcharts.com/v5/reference/chord/#radius_setting)` setting.
 
 It can be either percent value (relative to available space) or fixed pixel value.
 
@@ -388,7 +388,7 @@ var series = root.container.children.push(
 
 Chord diagram usually starts at zero angle (or the "right" edge of the circle). That's where first node is drawn.
 
-We can change that using series' setting `[startAngle](https://www.amcharts.com/docs/v5/reference/chord/#startAngle_setting)`, which is a numeric value in degrees.
+We can change that using series' setting `[startAngle](https://docs.amcharts.com/v5/reference/chord/#startAngle_setting)`, which is a numeric value in degrees.
 
 The angle can also be negative number:
 
@@ -418,7 +418,7 @@ var series = root.container.children.push(
 
 ### Configuring links
 
-We can configure links using series property `links.template`. Via template, we can set any [`ChordLink` setting](https://www.amcharts.com/docs/v5/reference/chordlink/#Settings).
+We can configure links using series property `links.template`. Via template, we can set any [`ChordLink` setting](https://docs.amcharts.com/v5/reference/chordlink/#settings).
 
 series.links.template.setAll({
   fillOpacity: 0.5
@@ -484,7 +484,7 @@ series.nodes.labels.template.setAll({
   wrap: true
 });
 
-Refer to [`RadialLabel` class reference](https://www.amcharts.com/docs/v5/reference/radiallabel/#Settings) for a full list of available settings.
+Refer to [`RadialLabel` class reference](https://docs.amcharts.com/v5/reference/radiallabel/#settings) for a full list of available settings.
 
 ### Label content
 
@@ -498,15 +498,15 @@ series.nodes.labels.template.setAll({
   text: "\[bold\]{name}\[/\] ({sumOutgoing})"
 });
 
-Contents of the label can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[IChordNodesDataItem](https://www.amcharts.com/docs/v5/reference/ichordnodesdataitem/)`.
+For available data placeholder fields refer to `[IChordNodesDataItem](https://docs.amcharts.com/v5/reference/ichordnodesdataitem/)`.
 
 ### Label type
 
 Normally, chord series will use circular labels: ones that follow the curve of the node itself.
 
-This can be changed using label setting: `[textType](https://www.amcharts.com/docs/v5/reference/radiallabel/#textType_setting)`.
+This can be changed using label setting: `[textType](https://docs.amcharts.com/v5/reference/radiallabel/#textType_setting)`.
 
 Available values are: `"circular"` (default), `"radial"`, and `"adjusted"`.
 
@@ -571,7 +571,7 @@ series.links.template.setAll({
 
 Contents of the tooltip can include data placeholders (codes in curly brackets that will be replaced by actual data) and in-line formatting blocks (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[IChordDataItem](https://www.amcharts.com/docs/v5/reference/ichorddataitem/)`.
+For available data placeholder fields refer to `[IChordDataItem](https://docs.amcharts.com/v5/reference/ichorddataitem/)`.
 
 ### On nodes
 
@@ -585,4 +585,4 @@ series.nodes.rectangles.template.setAll({
   tooltipText: "\[bold\]{name}\[/\]\\nOutgoing: {sumOutgoing}\\nIncoming: {sumIncoming}"
 });
 
-For available data placeholder fields refer to `[IChordNodesDataItem](https://www.amcharts.com/docs/v5/reference/ichordnodesdataitem/)`.
+For available data placeholder fields refer to `[IChordNodesDataItem](https://docs.amcharts.com/v5/reference/ichordnodesdataitem/)`.

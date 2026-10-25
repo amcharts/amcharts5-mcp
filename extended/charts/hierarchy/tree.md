@@ -1,6 +1,6 @@
 ---
 title: "Tree"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/tree/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/tree/"
 scraped: "2026-10-08"
 ---
 
@@ -45,7 +45,7 @@ There are two lists of elements that we can use to configure nodes: `circles` an
 
 `circles.template` can be used to configure node circles. All nodes have them.
 
-The template accepts all [`Circle` settings](https://www.amcharts.com/docs/v5/reference/circle/#Settings).
+The template accepts all [`Circle` settings](https://docs.amcharts.com/v5/reference/circle/#settings).
 
 series.circles.template.setAll({
   fillOpacity: 0.7,
@@ -75,7 +75,7 @@ Outer circles play special role in linked hierarchies: they indicate if node has
 
 The outer circle also has different looks based on whether it is expanded or collapsed.
 
-Those looks are controlled via application of certain [states](https://www.amcharts.com/docs/v5/concepts/settings/states/).
+Those looks are controlled via application of certain [states](https://docs.amcharts.com/v5/concepts/settings/states/).
 
 An outer circle can have four built-in states:
 
@@ -134,7 +134,7 @@ The main circle of a node in a tree series has a radius of `15` pixels.
 
 We can change that using `radius` setting of both `circles.template` and `outerCircles.template`.
 
-The smallest and biggest possible node circle is controlled by series `[minRadius](https://www.amcharts.com/docs/v5/reference/forcedirected/#minRadius_setting)` and `[maxRadius](https://www.amcharts.com/docs/v5/reference/forcedirected/#maxRadius_setting)` settings.
+The smallest and biggest possible node circle is controlled by series `[minRadius](https://docs.amcharts.com/v5/reference/forcedirected/#minRadius_setting)` and `[maxRadius](https://docs.amcharts.com/v5/reference/forcedirected/#maxRadius_setting)` settings.
 
 Both accept numeric values in pixels or percent values relative to the size of the chart itself.
 
@@ -355,7 +355,7 @@ series.nodes.template.setup = function(target) {
 }
 
 
-IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Setup_handler).
+IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://docs.amcharts.com/v5/concepts/settings/list-templates/#setup-handler).
 
 ## Layout
 
@@ -396,7 +396,7 @@ let series = zoomableContainer.contents.children.push(am5hierarchy.Tree.new(root
 
 ### Link appearance
 
-Links can be configured using series' `links.template`. It accepts all [`HierarchyLink` settings](https://www.amcharts.com/docs/v5/reference/hierarchylink/#Settings).
+Links can be configured using series' `links.template`. It accepts all [`HierarchyLink` settings](https://docs.amcharts.com/v5/reference/hierarchylink/#settings).
 
 series.links.template.setAll({
   strokeWidth: 5,
@@ -460,7 +460,7 @@ IMPORTANT Since categories (via `categoryField`) do not have the requirement to 
 
 ### Link bullets
 
-Refer to "[Hierarchy link bullets](https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-link-bullets/)".
+Refer to "[Hierarchy link bullets](https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-link-bullets/)".
 
 ## Labels
 
@@ -480,7 +480,7 @@ series.labels.template.setAll({
   text: "{category}"
 });
 
-Tree series uses `[Label](https://www.amcharts.com/docs/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+Tree series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -498,9 +498,9 @@ series.labels.template.setAll({
   fontSize: 14
 });
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[ITreeDataItem](https://www.amcharts.com/docs/v5/reference/itreedataitem/)` for available keys for the data placeholders.
+Refer to `[ITreeDataItem](https://docs.amcharts.com/v5/reference/itreedataitem/)` for available keys for the data placeholders.
 
 ### Disabling labels
 
@@ -520,10 +520,10 @@ series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
 series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[ITreeDataItem](https://www.amcharts.com/docs/v5/reference/itreedataitem/)` for available keys for the data placeholders.
+Refer to `[ITreeDataItem](https://docs.amcharts.com/v5/reference/itreedataitem/)` for available keys for the data placeholders.
 
 ## Related tutorials
 
--   [Tree Chart with HTML nodes](https://www.amcharts.com/docs/v5/tutorials/tree-chart-with-html-nodes/)
+-   [Tree Chart with HTML nodes](https://docs.amcharts.com/v5/tutorials/tree-chart-with-html-nodes/)

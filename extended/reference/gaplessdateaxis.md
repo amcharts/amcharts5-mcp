@@ -1,13 +1,13 @@
 ---
 title: "GaplessDateAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/gaplessdateaxis/"
+source: "https://docs.amcharts.com/v5/reference/gaplessdateaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `DateAxis` that leaves out periods without data, such as weekends, so the data items sit side by side.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/gapless-date-axis/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/
 
 ## Import
 

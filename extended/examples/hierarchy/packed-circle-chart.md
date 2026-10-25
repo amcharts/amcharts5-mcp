@@ -25,7 +25,7 @@ Prompt: Create a packed circle chart of one listener’s year of music in hours,
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Only the styles are labeled: a genre's name would sit behind its styles,
@@ -36,7 +36,7 @@ myTheme.rule("Label", ["pack", "node", "depth0"]).set("forceHidden", true);
 myTheme.rule("Label", ["pack", "node", "depth1"]).set("forceHidden", true);
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -51,7 +51,7 @@ var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Pack.new(root, {
   singleBranchOnly: false, // other branches stay open when one opens
   // every level opens at once: 10 is more levels than the data has
@@ -67,7 +67,7 @@ var series = chart.series.push(am5hierarchy.Pack.new(root, {
 series.nodes.template.set("tooltipText", "{category}: [bold]{sum} hours[/]");
 
 // Set data: one listener's year of music, 1,000 hours by genre and style
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 series.data.setAll([{
   name: "Music",
   children: [{
@@ -124,7 +124,7 @@ series.data.setAll([{
 series.set("selectedDataItem", series.dataItems[0]); // start with the root selected, so everything shows
 
 // Legend of the genres: click one to hide it
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Legend
+// https://docs.amcharts.com/v5/charts/hierarchy/#legend
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.percent(50), // the legend's middle...
   x: am5.percent(50)        // ...at the middle of the chart's width

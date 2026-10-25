@@ -1,13 +1,13 @@
 ---
 title: "OHLC"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/ohlc/"
+source: "https://docs.amcharts.com/v5/reference/ohlc/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A bar of an `OHLCSeries`: a line from the low to the high value, with ticks marking the open and close values.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/
 
 ## Import
 

@@ -1,6 +1,6 @@
 ---
 title: "Gauge charts"
-source: "https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/"
+source: "https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/"
 scraped: "2026-03-15"
 ---
 
@@ -10,7 +10,7 @@ This tutorial will address how to build gauges using radar chart components.
 
 In amCharts 5, we use radar chart to create gauges.
 
-That means that the process of creating a gauge is identical as creating a [radar chart](https://www.amcharts.com/docs/v5/charts/radar-chart/):
+That means that the process of creating a gauge is identical as creating a [radar chart](https://docs.amcharts.com/v5/charts/radar-chart/):
 
 ### Loading required modules
 
@@ -112,17 +112,17 @@ axisRenderer.grid.template.setAll({
   visible: false
 });
 
-For more information about configuration of grid and ticks, refer to "[Axes: Grid](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Grid)" and "[Axes: Ticks](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Ticks)".
+For more information about configuration of grid and ticks, refer to "[Axes: Grid](https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid)" and "[Axes: Ticks](https://docs.amcharts.com/v5/charts/xy-chart/axes/#ticks)".
 
 ### Axis configuration
 
-For more information on how to configure axes - labels, ticks, grid, individual radii and angles - refer to the "[Radar axes](https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/#Axis_radii_and_angles)" tutorial.
+For more information on how to configure axes - labels, ticks, grid, individual radii and angles - refer to the "[Radar axes](https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#axis-radii-and-angles)" tutorial.
 
 ## Start/end angles
 
 Gauges (radar chart) is not limited to a full circle. It can start and end at any angle.
 
-For that we have to chart's settings: `[startAngle](https://www.amcharts.com/docs/v5/reference/radarchart/#startAngle_setting)` and `[radarAngle](https://www.amcharts.com/docs/v5/reference/piechart/#endAngle_setting)`.
+For that we have to chart's settings: `[startAngle](https://docs.amcharts.com/v5/reference/radarchart/#startAngle_setting)` and `[radarAngle](https://docs.amcharts.com/v5/reference/piechart/#endAngle_setting)`.
 
 These are numeric values denoting degrees.
 
@@ -184,11 +184,11 @@ var chart = root.container.children.push(
   })
 );
 
-For more information about chart radii settings, refer to "[Radar chart: Radius](https://www.amcharts.com/docs/v5/charts/radar-chart/#Chart_radius)".
+For more information about chart radii settings, refer to "[Radar chart: Radius](https://docs.amcharts.com/v5/charts/radar-chart/#chart-radius)".
 
 ## Bands
 
-To add colored bands to axis, we can use [axis ranges](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/).
+To add colored bands to axis, we can use [axis ranges](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/).
 
 ### Creating a range
 
@@ -216,11 +216,11 @@ var rangeDataItem = axis.makeDataItem({
 // Create a range
 var range = axis.createAxisRange(rangeDataItem);
 
-For more information about setting start and end values depending on axis type, refer to "[Axis ranges: Range start and end](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Range_start_and_end)" tutorial.
+For more information about setting start and end values depending on axis type, refer to "[Axis ranges: Range start and end](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#range-start-and-end)" tutorial.
 
 ### Setting fill
 
-Range fills are not visible by default. We need to configure them using `axisFill` setting, which is a generic object of type `[Graphics](https://www.amcharts.com/docs/v5/reference/graphics/)`.
+Range fills are not visible by default. We need to configure them using `axisFill` setting, which is a generic object of type `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)`.
 
 rangeDataItem.get("axisFill").setAll({
   fill: color,
@@ -234,7 +234,7 @@ rangeDataItem.get("axisFill").setAll({
 
 ### Band width
 
-Bad widths depend on the chart's [`radius` and `innerRadius` settings](https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Chart_radius).
+Bad widths depend on the chart's [`radius` and `innerRadius` settings](https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#chart-radius).
 
 let chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
@@ -298,15 +298,15 @@ rangeDataItem.get("label").setAll({
 });
 
 
-For more information about labels on a circular axis, refer to "[Radar axes: Labels](https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/#Labels_on_a_circular_axis)".
+For more information about labels on a circular axis, refer to "[Radar axes: Labels](https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#labels-on-a-circular-axis)".
 
 ## Clock hands
 
 ### Adding
 
-In amCharts 5, clock hands are added as an [axis range bullet](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Bullet).
+In amCharts 5, clock hands are added as an [axis range bullet](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#bullet).
 
-As a "sprite" for the axis bullet, we are going to be using special element of type `[ClockHand](https://www.amcharts.com/docs/v5/reference/clockhand/)`:
+As a "sprite" for the axis bullet, we are going to be using special element of type `[ClockHand](https://docs.amcharts.com/v5/reference/clockhand/)`:
 
 let handDataItem = axis.makeDataItem({
   value: 0
@@ -354,7 +354,7 @@ handDataItem.set("value", 20);
 
 handDataItem.set("value", 20);
 
-Or, if we want the hand to smoothly turn to a new value, we can [animate its `value` setting](https://www.amcharts.com/docs/v5/concepts/animations/#Animating_settings):
+Or, if we want the hand to smoothly turn to a new value, we can [animate its `value` setting](https://docs.amcharts.com/v5/concepts/animations/#animating-settings):
 
 handDataItem.animate({
   key: "value",
@@ -448,8 +448,8 @@ hand.get("sprite").pin.set("visible", false);
 
 Besides radius settings, a clock hand also has two additional settings that control widths of hand's ends:
 
--   `[topWidth](https://www.amcharts.com/docs/v5/reference/clockhand/#topWidth_setting)` - width of the hand's tip, in pixels (default: `1`).
--   `[bottomWidth](https://www.amcharts.com/docs/v5/reference/clockhand/#bottomWidth_setting)` - width of the hand's base, in pixels (default: `10`).
+-   `[topWidth](https://docs.amcharts.com/v5/reference/clockhand/#topWidth_setting)` - width of the hand's tip, in pixels (default: `1`).
+-   `[bottomWidth](https://docs.amcharts.com/v5/reference/clockhand/#bottomWidth_setting)` - width of the hand's base, in pixels (default: `10`).
 
 let hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: am5radar.ClockHand.new(root, {
@@ -499,4 +499,4 @@ And here's a more advanced example, using multiple axes and hands at different s
 
 ## Related tutorials
 
--   [Gauge chart with custom ClockHand](https://www.amcharts.com/docs/v5/tutorials/gauge-chart-with-custom-clockhand/) (demo)
+-   [Gauge chart with custom ClockHand](https://docs.amcharts.com/v5/tutorials/gauge-chart-with-custom-clockhand/) (demo)

@@ -25,18 +25,18 @@ Prompt: Create a scatter chart with two series of points drawn as triangles, one
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,       // a drag pans the plot sideways...
   panY: true,       // ...and up and down
@@ -49,7 +49,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 4);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }), // at least 50px between the labels
   tooltip: am5.Tooltip.new(root, {}), // shows the cursor's x value on the axis
@@ -68,7 +68,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 yAxis.ghostLabel.set("forceHidden", true); // the same for the y axis
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series0 = chart.series.push(am5xy.LineSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -80,7 +80,7 @@ var series0 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 series0.bullets.push(function() {
   var graphics = am5.Triangle.new(root, {
     fill: series0.get("fill"), // the series' color
@@ -93,7 +93,7 @@ series0.bullets.push(function() {
 });
 
 // Create second series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series1 = chart.series.push(am5xy.LineSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -110,7 +110,7 @@ series0.strokes.template.set("strokeOpacity", 0);
 series1.strokes.template.set("strokeOpacity", 0);
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 series1.bullets.push(function() {
   var graphics = am5.Triangle.new(root, {
     fill: series1.get("fill"),
@@ -166,7 +166,7 @@ function trendLine(data, xField, yField) {
 }
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -175,7 +175,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // above the plot; zooms the x axis
 }));
@@ -253,7 +253,7 @@ trendSeries0.data.setAll(trendLine(data, "ax", "ay"));
 trendSeries1.data.setAll(trendLine(data, "bx", "by"));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 series1.appear(1000);
 

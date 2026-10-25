@@ -1,6 +1,6 @@
 ---
 title: "Category axis"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/"
 scraped: "2026-03-15"
 ---
 
@@ -128,11 +128,11 @@ xAxis.events.once("datavalidated", function(ev) {
   ev.target.zoomToIndexes(10, 20);
 });
 
-Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pre_zooming_axes)".
+Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
 ## Related tutorials
 
--   [Using adapters on category axis labels](https://www.amcharts.com/docs/v5/tutorials/using-adapters-on-category-axis-labels/)
--   [Auto-wrapping category axis labels](https://www.amcharts.com/docs/v5/tutorials/auto-wrapping-category-axis-labels/)
--   [Column labels as categories](https://www.amcharts.com/docs/v5/tutorials/column-labels-as-categories/)
--   [Handling long category axis labels](https://www.amcharts.com/docs/v5/tutorials/handling-long-category-axis-labels/)
+-   [Using adapters on category axis labels](https://docs.amcharts.com/v5/tutorials/using-adapters-on-category-axis-labels/)
+-   [Auto-wrapping category axis labels](https://docs.amcharts.com/v5/tutorials/auto-wrapping-category-axis-labels/)
+-   [Column labels as categories](https://docs.amcharts.com/v5/tutorials/column-labels-as-categories/)
+-   [Handling long category axis labels](https://docs.amcharts.com/v5/tutorials/handling-long-category-axis-labels/)

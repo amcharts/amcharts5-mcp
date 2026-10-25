@@ -1,7 +1,7 @@
 ---
 title: "IChartEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichartevents/"
+source: "https://docs.amcharts.com/v5/reference/ichartevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "Axis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axis/"
+source: "https://docs.amcharts.com/v5/reference/axis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A base class for all axes.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_axes
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/#adding-axes
 
 ## Import
 
@@ -31,11 +31,11 @@ Extended by: CategoryAxis, ValueAxis
 
 Public properties (not settings):
 
-- **axisHeader** (`Container`) — A container for extra content, such as a legend, a label or an icon. It sits above a Y axis, and to the left of an X axis. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-headers/
-- **axisRanges** (`List<DataItem<this["_dataItemSettings"]>>`) — The axis's ranges: highlighted values or spans, each with its own grid, label and fill. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+- **axisHeader** (`Container`) — A container for extra content, such as a legend, a label or an icon. It sits above a Y axis, and to the left of an X axis. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-headers/
+- **axisRanges** (`List<DataItem<this["_dataItemSettings"]>>`) — The axis's ranges: highlighted values or spans, each with its own grid, label and fill. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
 - **bulletsContainer** (`Container`) — Holds the axis's bullets.
 - **chart** (`XYChart`) — The chart the axis belongs to.
-- **ghostLabel** (`AxisLabel`) — An invisible label that keeps room for the axis's widest label, so the axis doesn't shrink while zooming (see `fixAxisSize`). Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Ghost_label
+- **ghostLabel** (`AxisLabel`) — An invisible label that keeps room for the axis's widest label, so the axis doesn't shrink while zooming (see `fixAxisSize`). Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#ghost-label
 - **gridContainer** (`Container`) — Holds the axis's grid and fills, drawn below the series.
 - **labelsContainer** (`Container`) — Holds the axis's labels and ticks.
 - **minorDataItems** (`DataItem<this["_dataItemSettings"]>[]`) — Data items of the minor grid.

@@ -1,6 +1,6 @@
 ---
 title: "XY chart series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/series/"
 scraped: "2026-03-15"
 ---
 
@@ -28,7 +28,7 @@ var series = chart.series.push(
   })
 );
 
-For more info, refer to "[Adding series](https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_series)" section of the main "XY Chart" tutorial.
+For more info, refer to "[Adding series](https://docs.amcharts.com/v5/charts/xy-chart/#adding-series)" section of the main "XY Chart" tutorial.
 
 ## Setting data
 
@@ -54,7 +54,7 @@ series.data.setAll(\[{
   value: 850
 }\]);
 
-For more info, refer to "[Setting data](https://www.amcharts.com/docs/v5/getting-started/xy-chart/#Setting_data)" section of the main "XY Chart" tutorial.
+For more info, refer to "[Setting data](https://docs.amcharts.com/v5/getting-started/xy-chart/#setting-data)" section of the main "XY Chart" tutorial.
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
@@ -116,7 +116,7 @@ var series = chart.series.push(
   })
 );
 
-Some series types, like candlestick or OHLC, need more than two values. They will need more data fields defined. For more info refer to "[Candlestick and OHLC series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/)" tutorial.
+Some series types, like candlestick or OHLC, need more than two values. They will need more data fields defined. For more info refer to "[Candlestick and OHLC series](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)" tutorial.
 
 IMPORTANTIn order to work properly data fields need to be set when series object is created (via its `.new()` method). Setting them later on will not work as expected.
 
@@ -128,7 +128,7 @@ If set, series will not use axis base value (zero) as a start for each data item
 
 For example, for line series that will mean the fill will extend to that value, rather than axis. For column series, it will mean that actual columns will start at some value, rather than axis.
 
-For more information and examples, check "[Line series: Open data fields](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Open_data_fields)" and "[Column series: floating columns](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/#Floating_columns)" sections.
+For more information and examples, check "[Line series: Open data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/#open-data-fields)" and "[Column series: floating columns](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/#floating-columns)" sections.
 
 ### Display fields
 
@@ -320,17 +320,9 @@ A color for series plays an important role in its identification. It is used in 
 
 ### Auto-assigned colors
 
-If we do not specify any color settings (`fill` and `stroke`) when creating series, an XY chart will assign those automatically, from its own [color set](https://www.amcharts.com/docs/v5/reference/xychart/#colors_setting).
+If we do not specify any color settings (`fill` and `stroke`) when creating series, an XY chart will assign those automatically, from its own [color set](https://docs.amcharts.com/v5/reference/xychart/#colors_setting).
 
-Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme), or a [reusable full theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/), e.g.:
-
-chart.get("colors").set("colors", \[
-  am5.color(0x095256),
-  am5.color(0x087f8c),
-  am5.color(0x5aaa95),
-  am5.color(0x86a873),
-  am5.color(0xbb9f06)
-\]);
+Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
 chart.get("colors").set("colors", \[
   am5.color(0x095256),
@@ -340,7 +332,15 @@ chart.get("colors").set("colors", \[
   am5.color(0xbb9f06)
 \]);
 
-MORE INFO A "[Color sets](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Setting_own_list_of_colors)" section of our color tutorial has more details and code samples.
+chart.get("colors").set("colors", \[
+  am5.color(0x095256),
+  am5.color(0x087f8c),
+  am5.color(0x5aaa95),
+  am5.color(0x86a873),
+  am5.color(0xbb9f06)
+\]);
+
+MORE INFO A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 ### Manual colors
 
@@ -392,23 +392,23 @@ series.columns.template.setAll({
 
 Please refer to dedicated series type tutorials for further info:
 
--   [Line and area series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/)
--   [Column series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/)
--   [Step line series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/)
--   [Candlestick and OHLC series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/)
--   [Smoothed series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/)
+-   [Line and area series](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)
+-   [Column series](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)
+-   [Step line series](https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/)
+-   [Candlestick and OHLC series](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)
+-   [Smoothed series](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 ## Binding settings to data
 
 It's possible to bind settings of a series element templates to values in data.
 
-For more information on how to do it, refer to "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+For more information on how to do it, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 ## Stacked series
 
 ### Data requirements
 
-IMPORTANTStacking requires that all stacked series have equal number of data items with the same timestamps / categories. Mismatched datasets will have visually odd results when series are plotted. For a workaround, please visit tutorial "[Stacking series with mismatched categories/dates](https://www.amcharts.com/docs/v5/tutorials/stacking-series-with-mismatched-categories-dates/)".
+IMPORTANTStacking requires that all stacked series have equal number of data items with the same timestamps / categories. Mismatched datasets will have visually odd results when series are plotted. For a workaround, please visit tutorial "[Stacking series with mismatched categories/dates](https://docs.amcharts.com/v5/tutorials/stacking-series-with-mismatched-categories-dates/)".
 
 ### Enabling stacking
 
@@ -448,10 +448,10 @@ IMPORTANTThere is no way to make series stack correctly if it contains both posi
 
 Enabling 100% stacks require few manipulation to chart setup:
 
--   Specifying [display data fields](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/#Display_fields) for series to use calculated percent values instead of absolute values.
+-   Specifying [display data fields](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#display-fields) for series to use calculated percent values instead of absolute values.
 -   Setting `calculateTotals: true` on a value axis so that percent values are calculated and available for use in display data fields.
 -   Capping value axis scale at `0` and `100` values.
--   Optionally, adding "%" sign to axis values using adapter or value axis' `[numberFormat](https://www.amcharts.com/docs/v5/reference/valueaxis/#numberFormat_setting)` setting.
+-   Optionally, adding "%" sign to axis values using adapter or value axis' `[numberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#numberFormat_setting)` setting.
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -500,7 +500,7 @@ var series = chart.series.push(
 
 ### Stack totals
 
-Refer to "[Totals on column stacks](https://www.amcharts.com/docs/v5/tutorials/totals-on-column-stacks/)" tutorial for information on how to display labels with totals over the stacks.
+Refer to "[Totals on column stacks](https://docs.amcharts.com/v5/tutorials/totals-on-column-stacks/)" tutorial for information on how to display labels with totals over the stacks.
 
 ## Relation to axes
 
@@ -543,7 +543,7 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 
 ## Bullets
 
-NOTE Bullets are not exclusive to XY chart. We are going to touch the topic briefly here, but for more information make sure to visit our dedicated "[Bullets](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/)" tutorial.
+NOTE Bullets are not exclusive to XY chart. We are going to touch the topic briefly here, but for more information make sure to visit our dedicated "[Bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/)" tutorial.
 
 ### Adding bullets
 
@@ -576,11 +576,11 @@ series.bullets.push(function() {
 
 Among other things, series will also pass relevant data item to the bullet.
 
-That's why bullets can use [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) to populate text, as well as heat rules.
+That's why bullets can use [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) to populate text, as well as heat rules.
 
 ### Positioning bullets
 
-A `Bullet` object has two properties that help position them within the parent element/data item: `[locationX](https://www.amcharts.com/docs/v5/reference/bullet/#locationX_setting)` and `[locationY](https://www.amcharts.com/docs/v5/reference/bullet/#locationY_setting)`.
+A `Bullet` object has two properties that help position them within the parent element/data item: `[locationX](https://docs.amcharts.com/v5/reference/bullet/#locationX_setting)` and `[locationY](https://docs.amcharts.com/v5/reference/bullet/#locationY_setting)`.
 
 Those accept numeric values from `0` (zero) to `1` (one) indicating relative position within target element, with zero indicating beginning and one the end.
 
@@ -761,8 +761,8 @@ series.hide();
 
 Some series (e.g. line series) have control over where their data item can be placed when plotting them. We do have series settings `locationX` and `locationY` for that.
 
-The concept is explained in detail in "[Line series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Data_item_location)" tutorial.
+The concept is explained in detail in "[Line series](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/#data-item-location)" tutorial.
 
 ## Related tutorials and demos
 
--   [Adding XY series dynamically](https://www.amcharts.com/docs/v5/tutorials/adding-xy-series-dynamically/)
+-   [Adding XY series dynamically](https://docs.amcharts.com/v5/tutorials/adding-xy-series-dynamically/)

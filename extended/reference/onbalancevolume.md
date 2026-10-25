@@ -1,13 +1,13 @@
 ---
 title: "OnBalanceVolume"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/onbalancevolume/"
+source: "https://docs.amcharts.com/v5/reference/onbalancevolume/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 On Balance Volume indicator: a running total of volume, added on data items that close higher than the previous one and subtracted on those that close lower. Drawn in a panel of its own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

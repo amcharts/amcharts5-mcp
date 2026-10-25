@@ -1,13 +1,13 @@
 ---
 title: "SmoothedYLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/smoothedylineseries/"
+source: "https://docs.amcharts.com/v5/reference/smoothedylineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A line series drawn as a smooth curve, for data that runs along the Y axis.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/
 
 ## Import
 

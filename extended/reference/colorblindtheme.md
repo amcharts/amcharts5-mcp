@@ -1,7 +1,7 @@
 ---
 title: "ColorblindTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/colorblindtheme/"
+source: "https://docs.amcharts.com/v5/reference/colorblindtheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ generatedFrom: "@amcharts/amcharts5@5.21.4"
 
 It sets only the series colors and leaves the interface colors alone.
 
-Docs: https://jfly.uni-koeln.de/color/, https://www.amcharts.com/docs/v5/concepts/themes/
+Docs: https://jfly.uni-koeln.de/color/, https://docs.amcharts.com/v5/concepts/themes/
 
 ## Import
 

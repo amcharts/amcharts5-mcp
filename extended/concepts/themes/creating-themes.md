@@ -1,6 +1,6 @@
 ---
 title: "Creating themes"
-source: "https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/"
+source: "https://docs.amcharts.com/v5/concepts/themes/creating-themes/"
 scraped: "2026-03-15"
 ---
 
@@ -36,7 +36,7 @@ A theme works via collection of objects - rules - that target specific elements 
 
 To create a rule we use theme's `rule()` method.
 
-It accepts one or two parameters that define a range of elements this rule is applicable for, and returns a [template](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Templates) object which we can use to set setting values, define events, and adapters. E.g.:
+It accepts one or two parameters that define a range of elements this rule is applicable for, and returns a [template](https://docs.amcharts.com/v5/concepts/settings/list-templates/#templates) object which we can use to set setting values, define events, and adapters. E.g.:
 
 class MyTheme extends am5.Theme {
   setupDefaultRules() {
@@ -82,7 +82,7 @@ this.rule("AxisRenderer").setAll({
   minGridDistance: 30
 });
 
-Use rule's `events` object to add [event handlers](https://www.amcharts.com/docs/v5/concepts/events/):
+Use rule's `events` object to add [event handlers](https://docs.amcharts.com/v5/concepts/events/):
 
 this.rule("Bullet").events.on("pointerover", function(event) {
   console.log("Pointer over bullet!", event.target);
@@ -92,7 +92,7 @@ this.rule("Bullet").events.on("pointerover", function(event) {
   console.log("Pointer over bullet!", event.target);
 });
 
-Or, use rules `adapters` to add an [adapter](https://www.amcharts.com/docs/v5/concepts/settings/adapters/) to targeted elements:
+Or, use rules `adapters` to add an [adapter](https://docs.amcharts.com/v5/concepts/settings/adapters/) to targeted elements:
 
 this.rule("LineSeries").adapters.add("stroke", function(stroke, target) {
   return am5.color(0x881133);
@@ -102,7 +102,7 @@ this.rule("LineSeries").adapters.add("stroke", function(stroke, target) {
   return am5.color(0x881133);
 });
 
-And we can also use `states` to create element [states](https://www.amcharts.com/docs/v5/concepts/settings/states/):
+And we can also use `states` to create element [states](https://docs.amcharts.com/v5/concepts/settings/states/):
 
 this.rule("AxisLabel").states.create("hover", {
   fontWeight: "bold"
@@ -128,7 +128,7 @@ this.rule("AxisLabel").setup = function(target) {
   });
 };
 
-MORE INFO For more information on how templates work, refer to "[Templates](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Templates)" tutorial.
+MORE INFO For more information on how templates work, refer to "[Templates](https://docs.amcharts.com/v5/concepts/settings/list-templates/#templates)" tutorial.
 
 ## Targeting elements
 
@@ -140,7 +140,7 @@ Each element will come with a pre-defined list of its class names that we can us
 
 The class name of the element is represented by its class' `className` and `classNames` static properties.
 
-Let's take a look at reference for the `[AxisRendererY](https://www.amcharts.com/docs/v5/reference/axisrenderery/#className_property)`:
+Let's take a look at reference for the `[AxisRendererY](https://docs.amcharts.com/v5/reference/axisrenderery/#className_property)`:
 
 As per above, we can target renderers for vertical axes using `AxisRendererY` name, or all renderers using `AxisRenderer`.
 
@@ -304,7 +304,7 @@ Vertical axis elements.
 
 `"axis"`, `"header"`
 
-[Axis header](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-headers/) container.
+[Axis header](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-headers/) container.
 
 `Rectangle`
 
@@ -1102,7 +1102,7 @@ class MyTheme extends am5.Theme {
 
 Colors for common user interface colors are set via various `InterfaceColors` settings, like `primaryButton`, `secondaryButton`, etc.
 
-For a complete list of available UI settings, refer to "Colors, gradients, and patterns: [Interface colors](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Interface_colors)".
+For a complete list of available UI settings, refer to "Colors, gradients, and patterns: [Interface colors](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#interface-colors)".
 
 class MyTheme extends am5.Theme {
   setupDefaultRules() {
@@ -1172,4 +1172,4 @@ class MyTheme extends am5.Theme {
 
 ## Related tutorials
 
--   [Using custom theme to apply patterns to pie chart slices](https://www.amcharts.com/docs/v5/tutorials/using-custom-theme-to-apply-patterns-to-pie-chart-slices/)
+-   [Using custom theme to apply patterns to pie chart slices](https://docs.amcharts.com/v5/tutorials/using-custom-theme-to-apply-patterns-to-pie-chart-slices/)

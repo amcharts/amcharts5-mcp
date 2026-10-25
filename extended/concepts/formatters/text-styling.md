@@ -1,6 +1,6 @@
 ---
 title: "Text styling"
-source: "https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/"
+source: "https://docs.amcharts.com/v5/concepts/formatters/text-styling/"
 scraped: "2026-03-15"
 ---
 

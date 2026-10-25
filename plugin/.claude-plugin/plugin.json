@@ -1,13 +1,13 @@
 {
   "name": "amcharts5",
   "displayName": "amCharts 5",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "description": "Build charts and maps with amCharts 5: the amCharts 5 skill, and the hosted amCharts MCP server for docs, code examples and the API reference",
   "author": {
     "name": "amCharts",
     "url": "https://www.amcharts.com"
   },
-  "homepage": "https://www.amcharts.com/docs/v5/ai/",
+  "homepage": "https://docs.amcharts.com/v5/ai/",
   "repository": "https://github.com/amcharts/amcharts5-mcp",
   "license": "MIT",
   "keywords": [
@@ -19,7 +19,7 @@
     "mcp"
   ],
   "icon": "./icon.png",
-  "documentationUrl": "https://www.amcharts.com/docs/v5/ai/",
+  "documentationUrl": "https://docs.amcharts.com/v5/ai/",
   "supportUrl": "https://github.com/amcharts/amcharts5-mcp/issues",
   "privacyPolicyUrl": "https://www.amcharts.com/privacy-policy/",
   "termsOfServiceUrl": "https://www.amcharts.com/terms-conditions/"

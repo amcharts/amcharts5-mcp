@@ -1,6 +1,6 @@
 ---
 title: "Map drill-down"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-drill-down/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-drill-down/"
 scraped: "2026-03-15"
 ---
 
@@ -86,7 +86,7 @@ continentSeries.mapPolygons.template.events.on("click", function (ev) {
   countrySeries.show();
 });
 
-MORE INFOFor more information about zooming map via API, refer to "Panning and zooming the map: [Zooming to clicked object](https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zooming_to_clicked_object)". For an in-depth info about events, check out "[Events](https://www.amcharts.com/docs/v5/concepts/events/)" tutorial.
+MORE INFOFor more information about zooming map via API, refer to "Panning and zooming the map: [Zooming to clicked object](https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zooming-to-clicked-object)". For an in-depth info about events, check out "[Events](https://docs.amcharts.com/v5/concepts/events/)" tutorial.
 
 ### Drill-up
 
@@ -227,7 +227,7 @@ First we determine ID of a clicked country, by accessing `id` setting of its dat
 
 Then we determine which map is appropriate for the clicked country.
 
-We also use built-in [data loader](https://www.amcharts.com/docs/v5/concepts/data/#External_data) and JSON parser to load GeoJSON data as well as set it on the country series.
+We also use built-in [data loader](https://docs.amcharts.com/v5/concepts/data/#external-data) and JSON parser to load GeoJSON data as well as set it on the country series.
 
 Finally, to avoid visual glitches, we don't want country series geodata to be set before it finishes loading, or before zoom animation is played out, so we employ `Promise` mechanism to sync up zoom and loading.
 

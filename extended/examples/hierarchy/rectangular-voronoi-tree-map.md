@@ -25,7 +25,7 @@ Prompt: Create a rectangular Voronoi treemap of world population, with the conti
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Create custom theme...
@@ -73,7 +73,7 @@ myTheme.rule("Label", ["node", "depth1"]).setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -1246,7 +1246,7 @@ am5.array.each(data.children, function (continent) {
 });
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 var series = chart.series.push(am5hierarchy.VoronoiTreemap.new(root, {
@@ -1297,11 +1297,11 @@ series.nodes.template.events.on("click", function (e) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 series.data.setAll([data]);
 
 // Select root node
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Pre_selected_branch
+// https://docs.amcharts.com/v5/charts/hierarchy/#pre-selected-branch
 series.set("selectedDataItem", series.dataItems[0]);
 
 // Make stuff animate on load

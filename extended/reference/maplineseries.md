@@ -1,13 +1,13 @@
 ---
 title: "MapLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/maplineseries/"
+source: "https://docs.amcharts.com/v5/reference/maplineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A map series of lines, such as routes: from GeoJSON geometries, or connecting the points of a `MapPointSeries`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+Docs: https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
 
 ## Import
 

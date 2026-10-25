@@ -1,7 +1,7 @@
 ---
 title: "IExportingImageOptions"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iexportingimageoptions/"
+source: "https://docs.amcharts.com/v5/reference/iexportingimageoptions/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -13,11 +13,11 @@ TypeScript: not exported by name from the package.
 ## Options
 
 - **quality** (`number`) — Quality of the image, `0` to `1`: `1` by default, `0.8` for JPG. Only JPEG images use it.
-- **maintainPixelRatio** (`boolean`) — default `false` — Exports the image at the chart's size in CSS pixels. When `false`, it is exported at the screen's resolution: larger on high-density screens. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Pixel_ratio
-- **minWidth** (`number`) — Minimal width of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
-- **maxWidth** (`number`) — Maximal width of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
-- **minHeight** (`number`) — Minimal height of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
-- **maxHeight** (`number`) — Maximal height of exported image, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/#Sizing_exported_image
+- **maintainPixelRatio** (`boolean`) — default `false` — Exports the image at the chart's size in CSS pixels. When `false`, it is exported at the screen's resolution: larger on high-density screens. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-images/#pixel-ratio
+- **minWidth** (`number`) — Minimal width of exported image, in pixels. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-images/#sizing-exported-image
+- **maxWidth** (`number`) — Maximal width of exported image, in pixels. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-images/#sizing-exported-image
+- **minHeight** (`number`) — Minimal height of exported image, in pixels. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-images/#sizing-exported-image
+- **maxHeight** (`number`) — Maximal height of exported image, in pixels. Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-images/#sizing-exported-image
 
 ## Other inherited options
 

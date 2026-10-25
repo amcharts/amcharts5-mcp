@@ -1,7 +1,7 @@
 ---
 title: "ILinkSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilinksettings/"
+source: "https://docs.amcharts.com/v5/reference/ilinksettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,7 +19,7 @@ TypeScript: `am5.ILinkSettings` (`import type { ILinkSettings } from "@amcharts/
 
 ## Inherited settings with a different default on Link
 
-- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#States
+- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/containers/
 
 ## Other inherited settings
 

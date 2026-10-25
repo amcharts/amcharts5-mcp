@@ -1,7 +1,7 @@
 ---
 title: "ICurveColumnSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icurvecolumnseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/icurvecolumnseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

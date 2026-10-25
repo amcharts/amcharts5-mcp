@@ -25,18 +25,18 @@ Prompt: Create a stacked radial bar chart of minutes a day spent on the phone by
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Data: minutes a day spent on the phone, by age group and activity (sample data)
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [
   { age: "65+", video: 25, social: 15, messaging: 20, games: 10, news: 35 },
   { age: "55-64", video: 35, social: 25, messaging: 25, games: 10, news: 30 },
@@ -47,7 +47,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,     // no dragging the plot around
   panY: false,
@@ -67,7 +67,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 chart.get("colors").set("step", 2);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on part of the scale
 }));
@@ -75,7 +75,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 // The bars run along the circle: minutes a day
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   strokeOpacity: 0.1, // the outer circle, faint
@@ -116,7 +116,7 @@ var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
 }));
 
 // Create series: one per activity, stacked along each ring
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, field) {
   var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
     stacked: true, // each activity starts where the one before it ends
@@ -148,7 +148,7 @@ createSeries("News", "news");
 
 
 // Add legend: the activities; click one to leave it out
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // the legend's middle...
   x: am5.p50        // ...at the middle of the chart
@@ -158,7 +158,7 @@ legend.data.setAll(chart.series.values);
 yAxis.data.setAll(data);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

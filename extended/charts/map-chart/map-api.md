@@ -1,6 +1,6 @@
 ---
 title: "Map API"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-api/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-api/"
 scraped: "2026-03-15"
 ---
 
@@ -10,8 +10,8 @@ This tutorial will look at various API functions that can be used with a `MapCha
 
 A map chart has two methods that can be used to convert screen coordinates to longitude/latitude and back:
 
--   [invert](https://www.amcharts.com/docs/v5/reference/mapchart/#invert_method)() - converts screen coordinates to latitude/longitude.
--   [convert](https://www.amcharts.com/docs/v5/reference/mapchart/#convert_method)() - converts latitude/longitude to screen coordinates.
+-   [invert](https://docs.amcharts.com/v5/reference/mapchart/#invert_method)() - converts screen coordinates to latitude/longitude.
+-   [convert](https://docs.amcharts.com/v5/reference/mapchart/#convert_method)() - converts latitude/longitude to screen coordinates.
 
 The following code will capture click on a map chart and use `point` (which holds screen coordinates) to retrieve latitude/longitude of the click place.
 

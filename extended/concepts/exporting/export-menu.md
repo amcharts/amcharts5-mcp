@@ -1,10 +1,10 @@
 ---
 title: "Export menu"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/export-menu/"
 scraped: "2026-10-08"
 ---
 
-This tutorial looks at configuration options for [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin menu.
+This tutorial looks at configuration options for [Exporting](https://docs.amcharts.com/v5/concepts/exporting/) plugin menu.
 
 ## Enabling
 
@@ -143,7 +143,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 Normally, when user clicks on menu item, that invokes some export operation, the legend auto-closes.
 
-If we'd rather it remained open until toggle button is clicked again, we can set menu's `[autoClose](https://www.amcharts.com/docs/v5/reference/exportingmenu/#autoClose_setting)` setting to `false`:
+If we'd rather it remained open until toggle button is clicked again, we can set menu's `[autoClose](https://docs.amcharts.com/v5/reference/exportingmenu/#autoClose_setting)` setting to `false`:
 
 let exporting = am5plugins\_exporting.Exporting.new(root, {
   menu: am5plugins\_exporting.ExportingMenu.new(root, {
@@ -161,7 +161,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 Menu will also disable all interactivity on the underlying chart when legend is hovered, so that interactive elements like cursor would not be active.
 
-To disable this functionality, use `[deactivateRoot](https://www.amcharts.com/docs/v5/reference/exportingmenu/#deactivateRoot_setting)` setting:
+To disable this functionality, use `[deactivateRoot](https://docs.amcharts.com/v5/reference/exportingmenu/#deactivateRoot_setting)` setting:
 
 let exporting = am5plugins\_exporting.Exporting.new(root, {
   menu: am5plugins\_exporting.ExportingMenu.new(root, {
@@ -181,7 +181,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 We can add custom menu items to menu as well, by pushing item objects into `items` array.
 
-Menu item object must follow `[IExportingMenuItem](https://www.amcharts.com/docs/v5/reference/iexportingmenuitem/)` interface.
+Menu item object must follow `[IExportingMenuItem](https://docs.amcharts.com/v5/reference/iexportingmenuitem/)` interface.
 
 The object should at the very least have `type` key, with one of the possible values:
 
@@ -300,7 +300,7 @@ var exporting = am5plugins\_exporting.Exporting.new(root, {
 
 ## Menu API
 
-Menu can be opened or closed programmatically using its methods `[open()](https://www.amcharts.com/docs/v5/reference/exportingmenu/#open_method)`, `[close()](https://www.amcharts.com/docs/v5/reference/exportingmenu/#close_method)`, and `[toggle()](https://www.amcharts.com/docs/v5/reference/exportingmenu/#toggle_method)`:
+Menu can be opened or closed programmatically using its methods `[open()](https://docs.amcharts.com/v5/reference/exportingmenu/#open_method)`, `[close()](https://docs.amcharts.com/v5/reference/exportingmenu/#close_method)`, and `[toggle()](https://docs.amcharts.com/v5/reference/exportingmenu/#toggle_method)`:
 
 exporting.get("menu").toggle();
 

@@ -1,6 +1,6 @@
 ---
 title: "Grouping slices"
-source: "https://www.amcharts.com/docs/v5/charts/percent-charts/grouping-slices/"
+source: "https://docs.amcharts.com/v5/charts/percent-charts/grouping-slices/"
 scraped: "2026-03-15"
 ---
 
@@ -30,11 +30,11 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 
 <script src="https://cdn.amcharts.com/lib/5/plugins/sliceGrouper.js"></script>
 
-MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Enabling
 
-Slice grouper plugin is instantiated just like any other object in amCharts 5: by calling [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) of its class, passing in [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element) and settings object.
+Slice grouper plugin is instantiated just like any other object in amCharts 5: by calling [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) of its class, passing in [root element](https://docs.amcharts.com/v5/getting-started/#root-element) and settings object.
 
 let grouper = am5plugins\_sliceGrouper.SliceGrouper.new(root, {
 });
@@ -171,4 +171,4 @@ Here's another one, which users adapter to break down grouped slice info in the 
 
 ## Related tutorials
 
--   [Grouping slices](https://www.amcharts.com/docs/v5/charts/percent-charts/grouping-slices/)
+-   [Grouping slices](https://docs.amcharts.com/v5/charts/percent-charts/grouping-slices/)

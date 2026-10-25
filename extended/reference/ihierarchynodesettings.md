@@ -1,7 +1,7 @@
 ---
 title: "IHierarchyNodeSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihierarchynodesettings/"
+source: "https://docs.amcharts.com/v5/reference/ihierarchynodesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -20,7 +20,7 @@ _(none declared here — all inherited)_
 
 - **cursorOverStyle** (`string`) — default `"pointer"` _(theme)_ — _from ISpriteSettings_ — CSS cursor to show while the pointer is over the element, e.g. `"pointer"`. Docs: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
 - **position** (`"absolute" | "relative"`) — default `"absolute"` _(theme)_ — _from ISpriteSettings_ — Positioning of the element. `"absolute"` leaves the element out of its parent's layout and size: it is placed by its `x` and `y` only.
-- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#States
+- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/containers/
 - **toggleKey** (`"none" | "disabled" | "active"`) — default `"disabled"` _(theme)_ — _from ISpriteSettings_ — Setting that a click or tap toggles between `true` and `false`: `"active"` or `"disabled"`. `"none"` turns toggling off.
 - **tooltipText** (`string`) — default `"{category}: {sum}"` _(theme)_ — _from ISpriteSettings_ — Text of the element's tooltip. It can hold data placeholders, such as `{value}`.
 

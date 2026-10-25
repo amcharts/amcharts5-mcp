@@ -1,6 +1,6 @@
 ---
 title: "Axes"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial looks into how to get the most of the axes on an XY chart.
 
 ## Adding axes
 
-Creating axes, assigning them to charts and series, as well as the concept of axis renderer is explained in the the "[Adding axes](https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_axes)" section of the main "XY Chart" article.
+Creating axes, assigning them to charts and series, as well as the concept of axis renderer is explained in the the "[Adding axes](https://docs.amcharts.com/v5/charts/xy-chart/#adding-axes)" section of the main "XY Chart" article.
 
 This tutorial will look into various ways we can configure the axes.
 
@@ -36,7 +36,7 @@ yRenderer.grid.template.setAll({
 
 The above will make Y axis grid lines 2px wide red.
 
-Or, if we want to modify grid lines for all axes all at once, we can create a [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme):
+Or, if we want to modify grid lines for all axes all at once, we can create a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme):
 
 const myTheme = am5.Theme.new(root);
 
@@ -64,7 +64,7 @@ root.setThemes(\[
 
 There is no template for base grid line - a grid line that is displayed on a zero value.
 
-Should we like to modify it, we'll need to either create a custom theme, or [create a](https://www.amcharts.com/docs/v5/concepts/themes/#Modifying_default_theme) [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme)[:](https://www.amcharts.com/docs/v5/concepts/themes/#Modifying_default_theme)
+Should we like to modify it, we'll need to either create a custom theme, or [create a](https://docs.amcharts.com/v5/concepts/themes/) [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme)[:](https://docs.amcharts.com/v5/concepts/themes/)
 
 const myTheme = am5.Theme.new(root);
 
@@ -220,7 +220,7 @@ var xAxis = chart.xAxes.push(
 
 #### Styling minor grid and labels
 
-Minor grid is styled using the same settings as the regular grid, which can be applied [via templates or themes](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#grid-lines).
+Minor grid is styled using the same settings as the regular grid, which can be applied [via templates or themes](https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-lines).
 
 This means that any setting, applied to regular grid will apply to minor grid, too.
 
@@ -368,11 +368,11 @@ root.setThemes(\[
 
 Setting `background` on a label template won't work as complex objects are not copied over to template clones.
 
-For that we'll need to use template's `setup()` method. For more information, refer to "[Containers: Background](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Templates)" tutorial.
+For that we'll need to use template's `setup()` method. For more information, refer to "[Containers: Background](https://docs.amcharts.com/v5/concepts/common-elements/containers/#templates)" tutorial.
 
 ### Label format
 
-Some axis types (e.g. value axis or date axis) will apply formatting to their labels. This is described in greater details in their respective tutorials: "[Value axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/)" and "[Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/)".
+Some axis types (e.g. value axis or date axis) will apply formatting to their labels. This is described in greater details in their respective tutorials: "[Value axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/)" and "[Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)".
 
 ### Label rotation
 
@@ -475,8 +475,8 @@ For example, if we would like to position the label at the center of the week, w
 
 ### Related label tutorials
 
--   [Axis labels on base line](https://www.amcharts.com/docs/v5/tutorials/axis-labels-on-base-line/)
--   [Show range of dates in a multi-interval DateAxis label](https://www.amcharts.com/docs/v5/tutorials/show-range-of-dates-in-a-multi-interval-dateaxis-label/)
+-   [Axis labels on base line](https://docs.amcharts.com/v5/tutorials/axis-labels-on-base-line/)
+-   [Show range of dates in a multi-interval DateAxis label](https://docs.amcharts.com/v5/tutorials/show-range-of-dates-in-a-multi-interval-dateaxis-label/)
 
 ## Start/end labels and ticks
 
@@ -681,7 +681,7 @@ var xAxis = chart.xAxes.push(
 
 Along with grid, ticks, and labels an axis can also create bullets.
 
-To set that up, we can use axis' `bullet` setting, which accepts function that returns an `[AxisBullet](https://www.amcharts.com/docs/v5/reference/axisbullet/)` object.
+To set that up, we can use axis' `bullet` setting, which accepts function that returns an `[AxisBullet](https://docs.amcharts.com/v5/reference/axisbullet/)` object.
 
 The function will be called each time, an axis needs to create a bullet, that is for every grid location.
 
@@ -955,7 +955,7 @@ chart.leftAxesContainer.set("layout", root.verticalLayout);
 
 The axes, including all the grid and related series will now occupy separate parts of the the plot area.
 
-For more information about XY chart's containers, refer "[Layout and containers of the XY chart](https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/)" tutorial. For more about container layouts, please take a look at "[Containers: Layout](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout)".
+For more information about XY chart's containers, refer "[Layout and containers of the XY chart](https://docs.amcharts.com/v5/charts/xy-chart/xy-chart-containers/)" tutorial. For more about container layouts, please take a look at "[Containers: Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
 
 ### Variable axis heights
 
@@ -995,7 +995,7 @@ var yAxis2 = chart.yAxes.push(
 
 There normally is no gap between, two stacked axes.
 
-The best way to put such gap between them, is to use [axis headers](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-headers/) with some or no information in them:
+The best way to put such gap between them, is to use [axis headers](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-headers/) with some or no information in them:
 
 yAxis1.axisHeader.children.push(am5.Label.new(root, {
   text: "Value",
@@ -1123,9 +1123,9 @@ We also need to apply rotation of the label for the vertical axis, as well as pr
 
 ## Axis tooltips
 
-Axis can display tooltips indicating position of a chart cursor if its available. For more information visit "[Cursor: Axis tooltips](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#axis-tooltips)" tutorial.
+Axis can display tooltips indicating position of a chart cursor if its available. For more information visit "[Cursor: Axis tooltips](https://docs.amcharts.com/v5/charts/xy-chart/cursor/#axis-tooltips)" tutorial.
 
-If you would like to add labels to axis labels, check out "[Labels: Interactive axis labels](https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#interactive-axis-labels)".
+If you would like to add labels to axis labels, check out "[Labels: Interactive axis labels](https://docs.amcharts.com/v5/concepts/common-elements/labels/#interactive-axis-labels)".
 
 ## Zoomable axes
 
@@ -1190,7 +1190,7 @@ chart.yAxes.autoDispose = false;
 
 ## Related tutorials
 
--   [Position X-axis on zero-value](https://www.amcharts.com/docs/v5/tutorials/position-x-axis-on-zero-value/)
--   [Simulating axis gaps](https://www.amcharts.com/docs/v5/tutorials/simulating-axis-gaps/)
--   [Syncing axis zooms across multiple charts](https://www.amcharts.com/docs/v5/tutorials/syncing-axis-zooms-across-multiple-charts/)
--   [Handling long category axis labels](https://www.amcharts.com/docs/v5/tutorials/handling-long-category-axis-labels/)
+-   [Position X-axis on zero-value](https://docs.amcharts.com/v5/tutorials/position-x-axis-on-zero-value/)
+-   [Simulating axis gaps](https://docs.amcharts.com/v5/tutorials/simulating-axis-gaps/)
+-   [Syncing axis zooms across multiple charts](https://docs.amcharts.com/v5/tutorials/syncing-axis-zooms-across-multiple-charts/)
+-   [Handling long category axis labels](https://docs.amcharts.com/v5/tutorials/handling-long-category-axis-labels/)

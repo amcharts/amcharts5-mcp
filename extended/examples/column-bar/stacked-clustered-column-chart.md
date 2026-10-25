@@ -25,18 +25,18 @@ Prompt: Create a column chart that is both stacked and clustered: six regions ov
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // no panning by drag
   panY: false,
@@ -47,7 +47,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // centered...
   x: am5.p50        // ...under the chart
@@ -83,7 +83,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   // each year's columns take the middle 80% of its cell, leaving a gap between years
   cellStartLocation: 0.1,
@@ -110,7 +110,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // adds one region's columns; with stacked true they go on top of the series before
 function makeSeries(name, fieldName, stacked) {
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
@@ -136,7 +136,7 @@ function makeSeries(name, fieldName, stacked) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 
   // the value in the middle of each column
@@ -176,7 +176,7 @@ makeSeries("Middle East", "meast", true);
 makeSeries("Africa", "africa", true);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

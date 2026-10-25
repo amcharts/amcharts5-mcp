@@ -25,18 +25,18 @@ Prompt: Create a zoomable bubble chart with two series on two value axes, one dr
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,       // drag the plot to pan sideways...
   panY: true,       // ...and up and down
@@ -48,7 +48,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 2); // skip a color, so the two series differ more
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }), // at least 50px between labels
   tooltip: am5.Tooltip.new(root, {}) // the cursor shows its x value on the axis...
@@ -60,7 +60,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series0 = chart.series.push(am5xy.LineSeries.new(root, {
   // finds the lowest and highest value, which the heat rule below sizes the bubbles by
   calculateAggregates: true,
@@ -75,7 +75,7 @@ var series0 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 // Both shapes cast a soft shadow, set on their templates
 var circleTemplate = am5.Template.new({
   shadowColor: am5.color(0x000000),
@@ -94,7 +94,7 @@ series0.bullets.push(function() {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series0.set("heatRules", [{
   target: circleTemplate,
   min: 3,  // the smallest bubble has a 3px radius...
@@ -104,7 +104,7 @@ series0.set("heatRules", [{
 }]);
 
 // Create second series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series1 = chart.series.push(am5xy.LineSeries.new(root, {
   calculateAggregates: true, // finds the lowest and highest value2, for the star sizes
   xAxis: xAxis,
@@ -118,7 +118,7 @@ var series1 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 // The star's shape goes in the template too, so one change reaches every star
 var starTemplate = am5.Template.new({
   spikes: 8,                    // an 8-pointed star...
@@ -139,7 +139,7 @@ series1.bullets.push(function() {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series1.set("heatRules", [{
   target: starTemplate,
   min: 3,  // the smallest star has a 3px radius...
@@ -153,7 +153,7 @@ series0.strokes.template.set("strokeOpacity", 0);
 series1.strokes.template.set("strokeOpacity", 0);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -162,7 +162,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // zoom and pan along x...
 }));
@@ -226,7 +226,7 @@ series0.data.setAll(data);
 series1.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 series1.appear(1000);
 

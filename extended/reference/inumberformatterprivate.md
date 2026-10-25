@@ -1,7 +1,7 @@
 ---
 title: "INumberFormatterPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/inumberformatterprivate/"
+source: "https://docs.amcharts.com/v5/reference/inumberformatterprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

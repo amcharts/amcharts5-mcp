@@ -1,7 +1,7 @@
 ---
 title: "WordCloudDefaultTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/wordclouddefaulttheme/"
+source: "https://docs.amcharts.com/v5/reference/wordclouddefaulttheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

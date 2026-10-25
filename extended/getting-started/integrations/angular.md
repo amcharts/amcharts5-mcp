@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with Angular"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/angular/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/angular/"
 scraped: "2026-10-22"
 ---
 
@@ -79,7 +79,7 @@ export class Chart {
 
 ### A chart from a JSON config
 
-`AmChartComponent` is the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/) with inputs and outputs Angular can check. It builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/), with no chart code:
+`AmChartComponent` is the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) with inputs and outputs Angular can check. It builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/), with no chart code:
 
 ```typescript
 import { Component } from '@angular/core';

@@ -1,7 +1,7 @@
 ---
 title: "EditableLabel"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/editablelabel/"
+source: "https://docs.amcharts.com/v5/reference/editablelabel/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

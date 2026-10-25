@@ -1,6 +1,6 @@
 ---
 title: "Cursor"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/cursor/"
 scraped: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ Cursor is an optional functional component of an XY chart. It can be used to dis
 
 ## Adding to chart
 
-To add a cursor to an XY chart, we simply create an instance of an `[XYCursor](https://www.amcharts.com/docs/v5/reference/xycursor/)` using its `new()` method, then assign it to chart's `cursor` setting:
+To add a cursor to an XY chart, we simply create an instance of an `[XYCursor](https://docs.amcharts.com/v5/reference/xycursor/)` using its `new()` method, then assign it to chart's `cursor` setting:
 
 chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
@@ -20,7 +20,7 @@ Adding a cursor to charts adds a corsshair, shown when hovering the chart.
 
 We can use cursor's `behavior` setting to specify what else it can do.
 
-NOTE Enabling cursor behavior will disable chart's [pan settings](https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Panning).
+NOTE Enabling cursor behavior will disable chart's [pan settings](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#panning).
 
 ### Zooming
 
@@ -81,7 +81,7 @@ Enables bi-directional selection.
 
 It will work the same way as zooming, except the selection area will stay selected after user releases mouse/touch.
 
-It can be useful in conjunction with selection-related [event handlers](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Events).
+It can be useful in conjunction with selection-related [event handlers](https://docs.amcharts.com/v5/charts/xy-chart/cursor/#events).
 
 ### Selection tolerance
 
@@ -109,14 +109,14 @@ The above will allow the original pointer down event to originate 30 pixels arou
 
 If series has `tooltip` property assigned to it, cursor will try to show multiple tooltips for all series in the currently hovered/touched category/interval.
 
-For information on how to add tooltip to series, please refer to "[XY chart series: Tooltips](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Tooltips)".
+For information on how to add tooltip to series, please refer to "[XY chart series: Tooltips](https://docs.amcharts.com/v5/charts/xy-chart/series/#tooltips)".
 
 
 #### Limiting number of tooltips shown at a time
 
 If our chart has many series with tooltips enabled, using cursor might result in quite a mess, that does not fit into the chart.
 
-In such cases we can use XY chart's own `[maxTooltipDistance](https://www.amcharts.com/docs/v5/reference/xychart/#maxTooltipDistance_setting)` setting to make cursor show only closest tooltips.
+In such cases we can use XY chart's own `[maxTooltipDistance](https://docs.amcharts.com/v5/reference/xychart/#maxTooltipDistance_setting)` setting to make cursor show only closest tooltips.
 
 It's a numeric value which means "show a tooltip to a closest data item as well as tooltips for data items that are visually no further from it by X pixels".
 
@@ -147,7 +147,7 @@ The following demo shows how we can use `maxTooltipDistance` to show only single
 
 The distance used by `maxTooltipDistance` is measured by both X and Y coordinates by default.
 
-If we'd like to measure only horizontal or vertical distance, we can use another setting: `[maxTooltipDistanceBy](https://www.amcharts.com/docs/v5/reference/xychart/#maxTooltipDistanceBy_setting)`:
+If we'd like to measure only horizontal or vertical distance, we can use another setting: `[maxTooltipDistanceBy](https://docs.amcharts.com/v5/reference/xychart/#maxTooltipDistanceBy_setting)`:
 
 let chart = root.container.children.push(
   am5xy.XYChart.new(root, {
@@ -185,7 +185,7 @@ var chart = root.container.children.push(
 
 A cursor can be made to snap to actual series data items.
 
-To enable it we need to assign actual series objects we want cursor to snap to into cursor's `[snapToSeries](https://www.amcharts.com/docs/v5/reference/xycursor/#snapToSeries_setting)` setting.
+To enable it we need to assign actual series objects we want cursor to snap to into cursor's `[snapToSeries](https://docs.amcharts.com/v5/reference/xycursor/#snapToSeries_setting)` setting.
 
 chart.set("cursor", am5xy.XYCursor.new(root, {
   snapToSeries: \[ series1, series2 \]
@@ -195,7 +195,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
   snapToSeries: \[ series1, series2 \]
 }));
 
-By default, cursor will choose closest data item based on proximity by both X and Y coordinate. If we'd like it to rather snap horizontally or vertically we can set `[snapToSeriesBy](https://www.amcharts.com/docs/v5/reference/xycursor/#snapToSeriesBy_setting)` to either `"x"` or `"y"`, respectively.
+By default, cursor will choose closest data item based on proximity by both X and Y coordinate. If we'd like it to rather snap horizontally or vertically we can set `[snapToSeriesBy](https://docs.amcharts.com/v5/reference/xycursor/#snapToSeriesBy_setting)` to either `"x"` or `"y"`, respectively.
 
 chart.set("cursor", am5xy.XYCursor.new(root, {
   snapToSeries: \[ series1, series2 \],
@@ -305,9 +305,9 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 
 ### Lines
 
-An XY cursor has two properties: `[lineX](https://www.amcharts.com/docs/v5/reference/xycursor/#lineX_property)` and `[lineY](https://www.amcharts.com/docs/v5/reference/xycursor/#lineY_property)` that represent vertical and horizontal crosshair lines respectively.
+An XY cursor has two properties: `[lineX](https://docs.amcharts.com/v5/reference/xycursor/#lineX_property)` and `[lineY](https://docs.amcharts.com/v5/reference/xycursor/#lineY_property)` that represent vertical and horizontal crosshair lines respectively.
 
-Those are elements of type `[Grid](https://www.amcharts.com/docs/v5/reference/grid/)` that we can use to configure cursor's lines:
+Those are elements of type `[Grid](https://docs.amcharts.com/v5/reference/grid/)` that we can use to configure cursor's lines:
 
 let cursor = chart.get("cursor");
 
@@ -335,7 +335,7 @@ The above will apply color, remove dashing, and make vertical line thicker, whil
 
 If cursor's `behavior` is set to zoom or select it will draw a shaded area to indicate selection when dragged on plot area.
 
-That shading is done by displaying a custom element (`[Graphics](https://www.amcharts.com/docs/v5/reference/graphics/)`) over plot area. It's accessible via `selection` property, and can be configured as needed:
+That shading is done by displaying a custom element (`[Graphics](https://docs.amcharts.com/v5/reference/graphics/)`) over plot area. It's accessible via `selection` property, and can be configured as needed:
 
 let cursor = chart.get("cursor");
 
@@ -353,11 +353,11 @@ cursor.selection.setAll({
 
 ## Events
 
-Cursor defines a few [events](https://www.amcharts.com/docs/v5/concepts/events/) that are dispatched when something happens.
+Cursor defines a few [events](https://docs.amcharts.com/v5/concepts/events/) that are dispatched when something happens.
 
-For example, we can use its `selectstarted` and `selectended` events to track when selection using the cursor began and ended. There's also `cursormoved` event which we can use to [track cursor movement](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Tracking_cursor_movement).
+For example, we can use its `selectstarted` and `selectended` events to track when selection using the cursor began and ended. There's also `cursormoved` event which we can use to [track cursor movement](https://docs.amcharts.com/v5/charts/xy-chart/cursor/#tracking-cursor-movement).
 
-For a complete list of events supported by `XYCursor`, check its [class reference](https://www.amcharts.com/docs/v5/reference/xycursor/#Events).
+For a complete list of events supported by `XYCursor`, check its [class reference](https://docs.amcharts.com/v5/reference/xycursor/#events).
 
 ## Tracking/setting position
 
@@ -365,7 +365,7 @@ For a complete list of events supported by `XYCursor`, check its [class referenc
 
 We can use cursor's `cursormoved` event to invoke custom handler whenever cursor position on the plot area changes.
 
-In event handler we can access its [private properties](https://www.amcharts.com/docs/v5/concepts/settings/#Private_settings) `positionX` and `positionY` wich in turn can be converted to real position on axis using axis' methods:
+In event handler we can access its [private properties](https://docs.amcharts.com/v5/concepts/settings/#private-settings) `positionX` and `positionY` wich in turn can be converted to real position on axis using axis' methods:
 
 cursor.events.on("cursormoved", function(ev) {
   let x = ev.target.getPrivate("positionX");
@@ -404,9 +404,9 @@ cursor.events.on("cursormoved", function(ev) {
 
 ### Manually positioning cursor
 
-We can manually position the cursor using its `[positionX](https://www.amcharts.com/docs/v5/reference/xycursor/#positionX_setting)` and `[positionY](https://www.amcharts.com/docs/v5/reference/xycursor/#positionY_setting)` settings.
+We can manually position the cursor using its `[positionX](https://docs.amcharts.com/v5/reference/xycursor/#positionX_setting)` and `[positionY](https://docs.amcharts.com/v5/reference/xycursor/#positionY_setting)` settings.
 
-We also want the cursor to display without hovering over plot area (which is default behavior), so we need to set `[alwaysShow](https://www.amcharts.com/docs/v5/reference/xycursor/#alwaysShow_setting)` to `true` as well.
+We also want the cursor to display without hovering over plot area (which is default behavior), so we need to set `[alwaysShow](https://docs.amcharts.com/v5/reference/xycursor/#alwaysShow_setting)` to `true` as well.
 
 Position is a numeric value relative to plot area, with `0` (zero) denoting beginning, and `1` (one) - the end.
 
@@ -493,18 +493,18 @@ chart3.set("cursor", cursor3);
 IMPORTANTSyncing is performed using actual X/Y coordinates of the point of mouse cursor's position or touch. It means that they will not sync by axis positions, but rather by screen coordinates. For example vertical lines will not sync across horizontally laid out charts, and vice versa.
 
 
-MORE INFOFor syncing cursors across non-vertically arranged charts, refer to "[Syncing cursors across multiple horizontally-arranged charts](https://www.amcharts.com/docs/v5/tutorials/syncing-cursors-across-multiple-horizontally-arranged-charts/)".
+MORE INFOFor syncing cursors across non-vertically arranged charts, refer to "[Syncing cursors across multiple horizontally-arranged charts](https://docs.amcharts.com/v5/tutorials/syncing-cursors-across-multiple-horizontally-arranged-charts/)".
 
 ## Keyboard control
 
 Cursor can also be controlled using directional keys on a keyboard.
 
-For more information, refer to "[Accessibility: XY cursor](https://www.amcharts.com/docs/v5/concepts/accessibility/#XY_Cursor)" tutorial.
+For more information, refer to "[Accessibility: XY cursor](https://docs.amcharts.com/v5/concepts/accessibility/#xy-cursor)" tutorial.
 
 ## Related tutorials
 
--   [Triggering bullet hover with an XY cursor](https://www.amcharts.com/docs/v5/tutorials/triggering-bullet-hover-with-an-xy-cursor/)
--   [Getting data items within cursor selection](https://www.amcharts.com/docs/v5/tutorials/getting-data-items-within-cursor-selection/)
--   [Cursor with “corner” crosshair lines](https://www.amcharts.com/docs/v5/tutorials/cursor-with-corner-crosshair-lines/)
--   [Changing XYCursor's behavior based on SHIFT key](https://www.amcharts.com/docs/v5/tutorials/changing-xycursors-behavior-based-on-shift-key/)
--   [Syncing cursors across multiple horizontally-arranged charts](https://www.amcharts.com/docs/v5/tutorials/syncing-cursors-across-multiple-horizontally-arranged-charts/)
+-   [Triggering bullet hover with an XY cursor](https://docs.amcharts.com/v5/tutorials/triggering-bullet-hover-with-an-xy-cursor/)
+-   [Getting data items within cursor selection](https://docs.amcharts.com/v5/tutorials/getting-data-items-within-cursor-selection/)
+-   [Cursor with “corner” crosshair lines](https://docs.amcharts.com/v5/tutorials/cursor-with-corner-crosshair-lines/)
+-   [Changing XYCursor's behavior based on SHIFT key](https://docs.amcharts.com/v5/tutorials/changing-xycursors-behavior-based-on-shift-key/)
+-   [Syncing cursors across multiple horizontally-arranged charts](https://docs.amcharts.com/v5/tutorials/syncing-cursors-across-multiple-horizontally-arranged-charts/)

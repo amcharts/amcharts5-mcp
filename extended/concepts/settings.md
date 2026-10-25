@@ -1,6 +1,6 @@
 ---
 title: "Settings"
-source: "https://www.amcharts.com/docs/v5/concepts/settings/"
+source: "https://docs.amcharts.com/v5/concepts/settings/"
 scraped: "2026-03-15"
 ---
 
@@ -80,7 +80,7 @@ We can find out what settings each element has by consulting the class reference
 
 Each class' reference will have a separate section named "Settings", accessible via right-hand menu:
 
-As an example, check out `DateAxis` settings [here](https://www.amcharts.com/docs/v5/reference/dateaxis/#Settings).
+As an example, check out `DateAxis` settings [here](https://docs.amcharts.com/v5/reference/dateaxis/#settings).
 
 ## Getting setting value
 
@@ -92,11 +92,11 @@ series.get("valueField");
 
 ## Binding to data
 
-Element's settings can be bound to a value in its data via its `templateField` setting. [More info](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/).
+Element's settings can be bound to a value in its data via its `templateField` setting. [More info](https://docs.amcharts.com/v5/concepts/settings/template-fields/).
 
 ## Dynamic modification
 
-Value for each setting can be manipulated dynamically by a custom function, called adapter. [More info](https://www.amcharts.com/docs/v5/concepts/settings/adapters/).
+Value for each setting can be manipulated dynamically by a custom function, called adapter. [More info](https://docs.amcharts.com/v5/concepts/settings/adapters/).
 
 ## Applying states
 
@@ -104,19 +104,19 @@ Each element can have any number of states attached to it. A state is basically 
 
 For example, we might want to change button's fill color when it is hovered by a mouse cursor.
 
-For more information refer to the "[Sates](https://www.amcharts.com/docs/v5/concepts/settings/states/)" tutorial.
+For more information refer to the "[Sates](https://docs.amcharts.com/v5/concepts/settings/states/)" tutorial.
 
 ## Settings via themes
 
-We can use themes - either built-in or custom ones - to automatically set setting values to certain elements. "[Themes](https://www.amcharts.com/docs/v5/concepts/themes/)" tutorial explains how.
+We can use themes - either built-in or custom ones - to automatically set setting values to certain elements. "[Themes](https://docs.amcharts.com/v5/concepts/themes/)" tutorial explains how.
 
 ## Tracking changes
 
-An element can invoke a custom function when value of particular setting changes. [More info](https://www.amcharts.com/docs/v5/concepts/events/#Settings_value_change).
+An element can invoke a custom function when value of particular setting changes. [More info](https://docs.amcharts.com/v5/concepts/events/#settings-value-change).
 
 ## Animating setting values
 
-Element can smoothly animate between two values of its settings, like colors, positions, scale, etc. [More info](https://www.amcharts.com/docs/v5/concepts/animations/#Animating_settings).
+Element can smoothly animate between two values of its settings, like colors, positions, scale, etc. [More info](https://docs.amcharts.com/v5/concepts/animations/#animating-settings).
 
 ## Private settings
 

@@ -1,7 +1,7 @@
 ---
 title: "ICurveCursorSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icurvecursorsettings/"
+source: "https://docs.amcharts.com/v5/reference/icurvecursorsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

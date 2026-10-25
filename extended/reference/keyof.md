@@ -1,7 +1,7 @@
 ---
 title: "Keyof"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/keyof/"
+source: "https://docs.amcharts.com/v5/reference/keyof/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

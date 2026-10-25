@@ -30,11 +30,11 @@ Prompt: Create a sunburst chart styled as a coffee aroma wheel, inspired by the 
  */
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -90,7 +90,7 @@ credits.events.on("click", function() {
 });
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
   singleBranchOnly: true, // only one branch open at a time; a sunburst always works this way
   downDepth: 2,           // a click on a slice opens two levels below it
@@ -130,7 +130,7 @@ series.labels.template.adapters.add("fill", function (fill, target) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 // the nameless white nodes with a value of 0.1 are thin gaps between the flavor groups
 var data = [{
   name: "COFFEE",

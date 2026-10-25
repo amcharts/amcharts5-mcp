@@ -1,7 +1,7 @@
 ---
 title: "IQuadrantLineSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iquadrantlineseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iquadrantlineseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

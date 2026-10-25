@@ -27,7 +27,7 @@ Prompt: Create a stadium track chart: an oval running track with one lane per ru
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -165,7 +165,7 @@ series.data.setAll(data);
 series.appear(3000, 100); // the bars grow over 3 seconds
 
 // Add the legend: each runner's photo and name, in the middle of the track
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.curveContainer.children.push(am5.Legend.new(root, {
   centerX: am5.p50,       // in the middle of the track...
   centerY: am5.p50,       // ...both ways

@@ -1,7 +1,7 @@
 ---
 title: "BezierCurveTo"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/beziercurveto/"
+source: "https://docs.amcharts.com/v5/reference/beziercurveto/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "RadarDefaultTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/radardefaulttheme/"
+source: "https://docs.amcharts.com/v5/reference/radardefaulttheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

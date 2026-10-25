@@ -1,7 +1,7 @@
 ---
 title: "IInterfaceColorsSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iinterfacecolorssettings/"
+source: "https://docs.amcharts.com/v5/reference/iinterfacecolorssettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Line series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/"
 scraped: "2026-03-15"
 ---
 
@@ -34,7 +34,7 @@ var series = chart.series.push(
 
 ### Stroke and fill colors
 
-Like with any series, it comes with stroke and fill color [pre-set from the theme](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/#Auto_assigned_colors).
+Like with any series, it comes with stroke and fill color [pre-set from the theme](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#auto-assigned-colors).
 
 Should we want to override theme's color, we can set it's `stroke` and/or `fill` settings.
 
@@ -95,7 +95,7 @@ NOTE Note the `visible: true` in `fills.template` settings. It is needed because
 
 If the line series has a lot of data points, they might get all crammed together, and make series look messy.
 
-We can make line series skip some points that are closer than X pixels, by setting its `[minDistance](https://www.amcharts.com/docs/v5/reference/lineseries/#minDistance_setting)` setting:
+We can make line series skip some points that are closer than X pixels, by setting its `[minDistance](https://docs.amcharts.com/v5/reference/lineseries/#minDistance_setting)` setting:
 
 let series = chart.series.push(
   am5xy.LineSeries.new(root, {
@@ -236,7 +236,7 @@ var series = chart.series.push(
 
 Line series is plotted on values we specify with input and display data fields. If we set up fills for the series, it will also fill the area all the way to the base axis.
 
-If we'd like it to rather fill to some other values, we can use [open data fields](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/#Open_data_input_fields) to point to values such fill should occur to.
+If we'd like it to rather fill to some other values, we can use [open data fields](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#open-data-input-fields) to point to values such fill should occur to.
 
 let series = chart.series.push(
   am5xy.LineSeries.new(root, {
@@ -303,7 +303,7 @@ var series = chart.series.push(
 
 ## Using template fields
 
-[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/) is a powerful concept allowing binding data values to settings of specific series elements.
+[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/) is a powerful concept allowing binding data values to settings of specific series elements.
 
 We can use those to modify appearance of certain sections of line series.
 
@@ -347,4 +347,4 @@ Whenever template field value is encountered in data, the "current" style of lin
 
 ## Related tutorials
 
--   [Line series with a border](https://www.amcharts.com/docs/v5/tutorials/line-series-with-a-border/)
+-   [Line series with a border](https://docs.amcharts.com/v5/tutorials/line-series-with-a-border/)

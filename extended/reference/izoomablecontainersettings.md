@@ -1,7 +1,7 @@
 ---
 title: "IZoomableContainerSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/izoomablecontainersettings/"
+source: "https://docs.amcharts.com/v5/reference/izoomablecontainersettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

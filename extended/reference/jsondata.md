@@ -1,7 +1,7 @@
 ---
 title: "JsonData"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/jsondata/"
+source: "https://docs.amcharts.com/v5/reference/jsondata/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -21,4 +21,4 @@ Extends: (none)
 
 Public properties (not settings):
 
-- **processor** (`DataProcessor`) — An optional processor for data. Docs: https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+- **processor** (`DataProcessor`) — An optional processor for data. Docs: https://docs.amcharts.com/v5/concepts/data/#pre-processing-data

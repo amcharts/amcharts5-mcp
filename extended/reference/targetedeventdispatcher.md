@@ -1,7 +1,7 @@
 ---
 title: "TargetedEventDispatcher"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/targetedeventdispatcher/"
+source: "https://docs.amcharts.com/v5/reference/targetedeventdispatcher/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "MapLine"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/mapline/"
+source: "https://docs.amcharts.com/v5/reference/mapline/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Labels"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/labels/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/labels/"
 scraped: "2026-03-15"
 ---
 
@@ -33,7 +33,7 @@ chart.children.unshift(am5.Label.new(root, {
 }));
 
 
-Refer to [`Label` settings](https://www.amcharts.com/docs/v5/reference/label/#Settings) list for more options.
+Refer to [`Label` settings](https://docs.amcharts.com/v5/reference/label/#settings) list for more options.
 
 ## In-line styling
 
@@ -43,7 +43,7 @@ label.set("text", "\[#888\]This is gray\[/\]. \[bold\]And this is bold\[/\]!");
 
 label.set("text", "\[#888\]This is gray\[/\]. \[bold\]And this is bold\[/\]!");
 
-For more information, refer to "[Text styling](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/)" tutorial.
+For more information, refer to "[Text styling](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" tutorial.
 
 ## Data placeholders
 
@@ -53,7 +53,7 @@ label.set("text", "\[#888\]{categoryX}\[/\]: \[bold\]{valueY}\[/\]");
 
 label.set("text", "\[#888\]{categoryX}\[/\]: \[bold\]{valueY}\[/\]");
 
-For more information, refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+For more information, refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 In order for data placeholders to work, labels also need to have they `populateText` setting set to `true`.
 
@@ -73,7 +73,7 @@ MPORTANTThis setting currently does not work with `RadialLabel`.
 
 Normally, oversized labels won't do anything, they'd just go out of bounds.
 
-We can control that using label's setting: `[oversizedBehavior](https://www.amcharts.com/docs/v5/reference/label/#oversizedBehavior_setting)`.
+We can control that using label's setting: `[oversizedBehavior](https://docs.amcharts.com/v5/reference/label/#oversizedBehavior_setting)`.
 
 xAxis.get("renderer").labels.template.setAll({
   oversizedBehavior: "truncate",
@@ -148,7 +148,7 @@ There are some additional options that relate to specific values of `oversizedBe
 
 #### Additional settings for "fit"
 
-If `oversizedBehavior` is set to `"fit"`, label will try to scale down itself to fit. To avoid microscopic unreadable labels, there's another setting - `[minScale](https://www.amcharts.com/docs/v5/reference/label/#minScale_setting)`. If set it will not allow labels to shrink beyond certain point.
+If `oversizedBehavior` is set to `"fit"`, label will try to scale down itself to fit. To avoid microscopic unreadable labels, there's another setting - `[minScale](https://docs.amcharts.com/v5/reference/label/#minScale_setting)`. If set it will not allow labels to shrink beyond certain point.
 
 For example, if we set `minScale` to `0.4` label will be allowed to get to 40% of its original size. If it still doesn't fit, it will be hidden.
 
@@ -158,7 +158,7 @@ Some series, like force-directed and treemap, have `oversizedBehavior` and `minS
 
 When text is truncated, label adds a Unicode ellipsis symbol (`…`) at the end.
 
-Since not all fonts support it, we might want to change it using label's `[ellipsis](https://www.amcharts.com/docs/v5/reference/label/#ellipsis_setting)` setting:
+Since not all fonts support it, we might want to change it using label's `[ellipsis](https://docs.amcharts.com/v5/reference/label/#ellipsis_setting)` setting:
 
 xAxis.get("renderer").labels.template.setAll({
   oversizedBehavior: "truncate",
@@ -188,7 +188,7 @@ chart.children.unshift(am5.Label.new(root, {
 
 Multi-line labels, or auto-wrapped labels, will align their lines to the left.
 
-We can set labels' `[textAlign](https://www.amcharts.com/docs/v5/reference/label/#textAlign_setting)` setting to something else, if we can them to be aligned differently:
+We can set labels' `[textAlign](https://docs.amcharts.com/v5/reference/label/#textAlign_setting)` setting to something else, if we can them to be aligned differently:
 
 xAxis.get("renderer").labels.template.setAll({
   oversizedBehavior: "wrap",
@@ -210,7 +210,7 @@ xAxis.get("renderer").labels.template.setAll({
 
 Labels are containers, so can have a background. We can use its `background` setting for that.
 
-For more information and examples, refer to "[Containers: Background](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Background)" tutorial.
+For more information and examples, refer to "[Containers: Background](https://docs.amcharts.com/v5/concepts/common-elements/containers/#background)" tutorial.
 
 ## Labels as interactive elements
 
@@ -248,7 +248,7 @@ label.events.on("click", function(ev) {
 
 ### Label templates
 
-For labels produces from a template (e.g. axis labels), we may need to add a "[setup function](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Setup_handler)" which adds a background to all newly-created labels.
+For labels produces from a template (e.g. axis labels), we may need to add a "[setup function](https://docs.amcharts.com/v5/concepts/settings/list-templates/#setup-handler)" which adds a background to all newly-created labels.
 
 yAxis.get("renderer").labels.template.setup = function(target) {
   target.set("background", am5.Rectangle.new(root, {
@@ -311,8 +311,8 @@ xRenderer.labels.template.setup = function(target) {
 
 ## Related tutorials
 
--   [Clickable circular labels](https://www.amcharts.com/docs/v5/tutorials/clickable-circular-labels/)
+-   [Clickable circular labels](https://docs.amcharts.com/v5/tutorials/clickable-circular-labels/)
 
 ## Related class references
 
--   [Label](https://www.amcharts.com/docs/v5/reference/label)
+-   [Label](https://docs.amcharts.com/v5/reference/label/)

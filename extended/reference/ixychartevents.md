@@ -1,7 +1,7 @@
 ---
 title: "IXYChartEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ixychartevents/"
+source: "https://docs.amcharts.com/v5/reference/ixychartevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

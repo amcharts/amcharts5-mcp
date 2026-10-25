@@ -1,7 +1,7 @@
 ---
 title: "IVennSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ivennsettings/"
+source: "https://docs.amcharts.com/v5/reference/ivennsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,7 +16,7 @@ TypeScript: `am5venn.IVennSettings` (`import type { IVennSettings } from "@amcha
 
 - **intersectionsField** (`string`) — Field in `data` that holds the categories of the circles an overlap is made of.
 - **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — Colors for slices with no `fill` in data, one after another.
-- **patterns** (`PatternSet`) — Patterns for slices with no `fillPattern`, one after another. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets
+- **patterns** (`PatternSet`) — Patterns for slices with no `fillPattern`, one after another. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets
 - **categoryField** (`string`) — Field in `data` that holds the circles' categories.
 - **fillField** (`string`) — Field in `data` that holds a slice's fill color.
 

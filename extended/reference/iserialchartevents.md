@@ -1,7 +1,7 @@
 ---
 title: "ISerialChartEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iserialchartevents/"
+source: "https://docs.amcharts.com/v5/reference/iserialchartevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

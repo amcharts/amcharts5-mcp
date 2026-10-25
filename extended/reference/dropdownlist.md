@@ -1,13 +1,13 @@
 ---
 title: "DropdownList"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/dropdownlist/"
+source: "https://docs.amcharts.com/v5/reference/dropdownlist/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A dropdown list for the controls of a `StockToolbar`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/
+Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/
 
 ## Import
 

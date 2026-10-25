@@ -25,11 +25,11 @@ Prompt: Create a map of the continents with a small pie chart on each of four re
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -40,7 +40,7 @@ root.setThemes([
 // ====================================
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var map = root.container.children.push(
   am5map.MapChart.new(root, {
     minZoomLevel: 0.5, // can zoom out to half the fitted size
@@ -52,14 +52,14 @@ var map = root.container.children.push(
 );
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = map.set("zoomControl", am5map.ZoomControl.new(root, {})); // + and - zoom buttons
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create polygon series for the continents
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = map.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_continentsLow // continents, not countries, in low detail
@@ -73,7 +73,7 @@ polygonSeries.mapPolygons.template.setAll({
 });
 
 // Add legend: a key to the product lines, which every pie shows in the same colors
-// https://www.amcharts.com/docs/v5/concepts/legend/
+// https://docs.amcharts.com/v5/concepts/legend/
 var legend = map.children.push(am5.Legend.new(root, {
   centerX: am5.p50,    // the legend's middle...
   x: am5.p50,          // ...at the middle of the map
@@ -89,7 +89,7 @@ var legend = map.children.push(am5.Legend.new(root, {
 legend.valueLabels.template.set("forceHidden", true); // no value labels in the legend
 
 // Create point series for the pie charts
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var pointSeries = map.series.push(
   am5map.MapPointSeries.new(root, {})
 );
@@ -109,7 +109,7 @@ var titleTemplate = am5.Template.new({
 
 // A pie chart as a bullet: each one is a chart of its own. It goes into the root container first, so it picks up
 // the themes and colors, and the bullet then moves it onto the map.
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 pointSeries.bullets.push(function(root, series, dataItem) {
   var region = dataItem.dataContext;
 

@@ -1,7 +1,7 @@
 ---
 title: "IMapLineSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imaplineseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/imaplineseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

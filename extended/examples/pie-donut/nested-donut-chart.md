@@ -25,25 +25,25 @@ Prompt: Create a nested donut chart comparing nine countries in two rings, the i
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
   layout: root.verticalLayout, // the chart's parts are stacked top to bottom
   innerRadius: am5.percent(40) // a hole in the middle, 40% of the radius
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 // two series in one pie chart make two rings: bottles inside, litres outside
 var series0 = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "bottles",
@@ -117,12 +117,12 @@ var data = [{
 }];
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series0.data.setAll(data);
 series1.data.setAll(data);
 
 // Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+// https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 series0.appear(1000, 100);
 series1.appear(1000, 100);
 ```

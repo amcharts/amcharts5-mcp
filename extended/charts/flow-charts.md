@@ -1,6 +1,6 @@
 ---
 title: "Flow charts"
-source: "https://www.amcharts.com/docs/v5/charts/flow-charts/"
+source: "https://docs.amcharts.com/v5/charts/flow-charts/"
 scraped: "2026-03-15"
 ---
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/flow.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Series
 
@@ -38,31 +38,31 @@ Comment
 
 A regular chord diagram.
 
-[More info](https://www.amcharts.com/docs/v5/charts/flow-charts/chord-diagram/#Regular_series)
+[More info](https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/#regular-series)
 
 `ChordDirected`
 
 A chord diagramwith arrowed links/ribbons.
 
-[More info](https://www.amcharts.com/docs/v5/charts/flow-charts/chord-diagram/#Directed_series)
+[More info](https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/#directed-series)
 
 `ChordNonRibbon`
 
 A chord diagram with narrow links lines.
 
-[More info](https://www.amcharts.com/docs/v5/charts/flow-charts/chord-diagram/#Non_ribbon_series)
+[More info](https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/#non-ribbon-series)
 
 `Sankey`
 
 A Sankey diagram.
 
-[More info](https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/)
+[More info](https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/)
 
 `ArcDiagram`
 
 An Arc diagram.
 
-[More info](https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/)
+[More info](https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/)
 
 Like everywhere else, we use its `new()` method to instantiate series, then push it into `series` list of the chart:
 
@@ -163,7 +163,7 @@ series.data.setAll(\[
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Minimum node size
 
@@ -171,7 +171,7 @@ Nodes/links in flow diagrams are sized by their value relatively to the sum of a
 
 In some cases, this may result in very small nodes.
 
-To ensure that that does not happen, there is a setting: `[minSize](https://www.amcharts.com/docs/v5/reference/flow/#minSize_setting)`.
+To ensure that that does not happen, there is a setting: `[minSize](https://docs.amcharts.com/v5/reference/flow/#minSize_setting)`.
 
 If set to a number it will override value for small nodes with a bigger value calculated from a sum of all the nodes.
 
@@ -266,8 +266,8 @@ series.nodes.data.setAll(\[
 
 For more information about configuring appearance of the flow series, refer to respective tutorials:
 
--   [Configuring Sankey series](https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/).
--   [Configuring chord series](https://www.amcharts.com/docs/v5/charts/flow-charts/chord-diagram/).
+-   [Configuring Sankey series](https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/).
+-   [Configuring chord series](https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/).
 
 ## Complete example
 
@@ -372,7 +372,7 @@ var container = root.container.children.push(am5.Container.new(root, {
   layout: root.verticalLayout
 }));
 
-NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout)".
+NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
 
 ### Chart title
 
@@ -396,5 +396,5 @@ var title = container.children.push(am5.Label.new(root, {
 
 For more information about configuring each type of series visit these tutorials:
 
--   [Configuring Sankey series](https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/).
--   [Configuring chord series](https://www.amcharts.com/docs/v5/charts/flow-charts/chord-diagram/).
+-   [Configuring Sankey series](https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/).
+-   [Configuring chord series](https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/).

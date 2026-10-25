@@ -25,18 +25,18 @@ Prompt: Create a heat map of values by weekday and hour of the day, highest in w
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,    // no dragging the plot
   panY: false,
@@ -79,7 +79,7 @@ var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/xy-chart/#adding-series
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   // works out valueLow and valueHigh, which the heat rules and the legend use
   calculateAggregates: true,
@@ -117,7 +117,7 @@ series.events.on("datavalidated", function() {
 
 // Set up heat rules: from the theme's first color for the lowest value to a later one for the highest, so the cells
 // follow the theme and dark mode
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 var lowColor = chart.get("colors").getIndex(0);
 var highColor = chart.get("colors").getIndex(5);
 
@@ -130,7 +130,7 @@ series.set("heatRules", [{
 }]);
 
 // Add heat legend
-// https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+// https://docs.amcharts.com/v5/concepts/legend/heat-legend/
 var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root, {
   orientation: "horizontal",       // a color bar along the bottom
   marginTop: 10,                   // 10px below the plot
@@ -139,7 +139,7 @@ var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root
 }));
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/xy-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/xy-chart/#setting-data
 var data = [{
   hour: "12am",
   weekday: "Sunday",
@@ -838,7 +838,7 @@ xAxis.data.setAll(hours.map(function(item) {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

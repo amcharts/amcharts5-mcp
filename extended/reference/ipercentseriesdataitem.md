@@ -1,7 +1,7 @@
 ---
 title: "IPercentSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipercentseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/ipercentseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -20,7 +20,7 @@ TypeScript: `am5percent.IPercentSeriesDataItem` (`import type { IPercentSeriesDa
 - **tick** (`Tick`) — Slice tick.
 - **legendDataItem** (`DataItem<ILegendDataItem>`) — The item's entry in a legend.
 - **fill** (`Color`) — Color of the slice and the elements that follow it, such as the legend marker.
-- **fillPattern** (`Pattern`) — Pattern used for the slice and related elements, e.g. legend marker. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+- **fillPattern** (`Pattern`) — Pattern used for the slice and related elements, e.g. legend marker. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
 
 ## Other inherited data item fields
 

@@ -25,7 +25,7 @@ Prompt: Create a line chart of 40 daily values where pressing on the plot and dr
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root); // a theme of our own, for the rule below
@@ -35,7 +35,7 @@ myTheme.rule("AxisLabel").setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -43,7 +43,7 @@ root.setThemes([
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   wheelX: "panX",   // a horizontal wheel or trackpad swipe pans...
   wheelY: "zoomX",  // ...and the vertical wheel zooms in on the dates
@@ -52,7 +52,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none" // a drag on the plot neither zooms nor selects, so it can move points
 }));
@@ -83,7 +83,7 @@ function generateDatas(count) {
 }
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.2, // pans up to 20% past the first and last date
   baseInterval: {    // one data point per day
@@ -104,7 +104,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   name: "Series",
   xAxis: xAxis,
@@ -133,7 +133,7 @@ series.bullets.push(function() {
 });
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // a bar above the plot to zoom and scroll through the dates
 }));
@@ -176,7 +176,7 @@ var data = generateDatas(40);
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

@@ -1,7 +1,7 @@
 ---
 title: "IOrthogonalLineSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iorthogonallinesettings/"
+source: "https://docs.amcharts.com/v5/reference/iorthogonallinesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,7 +19,7 @@ TypeScript: `am5.IOrthogonalLineSettings` (`import type { IOrthogonalLineSetting
 
 ## Inherited settings with a different default on OrthogonalLine
 
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `1` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 
 ## Other inherited settings

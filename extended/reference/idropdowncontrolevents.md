@@ -1,7 +1,7 @@
 ---
 title: "IDropdownControlEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idropdowncontrolevents/"
+source: "https://docs.amcharts.com/v5/reference/idropdowncontrolevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

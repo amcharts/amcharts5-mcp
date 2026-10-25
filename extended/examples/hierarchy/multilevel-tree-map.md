@@ -25,7 +25,7 @@ Prompt: Create a treemap of a year of US car sales by brand and model, with each
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root); // a theme of our own, for the rules below
@@ -71,7 +71,7 @@ chart.zoomableContainer.setAll({
 var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // + and - zoom buttons
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     maskContent:false, //!important with zoomable containers
@@ -101,7 +101,7 @@ series.labels.template.set("minScale", 0); // labels shrink as much as they need
 series.get("colors").set("step", 1);       // every theme color in turn, not every second one
 
 // Generate and set data
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   Acura: {
     ILX: 11757,

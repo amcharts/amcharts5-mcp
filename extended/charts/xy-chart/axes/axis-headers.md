@@ -1,6 +1,6 @@
 ---
 title: "Axis headers"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-headers/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-headers/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ Axis header is a container attached to each axis that can be used to put any add
 
 ## Header content
 
-Each axis has a header container pre-created. It's accessible via axis' property `[axisHeader](https://www.amcharts.com/docs/v5/reference/axis/#axisHeader_property)`.
+Each axis has a header container pre-created. It's accessible via axis' property `[axisHeader](https://docs.amcharts.com/v5/reference/axis/#axisHeader_property)`.
 
 By default, it contains no content, so is essentially invisible.
 

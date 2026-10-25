@@ -1,7 +1,7 @@
 ---
 title: "ITrendLineSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itrendlineseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/itrendlineseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

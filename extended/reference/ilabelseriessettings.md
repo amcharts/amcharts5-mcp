@@ -1,7 +1,7 @@
 ---
 title: "ILabelSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilabelseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ilabelseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -24,7 +24,7 @@ TypeScript: `am5stock.ILabelSeriesSettings` (`import type { ILabelSeriesSettings
 
 - **excludeFromAggregate** (`string[]`) — default `["valueX"]` _(theme)_ — _from ISeriesSettings_ — Fields to leave out of `calculateAggregates`, to save work where their aggregates are not needed. _Since 5.14.4._
 - **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
-- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#negative-value-stacking
 
 ## Other inherited settings
 

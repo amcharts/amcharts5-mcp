@@ -50,14 +50,14 @@ var map = root.container.children.push(
 );
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = map.set("zoomControl", am5map.ZoomControl.new(root, {})); // + and - zoom buttons
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create polygon series for the continents
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = map.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_continentsLow // continents, not countries, in low detail
@@ -71,7 +71,7 @@ polygonSeries.mapPolygons.template.setAll({
 });
 
 // Create point series for the pins
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var pointSeries = map.series.push(
   am5map.MapPointSeries.new(root, {})
 );
@@ -86,7 +86,7 @@ var titleTemplate = am5.Template.new({
 });
 
 // A pin is a container of a pole, a head sized by the value, the value on the head and a title next to it
-// https://www.amcharts.com/docs/v5/concepts/common-elements/containers/
+// https://docs.amcharts.com/v5/concepts/common-elements/containers/
 pointSeries.bullets.push(function(root, series, dataItem) {
   var value = dataItem.dataContext.value; // the market's growth in percent
 

@@ -25,18 +25,18 @@ Prompt: Create an infographic comparing the share of men and women in six depart
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,                   // no dragging the plot
@@ -52,7 +52,7 @@ var chart = root.container.children.push(
 root.numberFormatter.set("numberFormat", "#.#s'%"); // s drops the minus sign; '%' adds a percent sign
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(
   am5.Legend.new(root, {
     centerY: am5.p50,           // the legend's middle...
@@ -109,7 +109,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "category",
@@ -160,7 +160,7 @@ range.get("grid").setAll({
 });
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // a series of icon rows, one per department
 function createSeries(field, name, color, icon, inlegend, colorOpacity) {
   var series = chart.series.push(
@@ -231,7 +231,7 @@ createSeries("femaleMax", "Female", placeholderColor, femaleIcon, false, 0.12);
 createSeries("female", "Female", femaleColor, femaleIcon, true, 1);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

@@ -25,18 +25,18 @@ Prompt: Create a traceable Sankey diagram of 13 paths through four columns of no
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create a container for the series
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 var series = chart.series.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -71,7 +71,7 @@ series.links.template.events.on("pointerout", function (event) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 // an id is a path and a step: "A0-1" is the second link of path A0
 series.data.setAll([
   { from: "A", to: "E", value: 1, id: "A0-0" },

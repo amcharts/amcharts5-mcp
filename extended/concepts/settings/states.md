@@ -1,6 +1,6 @@
 ---
 title: "Element states"
-source: "https://www.amcharts.com/docs/v5/concepts/settings/states/"
+source: "https://docs.amcharts.com/v5/concepts/settings/states/"
 scraped: "2026-03-15"
 ---
 
@@ -43,7 +43,7 @@ Applied when element is set as active, e.g. by `disabled` setting, or toggle beh
 Applied whenever element status that applies state is removed, e.g. element is no longer hovered.  
 Default state is also applied when element is first initialized.
 
-There are more built-in states that are applied in some specialized cases, like for instance on a [candlestick series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/#Stroke_and_fill_colors).
+There are more built-in states that are applied in some specialized cases, like for instance on a [candlestick series](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/#stroke-and-fill-colors).
 
 ## Creating or modifying
 
@@ -142,8 +142,8 @@ series.columns.template.events.on("click", function(ev) {
 
 If enabled (via settings or animated theme), setting values will animate between the states.
 
-For more information on how to control this, refer to "[Animations: Animating between the states](https://www.amcharts.com/docs/v5/concepts/animations/#Animating_between_states)".
+For more information on how to control this, refer to "[Animations: Animating between the states](https://docs.amcharts.com/v5/concepts/animations/#animating-between-states)".
 
 ## Related tutorials
 
--   [Applying custom hover/active states on legend markers](https://www.amcharts.com/docs/v5/tutorials/applying-custom-hover-active-states-on-legend-markers/)
+-   [Applying custom hover/active states on legend markers](https://docs.amcharts.com/v5/tutorials/applying-custom-hover-active-states-on-legend-markers/)

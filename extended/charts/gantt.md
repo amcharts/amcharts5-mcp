@@ -1,6 +1,6 @@
 ---
 title: "Gantt Chart"
-source: "https://www.amcharts.com/docs/v5/charts/gantt/"
+source: "https://docs.amcharts.com/v5/charts/gantt/"
 scraped: "2026-03-15"
 ---
 
@@ -24,7 +24,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/gantt.js"></script>  
 <script src="https://cdn.amcharts.com/lib/5/plugins/colorPicker.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 IMPORTANT Gantt chart uses a Color Picker, which is an external plugin, hence the need to include it.
 
@@ -46,7 +46,7 @@ var chart = root.container.children.push(
 
 While technically Gantt is an XY Chart, there is no need to create axes or series for it. Those will be created automatically together with the chart.
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Configuring the chart
 
@@ -167,7 +167,7 @@ var chart = root.container.children.push(
 
 Unless we intend to start with an empty chart, we need to set the initial Gantt data in two places:
 
--   Category data on the vertical axis, which is a `[CategoryAxis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/)`.
+-   Category data on the vertical axis, which is a `[CategoryAxis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)`.
 -   Task data on the chart's Gantt series.
 
 ### Category data
@@ -517,7 +517,7 @@ A timestamp for task's start.
 
 `4`
 
-Task length in [duration units](https://www.amcharts.com/docs/v5/charts/gantt/#Duration_units), e.g. days.
+Task length in [duration units](https://docs.amcharts.com/v5/charts/gantt/#duration-units), e.g. days.
 
 `progress`
 
@@ -589,7 +589,7 @@ Array of category ids containing linked tasks.
 
 ## Category (vertical) axis
 
-The vertical axis in a Gantt chart is an axis of type `[GanttCategoryAxis](https://www.amcharts.com/docs/v5/reference/ganttcategoryaxis/)`. It's accessible via chart's `yAxis` property, and is essentially an enhanced `[CategoryAxis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/)`.
+The vertical axis in a Gantt chart is an axis of type `[GanttCategoryAxis](https://docs.amcharts.com/v5/reference/ganttcategoryaxis/)`. It's accessible via chart's `yAxis` property, and is essentially an enhanced `[CategoryAxis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)`.
 
 ### Cell height
 
@@ -689,7 +689,7 @@ This is controlled via Gantt chart's `gridIntervals` settings, with the default 
   \],
 }
 
-MORE INFO For information on how grid intervals work, refer to "[Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#grid-granularity)" documentation.
+MORE INFO For information on how grid intervals work, refer to "[Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#grid-granularity)" documentation.
 
 ### Disabling secondary X-axis
 
@@ -709,11 +709,11 @@ gantt.xAxisMinor.events.off("click");
 
 gantt.xAxisMinor.events.off("click");
 
-MORE INFO For information on customizing the markers' appearance please refer to "[Customizing Gantt appearance](https://www.amcharts.com/docs/v5/charts/gantt/cgantt-appearance/#Markers)".
+MORE INFO For information on customizing the markers' appearance please refer to "[Customizing Gantt appearance](https://docs.amcharts.com/v5/charts/gantt/cgantt-appearance/#markers)".
 
 ## Gantt series
 
-Gantt series is a heavily customized `[ColumnSeries](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/)`, meaning that anything we can to with the latter, we can do with Gantt series, too.
+Gantt series is a heavily customized `[ColumnSeries](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)`, meaning that anything we can to with the latter, we can do with Gantt series, too.
 
 The series is created automatically, and is accessible via Gantt chart's `series` property.
 
@@ -735,15 +735,15 @@ gantt.series.columns.template.adapters.add("stroke", function() {
   return am5.color(0x000000)
 });
 
-For a thorough documentation, please refer to `ColumnSeries` [docs](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/).
+For a thorough documentation, please refer to `ColumnSeries` [docs](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/).
 
-MORE INFO For information on customizing series' elements please refer to "[Customizing Gantt appearance](https://www.amcharts.com/docs/v5/charts/gantt/cgantt-appearance/#Series)".
+MORE INFO For information on customizing series' elements please refer to "[Customizing Gantt appearance](https://docs.amcharts.com/v5/charts/gantt/cgantt-appearance/)".
 
 ## Colors
 
 ### Auto-assigned colors
 
-By default, Gantt chart will assign a unique color for each newly added task. Whenever a new task is added, the chart pulls the next color from a "[color set](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Color_sets)". The colors depend on the theme used.
+By default, Gantt chart will assign a unique color for each newly added task. Whenever a new task is added, the chart pulls the next color from a "[color set](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#color-sets)". The colors depend on the theme used.
 
 Gantt's color set can be accessed via chart's `colors` setting, and used to configure available colors, stepping parameters, or even disable color iteration altogether.
 
@@ -777,7 +777,7 @@ gantt.get("colors").setAll({
   step: 0
 });
 
-MORE INFO For information about configuring color sets, refer to "[Colors, gradients and patterns](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Color_sets)" tutorial.
+MORE INFO For information about configuring color sets, refer to "[Colors, gradients and patterns](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#color-sets)" tutorial.
 
 ### Colors via the UI
 
@@ -807,43 +807,43 @@ Function
 
 `addButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Adds a new task.
 
 `colorPickerButton`
 
-`[ColorPickerButton](https://www.amcharts.com/docs/v5/reference/colorpickerbutton/)`
+`[ColorPickerButton](https://docs.amcharts.com/v5/reference/colorpickerbutton/)`
 
 Invokes a color picker.
 
 `expandButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Expands all categories.
 
 `collapseButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Collapses all categories.
 
 `linkButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Toggles auto-linking to newly added tasks.
 
 `clearButton`
 
-`[ConfirmButton](https://www.amcharts.com/docs/v5/reference/button/)`
+`[ConfirmButton](https://docs.amcharts.com/v5/reference/button/)`
 
 Deletes all data (categories, tasks, marked dates).
 
 `editButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Toggles between edit and read-only modes. (hidden by default)
 
@@ -881,13 +881,13 @@ Function
 
 `zoomOutButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Zooms out the X axis to full width.
 
 `fitButton`
 
-`[Button](https://www.amcharts.com/docs/v5/reference/button/)`
+`[Button](https://docs.amcharts.com/v5/reference/button/)`
 
 Zooms the X axis to fit currently visible tasks.
 
@@ -903,17 +903,17 @@ chart.fitButton.hide(0);
 
 ## Events and data serialization
 
-Please refer to "[Serializing and restoring Gantt data](https://www.amcharts.com/docs/v5/charts/gantt/serializing-gantt-data/)".
+Please refer to "[Serializing and restoring Gantt data](https://docs.amcharts.com/v5/charts/gantt/serializing-gantt-data/)".
 
 ## Example
 
 
 ## Related class references
 
--   [Gantt](https://www.amcharts.com/docs/v5/reference/gantt
+-   [Gantt](https://docs.amcharts.com/v5/reference/gantt/
     )
--   [GanttSeries](https://www.amcharts.com/docs/v5/reference/ganttseries
+-   [GanttSeries](https://docs.amcharts.com/v5/reference/ganttseries/
     )
--   [GanttCategoryAxis](https://www.amcharts.com/docs/v5/reference/ganttcategoryaxis
+-   [GanttCategoryAxis](https://docs.amcharts.com/v5/reference/ganttcategoryaxis/
     )
--   [GanttDateAxis](https://www.amcharts.com/docs/v5/reference/ganttdateaxis)
+-   [GanttDateAxis](https://docs.amcharts.com/v5/reference/ganttdateaxis/)

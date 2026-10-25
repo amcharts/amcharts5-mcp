@@ -4,6 +4,13 @@
  * Scrapes amCharts 5 documentation pages and saves them as clean markdown
  * in the extended/ directory.
  *
+ * OUT OF DATE since October 2026: the docs moved to docs.amcharts.com, a new
+ * site, and this script reads the old WordPress pages' HTML. The new site
+ * serves every page as Markdown next to it (https://docs.amcharts.com/v5/concepts/events.md)
+ * and lists them all in https://docs.amcharts.com/v5/llms.txt, so a new import
+ * should fetch those instead. Keep the hand-added notes in extended/ when
+ * re-importing (three-way merge). New links go through scripts/docs-links.cjs.
+ *
  * Usage: node scripts/scrape-docs.js [url-or-path ...]
  *
  *   With no arguments, scrapes every page in URLS.

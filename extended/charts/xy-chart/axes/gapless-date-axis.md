@@ -1,10 +1,10 @@
 ---
 title: "Gapless date axis"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/gapless-date-axis/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/"
 scraped: "2026-03-15"
 ---
 
-In a nutshell, a gapless [date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/) is the same as regular date axis (with some [limitations](#Limitations)), with data-less intervals removed from its scale.
+In a nutshell, a gapless [date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/) is the same as regular date axis (with some [limitations](#Limitations)), with data-less intervals removed from its scale.
 
 Regular date axis with irregular data
 
@@ -30,7 +30,7 @@ var xAxis = chart.xAxes.push(
   })
 );
 
-For more configuration options - grid, label formatting, zooming, positions, etc. - please refer to "[Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/)" tutorial.
+For more configuration options - grid, label formatting, zooming, positions, etc. - please refer to "[Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)" tutorial.
 
 ## Example
 
@@ -46,4 +46,4 @@ While gapless date axis implements most of the functionality from a regular date
 
 Gapless date axis replaces category-based axis which is still available for backwards compatibility, but should not be used to plot date-based data with gaps removed.
 
-For more information, read "[Category date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/)".
+For more information, read "[Category date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/)".

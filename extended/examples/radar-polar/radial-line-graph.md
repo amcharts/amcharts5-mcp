@@ -25,18 +25,18 @@ Prompt: Create a radial line graph of a house’s monthly energy use over a year
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // no dragging the plot around
   // a vertical layout puts the legend under the chart
@@ -50,7 +50,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 chart.get("colors").set("step", 3);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on some months
 }));
@@ -58,7 +58,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.1, // can be panned only 10% past the first and last month
   groupData: false,  // every month is shown, never merged into longer periods
@@ -84,7 +84,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, field) {
   var series = chart.series.push(am5radar.RadarLineSeries.new(root, {
     name: name,
@@ -118,7 +118,7 @@ var series1 = createSeries("Heating", "heating");
 var series2 = createSeries("Cooling", "cooling");
 
 // Add legend: click a name to hide its line
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Legend
+// https://docs.amcharts.com/v5/charts/radar-chart/#legend
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // the legend's middle...
   x: am5.p50        // ...at the middle of the chart
@@ -126,7 +126,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 // Set data: energy a house used for heating and for cooling each month, in kWh (sample data)
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var heating = [820, 700, 520, 300, 120, 30, 10, 15, 80, 280, 540, 760];
 var cooling = [0, 0, 10, 40, 120, 320, 480, 450, 230, 60, 10, 0];
 var data = [];
@@ -144,7 +144,7 @@ series1.data.setAll(data);
 series2.data.setAll(data);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series1.appear(1000);
 series2.appear(1000);
 chart.appear(1000, 100);

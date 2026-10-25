@@ -1,7 +1,7 @@
 ---
 title: "IXYCursorSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ixycursorsettings/"
+source: "https://docs.amcharts.com/v5/reference/ixycursorsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,13 +16,13 @@ TypeScript: `am5xy.IXYCursorSettings` (`import type { IXYCursorSettings } from "
 
 - **xAxis** (`Axis<AxisRenderer>`) — X axis for the vertical line to snap to. When that axis has a `tooltip`, the line follows it from cell to cell, such as from category to category.
 - **yAxis** (`Axis<AxisRenderer>`) — Y axis for the horizontal line to snap to. When that axis has a `tooltip`, the line follows it from cell to cell.
-- **behavior** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "selectX" | "selectY" | "selectXY"`) — default `"none"` _(theme)_ — What dragging across the plot area does: zoom or select along X, Y or both. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Behavior
+- **behavior** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "selectX" | "selectY" | "selectXY"`) — default `"none"` _(theme)_ — What dragging across the plot area does: zoom or select along X, Y or both. Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#behavior
 - **positionX** (`number`) — Pins the cursor at this horizontal position in the plot area: `0` is the left edge, `1` the right. While set, the cursor ignores the pointer.
 - **positionY** (`number`) — Pins the cursor at this vertical position in the plot area: `0` is the top edge, `1` the bottom. While set, the cursor ignores the pointer.
 - **alwaysShow** (`boolean`) — default `false` — Keeps the cursor visible when the pointer leaves the plot area.
 - **snapToSeries** (`XYSeries[]`) — Series to snap to: the cursor jumps to the nearest data item among them.
-- **snapToSeriesBy** (`"xy" | "x" | "y" | "x!" | "y!"`) — default `"xy"` _(theme)_ — How `snapToSeries` measures "nearest": `"xy"` by straight distance, `"x"` or `"y"` along one direction only. `"x!"` and `"y!"` do the same, but only among the items under the pointer, one per series. _Since 5.0.6._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#snapping-to-series
-- **syncWith** (`XYCursor[]`) — Cursors of other charts that move along with this one. They sync by position on the page, not by axis value, so vertical lines follow each other only between charts stacked one above another, and horizontal lines only between charts side by side. _Since 5.1.4._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#syncing-cursors
+- **snapToSeriesBy** (`"xy" | "x" | "y" | "x!" | "y!"`) — default `"xy"` _(theme)_ — How `snapToSeries` measures "nearest": `"xy"` by straight distance, `"x"` or `"y"` along one direction only. `"x!"` and `"y!"` do the same, but only among the items under the pointer, one per series. _Since 5.0.6._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#snapping-to-series
+- **syncWith** (`XYCursor[]`) — Cursors of other charts that move along with this one. They sync by position on the page, not by axis value, so vertical lines follow each other only between charts stacked one above another, and horizontal lines only between charts side by side. _Since 5.1.4._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#syncing-cursors
 - **moveThreshold** (`number`) — default `1` _(theme)_ — How far in pixels the pointer must move between press and release for a drag to zoom or select. A shorter move counts as a click. _Since 5.2.20._
 - **clickTolerance** (`number`) — default `0` — How far in pixels outside the plot area a press may start and still begin a zoom or selection, which then starts at the plot area's edge. Makes it easier to select from the very edge. _Since 5.20.0._
 

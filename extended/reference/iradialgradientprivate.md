@@ -1,7 +1,7 @@
 ---
 title: "IRadialGradientPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iradialgradientprivate/"
+source: "https://docs.amcharts.com/v5/reference/iradialgradientprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -25,11 +25,11 @@ Prompt: Create a world time zone map from the amCharts time zone geodata: the zo
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
@@ -37,7 +37,7 @@ root.setThemes([
 ]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     minZoomLevel: 0.5, // the map can zoom out to half its fitted size
@@ -54,7 +54,7 @@ var chart = root.container.children.push(
 var colorSet = am5.ColorSet.new(root, {}); // the theme's colors, for the time zone areas
 
 // Create series for the water: a faint fill behind the countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   // the map fits the countries, not this rectangle around the whole world
   affectsBounds: false
@@ -71,7 +71,7 @@ waterSeries.data.push({
 });
 
 // Create graticule series: grid lines every 10 degrees
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));
@@ -83,7 +83,7 @@ graticuleSeries.mapLines.template.setAll({
 
 // Create main polygon series for time zone areas: the land of each time zone,
 // in a color of its own
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var areaSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldTimeZoneAreasLow // the land, cut up by time zone
@@ -104,7 +104,7 @@ areaPolygonTemplate.states.create("hover", { fillOpacity: 0.8 }); // stronger un
 
 // Create main polygon series for time zones: bands from pole to pole, shaded
 // lightly, that run over the sea too
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var zoneSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldTimeZonesLow, // the time zone bands
@@ -124,7 +124,7 @@ zonePolygonTemplate.states.create("hover", { fillOpacity: 0.3 }); // a band unde
 
 // Create point series for the labels: a row of whole-hour offsets along the
 // bottom of the map, one under each band
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var labelSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 labelSeries.bullets.push(function () {
   return am5.Bullet.new(root, {
@@ -154,7 +154,7 @@ function offsetData(step) {
 labelSeries.data.setAll(offsetData(1)); // every whole hour
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 zoomControl.homeButton.set("visible", true); // a button that goes back to the home view
 

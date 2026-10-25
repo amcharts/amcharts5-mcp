@@ -1,7 +1,7 @@
 ---
 title: "IDropdownListPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idropdownlistprivate/"
+source: "https://docs.amcharts.com/v5/reference/idropdownlistprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -25,18 +25,18 @@ Prompt: Create a line chart of about 2,000 daily values that zooms along the val
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false, // no panning by dragging
@@ -48,7 +48,7 @@ var chart = root.container.children.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // drag up or down over the plot to zoom the value axis to that range
   behavior: "zoomY"
@@ -76,7 +76,7 @@ function generateDatas(count) {
 }
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 }, // one point per day
@@ -94,7 +94,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.LineSeries.new(root, {
     name: "Series",
@@ -111,7 +111,7 @@ var series = chart.series.push(
 series.fills.template.setAll({ fillOpacity: 0.3, visible: true }); // a light fill under the line
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = chart.set("scrollbarY", am5.Scrollbar.new(root, { // a vertical scrollbar zooms the values too
   orientation: "vertical"
 }));
@@ -120,7 +120,7 @@ var data = generateDatas(2000); // 2,000 days of data
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

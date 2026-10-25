@@ -25,18 +25,18 @@ Prompt: Create a 100% stacked column chart of six world regions over three years
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // the plot doesn't pan when dragged
   panY: false,
@@ -71,7 +71,7 @@ var data = [{
 }]
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 // The years run along the top, the legend along the bottom
 var xRenderer = am5xy.AxisRendererX.new(root, {
   opposite: true,        // the year labels go above the plot
@@ -102,7 +102,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add legend, under the plot
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50,
   x: am5.p50,
@@ -113,7 +113,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.valueLabels.template.set("forceHidden", true);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 function makeSeries(name, fieldName) {
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
     name: name,
@@ -137,7 +137,7 @@ function makeSeries(name, fieldName) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 
   // a label with the share in the middle of each segment
@@ -175,7 +175,7 @@ makeSeries("Middle East", "meast");
 makeSeries("Africa", "africa");
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

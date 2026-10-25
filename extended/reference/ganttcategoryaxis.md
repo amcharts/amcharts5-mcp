@@ -1,13 +1,13 @@
 ---
 title: "GanttCategoryAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/ganttcategoryaxis/"
+source: "https://docs.amcharts.com/v5/reference/ganttcategoryaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 The vertical axis of a `Gantt` chart: the editable task list, with subtasks, duration steppers and progress pies.
 
-_Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Category_vertical_axis
+_Since 5.14.0._ Docs: https://docs.amcharts.com/v5/charts/gantt/#category-vertical-axis
 
 ## Import
 

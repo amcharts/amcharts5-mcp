@@ -25,18 +25,18 @@ Prompt: Create a Google Analytics-style line chart comparing this week with last
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,      // drag the plot sideways to pan...
   panY: true,      // ...or up and down
@@ -48,16 +48,16 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 3); // the second series skips ahead three colors, so the weeks differ more
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
 cursor.lineY.set("visible", false); // no horizontal cursor line, only the vertical one
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.3, // pan up to 30% of the visible range past the first and last day
   baseInterval: {    // one point per day
@@ -75,7 +75,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   name: "This week",
   xAxis: xAxis,
@@ -141,7 +141,7 @@ series2.bullets.push(function () {
 });
 
 // Format dates in tooltips, e.g. "Thu, Jun 12"
-// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/
 root.dateFormatter.setAll({
   dateFormat: "EEE, MMM d",
   dateFields: ["valueX", "previousDate"]
@@ -189,7 +189,7 @@ series.data.setAll(data);
 series2.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 series2.appear(1000);
 chart.appear(1000, 100);

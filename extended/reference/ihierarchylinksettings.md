@@ -1,7 +1,7 @@
 ---
 title: "IHierarchyLinkSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihierarchylinksettings/"
+source: "https://docs.amcharts.com/v5/reference/ihierarchylinksettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -23,7 +23,7 @@ TypeScript: `am5hierarchy.IHierarchyLinkSettings` (`import type { IHierarchyLink
 
 - **isMeasured** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element's bounds are not measured, so it takes no part in its parent's layout or size.
 - **position** (`"absolute" | "relative"`) — default `"absolute"` _(theme)_ — _from ISpriteSettings_ — Positioning of the element. `"absolute"` leaves the element out of its parent's layout and size: it is placed by its `x` and `y` only.
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `1` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 
 ## Other inherited settings

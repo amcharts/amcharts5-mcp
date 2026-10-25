@@ -25,11 +25,11 @@ Prompt: Create a column chart of step counts for six people, shaded from light t
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -74,7 +74,7 @@ var data = [{
 }];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,    // the plot doesn't pan when dragged
@@ -87,7 +87,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 
 var xRenderer = am5xy.AxisRendererX.new(root, {
   minorGridEnabled:true,
@@ -117,7 +117,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Steps",
@@ -265,7 +265,7 @@ cursor.events.on("cursormoved", function () {
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
 ```

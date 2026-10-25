@@ -1,6 +1,6 @@
 ---
 title: "Adapters"
-source: "https://www.amcharts.com/docs/v5/concepts/settings/adapters/"
+source: "https://docs.amcharts.com/v5/concepts/settings/adapters/"
 scraped: "2026-03-15"
 ---
 
@@ -129,5 +129,5 @@ series.columns.template.adapters.add("fill", function(fill, target) {
 
 ## Related tutorials
 
--   [Using adapters on category axis labels](https://www.amcharts.com/docs/v5/tutorials/using-adapters-on-category-axis-labels/)
--   [Labels on negative columns](https://www.amcharts.com/docs/v5/tutorials/labels-on-negative-columns/) (dynamic placement of bullets using an adapter)
+-   [Using adapters on category axis labels](https://docs.amcharts.com/v5/tutorials/using-adapters-on-category-axis-labels/)
+-   [Labels on negative columns](https://docs.amcharts.com/v5/tutorials/labels-on-negative-columns/) (dynamic placement of bullets using an adapter)

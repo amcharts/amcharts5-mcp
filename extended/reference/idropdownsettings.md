@@ -1,7 +1,7 @@
 ---
 title: "IDropdownSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idropdownsettings/"
+source: "https://docs.amcharts.com/v5/reference/idropdownsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

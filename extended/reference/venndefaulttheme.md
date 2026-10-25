@@ -1,7 +1,7 @@
 ---
 title: "VennDefaultTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/venndefaulttheme/"
+source: "https://docs.amcharts.com/v5/reference/venndefaulttheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

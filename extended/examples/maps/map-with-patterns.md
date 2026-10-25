@@ -47,14 +47,14 @@ var chart = root.container.children.push(
 );
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {})); // + and - zoom buttons
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create series for the water: a faint fill behind the countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 
 waterSeries.mapPolygons.template.setAll({
@@ -68,7 +68,7 @@ waterSeries.data.push({
 });
 
 // Create graticule series: grid lines every 10 degrees
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));

@@ -1,10 +1,10 @@
 ---
 title: "Printing"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/printing/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/printing/"
 scraped: "2026-03-15"
 ---
 
-This tutorial looks at configuration options for printing charts with [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin.
+This tutorial looks at configuration options for printing charts with [Exporting](https://docs.amcharts.com/v5/concepts/exporting/) plugin.
 
 ## Print method
 

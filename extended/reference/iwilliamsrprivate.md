@@ -1,7 +1,7 @@
 ---
 title: "IWilliamsRPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iwilliamsrprivate/"
+source: "https://docs.amcharts.com/v5/reference/iwilliamsrprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

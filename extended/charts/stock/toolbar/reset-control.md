@@ -1,6 +1,6 @@
 ---
 title: "Reset control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/reset-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/reset-control/"
 scraped: "2026-10-08"
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "CurveLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/curvelineseries/"
+source: "https://docs.amcharts.com/v5/reference/curvelineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A line series for a `CurveChart`, `SerpentineChart` or `SpiralChart`.
 
-_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
+_Since 5.12.0._ Docs: https://docs.amcharts.com/v5/charts/timeline/
 
 ## Import
 

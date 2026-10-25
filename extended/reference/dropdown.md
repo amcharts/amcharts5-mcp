@@ -1,7 +1,7 @@
 ---
 title: "Dropdown"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/dropdown/"
+source: "https://docs.amcharts.com/v5/reference/dropdown/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

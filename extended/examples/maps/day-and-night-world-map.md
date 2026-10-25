@@ -25,18 +25,18 @@ Prompt: Create a live world map that shades the night side of the Earth, with tw
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   // go to the home view once the map is fitted
   autoHome: true,
@@ -57,7 +57,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 // Satellite view: NASA's pictures of the Earth, by day where the sun is up and city lights where it is night,
 // blended across the twilight, under the countries. Hidden at first (visible: false). The images are read from
 // the amCharts CDN
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   src: "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg", // the Earth by day...
   // ...and its city lights by night
@@ -67,7 +67,7 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // low-detail world countries
 }));
@@ -127,7 +127,7 @@ nightSeries.get("sun").setAll({
 });
 
 // Create graticule series: grid lines every 10 degrees, over the map
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));
@@ -138,7 +138,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // The moon: where it is overhead at the time, drawn in its phase, with the phase in a tooltip
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var moonSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 var moonRadius = 10; // the moon's radius in pixels
 
@@ -237,7 +237,7 @@ function updateMoon(date) {
 }
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
@@ -279,7 +279,7 @@ setInterval(function() {
 }, 60000);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

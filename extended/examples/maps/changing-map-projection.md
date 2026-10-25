@@ -25,18 +25,18 @@ Prompt: Create a world map that morphs smoothly into the next projection every f
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     minZoomLevel: 0.5, // zoom out to half the fitted size at most
@@ -51,14 +51,14 @@ var chart = root.container.children.push(
 );
 
 // Zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldLow // low-detail world countries
@@ -66,7 +66,7 @@ var polygonSeries = chart.series.push(
 );
 
 // Create graticule series (the grid), drawn under the countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.insertIndex(
   0, am5map.GraticuleSeries.new(root, {})
 );
@@ -77,7 +77,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create series for the ocean, drawn under everything
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var backgroundSeries = chart.series.unshift(
   am5map.MapPolygonSeries.new(root, {})
 );

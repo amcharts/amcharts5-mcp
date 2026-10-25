@@ -1,13 +1,13 @@
 ---
 title: "Picture"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/picture/"
+source: "https://docs.amcharts.com/v5/reference/picture/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Displays an image. If only `width` or `height` is set, the other follows the image's aspect ratio.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/images/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/images/
 
 ## Import
 

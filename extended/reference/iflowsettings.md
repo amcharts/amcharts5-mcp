@@ -1,7 +1,7 @@
 ---
 title: "IFlowSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iflowsettings/"
+source: "https://docs.amcharts.com/v5/reference/iflowsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,8 +19,8 @@ TypeScript: `am5flow.IFlowSettings` (`import type { IFlowSettings } from "@amcha
 - **nodeWidth** (`number`) — default `10` — Thickness of the node bars, in pixels. Not used by `ArcDiagram`.
 - **nodePadding** (`number`) — Gap between adjacent nodes, in pixels: `10` in a `Sankey`, `5` in an `ArcDiagram`. A `Chord` uses `padAngle` instead.
 - **minSize** (`number`) — default `0` _(theme)_ — Smallest size a link is drawn at, as a fraction of the sum of all link values. For example, `0.01` draws every link at least as thick as one holding 1% of the total, so small links and their nodes stay visible. _Since 5.1.5._
-- **hiddenSize** (`number`) — default `0.05` _(theme)_ — Size a hidden link keeps in the layout, as a fraction of its value. Links hide when their node is toggled off with a click (`toggleKey: "disabled"` on nodes); a small size keeps that node visible so it can be clicked back on. _Since 5.4.1._ Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/#Node_toggling
-- **minHiddenValue** (`number`) — default `0` _(theme)_ — Smallest value a hidden link shrinks to, whatever `hiddenSize` gives. _Since 5.4.1._ Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/#Node_toggling
+- **hiddenSize** (`number`) — default `0.05` _(theme)_ — Size a hidden link keeps in the layout, as a fraction of its value. Links hide when their node is toggled off with a click (`toggleKey: "disabled"` on nodes); a small size keeps that node visible so it can be clicked back on. _Since 5.4.1._ Docs: https://docs.amcharts.com/v5/charts/flow-charts/#node-toggling
+- **minHiddenValue** (`number`) — default `0` _(theme)_ — Smallest value a hidden link shrinks to, whatever `hiddenSize` gives. _Since 5.4.1._ Docs: https://docs.amcharts.com/v5/charts/flow-charts/#node-toggling
 
 ## Inherited settings with a different default on Flow
 

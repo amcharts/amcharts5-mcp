@@ -1,7 +1,7 @@
 ---
 title: "FibonacciTimezoneSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/fibonaccitimezoneseries/"
+source: "https://docs.amcharts.com/v5/reference/fibonaccitimezoneseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

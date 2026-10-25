@@ -1,6 +1,6 @@
 ---
 title: "Map polygon series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/"
 scraped: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ Map polygon series are responsible for drawing actual map areas (countries, regi
 
 ## Adding series
 
-To create a map polygon series we need to call its [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) and push the new object into chart's `series` list:
+To create a map polygon series we need to call its [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) and push the new object into chart's `series` list:
 
 let polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
@@ -34,7 +34,7 @@ The GeoJSON data is set via series `geodata` setting.
 
 amCharts 5 has a number of various country and region maps in a separate geodata package available as a downloadable ZIP file, NPM package, or CDN.
 
-File locations and naming for specific maps, as well as various detail version is described in main "[Map chart: Geodata (maps)](https://www.amcharts.com/docs/v5/charts/map-chart/#Geodata_maps_)" tutorial. Please make sure to visit it for reference.
+File locations and naming for specific maps, as well as various detail version is described in main "[Map chart: Geodata (maps)](https://docs.amcharts.com/v5/charts/map-chart/#geodata-maps)" tutorial. Please make sure to visit it for reference.
 
 Ads an example, let's load a map of France:
 
@@ -126,11 +126,11 @@ Function
 
 Comment
 
-`[am5map.getGeoCircle](https://www.amcharts.com/docs/v5/reference/maputils_module/#getGeoCircle_method)(geoPoint, radius)`
+`[am5map.getGeoCircle](https://docs.amcharts.com/v5/reference/maputils_module/#getGeoCircle_method)(geoPoint, radius)`
 
 Returns a geography data representing a circle with a center at specific latitude/longitude (first parameter) and radius (degrees).
 
-`[am5map.getGeoRectangle](https://www.amcharts.com/docs/v5/reference/maputils_module/#getGeoRectangle_method)(north, east, south, west)`
+`[am5map.getGeoRectangle](https://docs.amcharts.com/v5/reference/maputils_module/#getGeoRectangle_method)(north, east, south, west)`
 
 Returns a geography data representing a square with boundaries at passed in via the four parameters.
 
@@ -150,7 +150,7 @@ polygonSeries.data.push({
   geometry: am5map.getGeoCircle({ latitude: 48.86, longitude: 2.35 }, 2)
 });
 
-NOTE Regardless of how we add data to the polygon series, it will be reshaped according to the [projection](https://www.amcharts.com/docs/v5/charts/map-chart/#Projections) used on the map.
+NOTE Regardless of how we add data to the polygon series, it will be reshaped according to the [projection](https://docs.amcharts.com/v5/charts/map-chart/#projections) used on the map.
 
 ### Using geodata and data together
 
@@ -200,7 +200,7 @@ IMPORTANT It's a good practice to make sure that setting data happens as late i
 
 Polygon appearance can be configured via its template, accessible via series' `mapPolygons.template`.
 
-A polygon is an object of type `MapPolygon`. Any of [its settings](https://www.amcharts.com/docs/v5/reference/mappolygon/#Settings) can be set via template.
+A polygon is an object of type `MapPolygon`. Any of [its settings](https://docs.amcharts.com/v5/reference/mappolygon/#settings) can be set via template.
 
 polygonSeries.mapPolygons.template.setAll({
   stroke: am5.color(0xffffff),
@@ -234,7 +234,7 @@ var polygonSeries = chart.series.push(
 
 ## Binding to data
 
-Polygons can take values for theirs settings from data as well, using [template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/).
+Polygons can take values for theirs settings from data as well, using [template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/).
 
 Template fields allow binding an object's properties in series' data, to polygon template's settings.
 
@@ -291,7 +291,7 @@ polygonSeries.data.setAll(\[{
 
 To add a tooltip to the polygons, we can use `tooltipText` on polygon template. We can set `tooltipText` along any other polygon's settings.
 
-The value may contain [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) as well as [in-line text styles](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/).
+The value may contain [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) as well as [in-line text styles](https://docs.amcharts.com/v5/concepts/formatters/text-styling/).
 
 polygonSeries.mapPolygons.template.setAll({
   tooltipText: "{name}"
@@ -303,7 +303,7 @@ polygonSeries.mapPolygons.template.setAll({
 
 ### Hover states
 
-We can set setting values to apply to polygons when it is hovered by creating a "hover" [state](https://www.amcharts.com/docs/v5/concepts/settings/states/) for it.
+We can set setting values to apply to polygons when it is hovered by creating a "hover" [state](https://docs.amcharts.com/v5/concepts/settings/states/) for it.
 
 polygonSeries.mapPolygons.template.setAll({
   tooltipText: "{name}",
@@ -593,7 +593,7 @@ Using background series with projected rectangle
 
 ## Related tutorials
 
--   [Country-specific world maps](https://www.amcharts.com/docs/v5/tutorials/country-specific-world-maps/)
--   [Getting series object by its ID](https://www.amcharts.com/docs/v5/charts/map-chart/map-api/#Getting_object_by_ID)
--   [Maps with displaced areas and dividers](https://www.amcharts.com/docs/v5/tutorials/maps-with-displaced-areas-and-dividers/)
--   [MapChart with an auto-populated legend](https://www.amcharts.com/docs/v5/tutorials/mapchart-with-an-auto-populated-legend/)
+-   [Country-specific world maps](https://docs.amcharts.com/v5/tutorials/country-specific-world-maps/)
+-   [Getting series object by its ID](https://docs.amcharts.com/v5/charts/map-chart/map-api/#getting-object-by-id)
+-   [Maps with displaced areas and dividers](https://docs.amcharts.com/v5/tutorials/maps-with-displaced-areas-and-dividers/)
+-   [MapChart with an auto-populated legend](https://docs.amcharts.com/v5/tutorials/mapchart-with-an-auto-populated-legend/)

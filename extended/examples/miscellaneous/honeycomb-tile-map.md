@@ -32,16 +32,16 @@ Prompt: Create a honeycomb tile map of the US states as an XY chart: each state 
  * https://www.amcharts.com/
  *
  * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
+ * https://docs.amcharts.com/v5/
  * ---------------------------------------
  */
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -51,13 +51,13 @@ root.setThemes([
 root.numberFormatter.set("numberFormat", "#.#a");
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {}));
 // hide grid
 chart.gridContainer.set("opacity", 0)
 
 // Create axes: hidden, they only place the tiles in columns (x) and rows (y)
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50, inside: true }),
   min: 0,    // first values: the handler below fits min and max to the plot
@@ -86,7 +86,7 @@ chart.plotContainer.events.on("boundschanged", function() {
 });
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   // works out valueLow and valueHigh, which the heat rules and the legend use
   calculateAggregates: true,
@@ -98,7 +98,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet: a hexagon for each state, outlined in the background color, which leaves a gap between them
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 var template = am5.Template.new({
   stroke: root.interfaceColors.get("background"),
   strokeWidth: 2 // 2px gaps
@@ -153,7 +153,7 @@ series.bullets.push(function() {
 });
 
 // Color the tiles by population, in shades of the theme's first color
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 var colors = chart.get("colors"); // the theme's colors
 var lowColor = am5.Color.lighten(colors.getIndex(0), 0.6); // a light tint of the first color...
 var highColor = am5.Color.brighten(colors.getIndex(0), -0.5); // ...and a dark shade of it
@@ -179,7 +179,7 @@ series.set("heatRules", [{
 series.strokes.template.set("strokeOpacity", 0);
 
 // Add a color scale under the map
-// https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+// https://docs.amcharts.com/v5/concepts/legend/heat-legend/
 var heatLegend = chart.bottomAxesContainer.children.push(am5.HeatLegend.new(root, {
   orientation: "horizontal",       // a color bar along the bottom...
   startColor: lowColor,            // ...in the heat rule's colors...
@@ -523,7 +523,7 @@ am5.array.each(data, function(di) {
 series.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 
 chart.appear(1000, 100);

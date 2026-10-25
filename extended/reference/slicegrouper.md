@@ -1,13 +1,13 @@
 ---
 title: "SliceGrouper"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/slicegrouper/"
+source: "https://docs.amcharts.com/v5/reference/slicegrouper/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A plugin that can be used to automatically group small slices on percent charts into a single slice.
 
-Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/grouping-slices/
+Docs: https://docs.amcharts.com/v5/charts/percent-charts/grouping-slices/
 
 ## Import
 

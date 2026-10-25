@@ -1,7 +1,7 @@
 ---
 title: "IChordLinkPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichordlinkprivate/"
+source: "https://docs.amcharts.com/v5/reference/ichordlinkprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

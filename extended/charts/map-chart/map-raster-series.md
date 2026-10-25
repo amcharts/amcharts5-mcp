@@ -1,6 +1,6 @@
 ---
 title: "Map raster series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/"
 scraped: "2026-10-08"
 ---
 
@@ -168,7 +168,7 @@ If both are set, `sunDate` wins.
 
 Day turns into night gradually, across a twilight band. Its width is set with `twilight`, in degrees of the sun's height above the horizon (default: `12`). Larger numbers give a softer edge.
 
-MORE INFOTo shade night over any map, not just a satellite image, use [Night series](https://www.amcharts.com/docs/v5/charts/map-chart/night-series/).
+MORE INFOTo shade night over any map, not just a satellite image, use [Night series](https://docs.amcharts.com/v5/charts/map-chart/night-series/).
 
 ## Projections and performance
 

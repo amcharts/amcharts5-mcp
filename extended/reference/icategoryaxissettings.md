@@ -1,7 +1,7 @@
 ---
 title: "ICategoryAxisSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icategoryaxissettings/"
+source: "https://docs.amcharts.com/v5/reference/icategoryaxissettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,7 +14,7 @@ TypeScript: `am5xy.ICategoryAxisSettings` (`import type { ICategoryAxisSettings 
 
 ## Settings
 
-- **fillRule** (`(dataItem: DataItem<ICategoryAxisDataItem>, index?: number) => void`) — default `(function)` _(theme)_ — Function that decides which axis fills show; it is called for each category with its index. The default fills every other category. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Axis_fills
+- **fillRule** (`(dataItem: DataItem<ICategoryAxisDataItem>, index?: number) => void`) — default `(function)` _(theme)_ — Function that decides which axis fills show; it is called for each category with its index. The default fills every other category. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#axis-fills
 - **categoryField** (`string`) — Field in the data that holds the category names.
 - **idField** (`string`) — Field in the data that holds a unique id for each category.
 - **cellSizeField** (`string`) — Field in the data that holds each category's relative size: a category of `2` takes twice the room of one of `1`. Categories without it get `1`.

@@ -1,10 +1,10 @@
 ---
 title: "Data save control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/data-save-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/data-save-control/"
 scraped: "2026-10-08"
 ---
 
-Data save control when added to [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/) will provide users a way to save current indicators and drawings to browser's local storage so that they can be restored afterwards.
+Data save control when added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/) will provide users a way to save current indicators and drawings to browser's local storage so that they can be restored afterwards.
 
 ## What it does?
 
@@ -163,7 +163,7 @@ NOTEAutomatic node will be turned on regardless of this setting if user explicit
 
 ## Relation to Settings control
 
-Auto-saving can be enabled via [Settings control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/settings-control/), too.
+Auto-saving can be enabled via [Settings control](https://docs.amcharts.com/v5/charts/stock/toolbar/settings-control/), too.
 
 
 If you already have Data save control added to the Stock toolbar, the auto-save functionality in Settings control will use the same configuration options.

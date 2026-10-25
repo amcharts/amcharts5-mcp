@@ -25,11 +25,11 @@ Prompt: Create a fitness-app-style step count chart: a month of daily steps as c
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -163,7 +163,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     focusable: true, // the chart can be reached with the Tab key
@@ -181,7 +181,7 @@ var chart = root.container.children.push(
 chart.zoomOutButton.set("forceHidden", true);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   minGridDistance: 50, // at least 50px between the date labels
   strokeOpacity: 0.2,  // a faint axis line
@@ -219,7 +219,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     xAxis: xAxis,
@@ -250,7 +250,7 @@ series.columns.template.adapters.add("fill", function (fill, target) {
 });
 
 // Set up data processor to parse string dates
-// https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+// https://docs.amcharts.com/v5/concepts/data/#pre-processing-data
 series.data.processor = am5.DataProcessor.new(root, {
   dateFormat: "yyyy-MM-dd",
   dateFields: ["date"]
@@ -320,7 +320,7 @@ chart.plotContainer.onPrivate("width", function () {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // the cursor stays on when the pointer leaves the chart, so the middle day's tooltip always shows
   alwaysShow: true,
@@ -360,7 +360,7 @@ chart.plotContainer.events.on("globalpointerup", function () {
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 50);
 ```
 

@@ -101,18 +101,18 @@ var data = [
 ];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false, // no panning by dragging
@@ -125,7 +125,7 @@ var chart = root.container.children.push(
 chart.get("colors").set("step", 2);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     // the axis ends exactly at the lowest and highest values, not at rounded numbers
@@ -150,7 +150,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series0 = chart.series.push(
   am5xy.LineSeries.new(root, {
     xAxis: xAxis,
@@ -170,7 +170,7 @@ series0.fills.template.setAll({
 });
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series1 = chart.series.push(
   am5xy.LineSeries.new(root, {
     xAxis: xAxis,
@@ -190,7 +190,7 @@ series1.fills.template.setAll({
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -198,7 +198,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal"
 }));
@@ -211,7 +211,7 @@ series0.data.setAll(data);
 series1.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 series1.appear(1000);
 chart.appear(1000, 100);

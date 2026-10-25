@@ -1,13 +1,13 @@
 ---
 title: "VerticalLayout"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/verticallayout/"
+source: "https://docs.amcharts.com/v5/reference/verticallayout/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Stacks a `Container`'s children from top to bottom. Children with a percent height share the height the others leave, in proportion to their percents.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout
 
 ## Import
 

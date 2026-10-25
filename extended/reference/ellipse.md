@@ -1,13 +1,13 @@
 ---
 title: "Ellipse"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/ellipse/"
+source: "https://docs.amcharts.com/v5/reference/ellipse/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Draws an ellipse centered on its `x` and `y`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/graphics/
 
 ## Import
 

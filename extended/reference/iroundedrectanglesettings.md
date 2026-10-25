@@ -1,7 +1,7 @@
 ---
 title: "IRoundedRectangleSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iroundedrectanglesettings/"
+source: "https://docs.amcharts.com/v5/reference/iroundedrectanglesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

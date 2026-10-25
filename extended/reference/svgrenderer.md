@@ -1,7 +1,7 @@
 ---
 title: "SVGRenderer"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/svgrenderer/"
+source: "https://docs.amcharts.com/v5/reference/svgrenderer/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -17,7 +17,7 @@ All layers are in one `<svg>` element. Hit testing is geometric (no hidden canva
 
 Blend modes `DST_OVER`, `SRC_ATOP` and `XOR` are canvas-only: SVG draws them as `NORMAL`.
 
-_Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/getting-started/root-element/#renderer
+_Since 5.21.0._ Docs: https://docs.amcharts.com/v5/getting-started/root-element/#renderer
 
 ## Import
 

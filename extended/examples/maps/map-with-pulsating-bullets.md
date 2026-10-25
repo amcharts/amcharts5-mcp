@@ -25,15 +25,15 @@ Prompt: Create a world map of 18 capital cities marked with pulsing dots: a ring
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     // near-black space behind the satellite picture, shown only with it
@@ -52,14 +52,14 @@ var chart = root.container.children.push(
 );
 
 // Zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {})); // + and - zoom buttons
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create series for background fill
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   // the map fits the countries, not this rectangle around the whole world
   affectsBounds: false
@@ -71,14 +71,14 @@ backgroundSeries.mapPolygons.template.setAll({
 });
 
 // Add background polygon
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 backgroundSeries.data.push({
   geometry: am5map.getGeoRectangle(90, 180, -90, -180) // a rectangle over the whole globe
 });
 
 // Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
 // (visible: false): make it visible for the satellite view
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   visible: false,
   // the map fits the countries, not the whole picture
@@ -86,7 +86,7 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create graticule series: grid lines every 10 degrees
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));
@@ -97,7 +97,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldLow // the world's countries, in low detail
@@ -105,7 +105,7 @@ var polygonSeries = chart.series.push(
 );
 
 // Create point series for markers
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 var colorset = am5.ColorSet.new(root, {}); // the theme's colors; each city takes the next one
 
@@ -274,7 +274,7 @@ for (var i = 0; i < cities.length; i++) {
 // Each city gets the next color of the theme and a pulse of its own, as data: the ring's scale and opacity loop
 // forever, each city with a random start and length, so the rings pulse out of step. The easing ("exp", out) makes
 // the ring grow and fade fast, so it is gone long before the loop ends: a pause before the next pulse
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 function addCity(longitude, latitude, title, url) {
   var color = colorset.next();                // the next theme color
   var duration = 1500 + Math.random() * 2500; // one pulse lasts 1.5 to 4 seconds...

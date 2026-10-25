@@ -1,6 +1,6 @@
 ---
 title: "Force-directed"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/force-directed/"
 scraped: "2026-03-15"
 ---
 
@@ -14,7 +14,7 @@ There are two lists of elements that we can use to configure nodes: `circles` an
 
 `circles.template` can be used to configure node circles. All nodes have them.
 
-The template accepts all [`Circle` settings](https://www.amcharts.com/docs/v5/reference/circle/#Settings).
+The template accepts all [`Circle` settings](https://docs.amcharts.com/v5/reference/circle/#settings).
 
 series.circles.template.setAll({
   fillOpacity: 0.7,
@@ -44,7 +44,7 @@ Outer circles play special role in linked hierarchies: they indicate if node has
 
 The outer circle also has different looks based on whether it is expanded or collapsed.
 
-Those looks are controlled via application of certain [states](https://www.amcharts.com/docs/v5/concepts/settings/states/).
+Those looks are controlled via application of certain [states](https://docs.amcharts.com/v5/concepts/settings/states/).
 
 An outer circle can have four built-in states:
 
@@ -101,7 +101,7 @@ series.outerCircles.template.states.create("hoverDisabled", {
 
 Normally, nodes are sized based on their value, which is either value from data or sum of values of all node children.
 
-The smallest and biggest possible node circle is controlled by series `[minRadius](https://www.amcharts.com/docs/v5/reference/forcedirected/#minRadius_setting)` and `[maxRadius](https://www.amcharts.com/docs/v5/reference/forcedirected/#maxRadius_setting)` settings.
+The smallest and biggest possible node circle is controlled by series `[minRadius](https://docs.amcharts.com/v5/reference/forcedirected/#minRadius_setting)` and `[maxRadius](https://docs.amcharts.com/v5/reference/forcedirected/#maxRadius_setting)` settings.
 
 Both accept numeric values in pixels or percent values relative to the size of the chart itself.
 
@@ -163,7 +163,7 @@ series.nodes.template.setAll({
 
 ### Gaps between nodes
 
-Depending on [force simulation settings](https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/#Layout_and_force_simulation), nodes can be pulled quite close together.
+Depending on [force simulation settings](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/#layout-and-force-simulation), nodes can be pulled quite close together.
 
 We can control how close they can get using series' `nodePadding` setting.
 
@@ -343,7 +343,7 @@ series.nodes.template.setup = function(target) {
 }
 
 
-IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Setup_handler).
+IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://docs.amcharts.com/v5/concepts/settings/list-templates/#setup-handler).
 
 ### Using other shapes
 
@@ -422,7 +422,7 @@ series.nodes.template.setup = function(target) {
 
 ### Link appearance
 
-Links can be configured using series' `links.template`. It accepts all [`HierarchyLink` settings](https://www.amcharts.com/docs/v5/reference/hierarchylink/#Settings).
+Links can be configured using series' `links.template`. It accepts all [`HierarchyLink` settings](https://docs.amcharts.com/v5/reference/hierarchylink/#settings).
 
 series.links.template.setAll({
   strokeWidth: 5,
@@ -486,7 +486,7 @@ IMPORTANT Since categories (via `categoryField`) do not have the requirement to 
 
 ### Link bullets
 
-Refer to "[Hierarchy link bullets](https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-link-bullets/)".
+Refer to "[Hierarchy link bullets](https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-link-bullets/)".
 
 ## Labels
 
@@ -506,7 +506,7 @@ series.labels.template.setAll({
   text: "{category}"
 });
 
-Force-directed series uses `[Label](https://www.amcharts.com/docs/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+Force-directed series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -524,9 +524,9 @@ series.labels.template.setAll({
   fontSize: 14
 });
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IForceDirectedDataItem](https://www.amcharts.com/docs/v5/reference/iforcedirecteddataitem/)` for available keys for the data placeholders.
+Refer to `[IForceDirectedDataItem](https://docs.amcharts.com/v5/reference/iforcedirecteddataitem/)` for available keys for the data placeholders.
 
 ### Disabling labels
 
@@ -546,9 +546,9 @@ series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
 series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IForceDirectedDataItem](https://www.amcharts.com/docs/v5/reference/iforcedirecteddataitem/)` for available keys for the data placeholders.
+Refer to `[IForceDirectedDataItem](https://docs.amcharts.com/v5/reference/iforcedirecteddataitem/)` for available keys for the data placeholders.
 
 ## Layout and force simulation
 
@@ -660,14 +660,14 @@ The above will start showing actual nodes halfway through the settling animation
 
 It's possible to make force-directed tree zoomable by utilizing `ZoomableContainer`.
 
-For more information and an example, refer to "Containers: [Zoomable container](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Zoomable_container)".
+For more information and an example, refer to "Containers: [Zoomable container](https://docs.amcharts.com/v5/concepts/common-elements/containers/#zoomable-container)".
 
 ## Related tutorials
 
--   [Limit to single open branch in ForceDirectedSeries](https://www.amcharts.com/docs/v5/tutorials/limit-to-single-open-branch-in-forcedirectedseries/)
--   [Consistent radius of outer circles of a Force-Directed Tree](https://www.amcharts.com/docs/v5/tutorials/consistent-radius-of-outer-circles-of-a-force-directed-tree/)
--   [Highlighting links of a force-directed node on hover](https://www.amcharts.com/docs/v5/tutorials/highlighting-links-of-a-force-directed-node-on-hover/)
--   [Force-directed tree with adaptively positioned labels](https://www.amcharts.com/docs/v5/tutorials/force-directed-tree-with-adaptively-positioned-labels/)
--   [ForceDirected with custom nodes/buttons/legend](https://www.amcharts.com/docs/v5/tutorials/forcedirected-with-custom-nodes-buttons-legend/)
--   [Applying individual styles for Force-directed links](https://www.amcharts.com/docs/v5/tutorials/applying-individual-styles-for-force-directed-links/)
--   [Centering on a clicked node in a Force-Directed Tree](https://www.amcharts.com/docs/v5/tutorials/centering-on-a-clicked-node-in-a-force-directed-tree/)
+-   [Limit to single open branch in ForceDirectedSeries](https://docs.amcharts.com/v5/tutorials/limit-to-single-open-branch-in-forcedirectedseries/)
+-   [Consistent radius of outer circles of a Force-Directed Tree](https://docs.amcharts.com/v5/tutorials/consistent-radius-of-outer-circles-of-a-force-directed-tree/)
+-   [Highlighting links of a force-directed node on hover](https://docs.amcharts.com/v5/tutorials/highlighting-links-of-a-force-directed-node-on-hover/)
+-   [Force-directed tree with adaptively positioned labels](https://docs.amcharts.com/v5/tutorials/force-directed-tree-with-adaptively-positioned-labels/)
+-   [ForceDirected with custom nodes/buttons/legend](https://docs.amcharts.com/v5/tutorials/forcedirected-with-custom-nodes-buttons-legend/)
+-   [Applying individual styles for Force-directed links](https://docs.amcharts.com/v5/tutorials/applying-individual-styles-for-force-directed-links/)
+-   [Centering on a clicked node in a Force-Directed Tree](https://docs.amcharts.com/v5/tutorials/centering-on-a-clicked-node-in-a-force-directed-tree/)

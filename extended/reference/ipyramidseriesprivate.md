@@ -1,7 +1,7 @@
 ---
 title: "IPyramidSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipyramidseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/ipyramidseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

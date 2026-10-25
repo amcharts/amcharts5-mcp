@@ -1,7 +1,7 @@
 ---
 title: "IPolygonPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipolygonprivate/"
+source: "https://docs.amcharts.com/v5/reference/ipolygonprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

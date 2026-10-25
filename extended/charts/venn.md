@@ -1,6 +1,6 @@
 ---
 title: "Venn diagram"
-source: "https://www.amcharts.com/docs/v5/charts/venn/"
+source: "https://docs.amcharts.com/v5/charts/venn/"
 scraped: "2026-03-15"
 ---
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/venn.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Venn series
 
@@ -30,7 +30,7 @@ Venn diagrams are chart-less. This means that rather than creating a chart eleme
 
 Like everywhere else, we use its `new()` method to instantiate series, then push it `children` of a parent container.
 
-If we are not intending to add any other controls (e.g. legend, or title) to the chart, we can push directly to `root.container.children`, or we can create a [wrapper container](https://www.amcharts.com/docs/v5/charts/venn/#Additional_controls) as explained later on in this tutorial.
+If we are not intending to add any other controls (e.g. legend, or title) to the chart, we can push directly to `root.container.children`, or we can create a [wrapper container](https://docs.amcharts.com/v5/charts/venn/#additional-controls) as explained later on in this tutorial.
 
 let series = root.container.children.push(
   am5venn.Venn.new(root, {
@@ -120,7 +120,7 @@ series.data.setAll(\[
 
 IMPORTANTIt's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFOThere are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFOThere are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Circles vs intersections
 
@@ -161,17 +161,9 @@ There are a few ways to control how colors are assigned to slices.
 
 #### Auto-assigned colors
 
-A series will automatically assign a unique color to each slice from its own [color set](https://www.amcharts.com/docs/v5/reference/xychart/#colors_setting).
+A series will automatically assign a unique color to each slice from its own [color set](https://docs.amcharts.com/v5/reference/xychart/#colors_setting).
 
-Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme), or a [reusable full theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/), e.g.:
-
-series.get("colors").set("colors", \[
-  am5.color(0x095256),
-  am5.color(0x087f8c),
-  am5.color(0x5aaa95),
-  am5.color(0x86a873),
-  am5.color(0xbb9f06)
-\]);
+Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
 series.get("colors").set("colors", \[
   am5.color(0x095256),
@@ -181,7 +173,15 @@ series.get("colors").set("colors", \[
   am5.color(0xbb9f06)
 \]);
 
-MORE INFOA "[Color sets](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Setting_own_list_of_colors)" section of our color tutorial has more details and code samples.
+series.get("colors").set("colors", \[
+  am5.color(0x095256),
+  am5.color(0x087f8c),
+  am5.color(0x5aaa95),
+  am5.color(0x86a873),
+  am5.color(0xbb9f06)
+\]);
+
+MORE INFOA "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 #### Color data field
 
@@ -245,7 +245,7 @@ series.data.setAll(\[
   { name: "X", value: 5, sets: \["A", "B"\], sliceSettings: { fill: am5.color(0x5aaa95) } }
 }\]);
 
-For more information on how template fields work, refer to "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+For more information on how template fields work, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 ### Configuring slices
 
@@ -271,7 +271,7 @@ NOTESetting a value on a template will also update existing slices created using
 
 When a slice is hovered, a special visual element is shown over it to highlight the shape of a hovered slice.
 
-We can configure it using Venn's `hoverGraphics` which holds an instance of `[Graphics](https://www.amcharts.com/docs/v5/reference/graphics/)` to configure its appearance.
+We can configure it using Venn's `hoverGraphics` which holds an instance of `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)` to configure its appearance.
 
 series.hoverGraphics.setAll({
   strokeDasharray: \[3, 3\],
@@ -305,7 +305,7 @@ series.labels.template.setAll({
   text: "{category}"
 });
 
-Pie series uses `[Label](https://www.amcharts.com/docs/v5/reference/label/)` elements for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+Pie series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` elements for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -317,7 +317,7 @@ series.labels.template.set("text", "{category}: \[bold\]{value}\[/\])");
 
 series.labels.template.set("text", "{category}: \[bold\]{value}\[/\])");
 
-Contents of the label can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
 ### Disabling labels
 
@@ -337,7 +337,7 @@ series.slices.template.set("tooltipText", "{category}: \[bold\]{value}\[/\]");
 
 series.slices.template.set("tooltipText", "{category}: \[bold\]{value}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
 ## Additional controls
 
@@ -375,7 +375,7 @@ var series = root.container.children.push(
   })
 );
 
-NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout)".
+NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
 
 ### Chart title
 
@@ -405,7 +405,7 @@ legend.data.setAll(chart.dataItems);
 var legend = container.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.dataItems);
 
-MORE INFOFor more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFOFor more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Complete example
 

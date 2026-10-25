@@ -1,6 +1,6 @@
 ---
 title: "Duration axis"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/duration-axis/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/duration-axis/"
 scraped: "2026-03-15"
 ---
 
@@ -28,7 +28,7 @@ var yAxis = chart.yAxes.push(am5xy.DurationAxis.new(root, {
 
 The above will mean that numeric values should be treated as hours, e.g. a value of 60 will mean 60 hours.
 
-If `baseUnit` is not set for axis, it will use a `baseUnit` set on a [global duration formatter](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-durations/).
+If `baseUnit` is not set for axis, it will use a `baseUnit` set on a [global duration formatter](https://docs.amcharts.com/v5/concepts/formatters/formatting-durations/).
 
 ## Label format
 
@@ -42,7 +42,7 @@ root.numberFormatter.set("durationFormat", "mm:ss");
 
 If it's not set, the axis will choose a specific duration format which is suitable for specific base unit and scope of the values of the axis.
 
-For more information, refer to "Formatting durations: [Default format](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-durations/#Default_format)".
+For more information, refer to "Formatting durations: [Default format](https://docs.amcharts.com/v5/concepts/formatters/formatting-durations/#default-format)".
 
 ## Example
 

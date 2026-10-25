@@ -1,7 +1,7 @@
 ---
 title: "ComparisonControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/comparisoncontrol/"
+source: "https://docs.amcharts.com/v5/reference/comparisoncontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

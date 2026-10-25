@@ -25,17 +25,17 @@ Prompt: Create a radar timeline of temperature anomalies for about a hundred cou
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Create custom theme
-// https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme
+// https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme
 const myTheme = am5.Theme.new(root);
 myTheme.rule("Label").set("fontSize", 10);       // all labels 10px
 myTheme.rule("Grid").set("strokeOpacity", 0.06); // very faint grid lines
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -171,7 +171,7 @@ var currentYear = 1995; // the year shown first
 var colorSet = am5.ColorSet.new(root, {}); // colors for the continent bands
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,                  // no dragging the plot around
   panY: false,
@@ -184,7 +184,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX",       // drag around the ring to zoom in on some countries
   radius: am5.percent(40), // the cursor line ends at the inner edge of the ring...
@@ -193,7 +193,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   minGridDistance: 10 // small, so every country keeps its name
 });
@@ -226,7 +226,7 @@ var valueAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
   calculateAggregates: true, // works out the lowest and highest values, which the heat rules need
   name: "Series",
@@ -242,7 +242,7 @@ var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
 series.columns.template.set("strokeOpacity", 0); // no column outlines
 
 // Set up heat rules
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: series.columns.template,
   key: "fill",
@@ -260,7 +260,7 @@ var yearLabel = chart.radarContainer.children.push(am5.Label.new(root, {
 }));
 
 // Generate and set data
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = generateRadarData();
 series.data.setAll(data);
 categoryAxis.data.setAll(data);

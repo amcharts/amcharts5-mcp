@@ -25,11 +25,11 @@ Prompt: Create a flight routes map with two origin cities, London and Vilnius, a
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     // near-black space behind the satellite picture, shown only with it
@@ -61,7 +61,7 @@ var chart = root.container.children.push(
 );
 
 // Zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
@@ -71,7 +71,7 @@ zoomControl.homeButton.set("visible", true);
 var globe = false;
 
 // Create series for the water: a faint fill behind the countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   // the map fits the countries, not this rectangle around the whole world
   affectsBounds: false
@@ -89,7 +89,7 @@ waterSeries.data.push({
 
 // Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
 // (visible: false): make it visible for the satellite view
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   visible: false,
   // the map fits the countries, not the whole picture
@@ -97,7 +97,7 @@ var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
     geoJSON: am5geodata_worldLow
@@ -112,7 +112,7 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create line series for trajectory lines
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
 var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 lineSeries.mapLines.template.setAll({
   stroke: root.interfaceColors.get("alternativeBackground"), // contrasting with the background...
@@ -120,7 +120,7 @@ lineSeries.mapLines.template.setAll({
 });
 
 // Create point series for markers
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var originSeries = chart.series.push(
   am5map.MapPointSeries.new(root, { idField: "id" }) // so a city can be found by its id (getDataItemById)
 );

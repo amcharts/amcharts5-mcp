@@ -1,7 +1,7 @@
 ---
 title: "ITextStyle"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itextstyle/"
+source: "https://docs.amcharts.com/v5/reference/itextstyle/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

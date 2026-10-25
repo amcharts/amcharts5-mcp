@@ -15,7 +15,7 @@ const svg = am5.renderToSVG(root);
 const pixels = am5.renderToSVG(pixelSeries.pixels);
 ```
 
-_Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/
+_Since 5.21.0._ Docs: https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/
 
 ## Import
 

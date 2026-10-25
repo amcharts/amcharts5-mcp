@@ -1,6 +1,6 @@
 ---
 title: "amCharts + AI"
-source: "https://www.amcharts.com/docs/v5/ai/"
+source: "https://docs.amcharts.com/v5/ai/"
 scraped: "2026-10-08"
 ---
 
@@ -24,7 +24,7 @@ The good news: most AI platforms now offer **web search and documentation fetchi
 The bottom line: **the closer the AI is to current documentation, the better the results.** There are three ways to help:
 
 -   **[Bundled docs](#bundled-docs)** - `AGENTS.md` and a `docs/` folder that come with the library itself, matching the version you installed. Nothing to set up: just tell the AI where they are.
--   **[MCP Server](https://www.amcharts.com/docs/v5/ai/mcp/)** - the AI queries our documentation, examples, and API reference on demand. Use the hosted server (just add a URL, no install) or run it yourself. Works with any MCP client: Claude Code, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI, Cline, Zed, and browser chat (claude.ai, ChatGPT) via a custom connector.
+-   **[MCP Server](https://docs.amcharts.com/v5/ai/mcp/)** - the AI queries our documentation, examples, and API reference on demand. Use the hosted server (just add a URL, no install) or run it yourself. Works with any MCP client: Claude Code, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI, Cline, Zed, and browser chat (claude.ai, ChatGPT) via a custom connector.
 -   **[AI Skill](#skill-files)** - a structured reference the AI reads upfront. Works with any AI tool, including those without MCP support.
 
 The sections below cover how to get the best results depending on your setup.
@@ -45,7 +45,7 @@ Before writing chart code, read node\_modules/@amcharts/amcharts5/AGENTS.md and 
 
 With the ZIP download, use the path where you placed the amCharts files instead.
 
-The bundled docs work with any AI tool that can read project files, and work offline. For the full documentation and API reference, add the [MCP server](https://www.amcharts.com/docs/v5/ai/mcp/) as well.
+The bundled docs work with any AI tool that can read project files, and work offline. For the full documentation and API reference, add the [MCP server](https://docs.amcharts.com/v5/ai/mcp/) as well.
 
 ## Scenario 1: Browser-based chat
 
@@ -57,7 +57,7 @@ Browser-based AI services like [Claude](https://claude.ai), [ChatGPT](https://ch
 
 This happens automatically in most cases - you don't need to do anything special.
 
-**Even better:** Claude (claude.ai) and ChatGPT let you add a remote MCP server as a custom connector. Where connector support is available on your plan, add `https://mcp.amcharts.com/mcp` under **Settings > Connectors > Add custom connector** to give the chat direct, on-demand access to the full amCharts documentation, examples, and API reference - no install required. See the [MCP server guide](https://www.amcharts.com/docs/v5/ai/mcp/).
+**Even better:** Claude (claude.ai) and ChatGPT let you add a remote MCP server as a custom connector. Where connector support is available on your plan, add `https://mcp.amcharts.com/mcp` under **Settings > Connectors > Add custom connector** to give the chat direct, on-demand access to the full amCharts documentation, examples, and API reference - no install required. See the [MCP server guide](https://docs.amcharts.com/v5/ai/mcp/).
 
 **Claude.ai also accepts skills directly.** Download the [amCharts 5 Skill](https://github.com/amcharts/amcharts5-skill) repo as a ZIP, go to **Settings > Skills > Upload skill**, and toggle it on. Claude will then apply the amCharts rules in every chat without you having to paste anything.
 
@@ -138,7 +138,7 @@ Can search the web for current info.
 > **Example prompt:**
 > 
 > This code throws "\[object Object\] is not a valid color" on line 42.
-> Check the amCharts 5 docs at https://www.amcharts.com/docs/v5/ and fix it.
+> Check the amCharts 5 docs at https://docs.amcharts.com/v5/ and fix it.
 
 ## Scenario 2: AI code editors and CLI agents
 
@@ -158,11 +158,11 @@ This leads to:
 
 #### 1\. Use the MCP Server (recommended)
 
-The **[amCharts 5 MCP Server](https://www.amcharts.com/docs/v5/ai/mcp/)** is the easiest and most comprehensive way to give your AI assistant access to amCharts documentation. It provides **1,500+ documents** on demand: 140+ documentation pages, 280+ code examples, and 1,000+ class API references. The AI queries only what it needs - no manual copying, no context waste.
+The **[amCharts 5 MCP Server](https://docs.amcharts.com/v5/ai/mcp/)** is the easiest and most comprehensive way to give your AI assistant access to amCharts documentation. It provides **1,500+ documents** on demand: 140+ documentation pages, 280+ code examples, and 1,000+ class API references. The AI queries only what it needs - no manual copying, no context waste.
 
 Works with Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI, Cline, Zed, and any other MCP client - and, via a custom connector, browser chat like claude.ai and ChatGPT. The hosted server needs no install; clients that only speak stdio can bridge to it with `npx mcp-remote https://mcp.amcharts.com/mcp`.
 
-[**See installation instructions**](https://www.amcharts.com/docs/v5/ai/mcp/)
+[**See installation instructions**](https://docs.amcharts.com/v5/ai/mcp/)
 
 #### 2\. Enable web search (if available)
 
@@ -184,7 +184,7 @@ Cursor
 
 `@Docs`
 
-Go to **Cursor Settings > Indexing & Docs > Add Doc** and add `https://www.amcharts.com/docs/v5/`. Cursor will index the docs.
+Go to **Cursor Settings > Indexing & Docs > Add Doc** and add `https://docs.amcharts.com/v5/`. Cursor will index the docs.
 
 Windsurf
 
@@ -224,7 +224,7 @@ This is the **single most impactful thing** you can do if MCP is not available. 
 
 1.  Open **Cursor Settings > Indexing & Docs**
 2.  Click **"+ Add Doc"**
-3.  Paste: `https://www.amcharts.com/docs/v5/`
+3.  Paste: `https://docs.amcharts.com/v5/`
 4.  Let Cursor index the pages
 5.  When prompting, use `@Docs amCharts` to include the documentation as context
 
@@ -300,7 +300,7 @@ Having a working amCharts example file in your project gives the AI something co
 
 #### 7\. Paste relevant docs into the prompt
 
-When all else fails, the most reliable approach is to copy a relevant section from the [amCharts 5 documentation](https://www.amcharts.com/docs/v5/) directly into your prompt:
+When all else fails, the most reliable approach is to copy a relevant section from the [amCharts 5 documentation](https://docs.amcharts.com/v5/) directly into your prompt:
 
 Here is the relevant amCharts 5 documentation for XY charts:
 
@@ -344,7 +344,7 @@ Add the hosted URL - or one install command to run it locally
 
 Any AI tool (Claude, ChatGPT, Cursor, Copilot, etc.)
 
-MCP-compatible tools (see [MCP setup guide](https://www.amcharts.com/docs/v5/ai/mcp/))
+MCP-compatible tools (see [MCP setup guide](https://docs.amcharts.com/v5/ai/mcp/))
 
 **Best for**
 
@@ -358,7 +358,7 @@ Manual update needed (git pull)
 
 Hosted server is always current; local install updates via npx
 
-> **Recommendation:** If your tool supports MCP, use the [MCP server](https://www.amcharts.com/docs/v5/ai/mcp/) - it has much more content and uses context more efficiently. If your tool doesn't support MCP, use the skill. You can also use both.
+> **Recommendation:** If your tool supports MCP, use the [MCP server](https://docs.amcharts.com/v5/ai/mcp/) - it has much more content and uses context more efficiently. If your tool doesn't support MCP, use the skill. You can also use both.
 
 ## Scenario 3: Using the API
 
@@ -428,7 +428,7 @@ Always use amCharts 5 (not v4). When generating chart code:
 - Import from @amcharts/amcharts5 and sub-packages
 - Apply am5themes\_Animated theme by default
 - If unsure about any API detail, search the documentation
-  at https://www.amcharts.com/docs/v5/ before writing code
+  at https://docs.amcharts.com/v5/ before writing code
 
 > **Pro tip:** For API usage without web search or MCP, paste `SKILL.md` plus the relevant reference file (e.g., `references/xy.md`) directly into your system prompt. This gives the model all the critical patterns without needing to search.
 
@@ -522,7 +522,7 @@ Yes - #fetch / #websearch
 
 Yes - built-in
 
-**[MCP server](https://www.amcharts.com/docs/v5/ai/mcp/)**
+**[MCP server](https://docs.amcharts.com/v5/ai/mcp/)**
 
 Yes - via connector
 
@@ -599,9 +599,9 @@ Yes - .claude/skills/
 ## Summary
 
 1.  **Browser-based chat** gives the best results out of the box - web search is built in and handles most cases automatically. Adding the MCP connector or uploading the skill makes it even better. For charts shown inside the chat, [load amCharts from cdnjs](#in-chat-charts).
-2.  **Code editors and CLI agents** need a little setup but can match browser-quality results. The **[MCP server](https://www.amcharts.com/docs/v5/ai/mcp/)** is the fastest path - add the hosted URL (or one install command) and the AI gets 1,500+ documentation pages, code examples, and API references.
-3.  **The single biggest improvement** in any scenario is making sure the AI has access to the [amCharts 5 documentation](https://www.amcharts.com/docs/v5/), whether through MCP, web search, doc indexing, the skill, the [bundled docs](#bundled-docs), or pasting docs into the prompt.
+2.  **Code editors and CLI agents** need a little setup but can match browser-quality results. The **[MCP server](https://docs.amcharts.com/v5/ai/mcp/)** is the fastest path - add the hosted URL (or one install command) and the AI gets 1,500+ documentation pages, code examples, and API references.
+3.  **The single biggest improvement** in any scenario is making sure the AI has access to the [amCharts 5 documentation](https://docs.amcharts.com/v5/), whether through MCP, web search, doc indexing, the skill, the [bundled docs](#bundled-docs), or pasting docs into the prompt.
 4.  **Always specify amCharts 5** in your prompts to avoid confusion with older versions. An `AGENTS.md` with our rules file does this for every prompt.
-5.  **For MCP-compatible tools** (Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI), add the [MCP server](https://www.amcharts.com/docs/v5/ai/mcp/) - it's the most comprehensive and context-efficient option available.
+5.  **For MCP-compatible tools** (Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI), add the [MCP server](https://docs.amcharts.com/v5/ai/mcp/) - it's the most comprehensive and context-efficient option available.
 
 Still unsure where to start? Open [Claude](https://claude.ai) or [ChatGPT](https://chatgpt.com), browse our [demo gallery](https://www.amcharts.com/demos/) where most demos include sample AI prompts you can copy, and see the results for yourself.

@@ -1,6 +1,6 @@
 ---
 title: "Column series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/"
 scraped: "2026-10-08"
 ---
 
@@ -34,7 +34,7 @@ var series = chart.series.push(
 
 ### Stroke and fill colors
 
-Like with any series, it comes with stroke and fill color [pre-set from the theme](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/#Auto_assigned_colors).
+Like with any series, it comes with stroke and fill color [pre-set from the theme](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#auto-assigned-colors).
 
 Should we want to override theme's color, we can set it's `stroke` (column outline) and/or `fill` settings.
 
@@ -107,7 +107,7 @@ Floating columns with clustering disabled
 
 ### Enabling stacking
 
-[Stacking](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Stacked_series) for column series is enabled just like for any other XY series: by setting its `stacked` setting to `true`.
+[Stacking](https://docs.amcharts.com/v5/charts/xy-chart/series/#stacked-series) for column series is enabled just like for any other XY series: by setting its `stacked` setting to `true`.
 
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
@@ -131,7 +131,7 @@ var series = chart.series.push(
   }) 
 );
 
-MORE INFO For more information about negative and 100% stacking, please refer to "[XY chart series: Stacked series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Stacked_series)".
+MORE INFO For more information about negative and 100% stacking, please refer to "[XY chart series: Stacked series](https://docs.amcharts.com/v5/charts/xy-chart/series/#stacked-series)".
 
 ## Column width
 
@@ -173,7 +173,7 @@ series.columns.template.setAll({
 
 ## Floating columns
 
-Normally, columns start at base value (zero). We can make columns start at different values using [open data fields](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/#Open_data_input_fields): `openValueXField` or `openValueYField`.
+Normally, columns start at base value (zero). We can make columns start at different values using [open data fields](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#open-data-input-fields): `openValueXField` or `openValueYField`.
 
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
@@ -232,7 +232,7 @@ series.columns.template.states.create("dropFromPrevious", {
   stroke: am5.color(0xe4572e)
 });
 
-Naturally, we can also [modify global theme](https://www.amcharts.com/docs/v5/concepts/themes/#Modifying_default_theme) as well:
+Naturally, we can also [modify global theme](https://docs.amcharts.com/v5/concepts/themes/) as well:
 
 root.defaultTheme.rule("RoundedRectangle", \["series", "column"\]).create("riseFromPrevious", {
   fill: am5.color(0x76b041),

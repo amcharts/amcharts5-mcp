@@ -25,11 +25,11 @@ Prompt: Create a process control chart of 23 samples, with a shaded band between
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -62,7 +62,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: true,     // drag the plot to pan sideways...
@@ -73,7 +73,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     renderer: am5xy.AxisRendererX.new(root, {
@@ -90,7 +90,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.LineSeries.new(root, {
     // bullets hide when points get closer than 10px, so they don't crowd a zoomed-out line
@@ -129,7 +129,7 @@ series.bullets.push(function () {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis
 }));
@@ -141,7 +141,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000, 100);
 chart.appear(1000, 100);
 

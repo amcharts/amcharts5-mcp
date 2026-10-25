@@ -25,11 +25,11 @@ Prompt: Create a smoothed line chart of yearly values from 1950 to 2005 with two
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -188,7 +188,7 @@ var data = [{
 }];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   focusable: true, // the chart can take keyboard focus, for keyboard users
   panX: true,      // drag the plot sideways to pan...
@@ -200,7 +200,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.5, // pan up to half the visible range past the first and last year
   baseInterval: {    // one point per year
@@ -225,7 +225,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 yAxis.get("renderer").labels.template.set("minPosition", 0.05);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.SmoothedXLineSeries.new(root, {
   // bullets show only while the points are at least 10px apart
   minBulletDistance: 10,
@@ -244,7 +244,7 @@ var series = chart.series.push(am5xy.SmoothedXLineSeries.new(root, {
 series.fills.template.setAll({ fillOpacity: 0.2, visible: true }); // a faint fill under the line
 
 // Add series axis range for a different stroke/fill
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Series_axis_ranges
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#series-axis-ranges
 // from zero to well above the highest value: everything above zero gets the range's color
 var rangeDataItem = yAxis.makeDataItem({
   value: 0,
@@ -266,7 +266,7 @@ range.fills.template.setAll({
 });
 
 // Set up data processor to parse string dates
-// https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+// https://docs.amcharts.com/v5/concepts/data/#pre-processing-data
 series.data.processor = am5.DataProcessor.new(root, {
   dateFormat: "yyyy",  // the years are strings like "1950"...
   dateFields: ["year"] // ...in the year field
@@ -301,7 +301,7 @@ series.bullets.push(function() {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis // the cursor snaps to whole years
 }));
@@ -312,7 +312,7 @@ cursor.lineY.set("visible", false); // no horizontal cursor line, only the verti
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

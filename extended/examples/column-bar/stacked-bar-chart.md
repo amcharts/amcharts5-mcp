@@ -25,7 +25,7 @@ Prompt: Create a horizontal stacked bar chart of six regions’ values over thre
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 var myTheme = am5.Theme.new(root);
@@ -36,7 +36,7 @@ myTheme.rule("Grid", ["base"]).setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -44,7 +44,7 @@ root.setThemes([
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // no panning
   panY: false,
@@ -79,7 +79,7 @@ var data = [{
 }]
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {});
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "year",
@@ -104,7 +104,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // centered...
   x: am5.p50        // ...under the chart
@@ -114,7 +114,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.valueLabels.template.set("forceHidden", true);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // adds the bars of one region, stacked on the regions added before
 function makeSeries(name, fieldName) {
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
@@ -135,7 +135,7 @@ function makeSeries(name, fieldName) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 
   // the value in the middle of each bar
@@ -162,7 +162,7 @@ makeSeries("Middle East", "meast");
 makeSeries("Africa", "africa");
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

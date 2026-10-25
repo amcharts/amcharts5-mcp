@@ -1,7 +1,7 @@
 ---
 title: "IRootSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/irootsettings/"
+source: "https://docs.amcharts.com/v5/reference/irootsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,10 +16,10 @@ TypeScript: not exported by name from the package.
 - **useSafeResolution** (`boolean`) — default `true` — Draws the chart at a resolution of `1` on iOS and iPadOS devices instead of the screen's pixel ratio, to stay within their memory limits. Set to `false` for sharper charts there.
 - **tooltipContainerBounds** (`{ top: number; left: number; right: number; bottom: number; }`) — Extra space in pixels on each side of the chart where tooltips can still be drawn, letting them go outside the chart's container. _Since 5.2.24._
 - **accessible** (`boolean`) — default `true` — Set to `false` to disable all accessibility features. NOTE: once disabled, accessibility cannot be re-enabled on a live `Root` object. _Since 5.3.0._
-- **focusable** (`boolean`) — default `false` — If set to `true`, the parent inner `<div>` element will become a focusable element. _Since 5.3.17._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Accessibility_of_Root_element
+- **focusable** (`boolean`) — default `false` — If set to `true`, the parent inner `<div>` element will become a focusable element. _Since 5.3.17._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#accessibility-of-root-element
 - **focusPadding** (`number`) — default `2` — Distance between focused element and its highlight square in pixels. _Since 5.6.0._
-- **ariaLabel** (`string`) — If set to some string, it will be used as inner `<div>` ARIA-LABEL. Should be used in conjunction with `focusable`. _Since 5.3.17._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Accessibility_of_Root_element
-- **role** (`string`) — Allows setting a "role" for the inner `<div>`. _Since 5.3.17._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Accessibility_of_Root_element
+- **ariaLabel** (`string`) — If set to some string, it will be used as inner `<div>` ARIA-LABEL. Should be used in conjunction with `focusable`. _Since 5.3.17._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#accessibility-of-root-element
+- **role** (`string`) — Allows setting a "role" for the inner `<div>`. _Since 5.3.17._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#accessibility-of-root-element
 - **calculateSize** (`(dimensions: DOMRect) => ISize`) — A function that returns the width and height in pixels to draw the chart at, given the container's measured box. It runs when the chart is created and on every resize.
 - **sanitizeHTML** (`boolean`) — default `true` — Cleans potentially malicious code out of HTML content (`html` and `labelHTML` settings, HTML tooltips, modals, export menu labels) before it goes on the page. Turn it off only if you trust all HTML content: unsanitized HTML from untrusted data can lead to XSS attacks. _Since 5.19.0._
 - **fontFamily** (`string`) — Font family for all labels. It overrides the theme's, but not a `fontFamily` set on a label itself. _Since 5.20.2._

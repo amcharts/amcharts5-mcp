@@ -25,18 +25,18 @@ Prompt: Create a spectrum chart: one horizontal bar that shows a machine’s sta
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // no panning
   panY: false,
@@ -78,7 +78,7 @@ data.forEach(function(item) {
 });
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
   renderer: am5xy.AxisRendererY.new(root, {})
@@ -94,7 +94,7 @@ var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
 xAxis.get("renderer").labels.template.set("forceHidden", true);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -114,7 +114,7 @@ series.columns.template.setAll({
 series.data.setAll(data);
 
 // A time label where each period starts, and one at the end
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
 function addTimeLabel(value, dropped, atEnd) {
   var rangeDataItem = xAxis.makeDataItem({
     value: value // the time to label
@@ -152,7 +152,7 @@ var last = data[data.length - 1];
 addTimeLabel(last.to, !dropped && last.to - last.from < 30 * 60 * 1000, true);
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   nameField: "name",        // legend items from plain data: the name...
   fillField: "color",       // ...and the color, for the marker's fill...
@@ -171,7 +171,7 @@ legend.data.setAll(Object.keys(colors).map(function(status) {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
 ```

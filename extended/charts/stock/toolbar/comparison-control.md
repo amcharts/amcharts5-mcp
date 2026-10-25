@@ -1,10 +1,10 @@
 ---
 title: "Comparison control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/comparison-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/comparison-control/"
 scraped: "2026-10-08"
 ---
 
-Comparison control can be added to [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/), and is used to interactively add additional series to the Stock chart, so that they can be compared to main series.
+Comparison control can be added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/), and is used to interactively add additional series to the Stock chart, so that they can be compared to main series.
 
 ## Adding
 
@@ -247,7 +247,7 @@ comparisonControl.events.on("selected", function(ev) {
 function loadData(ticker, series) {
 
   // Load external data
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting\_data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   am5.net.load("https://mywebserver.com/data/" + ticker + ".csv").then(function(result) {
 
     // Parse loaded data
@@ -291,7 +291,7 @@ comparisonControl.events.on("selected", function(ev) {
 function loadData(ticker, series) {
 
   // Load external data
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting\_data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   am5.net.load("https://mywebserver.com/data/" + ticker + ".csv").then(function(result) {
 
     // Parse loaded data
@@ -317,13 +317,13 @@ function loadData(ticker, series) {
 
 }
 
-NOTEThe above code is using amCharts 5 built-in [`net.load()` utility](https://www.amcharts.com/docs/v5/concepts/data/#External_data) as well as data parser and [processor](https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data) to asynchronously load and parse data.
+NOTEThe above code is using amCharts 5 built-in [`net.load()` utility](https://docs.amcharts.com/v5/concepts/data/#external-data) as well as data parser and [processor](https://docs.amcharts.com/v5/concepts/data/#pre-processing-data) to asynchronously load and parse data.
 
 ## Percent scale
 
 By default, adding a comparison series will switch the chart into a "percent mode".
 
-For more information, check out "[Percent mode](https://www.amcharts.com/docs/v5/charts/stock/percent-mode/)" tutorial.
+For more information, check out "[Percent mode](https://docs.amcharts.com/v5/charts/stock/percent-mode/)" tutorial.
 
 ## Examples
 

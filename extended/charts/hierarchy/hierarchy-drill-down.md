@@ -1,6 +1,6 @@
 ---
 title: "Hierarchy drill-down"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-drill-down/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-drill-down/"
 scraped: "2026-03-15"
 ---
 
@@ -179,7 +179,7 @@ We can also set up external URLs to be opened when hierarchy nodes are clicked.
 
 For that we'll need two things:
 
--   [Disable built-in drill-down](https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-drill-down/#Disabling_drill_down) behavior (section above).
+-   [Disable built-in drill-down](https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-drill-down/#disabling-drill-down) behavior (section above).
 -   Attach `click` event to nodes that would open new window/tab/etc.
 
 // Disable collapsing/exploding of nodes
@@ -213,7 +213,7 @@ series.nodes.template.events.on("click", function(ev) {
 
 ### Triggering drill-down
 
-It's also possible to trigger drill-down/up via API, using series' `[selectDataItem()](https://www.amcharts.com/docs/v5/reference/sunburst/#selectDataItem_method)` method.
+It's also possible to trigger drill-down/up via API, using series' `[selectDataItem()](https://docs.amcharts.com/v5/reference/sunburst/#selectDataItem_method)` method.
 
 It accepts a single parameter - a data item of the node we want to drill-down into.
 

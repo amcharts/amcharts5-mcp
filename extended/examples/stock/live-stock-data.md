@@ -26,7 +26,7 @@ Prompt: Create a live stock chart of one-minute candles of random prices for a m
 ```javascript
 // Create root element
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root); // a theme of our own, for the rule below
@@ -44,7 +44,7 @@ root.setThemes([
 
 // Create a stock chart
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Instantiating_the_chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
 var stockChart = root.container.children.push(
   am5stock.StockChart.new(root, {
     paddingRight: 0 // no gap at the right edge
@@ -53,12 +53,12 @@ var stockChart = root.container.children.push(
 
 // Set global number format
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
 root.numberFormatter.set("numberFormat", "#,###.00"); // thousands separators, always two decimals
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Adding_panels
+// https://docs.amcharts.com/v5/charts/stock/
 var mainPanel = stockChart.panels.push(
   am5stock.StockPanel.new(root, {
     wheelY: "zoomX", // the mouse wheel zooms in on the time
@@ -69,7 +69,7 @@ var mainPanel = stockChart.panels.push(
 
 // Create value axis
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var valueAxis = mainPanel.yAxes.push(
   am5xy.ValueAxis.new(root, {
     renderer: am5xy.AxisRendererY.new(root, {
@@ -113,7 +113,7 @@ if (currentGrid) {
 
 // Add series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var valueSeries = mainPanel.series.push(
   am5xy.CandlestickSeries.new(root, {
     // draws the candles straight onto the canvas, faster (no rounded corners or column events)
@@ -136,12 +136,12 @@ var valueSeries = mainPanel.series.push(
 
 // Set main value series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("stockSeries", valueSeries);
 
 // Add a stock legend
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 var valueLegend = mainPanel.plotContainer.children.push(
   am5stock.StockLegend.new(root, {
     stockChart: stockChart
@@ -150,12 +150,12 @@ var valueLegend = mainPanel.plotContainer.children.push(
 
 // Set main series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 valueLegend.data.setAll([valueSeries]);
 
 // Add cursor(s)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 mainPanel.set(
   "cursor",
   am5xy.XYCursor.new(root, {
@@ -168,7 +168,7 @@ mainPanel.set(
 
 // Add scrollbar
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = mainPanel.set(
   "scrollbarX",
   am5xy.XYChartScrollbar.new(root, {

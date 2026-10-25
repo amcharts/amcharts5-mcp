@@ -1,7 +1,7 @@
 ---
 title: "IStockLegendSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istocklegendsettings/"
+source: "https://docs.amcharts.com/v5/reference/istocklegendsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -20,7 +20,7 @@ TypeScript: `am5stock.IStockLegendSettings` (`import type { IStockLegendSettings
 
 - **clickTarget** (`"none" | "itemContainer" | "marker"`) — default `"marker"` _(theme)_ — _from ILegendSettings_ — Which part of a legend item toggles the chart item when clicked: • `"itemContainer"` - the whole legend item (default). • `"marker"` - the marker only. • `"none"` - nothing; the legend items cannot be toggled. _Since 5.0.13._
 - **layer** (`number`) — default `30` _(theme)_ — _from ISpriteSettings_ — Layer to draw the element on: elements on higher layers show in front of those on lower ones. If not set, the element is on its parent's layer.
-- **layout** (`Layout`) — default `GridLayout.new(root, {})` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Layout
+- **layout** (`Layout`) — default `GridLayout.new(root, {})` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
 - **paddingLeft** (`number`) — default `6` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
 - **paddingTop** (`number`) — default `6` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
 

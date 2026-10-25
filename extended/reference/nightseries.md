@@ -1,7 +1,7 @@
 ---
 title: "NightSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/nightseries/"
+source: "https://docs.amcharts.com/v5/reference/nightseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ Shades the part of a map where it is night, with the twilight in steps, and show
 
 Set `sunDate` (e.g. `"now"`) or `sunPosition`. The night is styled through `mapPolygons.template`: `fill`, and `fillOpacity` for how dark full night is.
 
-_Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/night-series/
+_Since 5.21.0._ Docs: https://docs.amcharts.com/v5/charts/map-chart/night-series/
 
 ## Import
 

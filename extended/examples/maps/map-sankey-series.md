@@ -1,6 +1,6 @@
 ---
 title: "Map Sankey Series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-sankey-series/"
 category: "maps"
 added: "2026-06-04"
 ---
@@ -23,15 +23,15 @@ Key settings (on `MapSankeySeries`):
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root)]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",
   panY: "translateY",
@@ -39,7 +39,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Country polygons — also used by the Sankey series to resolve centroids
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow
 }));
@@ -61,7 +61,7 @@ polygonSeries.events.on("datavalidated", function () {
 });
 
 // Map Sankey series
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-sankey-series/
 var sankeySeries = chart.series.push(am5map.MapSankeySeries.new(root, {
   polygonSeries: polygonSeries,
   maxWidth: 3,

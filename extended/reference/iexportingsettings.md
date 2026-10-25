@@ -1,7 +1,7 @@
 ---
 title: "IExportingSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iexportingsettings/"
+source: "https://docs.amcharts.com/v5/reference/iexportingsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -29,7 +29,7 @@ TypeScript: not exported by name from the package.
 - **durationFormat** (`string`) — Format for the values in `durationFields`. If not set, the root's `DurationFormatter` format is used. _Since 5.0.16._
 - **durationUnit** (`TimeUnit`) — Time unit the values in `durationFields` are in. If not set, the root's `DurationFormatter` `baseUnit` is used. _Since 5.0.16._
 - **extraImages** (`(Root | IExportingImageSource)[]`) — default `[]` _(class default)_ — Other charts to add around the main chart in image exports.
-- **dataSource** (`any`) — default `[]` _(code fallback)_ — Data for data exports: an array of objects. Without it, the data formats are not offered. Docs: https://www.amcharts.com/docs/v5/concepts/exporting/#Exporting_data
+- **dataSource** (`any`) — default `[]` _(code fallback)_ — Data for data exports: an array of objects. Without it, the data formats are not offered. Docs: https://docs.amcharts.com/v5/concepts/exporting/#exporting-data
 - **pngOptions** (`IExportingImageOptions`) — default `{ quality: 1, maintainPixelRatio: false }` _(class default)_ — PNG format options.
 - **jpgOptions** (`IExportingImageOptions`) — default `{ quality: 0.8, maintainPixelRatio: false }` _(class default)_ — JPEG format options.
 - **svgOptions** (`IExportingSVGOptions`) — SVG format options. _Since 5.21.0._

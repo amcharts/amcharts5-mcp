@@ -1,6 +1,6 @@
 ---
 title: "Flow chart bullets"
-source: "https://www.amcharts.com/docs/v5/charts/flow-charts/flow-chart-bullets/"
+source: "https://docs.amcharts.com/v5/charts/flow-charts/flow-chart-bullets/"
 scraped: "2026-03-15"
 ---
 
@@ -186,7 +186,7 @@ bullet.set("locationX", 0.8);
 
 bullet.set("locationX", 0.8);
 
-We can also animate settings by creating a [setting animation](https://www.amcharts.com/docs/v5/concepts/animations/#Animating_settings):
+We can also animate settings by creating a [setting animation](https://docs.amcharts.com/v5/concepts/animations/#animating-settings):
 
 bullet.animate({
   key: "locationX",

@@ -25,11 +25,11 @@ Prompt: Create a polar area chart as a wind rose: sixteen compass directions, ea
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -37,7 +37,7 @@ root.setThemes([
 
 // Data: a wind rose. How often the wind blew from each direction over a year, in % of the time,
 // split by wind speed (sample data)
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [
   { direction: "N", s1: 1.2, s2: 1.5, s3: 0.9, s4: 0.4, s5: 0.1 },
   { direction: "NNE", s1: 1.0, s2: 1.1, s3: 0.6, s4: 0.2, s5: 0.1 },
@@ -58,7 +58,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // no dragging the plot around
   // a vertical layout puts the legend under the chart, clear of the scrollbar
@@ -69,7 +69,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag across some directions to zoom in on them
 }));
@@ -77,7 +77,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   // small enough that all 16 directions keep their label
   minGridDistance: 10
@@ -99,7 +99,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series: one stacked column series per wind speed, the calmest in the middle
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, field) {
   var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
     stacked: true, // each speed sits on top of the one before, so a wedge shows them all
@@ -131,11 +131,11 @@ createSeries("6-8 m/s", "s4");
 createSeries("8+ m/s", "s5");
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", exportable: false, forceHidden: true }));
 
 // Add legend: the wind speeds; click one to leave it out
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Legend
+// https://docs.amcharts.com/v5/charts/radar-chart/#legend
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // the legend's middle...
   x: am5.p50        // ...at the middle of the chart
@@ -145,7 +145,7 @@ legend.data.setAll(chart.series.values);
 xAxis.data.setAll(data);
 
 // Animate chart
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

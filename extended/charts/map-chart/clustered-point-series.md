@@ -1,6 +1,6 @@
 ---
 title: "Clustered point series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/"
 scraped: "2026-03-15"
 ---
 
@@ -24,7 +24,7 @@ var pointSeries = chart.series.push(
   })
 );
 
-MORE INFOPlease refer to "[Map point series](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/)" documentation for info on how to configure series markers (bullets), series itself, as well as set data.
+MORE INFOPlease refer to "[Map point series](https://docs.amcharts.com/v5/charts/map-chart/map-point-series/)" documentation for info on how to configure series markers (bullets), series itself, as well as set data.
 
 ## Configuring
 
@@ -199,7 +199,7 @@ pointSeries.set("clusteredBullet", function(root) {
 
 We can also add a `Label` element to our bullet to show the number of regular bullets that went into a group bullet.
 
-Since every bullet element has also access to bullet's data item, we can use [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) to dynamically populate our label.
+Since every bullet element has also access to bullet's data item, we can use [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) to dynamically populate our label.
 
 pointSeries.set("clusteredBullet", function(root) {
   const container = am5.Container.new(root, {});

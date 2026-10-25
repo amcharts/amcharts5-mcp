@@ -1,7 +1,7 @@
 ---
 title: "CurveChart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/curvechart/"
+source: "https://docs.amcharts.com/v5/reference/curvechart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ A timeline chart along any curve: the X axis runs along the `points` of its `Axi
 
 It is experimental and does not support everything an `XYChart` does.
 
-_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
+_Since 5.12.0._ Docs: https://docs.amcharts.com/v5/charts/timeline/
 
 ## Import
 

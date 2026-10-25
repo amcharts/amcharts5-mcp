@@ -26,7 +26,7 @@ Prompt: Create a stock chart for comparing stocks: daily Microsoft prices from a
 ```javascript
 // Create root element
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root);
@@ -43,19 +43,19 @@ root.setThemes([
 
 // Create a stock chart
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Instantiating_the_chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
 var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
   paddingRight: 0 // no gap at the right edge
 }));
 
 // Set global number format
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-numbers/
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
 root.numberFormatter.set("numberFormat", "#,###.00"); // thousands separators and two decimals
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Adding_panels
+// https://docs.amcharts.com/v5/charts/stock/
 var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX", // the mouse wheel zooms in on the dates
   panX: true,      // a drag pans through the dates...
@@ -64,7 +64,7 @@ var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 
 // Create value axis
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var valueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {
     pan: "zoom" // drag along the price axis to zoom it
@@ -92,7 +92,7 @@ dateAxis.get("renderer").labels.template.set("minPosition", 0.02);
 
 // Add series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var valueSeries = mainPanel.series.push(am5xy.CandlestickSeries.new(root, {
   turboMode: true,           // draws all the candles at once, much faster with many of them
   name: "MSFT",
@@ -112,19 +112,19 @@ var valueSeries = mainPanel.series.push(am5xy.CandlestickSeries.new(root, {
 
 // Set main value series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("stockSeries", valueSeries);
 
 // Add a stock legend
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 var valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
 
 // Create volume axis
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var volumeAxisRenderer = am5xy.AxisRendererY.new(root, {});
 volumeAxisRenderer.labels.template.set("forceHidden", true); // no volume labels...
 volumeAxisRenderer.grid.template.set("forceHidden", true);   // ...and no grid lines of its own
@@ -140,7 +140,7 @@ var volumeValueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var volumeSeries = mainPanel.series.push(am5xy.ColumnSeries.new(root, {
   turboMode: true,  // draws all the columns at once
   name: "Volume",
@@ -168,13 +168,13 @@ volumeSeries.columns.template.adapters.add("fill", function (fill, target) {
 
 // Set main series
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("volumeSeries", volumeSeries);
 valueLegend.data.setAll([valueSeries, volumeSeries]); // one legend for both series
 
 // Add cursor(s)
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 mainPanel.set("cursor", am5xy.XYCursor.new(root, {
   yAxis: valueAxis,
   xAxis: dateAxis,
@@ -184,7 +184,7 @@ mainPanel.set("cursor", am5xy.XYCursor.new(root, {
 
 // Add scrollbar
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = mainPanel.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal",
   height: 50 // 50px tall, with a small chart of the closing prices inside
@@ -223,7 +223,7 @@ sbSeries.fills.template.setAll({
 function loadData(ticker, series, granularity) {
 
   // Load external data
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" + ticker + "_" + granularity + ".csv").then(function (result) {
 
     // Parse loaded data
@@ -257,7 +257,7 @@ addComparingSeries("AAPL");
 
 // Set up main indices selector
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/toolbar/comparison-control/
+// https://docs.amcharts.com/v5/charts/stock/toolbar/comparison-control/
 var mainSeriesControl = am5stock.DropdownListControl.new(root, {
   stockChart: stockChart,
   name: valueSeries.get("name"),     // the button shows the main ticker...
@@ -297,7 +297,7 @@ mainSeriesControl.events.on("selected", function (ev) {
 
 // Set up comparison control
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/toolbar/comparison-control/
+// https://docs.amcharts.com/v5/charts/stock/toolbar/comparison-control/
 var comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
   searchable: true,                  // a search box...
@@ -374,7 +374,7 @@ function getTicker(search) {
 
 // Set up series type switcher
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/toolbar/series-type-control/
+// https://docs.amcharts.com/v5/charts/stock/toolbar/series-type-control/
 var seriesSwitcher = am5stock.SeriesTypeControl.new(root, {
   stockChart: stockChart
 });
@@ -439,7 +439,7 @@ function setSeriesType(seriesType) {
 
 // Stock toolbar
 // -------------------------------------------------------------------------------
-// https://www.amcharts.com/docs/v5/charts/stock/toolbar/
+// https://docs.amcharts.com/v5/charts/stock/toolbar/
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"), // the toolbar's HTML element, above the chart
   stockChart: stockChart,

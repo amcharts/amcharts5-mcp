@@ -25,11 +25,11 @@ Prompt: Create a zoomable word cloud of the most frequent words in the king’s 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -56,7 +56,7 @@ var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/word-cloud/
+// https://docs.amcharts.com/v5/charts/word-cloud/
 var series = chart.series.push(am5wc.WordCloud.new(root, {
   // The words fill this shape, scaled to fit the chart; the padding leaves room
   // for words that spill over its edges

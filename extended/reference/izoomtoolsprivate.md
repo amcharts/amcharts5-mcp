@@ -1,7 +1,7 @@
 ---
 title: "IZoomToolsPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/izoomtoolsprivate/"
+source: "https://docs.amcharts.com/v5/reference/izoomtoolsprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

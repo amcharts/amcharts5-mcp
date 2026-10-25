@@ -1,6 +1,6 @@
 ---
 title: "Radar chart"
-source: "https://www.amcharts.com/docs/v5/charts/radar-chart/"
+source: "https://docs.amcharts.com/v5/charts/radar-chart/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ Radar chart is used to create circular axis-based two-dimensional plots as well 
 
 ## Radar vs XY
 
-We can think of a radar chart as a round [XY chart](https://www.amcharts.com/docs/v5/charts/xy-chart/). Under the hood, it is in fact an XY chart, inheriting all of its capabilities and functionality, except for a few differences and additions, which we will discuss during this tutorial.
+We can think of a radar chart as a round [XY chart](https://docs.amcharts.com/v5/charts/xy-chart/). Under the hood, it is in fact an XY chart, inheriting all of its capabilities and functionality, except for a few differences and additions, which we will discuss during this tutorial.
 
 To keep it simple, we are going to provide bare basics here, and will not repeat vas information outlined in XY-related tutorials.
 
@@ -64,7 +64,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -82,7 +82,7 @@ var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {})
 );
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Adding axes
 
@@ -146,25 +146,25 @@ Comment
 
 For plotting data with string identifiers - categories.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)
 
 `CategoryDateAxis`
 
 For plotting time-based data without maintaining actual time scale. Grid/labels are displayed only where there is actual data.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Category_date_axis)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
 
 `DateAxis`
 
 For plotting time-based data. The axis will maintain natural time scale regardless on how actual data points are spaced out.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
 
 `ValueAxis`
 
 For plotting numeric values.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/)
 
 Some axis types require additional configuration besides renderer to work.
 
@@ -220,20 +220,20 @@ var xAxis = chart.xAxes.push(
   })
 );
 
-MORE INFO For information on configuring and using each axis type, please refer to the dedicated "[Axes](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/)" tutorial, or click on an axis class name in the table above.
+MORE INFO For information on configuring and using each axis type, please refer to the dedicated "[Axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)" tutorial, or click on an axis class name in the table above.
 
 ### Configuring axes
 
 For more information on how to configure axes, please visit these tutorials:
 
--   [Configuring XY (and radar) axes](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/)
--   [Radar-specific axes configuration](https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/)
+-   [Configuring XY (and radar) axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)
+-   [Radar-specific axes configuration](https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/)
 
 ## Adding series
 
 Radar chart is a "serial" chart, meaning it needs at least one series to display anything.
 
-As with anything else in amCharts 5, we create a series object using [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) of its class.
+As with anything else in amCharts 5, we create a series object using [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) of its class.
 
 There is also a number of properties that need to be set for series, like its X and Y axis, as well as data fields.
 
@@ -285,7 +285,7 @@ For example, if we have a `ValueAxis` as a Y-axis, and a `CategoryAxis` as an X-
 
 Some series can define additional data fields (e.g. for open values) to draw floating columns, or semi-filled area series.
 
-MORE INFO For more information about data fields refer to "[Data fields](https://www.amcharts.com/docs/v5/concepts/series/#Data_fields)" section in our "Series" tutorial.
+MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/concepts/series/#data-fields)" section in our "Series" tutorial.
 
 ### Types of series
 
@@ -299,19 +299,19 @@ Comment
 
 Displays columns or bars.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)
 
 `RadarLineSeries`
 
 Displays lines or area.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)
 
 `SmoothedRadarLineSeries`
 
 Displays smoothed lines or area with configurable horizontal tension.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 NOTE The links in the above table point to tutorial for XY chart equivalent series. Don't be alarmed, it's not a mistake. Radar and XY series are configured identically.
 
@@ -319,8 +319,8 @@ NOTE The links in the above table point to tutorial for XY chart equivalent seri
 
 For more information on how to configure series, please visit these tutorials:
 
--   [Configuring XY (and radar) series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/)
--   [Radar-specific series configuration](https://www.amcharts.com/docs/v5/charts/radar-chart/radar-series/)
+-   [Configuring XY (and radar) series](https://docs.amcharts.com/v5/charts/xy-chart/series/)
+-   [Radar-specific series configuration](https://docs.amcharts.com/v5/charts/radar-chart/radar-series/)
 
 ## Setting data
 
@@ -390,7 +390,7 @@ series2.data.setAll(data);
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There's more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFO There's more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Date-based data
 
@@ -398,7 +398,7 @@ A quick note about date-based charts (with a `DateAxis`): they expect data to be
 
 If you we have dates in any other format (as strings or `Date` objects), we'll need to set up a data processor to convert our dates to timestamps.
 
-MORE INFO For description how it works, please refer to "[Date-based data](https://www.amcharts.com/docs/v5/concepts/data/#Date_based_data)" section in our "Data" tutorial.
+MORE INFO For description how it works, please refer to "[Date-based data](https://docs.amcharts.com/v5/concepts/data/)" section in our "Data" tutorial.
 
 ## Additional controls
 
@@ -412,7 +412,7 @@ legend.data.setAll(chart.series.values);
 var legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.series.values);
 
-MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ### Cursor
 
@@ -422,7 +422,7 @@ chart.set("cursor", am5radar.RadarCursor.new(root, {}));
 
 chart.set("cursor", am5radar.RadarCursor.new(root, {}));
 
-MORE INFO For more information on how to configure the chart cursor make sure you visit "[Cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/)" tutorial.
+MORE INFO For more information on how to configure the chart cursor make sure you visit "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
 
 ## Complete example
 
@@ -660,7 +660,7 @@ chart.set("cursor", am5radar.RadarCursor.new(root, {}));
 
 A radar chart is not limited to a full circle. It can start and end at any angle.
 
-For that we have to chart's settings: `[startAngle](https://www.amcharts.com/docs/v5/reference/radarchart/#startAngle_setting)` and `[endAngle](https://www.amcharts.com/docs/v5/reference/piechart/#endAngle_setting)`.
+For that we have to chart's settings: `[startAngle](https://docs.amcharts.com/v5/reference/radarchart/#startAngle_setting)` and `[endAngle](https://docs.amcharts.com/v5/reference/piechart/#endAngle_setting)`.
 
 These are numeric values denoting degrees.
 
@@ -695,7 +695,7 @@ Default behavior
 
 ### Outer radius
 
-Radar chart's outer radius can be set using its `[radius](https://www.amcharts.com/docs/v5/reference/radarchart/#radius_setting)` setting.
+Radar chart's outer radius can be set using its `[radius](https://docs.amcharts.com/v5/reference/radarchart/#radius_setting)` setting.
 
 It can be either percent value (relative to available space) or fixed pixel value.
 
@@ -723,7 +723,7 @@ var chart = root.container.children.push(
 
 ### Inner radius
 
-Chart's `[innerRadius](https://www.amcharts.com/docs/v5/reference/radarchart/#innerRadius_setting)` settings controls the "hole" inside the radar.
+Chart's `[innerRadius](https://docs.amcharts.com/v5/reference/radarchart/#innerRadius_setting)` settings controls the "hole" inside the radar.
 
 As with `radius` it can be either a percent value or fixed pixel value.
 
@@ -755,4 +755,4 @@ var chart = root.container.children.push(
 
 amCharts 5 does not have a separate gauge chart type.
 
-Please refer to "[Gauge charts](https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/)" tutorial on how to use radar chart to create full-featured gauges.
+Please refer to "[Gauge charts](https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/)" tutorial on how to use radar chart to create full-featured gauges.

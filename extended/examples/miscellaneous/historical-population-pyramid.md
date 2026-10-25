@@ -211,11 +211,11 @@ function sum(values) {
 }
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -241,7 +241,7 @@ var container = root.container.children.push(am5.Container.new(root, {
 // ==========================================
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var pyramidChart = container.children.push(
   am5xy.XYChart.new(root, {
     width: am5.p50,             // half the width
@@ -284,7 +284,7 @@ var maleLabel = pyramidHeader.children.push(am5.Label.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var pyramidXAxis = pyramidChart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     // the same reach on both sides of zero, so the two halves of the pyramid compare
@@ -314,7 +314,7 @@ var pyramidYAxis = pyramidChart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var pyramidSeriesMale = pyramidChart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Males",
@@ -350,7 +350,7 @@ pyramidSeriesMale.data.setAll(pyramidData);
 pyramidSeriesFemale.data.setAll(pyramidData);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var pyramidCursor = pyramidChart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: pyramidXAxis,
   yAxis: pyramidYAxis
@@ -388,7 +388,7 @@ function showYear(year) {
 // ==========================================
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var popChart = container.children.push(
   am5xy.XYChart.new(root, {
     width: am5.p50,             // half the width
@@ -409,7 +409,7 @@ var popTitle = popChart.children.unshift(am5.Label.new(root, {
 }));
 
 // Create axes: years on a value axis
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var popXAxis = popChart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 1950,          // the years from 1950...
@@ -434,7 +434,7 @@ var popYAxis = popChart.yAxes.push(
 );
 
 // Add series: males and females, stacked
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var popSeriesMale = popChart.series.push(
   am5xy.LineSeries.new(root, {
     name: "Males",
@@ -476,7 +476,7 @@ am5.array.each([popSeriesMale, popSeriesFemale], function(series) {
 });
 
 // Add cursor: moving it over a year shows that year in the pyramid
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var popCursor = popChart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: popXAxis,
   yAxis: popYAxis
@@ -489,7 +489,7 @@ popCursor.events.on("cursormoved", function(ev) {
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 pyramidSeriesMale.appear(1000, 100);
 pyramidSeriesFemale.appear(1000, 100);
 popSeriesMale.appear(1000, 100);

@@ -1,6 +1,6 @@
 ---
 title: "Pie chart"
-source: "https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/"
+source: "https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/"
 scraped: "2026-03-15"
 ---
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -38,7 +38,7 @@ var chart = root.container.children.push(
   am5percent.PieChart.new(root, {})
 );
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Series
 
@@ -131,11 +131,11 @@ series.data.setAll(\[{
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Series appearance
 
-For more information about configuring appearance of the pie series, refer to "[Pie series](https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/pie-series/)".
+For more information about configuring appearance of the pie series, refer to "[Pie series](https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/pie-series/)".
 
 ## Legend
 
@@ -157,7 +157,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 
 legend.data.setAll(series.dataItems);
 
-MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Complete example
 
@@ -254,7 +254,7 @@ legend.data.setAll(series.dataItems);
 
 A pie chart is not limited to a full circle. It can start and end at any angle.
 
-For that we have to set chart's settings: `[startAngle](https://www.amcharts.com/docs/v5/reference/piechart/#startAngle_setting)` and `[endAngle](https://www.amcharts.com/docs/v5/reference/piechart/#endAngle_setting)`.
+For that we have to set chart's settings: `[startAngle](https://docs.amcharts.com/v5/reference/piechart/#startAngle_setting)` and `[endAngle](https://docs.amcharts.com/v5/reference/piechart/#endAngle_setting)`.
 
 These are numeric values denoting degrees.
 
@@ -311,7 +311,7 @@ Default behavior
 
 ### Outer radius
 
-Chart's outer radius can be set using its `[radius](https://www.amcharts.com/docs/v5/reference/piechart/#radius_setting)` setting.
+Chart's outer radius can be set using its `[radius](https://docs.amcharts.com/v5/reference/piechart/#radius_setting)` setting.
 
 It can be either percent value (relative to available space) or fixed pixel value.
 
@@ -405,7 +405,7 @@ chart.appear();
 
 ## Related tutorials
 
--   [Applying custom formatting logic to PieChart legend values](https://www.amcharts.com/docs/v5/tutorials/applying-custom-formatting-logic-to-piechart-legend-values/)
--   [Using slice color for PieChart label backgrounds](https://www.amcharts.com/docs/v5/tutorials/using-slice-color-for-piechart-label-backgrounds/)
--   [Adding sum labels inside Donut chart](https://www.amcharts.com/docs/v5/tutorials/adding-sum-labels-inside-donut-chart/)
--   [Pie chart with a custom legend](https://www.amcharts.com/docs/v5/tutorials/pie-chart-with-a-custom-legend/)
+-   [Applying custom formatting logic to PieChart legend values](https://docs.amcharts.com/v5/tutorials/applying-custom-formatting-logic-to-piechart-legend-values/)
+-   [Using slice color for PieChart label backgrounds](https://docs.amcharts.com/v5/tutorials/using-slice-color-for-piechart-label-backgrounds/)
+-   [Adding sum labels inside Donut chart](https://docs.amcharts.com/v5/tutorials/adding-sum-labels-inside-donut-chart/)
+-   [Pie chart with a custom legend](https://docs.amcharts.com/v5/tutorials/pie-chart-with-a-custom-legend/)

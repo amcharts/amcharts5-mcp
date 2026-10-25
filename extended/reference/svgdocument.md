@@ -1,7 +1,7 @@
 ---
 title: "SvgDocument"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/svgdocument/"
+source: "https://docs.amcharts.com/v5/reference/svgdocument/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

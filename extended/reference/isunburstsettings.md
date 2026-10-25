@@ -1,7 +1,7 @@
 ---
 title: "ISunburstSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isunburstsettings/"
+source: "https://docs.amcharts.com/v5/reference/isunburstsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -25,7 +25,7 @@ TypeScript: `am5hierarchy.ISunburstSettings` (`import type { ISunburstSettings }
 - **legendLabelText** (`string`) — default `"{category}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
 - **legendValueText** (`string`) — default `"{sum.formatNumber('#.#')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
 - **maskContent** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Clips all content that goes outside the container's bounds.
-- **upDepth** (`number`) — default `0` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Drill_down
+- **upDepth** (`number`) — default `0` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#drill-down
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

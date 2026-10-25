@@ -1,6 +1,6 @@
 ---
 title: "Zoom and pan"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ An XY chart can be zoomed and panned in a number of ways. This tutorial takes a 
 
 ## Panning
 
-An XY chart has two settings that can be used to enable panning: `[panX](https://www.amcharts.com/docs/v5/reference/xychart/#panX_setting)` and `[panY](https://www.amcharts.com/docs/v5/reference/xychart/#panY_setting)`.
+An XY chart has two settings that can be used to enable panning: `[panX](https://docs.amcharts.com/v5/reference/xychart/#panX_setting)` and `[panY](https://docs.amcharts.com/v5/reference/xychart/#panY_setting)`.
 
 They're both are boolean values, with `true` meaning that chart can be panned by dragging it horizontally (`panX`) and/or vertically (`panY`).
 
@@ -34,7 +34,7 @@ The above will enable horizontal panning, but will disable vertical one.
 
 Chart can also be configured to react in a number of ways to a mouse wheel.
 
-It has two settings for that: `[wheelX](https://www.amcharts.com/docs/v5/reference/xychart/#wheelX_setting)` and `[wheelY](https://www.amcharts.com/docs/v5/reference/xychart/#wheelY_setting)`.
+It has two settings for that: `[wheelX](https://docs.amcharts.com/v5/reference/xychart/#wheelX_setting)` and `[wheelY](https://docs.amcharts.com/v5/reference/xychart/#wheelY_setting)`.
 
 `wheelX` is responsible for specifying what needs to happen when mouse wheel is rotated horizontally, whereas `wheelY` will set action for vertical wheel rotations.
 
@@ -238,7 +238,7 @@ chart.plotContainer.events.on("wheel", function(ev) {
 
 ## Zooming with cursor
 
-If an XY chart has a [cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/) attached to it, its `behavior` can be set to `"zoomX"`, `"zoomY"`, or `"zoomXY"` to zoom the chart.
+If an XY chart has a [cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/) attached to it, its `behavior` can be set to `"zoomX"`, `"zoomY"`, or `"zoomXY"` to zoom the chart.
 
 chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "zoomX"
@@ -260,7 +260,7 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
-MORE INFO For more information about chart scrollbars visit "[Scrollbars](https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/)" tutorial.
+MORE INFO For more information about chart scrollbars visit "[Scrollbars](https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/)" tutorial.
 
 ## Zooming by panning axis
 
@@ -268,7 +268,7 @@ It's also possible to enable axis zooming by panning it.
 
 If enabled, user would be able to grab and drag by the axis label area to zoom it in and out.
 
-Use axis renderer's `[pan](https://www.amcharts.com/docs/v5/reference/axisrenderer/#pan_setting)` setting:
+Use axis renderer's `[pan](https://docs.amcharts.com/v5/reference/axisrenderer/#pan_setting)` setting:
 
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -317,7 +317,7 @@ var chart = root.container.children.push(
 
 To allow for a "bird's eye" view, a chart can zoom/pan a bit outside of the range of the actual values / axis scale.
 
-That is controlled by axis setting `[maxDeviation](https://www.amcharts.com/docs/v5/reference/axis/#maxDeviation_setting)`.
+That is controlled by axis setting `[maxDeviation](https://docs.amcharts.com/v5/reference/axis/#maxDeviation_setting)`.
 
 With default at `0.1`, it is a numeric value indicating relative distance from the whole width of the axis it can go "outside" actual data range.
 
@@ -371,7 +371,7 @@ The following will prevent this particular Y axis to be zoomed vertically.
 
 We can prevent the chart from either zooming in to deep, or zooming out too wide.
 
-For those axes have two settings: `[minZoomCount](https://www.amcharts.com/docs/v5/reference/axis/#minZoomCount_setting)` and `[maxZoomCount](https://www.amcharts.com/docs/v5/reference/axis/#maxZoomCount_setting)`.
+For those axes have two settings: `[minZoomCount](https://docs.amcharts.com/v5/reference/axis/#minZoomCount_setting)` and `[maxZoomCount](https://docs.amcharts.com/v5/reference/axis/#maxZoomCount_setting)`.
 
 The "count" notion differs between axis types. In data axis, it would mean number of base intervals, such as day for example. In category axis, it would mean a single category.
 
@@ -423,7 +423,7 @@ var xAxis = chart.xAxes.push(
 
 The above will pre-zoom our date axis to the last 10% percent of its scope.
 
-NOTE If your chart has a [scrollbar](https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/) with the same orientation as the axis being pre-zoomed, you will need to set the same `start` and `end` values in scrollbar's settings, too.
+NOTE If your chart has a [scrollbar](https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/) with the same orientation as the axis being pre-zoomed, you will need to set the same `start` and `end` values in scrollbar's settings, too.
 
 ### Specific range
 
@@ -445,17 +445,17 @@ series.events.on("datavalidated", function(ev) {
 
 For more information on zooming axes, refer to their respective tutorials:
 
--   [Zooming a value axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Zooming)
--   [Zooming a date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Zooming)
--   [Zooming a category date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/#Zooming)
--   [Zooming a category axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/#Zooming)
+-   [Zooming a value axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#zooming)
+-   [Zooming a date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#zooming)
+-   [Zooming a category date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/#zooming)
+-   [Zooming a category axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/#zooming)
 
 
 ## Zoom-out button
 
 A zoom-out button appears automatically whenever chart is not ideally fully zoomed out, or is over-zoomed.
 
-An instance of the button which is of class `[Button](https://www.amcharts.com/docs/v5/reference/button/)` is accessible directly via chart's `[zoomOutButton](https://www.amcharts.com/docs/v5/reference/xychart/#zoomOutButton_property)` property.
+An instance of the button which is of class `[Button](https://docs.amcharts.com/v5/reference/button/)` is accessible directly via chart's `[zoomOutButton](https://docs.amcharts.com/v5/reference/xychart/#zoomOutButton_property)` property.
 
 We can configure appearance using `Button` settings, or disable it by setting its `visible` to `false`:
 
@@ -465,6 +465,6 @@ chart.zoomOutButton.set("forceHidden", true);
 
 ## Related tutorials
 
--   [Bubble chart with zoom in and out buttons](https://www.amcharts.com/docs/v5/tutorials/bubble-chart-with-zoom-in-and-out-buttons/)
--   [Position the zoom-out button to bottom-right](https://www.amcharts.com/docs/v5/tutorials/position-the-zoom-out-button-to-bottom-right/)
--   [Custom period selector on XYChart](https://www.amcharts.com/docs/v5/tutorials/custom-period-selector-on-xychart/)
+-   [Bubble chart with zoom in and out buttons](https://docs.amcharts.com/v5/tutorials/bubble-chart-with-zoom-in-and-out-buttons/)
+-   [Position the zoom-out button to bottom-right](https://docs.amcharts.com/v5/tutorials/position-the-zoom-out-button-to-bottom-right/)
+-   [Custom period selector on XYChart](https://docs.amcharts.com/v5/tutorials/custom-period-selector-on-xychart/)

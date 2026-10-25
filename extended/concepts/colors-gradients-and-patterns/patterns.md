@@ -1,6 +1,6 @@
 ---
 title: "Patterns"
-source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/"
+source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/"
 scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
@@ -37,19 +37,19 @@ Pattern class
 
 Example
 
-`[LinePattern](https://www.amcharts.com/docs/v5/reference/linepattern/)`
+`[LinePattern](https://docs.amcharts.com/v5/reference/linepattern/)`
 
-`[RectanglePattern](https://www.amcharts.com/docs/v5/reference/rectanglepattern/)`
+`[RectanglePattern](https://docs.amcharts.com/v5/reference/rectanglepattern/)`
 
-`[CirclePattern](https://www.amcharts.com/docs/v5/reference/circlepattern/)`
+`[CirclePattern](https://docs.amcharts.com/v5/reference/circlepattern/)`
 
-`[StarPattern](https://www.amcharts.com/docs/v5/reference/starpattern/)` (5.20.0)
+`[StarPattern](https://docs.amcharts.com/v5/reference/starpattern/)` (5.20.0)
 
-`[TrianglePattern](https://www.amcharts.com/docs/v5/reference/trianglepattern/)` (5.20.0)
+`[TrianglePattern](https://docs.amcharts.com/v5/reference/trianglepattern/)` (5.20.0)
 
-`[PathPattern](https://www.amcharts.com/docs/v5/reference/pathpattern/)`
+`[PathPattern](https://docs.amcharts.com/v5/reference/pathpattern/)`
 
-`[GrainPattern](https://www.amcharts.com/docs/v5/reference/grainpattern/)`
+`[GrainPattern](https://docs.amcharts.com/v5/reference/grainpattern/)`
 
 Patterns can be customized by applying rotation, gap, stroke, and other settings, which we'll explore in a bit.
 
@@ -345,12 +345,12 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
 
 For more configuration options, visit following class references:
 
--   [`LinePattern` settings](https://www.amcharts.com/docs/v5/reference/linepattern/#Settings)
--   [`RectanglePattern` settings](https://www.amcharts.com/docs/v5/reference/linepattern/#Settings)
--   [`CirclePattern` settings](https://www.amcharts.com/docs/v5/reference/linepattern/#Settings)
--   [`PathPattern` settings](https://www.amcharts.com/docs/v5/reference/pathpattern/#Settings)
--   [`StarPattern` settings](https://www.amcharts.com/docs/v5/reference/starpattern/#Settings)
--   [`TrianglePattern` settings](https://www.amcharts.com/docs/v5/reference/trianglepattern/#Settings)
+-   [`LinePattern` settings](https://docs.amcharts.com/v5/reference/linepattern/#settings)
+-   [`RectanglePattern` settings](https://docs.amcharts.com/v5/reference/linepattern/#settings)
+-   [`CirclePattern` settings](https://docs.amcharts.com/v5/reference/linepattern/#settings)
+-   [`PathPattern` settings](https://docs.amcharts.com/v5/reference/pathpattern/#settings)
+-   [`StarPattern` settings](https://docs.amcharts.com/v5/reference/starpattern/#settings)
+-   [`TrianglePattern` settings](https://docs.amcharts.com/v5/reference/trianglepattern/#settings)
 
 ## Examples
 
@@ -519,7 +519,7 @@ series.slices.template.setAll({
 
 ## Pattern sets
 
-Pattern sets, similar to [color sets](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Color_sets), are collection patterns that can be used to auto-assign pattern fills to series elements, like slices, series, nodes, etc.
+Pattern sets, similar to [color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#color-sets), are collection patterns that can be used to auto-assign pattern fills to series elements, like slices, series, nodes, etc.
 
 Pattern sets are created by instantiating a `PatternSet` class. It will have a predefined list of some distinctive patterns, which, upon need, can be overridden (see later in this section).
 
@@ -577,7 +577,7 @@ var series = container.children.push(
 
 ### Flow charts
 
-For a Flow chart (e.g. Sankey, Chord), we assign `patterns` to its [nodes template](https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/#Configuring_nodes):
+For a Flow chart (e.g. Sankey, Chord), we assign `patterns` to its [nodes template](https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/#configuring-nodes):
 
 series.nodes.set("patterns", am5.PatternSet.new(root, {}));
 
@@ -653,4 +653,4 @@ var series = chart.series.push(am5percent.PieSeries.new(root, {
 
 ## Related tutorials
 
--   [Using custom theme to apply patterns to pie chart slices](https://www.amcharts.com/docs/v5/tutorials/using-custom-theme-to-apply-patterns-to-pie-chart-slices/)
+-   [Using custom theme to apply patterns to pie chart slices](https://docs.amcharts.com/v5/tutorials/using-custom-theme-to-apply-patterns-to-pie-chart-slices/)

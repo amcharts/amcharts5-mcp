@@ -1,7 +1,7 @@
 ---
 title: "IPieChartSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipiechartsettings/"
+source: "https://docs.amcharts.com/v5/reference/ipiechartsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,10 +14,10 @@ TypeScript: `am5percent.IPieChartSettings` (`import type { IPieChartSettings } f
 
 ## Settings
 
-- **radius** (`number | Percent`) — default `am5.percent(80)` _(theme)_ — Outer radius of the pie, in pixels or percent. A percent is of the largest radius that fits the chart for its `startAngle` and `endAngle`. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Pie_radius
-- **innerRadius** (`number | Percent`) — Inner radius of the pie, in pixels or percent of `radius`; any non-zero value makes a donut. A negative number is pixels in from the outer radius. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Pie_radius
-- **startAngle** (`number`) — default `-90` _(theme)_ — Angle where the pie starts, in degrees: `0` is at the right, `-90` at the top, and angles grow clockwise. The chart uses it to fit and center the pie; the series' own `startAngle` sets where its slices start, so set both. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Start_end_angles
-- **endAngle** (`number`) — default `270` _(theme)_ — Angle where the pie ends, in degrees. Like `startAngle`, it fits and centers the pie; set the series' `endAngle` to match. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Start_end_angles
+- **radius** (`number | Percent`) — default `am5.percent(80)` _(theme)_ — Outer radius of the pie, in pixels or percent. A percent is of the largest radius that fits the chart for its `startAngle` and `endAngle`. Docs: https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#pie-radius
+- **innerRadius** (`number | Percent`) — Inner radius of the pie, in pixels or percent of `radius`; any non-zero value makes a donut. A negative number is pixels in from the outer radius. Docs: https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#pie-radius
+- **startAngle** (`number`) — default `-90` _(theme)_ — Angle where the pie starts, in degrees: `0` is at the right, `-90` at the top, and angles grow clockwise. The chart uses it to fit and center the pie; the series' own `startAngle` sets where its slices start, so set both. Docs: https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#startend-angles
+- **endAngle** (`number`) — default `270` _(theme)_ — Angle where the pie ends, in degrees. Like `startAngle`, it fits and centers the pie; set the series' `endAngle` to match. Docs: https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#startend-angles
 
 ## Inherited settings with a different default on PieChart
 

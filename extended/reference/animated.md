@@ -1,7 +1,7 @@
 ---
 title: "Animated"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/animated/"
+source: "https://docs.amcharts.com/v5/reference/animated/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

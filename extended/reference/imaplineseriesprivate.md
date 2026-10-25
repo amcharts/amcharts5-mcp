@@ -1,7 +1,7 @@
 ---
 title: "IMapLineSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imaplineseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/imaplineseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

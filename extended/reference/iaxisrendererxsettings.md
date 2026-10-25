@@ -1,7 +1,7 @@
 ---
 title: "IAxisRendererXSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxisrendererxsettings/"
+source: "https://docs.amcharts.com/v5/reference/iaxisrendererxsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,14 +14,14 @@ TypeScript: `am5xy.IAxisRendererXSettings` (`import type { IAxisRendererXSetting
 
 ## Settings
 
-- **opposite** (`boolean`) — default `false` _(theme)_ — Puts the axis above the plot area instead of below it. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Axis_position
-- **inside** (`boolean`) — default `false` — Draws the axis's labels and ticks inside the plot area. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels_ticks_inside_plot_area
+- **opposite** (`boolean`) — default `false` _(theme)_ — Puts the axis above the plot area instead of below it. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#axis-position
+- **inside** (`boolean`) — default `false` — Draws the axis's labels and ticks inside the plot area. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#labelsticks-inside-plot-area
 
 ## Inherited settings with a different default on AxisRendererX
 
 - **crisp** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
-- **minGridDistance** (`number`) — default `120` _(theme)_ — _from IAxisRendererSettings_ — The smallest distance between grid lines, in pixels. The axis spaces its grid, and so its labels, at least this far apart. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Grid_density
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **minGridDistance** (`number`) — default `120` _(theme)_ — _from IAxisRendererSettings_ — The smallest distance between grid lines, in pixels. The axis spaces its grid, and so its labels, at least this far apart. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-density
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `0` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 

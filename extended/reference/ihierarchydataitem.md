@@ -1,7 +1,7 @@
 ---
 title: "IHierarchyDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihierarchydataitem/"
+source: "https://docs.amcharts.com/v5/reference/ihierarchydataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -26,7 +26,7 @@ TypeScript: `am5hierarchy.IHierarchyDataItem` (`import type { IHierarchyDataItem
 - **node** (`HierarchyNode`) — The node element.
 - **label** (`Label`) — The node's label.
 - **fill** (`Color`) — The node's color: from data (`fillField`), or else the next of `colors` for a first-level node and the parent's color for a deeper one.
-- **fillPattern** (`Pattern`) — Node's auto-assigned pattern. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+- **fillPattern** (`Pattern`) — Node's auto-assigned pattern. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
 - **disabled** (`boolean`) — `true` while the node is collapsed, with its children hidden.
 - **d3HierarchyNode** (`d3hierarchy.HierarchyNode<IHierarchyDataObject>`) — _(internal)_
 

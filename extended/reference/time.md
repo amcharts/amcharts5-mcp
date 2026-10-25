@@ -1,7 +1,7 @@
 ---
 title: "Time"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/time/"
+source: "https://docs.amcharts.com/v5/reference/time/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

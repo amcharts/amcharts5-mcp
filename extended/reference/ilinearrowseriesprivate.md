@@ -1,7 +1,7 @@
 ---
 title: "ILineArrowSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilinearrowseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/ilinearrowseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

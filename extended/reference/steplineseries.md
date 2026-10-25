@@ -1,13 +1,13 @@
 ---
 title: "StepLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/steplineseries/"
+source: "https://docs.amcharts.com/v5/reference/steplineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A line series drawn as steps: flat across each cell, with risers joining one step to the next. Its fill below makes a stepped area.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/
 
 ## Import
 

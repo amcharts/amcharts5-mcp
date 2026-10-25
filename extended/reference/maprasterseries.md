@@ -1,7 +1,7 @@
 ---
 title: "MapRasterSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/maprasterseries/"
+source: "https://docs.amcharts.com/v5/reference/maprasterseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -15,7 +15,7 @@ With `nightSrc` and `sunPosition`, it shows day and night: one image where the s
 
 The series counts as the whole world in the map's bounds. On a regional map, set `affectsBounds: false` to keep the map fitted to the region.
 
-_Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/
+_Since 5.21.0._ Docs: https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 
 ## Import
 

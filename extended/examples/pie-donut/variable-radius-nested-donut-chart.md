@@ -25,18 +25,18 @@ Prompt: Create a nested donut chart drawn as an open arc over the top, with a th
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     // a 220 degree arc over the top, open at the bottom
@@ -45,7 +45,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 
 var series0 = chart.series.push(
   am5percent.PieSeries.new(root, {
@@ -146,7 +146,7 @@ var data = [
 ];
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series0.data.setAll(data);
 series1.data.setAll(data);
 ```

@@ -1,7 +1,7 @@
 ---
 title: "PatternsDarkTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/patternsdarktheme/"
+source: "https://docs.amcharts.com/v5/reference/patternsdarktheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ generatedFrom: "@amcharts/amcharts5@5.21.4"
 
 Like `Patterns`, it tells series apart by texture rather than hue, so it stays legible for all forms of color blindness.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets, https://www.amcharts.com/docs/v5/concepts/themes/
+Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets, https://docs.amcharts.com/v5/concepts/themes/
 
 ## Import
 

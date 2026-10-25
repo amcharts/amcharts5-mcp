@@ -1,7 +1,7 @@
 ---
 title: "IVolumeProfileEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ivolumeprofileevents/"
+source: "https://docs.amcharts.com/v5/reference/ivolumeprofileevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

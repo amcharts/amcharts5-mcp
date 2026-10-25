@@ -1,7 +1,7 @@
 ---
 title: "IClusteredPointSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iclusteredpointseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/iclusteredpointseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,12 +14,12 @@ TypeScript: `am5map.IClusteredPointSeriesSettings` (`import type { IClusteredPoi
 
 ## Settings
 
-- **groupIdField** (`string`) — default `"groupId"` _(class default)_ — Field in `data` that holds the id of the point's group. Points cluster only with points of the same group, such as the same continent. Docs: https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Group_segregation
-- **minDistance** (`number`) — default `20` _(theme)_ — Points closer than this many pixels to each other are clustered. Docs: https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Minimal_distance
-- **clusteredBullet** (`(root: Root, series: ClusteredPointSeries, dataItem: DataItem<IClusteredDataItem>) => Bullet | undefined`) — A function that returns the `Bullet` to show a cluster with. Without it, points aren't clustered. Docs: https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Group_bullet
-- **scatterDistance** (`number`) — default `3` _(theme)_ — Once clustering stops (see `stopClusterZoom`), points closer than this many pixels to each other are scattered so that all of them show. _Since 5.5.7._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Scatter_settings
-- **scatterRadius** (`number`) — default `8` _(theme)_ — Radius in pixels each bullet is taken to have when scattering them. _Since 5.5.7._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Scatter_settings
-- **stopClusterZoom** (`number`) — default `0.95` _(theme)_ — Clustering stops, and scattering starts, once the map is zoomed to `maxZoomLevel` times this. _Since 5.5.7._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/#Scatter_settings
+- **groupIdField** (`string`) — default `"groupId"` _(class default)_ — Field in `data` that holds the id of the point's group. Points cluster only with points of the same group, such as the same continent. Docs: https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#group-segregation
+- **minDistance** (`number`) — default `20` _(theme)_ — Points closer than this many pixels to each other are clustered. Docs: https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#minimal-distance
+- **clusteredBullet** (`(root: Root, series: ClusteredPointSeries, dataItem: DataItem<IClusteredDataItem>) => Bullet | undefined`) — A function that returns the `Bullet` to show a cluster with. Without it, points aren't clustered. Docs: https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#group-bullet
+- **scatterDistance** (`number`) — default `3` _(theme)_ — Once clustering stops (see `stopClusterZoom`), points closer than this many pixels to each other are scattered so that all of them show. _Since 5.5.7._ Docs: https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#scatter-settings
+- **scatterRadius** (`number`) — default `8` _(theme)_ — Radius in pixels each bullet is taken to have when scattering them. _Since 5.5.7._ Docs: https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#scatter-settings
+- **stopClusterZoom** (`number`) — default `0.95` _(theme)_ — Clustering stops, and scattering starts, once the map is zoomed to `maxZoomLevel` times this. _Since 5.5.7._ Docs: https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#scatter-settings
 - **clusterDelay** (`number`) — default `0` — Waits this many milliseconds after the zoom level changes before clustering again. Helps with many data items. _Since 5.9.11._
 
 ## Inherited settings with a different default on ClusteredPointSeries

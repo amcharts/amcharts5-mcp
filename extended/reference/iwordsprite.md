@@ -1,7 +1,7 @@
 ---
 title: "IWordSprite"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iwordsprite/"
+source: "https://docs.amcharts.com/v5/reference/iwordsprite/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "ResetControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/resetcontrol/"
+source: "https://docs.amcharts.com/v5/reference/resetcontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A control that removes all drawings and indicators when clicked.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/reset-control/
+Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/reset-control/
 
 ## Import
 

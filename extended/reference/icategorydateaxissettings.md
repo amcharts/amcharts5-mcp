@@ -1,7 +1,7 @@
 ---
 title: "ICategoryDateAxisSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icategorydateaxissettings/"
+source: "https://docs.amcharts.com/v5/reference/icategorydateaxissettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,12 +14,12 @@ TypeScript: `am5xy.ICategoryDateAxisSettings` (`import type { ICategoryDateAxisS
 
 ## Settings
 
-- **baseInterval** (`ITimeInterval`) — The time interval of the data, such as `{ timeUnit: "day", count: 1 }` for daily data. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Data_granularity
-- **gridIntervals** (`ITimeInterval[]`) — default computed at runtime _(theme)_ — Intervals the grid and labels can be placed at, from shortest to longest. The axis uses the shortest that keeps grid lines at least `minGridDistance` apart. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Grid_granularity
+- **baseInterval** (`ITimeInterval`) — The time interval of the data, such as `{ timeUnit: "day", count: 1 }` for daily data. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#data-granularity
+- **gridIntervals** (`ITimeInterval[]`) — default computed at runtime _(theme)_ — Intervals the grid and labels can be placed at, from shortest to longest. The axis uses the shortest that keeps grid lines at least `minGridDistance` apart. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#grid-granularity
 - **markUnitChange** (`boolean`) — default `true` _(theme)_ — Formats labels where a new period begins, such as the first day of a month, with `periodChangeDateFormats` instead of `dateFormats`.
-- **dateFormats** (`{ [index: string]: string; }`) — default computed at runtime _(theme)_ — Date formats for labels, by the time unit of the grid, such as `"day"`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Date_formats
-- **periodChangeDateFormats** (`{ [index: string]: string; }`) — default computed at runtime _(theme)_ — Date formats, by time unit, for labels where a new period begins (see `markUnitChange`). Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Date_formats
-- **tooltipDateFormat** (`string`) — Date format for the axis tooltip. If not set, the one in `dateFormats` for the time unit of `baseInterval` is used. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
+- **dateFormats** (`{ [index: string]: string; }`) — default computed at runtime _(theme)_ — Date formats for labels, by the time unit of the grid, such as `"day"`. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#date-formats
+- **periodChangeDateFormats** (`{ [index: string]: string; }`) — default computed at runtime _(theme)_ — Date formats, by time unit, for labels where a new period begins (see `markUnitChange`). Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#date-formats
+- **tooltipDateFormat** (`string`) — Date format for the axis tooltip. If not set, the one in `dateFormats` for the time unit of `baseInterval` is used. Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/
 
 ## Other inherited settings
 

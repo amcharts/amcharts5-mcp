@@ -1,7 +1,7 @@
 ---
 title: "GhostLayer"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/ghostlayer/"
+source: "https://docs.amcharts.com/v5/reference/ghostlayer/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

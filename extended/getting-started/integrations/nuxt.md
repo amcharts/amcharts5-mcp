@@ -1,10 +1,10 @@
 ---
 title: "Using amCharts 5 with Nuxt 3"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/nuxt/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/nuxt/"
 scraped: "2026-10-22"
 ---
 
-Nuxt is a Vue framework: use our [`@amcharts/amcharts5-vue`](https://www.npmjs.com/package/@amcharts/amcharts5-vue) package, as in the [Vue.js tutorial](https://www.amcharts.com/docs/v5/getting-started/integrations/vue/). It works with Nuxt's server rendering: there is no need for `<ClientOnly>`, and nothing to set in `nuxt.config.ts`.
+Nuxt is a Vue framework: use our [`@amcharts/amcharts5-vue`](https://www.npmjs.com/package/@amcharts/amcharts5-vue) package, as in the [Vue.js tutorial](https://docs.amcharts.com/v5/getting-started/integrations/vue/). It works with Nuxt's server rendering: there is no need for `<ClientOnly>`, and nothing to set in `nuxt.config.ts`.
 
 Follow the directions for [installing Nuxt](https://nuxt.com/docs/getting-started/installation), then install amCharts:
 
@@ -46,7 +46,7 @@ An [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/
 
 ## Without the package
 
-To use the code from [the Vue.js tutorial](https://www.amcharts.com/docs/v5/getting-started/integrations/vue/#without-the-package) without the package, render the component in `<ClientOnly>`:
+To use the code from [the Vue.js tutorial](https://docs.amcharts.com/v5/getting-started/integrations/vue/#without-the-package) without the package, render the component in `<ClientOnly>`:
 
 ```html
 <ClientOnly>

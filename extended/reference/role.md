@@ -1,13 +1,13 @@
 ---
 title: "Role"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/role/"
+source: "https://docs.amcharts.com/v5/reference/role/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 ARIA roles an element can have.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/
+Docs: https://docs.amcharts.com/v5/concepts/accessibility/
 
 TypeScript: not exported by name from the package.
 

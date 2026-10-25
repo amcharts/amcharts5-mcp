@@ -1,13 +1,13 @@
 ---
 title: "SpriteEventDispatcher"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/spriteeventdispatcher/"
+source: "https://docs.amcharts.com/v5/reference/spriteeventdispatcher/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An `EventDispatcher` for `Sprite`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/events/
+Docs: https://docs.amcharts.com/v5/concepts/events/
 
 ## Import
 

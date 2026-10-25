@@ -1,6 +1,6 @@
 ---
 title: "Serializing indicators and annotations"
-source: "https://www.amcharts.com/docs/v5/charts/stock/serializing-indicators-annotations/"
+source: "https://docs.amcharts.com/v5/charts/stock/serializing-indicators-annotations/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ User-added drawings (annotations) and indicators, can be serialized into simple 
 
 ## Requirements
 
-The serialization / parsing of annotation data and added indicators is a functionality built-in into the [Drawing control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/) and [Indicator control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/indicator-control/) respectively.
+The serialization / parsing of annotation data and added indicators is a functionality built-in into the [Drawing control](https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/) and [Indicator control](https://docs.amcharts.com/v5/charts/stock/toolbar/indicator-control/) respectively.
 
 We will need those to be present and initialized in order to use the functionality.
 
@@ -48,7 +48,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
   \]
 });
 
-MORE INFOFor more information about managing toolbars, refer to the "[Stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/)" tutorial.
+MORE INFOFor more information about managing toolbars, refer to the "[Stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/)" tutorial.
 
 ## Serializing
 

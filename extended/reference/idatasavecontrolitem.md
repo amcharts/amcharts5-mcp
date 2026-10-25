@@ -1,7 +1,7 @@
 ---
 title: "IDataSaveControlItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idatasavecontrolitem/"
+source: "https://docs.amcharts.com/v5/reference/idatasavecontrolitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

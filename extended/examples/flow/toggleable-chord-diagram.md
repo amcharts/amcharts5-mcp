@@ -25,11 +25,11 @@ Prompt: Create a directed chord diagram of the connections between the six frien
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 // a click on a name switches that person's links off and on again (the nodes' default toggle)
 var series = chart.series.push(am5flow.ChordDirected.new(root, {
   startAngle: 80, // the first name starts at 80 degrees (0 is 3 o'clock), near the bottom
@@ -66,7 +66,7 @@ series.nodes.labels.template.setAll({
 series.links.template.set("fillStyle", "source");
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   { "from": "Monica", "to": "Rachel", "value": 4 },
   { "from": "Monica", "to": "Chandler", "value": 113 },

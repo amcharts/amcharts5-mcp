@@ -1,7 +1,7 @@
 ---
 title: "IChordSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichordsettings/"
+source: "https://docs.amcharts.com/v5/reference/ichordsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

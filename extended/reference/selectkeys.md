@@ -1,7 +1,7 @@
 ---
 title: "SelectKeys"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/selectkeys/"
+source: "https://docs.amcharts.com/v5/reference/selectkeys/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

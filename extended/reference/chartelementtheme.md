@@ -1,7 +1,7 @@
 ---
 title: "ChartElementTheme"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/chartelementtheme/"
+source: "https://docs.amcharts.com/v5/reference/chartelementtheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

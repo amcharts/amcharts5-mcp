@@ -1,13 +1,13 @@
 ---
 title: "Scrollbar"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/scrollbar/"
+source: "https://docs.amcharts.com/v5/reference/scrollbar/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A control for selecting a range, such as the zoom of a chart's axes: the grips resize the range, the thumb between them moves it.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 
 ## Import
 

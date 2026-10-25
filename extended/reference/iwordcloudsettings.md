@@ -1,7 +1,7 @@
 ---
 title: "IWordCloudSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iwordcloudsettings/"
+source: "https://docs.amcharts.com/v5/reference/iwordcloudsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -15,7 +15,7 @@ TypeScript: `am5wc.IWordCloudSettings` (`import type { IWordCloudSettings } from
 ## Settings
 
 - **animationDuration** (`number`) — default `0` _(code fallback)_ — Duration, in milliseconds, of words moving to their new places when the cloud is laid out again, as when the chart resizes.
-- **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing of words moving to their new places. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Easing_functions
+- **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing of words moving to their new places. Docs: https://docs.amcharts.com/v5/concepts/animations/#easing-functions
 - **autoFit** (`boolean`) — default `true` _(theme)_ — Shrinks all words until every one of them fits. When off, words that don't fit are left out.
 - **progress** (`number`) — Layout progress, from `0` to `1`. The layout runs in one pass, so this turns `1` each time it finishes: watch it to know when words are placed.
 - **colors** (`ColorSet`) — Colors for words with no `fill` in data, one after another.
@@ -40,8 +40,8 @@ TypeScript: `am5wc.IWordCloudSettings` (`import type { IWordCloudSettings } from
 ## Inherited settings with a different default on WordCloud
 
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
-- **sequencedDelay** (`number`) — default `15` _(theme)_ — _from ISeriesSettings_ — Extra delay in milliseconds between the animations of consecutive data items, with `sequencedInterpolation`. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
-- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+- **sequencedDelay** (`number`) — default `15` _(theme)_ — _from ISeriesSettings_ — Extra delay in milliseconds between the animations of consecutive data items, with `sequencedInterpolation`. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
+- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 - **valueField** (`string`) — default `"value"` _(class default)_ — _from ISeriesSettings_ — A key to look up in data for a numeric value of the data item. Some series draw their elements by it; heat rules can use it too.
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 

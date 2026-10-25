@@ -155,10 +155,26 @@ const tests = [
     label: "get_quick_start('pie','html') — no framework note",
   },
   // Step 9f: amcharts.com addresses work where a doc path or example path goes
+  // (the docs moved to docs.amcharts.com in October 2026; old addresses still work)
   {
     send: { jsonrpc: "2.0", id: 44, method: "tools/call", params: { name: "get_doc", arguments: { path: "https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/" } } },
     check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Formatting dates") ? "PASS" : "FAIL",
-    label: "get_doc(full amcharts.com docs URL)",
+    label: "get_doc(old amcharts.com/docs URL)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 60, method: "tools/call", params: { name: "get_doc", arguments: { path: "https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/#date-formats" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Formatting dates") ? "PASS" : "FAIL",
+    label: "get_doc(docs.amcharts.com URL with an anchor)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 61, method: "tools/call", params: { name: "get_doc", arguments: { path: "https://docs.amcharts.com/v5/concepts/events.md" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# Events") ? "PASS" : "FAIL",
+    label: "get_doc(docs.amcharts.com Markdown URL)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 62, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "https://docs.amcharts.com/v5/reference/xycursor/" } } },
+    check: (r) => (r.result?.content?.[0]?.text || "").startsWith("# XYCursor") ? "PASS" : "FAIL",
+    label: "get_api_reference(docs.amcharts.com reference URL)",
   },
   {
     send: { jsonrpc: "2.0", id: 45, method: "tools/call", params: { name: "get_doc", arguments: { path: "/docs/v5/concepts/events/#Global_events" } } },

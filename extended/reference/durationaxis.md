@@ -1,13 +1,13 @@
 ---
 title: "DurationAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/durationaxis/"
+source: "https://docs.amcharts.com/v5/reference/durationaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A value axis whose values are amounts of `baseUnit`, with labels formatted as durations.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/duration-axis/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/duration-axis/
 
 ## Import
 

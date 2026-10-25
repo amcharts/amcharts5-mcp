@@ -1,7 +1,7 @@
 ---
 title: "ILineSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilineseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ilineseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,15 +14,15 @@ TypeScript: `am5xy.ILineSeriesSettings` (`import type { ILineSeriesSettings } fr
 
 ## Settings
 
-- **connect** (`boolean`) — default `true` _(theme)_ — Draws the line across data items that have no value. With `false`, the line breaks there, and also at time gaps longer than `autoGapCount`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Gaps
-- **autoGapCount** (`number`) — default `1.1` _(theme)_ — With `connect` set to `false` and a `DateAxis` as the base axis, breaks the line where neighboring data items are more than this many base intervals (e.g. days) apart. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Auto_gaps_with_dates
+- **connect** (`boolean`) — default `true` _(theme)_ — Draws the line across data items that have no value. With `false`, the line breaks there, and also at time gaps longer than `autoGapCount`. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/#gaps
+- **autoGapCount** (`number`) — default `1.1` _(theme)_ — With `connect` set to `false` and a `DateAxis` as the base axis, breaks the line where neighboring data items are more than this many base intervals (e.g. days) apart. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/#auto-gaps-with-dates
 - **curveFactory** (`CurveFactory`) — _(internal)_
 - **minDistance** (`number`) — default `0` — Skips points closer than this many pixels to the last point drawn, which simplifies lines with many data points. _Since 5.2.7._
 
 ## Inherited settings with a different default on LineSeries
 
 - **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
-- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#negative-value-stacking
 
 ## Other inherited settings
 

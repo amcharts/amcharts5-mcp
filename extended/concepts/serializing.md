@@ -1,12 +1,12 @@
 ---
 title: "Serializing / JSON config"
-source: "https://www.amcharts.com/docs/v5/concepts/serializing/"
+source: "https://docs.amcharts.com/v5/concepts/serializing/"
 scraped: "2026-10-08"
 ---
 
 amCharts 5 charts or individual objects can be serialized into and parsed back from simple JavaScript objects or JSON-compatible strings. This tutorial explains how those features can be used.
 
-(To serialize charts, use the [ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/) class. [More info](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/).)
+(To serialize charts, use the [ChartSerializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/) class. [More info](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/).)
 
 ## Requirements
 
@@ -23,7 +23,7 @@ Supported features:
 -   Settings
 -   Adapters
 -   States
--   Declared animations — the `animations` setting *(5.20.8)*, see "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)". In a JSON config, colors and percents in an entry's `from`/`to` use the object form (`{ "type": "Color", "value": "#f00" }`, `{ "type": "Percent", "value": 50 }`).
+-   Declared animations — the `animations` setting *(5.20.8)*, see "[Animations](https://docs.amcharts.com/v5/concepts/animations/)". In a JSON config, colors and percents in an entry's `from`/`to` use the object form (`{ "type": "Color", "value": "#f00" }`, `{ "type": "Percent", "value": 50 }`).
 
 Unsupported features:
 
@@ -42,7 +42,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 
 <script src="https://cdn.amcharts.com/lib/5/plugins/json.js"></script>
 
-MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Object structure
 
@@ -60,7 +60,7 @@ A resulting object must at least contain `type` key, which should have object's 
 
 ### Settings
 
-To pass in object's [settings](https://www.amcharts.com/docs/v5/concepts/settings/), we need to use `settings` key, which is an object, where key is a setting key, while value is a setting value.
+To pass in object's [settings](https://docs.amcharts.com/v5/concepts/settings/), we need to use `settings` key, which is an object, where key is a setting key, while value is a setting value.
 
 Let's add some settings to the config above:
 
@@ -217,7 +217,7 @@ To use one of the theme's interface colors instead of a fixed one, refer to it v
   }
 }
 
-MORE INFO[ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/#Theme_colors) saves such colors this way, too.
+MORE INFO[ChartSerializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/#theme-colors) saves such colors this way, too.
 
 NOTE `@root` can be used in any config since 5.21.0: `JsonParser` makes it available as a global ref (a ref of the config's own named `@root` takes precedence). Earlier versions do not know `@root`.
 
@@ -458,7 +458,7 @@ Omitting `index` would push the element as the last child of a target container.
 
 ### Root settings
 
-A top-level `root` section applies settings and properties to the chart's `Root` object, such as formatters or a named locale. It is applied before the rest of the config is parsed, and is what [ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)'s `includeRoot` option produces.
+A top-level `root` section applies settings and properties to the chart's `Root` object, such as formatters or a named locale. It is applied before the rest of the config is parsed, and is what [ChartSerializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/)'s `includeRoot` option produces.
 
 {
   type: "XYChart",
@@ -498,7 +498,7 @@ In code, a chart's opening animation is played by calling `appear()` on the char
 
 A series waits for its data before playing the animation.
 
-MORE INFOFor more details, see "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)".
+MORE INFOFor more details, see "[Animations](https://docs.amcharts.com/v5/concepts/animations/)".
 
 ### Map chart projection
 
@@ -658,7 +658,7 @@ series: \[{
 
 JSON configs support axis ranges (both standalone and series-related), with certain caveats:
 
--   Axis range definitions should go into a separate [`refs` section](https://www.amcharts.com/docs/v5/concepts/serializing/#Referenced_objects) group.
+-   Axis range definitions should go into a separate [`refs` section](https://docs.amcharts.com/v5/concepts/serializing/#referenced-objects) group.
 -   Axes need to be defined in their own `refs` group that comes before axis ranges. This is needed so that axis range can reference the axis via hash-tags.
 -   For series-related axis ranges, the series needs to be in `refs` section, too.
 -   Axis range needs a special directive `__parseLogic: "axisRange"`.
@@ -778,7 +778,7 @@ Since adapters are functions, they can't technically be part of a serialized JSO
 
 ## States
 
-Element [states](https://www.amcharts.com/docs/v5/concepts/states/) can be defined via a `states` array, where each item has a `key` and its `settings`:
+Element [states](https://docs.amcharts.com/v5/concepts/states/) can be defined via a `states` array, where each item has a `key` and its `settings`:
 
 {
   type: "Circle",
@@ -982,17 +982,17 @@ To put a chart from a config on a page without writing any code, use the `<am5-c
 
 <am5-chart src="chart.json"></am5-chart>
 
-MORE INFOFor more details, see "[The <am5-chart> element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/)".
+MORE INFOFor more details, see "[The <am5-chart> element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/)".
 
 ## Serializing
 
-To serialize charts, use the [ChartSerializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/) class. [More info](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/).
+To serialize charts, use the [ChartSerializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/) class. [More info](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/).
 
 ## Visual JSON config editor
 
 You can create and edit JSON configs using [amCharts Editor](https://live.amcharts.com/).
 
-For more info, refer to "[JSON Editor](https://www.amcharts.com/docs/v5/concepts/serializing/json-editor/)".
+For more info, refer to "[JSON Editor](https://docs.amcharts.com/v5/concepts/serializing/json-editor/)".
 
 ## Examples
 

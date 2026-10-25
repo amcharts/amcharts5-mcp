@@ -25,17 +25,17 @@ Prompt: Create a Gantt chart of a software project over about a month: a start m
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root)
 ]);
 
 // Create Gantt chart
-// https://www.amcharts.com/docs/v5/charts/gantt/
+// https://docs.amcharts.com/v5/charts/gantt/
 var gantt = root.container.children.push(am5gantt.Gantt.new(root, {}));
 
 // A phone-sized chart: more room for the task names, lower rows so more of the plan shows,
@@ -192,8 +192,8 @@ var seriesData = [{
 var markedDates = [1758661200000, 1759352400000]; // timestamps of the dates to mark
 
 // Set data on axis and series
-// https://www.amcharts.com/docs/v5/charts/gantt/#Category_data
-// https://www.amcharts.com/docs/v5/charts/gantt/#Series_data
+// https://docs.amcharts.com/v5/charts/gantt/#category-data
+// https://docs.amcharts.com/v5/charts/gantt/#series-data
 gantt.yAxis.data.setAll(categoryData);
 gantt.series.data.setAll(seriesData);
 

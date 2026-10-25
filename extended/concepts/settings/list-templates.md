@@ -1,10 +1,10 @@
 ---
 title: "List templates"
-source: "https://www.amcharts.com/docs/v5/concepts/settings/list-templates/"
+source: "https://docs.amcharts.com/v5/concepts/settings/list-templates/"
 scraped: "2026-03-15"
 ---
 
-List templates (or objects of type `[ListTemplate](https://www.amcharts.com/docs/v5/reference/listtemplate/)`) are combination of a list of items of certain type as well as collection of default settings for those objects. List templates are used throughout amCharts 5.
+List templates (or objects of type `[ListTemplate](https://docs.amcharts.com/v5/reference/listtemplate/)`) are combination of a list of items of certain type as well as collection of default settings for those objects. List templates are used throughout amCharts 5.
 
 ## Use case
 
@@ -50,7 +50,7 @@ When new elements are created in this list, the will be set the settings from th
 
 These settings will override whatever defaults actual element may have.
 
-For more information about setting, refer to "[Settings](https://www.amcharts.com/docs/v5/concepts/settings/)" tutorial.
+For more information about setting, refer to "[Settings](https://docs.amcharts.com/v5/concepts/settings/)" tutorial.
 
 ### Setup handler
 
@@ -86,7 +86,7 @@ columnSeries.columns.template.events.on("click", function(ev) {
 
 Events added on a template, will be automatically replicated on any new object created in the list.
 
-For more information about events, refer to "[Events](https://www.amcharts.com/docs/v5/concepts/events/)" tutorial.
+For more information about events, refer to "[Events](https://docs.amcharts.com/v5/concepts/events/)" tutorial.
 
 ### Adapters
 
@@ -108,7 +108,7 @@ columnSeries.columns.template.adapters.add("fill", function(fill, target) {
   }
 });
 
-For more information about adapters, refer to "[Adapters](https://www.amcharts.com/docs/v5/concepts/settings/adapters/)" tutorial.
+For more information about adapters, refer to "[Adapters](https://docs.amcharts.com/v5/concepts/settings/adapters/)" tutorial.
 
 ### States
 
@@ -126,7 +126,7 @@ columnSeries.columns.template.states.create("hover", {
   fill: am5.color(0x0ff00f)
 });
 
-For more information about states, refer to "[Sates](https://www.amcharts.com/docs/v5/concepts/settings/states/)" tutorial.
+For more information about states, refer to "[Sates](https://docs.amcharts.com/v5/concepts/settings/states/)" tutorial.
 
 ## List items
 
@@ -150,4 +150,4 @@ pieSeries.slices.each(function(slice) {
   console.log(slice);
 });
 
-For more methods and properties available in list templates, refer to `ListTemplate` [class reference](https://www.amcharts.com/docs/v5/reference/listtemplate/).
+For more methods and properties available in list templates, refer to `ListTemplate` [class reference](https://docs.amcharts.com/v5/reference/listtemplate/).

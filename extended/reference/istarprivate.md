@@ -1,7 +1,7 @@
 ---
 title: "IStarPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istarprivate/"
+source: "https://docs.amcharts.com/v5/reference/istarprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

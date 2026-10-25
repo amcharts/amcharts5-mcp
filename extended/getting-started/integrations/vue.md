@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with Vue.js"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/vue/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/vue/"
 scraped: "2026-10-22"
 ---
 
@@ -110,7 +110,7 @@ IMPORTANT Give amCharts plain data and keep amCharts objects out of Vue's react
 
 ## A chart from a JSON config
 
-`<AmChart>` builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/), with no chart code:
+`<AmChart>` builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/), with no chart code:
 
 ```html
 <script setup>
@@ -134,7 +134,7 @@ const themes = [am5themes_Animated];
 | `@ready` | `{ root, chart }`, when the chart is built. |
 | `@error` | When it could not be built. |
 
-It is the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/): the component exposes it as `element`. Without a height, it is 400 pixels high.
+It is the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/): the component exposes it as `element`. Without a height, it is 400 pixels high.
 
 ## License
 

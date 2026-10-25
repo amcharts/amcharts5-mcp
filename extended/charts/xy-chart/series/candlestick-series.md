@@ -1,6 +1,6 @@
 ---
 title: "Candlestick and OHLC series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/"
 scraped: "2026-03-15"
 ---
 
@@ -73,13 +73,13 @@ var series = chart.series.push(
 
 Both candlestick and OHLC series have different approach to colors than the rest of the XY chart series.
 
-While they still get assigned stroke and fill color from the [theme](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/#Auto_assigned_colors) that are used for such auxiliary elements as tooltips, they do apply their own colors based on the close value relation to open value.
+While they still get assigned stroke and fill color from the [theme](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#auto-assigned-colors) that are used for such auxiliary elements as tooltips, they do apply their own colors based on the close value relation to open value.
 
 Basically, if the open value is lower than close, the candle/stick will be green. If it's the other way around, the candle/stick will be red.
 
 Using other themes may introduce different coloring scheme.
 
-Actual color application in these series is done by applying certain [state](https://www.amcharts.com/docs/v5/concepts/settings/states/) to candle/stick.
+Actual color application in these series is done by applying certain [state](https://docs.amcharts.com/v5/concepts/settings/states/) to candle/stick.
 
 It is done by the series based on actual open/close values of each data item.
 
@@ -113,7 +113,7 @@ series.columns.template.states.create("dropFromOpen", {
   stroke: am5.color(0xe4572e)
 });
 
-Naturally, we can also create a [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme):
+Naturally, we can also create a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme):
 
 const myTheme = am5.Theme.new(root);
 
@@ -183,7 +183,7 @@ series.columns.template.setAll({
   width: am5.percent(60)
 });
 
-For more information about this, refer to "[Column series: Column width](https://www.amcharts.com/docs/v5/getting-started/xy-chart/series/column-series/#Column_width)" tutorial.
+For more information about this, refer to "[Column series: Column width](https://docs.amcharts.com/v5/getting-started/xy-chart/series/column-series/#column-width)" tutorial.
 
 ## Professional candlesticks
 

@@ -25,18 +25,18 @@ Prompt: Create a word cloud of programming languages weighted by how many develo
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create a container for the series
-// https://www.amcharts.com/docs/v5/charts/word-cloud/
+// https://docs.amcharts.com/v5/charts/word-cloud/
 // holds the word cloud and zooms it
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 

@@ -1,7 +1,7 @@
 ---
 title: "IScrollbarSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iscrollbarsettings/"
+source: "https://docs.amcharts.com/v5/reference/iscrollbarsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -18,7 +18,7 @@ TypeScript: `am5.IScrollbarSettings` (`import type { IScrollbarSettings } from "
 - **start** (`number`) — default `0` _(theme)_ — Start of the selected range, from `0` to `1`: `0` is the left end, or the top on a vertical scrollbar.
 - **end** (`number`) — default `1` _(theme)_ — End of the selected range, from `0` to `1`: `1` is the right end, or the bottom on a vertical scrollbar.
 - **animationDuration** (`number`) — default `0` _(code fallback)_ — Duration in milliseconds of scroll animations, such as after a click on the scrollbar's background.
-- **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of scroll animations. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Easing_functions
+- **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of scroll animations. Docs: https://docs.amcharts.com/v5/concepts/animations/#easing-functions
 - **opposite** (`boolean`) — default `false` — Puts the scrollbar on the opposite side of the chart: a horizontal scrollbar below the plot area instead of above it, a vertical one on the left instead of the right. It can be changed at any time. Works only for scrollbars set as a chart's `scrollbarX` or `scrollbarY`. _Since 5.20.2._
 - **outsideAxes** (`boolean`) — Where the scrollbar sits relative to the axes on its side: `true` beyond them (outermost), `false` between them and the plot area. If not set, the chart decides. It can be changed at any time. Like `opposite`, works only for scrollbars set as a chart's `scrollbarX` or `scrollbarY`. _Since 5.21.0._
 

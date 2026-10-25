@@ -1,7 +1,7 @@
 ---
 title: "IVoronoiTreemapPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ivoronoitreemapprivate/"
+source: "https://docs.amcharts.com/v5/reference/ivoronoitreemapprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

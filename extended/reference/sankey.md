@@ -1,13 +1,13 @@
 ---
 title: "Sankey"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/sankey/"
+source: "https://docs.amcharts.com/v5/reference/sankey/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Sankey diagram: nodes in columns, linked by bands as wide as the values they carry.
 
-Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
+Docs: https://docs.amcharts.com/v5/charts/flow-charts/
 
 ## Import
 

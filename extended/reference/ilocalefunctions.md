@@ -1,7 +1,7 @@
 ---
 title: "ILocaleFunctions"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilocalefunctions/"
+source: "https://docs.amcharts.com/v5/reference/ilocalefunctions/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

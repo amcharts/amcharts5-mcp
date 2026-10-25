@@ -146,7 +146,7 @@ var heatLegend = chart.children.push(am5.HeatLegend.new(root, {
 }));
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {
   x: 0, // at the bottom left, clear of the heat legend on the right
   centerX: 0,

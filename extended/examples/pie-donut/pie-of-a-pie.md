@@ -25,11 +25,11 @@ Prompt: Create a pie-of-a-pie chart comparing six countries: clicking a slice tu
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 var container = root.container.children.push(
@@ -41,7 +41,7 @@ var container = root.container.children.push(
 );
 
 // Create main chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = container.children.push(
   am5percent.PieChart.new(root, {
     tooltip: am5.Tooltip.new(root, {})
@@ -49,7 +49,7 @@ var chart = container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     valueField: "value",
@@ -72,7 +72,7 @@ series.slices.template.events.on("click", function(e) {
 });
 
 // Create sub chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var subChart = container.children.push(
   am5percent.PieChart.new(root, {
     radius: am5.percent(50), // half the radius it could take, so the sub pie is smaller
@@ -81,7 +81,7 @@ var subChart = container.children.push(
 );
 
 // Create sub series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var subSeries = subChart.series.push(
   am5percent.PieSeries.new(root, {
     valueField: "value",
@@ -162,7 +162,7 @@ var line1 = container.children.push(
 );
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([
   {
     category: "Lithuania",

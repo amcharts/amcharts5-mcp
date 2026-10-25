@@ -1,13 +1,13 @@
 ---
 title: "ILineSeriesAxisRange"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilineseriesaxisrange/"
+source: "https://docs.amcharts.com/v5/reference/ilineseriesaxisrange/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An axis range of a `LineSeries`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Series_axis_ranges
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#series-axis-ranges
 
 ## Inheritance
 

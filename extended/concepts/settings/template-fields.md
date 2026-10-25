@@ -1,6 +1,6 @@
 ---
 title: "Template fields"
-source: "https://www.amcharts.com/docs/v5/concepts/settings/template-fields/"
+source: "https://docs.amcharts.com/v5/concepts/settings/template-fields/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ Template fields is a way to bind element's settings to data. Any element that ha
 
 ## Setting up
 
-Template fields are similar to series data fields (see "[XY chart series: Data fields](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Data_fields)"). In a nutshell it means this: "this field in data holds an object with setting values to be used for the element".
+Template fields are similar to series data fields (see "[XY chart series: Data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#data-fields)"). In a nutshell it means this: "this field in data holds an object with setting values to be used for the element".
 
 It is set via setting `templateField`.
 
@@ -127,4 +127,4 @@ Before 5.20.7 such a `templateField` on a background was never applied.
 
 There are some caveats involved when using template fields with bullets.
 
-For more information, please visit "Bullets: [Template fields](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/#template-fields)" tutorial.
+For more information, please visit "Bullets: [Template fields](https://docs.amcharts.com/v5/concepts/common-elements/bullets/#template-fields)" tutorial.

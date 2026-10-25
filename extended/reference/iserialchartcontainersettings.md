@@ -1,7 +1,7 @@
 ---
 title: "ISerialChartContainerSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iserialchartcontainersettings/"
+source: "https://docs.amcharts.com/v5/reference/iserialchartcontainersettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

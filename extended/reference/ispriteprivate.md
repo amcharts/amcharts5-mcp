@@ -1,7 +1,7 @@
 ---
 title: "ISpritePrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ispriteprivate/"
+source: "https://docs.amcharts.com/v5/reference/ispriteprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

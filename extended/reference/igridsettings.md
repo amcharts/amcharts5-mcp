@@ -1,7 +1,7 @@
 ---
 title: "IGridSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/igridsettings/"
+source: "https://docs.amcharts.com/v5/reference/igridsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,12 +14,12 @@ TypeScript: `am5xy.IGridSettings` (`import type { IGridSettings } from "@amchart
 
 ## Settings
 
-- **location** (`number`) — default `0` _(theme)_ — Where the grid line sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Location_of_axis_elements
+- **location** (`number`) — default `0` _(theme)_ — Where the grid line sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#location-of-axis-elements
 
 ## Inherited settings with a different default on Grid
 
 - **crisp** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `0.15` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 
 ## Other inherited settings

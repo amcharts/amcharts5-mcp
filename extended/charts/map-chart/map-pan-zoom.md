@@ -1,6 +1,6 @@
 ---
 title: "Panning and zooming the map"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/"
 scraped: "2026-10-08"
 ---
 
@@ -32,19 +32,19 @@ Move contents of the map without changing appearance.
 
 ## Zooming
 
-Zooming in and out the chart can be done in a variety of ways, e.g. with [mouse wheel](https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Mouse_wheel_behavior) or pinch gestures, via API and some interactions on the map, or via [zoom control](#Zoom_control).
+Zooming in and out the chart can be done in a variety of ways, e.g. with [mouse wheel](https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#mouse-wheel-behavior) or pinch gestures, via API and some interactions on the map, or via [zoom control](#Zoom_control).
 
 ### Zoom steps
 
 Whenever zoom operation kicks in (via API, zoom control, or mouse wheel spin) the map changes its zoom level by `2`.
 
-We can change map chart's `[zoomStep](https://www.amcharts.com/docs/v5/reference/mapchart/#zoomStep_setting)` setting to a lower value (making zoom in slower) or to a bigger value to make map zoom in deeper with each step.
+We can change map chart's `[zoomStep](https://docs.amcharts.com/v5/reference/mapchart/#zoomStep_setting)` setting to a lower value (making zoom in slower) or to a bigger value to make map zoom in deeper with each step.
 
 ### Limiting zoom
 
 As a default behavior, map chart would not let zoom out beyond level `1` and zoom in beyond level `32`.
 
-We can change that using `[minZoomLevel](https://www.amcharts.com/docs/v5/reference/mapchart/#minZoomLevel_setting)` and `[maxZoomLevel](https://www.amcharts.com/docs/v5/reference/mapchart/#maxZoomLevel_setting)` chart settings respectively.
+We can change that using `[minZoomLevel](https://docs.amcharts.com/v5/reference/mapchart/#minZoomLevel_setting)` and `[maxZoomLevel](https://docs.amcharts.com/v5/reference/mapchart/#maxZoomLevel_setting)` chart settings respectively.
 
 let chart = root.container.children.push(
   am5map.MapChart.new(root, {
@@ -73,19 +73,19 @@ Method
 
 Comment
 
-`[zoomToPoint()](https://www.amcharts.com/docs/v5/reference/mapchart/#zoomToPoint_method)`
+`[zoomToPoint()](https://docs.amcharts.com/v5/reference/mapchart/#zoomToPoint_method)`
 
 Centers and zooms the map to specific X/Y coordinates in pixels.
 
-`[zoomToGeoPoint()](https://www.amcharts.com/docs/v5/reference/mapchart/#zoomToGeoPoint_method)`
+`[zoomToGeoPoint()](https://docs.amcharts.com/v5/reference/mapchart/#zoomToGeoPoint_method)`
 
 Centers and zooms the map to specific latitude/longitude coordinates and zoom level.
 
-`[zoomIn()](https://www.amcharts.com/docs/v5/reference/mapchart/#zoomIn_method)`
+`[zoomIn()](https://docs.amcharts.com/v5/reference/mapchart/#zoomIn_method)`
 
 Zooms the map in by `zoomStep` setting value.
 
-`[zoomOut()](https://www.amcharts.com/docs/v5/reference/mapchart/#zoomOut_method)`
+`[zoomOut()](https://docs.amcharts.com/v5/reference/mapchart/#zoomOut_method)`
 
 Zooms the map out by `zoomStep` setting value.
 
@@ -123,7 +123,7 @@ var polygonSeries = chart.series.push(
 
 Clicking the same polygon again, or the map's background, zooms back to the [home position](#Initial_position_and_zoom). On a rotating map, such as a globe, the map also turns to bring the polygon to the center.
 
-The polygon zoomed to is set as active, so we can highlight it with an "active" [state](https://www.amcharts.com/docs/v5/concepts/settings/states/):
+The polygon zoomed to is set as active, so we can highlight it with an "active" [state](https://docs.amcharts.com/v5/concepts/settings/states/):
 
 polygonSeries.mapPolygons.template.states.create("active", {
   fill: am5.color(0x297373)
@@ -517,7 +517,7 @@ NOTE `maxPanOut` is not relevant if pan settings are set to rotate the map, rat
 
 ### Setting
 
-Map chart has two options for setting its initial/default position and zoom level: `[homeGeoPoint](https://www.amcharts.com/docs/v5/reference/mapchart/#homeGeoPoint_setting)` and `[homeZoomLevel](https://www.amcharts.com/docs/v5/reference/mapchart/#homeZoomLevel_setting)` respectively.
+Map chart has two options for setting its initial/default position and zoom level: `[homeGeoPoint](https://docs.amcharts.com/v5/reference/mapchart/#homeGeoPoint_setting)` and `[homeZoomLevel](https://docs.amcharts.com/v5/reference/mapchart/#homeZoomLevel_setting)` respectively.
 
 We can use those to set those to center around some latitude/longitude coordinates and zoom in automatically on start.
 
@@ -539,7 +539,7 @@ var chart = root.container.children.push(
   })
 );
 
-The move is animated if the chart has an animation duration set, e.g. by the Animated theme, and instant otherwise. Since it needs no code, it also works in [JSON configs](https://www.amcharts.com/docs/v5/concepts/serializing/).
+The move is animated if the chart has an animation duration set, e.g. by the Animated theme, and instant otherwise. Since it needs no code, it also works in [JSON configs](https://docs.amcharts.com/v5/concepts/serializing/).
 
 NOTE`autoHome` is available since version 5.21.0. In earlier versions, call `chart.goHome()` in polygon series' `datavalidated` event instead.
 
@@ -625,7 +625,7 @@ chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 ### Configuring buttons
 
-Zoom control has two properties that hold button instances: `[minusButton](https://www.amcharts.com/docs/v5/reference/zoomcontrol/#minusButton_property)` and `[plusButton](https://www.amcharts.com/docs/v5/reference/zoomcontrol/#plusButton_property)`.
+Zoom control has two properties that hold button instances: `[minusButton](https://docs.amcharts.com/v5/reference/zoomcontrol/#minusButton_property)` and `[plusButton](https://docs.amcharts.com/v5/reference/zoomcontrol/#plusButton_property)`.
 
 Both are elements of type `Button`.
 
@@ -690,5 +690,5 @@ chart.set("zoomControl", am5map.ZoomControl.new(root, {
 
 ## Related tutorials
 
--   [Rotate and zoom the globe to a clicked country](https://www.amcharts.com/docs/v5/tutorials/rotate-and-zoom-the-globe-to-a-clicked-country/) (demo)
--   [Get points within current viewport of a MapChart](https://www.amcharts.com/docs/v5/tutorials/get-points-within-current-viewport-of-a-mapchart/) (demo)
+-   [Rotate and zoom the globe to a clicked country](https://docs.amcharts.com/v5/tutorials/rotate-and-zoom-the-globe-to-a-clicked-country/) (demo)
+-   [Get points within current viewport of a MapChart](https://docs.amcharts.com/v5/tutorials/get-points-within-current-viewport-of-a-mapchart/) (demo)

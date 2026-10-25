@@ -1,6 +1,6 @@
 ---
 title: "Responsive"
-source: "https://www.amcharts.com/docs/v5/concepts/responsive/"
+source: "https://docs.amcharts.com/v5/concepts/responsive/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ Responsive features in amCharts 5 are activated via Responsive theme.
 
 ## Loading
 
-Responsive is loaded just like any other [theme](https://www.amcharts.com/docs/v5/concepts/themes/):
+Responsive is loaded just like any other [theme](https://docs.amcharts.com/v5/concepts/themes/):
 
 import am5themes\_Responsive from "@amcharts/amcharts5/themes/Responsive";
 
@@ -93,7 +93,7 @@ Let's examine what's going on in the above snippet.
 
 The class name of the element is represented by its class' `className` and `classNames` properties.
 
-Take a look at class reference of the `[AxisRendererY](https://www.amcharts.com/docs/v5/reference/axisrenderery/#className_property)` from the example above:
+Take a look at class reference of the `[AxisRendererY](https://docs.amcharts.com/v5/reference/axisrenderery/#className_property)` from the example above:
 
 We can target elements by any of the class names. E.g. using `AxisRenderer` would target all axis renderers, not just ones for the Y axis.
 
@@ -125,7 +125,7 @@ responsive.addRule({
 
 The above will target vertical axis renderer, but only if it's placed on the right-side of the chart (`opposite: true`).
 
-For more information about targeting elements using class names, theme tags and a list of hard-coded tags, refer to "[Creating themes: Targeting elements](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/#Targeting_elements)" tutorial.
+For more information about targeting elements using class names, theme tags and a list of hard-coded tags, refer to "[Creating themes: Targeting elements](https://docs.amcharts.com/v5/concepts/themes/creating-themes/#targeting-elements)" tutorial.
 
 ### Rule condition
 
@@ -337,7 +337,7 @@ responsive.addRule({
 
 Final property of the rule is `settings` which supplies `key` - `value` pairs to override for the element if the condition is met.
 
-NOTE [Settings](https://www.amcharts.com/docs/v5/concepts/settings/) are not regular properties of the element, which cannot be set by the responsive rule. For more complex overrides, please refer to the "[Custom apply/remove functions](#Custom_apply_remove_functions)" section of this tutorial. Also, read about "[Settings](https://www.amcharts.com/docs/v5/concepts/settings/)".
+NOTE [Settings](https://docs.amcharts.com/v5/concepts/settings/) are not regular properties of the element, which cannot be set by the responsive rule. For more complex overrides, please refer to the "[Custom apply/remove functions](#Custom_apply_remove_functions)" section of this tutorial. Also, read about "[Settings](https://docs.amcharts.com/v5/concepts/settings/)".
 
 ### Note about user-set settings
 
@@ -490,4 +490,4 @@ responsive.addRule({
 
 ## Related tutorials
 
--   [Adaptive label placement based on available space](https://www.amcharts.com/docs/v5/tutorials/adaptive-label-placement-based-on-available-space/)
+-   [Adaptive label placement based on available space](https://docs.amcharts.com/v5/tutorials/adaptive-label-placement-based-on-available-space/)

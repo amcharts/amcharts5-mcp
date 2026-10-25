@@ -25,18 +25,18 @@ Prompt: Create a gauge chart with seven colored, labeled bands from Unsustainabl
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // no dragging
   panY: false,
@@ -46,7 +46,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Create axis and its renderer
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Axes
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#axes
 var axisRenderer = am5radar.AxisRendererCircular.new(root, {
   // negative: 40px in from the outer edge, so the bands form a 40px-wide ring
   innerRadius: -40
@@ -67,7 +67,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add clock hand
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Clock_hands
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#clock-hands
 var axisDataItem = xAxis.makeDataItem({});
 
 var clockHand = am5radar.ClockHand.new(root, {
@@ -126,7 +126,7 @@ setInterval(function () {
 
 // Create axis ranges bands, colored on the theme's scale from its color for negative values (red) through its warning
 // color (yellow) to its positive one (green), so they follow the theme and dark mode
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Bands
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#bands
 function scaleColor(position) {
   return am5.Color.interpolateColors(position, [
     root.interfaceColors.get("negative"),

@@ -25,18 +25,18 @@ Prompt: Create a line chart of about 200 weekdays of values on a date axis that 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,      // drag the plot sideways to pan
   panY: false,
@@ -46,7 +46,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none" // a drag over the plot pans the chart instead of zooming
 }));
@@ -81,8 +81,8 @@ function generateDatas(count) {
 }
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/
 var xRenderer = am5xy.AxisRendererX.new(root, {});
 // hide a label that would be cut off at either end of the axis
 xRenderer.labels.template.set("minPosition", 0.01);
@@ -110,7 +110,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   name: "Series",
   xAxis: xAxis,
@@ -123,7 +123,7 @@ var tooltip = series.set("tooltip", am5.Tooltip.new(root, {}));
 tooltip.label.set("text", "{valueY}"); // the hovered value
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // a scrollbar above the plot, to zoom and pan the dates
 }));
@@ -134,7 +134,7 @@ series.data.setAll(data);
 xAxis.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

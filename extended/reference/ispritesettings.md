@@ -1,7 +1,7 @@
 ---
 title: "ISpriteSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ispritesettings/"
+source: "https://docs.amcharts.com/v5/reference/ispritesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -42,16 +42,16 @@ TypeScript: `am5.ISpriteSettings` (`import type { ISpriteSettings } from "@amcha
 - **tooltip** (`Tooltip`) — The `Tooltip` to show for the element. If not set, the nearest parent's is used.
 - **tooltipPosition** (`"fixed" | "pointer"`) — default `"fixed"` _(theme)_ — Where the tooltip points: `"fixed"` at `tooltipX` and `tooltipY`, or `"pointer"` at the pointer, following it.
 - **isMeasured** (`boolean`) — default `true` _(theme)_ — If `false`, the element's bounds are not measured, so it takes no part in its parent's layout or size.
-- **templateField** (`string`) — Field in the data item's data object that holds settings for this element, applied over its template's. Docs: https://www.amcharts.com/docs/v5/concepts/settings/template-fields/
+- **templateField** (`string`) — Field in the data item's data object that holds settings for this element, applied over its template's. Docs: https://docs.amcharts.com/v5/concepts/settings/template-fields/
 - **draggable** (`boolean`) — Lets the user drag the element. Touches that start on it no longer scroll the page.
 - **wheelable** (`boolean`) — Makes the element receive mouse wheel events. While the pointer is over it, the wheel no longer scrolls the page.
-- **numberFormatter** (`NumberFormatter`) — default `root.numberFormatter` _(code fallback)_ — A `NumberFormatter` to use for this element instead of the root's. Docs: https://www.amcharts.com/docs/v5/concepts/using-formatters/
-- **dateFormatter** (`DateFormatter`) — default `root.dateFormatter` _(code fallback)_ — A `DateFormatter` to use for this element instead of the root's. Docs: https://www.amcharts.com/docs/v5/concepts/using-formatters/
-- **durationFormatter** (`DurationFormatter`) — default `root.durationFormatter` _(code fallback)_ — A `DurationFormatter` to use for this element instead of the root's. Docs: https://www.amcharts.com/docs/v5/concepts/using-formatters/
+- **numberFormatter** (`NumberFormatter`) — default `root.numberFormatter` _(code fallback)_ — A `NumberFormatter` to use for this element instead of the root's. Docs: https://docs.amcharts.com/v5/concepts/formatters/
+- **dateFormatter** (`DateFormatter`) — default `root.dateFormatter` _(code fallback)_ — A `DateFormatter` to use for this element instead of the root's. Docs: https://docs.amcharts.com/v5/concepts/formatters/
+- **durationFormatter** (`DurationFormatter`) — default `root.durationFormatter` _(code fallback)_ — A `DurationFormatter` to use for this element instead of the root's. Docs: https://docs.amcharts.com/v5/concepts/formatters/
 - **toggleKey** (`"none" | "disabled" | "active"`) — Setting that a click or tap toggles between `true` and `false`: `"active"` or `"disabled"`. `"none"` turns toggling off.
 - **active** (`boolean`) — Applies the element's `"active"` state while `true`.
 - **disabled** (`boolean`) — Applies the element's `"disabled"` state while `true`. It changes only the look: the element still responds to the pointer.
-- **filter** (`string`) — default `""` _(code fallback)_ — _(internal)_ An SVG filter to apply to the element. IMPORTANT: SVG filters are not supported in some browsers, e.g. Safari. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/#SVG_filters
+- **filter** (`string`) — default `""` _(code fallback)_ — _(internal)_ An SVG filter to apply to the element. IMPORTANT: SVG filters are not supported in some browsers, e.g. Safari. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/#svg-filters
 - **cursorOverStyle** (`string`) — CSS cursor to show while the pointer is over the element, e.g. `"pointer"`. Docs: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
 - **exportable** (`boolean`) — If `false`, the element is left out of exported images of the chart.
 - **layer** (`number`) — Layer to draw the element on: elements on higher layers show in front of those on lower ones. If not set, the element is on its parent's layer.
@@ -64,33 +64,33 @@ TypeScript: `am5.ISpriteSettings` (`import type { ISpriteSettings } from "@amcha
   series.setAll({ autoAppear: true, appearDuration: 1000 });
   ```
 
-  _Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/concepts/animations/
+  _Since 5.21.0._ Docs: https://docs.amcharts.com/v5/concepts/animations/
 
 - **appearDuration** (`number`) — Duration of the `autoAppear` animation, in milliseconds. Without it, the element's `stateAnimationDuration` is used. _Since 5.21.0._
 - **appearDelay** (`number`) — default `0` — Milliseconds to wait before the `autoAppear` animation starts. The element stays hidden until then. _Since 5.21.0._
 - **forceInactive** (`boolean`) — default `null` _(code fallback)_ — Makes the element and its children ignore the pointer, even with `interactive: true` or event listeners set. _Since 5.0.21._
-- **showTooltipOn** (`"click" | "hover" | "always"`) — default `"hover"` — When the element's tooltip shows: • `"hover"` (default) - while the pointer is over the element, or after a tap on it until a tap elsewhere. • `"always"` - all the time. To show tooltips of several elements at once, give each its own `Tooltip` (`tooltip`). • `"click"` - after a click or tap on the element, until a click anywhere else on the page. _Since 5.0.16._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/tooltips/#Sticky_tooltips
+- **showTooltipOn** (`"click" | "hover" | "always"`) — default `"hover"` — When the element's tooltip shows: • `"hover"` (default) - while the pointer is over the element, or after a tap on it until a tap elsewhere. • `"always"` - all the time. To show tooltips of several elements at once, give each its own `Tooltip` (`tooltip`). • `"click"` - after a click or tap on the element, until a click anywhere else on the page. _Since 5.0.16._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/tooltips/#sticky-tooltips
 - **crisp** (`boolean`) — default `false` — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
-- **blur** (`number`) — default `0` _(code fallback)_ — Blur radius in pixels, from `0` (no blur) up. IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **brightness** (`number`) — default `1` _(code fallback)_ — Brightness. • `0` - completely black • `1` - no changes (default) • `>1` - brighter IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **contrast** (`number`) — default `1` _(code fallback)_ — Contrast. • `0` - completely gray • `1` - no changes (default) • `>1` - more contrast IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **saturate** (`number`) — default `1` _(code fallback)_ — Saturation. • `0` - grayscale • `1` - no changes (default) • `>1` - more saturated IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **sepia** (`number`) — default `0` _(code fallback)_ — Sepia tone, from `0` (no changes) to `1` (full sepia). IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **invert** (`number`) — default `0` _(code fallback)_ — Color inversion, from `0` (no changes) to `1` (fully inverted colors). IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **hue** (`number`) — default `0` _(code fallback)_ — Rotates the hue of all colors by this many degrees, from `0` to `360`. IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/
-- **tabindexOrder** (`number`) — An internal order by which focusable elements will be selected within the chart. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Focusing_elements
-- **hoverOnFocus** (`boolean`) — Simulate hover on an element when it gains focus, including changing hover appearance and displaying a tooltip if applicable. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Focusing_elements
-- **focusable** (`boolean`) — Can element be focused, i.e. selected using TAB key. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Focusing_elements
-- **focusableGroup** (`string | number`) — An identifier by which to group common elements into focusable groups. If set, only the first element in he group will be focusable via TAB key. When it is selected, the rest of the elements in the same group can be selected using arrow keys. It allows users to TAB-through chart elements quickly without the need to TAB into each and every element. It's up to implementer of the charts to provide meaningful `ariaLabel` to the element, which advertises this capability and provides adequate instructions. _Since 5.0.6._ Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Grouping_focusable_elements
+- **blur** (`number`) — default `0` _(code fallback)_ — Blur radius in pixels, from `0` (no blur) up. IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **brightness** (`number`) — default `1` _(code fallback)_ — Brightness. • `0` - completely black • `1` - no changes (default) • `>1` - brighter IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **contrast** (`number`) — default `1` _(code fallback)_ — Contrast. • `0` - completely gray • `1` - no changes (default) • `>1` - more contrast IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **saturate** (`number`) — default `1` _(code fallback)_ — Saturation. • `0` - grayscale • `1` - no changes (default) • `>1` - more saturated IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **sepia** (`number`) — default `0` _(code fallback)_ — Sepia tone, from `0` (no changes) to `1` (full sepia). IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **invert** (`number`) — default `0` _(code fallback)_ — Color inversion, from `0` (no changes) to `1` (fully inverted colors). IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **hue** (`number`) — default `0` _(code fallback)_ — Rotates the hue of all colors by this many degrees, from `0` to `360`. IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
+- **tabindexOrder** (`number`) — An internal order by which focusable elements will be selected within the chart. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#focusing-elements
+- **hoverOnFocus** (`boolean`) — Simulate hover on an element when it gains focus, including changing hover appearance and displaying a tooltip if applicable. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#focusing-elements
+- **focusable** (`boolean`) — Can element be focused, i.e. selected using TAB key. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#focusing-elements
+- **focusableGroup** (`string | number`) — An identifier by which to group common elements into focusable groups. If set, only the first element in he group will be focusable via TAB key. When it is selected, the rest of the elements in the same group can be selected using arrow keys. It allows users to TAB-through chart elements quickly without the need to TAB into each and every element. It's up to implementer of the charts to provide meaningful `ariaLabel` to the element, which advertises this capability and provides adequate instructions. _Since 5.0.6._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#grouping-focusable-elements
 - **clickAnnounceText** (`string`) — If set, the text will be read out (announced) by a screen reader when focused element is "clicked" (by pressing ENTER or SPACE). _Since 5.10.8._
-- **role** (`Role`) — Element's role. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Roles
+- **role** (`Role`) — Element's role. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#roles
 - **ariaLive** (`AriaLive`) — `aria-live` setting.
 - **ariaChecked** (`boolean`) — `aria-checked` setting. This setting is ignored unless `role` is one of the following: • `"checkbox"` • `"option"` • `"radio"` • `"menuitemcheckbox"` • `"menuitemradio"` • `"treeitem"` On a toggle `"button"` (one with `toggleKey`) it is exposed as `aria-pressed`.
 - **ariaExpanded** (`boolean`) — `aria-expanded` setting: whether the content the element shows or hides (e.g. a task's subtasks, a node's children) is shown. _Since 5.21.0._ Docs: https://w3c.github.io/aria/#aria-expanded
 - **ariaCurrent** (`string`) — `aria-current` setting. _Since 5.9.8._ Docs: https://w3c.github.io/aria/#aria-current
 - **ariaSelected** (`boolean`) — `aria-selected` setting. _Since 5.9.8._ Docs: https://w3c.github.io/aria/#aria-selected
 - **ariaHidden** (`boolean`) — `aria-hidden` setting.
-- **ariaLabel** (`string`) — Label for the element to use for screen readers. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Screen_reader
+- **ariaLabel** (`string`) — Label for the element to use for screen readers. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#screen-reader
 - **ariaOrientation** (`string`) — `aria-orientation` setting.
 - **ariaValueNow** (`string`) — `aria-valuenow` setting.
 - **ariaValueMin** (`string`) — `aria-valuemin` setting.

@@ -25,11 +25,11 @@ Prompt: Create a star atlas on a map chart: the night sky with about 100 named b
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Every color comes from the theme: the stars and labels in the text color, the sky and the grid in the alternative
@@ -343,7 +343,7 @@ for (var lon = -180; lon <= 180; lon += 5) { // a point every 5 degrees
 }
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
 	panX: "rotateX",    // a sideways drag turns the sky round
 	panY: "translateY", // an up or down drag moves it
@@ -363,7 +363,7 @@ bgSeries.mapPolygons.template.setAll({
 bgSeries.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
 
 // Graticule
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
 graticuleSeries.mapLines.template.setAll({
 	stroke: skyColor,    // grid lines in the sky color...
@@ -514,12 +514,12 @@ function stopRotation() {
 chart.chartContainer.events.on("pointerdown", stopRotation); // the first press on the map stops it
 
 // Zoom controls
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 zoomControl.homeButton.set("visible", true); // the home button is hidden by default
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

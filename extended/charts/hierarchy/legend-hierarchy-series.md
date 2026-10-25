@@ -1,6 +1,6 @@
 ---
 title: "Legend and hierarchy series"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/legend-hierarchy-series/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/legend-hierarchy-series/"
 scraped: "2026-03-15"
 ---
 
@@ -20,7 +20,7 @@ legend.data.setAll(series.dataItems\[0\].get("children"));
 var legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(series.dataItems\[0\].get("children"));
 
-MORE INFO For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Legend label content
 
@@ -68,13 +68,13 @@ var series = chart.series.push(
   })
 );
 
-Labels support [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets) so the text will be populated with actual data and values.
+Labels support [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets) so the text will be populated with actual data and values.
 
-Since each legend item is constructed out of the series data items, their data will be used to populate it, e.g. `[ForceDirectedDataItem](https://www.amcharts.com/docs/v5/reference/iforcedirecteddataitem/)`.
+Since each legend item is constructed out of the series data items, their data will be used to populate it, e.g. `[ForceDirectedDataItem](https://docs.amcharts.com/v5/reference/iforcedirecteddataitem/)`.
 
 ### In-line formatting
 
-Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) blocks. E.g.:
+Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) blocks. E.g.:
 
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
@@ -103,5 +103,5 @@ The above will use slice's `fill` (color) for category and value, as well as mak
 
 ## Related tutorials
 
--   [Toggling multi-level Sunburst nodes with legend](https://www.amcharts.com/docs/v5/tutorials/toggling-multi-level-sunburst-nodes-with-legend/)
--   [Sunburst chart with a legend including all nodes](https://www.amcharts.com/docs/v5/tutorials/sunburst-chart-with-a-legend-including-all-nodes/)
+-   [Toggling multi-level Sunburst nodes with legend](https://docs.amcharts.com/v5/tutorials/toggling-multi-level-sunburst-nodes-with-legend/)
+-   [Sunburst chart with a legend including all nodes](https://docs.amcharts.com/v5/tutorials/sunburst-chart-with-a-legend-including-all-nodes/)

@@ -1,7 +1,7 @@
 ---
 title: "IDurationAxisSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idurationaxissettings/"
+source: "https://docs.amcharts.com/v5/reference/idurationaxissettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,7 +14,7 @@ TypeScript: `am5xy.IDurationAxisSettings` (`import type { IDurationAxisSettings 
 
 ## Settings
 
-- **baseUnit** (`TimeUnit`) — default `"second"` _(theme)_ — The time unit the data's values are in: with `"second"`, a value of `90` is 1 minute 30 seconds. Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-durations/#Base_unit
+- **baseUnit** (`TimeUnit`) — default `"second"` _(theme)_ — The time unit the data's values are in: with `"second"`, a value of `90` is 1 minute 30 seconds. Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-durations/#base-unit
 
 ## Other inherited settings
 

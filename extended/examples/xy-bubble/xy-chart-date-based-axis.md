@@ -25,11 +25,11 @@ Prompt: Create a bubble chart of 12 days on a date axis with two series, one dra
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -42,7 +42,7 @@ root.dateFormatter.setAll({
 });
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false, // no panning by dragging
   panY: false,
@@ -52,7 +52,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 2); // every second theme color, so the two series differ more
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   baseInterval: { timeUnit: "day", count: 1 }, // one point per day
   autoZoom: false,
@@ -71,7 +71,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series0 = chart.series.push(am5xy.LineSeries.new(root, {
   // works out the lowest and highest value, which the heat rule sizes the bubbles by
   calculateAggregates: true,
@@ -86,7 +86,7 @@ var series0 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 // Both shapes cast a soft shadow, set on their templates
 var circleTemplate = am5.Template.new({
   shadowColor: am5.color(0x000000), // a black shadow...
@@ -105,7 +105,7 @@ series0.bullets.push(function() {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series0.set("heatRules", [{
   target: circleTemplate,
   min: 3,             // the smallest value gets a 3px radius...
@@ -122,7 +122,7 @@ var starTemplate = am5.Template.new({
   shadowOffsetY: 2
 });
 // Create second series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series1 = chart.series.push(am5xy.LineSeries.new(root, {
   calculateAggregates: true, // the lowest and highest value, for this series' heat rule
   xAxis: xAxis,
@@ -136,7 +136,7 @@ var series1 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 series1.bullets.push(function() {
   var graphics = am5.Star.new(root, {
     fill: series1.get("fill"),    // the series color
@@ -149,7 +149,7 @@ series1.bullets.push(function() {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series1.set("heatRules", [{
   target: starTemplate,
   min: 3,  // the stars range from a 3px radius...
@@ -172,7 +172,7 @@ series1.data.processor = am5.DataProcessor.new(root, {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -181,7 +181,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal"
 }));
@@ -264,7 +264,7 @@ series0.data.setAll(data);
 series1.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 series1.appear(1000);
 

@@ -1,13 +1,13 @@
 ---
 title: "Label"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/label/"
+source: "https://docs.amcharts.com/v5/reference/label/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A text element with padding and an optional background. Its text can hold in-line formatting and data placeholders.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/labels/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/labels/
 
 ## Import
 

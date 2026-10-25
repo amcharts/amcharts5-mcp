@@ -1,7 +1,7 @@
 ---
 title: "IStandardDeviationPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istandarddeviationprivate/"
+source: "https://docs.amcharts.com/v5/reference/istandarddeviationprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

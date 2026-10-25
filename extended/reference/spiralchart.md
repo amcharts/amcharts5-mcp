@@ -1,7 +1,7 @@
 ---
 title: "SpiralChart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/spiralchart/"
+source: "https://docs.amcharts.com/v5/reference/spiralchart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ A timeline that winds outward in a spiral, clockwise. It builds the X axis line 
 
 It is experimental and does not support everything an `XYChart` does.
 
-_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
+_Since 5.12.0._ Docs: https://docs.amcharts.com/v5/charts/timeline/
 
 ## Import
 

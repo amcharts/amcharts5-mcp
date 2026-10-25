@@ -1,7 +1,7 @@
 ---
 title: "INetRequestOptions"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/inetrequestoptions/"
+source: "https://docs.amcharts.com/v5/reference/inetrequestoptions/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

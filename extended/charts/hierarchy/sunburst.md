@@ -1,6 +1,6 @@
 ---
 title: "Sunburst"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/sunburst/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/sunburst/"
 scraped: "2026-03-15"
 ---
 
@@ -30,7 +30,7 @@ NOTE Setting a value on a template will also update existing slices created usin
 
 ### Outer radius
 
-Sunburst's outer radius can be set using its `[radius](https://www.amcharts.com/docs/v5/reference/sunburst/#radius_setting)` setting.
+Sunburst's outer radius can be set using its `[radius](https://docs.amcharts.com/v5/reference/sunburst/#radius_setting)` setting.
 
 It can be either percent value (relative to available space) or fixed pixel value.
 
@@ -64,7 +64,7 @@ var series = root.container.children.push(
 
 ### Inner radius
 
-Series's `[innerRadius](https://www.amcharts.com/docs/v5/reference/sunburst/#innerRadius_setting)` settings controls the "hole" inside the sunburst's pie.
+Series's `[innerRadius](https://docs.amcharts.com/v5/reference/sunburst/#innerRadius_setting)` settings controls the "hole" inside the sunburst's pie.
 
 As with `radius` it can be either a percent value or fixed pixel value.
 
@@ -101,7 +101,7 @@ var series = root.container.children.push(
 
 A sunburst series is not limited to a full circle. It can start and end at any angle.
 
-For that we have to set series' settings: `[startAngle](https://www.amcharts.com/docs/v5/reference/sunburst/#startAngle_setting)` and `[endAngle](https://www.amcharts.com/docs/v5/reference/sunburst/#endAngle_setting)`.
+For that we have to set series' settings: `[startAngle](https://docs.amcharts.com/v5/reference/sunburst/#startAngle_setting)` and `[endAngle](https://docs.amcharts.com/v5/reference/sunburst/#endAngle_setting)`.
 
 These are numeric values denoting degrees.
 
@@ -156,7 +156,7 @@ series.labels.template.setAll({
   fill: am5.color(0x888888)
 });
 
-Refer to [`RadialLabel` class reference](https://www.amcharts.com/docs/v5/reference/radiallabel/#Settings) for a full list of available settings.
+Refer to [`RadialLabel` class reference](https://docs.amcharts.com/v5/reference/radiallabel/#settings) for a full list of available settings.
 
 ### Label content
 
@@ -170,9 +170,9 @@ series.labels.template.setAll({
   text: "\[bold\]{category}\[/\] ({sum})"
 });
 
-Contents of the label can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[ISunburstDataItem](https://www.amcharts.com/docs/v5/reference/isunburstdataitem/)`.
+For available data placeholder fields refer to `[ISunburstDataItem](https://docs.amcharts.com/v5/reference/isunburstdataitem/)`.
 
 ### Disabling labels
 
@@ -192,13 +192,13 @@ series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
 series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[ISunburstDataItem](https://www.amcharts.com/docs/v5/reference/isunburstdataitem/)` for available keys for the data placeholders.
+Refer to `[ISunburstDataItem](https://docs.amcharts.com/v5/reference/isunburstdataitem/)` for available keys for the data placeholders.
 
 ## Example
 
 
 ## Related tutorials
 
--   [Toggling multi-level Sunburst nodes with legend](https://www.amcharts.com/docs/v5/tutorials/toggling-multi-level-sunburst-nodes-with-legend/)
+-   [Toggling multi-level Sunburst nodes with legend](https://docs.amcharts.com/v5/tutorials/toggling-multi-level-sunburst-nodes-with-legend/)

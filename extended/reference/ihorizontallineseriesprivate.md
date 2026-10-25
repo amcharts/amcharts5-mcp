@@ -1,7 +1,7 @@
 ---
 title: "IHorizontalLineSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ihorizontallineseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/ihorizontallineseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

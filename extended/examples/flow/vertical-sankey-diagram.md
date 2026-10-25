@@ -25,18 +25,18 @@ Prompt: Create a vertical Sankey diagram of an example breakdown of company cash
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create a container for the series
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 var series = chart.series.push(
   am5flow.Sankey.new(root, {
     orientation: "vertical", // the money flows from top to bottom
@@ -168,7 +168,7 @@ series.bullets.push(function () {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   {
     from: "Non-financial companies",

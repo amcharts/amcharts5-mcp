@@ -1,7 +1,7 @@
 ---
 title: "ISankeyLinkSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isankeylinksettings/"
+source: "https://docs.amcharts.com/v5/reference/isankeylinksettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,8 +16,8 @@ TypeScript: `am5flow.ISankeyLinkSettings` (`import type { ISankeyLinkSettings } 
 
 - **source** (`DataItem<ISankeyNodesDataItem>`) — Source node data item.
 - **target** (`DataItem<ISankeyNodesDataItem>`) — Target node data item.
-- **fillStyle** (`"solid" | "source" | "target" | "gradient"`) — default `"gradient"` _(theme)_ — How the link is filled: `"solid"` with its own `fill`, `"source"` or `"target"` with that node's color, or `"gradient"` from the source color to the target color. Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/#Color_mode
-- **controlPointDistance** (`number`) — default `0.2` _(theme)_ — Distance of the link's two bend points from its ends, as a fraction of the distance between its nodes, up to `0.5`. Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/#Bend_point
+- **fillStyle** (`"solid" | "source" | "target" | "gradient"`) — default `"gradient"` _(theme)_ — How the link is filled: `"solid"` with its own `fill`, `"source"` or `"target"` with that node's color, or `"gradient"` from the source color to the target color. Docs: https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/#color-mode
+- **controlPointDistance** (`number`) — default `0.2` _(theme)_ — Distance of the link's two bend points from its ends, as a fraction of the distance between its nodes, up to `0.5`. Docs: https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/#bend-point
 
 ## Other inherited settings
 

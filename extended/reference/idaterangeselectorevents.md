@@ -1,7 +1,7 @@
 ---
 title: "IDateRangeSelectorEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idaterangeselectorevents/"
+source: "https://docs.amcharts.com/v5/reference/idaterangeselectorevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

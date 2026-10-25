@@ -1,7 +1,7 @@
 ---
 title: "ICandlestickPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icandlestickprivate/"
+source: "https://docs.amcharts.com/v5/reference/icandlestickprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

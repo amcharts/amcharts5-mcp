@@ -1,7 +1,7 @@
 ---
 title: "IPackDataObject"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipackdataobject/"
+source: "https://docs.amcharts.com/v5/reference/ipackdataobject/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

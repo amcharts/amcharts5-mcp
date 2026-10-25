@@ -1,7 +1,7 @@
 ---
 title: "IMapPolygonSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imappolygonseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/imappolygonseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

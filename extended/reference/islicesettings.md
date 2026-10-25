@@ -1,7 +1,7 @@
 ---
 title: "ISliceSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/islicesettings/"
+source: "https://docs.amcharts.com/v5/reference/islicesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

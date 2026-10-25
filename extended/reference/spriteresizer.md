@@ -1,7 +1,7 @@
 ---
 title: "SpriteResizer"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/spriteresizer/"
+source: "https://docs.amcharts.com/v5/reference/spriteresizer/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

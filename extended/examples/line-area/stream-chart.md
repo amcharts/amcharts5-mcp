@@ -25,18 +25,18 @@ Prompt: Create a streamgraph of Olympic medal counts for the United Kingdom, the
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,     // a drag doesn't pan: the cursor zooms with it
   panY: false,
@@ -82,11 +82,11 @@ var data = [
 ];
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "year",
   // the axis starts and ends in the middle of the first and last year, so no half cells stay empty
@@ -114,7 +114,7 @@ yAxis.get("renderer").labels.template.set("forceHidden", true);
 yAxis.get("renderer").grid.template.set("forceHidden", true);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // adds one country's layer, filled between its low and high edges
 function createSeries(field, name) {
   var series = chart.series.push(am5xy.SmoothedXLineSeries.new(root, {
@@ -151,7 +151,7 @@ function createSeries(field, name) {
   });
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 }
 
@@ -195,7 +195,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

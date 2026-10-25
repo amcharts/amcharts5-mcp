@@ -1,7 +1,7 @@
 ---
 title: "IEditableLabelPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ieditablelabelprivate/"
+source: "https://docs.amcharts.com/v5/reference/ieditablelabelprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

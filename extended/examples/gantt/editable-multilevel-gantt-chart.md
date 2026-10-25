@@ -25,24 +25,24 @@ Prompt: Create an editable Gantt chart on two levels: an idea milestone, prepara
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root)
 ]);
 
 // Create Gantt chart
-// https://www.amcharts.com/docs/v5/charts/gantt/
+// https://docs.amcharts.com/v5/charts/gantt/
 var gantt = root.container.children.push(am5gantt.Gantt.new(root, {}));
 
 // Hide a date label that would be cut off at the left edge of the timeline
 gantt.xAxis.get("renderer").labels.template.set("minPosition", 0.08);
 
 // Set category data
-// https://www.amcharts.com/docs/v5/charts/gantt/#Category_data
+// https://docs.amcharts.com/v5/charts/gantt/#category-data
 gantt.yAxis.data.setAll([{
   name: "Idea",
   id: "gantt_0"
@@ -78,7 +78,7 @@ gantt.yAxis.data.setAll([{
 }]);
 
 // Set series data
-// https://www.amcharts.com/docs/v5/charts/gantt/#Series_data
+// https://docs.amcharts.com/v5/charts/gantt/#series-data
 gantt.series.data.setAll([{
   start: 1758142800000, // a timestamp in milliseconds
   // duration 0 draws a milestone

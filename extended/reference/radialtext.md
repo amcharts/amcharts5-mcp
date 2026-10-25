@@ -1,7 +1,7 @@
 ---
 title: "RadialText"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/radialtext/"
+source: "https://docs.amcharts.com/v5/reference/radialtext/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

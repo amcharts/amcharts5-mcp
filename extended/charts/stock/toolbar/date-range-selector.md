@@ -1,6 +1,6 @@
 ---
 title: "Date range selector"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/date-range-selector/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/date-range-selector/"
 scraped: "2026-10-08"
 ---
 
@@ -33,7 +33,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 ## Date format
 
-Date range selector will automatically use [global date format](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/#global-date-format) specified in the root element's date formatter.
+Date range selector will automatically use [global date format](https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/#global-date-format) specified in the root element's date formatter.
 
 The format will be used both to format dates displayed in the input fields, as well as parse user-typed dates.
 
@@ -61,7 +61,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
   \]
 });
 
-Please refer to "[Formatting dates](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/#format-codes)" for syntax reference.
+Please refer to "[Formatting dates](https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/#format-codes)" for syntax reference.
 
 ## Restricting date range
 
@@ -103,4 +103,4 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 ## Period selector
 
-Date range selector works well with [period selector](https://www.amcharts.com/docs/v5/period-selector/) control.
+Date range selector works well with [period selector](https://docs.amcharts.com/v5/period-selector/) control.

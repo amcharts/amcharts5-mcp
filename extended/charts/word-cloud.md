@@ -1,6 +1,6 @@
 ---
 title: "Word cloud"
-source: "https://www.amcharts.com/docs/v5/charts/word-cloud/"
+source: "https://docs.amcharts.com/v5/charts/word-cloud/"
 scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
@@ -22,7 +22,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/wc.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## WordCloud series
 
@@ -30,7 +30,7 @@ Word clouds are chart-less. This means that rather than creating a chart element
 
 Like everywhere else, we use its `new()` method to instantiate series, then push it `children` of a parent container.
 
-If we are not intending to add any other controls (e.g. legend, or title) to the chart, we can push directly to `root.container.children`, or we can create a [wrapper container](https://www.amcharts.com/docs/v5/charts/venn/#Additional_controls) as explained later on in this tutorial.
+If we are not intending to add any other controls (e.g. legend, or title) to the chart, we can push directly to `root.container.children`, or we can create a [wrapper container](https://docs.amcharts.com/v5/charts/venn/#additional-controls) as explained later on in this tutorial.
 
 let series = root.container.children.push(
   am5wc.WordCloud.new(root, {
@@ -354,7 +354,7 @@ series.labels.template.setAll({
 
 ### Via color set
 
-Word cloud series can automatically assign a new color out of a [color set](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Color_sets).
+Word cloud series can automatically assign a new color out of a [color set](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#color-sets).
 
 To make it happen we just need to assign an instance of `ColorSet` to `colors` setting of the series:
 
@@ -408,7 +408,7 @@ var series = root.container.children.push(
 
 ### Via data
 
-We can also use [template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/) to specify which field in data holds object with label's setting values we want to override:
+We can also use [template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/) to specify which field in data holds object with label's setting values we want to override:
 
 series.labels.template.setAll({
   fontFamily: "Courier New",
@@ -436,11 +436,11 @@ series.data.setAll(\[
   { category: "Java", value: 35.35, labelSettings: { fill: am5.color(0x39393A) } }
 \]);
 
-MORE INFOFor more information, refer to "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+MORE INFOFor more information, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 ### Via heat rules
 
-We can automatically assign a color (or any other label setting value) from a range based on its weight (value) using a [heat rule](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/).
+We can automatically assign a color (or any other label setting value) from a range based on its weight (value) using a [heat rule](https://docs.amcharts.com/v5/concepts/settings/heat-rules/).
 
 let series = root.container.children.push(am5wc.WordCloud.new(root, {
   calculateAggregates: true,
@@ -474,7 +474,7 @@ series.set("heatRules", \[{
 
 The above setup will make all words same size, but will apply different color based on their value.
 
-MORE INFOFor more information, refer to "[Heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/)" tutorial.
+MORE INFOFor more information, refer to "[Heat rules](https://docs.amcharts.com/v5/concepts/settings/heat-rules/)" tutorial.
 
 ## Tooltips
 
@@ -484,7 +484,7 @@ series.labels.template.set("tooltipText", "{category}: \[bold\]{value}\[/\]");
 
 series.labels.template.set("tooltipText", "{category}: \[bold\]{value}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
 ## Complete example
 
@@ -561,7 +561,7 @@ var series = root.container.children.push(
   })
 );
 
-NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Layout)".
+NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
 
 ### Chart title
 
@@ -600,6 +600,6 @@ The above will open a Google search with the clicked word.
 
 ## Related tutorials
 
--   [Adding words to existing WordCloud](https://www.amcharts.com/docs/v5/tutorials/adding-words-to-existing-wordcloud/)
--   [WordCloud with hover effects on words](https://www.amcharts.com/docs/v5/tutorials/wordcloud-with-hover-effects-on-words/)
--   [Auto-exporting a WordCloud](https://www.amcharts.com/docs/v5/tutorials/auto-exporting-a-wordcloud/)
+-   [Adding words to existing WordCloud](https://docs.amcharts.com/v5/tutorials/adding-words-to-existing-wordcloud/)
+-   [WordCloud with hover effects on words](https://docs.amcharts.com/v5/tutorials/wordcloud-with-hover-effects-on-words/)
+-   [Auto-exporting a WordCloud](https://docs.amcharts.com/v5/tutorials/auto-exporting-a-wordcloud/)

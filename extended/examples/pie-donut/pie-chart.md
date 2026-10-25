@@ -25,18 +25,18 @@ Prompt: Create a pie chart comparing seven countries, each slice sized by its va
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     endAngle: 270 // a full circle, from the top (-90, the default start) back to the top
@@ -44,7 +44,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     valueField: "value",
@@ -59,7 +59,7 @@ series.states.create("hidden", {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([{
   category: "Lithuania",
   value: 501.9

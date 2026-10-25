@@ -1,7 +1,7 @@
 ---
 title: "IAxisLabel"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxislabel/"
+source: "https://docs.amcharts.com/v5/reference/iaxislabel/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -12,8 +12,8 @@ TypeScript: `am5xy.IAxisLabel` (`import type { IAxisLabel } from "@amcharts/amch
 
 ## Properties
 
-- **location** (`number`) — Where the label sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Location_of_axis_elements
-- **multiLocation** (`number`) — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a label. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Multi_location
+- **location** (`number`) — Where the label sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#location-of-axis-elements
+- **multiLocation** (`number`) — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a label. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#multi-location
 - **inside** (`boolean`) — Shows the label inside the plot area. If not set, the renderer's `inside` applies.
 - **minPosition** (`number`) — default `0` — Hides the label when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides labels in the first 10%.
 - **maxPosition** (`number`) — default `1` — Hides the label when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides labels in the last 10%.

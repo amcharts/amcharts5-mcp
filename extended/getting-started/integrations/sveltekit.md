@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with SvelteKit"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/sveltekit/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/sveltekit/"
 scraped: "2026-10-22"
 ---
 
@@ -18,7 +18,7 @@ It needs Svelte 4 or later and amCharts 5.21.0 or later.
 
 ## Using the package
 
-In Svelte 5.29 or later, use attachments. `attachAmChart()` gives your function a new root in the element; build the chart in it as in any amCharts example. `attachAmChartConfig()` builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/) in the library's [`<am5-chart>` element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/). Both elements need a height.
+In Svelte 5.29 or later, use attachments. `attachAmChart()` gives your function a new root in the element; build the chart in it as in any amCharts example. `attachAmChartConfig()` builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/) in the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/). Both elements need a height.
 
 ```html
 <script lang="ts">

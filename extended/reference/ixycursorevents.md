@@ -1,7 +1,7 @@
 ---
 title: "IXYCursorEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ixycursorevents/"
+source: "https://docs.amcharts.com/v5/reference/ixycursorevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

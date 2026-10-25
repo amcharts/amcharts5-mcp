@@ -1,7 +1,7 @@
 ---
 title: "IRadarLineSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iradarlineseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/iradarlineseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,12 +14,12 @@ TypeScript: `am5radar.IRadarLineSeriesSettings` (`import type { IRadarLineSeries
 
 ## Settings
 
-- **connectEnds** (`boolean`) — default `true` _(theme)_ — Joins the last data point to the first, closing the line into a loop. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/radar-series/#Connecting_ends
+- **connectEnds** (`boolean`) — default `true` _(theme)_ — Joins the last data point to the first, closing the line into a loop. Docs: https://docs.amcharts.com/v5/charts/radar-chart/radar-series/#connecting-ends
 
 ## Inherited settings with a different default on RadarLineSeries
 
 - **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
-- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#negative-value-stacking
 
 ## Other inherited settings
 

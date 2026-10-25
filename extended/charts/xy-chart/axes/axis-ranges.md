@@ -1,6 +1,6 @@
 ---
 title: "Axis ranges"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/"
 scraped: "2026-03-15"
 ---
 
@@ -99,7 +99,7 @@ var rangeDataItem = xAxis.makeDataItem({
 
 ### Grid
 
-The axis data item has a setting `grid` which holds an instance of `[Grid](https://www.amcharts.com/docs/v5/reference/grid/)` element, that we can use to configure how the grid line (which is placed at precisely at `value` or `category`) looks like:
+The axis data item has a setting `grid` which holds an instance of `[Grid](https://docs.amcharts.com/v5/reference/grid/)` element, that we can use to configure how the grid line (which is placed at precisely at `value` or `category`) looks like:
 
 rangeDataItem.get("grid").setAll({
   stroke: color,
@@ -143,7 +143,7 @@ rangeDataItem.get("grid").set("visible", false);
 
 ### Fill
 
-Unlike grid, fills are not visible by default, so we need to configure them using `axisFill` setting, which is a generic object of type `[Graphics](https://www.amcharts.com/docs/v5/reference/graphics/)`.
+Unlike grid, fills are not visible by default, so we need to configure them using `axisFill` setting, which is a generic object of type `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)`.
 
 rangeDataItem.get("axisFill").setAll({
   fill: color,
@@ -161,7 +161,7 @@ NOTEAxis fills are hidden by default, hence the need for `visible: true`.
 
 ### Label
 
-Like grid and fill, a label is already pre-created with every axis data item. It's accessible via `label` setting and is usually an object of type `[AxisLabel](https://www.amcharts.com/docs/v5/reference/axislabel/)`.
+Like grid and fill, a label is already pre-created with every axis data item. It's accessible via `label` setting and is usually an object of type `[AxisLabel](https://docs.amcharts.com/v5/reference/axislabel/)`.
 
 For it to become visible, at the very least we need to set its `text` setting, but can also use any `AxisLabel` setting:
 
@@ -210,7 +210,7 @@ rangeDataItem.get("label").setAll({
 `location: 1`
 
 
-NOTELabels are shown on the axis itself by default. For tips on how to move them on the opposite side of the chart, refer to "[Aligning axis range labels](https://www.amcharts.com/docs/v5/tutorials/aligning-axis-range-labels/)" tutorial.
+NOTELabels are shown on the axis itself by default. For tips on how to move them on the opposite side of the chart, refer to "[Aligning axis range labels](https://docs.amcharts.com/v5/tutorials/aligning-axis-range-labels/)" tutorial.
 
 ### Bullet
 
@@ -272,7 +272,7 @@ rangeDataItem.set("bullet", am5xy.AxisBullet.new(root, {
 }));
 
 
-For more information about bullets, refer to "[Bullets](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/)" tutorial.
+For more information about bullets, refer to "[Bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/)" tutorial.
 
 ### Grid/fill above series
 
@@ -361,7 +361,7 @@ NOTE`createAxisRange()` creates the necessary range elements such as grid, label
 
 ### Setting series appearance
 
-Configuring appearance of a series segment within a range is done very similarly to [configuring the series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Configuring_appearance) itself: via templates of specific elements.
+Configuring appearance of a series segment within a range is done very similarly to [configuring the series](https://docs.amcharts.com/v5/charts/xy-chart/series/#configuring-appearance) itself: via templates of specific elements.
 
 For example we would configure column series columns, via its `columns.template`. Or line series via its `strokes.template` and `fills.template`.
 
@@ -438,9 +438,9 @@ series.axisRanges.removeValue(range);
 
 ## Related tutorials
 
--   [Range selector with draggable axis range](https://www.amcharts.com/docs/v5/tutorials/range-selector-with-draggable-axis-range/)
--   [Using axis ranges to place labels at arbitrary values or dates](https://www.amcharts.com/docs/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
--   [Force the last label on a DateAxis using axis range](https://www.amcharts.com/docs/v5/tutorials/force-the-last-label-on-a-dateaxis-using-axis-range/)
--   [Using axis ranges to highlight weekends](https://www.amcharts.com/docs/v5/tutorials/using-axis-ranges-to-highlight-weekends/)
--   [Automatically grouping date axis months into years using axis ranges](https://www.amcharts.com/docs/v5/tutorials/automatically-grouping-date-axis-months-into-years-using-axis-ranges/)
--   [Adding axis ranges to a legend](https://www.amcharts.com/docs/v5/tutorials/adding-axis-ranges-to-a-legend/)
+-   [Range selector with draggable axis range](https://docs.amcharts.com/v5/tutorials/range-selector-with-draggable-axis-range/)
+-   [Using axis ranges to place labels at arbitrary values or dates](https://docs.amcharts.com/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
+-   [Force the last label on a DateAxis using axis range](https://docs.amcharts.com/v5/tutorials/force-the-last-label-on-a-dateaxis-using-axis-range/)
+-   [Using axis ranges to highlight weekends](https://docs.amcharts.com/v5/tutorials/using-axis-ranges-to-highlight-weekends/)
+-   [Automatically grouping date axis months into years using axis ranges](https://docs.amcharts.com/v5/tutorials/automatically-grouping-date-axis-months-into-years-using-axis-ranges/)
+-   [Adding axis ranges to a legend](https://docs.amcharts.com/v5/tutorials/adding-axis-ranges-to-a-legend/)

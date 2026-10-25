@@ -25,18 +25,18 @@ Prompt: Create a solid gauge: a three-quarter circle of four rings, one per depa
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,                  // a drag doesn't pan: the cursor zooms with it
   panY: false,
@@ -80,7 +80,7 @@ var data = [{
 }];
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on that span
 }));
@@ -88,7 +88,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no curved cursor line, only the straight one from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var xRenderer = am5radar.AxisRendererCircular.new(root, {});
 
 xRenderer.labels.template.setAll({
@@ -132,7 +132,7 @@ var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
 yAxis.data.setAll(data);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 // the track: a faint bar to 100% behind each colored bar
 var series1 = chart.series.push(am5radar.RadarColumnSeries.new(root, {
   xAxis: xAxis,
@@ -172,7 +172,7 @@ series2.columns.template.setAll({
 series2.data.setAll(data);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series1.appear(1000);
 series2.appear(1000);
 chart.appear(1000, 100);

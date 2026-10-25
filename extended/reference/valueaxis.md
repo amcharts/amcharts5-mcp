@@ -1,13 +1,13 @@
 ---
 title: "ValueAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/valueaxis/"
+source: "https://docs.amcharts.com/v5/reference/valueaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An axis with a numeric scale.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/
 
 ## Import
 

@@ -1,6 +1,6 @@
 ---
 title: "Map point series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/map-point-series/"
 scraped: "2026-10-08"
 ---
 
@@ -8,7 +8,7 @@ Map point series can be used to add points (markers) at specific coordinates on 
 
 ## Adding series
 
-To create a map line series we need to call its [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) and push the new object into chart's `series` list:
+To create a map line series we need to call its [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) and push the new object into chart's `series` list:
 
 let pointSeries = chart.series.push(
   am5map.MapPointSeries.new(root, {
@@ -306,7 +306,7 @@ IMPORTANT It's a good practice to make sure setting data happens as late into c
 
 We can also use series `pushDataItem()` method to add data points one-by-one.
 
-The parameter is an object that adheres to `[IMapPointSeriesDataItem](https://www.amcharts.com/docs/v5/reference/imappointseriesdataitem/)` interface.
+The parameter is an object that adheres to `[IMapPointSeriesDataItem](https://docs.amcharts.com/v5/reference/imappointseriesdataitem/)` interface.
 
 let nyc = pointSeries.pushDataItem({ latitude: 40.641312, longitude: -73.778137 });
 let london = pointSeries.pushDataItem({ latitude: 51.470020, longitude: -0.454296 });
@@ -319,7 +319,7 @@ var beijing = pointSeries.pushDataItem({ latitude: 40.072498, longitude: 116.597
 
 ## Relation to polygon series
 
-Point series can use a [map polygon series](https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/) to position its markers.
+Point series can use a [map polygon series](https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/) to position its markers.
 
 ### Via ID data field
 
@@ -415,7 +415,7 @@ polygonSeries.events.on("datavalidated", function(ev) {
 
 ### Connecting line series points
 
-We can use actual data items from a map line series as points for the line from a [map line series](https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/).
+We can use actual data items from a map line series as points for the line from a [map line series](https://docs.amcharts.com/v5/charts/map-chart/map-line-series/).
 
 This eliminates the need to define `geometry` for our lines, as we can use `pointsToConnect` setting instead, which is an array of map line series' data items:
 
@@ -672,11 +672,11 @@ pointSeries.data.setAll([{
 }]);
 ```
 
-NOTE This matters when the chart is [serialized](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/): points created with `pushDataItem()` are not data rows, so they are not part of a serialized config. Points given as data rows are.
+NOTE This matters when the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/): points created with `pushDataItem()` are not data rows, so they are not part of a serialized config. Points given as data rows are.
 
 #### Animating a point along a line (5.20.8)
 
-To make a point travel along its line, give the bullet's sprite an [`animations`](https://www.amcharts.com/docs/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
+To make a point travel along its line, give the bullet's sprite an [`animations`](https://docs.amcharts.com/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
 
 ```javascript
 var planeSeries = chart.series.push(
@@ -761,7 +761,7 @@ pointSeries.pushDataItem({ latitude: 40.641312, longitude: -73.778137, altitude:
 
 On a globe, raised points rise away from its surface. On flat maps they rise up the screen.
 
-A point on a line takes the line's altitude instead. For lines that arc above the ground, see "[Map line series](https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/)".
+A point on a line takes the line's altitude instead. For lines that arc above the ground, see "[Map line series](https://docs.amcharts.com/v5/charts/map-chart/map-line-series/)".
 
 NOTEAltitude is available since version 5.21.0.
 
@@ -771,7 +771,7 @@ NOTEAltitude is available since version 5.21.0.
 
 To add a tooltip to the points/markers, we can use `tooltipText` on a related bullet.
 
-The value may contain [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) as well as [in-line text styles](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/).
+The value may contain [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) as well as [in-line text styles](https://docs.amcharts.com/v5/concepts/formatters/text-styling/).
 
 pointSeries.bullets.push(function() {
   return am5.Bullet.new(root, {
@@ -795,7 +795,7 @@ pointSeries.bullets.push(function() {
 
 ### Hover states
 
-We can set values to apply to point bullets when it is hovered by creating a "hover" [state](https://www.amcharts.com/docs/v5/concepts/settings/states/) for them.
+We can set values to apply to point bullets when it is hovered by creating a "hover" [state](https://docs.amcharts.com/v5/concepts/settings/states/) for them.
 
 pointSeries.bullets.push(function() {
   let circle = am5.Circle.new(root, {
@@ -868,6 +868,6 @@ pointSeries.bullets.push(function() {
 
 ## Related tutorials
 
--   [Map point series with rounded image bullets](https://www.amcharts.com/docs/v5/tutorials/map-point-series-with-rounded-image-bullets/) (demo)
--   [Get points within current viewport of a MapChart](https://www.amcharts.com/docs/v5/tutorials/get-points-within-current-viewport-of-a-mapchart/) (demo)
--   [Map with custom markers and data-bound colors](https://www.amcharts.com/docs/v5/tutorials/map-with-custom-markers-and-data-bound-colors/) (demo)
+-   [Map point series with rounded image bullets](https://docs.amcharts.com/v5/tutorials/map-point-series-with-rounded-image-bullets/) (demo)
+-   [Get points within current viewport of a MapChart](https://docs.amcharts.com/v5/tutorials/get-points-within-current-viewport-of-a-mapchart/) (demo)
+-   [Map with custom markers and data-bound colors](https://docs.amcharts.com/v5/tutorials/map-with-custom-markers-and-data-bound-colors/) (demo)

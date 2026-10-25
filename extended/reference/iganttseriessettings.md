@@ -1,7 +1,7 @@
 ---
 title: "IGanttSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iganttseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/iganttseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,9 +14,9 @@ TypeScript: `am5gantt.IGanttSeriesSettings` (`import type { IGanttSeriesSettings
 
 ## Settings
 
-- **progressField** (`string`) — default `"progress"` — Field in data that holds the task's progress, `0` to `1`. Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Series_data
-- **durationField** (`string`) — default `"duration"` — Field in data that holds the task's duration, in the Gantt's `durationUnit` units. Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Series_data
-- **linkToField** (`string`) — default `"linkTo"` — Field in data that holds an array of IDs of the tasks this task links to. Docs: https://www.amcharts.com/docs/v5/charts/gantt/#Series_data
+- **progressField** (`string`) — default `"progress"` — Field in data that holds the task's progress, `0` to `1`. Docs: https://docs.amcharts.com/v5/charts/gantt/#series-data
+- **durationField** (`string`) — default `"duration"` — Field in data that holds the task's duration, in the Gantt's `durationUnit` units. Docs: https://docs.amcharts.com/v5/charts/gantt/#series-data
+- **linkToField** (`string`) — default `"linkTo"` — Field in data that holds an array of IDs of the tasks this task links to. Docs: https://docs.amcharts.com/v5/charts/gantt/#series-data
 - **linkHorizontalOffset** (`number`) — default `25` _(theme)_ — How far in pixels a link runs straight out of a bar's end, and into the next bar's start, before it turns.
 - **snapCount** (`number`) — default `1` _(theme)_ — How many `durationUnit` units a dragged or resized bar snaps to, e.g. `2` snaps to every second unit.
 - **yAxis** (`GanttCategoryAxis<GanttCategoryAxisRenderer>`) — The Gantt's task list axis.

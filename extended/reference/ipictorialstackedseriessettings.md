@@ -1,7 +1,7 @@
 ---
 title: "IPictorialStackedSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipictorialstackedseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ipictorialstackedseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,14 +14,14 @@ TypeScript: `am5percent.IPictorialStackedSeriesSettings` (`import type { IPictor
 
 ## Settings
 
-- **svgPath** (`string`) — An SVG path that will define the shape of the pictorial series. Docs: https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pictorial-stacked-series/#Shape_of_the_series
+- **svgPath** (`string`) — An SVG path that will define the shape of the pictorial series. Docs: https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pictorial-stacked-series/#shape-of-the-series
 
 ## Inherited settings with a different default on PictorialStackedSeries
 
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **legendLabelText** (`string`) — default `"{category}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
 - **legendValueText** (`string`) — default `"{valuePercentTotal.formatNumber('0.00p')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
-- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+- **sequencedInterpolation** (`boolean`) — default `true` _(theme)_ — _from ISeriesSettings_ — Shows and hides the data items one after another instead of all at once, including in the initial animation. Works in XY and percent series. Docs: https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

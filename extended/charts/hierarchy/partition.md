@@ -1,6 +1,6 @@
 ---
 title: "Partition"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/partition/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/partition/"
 scraped: "2026-03-15"
 ---
 
@@ -69,7 +69,7 @@ var series = root.container.children.push(
 
 The appearance of node rectangles can be configured using their template, accessible on series property: `rectangles.template`.
 
-The template can have contain any `RoundedRectangle` [setting](https://www.amcharts.com/docs/v5/reference/roundedrectangle/#Settings).
+The template can have contain any `RoundedRectangle` [setting](https://docs.amcharts.com/v5/reference/roundedrectangle/#settings).
 
 series.rectangles.template.setAll({
   fillOpacity: 0.7,
@@ -89,7 +89,7 @@ series.rectangles.template.setAll({
 
 ### Hover behavior
 
-We can set setting values to apply to a rectangle when it is hovered by creating a "hover" [state](https://www.amcharts.com/docs/v5/concepts/settings/states/) for it.
+We can set setting values to apply to a rectangle when it is hovered by creating a "hover" [state](https://docs.amcharts.com/v5/concepts/settings/states/) for it.
 
 series.rectangles.template.states.create("hover", {
   fill: am5.color(0x677935),
@@ -119,7 +119,7 @@ series.labels.template.setAll({
   text: "{category}"
 });
 
-Partition series uses `[Label](https://www.amcharts.com/docs/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+Partition series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -137,9 +137,9 @@ series.labels.template.setAll({
   fontSize: 14
 });
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IPartitionDataItem](https://www.amcharts.com/docs/v5/reference/ipartitiondataitem/)` for available keys for the data placeholders.
+Refer to `[IPartitionDataItem](https://docs.amcharts.com/v5/reference/ipartitiondataitem/)` for available keys for the data placeholders.
 
 ### Disabling labels
 
@@ -159,9 +159,9 @@ series.rectangles.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
 series.rectangles.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IPartitionDataItem](https://www.amcharts.com/docs/v5/reference/ipartitiondataitem/)` for available keys for the data placeholders.
+Refer to `[IPartitionDataItem](https://docs.amcharts.com/v5/reference/ipartitiondataitem/)` for available keys for the data placeholders.
 
 ## Example
 

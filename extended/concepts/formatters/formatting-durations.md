@@ -1,6 +1,6 @@
 ---
 title: "Formatting durations"
-source: "https://www.amcharts.com/docs/v5/concepts/formatters/formatting-durations/"
+source: "https://docs.amcharts.com/v5/concepts/formatters/formatting-durations/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial takes a look at duration formatter - helper object used to format 
 
 ## Formatter object
 
-Duration formatter object is accessible globally via chart [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element)'s `durationFormatter` property.
+Duration formatter object is accessible globally via chart [root element](https://docs.amcharts.com/v5/getting-started/#root-element)'s `durationFormatter` property.
 
 We can use it to set `durationFormat`, as well as a few of other related settings, that will be used whenever number needs to be formatted as a duration in the chart.
 
@@ -18,7 +18,7 @@ Duration formatter is used in a number of places throughout the chart.
 
 The most notable user for duration formatter is a duration axis (`DurationAxis`).
 
-Also, labels (e.g. in tooltips) with date [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) will turn to duration formatter to format their values where applicable.
+Also, labels (e.g. in tooltips) with date [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) will turn to duration formatter to format their values where applicable.
 
 Data export functionality will also use duration formatter to format its output of duration values.
 
@@ -45,7 +45,7 @@ There are two ways to set duration formats on a duration formatter:
 -   A universal duration format which will be applied to all values that need to be formatted as a duration.
 -   A list of duration formats tailored for each base unit.
 
-A global duration formatter will already have its `durationFormats` pre-set to a default values, that may depend on the [locale](https://www.amcharts.com/docs/v5/concepts/locales/) your chart is using, whereas the universal duration format won't be set.
+A global duration formatter will already have its `durationFormats` pre-set to a default values, that may depend on the [locale](https://docs.amcharts.com/v5/concepts/locales/) your chart is using, whereas the universal duration format won't be set.
 
 ### Setting default format
 
@@ -97,7 +97,7 @@ root.durationFormatter.setAll({
   durationFields: \["valueY"\]
 });
 
-For more information on how it works, please refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+For more information on how it works, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ## Format codes
 
@@ -157,7 +157,7 @@ root.durationFormatter.set("durationFormat", "\[bold\]mm:ss");
 
 root.durationFormatter.set("durationFormat", "\[bold\]mm:ss");
 
-Please refer to the "[Text styling and data binding](https://www.amcharts.com/docs/v5/concepts/formatters/in-line/)" tutorial for more info.
+Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/in-line/)" tutorial for more info.
 
 ## Escaping
 
@@ -185,4 +185,4 @@ Chart's duration axes will use global duration formatter and its settings: `base
 
 The base unit can be overridden for each individual duration axis using its own `baseUnit` setting.
 
-For more information, refer to "[Duration axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/duration-axis/)" tutorial.
+For more information, refer to "[Duration axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/duration-axis/)" tutorial.

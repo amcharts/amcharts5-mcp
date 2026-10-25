@@ -1,7 +1,7 @@
 ---
 title: "IStockPanelSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istockpanelsettings/"
+source: "https://docs.amcharts.com/v5/reference/istockpanelsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -18,7 +18,7 @@ _(none declared here — all inherited)_
 
 ## Inherited settings with a different default on StockPanel
 
-- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
+- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
 - **minHeight** (`number`) — default `1` _(theme)_ — _from ISpriteSettings_ — Minimum allowed height in pixels.
@@ -26,9 +26,9 @@ _(none declared here — all inherited)_
 - **paddingLeft** (`number`) — default `20` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
 - **paddingRight** (`number`) — default `20` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
 - **paddingTop** (`number`) — default `16` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
-- **panX** (`boolean`) — default `true` _(theme)_ — _from IXYChartSettings_ — Lets the user pan the chart horizontally by dragging the plot area. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Panning
-- **panY** (`boolean`) — default `true` _(theme)_ — _from IXYChartSettings_ — Lets the user pan the chart vertically by dragging the plot area. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Panning
-- **wheelY** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY"`) — default `"zoomX"` _(theme)_ — _from IXYChartSettings_ — What scrolling the wheel vertically over the plot area does: zoom or pan along X, Y or both. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Mouse_wheel_behavior
+- **panX** (`boolean`) — default `true` _(theme)_ — _from IXYChartSettings_ — Lets the user pan the chart horizontally by dragging the plot area. Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#panning
+- **panY** (`boolean`) — default `true` _(theme)_ — _from IXYChartSettings_ — Lets the user pan the chart vertically by dragging the plot area. Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#panning
+- **wheelY** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY"`) — default `"zoomX"` _(theme)_ — _from IXYChartSettings_ — What scrolling the wheel vertically over the plot area does: zoom or pan along X, Y or both. Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#mouse-wheel-behavior
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

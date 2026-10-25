@@ -1,7 +1,7 @@
 ---
 title: "IAxisLabelSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxislabelsettings/"
+source: "https://docs.amcharts.com/v5/reference/iaxislabelsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,11 +14,11 @@ TypeScript: `am5xy.IAxisLabelSettings` (`import type { IAxisLabelSettings } from
 
 ## Settings
 
-- **location** (`number`) — default `0.5` _(theme)_ — Where the label sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Location_of_axis_elements
-- **multiLocation** (`number`) — default `0` _(theme)_ — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a label. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Multi_location
-- **inside** (`boolean`) — Shows the label inside the plot area. If not set, the renderer's `inside` applies. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels_ticks_inside_plot_area
-- **minPosition** (`number`) — default `0` — Hides the label when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides labels in the first 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Start_end_labels_and_ticks
-- **maxPosition** (`number`) — default `1` — Hides the label when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides labels in the last 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Start_end_labels_and_ticks
+- **location** (`number`) — default `0.5` _(theme)_ — Where the label sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#location-of-axis-elements
+- **multiLocation** (`number`) — default `0` _(theme)_ — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a label. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#multi-location
+- **inside** (`boolean`) — Shows the label inside the plot area. If not set, the renderer's `inside` applies. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#labelsticks-inside-plot-area
+- **minPosition** (`number`) — default `0` — Hides the label when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides labels in the first 10%. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#startend-labels-and-ticks
+- **maxPosition** (`number`) — default `1` — Hides the label when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides labels in the last 10%. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#startend-labels-and-ticks
 
 ## Inherited settings with a different default on AxisLabel
 

@@ -1,6 +1,6 @@
 ---
 title: "Creating translations"
-source: "https://www.amcharts.com/docs/v5/concepts/locales/creating-translations/"
+source: "https://docs.amcharts.com/v5/concepts/locales/creating-translations/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ amCharts 5 uses locale objects to modify textual prompts as well as other locati
 
 ## Prerequisite
 
-If we you're not yet familiar how localization works in amCharts 5, we suggest reading "[Locales](https://www.amcharts.com/docs/v5/concepts/locales/)" tutorial first.
+If we you're not yet familiar how localization works in amCharts 5, we suggest reading "[Locales](https://docs.amcharts.com/v5/concepts/locales/)" tutorial first.
 
 ## Creating a new locale
 
@@ -444,4 +444,4 @@ console.log(root.language.translateAny("Hello!"));
 
 ### Translating Stock Chart
 
-Please refer to "[Translating Stock Chart](https://www.amcharts.com/docs/v5/charts/stock/translating-stock-chart/)" tutorial.
+Please refer to "[Translating Stock Chart](https://docs.amcharts.com/v5/charts/stock/translating-stock-chart/)" tutorial.

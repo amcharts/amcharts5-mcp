@@ -111,7 +111,7 @@ files.set("plugin.json", JSON.stringify({
   version: pkg.version,
   description: "Build charts and maps with amCharts 5: the amCharts 5 skill, and the hosted amCharts MCP server for docs, code examples and the API reference",
   author: { name: "amCharts", url: "https://www.amcharts.com" },
-  homepage: "https://www.amcharts.com/docs/v5/ai/",
+  homepage: "https://docs.amcharts.com/v5/ai/",
   repository: "https://github.com/amcharts/amcharts5-mcp",
   license: pkg.license,
   keywords: ["amcharts", "charts", "maps", "data-visualization", "javascript", "mcp"],

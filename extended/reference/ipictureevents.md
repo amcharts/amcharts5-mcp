@@ -1,7 +1,7 @@
 ---
 title: "IPictureEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipictureevents/"
+source: "https://docs.amcharts.com/v5/reference/ipictureevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IZigZagEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/izigzagevents/"
+source: "https://docs.amcharts.com/v5/reference/izigzagevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

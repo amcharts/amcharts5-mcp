@@ -1,13 +1,13 @@
 ---
 title: "CurveColumnSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/curvecolumnseries/"
+source: "https://docs.amcharts.com/v5/reference/curvecolumnseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A column series for a `CurveChart`, `SerpentineChart` or `SpiralChart`. Its columns bend along the curve.
 
-_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
+_Since 5.12.0._ Docs: https://docs.amcharts.com/v5/charts/timeline/
 
 ## Import
 

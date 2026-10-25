@@ -1,13 +1,13 @@
 ---
 title: "CategoryDateAxis"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/categorydateaxis/"
+source: "https://docs.amcharts.com/v5/reference/categorydateaxis/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A category axis whose categories are timestamps. Each data item takes an equal share of the axis, so periods without data leave no gaps.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-date-axis/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/
 
 ## Import
 

@@ -1,13 +1,13 @@
 ---
 title: "Bullet"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/bullet/"
+source: "https://docs.amcharts.com/v5/reference/bullet/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Holds an element (`sprite`) that a series places at a data item.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/
 
 ## Import
 

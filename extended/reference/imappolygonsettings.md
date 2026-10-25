@@ -1,7 +1,7 @@
 ---
 title: "IMapPolygonSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imappolygonsettings/"
+source: "https://docs.amcharts.com/v5/reference/imappolygonsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -20,12 +20,12 @@ TypeScript: `am5map.IMapPolygonSettings` (`import type { IMapPolygonSettings } f
 
 ## Inherited settings with a different default on MapPolygon
 
-- **fill** (`Color`) — default `root.interfaceColors.get("primaryButton")` _(theme)_ — _from IGraphicsSettings_ — Fill color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **fill** (`Color`) — default `root.interfaceColors.get("primaryButton")` _(theme)_ — _from IGraphicsSettings_ — Fill color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **fillOpacity** (`number`) — default `1` _(theme)_ — _from IGraphicsSettings_ — Opacity of the fill, from `0` (transparent) to `1` (opaque).
 - **isMeasured** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element's bounds are not measured, so it takes no part in its parent's layout or size.
 - **position** (`"absolute" | "relative"`) — default `"absolute"` _(theme)_ — _from ISpriteSettings_ — Positioning of the element. `"absolute"` leaves the element out of its parent's layout and size: it is placed by its `x` and `y` only.
-- **role** (`Role`) — default `"figure"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Roles
-- **stroke** (`Color`) — default `root.interfaceColors.get("background")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **role** (`Role`) — default `"figure"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#roles
+- **stroke** (`Color`) — default `root.interfaceColors.get("background")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `1` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 - **strokeWidth** (`number`) — default `0.2` _(theme)_ — _from IGraphicsSettings_ — Width of the stroke (border or line) in pixels.
 

@@ -1,7 +1,7 @@
 ---
 title: "ChartElement"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/chartelement/"
+source: "https://docs.amcharts.com/v5/reference/chartelement/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -21,7 +21,7 @@ The element dispatches `ready` when the chart is built, with `root` and `chart` 
 
 Without a height of its own, from CSS or its parent, the element is 400 pixels high.
 
-_Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/, https://www.amcharts.com/docs/v5/concepts/serializing/
+_Since 5.21.0._ Docs: https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/, https://docs.amcharts.com/v5/concepts/serializing/
 
 ## Import
 

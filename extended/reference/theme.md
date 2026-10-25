@@ -1,13 +1,13 @@
 ---
 title: "Theme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/theme/"
+source: "https://docs.amcharts.com/v5/reference/theme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A base class for an amCharts theme.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+Docs: https://docs.amcharts.com/v5/concepts/themes/
 
 ## Import
 

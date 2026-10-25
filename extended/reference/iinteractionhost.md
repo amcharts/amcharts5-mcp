@@ -1,7 +1,7 @@
 ---
 title: "IInteractionHost"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iinteractionhost/"
+source: "https://docs.amcharts.com/v5/reference/iinteractionhost/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

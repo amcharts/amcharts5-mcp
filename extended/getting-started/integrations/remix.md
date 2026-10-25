@@ -1,10 +1,10 @@
 ---
 title: "Using amCharts 5 with Remix"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/remix/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/remix/"
 scraped: "2026-10-22"
 ---
 
-Remix 2 is now [React Router](https://reactrouter.com/), in its framework mode. This tutorial shows amCharts 5 in a React Router app. For Remix 3, see [Remix 3](https://www.amcharts.com/docs/v5/getting-started/integrations/remix-3/).
+Remix 2 is now [React Router](https://reactrouter.com/), in its framework mode. This tutorial shows amCharts 5 in a React Router app. For Remix 3, see [Remix 3](https://docs.amcharts.com/v5/getting-started/integrations/remix-3/).
 
 Create a project and install amCharts with our React package:
 
@@ -50,6 +50,6 @@ export default function Home() {
 }
 ```
 
-See the [React tutorial](https://www.amcharts.com/docs/v5/getting-started/integrations/react/) for everything the package does, and the [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/react/examples/react-router) on GitHub.
+See the [React tutorial](https://docs.amcharts.com/v5/getting-started/integrations/react/) for everything the package does, and the [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/react/examples/react-router) on GitHub.
 
 NOTE Astro needs the same setting, under `vite` in `astro.config.mjs`.

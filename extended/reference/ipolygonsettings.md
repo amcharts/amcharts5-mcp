@@ -1,7 +1,7 @@
 ---
 title: "IPolygonSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipolygonsettings/"
+source: "https://docs.amcharts.com/v5/reference/ipolygonsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -17,7 +17,7 @@ TypeScript: `am5.IPolygonSettings` (`import type { IPolygonSettings } from "@amc
 - **points** (`IPoint[]`) — The polygon's corners, in pixels. When they change, the polygon morphs from its old shape to the new one.
 - **coordinates** (`number[][]`) — The corners as `[x, y]` pairs, in pixels. They replace `points`.
 - **animationDuration** (`number`) — default `0` _(code fallback)_ — Duration in milliseconds of the morph when `points` change.
-- **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of the morph. Docs: https://www.amcharts.com/docs/v5/concepts/animations/#Easing_functions
+- **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of the morph. Docs: https://docs.amcharts.com/v5/concepts/animations/#easing-functions
 
 ## Other inherited settings
 

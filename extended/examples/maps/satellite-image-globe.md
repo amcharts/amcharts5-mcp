@@ -25,11 +25,11 @@ Prompt: Create a slowly turning globe covered with NASA’s satellite picture of
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
@@ -37,7 +37,7 @@ root.setThemes([
 ]);
 
 // Create the map chart: a globe that turns once every two minutes
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   projection: am5map.geoOrthographic(), // a globe, seen from space
   panX: "rotateX",                      // a sideways drag spins the globe
@@ -55,7 +55,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Create series for a soft blue glow around the globe, like the atmosphere
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var glowSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
 
 glowSeries.mapPolygons.template.setAll({
@@ -79,7 +79,7 @@ var rasterSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
 }));
 
 // Add country borders over the image, with the country's name on hover
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // country shapes from the low-detail world map
 }));
@@ -105,7 +105,7 @@ var credit = chart.children.push(am5.Label.new(root, {
 }));
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
@@ -134,7 +134,7 @@ responsive.addRule({
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

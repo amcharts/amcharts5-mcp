@@ -1,7 +1,7 @@
 ---
 title: "SerpentineChart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/serpentinechart/"
+source: "https://docs.amcharts.com/v5/reference/serpentinechart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ A timeline that winds back and forth in runs joined by half-circle turns. It bui
 
 It is experimental and does not support everything an `XYChart` does.
 
-_Since 5.12.0._ Docs: https://www.amcharts.com/docs/v5/charts/timeline/
+_Since 5.12.0._ Docs: https://docs.amcharts.com/v5/charts/timeline/
 
 ## Import
 

@@ -25,18 +25,18 @@ Prompt: Create a stacked waterfall chart of two budgets spent over eight stages:
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,     // no panning by drag
   panY: false,
@@ -110,7 +110,7 @@ am5.array.each(data, function(item) {
 });
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   // each column takes the middle 80% of its stage's cell, leaving a gap between stages
   cellStartLocation: 0.1,
@@ -141,7 +141,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 // The stage totals share a template, so a change to it reaches them all
 var totalLabel = am5.Template.new({});
@@ -169,7 +169,7 @@ function makeSeries(name, field, openField, amountField, total) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 
   // The budget's amount in the middle of its part, hidden when the part is too short for it
@@ -218,7 +218,7 @@ makeSeries("Budget #1", "close1", "open1", "amount1", false); // the lower parts
 makeSeries("Budget #2", "close2", "open2", "amount2", true);  // the upper parts, with the stage totals on top
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

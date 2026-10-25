@@ -25,11 +25,11 @@ Prompt: Create a tree chart of a four-generation family tree, laid out top to bo
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -43,7 +43,7 @@ var chart = root.container.children.push(
 );
 
 // Zoom with the mouse wheel or a pinch, and drag to pan
-// https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Zoom_functionality
+// https://docs.amcharts.com/v5/concepts/common-elements/containers/#zoom-functionality
 chart.zoomableContainer.setAll({
   wheelable: true,
   pinchZoom: true
@@ -52,7 +52,7 @@ chart.zoomableContainer.setAll({
 var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {})); // zoom in, zoom out and reset buttons
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Tree.new(root, {
   singleBranchOnly: false, // opening one branch leaves the others open
   // show every generation on load; a collapsed node opens one level at a time
@@ -72,7 +72,7 @@ series.labels.template.set("minScale", 0);
 series.nodes.template.set("tooltipText", "{category}, born {born.formatNumber('#')}");
 
 // Set data: a family tree, from a grandmother to her great-grandchildren
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 series.data.setAll([{
   name: "Rose",
   born: 1938,

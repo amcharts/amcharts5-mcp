@@ -1,7 +1,7 @@
 ---
 title: "DoodleSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/doodleseries/"
+source: "https://docs.amcharts.com/v5/reference/doodleseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

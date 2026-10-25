@@ -1,13 +1,13 @@
 ---
 title: "Annotator"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/annotator/"
+source: "https://docs.amcharts.com/v5/reference/annotator/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A plugin that lets the user draw annotations over the chart, using the MarkerJS library.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/exporting/annotator/
+Docs: https://docs.amcharts.com/v5/concepts/exporting/annotator/
 
 ## Import
 

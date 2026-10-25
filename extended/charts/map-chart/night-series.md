@@ -1,6 +1,6 @@
 ---
 title: "Night series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/night-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/night-series/"
 scraped: "2026-10-08"
 ---
 
@@ -155,7 +155,7 @@ var nightSeries = chart.series.push(
 
 ## With satellite images
 
-A [Map raster series](https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/) can show day and night by itself, swapping in a night image of city lights. To also show the sun there, add a night series with no shade:
+A [Map raster series](https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/) can show day and night by itself, swapping in a night image of city lights. To also show the sun there, add a night series with no shade:
 
 let rasterSeries = chart.series.push(
   am5map.MapRasterSeries.new(root, {

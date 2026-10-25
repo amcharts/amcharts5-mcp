@@ -1,7 +1,7 @@
 ---
 title: "IParseSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iparsesettings/"
+source: "https://docs.amcharts.com/v5/reference/iparsesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

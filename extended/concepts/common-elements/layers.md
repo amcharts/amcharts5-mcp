@@ -1,6 +1,6 @@
 ---
 title: "Layers"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/layers/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/layers/"
 scraped: "2026-03-15"
 ---
 
@@ -12,7 +12,7 @@ All visual elements in amCharts 5 are drawn in a `<canvas>` element, which is a 
 
 amCharts 5 supports having multiple `<canvas>` elements, overlaid over each other.
 
-NOTE Since 5.21.0 a chart can also be drawn as SVG, by setting `renderer: am5.SVGRenderer` on the root element (see "[Root element: Renderer](https://www.amcharts.com/docs/v5/getting-started/root-element/#Renderer)"). Layers work the same way there: each layer is a nested `<svg>` element (class `am5-layer-<number>`), stacked in layer order inside one `<svg>`, instead of a separate `<canvas>`.
+NOTE Since 5.21.0 a chart can also be drawn as SVG, by setting `renderer: am5.SVGRenderer` on the root element (see "[Root element: Renderer](https://docs.amcharts.com/v5/getting-started/root-element/#renderer)"). Layers work the same way there: each layer is a nested `<svg>` element (class `am5-layer-<number>`), stacked in layer order inside one `<svg>`, instead of a separate `<canvas>`.
 
 Any element in the chart can go to any of the layers, and developers are free to create as many layers as needed.
 
@@ -53,7 +53,7 @@ Tooltips
 
 `30`
 
-Tooltips (if used with [extended bounds](https://www.amcharts.com/docs/v5/getting-started/root-element/#Expanded_tooltip_bounds))
+Tooltips (if used with [extended bounds](https://docs.amcharts.com/v5/getting-started/root-element/#expanded-tooltip-bounds))
 
 `35`
 

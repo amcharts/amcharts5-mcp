@@ -1,13 +1,13 @@
 ---
 title: "Gradient"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/gradient/"
+source: "https://docs.amcharts.com/v5/reference/gradient/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for gradients.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
 
 ## Import
 

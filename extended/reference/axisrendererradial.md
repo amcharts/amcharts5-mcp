@@ -1,7 +1,7 @@
 ---
 title: "AxisRendererRadial"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axisrendererradial/"
+source: "https://docs.amcharts.com/v5/reference/axisrendererradial/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

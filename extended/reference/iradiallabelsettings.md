@@ -1,7 +1,7 @@
 ---
 title: "IRadialLabelSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iradiallabelsettings/"
+source: "https://docs.amcharts.com/v5/reference/iradiallabelsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

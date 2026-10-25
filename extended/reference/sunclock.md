@@ -1,7 +1,7 @@
 ---
 title: "SunClock"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/sunclock/"
+source: "https://docs.amcharts.com/v5/reference/sunclock/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

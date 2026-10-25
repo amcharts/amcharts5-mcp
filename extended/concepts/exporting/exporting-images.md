@@ -1,12 +1,12 @@
 ---
 title: "Exporting to image formats"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/exporting-images/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-images/"
 scraped: "2026-10-08"
 ---
 
-This tutorial looks at configuration options for chart snapshot export with [Exporting](https://www.amcharts.com/docs/v5/concepts/exporting/) plugin.
+This tutorial looks at configuration options for chart snapshot export with [Exporting](https://docs.amcharts.com/v5/concepts/exporting/) plugin.
 
-NOTECharts can also be exported as SVG vector images. Quality, pixel ratio, and size options below do not apply to SVG, while combining images and modifying the export do. For more, see "[Exporting to SVG](https://www.amcharts.com/docs/v5/concepts/exporting/exporting-svg/)".
+NOTECharts can also be exported as SVG vector images. Quality, pixel ratio, and size options below do not apply to SVG, while combining images and modifying the export do. For more, see "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
 
 ## Image quality
 
@@ -144,7 +144,7 @@ var exporting = am5plugins\_exporting.Exporting.new(chartRoot, {
   extraImages: \[legendRoot\]
 });
 
-The items in `extraImages` can either be root elements (they will be added to the bottom of the exported image), or an object that implements `[IExportingImageSource](https://www.amcharts.com/docs/v5/reference/iexportingimagesource/)` interface.
+The items in `extraImages` can either be root elements (they will be added to the bottom of the exported image), or an object that implements `[IExportingImageSource](https://docs.amcharts.com/v5/reference/iexportingimagesource/)` interface.
 
 Using a wrapper objects allows specifying a number of additional options, such as position and margins of the extra images:
 

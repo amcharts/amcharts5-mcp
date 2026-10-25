@@ -1,7 +1,7 @@
 ---
 title: "IEditableAxisLabelSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ieditableaxislabelsettings/"
+source: "https://docs.amcharts.com/v5/reference/ieditableaxislabelsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -22,7 +22,7 @@ _(none declared here — all inherited)_
 - **paddingLeft** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
 - **paddingRight** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
 - **paddingTop** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
-- **themeTags** (`string[]`) — default `["editablelabel"]` _(theme)_ — _from IEntitySettings_ — Tags that theme rules can target. They also count for the element's children, so a rule can match a child by a tag of its parent. Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+- **themeTags** (`string[]`) — default `["editablelabel"]` _(theme)_ — _from IEntitySettings_ — Tags that theme rules can target. They also count for the element's children, so a rule can match a child by a tag of its parent. Docs: https://docs.amcharts.com/v5/concepts/themes/
 
 ## Other inherited settings
 

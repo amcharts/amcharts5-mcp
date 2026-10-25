@@ -1,6 +1,6 @@
 ---
 title: "Graticule series"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/graticule-series/"
 scraped: "2026-03-15"
 ---
 
@@ -33,14 +33,14 @@ graticuleSeries.mapLines.template.setAll({
 
 The `unshift()` call above is used to insert graticule series at the beginning of the series list so it stays behind all the other series we may have.
 
-Please note that graticule series is actually a line series under the hood. Please refer to the "[Map line series](https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/)" tutorial for further info on how to configure appearance of the lines.
+Please note that graticule series is actually a line series under the hood. Please refer to the "[Map line series](https://docs.amcharts.com/v5/charts/map-chart/map-line-series/)" tutorial for further info on how to configure appearance of the lines.
 
 
 ## Grid density
 
 Normally. graticule series places a line every 10 degrees of latitude and longitude.
 
-We can change the density using series' `[step](https://www.amcharts.com/docs/v5/reference/graticuleseries/#step_setting)` setting:
+We can change the density using series' `[step](https://docs.amcharts.com/v5/reference/graticuleseries/#step_setting)` setting:
 
 let graticuleSeries = chart.series.unshift(
   am5map.GraticuleSeries.new(root, {

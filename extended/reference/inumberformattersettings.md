@@ -1,7 +1,7 @@
 ---
 title: "INumberFormatterSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/inumberformattersettings/"
+source: "https://docs.amcharts.com/v5/reference/inumberformattersettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

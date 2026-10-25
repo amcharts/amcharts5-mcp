@@ -1,7 +1,7 @@
 ---
 title: "IStandardDeviationSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/istandarddeviationsettings/"
+source: "https://docs.amcharts.com/v5/reference/istandarddeviationsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

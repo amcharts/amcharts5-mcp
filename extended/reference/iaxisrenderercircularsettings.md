@@ -1,7 +1,7 @@
 ---
 title: "IAxisRendererCircularSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxisrenderercircularsettings/"
+source: "https://docs.amcharts.com/v5/reference/iaxisrenderercircularsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,17 +14,17 @@ TypeScript: `am5radar.IAxisRendererCircularSettings` (`import type { IAxisRender
 
 ## Settings
 
-- **radius** (`number | Percent`) — Outer radius of the axis, in pixels or as a percent of the chart's radius. A negative value is measured in from the chart's radius. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/#Axis_radii_and_angles
-- **innerRadius** (`number | Percent`) — Inner radius of the axis, in pixels or as a percent of the chart's radius. A negative value is measured in from the axis's outer radius. If not set, the chart's `innerRadius` is used. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/#Axis_radii_and_angles
-- **startAngle** (`number`) — Angle in degrees where the axis starts. If not set, the chart's `startAngle` is used. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/#Axis_radii_and_angles
-- **endAngle** (`number`) — Angle in degrees where the axis ends. If not set, the chart's `endAngle` is used. Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/radar-axes/#Axis_radii_and_angles
+- **radius** (`number | Percent`) — Outer radius of the axis, in pixels or as a percent of the chart's radius. A negative value is measured in from the chart's radius. Docs: https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#axis-radii-and-angles
+- **innerRadius** (`number | Percent`) — Inner radius of the axis, in pixels or as a percent of the chart's radius. A negative value is measured in from the axis's outer radius. If not set, the chart's `innerRadius` is used. Docs: https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#axis-radii-and-angles
+- **startAngle** (`number`) — Angle in degrees where the axis starts. If not set, the chart's `startAngle` is used. Docs: https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#axis-radii-and-angles
+- **endAngle** (`number`) — Angle in degrees where the axis ends. If not set, the chart's `endAngle` is used. Docs: https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#axis-radii-and-angles
 - **axisAngle** (`number`) — Not used by a circular axis. See `axisAngle` of `AxisRendererRadial`.
 
 ## Inherited settings with a different default on AxisRendererCircular
 
 - **crisp** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
-- **minGridDistance** (`number`) — default `100` _(theme)_ — _from IAxisRendererSettings_ — The smallest distance between grid lines, in pixels. The axis spaces its grid, and so its labels, at least this far apart. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Grid_density
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **minGridDistance** (`number`) — default `100` _(theme)_ — _from IAxisRendererSettings_ — The smallest distance between grid lines, in pixels. The axis spaces its grid, and so its labels, at least this far apart. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-density
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `0` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 
 ## Other inherited settings

@@ -25,11 +25,11 @@ Prompt: Create a sunburst chart of what fills a laptop drive, with the drive in 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -43,7 +43,7 @@ var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
   singleBranchOnly: true, // only one branch open at a time; a sunburst always works this way
   // show up to 10 levels on load and on each click: more than this data has, so all of them show
@@ -58,7 +58,7 @@ var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
 series.nodes.template.set("tooltipText", "{category}: [bold]{sum} GB[/]");
 
 // Set data: what fills a laptop's drive, folder by folder, in gigabytes
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 series.data.setAll([{
   name: "Drive",
   children: [{

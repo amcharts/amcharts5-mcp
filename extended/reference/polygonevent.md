@@ -1,7 +1,7 @@
 ---
 title: "PolygonEvent"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/polygonevent/"
+source: "https://docs.amcharts.com/v5/reference/polygonevent/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

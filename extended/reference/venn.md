@@ -1,13 +1,13 @@
 ---
 title: "Venn"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/venn/"
+source: "https://docs.amcharts.com/v5/reference/venn/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A Venn diagram: circles sized by their values, overlapping as much as the values of their overlaps say.
 
-Docs: https://www.amcharts.com/docs/v5/charts/venn/
+Docs: https://docs.amcharts.com/v5/charts/venn/
 
 ## Import
 

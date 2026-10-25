@@ -1,7 +1,7 @@
 ---
 title: "IColumnSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icolumnseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/icolumnseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,7 +14,7 @@ TypeScript: `am5xy.IColumnSeriesSettings` (`import type { IColumnSeriesSettings 
 
 ## Settings
 
-- **turboMode** (`boolean`) — Draws all columns as a single shape instead of one element each, which renders charts with many columns much faster. Experimental: the columns then don't react to the pointer, and some of their settings, such as rounded corners, have no effect. _Since 5.14.0._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/#Turbo_mode
+- **turboMode** (`boolean`) — Draws all columns as a single shape instead of one element each, which renders charts with many columns much faster. Experimental: the columns then don't react to the pointer, and some of their settings, such as rounded corners, have no effect. _Since 5.14.0._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/#turbo-mode
 
 ## Inherited settings with a different default on ColumnSeries
 

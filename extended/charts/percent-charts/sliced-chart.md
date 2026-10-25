@@ -1,6 +1,6 @@
 ---
 title: "Funnel, pyramid, and pictorial charts"
-source: "https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/"
+source: "https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/"
 scraped: "2026-03-15"
 ---
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -38,7 +38,7 @@ var chart = root.container.children.push(
   am5percent.SlicedChart.new(root, {})
 );
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Series
 
@@ -78,19 +78,19 @@ Comment
 
 A horizontal or vertical funnel.
 
-[More info](https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/funnel-series/)
+[More info](https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/funnel-series/)
 
 `PyramidSeries`
 
 A horizontal or vertical pyramid.
 
-[More info](https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/)
+[More info](https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pyramid-series/)
 
 `PictorialStackedSeries`
 
 A horizontal or vertical custom shape.
 
-[More info](https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pictorial-stacked-series/)
+[More info](https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pictorial-stacked-series/)
 
 ### Data fields
 
@@ -157,7 +157,7 @@ series.data.setAll(\[{
   applicants: 5500
 }\]);
 
-For more information about setting data to series, refer to "[Percent series: Setting data](https://www.amcharts.com/docs/v5/charts/percent-charts/percent-series/#Setting_data)".
+For more information about setting data to series, refer to "[Percent series: Setting data](https://docs.amcharts.com/v5/charts/percent-charts/percent-series/#setting-data)".
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
@@ -167,7 +167,7 @@ A series will automatically assign a different color to each of its slice.
 
 The colors are defined in a theme used by the chart, and can be overridden in a number of ways.
 
-For more information about it, refer to "[Percent series: Slice colors](https://www.amcharts.com/docs/v5/charts/percent-charts/percent-series/#Slice_colors)".
+For more information about it, refer to "[Percent series: Slice colors](https://docs.amcharts.com/v5/charts/percent-charts/percent-series/#slice-colors)".
 
 ## Legend
 
@@ -189,7 +189,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 
 legend.data.setAll(series.dataItems);
 
-MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Complete example
 
@@ -329,7 +329,7 @@ chart.appear();
 
 ## Bullets
 
-[Bullets](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/) can be added to a sliced series just like any other kind of series:
+[Bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/) can be added to a sliced series just like any other kind of series:
 
 series.bullets.push(function(root) {
   return am5.Bullet.new(root, {

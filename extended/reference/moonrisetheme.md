@@ -1,7 +1,7 @@
 ---
 title: "MoonriseTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/moonrisetheme/"
+source: "https://docs.amcharts.com/v5/reference/moonrisetheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

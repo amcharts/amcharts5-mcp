@@ -25,11 +25,11 @@ Prompt: Create a vertical arc diagram of the connections between the six friends
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/
+// https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/
 var series = chart.series.push(am5flow.ArcDiagram.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
@@ -54,7 +54,7 @@ series.nodes.setAll({
 });
 
 // Configure labels
-// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Labels
+// https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/#labels
 series.nodes.labels.template.setAll({
   fontSize: "0.85em", // 85% of the chart's text size
   paddingLeft: 20,    // 20px of room on both sides of each name
@@ -63,7 +63,7 @@ series.nodes.labels.template.setAll({
 });
 
 // Arcs take the color of the node they start from
-// https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/#Color_mode
+// https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/#color-mode
 series.links.template.setAll({
   strokeStyle: "source",
   strokeOpacity: 0.4 // see-through, so crossing arcs show
@@ -92,7 +92,7 @@ series.bullets.push(function(_root, _series, dataItem) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   { "from": "Monica", "to": "Rachel", "value": 4 },
   { "from": "Monica", "to": "Chandler", "value": 63 },

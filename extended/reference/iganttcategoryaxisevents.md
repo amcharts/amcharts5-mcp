@@ -1,7 +1,7 @@
 ---
 title: "IGanttCategoryAxisEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iganttcategoryaxisevents/"
+source: "https://docs.amcharts.com/v5/reference/iganttcategoryaxisevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

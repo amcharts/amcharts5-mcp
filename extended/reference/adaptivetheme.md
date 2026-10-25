@@ -14,7 +14,7 @@ root.setThemes([
 ]);
 ```
 
-Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+Docs: https://docs.amcharts.com/v5/concepts/themes/
 
 ## Import
 

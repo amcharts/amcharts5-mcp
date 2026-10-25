@@ -1,13 +1,13 @@
 ---
 title: "PicturePattern"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/picturepattern/"
+source: "https://docs.amcharts.com/v5/reference/picturepattern/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Picture pattern.
 
-_Since 5.2.15._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+_Since 5.2.15._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
 
 ## Import
 

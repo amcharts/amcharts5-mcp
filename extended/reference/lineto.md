@@ -1,7 +1,7 @@
 ---
 title: "LineTo"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/lineto/"
+source: "https://docs.amcharts.com/v5/reference/lineto/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "ExportingMenu"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/exportingmenu/"
+source: "https://docs.amcharts.com/v5/reference/exportingmenu/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 The export menu: an icon on the chart that opens a list of formats to export with `Exporting`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/exporting/
+Docs: https://docs.amcharts.com/v5/concepts/exporting/
 
 ## Import
 

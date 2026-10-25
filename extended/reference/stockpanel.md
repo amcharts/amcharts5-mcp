@@ -1,13 +1,13 @@
 ---
 title: "StockPanel"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/stockpanel/"
+source: "https://docs.amcharts.com/v5/reference/stockpanel/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A panel of a `StockChart`: an `XYChart` stacked with the other panels.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/panels/
+Docs: https://docs.amcharts.com/v5/charts/stock/panels/
 
 ## Import
 

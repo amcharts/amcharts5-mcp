@@ -1,13 +1,13 @@
 ---
 title: "IAccessibilitySettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaccessibilitysettings/"
+source: "https://docs.amcharts.com/v5/reference/iaccessibilitysettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Accessibility setting that can be applied to any visual element.
 
-**Deprecated:** Since 5.11.2. Moved to ISpriteSettings Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/
+**Deprecated:** Since 5.11.2. Moved to ISpriteSettings Docs: https://docs.amcharts.com/v5/concepts/accessibility/
 
 ## Inheritance
 

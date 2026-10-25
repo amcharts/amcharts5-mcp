@@ -1,7 +1,7 @@
 ---
 title: "ISmoothedRadarLineSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ismoothedradarlineseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ismoothedradarlineseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,13 +14,13 @@ TypeScript: `am5radar.ISmoothedRadarLineSeriesSettings` (`import type { ISmoothe
 
 ## Settings
 
-- **tension** (`number`) — default `0.5` _(theme)_ — How tight the curve is, from `0` to `1`: `1` draws straight lines, a smaller value a rounder curve. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/#Line_tension
+- **tension** (`number`) — default `0.5` _(theme)_ — How tight the curve is, from `0` to `1`: `1` draws straight lines, a smaller value a rounder curve. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/#line-tension
 - **curveFactory** (`CurveCardinalFactory`) — default computed at runtime _(class default)_ — _(internal)_
 
 ## Inherited settings with a different default on SmoothedRadarLineSeries
 
 - **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
-- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#negative-value-stacking
 
 ## Other inherited settings
 

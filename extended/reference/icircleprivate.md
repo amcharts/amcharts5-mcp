@@ -1,7 +1,7 @@
 ---
 title: "ICirclePrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icircleprivate/"
+source: "https://docs.amcharts.com/v5/reference/icircleprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "AxisLabel"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axislabel/"
+source: "https://docs.amcharts.com/v5/reference/axislabel/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A label on an axis, such as a category name or a value.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#labels
 
 ## Import
 

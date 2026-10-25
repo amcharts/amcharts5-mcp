@@ -25,11 +25,11 @@ Prompt: Create a packed circle chart of 500 items on a single level, each circle
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -52,7 +52,7 @@ chart.zoomableContainer.setAll({
 var zoomTools = chart.set("zoomTools", am5.ZoomTools.new(root, {}));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Pack.new(root, { // circles sized by their values, packed tightly
   maskContent:false, //!important with zoomable containers
   // leave out the root circle around everything: only its 500 children show
@@ -67,7 +67,7 @@ series.labels.template.set("text", "{sum}");
 series.nodes.template.set("tooltipText", "Item {category}: [bold]{sum}[/]");
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   name: "Root",
   children: [

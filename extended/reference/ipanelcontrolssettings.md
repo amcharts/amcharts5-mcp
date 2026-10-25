@@ -1,7 +1,7 @@
 ---
 title: "IPanelControlsSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipanelcontrolssettings/"
+source: "https://docs.amcharts.com/v5/reference/ipanelcontrolssettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -21,7 +21,7 @@ TypeScript: `am5stock.IPanelControlsSettings` (`import type { IPanelControlsSett
 
 - **centerX** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `x` position, and that it rotates and scales around: pixels from its left edge, or a percent of its width.
 - **layer** (`number`) — default `30` _(theme)_ — _from ISpriteSettings_ — Layer to draw the element on: elements on higher layers show in front of those on lower ones. If not set, the element is on its parent's layer.
-- **layout** (`Layout`) — default `root.horizontalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Layout
+- **layout** (`Layout`) — default `root.horizontalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
 - **opacity** (`number`) — default `0.5` _(theme)_ — _from ISpriteSettings_ — Opacity, from `0` (transparent) to `1` (opaque). The theme's `"default"` state has `opacity: 1`, so `show()`, and leaving a state that changes `opacity`, bring it back to `1`, not to a value set here. To come back to another value, set it in the `"default"` state too: `sprite.states.create("default", { opacity: 0.5 })`.
 - **paddingRight** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
 - **paddingTop** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.

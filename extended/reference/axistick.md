@@ -1,13 +1,13 @@
 ---
 title: "AxisTick"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axistick/"
+source: "https://docs.amcharts.com/v5/reference/axistick/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A tick mark on an axis. Ticks are hidden by default.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Ticks
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#ticks
 
 ## Import
 

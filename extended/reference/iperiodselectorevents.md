@@ -1,7 +1,7 @@
 ---
 title: "IPeriodSelectorEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iperiodselectorevents/"
+source: "https://docs.amcharts.com/v5/reference/iperiodselectorevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

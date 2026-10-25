@@ -1,7 +1,7 @@
 ---
 title: "Container"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/container/"
+source: "https://docs.amcharts.com/v5/reference/container/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ An element that holds child elements, arranges them with a layout, and can have 
 
 Its children can be any `Sprite`, from basic shapes to whole charts.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/
+Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/
 
 ## Import
 

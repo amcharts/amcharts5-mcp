@@ -1,13 +1,13 @@
 ---
 title: "AxisRendererY"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axisrenderery/"
+source: "https://docs.amcharts.com/v5/reference/axisrenderery/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Renderer for a vertical (Y) axis.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/#Axis_renderer
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/#axis-renderer
 
 ## Import
 

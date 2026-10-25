@@ -25,18 +25,18 @@ Prompt: Create a world map that shows where it is roughly working hours (9 AM to
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   minZoomLevel: 0.5, // zoom out to half the fitted size at most
   // go to the home view once the map is fitted
@@ -49,14 +49,14 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
 // Create series for background fill
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 // it covers the whole sphere, so it doesn't count when the map is fitted to the countries
 var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   affectsBounds: false
@@ -67,13 +67,13 @@ backgroundSeries.mapPolygons.template.setAll({
   strokeOpacity: 0 // no outline
 });
 // Add background polygon
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 backgroundSeries.data.push({
   geometry: am5map.getGeoRectangle(90, 180, -90, -180) // a rectangle around the whole world
 });
 
 // Create graticule series: grid lines every 10 degrees
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
   step: 10
 }));
@@ -84,13 +84,13 @@ graticuleSeries.mapLines.template.setAll({
 });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // low-detail world countries
 }));
 
 // Create point series for Sun icon
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var sunSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
 // two bullets make the sun: a blurred, pulsing glow and a solid disc drawn over it
@@ -126,7 +126,7 @@ sunSeries.bullets.push(function () {
 var sunDataItem = sunSeries.pushDataItem({}); // one point for the sun; updateDateNight places it
 
 // Create polygon series that shades the hours outside 9 AM to 5 PM
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var nightSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   affectsBounds: false // the shade doesn't count when the map is fitted
 }));
@@ -140,7 +140,7 @@ nightSeries.mapPolygons.template.setAll({
 var nightDataItem = nightSeries.pushDataItem({}); // one shape; updateDateNight draws it
 
 // Create line series for lines at 9 and 17 o'clock
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
 var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 
 lineSeries.mapLines.template.setAll({
@@ -153,7 +153,7 @@ var nineLine = lineSeries.pushDataItem({}); // the 9 AM line...
 var fiveLine = lineSeries.pushDataItem({}); // ...and the 5 PM line, drawn by updateDateNight
 
 // create point series for labels
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
 var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
 pointSeries.bullets.push(function () {

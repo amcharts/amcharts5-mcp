@@ -1,7 +1,7 @@
 ---
 title: "StockControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/stockcontrol/"
+source: "https://docs.amcharts.com/v5/reference/stockcontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

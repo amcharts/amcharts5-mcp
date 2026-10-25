@@ -1,6 +1,6 @@
 ---
 title: "HTML content"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/html-content/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/html-content/"
 scraped: "2026-03-15"
 ---
 

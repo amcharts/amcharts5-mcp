@@ -1,7 +1,7 @@
 ---
 title: "IEllipsePrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iellipseprivate/"
+source: "https://docs.amcharts.com/v5/reference/iellipseprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

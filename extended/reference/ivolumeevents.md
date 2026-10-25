@@ -1,7 +1,7 @@
 ---
 title: "IVolumeEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ivolumeevents/"
+source: "https://docs.amcharts.com/v5/reference/ivolumeevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

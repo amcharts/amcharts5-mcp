@@ -1,7 +1,7 @@
 ---
 title: "Ordering"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/ordering/"
+source: "https://docs.amcharts.com/v5/reference/ordering/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

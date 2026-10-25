@@ -1,6 +1,6 @@
 ---
 title: "Gradients"
-source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/"
+source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/"
 scraped: "2026-03-15"
 ---
 
@@ -37,9 +37,9 @@ Pattern class
 
 Example
 
-`[LinearGradient](https://www.amcharts.com/docs/v5/reference/lineargradient/)`
+`[LinearGradient](https://docs.amcharts.com/v5/reference/lineargradient/)`
 
-`[RadialGradient](https://www.amcharts.com/docs/v5/reference/radialgradient/)`
+`[RadialGradient](https://docs.amcharts.com/v5/reference/radialgradient/)`
 
 ## Setting gradient
 
@@ -71,7 +71,7 @@ Each step in gradient is called a "stop".
 
 Gradient needs to have two or more stops.
 
-Those are set via gradient's `stops` setting which is an array of `[IGradientStop](https://www.amcharts.com/docs/v5/reference/igradientstop/)` objects.
+Those are set via gradient's `stops` setting which is an array of `[IGradientStop](https://docs.amcharts.com/v5/reference/igradientstop/)` objects.
 
 ### Colors
 

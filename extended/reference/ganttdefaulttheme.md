@@ -1,7 +1,7 @@
 ---
 title: "GanttDefaultTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/ganttdefaulttheme/"
+source: "https://docs.amcharts.com/v5/reference/ganttdefaulttheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

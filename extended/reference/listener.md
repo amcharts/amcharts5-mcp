@@ -1,7 +1,7 @@
 ---
 title: "Listener"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/listener/"
+source: "https://docs.amcharts.com/v5/reference/listener/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

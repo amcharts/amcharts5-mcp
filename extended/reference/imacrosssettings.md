@@ -1,7 +1,7 @@
 ---
 title: "IMACrossSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imacrosssettings/"
+source: "https://docs.amcharts.com/v5/reference/imacrosssettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

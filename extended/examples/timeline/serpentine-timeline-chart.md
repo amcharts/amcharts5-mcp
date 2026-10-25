@@ -27,7 +27,7 @@ Prompt: Create a serpentine timeline chart whose date axis winds left and right 
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -187,7 +187,7 @@ var data = [{
 }];
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -290,7 +290,7 @@ yAxis.data.setAll([
 ]);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series.appear(1000);
 chart.appear(1000, 100);
 ```

@@ -1,6 +1,6 @@
 ---
 title: "XY chart"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/"
 scraped: "2026-03-15"
 ---
 
@@ -22,7 +22,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -40,7 +40,7 @@ var chart = root.container.children.push(
   am5xy.XYChart.new(root, {})
 );
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Adding axes
 
@@ -94,25 +94,25 @@ Comment
 
 For plotting data with string identifiers - categories.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)
 
 `CategoryDateAxis`
 
 For plotting time-based data without maintaining actual time scale. Grid/labels are displayed only where there is actual data.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Category_date_axis)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
 
 `DateAxis`
 
 For plotting time-based data. The axis will maintain natural time scale regardless on how actual data points are spaced out.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
 
 `ValueAxis`
 
 For plotting numeric values.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/)
 
 Some axis types require additional configuration besides renderer to work.
 
@@ -168,13 +168,13 @@ var xAxis = chart.xAxes.push(
   })
 );
 
-MORE INFO For information on configuring and using each axis type, please refer to the dedicated "[Axes](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/)" tutorial, or click on an axis class name in the table above.
+MORE INFO For information on configuring and using each axis type, please refer to the dedicated "[Axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)" tutorial, or click on an axis class name in the table above.
 
 ## Adding series
 
 XY chart is a "serial" chart, meaning it needs at least one series to display anything.
 
-As with anything else in amCharts 5, we create a series object using [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) of its class.
+As with anything else in amCharts 5, we create a series object using [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) of its class.
 
 There is also a number of properties that need to be set for series, like its X and Y axis, as well as data fields.
 
@@ -226,7 +226,7 @@ For example, if we have a `ValueAxis` as a Y-axis, and a `CategoryAxis` as an X-
 
 Depending on series type, it may need additional fields. For example `CandlestickSeries` needs four values, so it will need four data fields as well.
 
-MORE INFO For more information about data fields refer to "[Data fields](https://www.amcharts.com/docs/v5/concepts/series/#Data_fields)" section in our "Series" tutorial.
+MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/concepts/series/#data-fields)" section in our "Series" tutorial.
 
 ### Types of series
 
@@ -240,49 +240,49 @@ Comment
 
 Series that displays candles with open, high, low, and close values.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)
 
 `ColumnSeries`
 
 Displays columns or bars.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)
 
 `LineSeries`
 
 Displays lines or area.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)
 
 `OHLCSeries`
 
 Series that displays sticks with open, high, low, and close values.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/candlestick-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)
 
 `SmoothedXLineSeries`
 
 Displays smoothed lines or area with configurable horizontal tension.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 `SmoothedXYLineSeries`
 
 Displays smoothed lines or area with configurable horizontal and vertical tension.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 `SmoothedYLineSeries`
 
 Displays smoothed lines or area with configurable vertical tension.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 `StepLineSeries`
 
 Displays stepped line or area.
 
-[More info](https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/)
+[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/)
 
 ## Setting data
 
@@ -352,7 +352,7 @@ series2.data.setAll(data);
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There's more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://www.amcharts.com/docs/v5/concepts/data/)" tutorial.
+MORE INFO There's more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Date-based data
 
@@ -360,7 +360,7 @@ A quick note about date-based charts (with a `DateAxis`): they expect data to be
 
 If you we have dates in any other format (as strings or `Date` objects), we'll need to set up a data processor to convert our dates to timestamps.
 
-MORE INFO For description how it works, please refer to "[Date-based data](https://www.amcharts.com/docs/v5/concepts/data/#Date_based_data)" section in our "Data" tutorial.
+MORE INFO For description how it works, please refer to "[Date-based data](https://docs.amcharts.com/v5/concepts/data/)" section in our "Data" tutorial.
 
 ## Additional controls
 
@@ -374,7 +374,7 @@ legend.data.setAll(chart.series.values);
 var legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.series.values);
 
-MORE INFO For more information on how to configure the content for legend on an XY chart, refer to "[Legend and XY series](https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/)" tutorial. For generic tips on how to configure legend and its items, please visit our dedicated "[Legend](https://www.amcharts.com/docs/v5/concepts/legend/)" tutorial.
+MORE INFO For more information on how to configure the content for legend on an XY chart, refer to "[Legend and XY series](https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/)" tutorial. For generic tips on how to configure legend and its items, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ### Cursor
 
@@ -384,7 +384,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
 chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
-MORE INFO For more information on how to configure the chart cursor make sure you visit "[Cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/)" tutorial.
+MORE INFO For more information on how to configure the chart cursor make sure you visit "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
 
 ## Complete example
 
@@ -543,22 +543,22 @@ chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
 ### Configuring axes
 
--   [Configuring axes](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/)
--   [Working with a Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/)
--   [Working with a Category axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/category-axis/)
--   [Working with a Value axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/)
--   [Working with Gapless Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/gapless-date-axis/)
+-   [Configuring axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)
+-   [Working with a Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
+-   [Working with a Category axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)
+-   [Working with a Value axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/)
+-   [Working with Gapless Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/)
 
 ### Configuring series
 
--   [Adding tooltips to series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Tooltips)
--   [Using date-based data](https://www.amcharts.com/docs/v5/concepts/data/#Parsing_dates)
--   [Loading external data](https://www.amcharts.com/docs/v5/concepts/data/#External_data)
--   [Smoothed series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/)
+-   [Adding tooltips to series](https://docs.amcharts.com/v5/charts/xy-chart/series/#tooltips)
+-   [Using date-based data](https://docs.amcharts.com/v5/concepts/data/#parsing-dates)
+-   [Loading external data](https://docs.amcharts.com/v5/concepts/data/#external-data)
+-   [Smoothed series](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 ### Other topics
 
--   [Configuring zooming and panning](https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/)
--   [Configuring legend](https://www.amcharts.com/docs/v5/concepts/legend/)
--   [Configuring cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/)
--   [Using themes](https://www.amcharts.com/docs/v5/concepts/themes/)
+-   [Configuring zooming and panning](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/)
+-   [Configuring legend](https://docs.amcharts.com/v5/concepts/legend/)
+-   [Configuring cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)
+-   [Using themes](https://docs.amcharts.com/v5/concepts/themes/)

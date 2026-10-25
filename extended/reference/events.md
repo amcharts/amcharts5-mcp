@@ -1,7 +1,7 @@
 ---
 title: "Events"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/events/"
+source: "https://docs.amcharts.com/v5/reference/events/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

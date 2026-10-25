@@ -1,7 +1,7 @@
 ---
 title: "SceneGraphics"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/scenegraphics/"
+source: "https://docs.amcharts.com/v5/reference/scenegraphics/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

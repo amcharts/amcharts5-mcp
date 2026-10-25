@@ -1,7 +1,7 @@
 ---
 title: "IGaplessDateAxisEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/igaplessdateaxisevents/"
+source: "https://docs.amcharts.com/v5/reference/igaplessdateaxisevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

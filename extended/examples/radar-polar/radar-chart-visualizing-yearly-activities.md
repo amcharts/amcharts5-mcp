@@ -25,17 +25,17 @@ Prompt: Create a radar chart of a year of bicycle rides: weekly distance totals 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Create custom theme
-// https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme
+// https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme
 const myTheme = am5.Theme.new(root);
 myTheme.rule("Label").set("fontSize", 10);       // all labels 10px
 myTheme.rule("Grid").set("strokeOpacity", 0.06); // very faint grid lines
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_Responsive.new(root)]);
 
 // tell that valueX should be formatted as a date (show week number)
@@ -747,7 +747,7 @@ prepareDistanceData(data);
 
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     panX: false,                  // no dragging the plot around
@@ -777,7 +777,7 @@ chart.radarContainer.children.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set(
   "cursor",
   am5radar.RadarCursor.new(root, {
@@ -787,7 +787,7 @@ var cursor = chart.set(
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 
 // date axis
 var dateAxisRenderer = am5radar.AxisRendererCircular.new(root, {
@@ -854,7 +854,7 @@ var weekAxis = chart.yAxes.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var distanceSeries = chart.series.push(
   am5radar.RadarColumnSeries.new(root, {
     calculateAggregates: true, // works out the lowest and highest values, which the heat rules need
@@ -871,7 +871,7 @@ var distanceSeries = chart.series.push(
 distanceSeries.columns.template.set("strokeOpacity", 0); // no column outlines
 
 // Set up heat rules
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 distanceSeries.set("heatRules", [{
   target: distanceSeries.columns.template,
   key: "fill",
@@ -881,7 +881,7 @@ distanceSeries.set("heatRules", [{
 }]);
 
 // bubble series is a line series with strokes hidden
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var bubbleSeries = chart.series.push(
   am5radar.RadarLineSeries.new(root, {
     calculateAggregates: true, // works out the lowest and highest values, which the heat rule needs
@@ -911,7 +911,7 @@ bubbleSeries.bullets.push(function () {
 });
 
 // Add heat rule (sizes the bubbles by the distance of each ride)
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 bubbleSeries.set("heatRules", [{
   target: circleTemplate,
   min: 3,  // the shortest ride a 3px bubble...
@@ -921,7 +921,7 @@ bubbleSeries.set("heatRules", [{
 }]);
 
 // set data
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 
 distanceSeries.data.setAll(weeklyData);
 weekAxis.data.setAll(weekAxisData);

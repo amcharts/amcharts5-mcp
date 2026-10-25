@@ -25,18 +25,18 @@ Prompt: Create a horizontal clustered bar chart comparing income and expenses ov
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // the plot doesn't pan when dragged
   panY: false,
@@ -70,7 +70,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "year",
   renderer: am5xy.AxisRendererY.new(root, {
@@ -94,7 +94,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 function createSeries(field, name) {
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
     name: name,
@@ -153,7 +153,7 @@ createSeries("income", "Income");
 createSeries("expenses", "Expenses");
 
 // Add legend, above the plot
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.unshift(am5.Legend.new(root, {
   centerX: am5.p50, // the legend's middle...
   x: am5.p50,       // ...at the middle of the chart
@@ -163,7 +163,7 @@ var legend = chart.children.unshift(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // drag up or down across the plot to zoom into those years
   behavior: "zoomY"
@@ -172,7 +172,7 @@ cursor.lineY.set("forceHidden", true); // no cursor lines
 cursor.lineX.set("forceHidden", true);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

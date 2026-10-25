@@ -1,7 +1,7 @@
 ---
 title: "IGanttDateAxisDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iganttdateaxisdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iganttdateaxisdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

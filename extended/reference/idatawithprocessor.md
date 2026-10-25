@@ -1,7 +1,7 @@
 ---
 title: "IDataWithProcessor"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idatawithprocessor/"
+source: "https://docs.amcharts.com/v5/reference/idatawithprocessor/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,4 +14,4 @@ TypeScript: not exported by name from the package.
 
 ## Properties
 
-- **processor** (`DataProcessor`) — An optional processor for data. Docs: https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+- **processor** (`DataProcessor`) — An optional processor for data. Docs: https://docs.amcharts.com/v5/concepts/data/#pre-processing-data

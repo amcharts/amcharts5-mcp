@@ -25,25 +25,25 @@ Prompt: Create a donut chart of a monthly household budget split into six spendi
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
   layout: root.verticalLayout, // the legend goes below the donut
   innerRadius: am5.percent(55) // a hole 55% of the radius turns the pie into a donut
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series = chart.series.push(am5percent.PieSeries.new(root, {
   valueField: "value",
   categoryField: "category",
@@ -64,7 +64,7 @@ series.slices.template.setAll({
 });
 
 // The total, in the hole
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Label_in_the_middle
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 series.children.push(am5.Label.new(root, {
   text: "[fontSize:13px]Monthly budget[/]\n[bold fontSize:26px]${valueSum.formatNumber('#,###')}[/]",
   // fills in {valueSum} from the series the label belongs to
@@ -75,7 +75,7 @@ series.children.push(am5.Label.new(root, {
 }));
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([
   { value: 1050, category: "Housing" },
   { value: 540, category: "Food" },
@@ -86,7 +86,7 @@ series.data.setAll([
 ]);
 
 // Create legend
-// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+// https://docs.amcharts.com/v5/charts/percent-charts/legend-percent-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.percent(50), // the legend's middle...
   x: am5.percent(50),       // ...at the middle of the chart
@@ -97,7 +97,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(series.dataItems);
 
 // Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+// https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 series.appear(1000, 100);
 ```
 

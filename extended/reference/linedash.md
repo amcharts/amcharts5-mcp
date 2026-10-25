@@ -1,7 +1,7 @@
 ---
 title: "LineDash"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/linedash/"
+source: "https://docs.amcharts.com/v5/reference/linedash/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

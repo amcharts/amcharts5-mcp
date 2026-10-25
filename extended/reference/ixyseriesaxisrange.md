@@ -1,13 +1,13 @@
 ---
 title: "IXYSeriesAxisRange"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ixyseriesaxisrange/"
+source: "https://docs.amcharts.com/v5/reference/ixyseriesaxisrange/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An axis range of a series: a stretch of an axis within which the series can look different.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Series_axis_ranges
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#series-axis-ranges
 
 ## Inheritance
 

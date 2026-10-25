@@ -1,13 +1,13 @@
 ---
 title: "XYChartScrollbar"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/xychartscrollbar/"
+source: "https://docs.amcharts.com/v5/reference/xychartscrollbar/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A scrollbar with a small preview chart in it. Add axes and series to its `chart` to draw the preview.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/#Scrollbar_with_chart_preview
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/#scrollbar-with-chart-preview
 
 ## Import
 

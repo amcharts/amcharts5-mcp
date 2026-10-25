@@ -25,7 +25,7 @@ Prompt: Create a line chart of ten series of daily values with a legend on the r
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // a theme of our own, with rules for the minor labels and the vertical grid lines
@@ -44,7 +44,7 @@ myTheme.rule("Grid", ["x", "minor"]).setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -52,7 +52,7 @@ root.setThemes([
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,      // drag the plot to pan...
   panY: true,      // ...in any direction
@@ -92,7 +92,7 @@ function generateDatas(count) {
 }
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.2, // panning can go up to 20% past the first and last day
   baseInterval: {    // one data point per day
@@ -110,7 +110,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 for (var i = 0; i < 10; i++) {
   var series = chart.series.push(am5xy.LineSeries.new(root, {
     name: "Series " + i,
@@ -134,25 +134,25 @@ for (var i = 0; i < 10; i++) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 }
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none" // a drag over the plot pans the chart instead of zooming
 }));
 cursor.lineY.set("visible", false); // no horizontal cursor line
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // a scrollbar above the plot, to zoom and pan the dates
 }));
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 // as wide as a series name and its value need
 var legend = chart.rightAxesContainer.children.push(am5.Legend.new(root, {
   width: 130,
@@ -206,7 +206,7 @@ legend.valueLabels.template.setAll({
 legend.data.setAll(chart.series.values);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

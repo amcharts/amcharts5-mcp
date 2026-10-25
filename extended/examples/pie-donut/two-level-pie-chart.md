@@ -25,18 +25,18 @@ Prompt: Create a two-level pie chart of three equal parts: a thin ring shows Fir
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     layout: root.verticalLayout
@@ -44,7 +44,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 // two pie series in one chart: a faint outer ring for the group, a thinner one for its parts
 var series0 = chart.series.push(
   am5percent.PieSeries.new(root, {
@@ -86,7 +86,7 @@ series0.labels.template.setAll({
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series0.data.setAll([
   {
     category: "First + Second",
@@ -101,7 +101,7 @@ series0.data.setAll([
 ]);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series1 = chart.series.push(
   am5percent.PieSeries.new(root, {
     // a thinner ring in the middle of the faint ring's band, which runs from 80% to 100%
@@ -143,7 +143,7 @@ series1.ticks.template.setAll({
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series1.data.setAll([{
   category: "First",
   value: 30

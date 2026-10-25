@@ -1,6 +1,6 @@
 ---
 title: "Images"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/images/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/images/"
 scraped: "2026-03-15"
 ---
 
@@ -8,9 +8,9 @@ This tutorial explains how we can use `Picture` class elements to add images to 
 
 ## Creating an image
 
-To create an image, we will need to instantiate a `[Picture](https://www.amcharts.com/docs/v5/reference/picture/)` object using its `new()` method.
+To create an image, we will need to instantiate a `[Picture](https://docs.amcharts.com/v5/reference/picture/)` object using its `new()` method.
 
-For image to work, it needs to at least have its `[src](https://www.amcharts.com/docs/v5/reference/picture/#src_setting)` setting set.
+For image to work, it needs to at least have its `[src](https://docs.amcharts.com/v5/reference/picture/#src_setting)` setting set.
 
 The `src` can be a string with a relative or absolute URL or an encoded data URI. Basically anything that could go into `href` attribute of an HTML `<img>` tag.
 
@@ -43,7 +43,7 @@ am5.Picture.new(root, {
 
 ## Images as bullets
 
-Since image is as good as element as any, we can also use it as [bullet in series](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/) or [axes ranges](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Bulltet):
+Since image is as good as element as any, we can also use it as [bullet in series](https://docs.amcharts.com/v5/concepts/common-elements/bullets/) or [axes ranges](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/):
 
 series.bullets.push(function() {
   return am5.Bullet.new(root, {
@@ -98,4 +98,4 @@ Instead of full images, we can also use SVG paths as images.
 
 Using SVG paths adds a number of advantages, like avoiding cross-domain issues, latency loading external files, as well as enabling us to set custom colors and other drawing settings.
 
-To draw shapes using SVG paths, instead of `Picture` class, we can use `Graphics`. For more information, please refer to "[Graphics](https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/)" tutorial.
+To draw shapes using SVG paths, instead of `Picture` class, we can use `Graphics`. For more information, please refer to "[Graphics](https://docs.amcharts.com/v5/concepts/common-elements/graphics/)" tutorial.

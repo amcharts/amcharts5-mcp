@@ -1,10 +1,10 @@
 ---
 title: "Stock toolbar"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/"
 scraped: "2026-10-08"
 ---
 
-Stock toolbar is a tool bundled with our [Stock chart](https://www.amcharts.com/docs/v5/charts/stock/) that can hold a number of chart-related controls, built-in or custom.
+Stock toolbar is a tool bundled with our [Stock chart](https://docs.amcharts.com/v5/charts/stock/) that can hold a number of chart-related controls, built-in or custom.
 
 ## Creating
 
@@ -55,61 +55,61 @@ Comment
 
 A control designed to add additional series to compare against main series.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/comparison-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/comparison-control/)
 
 `DataSaveControl`
 
 Allows saving/restoring current annotations, as well as enabling auto-saving.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/data-save-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/data-save-control/)
 
 `DateRangeSelector`
 
 Allows selecting date range the chart to zoom to, using date picker.
 
-[Info](https://www.amcharts.com/docs/v5/date-range-selector/)
+[Info](https://docs.amcharts.com/v5/date-range-selector/)
 
 `DrawingControl`
 
-Toggles drawing tools on and off. Puts chart into "[annotation mode](https://www.amcharts.com/docs/v5/charts/stock/stock-annotations/)".
+Toggles drawing tools on and off. Puts chart into "[annotation mode](https://docs.amcharts.com/v5/charts/stock/stock-annotations/)".
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/)
 
 `IndicatorControl`
 
-Allows adding [technical indicators](https://www.amcharts.com/docs/v5/charts/stock/indicators/).
+Allows adding [technical indicators](https://docs.amcharts.com/v5/charts/stock/indicators/).
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/indicator-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/indicator-control/)
 
 `IntervalControl`
 
 Allows switching data granularity.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/interval-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/interval-control/)
 
 `PeriodSelector`
 
 Displays a pre-defined list of periods for quick zoom of the chart.
 
-[Info](https://www.amcharts.com/docs/v5/period-selector/)
+[Info](https://docs.amcharts.com/v5/period-selector/)
 
 `ResetControl`
 
 Removes all annotations and indicators added by user.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/reset-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/reset-control/)
 
 `SeriesTypeControl`
 
 Allows switching type of the main series.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/series-type-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/series-type-control/)
 
 `SettingsControl`
 
 Allows changing some settings of the chart, such as Y-axis scale and axis fills.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/settings-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/settings-control/)
 
 Besides these functional controls, stock chart offers generic controls that we can use to add custom functionality:
 
@@ -121,7 +121,7 @@ Comment
 
 A control that can be used to add searchable list of any item for selection.
 
-[Info](https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/)
 
 `StockControl`
 
@@ -368,4 +368,4 @@ Here's an example:
 
 ## Related tutorials
 
--   [Stock Chart with custom indicator add button](https://www.amcharts.com/docs/v5/tutorials/stock-chart-with-custom-indicator-add-button/)
+-   [Stock Chart with custom indicator add button](https://docs.amcharts.com/v5/tutorials/stock-chart-with-custom-indicator-add-button/)

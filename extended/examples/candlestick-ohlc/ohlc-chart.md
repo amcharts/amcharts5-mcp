@@ -25,7 +25,7 @@ Prompt: Create a zoomable OHLC chart of about five years of simulated daily pric
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root); // a theme of our own, for the rule below
@@ -70,7 +70,7 @@ function generateChartData() {
 var data = generateChartData();
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   focusable: true, // the chart can be reached with the Tab key
   panX: true,      // drag the plot sideways to pan through the days
@@ -81,7 +81,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   maxDeviation: 0.5, // pans up to half the visible range past the first and last day
   groupData: true, // zoomed out, days are grouped into weeks or months, so bars don't crowd
@@ -103,7 +103,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 var color = root.interfaceColors.get("background");
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.OHLCSeries.new(root, {
   fill: color,
   calculateAggregates: true, // works out range values, such as {valueYClose} in the legend
@@ -131,14 +131,14 @@ var series = chart.series.push(am5xy.OHLCSeries.new(root, {
 }));
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis // the cursor snaps to the days
 }));
 cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal", // a bar above the plot to zoom and scroll...
   height: 50                 // ...50px tall, with a small chart of the prices in it
@@ -171,7 +171,7 @@ var sbseries = scrollbar.chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.plotContainer.children.push( // inside the plot area, at its top left
   am5.Legend.new(root, {})
 );
@@ -200,7 +200,7 @@ series.data.setAll(data);
 sbseries.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

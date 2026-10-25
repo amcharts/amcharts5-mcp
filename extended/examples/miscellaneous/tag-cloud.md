@@ -25,11 +25,11 @@ Prompt: Create a tag cloud of the most used programming languages in the 2021 St
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -53,7 +53,7 @@ var title = chart.children.push(am5.Label.new(root, {
 chart.children.moveValue(title, 0);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/word-cloud/
+// https://docs.amcharts.com/v5/charts/word-cloud/
 var series = chart.series.push(am5wc.WordCloud.new(root, {
   categoryField: "tag",
   valueField: "weight", // the share of developers, which sets each word's size
@@ -61,7 +61,7 @@ var series = chart.series.push(am5wc.WordCloud.new(root, {
 }));
 
 // Set up heat rules: shades of the theme's first color, the more used a language, the more it stands out
-// https://www.amcharts.com/docs/v5/charts/word-cloud/#Via_heat_rules
+// https://docs.amcharts.com/v5/charts/word-cloud/#via-heat-rules
 var color = am5.ColorSet.new(root, {}).getIndex(0); // the theme's first color
 series.set("heatRules", [{
   target: series.labels.template,
@@ -83,7 +83,7 @@ series.labels.template.setAll({
 });
 
 // Add click event on words
-// https://www.amcharts.com/docs/v5/charts/word-cloud/#Events
+// https://docs.amcharts.com/v5/charts/word-cloud/#events
 series.labels.template.events.on("click", function(ev) {
   const dataContext = ev.target.dataItem.dataContext;
   // the word's Stack Overflow tag: its own "link" where the name isn't one, the name otherwise

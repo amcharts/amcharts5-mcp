@@ -1,7 +1,7 @@
 ---
 title: "ITreePrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itreeprivate/"
+source: "https://docs.amcharts.com/v5/reference/itreeprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

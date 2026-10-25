@@ -241,7 +241,7 @@ function continentOf(id) {
 }
 
 // Create root element: one root holds the whole dashboard, so its charts share a theme and can react to each other
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 var myTheme = am5.Theme.new(root); // a theme of our own, for the two rules below
@@ -255,7 +255,7 @@ myTheme.rule("AxisLabel", ["minor"]).setAll({
 });
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_Responsive.new(root)]);
 
 // Colors from the theme, so the dashboard follows the theme: a main color and a pale one for the rest
@@ -353,7 +353,7 @@ function highlightCountries(continent) {
 // income and expenses by year as two lines; the last year is a dashed projection
 function makeLineSeriesChart(parent) {
   // Create chart
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/
+  // https://docs.amcharts.com/v5/charts/xy-chart/
   var chart = parent.children.push(
     am5xy.XYChart.new(root, {
       width: am5.percent(50),     // half the top row's width
@@ -406,7 +406,7 @@ function makeLineSeriesChart(parent) {
   ];
 
   // Create axes
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  // https://docs.amcharts.com/v5/charts/xy-chart/axes/
   var xRenderer = am5xy.AxisRendererX.new(root, {
     minorGridEnabled: true, // fainter grid lines between the labeled ones
     minGridDistance: 60     // at least 60px between labels; on narrow screens some are skipped
@@ -435,7 +435,7 @@ function makeLineSeriesChart(parent) {
   );
 
   // Add series
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/
   var series1 = chart.series.push(
     am5xy.LineSeries.new(root, {
       name: "Income",
@@ -485,7 +485,7 @@ function makeLineSeriesChart(parent) {
   chart.set("cursor", am5xy.XYCursor.new(root, {})); // the cursor shows the tooltips of both lines
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   chart.appear(1000, 100);
   series1.appear(1000, 500);
   series2.appear(1000, 1500);
@@ -494,7 +494,7 @@ function makeLineSeriesChart(parent) {
 // the average of each continent as a ring of a radar chart, top right
 function makeRadarGauge(parent, averages) {
   // Create chart
-  // https://www.amcharts.com/docs/v5/charts/radar-chart/
+  // https://docs.amcharts.com/v5/charts/radar-chart/
   var radarGauge = parent.children.push(am5radar.RadarChart.new(root, {
     width: am5.percent(25),       // a quarter of the top row's width
     radius: am5.percent(90),      // the rings fill 90% of the space
@@ -524,7 +524,7 @@ function makeRadarGauge(parent, averages) {
   });
 
   // Create axes and their renderers
-  // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+  // https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
   var xRenderer = am5radar.AxisRendererCircular.new(root, {
     minGridDistance: 40 // at least 40px between the percent labels around the circle
   });
@@ -566,7 +566,7 @@ function makeRadarGauge(parent, averages) {
   yAxis.data.setAll(data);
 
   // Create series
-  // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+  // https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
   // The full ring, faint, behind each value
   var series1 = radarGauge.series.push(am5radar.RadarColumnSeries.new(root, {
     xAxis: xAxis,
@@ -623,7 +623,7 @@ function makeRadarGauge(parent, averages) {
   gaugeSeries.data.setAll(data);
 
   // Animate chart and series in
-  // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+  // https://docs.amcharts.com/v5/concepts/animations/#initial-animation
   gaugeSeries.appear(2000);
 
   return gaugeSeries;
@@ -632,7 +632,7 @@ function makeRadarGauge(parent, averages) {
 // the share of countries above 10% as a donut, top left
 function makePieChart(parent, share) {
   // Create chart
-  // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+  // https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
   var startAngle = -90; // the donut starts at the top
   var chart = parent.children.push(am5percent.PieChart.new(root, {
     width: am5.percent(25),       // a quarter of the top row's width
@@ -641,7 +641,7 @@ function makePieChart(parent, share) {
   }));
 
   // Create series
-  // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+  // https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
   var series = chart.series.push(am5percent.PieSeries.new(root, {
     valueField: "value",
     categoryField: "category",
@@ -666,14 +666,14 @@ function makePieChart(parent, share) {
   });
 
   // Set data: the share of countries above 10%, and the rest
-  // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+  // https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
   series.data.setAll([
     { value: share, category: "Above 10%", settings: { fill: mainColor } },
     { value: 1 - share, category: "The rest", settings: { fill: root.interfaceColors.get("alternativeBackground"), fillOpacity: 0.1 } }
   ]);
 
   // Play initial series animation
-  // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+  // https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
   series.appear(2000);
 
   // The share, in the middle
@@ -690,7 +690,7 @@ function makePieChart(parent, share) {
 // a column per day for 30 days, bottom right
 function makeColumnChart(parent) {
   // Create chart
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/
+  // https://docs.amcharts.com/v5/charts/xy-chart/
   var chart = parent.children.push(am5xy.XYChart.new(root, {
     width: am5.percent(40), // 40% of the bottom row's width
     panX: false,            // no dragging to pan...
@@ -701,7 +701,7 @@ function makeColumnChart(parent) {
   }));
 
   // Add cursor
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+  // https://docs.amcharts.com/v5/charts/xy-chart/cursor/
   var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
     behavior: "zoomX" // drag across the plot to zoom in on those days
   }));
@@ -731,7 +731,7 @@ function makeColumnChart(parent) {
   }
 
   // Create axes
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  // https://docs.amcharts.com/v5/charts/xy-chart/axes/
   var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
     maxDeviation: 0, // no panning past the first or last day
     baseInterval: {  // one column per day
@@ -755,7 +755,7 @@ function makeColumnChart(parent) {
   }));
 
   // Add series
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
     name: "Series",
     xAxis: xAxis,
@@ -777,7 +777,7 @@ function makeColumnChart(parent) {
   })
 
   // Add scrollbar
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+  // https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
   var scrollbar = chart.set("scrollbarX", am5.Scrollbar.new(root, {
     orientation: "horizontal" // a bar above the plot to zoom and scroll through the days
   }));
@@ -789,7 +789,7 @@ function makeColumnChart(parent) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear(1000);
   chart.appear(1000, 100);
 
@@ -799,7 +799,7 @@ function makeColumnChart(parent) {
 
 function makeMapChart(parent) {
   // Create the map chart
-  // https://www.amcharts.com/docs/v5/charts/map-chart/
+  // https://docs.amcharts.com/v5/charts/map-chart/
   var chart = parent.children.push(am5map.MapChart.new(root, {
     minZoomLevel: 0.5, // can zoom out to half the fitted size
     // go to the home view once the map is fitted
@@ -849,7 +849,7 @@ function makeMapChart(parent) {
   };
 
   // Create series for the water: a faint fill behind the countries
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+  // https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
   var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
     // the map fits the countries, not this rectangle around the whole world
     affectsBounds: false
@@ -866,7 +866,7 @@ function makeMapChart(parent) {
   });
 
   // the countries, colored by their rate
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+  // https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
   var polygonSeries = chart.series.push(
     am5map.MapPolygonSeries.new(root, {
       geoJSON: am5geodata_worldLow, // the world's countries, in low detail
@@ -892,7 +892,7 @@ function makeMapChart(parent) {
   });
 
   // the countries are shaded from light to dark by rate
-  // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+  // https://docs.amcharts.com/v5/concepts/settings/heat-rules/
   polygonSeries.set("heatRules", [{
     target: polygonSeries.mapPolygons.template,
     dataField: "value",
@@ -920,7 +920,7 @@ function makeMapChart(parent) {
   polygonSeries.data.setAll(data);
 
   // The heat legend, in the row next to the map, so it never covers a country
-  // https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+  // https://docs.amcharts.com/v5/concepts/legend/heat-legend/
   var heatLegend = parent.children.push(am5.HeatLegend.new(root, {
     orientation: "vertical",                       // standing upright
     startColor: am5.Color.lighten(mainColor, 0.6), // the same colors...

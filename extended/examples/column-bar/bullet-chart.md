@@ -25,11 +25,11 @@ Prompt: Create a pair of bullet charts, one above the other, each with an actual
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -52,7 +52,7 @@ var colors = [0, 0.25, 0.5, 0.75, 1].map(function(position) {
 // one bullet chart: a gradient behind the bar when gradient is true, solid bands if not
 function createBulletChart(gradient) {
   // Create chart
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/
+  // https://docs.amcharts.com/v5/charts/xy-chart/
   var chart = root.container.children.push(
     am5xy.XYChart.new(root, {
       panX: false,    // the chart doesn't pan or zoom
@@ -67,7 +67,7 @@ function createBulletChart(gradient) {
   );
 
   // Create axes
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  // https://docs.amcharts.com/v5/charts/xy-chart/axes/
   var yAxis = chart.yAxes.push(
     am5xy.CategoryAxis.new(root, {
       categoryField: "category",
@@ -90,7 +90,7 @@ function createBulletChart(gradient) {
   );
 
   // Color the ranges behind the bar with axis ranges
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+  // https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
   if (gradient) {
     // one range across the whole scale, with a gradient from orange to green
     var rangeDataItem = xAxis.makeDataItem({ value: 0, endValue: 100 });
@@ -129,7 +129,7 @@ function createBulletChart(gradient) {
   }
 
   // The actual value: a bar
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/
   var series = chart.series.push(
     am5xy.ColumnSeries.new(root, {
       xAxis: xAxis,
@@ -153,7 +153,7 @@ function createBulletChart(gradient) {
   series.data.setAll([{ category: "Evaluation", value: 65 }]);
 
   // The target: a short vertical line, drawn by a step line series with no risers
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/
   var stepSeries = chart.series.push(
     am5xy.StepLineSeries.new(root, {
       xAxis: xAxis,
@@ -177,7 +177,7 @@ function createBulletChart(gradient) {
   stepSeries.data.setAll([{ category: "Evaluation", value: 83 }]);
 
   // Add cursor, with its lines hidden: it only shows the tooltips
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+  // https://docs.amcharts.com/v5/charts/xy-chart/cursor/
   var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
     behavior: "none" // dragging doesn't select or zoom
   }));
@@ -185,7 +185,7 @@ function createBulletChart(gradient) {
   cursor.lineX.set("visible", false);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   chart.appear(1000, 100);
   series.appear();
   stepSeries.appear();

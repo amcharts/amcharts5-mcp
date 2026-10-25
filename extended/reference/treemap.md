@@ -1,13 +1,13 @@
 ---
 title: "Treemap"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/treemap/"
+source: "https://docs.amcharts.com/v5/reference/treemap/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A treemap: nodes as rectangles sized by value, each inside its parent's rectangle. A click on a node zooms into it.
 
-Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/
+Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/
 
 ## Import
 

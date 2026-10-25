@@ -1,16 +1,16 @@
 ---
 title: "Chart Serializer"
-source: "https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/"
+source: "https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/"
 scraped: "2026-10-08"
 ---
 
-Use ChartSerializer to serialize the whole chart objects into JSON which can be stored and [parsed back](https://www.amcharts.com/docs/v5/concepts/serializing/#Parsing) into a functional object.
+Use ChartSerializer to serialize the whole chart objects into JSON which can be stored and [parsed back](https://docs.amcharts.com/v5/concepts/serializing/#parsing) into a functional object.
 
 ## Getting started
 
 ### Initializing
 
-The chart serializer is part of the [JSON plugin](https://www.amcharts.com/docs/v5/concepts/serializing/), which needs to be loaded.
+The chart serializer is part of the [JSON plugin](https://docs.amcharts.com/v5/concepts/serializing/), which needs to be loaded.
 
 You can import those in your TypeScript / ES6 application as JavaScript modules:
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 
 <script src="https://cdn.amcharts.com/lib/5/plugins/json.js"></script>
 
-MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ### Creating serializer object
 
@@ -146,7 +146,7 @@ var serializer = am5plugins_json.ChartSerializer.new(root, {
 
 ### Animations (5.20.8)
 
-An element's `animations` setting (see "[Animations: Animations as settings](https://www.amcharts.com/docs/v5/concepts/animations/#Animations_as_settings)") is written as configured. A setting one of its entries animates is written with the value it was configured with, never one caught mid-animation.
+An element's `animations` setting (see "[Animations: Animations as settings](https://docs.amcharts.com/v5/concepts/animations/#animations-as-settings)") is written as configured. A setting one of its entries animates is written with the value it was configured with, never one caught mid-animation.
 
 With `runningAnimations: true` (the default) *(5.20.8)*, an animation started in code with `animate()` that loops forever (`loops: Infinity`) and uses a named easing is written as an `animations` entry (`{ key, from, to, duration, loops: 0 }`, plus `easing`, `ease` and `yoyo` where they apply), and the setting it animates is left out of the output. A globe that keeps turning or a bullet that keeps pulsing thus plays on in the parsed chart.
 
@@ -171,7 +171,7 @@ var serializer = am5plugins_json.ChartSerializer.new(root, {
 
 The serializer will detect `Legend` or `HeatLegend` and include it in the output if it's a child of one of the chart's built-in containers, like `rightAxesContainer`, its series or the chart itself.
 
-Since 5.20.7 a legend placed inside an axis header (`axisHeader`) round-trips too. Before, parsing such a config failed with "Could not find ref", because the legend names a series defined further down the config (see "[Grouping referenced objects](https://www.amcharts.com/docs/v5/concepts/serializing/#Grouping_referenced_objects)").
+Since 5.20.7 a legend placed inside an axis header (`axisHeader`) round-trips too. Before, parsing such a config failed with "Could not find ref", because the legend names a series defined further down the config (see "[Grouping referenced objects](https://docs.amcharts.com/v5/concepts/serializing/#grouping-referenced-objects)").
 
 #### Custom elements
 
@@ -201,7 +201,7 @@ Since 5.20.6 the `themeTags` you give an element are written to the output too, 
 
 ### Theme colors
 
-A color taken from the root's [interface colors](https://www.amcharts.com/docs/v5/concepts/themes/) is saved as a reference to it, not as a fixed value:
+A color taken from the root's [interface colors](https://docs.amcharts.com/v5/concepts/themes/) is saved as a reference to it, not as a fixed value:
 
 polygonSeries.mapPolygons.template.setAll({
   stroke: root.interfaceColors.get("background")
@@ -261,4 +261,4 @@ Colors in data rows are always written as values (a string starting with `@` in 
 
 You can create and edit JSON configs using [amCharts Editor](https://live.amcharts.com/).
 
-For more info, refer to "[JSON Editor](https://www.amcharts.com/docs/v5/concepts/serializing/json-editor/)".
+For more info, refer to "[JSON Editor](https://docs.amcharts.com/v5/concepts/serializing/json-editor/)".

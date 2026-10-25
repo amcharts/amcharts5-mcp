@@ -1,7 +1,7 @@
 ---
 title: "IDrawingControlSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idrawingcontrolsettings/"
+source: "https://docs.amcharts.com/v5/reference/idrawingcontrolsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,12 +14,12 @@ TypeScript: `am5stock.IDrawingControlSettings` (`import type { IDrawingControlSe
 
 ## Settings
 
-- **tools** (`DrawingTools[]`) — default `["Arrows &amp; Icons", "Average", "Callout", "Doodle", "Ellipse", "Fibonacci", "Fibonacci Timezone", "Horizontal Line", "Horizontal Ray", "Label", "Line", "Line Arrow", "Measure", "Parallel Channel…` _(theme)_ — Tools to list in the tool dropdown. Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/#Tool_list
+- **tools** (`DrawingTools[]`) — default `["Arrows &amp; Icons", "Average", "Callout", "Doodle", "Ellipse", "Fibonacci", "Fibonacci Timezone", "Horizontal Line", "Horizontal Ray", "Label", "Line", "Line Arrow", "Measure", "Parallel Channel…` _(theme)_ — Tools to list in the tool dropdown. Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/#tool-list
 - **tool** (`DrawingTools`) — default `"Line"` _(theme)_ — The tool in use; the one set at the start is the default.
 - **scrollable** (`boolean`) — default `true` _(theme)_ — Limits the tool list's height to the chart's height minus 100 pixels, scrolling the rest. _Since 5.9.5._
-- **toolSettings** (`{ [index: string]: any; }`) — default `{}` _(code fallback)_ — Settings for the drawing series of each tool, keyed by tool name. _Since 5.5.2._ Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/#Tool_settings
+- **toolSettings** (`{ [index: string]: any; }`) — default `{}` _(code fallback)_ — Settings for the drawing series of each tool, keyed by tool name. _Since 5.5.2._ Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/#tool-settings
 - **series** (`XYSeries[]`) — default `[]` _(code fallback)_ — Series to attach drawings to. Each panel's main series (`stockSeries` on its panel, the first series on others) is added automatically.
-- **colors** (`ColorSet`) — Colors to offer in the color pickers. Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/#Colors
+- **colors** (`ColorSet`) — Colors to offer in the color pickers. Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/#colors
 - **strokeColor** (`Color`) — default `am5.color(0x882dff)` _(theme)_ — Line color of new drawings; changing it also restyles the selected ones.
 - **strokeWidth** (`number`) — default `2` _(theme)_ — Line width of new drawings, in pixels.
 - **strokeWidths** (`number[]`) — default `[1, 2, 4, 8, 16]` _(theme)_ — Line widths to choose from, in pixels.

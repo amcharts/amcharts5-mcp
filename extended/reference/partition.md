@@ -1,13 +1,13 @@
 ---
 title: "Partition"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/partition/"
+source: "https://docs.amcharts.com/v5/reference/partition/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A partition (icicle) diagram: each level is a row of rectangles (a column, when horizontal), and each node spans as much of it as its value. A click on a node zooms into it.
 
-Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/partition/
+Docs: https://docs.amcharts.com/v5/charts/hierarchy/partition/
 
 ## Import
 

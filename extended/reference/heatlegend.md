@@ -1,13 +1,13 @@
 ---
 title: "HeatLegend"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/heatlegend/"
+source: "https://docs.amcharts.com/v5/reference/heatlegend/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A legend that shows a color scale from `startColor` to `endColor`, with the values at its ends.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+Docs: https://docs.amcharts.com/v5/concepts/legend/heat-legend/
 
 ## Import
 

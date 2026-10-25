@@ -25,18 +25,18 @@ Prompt: Create a horizontal pictorial stacked chart that fills a sausage-shaped 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
 var chart = root.container.children.push(am5percent.SlicedChart.new(root, {
   layout: root.verticalLayout,
   paddingLeft: 80, // 80px of space on the left...
@@ -44,7 +44,7 @@ var chart = root.container.children.push(am5percent.SlicedChart.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/#series
 var series = chart.series.push(am5percent.PictorialStackedSeries.new(root, {
   alignLabels: true,         // the labels line up in a row under the shape
   orientation: "horizontal", // the slices run from left to right
@@ -64,7 +64,7 @@ series.labels.template.set("text", "{category}\n{valuePercentTotal.formatNumber(
 series.slices.template.set("tooltipText", "{category}: {valuePercentTotal.formatNumber('0.0p')}");
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/#setting-data
 series.data.setAll([
   { value: 10, category: "One" },
   { value: 9, category: "Two" },
@@ -76,7 +76,7 @@ series.data.setAll([
 ]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

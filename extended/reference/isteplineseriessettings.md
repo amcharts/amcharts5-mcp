@@ -1,7 +1,7 @@
 ---
 title: "IStepLineSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isteplineseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/isteplineseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,14 +14,14 @@ TypeScript: `am5xy.IStepLineSeriesSettings` (`import type { IStepLineSeriesSetti
 
 ## Settings
 
-- **stepWidth** (`Percent`) — default `100%` — Width of each step as a percent of its cell. Less than 100% shows only with `noRisers` set. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/#Step_width
-- **noRisers** (`boolean`) — default `false` — Draws only the steps, without the risers that join one step to the next. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/step-line-series/#Disabling_risers
+- **stepWidth** (`Percent`) — default `100%` — Width of each step as a percent of its cell. Less than 100% shows only with `noRisers` set. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/#step-width
+- **noRisers** (`boolean`) — default `false` — Draws only the steps, without the risers that join one step to the next. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/#disabling-risers
 
 ## Inherited settings with a different default on StepLineSeries
 
 - **curveFactory** (`CurveFactory`) — default computed at runtime _(class default)_ — _from ILineSeriesSettings_ — _(internal)_
 - **legendLabelText** (`string`) — default `"{name}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
-- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Negative_value_stacking
+- **stackToNegative** (`boolean`) — default `false` _(theme)_ — _from IXYSeriesSettings_ — When stacking, puts negative values on the negative values below and positive on positive, so the stack grows away from zero both ways. With `false`, each value goes on the one right below it, whatever its sign. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#negative-value-stacking
 
 ## Other inherited settings
 

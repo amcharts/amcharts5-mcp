@@ -58,18 +58,18 @@ function generateCategories(count) {
 }
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // no dragging to pan...
   panY: false,                // ...in either direction...
@@ -83,7 +83,7 @@ var maleColor = chart.get("colors").getIndex(0);
 var femaleColor = chart.get("colors").getIndex(1);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "cat",
   renderer: am5xy.AxisRendererX.new(root, {})
@@ -143,7 +143,7 @@ var iconTemplate = am5.Template.new({
 });
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // A colored series gets a tooltip with its count, e.g. "Male: 58 of 100"
 function makeSeries(name, yAxis, data, color, path, withTooltip) {
   var series = chart.series.push(am5xy.ColumnSeries.new(root, {
@@ -203,7 +203,7 @@ yAxis1.events.on("boundschanged", function() {
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

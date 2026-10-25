@@ -1,7 +1,7 @@
 ---
 title: "ITreeSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itreesettings/"
+source: "https://docs.amcharts.com/v5/reference/itreesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -31,7 +31,7 @@ TypeScript: `am5hierarchy.ITreeSettings` (`import type { ITreeSettings } from "@
 - **paddingRight** (`number`) — default `20` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
 - **paddingTop** (`number`) — default `20` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
 - **singleBranchOnly** (`boolean`) — default `false` _(theme)_ — _from IHierarchySettings_ — Collapses the other branches when a branch is opened. `Sunburst` ignores this setting and always works as if it is `true`.
-- **upDepth** (`number`) — default `Infinity` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Drill_down
+- **upDepth** (`number`) — default `Infinity` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#drill-down
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

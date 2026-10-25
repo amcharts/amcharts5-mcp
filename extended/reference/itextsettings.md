@@ -1,7 +1,7 @@
 ---
 title: "ITextSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itextsettings/"
+source: "https://docs.amcharts.com/v5/reference/itextsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -16,7 +16,7 @@ TypeScript: `am5.ITextSettings` (`import type { ITextSettings } from "@amcharts/
 
 - **text** (`string`) — default `""` _(code fallback)_
 - **fill** (`Color`)
-- **fillGradient** (`Gradient`) — Fill gradient. _Since 5.10.1._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/
+- **fillGradient** (`Gradient`) — Fill gradient. _Since 5.10.1._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
 - **fillOpacity** (`number`) — default `1` _(code fallback)_
 - **textAlign** (`"start" | "end" | "left" | "right" | "center"`)
 - **fontFamily** (`string`)

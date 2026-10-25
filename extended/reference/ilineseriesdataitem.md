@@ -1,7 +1,7 @@
 ---
 title: "ILineSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilineseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/ilineseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

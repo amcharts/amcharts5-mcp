@@ -25,18 +25,18 @@ Prompt: Create a polar scatter plot on a 24-hour clock of commuter trips by star
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false,                  // no dragging the plot around
   panY: false,
@@ -50,7 +50,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 chart.get("colors").set("step", 3);
 
 // Add cursor: drag along the ring to zoom in on some hours
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX"
 }));
@@ -58,7 +58,7 @@ var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 // The circle is a 24-hour clock: midnight at the top, noon at the bottom
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   strokeOpacity: 0.1, // the outer circle, faint
@@ -95,7 +95,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series: points only, no lines
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 function createSeries(name, data) {
   var series = chart.series.push(am5radar.RadarLineSeries.new(root, {
     name: name,
@@ -229,7 +229,7 @@ createSeries("Train", [
 ]);
 
 // Add legend: click a way of travel to hide it
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   x: am5.p50,      // the legend's middle...
   centerX: am5.p50 // ...at the middle of the chart
@@ -237,7 +237,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

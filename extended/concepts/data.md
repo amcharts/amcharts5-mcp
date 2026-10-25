@@ -1,6 +1,6 @@
 ---
 title: "Data"
-source: "https://www.amcharts.com/docs/v5/concepts/data/"
+source: "https://docs.amcharts.com/v5/concepts/data/"
 scraped: "2026-03-15"
 ---
 
@@ -14,7 +14,7 @@ It's not a simple storage for data but rather object based on class `ListData`.
 
 Any data manipulation - setting data, inserting, removing, or updating values for data points - is done via many of the `ListData` methods. The object will take care of the rest - no need to let the chart know we've updated something - it will just happen.
 
-In this tutorial, we will cover the most common of `ListData`'s methods, but make sure you visit its [full class reference](https://www.amcharts.com/docs/v5/reference/datalist/#Methods) for more options.
+In this tutorial, we will cover the most common of `ListData`'s methods, but make sure you visit its [full class reference](https://docs.amcharts.com/v5/reference/datalist/#methods) for more options.
 
 ## Setting data
 
@@ -22,7 +22,7 @@ Data set set via `ListData` object of the component that is direct user of the d
 
 For example, in XY Chart the users of data are its series, not the chart itself.
 
-Chart's [legend](https://www.amcharts.com/docs/v5/concepts/legend/) is another example of a data user.
+Chart's [legend](https://docs.amcharts.com/v5/concepts/legend/) is another example of a data user.
 
 To set initial data or replace all of the current data, we use `setAll()` method:
 
@@ -54,7 +54,7 @@ IMPORTANT It's a good practice to make sure that setting data happens as late i
 
 ## Data order
 
-IMPORTANT[Date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/) expects series data to be sorted in ascending order. Otherwise, chart will be prone to all kinds of plotting anomalies.
+IMPORTANT[Date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/) expects series data to be sorted in ascending order. Otherwise, chart will be prone to all kinds of plotting anomalies.
 
 ## Incremental updates
 
@@ -315,7 +315,7 @@ series.data.setAll(\[{
   value: "800"
 }\]);
 
-MORE INFO The date format is described in "[Formatting dates](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/)" tutorial.
+MORE INFO The date format is described in "[Formatting dates](https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/)" tutorial.
 
 The following format codes are supported when parsing dates:
 
@@ -710,7 +710,7 @@ am5.net.load("/data/mydata.json").then(function(result) {
 
 The `result` passed to handler functions is an object that implements `INetLoadResult` interface. It contains a bunch of useful references, but the most important one is `response`, which contains the actual output of the requested URL.
 
-MORE INFO There are more to `am5.net.load()` than the bare minimum outlined above. Please refer to "[Getting the most out of net.load utility](https://www.amcharts.com/docs/v5/concepts/data/net-load-utility/)" tutorial for information about passing in target data user object, setting HTTP request options, and more.
+MORE INFO There are more to `am5.net.load()` than the bare minimum outlined above. Please refer to "[Getting the most out of net.load utility](https://docs.amcharts.com/v5/concepts/data/net-load-utility/)" tutorial for information about passing in target data user object, setting HTTP request options, and more.
 
 ### Parsing
 
@@ -878,7 +878,7 @@ chart.get("userData");
 
 ## Related content
 
--   [Getting the most out of net.load utility](https://www.amcharts.com/docs/v5/concepts/data/net-load-utility/)
--   [Binding element's settings to values in data](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)
--   [Show "no data" warning on a chart](https://www.amcharts.com/docs/v5/tutorials/show-no-data-warning-on-a-chart/)
--   [Gantt chart with external data](https://www.amcharts.com/docs/v5/tutorials/gantt-chart-with-external-data/) (demo)
+-   [Getting the most out of net.load utility](https://docs.amcharts.com/v5/concepts/data/net-load-utility/)
+-   [Binding element's settings to values in data](https://docs.amcharts.com/v5/concepts/settings/template-fields/)
+-   [Show "no data" warning on a chart](https://docs.amcharts.com/v5/tutorials/show-no-data-warning-on-a-chart/)
+-   [Gantt chart with external data](https://docs.amcharts.com/v5/tutorials/gantt-chart-with-external-data/) (demo)

@@ -1,13 +1,13 @@
 ---
 title: "ArcDiagram"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/arcdiagram/"
+source: "https://docs.amcharts.com/v5/reference/arcdiagram/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Arc diagram: nodes as circles in a row or column, sized by their values and linked by arcs.
 
-Docs: https://www.amcharts.com/docs/v5/charts/flow-charts/
+Docs: https://docs.amcharts.com/v5/charts/flow-charts/
 
 ## Import
 

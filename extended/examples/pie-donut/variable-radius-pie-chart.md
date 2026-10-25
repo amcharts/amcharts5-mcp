@@ -25,24 +25,24 @@ Prompt: Create a pie chart where each slice’s radius grows with its value, so 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
   layout: root.verticalLayout // the legend goes under the pie
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series = chart.series.push(am5percent.PieSeries.new(root, {
   alignLabels: true, // labels line up in columns at the sides
   // works out the highest value, which the radius adapter below measures the slices against
@@ -60,7 +60,7 @@ series.slices.template.setAll({
 series.labelsContainer.set("paddingTop", 30);
 
 // Set up adapters for variable slice radius
-// https://www.amcharts.com/docs/v5/concepts/settings/adapters/
+// https://docs.amcharts.com/v5/concepts/settings/adapters/
 series.slices.template.adapters.add("radius", function (radius, target) {
   var dataItem = target.dataItem;
   var high = series.getPrivate("valueHigh");
@@ -74,7 +74,7 @@ series.slices.template.adapters.add("radius", function (radius, target) {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([{
   value: 10,
   category: "One"
@@ -96,7 +96,7 @@ series.data.setAll([{
 }]);
 
 // Create legend
-// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+// https://docs.amcharts.com/v5/charts/percent-charts/legend-percent-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // centered under the pie
   x: am5.p50,
@@ -107,7 +107,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(series.dataItems);
 
 // Play initial series animation
-// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+// https://docs.amcharts.com/v5/concepts/animations/#animation-of-series
 series.appear(1000, 100);
 ```
 

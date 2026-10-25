@@ -1,7 +1,7 @@
 ---
 title: "ITreemapSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itreemapsettings/"
+source: "https://docs.amcharts.com/v5/reference/itreemapsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,12 +14,12 @@ TypeScript: `am5hierarchy.ITreemapSettings` (`import type { ITreemapSettings } f
 
 ## Settings
 
-- **nodePaddingInner** (`number`) — Gap between neighboring nodes, in pixels. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/#Margins
-- **nodePaddingOuter** (`number`) — default `0` _(code fallback)_ — Gap between a node's edges and the nodes inside it, in pixels; for the top node, that is the gap to the chart's edges. Overrides `nodePaddingTop`, `nodePaddingRight`, `nodePaddingBottom` and `nodePaddingLeft`. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/#Margins
-- **nodePaddingTop** (`number`) — Gap between a node's top edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/#Margins
-- **nodePaddingBottom** (`number`) — Gap between a node's bottom edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/#Margins
-- **nodePaddingLeft** (`number`) — Gap between a node's left edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/#Margins
-- **nodePaddingRight** (`number`) — Gap between a node's right edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/treemap/#Margins
+- **nodePaddingInner** (`number`) — Gap between neighboring nodes, in pixels. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#margins
+- **nodePaddingOuter** (`number`) — default `0` _(code fallback)_ — Gap between a node's edges and the nodes inside it, in pixels; for the top node, that is the gap to the chart's edges. Overrides `nodePaddingTop`, `nodePaddingRight`, `nodePaddingBottom` and `nodePaddingLeft`. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#margins
+- **nodePaddingTop** (`number`) — Gap between a node's top edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#margins
+- **nodePaddingBottom** (`number`) — Gap between a node's bottom edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#margins
+- **nodePaddingLeft** (`number`) — Gap between a node's left edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#margins
+- **nodePaddingRight** (`number`) — Gap between a node's right edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#margins
 - **layoutAlgorithm** (`"binary" | "squarify" | "slice" | "dice" | "sliceDice"`) — default `"squarify"` _(theme)_ — How the rectangles are laid out: `"squarify"` keeps them close to squares, `"binary"` splits the space in balanced halves, `"slice"` stacks them top to bottom, `"dice"` places them left to right, and `"sliceDice"` alternates between the two from level to level.
 
 ## Inherited settings with a different default on Treemap
@@ -28,7 +28,7 @@ TypeScript: `am5hierarchy.ITreemapSettings` (`import type { ITreemapSettings } f
 - **legendLabelText** (`string`) — default `"{category}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's label in a `Legend`.
 - **legendValueText** (`string`) — default `"{sum.formatNumber('#.#')}"` _(theme)_ — _from ISeriesSettings_ — Text template for the item's value label in a `Legend`.
 - **maskContent** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Clips all content that goes outside the container's bounds.
-- **upDepth** (`number`) — default `0` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://www.amcharts.com/docs/v5/charts/hierarchy/#Drill_down
+- **upDepth** (`number`) — default `0` _(theme)_ — _from IHierarchySettings_ — Number of parent levels that stay visible above the selected node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#drill-down
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

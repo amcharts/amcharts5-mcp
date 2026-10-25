@@ -1,7 +1,7 @@
 ---
 title: "ITreeEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itreeevents/"
+source: "https://docs.amcharts.com/v5/reference/itreeevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

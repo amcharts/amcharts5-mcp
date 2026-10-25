@@ -1,6 +1,6 @@
 ---
 title: "Heat rules"
-source: "https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/"
+source: "https://docs.amcharts.com/v5/concepts/settings/heat-rules/"
 scraped: "2026-10-18"
 ---
 
@@ -12,7 +12,7 @@ In order for heat rules to function properly on series, it needs aggregate value
 
 Normally, series does not do that in order not to waste resources.
 
-To enable, we just need to set `[calculateAggregates](https://www.amcharts.com/docs/v5/reference/series/#calculateAggregates_setting)` setting to `true`:
+To enable, we just need to set `[calculateAggregates](https://docs.amcharts.com/v5/reference/series/#calculateAggregates_setting)` setting to `true`:
 
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
@@ -38,7 +38,7 @@ var series = chart.series.push(
 
 ## Creating
 
-A heat rule is a generic object that corresponds to `[IHeatRule](https://www.amcharts.com/docs/v5/reference/Iheatrule/)` interface.
+A heat rule is a generic object that corresponds to `[IHeatRule](https://docs.amcharts.com/v5/reference/iheatrule/)` interface.
 
 It has the following required properties:
 
@@ -278,7 +278,7 @@ The element with the lowest value gets the first stop, and the one with the high
 
 Stops can be numbers, percents, or colors, but all of one kind. If `minValue` and `maxValue` are set, values outside that range get the first or last stop.
 
-NOTE`stops` is available since version 5.21.2. To show the same scale in a [heat legend](https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/), pass the same colors to its `colors` setting.
+NOTE`stops` is available since version 5.21.2. To show the same scale in a [heat legend](https://docs.amcharts.com/v5/concepts/legend/heat-legend/), pass the same colors to its `colors` setting.
 
 ## Logarithmic scale
 

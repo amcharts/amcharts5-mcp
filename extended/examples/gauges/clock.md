@@ -25,25 +25,25 @@ Prompt: Create a working analog clock from a circular gauge chart, with the hour
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // the clock doesn't pan when dragged
   panY: false
 }));
 
 // Create axis and its renderer
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Axes
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#axes
 var axisRenderer = am5radar.AxisRendererCircular.new(root, {
   innerRadius: -10, // the grid lines are 10px marks in from the rim
   strokeOpacity: 1, // a solid rim...
@@ -72,7 +72,7 @@ axisRenderer.labels.template.setAll({
 axisRenderer.grid.template.set("strokeOpacity", 1); // solid hour marks
 
 // Add clock hands
-// https://www.amcharts.com/docs/v5/charts/radar-chart/gauge-charts/#Clock_hands
+// https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#clock-hands
 
 // hour
 // each hand is the bullet of an axis range: setting the range's value turns the hand

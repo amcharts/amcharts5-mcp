@@ -1,7 +1,7 @@
 ---
 title: "IChordNodesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichordnodesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/ichordnodesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

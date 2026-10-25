@@ -1,6 +1,6 @@
 ---
 title: "Stock chart"
-source: "https://www.amcharts.com/docs/v5/charts/stock/"
+source: "https://docs.amcharts.com/v5/charts/stock/"
 scraped: "2026-03-15"
 ---
 
@@ -41,7 +41,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/stock.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -59,7 +59,7 @@ var stockChart = root.container.children.push(
   am5stock.StockChart.new(root, {})
 );
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Panels
 
@@ -67,7 +67,7 @@ A "panel" in a stock chart is an instance of a `StockPanel` which in turn extend
 
 Basically, anything you can and need do with an XY chart, you can do with a stock panel.
 
-MORE INFOFor a complete guide on how to configure an XY chart, please refer to "[XY chart](https://www.amcharts.com/docs/v5/charts/xy-chart/)" tutorial section.
+MORE INFOFor a complete guide on how to configure an XY chart, please refer to "[XY chart](https://docs.amcharts.com/v5/charts/xy-chart/)" tutorial section.
 
 The following code will add a single panel (chart). Let's call it a "main chart".
 
@@ -83,7 +83,7 @@ var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   panY: true
 }));
 
-MORE INFOPanels/charts are configurable. For a complete rundown of their configuration features, visit "[Panels](https://www.amcharts.com/docs/v5/charts/stock/panels/)" tutorial.
+MORE INFOPanels/charts are configurable. For a complete rundown of their configuration features, visit "[Panels](https://docs.amcharts.com/v5/charts/stock/panels/)" tutorial.
 
 Stock chart will also take care of syncing zoom across multiple panels, automatically.
 
@@ -91,7 +91,7 @@ Stock chart will also take care of syncing zoom across multiple panels, automati
 
 Since an XY chart requires at least two axes (X and Y) to function, we'll need to add those to panel's (chart), too.
 
-While regular XY chart can accept any combination of axes types, when used as a panel, it needs its X axis to be a [date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/), and its Y axis to be a [value axis](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/) - we'll be plotting a date/time-based value data.
+While regular XY chart can accept any combination of axes types, when used as a panel, it needs its X axis to be a [date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/), and its Y axis to be a [value axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/) - we'll be plotting a date/time-based value data.
 
 let valueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
@@ -117,7 +117,7 @@ var dateAxis = mainPanel.xAxes.push(am5xy.DateAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, {})
 }));
 
-MORE INFOFor more information on adding and configuring axes on an XY chart, refer to "[Axes](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/)" tutorial.
+MORE INFOFor more information on adding and configuring axes on an XY chart, refer to "[Axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)" tutorial.
 
 ## Series
 
@@ -149,7 +149,7 @@ var valueSeries = mainPanel.series.push(am5xy.LineSeries.new(root, {
 
 valueSeries.data.setAll(data);
 
-MORE INFORefer to "[Series](https://www.amcharts.com/docs/v5/charts/xy-chart/series/)" tutorial for more information about configuration options.
+MORE INFORefer to "[Series](https://docs.amcharts.com/v5/charts/xy-chart/series/)" tutorial for more information about configuration options.
 
 ### Setting main series
 
@@ -216,7 +216,7 @@ stockChart.set("volumeSeries", volumeSeries);
 
 Main value series (set on `stockSeries`) and main volume series (set on `volumeSeries`) will use two colors if they are of type column, candlestick, or OHLC.
 
-They will use "negative" and "positive" colors from the default [interface color set](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Interface_colors).
+They will use "negative" and "positive" colors from the default [interface color set](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#interface-colors).
 
 Negative color will be used for items that have their close value lower than their open.
 
@@ -273,7 +273,7 @@ var stockChart = root.container.children.push(
 
 ## Legend
 
-In stock chart, we can use both the [regular legend](https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/) that we'd use in an XY chart, as well as advanced special "sock legend".
+In stock chart, we can use both the [regular legend](https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/) that we'd use in an XY chart, as well as advanced special "sock legend".
 
 The latter offers enhanced view as well as tools to edit related series/indicators.
 
@@ -301,7 +301,7 @@ valueLegend.data.setAll(\[valueSeries\]);
 var valueLegend = valueAxis.axisHeader.children.push(am5.Legend.new(root, {}));
 valueLegend.data.setAll(\[valueSeries\]);
 
-NOTEFor more about stock legend, visit "[Stock legend](https://www.amcharts.com/docs/v5/charts/stock/stock-legend/)" tutorial.
+NOTEFor more about stock legend, visit "[Stock legend](https://docs.amcharts.com/v5/charts/stock/stock-legend/)" tutorial.
 
 ## Cursors
 
@@ -321,7 +321,7 @@ Cursor needs to be added to each panel individually.
 
 Stock chart will take care of syncing cursor position across all panels, automatically.
 
-MORE INFORefer to "[Cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/)" tutorial for more information.
+MORE INFORefer to "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial for more information.
 
 ## Scrollbar
 
@@ -397,7 +397,7 @@ mainPanel.bottomAxesContainer.children.push(scrollbar);
 
 mainPanel.bottomAxesContainer.children.push(scrollbar);
 
-MORE INFOLook for more info about adding scrollbars in our "[Scrollbars](https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/)" tutorial.
+MORE INFOLook for more info about adding scrollbars in our "[Scrollbars](https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/)" tutorial.
 
 ## Complete example
 
@@ -465,17 +465,17 @@ let data = \[
 \];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root\_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 let root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes(\[
   am5themes\_Animated.new(root)
 \]);
 
 // Create a stock chart
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Instantiating\_the\_chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
 let stockChart = root.container.children.push(am5stock.StockChart.new(root, {
 }));
 
@@ -484,7 +484,7 @@ let stockChart = root.container.children.push(am5stock.StockChart.new(root, {
  \*/
 
 // Create a main stock panel (chart)
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Adding\_panels
+// https://docs.amcharts.com/v5/charts/stock/
 let mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",
   panX: true,
@@ -492,7 +492,7 @@ let mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 let valueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
@@ -506,7 +506,7 @@ let dateAxis = mainPanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 let valueSeries = mainPanel.series.push(am5xy.LineSeries.new(root, {
   name: "STCK",
   valueXField: "Date",
@@ -519,11 +519,11 @@ let valueSeries = mainPanel.series.push(am5xy.LineSeries.new(root, {
 valueSeries.data.setAll(data);
 
 // Set main value series
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting\_main\_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("stockSeries", valueSeries);
 
 // Add a stock legend
-// https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 let valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
@@ -534,7 +534,7 @@ valueLegend.data.setAll(\[valueSeries\]);
  \*/
 
 // Create a main stock panel (chart)
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Adding\_panels
+// https://docs.amcharts.com/v5/charts/stock/
 let volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",
   panX: true,
@@ -543,7 +543,7 @@ let volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 let volumeValueAxis = volumePanel.yAxes.push(am5xy.ValueAxis.new(root, {
   numberFormat: "#.#a",
   renderer: am5xy.AxisRendererY.new(root, {})
@@ -558,7 +558,7 @@ let  volumeDateAxis = volumePanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 let volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
   name: "STCK",
   valueXField: "Date",
@@ -571,12 +571,12 @@ let volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
 volumeSeries.data.setAll(data);
 
 // Set main value series
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting\_main\_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("volumeSeries", volumeSeries);
 
 
 // Add a stock legend
-// https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 let volumeLegend = volumePanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
@@ -584,7 +584,7 @@ volumeLegend.data.setAll(\[volumeSeries\]);
 
 
 // Add cursor(s)
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 mainPanel.set("cursor", am5xy.XYCursor.new(root, {
   yAxis: valueAxis,
   xAxis: dateAxis,
@@ -601,7 +601,7 @@ volumePanel.set("cursor", am5xy.XYCursor.new(root, {
 
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 let scrollbar = mainPanel.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal",
   height: 50
@@ -701,17 +701,17 @@ var data = \[
 \];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root\_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes(\[
   am5themes\_Animated.new(root)
 \]);
 
 // Create a stock chart
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Instantiating\_the\_chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
 var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
 }));
 
@@ -720,7 +720,7 @@ var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
  \*/
 
 // Create a main stock panel (chart)
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Adding\_panels
+// https://docs.amcharts.com/v5/charts/stock/
 var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",
   panX: true,
@@ -728,7 +728,7 @@ var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var valueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
@@ -742,7 +742,7 @@ var dateAxis = mainPanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var valueSeries = mainPanel.series.push(am5xy.LineSeries.new(root, {
   name: "STCK",
   valueXField: "Date",
@@ -755,11 +755,11 @@ var valueSeries = mainPanel.series.push(am5xy.LineSeries.new(root, {
 valueSeries.data.setAll(data);
 
 // Set main value series
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting\_main\_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("stockSeries", valueSeries);
 
 // Add a stock legend
-// https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 var valueLegend = mainPanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
@@ -770,7 +770,7 @@ valueLegend.data.setAll(\[valueSeries\]);
  \*/
 
 // Create a main stock panel (chart)
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Adding\_panels
+// https://docs.amcharts.com/v5/charts/stock/
 var volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   wheelY: "zoomX",
   panX: true,
@@ -779,7 +779,7 @@ var volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var volumeValueAxis = volumePanel.yAxes.push(am5xy.ValueAxis.new(root, {
   numberFormat: "#.#a",
   renderer: am5xy.AxisRendererY.new(root, {})
@@ -794,7 +794,7 @@ var volumeDateAxis = volumePanel.xAxes.push(am5xy.GaplessDateAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
   name: "STCK",
   valueXField: "Date",
@@ -807,12 +807,12 @@ var volumeSeries = volumePanel.series.push(am5xy.ColumnSeries.new(root, {
 volumeSeries.data.setAll(data);
 
 // Set main value series
-// https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting\_main\_series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
 stockChart.set("volumeSeries", volumeSeries);
 
 
 // Add a stock legend
-// https://www.amcharts.com/docs/v5/charts/stock-chart/stock-legend/
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
 var volumeLegend = volumePanel.plotContainer.children.push(am5stock.StockLegend.new(root, {
   stockChart: stockChart
 }));
@@ -820,7 +820,7 @@ volumeLegend.data.setAll(\[volumeSeries\]);
 
 
 // Add cursor(s)
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 mainPanel.set("cursor", am5xy.XYCursor.new(root, {
   yAxis: valueAxis,
   xAxis: dateAxis,
@@ -837,7 +837,7 @@ volumePanel.set("cursor", am5xy.XYCursor.new(root, {
 
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = mainPanel.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal",
   height: 50
@@ -878,7 +878,7 @@ sbSeries.data.setAll(data);
 
 Stock chart comes with a number of most popular stock indicators built-in. These are special series, that provide analysis of data in existing value and volume main series.
 
-Refer to "[Indicators](https://www.amcharts.com/docs/v5/charts/stock/indicators/)" tutorial for further information.
+Refer to "[Indicators](https://docs.amcharts.com/v5/charts/stock/indicators/)" tutorial for further information.
 
 ### Drawing/annotation tools
 
@@ -886,19 +886,19 @@ Provided are also various drawing and annotation tools, accessible via API and b
 
 Those include basic annotations like adding basic shapes and text, as well as advanced analytical tools, like drawing trend lines.
 
-Refer to "[Stock annotations](https://www.amcharts.com/docs/v5/charts/stock/stock-annotations/)" tutorial for further information.
+Refer to "[Stock annotations](https://docs.amcharts.com/v5/charts/stock/stock-annotations/)" tutorial for further information.
 
 ### Toolbar
 
 Stock chart also includes a special pre-made toolbar, which can be used as graphical user interface to select drawing tools, add indicators and comparisons, control chart zoom and granularity, types, etc.
 
-Refer to "[Stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/)" tutorial for further information.
+Refer to "[Stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/)" tutorial for further information.
 
 ### Percent mode
 
 If turned on, stock chart can switch to a "percent change mode" when comparison series are added, or when switched on via API.
 
-Refer to "[Percent mode](https://www.amcharts.com/docs/v5/charts/stock/percent-mode/)" tutorial for further information.
+Refer to "[Percent mode](https://docs.amcharts.com/v5/charts/stock/percent-mode/)" tutorial for further information.
 
 ### Zoom behavior
 
@@ -924,4 +924,4 @@ var volumePanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
 
 ## Related tutorials
 
--   [Infinite dynamic data loading on Stock Chart](https://www.amcharts.com/docs/v5/tutorials/infinite-dynamic-data-loading-on-stock-chart/)
+-   [Infinite dynamic data loading on Stock Chart](https://docs.amcharts.com/v5/tutorials/infinite-dynamic-data-loading-on-stock-chart/)

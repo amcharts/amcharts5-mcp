@@ -1,7 +1,7 @@
 ---
 title: "Public"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/public/"
+source: "https://docs.amcharts.com/v5/reference/public/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

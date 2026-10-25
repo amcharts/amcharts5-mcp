@@ -1,7 +1,7 @@
 ---
 title: "IPixelShape"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipixelshape/"
+source: "https://docs.amcharts.com/v5/reference/ipixelshape/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IAxisDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxisdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iaxisdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -18,7 +18,7 @@ TypeScript: `am5xy.IAxisDataItem` (`import type { IAxisDataItem } from "@amchart
 - **axisFill** (`Graphics`) — Axis fill element.
 - **bullet** (`AxisBullet`) — Bullet element.
 - **isRange** (`boolean`) — `true` if this data item is an axis range.
-- **above** (`boolean`) — default `false` — Draws the grid and fill of this axis range above the series. Set it before the range is created; changing it later has no effect. To draw all grid above the series, use `chart.gridContainer.toFront()`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#Grid_fill_above_series
+- **above** (`boolean`) — default `false` — Draws the grid and fill of this axis range above the series. Set it before the range is created; changing it later has no effect. To draw all grid above the series, use `chart.gridContainer.toFront()`. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#gridfill-above-series
 
 ## Other inherited data item fields
 

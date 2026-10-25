@@ -1,13 +1,13 @@
 ---
 title: "RadarChart"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/radarchart/"
+source: "https://docs.amcharts.com/v5/reference/radarchart/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An XY chart drawn in a circle: one axis runs around it (`AxisRendererCircular`), the other out from the center (`AxisRendererRadial`). Also used for gauges.
 
-Docs: https://www.amcharts.com/docs/v5/charts/radar-chart/
+Docs: https://docs.amcharts.com/v5/charts/radar-chart/
 
 ## Import
 

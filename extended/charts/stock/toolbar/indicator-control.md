@@ -1,14 +1,14 @@
 ---
 title: "Indicator control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/indicator-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/indicator-control/"
 scraped: "2026-10-08"
 ---
 
-Indicator control allows selecting and adding automatic technical [indicators](https://www.amcharts.com/docs/v5/charts/stock/indicators/) to the chart.
+Indicator control allows selecting and adding automatic technical [indicators](https://docs.amcharts.com/v5/charts/stock/indicators/) to the chart.
 
 ## Main series
 
-Most of the indicators will require stock chart to have its [main series](https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series) set. Some will need volume series to be set, too.
+Most of the indicators will require stock chart to have its [main series](https://docs.amcharts.com/v5/charts/stock/#setting-main-series) set. Some will need volume series to be set, too.
 
 ### Value series
 
@@ -155,13 +155,13 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 ### Custom indicators
 
-Please refer to "[Creating custom indicators for a Stock Chart](https://www.amcharts.com/docs/v5/tutorials/creating-custom-indicators-for-a-stock-chart/)" tutorial for the information.
+Please refer to "[Creating custom indicators for a Stock Chart](https://docs.amcharts.com/v5/tutorials/creating-custom-indicators-for-a-stock-chart/)" tutorial for the information.
 
 ### Settings modal
 
 By default, an indicator settings modal would open automatically when indicator is added via Indicator control.
 
-We can disable this behavior using indicator setting `autoOpenSettings` in a [custom theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/).
+We can disable this behavior using indicator setting `autoOpenSettings` in a [custom theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/).
 
 We can either target particular indicators:
 

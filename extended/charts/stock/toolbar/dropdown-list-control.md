@@ -1,10 +1,10 @@
 ---
 title: "Dropdown list control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/"
 scraped: "2026-10-08"
 ---
 
-It's a generic control that can be populated with custom items for user to choose from, allowing enhancing [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/) with proprietary functionality.
+It's a generic control that can be populated with custom items for user to choose from, allowing enhancing [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/) with proprietary functionality.
 
 ## Adding
 
@@ -45,7 +45,7 @@ This will add a control, but it won't be useful just yet. We still need to:
 
 ## Populating the list
 
-To add items to the list, we need to supply an array of objects that correspond to `[IDropdownListItem](https://www.amcharts.com/docs/v5/reference/idropdownlistitem/)` interface.
+To add items to the list, we need to supply an array of objects that correspond to `[IDropdownListItem](https://docs.amcharts.com/v5/reference/idropdownlistitem/)` interface.
 
 ### Basic labels
 

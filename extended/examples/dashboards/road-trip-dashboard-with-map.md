@@ -133,11 +133,11 @@ var data = [
 ];
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
@@ -203,7 +203,7 @@ function cityCircle(series, dataItem) {
 // the timeline: the trip as a winding road, with a circle for each city
 function makeSerpentineChart() {
   // Create chart
-  // https://www.amcharts.com/docs/v5/charts/timeline/
+  // https://docs.amcharts.com/v5/charts/timeline/
   var chart = root.container.children.push(am5timeline.SerpentineChart.new(root, {
     width: am5.percent(50), // the left half
     // the road winds back and forth over five levels
@@ -247,7 +247,7 @@ function makeSerpentineChart() {
   }));
 
   // A distance marker every 500 km, except close to a city, where the city's circle would cover it
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+  // https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
   function nearCity(km) {
     return data.some(function (city) {
       return Math.abs(city.distance - km) < 150; // within 150 km of a city
@@ -274,7 +274,7 @@ function makeSerpentineChart() {
   }
 
   // Add series
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/
   var series = chart.series.push(am5timeline.CurveLineSeries.new(root, {
     xAxis: xAxis,
     yAxis: yAxis,
@@ -385,7 +385,7 @@ function makeSerpentineChart() {
   ]);
 
   // Animate chart and series in
-  // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+  // https://docs.amcharts.com/v5/concepts/animations/#initial-animation
   series.appear(1000);
   chart.appear(1000, 100);
 
@@ -395,7 +395,7 @@ function makeSerpentineChart() {
 // the map: the same cities on a map of Europe, joined by the route
 function makeMapChart() {
   // Create the map chart
-  // https://www.amcharts.com/docs/v5/charts/map-chart/
+  // https://docs.amcharts.com/v5/charts/map-chart/
   var chart = root.container.children.push(am5map.MapChart.new(root, {
     minZoomLevel: 0.5, // can zoom out to half the size of the fitted map
     // go to the home view once the map is fitted: zoomed in on the route, with room for the city names left of
@@ -412,14 +412,14 @@ function makeMapChart() {
   }));
 
   // Zoom control
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+  // https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
   var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
   // the home button is hidden by default
   zoomControl.homeButton.set("visible", true);
 
   // Create series for the water: a faint fill behind the countries
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+  // https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
   var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
     // the map fits the countries, not this rectangle around the whole world
     affectsBounds: false
@@ -436,7 +436,7 @@ function makeMapChart() {
   });
 
   // Create graticule series: grid lines every 10 degrees
-  // https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+  // https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
   var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
     step: 10
   }));
@@ -447,7 +447,7 @@ function makeMapChart() {
   });
 
   // Create main polygon series for countries
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+  // https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
   var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
     name: "Polygon Series",
     geoJSON: am5geodata_region_world_europeLow // Europe's countries, low detail
@@ -463,7 +463,7 @@ function makeMapChart() {
   });
 
   // The route: a dotted line in the text color, through the cities in order
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/
+  // https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
   var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
     name: "Line Series"
   }));
@@ -475,7 +475,7 @@ function makeMapChart() {
     strokeOpacity: 0.5 // half see-through
   });
 
-  // https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/
+  // https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
   var series = chart.series.push(am5map.MapPointSeries.new(root, {
     name: "City Series",
     valueField: "population",  // the value the heat rule sizes the circles by

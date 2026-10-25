@@ -25,11 +25,11 @@ Prompt: Create a map of the visitor’s own country, found from their IP address
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -39,7 +39,7 @@ root.setThemes([
 var colors = am5.ColorSet.new(root, {});
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var chart = root.container.children.push(am5map.MapChart.new(root, {
   minZoomLevel: 0.5, // can zoom out to half the fitted size
   // go to the home view once the map is fitted
@@ -54,7 +54,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Add zoom control
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+// https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {
   position: "absolute" // + and - zoom buttons over the map, left out of the side-by-side layout
 }));
@@ -74,7 +74,7 @@ am5.net.load("https://www.amcharts.com/tools/country/?v=xz6Z", chart).then(funct
 });
 
 // Create polygon series for the country's regions, filled by value
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   // works out the lowest and highest value, which the heat rules and the legend use
   calculateAggregates: true,

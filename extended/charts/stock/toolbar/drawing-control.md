@@ -1,6 +1,6 @@
 ---
 title: "Drawing control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/"
 scraped: "2026-10-08"
 ---
 
@@ -10,7 +10,7 @@ Drawing control allows using a number of tools to dynamically add annotations to
 
 Some of the drawing tools can be used on any chart.
 
-Some will require [main series](https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series) to be set on the chart, while other will require main volume series, too.
+Some will require [main series](https://docs.amcharts.com/v5/charts/stock/#setting-main-series) to be set on the chart, while other will require main volume series, too.
 
 ## Adding
 
@@ -267,7 +267,7 @@ Example:
 
 ### Other settings
 
-Please refer to [drawing control's setting reference](https://www.amcharts.com/docs/v5/reference/drawingcontrol/#Settings) for a complete list of its configuration options.
+Please refer to [drawing control's setting reference](https://docs.amcharts.com/v5/reference/drawingcontrol/#settings) for a complete list of its configuration options.
 
 ## Standalone usage / API
 
@@ -331,7 +331,7 @@ drawingControl.setAll({
 
 ### Available settings
 
-Please refer to the class reference of the `DrawingControl` for a complete list of [available settings](https://www.amcharts.com/docs/v5/reference/drawingcontrol/#Settings).
+Please refer to the class reference of the `DrawingControl` for a complete list of [available settings](https://docs.amcharts.com/v5/reference/drawingcontrol/#settings).
 
 ### Exiting draw mode
 

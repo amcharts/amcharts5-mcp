@@ -1,14 +1,14 @@
 ---
 title: "Stock annotations"
-source: "https://www.amcharts.com/docs/v5/charts/stock/stock-annotations/"
+source: "https://docs.amcharts.com/v5/charts/stock/stock-annotations/"
 scraped: "2026-03-15"
 ---
 
-[Stock chart](https://www.amcharts.com/docs/v5/charts/stock/) can be annotated using a vast array of tools ranging from simple shapes and doodles, to complex calculated indicators.
+[Stock chart](https://docs.amcharts.com/v5/charts/stock/) can be annotated using a vast array of tools ranging from simple shapes and doodles, to complex calculated indicators.
 
 ## Enabling UI
 
-To enable annotation user interface, we need to add a [drawing control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/drawing-control/) to the stock toolbar.
+To enable annotation user interface, we need to add a [drawing control](https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/) to the stock toolbar.
 
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
@@ -41,7 +41,7 @@ When eraser tool is selected, clicking on any annotation will remove it.
 
 ### Reset control
 
-If the toolbar contains a [reset control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/reset-control/), it can be clicked to automatically remove all annotations from the chart.
+If the toolbar contains a [reset control](https://docs.amcharts.com/v5/charts/stock/toolbar/reset-control/), it can be clicked to automatically remove all annotations from the chart.
 
 ## Drawing on fills
 
@@ -51,7 +51,7 @@ E.g. if we draw a rectangle, we can't draw a doodle inside it.
 
 Should we want to have such capability, we need to disable interactivity of drawings' fills.
 
-This can be done by implementing a [custom theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/):
+This can be done by implementing a [custom theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/):
 
 const myTheme = am5.Theme.new(root);
 

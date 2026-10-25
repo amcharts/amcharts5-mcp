@@ -1,13 +1,13 @@
 ---
 title: "VWAP"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/vwap/"
+source: "https://docs.amcharts.com/v5/reference/vwap/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Volume-Weighted Average Price indicator: `field` averaged over the last `period` data items, weighted by volume. Drawn over the main series; needs a `volumeSeries`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

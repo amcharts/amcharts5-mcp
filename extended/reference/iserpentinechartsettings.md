@@ -1,7 +1,7 @@
 ---
 title: "ISerpentineChartSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iserpentinechartsettings/"
+source: "https://docs.amcharts.com/v5/reference/iserpentinechartsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -22,7 +22,7 @@ TypeScript: `am5timeline.ISerpentineChartSettings` (`import type { ISerpentineCh
 
 ## Inherited settings with a different default on SerpentineChart
 
-- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Series_colors
+- **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — _from ISerialChartSettings_ — The `ColorSet` series take their colors from. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
 - **paddingBottom** (`number`) — default `16` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.

@@ -1,14 +1,14 @@
 ---
 title: "Heat legend"
-source: "https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/"
+source: "https://docs.amcharts.com/v5/concepts/legend/heat-legend/"
 scraped: "2026-10-18"
 ---
 
-Heat legend is a visual tool that usually compliments a chart with [heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/).
+Heat legend is a visual tool that usually compliments a chart with [heat rules](https://docs.amcharts.com/v5/concepts/settings/heat-rules/).
 
 ## Adding
 
-We can add a heat legend like a regular legend, by pushing and instance of `[HeatLegend](https://www.amcharts.com/docs/v5/reference/heatlegend/)` into chart's children.
+We can add a heat legend like a regular legend, by pushing and instance of `[HeatLegend](https://docs.amcharts.com/v5/reference/heatlegend/)` into chart's children.
 
 Heat legend also requires at least two settings: `startColor` and `endColor` (or [`colors`](#More_than_two_colors) instead).
 
@@ -153,7 +153,7 @@ By default, the legend shows a gradient through all the colors, spread evenly al
 
 Tooltips shown with [`showValue()`](#Triggering_tooltip) take their color from the same scale.
 
-NOTE`colors` is available since version 5.21.2. To color chart elements on the same scale, use heat rule's [`stops`](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#multiple-stops) setting with the same colors.
+NOTE`colors` is available since version 5.21.2. To color chart elements on the same scale, use heat rule's [`stops`](https://docs.amcharts.com/v5/concepts/settings/heat-rules/#multiple-stops) setting with the same colors.
 
 ## Tooltip
 
@@ -195,7 +195,7 @@ series.events.on("datavalidated", function () {
 
 ### Triggering tooltip
 
-To trigger the legend to show a tooltip at specific value, we can use its `[showValue()](https://www.amcharts.com/docs/v5/reference/heatlegend/#showValue_method)` method.
+To trigger the legend to show a tooltip at specific value, we can use its `[showValue()](https://docs.amcharts.com/v5/reference/heatlegend/#showValue_method)` method.
 
 heatLegend.showValue(500);
 
@@ -227,9 +227,9 @@ polygonSeries.mapPolygons.template.events.on("pointerover", function(ev) {
 
 ## Related tutorials
 
--   [A custom "heat legend" using a gradient](https://www.amcharts.com/docs/v5/tutorials/a-custom-heat-legend-using-a-gradient/) (demo)
--   [Heat legend with scale](https://www.amcharts.com/docs/v5/tutorials/heat-legend-with-scale/) (demo)
+-   [A custom "heat legend" using a gradient](https://docs.amcharts.com/v5/tutorials/a-custom-heat-legend-using-a-gradient/) (demo)
+-   [Heat legend with scale](https://docs.amcharts.com/v5/tutorials/heat-legend-with-scale/) (demo)
 
 ## Related class references
 
--   [HeatLegend](https://www.amcharts.com/docs/v5/reference/heatlegend)
+-   [HeatLegend](https://docs.amcharts.com/v5/reference/heatlegend/)

@@ -1,6 +1,6 @@
 ---
 title: "Getting the most out of net.load utility"
-source: "https://www.amcharts.com/docs/v5/concepts/data/net-load-utility/"
+source: "https://docs.amcharts.com/v5/concepts/data/net-load-utility/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial walks through advanced uses of the `net.load` utility, which is us
 
 ## Prerequisites
 
-We're assuming that you are familiar with what `net.load` utility is, what is it used for, and how. For basic usage refer to the "[External data](https://www.amcharts.com/docs/v5/concepts/data/#External_data)" section in "Data" tutorial.
+We're assuming that you are familiar with what `net.load` utility is, what is it used for, and how. For basic usage refer to the "[External data](https://docs.amcharts.com/v5/concepts/data/#external-data)" section in "Data" tutorial.
 
 ## Specifying data user
 
@@ -118,4 +118,4 @@ A response type. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/X
 
 `target`
 
-A target data user object if it was specified. ([more info](https://www.amcharts.com/docs/v5/tutorials/advanced-use-of-net-load-utility/#Specifying_data_user))
+A target data user object if it was specified. ([more info](https://docs.amcharts.com/v5/tutorials/advanced-use-of-net-load-utility/#specifying-data-user))

@@ -1,6 +1,6 @@
 ---
 title: "Map chart"
-source: "https://www.amcharts.com/docs/v5/charts/map-chart/"
+source: "https://docs.amcharts.com/v5/charts/map-chart/"
 scraped: "2026-10-08"
 ---
 
@@ -20,7 +20,7 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Geodata (maps)
 
@@ -71,13 +71,13 @@ import am5geodata_region_usa_congressional120_flLow from "@amcharts/amcharts5-ge
 
 NOTE The global name is `am5geodata_` plus the path below `geodata/` with `/` turned into `_`. The US congressional maps come in versioned packs: `congressional` (117th Congress, the original set), `congressional2022` (118th), `congressional2025` (119th) and `congressional120` (120th, the newest, in geodata 5.1.6). Each pack has `usaCongressionalLow`/`High` and one map per state (`flLow`, `caLow`, …). The MCP server's `list_geodata` tool lists every map with its path, global name and import. *(Corrected: the published example loads `congressional2022/worldLow.js`, which does not exist.)*
 
-MORE INFOFor more information on how to use regional maps, visit "[Using regional maps](https://www.amcharts.com/docs/v5/tutorials/using-regional-maps/)" tutorial.
+MORE INFOFor more information on how to use regional maps, visit "[Using regional maps](https://docs.amcharts.com/v5/tutorials/using-regional-maps/)" tutorial.
 
 ## Instantiating the chart
 
 As with any chart type in amCharts 5, we'll need to start with creation of the `Root` element.
 
-In it we will create an instance of `[MapChart](https://www.amcharts.com/docs/v5/reference/mapchart/)` class.
+In it we will create an instance of `[MapChart](https://docs.amcharts.com/v5/reference/mapchart/)` class.
 
 let root = am5.Root.new("chartdiv");
 let chart = root.container.children.push(
@@ -89,13 +89,13 @@ var chart = root.container.children.push(
   am5map.MapChart.new(root, {})
 );
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://www.amcharts.com/docs/v5/getting-started/#Creating_a_chart)" section in the "Getting started" tutorial. Make sure you check it out.
+MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Adding series
 
 Map chart, like most of the charts, is a serial chart, which means that it requires at least one series to operate.
 
-We create a series by calling its [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) and pushing the new object into chart's `series` list:
+We create a series by calling its [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) and pushing the new object into chart's `series` list:
 
 let polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
@@ -123,55 +123,55 @@ Comment
 
 Used to display shapes of countries and other regions (polygons).
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/)
 
 `MapLineSeries`
 
 Used to draw lines on the map.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-line-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/map-line-series/)
 
 `MapPointSeries`
 
 Used to put markers on the map.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/map-point-series/)
 
 `ClusteredPointSeries`
 
 Markers that group into clusters when close together.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/clustered-point-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/)
 
 `MapSankeySeries`
 
 Flows between places, with width showing the amount.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-sankey-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/map-sankey-series/)
 
 `PixelMapSeries`
 
 Map polygons drawn as a grid of pixels (squares, circles, diamonds, or hexagons).
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/pixel-map-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/pixel-map-series/)
 
 `MapRasterSeries`
 
 A whole-world image, such as a satellite photo, fitted to the map.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/map-raster-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/)
 
 `NightSeries`
 
 Shades the part of the map where it is night, and shows the sun.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/night-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/night-series/)
 
 `GraticuleSeries`
 
 Used to display a map grid.
 
-[More info](https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/)
+[More info](https://docs.amcharts.com/v5/charts/map-chart/graticule-series/)
 
 For most of the map chart setups, it will require at least one polygon series to make sense. A map that only needs to show the Earth itself can use a raster series instead.
 
@@ -181,7 +181,7 @@ For most of the map chart setups, it will require at least one polygon series to
 
 There's a lot of ways to translate spherical surface of a planet into a flat map. In cartography those are called projections.
 
-To specify which projection to use, set chart's `[projection](https://www.amcharts.com/docs/v5/reference/mapchart/#projection_setting)` setting:
+To specify which projection to use, set chart's `[projection](https://docs.amcharts.com/v5/reference/mapchart/#projection_setting)` setting:
 
 let chart = root.container.children.push(
   am5map.MapChart.new(root, {
@@ -278,13 +278,13 @@ var chart = root.container.children.push(
   })
 );
 
-For more information, refer to "[Panning and zooming the map](https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/)" tutorial.
+For more information, refer to "[Panning and zooming the map](https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/)" tutorial.
 
 ## Zooming
 
 Zooming of the map can be done in a number of ways: zoom control, mouse wheel or pinch gestures, clicking on polygons, API, or custom events.
 
-For more information, refer to "[Panning and zooming the map](https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/)" tutorial.
+For more information, refer to "[Panning and zooming the map](https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/)" tutorial.
 
 ## Centering the map
 
@@ -368,13 +368,13 @@ var polygonSeries = chart.series.push(
 
 There are a couple of ways to attach a background (water fill) for the map.
 
-Both of them are described in "[Map polygon series: Background polygon](https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon)" tutorial.
+Both of them are described in "[Map polygon series: Background polygon](https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon)" tutorial.
 
 ## Heat maps
 
 It's possible to create heat maps (choropleth) maps using heat rules.
 
-For detailed instructions and live samples, make sure to check "[Heat rules](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/)" tutorial.
+For detailed instructions and live samples, make sure to check "[Heat rules](https://docs.amcharts.com/v5/concepts/settings/heat-rules/)" tutorial.
 
 ## Additional controls
 
@@ -388,8 +388,8 @@ chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
-For more information, refer to "[Panning and zooming the map: Zoom control](https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control)" tutorial.
+For more information, refer to "[Panning and zooming the map: Zoom control](https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control)" tutorial.
 
 ## Related tutorials
 
--   [MapChart with an auto-populated legend](https://www.amcharts.com/docs/v5/tutorials/mapchart-with-an-auto-populated-legend/)
+-   [MapChart with an auto-populated legend](https://docs.amcharts.com/v5/tutorials/mapchart-with-an-auto-populated-legend/)

@@ -1,7 +1,7 @@
 ---
 title: "IDurationAxisEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idurationaxisevents/"
+source: "https://docs.amcharts.com/v5/reference/idurationaxisevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

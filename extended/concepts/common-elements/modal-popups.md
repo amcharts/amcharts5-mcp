@@ -1,6 +1,6 @@
 ---
 title: "Modal popups"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/modal-popups/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/modal-popups/"
 scraped: "2026-10-08"
 ---
 
@@ -199,7 +199,7 @@ The modal also handles keyboard focus:
 -   ESC cancels it.
 -   When it closes, focus goes back to the element that had it before the modal opened.
 
-NOTEThese features are available since version 5.21.0. They also apply to modals used by other parts of the library, such as [Stock chart](https://www.amcharts.com/docs/v5/charts/stock/) settings.
+NOTEThese features are available since version 5.21.0. They also apply to modals used by other parts of the library, such as [Stock chart](https://docs.amcharts.com/v5/charts/stock/) settings.
 
 ## Example
 

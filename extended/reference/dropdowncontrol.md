@@ -1,7 +1,7 @@
 ---
 title: "DropdownControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/dropdowncontrol/"
+source: "https://docs.amcharts.com/v5/reference/dropdowncontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -9,7 +9,7 @@ A control with a dropdown that shows custom HTML (`html`).
 
 Can be used in a `StockToolbar`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-list-control/
+Docs: https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/
 
 ## Import
 

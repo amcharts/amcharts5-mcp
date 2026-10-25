@@ -1,7 +1,7 @@
 ---
 title: "IChordNodesEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichordnodesevents/"
+source: "https://docs.amcharts.com/v5/reference/ichordnodesevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

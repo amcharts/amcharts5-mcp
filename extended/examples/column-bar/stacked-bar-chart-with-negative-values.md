@@ -25,18 +25,18 @@ Prompt: Create a population pyramid: a horizontal bar chart of age groups, the o
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,            // a drag doesn't pan: the cursor zooms with it
@@ -148,7 +148,7 @@ var data = [
 ];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "age",
@@ -179,7 +179,7 @@ var xAxis = chart.xAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // adds one side of the pyramid: its bars, their value labels and a line with the side's name
 function createSeries(field, labelCenterX, pointerOrientation, rangeValue) {
   var series = chart.series.push(
@@ -250,7 +250,7 @@ createSeries("male", am5.p100, "right", -4); // left side: labels end at the bar
 createSeries("female", 0, "left", 4);        // right side: labels start at the bars, line at 4
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "zoomY" // a drag up or down zooms in on those age groups
 }));
@@ -258,7 +258,7 @@ cursor.lineY.set("forceHidden", true); // no cursor lines...
 cursor.lineX.set("forceHidden", true); // ...only the tooltips
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

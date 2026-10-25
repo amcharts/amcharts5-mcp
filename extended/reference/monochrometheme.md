@@ -16,7 +16,7 @@ root.setThemes([
 
 With nothing set, the ramp is blue (`#2e7c9e`).
 
-Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+Docs: https://docs.amcharts.com/v5/concepts/themes/
 
 ## Import
 

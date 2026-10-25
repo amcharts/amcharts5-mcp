@@ -1,7 +1,7 @@
 ---
 title: "IAnnotatorEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iannotatorevents/"
+source: "https://docs.amcharts.com/v5/reference/iannotatorevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

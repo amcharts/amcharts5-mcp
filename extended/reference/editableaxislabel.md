@@ -1,13 +1,13 @@
 ---
 title: "EditableAxisLabel"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/editableaxislabel/"
+source: "https://docs.amcharts.com/v5/reference/editableaxislabel/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 An axis label whose text the user can edit in place, as on a Gantt chart's task axis.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#labels
 
 ## Import
 

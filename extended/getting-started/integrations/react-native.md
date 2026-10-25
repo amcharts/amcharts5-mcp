@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with React Native"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/react-native/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/react-native/"
 scraped: "2026-10-22"
 ---
 
@@ -18,7 +18,7 @@ It needs React Native 0.72 and react-native-webview 13 or later. `@amcharts/amch
 
 ## A chart from a JSON config
 
-The simplest way: a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/), as an object or a string. The chart types it uses are loaded for it, and so is map geodata named by its global, e.g. `"geoJSON": "am5geodata_worldLow"`.
+The simplest way: a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/), as an object or a string. The chart types it uses are loaded for it, and so is map geodata named by its global, e.g. `"geoJSON": "am5geodata_worldLow"`.
 
 ```typescript
 import { AmChart } from "@amcharts/amcharts5-react-native";

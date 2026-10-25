@@ -25,18 +25,18 @@ Prompt: Create a Mekko chart of trucks, SUVs and cars: stacked columns of differ
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,                // no dragging to pan...
   panY: false,                // ...in either direction
@@ -44,7 +44,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(
   am5.Legend.new(root, {
     centerX: am5.p50, // the legend's middle...
@@ -56,7 +56,7 @@ var legend = chart.children.push(
 legend.valueLabels.template.set("forceHidden", true);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 // The horizontal axis runs from 0 to 100: each column's width is its share of the whole
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   min: 0,
@@ -70,7 +70,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // Each segment is a stacked step line: every point starts a column at "ax" with
 // a height of "ay", so the steps draw columns of different widths
 function createSeries(name, data) {
@@ -96,7 +96,7 @@ function createSeries(name, data) {
   series.data.setAll(data);
 
   // Make stuff animate on load
-  // https://www.amcharts.com/docs/v5/concepts/animations/
+  // https://docs.amcharts.com/v5/concepts/animations/
   series.appear();
 
   // A hidden column series, stacked the same way, holds a label in the middle of each block
@@ -193,7 +193,7 @@ var series3 = createSeries(
 );
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

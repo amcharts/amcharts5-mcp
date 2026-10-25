@@ -1,10 +1,10 @@
 ---
 title: "Percent scale"
-source: "https://www.amcharts.com/docs/v5/charts/stock/percent-mode/"
+source: "https://docs.amcharts.com/v5/charts/stock/percent-mode/"
 scraped: "2026-03-15"
 ---
 
-Percent scale in a [Stock chart](https://www.amcharts.com/docs/v5/charts/stock/) allows applying special setting values to chart series and axes when there are more than one series displayed, or when turned on in API or via stock [toolbar](https://www.amcharts.com/docs/v5/charts/stock-chart/toolbar/).
+Percent scale in a [Stock chart](https://docs.amcharts.com/v5/charts/stock/) allows applying special setting values to chart series and axes when there are more than one series displayed, or when turned on in API or via stock [toolbar](https://docs.amcharts.com/v5/charts/stock-chart/toolbar/).
 
 ## Intended use
 
@@ -24,7 +24,7 @@ stockChart.set("stockSeries", valueSeries);
 
 Stock chart needs to know which series is the "main" series, so that there's a known target other series are compared against.
 
-MORE INFORead more about it in "Stock chart: [Setting main series](https://www.amcharts.com/docs/v5/charts/stock-chart/#Setting_main_series)".
+MORE INFORead more about it in "Stock chart: [Setting main series](https://docs.amcharts.com/v5/charts/stock/#setting-main-series)".
 
 ### Calculation of aggregates
 
@@ -147,7 +147,7 @@ strockChart.setPercentScale(true); // turn percent scale on
 
 ### Via toolbar
 
-If [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock-chart/toolbar/) is enabled and contains `SettingsControl`, switching to "Change percent" Y-axis scale would trigger percent scale, regardless how many series there are currently on the chart.
+If [stock toolbar](https://docs.amcharts.com/v5/charts/stock-chart/toolbar/) is enabled and contains `SettingsControl`, switching to "Change percent" Y-axis scale would trigger percent scale, regardless how many series there are currently on the chart.
 
 ## Example
 

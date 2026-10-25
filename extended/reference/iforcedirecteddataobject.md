@@ -1,7 +1,7 @@
 ---
 title: "IForceDirectedDataObject"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iforcedirecteddataobject/"
+source: "https://docs.amcharts.com/v5/reference/iforcedirecteddataobject/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IPatternSetSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipatternsetsettings/"
+source: "https://docs.amcharts.com/v5/reference/ipatternsetsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -15,7 +15,7 @@ TypeScript: `am5.IPatternSetSettings` (`import type { IPatternSetSettings } from
 
 - **patterns** (`Pattern[]`) — default `[]` _(code fallback)_ — The patterns in the set. A built-in list of 16 patterns if not set.
 - **step** (`number`) — default `1` _(theme)_ — How many positions `next()` moves each time: `2` returns every second pattern.
-- **color** (`Color`) — default `root.interfaceColors.get("stroke")` _(theme)_ — Color of the built-in patterns, used when `patterns` is not set. Changing it after the set is created has no effect. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Colors
+- **color** (`Color`) — default `root.interfaceColors.get("stroke")` _(theme)_ — Color of the built-in patterns, used when `patterns` is not set. Changing it after the set is created has no effect. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#colors
 - **startIndex** (`number`) — default `0` — Index of the pattern the first `next()` returns, and `reset()` goes back to.
 
 ## Other inherited settings

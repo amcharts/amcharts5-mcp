@@ -1,7 +1,7 @@
 ---
 title: "ISunburstDataObject"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isunburstdataobject/"
+source: "https://docs.amcharts.com/v5/reference/isunburstdataobject/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -25,18 +25,18 @@ Prompt: Create a column chart of visits from 16 countries, each column in its ow
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,     // no dragging the plot
   panY: false,
@@ -145,7 +145,7 @@ var data = [{
 }]
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   // columns use the middle 80% of their category's width, leaving gaps between them
   cellStartLocation: 0.1,
@@ -182,7 +182,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -203,7 +203,7 @@ series.data.setAll(data);
 
 // Add export menu: the icon in the top right corner saves the chart as an
 // image or PDF, the data as JSON, CSV, Excel, PDF or HTML, or prints it
-// https://www.amcharts.com/docs/v5/concepts/exporting/
+// https://docs.amcharts.com/v5/concepts/exporting/
 var exporting = am5plugins_exporting.Exporting.new(root, {
   menu: am5plugins_exporting.ExportingMenu.new(root, {}),
   // The data part of the menu exports these two fields, with these column names
@@ -215,7 +215,7 @@ var exporting = am5plugins_exporting.Exporting.new(root, {
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
 ```

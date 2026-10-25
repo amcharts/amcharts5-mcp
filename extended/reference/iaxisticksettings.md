@@ -1,7 +1,7 @@
 ---
 title: "IAxisTickSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxisticksettings/"
+source: "https://docs.amcharts.com/v5/reference/iaxisticksettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,18 +14,18 @@ TypeScript: `am5xy.IAxisTickSettings` (`import type { IAxisTickSettings } from "
 
 ## Settings
 
-- **location** (`number`) — default `0.5` _(theme)_ — Where the tick sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Location_of_axis_elements
-- **multiLocation** (`number`) — default `0` _(theme)_ — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a tick. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Multi_location
-- **inside** (`boolean`) — Draws the tick inside the plot area. If not set, the renderer's `inside` applies. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Labels_ticks_inside_plot_area
-- **minPosition** (`number`) — default `0` — Hides the tick when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides ticks in the first 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Start_end_labels_and_ticks
-- **maxPosition** (`number`) — default `1` — Hides the tick when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides ticks in the last 10%. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Start_end_labels_and_ticks
+- **location** (`number`) — default `0.5` _(theme)_ — Where the tick sits within its cell, from `0` (start) to `1` (end). A cell is a category, a date period, or the span of an axis range. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#location-of-axis-elements
+- **multiLocation** (`number`) — default `0` _(theme)_ — Used instead of `location` when a grid step spans several units, such as 5 days, or when only every few categories get a tick. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#multi-location
+- **inside** (`boolean`) — Draws the tick inside the plot area. If not set, the renderer's `inside` applies. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#labelsticks-inside-plot-area
+- **minPosition** (`number`) — default `0` — Hides the tick when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides ticks in the first 10%. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#startend-labels-and-ticks
+- **maxPosition** (`number`) — default `1` — Hides the tick when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides ticks in the last 10%. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#startend-labels-and-ticks
 
 ## Inherited settings with a different default on AxisTick
 
 - **crisp** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
 - **isMeasured** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element's bounds are not measured, so it takes no part in its parent's layout or size.
 - **position** (`"absolute" | "relative"`) — default `"absolute"` _(theme)_ — _from ISpriteSettings_ — Positioning of the element. `"absolute"` leaves the element out of its parent's layout and size: it is placed by its `x` and `y` only.
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 - **strokeOpacity** (`number`) — default `1` _(theme)_ — _from IGraphicsSettings_ — Opacity of the stroke (border or line), from `0` (transparent) to `1` (opaque).
 - **visible** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — Whether the element is shown. Unlike `show()` and `hide()`, it does not animate.
 

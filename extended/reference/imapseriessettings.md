@@ -1,7 +1,7 @@
 ---
 title: "IMapSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imapseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/imapseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -39,7 +39,7 @@ TypeScript: `am5map.IMapSeriesSettings` (`import type { IMapSeriesSettings } fro
   }));
   ```
 
-  _Since 5.1.13._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/map-translations/
+  _Since 5.1.13._ Docs: https://docs.amcharts.com/v5/charts/map-chart/map-translations/
 
 ## Inherited settings with a different default on MapSeries
 

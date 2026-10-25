@@ -1,7 +1,7 @@
 ---
 title: "IRadarColumnSeriesAxisRange"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iradarcolumnseriesaxisrange/"
+source: "https://docs.amcharts.com/v5/reference/iradarcolumnseriesaxisrange/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "CalloutSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/calloutseries/"
+source: "https://docs.amcharts.com/v5/reference/calloutseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

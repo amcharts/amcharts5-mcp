@@ -1,6 +1,6 @@
 ---
 title: "Shadows"
-source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/"
+source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/"
 scraped: "2026-03-15"
 ---
 

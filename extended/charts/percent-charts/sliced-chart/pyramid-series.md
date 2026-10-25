@@ -1,6 +1,6 @@
 ---
 title: "Pyramid series"
-source: "https://www.amcharts.com/docs/v5/charts/percent-charts/sliced-chart/pyramid-series/"
+source: "https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pyramid-series/"
 scraped: "2026-03-15"
 ---
 
@@ -16,17 +16,9 @@ There are a few ways to control how colors are assigned to slices.
 
 #### Auto-assigned colors
 
-A series will automatically assign a unique color to each slice from its own [color set](https://www.amcharts.com/docs/v5/reference/xychart/#colors_setting).
+A series will automatically assign a unique color to each slice from its own [color set](https://docs.amcharts.com/v5/reference/xychart/#colors_setting).
 
-Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme), or a [reusable full theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/), e.g.:
-
-series.get("colors").set("colors", \[
-  am5.color(0x095256),
-  am5.color(0x087f8c),
-  am5.color(0x5aaa95),
-  am5.color(0x86a873),
-  am5.color(0xbb9f06)
-\]);
+Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
 series.get("colors").set("colors", \[
   am5.color(0x095256),
@@ -36,13 +28,21 @@ series.get("colors").set("colors", \[
   am5.color(0xbb9f06)
 \]);
 
-MORE INFO A "[Color sets](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/#Setting_own_list_of_colors)" section of our color tutorial has more details and code samples.
+series.get("colors").set("colors", \[
+  am5.color(0x095256),
+  am5.color(0x087f8c),
+  am5.color(0x5aaa95),
+  am5.color(0x86a873),
+  am5.color(0xbb9f06)
+\]);
+
+MORE INFO A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 #### Manual slice colors
 
 We can also specify color for each slice through data and template fields.
 
-For more information on how to do it, refer to "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+For more information on how to do it, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 ### Configuring slices
 
@@ -68,7 +68,7 @@ NOTE Setting a value on a template will also update existing slices created usin
 
 In pyramid series, slice size can either be reflected by its height or its area.
 
-Default is calculation by area. It can be changed using series `[valueIs](https://www.amcharts.com/docs/v5/reference/pyramidseries/#valueIs_setting)` setting (possible values are `"area"` and `"height"`):
+Default is calculation by area. It can be changed using series `[valueIs](https://docs.amcharts.com/v5/reference/pyramidseries/#valueIs_setting)` setting (possible values are `"area"` and `"height"`):
 
 let series = chart.series.push(
   am5percent.PyramidSeries.new(root, {
@@ -114,7 +114,7 @@ series.labels.template.setAll({
   text: "{category}"
 });
 
-Pyramid series uses `[Label](https://www.amcharts.com/docs/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/label/#Settings).
+Pyramid series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -126,7 +126,7 @@ series.labels.template.set("text", "{category}: \[bold\]{valuePercentTotal.forma
 
 series.labels.template.set("text", "{category}: \[bold\]{valuePercentTotal.formatNumber('0.00')}%\[/\] ({value})");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
 ### Disabling labels
 
@@ -180,7 +180,7 @@ series.ticks.template.setAll({
   strokeWidth: 2
 });
 
-Series uses `[Tick](https://www.amcharts.com/docs/v5/reference/radiallabel/)` for its labels. Check out its class reference for all the [possible settings](https://www.amcharts.com/docs/v5/reference/tick/#Settings).
+Series uses `[Tick](https://docs.amcharts.com/v5/reference/radiallabel/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/tick/#settings).
 
 ### Disabling ticks
 
@@ -222,7 +222,7 @@ series.slices.template.set("tooltipText", "{category}: \[bold\]{valuePercentTota
 
 series.slices.template.set("tooltipText", "{category}: \[bold\]{valuePercentTotal.formatNumber('0.00')}%\[/\] ({value})");
 
-Contents of the tooltip can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
 ## Series layout
 
@@ -376,4 +376,4 @@ The above will start and end series 20% of the whole width/height from the edges
 
 It's possible to bind settings of a series slice, label, and tick templates to values in data.
 
-For more information on how to do it, refer to "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+For more information on how to do it, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.

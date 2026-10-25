@@ -1,7 +1,7 @@
 ---
 title: "ShortWeekdays"
 type: "type"
-source: "https://www.amcharts.com/docs/v5/reference/shortweekdays/"
+source: "https://docs.amcharts.com/v5/reference/shortweekdays/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -25,11 +25,11 @@ Prompt: Create a word cloud shaped like a human head in profile: about 90 words 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -46,7 +46,7 @@ var headPath = "M 120 15 C 176 15 216 56 217 105 C 218 116 215 125 216 126 C 219
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/word-cloud/
+// https://docs.amcharts.com/v5/charts/word-cloud/
 var series = chart.series.push(
   am5wc.WordCloud.new(root, {
     paddingTop: 20,       // 20px of space around the cloud on each side

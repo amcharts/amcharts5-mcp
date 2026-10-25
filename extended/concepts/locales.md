@@ -1,6 +1,6 @@
 ---
 title: "Locales"
-source: "https://www.amcharts.com/docs/v5/concepts/locales/"
+source: "https://docs.amcharts.com/v5/concepts/locales/"
 scraped: "2026-03-15"
 ---
 
@@ -20,7 +20,7 @@ import am5locales\_en\_US from "@amcharts/amcharts5/locales/en\_US";
 
 ## Applying
 
-To apply the locale to the chart, simply set `locale` property of the [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element):
+To apply the locale to the chart, simply set `locale` property of the [root element](https://docs.amcharts.com/v5/getting-started/#root-element):
 
 root.locale = am5locales\_en\_US;
 
@@ -28,11 +28,11 @@ root.locale = am5locales\_en\_US;
 
 ## Creating translations
 
-Please refer to our "[Creating translations](https://www.amcharts.com/docs/v5/concepts/locales/creating-translations/)" tutorial for more info.
+Please refer to our "[Creating translations](https://docs.amcharts.com/v5/concepts/locales/creating-translations/)" tutorial for more info.
 
 ## Using time zones
 
-It's possible to force charts to use specific time zone when displaying time/date. For more information visit "Root element: [Time zone](https://www.amcharts.com/docs/v5/getting-started/root-element/#Time_zone)" tutorial.
+It's possible to force charts to use specific time zone when displaying time/date. For more information visit "Root element: [Time zone](https://docs.amcharts.com/v5/getting-started/root-element/#time-zone)" tutorial.
 
 ## First day of week
 
@@ -48,8 +48,8 @@ root.locale.firstDayOfWeek = 0;
 
 ## Right-to-left languages
 
-For RTL options, check out "[Right-to-left support](https://www.amcharts.com/docs/v5/concepts/locales/right-to-left-support/)" tutorial.
+For RTL options, check out "[Right-to-left support](https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/)" tutorial.
 
 ## Translations in maps
 
-Country names on map charts can automatically be translated to a selection of languages. Please refer to "[Map translations](https://www.amcharts.com/docs/v5/charts/map-chart/map-translations/)" tutorial.
+Country names on map charts can automatically be translated to a selection of languages. Please refer to "[Map translations](https://docs.amcharts.com/v5/charts/map-chart/map-translations/)" tutorial.

@@ -25,18 +25,18 @@ Prompt: Create an interactive wheel of life: a radar column chart of eight areas
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // no panning or zooming: the wheel stays as it is
   panY: false,
@@ -45,7 +45,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
 }));
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 // every area keeps its label, also on a small chart
 var xRenderer = am5radar.AxisRendererCircular.new(root, {
   minGridDistance: 10
@@ -72,7 +72,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 yAxis.get("renderer").labels.template.set("forceHidden", true); // no numbers on the scale
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var series = chart.series.push(am5radar.RadarColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -89,7 +89,7 @@ series.columns.template.setAll({
 });
 
 // Set data: eight areas of life, each in its own color, all at 0 until rated
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var areas = ["Health", "Career", "Love", "Spirituality", "Family", "Money", "Fun", "Friends"];
 var data = areas.map(function(area) {
   return {
@@ -105,7 +105,7 @@ series.data.setAll(data);
 xAxis.data.setAll(data);
 
 // Animate chart
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series.appear(1000);
 chart.appear(1000, 100);
 

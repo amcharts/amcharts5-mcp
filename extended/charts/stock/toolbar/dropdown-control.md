@@ -1,10 +1,10 @@
 ---
 title: "Dropdown control"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/dropdown-control/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-control/"
 scraped: "2026-10-08"
 ---
 
-It's a generic control that can be added to a [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/), populated with custom content to be displayed in a dropdown when toggled.
+It's a generic control that can be added to a [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/), populated with custom content to be displayed in a dropdown when toggled.
 
 ## Adding
 

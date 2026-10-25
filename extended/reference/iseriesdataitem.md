@@ -1,7 +1,7 @@
 ---
 title: "ISeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/iseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

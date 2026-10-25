@@ -1,7 +1,7 @@
 ---
 title: "IPercentSeriesSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipercentseriessettings/"
+source: "https://docs.amcharts.com/v5/reference/ipercentseriessettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -15,7 +15,7 @@ TypeScript: `am5percent.IPercentSeriesSettings` (`import type { IPercentSeriesSe
 ## Settings
 
 - **colors** (`ColorSet`) — default `ColorSet.new(root, {})` _(theme)_ — `ColorSet` that gives each slice its color, unless the data sets one through `fillField`.
-- **patterns** (`PatternSet`) — A `PatternSet` to use when assigning patterns for slices. _Since 5.10.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Pattern_sets
+- **patterns** (`PatternSet`) — A `PatternSet` to use when assigning patterns for slices. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets
 - **categoryField** (`string`) — Field in data that holds the category names.
 - **alignLabels** (`boolean`) — default `true` — Lines the labels up in columns (or a row) beside the slices, joined to them by ticks. `false` places each label at its own slice.
 - **fillField** (`string`) — Field in data that holds the slice's color.

@@ -1,13 +1,13 @@
 ---
 title: "TrianglePattern"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/trianglepattern/"
+source: "https://docs.amcharts.com/v5/reference/trianglepattern/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Triangle pattern.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/
+Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/
 
 ## Import
 

@@ -1,7 +1,7 @@
 ---
 title: "IRasterImage"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/irasterimage/"
+source: "https://docs.amcharts.com/v5/reference/irasterimage/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

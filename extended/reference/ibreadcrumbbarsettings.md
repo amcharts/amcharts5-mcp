@@ -1,7 +1,7 @@
 ---
 title: "IBreadcrumbBarSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ibreadcrumbbarsettings/"
+source: "https://docs.amcharts.com/v5/reference/ibreadcrumbbarsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -18,7 +18,7 @@ TypeScript: `am5hierarchy.IBreadcrumbBarSettings` (`import type { IBreadcrumbBar
 
 ## Inherited settings with a different default on BreadcrumbBar
 
-- **layout** (`Layout`) — default `root.gridLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Layout
+- **layout** (`Layout`) — default `root.gridLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
 - **paddingLeft** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
 
 ## Other inherited settings

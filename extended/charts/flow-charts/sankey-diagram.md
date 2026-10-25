@@ -1,12 +1,12 @@
 ---
 title: "Sankey diagram"
-source: "https://www.amcharts.com/docs/v5/charts/flow-charts/sankey-diagram/"
+source: "https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/"
 scraped: "2026-03-15"
 ---
 
 ## Flow chart
 
-A Sankey diagram is a flow chart. For generic flow chart related information, please visit "[Flow charts](https://www.amcharts.com/docs/v5/charts/flow-charts/)" tutorial.
+A Sankey diagram is a flow chart. For generic flow chart related information, please visit "[Flow charts](https://docs.amcharts.com/v5/charts/flow-charts/)" tutorial.
 
 ## Orientation
 
@@ -42,7 +42,7 @@ var series = root.container.children.push(
 
 Nodes (colored bands) are 10 pixel wide by default.
 
-We can use series setting `[nodeWidth](https://www.amcharts.com/docs/v5/reference/sankey/#nodeWidth_setting)` to change that:
+We can use series setting `[nodeWidth](https://docs.amcharts.com/v5/reference/sankey/#nodeWidth_setting)` to change that:
 
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
@@ -70,11 +70,11 @@ var series = root.container.children.push(
 
 ### Configuring nodes
 
-Nodes in flow diagrams are represented by their own series, accessible via read-only property `nodes` which is an object of type `[SankeyNodes](https://www.amcharts.com/docs/v5/reference/sankeynodes/)`.
+Nodes in flow diagrams are represented by their own series, accessible via read-only property `nodes` which is an object of type `[SankeyNodes](https://docs.amcharts.com/v5/reference/sankeynodes/)`.
 
 It subsequently has a property `rectangles` which is a list of all nodes in series.
 
-Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[RoundedRectangle](https://www.amcharts.com/docs/v5/reference/slice/)`:
+Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[RoundedRectangle](https://docs.amcharts.com/v5/reference/slice/)`:
 
 series.nodes.rectangles.template.setAll({
   fillOpacity: 0.5,
@@ -220,7 +220,7 @@ series.nodes.data.setAll(\[
 
 Sankey diagrams display a tiny gap between each node by default.
 
-We can control the size of it using series' `[nodePadding](https://www.amcharts.com/docs/v5/reference/sankey/#nodePadding_setting)` setting.
+We can control the size of it using series' `[nodePadding](https://docs.amcharts.com/v5/reference/sankey/#nodePadding_setting)` setting.
 
 It accepts a numeric value in degrees.
 
@@ -252,7 +252,7 @@ var series = root.container.children.push(
 
 Sankey will position all of its nodes aligned to left, which might not work for complex flows.
 
-To control it, we have a Sankey setting: `[nodeAlign](https://www.amcharts.com/docs/v5/reference/sankey/#nodeAlign_setting)`.
+To control it, we have a Sankey setting: `[nodeAlign](https://docs.amcharts.com/v5/reference/sankey/#nodeAlign_setting)`.
 
 It accepts four values: `"left"` (default), `"right"`, `"center"`, and `"justify"`.
 
@@ -305,7 +305,7 @@ series.nodes.nodes.template.setAll({
 
 Sankey links are smooth curves by default.
 
-We can configure how "tight" the curve is via series `[linkTension](https://www.amcharts.com/docs/v5/reference/sankey/#linkTension_setting)` setting.
+We can configure how "tight" the curve is via series `[linkTension](https://docs.amcharts.com/v5/reference/sankey/#linkTension_setting)` setting.
 
 With default of `0.5` it accepts a numeric value between `0` (zero) and `1` (one).
 
@@ -337,7 +337,7 @@ var series = root.container.children.push(
 
 ### Configuring links
 
-We can configure links using series property `links.template`. Via template, we can set any [`SankeyLink` setting](https://www.amcharts.com/docs/v5/reference/sankeylink/#Settings).
+We can configure links using series property `links.template`. Via template, we can set any [`SankeyLink` setting](https://docs.amcharts.com/v5/reference/sankeylink/#settings).
 
 series.links.template.setAll({
   fillOpacity: 0.5
@@ -389,7 +389,7 @@ A bend (or control point) is a position where link's elbows bend forming an "elb
 
 By default this happens 20% of either end of the link.
 
-We can control it using link setting: `[controlPointDistance](https://www.amcharts.com/docs/v5/reference/sankeylink/#controlPointDistance_setting)`.
+We can control it using link setting: `[controlPointDistance](https://docs.amcharts.com/v5/reference/sankeylink/#controlPointDistance_setting)`.
 
 It accepts numeric values between `0` (zero) and `1` (one). The smaller the number the closer the elbow will be to the ends of the link.
 
@@ -486,7 +486,7 @@ series.nodes.labels.template.setAll({
   oversizedBehavior: "wrap"
 });
 
-Refer to [`Label` class reference](https://www.amcharts.com/docs/v5/reference/label/#Settings) for a full list of available settings.
+Refer to [`Label` class reference](https://docs.amcharts.com/v5/reference/label/#settings) for a full list of available settings.
 
 ### Label content
 
@@ -500,9 +500,9 @@ series.nodes.labels.template.setAll({
   text: "\[bold\]{name}\[/\] ({sumOutgoing})"
 });
 
-Contents of the label can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[ISankeyNodesDataItem](https://www.amcharts.com/docs/v5/reference/isankeynodesdataitem/)`.
+For available data placeholder fields refer to `[ISankeyNodesDataItem](https://docs.amcharts.com/v5/reference/isankeynodesdataitem/)`.
 
 ### Positioning labels
 
@@ -567,7 +567,7 @@ series.nodes.labels.template.setAll({
 });
 
 
-MORE INFOFor selectively aligning labels, check out "[Selectively positioning Sankey diagram labels](https://www.amcharts.com/docs/v5/tutorials/selectively-positioning-sankey-diagram-labels/)".
+MORE INFOFor selectively aligning labels, check out "[Selectively positioning Sankey diagram labels](https://docs.amcharts.com/v5/tutorials/selectively-positioning-sankey-diagram-labels/)".
 
 ### Disabling labels
 
@@ -595,7 +595,7 @@ series.links.template.setAll({
 
 Contents of the tooltip can include data placeholders (codes in curly brackets that will be replaced by actual data) and in-line formatting blocks (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[ISankeyDataItem](https://www.amcharts.com/docs/v5/reference/isankeydataitem/)`.
+For available data placeholder fields refer to `[ISankeyDataItem](https://docs.amcharts.com/v5/reference/isankeydataitem/)`.
 
 ### On nodes
 
@@ -609,11 +609,11 @@ series.nodes.rectangles.template.setAll({
   tooltipText: "\[bold\]{name}\[/\]\\nOutgoing: {sumOutgoing}\\nIncoming: {sumIncoming}"
 });
 
-For available data placeholder fields refer to `[ISankeyNodesDataItem](https://www.amcharts.com/docs/v5/reference/isankeynodesdataitem/)`.
+For available data placeholder fields refer to `[ISankeyNodesDataItem](https://docs.amcharts.com/v5/reference/isankeynodesdataitem/)`.
 
 ## Using template fields
 
-[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/) can also be used to configure various diagram elements, such as node rectangles and link graphics.
+[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/) can also be used to configure various diagram elements, such as node rectangles and link graphics.
 
 series.nodes.rectangles.template.set("templateField", "nodeSettings");
 series.links.template.set("templateField", "linkSettings");
@@ -644,9 +644,9 @@ series.data.setAll(\[
 \]);
 
 
-NOTEFor more information on how template fields work, visit "[Template fields](https://www.amcharts.com/docs/v5/concepts/settings/template-fields/)" tutorial.
+NOTEFor more information on how template fields work, visit "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 ## Related tutorials
 
--   [Images in Sankey nodes](https://www.amcharts.com/docs/v5/tutorials/images-in-sankey-nodes/)
--   [Selectively positioning Sankey diagram labels](https://www.amcharts.com/docs/v5/tutorials/selectively-positioning-sankey-diagram-labels/)
+-   [Images in Sankey nodes](https://docs.amcharts.com/v5/tutorials/images-in-sankey-nodes/)
+-   [Selectively positioning Sankey diagram labels](https://docs.amcharts.com/v5/tutorials/selectively-positioning-sankey-diagram-labels/)

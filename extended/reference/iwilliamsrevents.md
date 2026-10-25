@@ -1,7 +1,7 @@
 ---
 title: "IWilliamsREvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iwilliamsrevents/"
+source: "https://docs.amcharts.com/v5/reference/iwilliamsrevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

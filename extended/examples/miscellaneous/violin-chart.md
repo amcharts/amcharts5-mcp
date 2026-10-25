@@ -25,11 +25,11 @@ Prompt: Create a violin chart that compares how values are spread in four region
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -44,7 +44,7 @@ var sourceData = {
 };
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 // Pans sideways only: panning up or down would push the violins out of their rows
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
@@ -56,7 +56,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   maxDeviation: 0, // no panning past the first or last range
   categoryField: "range",
@@ -95,7 +95,7 @@ chart.leftAxesContainer.setAll({
 });
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 function createSeries(category) {
   var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
     maxDeviation: 0, // no panning past the violin
@@ -185,7 +185,7 @@ createSeries("Asia");
 createSeries("Africa");
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis
 }));
@@ -198,7 +198,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

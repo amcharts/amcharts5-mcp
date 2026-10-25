@@ -1,13 +1,13 @@
 ---
 title: "DateFormatter"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/dateformatter/"
+source: "https://docs.amcharts.com/v5/reference/dateformatter/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Formats dates in labels, tooltips and other text, and parses date strings.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
+Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/
 
 ## Import
 

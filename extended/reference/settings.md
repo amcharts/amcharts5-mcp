@@ -1,13 +1,13 @@
 ---
 title: "Settings"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/settings/"
+source: "https://docs.amcharts.com/v5/reference/settings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for objects with settings, such as `Entity`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/settings/
+Docs: https://docs.amcharts.com/v5/concepts/settings/
 
 ## Import
 

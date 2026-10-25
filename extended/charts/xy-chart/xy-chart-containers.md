@@ -1,6 +1,6 @@
 ---
 title: "Containers of an XY chart"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/xy-chart-containers/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/xy-chart-containers/"
 scraped: "2026-03-15"
 ---
 
@@ -62,13 +62,13 @@ Series are plot in this container.
 
 ## Configuring containers
 
-All XY chart containers are elements of type `[Container](https://www.amcharts.com/docs/v5/reference/container/)`.
+All XY chart containers are elements of type `[Container](https://docs.amcharts.com/v5/reference/container/)`.
 
 We can use to configure them as we see fit.
 
 ### Adding outline/background
 
-Configuring outlines or background is done like with any other container: but adding a `Rectangle` element into its [`background` setting](https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Background).
+Configuring outlines or background is done like with any other container: but adding a `Rectangle` element into its [`background` setting](https://docs.amcharts.com/v5/concepts/common-elements/containers/#background).
 
 The following code will add a fill and an outline for the whole chart's area:
 
@@ -109,7 +109,7 @@ Changing layout of the container may alter the way and order chart elements are 
 
 For example, if we push the legend into chart's children list, setting its `layout` to vertical will put legend below everything else, while setting it to horizontal, will put legend to the right of the chart.
 
-For more information, visit "Legend: [Positioning](https://www.amcharts.com/docs/v5/concepts/legend/#Positioning)".
+For more information, visit "Legend: [Positioning](https://docs.amcharts.com/v5/concepts/legend/#positioning)".
 
 ## Adding custom elements
 

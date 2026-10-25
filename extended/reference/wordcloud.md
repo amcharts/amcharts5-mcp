@@ -1,13 +1,13 @@
 ---
 title: "WordCloud"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/wordcloud/"
+source: "https://docs.amcharts.com/v5/reference/wordcloud/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A word cloud: words sized by their values, from `data` or counted in `text`.
 
-Docs: https://www.amcharts.com/docs/v5/charts/word-cloud/
+Docs: https://docs.amcharts.com/v5/charts/word-cloud/
 
 ## Import
 

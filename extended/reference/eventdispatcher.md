@@ -1,13 +1,13 @@
 ---
 title: "EventDispatcher"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/eventdispatcher/"
+source: "https://docs.amcharts.com/v5/reference/eventdispatcher/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Universal Event Dispatcher.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/events/
+Docs: https://docs.amcharts.com/v5/concepts/events/
 
 ## Import
 

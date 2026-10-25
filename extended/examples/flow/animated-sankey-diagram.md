@@ -25,11 +25,11 @@ Prompt: Create a horizontal Sankey diagram of an example breakdown of company ca
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
 	am5themes_Animated.new(root),
 	am5themes_Responsive.new(root)
@@ -43,7 +43,7 @@ var serialChartContainer = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 var series = serialChartContainer.series.push(
 	am5flow.Sankey.new(root, {
 		orientation: "horizontal", // the flows run left to right
@@ -213,7 +213,7 @@ series.bullets.push(function () {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
 	{
 		from: "Non-financial companies",

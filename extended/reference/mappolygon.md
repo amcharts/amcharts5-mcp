@@ -1,7 +1,7 @@
 ---
 title: "MapPolygon"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/mappolygon/"
+source: "https://docs.amcharts.com/v5/reference/mappolygon/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

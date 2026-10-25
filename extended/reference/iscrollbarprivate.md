@@ -1,7 +1,7 @@
 ---
 title: "IScrollbarPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iscrollbarprivate/"
+source: "https://docs.amcharts.com/v5/reference/iscrollbarprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

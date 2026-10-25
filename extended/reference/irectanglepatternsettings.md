@@ -1,7 +1,7 @@
 ---
 title: "IRectanglePatternSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/irectanglepatternsettings/"
+source: "https://docs.amcharts.com/v5/reference/irectanglepatternsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -23,9 +23,9 @@ TypeScript: `am5.IRectanglePatternSettings` (`import type { IRectanglePatternSet
 
 ## Inherited settings with a different default on RectanglePattern
 
-- **height** (`number`) — default `48` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+- **height** (`number`) — default `48` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#sizing-patterns
 - **strokeWidth** (`number`) — default `0` _(theme)_ — _from IPatternSettings_ — Width of the pattern's line elements.
-- **width** (`number`) — default `48` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+- **width** (`number`) — default `48` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#sizing-patterns
 
 ## Other inherited settings
 

@@ -12,7 +12,7 @@
     "Finds the right map file for a country or region, with its CDN path and import",
     "Explains and fixes common amCharts 5 mistakes, such as dates, axes, themes and disposal"
   ],
-  "websiteURL": "https://www.amcharts.com/docs/v5/ai/mcp/",
+  "websiteURL": "https://docs.amcharts.com/v5/ai/mcp/",
   "supportURL": "https://github.com/amcharts/amcharts5-mcp/issues",
   "privacyPolicyURL": "https://www.amcharts.com/privacy-policy/",
   "termsOfServiceURL": "https://www.amcharts.com/terms-conditions/",

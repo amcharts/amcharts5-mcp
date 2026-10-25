@@ -25,7 +25,7 @@ Prompt: Create a zoomable candlestick chart of about five years of simulated dai
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root);
@@ -72,7 +72,7 @@ function generateChartData() {
 var data = generateChartData();
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     focusable: true, // the chart can take keyboard focus, for keyboard users
@@ -85,7 +85,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,                             // zoomed out, the days are grouped into weeks or months
@@ -111,7 +111,7 @@ var yAxis = chart.yAxes.push(
 var color = root.interfaceColors.get("background");
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.CandlestickSeries.new(root, {
     // draws all candles at once, much faster for many of them (no rounded corners or column events)
@@ -144,7 +144,7 @@ var series = chart.series.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set(
   "cursor",
   am5xy.XYCursor.new(root, {
@@ -154,11 +154,11 @@ var cursor = chart.set(
 cursor.lineY.set("visible", false); // no horizontal cursor line, only the vertical one
 
 // Stack axes vertically
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Stacked_axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/#stacked-axes
 chart.leftAxesContainer.set("layout", root.verticalLayout);
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal", // drag its grips to zoom in on a range of dates
   height: 50                 // 50px tall, with a preview of the prices
@@ -198,7 +198,7 @@ var sbseries = scrollbar.chart.series.push(
 );
 
 // Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = yAxis.axisHeader.children.push(am5.Legend.new(root, {})); // in a header above the value axis
 
 legend.data.push(series);
@@ -226,7 +226,7 @@ series.data.setAll(data);
 sbseries.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

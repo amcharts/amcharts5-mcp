@@ -1,7 +1,7 @@
 ---
 title: "IEntityEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ientityevents/"
+source: "https://docs.amcharts.com/v5/reference/ientityevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

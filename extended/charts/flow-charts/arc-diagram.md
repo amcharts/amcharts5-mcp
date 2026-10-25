@@ -1,6 +1,6 @@
 ---
 title: "Arc Diagram"
-source: "https://www.amcharts.com/docs/v5/charts/flow-charts/arc-diagram/"
+source: "https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ This tutorial contains information for creating Arc diagram.
 
 ## Flow chart
 
-An Arc diagram is a flow chart. For generic flow chart related information, please visit "[Flow charts](https://www.amcharts.com/docs/v5/charts/flow-charts/)" tutorial.
+An Arc diagram is a flow chart. For generic flow chart related information, please visit "[Flow charts](https://docs.amcharts.com/v5/charts/flow-charts/)" tutorial.
 
 ## Orientation
 
@@ -120,7 +120,7 @@ Nodes in Arc diagrams are represented by their own series, accessible via read-o
 
 It subsequently has a property `circles` which is a list of all nodes in series.
 
-Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[Circle](https://www.amcharts.com/docs/v5/reference/circle/)`:
+Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[Circle](https://docs.amcharts.com/v5/reference/circle/)`:
 
 series.nodes.circles.template.setAll({
   fillOpacity: 0.5,
@@ -272,7 +272,7 @@ series.links.template.setAll({
   strokeOpacity: 0.3
 });
 
-Refer to the [class reference of the `ArcDiagramLink`](https://www.amcharts.com/docs/v5/reference/arcdiagramlink/#Settings) for more settings.
+Refer to the [class reference of the `ArcDiagramLink`](https://docs.amcharts.com/v5/reference/arcdiagramlink/#settings) for more settings.
 
 ### Color mode
 
@@ -328,7 +328,7 @@ series.nodes.labels.template.setAll({
   wrap: true
 });
 
-Refer to [`Label` class reference](https://www.amcharts.com/docs/v5/reference/label/#Settings) for a full list of available settings.
+Refer to [`Label` class reference](https://docs.amcharts.com/v5/reference/label/#settings) for a full list of available settings.
 
 ### Label content
 
@@ -342,9 +342,9 @@ series.nodes.labels.template.setAll({
   text: "\[bold\]{name}\[/\] ({sumOutgoing})"
 });
 
-Contents of the label can include [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://www.amcharts.com/docs/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
+Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[IArcDiagramNodesDataItem](https://www.amcharts.com/docs/v5/reference/iarcdiagramnodesdataitem/)`.
+For available data placeholder fields refer to `[IArcDiagramNodesDataItem](https://docs.amcharts.com/v5/reference/iarcdiagramnodesdataitem/)`.
 
 ### Alignment
 

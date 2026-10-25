@@ -108,7 +108,7 @@ series.data.setAll(data);
 
 // Color the part below zero: a series axis range from far below the data up to 0
 // draws that stretch of the line and fill in its own color
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/#series-axis-ranges
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#series-axis-ranges
 var rangeDataItem = yAxis.makeDataItem({
   value: -1000,
   endValue: 0
@@ -151,11 +151,11 @@ yAxis.set( // ...and the value on this one
 );
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

@@ -1,10 +1,10 @@
 ---
 title: "Events and Gantt data serialization"
-source: "https://www.amcharts.com/docs/v5/charts/gantt/serializing-gantt-data/"
+source: "https://docs.amcharts.com/v5/charts/gantt/serializing-gantt-data/"
 scraped: "2026-03-15"
 ---
 
-This tutorial will look at the way we can use [Gantt chart](https://www.amcharts.com/docs/v5/charts/gantt/)'s events to track for changes, serialize, and restore the data.
+This tutorial will look at the way we can use [Gantt chart](https://docs.amcharts.com/v5/charts/gantt/)'s events to track for changes, serialize, and restore the data.
 
 ## Events
 
@@ -20,7 +20,7 @@ chart.events.on("valueschanged", function(ev) {
   // Values changed
 });
 
-`"valueschanged"` event is executed every time something changes, including intermediate values, when animations are playing out. To avoid wasteful repetition of the event handler calls, we can use "[debounced](https://www.amcharts.com/docs/v5/concepts/events/#Debounced_events)" events instead:
+`"valueschanged"` event is executed every time something changes, including intermediate values, when animations are playing out. To avoid wasteful repetition of the event handler calls, we can use "[debounced](https://docs.amcharts.com/v5/concepts/events/#debounced-events)" events instead:
 
 chart.events.onDebounced("valueschanged", function(ev) {
   // Values changed
@@ -34,7 +34,7 @@ chart.events.onDebounced("valueschanged", function(ev) {
 
 ### Markers added or removed
 
-When [markers](https://www.amcharts.com/docs/v5/charts/gantt/#Marked_dates) are added or removed, the Gantt chart invokes its `"datemarked"` and `"dateunmarked"` events respectively.
+When [markers](https://docs.amcharts.com/v5/charts/gantt/#marked-dates) are added or removed, the Gantt chart invokes its `"datemarked"` and `"dateunmarked"` events respectively.
 
 gantt.events.on("datemarked", function(ev) {
   console.log("Date marked: " + ev.date + " (" + new Date(ev.date) + ") in " + ev.dataItem.get(name));

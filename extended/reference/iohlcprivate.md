@@ -1,7 +1,7 @@
 ---
 title: "IOHLCPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iohlcprivate/"
+source: "https://docs.amcharts.com/v5/reference/iohlcprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

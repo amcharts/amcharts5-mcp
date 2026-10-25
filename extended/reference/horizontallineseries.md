@@ -1,7 +1,7 @@
 ---
 title: "HorizontalLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/horizontallineseries/"
+source: "https://docs.amcharts.com/v5/reference/horizontallineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

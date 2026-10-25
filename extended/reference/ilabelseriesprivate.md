@@ -1,7 +1,7 @@
 ---
 title: "ILabelSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilabelseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/ilabelseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

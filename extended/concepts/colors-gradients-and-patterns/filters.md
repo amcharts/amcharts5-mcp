@@ -1,6 +1,6 @@
 ---
 title: "Filters"
-source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/"
+source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/"
 scraped: "2026-03-15"
 ---
 

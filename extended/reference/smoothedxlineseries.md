@@ -1,13 +1,13 @@
 ---
 title: "SmoothedXLineSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/smoothedxlineseries/"
+source: "https://docs.amcharts.com/v5/reference/smoothedxlineseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A line series drawn as a smooth curve, for data that runs along the X axis, such as values over time.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/
 
 ## Import
 

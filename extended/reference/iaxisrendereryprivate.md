@@ -1,7 +1,7 @@
 ---
 title: "IAxisRendererYPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/iaxisrendereryprivate/"
+source: "https://docs.amcharts.com/v5/reference/iaxisrendereryprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

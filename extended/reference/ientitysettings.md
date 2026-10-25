@@ -1,7 +1,7 @@
 ---
 title: "IEntitySettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ientitysettings/"
+source: "https://docs.amcharts.com/v5/reference/ientitysettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -14,8 +14,8 @@ TypeScript: `am5.IEntitySettings` (`import type { IEntitySettings } from "@amcha
 ## Settings
 
 - **ignoreThemes** (`boolean`) — default `false` — Ignores themes: no theme rule applies to the element, not even one of the default theme. _Since 5.15.6._
-- **themeTags** (`string[]`) — default `[]` _(code fallback)_ — Tags that theme rules can target. They also count for the element's children, so a rule can match a child by a tag of its parent. Docs: https://www.amcharts.com/docs/v5/concepts/themes/
-- **themeTagsSelf** (`string[]`) — Tags that theme rules can target, like `themeTags`, but only for this element, not its children. Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+- **themeTags** (`string[]`) — default `[]` _(code fallback)_ — Tags that theme rules can target. They also count for the element's children, so a rule can match a child by a tag of its parent. Docs: https://docs.amcharts.com/v5/concepts/themes/
+- **themeTagsSelf** (`string[]`) — Tags that theme rules can target, like `themeTags`, but only for this element, not its children. Docs: https://docs.amcharts.com/v5/concepts/themes/
 - **themes** (`Theme[]`) — Themes applied to the element and everything inside it.
 - **stateAnimationDuration** (`number`) — default `0` _(theme)_ — How long, in milliseconds, a switch from one state to another animates. `0` switches at once.
 - **stateAnimationEasing** (`$ease.Easing`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing of the animated switch from one state to another.

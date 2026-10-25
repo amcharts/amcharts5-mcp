@@ -1,7 +1,7 @@
 ---
 title: "ILegendSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ilegendsettings/"
+source: "https://docs.amcharts.com/v5/reference/ilegendsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -23,7 +23,7 @@ TypeScript: `am5.ILegendSettings` (`import type { ILegendSettings } from "@amcha
 ## Inherited settings with a different default on Legend
 
 - **layer** (`number`) — default `30` _(theme)_ — _from ISpriteSettings_ — Layer to draw the element on: elements on higher layers show in front of those on lower ones. If not set, the element is on its parent's layer.
-- **layout** (`Layout`) — default `GridLayout.new(root, {})` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://www.amcharts.com/docs/v5/concepts/containers/#Layout
+- **layout** (`Layout`) — default `GridLayout.new(root, {})` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
 
 ## Other inherited settings
 

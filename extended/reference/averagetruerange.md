@@ -1,13 +1,13 @@
 ---
 title: "AverageTrueRange"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/averagetruerange/"
+source: "https://docs.amcharts.com/v5/reference/averagetruerange/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Average True Range indicator: volatility, as each data item's true range averaged over `period`. Drawn in a panel of its own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

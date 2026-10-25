@@ -32,23 +32,23 @@ Prompt: Create a strip plot of made-up social media posts: a row for each of 12 
  * https://www.amcharts.com/
  *
  * Documentation is available at:
- * https://www.amcharts.com/docs/v5/
+ * https://docs.amcharts.com/v5/
  * ---------------------------------------
  */
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false, // dragging the plot doesn't pan it
   panY: false,
@@ -75,7 +75,7 @@ var categories = [
 ];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
   renderer: am5xy.AxisRendererY.new(root, {
@@ -152,7 +152,7 @@ for(var i = 0; i < categories.length; i++) {
 }
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -201,7 +201,7 @@ series.set("heatRules", [{
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 chart.appear(1000, 100);
 ```

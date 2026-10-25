@@ -1,13 +1,13 @@
 ---
 title: "CommodityChannelIndex"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/commoditychannelindex/"
+source: "https://docs.amcharts.com/v5/reference/commoditychannelindex/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Commodity Channel Index indicator: how far the typical price (average of high, low and close) is from its `period` average, relative to its mean deviation. Drawn in a panel of its own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

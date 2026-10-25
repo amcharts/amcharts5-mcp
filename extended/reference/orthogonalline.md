@@ -1,7 +1,7 @@
 ---
 title: "OrthogonalLine"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/orthogonalline/"
+source: "https://docs.amcharts.com/v5/reference/orthogonalline/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

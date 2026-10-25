@@ -3,7 +3,7 @@
   "name": "io.github.amcharts/amcharts5",
   "title": "amCharts 5",
   "description": "On-demand access to amCharts 5 docs, code examples, and API reference",
-  "websiteUrl": "https://www.amcharts.com/docs/v5/ai/mcp/",
+  "websiteUrl": "https://docs.amcharts.com/v5/ai/mcp/",
   "icons": [
     {
       "src": "https://www.amcharts.com/wp-content/themes/amcharts4/css/img/favicon/mstile-310x310.png",
@@ -15,12 +15,12 @@
     "url": "https://github.com/amcharts/amcharts5-mcp",
     "source": "github"
   },
-  "version": "1.9.2",
+  "version": "1.9.3",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@amcharts/amcharts5-mcp",
-      "version": "1.9.2",
+      "version": "1.9.3",
       "transport": {
         "type": "stdio"
       }

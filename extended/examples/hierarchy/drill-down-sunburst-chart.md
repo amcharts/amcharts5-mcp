@@ -25,11 +25,11 @@ Prompt: Create a drill-down sunburst chart of an online store’s sales by depar
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -43,7 +43,7 @@ var chart = root.container.children.push(am5.SerialChartContainer.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
   singleBranchOnly: true,       // opening a branch closes the others
   // show every level, on load and after a click (10 is more levels than the data has)
@@ -61,13 +61,13 @@ var series = chart.series.push(am5hierarchy.Sunburst.new(root, {
 series.nodes.template.set("tooltipText", "{category}: [bold]${sum}k[/]");
 
 // Breadcrumbs above the chart show where you are and lead back up
-// https://www.amcharts.com/docs/v5/charts/hierarchy/breadcrumbs/
+// https://docs.amcharts.com/v5/charts/hierarchy/breadcrumbs/
 chart.children.unshift(am5hierarchy.BreadcrumbBar.new(root, {
   series: series
 }));
 
 // Set data: a year of an online store's sales, in thousands of dollars
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 series.data.setAll([{
   name: "All sales",
   children: [{

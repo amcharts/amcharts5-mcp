@@ -1,13 +1,13 @@
 ---
 title: "ZoomableContainer"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/zoomablecontainer/"
+source: "https://docs.amcharts.com/v5/reference/zoomablecontainer/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 A `Container` whose `contents` can be zoomed with the wheel, a pinch or `ZoomTools`, and panned by dragging.
 
-_Since 5.8.0._ Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Zoomable_container
+_Since 5.8.0._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#zoomable-container
 
 ## Import
 
@@ -31,4 +31,4 @@ Extends: Container → Sprite → Entity → Settings
 
 Public properties (not settings):
 
-- **contents** (`Container`) — The container that zooms and pans. Add elements to `contents.children`, not to the ZoomableContainer's own `children`. Docs: https://www.amcharts.com/docs/v5/concepts/common-elements/containers/#Zoomable_container
+- **contents** (`Container`) — The container that zooms and pans. Add elements to `contents.children`, not to the ZoomableContainer's own `children`. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#zoomable-container

@@ -1,7 +1,7 @@
 ---
 title: "ISvgLeaf"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isvgleaf/"
+source: "https://docs.amcharts.com/v5/reference/isvgleaf/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

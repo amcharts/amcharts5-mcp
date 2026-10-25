@@ -25,10 +25,10 @@ Prompt: Create a Gapminder-style motion chart of the world’s countries as bubb
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -346,7 +346,7 @@ var mainContainer = root.container.children.push(am5.Container.new(root, {
 }))
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = mainContainer.children.push(am5xy.XYChart.new(root, {
   panX: true,       // drag the plot to pan sideways...
   panY: true,       // ...and up and down
@@ -356,7 +356,7 @@ var chart = mainContainer.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   min: 0, // metric X runs from 0...
   max: 1000, // ...to 1000
@@ -381,7 +381,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 yAxis.children.moveValue(am5.Label.new(root, { text: "Hypothetical metric Y", rotation: -90, y: am5.p50, centerX: am5.p50 }), 0);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var bubbleSeries = chart.series.push(am5xy.LineSeries.new(root, {
   calculateAggregates: true, // works out the lowest and highest values, for the heat rule
   xAxis: xAxis,
@@ -395,7 +395,7 @@ var bubbleSeries = chart.series.push(am5xy.LineSeries.new(root, {
 bubbleSeries.strokes.template.set("visible", false);
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 var circleTemplate = am5.Template.new({ tooltipY: 0 }); // shared by all bubbles; the tooltip points at the top
 circleTemplate.states.create("transparent", { opacity: 0.15 }); // a faded look for the bubbles not pointed at
 
@@ -482,7 +482,7 @@ bubbleSeries.bullets.push(function() {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 // maxValue fixes the top of the scale, so bubble sizes compare from year to year
 bubbleSeries.set("heatRules", [{
   target: circleTemplate,
@@ -515,7 +515,7 @@ lineSeries.bullets.push(function() {
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -523,7 +523,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal",
   exportable:false // left out of exported images
@@ -604,7 +604,7 @@ slider.events.on("rangechanged", function() {
 });
 
 // Create the map chart: a small world map in the top left corner, where the bubbles don't go
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var navMap = chart.plotContainer.children.push(am5map.MapChart.new(root, {
   projection: am5map.geoNaturalEarth1(), // a compromise world projection
   rotationX: -11, // centered on longitude 11 degrees east
@@ -617,7 +617,7 @@ var navMap = chart.plotContainer.children.push(am5map.MapChart.new(root, {
 }));
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = navMap.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_continentsLow, // continents, not countries, in low detail
   exclude: ["antarctica"]            // Antarctica left out, to save room
@@ -741,7 +741,7 @@ function updateSeriesData(year) {
 bubbleSeries.data.setAll(yearData[currentYear]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 bubbleSeries.appear(1000);
 chart.appear(1000, 100);
 ```

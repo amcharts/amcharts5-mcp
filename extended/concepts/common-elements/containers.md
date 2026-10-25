@@ -1,6 +1,6 @@
 ---
 title: "Containers"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/containers/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/containers/"
 scraped: "2026-03-15"
 ---
 
@@ -70,7 +70,7 @@ Not set
 
 Child elements are placed at whatever `x` and/or `y` setting are set for them, or at upper-left corner if not set.
 
-Setting layout might affect the look of the chart setup, such as where [chart's legend is placed](https://www.amcharts.com/docs/v5/concepts/legend/#Positioning).
+Setting layout might affect the look of the chart setup, such as where [chart's legend is placed](https://docs.amcharts.com/v5/concepts/legend/#positioning).
 
 let chart = root.container.children.push( 
   am5percent.PieChart.new(root, {
@@ -176,7 +176,7 @@ yAxis.get("renderer").labels.template.setup = function(target) {
   }))
 }
 
-IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://www.amcharts.com/docs/v5/concepts/settings/list-templates/#Setup_handler).
+IMPORTANT The `template.setup` needs to be set **before** any data is set on the the series. More info [here](https://docs.amcharts.com/v5/concepts/settings/list-templates/#setup-handler).
 
 ## Masks
 
@@ -340,4 +340,4 @@ Resets containers position and zoom level to initial.
 
 ## Related tutorials
 
--   [Dynamically adding charts to the same Root](https://www.amcharts.com/docs/v5/tutorials/dynamically-adding-charts-to-the-same-root/)
+-   [Dynamically adding charts to the same Root](https://docs.amcharts.com/v5/tutorials/dynamically-adding-charts-to-the-same-root/)

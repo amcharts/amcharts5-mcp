@@ -1,7 +1,7 @@
 ---
 title: "GrainPattern"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/grainpattern/"
+source: "https://docs.amcharts.com/v5/reference/grainpattern/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -13,7 +13,7 @@ Note, grain pattern does not support `fill` and `color` setting. Use `colors` se
 
 Note, rotation setting is not supported by this pattern.
 
-_Since 5.5.0._ Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Grain_patterns
+_Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#grain-patterns
 
 ## Import
 

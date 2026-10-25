@@ -1,13 +1,13 @@
 ---
 title: "XYSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/xyseries/"
+source: "https://docs.amcharts.com/v5/reference/xyseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for all XY chart series.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 ## Import
 
@@ -31,7 +31,7 @@ Extended by: BaseColumnSeries, LineSeries
 
 Public properties (not settings):
 
-- **axisRanges** (`List<this["_axisRangeType"]>`) — Axis ranges of the series, added with `createAxisRange()`. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+- **axisRanges** (`List<this["_axisRangeType"]>`) — Axis ranges of the series, added with `createAxisRange()`. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
 - **chart** (`XYChart`) — The chart the series belongs to.
 - **mainContainer** (`Container`) — default `Container.new()` — Container that holds the series' elements, such as its lines or columns.
 - **mainDataItems** (`DataItem<this["_dataItemSettings"]>[]`) — The series' original data items, before any grouping by a `DateAxis`.

@@ -1,6 +1,6 @@
 ---
 title: "Events"
-source: "https://www.amcharts.com/docs/v5/concepts/events/"
+source: "https://docs.amcharts.com/v5/concepts/events/"
 scraped: "2026-10-08"
 updated: "2026-08-05"
 updatedFor: "@amcharts/amcharts5@5.20.1"
@@ -80,7 +80,7 @@ columnSeries.columns.template.events.enableType("click");
 
 To temporarily disable all event handlers, use `disable()`. To enable all them back on - `enable()`.
 
-MORE INFO Please refer to the `[SpriteEventDispatcher](https://www.amcharts.com/docs/v5/reference/spriteeventdispatcher/)` for a complete list of available methods.
+MORE INFO Please refer to the `[SpriteEventDispatcher](https://docs.amcharts.com/v5/reference/spriteeventdispatcher/)` for a complete list of available methods.
 
 ## Behavioral events
 
@@ -88,7 +88,7 @@ Some elements might have events that signal some change on it without user's int
 
 For example, a Scrollbar might invoke a `rangechanged` event when its selection range changes, whether by dragging its grips or programatically.
 
-For a complete list of element's events, see "Events" section in its class reference. Here's a [link](https://www.amcharts.com/docs/v5/reference/scrollbar/#Events) to `Scrollbar` events as an example.
+For a complete list of element's events, see "Events" section in its class reference. Here's a [link](https://docs.amcharts.com/v5/reference/scrollbar/#events) to `Scrollbar` events as an example.
 
 ## Global pointer events
 
@@ -128,7 +128,7 @@ series.events.onDebounced("valueschanged", function(ev) {
 
 ### Adding
 
-Elements settings is a set of key-value pairs that can be set via `set()` property. Most of the configuration in amCharts 5 happens via settings. Read more about it [here](https://www.amcharts.com/docs/v5/concepts/settings/).
+Elements settings is a set of key-value pairs that can be set via `set()` property. Most of the configuration in amCharts 5 happens via settings. Read more about it [here](https://docs.amcharts.com/v5/concepts/settings/).
 
 We can add a handler whenever a value for a particular setting changes using element's `on()` method:
 
@@ -150,7 +150,7 @@ series.on("visible", function(visible, target) {
   }
 });
 
-Similarly, for catching value change of a [private setting](https://www.amcharts.com/docs/v5/concepts/settings/#Private_settings), we can use the `onPrivate()` method:
+Similarly, for catching value change of a [private setting](https://docs.amcharts.com/v5/concepts/settings/#private-settings), we can use the `onPrivate()` method:
 
 xAxis.onPrivate("selectionMin", function(value, target) {
   var start = new Date(value);
@@ -236,6 +236,6 @@ xAxis.offPrivate("selectionMax");
 
 ## Related tutorials
 
--   [Chart ready event](https://www.amcharts.com/docs/v5/getting-started/root-element/#Chart_ready_event)
--   [Column series events](https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/#Events)
--   [Bullet events](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/#event-handlers)
+-   [Chart ready event](https://docs.amcharts.com/v5/getting-started/root-element/#chart-ready-event)
+-   [Column series events](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/#events)
+-   [Bullet events](https://docs.amcharts.com/v5/concepts/common-elements/bullets/#event-handlers)

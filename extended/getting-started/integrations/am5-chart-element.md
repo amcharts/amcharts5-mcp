@@ -1,10 +1,10 @@
 ---
 title: "The <am5-chart> Element"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/"
 scraped: "2026-10-22"
 ---
 
-`<am5-chart>` is an HTML element that builds a chart from a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/). There is no root element to create and no chart code to write: put the element on the page and give it a config.
+`<am5-chart>` is an HTML element that builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/). There is no root element to create and no chart code to write: put the element on the page and give it a config.
 
 NOTE The `<am5-chart>` element is available since version 5.21.0.
 
@@ -111,7 +111,7 @@ document.getElementById("chartdiv").appendChild(element);
 
 Changing the config, by attribute or property, builds the chart again. Removing the element from the page disposes the chart. Moving the element keeps it.
 
-MORE INFO For the config format, see "[Serializing / JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/)". To have the chart animate in when it loads, use the `autoAppear` setting in the config (more about it in "[Animations](https://www.amcharts.com/docs/v5/concepts/animations/)").
+MORE INFO For the config format, see "[Serializing / JSON config](https://docs.amcharts.com/v5/concepts/serializing/)". To have the chart animate in when it loads, use the `autoAppear` setting in the config (more about it in "[Animations](https://docs.amcharts.com/v5/concepts/animations/)").
 
 NOTE Complete configs to copy into the element are in the amCharts skill's JSON guide (`skill/json` in the amCharts MCP server, `references/json.md` in the skill): section "Complete configs" for XY, pie, flow and hierarchy charts, and section "Maps" for a world map colored by value or with a few countries highlighted.
 
@@ -154,7 +154,7 @@ Charts are drawn on canvas. To draw the chart as SVG instead, set `renderer="svg
 <am5-chart src="chart.json" renderer="svg"></am5-chart>
 ```
 
-MORE INFO For differences between the two, see "[Root element](https://www.amcharts.com/docs/v5/getting-started/root-element/)".
+MORE INFO For differences between the two, see "[Root element](https://docs.amcharts.com/v5/getting-started/root-element/)".
 
 ## Accessing the chart
 
@@ -208,7 +208,7 @@ NOTE A chart with a config right in the page can be built before a script gets 
 
 ## In frameworks
 
-Our packages for React, Vue, Angular and Svelte wrap the element: they load its code in the browser only, so pages can be rendered on a server, and take the config, themes and renderer as props or inputs. See [Integrations](https://www.amcharts.com/docs/v5/getting-started/integrations/).
+Our packages for React, Vue, Angular and Svelte wrap the element: they load its code in the browser only, so pages can be rendered on a server, and take the config, themes and renderer as props or inputs. See [Integrations](https://docs.amcharts.com/v5/getting-started/integrations/).
 
 ## Custom element name
 

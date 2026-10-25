@@ -52,7 +52,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Adding
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
 var series = chart.series.push(
   am5hierarchy.Treemap.new(root, {
     singleBranchOnly: false,
@@ -82,7 +82,7 @@ series.nodes.template.set("tooltipText", "{category}: [bold]{sum}[/] visitors");
 
 // Set data: visitors on the pages of an online store, by section.
 // The sections themselves are hidden (see the theme above): their pages share a color.
-// https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
 var data = {
   name: "Store",
   children: [{
@@ -130,7 +130,7 @@ series.set("selectedDataItem", series.dataItems[0]); // start with the root sele
 
 // Every two seconds, move each page's count up or down by up to 20% (random numbers here;
 // a real page would load new figures). Counts stay between half and double their first value.
-// https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-api/#Updating_node_values
+// https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-api/#updating-node-values
 setInterval(function() {
   var dataItems = series.dataItems[0].get("children");
 

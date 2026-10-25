@@ -1,13 +1,13 @@
 ---
 title: "MovingAverageDeviation"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/movingaveragedeviation/"
+source: "https://docs.amcharts.com/v5/reference/movingaveragedeviation/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Moving Average Deviation indicator: columns showing how far `field` is from its moving average over `period`. Drawn in a panel of its own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

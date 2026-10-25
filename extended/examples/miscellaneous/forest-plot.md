@@ -25,18 +25,18 @@ Prompt: Create a forest plot for a meta-analysis of five studies and their summa
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,     // no dragging the plot
   panY: false,
@@ -93,7 +93,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
   inversed: true,        // the first study at the top
   minorGridEnabled: true // a skipped study still gets a faint grid line
@@ -134,7 +134,7 @@ var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 // Column series: a thin bar from the low to the high end of each confidence interval
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
@@ -216,7 +216,7 @@ series2.bullets.push(function() {
 series2.data.setAll(data);
 
 // Create a summary line
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-ranges/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/
 var rangeDataItem = xAxis.makeDataItem({
   value: 2.2 // at the summary measure
 });
@@ -231,7 +231,7 @@ rangeDataItem.get("grid").setAll({
 });
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis
 }));
@@ -239,7 +239,7 @@ cursor.lineY.set("visible", false); // no horizontal cursor line...
 cursor.lineX.set("visible", false); // ...and no vertical one: the cursor just shows the tooltip
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear();
 series2.appear();
 chart.appear(1000, 100);

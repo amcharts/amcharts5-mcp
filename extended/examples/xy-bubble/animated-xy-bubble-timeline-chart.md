@@ -25,11 +25,11 @@ Prompt: Create an animated bubble chart of 50 bubbles with made-up values that d
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -69,7 +69,7 @@ for (var year = firstYear; year <= lastYear; year++) {
 root.container.set("layout", root.verticalLayout);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,       // drag the plot to pan sideways...
   panY: true,       // ...and up and down
@@ -79,7 +79,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   min: -100, // the axis runs from -100...
   max: 100, // ...to 100
@@ -171,7 +171,7 @@ xAxis.get("renderer").grid.template.set("layer", 1);
 yAxis.get("renderer").grid.template.set("layer", 1);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   calculateAggregates: true, // finds the lowest and highest value, for the heat rule below
   xAxis: xAxis,
@@ -184,7 +184,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
 series.strokes.template.set("visible", false); // no line between the points, only the bubbles
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 var circleTemplate = am5.Template.new({}); // one template for all circles, so the heat rule can size them
 series.bullets.push(function () {
   var bulletCircle = am5.Circle.new(root, {
@@ -200,7 +200,7 @@ series.bullets.push(function () {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 // a fixed maxValue, so the sizes don't scale to each year's largest value
 series.set("heatRules", [{
   target: circleTemplate,
@@ -211,14 +211,14 @@ series.set("heatRules", [{
 }]);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis
 }));
 
 // Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // zoom and pan along x...
 }));
@@ -308,7 +308,7 @@ function updateSeriesData(year) {
 series.data.setAll(yearData[currentYear]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000);
 chart.appear(1000, 100);
 ```

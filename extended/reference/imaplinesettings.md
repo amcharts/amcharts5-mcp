@@ -1,7 +1,7 @@
 ---
 title: "IMapLineSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imaplinesettings/"
+source: "https://docs.amcharts.com/v5/reference/imaplinesettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -20,8 +20,8 @@ TypeScript: `am5map.IMapLineSettings` (`import type { IMapLineSettings } from "@
 
 ## Inherited settings with a different default on MapLine
 
-- **role** (`Role`) — default `"figure"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://www.amcharts.com/docs/v5/concepts/accessibility/#Roles
-- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/
+- **role** (`Role`) — default `"figure"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#roles
+- **stroke** (`Color`) — default `root.interfaceColors.get("grid")` _(theme)_ — _from IGraphicsSettings_ — Stroke (border or line) color. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/
 
 ## Other inherited settings
 

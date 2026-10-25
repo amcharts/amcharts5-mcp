@@ -25,16 +25,16 @@ Prompt: Create two donut charts side by side, separated by a dashed line, with s
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Create custom theme
-// https://www.amcharts.com/docs/v5/concepts/themes/#Quick_custom_theme
+// https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme
 var myTheme = am5.Theme.new(root);
 myTheme.rule("Label").set("fontSize", "0.8em"); // all labels a little smaller
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
@@ -49,14 +49,14 @@ var container = root.container.children.push(am5.Container.new(root, {
 }));
 
 // Create first chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart0 = container.children.push(am5percent.PieChart.new(root, {
   innerRadius: am5.p50, // a hole half the radius turns the pie into a donut
   tooltip: am5.Tooltip.new(root, {})
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series0 = chart0.series.push(am5percent.PieSeries.new(root, {
   valueField: "value",
   categoryField: "category",
@@ -90,14 +90,14 @@ container.children.push(am5.Line.new(root, {
 }));
 
 // Create second chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart1 = container.children.push(am5percent.PieChart.new(root, {
   innerRadius: am5.p50,
   tooltip: am5.Tooltip.new(root, {})
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series1 = chart1.series.push(am5percent.PieSeries.new(root, {
   valueField: "value",
   categoryField: "category",

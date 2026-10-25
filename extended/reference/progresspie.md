@@ -1,7 +1,7 @@
 ---
 title: "ProgressPie"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/progresspie/"
+source: "https://docs.amcharts.com/v5/reference/progresspie/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

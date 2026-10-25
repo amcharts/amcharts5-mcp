@@ -1,7 +1,7 @@
 ---
 title: "IDataSaveControlEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/idatasavecontrolevents/"
+source: "https://docs.amcharts.com/v5/reference/idatasavecontrolevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

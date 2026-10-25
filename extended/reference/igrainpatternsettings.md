@@ -1,7 +1,7 @@
 ---
 title: "IGrainPatternSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/igrainpatternsettings/"
+source: "https://docs.amcharts.com/v5/reference/igrainpatternsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -24,8 +24,8 @@ TypeScript: not exported by name from the package.
 
 ## Inherited settings with a different default on GrainPattern
 
-- **height** (`number`) — default `200` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
-- **width** (`number`) — default `200` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/#Sizing_patterns
+- **height** (`number`) — default `200` _(theme)_ — _from IPatternSettings_ — Height of the pattern tile, in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#sizing-patterns
+- **width** (`number`) — default `200` _(theme)_ — _from IPatternSettings_ — Width of the pattern tile, in pixels. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#sizing-patterns
 
 ## Other inherited settings
 

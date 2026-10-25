@@ -1,14 +1,14 @@
 ---
 title: "Hierarchy link bullets"
-source: "https://www.amcharts.com/docs/v5/charts/hierarchy/hierarchy-link-bullets/"
+source: "https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-link-bullets/"
 scraped: "2026-03-15"
 ---
 
-This tutorial will show how we can add bullets to links on linked hierarchy charts like [Force-directed](https://www.amcharts.com/docs/v5/charts/hierarchy/force-directed/) and [Tree](https://www.amcharts.com/docs/v5/charts/hierarchy/tree/).
+This tutorial will show how we can add bullets to links on linked hierarchy charts like [Force-directed](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/) and [Tree](https://docs.amcharts.com/v5/charts/hierarchy/tree/).
 
 ## Adding bullets
 
-Hierarchy chart's bullets are created like [any other bullets](https://www.amcharts.com/docs/v5/concepts/common-elements/bullets/), except they are pushed to `linkBullets` list (instead of `bullets`):
+Hierarchy chart's bullets are created like [any other bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/), except they are pushed to `linkBullets` list (instead of `bullets`):
 
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
@@ -195,7 +195,7 @@ bullet.set("locationX", 0.8);
 
 bullet.set("locationX", 0.8);
 
-We can also animate settings by creating a [setting animation](https://www.amcharts.com/docs/v5/concepts/animations/#Animating_settings):
+We can also animate settings by creating a [setting animation](https://docs.amcharts.com/v5/concepts/animations/#animating-settings):
 
 series.linkBullets.push(function(root, source, target) {
   const bullet = am5.Bullet.new(root, {
@@ -262,4 +262,4 @@ series.linkBullets.push(function(root, source, target) {
 
 ## Related tutorials
 
--   [Force-Directed Tree with directional labels on links](https://www.amcharts.com/docs/v5/tutorials/force-directed-tree-with-directional-labels-on-links/)
+-   [Force-Directed Tree with directional labels on links](https://docs.amcharts.com/v5/tutorials/force-directed-tree-with-directional-labels-on-links/)

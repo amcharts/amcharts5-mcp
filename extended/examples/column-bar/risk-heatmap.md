@@ -25,18 +25,18 @@ Prompt: Create a 5 by 5 risk heat map, both axes running from Very good to Criti
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,    // no dragging...
@@ -86,7 +86,7 @@ var xAxis = chart.xAxes.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/xy-chart/#adding-series
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     calculateAggregates: true, // works out the lowest and highest values, which the heat rule needs
@@ -119,7 +119,7 @@ series.columns.template.setAll({
 var circleTemplate = am5.Template.new({});
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: circleTemplate,
   min: 10, // the smallest value a 10px bubble...
@@ -176,7 +176,7 @@ var colors = {
 };
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/xy-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/xy-chart/#setting-data
 var data = [
   {
     y: "Critical",
@@ -399,7 +399,7 @@ xAxis.data.setAll([
 ]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

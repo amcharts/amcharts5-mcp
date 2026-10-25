@@ -1,7 +1,7 @@
 ---
 title: "ISankeyNodesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isankeynodesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/isankeynodesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

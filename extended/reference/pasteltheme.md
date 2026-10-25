@@ -1,13 +1,13 @@
 ---
 title: "PastelTheme"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/pasteltheme/"
+source: "https://docs.amcharts.com/v5/reference/pasteltheme/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 "Pastel": a soft light theme on a warm off-white background, with muted pastel series colors. Calm and editorial. Pairs with `PastelDark`.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/themes/
+Docs: https://docs.amcharts.com/v5/concepts/themes/
 
 ## Import
 

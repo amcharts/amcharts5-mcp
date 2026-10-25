@@ -1,7 +1,7 @@
 ---
 title: "LinkedHierarchy"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/linkedhierarchy/"
+source: "https://docs.amcharts.com/v5/reference/linkedhierarchy/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

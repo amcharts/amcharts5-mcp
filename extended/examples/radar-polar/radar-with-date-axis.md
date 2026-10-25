@@ -25,15 +25,15 @@ Prompt: Create a radar chart with the year around the circle as a date axis and 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     panX: false,                 // no dragging the plot around
@@ -48,7 +48,7 @@ var chart = root.container.children.push(
 chart.get("colors").set("step", 2);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor",
 am5radar.RadarCursor.new(root, {
   behavior: "zoomX" // drag around the circle to zoom in on some dates
@@ -57,7 +57,7 @@ am5radar.RadarCursor.new(root, {
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 // One ring per holiday home, from the middle out
 var yRenderer = am5radar.AxisRendererRadial.new(root, {
   minGridDistance: 10 // small, so every home keeps its label
@@ -101,14 +101,14 @@ var data = [
 ];
 
 // Dates in tooltips
-// https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/
 root.dateFormatter.setAll({
   dateFormat: "MMM d",                 // dates shown as "Jun 1"
   dateFields: ["valueX", "openValueX"] // the fields that hold dates, so they're formatted as dates
 });
 
 // Create series: one per home, so each ring gets its own color
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var homes = ["City flat", "Farmhouse", "Lake cabin", "Beach house", "Ski chalet"]; // middle ring out
 
 homes.forEach(function(home) {
@@ -141,11 +141,11 @@ yAxis.data.setAll(homes.map(function(home) {
 }));
 
 // Add scrollbar: it zooms the dates. It starts hidden
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", exportable: false, forceHidden: true }));
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(2000, 100);
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: "Using amCharts 5 with Ember.js"
-source: "https://www.amcharts.com/docs/v5/getting-started/integrations/ember-js/"
+source: "https://docs.amcharts.com/v5/getting-started/integrations/ember-js/"
 scraped: "2026-10-22"
 ---
 

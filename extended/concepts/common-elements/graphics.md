@@ -1,6 +1,6 @@
 ---
 title: "Graphics"
-source: "https://www.amcharts.com/docs/v5/concepts/common-elements/graphics/"
+source: "https://docs.amcharts.com/v5/concepts/common-elements/graphics/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ scraped: "2026-03-15"
 
 ## Creating
 
-To create a graphics element, we will need to instantiate a `[Graphics](https://www.amcharts.com/docs/v5/reference/graphics/)` object using its `new()` method.
+To create a graphics element, we will need to instantiate a `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)` object using its `new()` method.
 
 By default, it would not display anything. For it to work, we will need to:
 
@@ -76,7 +76,7 @@ am5.Graphics.new(root, {
 
 Another option is using low-level drawing functions, like `moveTo()`, `lineTo()`, `drawRect()`, `drawCircle()`, etc.
 
-To use those, we need to assign a custom function to graphics element's [`draw` setting](https://www.amcharts.com/docs/v5/reference/graphics/#draw_setting).
+To use those, we need to assign a custom function to graphics element's [`draw` setting](https://docs.amcharts.com/v5/reference/graphics/#draw_setting).
 
 The function will receive a "display object" (implementing the `IGraphics` interface), which will provide the drawing functions we mentioned earlier.
 
@@ -106,7 +106,7 @@ am5.Graphics.new(root, {
   }
 });
 
-For a full list of drawing methods, refer to `[IGraphics](https://www.amcharts.com/docs/v5/reference/igraphics/)` reference.
+For a full list of drawing methods, refer to `[IGraphics](https://docs.amcharts.com/v5/reference/igraphics/)` reference.
 
 
 #### The complete list of drawing functions
@@ -139,7 +139,7 @@ There are more settings to graphics element than just `fill` and `stroke` (that 
 
 For example `fillOpacity` will control fill transparency.
 
-MORE INFOFor a complete list of available settings, check out [`Graphics` reference](https://www.amcharts.com/docs/v5/reference/graphics/#Settings).
+MORE INFOFor a complete list of available settings, check out [`Graphics` reference](https://docs.amcharts.com/v5/reference/graphics/#settings).
 
 Here's another example, that uses `drawRect()` drawing method to draw a rotated semi-transparent rectangle:
 

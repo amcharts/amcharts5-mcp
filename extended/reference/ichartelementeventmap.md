@@ -1,7 +1,7 @@
 ---
 title: "IChartElementEventMap"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ichartelementeventmap/"
+source: "https://docs.amcharts.com/v5/reference/ichartelementeventmap/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

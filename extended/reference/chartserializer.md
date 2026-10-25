@@ -1,13 +1,13 @@
 ---
 title: "ChartSerializer"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/chartserializer/"
+source: "https://docs.amcharts.com/v5/reference/chartserializer/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Serializes a whole chart, with its axes, series, data and legends, into a config that `JsonParser` builds the chart from again. Unlike `Serializer`, by default it writes states and adapters, keeps adapter callbacks as functions, and goes 10 levels deep.
 
-_Since 5.15.0._ Docs: https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/
+_Since 5.15.0._ Docs: https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/
 
 ## Import
 

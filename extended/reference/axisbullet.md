@@ -1,13 +1,13 @@
 ---
 title: "AxisBullet"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/axisbullet/"
+source: "https://docs.amcharts.com/v5/reference/axisbullet/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Draws a bullet on an axis.
 
-Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Axis_bullets
+Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#axis-bullets
 
 ## Import
 

@@ -1,6 +1,6 @@
 ---
 title: "Animations"
-source: "https://www.amcharts.com/docs/v5/concepts/animations/"
+source: "https://docs.amcharts.com/v5/concepts/animations/"
 scraped: "2026-10-08"
 ---
 
@@ -24,15 +24,15 @@ root.setThemes(\[
   am5themes\_Animated.new(root)
 \]);
 
-For more information about themes, refer to our "[Themes](https://www.amcharts.com/docs/v5/concepts/themes/)" tutorial.
+For more information about themes, refer to our "[Themes](https://docs.amcharts.com/v5/concepts/themes/)" tutorial.
 
 ## Animating settings
 
-A value of a setting of an element or a data item can be animated using its `[animate()](https://www.amcharts.com/docs/v5/reference/sprite/#animate_method)` method.
+A value of a setting of an element or a data item can be animated using its `[animate()](https://docs.amcharts.com/v5/reference/sprite/#animate_method)` method.
 
 This applies to settings that use quantifiable values, like numbers, colors, or percent.
 
-`animate()` method takes one parameter - an object that implements `[AnimationOptions](https://www.amcharts.com/docs/v5/reference/animationoptions/)` interface:
+`animate()` method takes one parameter - an object that implements `[AnimationOptions](https://docs.amcharts.com/v5/reference/animationoptions/)` interface:
 
 Option
 
@@ -104,7 +104,7 @@ handDataItem.animate({
 
 ## Animations as settings
 
-Animations can also be set as part of element's configuration, using its `animations` setting. This is handy for animations that should simply always run, such as a spinning globe or a pulsing marker. And since it's a regular setting, it also works in [JSON configs](https://www.amcharts.com/docs/v5/concepts/serializing/).
+Animations can also be set as part of element's configuration, using its `animations` setting. This is handy for animations that should simply always run, such as a spinning globe or a pulsing marker. And since it's a regular setting, it also works in [JSON configs](https://docs.amcharts.com/v5/concepts/serializing/).
 
 The setting takes an array of animations, each with these options:
 
@@ -230,13 +230,13 @@ pointSeries.bullets.push(function() {
   });
 });
 
-Animations start when the setting is applied, restart when it changes, and stop when the element is disposed. When the chart is [serialized](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/), the configured values are saved, not whatever value the animation was at.
+Animations start when the setting is applied, restart when it changes, and stop when the element is disposed. When the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/), the configured values are saved, not whatever value the animation was at.
 
 NOTEUnlike `animate()`, where `loops: Infinity` means forever, here it's `loops: 0`. The `animations` setting is available since version 5.20.8.
 
 ### More about the `animations` setting (5.20.8)
 
-Being a plain setting, `animations` can be set like any other — on an element, a template, a bullet's sprite, or in a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/) — and a [serialized](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/) chart keeps it.
+Being a plain setting, `animations` can be set like any other — on an element, a template, a bullet's sprite, or in a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/) — and a [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/) chart keeps it.
 
 Notes on the options listed above:
 
@@ -263,7 +263,7 @@ series.bullets.push(function (root, series, dataItem) {
 
 IMPORTANT With `from` omitted, the animation starts from the setting's current value. If that value is `undefined`, the element jumps straight to `to` and nothing animates. `scale`, `opacity` and `rotation` are fine (the theme gives them a value), but settings like `dx` or `fill`, or a data item value that is not set yet (e.g. a map point without `positionOnLine`), need an explicit `from`.
 
-With `target: "dataItem"`, the entry animates the data item the element belongs to — for example, a map point's `positionOnLine`, which flies the point along its line. See "[Map point series: Points on a line](https://www.amcharts.com/docs/v5/charts/map-chart/map-point-series/#Points_on_a_line)".
+With `target: "dataItem"`, the entry animates the data item the element belongs to — for example, a map point's `positionOnLine`, which flies the point along its line. See "[Map point series: Points on a line](https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#points-on-a-line)".
 
 In a JSON config, colors and percents in `from`/`to` are written in their object form:
 
@@ -284,12 +284,12 @@ In a JSON config, colors and percents in `from`/`to` are written in their object
 }
 ```
 
-`ChartSerializer` can also turn a never-ending animation started in code with `animate()` into an `animations` entry — on an element, and since 5.21.0 on a data item too — see its `runningAnimations` setting in "[Chart serializer](https://www.amcharts.com/docs/v5/concepts/serializing/chart-serializer/)".
+`ChartSerializer` can also turn a never-ending animation started in code with `animate()` into an `animations` entry — on an element, and since 5.21.0 on a data item too — see its `runningAnimations` setting in "[Chart serializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/)".
 
 
 ## Animating between states
 
-When element [state](https://www.amcharts.com/docs/v5/concepts/settings/states/) is applied, its values will replace current setting values.
+When element [state](https://docs.amcharts.com/v5/concepts/settings/states/) is applied, its values will replace current setting values.
 
 Normally, element would go directly to new setting values.
 
@@ -321,7 +321,7 @@ The state application animation will use `stateAnimationDuration` and `stateAnim
 
 ## Animating data values
 
-Updating data values is done via `setIndex()` method of series data, as per "[Data](https://www.amcharts.com/docs/v5/concepts/data/#Updating_existing_data)" tutorial:
+Updating data values is done via `setIndex()` method of series data, as per "[Data](https://docs.amcharts.com/v5/concepts/data/#updating-existing-data)" tutorial:
 
 series.data.setIndex(1, {
   category: "Marketing",
@@ -425,7 +425,7 @@ var chart = root.container.children.push(
   })
 );
 
-Since these are regular settings, this is how a [JSON config](https://www.amcharts.com/docs/v5/concepts/serializing/) or a [<am5-chart> element](https://www.amcharts.com/docs/v5/getting-started/integrations/am5-chart-element/) gets its opening animation.
+Since these are regular settings, this is how a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/) or a [<am5-chart> element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) gets its opening animation.
 
 A few things to know:
 

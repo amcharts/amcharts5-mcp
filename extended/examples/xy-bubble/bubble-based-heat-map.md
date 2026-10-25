@@ -25,18 +25,18 @@ Prompt: Create a bubble heat map of days of the week by hours of the day, with a
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,    // the plot doesn't pan when dragged
@@ -81,7 +81,7 @@ var xAxis = chart.xAxes.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/xy-chart/#adding-series
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     // finds the lowest and highest value, which the heat rule below sizes the bubbles by
@@ -106,7 +106,7 @@ series.columns.template.setAll({
 var circleTemplate = am5.Template.new({ radius: 5 });
 
 // Add circle bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 series.bullets.push(function () {
   var graphics = am5.Circle.new(
     root, {
@@ -123,7 +123,7 @@ series.bullets.push(function () {
 });
 
 // Set up heat rules
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 var heatRule = {
   target: circleTemplate,
   min: 3,  // the smallest bubble has a 3px radius
@@ -143,7 +143,7 @@ chart.plotContainer.events.on("boundschanged", function () {
 });
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/xy-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/xy-chart/#setting-data
 var data = [{
   hour: "12am",
   weekday: "Sunday",
@@ -858,7 +858,7 @@ xAxis.data.setAll([
 ]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 
 // Every second, move each value up to 20% above or below its starting value

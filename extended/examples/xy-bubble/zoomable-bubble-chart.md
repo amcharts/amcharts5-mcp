@@ -25,18 +25,18 @@ Prompt: Create a zoomable bubble chart of 168 countries, GDP per capita against 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true, // drag the plot to pan in any direction
   panY: true,
@@ -50,7 +50,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 2);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 // The X axis runs along the top, the legend along the bottom
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, {
@@ -1448,7 +1448,7 @@ continents.forEach(function(continent) {
   });
 
   // Create series
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/
   var series = chart.series.push(am5xy.LineSeries.new(root, {
     name: continent.name,
     calculateAggregates: true, // the continent's lowest and highest population, for the heat rule
@@ -1469,7 +1469,7 @@ continents.forEach(function(continent) {
   series.strokes.template.set("visible", false);
 
   // Add bullet
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
   // Settings shared by all bubbles of the continent go in a template
   var circleTemplate = am5.Template.new({
     fillOpacity: 0.8, // slightly see-through, so overlapping bubbles show
@@ -1488,7 +1488,7 @@ continents.forEach(function(continent) {
   });
 
   // Add heat rule: the radius grows with population
-  // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+  // https://docs.amcharts.com/v5/concepts/settings/heat-rules/
   // A heat rule spreads its radii between the smallest and the largest country of the
   // series, so it gets the radii those two countries have on the common scale
   series.set("heatRules", [{
@@ -1500,14 +1500,14 @@ continents.forEach(function(continent) {
   }]);
 
   // Set data
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   series.data.setAll(continentData);
 
   series.appear(1000);
 });
 
 // Add legend under the chart: click a continent to hide or show it
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50, // centered under the plot
   x: am5.p50,
@@ -1533,7 +1533,7 @@ legend.valueLabels.template.set("forceHidden", true);
 legend.data.setAll(chart.series.values);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -1542,7 +1542,7 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 
 // Add scrollbars
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal",
   // above the X axis labels at the top, not between them and the bubbles
@@ -1554,7 +1554,7 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, {
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

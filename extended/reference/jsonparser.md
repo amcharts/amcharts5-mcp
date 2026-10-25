@@ -1,13 +1,13 @@
 ---
 title: "JSONParser"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/jsonparser/"
+source: "https://docs.amcharts.com/v5/reference/jsonparser/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Parses a JSON string into data.
 
-Docs: https://www.amcharts.com/docs/v5/concepts/data/#Parsing
+Docs: https://docs.amcharts.com/v5/concepts/data/#parsing
 
 ## Import
 
@@ -23,7 +23,7 @@ Extends: (none)
 
 Builds charts from JSON configs.
 
-_Since 5.3.0._ Docs: https://www.amcharts.com/docs/v5/concepts/serializing/
+_Since 5.3.0._ Docs: https://docs.amcharts.com/v5/concepts/serializing/
 
 ### Import
 

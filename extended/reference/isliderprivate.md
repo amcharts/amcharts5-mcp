@@ -1,7 +1,7 @@
 ---
 title: "ISliderPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isliderprivate/"
+source: "https://docs.amcharts.com/v5/reference/isliderprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

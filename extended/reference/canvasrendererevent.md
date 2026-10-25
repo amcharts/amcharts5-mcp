@@ -1,7 +1,7 @@
 ---
 title: "CanvasRendererEvent"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/canvasrendererevent/"
+source: "https://docs.amcharts.com/v5/reference/canvasrendererevent/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

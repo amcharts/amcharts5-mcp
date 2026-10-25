@@ -1,6 +1,6 @@
 ---
 title: "amCharts MCP Server"
-source: "https://www.amcharts.com/docs/v5/ai/mcp/"
+source: "https://docs.amcharts.com/v5/ai/mcp/"
 scraped: "2026-10-08"
 ---
 
@@ -288,4 +288,4 @@ The hosted server is updated with every amCharts release. For the local install,
 
 ## Links
 
-[@amcharts/amcharts5-mcp on npm](https://www.npmjs.com/package/@amcharts/amcharts5-mcp) · [GitHub repository](https://github.com/amcharts/amcharts5-mcp) · [Using AI with amCharts 5](https://www.amcharts.com/docs/v5/ai/)
+[@amcharts/amcharts5-mcp on npm](https://www.npmjs.com/package/@amcharts/amcharts5-mcp) · [GitHub repository](https://github.com/amcharts/amcharts5-mcp) · [Using AI with amCharts 5](https://docs.amcharts.com/v5/ai/)

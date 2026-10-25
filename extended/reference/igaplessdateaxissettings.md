@@ -1,7 +1,7 @@
 ---
 title: "IGaplessDateAxisSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/igaplessdateaxissettings/"
+source: "https://docs.amcharts.com/v5/reference/igaplessdateaxissettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -19,7 +19,7 @@ _(none declared here — all inherited)_
 ## Inherited settings with a different default on GaplessDateAxis
 
 - **maxZoomFactor** (`number`) — default `null` _(theme)_ — _from IAxisSettings_ — Roughly how many times the axis can be zoomed in. A `CategoryAxis` ignores it and zooms in as far as `minZoomCount` categories; a `DateAxis` set to `null` (its default) zooms in as far as `minZoomCount` base intervals.
-- **strictMinMax** (`boolean`) — default `true` _(theme)_ — _from IValueAxisSettings_ — Makes the scale start and end exactly at `min` and `max`, or where they aren't set, at the lowest and highest series values, without rounding. The axis then also stops rescaling to the values in view as the chart zooms. To rescale to the exact values in view, use `strictMinMaxSelection` instead. `extraMin` and `extraMax` still add padding. Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/value-axis/#Custom_scope
+- **strictMinMax** (`boolean`) — default `true` _(theme)_ — _from IValueAxisSettings_ — Makes the scale start and end exactly at `min` and `max`, or where they aren't set, at the lowest and highest series values, without rounding. The axis then also stops rescaling to the values in view as the chart zooms. To rescale to the exact values in view, use `strictMinMaxSelection` instead. `extraMin` and `extraMax` still add padding. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#custom-scope
 
 ## Other inherited settings
 

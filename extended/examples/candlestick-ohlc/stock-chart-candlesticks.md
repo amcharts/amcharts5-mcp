@@ -25,7 +25,7 @@ Prompt: Create a two-panel chart of daily Microsoft (MSFT) stock prices loaded f
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 const myTheme = am5.Theme.new(root);
@@ -41,7 +41,7 @@ root.setThemes([
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,      // a drag pans through the dates
   panY: false,
@@ -54,7 +54,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 chart.get("colors").set("step", 2); // every second theme color
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var valueAxisRenderer = am5xy.AxisRendererY.new(root, {
   pan: "zoom" // drag along the axis to zoom it
 });
@@ -115,7 +115,7 @@ dateAxis.set("tooltip", am5.Tooltip.new(root, {})); // shows the cursor's date o
 var color = root.interfaceColors.get("background");
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var valueSeries = chart.series.push(
   am5xy.CandlestickSeries.new(root, {
     fill: color,
@@ -182,8 +182,8 @@ var volumeSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
 }));
 
 // Add legend to axis header
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/axis-headers/
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-headers/
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
 var valueLegend = valueAxis.axisHeader.children.push(
   am5.Legend.new(root, {
     useDefaultMarker: true // a plain square marker in the series' color
@@ -199,15 +199,15 @@ var volumeLegend = volumeAxis.axisHeader.children.push(
 volumeLegend.data.setAll([volumeSeries]);
 
 // Stack axes vertically
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Stacked_axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/#stacked-axes
 chart.leftAxesContainer.set("layout", root.verticalLayout);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 chart.set("cursor", am5xy.XYCursor.new(root, {}))
 
 // Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 var scrollbar = chart.set("scrollbarX", am5xy.XYChartScrollbar.new(root, {
   orientation: "horizontal",
   height: 50 // 50px tall, with a small chart of the prices inside
@@ -248,7 +248,7 @@ sbSeries.fills.template.setAll({
 });
 
 // Load external data
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
 am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/stock/MSFT.csv").then(function (result) {
 
   // Parse loaded data
@@ -280,7 +280,7 @@ am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/stock/MSFT.csv"
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

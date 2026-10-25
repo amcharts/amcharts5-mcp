@@ -1,7 +1,7 @@
 ---
 title: "ITreemapDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/itreemapdataitem/"
+source: "https://docs.amcharts.com/v5/reference/itreemapdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

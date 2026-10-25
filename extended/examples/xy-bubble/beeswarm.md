@@ -87,18 +87,18 @@ function updateForces() {
 }
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 // The dots only have a position along X, so zoom and pan work on the X axis only
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,
@@ -108,18 +108,18 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add cursor: drag across the plot to zoom in on a range of values
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "zoomX"
 }));
 cursor.lineY.set("visible", false); // no horizontal cursor line, only the vertical one
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, {
     minGridDistance:30 // at least 30px between labels
@@ -139,7 +139,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 yAxis.get("renderer").grid.template.set("forceHidden", true); // no horizontal grid lines
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5xy.LineSeries.new(root, {
   // finds the lowest and highest value, which the heat rule below sizes the dots by
   calculateAggregates: true,
@@ -153,7 +153,7 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
 series.strokes.template.set("visible", false); // no line between the dots
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 // Settings shared by all dots go in a template
 var circleTemplate = am5.Template.new({
   fillOpacity: 0.8 // a little see-through, so overlaps show
@@ -177,7 +177,7 @@ series.bullets.push(function() {
 });
 
 // Add heat rule
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 // this makes radius different, depending on the value.
 // remove if you want all circles to be of the same size
 series.set("heatRules", [{
@@ -189,7 +189,7 @@ series.set("heatRules", [{
 }]);
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
 
 // Generate random data
 var data = [];
@@ -229,7 +229,7 @@ xAxis.on("start", repack);
 xAxis.on("end", repack);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

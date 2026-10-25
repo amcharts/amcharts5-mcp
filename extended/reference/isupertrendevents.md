@@ -1,7 +1,7 @@
 ---
 title: "ISuperTrendEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/isupertrendevents/"
+source: "https://docs.amcharts.com/v5/reference/isupertrendevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

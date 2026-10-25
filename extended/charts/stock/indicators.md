@@ -1,6 +1,6 @@
 ---
 title: "Indicators"
-source: "https://www.amcharts.com/docs/v5/charts/stock/indicators/"
+source: "https://docs.amcharts.com/v5/charts/stock/indicators/"
 scraped: "2026-03-15"
 ---
 
@@ -8,7 +8,7 @@ Stock chart comes with a selection of automatic indicators that can be added to 
 
 ## Adding via toolbar
 
-To enable adding of indicators via UI, we need to add [indicator control](https://www.amcharts.com/docs/v5/charts/stock/toolbar/indicator-control/) to our stock toolbar:
+To enable adding of indicators via UI, we need to add [indicator control](https://docs.amcharts.com/v5/charts/stock/toolbar/indicator-control/) to our stock toolbar:
 
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
@@ -75,31 +75,31 @@ Needs `volumeSeries`
 
 Optional
 
-[Settings](https://www.amcharts.com/docs/v5/reference/accumulationdistribution/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/accumulationdistribution/#settings)
 
 `AccumulativeSwingIndex`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/accumulativeswingindex/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/accumulativeswingindex/#settings)
 
 `Aroon`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/aroon/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/aroon/#settings)
 
 `AwesomeOscillator`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/awesomeoscillator/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/awesomeoscillator/#settings)
 
 `BollingerBands`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/bollingerbands/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/bollingerbands/#settings)
 
 `ChaikinMoneyFlow`
 
@@ -107,7 +107,7 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/chaikinmoneyflow/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/chaikinmoneyflow/#settings)
 
 `ChaikinOscillator`
 
@@ -115,55 +115,55 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/chaikinoscillator/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/chaikinoscillator/#settings)
 
 `CommodityChannelIndex`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/commoditychannelindex/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/commoditychannelindex/#settings)
 
 `DisparityIndex`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/disparityindex/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/disparityindex/#settings)
 
 `MACD`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/macd/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/macd/#settings)
 
 `MedianPrice`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/medianprice/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/medianprice/#settings)
 
 `MovingAverage`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/movingaverage/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/movingaverage/#settings)
 
 `MovingAverageCross`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/movingaveragecross/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/movingaveragecross/#settings)
 
 `MovingAverageDeviation`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/movingaveragedeviation/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/movingaveragedeviation/#settings)
 
 `MovingAverageEnvelope`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/movingaverageenvelope/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/movingaverageenvelope/#settings)
 
 `OnBalanceVolume`
 
@@ -171,7 +171,7 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/onbalancevolume/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/onbalancevolume/#settings)
 
 `PVT` (Price Volume Trend)
 
@@ -179,37 +179,37 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/pvt/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/pvt/#settings)
 
 `RelativeStrengthIndex`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/relativestrengthindex/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/relativestrengthindex/#settings)
 
 `StandardDeviation`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/standarddeviation/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/standarddeviation/#settings)
 
 `StochasticOscillator`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/stochasticoscillator/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/stochasticoscillator/#settings)
 
 `Trix`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/trix/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/trix/#settings)
 
 `TypicalPrice`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/typicalprice/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/typicalprice/#settings)
 
 `Volume`
 
@@ -217,7 +217,7 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/volume/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/volume/#settings)
 
 `VolumeProfile`
 
@@ -225,7 +225,7 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/volumeprofile/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/volumeprofile/#settings)
 
 `VWAP`
 
@@ -233,24 +233,24 @@ Optional
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/vwap/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/vwap/#settings)
 
 `WilliamsR`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/williamsr/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/williamsr/#settings)
 
 `ZigZag`
 
 **Yes**
 
-[Settings](https://www.amcharts.com/docs/v5/reference/zigzag/#Settings)
+[Settings](https://docs.amcharts.com/v5/reference/zigzag/#settings)
 
 ## Creating custom indicators
 
-Refer to "[Creating custom indicators for a Stock Chart](https://www.amcharts.com/docs/v5/tutorials/creating-custom-indicators-for-a-stock-chart/)" tutorial.
+Refer to "[Creating custom indicators for a Stock Chart](https://docs.amcharts.com/v5/tutorials/creating-custom-indicators-for-a-stock-chart/)" tutorial.
 
 ## Related tutorials
 
--   [Stock Chart with custom indicator add button](https://www.amcharts.com/docs/v5/tutorials/stock-chart-with-custom-indicator-add-button/)
+-   [Stock Chart with custom indicator add button](https://docs.amcharts.com/v5/tutorials/stock-chart-with-custom-indicator-add-button/)

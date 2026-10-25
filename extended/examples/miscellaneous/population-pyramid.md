@@ -4352,7 +4352,7 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
 });
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 map.appear(1000, 100);
 ```

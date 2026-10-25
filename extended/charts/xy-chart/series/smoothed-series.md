@@ -1,6 +1,6 @@
 ---
 title: "Smoothed line series"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/series/smoothed-series/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/"
 scraped: "2026-03-15"
 ---
 
@@ -14,15 +14,15 @@ Class
 
 Comment
 
-`[am5xy.SmoothedXLineSeries](https://www.amcharts.com/docs/v5/reference/smoothedxlineseries/)`
+`[am5xy.SmoothedXLineSeries](https://docs.amcharts.com/v5/reference/smoothedxlineseries/)`
 
 Used for horizontal series.
 
-`[am5xy.SmoothedYLineSeries](https://www.amcharts.com/docs/v5/reference/smoothedylineseries/)`
+`[am5xy.SmoothedYLineSeries](https://docs.amcharts.com/v5/reference/smoothedylineseries/)`
 
 Used for vertical series.
 
-`[am5xy.SmoothedXYLineSeries](https://www.amcharts.com/docs/v5/reference/smoothedxylineseries/)`
+`[am5xy.SmoothedXYLineSeries](https://docs.amcharts.com/v5/reference/smoothedxylineseries/)`
 
 Used for scenarios where series does not have any specific direct, e.g. scatter chart.
 
@@ -73,7 +73,7 @@ The smaller the number, the more lose and curvy the line will be. `1` indicates 
 
 By all intents and purposes all smoothed line series types are essentially a line series. Its appearance, just like line series, is configured via `strokes.template` and `fills.template`.
 
-For more information, please refer to "[Line series: Configuring appearance](https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/#Configuring_appearance)" tutorial.
+For more information, please refer to "[Line series: Configuring appearance](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/#configuring-appearance)" tutorial.
 
 ## Using D3 smoothing
 
@@ -112,4 +112,4 @@ var series = chart.series.push(
 
 ## Related tutorials
 
--   [Line series with a border](https://www.amcharts.com/docs/v5/tutorials/line-series-with-a-border/)
+-   [Line series with a border](https://docs.amcharts.com/v5/tutorials/line-series-with-a-border/)

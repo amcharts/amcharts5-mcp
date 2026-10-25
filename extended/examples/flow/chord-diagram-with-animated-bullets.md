@@ -25,15 +25,15 @@ Prompt: Create a directed chord diagram of six nodes joined by nine weighted, on
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {})); // holds the chord diagram
 
 var series = chart.series.push(
@@ -100,7 +100,7 @@ series.nodes.bullets.push(function (_root, _series, dataItem) {
 series.children.moveValue(series.bulletsContainer, 0);
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   { from: "A", to: "D", value: 10 },
   { from: "B", to: "C", value: 8 },

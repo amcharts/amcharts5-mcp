@@ -25,18 +25,18 @@ Prompt: Create an XY chart with two value axes where each of four data points is
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: true,       // drag the plot to pan sideways...
   panY: true,       // ...and up and down
@@ -46,12 +46,12 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Add scrollbars, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }), // at least 50px between labels
   tooltip: am5.Tooltip.new(root, {})
@@ -63,7 +63,7 @@ var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series0 = chart.series.push(am5xy.LineSeries.new(root, {
   // finds the lowest and highest value, which the heat rules below size the pies by
   calculateAggregates: true,
@@ -78,7 +78,7 @@ var series0 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // Add bullet
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+// https://docs.amcharts.com/v5/charts/xy-chart/series/#bullets
 // one template for all the pie charts, so the heat rules can size them
 var pieChartTemplate = am5.Template.new({});
 
@@ -109,7 +109,7 @@ series0.bullets.push(function(root, series, dataItem) {
 });
 
 // Add heat rules: the bigger the value, the bigger the pie (width and height together, so it stays round)
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series0.set("heatRules", [{
   target: pieChartTemplate,
   min: 50,  // the smallest pie is 50px wide...
@@ -197,7 +197,7 @@ var data = [{
 series0.data.setAll(data);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series0.appear(1000);
 chart.appear(1000, 100);
 ```

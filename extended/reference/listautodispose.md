@@ -1,7 +1,7 @@
 ---
 title: "ListAutoDispose"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/listautodispose/"
+source: "https://docs.amcharts.com/v5/reference/listautodispose/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

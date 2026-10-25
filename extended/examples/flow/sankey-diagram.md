@@ -25,18 +25,18 @@ Prompt: Create a Sankey diagram of an example energy budget: sources flow into e
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/flow-charts/
+// https://docs.amcharts.com/v5/charts/flow-charts/
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {})); // holds the flow series
 
 // each link is as wide as its value, and each node as tall as the flow through it
@@ -55,7 +55,7 @@ series.nodes.get("colors").set("step", 2);
 series.links.template.set("tooltipText", "{sourceId} to {targetId}: {value}%");
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/flow-charts/#Setting_data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
 series.data.setAll([
   // sources
   { from: "Wind & solar", to: "Electricity", value: 16 },

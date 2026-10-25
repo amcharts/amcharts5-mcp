@@ -1,10 +1,10 @@
 ---
 title: "Period selector"
-source: "https://www.amcharts.com/docs/v5/charts/stock/toolbar/period-selector/"
+source: "https://docs.amcharts.com/v5/charts/stock/toolbar/period-selector/"
 scraped: "2026-10-08"
 ---
 
-Period selector is a [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/) control that displays buttons for predefined periods. Those can be used to single-click zoom to some useful pre-defined period, such as 1 month, year-to-date, etc.
+Period selector is a [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/) control that displays buttons for predefined periods. Those can be used to single-click zoom to some useful pre-defined period, such as 1 month, year-to-date, etc.
 
 ## Adding
 
@@ -190,8 +190,8 @@ periodSelector.selectPeriod({ timeUnit: "month", count: 6 });
 
 ## Date range selector
 
-Period selector works well together with [date range selector](https://www.amcharts.com/docs/v5/charts/stock/toolbar/date-range-selector/) control.
+Period selector works well together with [date range selector](https://docs.amcharts.com/v5/charts/stock/toolbar/date-range-selector/) control.
 
 ## Related class references
 
--   [PeriodSelector](https://www.amcharts.com/docs/v5/reference/periodselector)
+-   [PeriodSelector](https://docs.amcharts.com/v5/reference/periodselector/)

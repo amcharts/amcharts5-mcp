@@ -76,11 +76,11 @@ var data = [{
 }]
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -98,7 +98,7 @@ var container = root.container.children.push(am5.Container.new(root, {
 // ==============================================
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var columnChart = container.children.push(am5xy.XYChart.new(root, {
   width: am5.p50, // half the width
   panX: false,    // no dragging the plot
@@ -109,7 +109,7 @@ var columnChart = container.children.push(am5xy.XYChart.new(root, {
 }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {});
 var yAxis = columnChart.yAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
@@ -127,7 +127,7 @@ var xAxis = columnChart.xAxes.push(am5xy.ValueAxis.new(root, {
 }));
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var columnSeries = columnChart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -141,7 +141,7 @@ columnSeries.columns.template.setAll({
 
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 columnChart.appear(1000, 100);
 
 // ==============================================

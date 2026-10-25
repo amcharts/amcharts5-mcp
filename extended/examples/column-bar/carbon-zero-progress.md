@@ -25,18 +25,18 @@ Prompt: Create a progress bar toward net zero: a row of segments counting down f
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 // The bar needs little height, so the chart takes half of the space, in the middle
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panX: false,      // the chart doesn't pan or zoom
@@ -157,7 +157,7 @@ var data = [{
 }];
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
   categoryField: "category",
   renderer: am5xy.AxisRendererX.new(root, {
@@ -186,7 +186,7 @@ yRenderer.grid.template.set("forceHidden", true); // no grid lines or labels on 
 yRenderer.labels.template.set("forceHidden", true);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
@@ -299,7 +299,7 @@ addAxisLabel("10", "10");
 addAxisLabel("5", "5");
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 series.appear(1000, 100);
 chart.appear(1000, 100);
 ```

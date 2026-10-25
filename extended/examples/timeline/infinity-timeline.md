@@ -27,7 +27,7 @@ Prompt: Create a timeline of the Apollo 11 mission along a custom path shaped li
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -342,14 +342,14 @@ series.data.setAll([
   { "value": 0, "date": "1969-07-24 20:05", "event": "CM hatch reopened." }]);
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series.appear(1000);
 chart.appear(1000, 100);
 
 // globe
 
 // Create the map chart
-// https://www.amcharts.com/docs/v5/charts/map-chart/
+// https://docs.amcharts.com/v5/charts/map-chart/
 var globe = root.container.children.push(am5map.MapChart.new(root, {
   panX: "rotateX",                      // drag sideways to spin the globe...
   panY: "rotateY",                      // ...or up and down to tilt it
@@ -374,7 +374,7 @@ globe.adapters.add("height", function (height) {
 })
 
 // Create series for background fill, first so the continents are drawn over it
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/#Background_polygon
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon
 var backgroundSeries = globe.series.push(am5map.MapPolygonSeries.new(root, {}));
 backgroundSeries.mapPolygons.template.setAll({
   fill: root.interfaceColors.get("alternativeBackground"), // dark on a light background, light on a dark one
@@ -386,7 +386,7 @@ backgroundSeries.data.push({
 });
 
 // Create main polygon series for countries
-// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
 var polygonSeries = globe.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_continentsLow
 }));
@@ -399,7 +399,7 @@ polygonSeries.mapPolygons.template.setAll({
 });
 
 // Create graticule series
-// https://www.amcharts.com/docs/v5/charts/map-chart/graticule-series/
+// https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
 // latitude and longitude lines, every 10 degrees
 var graticuleSeries = globe.series.push(am5map.GraticuleSeries.new(root, {}));
 graticuleSeries.mapLines.template.setAll({ strokeOpacity: 0.1, stroke: root.interfaceColors.get("alternativeBackground") })

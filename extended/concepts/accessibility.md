@@ -1,6 +1,6 @@
 ---
 title: "Accessibility"
-source: "https://www.amcharts.com/docs/v5/concepts/accessibility/"
+source: "https://docs.amcharts.com/v5/concepts/accessibility/"
 scraped: "2026-10-08"
 ---
 
@@ -133,7 +133,7 @@ series.columns.template.setAll({
   ariaLabel: "{name}. {categoryX} {valueY}. Use arrow keys to select other columns in this series"
 });
 
-If group members can also be dragged, e.g. nodes in a [flow](https://www.amcharts.com/docs/v5/charts/flow-charts/) or [hierarchy](https://www.amcharts.com/docs/v5/charts/hierarchy/) chart, arrow keys still move between them. To drag the focused member, hold SHIFT while pressing arrow keys.
+If group members can also be dragged, e.g. nodes in a [flow](https://docs.amcharts.com/v5/charts/flow-charts/) or [hierarchy](https://docs.amcharts.com/v5/charts/hierarchy/) chart, arrow keys still move between them. To drag the focused member, hold SHIFT while pressing arrow keys.
 
 IMPORTANTApple introduced a "Quick Nav" feature in its VoiceOver assistive utility in macOS 13. It will prevent navigation of elements within the group, and make the arrow keys work as regular TAB. To disable this feature press the left and right arrow keys simultaneously. [More info](https://support.apple.com/guide/voiceover/with-quick-nav-vo27943/mac).
 
@@ -220,7 +220,7 @@ series.columns.template.setAll({
 
 The above code will make columns in series focusable, as well as add reader text to each one with its own dynamic values.
 
-MORE INFOFor more information on binding data to text, refer to "[Data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/)" tutorial.
+MORE INFOFor more information on binding data to text, refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ## Accessibility of Root element
 
@@ -304,10 +304,10 @@ columnSeries.columns.template.setAll({
 
 Now each column will be TAB-selectable, and will trigger reader text to read out series name, category, and value.
 
-Best of all, `ariaLabel` text is compatible with [data placeholders](https://www.amcharts.com/docs/v5/concepts/formatters/data-placeholders/), so they will be replaced with real dynamic data.
+Best of all, `ariaLabel` text is compatible with [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/), so they will be replaced with real dynamic data.
 
 
-NOTEWith series, that usually have quite a few elements, it makes sense to enable [focusable element grouping](https://www.amcharts.com/docs/v5/concepts/accessibility/#Grouping_focusable_elements).
+NOTEWith series, that usually have quite a few elements, it makes sense to enable [focusable element grouping](https://docs.amcharts.com/v5/concepts/accessibility/#grouping-focusable-elements).
 
 ### Bullets
 
@@ -485,9 +485,9 @@ Some built-in controls have also default reader text with toggling instructions 
 
 E.g. the legend items we already mentioned: they will read out "Press ENTER to toggle".
 
-Toggles also tell screen readers their current state. A button with `toggleKey` is read out as pressed or not pressed. For elements that show or hide other content, the `ariaExpanded` setting tells whether it is expanded. It is set automatically on [Gantt](https://www.amcharts.com/docs/v5/charts/gantt/) tasks with subtasks and on hierarchy nodes with children.
+Toggles also tell screen readers their current state. A button with `toggleKey` is read out as pressed or not pressed. For elements that show or hide other content, the `ariaExpanded` setting tells whether it is expanded. It is set automatically on [Gantt](https://docs.amcharts.com/v5/charts/gantt/) tasks with subtasks and on hierarchy nodes with children.
 
-MORE INFOSome controls built with HTML have their own keyboard support: [export menu](https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/#Accessibility), [modal popups](https://www.amcharts.com/docs/v5/concepts/common-elements/modal-popups/), and [stock toolbar](https://www.amcharts.com/docs/v5/charts/stock/toolbar/#Accessibility).
+MORE INFOSome controls built with HTML have their own keyboard support: [export menu](https://docs.amcharts.com/v5/concepts/exporting/export-menu/#accessibility), [modal popups](https://docs.amcharts.com/v5/concepts/common-elements/modal-popups/), and [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/#accessibility).
 
 ## Events
 
@@ -515,4 +515,4 @@ series.slices.template.events.on("blur", function(ev) {
 
 ## Related tutorials
 
--   [Focusable pie slices with perfect outline](https://www.amcharts.com/docs/v5/tutorials/focusable-pie-slices-with-perfect-outline/)
+-   [Focusable pie slices with perfect outline](https://docs.amcharts.com/v5/tutorials/focusable-pie-slices-with-perfect-outline/)

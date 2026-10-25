@@ -25,18 +25,18 @@ Prompt: Create a pie chart with an export menu that has an extra Annotate item, 
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     endAngle: 270 // the pie ends at 270 degrees: a full circle from the top
@@ -44,7 +44,7 @@ var chart = root.container.children.push(
 );
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#series
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     valueField: "value",
@@ -62,7 +62,7 @@ series.labels.template.set("forceHidden", true); // no slice labels...
 series.ticks.template.set("forceHidden", true);  // ...and no lines to them
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series.data.setAll([{
   category: "Lithuania",
   value: 501.9

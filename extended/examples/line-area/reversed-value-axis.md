@@ -25,18 +25,18 @@ Prompt: Create a ranking line chart of where three teams finished in a league ta
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: true,                  // drag the plot to pan sideways...
@@ -119,11 +119,11 @@ var data = [
 ];
 
 // Add scrollbar, hidden at first
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xRenderer = am5xy.AxisRendererX.new(root, {
   minorGridEnabled: true // years whose label is skipped still get a faint grid line
 });
@@ -160,7 +160,7 @@ var yAxis = chart.yAxes.push(
 );
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   // always visible, starting at the right end (positionX 1) on the last year
   alwaysShow: true,
@@ -172,7 +172,7 @@ cursor.lineY.set("visible", false);  // only the vertical cursor line, no horizo
 cursor.lineX.set("focusable", true); // Tab to the cursor line, then move it with the arrow keys
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 
 // each series has its own bullet shape, so the lines can be told apart where they cross
 function createSeries(name, field, Shape, shapeSettings) {
@@ -250,7 +250,7 @@ chart.plotContainer.events.on("pointerover", function(){
 })
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

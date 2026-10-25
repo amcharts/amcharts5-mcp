@@ -27,18 +27,18 @@ Prompt: Create a line chart of three series of daily values of very different si
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     focusable: true, // the chart can be reached with the Tab key
@@ -54,7 +54,7 @@ var chart = root.container.children.push(
 chart.get("colors").set("step", 3);
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     maxDeviation: 0.1, // pans up to 10% past the first and last day
@@ -92,7 +92,7 @@ function createAxisAndSeries(startValue, opposite) {
   }
 
   // Add series
-  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/
   var series = chart.series.push(
     am5xy.LineSeries.new(root, {
       xAxis: xAxis,
@@ -121,7 +121,7 @@ function createAxisAndSeries(startValue, opposite) {
 }
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,    // the cursor snaps to the days
   behavior: "none" // dragging the plot pans instead of selecting a range to zoom
@@ -138,7 +138,7 @@ createAxisAndSeries(1000, true); // right axis, about 1000
 createAxisAndSeries(8000, true); // another right axis, about 8000
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 
 // Generates random data, quite different range

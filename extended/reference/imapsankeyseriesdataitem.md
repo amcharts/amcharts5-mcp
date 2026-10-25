@@ -1,7 +1,7 @@
 ---
 title: "IMapSankeySeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/imapsankeyseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/imapsankeyseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IBaseColumnSeriesDataItem"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ibasecolumnseriesdataitem/"
+source: "https://docs.amcharts.com/v5/reference/ibasecolumnseriesdataitem/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -13,10 +13,10 @@ TypeScript: `am5xy.IBaseColumnSeriesDataItem` (`import type { IBaseColumnSeriesD
 
 ## Data item fields
 
-- **fill** (`Color`) — The column's color, given by the series when `colorByDataItem` is set. _Since 5.20.4._ Docs: https://www.amcharts.com/docs/v5/charts/xy-chart/series/column-series/
+- **fill** (`Color`) — The column's color, given by the series when `colorByDataItem` is set. _Since 5.20.4._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/
 - **graphics** (`Graphics`) — The column drawn for the data item: a `RoundedRectangle`, `Slice`, `Candlestick` or `OHLC`, depending on the series.
 - **rangeGraphics** (`Graphics[]`) — The data item's columns in the series' axis ranges, one per range.
-- **legendDataItem** (`DataItem<ILegendDataItem>`) — The `Legend` data item for this data item, when the series' data items feed a legend. Docs: https://www.amcharts.com/docs/v5/concepts/legend/#Data_item_list
+- **legendDataItem** (`DataItem<ILegendDataItem>`) — The `Legend` data item for this data item, when the series' data items feed a legend. Docs: https://docs.amcharts.com/v5/concepts/legend/#data-item-list
 
 ## Other inherited data item fields
 

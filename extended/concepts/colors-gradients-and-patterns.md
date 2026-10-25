@@ -1,14 +1,14 @@
 ---
 title: "Colors, gradients, and patterns"
-source: "https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/"
+source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/"
 scraped: "2026-03-15"
 ---
 
 ## Colors
 
-Colors in amCharts 5 are represented by a `[Color](https://www.amcharts.com/docs/v5/reference/color/)` object.
+Colors in amCharts 5 are represented by a `[Color](https://docs.amcharts.com/v5/reference/color/)` object.
 
-`Color` class also has a bunch of static [methods](https://www.amcharts.com/docs/v5/reference/color/#Methods) that can be used to convert hex numbers or RGB color identifiers into proper `Color` objects, but the most common method is to use a standalone `am5.color()` function which can convert any number or string into a `Color` object:
+`Color` class also has a bunch of static [methods](https://docs.amcharts.com/v5/reference/color/#methods) that can be used to convert hex numbers or RGB color identifiers into proper `Color` objects, but the most common method is to use a standalone `am5.color()` function which can convert any number or string into a `Color` object:
 
 series.set("fill", am5.color(0xff0000)); // set Series color to red
 series2.set("fill", am5.color("#00ff00")); // set Series color to green
@@ -35,19 +35,19 @@ am5.Color.interpolateColors(0.5, scale);  // the "warning" yellow
 am5.Color.interpolateColors(0.25, scale); // halfway between red and yellow
 ```
 
-To color series elements by value on such a scale, use a heat rule's [`stops`](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#multiple-stops) setting, and show it in a heat legend with its [`colors`](https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/#More_than_two_colors) setting.
+To color series elements by value on such a scale, use a heat rule's [`stops`](https://docs.amcharts.com/v5/concepts/settings/heat-rules/#multiple-stops) setting, and show it in a heat legend with its [`colors`](https://docs.amcharts.com/v5/concepts/legend/heat-legend/#more-than-two-colors) setting.
 
 ## Color sets
 
 Colors sets are basically collections of colors with ability to generate new colors according to certain rules as needed.
 
-In most scenarios, a chart would grab next color from the color set using its `[next()](https://www.amcharts.com/docs/v5/reference/colorset/#next_method)` method.
+In most scenarios, a chart would grab next color from the color set using its `[next()](https://docs.amcharts.com/v5/reference/colorset/#next_method)` method.
 
 Color set has internal counter, so it will produce new color every time.
 
 ### Setting own list of colors
 
-A color set comes with a pre-defined list of colors, depending on the [theme](https://www.amcharts.com/docs/v5/concepts/themes/) we are using (if any).
+A color set comes with a pre-defined list of colors, depending on the [theme](https://docs.amcharts.com/v5/concepts/themes/) we are using (if any).
 
 There is a number of ways to override the list as needed.
 
@@ -69,7 +69,7 @@ chart.get("colors").set("colors", \[
   am5.color(0xbb9f06)
 \]);
 
-Another option is to [modify default theme](https://www.amcharts.com/docs/v5/concepts/themes/#Modifying_default_theme):
+Another option is to [modify default theme](https://docs.amcharts.com/v5/concepts/themes/):
 
 root.defaultTheme.rule("ColorSet").set("colors", \[
   am5.color(0x095256),
@@ -87,7 +87,7 @@ root.defaultTheme.rule("ColorSet").set("colors", \[
   am5.color(0xbb9f06)
 \]);
 
-Obviously, creating own [custom theme](https://www.amcharts.com/docs/v5/concepts/themes/creating-themes/) is also an option.
+Obviously, creating own [custom theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/) is also an option.
 
 NOTESome chart types (e.g. pie chart) use `colors` setting on its series, rather than chart itself. In those cases you would need to use `series.get("colors")` to modify color list.
 
@@ -257,9 +257,9 @@ Color to express negative value (e.g. in candlesticks).
 
 0xf2c230
 
-A yellow between `negative` and `positive`: a warning, or the middle of a scale from bad to good (e.g. heat rule [`stops`](https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/#multiple-stops)).
+A yellow between `negative` and `positive`: a warning, or the middle of a scale from bad to good (e.g. heat rule [`stops`](https://docs.amcharts.com/v5/concepts/settings/heat-rules/#multiple-stops)).
 
-NOTEDefault colors may be overridden by [themes](https://www.amcharts.com/docs/v5/concepts/themes/).
+NOTEDefault colors may be overridden by [themes](https://docs.amcharts.com/v5/concepts/themes/).
 
 ### Using interface colors
 
@@ -304,7 +304,7 @@ The above will make all grid lines (as well as some other elements that use `gri
 
 ## Dashed lines
 
-To make a line (stroke) dashed, we can use element's `[strokeDasharray](https://www.amcharts.com/docs/v5/reference/graphics/#strokeDasharray_setting)` setting.
+To make a line (stroke) dashed, we can use element's `[strokeDasharray](https://docs.amcharts.com/v5/reference/graphics/#strokeDasharray_setting)` setting.
 
 It needs to be set to an array of numbers, that define dash pattern.
 
@@ -332,16 +332,16 @@ series.strokes.template.setAll({
 
 ## Gradients
 
-For information on how to create gradients for fills and strokes, refer to "[Gradients](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/gradients/)" tutorial.
+For information on how to create gradients for fills and strokes, refer to "[Gradients](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/)" tutorial.
 
 ## Patterns
 
-For information on how to create patterned fills and strokes, refer to "[Patterns](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/patterns/)" tutorial.
+For information on how to create patterned fills and strokes, refer to "[Patterns](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/)" tutorial.
 
 ## Shadows
 
-For information on how to enable shadows on graphic elements, refer to "[Shadows](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/shadows/)" tutorial.
+For information on how to enable shadows on graphic elements, refer to "[Shadows](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/shadows/)" tutorial.
 
 ## Filters
 
-For information on how to apply various filters on graphic elements, refer to "[Filters](https://www.amcharts.com/docs/v5/concepts/colors-gradients-and-patterns/filters/)" tutorial.
+For information on how to apply various filters on graphic elements, refer to "[Filters](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/)" tutorial.

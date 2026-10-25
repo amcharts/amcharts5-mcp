@@ -1,7 +1,7 @@
 ---
 title: "SeriesTypeControl"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/seriestypecontrol/"
+source: "https://docs.amcharts.com/v5/reference/seriestypecontrol/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

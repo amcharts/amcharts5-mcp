@@ -1,6 +1,6 @@
 ---
 title: "Concepts"
-source: "https://www.amcharts.com/docs/v5/concepts/"
+source: "https://docs.amcharts.com/v5/concepts/"
 scraped: "2026-03-15"
 ---
 

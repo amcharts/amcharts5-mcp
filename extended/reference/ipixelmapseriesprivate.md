@@ -1,7 +1,7 @@
 ---
 title: "IPixelMapSeriesPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ipixelmapseriesprivate/"
+source: "https://docs.amcharts.com/v5/reference/ipixelmapseriesprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

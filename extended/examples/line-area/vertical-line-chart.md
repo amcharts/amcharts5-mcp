@@ -25,11 +25,11 @@ Prompt: Create a vertical line chart with the dates running up the Y axis and th
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
@@ -191,7 +191,7 @@ var data = [
 ];
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     focusable: true, // the chart can be reached with the Tab key
@@ -205,7 +205,7 @@ var chart = root.container.children.push(
 );
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yAxis = chart.yAxes.push(
   am5xy.DateAxis.new(root, {
     maxDeviation: 0.1, // can be panned 10% of its length past the first or last day
@@ -229,7 +229,7 @@ var xAxis = chart.xAxes.push(
 );
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(
   am5xy.LineSeries.new(root, {
     minBulletDistance: 10, // dots hide when the points get closer than 10px
@@ -250,7 +250,7 @@ var series = chart.series.push(
 );
 
 // Set up data processor to parse string dates
-// https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
+// https://docs.amcharts.com/v5/concepts/data/#pre-processing-data
 series.data.processor = am5.DataProcessor.new(root, {
   dateFormat: "yyyy-MM-dd",
   dateFields: ["date"]
@@ -303,7 +303,7 @@ range1DataItem.get("axisFill").setAll({
 chart.plotContainer.children.moveValue(chart.topGridContainer, 0);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set(
   "cursor",
   am5xy.XYCursor.new(root, {
@@ -318,7 +318,7 @@ cursor.lineX.set("visible", false); // no vertical cursor line: the horizontal o
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

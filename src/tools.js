@@ -22,16 +22,18 @@ const FRAMEWORK_NOTE = `
 ## In a React, Vue, Angular, Svelte or React Native app
 Use amCharts' package for the framework: \`@amcharts/amcharts5-react\`, \`-vue\`, \`-angular\` or \`-svelte\`. It creates and disposes the root, and works with server rendering. Its setup function receives \`root\`, so put the code above that follows \`am5.Root.new(...)\` inside it, e.g. in React \`const { ref, result } = useAmChart((root) => { /* the chart */ return { series }; }, []);\` with \`<div ref={ref} style={{ height: "500px" }} />\`. Deps such as \`[data]\` make the chart again from scratch; to change data in place, return what you need and update it through \`result\`. \`@amcharts/amcharts5-react-native\` takes the chart code as a string instead. Details: \`get_section("SKILL", "Frameworks")\`, and \`get_doc("getting-started/integrations/react")\` (also \`vue\`, \`angular\`, \`sveltekit\`, \`next-js\`, \`nuxt\`, \`react-native\`).`;
 
-// A docs path from what an agent holds: an amcharts.com address
-// ("https://www.amcharts.com/docs/v5/concepts/events/#Global_events"),
-// a site path ("/docs/v5/concepts/events") or the tools' own form
-// ("concepts/events", "skill/xy.md"). Returns the tools' form.
+// A docs path from what an agent holds: a docs address
+// ("https://docs.amcharts.com/v5/concepts/events/#adding-a-handler", the
+// page's Markdown ".../v5/concepts/events.md", or the address before the docs
+// moved, "https://www.amcharts.com/docs/v5/concepts/events/#Global_events"),
+// a site path ("/v5/concepts/events", "/docs/v5/concepts/events") or the
+// tools' own form ("concepts/events", "skill/xy.md"). Returns the tools' form.
 function docPathFromInput(input) {
   return String(input ?? "").trim()
     .replace(/[?#].*$/, "")
-    .replace(/^(https?:\/\/)?(www\.)?amcharts\.com(?=\/|$)/i, "")
+    .replace(/^(https?:\/\/)?((www|docs)\.)?amcharts\.com(?=\/|$)/i, "")
     .replace(/^\/+/, "")
-    .replace(/^docs\/v5\//i, "")
+    .replace(/^(docs\/)?v5\//i, "")
     .replace(/\/+$/, "")
     .replace(/\.md$/i, "");
 }

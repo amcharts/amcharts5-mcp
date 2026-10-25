@@ -1,7 +1,7 @@
 ---
 title: "PixelMapSeries"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/pixelmapseries/"
+source: "https://docs.amcharts.com/v5/reference/pixelmapseries/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
@@ -15,7 +15,7 @@ In SVG export (`renderToSVG`) each polygon's flat pixels are a group with the po
 
 Pixels lie on the surface of the map, so on a globe they turn and shrink towards the edge. With `uniform: true` they sit on an even grid on screen instead.
 
-_Since 5.21.0._ Docs: https://www.amcharts.com/docs/v5/charts/map-chart/pixel-map-series/
+_Since 5.21.0._ Docs: https://docs.amcharts.com/v5/charts/map-chart/pixel-map-series/
 
 ## Import
 

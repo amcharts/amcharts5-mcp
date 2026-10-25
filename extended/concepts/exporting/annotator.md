@@ -1,6 +1,6 @@
 ---
 title: "Annotator"
-source: "https://www.amcharts.com/docs/v5/concepts/exporting/annotator/"
+source: "https://docs.amcharts.com/v5/concepts/exporting/annotator/"
 scraped: "2026-03-15"
 ---
 
@@ -28,11 +28,11 @@ For vanilla JavaScript applications and web pages, you can use "script" version:
 
 <script src="https://cdn.amcharts.com/lib/5/plugins/exporting.js"></script>
 
-MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://www.amcharts.com/docs/v5/getting-started/)" tutorial.
+MORE INFOFor more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Enabling
 
-Annotator is instantiated just like any other object in amCharts 5: by calling [`new()` method](https://www.amcharts.com/docs/v5/getting-started/#New_element_syntax) of its class, passing in [root element](https://www.amcharts.com/docs/v5/getting-started/#Root_element) and settings object.
+Annotator is instantiated just like any other object in amCharts 5: by calling [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) of its class, passing in [root element](https://docs.amcharts.com/v5/getting-started/#root-element) and settings object.
 
 let annotator = am5plugins\_exporting.Annotator.new(root, {});
 
@@ -74,7 +74,7 @@ annotator.open();
 
 ### Via export menu
 
-We can add Annotator to export menu by manually [inserting it into menu items](https://www.amcharts.com/docs/v5/concepts/exporting/export-menu/#Adding_custom_items):
+We can add Annotator to export menu by manually [inserting it into menu items](https://docs.amcharts.com/v5/concepts/exporting/export-menu/#adding-custom-items):
 
 let menuitems = exporting.get("menu").get("items");
 

@@ -73,18 +73,18 @@ for (var i = 0; i < names.length; i++) {
 }
 
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
+// https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     panX: false,     // no panning sideways
@@ -101,7 +101,7 @@ var chart = root.container.children.push(
 chart.bottomAxesContainer.set("layout", root.horizontalLayout); // the x axes sit side by side, one per pane
 
 // Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
 var yRenderer = am5xy.AxisRendererY.new(root, {
   minGridDistance: 15 // names may sit 15px apart, so most get a label
 });
@@ -126,7 +126,7 @@ var yAxis = chart.yAxes.push(
 yAxis.data.setAll(data);
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 // one pane: a value axis with its title, and a column or line series on it
 function createSeries(field, name, margin, column) {
   var xRenderer = am5xy.AxisRendererX.new(root, {
@@ -219,14 +219,14 @@ createSeries("value2", "Calls made", 30, false); // a line, 30px from the pane b
 createSeries("value3", "Revenue, $k", 30, false);
 
 // Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none", // a drag over the plot pans instead of zooming
   yAxis: yAxis
 }));
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
+// https://docs.amcharts.com/v5/concepts/animations/
 chart.appear(1000, 100);
 ```
 

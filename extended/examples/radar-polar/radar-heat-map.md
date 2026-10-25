@@ -25,18 +25,18 @@ Prompt: Create a radar heat map with the 24 hours of the day around the circle a
 
 ```javascript
 // Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+// https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_Responsive.new(root)
 ]);
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/radar-chart/
+// https://docs.amcharts.com/v5/charts/radar-chart/
 var chart = root.container.children.push(  am5radar.RadarChart.new(root, {
     innerRadius: am5.percent(35), // a hole in the middle, 35% of the radius
     panX: false,                  // no dragging the plot around
@@ -48,14 +48,14 @@ var chart = root.container.children.push(  am5radar.RadarChart.new(root, {
   }));
 
 // Add cursor: drag around the ring to zoom in on a few hours
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Cursor
+// https://docs.amcharts.com/v5/charts/radar-chart/#cursor
 var cursor = chart.set("cursor", am5radar.RadarCursor.new(root, {
   behavior: "zoomX"
 }));
 cursor.lineY.set("visible", false); // no circle through the pointer, only the line from the center
 
 // Create axes and their renderers
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
 var yRenderer = am5radar.AxisRendererRadial.new(root, {
   visible: false,      // no axis line; the labels still show
   axisAngle: 90,       // the weekday names sit at the bottom of their rings
@@ -100,7 +100,7 @@ var xAxis = chart.xAxes.push(  am5xy.CategoryAxis.new(root, {
   }));
 
 // Create series
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+// https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
 var series = chart.series.push(  am5radar.RadarColumnSeries.new(root, {
     calculateAggregates: true, // works out the lowest and highest values, for the heat rules and legend
     // gaps between the cells in the background color, so they work in light and dark mode
@@ -136,7 +136,7 @@ series.events.on("datavalidated", function () {
 });
 
 // Set up heat rules
-// https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+// https://docs.amcharts.com/v5/concepts/settings/heat-rules/
 series.set("heatRules", [{
   target: series.columns.template,
   min: chart.get("colors").getIndex(0), // the lowest value in the theme's first color...
@@ -146,7 +146,7 @@ series.set("heatRules", [{
 }]);
 
 // Add heat legend
-// https://www.amcharts.com/docs/v5/concepts/legend/heat-legend/
+// https://docs.amcharts.com/v5/concepts/legend/heat-legend/
 var heatLegend = chart.children.push(  am5.HeatLegend.new(root, {
     orientation: "horizontal",       // a horizontal color bar
     startColor: chart.get("colors").getIndex(0), // the same colors as the heat rules
@@ -154,7 +154,7 @@ var heatLegend = chart.children.push(  am5.HeatLegend.new(root, {
   }));
 
 // Set data
-// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+// https://docs.amcharts.com/v5/charts/radar-chart/#setting-data
 var data = [{
   hour: "12am",
   weekday: "Sunday",
@@ -870,7 +870,7 @@ xAxis.data.setAll([
 ]);
 
 // Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 chart.appear(1000, 100);
 ```
 

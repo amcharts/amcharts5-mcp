@@ -1,7 +1,7 @@
 ---
 title: "TextFormatter"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/textformatter/"
+source: "https://docs.amcharts.com/v5/reference/textformatter/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "IBullBearPowerPrivate"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ibullbearpowerprivate/"
+source: "https://docs.amcharts.com/v5/reference/ibullbearpowerprivate/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

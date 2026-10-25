@@ -1,13 +1,13 @@
 ---
 title: "MovingAverage"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/movingaverage/"
+source: "https://docs.amcharts.com/v5/reference/movingaverage/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Moving Average indicator: a line over the main series, averaging `field` over the last `period` data items.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

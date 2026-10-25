@@ -27,7 +27,7 @@ Prompt: Create a spiral timeline chart whose date axis starts in the middle and 
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
+// https://docs.amcharts.com/v5/concepts/themes/
 var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
@@ -184,7 +184,7 @@ var data = [{
 }];
 
 // Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
 var series = chart.series.push(am5timeline.CurveColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -287,7 +287,7 @@ yAxis.data.setAll([
 ]);
 
 // Legend: one item per module, in its color
-// https://www.amcharts.com/docs/v5/concepts/legend/
+// https://docs.amcharts.com/v5/concepts/legend/
 var legend = chart.children.push(am5.Legend.new(root, {
   nameField: "name",    // legend items from plain data: the name...
   fillField: "color",   // ...and the color, for the marker's fill...
@@ -335,7 +335,7 @@ responsive.addRule({
 });
 
 // Animate chart and series in
-// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
 series.appear(1000);
 chart.appear(1000, 100);
 ```

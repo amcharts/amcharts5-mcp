@@ -1,7 +1,7 @@
 ---
 title: "Registry"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/registry/"
+source: "https://docs.amcharts.com/v5/reference/registry/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

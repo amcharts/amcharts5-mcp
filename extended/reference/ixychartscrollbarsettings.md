@@ -1,7 +1,7 @@
 ---
 title: "IXYChartScrollbarSettings"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/ixychartscrollbarsettings/"
+source: "https://docs.amcharts.com/v5/reference/ixychartscrollbarsettings/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 

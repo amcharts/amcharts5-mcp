@@ -1,6 +1,6 @@
 ---
 title: "Date axis"
-source: "https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/"
+source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/"
 scraped: "2026-10-08"
 ---
 
@@ -14,7 +14,7 @@ IMPORTANTDate axis expects series data to be sorted in ascending order. Otherwis
 
 The single most important setting for a date axis is `baseInterval` which describes granularity of data used in the chart.
 
-The value of `baseInterval` is an object of type `[ITimeInterval](https://www.amcharts.com/docs/v5/reference/itimeinterval/)` which has two keys:
+The value of `baseInterval` is an object of type `[ITimeInterval](https://docs.amcharts.com/v5/reference/itimeinterval/)` which has two keys:
 
 -   `timeUnit` - what time unit is used in data.
 -   `count` - number of time units.
@@ -71,11 +71,11 @@ Zooming in. Granularity is reverting to 1 day.
 
 ### Customizing grid granularity
 
-We can control to what time intervals we want grid of the date axis to switch by setting its `[gridIntervals](https://www.amcharts.com/docs/v5/reference/dateaxis/#gridIntervals_setting)` setting.
+We can control to what time intervals we want grid of the date axis to switch by setting its `[gridIntervals](https://docs.amcharts.com/v5/reference/dateaxis/#gridIntervals_setting)` setting.
 
-It's an array of `[ITimeInterval](https://www.amcharts.com/docs/v5/reference/itimeinterval/)` objects, each specifying an allowed option for grid lines.
+It's an array of `[ITimeInterval](https://docs.amcharts.com/v5/reference/itimeinterval/)` objects, each specifying an allowed option for grid lines.
 
-Date axis will use the most granular interval that satisfies [grid density restrictions](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Grid_density).
+Date axis will use the most granular interval that satisfies [grid density restrictions](https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-density).
 
 For example, let's restrict grid to just days and months:
 
@@ -154,7 +154,7 @@ The default value for `gridIntervals` is:
 
 The granularity of grid also may affect how related labels and ticks are placed.
 
-For more information about how to position labels/ticks with their `location` and `multiLocation` settings, visit "[XY chart axes: Location of axis elements](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#location-of-axis-elements)" tutorial.
+For more information about how to position labels/ticks with their `location` and `multiLocation` settings, visit "[XY chart axes: Location of axis elements](https://docs.amcharts.com/v5/charts/xy-chart/axes/#location-of-axis-elements)" tutorial.
 
 ## Date formats
 
@@ -162,11 +162,11 @@ For more information about how to position labels/ticks with their `location` an
 
 The current grid granularity determines the date/time format of the labels, too.
 
-Instead of using date format as set in a [global date formatter](https://www.amcharts.com/docs/v5/concepts/formatters/formatting-dates/#Formatter_object), date axis defines own list of formats, suitable for each time unit a grid interval its grid can have.
+Instead of using date format as set in a [global date formatter](https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/#formatter-object), date axis defines own list of formats, suitable for each time unit a grid interval its grid can have.
 
 #### Label date formats
 
-The formats used for each time unit are set in date axis' `[dateFormats](https://www.amcharts.com/docs/v5/reference/dateaxis/#dateFormats_setting)` setting.
+The formats used for each time unit are set in date axis' `[dateFormats](https://docs.amcharts.com/v5/reference/dateaxis/#dateFormats_setting)` setting.
 
 It's an object with a key corresponding to each time unit ( `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, `"year"`) with a value corresponding to its format.
 
@@ -199,7 +199,7 @@ Default format
 
 A label representing start of a period, e.g. start of the month when grid uses daily time unit, will be formatted according to different format, by default.
 
-We can turn this behavior off by setting `[markUnitChange](https://www.amcharts.com/docs/v5/reference/dateaxis/#markUnitChange_setting)` setting to `false` on a date axis.
+We can turn this behavior off by setting `[markUnitChange](https://docs.amcharts.com/v5/reference/dateaxis/#markUnitChange_setting)` setting to `false` on a date axis.
 
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
@@ -219,7 +219,7 @@ var xAxis = chart.xAxes.push(
 
 We can also override the date format for such labels.
 
-Similarly to `dateFormats` there's another setting: `[periodChangeDateFormats](https://www.amcharts.com/docs/v5/reference/dateaxis/#periodChangeDateFormats_setting)`.
+Similarly to `dateFormats` there's another setting: `[periodChangeDateFormats](https://docs.amcharts.com/v5/reference/dateaxis/#periodChangeDateFormats_setting)`.
 
 Formats from `periodChangeDateFormats` will be used only for the period beginning labels, like for January 1st in the following example.
 
@@ -236,7 +236,7 @@ Both label and period label formats customized
 
 #### Minor grid formats
 
-If you have "[minor grid](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Minor_grid)" enabled, its labels (if enabled) will be formatted using the same date formats as the regular axis labels.
+If you have "[minor grid](https://docs.amcharts.com/v5/charts/xy-chart/axes/#minor-grid)" enabled, its labels (if enabled) will be formatted using the same date formats as the regular axis labels.
 
 Should we nee to, we can specify different formats using axis' setting `minorDateFormats`.
 
@@ -270,7 +270,7 @@ There are a few aspects and settings that will affect date format shown in a dat
 
 #### Base interval based format
 
-Axis will use the date format suitable for the granularity of the data (as set via `baseInterval`) for its tooltip (when [used with cursor](https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/#Axis_tooltips)).
+Axis will use the date format suitable for the granularity of the data (as set via `baseInterval`) for its tooltip (when [used with cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/#axis-tooltips)).
 
 There are defaults set for each available `baseInterval` that provides the best experience.
 
@@ -280,7 +280,7 @@ Tooltip would show a more descriptive information for those, i.e. "Jan 1, 2022",
 
 These can be overridden using date axis' `tooltipDateFormats` setting.
 
-It works exactly the same way as [label formats](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#Label_date_formats), i.e. by setting appropriate base interval key:
+It works exactly the same way as [label formats](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#label-date-formats), i.e. by setting appropriate base interval key:
 
 xAxis.get("tooltipDateFormats")\["day"\] = "MM/dd";
 
@@ -301,7 +301,7 @@ Here's how defaults look like in International English locale:
 
 #### Fixed tooltip format
 
-If we do not want to define different format for each base interval, we can also override it with a single setting: `[tooltipDateFormat](https://www.amcharts.com/docs/v5/reference/valueaxis/#tooltipNumberFormat_setting)`.
+If we do not want to define different format for each base interval, we can also override it with a single setting: `[tooltipDateFormat](https://docs.amcharts.com/v5/reference/valueaxis/#tooltipNumberFormat_setting)`.
 
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
@@ -323,7 +323,7 @@ A date axis is divided into cells by grid in certain increments. For example the
 
 Normally, an axis tooltip will display timestamp representing cell's beginning - same as corresponding axis tooltip, even if it does not correspond with the actual position of the cursor line.
 
-This is controlled by axis' `[tooltipIntervalOffset](https://www.amcharts.com/docs/v5/reference/idateaxissettings/#tooltipIntervalOffset_property)` setting.
+This is controlled by axis' `[tooltipIntervalOffset](https://docs.amcharts.com/v5/reference/idateaxissettings/#tooltipIntervalOffset_property)` setting.
 
 It's a numeric value denoting how timestamp used for the tooltip should be offset relatively to the length of the cell.
 
@@ -348,7 +348,7 @@ There are a few ways to override those start and end timestamps.
 
 ### Custom scope
 
-We can set start date using `[min](https://www.amcharts.com/docs/v5/reference/dateaxis/#min_setting)` setting of the axis. Similarly, end date can be overridden using `[max](https://www.amcharts.com/docs/v5/reference/dateaxis/#max_setting)`.
+We can set start date using `[min](https://docs.amcharts.com/v5/reference/dateaxis/#min_setting)` setting of the axis. Similarly, end date can be overridden using `[max](https://docs.amcharts.com/v5/reference/dateaxis/#max_setting)`.
 
 Those are numeric values of timestamps:
 
@@ -374,7 +374,7 @@ We can specify both `min` and `max`, or just one of them. If either `min` or `ma
 
 ### Relative scope extension
 
-We can also make date axis expand its scope relatively to automatically-calculated range, using its `[extraMin](https://www.amcharts.com/docs/v5/reference/dateaxis/#extraMin_setting)` and `[extraMax](https://www.amcharts.com/docs/v5/reference/dateaxis/#extraMax_setting)` settings.
+We can also make date axis expand its scope relatively to automatically-calculated range, using its `[extraMin](https://docs.amcharts.com/v5/reference/dateaxis/#extraMin_setting)` and `[extraMax](https://docs.amcharts.com/v5/reference/dateaxis/#extraMax_setting)` settings.
 
 Those are relative values indicating how much of the automatically-calculated value range to add to either `min` or `max`.
 
@@ -411,7 +411,7 @@ Here's a very basic chart with data grouping and 50K data points:
 
 ### Enabling grouping
 
-To enable grouping simply set axis' `[groupData](https://www.amcharts.com/docs/v5/reference/dateaxis/#groupData_setting)` setting to `true`:
+To enable grouping simply set axis' `[groupData](https://docs.amcharts.com/v5/reference/dateaxis/#groupData_setting)` setting to `true`:
 
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
@@ -445,7 +445,7 @@ The chart now goes on to months, which gives us just 120 aggregate data items. T
 
 If zoom changes, the chart will re-evaluate the current range and number of intervals in it, and will adjust granularity of displayed data items as necessary.
 
-The threshold can be change using `[groupCount](https://www.amcharts.com/docs/v5/reference/dateaxis/#groupCount_setting)` setting:
+The threshold can be change using `[groupCount](https://docs.amcharts.com/v5/reference/dateaxis/#groupCount_setting)` setting:
 
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
@@ -514,7 +514,7 @@ var xAxis = chart.xAxes.push(
 
 We can also force the chart to group data items into specific interval, regardless if the threshold (`groupCount`) hasn't been passed.
 
-The setting `[groupInterval](https://www.amcharts.com/docs/v5/reference/dateaxis/#groupInterval_setting)` is for that:
+The setting `[groupInterval](https://docs.amcharts.com/v5/reference/dateaxis/#groupInterval_setting)` is for that:
 
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
@@ -761,11 +761,11 @@ To optimize the performance, we can follow these guidelines:
 
 #### 1) Use correct data granularity
 
-Make sure that [the `baseInterval` setting](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#data-granularity) is set to an absolute highest setting that suits the actual data.
+Make sure that [the `baseInterval` setting](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#data-granularity) is set to an absolute highest setting that suits the actual data.
 
 #### 2) Tweak group intervals
 
-Normally, series will calculate its aggregate values for all available [grouping intervals](https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/#grouping-intervals).
+Normally, series will calculate its aggregate values for all available [grouping intervals](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#grouping-intervals).
 
 For some data sets some of the intervals might not be applicable and needed.
 
@@ -815,13 +815,13 @@ series.events.once("datavalidated", function(ev) {
   ev.target.get("xAxis").zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
 });
 
-Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://www.amcharts.com/docs/v5/charts/xy-chart/zoom-and-pan/#Pre_zooming_axes)".
+Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
 ## Events
 
 Date axis does not have specific events that are triggered when it is zoomed.
 
-Instead, we can use private setting change events on `[selectionMin](https://www.amcharts.com/docs/v5/reference/dateaxis/#selectionMin_setting)` and `[selectionMax](https://www.amcharts.com/docs/v5/reference/dateaxis/#selectionMax_setting)` private settings:
+Instead, we can use private setting change events on `[selectionMin](https://docs.amcharts.com/v5/reference/dateaxis/#selectionMin_setting)` and `[selectionMax](https://docs.amcharts.com/v5/reference/dateaxis/#selectionMax_setting)` private settings:
 
 xAxis.onPrivate("selectionMin", function(value, target) {
   var start = new Date(value);
@@ -852,7 +852,7 @@ In a nutshell it's a `DateAxis` that removes time periods that there is no data 
 
 It can be used to display irregularly-spaced date-based data, where maintaining natural time scale is not important, e.g. removing weekends from the axis, because there is not data for those days.
 
-For more information, please refer to "[Gapless date axis](https://www.amcharts.com/docs/v5/charts/xy-chart/gapless-date-axis/)" tutorial.
+For more information, please refer to "[Gapless date axis](https://docs.amcharts.com/v5/charts/xy-chart/gapless-date-axis/)" tutorial.
 
 Regular date axis with irregular data
 
@@ -860,13 +860,13 @@ Category date axis with irregular data
 
 ## Related tutorials
 
--   [Additional axis tooltip to display totals](https://www.amcharts.com/docs/v5/tutorials/additional-axis-tooltip-to-display-totals/)
--   [Location of items on date axis and date-based series](https://www.amcharts.com/docs/v5/tutorials/location-of-items-on-date-axis-and-date-based-series/)
--   [Different bullet styling of grouped data items](https://www.amcharts.com/docs/v5/tutorials/different-bullet-styling-of-grouped-data-items/)
--   [Axis zoom end event](https://www.amcharts.com/docs/v5/tutorials/axis-zoom-end-event/)
--   [Dual date axis with both month and year labels](https://www.amcharts.com/docs/v5/tutorials/dual-date-axis-with-both-month-and-year-labels/)
--   [Show a range of dates in a tooltip of a DateAxis when grouping data](https://www.amcharts.com/docs/v5/tutorials/show-a-range-of-dates-in-a-tooltip-of-a-dateaxis-when-grouping-data/)
+-   [Additional axis tooltip to display totals](https://docs.amcharts.com/v5/tutorials/additional-axis-tooltip-to-display-totals/)
+-   [Location of items on date axis and date-based series](https://docs.amcharts.com/v5/tutorials/location-of-items-on-date-axis-and-date-based-series/)
+-   [Different bullet styling of grouped data items](https://docs.amcharts.com/v5/tutorials/different-bullet-styling-of-grouped-data-items/)
+-   [Axis zoom end event](https://docs.amcharts.com/v5/tutorials/axis-zoom-end-event/)
+-   [Dual date axis with both month and year labels](https://docs.amcharts.com/v5/tutorials/dual-date-axis-with-both-month-and-year-labels/)
+-   [Show a range of dates in a tooltip of a DateAxis when grouping data](https://docs.amcharts.com/v5/tutorials/show-a-range-of-dates-in-a-tooltip-of-a-dateaxis-when-grouping-data/)
 
 ## Related class references
 
--   [DateAxis](https://www.amcharts.com/docs/v5/reference/dateaxis)
+-   [DateAxis](https://docs.amcharts.com/v5/reference/dateaxis/)

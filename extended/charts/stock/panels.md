@@ -1,10 +1,10 @@
 ---
 title: "Panels"
-source: "https://www.amcharts.com/docs/v5/charts/stock/panels/"
+source: "https://docs.amcharts.com/v5/charts/stock/panels/"
 scraped: "2026-03-15"
 ---
 
-Panels are instances of `StockPanel` class (which in turn extends an `XYChart`) comprising the [Stock chart](https://www.amcharts.com/docs/v5/charts/stock/). Zoom state of their X axes as well as cursor are automatically synced by the stock chart itself.
+Panels are instances of `StockPanel` class (which in turn extends an `XYChart`) comprising the [Stock chart](https://docs.amcharts.com/v5/charts/stock/). Zoom state of their X axes as well as cursor are automatically synced by the stock chart itself.
 
 ## Adding panels
 
@@ -28,7 +28,7 @@ var mainPanel = stockChart.panels.push(am5stock.StockPanel.new(root, {
   panY: true
 }));
 
-MORE INFOFor a complete guide on how to configure an a panel (XY chart), please refer to "[XY chart](https://www.amcharts.com/docs/v5/charts/xy-chart/)" tutorial section.
+MORE INFOFor a complete guide on how to configure an a panel (XY chart), please refer to "[XY chart](https://docs.amcharts.com/v5/charts/xy-chart/)" tutorial section.
 
 ## Panel controls
 
@@ -67,7 +67,7 @@ mainPanel.panelControls.closeButton.set("forceHidden");
 mainPanel.panelControls.expandButton.set("forceHidden");
 mainPanel.panelControls.closeButton.set("forceHidden");
 
-NOTEClose button will be automatically disabled for the panel that holds the [main series](https://www.amcharts.com/docs/v5/charts/stock/#Setting_main_series), if there's one set.
+NOTEClose button will be automatically disabled for the panel that holds the [main series](https://docs.amcharts.com/v5/charts/stock/#setting-main-series), if there's one set.
 
 ### Disabling panel resizer
 

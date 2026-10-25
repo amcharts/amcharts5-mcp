@@ -1,13 +1,13 @@
 ---
 title: "ChartIndicator"
 type: "class"
-source: "https://www.amcharts.com/docs/v5/reference/chartindicator/"
+source: "https://docs.amcharts.com/v5/reference/chartindicator/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
 Base class for `StockChart` indicators drawn in a panel of their own.
 
-Docs: https://www.amcharts.com/docs/v5/charts/stock/indicators/
+Docs: https://docs.amcharts.com/v5/charts/stock/indicators/
 
 ## Import
 

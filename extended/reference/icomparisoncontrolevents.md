@@ -1,7 +1,7 @@
 ---
 title: "IComparisonControlEvents"
 type: "interface"
-source: "https://www.amcharts.com/docs/v5/reference/icomparisoncontrolevents/"
+source: "https://docs.amcharts.com/v5/reference/icomparisoncontrolevents/"
 generatedFrom: "@amcharts/amcharts5@5.21.4"
 ---
 
