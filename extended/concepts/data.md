@@ -14,7 +14,7 @@ It's not a simple storage for data but rather object based on class `ListData`.
 
 Any data manipulation - setting data, inserting, removing, or updating values for data points - is done via many of the `ListData` methods. The object will take care of the rest - no need to let the chart know we've updated something - it will just happen.
 
-In this tutorial, we will cover the most common of `ListData`'s methods, but make sure you visit its [full class reference](https://docs.amcharts.com/v5/reference/datalist/#methods) for more options.
+In this tutorial, we will cover the most common of `ListData`'s methods, but make sure you visit its [full class reference](https://docs.amcharts.com/v5/reference/listdata/#methods) for more options.
 
 ## Setting data
 

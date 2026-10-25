@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `concepts/using-formatters/` → `concepts/formatters/`
     - `concepts/common-elements/polygon/` → `…/graphics/`
     - and, from the library's typings and examples: `themes/`, `concepts/cors/` and `tutorials/creating-translations/`.
+    - `reference/datalist/` → `reference/listdata/`: the data page's "full class reference" link has a typo, and no DataList class exists. It's wrong on docs.amcharts.com too.
   - Still dead, because the docs site has no such page:
     - four links in the docs' own pages (`concepts/formatters/in-line/`, `charts/percent-charts/percent-series/`, `retaining-y-axis-zoom-after-data-update/`, `tutorials/advanced-use-of-net-load-utility/`);
     - the `source:` of 161 internal classes in the API reference, which the docs never covered.

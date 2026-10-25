@@ -22,6 +22,7 @@ const MOVED_BY_HAND = {
   "concepts/using-formatters/": "concepts/formatters/",
   "concepts/common-elements/polygon/": "concepts/common-elements/graphics/",
   "concepts/cors/": "concepts/common-elements/images/#cross-domain-issues",
+  "reference/datalist/": "reference/listdata/", // the docs' data page means ListData; there is no DataList
   "themes/": "concepts/themes/",
   "tutorials/creating-translations/": "concepts/locales/creating-translations/",
   "getting-started/integrations/using-amcharts-5-with-remix/": "getting-started/integrations/remix/",
