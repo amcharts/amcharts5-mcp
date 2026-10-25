@@ -34,7 +34,7 @@ var series = chart.series.push(
 
 ### Stroke and fill colors
 
-Like with any series, it comes with stroke and fill color [pre-set from the theme](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#auto-assigned-colors).
+Like with any series, it comes with stroke and fill color [pre-set from the theme](https://docs.amcharts.com/v5/charts/xy-chart/series/#auto-assigned-colors).
 
 Should we want to override theme's color, we can set it's `stroke` and/or `fill` settings.
 
@@ -236,7 +236,7 @@ var series = chart.series.push(
 
 Line series is plotted on values we specify with input and display data fields. If we set up fills for the series, it will also fill the area all the way to the base axis.
 
-If we'd like it to rather fill to some other values, we can use [open data fields](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#open-data-input-fields) to point to values such fill should occur to.
+If we'd like it to rather fill to some other values, we can use [open data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#open-data-input-fields) to point to values such fill should occur to.
 
 let series = chart.series.push(
   am5xy.LineSeries.new(root, {

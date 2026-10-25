@@ -103,4 +103,4 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 ## Period selector
 
-Date range selector works well with [period selector](https://docs.amcharts.com/v5/period-selector/) control.
+Date range selector works well with [period selector](https://docs.amcharts.com/v5/charts/stock/toolbar/period-selector/) control.

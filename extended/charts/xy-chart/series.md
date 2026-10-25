@@ -54,7 +54,7 @@ series.data.setAll(\[{
   value: 850
 }\]);
 
-For more info, refer to "[Setting data](https://docs.amcharts.com/v5/getting-started/xy-chart/#setting-data)" section of the main "XY Chart" tutorial.
+For more info, refer to "[Setting data](https://docs.amcharts.com/v5/charts/xy-chart/#setting-data)" section of the main "XY Chart" tutorial.
 
 IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
@@ -448,7 +448,7 @@ IMPORTANTThere is no way to make series stack correctly if it contains both posi
 
 Enabling 100% stacks require few manipulation to chart setup:
 
--   Specifying [display data fields](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#display-fields) for series to use calculated percent values instead of absolute values.
+-   Specifying [display data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#display-fields) for series to use calculated percent values instead of absolute values.
 -   Setting `calculateTotals: true` on a value axis so that percent values are calculated and available for use in display data fields.
 -   Capping value axis scale at `0` and `100` values.
 -   Optionally, adding "%" sign to axis values using adapter or value axis' `[numberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#numberFormat_setting)` setting.

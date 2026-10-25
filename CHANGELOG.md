@@ -11,14 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **Docs links point at docs.amcharts.com.** The amCharts docs moved there from www.amcharts.com/docs/v5/. The old addresses redirect, but the redirect drops the section anchor, and the new site writes its anchors differently (`#Global_events` became `#global-events`).
-  - 5,731 links in 1,817 files are rewritten: the docs, the examples, the API reference, the skill, both plugins' metadata, `server.json` and the OpenAI listing.
-  - Each anchor was checked against the live page. Most take the new form; 143 needed the page's actual id; 11 sections no longer exist, so those links open the page.
-  - A few pages moved:
+  - About 5,700 links in about 1,800 files are rewritten: the docs, the examples, the API reference, the skill, both plugins' metadata, `server.json` and the OpenAI listing.
+  - All 2,125 distinct links were checked against the live site. Each page answers without a redirect, and each anchor exists on its page.
+    - Most anchors take the new site's usual form. 142 needed the page's actual id. 12 point at sections that no longer exist, so those links open the page.
+    - 20 old paths that the new site redirects now link straight to the new path, e.g. `concepts/states/` → `concepts/settings/states/` and `getting-started/hierarchy/` → `charts/hierarchy/`.
+  - Pages the new site has no redirect for are mapped by hand:
     - `charts/stock-chart/` → `charts/stock/`
     - `charts/timeline-chart/` → `charts/timeline/`
     - `concepts/using-formatters/` → `concepts/formatters/`
     - `concepts/common-elements/polygon/` → `…/graphics/`
-  - `scripts/docs-links.cjs` does the rewrite, and `npm run map:docs-anchors` rebuilds its anchor table from the live pages. The reference generator uses it for the typings' `@see` links, which still point at the old address in amCharts 5.21.4.
+    - and, from the library's typings and examples: `themes/`, `concepts/cors/` and `tutorials/creating-translations/`.
+  - Still dead, because the docs site has no such page:
+    - four links in the docs' own pages (`concepts/formatters/in-line/`, `charts/percent-charts/percent-series/`, `retaining-y-axis-zoom-after-data-update/`, `tutorials/advanced-use-of-net-load-utility/`);
+    - the `source:` of 161 internal classes in the API reference, which the docs never covered.
+  - `scripts/docs-links.cjs` does the rewrite. `npm run map:docs-anchors` rebuilds its anchor and redirect tables from the live pages, and can scan another repo too; the library used it for its own links. The reference generator uses it for the typings' `@see` links, which still point at the old address in amCharts 5.21.4.
   - `npm test` now fails if an old docs link comes back (`scripts/check-docs-links.js`).
 - **`get_doc`, `get_section` and `get_api_reference` take docs.amcharts.com addresses:** a page (`https://docs.amcharts.com/v5/concepts/events/#adding-a-handler`), its Markdown (`…/concepts/events.md`) or a site path (`/v5/concepts/events`). The old www.amcharts.com/docs addresses still work. 3 new tests (62).
 - `scripts/scrape-docs.js` is marked out of date: it reads the old WordPress HTML. The new site serves each page as Markdown and lists them in `docs.amcharts.com/v5/llms.txt`.

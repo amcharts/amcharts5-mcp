@@ -19,7 +19,7 @@ _(none declared here — all inherited)_
 ## Inherited settings with a different default on FlowNode
 
 - **cursorOverStyle** (`string`) — default `"pointer"` _(theme)_ — _from ISpriteSettings_ — CSS cursor to show while the pointer is over the element, e.g. `"pointer"`. Docs: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
-- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/containers/
+- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/
 - **toggleKey** (`"none" | "disabled" | "active"`) — default `"disabled"` _(theme)_ — _from ISpriteSettings_ — Setting that a click or tap toggles between `true` and `false`: `"active"` or `"disabled"`. `"none"` turns toggling off.
 
 ## Other inherited settings

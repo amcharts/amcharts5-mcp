@@ -16,7 +16,7 @@
  "charts/xy-chart/axes/axis-ranges/#Bulltet": "",
  "charts/xy-chart/axes/axis-ranges/#Grid_fill_above_series": "gridfill-above-series",
  "charts/xy-chart/axes/date-axis/#Category_date_axis": "",
- "concepts/containers/#States": "",
+ "concepts/common-elements/containers/#States": "",
  "concepts/data/#Date_based_data": "",
  "concepts/themes/#Modifying_default_theme": "",
  "reference/axis/#axisHeader_property": "axisHeader_property",
@@ -136,8 +136,8 @@
  "reference/valueaxis/#tooltipNumberFormat_setting": "tooltipNumberFormat_setting",
  "reference/valueaxis/#treatZeroAs_setting": "treatZeroAs_setting",
  "reference/xychart/#colors_setting": "colors_setting",
- "reference/xychart/#maxTooltipDistanceBy_setting": "maxTooltipDistanceBy_setting",
  "reference/xychart/#maxTooltipDistance_setting": "maxTooltipDistance_setting",
+ "reference/xychart/#maxTooltipDistanceBy_setting": "maxTooltipDistanceBy_setting",
  "reference/xychart/#panX_setting": "panX_setting",
  "reference/xychart/#panY_setting": "panY_setting",
  "reference/xychart/#wheelX_setting": "wheelX_setting",
@@ -149,8 +149,8 @@
  "reference/xycursor/#lineY_property": "lineY_property",
  "reference/xycursor/#positionX_setting": "positionX_setting",
  "reference/xycursor/#positionY_setting": "positionY_setting",
- "reference/xycursor/#snapToSeriesBy_setting": "snapToSeriesBy_setting",
  "reference/xycursor/#snapToSeries_setting": "snapToSeries_setting",
+ "reference/xycursor/#snapToSeriesBy_setting": "snapToSeriesBy_setting",
  "reference/zoomcontrol/#minusButton_property": "minusButton_property",
  "reference/zoomcontrol/#plusButton_property": "plusButton_property"
 }

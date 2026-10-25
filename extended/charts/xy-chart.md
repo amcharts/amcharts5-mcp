@@ -226,7 +226,7 @@ For example, if we have a `ValueAxis` as a Y-axis, and a `CategoryAxis` as an X-
 
 Depending on series type, it may need additional fields. For example `CandlestickSeries` needs four values, so it will need four data fields as well.
 
-MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/concepts/series/#data-fields)" section in our "Series" tutorial.
+MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#data-fields)" section in our "Series" tutorial.
 
 ### Types of series
 

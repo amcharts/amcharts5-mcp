@@ -18,13 +18,13 @@ TypeScript: `am5.IContainerSettings` (`import type { IContainerSettings } from "
 - **paddingRight** (`number`) — default `0` _(code fallback)_ — Right padding in pixels.
 - **paddingTop** (`number`) — default `0` _(code fallback)_ — Top padding in pixels.
 - **paddingBottom** (`number`) — default `0` _(code fallback)_ — Bottom padding in pixels.
-- **background** (`Graphics`) — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/containers/#background
-- **layout** (`Layout`) — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
-- **mask** (`Graphics`) — An element whose shape clips the container's children. Docs: https://docs.amcharts.com/v5/concepts/containers/#masks
+- **background** (`Graphics`) — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#background
+- **layout** (`Layout`) — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout
+- **mask** (`Graphics`) — An element whose shape clips the container's children. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#masks
 - **maskContent** (`boolean`) — Clips all content that goes outside the container's bounds.
 - **interactiveChildren** (`boolean`) — default `true` _(theme)_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
-- **setStateOnChildren** (`boolean`) — default `false` _(theme)_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/containers/
-- **verticalScrollbar** (`Scrollbar`) — A `Scrollbar` that scrolls the content vertically when it does not fit in the container. Docs: https://docs.amcharts.com/v5/concepts/containers/#scrollbar
+- **setStateOnChildren** (`boolean`) — default `false` _(theme)_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/
+- **verticalScrollbar** (`Scrollbar`) — A `Scrollbar` that scrolls the content vertically when it does not fit in the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#scrollbar
 - **reverseChildren** (`boolean`) — Lays out the children in reverse order. _Since 5.1.1._
 - **html** (`string`) — default `""` _(code fallback)_ — HTML content of the container. It can hold data placeholders, such as `{category}`. _Since 5.2.11._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/html-content/
 

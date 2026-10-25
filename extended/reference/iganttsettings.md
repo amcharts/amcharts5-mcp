@@ -28,7 +28,7 @@ TypeScript: `am5gantt.IGanttSettings` (`import type { IGanttSettings } from "@am
 ## Inherited settings with a different default on Gantt
 
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
-- **layout** (`Layout`) — default `root.verticalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
+- **layout** (`Layout`) — default `root.verticalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings

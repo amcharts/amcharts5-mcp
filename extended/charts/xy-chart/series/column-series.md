@@ -34,7 +34,7 @@ var series = chart.series.push(
 
 ### Stroke and fill colors
 
-Like with any series, it comes with stroke and fill color [pre-set from the theme](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#auto-assigned-colors).
+Like with any series, it comes with stroke and fill color [pre-set from the theme](https://docs.amcharts.com/v5/charts/xy-chart/series/#auto-assigned-colors).
 
 Should we want to override theme's color, we can set it's `stroke` (column outline) and/or `fill` settings.
 
@@ -173,7 +173,7 @@ series.columns.template.setAll({
 
 ## Floating columns
 
-Normally, columns start at base value (zero). We can make columns start at different values using [open data fields](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#open-data-input-fields): `openValueXField` or `openValueYField`.
+Normally, columns start at base value (zero). We can make columns start at different values using [open data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#open-data-input-fields): `openValueXField` or `openValueYField`.
 
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 

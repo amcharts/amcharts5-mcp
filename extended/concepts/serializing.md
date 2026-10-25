@@ -778,7 +778,7 @@ Since adapters are functions, they can't technically be part of a serialized JSO
 
 ## States
 
-Element [states](https://docs.amcharts.com/v5/concepts/states/) can be defined via a `states` array, where each item has a `key` and its `settings`:
+Element [states](https://docs.amcharts.com/v5/concepts/settings/states/) can be defined via a `states` array, where each item has a `key` and its `settings`:
 
 {
   type: "Circle",

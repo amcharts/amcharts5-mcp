@@ -22,7 +22,7 @@ TypeScript: not exported by name from the package.
 
 ## Inherited settings with a different default on ColorPicker
 
-- **background** (`Graphics`) — default `RoundedRectangle.new(root, { strokeOpacity: 1, fillOpacity: 1, shadowBlur: 8, shadowColor: am5.color(0x000000), shadowOpacity: 0.3, shadowOffsetX: 2, shadowOffsetY: 2, fill: am5.color(0xffffff), })` _(theme)_ — _from IContainerSettings_ — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/containers/#background
+- **background** (`Graphics`) — default `RoundedRectangle.new(root, { strokeOpacity: 1, fillOpacity: 1, shadowBlur: 8, shadowColor: am5.color(0x000000), shadowOpacity: 0.3, shadowOffsetX: 2, shadowOffsetY: 2, fill: am5.color(0xffffff), })` _(theme)_ — _from IContainerSettings_ — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#background
 - **centerX** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `x` position, and that it rotates and scales around: pixels from its left edge, or a percent of its width.
 - **centerY** (`number | Percent`) — default `am5.p50` _(theme)_ — _from ISpriteSettings_ — The point of the element that is placed at its `y` position, and that it rotates and scales around: pixels from its top edge, or a percent of its height.
 - **exportable** (`boolean`) — default `false` _(theme)_ — _from ISpriteSettings_ — If `false`, the element is left out of exported images of the chart.

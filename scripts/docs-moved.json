@@ -1,0 +1,22 @@
+{
+ "charts/stock-chart/toolbar/": "charts/stock/toolbar/",
+ "charts/xy-chart/gapless-date-axis/": "charts/xy-chart/axes/gapless-date-axis/",
+ "concepts/containers/": "concepts/common-elements/containers/",
+ "concepts/series/": "charts/xy-chart/series/",
+ "concepts/states/": "concepts/settings/states/",
+ "date-range-selector/": "charts/stock/toolbar/date-range-selector/",
+ "getting-started/hierarchy/": "charts/hierarchy/",
+ "getting-started/hierarchy/breadcrumbs/": "charts/hierarchy/breadcrumbs/",
+ "getting-started/hierarchy/force-directed/": "charts/hierarchy/force-directed/",
+ "getting-started/hierarchy/pack/": "charts/hierarchy/pack/",
+ "getting-started/hierarchy/partition/": "charts/hierarchy/partition/",
+ "getting-started/hierarchy/sunburst/": "charts/hierarchy/sunburst/",
+ "getting-started/hierarchy/tree/": "charts/hierarchy/tree/",
+ "getting-started/hierarchy/treemap/": "charts/hierarchy/treemap/",
+ "getting-started/xy-chart/": "charts/xy-chart/",
+ "getting-started/xy-chart/series/": "charts/xy-chart/series/",
+ "getting-started/xy-chart/series/column-series/": "charts/xy-chart/series/column-series/",
+ "getting-started/xy-chart/series/line-series/": "charts/xy-chart/series/line-series/",
+ "period-selector/": "charts/stock/toolbar/period-selector/",
+ "tutorials/xy-chart-containers/": "charts/xy-chart/xy-chart-containers/"
+}

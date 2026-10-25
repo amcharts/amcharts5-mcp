@@ -222,7 +222,7 @@ The above will make the chart start with "A0" and "C0" nodes collapsed, while "B
 
 ### Data structure
 
-IMORTANT A data for all hierarchy charts requires to have just one top item. Having several items on top level might break the chart. If we don't want this top item to appear on the chart itself, we can hide it by providing `topLevel: 1` in series settings. Refer to "[Tree depth](https://docs.amcharts.com/v5/getting-started/hierarchy/#tree-depth)" section of this tutorial for more info.
+IMORTANT A data for all hierarchy charts requires to have just one top item. Having several items on top level might break the chart. If we don't want this top item to appear on the chart itself, we can hide it by providing `topLevel: 1` in series settings. Refer to "[Tree depth](https://docs.amcharts.com/v5/charts/hierarchy/#tree-depth)" section of this tutorial for more info.
 
 ### Setting data
 
@@ -374,12 +374,12 @@ IMPORTANT The `selectedDataItem` needs to be set **after** data is set to the se
 
 For more information about configuring appearance of the flow series, refer to respective tutorials:
 
--   [Configuring Force-directed series](https://docs.amcharts.com/v5/getting-started/hierarchy/force-directed/).
--   [Configuring Pack series](https://docs.amcharts.com/v5/getting-started/hierarchy/pack/).
--   [Configuring Partition](https://docs.amcharts.com/v5/getting-started/hierarchy/partition/).
--   [Configuring Sunburst](https://docs.amcharts.com/v5/getting-started/hierarchy/sunburst/).
--   [Configuring Tree](https://docs.amcharts.com/v5/getting-started/hierarchy/tree/).
--   [Configuring Treemap](https://docs.amcharts.com/v5/getting-started/hierarchy/treemap/).
+-   [Configuring Force-directed series](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/).
+-   [Configuring Pack series](https://docs.amcharts.com/v5/charts/hierarchy/pack/).
+-   [Configuring Partition](https://docs.amcharts.com/v5/charts/hierarchy/partition/).
+-   [Configuring Sunburst](https://docs.amcharts.com/v5/charts/hierarchy/sunburst/).
+-   [Configuring Tree](https://docs.amcharts.com/v5/charts/hierarchy/tree/).
+-   [Configuring Treemap](https://docs.amcharts.com/v5/charts/hierarchy/treemap/).
 
 ## Node value
 
@@ -529,7 +529,7 @@ container.children.unshift(
   })
 );
 
-For more information on how to use breadcrumb control, refer to "[Breadcrumb navigation](https://docs.amcharts.com/v5/getting-started/hierarchy/breadcrumbs/)" tutorial.
+For more information on how to use breadcrumb control, refer to "[Breadcrumb navigation](https://docs.amcharts.com/v5/charts/hierarchy/breadcrumbs/)" tutorial.
 
 ### Legend
 

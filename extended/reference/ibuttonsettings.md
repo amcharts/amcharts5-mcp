@@ -22,12 +22,12 @@ TypeScript: `am5.IButtonSettings` (`import type { IButtonSettings } from "@amcha
 - **focusable** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Can element be focused, i.e. selected using TAB key. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#focusing-elements
 - **interactive** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Makes the element respond to the pointer. Adding a pointer event listener to it turns this on.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
-- **layout** (`Layout`) — default `root.horizontalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/containers/#layout
+- **layout** (`Layout`) — default `root.horizontalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout
 - **paddingBottom** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
 - **paddingLeft** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
 - **paddingRight** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
 - **paddingTop** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
-- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/containers/
+- **setStateOnChildren** (`boolean`) — default `true` _(theme)_ — _from IContainerSettings_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/
 
 ## Other inherited settings
 

@@ -73,7 +73,7 @@ var series = chart.series.push(
 
 Both candlestick and OHLC series have different approach to colors than the rest of the XY chart series.
 
-While they still get assigned stroke and fill color from the [theme](https://docs.amcharts.com/v5/getting-started/xy-chart/series/#auto-assigned-colors) that are used for such auxiliary elements as tooltips, they do apply their own colors based on the close value relation to open value.
+While they still get assigned stroke and fill color from the [theme](https://docs.amcharts.com/v5/charts/xy-chart/series/#auto-assigned-colors) that are used for such auxiliary elements as tooltips, they do apply their own colors based on the close value relation to open value.
 
 Basically, if the open value is lower than close, the candle/stick will be green. If it's the other way around, the candle/stick will be red.
 
@@ -183,7 +183,7 @@ series.columns.template.setAll({
   width: am5.percent(60)
 });
 
-For more information about this, refer to "[Column series: Column width](https://docs.amcharts.com/v5/getting-started/xy-chart/series/column-series/#column-width)" tutorial.
+For more information about this, refer to "[Column series: Column width](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/#column-width)" tutorial.
 
 ## Professional candlesticks
 

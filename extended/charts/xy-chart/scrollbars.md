@@ -297,4 +297,4 @@ chart.plotContainer.children.push(scrollbarX);
 
 -   [Start/end labels on scrollbar grips](https://docs.amcharts.com/v5/tutorials/start-end-labels-on-scrollbar-grips/)
 -   [Start/end labels on a scrollbar](https://docs.amcharts.com/v5/tutorials/adding-start-and-end-labels-to-a-scrollbar/)
--   [Containers of an XY chart](https://docs.amcharts.com/v5/tutorials/xy-chart-containers/)
+-   [Containers of an XY chart](https://docs.amcharts.com/v5/charts/xy-chart/xy-chart-containers/)

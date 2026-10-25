@@ -284,7 +284,7 @@ For example, if we have a `ValueAxis` as a Y-axis, and a `CategoryAxis` as an X-
 
 Some series can define additional data fields (e.g. for open values) to draw floating columns, or semi-filled area series.
 
-MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/concepts/series/#data-fields)" section in our "Series" tutorial.
+MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#data-fields)" section in our "Series" tutorial.
 
 ### Types of series
 

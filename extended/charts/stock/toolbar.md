@@ -67,7 +67,7 @@ Allows saving/restoring current annotations, as well as enabling auto-saving.
 
 Allows selecting date range the chart to zoom to, using date picker.
 
-[Info](https://docs.amcharts.com/v5/date-range-selector/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/date-range-selector/)
 
 `DrawingControl`
 
@@ -91,7 +91,7 @@ Allows switching data granularity.
 
 Displays a pre-defined list of periods for quick zoom of the chart.
 
-[Info](https://docs.amcharts.com/v5/period-selector/)
+[Info](https://docs.amcharts.com/v5/charts/stock/toolbar/period-selector/)
 
 `ResetControl`
 

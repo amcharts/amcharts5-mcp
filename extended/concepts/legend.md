@@ -168,7 +168,7 @@ var legend = chart.children.unshift(am5.Legend.new(root, {}));
 
 `layout` not set
 
-MORE INFO For more information about layouts, visit our "[Containers: Layout](https://docs.amcharts.com/v5/concepts/containers/#layout)" tutorial.
+MORE INFO For more information about layouts, visit our "[Containers: Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)" tutorial.
 
 ## Aligning
 
@@ -225,7 +225,7 @@ legend = chart.children.push(am5.Legend.new(root, {
 
 Obviously, when choosing layout, we need to think of the place the legend will appear in, as well as a number of potential items in it.
 
-MORE INFO For more information about layouts, visit our "[Containers: Layout](https://docs.amcharts.com/v5/concepts/containers/#layout)" tutorial.
+MORE INFO For more information about layouts, visit our "[Containers: Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)" tutorial.
 
 ### Grid layout
 
@@ -261,7 +261,7 @@ var legend = chart.children.push(am5.Legend.new(root, {
 `maxColumns: 2`
 
 
-MORE INFO For more information about grid layout, visit our "[Containers: Grid](https://docs.amcharts.com/v5/concepts/containers/#layout)" tutorial.
+MORE INFO For more information about grid layout, visit our "[Containers: Grid](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)" tutorial.
 
 ## Markers
 

@@ -852,7 +852,7 @@ In a nutshell it's a `DateAxis` that removes time periods that there is no data 
 
 It can be used to display irregularly-spaced date-based data, where maintaining natural time scale is not important, e.g. removing weekends from the axis, because there is not data for those days.
 
-For more information, please refer to "[Gapless date axis](https://docs.amcharts.com/v5/charts/xy-chart/gapless-date-axis/)" tutorial.
+For more information, please refer to "[Gapless date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/)" tutorial.
 
 Regular date axis with irregular data
 
