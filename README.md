@@ -21,6 +21,8 @@ Point your AI client at:
 https://mcp.amcharts.com/mcp
 ```
 
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square)](https://insiders.vscode.dev/redirect/mcp/install?name=amcharts5&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.amcharts.com%2Fmcp%22%7D) [![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=amcharts5&config=eyJ1cmwiOiJodHRwczovL21jcC5hbWNoYXJ0cy5jb20vbWNwIn0%3D)
+
 The amCharts 5 docs are also on [Context7](https://context7.com/amcharts/amcharts5) as `/amcharts/amcharts5`.
 
 **Claude Code**
