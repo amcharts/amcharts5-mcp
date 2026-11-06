@@ -124,10 +124,18 @@ files.set("plugin.json", JSON.stringify({
   },
 }, null, 2) + "\n");
 
+// OpenAI's portal requires each server to declare its auth type; the hosted
+// server has no sign-in. OpenAI's docs put it under the server's
+// extensions["com.openai"].auth, although the strict Agent Plugins 1.0.0
+// schema has no "extensions" key there.
 files.set("mcp.json", JSON.stringify({
   $schema: "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   mcpServers: {
-    amcharts5: { type: "streamable-http", url: "https://mcp.amcharts.com/mcp" },
+    amcharts5: {
+      type: "streamable-http",
+      url: "https://mcp.amcharts.com/mcp",
+      extensions: { "com.openai": { auth: { type: "none" } } },
+    },
   },
 }, null, 2) + "\n");
 
