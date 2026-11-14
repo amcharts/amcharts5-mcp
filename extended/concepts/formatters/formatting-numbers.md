@@ -302,7 +302,7 @@ root.numberFormatter.set("numberFormat", "[bold]#,###.00");
 | --------------------------------------- | ----------- | ------ |
 | `[#0f0]#,###`                           | 1000        | 1,000  |
 | `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | 1000        | 1,000  |
-| `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | -1000       | (1000) |
+| `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | -1000       | (-1,000) |
 | `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | 0           | -      |
 
 Please refer to the "[Text styling](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" and "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorials for more info.
