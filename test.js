@@ -650,6 +650,51 @@ const tests = [
     },
     label: "get_section('json', 'Complete configs') — the configs the overview lists",
   },
+  // Step 15: queries that failed AI agents in a blind benchmark (2026-11),
+  // each with the section that answers it
+  {
+    send: { jsonrpc: "2.0", id: 72, method: "tools/call", params: { name: "search_docs", arguments: { query: "map polygon tooltip for countries without data, heat legend start end value labels", maxResults: 4 } } },
+    check: (r) => skillRank(r, /^## .* → Choropleth \(heat map\) via heat rules$/, 1),
+    label: "search_docs(no-data tooltips, heat legend labels) → map.md Choropleth first",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 73, method: "tools/call", params: { name: "search_docs", arguments: { query: "parent header label", maxResults: 4 } } },
+    check: (r) => skillRank(r, /^## .* → Treemap$/, 1),
+    label: "search_docs('parent header label') → the treemap's group headers",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 74, method: "tools/call", params: { name: "search_all", arguments: { query: "legend value without cursor legendRangeValueText valueYClose", maxResults: 5 } } },
+    check: (r) => searchRank(r, /^skill\/xy$/, 1),
+    label: "search_all(legend value without a cursor) → xy.md Legend first",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 75, method: "tools/call", params: { name: "search_all", arguments: { query: "number format examples numberFormat formatNumber", maxResults: 5 } } },
+    check: (r) => searchRank(r, /^(skill\/SKILL|concepts\/formatters\/formatting-numbers)$/, 2),
+    label: "search_all(number format examples) → Number formats or the formatting-numbers page",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 76, method: "tools/call", params: { name: "search_all", arguments: { query: "axis value to pixel coordinate", maxResults: 5 } } },
+    check: (r) => searchRank(r, /^skill\/xy$/, 1),
+    label: "search_all('axis value to pixel coordinate') → xy.md Value to pixel",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 77, method: "tools/call", params: { name: "search_all", arguments: { query: "candlestick legend valueYClose calculateAggregates", maxResults: 3 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return /Matching lines further on \(full text: get_(example|section)\(/.test(text) ? "PASS" : "FAIL (no matching lines past the excerpt)";
+    },
+    label: "search_all — quotes the matching lines past a result's excerpt",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 78, method: "tools/call", params: { name: "search_docs", arguments: { query: "disable axis zoom animation interpolationDuration", maxResults: 3 } } },
+    check: (r) => skillRank(r, /^## .* → Performance: big data, fast updates, no animation$/, 1),
+    label: "search_docs(disable axis zoom animation) → SKILL.md Performance",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 79, method: "tools/call", params: { name: "search_all", arguments: { query: "performance tips big data disable animations", maxResults: 5 } } },
+    check: (r) => searchRank(r, /^skill\/SKILL$/, 1),
+    label: "search_all('performance tips big data disable animations') → SKILL.md Performance",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
@@ -659,6 +704,16 @@ function searchRank(r, want, within) {
   const sources = [...text.matchAll(/\*Source: (\S+) \| Relevance/g)].map(m => m[1]);
   const rank = sources.findIndex(s => want.test(s)) + 1;
   if (!rank) return `FAIL (not in the top ${sources.length}: ${sources.slice(0, 3).join(", ")})`;
+  return rank <= within ? `PASS (rank ${rank})` : `FAIL (rank ${rank}, want ≤ ${within})`;
+}
+
+// Rank of the first search_docs result whose "## title → heading" line
+// matches `want`; PASS if it is within `within`.
+function skillRank(r, want, within) {
+  const text = r.result?.content?.[0]?.text || "";
+  const headings = text.split("\n").filter(l => l.startsWith("## "));
+  const rank = headings.findIndex(h => want.test(h)) + 1;
+  if (!rank) return `FAIL (not in the top ${headings.length}: ${headings.slice(0, 3).join(" | ")})`;
   return rank <= within ? `PASS (rank ${rank})` : `FAIL (rank ${rank}, want ≤ ${within})`;
 }
 

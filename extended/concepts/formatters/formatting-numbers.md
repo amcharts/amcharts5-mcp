@@ -52,6 +52,8 @@ root.numberFormatter.setAll({
   numericFields: \["valueY"\]
 });
 
+Format a single placeholder inline with `formatNumber()`: `{valueY.formatNumber('#,###.')}`.
+
 For more information on how it works, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
 ## Format codes
@@ -90,9 +92,11 @@ Example format: `#`
 
 Indicates thousand separator place. This is used to determine home many digits to consider a "thousand". Only the rightmost comma will be used.  
   
-Example format: `#,###`  
+Example format: `#,####`  
 `12345` > `1,2345`  
-`123456789` > `1,2345,6789`
+`123456789` > `1,2345,6789`  
+  
+(With `#,###`, `12345` > `12,345`.)
 
 e
 
@@ -203,7 +207,7 @@ Output
 
 1000
 
-1000
+1,000
 
 `#,###|(#,###s)|'-'`
 

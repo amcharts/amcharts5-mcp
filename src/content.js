@@ -49,6 +49,24 @@ export const CHART_TYPE_MAP = {
   "json": "json", "json-config": "json", "config": "json", "serialized": "json",
 };
 
+// A section longer than this is offered by its ### subsections: in overviews,
+// in get_section, and as search units
+export const SPLIT_OVER = 6000;
+
+// A section body split at its ### headings: the text before the first one
+// (heading null), then each subsection
+export function splitSubsections(body) {
+  const parts = [{ heading: null, text: [] }];
+  for (const line of String(body).split("\n")) {
+    const m = /^###\s+(.+)/.exec(line);
+    if (m) parts.push({ heading: m[1].trim(), text: [] });
+    else parts[parts.length - 1].text.push(line);
+  }
+  return parts
+    .map((p) => ({ heading: p.heading, text: p.text.join("\n").trim() }))
+    .filter((p) => p.heading || p.text);
+}
+
 export function parseSections(content) {
   const sections = [];
   const lines = content.split("\n");
@@ -321,13 +339,20 @@ export function queryTerms(query) {
 let lastLineQuery = null;
 let lastLineTerms = null;
 
-/** Does this line contain any of the query's terms? (For quoting matches.) */
-export function lineMatchesQuery(line, query) {
+/** How many of the query's terms does this line contain? (For quoting matches.) */
+export function lineMatchCount(line, query) {
   if (query !== lastLineQuery) {
     lastLineQuery = query;
     lastLineTerms = new Set(queryTerms(query).map(t => t.term));
   }
-  return tokenize(line).some(t => lastLineTerms.has(t));
+  const seen = new Set();
+  for (const t of tokenize(line)) if (lastLineTerms.has(t)) seen.add(t);
+  return seen.size;
+}
+
+/** Does this line contain any of the query's terms? */
+export function lineMatchesQuery(line, query) {
+  return lineMatchCount(line, query) > 0;
 }
 
 const normalizeTitle = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -392,6 +417,19 @@ function buildSearchIndex(content) {
 
   for (const [name, doc] of content.docs) {
     for (const section of doc.sections) {
+      // A long section is searched by its ### subsections, as the overviews
+      // and get_section offer it: a subsection's heading counts as its title,
+      // and a hit quotes that subsection, not the head of the long section
+      const parts = section.body.length > SPLIT_OVER ? splitSubsections(section.body) : [];
+      if (parts.some(p => p.heading)) {
+        for (const part of parts) {
+          const heading = part.heading || section.heading;
+          add(KIND_SKILL,
+            { kind: "skill", file: name, docTitle: doc.title, heading, body: part.text },
+            heading || doc.title, `${doc.title} ${name}${part.heading ? ` ${section.heading}` : ""}`, part.text, [heading]);
+        }
+        continue;
+      }
       add(KIND_SKILL,
         { kind: "skill", file: name, docTitle: doc.title, heading: section.heading, body: section.body },
         section.heading || doc.title, `${doc.title} ${name}`, section.body, [section.heading]);

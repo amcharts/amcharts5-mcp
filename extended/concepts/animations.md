@@ -337,7 +337,7 @@ Once called, series will animate its data item (e.g. column) to new value.
 
 The speed and style of such animation is controlled using two settings:
 
--   `interpolationDuration` - duration of animation in seconds (default: `0`, or `600` if animated theme is enabled).
+-   `interpolationDuration` - duration of animation in milliseconds (default: `0`, or `600` if animated theme is enabled).
 -   `interpolationEasing` - an easing function for animation (default: `am5.ease.out($ease.cubic)`).
 
 Using these two settings, we can control how long animation to new value takes, and how it progresses:

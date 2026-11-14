@@ -60,27 +60,27 @@ Comment
 
 `nodePaddingInner`
 
-Gap between nodes.
+Gap between neighboring nodes, in pixels.
 
 `nodePaddingOuter`
 
-Gap between nodes and outer edge of the chart.
+Gap between a node's edges and the nodes inside it, in pixels; for the top node, that is the gap to the chart's edges. Overrides `nodePaddingTop`, `nodePaddingRight`, `nodePaddingBottom` and `nodePaddingLeft`.
 
 `nodePaddingTop`
 
-Gap between nodes and top edge. Will be ignored if `nodePaddingOuter` is set.
+Gap between a node's top edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set. It's the room for a group header: see the skill's hierarchy reference, "Group headers".
 
 `nodePaddingBottom`
 
-Gap between nodes and bottomedge. Will be ignored if `nodePaddingOuter` is set.
+Gap between a node's bottom edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set.
 
 `nodePaddingLeft`
 
-Gap between nodes and left edge. Will be ignored if `nodePaddingOuter` is set.
+Gap between a node's left edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set.
 
 `nodePaddingRight`
 
-Gap between nodes and bottom edge. Will be ignored if `nodePaddingOuter` is set.
+Gap between a node's right edge and the nodes inside it, in pixels. Ignored if `nodePaddingOuter` is set.
 
 let series = root.container.children.push(
   am5hierarchy.Treemap.new(root, {

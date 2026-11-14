@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { z } from "zod";
-import { CHART_TYPE_MAP, extractImportBlock, lineMatchesQuery, rankContent, searchDocs } from "./content.js";
+import { CHART_TYPE_MAP, extractImportBlock, lineMatchCount, rankContent, searchDocs, SPLIT_OVER, splitSubsections } from "./content.js";
 import { listGeodata } from "./geodata.js";
 
 // Every tool only reads the bundled content (skill, docs, examples, reference,
@@ -73,23 +73,28 @@ const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 20
 // eval measured the long references (SKILL.md, map.md) as half of all input
 // tokens, because every later step of an answer reads them again.
 export const OVERVIEW_CAP = 12000;
-// A section longer than this is offered by its ### subsections
-export const SPLIT_OVER = 6000;
 // "Example 1: …", "Example: Spiral chart", "amCharts 5 XY Charts — Working Examples"
 const isExampleSection = (heading) => /^Example\b|Working Examples$/i.test(heading || "");
 
-// A section body split at its ### headings: the text before the first one
-// (heading null), then each subsection
-export function splitSubsections(body) {
-  const parts = [{ heading: null, text: [] }];
-  for (const line of String(body).split("\n")) {
-    const m = /^###\s+(.+)/.exec(line);
-    if (m) parts.push({ heading: m[1].trim(), text: [] });
-    else parts[parts.length - 1].text.push(line);
+export { SPLIT_OVER, splitSubsections };
+
+// The lines of `body` from character `from` on that match the most query
+// terms, best first, then put back in their order in the text
+function matchingLines(body, from, query, max, width) {
+  const found = [];
+  let offset = 0;
+  for (const line of body.split("\n")) {
+    const start = offset;
+    offset += line.length + 1;
+    if (start < from || !line.trim()) continue;
+    const n = lineMatchCount(line, query);
+    if (n) found.push({ start, n, text: line.trim().slice(0, width) });
   }
-  return parts
-    .map((p) => ({ heading: p.heading, text: p.text.join("\n").trim() }))
-    .filter((p) => p.heading || p.text);
+  return found
+    .sort((a, b) => b.n - a.n || a.start - b.start)
+    .slice(0, max)
+    .sort((a, b) => a.start - b.start)
+    .map((l) => l.text);
 }
 
 // The parts an overview is made of: each ## section, or for a long section
@@ -405,15 +410,7 @@ export function registerTools(server, content) {
           // head so the answer is never lost, and print the exact call that
           // returns the full section.
           const head = body.slice(0, budget);
-          const beyond = [];
-          let offset = 0;
-          for (const line of body.split("\n")) {
-            const start = offset;
-            offset += line.length + 1;
-            if (start < budget) continue;
-            if (lineMatchesQuery(line, query)) beyond.push(line.trim().slice(0, 400));
-            if (beyond.length >= 8) break;
-          }
+          const beyond = matchingLines(body, budget, query, 8, 400);
           body = head + (isExample
             ? `\n\n...(truncated — full example: get_example(path: "${r.file}"))`
             : `\n\n...(truncated — full section: get_section(file: "${id}", heading: "${r.heading}"))`);
@@ -423,7 +420,12 @@ export function registerTools(server, content) {
         }
         text += body + "\n\n---\n\n";
       }
-      return { content: [{ type: "text", text: text + geodataHint(query) }] };
+      // The npm package ships the same skill text in docs/, so an agent that
+      // read it there gets nothing new here: say where else to look
+      const wider = scope === "skill"
+        ? "These are sections of the amCharts 5 skill, the same text the @amcharts/amcharts5 npm package has in docs/. For the full docs, the API reference and the code examples, use search_all or scope: \"all\".\n"
+        : "";
+      return { content: [{ type: "text", text: text + wider + geodataHint(query) }] };
     }
   );
 
@@ -557,7 +559,20 @@ export function registerTools(server, content) {
         const source = r.kind === "skill" ? `skill/${r.file}` : r.file;
         text += `## [${TYPE_LABEL[r.kind]}] ${r.docTitle}${r.heading ? ` → ${r.heading}` : ""}\n`;
         text += `*Source: ${source} | Relevance: ${r.score}*\n\n`;
-        text += r.body.slice(0, 300) + "\n\n---\n\n";
+        text += r.body.slice(0, 300);
+        // The answer is often further down (an example's prose comes before
+        // its code): quote the lines that match the query best, and the call
+        // that returns the whole text
+        const beyond = r.body.length > 300 ? matchingLines(r.body, 300, query, 3, 200) : [];
+        if (beyond.length) {
+          const full = r.kind === "example"
+            ? `get_example(path: "${r.file}")`
+            : r.heading
+              ? `get_section(file: "${r.kind}/${r.file}", heading: "${r.heading}")`
+              : `get_doc(path: "${r.kind === "skill" ? `skill/${r.file}` : r.file}")`;
+          text += `\n\nMatching lines further on (full text: ${full}):\n` + beyond.map((l) => `> ${l}`).join("\n");
+        }
+        text += "\n\n---\n\n";
       }
       return { content: [{ type: "text", text: text + geodataHint(query) }] };
     }
