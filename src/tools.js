@@ -87,15 +87,20 @@ function matchingLines(body, from, query, max, width) {
   for (const line of body.split("\n")) {
     const start = offset;
     offset += line.length + 1;
-    if (start + line.length <= from || !line.trim()) continue;
-    const n = lineMatchCount(line, query);
+    if (start + line.length <= from) continue;
+    // A line the excerpt cuts: only its part past the cut is new
+    const cut = Math.max(0, from - start);
+    let text = line.slice(cut).trim();
+    if (!text) continue;
+    const n = lineMatchCount(text, query);
     if (!n) continue;
-    let text = line.trim();
+    let clipped = cut > 0;
     if (text.length > width) {
       const at = Math.max(0, firstMatchIndex(text, query) - 40);
-      text = (at > 0 ? "…" : "") + text.slice(at, at + width);
+      text = text.slice(at, at + width);
+      clipped = clipped || at > 0;
     }
-    found.push({ start, n, text });
+    found.push({ start, n, text: (clipped ? "…" : "") + text });
   }
   return found
     .sort((a, b) => b.n - a.n || a.start - b.start)
@@ -281,7 +286,7 @@ export function registerTools(server, content) {
       const flat = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
       let a = anchor; try { a = decodeURIComponent(anchor); } catch {}
       const heading = [...doc.content.matchAll(/^#{2,4}\s+(.+?)\s*$/gm)].map((h) => h[1]).find((h) => flat(h) === flat(a));
-      if (heading) return `${link} is the section "${heading}" of the docs page "${doc.title}": get_section(file: "${label}", heading: "${heading}"), or the whole page with get_doc(path: "${label}").`;
+      if (heading) return `${link} is the section "${heading}" of the docs page "${doc.title}": get_section(file: "${label}", heading: ${JSON.stringify(heading)}), or the whole page with get_doc(path: "${label}").`;
     }
     return `${link} is the docs page "${doc.title}": get_doc(path: "${label}").`;
   }

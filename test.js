@@ -703,6 +703,20 @@ const tests = [
     },
     label: "get_quick_start('xy', html) — the amCharts CDN tags and the npm-CDN pointer",
   },
+  {
+    send: { jsonrpc: "2.0", id: 81, method: "tools/call", params: { name: "search_all", arguments: { query: "number format rounding", maxResults: 3 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      // Each result: its excerpt, then "Matching lines further on". No quote may repeat the excerpt.
+      const repeats = text.split("\n---\n").filter((block) => {
+        const [excerpt, quotes] = block.split("Matching lines further on");
+        if (!quotes) return false;
+        return quotes.split("\n").some((l) => l.startsWith("> ") && l.length > 40 && excerpt.includes(l.slice(2, 60).replace(/^…/, "")));
+      });
+      return repeats.length ? `FAIL (${repeats.length} result(s) quote text the excerpt shows)` : "PASS";
+    },
+    label: "search_all — the quoted lines don't repeat the excerpt",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
