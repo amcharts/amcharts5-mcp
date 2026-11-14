@@ -103,7 +103,7 @@ var series = root.container.children.push(
 
 The appearance of node rectangles can be configured using their template, accessible on series property: `rectangles.template`.
 
-The template can have contain any `RoundedRectangle` [setting](https://docs.amcharts.com/v5/reference/roundedrectangle/#Settings).
+The template can have contain any `RoundedRectangle` [setting](https://docs.amcharts.com/v5/reference/roundedrectangle/#settings).
 
 TypeScript:
 
@@ -177,7 +177,7 @@ series.labels.template.setAll({
 });
 ```
 
-Partition series uses `Label` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#Settings).
+Partition series uses `Label` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 

@@ -123,7 +123,7 @@ When cursor leaves the plot area again, the text will be replaced back with the 
 
 Since labels support [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets), text will be populated with actual data and values.
 
-When there is no data cursor on chart, or cursor is not over plot area, labels will be populated from series' settings, e.g. `LineSeries` [settings](https://docs.amcharts.com/v5/reference/lineseries/#settings) or [private settings](https://docs.amcharts.com/v5/reference/lineseries/#Private_settings).
+When there is no data cursor on chart, or cursor is not over plot area, labels will be populated from series' settings, e.g. `LineSeries` [settings](https://docs.amcharts.com/v5/reference/lineseries/#settings) or [private settings](https://docs.amcharts.com/v5/reference/lineseries/#private-settings).
 
 If cursor is hovering on plot area, closest data item will be used to populate the label, e.g. `LineSeriesDataItem`.
 

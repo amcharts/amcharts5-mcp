@@ -447,7 +447,7 @@ pointSeries.bullets.push(function() {
 });
 ```
 
-Animations start when the setting is applied, restart when it changes, and stop when the element is disposed. When the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/), the configured values are saved, not whatever value the animation was at.
+Animations start when the setting is applied, restart when it changes, and stop when the element is disposed. When the setting changes, the settings its animations animated are put back to what they held first, then the new list starts. When the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/), the configured values are saved, not whatever value the animation was at.
 
 > **Note:** Unlike `animate()`, where `loops: Infinity` means forever, here it's `loops: 0`. The `animations` setting is available since version 5.20.8.
 
@@ -594,7 +594,7 @@ However, if we enable animated theme, or if we set required settings, the quanti
 
 These animations are controlled by two settings:
 
-* `stateAnimationDuration` - duration of animation in seconds (default: `0`, or `600` if animated theme is enabled).
+* `stateAnimationDuration` - duration of animation in milliseconds (default: `0`, or `600` if animated theme is enabled).
 * `stateAnimationEasing` - an easing function for animation (default: `am5.ease.out($ease.cubic)`).
 
 We can use these two settings to control how long transition of setting values takes, as well as what process easing function it uses:

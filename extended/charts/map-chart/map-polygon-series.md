@@ -241,7 +241,7 @@ Now, the series will use items from `worldLow` map, but will also attach additio
 
 Polygon appearance can be configured via its template, accessible via series' `mapPolygons.template`.
 
-A polygon is an object of type `MapPolygon`. Any of [its settings](https://docs.amcharts.com/v5/reference/mappolygon/#Settings) can be set via template.
+A polygon is an object of type `MapPolygon`. Any of [its settings](https://docs.amcharts.com/v5/reference/mappolygon/#settings) can be set via template.
 
 TypeScript:
 
