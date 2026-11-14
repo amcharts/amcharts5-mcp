@@ -1,5 +1,7 @@
 # amCharts 5 MCP Server
 
+> **Using Claude?** Install the [amCharts 5 plugin](https://claude.ai/customize/plugins/id/88417dfb-479c-409d-8571-796c3a299aac%40anthropic-plugin-directory): it bundles this server and the skill. In Claude Code: `/plugin install amcharts5@anthropic-plugin-directory`.
+
 An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that gives AI assistants on-demand access to the complete amCharts 5 knowledge base: **160+ documentation pages**, **350+ code examples** (including 60+ complete JSON configs), and **1,300+ API reference pages**.
 
 Works with **Claude Code**, **Claude Desktop**, **Cursor**, **Windsurf**, **VS Code + GitHub Copilot**, and any other MCP-compatible AI tool.
