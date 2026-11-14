@@ -2,7 +2,7 @@
 title: "PeriodSelector"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/periodselector/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A `StockToolbar` control with buttons that zoom the chart to preset periods, such as one month or year to date.

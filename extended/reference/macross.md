@@ -2,7 +2,7 @@
 title: "MACross"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/macross/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Moving Average Cross indicator: a slow (`period`) and a fast (`fastPeriod`) simple moving average of `field`, drawn over the main series.

@@ -2,7 +2,7 @@
 title: "Polygon"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/polygon/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Draws a closed polygon through `points`.

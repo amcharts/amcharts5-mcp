@@ -2,7 +2,7 @@
 title: "Events"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/events/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 TypeScript: not exported by name from the package.

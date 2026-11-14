@@ -2,7 +2,7 @@
 title: "ITextMeasureContext"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/itextmeasurecontext/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 What text layout measures with. A canvas 2D context in the chart's DOM is one: it resolves relative font sizes (`em`) against the page like the layer canvases do.

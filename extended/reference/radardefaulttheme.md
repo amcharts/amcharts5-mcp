@@ -2,7 +2,7 @@
 title: "RadarDefaultTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/radardefaulttheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Built-in theme rules: `RadarChart` adds this theme to its default themes, so its rules apply to that element and everything inside it.

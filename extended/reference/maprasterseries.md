@@ -2,7 +2,7 @@
 title: "MapRasterSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/maprasterseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A `MapChart` series that shows an image of the whole world, such as a satellite photo, reprojected to the chart's projection.

@@ -2,7 +2,7 @@
 title: "Pack"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/pack/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A pack diagram: nodes as circles sized by value, each inside its parent's circle. A click on a node zooms into it.

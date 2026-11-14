@@ -2,7 +2,7 @@
 title: "IText"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/itext/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 ## Inheritance
@@ -24,5 +24,5 @@ TypeScript: not exported by name from the package.
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IDisplayObject")`) for types, defaults and descriptions.
 
-- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, visible, wheelable, x, y
+- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, visible, wheelable, x, y
 - _IDisposer_: dispose, isDisposed

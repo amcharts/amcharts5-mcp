@@ -2,7 +2,7 @@
 title: "FrozenTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/frozentheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A theme. Apply it with `root.setThemes([am5themes_Frozen.new(root)])`.

@@ -1,7 +1,7 @@
 ---
 title: "ease.quad"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Starts slowly and speeds up (progress squared).

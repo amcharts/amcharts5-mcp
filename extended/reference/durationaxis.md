@@ -2,7 +2,7 @@
 title: "DurationAxis"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/durationaxis/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A value axis whose values are amounts of `baseUnit`, with labels formatted as durations.

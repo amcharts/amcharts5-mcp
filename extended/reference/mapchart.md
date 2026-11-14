@@ -2,7 +2,7 @@
 title: "MapChart"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/mapchart/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A map: geographic data drawn in a projection, which can be zoomed, panned and rotated. Its series draw polygons, lines and points.

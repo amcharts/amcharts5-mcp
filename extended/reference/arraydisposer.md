@@ -2,7 +2,7 @@
 title: "ArrayDisposer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/arraydisposer/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 This can be extended by other classes to add a `_disposers` property.

@@ -2,7 +2,7 @@
 title: "AccelerationBands"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/accelerationbands/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Acceleration Bands indicator: bands above the high and below the low that widen as the high-low range grows, and their middle line, each averaged over `period`. Drawn over the main series.

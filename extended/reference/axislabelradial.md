@@ -2,7 +2,7 @@
 title: "AxisLabelRadial"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/axislabelradial/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Draws a label on a circular axis.

@@ -2,7 +2,7 @@
 title: "RectanglePattern"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/rectanglepattern/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Rectangle pattern.

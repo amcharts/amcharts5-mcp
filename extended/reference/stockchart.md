@@ -2,7 +2,7 @@
 title: "StockChart"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stockchart/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 The stock chart: `StockPanel` charts stacked over one date range, with indicators, drawings and series comparison.

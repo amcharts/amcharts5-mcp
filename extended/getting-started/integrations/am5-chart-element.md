@@ -30,7 +30,7 @@ import "@amcharts/amcharts5/element";
 import "@amcharts/amcharts5/element";
 ```
 
-NOTE esbuild drops that bare import: it doesn't read the brace pattern the package's `sideEffects` uses for `element.js`, so the element is never defined (checked with esbuild 0.25 and amCharts 5.21.4). Import `defineChartElement` and call it instead; it does nothing if the element is already defined: `import { defineChartElement } from "@amcharts/amcharts5/element"; defineChartElement();`. With npm imports, a map's geodata and a locale go in the element's `resources` property (5.21.4): `element.resources = { am5geodata_worldLow }`.
+NOTE Before amCharts 5.21.5, esbuild dropped that bare import, so the element was never defined: it didn't read the brace pattern the package's `sideEffects` used for `element.js`. 5.21.5 fixes the pattern (checked with esbuild). Calling `defineChartElement` works with every version and bundler, and does nothing if the element is already defined: `import { defineChartElement } from "@amcharts/amcharts5/element"; defineChartElement();`. With npm imports, a map's geodata and a locale go in the element's `resources` property (5.21.4): `element.resources = { am5geodata_worldLow }`.
 
 ## Adding a chart
 

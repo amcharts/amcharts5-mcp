@@ -1,7 +1,7 @@
 ---
 title: "defineChartElement"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Registers `<am5-chart>`, or the element under another name. Loading the module does this already; call it for a different name.

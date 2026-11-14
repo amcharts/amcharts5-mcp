@@ -2,7 +2,7 @@
 title: "XYChart"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/xychart/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A chart with X and Y axes, for line, column, scatter and other XY series.

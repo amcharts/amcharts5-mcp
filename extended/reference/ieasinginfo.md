@@ -2,7 +2,7 @@
 title: "IEasingInfo"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ieasinginfo/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 What an easing function is, by name: the base easing, which way it applies, and whether it goes there and back. Only functions made from the ones here have one - a hand-written easing cannot be named.

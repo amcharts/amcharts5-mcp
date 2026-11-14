@@ -2,7 +2,7 @@
 title: "DropdownColors"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/dropdowncolors/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 The dropdown of a `ColorControl`. Not meant to be used on its own.

@@ -1,7 +1,7 @@
 ---
 title: "utils"
 type: "namespace"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Helpers exported as `am5.utils`.
@@ -23,6 +23,7 @@ am5.utils.…
 - `blur(): void` — Removes focus from any element by shifting focus to body.
 - `brighten(rgb: $type.Optional<iRGB>, percent: number): $type.Optional<iRGB>` — Returns a color brightened by `percent`, from `-1` to `1`. Unlike `lighten()`, it adds the same amount to every channel.
 - `capitalizeFirst(text: string): string` — Capitalizes the first letter of a string.
+- `classNameWords(className: string): string` — A class name as words, e.g. "PieSeries" as "Pie series".
 - `cleanFormat(format: string): string` — Cleans up format: • Strips out formatter hints
 - `contains(a: Element, b: Element): boolean` — Checks if element `a` contains element `b`, or is `b`. Looks across shadow DOM boundaries too.
 - `decimalPlaces(number: number): number` — Returns number of decimals

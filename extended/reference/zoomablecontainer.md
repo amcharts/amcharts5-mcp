@@ -2,7 +2,7 @@
 title: "ZoomableContainer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/zoomablecontainer/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A `Container` whose `contents` can be zoomed with the wheel, a pinch or `ZoomTools`, and panned by dragging.

@@ -2,7 +2,7 @@
 title: "MidnightTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/midnighttheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 "Midnight": a dark theme on a deep navy background, with series colors of even depth tuned to show on it. It sets all interface colors, so use it instead of `Dark`.

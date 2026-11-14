@@ -2,7 +2,7 @@
 title: "IDisplayObject"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/idisplayobject/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 ## Inheritance
@@ -31,6 +31,7 @@ TypeScript: not exported by name from the package.
 - **filter** (`string`)
 - **cursorOverStyle** (`string`)
 - **exportable** (`boolean`)
+- **exportName** (`string`) — The layer name an SVG document gives this object, as `data-name`.
 - **_setMatrix** (`() => void`)
 - **getLayer** (`() => ILayer`)
 - **setLayer** (`(order: number | undefined, margin: IMargin | undefined) => void`)

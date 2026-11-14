@@ -2,7 +2,7 @@
 title: "XYChartDefaultTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/xychartdefaulttheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Built-in theme rules: `StockChart` and `XYChart` add this theme to their default themes, so its rules apply to those elements and everything inside them.

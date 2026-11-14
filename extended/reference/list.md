@@ -2,7 +2,7 @@
 title: "List"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/list/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 An ordered list of items that dispatches events as items are added, removed or moved.

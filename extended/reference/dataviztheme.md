@@ -2,7 +2,7 @@
 title: "DatavizTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/dataviztheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A theme. Apply it with `root.setThemes([am5themes_Dataviz.new(root)])`.

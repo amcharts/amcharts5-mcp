@@ -2,7 +2,7 @@
 title: "Candlestick"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/candlestick/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A candle of a `CandlestickSeries`: a body from the open to the close value, with wicks out to the low and high values.

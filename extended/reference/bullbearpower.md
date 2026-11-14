@@ -2,7 +2,7 @@
 title: "BullBearPower"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/bullbearpower/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Bull Bear Power indicator: bull power (high minus the `period` exponential moving average of the close) plus bear power (low minus that average). Drawn in a panel of its own.

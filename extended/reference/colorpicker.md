@@ -2,7 +2,7 @@
 title: "ColorPicker"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/colorpicker/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A color picker with a color square, a hue slider, an eyedropper, a hex input and an opacity slider. It opens for the `ColorPickerButton` set as its `colorButton`.

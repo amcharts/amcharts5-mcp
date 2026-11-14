@@ -2,7 +2,7 @@
 title: "MedianPrice"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/medianprice/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Median Price indicator: `field`, by default the median price (`"hl/2"`), averaged over `period`. Drawn in a panel of its own.

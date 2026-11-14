@@ -2,7 +2,7 @@
 title: "CanvasImage"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/canvasimage/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 **Deprecated:** Renamed to `SceneImage`.

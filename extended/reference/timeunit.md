@@ -2,7 +2,7 @@
 title: "TimeUnit"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/timeunit/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A unit of time.

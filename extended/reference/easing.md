@@ -2,7 +2,7 @@
 title: "Easing"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/easing/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 An easing function: takes animation progress from `0` to `1` and returns the eased progress.

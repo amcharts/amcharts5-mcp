@@ -2,7 +2,7 @@
 title: "MovingAverageEnvelope"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/movingaverageenvelope/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Moving Average Envelope indicator: a moving average of `field` over `period`, with bands `shift` above and below it. Drawn over the main series.

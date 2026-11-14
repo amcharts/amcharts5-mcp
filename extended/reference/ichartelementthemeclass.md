@@ -2,7 +2,7 @@
 title: "IChartElementThemeClass"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ichartelementthemeclass/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A theme class, or anything else with a `new(root, settings)` that makes a theme, such as `am5themes_Adaptive`.

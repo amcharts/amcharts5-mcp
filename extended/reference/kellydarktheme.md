@@ -2,7 +2,7 @@
 title: "KellyDarkTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/kellydarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 "Kelly Dark": the high-contrast `Kelly` palette on a dark background, with neutral dark interface colors. Its darker colors are lightened to show on the background. Use it in place of `Kelly`.

@@ -2,7 +2,7 @@
 title: "StockPanel"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stockpanel/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A panel of a `StockChart`: an `XYChart` stacked with the other panels.

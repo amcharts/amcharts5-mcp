@@ -2,7 +2,7 @@
 title: "Treemap"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/treemap/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A treemap: nodes as rectangles sized by value, each inside its parent's rectangle. A click on a node zooms into it.

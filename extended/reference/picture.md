@@ -2,7 +2,7 @@
 title: "Picture"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/picture/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Displays an image. If only `width` or `height` is set, the other follows the image's aspect ratio.

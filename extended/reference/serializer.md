@@ -2,7 +2,7 @@
 title: "Serializer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/serializer/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Serializes charts or individual elements into plain objects, which can be saved as JSON.

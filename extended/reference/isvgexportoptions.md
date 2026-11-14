@@ -2,7 +2,7 @@
 title: "ISvgExportOptions"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/isvgexportoptions/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Options for `renderToSVG`.
@@ -22,3 +22,4 @@ TypeScript: `am5.ISvgExportOptions` (`import type { ISvgExportOptions } from "@a
 - **idPrefix** (`string`) — default `"am5-"` — Prefix for ids in `<defs>`; needed when several SVGs share a page.
 - **title** (`string`) — Name of the image for screen readers, written as the SVG's `<title>`. Defaults to the chart's `ariaLabel` (`Root` setting), if it has one.
 - **background** (`string`) — CSS color to fill the image with, behind the chart. Transparent if not set. _Since 5.21.0._
+- **includeNonExportable** (`boolean`) — default `false` — Also write elements marked `exportable: false`, such as scrollbar grips, as the chart shows them. _Since 5.21.5._

@@ -2,7 +2,7 @@
 title: "CanvasRadialText"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/canvasradialtext/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 **Deprecated:** Renamed to `SceneRadialText`.

@@ -2,7 +2,7 @@
 title: "SceneNode"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/scenenode/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A renderer-neutral display object: state, place in the tree, transform and bounds. Backends paint it.
@@ -28,6 +28,7 @@ Public properties (not settings):
 - **crisp** (`boolean`)
 - **cursorOverStyle** (`string`)
 - **exportable** (`boolean`)
+- **exportName** (`string`) — The layer name an SVG document gives this object, as `data-name`.
 - **filter** (`string`)
 - **inactive** (`boolean`)
 - **interactive** (`boolean`)

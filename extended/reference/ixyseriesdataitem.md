@@ -2,7 +2,7 @@
 title: "IXYSeriesDataItem"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ixyseriesdataitem/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 XY chart series data item.

@@ -2,7 +2,7 @@
 title: "Sankey"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/sankey/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Sankey diagram: nodes in columns, linked by bands as wide as the values they carry.

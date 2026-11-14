@@ -2,7 +2,7 @@
 title: "GraphicsPaint"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/graphicspaint/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A CSS color string, or a gradient/pattern made by the renderer.

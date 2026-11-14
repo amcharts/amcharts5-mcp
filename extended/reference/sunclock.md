@@ -2,7 +2,7 @@
 title: "SunClock"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/sunclock/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Keeps a series' `sunPosition` worked out from its `sunDate`.

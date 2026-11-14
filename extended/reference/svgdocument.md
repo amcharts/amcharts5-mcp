@@ -2,7 +2,7 @@
 title: "SvgDocument"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/svgdocument/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Writes SVG markup and collects the `<defs>` it references.
@@ -25,5 +25,6 @@ Public properties (not settings):
 - **defs** (`SvgDefs`)
 - **href** (`string`)
 - **live** (`boolean`)
+- **nonExportable** (`boolean`)
 - **precision** (`number`)
 - **resolution** (`number`)

@@ -2,7 +2,7 @@
 title: "ChordDirected"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chorddirected/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Chord diagram for one-way flows: a node's arc shows its incoming and outgoing totals together, and each link keeps its width all the way to the target, where it ends in an arrowhead.

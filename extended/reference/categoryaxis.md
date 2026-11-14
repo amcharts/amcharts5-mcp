@@ -2,7 +2,7 @@
 title: "CategoryAxis"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/categoryaxis/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 An axis of named categories, each taking an equal share of the axis unless `cellSizeField` sets their sizes.

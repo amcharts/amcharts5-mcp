@@ -2,7 +2,7 @@
 title: "StockLegend"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stocklegend/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A legend for a `StockChart` panel, with settings and close buttons on its items.

@@ -2,7 +2,7 @@
 title: "CandlestickSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/candlestickseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A series that shows open, high, low and close values as candles (`Candlestick`). A candle that closes below its open takes the `negative` interface color, the others the `positive` one.

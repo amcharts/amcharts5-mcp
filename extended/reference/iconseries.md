@@ -2,7 +2,7 @@
 title: "IconSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/iconseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Draws icons, for the Arrows & Icons tool of a `StockChart`.

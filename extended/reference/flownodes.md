@@ -2,7 +2,7 @@
 title: "FlowNodes"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/flownodes/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Holds instances of nodes for a `Flow` series.

@@ -2,7 +2,7 @@
 title: "DataItem"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/dataitem/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 One item of a `Component`'s data, holding its values and settings.

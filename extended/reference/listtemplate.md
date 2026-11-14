@@ -2,7 +2,7 @@
 title: "ListTemplate"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/listtemplate/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 A version of a `List` that is able to create new elements as well as apply additional settings to newly created items.

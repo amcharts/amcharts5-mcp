@@ -2,7 +2,7 @@
 title: "StochasticOscillator"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stochasticoscillator/"
-generatedFrom: "@amcharts/amcharts5@5.21.4"
+generatedFrom: "@amcharts/amcharts5@5.21.5"
 ---
 
 Stochastic Oscillator indicator: where the price is within the high-low range of the last `period` data items, from `0` to `100`, with a slow line averaging it. Drawn in a panel of its own.
