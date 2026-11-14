@@ -695,6 +695,14 @@ const tests = [
     check: (r) => searchRank(r, /^skill\/SKILL$/, 1),
     label: "search_all('performance tips big data disable animations') → SKILL.md Performance",
   },
+  {
+    send: { jsonrpc: "2.0", id: 80, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "xy", format: "html" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("https://cdn.amcharts.com/lib/5/xy.js") && text.includes("cdn.jsdelivr.net/npm/@amcharts/amcharts5@") ? "PASS" : "FAIL (no npm-CDN pointer)";
+    },
+    label: "get_quick_start('xy', html) — the amCharts CDN tags and the npm-CDN pointer",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

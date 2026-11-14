@@ -479,7 +479,7 @@ export function registerTools(server, content) {
       description: "Get a quick-start template for a specific chart type — a minimal working example ready to customize.",
       inputSchema: {
         chartType: z.string().describe("Chart type, e.g. 'pie', 'line', 'bar', 'map', 'sankey', 'treemap'"),
-        format: z.enum(["html", "esm"]).optional().default("html").describe("Output format: 'html' for a full HTML page with CDN scripts, 'esm' for ES module imports"),
+        format: z.enum(["html", "esm"]).optional().default("html").describe("Output format: 'html' for script tags (cdn.amcharts.com, with the npm-CDN equivalent on jsDelivr/unpkg for pages that may load only from npm CDNs), 'esm' for ES module imports"),
       },
       annotations: READ_ONLY,
     },
@@ -744,7 +744,7 @@ export function registerTools(server, content) {
     "list_geodata",
     {
       title: "List geodata (map files)",
-      description: "List amCharts 5 geodata (map) files with each one's CDN path, script global name and ES module import: world maps, continents, every country map, regional packs (US states and counties, Canada, Mexico) and the US congressional-district packs, which are versioned per Congress (congressional120 = 120th Congress is the newest). Also the data/countries2 and lang/* helper files. It gives the exact file path and global name that map code needs.",
+      description: "List amCharts 5 geodata (map) files with each one's CDN path, script global name and ES module import: world maps, continents, every country map, regional packs (US states and counties, Canada, Mexico) and the US congressional-district packs, which are versioned per Congress (congressional120 = 120th Congress is the newest). Also the data/countries2 and lang/* helper files. It gives the exact file path and global name that map code needs. Where the geodata package has a dist/ folder, the answer also gives its unpkg address, for pages that may load only from npm CDNs.",
       inputSchema: {
         filter: z.string().optional().describe("Words that must all match (case-insensitive) a map's path, label, group, ISO code or pack, e.g. 'germany', 'FR', 'region/canada', 'usa counties', 'congressional120', 'congressional whole country', 'continents', 'countries2'. A file or global name ('usaCongressionalLow', 'am5geodata_worldLow') works too. Without it, the result is an overview."),
       },

@@ -187,7 +187,8 @@ function build() {
   const families = new Map();
   const files = walk(PKG_DIR)
     .map((f) => toPosix(path.relative(PKG_DIR, f)))
-    .filter((f) => !f.startsWith(".internal/") && !f.startsWith("json/") && !f.startsWith("node_modules/") && f !== "index.js");
+    // dist/ (geodata releases after 5.1.6) holds script copies of the same maps
+    .filter((f) => !f.startsWith(".internal/") && !f.startsWith("json/") && !f.startsWith("dist/") && !f.startsWith("node_modules/") && f !== "index.js");
   for (const rel of files) {
     const noExt = rel.replace(/\.js$/, "");
     const top = noExt.split("/")[0];
@@ -318,6 +319,10 @@ function build() {
     package: PKG.name,
     version: PKG.version,
     cdnBase: CDN_BASE,
+    // The same script files in the package's dist/, which unpkg serves (not
+    // jsDelivr: the package is over its size limit). Only in releases that
+    // have dist/; null before.
+    npmCdnBase: fs.existsSync(path.join(PKG_DIR, "dist")) ? `https://unpkg.com/${PKG.name}@${PKG.version}/dist/` : null,
     rules: {
       cdn: "geodata/<path><Variant>.js, relative to cdnBase",
       global: "am5geodata_<path with / replaced by _><Variant> (set by the CDN script)",
