@@ -1,7 +1,7 @@
 ---
 title: "amCharts MCP Server"
 source: "https://docs.amcharts.com/v5/ai/mcp/"
-scraped: "2026-10-08"
+scraped: "2026-11-14"
 ---
 
 The amCharts 5 MCP Server gives your AI assistant on-demand access to 1,500+ documents: documentation pages, working code examples, and class API references. It queries only what it needs, keeping your context lean and your code accurate.
@@ -10,30 +10,54 @@ The amCharts 5 MCP Server gives your AI assistant on-demand access to 1,500+ doc
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is an open standard that lets AI tools connect to external data sources. Instead of relying solely on training data, the AI can fetch current documentation and examples in real time. Most popular tools already support it, including Claude Code, Claude Desktop, claude.ai, ChatGPT, Cursor, Windsurf, VS Code with GitHub Copilot, Codex CLI, Gemini CLI, and Cline.
 
-You can connect in one of two ways: the **hosted server** (just add a URL, nothing to install) or a **local install** via npm.
+In Claude, the quickest way is the **amCharts 5 plugin**, which also adds the amCharts 5 skill. Elsewhere, connect in one of two ways: the **hosted server** (just add a URL, nothing to install) or a **local install** via npm.
 
 ## Installation
+
+### Claude: the amCharts 5 plugin
+
+The plugin adds this MCP server (hosted, no sign-in) and the [amCharts 5 skill](https://docs.amcharts.com/v5/ai/#5-use-the-amcharts-ai-skill) together:
+
+* **claude.ai and the Claude Desktop app** - open the [amCharts 5 plugin](https://claude.ai/customize/plugins/id/88417dfb-479c-409d-8571-796c3a299aac%40anthropic-plugin-directory) and install it.
+* **Claude Code** - in a session:
+
+```sh
+/plugin install amcharts5@anthropic-plugin-directory
+```
+
+Or in your shell:
+
+```sh
+claude plugin install amcharts5@anthropic-plugin-directory
+```
+
+To add only the server, without the skill, use the Claude Code command or the Connectors Directory link under [Hosted server](https://docs.amcharts.com/v5/ai/mcp/#hosted-server-no-install).
 
 ### Hosted server (no install)
 
 The simplest option: point your AI client at our hosted endpoint. No package to install, and it always runs the latest version.
 
+```
 https://mcp.amcharts.com/mcp
+```
 
 Pick your tool below. Each snippet registers the server under the name `amcharts5`.
 
-**Claude Code** - one command:
+**Claude Code** - the [plugin](https://docs.amcharts.com/v5/ai/mcp/#claude-the-amcharts-5-plugin) adds the server and the skill. For the server only, one command:
 
+```sh
 claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
+```
 
 Add `-s user` after `add` to make it available in all projects instead of just the current one.
 
-**Claude Desktop / claude.ai** - go to **Settings > Connectors > Add custom connector**, then paste `https://mcp.amcharts.com/mcp`.
+**Claude Desktop / claude.ai** - the [plugin](https://docs.amcharts.com/v5/ai/mcp/#claude-the-amcharts-5-plugin) adds the server and the skill. For the server only, [add amCharts 5 to Claude](https://claude.ai/directory/amcharts) from the Connectors Directory, or go to **Settings > Connectors > Add custom connector** and paste `https://mcp.amcharts.com/mcp`.
 
-**ChatGPT** (Plus/Pro/Business/Enterprise, with connectors or developer mode enabled) - **Settings > Connectors > Add custom connector**, then paste the same URL.
+**ChatGPT** (Free plan too) - open [Plugins](https://chatgpt.com/plugins) > **+** > **Add custom MCP server**. Name it amCharts, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then click **Create as a plugin**. In a chat, type **@amCharts** to use it.
 
 **Cursor** - add to `.cursor/mcp.json` (or `~/.cursor/mcp.json` for all projects):
 
+```json
 {
   "mcpServers": {
     "amcharts5": {
@@ -41,9 +65,11 @@ Add `-s user` after `add` to make it available in all projects instead of just t
     }
   }
 }
+```
 
 **Windsurf** - add to `~/.codeium/windsurf/mcp_config.json`:
 
+```json
 {
   "mcpServers": {
     "amcharts5": {
@@ -51,9 +77,11 @@ Add `-s user` after `add` to make it available in all projects instead of just t
     }
   }
 }
+```
 
 **VS Code + GitHub Copilot** - add to `.vscode/mcp.json`:
 
+```json
 {
   "servers": {
     "amcharts5": {
@@ -62,22 +90,30 @@ Add `-s user` after `add` to make it available in all projects instead of just t
     }
   }
 }
+```
 
 **Codex CLI** (also used by the Codex app and IDE extension) - one command:
 
+```sh
 codex mcp add amcharts5 --url https://mcp.amcharts.com/mcp
+```
 
 Or add to `~/.codex/config.toml`:
 
-\[mcp\_servers.amcharts5\]
+```toml
+[mcp_servers.amcharts5]
 url = "https://mcp.amcharts.com/mcp"
+```
 
 **Gemini CLI** - one command (add `-s user` for all projects):
 
+```sh
 gemini mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
+```
 
 Or add to `.gemini/settings.json` (or `~/.gemini/settings.json`):
 
+```json
 {
   "mcpServers": {
     "amcharts5": {
@@ -85,9 +121,11 @@ Or add to `.gemini/settings.json` (or `~/.gemini/settings.json`):
     }
   }
 }
+```
 
 **Cline** (VS Code extension) - open the **MCP Servers** panel, choose **Remote Servers**, and paste the URL. Or add to its MCP settings JSON:
 
+```json
 {
   "mcpServers": {
     "amcharts5": {
@@ -96,17 +134,20 @@ Or add to `.gemini/settings.json` (or `~/.gemini/settings.json`):
     }
   }
 }
+```
 
 **Tools that only support local (stdio) servers** (e.g. Zed, Continue, Amazon Q Developer) - bridge to the hosted URL with [mcp-remote](https://www.npmjs.com/package/mcp-remote):
 
+```json
 {
   "mcpServers": {
     "amcharts5": {
       "command": "npx",
-      "args": \["-y", "mcp-remote", "https://mcp.amcharts.com/mcp"\]
+      "args": ["-y", "mcp-remote", "https://mcp.amcharts.com/mcp"]
     }
   }
 }
+```
 
 **Any other MCP client** that accepts a remote URL works too. Use the `/mcp` endpoint (Streamable HTTP). If your client only speaks the older SSE transport, use `https://mcp.amcharts.com/sse` instead.
 
@@ -118,100 +159,81 @@ Prefer to run the server yourself - for offline use, or to pin a version? It's p
 
 Run one command to install globally (available in all projects):
 
+```sh
 claude mcp add -s user amcharts5 -- npx -y @amcharts/amcharts5-mcp
+```
 
 Or install for the current project only (omit `-s user`):
 
+```sh
 claude mcp add amcharts5 -- npx -y @amcharts/amcharts5-mcp
+```
 
 #### Cursor, Windsurf, Claude Desktop, Gemini CLI, and others
 
 Add the following to your MCP configuration file:
 
+```json
 {
   "mcpServers": {
     "amcharts5": {
       "command": "npx",
-      "args": \["-y", "@amcharts/amcharts5-mcp"\]
+      "args": ["-y", "@amcharts/amcharts5-mcp"]
     }
   }
 }
+```
 
 Where to find the config file:
 
-Tool
-
-Config file
-
-Scope
-
-**Cursor**
-
-`.cursor/mcp.json` in project root
-
-Per project
-
-**Cursor** (global)
-
-`~/.cursor/mcp.json`
-
-All projects
-
-**Windsurf**
-
-`~/.codeium/windsurf/mcp_config.json`
-
-Global
-
-**Claude Desktop**
-
-`claude_desktop_config.json` - open it from **Settings > Developer > Edit Config**
-
-Global
-
-**Gemini CLI**
-
-`.gemini/settings.json` (project) or `~/.gemini/settings.json` (global)
-
-Either
-
-**Cline**
-
-MCP Servers panel > Configure
-
-Global
+| Tool                | Config file                                                                        | Scope        |
+| ------------------- | ---------------------------------------------------------------------------------- | ------------ |
+| **Cursor**          | `.cursor/mcp.json` in project root                                                 | Per project  |
+| **Cursor** (global) | `~/.cursor/mcp.json`                                                               | All projects |
+| **Windsurf**        | `~/.codeium/windsurf/mcp_config.json`                                              | Global       |
+| **Claude Desktop**  | `claude_desktop_config.json` - open it from **Settings > Developer > Edit Config** | Global       |
+| **Gemini CLI**      | `.gemini/settings.json` (project) or `~/.gemini/settings.json` (global)            | Either       |
+| **Cline**           | MCP Servers panel > Configure                                                      | Global       |
 
 #### VS Code + GitHub Copilot
 
 VS Code uses a slightly different format. Create or edit `.vscode/mcp.json` in your workspace:
 
+```json
 {
   "servers": {
     "amcharts5": {
       "type": "stdio",
       "command": "npx",
-      "args": \["-y", "@amcharts/amcharts5-mcp"\]
+      "args": ["-y", "@amcharts/amcharts5-mcp"]
     }
   }
 }
+```
 
 #### Codex CLI
 
 Codex uses TOML. Run one command:
 
+```sh
 codex mcp add amcharts5 -- npx -y @amcharts/amcharts5-mcp
+```
 
 Or add to `~/.codex/config.toml`:
 
-\[mcp\_servers.amcharts5\]
+```toml
+[mcp_servers.amcharts5]
 command = "npx"
-args = \["-y", "@amcharts/amcharts5-mcp"\]
+args = ["-y", "@amcharts/amcharts5-mcp"]
+```
 
 #### Other MCP-compatible tools
 
 For Continue, Amazon Q Developer, Zed, and other tools that support MCP, configure them to run:
 
+```
 npx -y @amcharts/amcharts5-mcp
+```
 
 Check your tool's documentation for the exact config format.
 
@@ -219,7 +241,9 @@ Check your tool's documentation for the exact config format.
 
 Most tools list connected servers somewhere in their UI (Claude Code: run `/mcp`; Cursor and VS Code: the MCP settings page shows a green dot next to `amcharts5`). The quickest end-to-end test is to ask the AI something it can only answer by using the server:
 
+```sh title="Prompt"
 Using the amcharts5 MCP server, list the available chart types.
+```
 
 If the reply comes from a tool call rather than memory, you're set. Restart the tool if the server doesn't appear right after adding it - most clients only read the config on startup.
 
@@ -227,62 +251,28 @@ If the reply comes from a tool call rather than memory, you're set. Restart the 
 
 Once installed, the AI gets access to 11 tools for querying amCharts documentation:
 
-Tool
-
-What it does
-
-`get_core_reference`
-
-Core amCharts 5 docs - setup, themes, colors, events, common pitfalls
-
-`get_chart_reference`
-
-Full reference for a chart type (e.g. "pie", "sankey", "treemap", "ui-elements")
-
-`list_chart_types`
-
-List all available chart types and their keywords
-
-`search_docs`
-
-Search the curated skill reference by keyword (or everything, with `scope: "all"`)
-
-`search_all`
-
-Search across **everything** - docs, examples, and API reference
-
-`get_doc`
-
-Get a full documentation page (e.g. "charts/xy-chart/axes", "getting-started/integrations/react")
-
-`get_section`
-
-Get a specific section from a reference file by heading
-
-`get_quick_start`
-
-Get a minimal working template for any chart type, as a full HTML page or ES module code
-
-`get_api_reference`
-
-Per-class API reference with full settings table and default values (e.g. "XYCursor", "Tooltip")
-
-`list_examples`
-
-Browse all 283 examples, optionally filtered by category
-
-`get_example`
-
-Get the full code for a specific example
+| Tool                  | What it does                                                                                      |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
+| `get_core_reference`  | Core amCharts 5 docs - setup, themes, colors, events, common pitfalls                             |
+| `get_chart_reference` | Full reference for a chart type (e.g. "pie", "sankey", "treemap", "ui-elements")                  |
+| `list_chart_types`    | List all available chart types and their keywords                                                 |
+| `search_docs`         | Search the curated skill reference by keyword (or everything, with `scope: "all"`)                |
+| `search_all`          | Search across **everything** - docs, examples, and API reference                                  |
+| `get_doc`             | Get a full documentation page (e.g. "charts/xy-chart/axes", "getting-started/integrations/react") |
+| `get_section`         | Get a specific section from a reference file by heading                                           |
+| `get_quick_start`     | Get a minimal working template for any chart type, as a full HTML page or ES module code          |
+| `get_api_reference`   | Per-class API reference with full settings table and default values (e.g. "XYCursor", "Tooltip")  |
+| `list_examples`       | Browse all 283 examples, optionally filtered by category                                          |
+| `get_example`         | Get the full code for a specific example                                                          |
 
 You don't need to call these tools yourself. The AI decides which tools to use based on your request and fetches the relevant information automatically. If it doesn't, just tell it: "check the amcharts5 MCP server first".
 
 ## What's inside
 
--   **140+ documentation pages** - getting started, chart guides, concepts (themes, events, adapters, data, animations, accessibility), and framework integration guides (React, Angular, Vue, Next.js, Svelte, and more)
--   **280+ code examples** - working demos across 16 categories: column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more
--   **1,000+ class API references** - every class in the library with its settings, defaults, properties, methods, events, and inheritance chain
--   **Curated skill reference** - quick-start templates and chart-specific guides from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
+* **140+ documentation pages** - getting started, chart guides, concepts (themes, events, adapters, data, animations, accessibility), and framework integration guides (React, Angular, Vue, Next.js, Svelte, and more)
+* **280+ code examples** - working demos across 16 categories: column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more
+* **1,000+ class API references** - every class in the library with its settings, defaults, properties, methods, events, and inheritance chain
+* **Curated skill reference** - quick-start templates and chart-specific guides from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
 
 The hosted server is updated with every amCharts release. For the local install, `npx -y` fetches the latest published version each time the server starts.
 

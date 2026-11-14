@@ -1,7 +1,7 @@
 ---
 title: "Animations"
 source: "https://docs.amcharts.com/v5/concepts/animations/"
-scraped: "2026-10-08"
+scraped: "2026-11-14"
 ---
 
 ## Animated theme
@@ -10,68 +10,66 @@ The easiest way to enable all kinds of polished animations on charts is to use "
 
 Like all themes it needs to be loaded first:
 
-import am5themes\_Animated from "@amcharts/amcharts5/themes/Animated";
+TypeScript:
 
+```ts
+import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+```
+
+JavaScript:
+
+```js
 <script src="//cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+```
 
 Then applied to the root element:
 
-root.setThemes(\[
-  am5themes\_Animated.new(root)
-\]);
+TypeScript:
 
-root.setThemes(\[
-  am5themes\_Animated.new(root)
-\]);
+```ts
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+```
+
+JavaScript:
+
+```js
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+```
 
 For more information about themes, refer to our "[Themes](https://docs.amcharts.com/v5/concepts/themes/)" tutorial.
 
+## Turning off animations
+
+Without the Animated theme, most animation durations are `0`, so changes happen at once.
+
+To keep the theme but turn off one kind of animation, set its duration to `0`. For example, axis zoom: see "[Zoom animation](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#zoom-animation)".
+
 ## Animating settings
 
-A value of a setting of an element or a data item can be animated using its `[animate()](https://docs.amcharts.com/v5/reference/sprite/#animate_method)` method.
+A value of a setting of an element or a data item can be animated using its `animate()` method.
 
 This applies to settings that use quantifiable values, like numbers, colors, or percent.
 
-`animate()` method takes one parameter - an object that implements `[AnimationOptions](https://docs.amcharts.com/v5/reference/animationoptions/)` interface:
+`animate()` method takes one parameter - an object that implements `AnimationOptions` interface:
 
-Option
-
-Comment
-
-`duration`
-
-Animation duration in milliseconds.
-
-`easing`
-
-An [easing function](#Easing_functions) to use.
-
-`from`
-
-Starting value. Will use current value if not set.
-
-`key`
-
-Setting key to animate values for.
-
-`loops`
-
-Number of times to play animation. Will play only once if not set, or will loop forever if set to `Infinity`.
-
-`to`
-
-End value to animate to.
+| Option     | Comment                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------- |
+| `duration` | Animation duration in milliseconds.                                                                           |
+| `easing`   | An [easing function](#easing-functions) to use.                                                               |
+| `from`     | Starting value. Will use current value if not set.                                                            |
+| `key`      | Setting key to animate values for.                                                                            |
+| `loops`    | Number of times to play animation. Will play only once if not set, or will loop forever if set to `Infinity`. |
+| `to`       | End value to animate to.                                                                                      |
 
 As an example let's create a repeating animation of a `startAngle` setting of a pie series:
 
-series.animate({
-  key: "startAngle",
-  to: 180,
-  loops: Infinity,
-  duration: 2000,
-  easing: am5.ease.yoyo(am5.ease.cubic)
-});
+TypeScript:
 
+```ts
 series.animate({
   key: "startAngle",
   to: 180,
@@ -79,28 +77,278 @@ series.animate({
   duration: 2000,
   easing: am5.ease.yoyo(am5.ease.cubic)
 });
+```
+
+JavaScript:
+
+```js
+series.animate({
+  key: "startAngle",
+  to: 180,
+  loops: Infinity,
+  duration: 2000,
+  easing: am5.ease.yoyo(am5.ease.cubic)
+});
+```
 
 We have used `am5.ease.yoyo` easing function which animates setting to target value, then returns back to original one.
 
-Read more about it in "[Easing functions](#Easing_functions)" section.
+Read more about it in "[Easing functions](#easing-functions)" section.
 
+Example: [Easing](https://docs.amcharts.com/embeds/v5/easing/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    radius: am5.percent(90),
+    innerRadius: am5.percent(50)
+  })
+);
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series.data.setAll(data);
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
+
+series.animate({
+  key: "startAngle",
+  to: 180,
+  loops: Infinity,
+  duration: 2000,
+  easing: am5.ease.yoyo(am5.ease.cubic)
+});
+```
 
 It works exactly the same for data item settings:
 
+TypeScript:
+
+```ts
 handDataItem.animate({
   key: "value",
   to: 20,
   duration: 800,
   easing: am5.ease.out(am5.ease.cubic)
 });
+```
 
+JavaScript:
+
+```js
 handDataItem.animate({
   key: "value",
   to: 20,
   duration: 800,
   easing: am5.ease.out(am5.ease.cubic)
 });
+```
 
+Example: [Gauge chart with hand](https://docs.amcharts.com/embeds/v5/gauge-chart-with-hand/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/radar.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5radar.RadarChart.new(root, {
+    panX: false,
+    panY: false,
+    startAngle: -180,
+    endAngle: 0,
+    innerRadius: -26
+  })
+);
+
+var axisRenderer = am5radar.AxisRendererCircular.new(root, {
+  strokeOpacity: 0.1,
+  minGridDistance: 30
+});
+
+axisRenderer.ticks.template.setAll({
+  visible: true,
+  strokeOpacity: 0.5
+});
+
+axisRenderer.grid.template.setAll({
+  visible: false
+});
+
+var axis = chart.xAxes.push(
+  am5xy.ValueAxis.new(root, {
+    maxDeviation: 0,
+    min: 0,
+    max: 100,
+    strictMinMax: true,
+    renderer: axisRenderer
+  })
+);
+
+function createRange(start, end, color, label) {
+  var rangeDataItem = axis.makeDataItem({
+    value: start,
+    endValue: end
+  });
+
+  var range = axis.createAxisRange(rangeDataItem);
+
+  rangeDataItem.get("axisFill").setAll({
+    visible: true,
+    fill: color,
+    fillOpacity: 0.8
+  });
+
+  rangeDataItem.get("tick").setAll({
+    visible: false
+  });
+
+  rangeDataItem.get("label").setAll({
+    text: label,
+    inside: true,
+    radius: 8,
+    fontSize: "0.9em",
+    fill: am5.color(0xffffff)
+  });
+}
+
+createRange(0, 70, am5.color(0x297373), "Safe");
+createRange(70, 90, am5.color(0x946b49), "Warning");
+createRange(90, 100, am5.color(0xff621f), "Danger");
+
+// Add clock hand
+var handDataItem = axis.makeDataItem({
+  value: 0
+});
+
+var hand = handDataItem.set(
+  "bullet",
+  am5xy.AxisBullet.new(root, {
+    sprite: am5radar.ClockHand.new(root, {
+      radius: am5.percent(99)
+    })
+  })
+);
+
+axis.createAxisRange(handDataItem);
+
+handDataItem.get("grid").set("visible", false);
+handDataItem.get("tick").set("visible", false);
+
+setInterval(() => {
+  handDataItem.animate({
+    key: "value",
+    to: Math.round(Math.random() * 100),
+    duration: 800,
+    easing: am5.ease.out(am5.ease.cubic)
+  });
+}, 2000);
+```
 
 ## Animations as settings
 
@@ -108,114 +356,58 @@ Animations can also be set as part of element's configuration, using its `animat
 
 The setting takes an array of animations, each with these options:
 
-Option
-
-Default
-
-Comment
-
-`key`
-
-Setting to animate.
-
-`from`
-
-Current value
-
-Value to start from.
-
-`to`
-
-Value to animate to.
-
-`duration`
-
-Duration in milliseconds. With `yoyo`, one way.
-
-`delay`
-
-`0`
-
-Milliseconds to wait before starting.
-
-`loops`
-
-`1`
-
-How many times to play the animation. `0` plays it forever.
-
-`yoyo`
-
-`false`
-
-Go back to `from` after reaching `to`, instead of jumping back.
-
-`easing`
-
-`"linear"`
-
-Easing function by name: `"linear"`, `"quad"`, `"cubic"`, `"exp"`, `"sine"`, `"circle"`, `"bounce"`, or `"elastic"`.
-
-`ease`
-
-`"in"`
-
-Which way easing applies: `"in"`, `"out"`, or `"inOut"`.
-
-`target`
-
-`"self"`
-
-`"self"` animates a setting of the element, `"dataItem"` a value of its data item.
+| Option     | Default       | Comment                                                                                                              |
+| ---------- | ------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `key`      |               | Setting to animate.                                                                                                  |
+| `from`     | Current value | Value to start from.                                                                                                 |
+| `to`       |               | Value to animate to.                                                                                                 |
+| `duration` |               | Duration in milliseconds. With `yoyo`, one way.                                                                      |
+| `delay`    | `0`           | Milliseconds to wait before starting.                                                                                |
+| `loops`    | `1`           | How many times to play the animation. `0` plays it forever.                                                          |
+| `yoyo`     | `false`       | Go back to `from` after reaching `to`, instead of jumping back.                                                      |
+| `easing`   | `"linear"`    | Easing function by name: `"linear"`, `"quad"`, `"cubic"`, `"exp"`, `"sine"`, `"circle"`, `"bounce"`, or `"elastic"`. |
+| `ease`     | `"in"`        | Which way easing applies: `"in"`, `"out"`, or `"inOut"`.                                                             |
+| `target`   | `"self"`      | `"self"` animates a setting of the element, `"dataItem"` a value of its data item.                                   |
 
 The following makes a globe spin forever, one full turn every two minutes:
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5map.MapChart.new(root, {
     projection: am5map.geoOrthographic(),
-    animations: \[
+    animations: [
       { key: "rotationX", from: 0, to: 360, duration: 120000, loops: 0 }
-    \]
+    ]
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5map.MapChart.new(root, {
     projection: am5map.geoOrthographic(),
-    animations: \[
+    animations: [
       { key: "rotationX", from: 0, to: 360, duration: 120000, loops: 0 }
-    \]
+    ]
   })
 );
+```
 
 With `target: "dataItem"`, an animation can change a value of element's data item. The following moves a map point along its line, back and forth:
 
-pointSeries.bullets.push(function() {
-  return am5.Bullet.new(root, {
-    sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: am5.color(0xff0000),
-      animations: \[{
-        key: "positionOnLine",
-        target: "dataItem",
-        from: 0,
-        to: 1,
-        duration: 5000,
-        loops: 0,
-        yoyo: true,
-        easing: "sine",
-        ease: "inOut"
-      }\]
-    })
-  });
-});
+TypeScript:
 
+```ts
 pointSeries.bullets.push(function() {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
       radius: 5,
       fill: am5.color(0xff0000),
-      animations: \[{
+      animations: [{
         key: "positionOnLine",
         target: "dataItem",
         from: 0,
@@ -225,67 +417,172 @@ pointSeries.bullets.push(function() {
         yoyo: true,
         easing: "sine",
         ease: "inOut"
-      }\]
+      }]
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+pointSeries.bullets.push(function() {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fill: am5.color(0xff0000),
+      animations: [{
+        key: "positionOnLine",
+        target: "dataItem",
+        from: 0,
+        to: 1,
+        duration: 5000,
+        loops: 0,
+        yoyo: true,
+        easing: "sine",
+        ease: "inOut"
+      }]
+    })
+  });
+});
+```
 
 Animations start when the setting is applied, restart when it changes, and stop when the element is disposed. When the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/), the configured values are saved, not whatever value the animation was at.
 
-NOTEUnlike `animate()`, where `loops: Infinity` means forever, here it's `loops: 0`. The `animations` setting is available since version 5.20.8.
+> **Note:** Unlike `animate()`, where `loops: Infinity` means forever, here it's `loops: 0`. The `animations` setting is available since version 5.20.8.
 
-### More about the `animations` setting (5.20.8)
+Example: [Marker moving along a route](https://docs.amcharts.com/embeds/v5/marker-moving-along-a-route/)
 
-Being a plain setting, `animations` can be set like any other — on an element, a template, a bullet's sprite, or in a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/) — and a [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/) chart keeps it.
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
-Notes on the options listed above:
+HTML:
 
--   `key`, `to` and `duration` are required. With `yoyo`, `duration` is one way, so a full there-and-back takes twice as long.
--   `loops: 0` plays the animation forever (`Infinity` works too in JavaScript, but not in JSON).
--   `easing` takes a **name** only; functions are not accepted here. An unknown name silently falls back to `"linear"`. `ease` is the same as wrapping the function in `am5.ease.out()` or `am5.ease.inOut()` (see "Easing functions by name" below).
--   When the setting changes, the settings its animations animated are put back to what they held first, then the new list starts.
+```html
+<div id="chartdiv"></div>
+```
 
-The following makes each bullet pulse, forever:
+CSS:
 
-```javascript
-series.bullets.push(function (root, series, dataItem) {
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create the map chart
+// https://docs.amcharts.com/v5/charts/map-chart/
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    projection: am5map.geoNaturalEarth1()
+  })
+);
+
+// Create polygon series for countries
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"]
+  })
+);
+
+// Create the route: New York > London > Beijing
+// https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+
+lineSeries.mapLines.template.setAll({
+  stroke: root.interfaceColors.get("alternativeBackground"),
+  strokeOpacity: 0.6,
+  strokeDasharray: [3, 3]
+});
+
+lineSeries.data.setAll([
+  {
+    id: "route",
+    geometry: {
+      type: "LineString",
+      coordinates: [
+        [-73.778137, 40.641312],
+        [-0.454296, 51.47002],
+        [116.597504, 40.072498]
+      ]
+    }
+  }
+]);
+
+// Create a point that sits on the route
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#points-on-a-line
+var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+pointSeries.bullets.push(function () {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
-      radius: 6,
+      radius: 7,
+      fill: am5.color(0xff5500),
+      stroke: root.interfaceColors.get("background"),
+      strokeWidth: 2,
+
+      // Animate positionOnLine of the point's data item, from start to end
+      // and back, forever
+      // https://docs.amcharts.com/v5/concepts/animations/#animations-as-settings
       animations: [
-        { key: "scale", from: 1, to: 1.6, duration: 800, loops: 0, yoyo: true, easing: "sine" },
-        { key: "opacity", from: 1, to: 0.3, duration: 800, loops: 0, yoyo: true }
+        {
+          key: "positionOnLine",
+          target: "dataItem",
+          from: 0,
+          to: 1,
+          duration: 6000,
+          loops: 0,
+          yoyo: true,
+          easing: "sine",
+          ease: "inOut"
+        }
       ]
     })
   });
 });
-```
 
-IMPORTANT With `from` omitted, the animation starts from the setting's current value. If that value is `undefined`, the element jumps straight to `to` and nothing animates. `scale`, `opacity` and `rotation` are fine (the theme gives them a value), but settings like `dx` or `fill`, or a data item value that is not set yet (e.g. a map point without `positionOnLine`), need an explicit `from`.
-
-With `target: "dataItem"`, the entry animates the data item the element belongs to — for example, a map point's `positionOnLine`, which flies the point along its line. See "[Map point series: Points on a line](https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#points-on-a-line)".
-
-In a JSON config, colors and percents in `from`/`to` are written in their object form:
-
-```json
-{
-  "type": "Circle",
-  "settings": {
-    "radius": 6,
-    "animations": [{
-      "key": "fill",
-      "from": { "type": "Color", "value": "#ff0000" },
-      "to": { "type": "Color", "value": "#0000ff" },
-      "duration": 1000,
-      "loops": 0,
-      "yoyo": true
-    }]
+pointSeries.data.setAll([
+  {
+    lineId: "route",
+    positionOnLine: 0
   }
-}
+]);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
 ```
-
-`ChartSerializer` can also turn a never-ending animation started in code with `animate()` into an `animations` entry — on an element, and since 5.21.0 on a data item too — see its `runningAnimations` setting in "[Chart serializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/)".
-
 
 ## Animating between states
 
@@ -297,51 +594,195 @@ However, if we enable animated theme, or if we set required settings, the quanti
 
 These animations are controlled by two settings:
 
--   `stateAnimationDuration` - duration of animation in seconds (default: `0`, or `600` if animated theme is enabled).
--   `stateAnimationEasing` - an easing function for animation (default: `am5.ease.out($ease.cubic)`).
+* `stateAnimationDuration` - duration of animation in seconds (default: `0`, or `600` if animated theme is enabled).
+* `stateAnimationEasing` - an easing function for animation (default: `am5.ease.out($ease.cubic)`).
 
 We can use these two settings to control how long transition of setting values takes, as well as what process easing function it uses:
 
-columnSeries.columns.template.setAll({
-  interactive: true,
-  stateAnimationDuration: 2000,
-  stateAnimationEasing: am5.ease.out(am5.ease.cubic)
-});
+TypeScript:
 
+```ts
 columnSeries.columns.template.setAll({
   interactive: true,
   stateAnimationDuration: 2000,
   stateAnimationEasing: am5.ease.out(am5.ease.cubic)
 });
+```
+
+JavaScript:
+
+```js
+columnSeries.columns.template.setAll({
+  interactive: true,
+  stateAnimationDuration: 2000,
+  stateAnimationEasing: am5.ease.out(am5.ease.cubic)
+});
+```
 
 The following demo adds a custom state ("off") which is applied to the column when it's clicked.
 
 The state application animation will use `stateAnimationDuration` and `stateAnimationEasing` settings.
 
+Example: [Modifying state animation options](https://docs.amcharts.com/embeds/v5/modifying-state-animation-options/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    category: "Research",
+    value: 690
+  },
+  {
+    category: "Marketing",
+    value: 1000
+  },
+  {
+    category: "Sales",
+    value: 850
+  }
+];
+
+// Craete Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    min: 400,
+    max: 1400,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0.2,
+    renderer: am5xy.AxisRendererX.new(root, {}),
+
+    categoryField: "category"
+  })
+);
+
+xAxis.data.setAll(data);
+
+// Create series
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    categoryXField: "category",
+    interpolationDuration: 2000,
+    interpolationEasing: am5.ease.inOut(am5.ease.elastic)
+  })
+);
+
+series.data.setAll(data);
+
+// Create custoim state on columns
+series.columns.template.states.create("off", {
+  fillOpacity: 0.1,
+  strokeOpacity: 0.1
+});
+
+series.columns.template.setAll({
+  interactive: true,
+  stateAnimationDuration: 2000,
+  stateAnimationEasing: am5.ease.out(am5.ease.cubic)
+});
+
+series.columns.template.events.on("click", function (ev) {
+  if (ev.target.get("fillOpacity") !== 1) {
+    ev.target.states.applyAnimate("default");
+  } else {
+    ev.target.states.applyAnimate("off");
+  }
+});
+```
 
 ## Animating data values
 
 Updating data values is done via `setIndex()` method of series data, as per "[Data](https://docs.amcharts.com/v5/concepts/data/#updating-existing-data)" tutorial:
 
-series.data.setIndex(1, {
-  category: "Marketing",
-  value: 1000
-});
+TypeScript:
 
+```ts
 series.data.setIndex(1, {
   category: "Marketing",
   value: 1000
 });
+```
+
+JavaScript:
+
+```js
+series.data.setIndex(1, {
+  category: "Marketing",
+  value: 1000
+});
+```
 
 Once called, series will animate its data item (e.g. column) to new value.
 
 The speed and style of such animation is controlled using two settings:
 
--   `interpolationDuration` - duration of animation in milliseconds (default: `0`, or `600` if animated theme is enabled).
--   `interpolationEasing` - an easing function for animation (default: `am5.ease.out($ease.cubic)`).
+* `interpolationDuration` - duration of animation in milliseconds (default: `0`, or `600` if animated theme is enabled).
+* `interpolationEasing` - an easing function for animation (default: `am5.ease.out($ease.cubic)`).
 
 Using these two settings, we can control how long animation to new value takes, and how it progresses:
 
+TypeScript:
+
+```ts
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: "Series", 
@@ -353,7 +794,11 @@ var series = chart.series.push(
     interpolationEasing: am5.ease.inOut(am5.ease.elastic)
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: "Series", 
@@ -365,7 +810,121 @@ var series = chart.series.push(
     interpolationEasing: am5.ease.inOut(am5.ease.elastic)
   }) 
 );
+```
 
+Example: [Updating series values](https://docs.amcharts.com/embeds/v5/updating-series-values/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    category: "Research",
+    value: 690
+  },
+  {
+    category: "Marketing",
+    value: 1000
+  },
+  {
+    category: "Sales",
+    value: 850
+  }
+];
+
+// Craete Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    min: 400,
+    max: 1400,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0.2,
+    renderer: am5xy.AxisRendererX.new(root, {}),
+
+    categoryField: "category"
+  })
+);
+
+xAxis.data.setAll(data);
+
+// Create series
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    categoryXField: "category",
+    interpolationDuration: 2000,
+    interpolationEasing: am5.ease.inOut(am5.ease.elastic)
+  })
+);
+
+series.data.setAll(data);
+
+// Update data
+setInterval(function () {
+  series.data.setIndex(1, {
+    category: "Marketing",
+    value: Math.round(Math.random() * 800 + 400)
+  });
+}, 3000);
+```
 
 ## Forcing appearance animation
 
@@ -379,14 +938,22 @@ The actual "appearance" animation may take multiple forms, but most commonly it 
 
 Calling `appear()` method does two things:
 
-1.  Hides the element and applies hidden state.
-2.  Unhides the elements and animates to default state.
+1. Hides the element and applies hidden state.
+2. Unhides the elements and animates to default state.
 
 It can be used on any element from simple button to series to a whole chart:
 
-chart.appear();
+TypeScript:
 
+```ts
 chart.appear();
+```
+
+JavaScript:
+
+```js
+chart.appear();
+```
 
 ### Timing appearance
 
@@ -394,12 +961,20 @@ When called without parameters, appearance will take place immediately, and will
 
 We can control that using two parameters to `appear()`:
 
-1.  Duration in milliseconds.
-2.  Delay in milliseconds.
+1. Duration in milliseconds.
+2. Delay in milliseconds.
 
-chart.appear(2000, 500);
+TypeScript:
 
+```ts
 chart.appear(2000, 500);
+```
+
+JavaScript:
+
+```js
+chart.appear(2000, 500);
+```
 
 The above will make chart fade-in animation take 2 seconds, and will be delayed by half a second.
 
@@ -409,6 +984,9 @@ Instead of calling `appear()`, we can set element's `autoAppear` setting to `tru
 
 Duration and delay are set with `appearDuration` and `appearDelay` settings, both in milliseconds. If `appearDuration` is not set, element's `stateAnimationDuration` is used.
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     autoAppear: true,
@@ -416,7 +994,82 @@ let chart = root.container.children.push(
     appearDelay: 100
   })
 );
+```
 
+JavaScript:
+
+```js
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    autoAppear: true,
+    appearDuration: 1000,
+    appearDelay: 100
+  })
+);
+```
+
+Since these are regular settings, this is how a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/) or a [\<am5-chart> element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) gets its opening animation.
+
+A few things to know:
+
+* The animation plays once. Data updates do not play it again. Turning the setting off and back on does.
+* Elements created from a template, e.g. columns, play it as each one is created.
+* An element that starts hidden stays hidden.
+
+> **Note:** `autoAppear`, `appearDuration`, and `appearDelay` are available since version 5.21.0.
+
+Example: [Opening animation with autoAppear](https://docs.amcharts.com/embeds/v5/opening-animation-with-autoappear/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// autoAppear plays the opening animation when the chart is first drawn,
+// the same as calling chart.appear(1000, 100)
+// https://docs.amcharts.com/v5/concepts/animations/#automatic-appearance
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
     autoAppear: true,
@@ -425,15 +1078,49 @@ var chart = root.container.children.push(
   })
 );
 
-Since these are regular settings, this is how a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/) or a [<am5-chart> element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) gets its opening animation.
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "category",
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
 
-A few things to know:
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
 
--   The animation plays once. Data updates do not play it again. Turning the setting off and back on does.
--   Elements created from a template, e.g. columns, play it as each one is created.
--   An element that starts hidden stays hidden.
+// Create series
+// A series with autoAppear waits for its data, then grows its columns
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    categoryXField: "category",
+    sequencedInterpolation: true,
+    autoAppear: true,
+    appearDuration: 1000
+  })
+);
 
-NOTE`autoAppear`, `appearDuration`, and `appearDelay` are available since version 5.21.0.
+// Set data
+var data = [
+  { category: "Research", value: 1000 },
+  { category: "Marketing", value: 1200 },
+  { category: "Sales", value: 850 },
+  { category: "Support", value: 600 },
+  { category: "Legal", value: 300 }
+];
+
+xAxis.data.setAll(data);
+series.data.setAll(data);
+
+// No appear() calls needed
+```
 
 ## Animation of series
 
@@ -441,6 +1128,9 @@ NOTE`autoAppear`, `appearDuration`, and `appearDelay` are available since versio
 
 Created series will appear on chart right away. Should we want to make it play out initial animation, we can call it's `appear()` method right after creating its object:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -451,7 +1141,11 @@ let series = chart.series.push(
   })
 );
 series.appear();
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -462,8 +1156,9 @@ var series = chart.series.push(
   })
 );
 series.appear();
+```
 
-Alternatively, set `autoAppear: true` on the series (see "[Automatic appearance](#Automatic_appearance)"). A series with it waits for its data before animating, so it works even if data is loaded later.
+Alternatively, set `autoAppear: true` on the series (see "[Automatic appearance](#automatic-appearance)"). A series with it waits for its data before animating, so it works even if data is loaded later.
 
 ### Sequenced animations
 
@@ -473,6 +1168,9 @@ We can make them appear in sequence, one by one, by setting `sequencedInterpolat
 
 We can also control the delay by which each subsequent data item starts animating by `sequencedDelay` setting, which indicates number of milliseconds.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -485,7 +1183,11 @@ let series = chart.series.push(
   })
 );
 series.appear();
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -498,6 +1200,7 @@ var series = chart.series.push(
   })
 );
 series.appear();
+```
 
 ## Easing functions
 
@@ -507,14 +1210,9 @@ Easing functions are used by animations to control the effect of progress of the
 
 Different easing functions create different feeling, e.g. "out" function will gradually slow down animation at the end, creating effect of the "braking".
 
-series.animate({
-  key: "startAngle",
-  to: 180,
-  loops: Infinity,
-  duration: 2000,
-  easing: am5.ease.elastic
-});
+TypeScript:
 
+```ts
 series.animate({
   key: "startAngle",
   to: 180,
@@ -522,39 +1220,136 @@ series.animate({
   duration: 2000,
   easing: am5.ease.elastic
 });
+```
+
+JavaScript:
+
+```js
+series.animate({
+  key: "startAngle",
+  to: 180,
+  loops: Infinity,
+  duration: 2000,
+  easing: am5.ease.elastic
+});
+```
 
 There is a number of easing functions:
 
-Function
-
-Comment
-
-`am5.ease.bounce`
-
-Will "bounce" at the end.
-
-`am5.ease.circle`
-
-`am5.ease.cubic`
-
-`am5.ease.elastic`
-
-Will overshoot end value, then bounce back a few times before settling down at the end.
-
-`am5.ease.exp`
-
-`am5.ease.linear`
-
-Constant speed during all duration.
-
-`am5.ease.quad`
-
-`am5.ease.sine`
-
-NOTE `am5.ease.pow` is not a ready-to-use easing: it is `pow(t, e)` and needs an exponent as its second parameter. Passed directly as `easing`, the exponent is `undefined` and the animation produces `NaN`. Wrap it in a function instead: `easing: function(t) { return am5.ease.pow(t, 3); }`.
+| Function           | Comment                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| `am5.ease.bounce`  | Will "bounce" at the end.                                                               |
+| `am5.ease.circle`  |                                                                                         |
+| `am5.ease.cubic`   |                                                                                         |
+| `am5.ease.elastic` | Will overshoot end value, then bounce back a few times before settling down at the end. |
+| `am5.ease.exp`     |                                                                                         |
+| `am5.ease.linear`  | Constant speed during all duration.                                                     |
+| `am5.ease.pow`     |                                                                                         |
+| `am5.ease.quad`    |                                                                                         |
+| `am5.ease.sine`    |                                                                                         |
 
 Below demo shows the behavior of various basic easing functions:
 
+Example: [Easing functions](https://docs.amcharts.com/embeds/v5/easing-functions/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var container = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.p100,
+    height: am5.p100,
+    layout: root.gridLayout
+  })
+);
+
+function createAnimation(easing, title) {
+  var animationContainer = container.children.push(
+    am5.Container.new(root, {
+      width: 100,
+      height: 100
+    })
+  );
+
+  var circle = animationContainer.children.push(
+    am5.Circle.new(root, {
+      radius: 10,
+      fill: am5.color(0xff621f),
+      x: 50,
+      y: 60
+    })
+  );
+
+  var label = animationContainer.children.push(
+    am5.Label.new(root, {
+      text: title,
+      fontSize: 12,
+      x: 50,
+      y: 100,
+      centerX: am5.p50,
+      centerY: am5.p100
+    })
+  );
+
+  circle.animate({
+    key: "y",
+    to: 10,
+    loops: Infinity,
+    duration: 2000,
+    easing: am5.ease.yoyo(easing)
+  });
+}
+
+createAnimation(am5.ease.bounce, "am5.ease.bounce");
+createAnimation(am5.ease.circle, "am5.ease.circle");
+createAnimation(am5.ease.cubic, "am5.ease.cubic");
+createAnimation(am5.ease.elastic, "am5.ease.elastic");
+createAnimation(am5.ease.exp, "am5.ease.exp");
+createAnimation(am5.ease.linear, "am5.ease.linear");
+createAnimation(am5.ease.quad, "am5.ease.quad");
+createAnimation(am5.ease.sine, "am5.ease.sine");
+```
 
 ### Modifier functions
 
@@ -562,6 +1357,9 @@ Besides basic easing functions, amCharts 5 comes with several "modifier" functio
 
 These functions take basic easing function as a parameter and modifies their output in some way.
 
+TypeScript:
+
+```ts
 series.animate({
   key: "startAngle",
   to: 180,
@@ -569,7 +1367,11 @@ series.animate({
   duration: 2000,
   easing: am5.ease.yoyo(am5.ease.cubic)
 });
+```
 
+JavaScript:
+
+```js
 series.animate({
   key: "startAngle",
   to: 180,
@@ -577,26 +1379,123 @@ series.animate({
   duration: 2000,
   easing: am5.ease.yoyo(am5.ease.cubic)
 });
+```
 
-Function
+| Function         | Comment                                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------------------------- |
+| `am5.ease.inOut` | The basic easing function is applied when starting and ending animation.                                  |
+| `am5.ease.out`   | The basic easing function is applied at the end animation.                                                |
+| `am5.ease.yoyo`  | Plays animation to the end value, then returns back to the starting value, using supplied basic function. |
 
-Comment
+Example: [Easing functions](https://docs.amcharts.com/embeds/v5/easing-functions-2/)
 
-`am5.ease.inOut`
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
-The basic easing function is applied when starting and ending animation.
+HTML:
 
-`am5.ease.out`
+```html
+<div id="chartdiv"></div>
+```
 
-The basic easing function is applied at the end animation.
+CSS:
 
-`am5.ease.yoyo`
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
-Plays animation to the end value, then returns back to the starting value, using supplied basic function.
+#chartdiv {
+  width: 550px;
+  height: 450px;
+  margin: auto;
+}
+```
 
-### Easing functions by name (5.20.8)
+JavaScript:
 
-The eight basic easing functions listed above carry a name, which is what lets the [`animations` setting](#Animations_as_settings) and JSON configs refer to them as strings.
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var container = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.p100,
+    height: am5.p100,
+    layout: root.gridLayout
+  })
+);
+
+function createAnimation(easing, title) {
+  var animationContainer = container.children.push(
+    am5.Container.new(root, {
+      width: 130,
+      height: 130
+    })
+  );
+
+  var circle = animationContainer.children.push(
+    am5.Circle.new(root, {
+      radius: 10,
+      fill: am5.color(0xff621f),
+      x: am5.p50,
+      y: 60
+    })
+  );
+
+  var label = animationContainer.children.push(
+    am5.Label.new(root, {
+      text: title,
+      fontSize: 12,
+      x: am5.p50,
+      y: 130,
+      centerX: am5.p50,
+      centerY: am5.p100
+    })
+  );
+
+  circle.animate({
+    key: "y",
+    from: 60,
+    to: 10,
+    loops: Infinity,
+    duration: 4000,
+    easing: am5.ease.yoyo(easing)
+  });
+}
+
+createAnimation(am5.ease.inOut(am5.ease.bounce), "am5.ease.inOut(\n  am5.ease.bounce\n)");
+createAnimation(am5.ease.inOut(am5.ease.cubic), "am5.ease.inOut(\n  am5.ease.cubic\n)");
+createAnimation(am5.ease.inOut(am5.ease.elastic), "am5.ease.inOut(\n  am5.ease.elastic\n)");
+createAnimation(am5.ease.inOut(am5.ease.linear), "am5.ease.inOut(\n  am5.ease.linear\n)");
+
+createAnimation(am5.ease.out(am5.ease.bounce), "am5.ease.out(\n  am5.ease.bounce\n)");
+createAnimation(am5.ease.out(am5.ease.cubic), "am5.ease.out(\n  am5.ease.cubic\n)");
+createAnimation(am5.ease.out(am5.ease.elastic), "am5.ease.out(\n  am5.ease.elastic\n)");
+createAnimation(am5.ease.out(am5.ease.linear), "am5.ease.out(\n  am5.ease.linear\n)");
+
+createAnimation(am5.ease.yoyo(am5.ease.bounce), "am5.ease.yoyo(\n  am5.ease.bounce\n)");
+createAnimation(am5.ease.yoyo(am5.ease.cubic), "am5.ease.yoyo(\n  am5.ease.cubic\n)");
+createAnimation(am5.ease.yoyo(am5.ease.elastic), "am5.ease.yoyo(\n  am5.ease.elastic\n)");
+createAnimation(am5.ease.yoyo(am5.ease.linear), "am5.ease.yoyo(\n  am5.ease.linear\n)");
+```
+
+### Easing by name
 
 `am5.ease.byName(name, mode)` returns an easing function by its name — `"linear"`, `"quad"`, `"cubic"`, `"exp"`, `"sine"`, `"circle"`, `"bounce"` or `"elastic"` — optionally wrapped by `mode`: `"in"` (default), `"out"` or `"inOut"`. An unknown name gives `linear`.
 
@@ -607,4 +1506,3 @@ am5.ease.byName("cubic", "out");                     // same as am5.ease.out(am5
 am5.ease.easingInfo(am5.ease.yoyo(am5.ease.sine));   // { easing: "sine", yoyo: true }
 am5.ease.easingInfo(function(t) { return t * t; });  // undefined
 ```
-
