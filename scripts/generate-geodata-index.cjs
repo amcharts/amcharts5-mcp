@@ -187,7 +187,7 @@ function build() {
   const families = new Map();
   const files = walk(PKG_DIR)
     .map((f) => toPosix(path.relative(PKG_DIR, f)))
-    // dist/ (geodata releases after 5.1.6) holds script copies of the same maps
+    // dist/ (in the geodata releases that ship it) holds script copies of the same maps
     .filter((f) => !f.startsWith(".internal/") && !f.startsWith("json/") && !f.startsWith("dist/") && !f.startsWith("node_modules/") && f !== "index.js");
   for (const rel of files) {
     const noExt = rel.replace(/\.js$/, "");
