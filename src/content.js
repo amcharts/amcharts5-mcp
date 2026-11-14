@@ -350,6 +350,17 @@ export function lineMatchCount(line, query) {
   return seen.size;
 }
 
+/** Where the line's first word that is a query term starts, or -1. */
+export function firstMatchIndex(line, query) {
+  lineMatchCount("", query); // sets the query's terms
+  const re = new RegExp(WORD_RE.source, "g");
+  let m;
+  while ((m = re.exec(line))) {
+    if (wordTokens(m[0]).some(t => lastLineTerms.has(t))) return m.index;
+  }
+  return -1;
+}
+
 /** Does this line contain any of the query's terms? */
 export function lineMatchesQuery(line, query) {
   return lineMatchCount(line, query) > 0;
@@ -422,11 +433,21 @@ function buildSearchIndex(content) {
       // and a hit quotes that subsection, not the head of the long section
       const parts = section.body.length > SPLIT_OVER ? splitSubsections(section.body) : [];
       if (parts.some(p => p.heading)) {
+        // The section itself, as its opening text and the list of its
+        // subsections, so a query for the section's own title still finds it
+        const intro = parts.find(p => !p.heading);
+        const list = parts.filter(p => p.heading).map(p => `- ${p.heading}`).join("\n");
+        const body = [intro ? intro.text : "", `Subsections:\n${list}`].filter(Boolean).join("\n\n");
+        add(KIND_SKILL,
+          { kind: "skill", file: name, docTitle: doc.title, heading: section.heading, body },
+          section.heading || doc.title, `${doc.title} ${name}`, body, [section.heading]);
+        // Each subsection on its own; the parent heading is not its title, or
+        // every part of "Series types" would match "series"
         for (const part of parts) {
-          const heading = part.heading || section.heading;
+          if (!part.heading) continue;
           add(KIND_SKILL,
-            { kind: "skill", file: name, docTitle: doc.title, heading, body: part.text },
-            heading || doc.title, `${doc.title} ${name}${part.heading ? ` ${section.heading}` : ""}`, part.text, [heading]);
+            { kind: "skill", file: name, docTitle: doc.title, heading: part.heading, body: part.text },
+            part.heading, `${doc.title} ${name}`, part.text, [part.heading]);
         }
         continue;
       }

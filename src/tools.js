@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { z } from "zod";
-import { CHART_TYPE_MAP, extractImportBlock, lineMatchCount, rankContent, searchDocs, SPLIT_OVER, splitSubsections } from "./content.js";
+import { CHART_TYPE_MAP, extractImportBlock, firstMatchIndex, lineMatchCount, rankContent, searchDocs, SPLIT_OVER, splitSubsections } from "./content.js";
 import { listGeodata } from "./geodata.js";
 
 // Every tool only reads the bundled content (skill, docs, examples, reference,
@@ -78,17 +78,24 @@ const isExampleSection = (heading) => /^Example\b|Working Examples$/i.test(headi
 
 export { SPLIT_OVER, splitSubsections };
 
-// The lines of `body` from character `from` on that match the most query
-// terms, best first, then put back in their order in the text
+// The lines of `body` that end past character `from` and match the most
+// query terms, best first, then put back in their order in the text. A long
+// line is quoted from just before its first matching word.
 function matchingLines(body, from, query, max, width) {
   const found = [];
   let offset = 0;
   for (const line of body.split("\n")) {
     const start = offset;
     offset += line.length + 1;
-    if (start < from || !line.trim()) continue;
+    if (start + line.length <= from || !line.trim()) continue;
     const n = lineMatchCount(line, query);
-    if (n) found.push({ start, n, text: line.trim().slice(0, width) });
+    if (!n) continue;
+    let text = line.trim();
+    if (text.length > width) {
+      const at = Math.max(0, firstMatchIndex(text, query) - 40);
+      text = (at > 0 ? "…" : "") + text.slice(at, at + width);
+    }
+    found.push({ start, n, text });
   }
   return found
     .sort((a, b) => b.n - a.n || a.start - b.start)
@@ -413,7 +420,7 @@ export function registerTools(server, content) {
           const beyond = matchingLines(body, budget, query, 8, 400);
           body = head + (isExample
             ? `\n\n...(truncated — full example: get_example(path: "${r.file}"))`
-            : `\n\n...(truncated — full section: get_section(file: "${id}", heading: "${r.heading}"))`);
+            : `\n\n...(truncated — full section: get_section(file: "${id}", heading: ${JSON.stringify(r.heading)}))`);
           if (beyond.length) {
             body += `\n\nMatching lines beyond the excerpt:\n` + beyond.map(l => `> ${l}`).join("\n");
           }
@@ -568,7 +575,7 @@ export function registerTools(server, content) {
           const full = r.kind === "example"
             ? `get_example(path: "${r.file}")`
             : r.heading
-              ? `get_section(file: "${r.kind}/${r.file}", heading: "${r.heading}")`
+              ? `get_section(file: "${r.kind}/${r.file}", heading: ${JSON.stringify(r.heading)})`
               : `get_doc(path: "${r.kind === "skill" ? `skill/${r.file}` : r.file}")`;
           text += `\n\nMatching lines further on (full text: ${full}):\n` + beyond.map((l) => `> ${l}`).join("\n");
         }
