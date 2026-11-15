@@ -1,4 +1,5 @@
 import { spawn } from "child_process";
+import { readFileSync } from "fs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -716,6 +717,145 @@ const tests = [
       return repeats.length ? `FAIL (${repeats.length} result(s) quote text the excerpt shows)` : "PASS";
     },
     label: "search_all — the quoted lines don't repeat the excerpt",
+  },
+  // From amcharts-d3-b3's audit of the tools (2026-11-15)
+  {
+    send: { jsonrpc: "2.0", id: 82, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "funnel", format: "html" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Funnel chart") && text.includes("<!DOCTYPE html>") && text.includes("cdn.jsdelivr.net/npm/@amcharts/amcharts5@") ? "PASS" : "FAIL";
+    },
+    label: "get_quick_start('funnel', html) — the funnel example page, with the npm-CDN pointer",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 83, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "xy", format: "html" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return !text.includes("/* axis */") && text.includes("am5xy.XYChart.new") && text.includes('<div id="chartdiv">') ? "PASS" : "FAIL (a skeleton, not a runnable page)";
+    },
+    label: "get_quick_start('xy', html) — a runnable page, not the /* axis */ skeleton",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 84, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "treemap", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("import * as am5hierarchy") && text.includes("am5hierarchy.Treemap.new") && !text.includes("<script") ? "PASS" : "FAIL";
+    },
+    label: "get_quick_start('treemap', esm) — the example's code under ES module imports",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 85, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "US map", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('import am5geodata_usaLow from "@amcharts/amcharts5-geodata/usaLow";') && text.includes("am5geodata_usaLow") ? "PASS" : "FAIL";
+    },
+    label: "get_quick_start('US map', esm) — imports the geodata its example uses",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 86, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "usaLow" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("1 match") && text.includes("am5geodata_usaLow") ? "PASS" : "FAIL";
+    },
+    label: "list_geodata('usaLow') — the one map, though the name is short",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 87, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "am5xy.XYChart" } } },
+    check: (r) => ((r.result?.content?.[0]?.text || "").startsWith("# XYChart") ? "PASS" : "FAIL"),
+    label: "get_api_reference('am5xy.XYChart') — a namespaced name",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 88, method: "tools/call", params: { name: "get_section", arguments: { file: "SKILL", heading: "Plain HTML, no bundler" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Plain HTML, no bundler") && text.includes("cdn.jsdelivr.net/npm/@amcharts/amcharts5@") && !text.includes("**Bundling.**") ? "PASS" : "FAIL";
+    },
+    label: "get_section('SKILL', 'Plain HTML, no bundler') — a bold lead, up to the next one",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 89, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: " Word Cloud " } } },
+    check: (r) => ((r.result?.content?.[0]?.text || "").startsWith("# Word Cloud") ? "PASS" : "FAIL"),
+    label: "get_chart_reference(' Word Cloud ') — trimmed, several words",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 90, method: "tools/call", params: { name: "search_docs", arguments: { query: "legend", maxResults: 0 } } },
+    check: (r) => {
+      const n = ((r.result?.content?.[0]?.text || "").match(/\n## /g) || []).length;
+      return n === 1 ? "PASS" : `FAIL (${n} results)`;
+    },
+    label: "search_docs(maxResults: 0) — exactly one result",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 91, method: "tools/call", params: { name: "list_examples", arguments: { category: "Maps" } } },
+    check: (r) => ((r.result?.content?.[0]?.text || "").startsWith("# maps examples (") ? "PASS" : "FAIL"),
+    label: "list_examples('Maps') — a category in any casing",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 92, method: "tools/call", params: { name: "get_doc", arguments: { path: "skill/xy" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const h1 = text.split("\n").filter((l) => /^# /.test(l));
+      return h1.length >= 1 && h1[0] !== h1[1] ? "PASS" : `FAIL (${h1.slice(0, 2).join(" | ")})`;
+    },
+    label: "get_doc('skill/xy') — the page title once",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 93, method: "tools/list", params: {} },
+    check: (r) => {
+      const d = r.result?.tools?.find((t) => t.name === "get_core_reference")?.inputSchema?.properties?.full?.description || "";
+      const said = Number((/about ([\d,]+) characters/.exec(d) || [])[1]?.replace(/,/g, ""));
+      const real = readFileSync(new URL("./amcharts5-skill/amcharts5-skill/SKILL.md", import.meta.url), "utf8").length;
+      return Math.abs(said - real) <= 1500 ? "PASS" : `FAIL (says ${said}, is ${real})`;
+    },
+    label: "get_core_reference — the size it states is SKILL.md's",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 94, method: "tools/call", params: { name: "get_example", arguments: { path: "examples/json-configs/xy-smoothed-line" } } },
+    check: (r) => {
+      const h1 = (r.result?.content?.[0]?.text || "").split("\n").filter((l) => /^# /.test(l));
+      return h1.length >= 1 && h1[0] !== h1[1] ? "PASS" : `FAIL (${h1.slice(0, 2).join(" | ")})`;
+    },
+    label: "get_example(a JSON config) — the title once",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 95, method: "tools/call", params: { name: "get_doc", arguments: { path: "skill/SKILL" } } },
+    check: (r) => {
+      const h1 = (r.result?.content?.[0]?.text || "").split("\n").filter((l) => /^# /.test(l));
+      return h1.length >= 1 && h1[0] !== h1[1] ? "PASS" : `FAIL (${h1.slice(0, 2).join(" | ")})`;
+    },
+    label: "get_doc('skill/SKILL') — the title once, after the front matter",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 96, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "json" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("## Where a config goes") && text.includes('"type": "XYChart"') ? "PASS" : "FAIL";
+    },
+    label: "get_quick_start('json') — where a config goes and a complete config",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 97, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "ukLow, ukHigh" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("1 match") && text.includes("am5geodata_ukLow") ? "PASS" : "FAIL";
+    },
+    label: "list_geodata('ukLow, ukHigh') — two file names of one map",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 98, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "stock", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('`<div id="chartcontrols">`') && text.includes('`<div id="chartdiv">`') ? "PASS" : "FAIL (the toolbar's div is not named)";
+    },
+    label: "get_quick_start('stock', esm) — names every div the code looks up",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 99, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "candlestick" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('No example in this reference shows "candlestick"') ? "PASS" : "FAIL (an unrelated example, unannounced)";
+    },
+    label: "get_quick_start('candlestick') — says the example is not a candlestick one",
   },
 ];
 

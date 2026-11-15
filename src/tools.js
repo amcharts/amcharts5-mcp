@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { z } from "zod";
-import { CHART_TYPE_MAP, extractImportBlock, firstMatchIndex, lineMatchCount, rankContent, searchDocs, SPLIT_OVER, splitSubsections } from "./content.js";
+import { CHART_TYPE_MAP, chartKeyOf, extractImportBlock, firstMatchIndex, lineMatchCount, rankContent, searchDocs, SPLIT_OVER, splitSubsections } from "./content.js";
 import { listGeodata } from "./geodata.js";
 
 // Every tool only reads the bundled content (skill, docs, examples, reference,
@@ -65,6 +65,83 @@ const AMCHARTS_LINK = /(?:https?:\/\/)?(?:[\w-]+\.)*amcharts\.com\/[^\s)"'<>\]`*
 
 // User text echoed back in a reply, capped so a huge query can't balloon it
 const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
+
+// A paragraph that opens with a bold lead named `needle` ("plain html, no
+// bundler" finds "**Plain HTML, no bundler.** Load the …"), up to the next
+// bold lead or heading outside code: { name, section, text }, or null
+function boldLead(doc, asked) {
+  // "Plain HTML, no bundler.", "**Plain HTML, no bundler.**" and a lead with
+  // `code` in it all compare as plain words
+  const plain = (t) => t.toLowerCase().replace(/[*`]/g, "").trim().replace(/[.:]$/, "").trim();
+  const needle = plain(asked);
+  if (needle.length < 4) return null;
+  const leadOf = (line) => {
+    const m = /^\*\*([^*]+)\*\*/.exec(line);
+    return m ? m[1].trim().replace(/[.:]$/, "").trim() : null;
+  };
+  for (const pass of [(t) => plain(t) === needle, (t) => plain(t).startsWith(needle)]) {
+    for (const section of doc.sections) {
+      const lines = section.body.split("\n");
+      let fenced = false;
+      for (let i = 0; i < lines.length; i++) {
+        if (/^\s*```/.test(lines[i])) fenced = !fenced;
+        const name = !fenced && leadOf(lines[i]);
+        if (!name || !pass(name.toLowerCase())) continue;
+        const out = [lines[i]];
+        let inCode = false;
+        for (let j = i + 1; j < lines.length; j++) {
+          if (/^\s*```/.test(lines[j])) inCode = !inCode;
+          if (!inCode && (/^#{1,6}\s/.test(lines[j]) || leadOf(lines[j]))) break;
+          out.push(lines[j]);
+        }
+        return { name, section: section.heading, text: out.join("\n").trim() };
+      }
+    }
+  }
+  return null;
+}
+
+// The example get_quick_start returns: a section "Example …" holding an HTML
+// page, the one whose title names what was asked ("funnel", "semi-circle",
+// "force-directed") or else the first; null when the reference has none
+function pickExample(doc, asked) {
+  const examples = doc.sections.filter(s => /^Example\b/i.test(s.heading) && /```html/.test(s.body));
+  if (!examples.length) return null;
+  let words = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/ (charts?|diagrams?|graphs?)$/, "");
+  words = EXAMPLE_WORDS[words] || words;
+  if (!words) return { example: examples[0], named: false };
+  const re = new RegExp(`\\b${words.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+  const named = examples.find(s => re.test(s.heading.toLowerCase().replace(/[\s_-]+/g, " ")));
+  return { example: named || examples[0], named: !!named };
+}
+
+// Keywords whose example has another word in its title
+const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org chart": "tree" };
+
+// Keywords that name a whole family: its first example is the right answer
+const FAMILY_WORDS = new Set(["xy", "pie", "map", "geo", "geographic", "country", "hierarchy", "flow", "radar", "polar",
+  "stock", "financial", "trading", "timeline", "curve", "gantt", "project timeline", "wordcloud", "word cloud", "tag cloud", "venn"]);
+
+// The inline script of an example page, unindented
+function scriptOf(body) {
+  const m = /<script>\s*\n([\s\S]*?)<\/script>/.exec(body);
+  if (!m) return "";
+  const lines = m[1].replace(/\s+$/, "").split("\n");
+  const indent = Math.min(...lines.filter(l => l.trim()).map(l => l.match(/^\s*/)[0].length));
+  return lines.map(l => l.slice(indent)).join("\n");
+}
+
+// A page's text without the title line it opens with, when the answer prints
+// that title itself
+function withoutTitle(content, title) {
+  // The title line may follow front matter (SKILL.md's), which stays
+  const body = String(content).replace(/^(\s*---\n[\s\S]*?\n---\n)?(\s*#\s+(.+)\n)/, (all, front, line, t) =>
+    (t.trim().toLowerCase() === String(title).trim().toLowerCase() ? (front || "") : all));
+  return body.replace(/^\s+/, "");
+}
+
+// A result count from what an agent passed: 0, -1 or 1e9 still gives a usable list
+const resultCount = (n, fallback) => Math.max(1, Math.min(50, Number.isFinite(n) ? Math.floor(n) : fallback));
 
 // --- Overviews of long references -------------------------------------------
 // A reference longer than OVERVIEW_CAP characters is answered with an
@@ -240,7 +317,7 @@ export function registerTools(server, content) {
     let text = `# ${ex.title}\n`;
     text += `*Category: ${ex.category}*\n`;
     if (ex.source) text += `*Source: ${ex.source}*\n`;
-    return text + `\n${ex.content}`;
+    return text + `\n${withoutTitle(ex.content, ex.title)}`;
   }
 
   // A link someone pasted (Figma, for one, invites "a link from amCharts" as
@@ -341,7 +418,7 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ chartType, full }) => {
-      const key = CHART_TYPE_MAP[chartType.toLowerCase()] || chartType.toLowerCase();
+      const key = chartKeyOf(chartType);
       const doc = docs.get(key);
       if (!doc) {
         const available = [...new Set(Object.values(CHART_TYPE_MAP))].sort().join(", ");
@@ -361,7 +438,7 @@ export function registerTools(server, content) {
       title: "Get core reference (setup, themes, pitfalls)",
       description: `Get the core amCharts 5 reference (SKILL.md) — covers setup, colors, themes, legends, tooltips, events, data, adapters, disposal, and common pitfalls. It is the base for every chart type; the chart-specific references build on it. It comes as an overview: its first sections, up to ${OVERVIEW_CAP.toLocaleString("en-US")} characters, and a list of the others, each of which get_section("SKILL", heading) returns. With \`full: true\` it is the whole file.`,
       inputSchema: {
-        full: z.boolean().optional().default(false).describe("true: the whole SKILL.md (about 105,000 characters). false (default): the overview."),
+        full: z.boolean().optional().default(false).describe(`true: the whole SKILL.md (about ${(Math.round((docs.get("SKILL")?.content.length || 0) / 1000) * 1000).toLocaleString("en-US")} characters). false (default): the overview.`),
       },
       annotations: READ_ONLY,
     },
@@ -383,12 +460,13 @@ export function registerTools(server, content) {
       description: "Search the curated amCharts 5 skill docs (SKILL.md + chart references) for a keyword or topic, returning matching sections ranked by relevance. By default it searches only the skill layer. With scope 'all' it also searches the extended docs, the per-class API reference and the code examples. Per-setting defaults (e.g. tooltip background cornerRadius, axis tick `visible` default, cursor line strokeDasharray) are in the extended docs and the API reference, which search_all, get_api_reference and get_doc also return.",
       inputSchema: {
         query: z.string().describe("Search query, e.g. 'legend', 'axis label rotation', 'tooltip format', 'data processor'"),
-        maxResults: z.number().optional().default(5).describe("Maximum number of results to return (default 5)"),
+        maxResults: z.number().optional().default(5).describe("Maximum number of results to return (default 5, 1 to 50)"),
         scope: z.enum(["skill", "all"]).optional().default("skill").describe("'skill' (default) searches only the curated skill docs; 'all' also searches the extended docs / per-class API reference where settings and defaults live, and the code examples."),
       },
       annotations: READ_ONLY,
     },
-    async ({ query: asked, maxResults, scope }) => {
+    async ({ query: asked, maxResults: askedMax, scope }) => {
+      const maxResults = resultCount(askedMax, 5);
       // A pasted amcharts.com link: where it points comes first, then results
       // for the words besides it, if any
       const { pointer, rest: query } = splitLink(asked);
@@ -449,7 +527,7 @@ export function registerTools(server, content) {
       description: "Get the full text of one section of a doc by heading, for example a section that a search_docs or search_all result shows truncated. `file` accepts the source label exactly as search results print it ('skill/SKILL.md', 'skill/xy', 'extended/charts/xy-chart/cursor', 'reference/xycursor') as well as a bare skill file name ('SKILL', 'xy', 'map').",
       inputSchema: {
         file: z.string().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
-        heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'. A ### subsection heading returns just that subsection."),
+        heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'. A ### subsection heading returns just that subsection, and a bold lead (e.g. 'Plain HTML, no bundler') its paragraphs."),
       },
       annotations: READ_ONLY,
     },
@@ -476,6 +554,11 @@ export function registerTools(server, content) {
       if (sub) {
         return { content: [{ type: "text", text: `# ${sub.heading}\n*(source: ${label}.md, in "${sub.section}")*\n\n${sub.text}` }] };
       }
+      // Skill text also points to bold leads ("**Plain HTML, no bundler.** …") by name
+      const lead = boldLead(doc, needle);
+      if (lead) {
+        return { content: [{ type: "text", text: `# ${lead.name}\n*(source: ${label}.md, in "${lead.section}")*\n\n${lead.text}` }] };
+      }
       const available = doc.sections.map(s => s.heading).filter(Boolean).join("\n- ");
       return {
         content: [{ type: "text", text: `Section "${heading}" not found in ${label}.md.\n\nAvailable sections:\n- ${available}` }],
@@ -496,18 +579,71 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ chartType, format }) => {
-      const key = CHART_TYPE_MAP[chartType.toLowerCase()] || chartType.toLowerCase();
+      const key = chartKeyOf(chartType);
       const doc = docs.get(key);
       if (!doc) {
         return {
           content: [{ type: "text", text: `No reference found for "${echo(chartType)}". Use list_chart_types to see available types.` }],
         };
       }
+      if (key === "ui-elements") {
+        return { content: [{ type: "text", text: `UI elements (buttons, sliders, scrollbars, modals) are not a chart type: they go on any chart. get_chart_reference("ui-elements") has them; for a chart to start from, call get_quick_start with a chart type (list_chart_types lists them).` }] };
+      }
 
       // Grab the imports section first so we can exclude it from the setup match.
       const importSection = doc.sections.find(s =>
         /import/i.test(s.heading)
       );
+
+      // A complete, runnable example: the one whose title names what was asked
+      // ("funnel", "donut", "chord"), else the reference's first. html gives the
+      // page as it is; esm the page's script under the ES module imports.
+      const { example, named } = pickExample(doc, chartType) || {};
+      if (example) {
+        const others = doc.sections.filter(s => s !== example && /^Example\b/i.test(s.heading) && /```html/.test(s.body));
+        const more = others.length
+          ? `\n\nOther examples here: ${others.map(s => `get_section("${key}", ${JSON.stringify(s.heading)})`).join(", ")}. The whole reference: get_chart_reference("${key}").`
+          : `\n\nThe whole reference: get_chart_reference("${key}").`;
+        // Asked for a type no example here shows ("candlestick", "waterfall"): say so
+        const asked = chartType.trim().toLowerCase().replace(/[\s_-]+/g, " ");
+        const unnamed = !named && asked !== key && !FAMILY_WORDS.has(asked)
+          ? `> No example in this reference shows "${echo(chartType.trim())}"; this is its first. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
+          : "";
+        const title = `# Quick Start: ${example.heading.replace(/^Example\s*\d*:\s*/i, "")}\n*(source: skill/${key}.md, ${doc.title}: "${example.heading}")*\n\n${unnamed}`;
+        if (format === "esm") {
+          const esm = importSection ? extractImportBlock(importSection.body, "esm") : "";
+          const code = scriptOf(example.body);
+          if (esm && code) {
+            // Geodata the example uses beyond what the reference imports
+            const imported = new Set([...esm.matchAll(/import\s+(?:\*\s+as\s+)?(\w+)/g)].map(m => m[1]));
+            const geodata = [...new Set(code.match(/\bam5geodata_\w+/g) || [])].filter(n => !imported.has(n))
+              .map(n => `import ${n} from "@amcharts/amcharts5-geodata/${n.slice("am5geodata_".length).replace(/_/g, "/")}";`);
+            // The page's elements the code looks up: the chart's div, and e.g. a stock toolbar's
+            const ids = [...new Set([...example.body.matchAll(/<div id="([^"]+)"/g)].map(m => m[1]))];
+            const div = ids.length ? `\n\nThe code draws into ${ids.map(id => `\`<div id="${id}">\``).join(" and ")} on the page${ids.includes("chartdiv") ? `; the chart's div needs a height (e.g. \`style="height: 500px"\`)` : ""}.` : "";
+            const text = title + `## Imports (ES modules)\n${esm}\n` + (geodata.length ? "```js\n" + geodata.join("\n") + "\n```\n" : "") +
+              `\n## Code\n\`\`\`js\n${code}\n\`\`\`${div}${more}${FRAMEWORK_NOTE}`;
+            return { content: [{ type: "text", text }] };
+          }
+        } else {
+          // The npm-CDN pointer from the reference's script-tag imports
+          const cdn = importSection ? extractImportBlock(importSection.body, "html") : "";
+          const pointer = cdn.split(/```[\s\S]*?```/).join("\n").split("\n").map(l => l.trim()).filter(Boolean).join("\n");
+          return { content: [{ type: "text", text: title + example.body.trim() + (pointer ? `\n\n${pointer}` : "") + more }] };
+        }
+      }
+
+      // A JSON config: where it goes, then the first complete config
+      if (key === "json") {
+        const where = doc.sections.find(s => /^Where a config goes/i.test(s.heading));
+        const complete = doc.sections.find(s => /^Complete configs/i.test(s.heading));
+        const first = complete && splitSubsections(complete.body).find(p => p.heading);
+        if (where && first) {
+          const text = `# Quick Start: ${doc.title}\n*(source: skill/json.md)*\n\n## ${where.heading}\n${where.body.trim()}\n\n## ${first.heading}\n${first.text}\n\n` +
+            `The rules a config follows, and more complete configs: get_chart_reference("json").`;
+          return { content: [{ type: "text", text }] };
+        }
+      }
 
       // Find the setup/core pattern section — must NOT be the imports section
       // (headings like "Required imports" otherwise win and the actual core
@@ -550,11 +686,12 @@ export function registerTools(server, content) {
       description: "Search across all amCharts 5 content: skill references, full documentation, and code examples. For broad searches across everything.",
       inputSchema: {
         query: z.string().describe("Search query, e.g. 'react integration', 'date axis formatting', 'stacked bar example'. An amcharts.com link (a demo or a docs page) is answered with the call that returns it."),
-        maxResults: z.number().optional().default(10).describe("Maximum results (default 10)"),
+        maxResults: z.number().optional().default(10).describe("Maximum results (default 10, 1 to 50)"),
       },
       annotations: READ_ONLY,
     },
-    async ({ query: asked, maxResults }) => {
+    async ({ query: asked, maxResults: askedMax }) => {
+      const maxResults = resultCount(askedMax, 10);
       // A pasted amcharts.com link: where it points comes first, then results
       // for the words besides it, if any
       const { pointer, rest: query } = splitLink(asked);
@@ -621,7 +758,7 @@ export function registerTools(server, content) {
         };
       }
       const { doc, label } = resolved;
-      return { content: [{ type: "text", text: `# ${doc.title}\n*(source: ${label}.md)*\n\n${doc.content}` }] };
+      return { content: [{ type: "text", text: `# ${doc.title}\n*(source: ${label}.md)*\n\n${withoutTitle(doc.content, doc.title)}` }] };
     }
   );
 
@@ -640,7 +777,8 @@ export function registerTools(server, content) {
     async ({ className, includePrivate }) => {
       // Normalize: "XYCursor" / "xy-cursor" / "XY Cursor" → "xycursor"; an
       // address or path ("…/docs/v5/reference/xycursor/") gives its last part
-      const name = /\//.test(className) ? docPathFromInput(className).split("/").pop() : className;
+      // and a namespaced name ("am5xy.XYChart") its class name
+      const name = /\//.test(className) ? docPathFromInput(className).split("/").pop() : className.trim().replace(/^am5\w*\./i, "");
       const norm = name.toLowerCase().replace(/[^a-z0-9]/g, "");
       const classDoc = extendedDocs.get(`reference/${norm}`);
       const settingsDoc = extendedDocs.get(`reference/i${norm}settings`);
@@ -708,16 +846,17 @@ export function registerTools(server, content) {
         return { content: [{ type: "text", text }] };
       }
 
+      const wanted = category.trim().toLowerCase();
       const matching = [...examples.entries()]
-        .filter(([, ex]) => ex.category === category)
+        .filter(([, ex]) => ex.category.toLowerCase() === wanted)
         .sort((a, b) => a[1].title.localeCompare(b[1].title));
 
       if (matching.length === 0) {
         const cats = [...new Set([...examples.values()].map(e => e.category))].sort();
-        return { content: [{ type: "text", text: `No examples in category "${category}".\n\nAvailable: ${cats.join(", ")}` }] };
+        return { content: [{ type: "text", text: `No examples in category "${echo(category)}".\n\nAvailable: ${cats.join(", ")}` }] };
       }
 
-      let text = `# ${category} examples (${matching.length})\n\n`;
+      let text = `# ${matching[0][1].category} examples (${matching.length})\n\n`;
       for (const [key, ex] of matching) {
         text += `- **${ex.title}** — \`${key}\`\n`;
       }

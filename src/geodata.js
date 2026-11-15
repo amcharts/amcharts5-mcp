@@ -46,12 +46,16 @@ function entryWords(e, packNote) {
  * "region/usa/congressional120/usacongressional".
  */
 function normalizeWord(word) {
+  // A camelCase suffix ("usaLow", "ukHigh", "am5geodata_uaeLow") is a detail
+  // suffix however short the name; in lower case only longer words count, so
+  // a bare "low" or "high" stays a word
+  const camel = /[a-z0-9](Low|High|Ultra)(\.js)?\/?$/.test(word);
   let w = word.toLowerCase().replace(/\.js$/, "").replace(/^\/+|\/+$/g, "");
   w = w.replace(/^https?:\/\/cdn\.amcharts\.com\/lib\/5\//, "").replace(/^geodata\//, "")
     .replace(/^@amcharts\/amcharts5-geodata\//, "");
   if (w.startsWith("am5geodata_")) w = w.slice("am5geodata_".length).replace(/_/g, "/");
   // A specific file name means its map: drop the detail suffix.
-  if (/[a-z0-9](low|high|ultra)$/.test(w) && w.length > 6) w = w.replace(/(low|high|ultra)$/, "");
+  if (/[a-z0-9](low|high|ultra)$/.test(w) && (camel || w.length > 6)) w = w.replace(/(low|high|ultra)$/, "");
   return w;
 }
 
@@ -132,12 +136,23 @@ export function listGeodata(index, filter) {
   if (!words.length) return overview(index);
 
   const packNote = (e) => (e.pack ? index.packs?.[e.pack]?.note : null);
-  const found = index.maps.filter((e) => matches(e, packNote(e), words));
+  // A file name ("usaLow", "am5geodata_ukHigh", "geodata/uae.js") means that
+  // map, not every map whose name has the word in it
+  // ("usaLow, usaHigh": both name the one map)
+  const raw = String(filter).trim().split(/[\s,]+/).filter(Boolean);
+  const fileName = raw.length > 0 && raw.every((r) => /[a-z0-9](Low|High|Ultra)(\.js)?$|\.js$|^am5geodata_/i.test(r));
+  const exact = fileName ? index.maps.filter((e) => words.includes(e.path.toLowerCase())) : [];
+  const found = exact.length ? exact : index.maps.filter((e) => matches(e, packNote(e), words));
   // Whole-country maps (usaCounties, each congressional pack's usaCongressional)
   // first, so a broad filter still shows every pack's main file.
   if (found.length > MAX_LISTED) {
     const whole = (e) => (e.label.includes("whole country") ? 0 : 1);
     found.sort((a, b) => whole(a) - whole(b)); // stable: index order otherwise
+  }
+  // The map a single word names exactly ("usa") comes first
+  if (words.length === 1) {
+    const own = (e) => (e.path.toLowerCase() === words[0] ? 0 : 1);
+    found.sort((a, b) => own(a) - own(b));
   }
   if (!found.length) {
     return `No geodata matches "${echo(filter)}".\n\nTry a country name or ISO code ("germany", "DE"), a folder ("region/usa", "region/canada"), ` +

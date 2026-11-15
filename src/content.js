@@ -49,6 +49,20 @@ export const CHART_TYPE_MAP = {
   "json": "json", "json-config": "json", "config": "json", "serialized": "json",
 };
 
+// The reference a chart-type keyword names, however it is written: "pie",
+// " Pie chart ", "word cloud", "stacked bar chart", "world map", "org chart"
+export function chartKeyOf(input) {
+  const known = (k) => Object.hasOwn(CHART_TYPE_MAP, k);
+  const w = String(input ?? "").trim().toLowerCase().replace(/[\s_]+/g, "-");
+  if (known(w)) return CHART_TYPE_MAP[w];
+  const bare = w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
+  if (known(bare)) return CHART_TYPE_MAP[bare];
+  // A name of several words with a known one in it: "us-map", "3d-pie",
+  // "radar-column" (the first known word names the family)
+  const part = w.split("-").find(known);
+  return part ? CHART_TYPE_MAP[part] : bare;
+}
+
 // A section longer than this is offered by its ### subsections: in overviews,
 // in get_section, and as search units
 export const SPLIT_OVER = 6000;
