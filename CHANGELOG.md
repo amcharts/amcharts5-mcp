@@ -7,6 +7,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.9.5] - 2026-11-16
+
+### Added
+- **amCharts 5.22.0 and geodata 5.2.0** (both released 2026-11-16). The skill, the API reference (1,394 pages), the 62 JSON configs and the geodata index are generated from or checked against them:
+  - **ResponsiveMax on every chart.** Every code example starts with `Animated` and `ResponsiveMax`, with a palette or `Dark` after them, and so do the answers `get_quick_start` builds from the examples. A new critical rule says so, with its exceptions: a `Micro` sparkline keeps `Micro` alone, and before 5.22.0 the theme is left out (in React Native, before react-native 5.0.3, which loads 5.22.0). `<am5-chart>` and the framework packages' theme lists include it.
+  - **New settings:** `autoLabels` on axis renderers and series, `autoFit` on legends, `autoHide` on chart scrollbars, and `keepInView` on axis labels.
+  - **Right-to-left charts in one setting:** `am5.Root.new("chartdiv", { direction: "rtl" })` draws text right to left and lays out legends from the right. It can also be set in a JSON config's `root` section. Containers take `direction` too.
+  - **JSON configs are read as data:** what refs and properties can reach, the `root` section, and `trusted: true` for your own configs. This covers the framework packages' `config` prop too.
+  - **Script files on npm CDNs:** the npm package has them in `dist/`, so jsDelivr and unpkg serve them where only npm CDNs are allowed, e.g. AI chat sandboxes and strict CSPs. Geodata 5.2.0's maps and globe images are on unpkg only, not jsDelivr. `list_geodata` and `get_quick_start` give these paths.
+  - **The "New in 5.22.0" list,** including Gantt speed, pie, pyramid and pictorial labels, and the fixes that retire two pitfalls: `LinearGradient` rotation and an empty `ColorSet`.
+- **amCharts 5.21.5:**
+  - `renderToSVG()` for design tools, with `includeNonExportable`;
+  - theme colors saved as references in JSON data;
+  - a bare `import "@amcharts/amcharts5/element"` works with esbuild;
+  - react-native 5.0.2.
+- **More from the skill,** from a blind benchmark of AI agents and from user suggestions, checked on 5.21.5:
+  - legend values without a cursor and number formats;
+  - performance: no animation, streams, large data, large scatter plots;
+  - loading and bundling sizes, re-measured on 5.22.0;
+  - series colors, stock chart styling and a bar chart race;
+  - treemap group headers and one-level clicks;
+  - Sankey link colors and highlighting;
+  - heat legend labels and placement;
+  - map live updates, textures, no-data tooltips and screen/geo coordinates.
+- **Search:**
+  - Long skill sections are searched by their `###` subsections.
+  - `search_all` and `search_docs` quote the best-matching lines past the excerpt.
+  - Results limited to the skill point to `search_all`.
+- **Tools,** from an audit of every skill example and tool:
+  - `get_quick_start` returns a runnable example from the chart's reference, picked by the asked type, with ES module imports for `esm`. It notes when no example shows that type, and handles JSON and UI-element requests.
+  - `list_geodata` finds short file names (`usaLow`, `ukLow`) as that one map, and puts an exact name first.
+  - `get_api_reference` takes names like `am5xy.XYChart`.
+  - `get_section` finds bold lead-ins.
+  - `get_chart_reference` trims its input and takes names of several words, e.g. " Word Cloud ".
+- **Docs:** 34 pages re-imported from docs.amcharts.com as Markdown, with their code fences. Two of them are new: the ResponsiveMax theme and Responsive charts. The AI pages now offer the ChatGPT plugin. `scripts/import-docs-md.mjs` does the import and lists the hand-added lines a new page may lack.
+- **README:**
+  - the amCharts 5 plugins for Claude and for ChatGPT, each bundling this server and the skill;
+  - Install in VS Code and Add to Cursor buttons.
+- 28 new tests (99).
+
+### Changed
+- Gantt loads `plugins/colorPicker.js` before `gantt.js`: gantt.md Example 1, the module map and the pitfall.
+- The OpenAI plugin's `mcp.json` declares the server's auth type (none), which OpenAI's portal now requires.
+- The plugin README links the licenses page at amcharts.com/pricing/.
+
+### Fixed
+- **Tools:**
+  - `get_core_reference` states SKILL.md's real size.
+  - `maxResults` is kept within 1 to 50.
+  - `list_examples` takes categories in any casing.
+  - `get_doc` and `get_example` print the page title once.
+- **Skill,** from two audits of its 5.22.0 claims:
+  - the `(#,###s)` format;
+  - drill-down with `worldSeries.zoomToDataItem`;
+  - pie colors from `series.get("colors")`;
+  - `zoomToGeoPoint()` centering;
+  - GeoJSON properties need `valueField`;
+  - scrollbar margins by direction;
+  - `autoLabels` on every axis renderer.
+- **Skill: `keepContrast`** can move Adaptive's `baseColor` and `baseColor2`, so the first color is then not exactly the brand color. In Monochrome it moves the end of the shades nearest the background.
+- **Docs copies:**
+  - treemap padding;
+  - `interpolationDuration` and `stateAnimationDuration` are in milliseconds;
+  - `#,###` gives `1,000`, and a negative `(-1,000)`;
+  - four reference anchors;
+  - a dropped animations note.
+
 ## [1.9.4] - 2026-10-25
 
 ### Added

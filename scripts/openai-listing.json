@@ -73,6 +73,6 @@
     "demo_recording_url": "https://drive.google.com/file/d/1cNVv96IurF51xnC3CxDe0wbnxKTiHfbj/view?usp=sharing"
   },
   "publication": {
-    "release_notes": "1.9.1 to 1.9.4: amCharts 5.21.4 (resources for maps and locales in JSON configs, themes with settings); a JSON config reference for Chart Maker and the <am5-chart> element, with the npm package's 62 JSON configs as examples; docs links moved to docs.amcharts.com; a pasted amcharts.com demo or docs link leads to that demo's code or that docs page or section; 9 new examples; shorter first answers from the long references, with the rest on request."
+    "release_notes": "1.9.5: amCharts 5.22.0 and geodata 5.2.0. Every chart starts with the new ResponsiveMax theme, which fits labels, legends and scrollbars to the space they have. The new settings are covered: autoLabels, autoFit, autoHide, keepInView, and right-to-left charts with the Root direction setting. JSON chart configs are treated as data, not code. The library files load from npm CDNs (jsDelivr, unpkg), so charts also work in chat sandboxes that allow only those. Search quotes the matching lines and searches long sections by subsection. Quick starts return a runnable example for the asked chart type. 34 docs pages were refreshed from docs.amcharts.com."
   }
 }
