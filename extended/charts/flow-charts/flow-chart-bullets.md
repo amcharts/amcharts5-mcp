@@ -1,7 +1,7 @@
 ---
 title: "Flow chart bullets"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/flow-chart-bullets/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will look at how we can use bullets on flow charts.
@@ -10,15 +10,9 @@ This tutorial will look at how we can use bullets on flow charts.
 
 Flow charts are basically series, so bullets are added just like with any other series: by pushing bullet creation function into series' `bullets` list:
 
-series.bullets.push(function(root, series, dataItem) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: am5.color(0x000000)
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
@@ -27,6 +21,20 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.bullets.push(function(root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fill: am5.color(0x000000)
+    })
+  });
+});
+```
 
 This will add a bullet on each link in series.
 
@@ -44,16 +52,9 @@ It accepts numeric values from `0` (one, which means beginning of the link) and 
 
 The following will place bullets in the middle of the Sankey links:
 
-series.bullets.push(function(root, series, dataItem) {
-  return am5.Bullet.new(root, {
-    location: 0.5,
-    sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: am5.color(0x000000)
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     location: 0.5,
@@ -63,6 +64,21 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.bullets.push(function(root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    location: 0.5,
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fill: am5.color(0x000000)
+    })
+  });
+});
+```
 
 ## Inheriting bullet color
 
@@ -72,16 +88,9 @@ We can use it to either access link's color, or a color of a source or destinati
 
 The following will use `fill` of the link's source node:
 
-series.bullets.push(function(root, series, dataItem) {
-  return am5.Bullet.new(root, {
-    locationX: 0.5,
-    sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: dataItem.get("source").get("fill")
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -91,6 +100,21 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.bullets.push(function(root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    locationX: 0.5,
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fill: dataItem.get("source").get("fill")
+    })
+  });
+});
+```
 
 ## Relative rotation
 
@@ -100,6 +124,9 @@ It doesn't matter for a circle bullet, but might make perfect sense for other sh
 
 We have a bullet setting `autoRotate` (default: `false`) for that:
 
+TypeScript:
+
+```ts
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -113,7 +140,11 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
 
+JavaScript:
+
+```js
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -127,11 +158,108 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
 
-`autoRotate: false` (default)
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/flow-chart-bullets/sankey_bullet-1024x878.png "`autoRotate: false` (default)")
 
-`autoRotate: true`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/flow-chart-bullets/sankey_bullet_autorotate-1024x878.png "`autoRotate: true`")
 
+Example: [Sankey diagram with bullets](https://docs.amcharts.com/embeds/v5/sankey-diagram-with-bullets/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+am5.addLicense("AM5C12312313");
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/flow-charts/
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 50
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+series.bullets.push(function (root, series, dataItem) {
+  return (bullet = am5.Bullet.new(root, {
+    locationX: 0.5,
+    autoRotate: true,
+    sprite: am5.Label.new(root, {
+      text: "{sourceId} - {targetId}",
+      fill: dataItem.get("source").get("fill"),
+      centerX: am5.percent(50),
+      textAlign: "middle",
+      populateText: true
+    })
+  }));
+});
+
+// Set data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
+series.data.setAll([
+  { from: "A", to: "D", value: 10 },
+  { from: "B", to: "D", value: 8 },
+  { from: "B", to: "E", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```
 
 Relative rotation can also be further tweaked using another bullet setting: `autoRotateAngle`.
 
@@ -139,6 +267,9 @@ If set, it will add additional degrees to the angle, calculated automatically.
 
 The following will create triangle arrowheads for bullets, and the `autoRotateAngle: 180` will make the point backwards:
 
+TypeScript:
+
+```ts
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -157,7 +288,11 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
 
+JavaScript:
+
+```js
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -176,34 +311,262 @@ series.bullets.push(function(root, series, dataItem) {
     })
   });
 });
+```
 
+Example: [Sankey diagram with bullets](https://docs.amcharts.com/embeds/v5/sankey-diagram-with-bullets-2/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+am5.addLicense("AM5C12312313");
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/flow-charts/
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 50
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+series.bullets.push(function (root, series, dataItem) {
+  return am5.Bullet.new(root, {
+    locationX: 0.5,
+    autoRotate: true,
+    autoRotateAngle: 180,
+    sprite: am5.Graphics.new(root, {
+      fill: dataItem.get("source").get("fill"),
+      centerY: am5.percent(50),
+      centerX: am5.percent(50),
+      draw: function (display) {
+        display.moveTo(0, -6);
+        display.lineTo(16, 0);
+        display.lineTo(0, 6);
+        display.lineTo(0, -6);
+      }
+    })
+  });
+});
+
+// Set data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
+series.data.setAll([
+  { from: "A", to: "D", value: 10 },
+  { from: "B", to: "D", value: 8 },
+  { from: "B", to: "E", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```
 
 ## Dynamic updates and animation
 
 We can update any bullet setting, including `locationX`/`locationY`, dynamically.
 
-bullet.set("locationX", 0.8);
+TypeScript:
 
+```ts
 bullet.set("locationX", 0.8);
+```
+
+JavaScript:
+
+```js
+bullet.set("locationX", 0.8);
+```
 
 We can also animate settings by creating a [setting animation](https://docs.amcharts.com/v5/concepts/animations/#animating-settings):
 
+TypeScript:
+
+```ts
 bullet.animate({
   key: "locationX",
   to: 0.8,
   from: 0.2,
-  duration: Math.random() \* 1000 + 2000,
+  duration: Math.random() * 1000 + 2000,
   loops: Infinity,
   easing: am5.ease.quad
 });
+```
 
+JavaScript:
+
+```js
 bullet.animate({
   key: "locationX",
   to: 0.8,
   from: 0.2,
-  duration: Math.random() \* 1000 + 2000,
+  duration: Math.random() * 1000 + 2000,
   loops: Infinity,
   easing: am5.ease.quad
 });
+```
 
+Example: [Sankey diagram with animated bullets](https://docs.amcharts.com/embeds/v5/sankey-diagram-with-animated-bullets/)
 
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+am5.addLicense("AM5C12312313");
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/flow-charts/
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 50
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+series.bullets.push(function (root, series, dataItem) {
+  var bullet = am5.Bullet.new(root, {
+    locationX: 0.5,
+    autoRotate: true,
+    sprite: am5.Graphics.new(root, {
+      fill: dataItem.get("source").get("fill"),
+      centerY: am5.percent(50),
+      centerX: am5.percent(50),
+      draw: function (display) {
+        display.moveTo(0, -6);
+        display.lineTo(16, 0);
+        display.lineTo(0, 6);
+        display.lineTo(0, -6);
+      }
+    })
+  });
+
+  bullet.animate({
+    key: "locationX",
+    to: 0.8,
+    from: 0.2,
+    duration: Math.random() * 1000 + 2000,
+    loops: Infinity,
+    easing: am5.ease.quad
+  });
+
+  return bullet;
+});
+
+// Set data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
+series.data.setAll([
+  { from: "A", to: "D", value: 10 },
+  { from: "B", to: "D", value: 8 },
+  { from: "B", to: "E", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```

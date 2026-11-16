@@ -1,7 +1,7 @@
 ---
 title: "Tooltips"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/tooltips/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will look at various ways how we can enable, configure, and trigger tooltips in amCharts 5.
@@ -16,19 +16,35 @@ It can be set directly on an element, or a template.
 
 For example, we can set a tooltip to be shown when XY chart's zoom out button is hovered:
 
-zoomOutButton.set("tooltipText", "Click to zoom out");
+TypeScript:
 
+```ts
 zoomOutButton.set("tooltipText", "Click to zoom out");
+```
+
+JavaScript:
+
+```js
+zoomOutButton.set("tooltipText", "Click to zoom out");
+```
 
 The following code will set a rollover tooltip on all columns in a column series using its template:
 
-series.columns.template.setAll({
-  tooltipText: "{name}, {categoryX}: {valueY}"
-});
+TypeScript:
 
+```ts
 series.columns.template.setAll({
   tooltipText: "{name}, {categoryX}: {valueY}"
 });
+```
+
+JavaScript:
+
+```js
+series.columns.template.setAll({
+  tooltipText: "{name}, {categoryX}: {valueY}"
+});
+```
 
 `tooltipText` supports data placeholders, which means that we can use curly bracket references to related data item and element itself. For more information, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
@@ -46,6 +62,9 @@ We can do that by assigning a new instance of the `Tooltip` to element's `toolti
 
 The following will create a dedicated tooltip for a scrollbar, as well as enable rollover tooltips on its grips:
 
+TypeScript:
+
+```ts
 let scrollbar = am5.Scrollbar.new(root, {
   orientation: "horizontal"
 });
@@ -62,7 +81,11 @@ scrollbar.startGrip.set("tooltipText", "Drag to zoom");
 scrollbar.endGrip.set("tooltipText", "Drag to zoom");
 
 chart.set("scrollbarX", scrollbar);
+```
 
+JavaScript:
+
+```js
 var scrollbar = am5.Scrollbar.new(root, {
   orientation: "horizontal"
 });
@@ -79,16 +102,213 @@ scrollbar.startGrip.set("tooltipText", "Drag to zoom");
 scrollbar.endGrip.set("tooltipText", "Drag to zoom");
 
 chart.set("scrollbarX", scrollbar);
+```
 
+Example: [Custom tooltip on scrollbar grips](https://docs.amcharts.com/embeds/v5/custom-tooltip-on-scrollbar-grips/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Add legend
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  })
+);
+
+var data = [
+  {
+    year: "2021",
+    europe: 2.5,
+    namerica: 2.5,
+    asia: 2.1,
+    lamerica: 1,
+    meast: 0.8,
+    africa: 0.4
+  },
+  {
+    year: "2022",
+    europe: 2.6,
+    namerica: 2.7,
+    asia: 2.2,
+    lamerica: 0.5,
+    meast: 0.4,
+    africa: 0.3
+  },
+  {
+    year: "2023",
+    europe: 2.8,
+    namerica: 2.9,
+    asia: 2.4,
+    lamerica: 0.3,
+    meast: 0.9,
+    africa: 0.5
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    renderer: am5xy.AxisRendererX.new(root, {
+      cellStartLocation: 0.1,
+      cellEndLocation: 0.9
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+function makeSeries(name, fieldName) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      categoryXField: "year"
+    })
+  );
+
+  series.columns.template.setAll({
+    tooltipText: "{name}, {categoryX}: {valueY}",
+    width: am5.percent(90),
+    tooltipY: 0
+  });
+
+  series.data.setAll(data);
+
+  // Make stuff animate on load
+  // https://docs.amcharts.com/v5/concepts/animations/
+  series.appear();
+
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      locationY: 0,
+      sprite: am5.Label.new(root, {
+        text: "{valueY}",
+        fill: root.interfaceColors.get("alternativeText"),
+        centerY: 0,
+        centerX: am5.p50,
+        populateText: true
+      })
+    });
+  });
+
+  legend.data.push(series);
+}
+
+makeSeries("Europe", "europe");
+makeSeries("North America", "namerica");
+makeSeries("Asia", "asia");
+makeSeries("Latin America", "lamerica");
+makeSeries("Middle East", "meast");
+makeSeries("Africa", "africa");
+
+// Add scrollbar
+var scrollbar = am5.Scrollbar.new(root, {
+  orientation: "horizontal"
+});
+
+var tooltip = am5.Tooltip.new(root, {
+  getFillFromSprite: false
+});
+
+tooltip.get("background").setAll({
+  fill: am5.color(0xbbb000)
+});
+
+scrollbar.set("tooltip", tooltip);
+
+scrollbar.startGrip.set("tooltipText", "Drag to zoom");
+scrollbar.endGrip.set("tooltipText", "Drag to zoom");
+
+chart.set("scrollbarX", scrollbar);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ### Series
 
 If we want our chart to be able to show multiple tooltips for multiple series at once, we need to:
 
--   Create individual tooltips for each series.
--   Set up tooltip label to show the information we want it to show.
--   Enable chart cursor.
+* Create individual tooltips for each series.
+* Set up tooltip label to show the information we want it to show.
+* Enable chart cursor.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis, 
@@ -96,13 +316,17 @@ let series = chart.series.push(
     valueYField: field, 
     valueXField: "date",
     tooltip: am5.Tooltip.new(root, {
-      labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+      labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
     })
   }) 
 );
 
 series.data.setAll(data);
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis, 
@@ -110,19 +334,23 @@ var series = chart.series.push(
     valueYField: field, 
     valueXField: "date",
     tooltip: am5.Tooltip.new(root, {
-      labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+      labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
     })
   }) 
 );
 
 series.data.setAll(data);
+```
 
-NOTESeries tooltips will only be shown if there's a cursor enabled for the chart. For more information, refer to the "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
+> **Note:** Series tooltips will only be shown if there's a cursor enabled for the chart. For more information, refer to the "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
 
 ### Hoverable tooltips
 
 If we want to keep the target element hovered (and tooltip visible) when move pointer (e.g. mouse) position over open tooltip, we need to set tooltip's `keepTargetHover: true`.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     xAxis: xAxis, 
@@ -138,7 +366,11 @@ let series = chart.series.push(
 series.columns.template.setAll({
   tooltipText: "{categoryX}: {valueY}"
 });
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     xAxis: xAxis, 
@@ -154,6 +386,7 @@ var series = chart.series.push(
 series.columns.template.setAll({
   tooltipText: "{categoryX}: {valueY}"
 });
+```
 
 ## Colors
 
@@ -175,9 +408,12 @@ If we need to change background color, we will first need to disable fill inheri
 
 Then we can set `fill` on tooltip's `background` element.
 
+TypeScript:
+
+```ts
 let tooltip = am5.Tooltip.new(root, {
   getFillFromSprite: false,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.get("background").setAll({
@@ -186,10 +422,14 @@ tooltip.get("background").setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
+JavaScript:
+
+```js
 var tooltip = am5.Tooltip.new(root, {
   getFillFromSprite: false,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.get("background").setAll({
@@ -198,13 +438,17 @@ tooltip.get("background").setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
 ### Outline
 
 To change color of the outline, all we need to do is to set background's `stroke` setting:
 
+TypeScript:
+
+```ts
 let tooltip = am5.Tooltip.new(root, {
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.get("background").setAll({
@@ -213,9 +457,13 @@ tooltip.get("background").setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
+JavaScript:
+
+```js
 var tooltip = am5.Tooltip.new(root, {
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.get("background").setAll({
@@ -224,24 +472,33 @@ tooltip.get("background").setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
 We can also make tooltip outline inherit `stroke` from the target element, similarly `fill` is inherited for tooltip's background.
 
 For that we will need to set `getStrokeFromSprite` to `true`:
 
+TypeScript:
+
+```ts
 let tooltip = am5.Tooltip.new(root, {
   getStrokeFromSprite: true,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 series.set("tooltip", tooltip);
+```
 
+JavaScript:
+
+```js
 var tooltip = am5.Tooltip.new(root, {
   getStrokeFromSprite: true,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 series.set("tooltip", tooltip);
+```
 
 ### Text color
 
@@ -249,9 +506,12 @@ If we need specific color for tooltip text, we will first need to disable defaul
 
 To do that we will need to set `autoTextColor` setting to `false`. Then we can set `fill` setting of the tooltip's label element:
 
+TypeScript:
+
+```ts
 let tooltip = am5.Tooltip.new(root, {
   autoTextColor: false,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.label.setAll({
@@ -259,10 +519,14 @@ tooltip.label.setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
+JavaScript:
+
+```js
 var tooltip = am5.Tooltip.new(root, {
   autoTextColor: false,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.label.setAll({
@@ -270,33 +534,45 @@ tooltip.label.setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
 We can also make tooltip label inherit `fill` color from the target element, by using `getLabelFillFromSprite` setting:
 
+TypeScript:
+
+```ts
 let tooltip = am5.Tooltip.new(root, {
   getLabelFillFromSprite: true,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 series.set("tooltip", tooltip);
+```
 
+JavaScript:
+
+```js
 var tooltip = am5.Tooltip.new(root, {
   getLabelFillFromSprite: true,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 series.set("tooltip", tooltip);
+```
 
 ### Full example
 
 The following code will make column series' tooltips have white background, but will inherit its stroke and text color from the target column:
 
+TypeScript:
+
+```ts
 let tooltip = am5.Tooltip.new(root, {
   getFillFromSprite: false,
   getStrokeFromSprite: true,
   autoTextColor: false,
   getLabelFillFromSprite: true,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.get("background").setAll({
@@ -305,13 +581,17 @@ tooltip.get("background").setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
+JavaScript:
+
+```js
 var tooltip = am5.Tooltip.new(root, {
   getFillFromSprite: false,
   getStrokeFromSprite: true,
   autoTextColor: false,
   getLabelFillFromSprite: true,
-  labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+  labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
 });
 
 tooltip.get("background").setAll({
@@ -320,16 +600,191 @@ tooltip.get("background").setAll({
 });
 
 series.set("tooltip", tooltip);
+```
 
+Example: [Customizing tooltip colors](https://docs.amcharts.com/embeds/v5/customizing-tooltip-colors/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Add legend
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  })
+);
+
+var data = [
+  {
+    year: "2021",
+    europe: 2.5,
+    namerica: 2.5,
+    asia: 2.1,
+    lamerica: 1,
+    meast: 0.8,
+    africa: 0.4
+  },
+  {
+    year: "2022",
+    europe: 2.6,
+    namerica: 2.7,
+    asia: 2.2,
+    lamerica: 0.5,
+    meast: 0.4,
+    africa: 0.3
+  },
+  {
+    year: "2023",
+    europe: 2.8,
+    namerica: 2.9,
+    asia: 2.4,
+    lamerica: 0.3,
+    meast: 0.9,
+    africa: 0.5
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    renderer: am5xy.AxisRendererX.new(root, {
+      cellStartLocation: 0.1,
+      cellEndLocation: 0.9
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create a universal tooltip to be used for multiple series
+var tooltip = am5.Tooltip.new(root, {
+  getFillFromSprite: false,
+  getStrokeFromSprite: true,
+  autoTextColor: false,
+  getLabelFillFromSprite: true,
+  labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
+});
+
+tooltip.get("background").setAll({
+  fill: am5.color(0xffffff),
+  fillOpacity: 0.8
+});
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+function makeSeries(name, fieldName) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      categoryXField: "year",
+      tooltip: tooltip
+    })
+  );
+
+  series.columns.template.setAll({
+    tooltipText: "{name}, {categoryX}: {valueY}",
+    width: am5.percent(90),
+    tooltipY: 0
+  });
+
+  series.data.setAll(data);
+  series.appear();
+  legend.data.push(series);
+}
+
+makeSeries("Europe", "europe");
+makeSeries("North America", "namerica");
+makeSeries("Asia", "asia");
+makeSeries("Latin America", "lamerica");
+makeSeries("Middle East", "meast");
+makeSeries("Africa", "africa");
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ### Colors from bullets
 
 Normally, tooltips will inherit its colors from target series' `fill` and `stroke` settings.
 
-However, we can make it inherit from bullets instead, by setting series' setting `[seriesTooltipTarget](https://docs.amcharts.com/v5/reference/ixyseriessettings/#seriesTooltipTarget_property)` to `"bullet"`.
+However, we can make it inherit from bullets instead, by setting series' setting `seriesTooltipTarget` to `"bullet"`.
 
 In such case, tooltip will take series first bullet (if available) and use it as a source for its colors.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis, 
@@ -342,7 +797,11 @@ let series = chart.series.push(
     })
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis, 
@@ -355,6 +814,7 @@ var series = chart.series.push(
     })
   }) 
 );
+```
 
 ## Orientation
 
@@ -362,6 +822,9 @@ Depending on the situation, tooltip can be shown above, below, to the left, or t
 
 The defaults differ for various elements, but we can control it by explicitly setting tooltip's `pointerOrientation`.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis, 
@@ -373,7 +836,11 @@ let series = chart.series.push(
     })
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis, 
@@ -385,25 +852,155 @@ var series = chart.series.push(
     })
   }) 
 );
+```
 
-Orientation
+| Orientation    | Example #1                                                                   | Example #2                                                                   |
+| -------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `"horizontal"` | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right2.png) |
+| `"left"`       | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left2.png)  |
+| `"right"`      | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right1.png) | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right2.png) |
+| `"vertical"`   | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down2.png)  |
+| `"down"`       | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down2.png)  |
+| `"up"`         | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_up1.png)    | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_up2.png)    |
 
-Example #1
+Example: [Tooltip orientation](https://docs.amcharts.com/embeds/v5/tooltip-orientation/)
 
-Example #2
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
-`"horizontal"`
+HTML:
 
-`"left"`
+```html
+<div id="chartdiv"></div>
+```
 
-`"right"`
+CSS:
 
-`"vertical"`
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
-`"down"`
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
 
-`"up"`
+JavaScript:
 
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout,
+    cursor: am5xy.XYCursor.new(root, {})
+  })
+);
+
+var cursor = chart.get("cursor");
+
+cursor.lineX.setAll({
+  visible: false
+});
+
+cursor.lineY.setAll({
+  visible: false
+});
+
+var data = [
+  {
+    year: "2021",
+    value: 20
+  },
+  {
+    year: "2022",
+    value: 26
+  },
+  {
+    year: "2023",
+    value: 28
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    startLocation: 0.1,
+    endLocation: 0.9,
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5xy.LineSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    categoryXField: "year",
+    tooltip: am5.Tooltip.new(root, {
+      pointerOrientation: "right",
+      labelText: "{categoryX}: {valueY}"
+    })
+  })
+);
+
+series.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 6,
+      stroke: series.get("fill"),
+      strokeWidth: 2,
+      fill: am5.color(0xffffff)
+    })
+  });
+});
+
+series.data.setAll(data);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+series.appear();
+chart.appear(1000, 100);
+```
 
 ## Position
 
@@ -415,18 +1012,155 @@ For that we have `tooltipX` and `tooltipY` settings, which can either be absolut
 
 For example, if we would like to display tooltip anchored to the upper-right corner of a column, we'd do something like this:
 
+TypeScript:
+
+```ts
 columnSeries.columns.template.setAll({
   tooltipX: am5.percent(100),
   tooltipY: am5.percent(0),
   tooltipText: "{categoryX}: {valueY}"
 });
+```
 
+JavaScript:
+
+```js
 columnSeries.columns.template.setAll({
   tooltipX: am5.percent(100),
   tooltipY: am5.percent(0),
   tooltipText: "{categoryX}: {valueY}"
 });
+```
 
+Example: [Tooltip position](https://docs.amcharts.com/embeds/v5/tooltip-position/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+    //cursor: am5xy.XYCursor.new(root, {})
+  })
+);
+
+// var cursor = chart.get("cursor");
+
+// cursor.lineX.setAll({
+//   visible: false
+// });
+
+// cursor.lineY.setAll({
+//   visible: false
+// });
+
+var data = [
+  {
+    year: "2021",
+    value: 20
+  },
+  {
+    year: "2022",
+    value: 26
+  },
+  {
+    year: "2023",
+    value: 28
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    startLocation: 0.1,
+    endLocation: 0.9,
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    categoryXField: "year"
+  })
+);
+
+series.columns.template.setAll({
+  tooltipX: am5.percent(100),
+  tooltipY: am5.percent(0),
+  tooltipText: "{categoryX}: {valueY}"
+});
+
+series.data.setAll(data);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+series.appear();
+chart.appear(1000, 100);
+```
 
 ### With cursor
 
@@ -440,9 +1174,17 @@ We can trigger showing of a tooltip on an element programmatically, too.
 
 Every element has a method `showTooltip()`. All we need to do is to call it:
 
-columnSeries.columns.getIndex(1).showTooltip();
+TypeScript:
 
+```ts
 columnSeries.columns.getIndex(1).showTooltip();
+```
+
+JavaScript:
+
+```js
+columnSeries.columns.getIndex(1).showTooltip();
+```
 
 The above will trigger tooltip for the second column in a column series.
 
@@ -454,20 +1196,28 @@ We can make them show all the time, without any interactions.
 
 For that, we will need:
 
-1.  Create a separate instance of a tooltip for the element (because elements share tooltips).
-2.  Set `showTooltipOn: "always"` setting for the element.
+1. Create a separate instance of a tooltip for the element (because elements share tooltips).
+2. Set `showTooltipOn: "always"` setting for the element.
 
+TypeScript:
+
+```ts
 chart.zoomOutButton.setAll({
   tooltipText: "Click to zoom out",
   showTooltipOn: "always",
   tooltip: am5.Tooltip.new(root, {})
 });
+```
 
+JavaScript:
+
+```js
 chart.zoomOutButton.setAll({
   tooltipText: "Click to zoom out",
   showTooltipOn: "always",
   tooltip: am5.Tooltip.new(root, {})
 });
+```
 
 The above will make tooltip appear over XY chart's zoom out button constantly.
 
@@ -475,6 +1225,9 @@ The above will make tooltip appear over XY chart's zoom out button constantly.
 
 Creating sticky tooltips for bullets is easy, because we use custom functions that create a bullet:
 
+TypeScript:
+
+```ts
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
@@ -488,6 +1241,140 @@ series.bullets.push(function () {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fill: series.get("fill"),
+      stroke: root.interfaceColors.get("background"),
+      strokeWidth: 2,
+      tooltipText: "{valueY}",
+      showTooltipOn: "always",
+      tooltip: am5.Tooltip.new(root, {})
+    })
+  });
+});
+```
+
+Example: [Sticky tooltips on bullets](https://docs.amcharts.com/embeds/v5/sticky-tooltips-on-bullets/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+var data = [
+  { date: new Date(2012, 1, 1).getTime(), value: 8 },
+  { date: new Date(2012, 1, 2).getTime(), value: 10 },
+  { date: new Date(2012, 1, 3).getTime(), value: 12 },
+  { date: new Date(2012, 1, 4).getTime(), value: 14 },
+  { date: new Date(2012, 1, 5).getTime(), value: 11 },
+  { date: new Date(2012, 1, 6).getTime(), value: 6 },
+  { date: new Date(2012, 1, 7).getTime(), value: 7 }
+];
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: true,
+    panY: true,
+    wheelX: "panX",
+    wheelY: "zoomX"
+  })
+);
+
+var easing = am5.ease.linear;
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    maxDeviation: 0.1,
+    groupData: false,
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 50
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    maxDeviation: 0.1,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5xy.LineSeries.new(root, {
+    minBulletDistance: 10,
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date",
+    tooltip: am5.Tooltip.new(root, {
+      pointerOrientation: "horizontal",
+      labelText: "{valueY}"
+    })
+  })
+);
+
+series.data.setAll(data);
 
 series.bullets.push(function () {
   return am5.Bullet.new(root, {
@@ -503,6 +1390,30 @@ series.bullets.push(function () {
   });
 });
 
+// Add cursor
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
+var cursor = chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    xAxis: xAxis
+  })
+);
+
+cursor.lineY.set("visible", false);
+
+// add scrollbar
+chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+series.appear(1000, 100);
+chart.appear(1000, 100);
+```
 
 ### On series element templates
 
@@ -510,6 +1421,9 @@ Adding sticky tooltips to series elements (e.g. columns) via templates is tricki
 
 We will need to use [template's `setup` handler](https://docs.amcharts.com/v5/concepts/settings/list-templates/#setup-handler) for that.
 
+TypeScript:
+
+```ts
 series.columns.template.setAll({
   tooltipText: "{name}, {categoryX}:{valueY}",
   width: am5.percent(90),
@@ -521,7 +1435,11 @@ series.columns.template.setAll({
 series.columns.template.setup = function(target) {
   target.set("tooltip", am5.Tooltip.new(root, {}));
 }
+```
 
+JavaScript:
+
+```js
 series.columns.template.setAll({
   tooltipText: "{name}, {categoryX}:{valueY}",
   width: am5.percent(90),
@@ -533,7 +1451,135 @@ series.columns.template.setAll({
 series.columns.template.setup = function(target) {
   target.set("tooltip", am5.Tooltip.new(root, {}));
 }
+```
 
+Example: [Sticky tooltips on columns](https://docs.amcharts.com/embeds/v5/sticky-tooltips-on-columns/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+var data = [
+  {
+    category: "2021",
+    value: 2.5
+  },
+  {
+    category: "2022",
+    value: 2.6
+  },
+  {
+    category: "2023",
+    value: 2.8
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "category",
+    renderer: am5xy.AxisRendererX.new(root, {
+      cellStartLocation: 0.1,
+      cellEndLocation: 0.9
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5xy.ColumnSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    categoryXField: "category"
+  })
+);
+
+series.columns.template.setAll({
+  tooltipText: "{name}, {categoryX}:{valueY}",
+  width: am5.percent(90),
+  tooltipY: 0,
+  tooltipText: "{categoryX}: {valueY}",
+  showTooltipOn: "always"
+});
+
+series.columns.template.setup = function (target) {
+  target.set("tooltip", am5.Tooltip.new(root, {}));
+};
+
+series.data.setAll(data);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+series.appear();
+chart.appear(1000, 100);
+```
 
 ## Tooltips on labels
 
@@ -541,6 +1587,9 @@ If we need rollover tooltips to be displayed on a label, there is one additional
 
 The following snippet will add tooltip to the pie chart's slice labels:
 
+TypeScript:
+
+```ts
 series.labels.template.set("tooltipText", "{category}: {value}");
 
 series.labels.template.setup = function(target) {
@@ -549,7 +1598,11 @@ series.labels.template.setup = function(target) {
     fillOpacity: 0
   }));
 }
+```
 
+JavaScript:
+
+```js
 series.labels.template.set("tooltipText", "{category}: {value}");
 
 series.labels.template.setup = function(target) {
@@ -558,9 +1611,100 @@ series.labels.template.setup = function(target) {
     fillOpacity: 0
   }));
 }
+```
 
+Example: [Adding tooltips to pie chart slice labels](https://docs.amcharts.com/embeds/v5/adding-tooltips-to-pie-chart-slice-labels/)
 
-MORE INFOFor more information on label interactivity refer to "[Labels as interactive elements](https://docs.amcharts.com/v5/concepts/common-elements/labels/#labels-as-interactive-elements)" tutorial.
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series.labels.template.set("tooltipText", "{category}: {value}");
+
+series.labels.template.setup = function (target) {
+  target.set(
+    "background",
+    am5.Rectangle.new(root, {
+      fill: am5.color(0x000000),
+      fillOpacity: 0
+    })
+  );
+};
+
+series.data.setAll(data);
+```
+
+> **More info:** For more information on label interactivity refer to "[Labels as interactive elements](https://docs.amcharts.com/v5/concepts/common-elements/labels/#labels-as-interactive-elements)" tutorial.
 
 ## HTML in tooltips
 
@@ -576,6 +1720,9 @@ Using root element's `tooltipContainerBounds` setting, it's possible to add addi
 
 The setting accepts an object with pixel values for top, right, bottom, and left sides of the chart area:
 
+TypeScript:
+
+```ts
 const root = am5.Root.new("chartdiv", {
   tooltipContainerBounds: {
     top: 50,
@@ -584,7 +1731,11 @@ const root = am5.Root.new("chartdiv", {
     left: 100
   }
 });
+```
 
+JavaScript:
+
+```js
 var root = am5.Root.new("chartdiv", {
   tooltipContainerBounds: {
     top: 50,
@@ -593,14 +1744,119 @@ var root = am5.Root.new("chartdiv", {
     left: 100
   }
 });
+```
 
-Default behavior
+![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/2022-09-27_13-32-50-1024x547.png "Default behavior")
 
-Using `tooltipContainerBounds`
+![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/chrome_2022-09-27_13-32-25-1024x547.png "Using `tooltipContainerBounds`")
 
+Example: [Expanded tooltip area](https://docs.amcharts.com/embeds/v5/expanded-tooltip-area/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div class="charts">
+  <div id="chartdiv1" class="chart"></div>
+  <div id="chartdiv2" class="chart"></div>
+  <div id="chartdiv3" class="chart"></div>
+  <div id="chartdiv4" class="chart"></div>
+  <div id="chartdiv5" class="chart"></div>
+</div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.chart {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin: 10px;
+  border: 1px dotted #eee;
+  position: relative;
+}
+
+.chart:hover {
+  z-index: 1000;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+for (var i = 1; i <= 5; i++) {
+  // Create root and chart
+  var root = am5.Root.new("chartdiv" + i, {
+    tooltipContainerBounds: {
+      top: 50,
+      right: 100,
+      bottom: 50,
+      left: 100
+    }
+  });
+
+  root.setThemes([am5themes_Animated.new(root)]);
+
+  var chart = root.container.children.push(
+    am5percent.PieChart.new(root, {
+      layout: root.verticalLayout
+    })
+  );
+
+  // Define data
+  var data = [
+    {
+      country: "France",
+      sales: Math.random() * 10000
+    },
+    {
+      country: "Spain",
+      sales: Math.random() * 10000
+    },
+    {
+      country: "United Kingdom",
+      sales: Math.random() * 10000
+    }
+  ];
+
+  // Create series
+  var series = chart.series.push(
+    am5percent.PieSeries.new(root, {
+      name: "Series",
+      valueField: "sales",
+      categoryField: "country"
+    })
+  );
+
+  series.labels.template.set("forceHidden", true);
+  series.ticks.template.set("forceHidden", true);
+
+  series.data.setAll(data);
+}
+```
 
 ## Related tutorials
 
--   [Combining tooltip values from multiple series](https://docs.amcharts.com/v5/tutorials/combining-tooltip-values-from-multiple-series/)
--   [Constraining tooltip to plot container bounds](https://docs.amcharts.com/v5/tutorials/constraining-tooltip-to-plot-container-bounds/)
--   [Tooltip with a pointer on the side](https://docs.amcharts.com/v5/tutorials/tooltip-with-a-pointer-on-the-side/)
+* [Combining tooltip values from multiple series](https://docs.amcharts.com/v5/tutorials/combining-tooltip-values-from-multiple-series/)
+* [Constraining tooltip to plot container bounds](https://docs.amcharts.com/v5/tutorials/constraining-tooltip-to-plot-container-bounds/)
+* [Tooltip with a pointer on the side](https://docs.amcharts.com/v5/tutorials/tooltip-with-a-pointer-on-the-side/)

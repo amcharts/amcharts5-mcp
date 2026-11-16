@@ -1,8 +1,10 @@
 ---
 title: "Night series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/night-series/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
+
+> NightSeries shades the part of a map where it is night, fading through twilight at the edge, and shows the sun where it is directly overhead.
 
 `NightSeries` shades the part of a map where it is night, fading through twilight at the edge, and shows the sun where it is directly overhead.
 
@@ -10,9 +12,12 @@ scraped: "2026-10-08"
 
 Add the night series after the series it should shade, and tell it what time to show with `sunDate`:
 
+TypeScript:
+
+```ts
 let polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata\_worldLow
+    geoJSON: am5geodata_worldLow
   })
 );
 
@@ -21,10 +26,14 @@ let nightSeries = chart.series.push(
     sunDate: "now"
   })
 );
+```
 
+JavaScript:
+
+```js
 var polygonSeries = chart.series.push(
   am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata\_worldLow
+    geoJSON: am5geodata_worldLow
   })
 );
 
@@ -33,26 +42,113 @@ var nightSeries = chart.series.push(
     sunDate: "now"
   })
 );
+```
 
 The night series works with any projection, including a globe, and does not affect how the map is fitted or zoomed.
+
+Example: [Day and night on a map](https://docs.amcharts.com/embeds/v5/day-and-night-on-a-map/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create the map chart
+// https://docs.amcharts.com/v5/charts/map-chart/
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    projection: am5map.geoNaturalEarth1()
+  })
+);
+
+// Create polygon series for countries
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow
+  })
+);
+
+// Shade the night side and show the sun
+// https://docs.amcharts.com/v5/charts/map-chart/night-series/
+var nightSeries = chart.series.push(
+  am5map.NightSeries.new(root, {
+    sunDate: "now" // the night as it is right now, moved on every minute
+  })
+);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ## Setting the time
 
 `sunDate` can be `"now"`, a timestamp, a date string (e.g. `"2026-12-21T12:00:00Z"`) or a `Date` object. With `"now"`, the night moves with the clock, updated every minute.
 
-NOTETo change a `Date`, set a new object. Changes made to the same `Date` object are not picked up.
+> **Note:** To change a `Date`, set a new object. Changes made to the same `Date` object are not picked up.
 
 Instead of a date, we can set where the sun is directly overhead, using `sunPosition`. The `am5map.getSunPosition()` function works it out for any date:
 
+TypeScript:
+
+```ts
 nightSeries.set("sunPosition", am5map.getSunPosition(new Date(2026, 11, 21, 12, 0)));
 
 // Or any point
 nightSeries.set("sunPosition", { longitude: 0, latitude: 23.4 });
+```
 
+JavaScript:
+
+```js
 nightSeries.set("sunPosition", am5map.getSunPosition(new Date(2026, 11, 21, 12, 0)));
 
 // Or any point
 nightSeries.set("sunPosition", { longitude: 0, latitude: 23.4 });
+```
 
 If both are set, `sunDate` wins.
 
@@ -60,23 +156,34 @@ If both are set, `sunDate` wins.
 
 The night is made of map polygons, so it is styled through `mapPolygons.template`. `fill` sets its color, and `fillOpacity` sets how dark full night is. By default it is black at `0.5`.
 
-nightSeries.mapPolygons.template.setAll({
-  fill: am5.color(0x0b1d3a),
-  fillOpacity: 0.7
-});
+TypeScript:
 
+```ts
 nightSeries.mapPolygons.template.setAll({
   fill: am5.color(0x0b1d3a),
   fillOpacity: 0.7
 });
+```
+
+JavaScript:
+
+```js
+nightSeries.mapPolygons.template.setAll({
+  fill: am5.color(0x0b1d3a),
+  fillOpacity: 0.7
+});
+```
 
 ### Twilight
 
 Day turns into night across a twilight band, drawn in steps that get darker towards full night. Two settings control it:
 
--   `twilight` - width of the band, in degrees of the sun's height above the horizon (default: `12`).
--   `twilightSteps` - how many shades the band is drawn in (default: `4`). More steps give a smoother edge.
+* `twilight` - width of the band, in degrees of the sun's height above the horizon (default: `12`).
+* `twilightSteps` - how many shades the band is drawn in (default: `4`). More steps give a smoother edge.
 
+TypeScript:
+
+```ts
 let nightSeries = chart.series.push(
   am5map.NightSeries.new(root, {
     sunDate: "now",
@@ -84,7 +191,11 @@ let nightSeries = chart.series.push(
     twilightSteps: 8
   })
 );
+```
 
+JavaScript:
+
+```js
 var nightSeries = chart.series.push(
   am5map.NightSeries.new(root, {
     sunDate: "now",
@@ -92,6 +203,7 @@ var nightSeries = chart.series.push(
     twilightSteps: 8
   })
 );
+```
 
 ## Sun
 
@@ -99,26 +211,29 @@ The series marks where the sun is directly overhead with a glowing yellow circle
 
 The circle can be accessed with `get("sun")`:
 
-nightSeries.get("sun").setAll({
-  radius: 12,
-  fill: am5.color(0xff6600)
-});
+TypeScript:
 
+```ts
 nightSeries.get("sun").setAll({
   radius: 12,
   fill: am5.color(0xff6600)
 });
+```
+
+JavaScript:
+
+```js
+nightSeries.get("sun").setAll({
+  radius: 12,
+  fill: am5.color(0xff6600)
+});
+```
 
 To use something else, such as an image, set any element as `sun`:
 
-nightSeries.set("sun", am5.Picture.new(root, {
-  src: "sun.svg",
-  width: 32,
-  height: 32,
-  centerX: am5.p50,
-  centerY: am5.p50
-}));
+TypeScript:
 
+```ts
 nightSeries.set("sun", am5.Picture.new(root, {
   src: "sun.svg",
   width: 32,
@@ -126,12 +241,33 @@ nightSeries.set("sun", am5.Picture.new(root, {
   centerX: am5.p50,
   centerY: am5.p50
 }));
+```
+
+JavaScript:
+
+```js
+nightSeries.set("sun", am5.Picture.new(root, {
+  src: "sun.svg",
+  width: 32,
+  height: 32,
+  centerX: am5.p50,
+  centerY: am5.p50
+}));
+```
 
 To hide the sun:
 
-nightSeries.get("sun").set("forceHidden", true);
+TypeScript:
 
+```ts
 nightSeries.get("sun").set("forceHidden", true);
+```
+
+JavaScript:
+
+```js
+nightSeries.get("sun").set("forceHidden", true);
+```
 
 ### Sun above a globe
 
@@ -139,24 +275,133 @@ nightSeries.get("sun").set("forceHidden", true);
 
 It is for looks, not the real distance: values from 1,000,000 to 5,000,000 work well (the Earth's radius is about 6,371,000).
 
+TypeScript:
+
+```ts
 let nightSeries = chart.series.push(
   am5map.NightSeries.new(root, {
     sunDate: "now",
     sunAltitude: 2000000
   })
 );
+```
 
+JavaScript:
+
+```js
 var nightSeries = chart.series.push(
   am5map.NightSeries.new(root, {
     sunDate: "now",
     sunAltitude: 2000000
   })
 );
+```
+
+Example: [Globe with a raised sun](https://docs.amcharts.com/embeds/v5/globe-with-a-raised-sun/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Where the sun is overhead right now
+var sun = am5map.getSunPosition(new Date());
+
+// Create the map chart: a globe, turned so that the sun is just past its
+// right edge
+// https://docs.amcharts.com/v5/charts/map-chart/
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "rotateY",
+    projection: am5map.geoOrthographic(),
+    rotationX: 100 - sun.longitude
+  })
+);
+
+// Add water
+var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+
+backgroundSeries.mapPolygons.template.setAll({
+  fill: root.interfaceColors.get("alternativeBackground"),
+  fillOpacity: 0.1,
+  strokeOpacity: 0
+});
+
+backgroundSeries.data.push({
+  geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+});
+
+// Create polygon series for countries
+// https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow
+  })
+);
+
+// Shade the night side and show the sun
+// https://docs.amcharts.com/v5/charts/map-chart/night-series/
+var nightSeries = chart.series.push(
+  am5map.NightSeries.new(root, {
+    sunDate: "now", // the night as it is right now
+    sunAltitude: 2000000 // raise the sun 2,000 km, so it peeks over the edge
+  })
+);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ## With satellite images
 
 A [Map raster series](https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/) can show day and night by itself, swapping in a night image of city lights. To also show the sun there, add a night series with no shade:
 
+TypeScript:
+
+```ts
 let rasterSeries = chart.series.push(
   am5map.MapRasterSeries.new(root, {
     src: "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg",
@@ -172,7 +417,11 @@ let nightSeries = chart.series.push(
 );
 
 nightSeries.mapPolygons.template.set("fillOpacity", 0);
+```
 
+JavaScript:
+
+```js
 var rasterSeries = chart.series.push(
   am5map.MapRasterSeries.new(root, {
     src: "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg",
@@ -188,43 +437,15 @@ var nightSeries = chart.series.push(
 );
 
 nightSeries.mapPolygons.template.set("fillOpacity", 0);
+```
 
 ## Settings
 
-Setting
-
-Default
-
-Comment
-
-`sunDate`
-
-Date to show the night for: `"now"`, a timestamp, a date string or a `Date`. Overrides `sunPosition`.
-
-`sunPosition`
-
-Point where the sun is directly overhead, e.g. `{ longitude: 0, latitude: 23.4 }`.
-
-`twilight`
-
-`12`
-
-Width of the twilight band, in degrees of the sun's height.
-
-`twilightSteps`
-
-`4`
-
-How many shades the twilight is drawn in.
-
-`sun`
-
-Circle
-
-Element shown where the sun is overhead.
-
-`sunAltitude`
-
-`0`
-
-Raises the sun above the map, in metres.
+| Setting         | Default | Comment                                                                                               |
+| --------------- | ------- | ----------------------------------------------------------------------------------------------------- |
+| `sunDate`       |         | Date to show the night for: `"now"`, a timestamp, a date string or a `Date`. Overrides `sunPosition`. |
+| `sunPosition`   |         | Point where the sun is directly overhead, e.g. `{ longitude: 0, latitude: 23.4 }`.                    |
+| `twilight`      | `12`    | Width of the twilight band, in degrees of the sun's height.                                           |
+| `twilightSteps` | `4`     | How many shades the twilight is drawn in.                                                             |
+| `sun`           | Circle  | Element shown where the sun is overhead.                                                              |
+| `sunAltitude`   | `0`     | Raises the sun above the map, in metres.                                                              |

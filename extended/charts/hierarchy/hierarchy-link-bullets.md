@@ -1,8 +1,10 @@
 ---
 title: "Hierarchy link bullets"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-link-bullets/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
+
+> This tutorial will show how we can add bullets to links on linked hierarchy charts like Force-directed and Tree.
 
 This tutorial will show how we can add bullets to links on linked hierarchy charts like [Force-directed](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/) and [Tree](https://docs.amcharts.com/v5/charts/hierarchy/tree/).
 
@@ -10,17 +12,9 @@ This tutorial will show how we can add bullets to links on linked hierarchy char
 
 Hierarchy chart's bullets are created like [any other bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/), except they are pushed to `linkBullets` list (instead of `bullets`):
 
-series.linkBullets.push(function(root, source, target) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Label.new(root, {
-      text: "Link",
-      fill: am5.color(0x000000),
-      centerX: am5.p50,
-      centerY: am5.p50
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
     sprite: am5.Label.new(root, {
@@ -31,6 +25,22 @@ series.linkBullets.push(function(root, source, target) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.linkBullets.push(function(root, source, target) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Label.new(root, {
+      text: "Link",
+      fill: am5.color(0x000000),
+      centerX: am5.p50,
+      centerY: am5.p50
+    })
+  });
+});
+```
 
 This will add a bullet on each link in series.
 
@@ -44,18 +54,9 @@ It accepts numeric values from `0` (one, which means beginning of the link) and 
 
 The following will place bullets in the middle of a link:
 
-series.linkBullets.push(function(root, source, target) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Label.new(root, {
-      text: "Link",
-      fill: am5.color(0x000000),
-      centerX: am5.p50,
-      centerY: am5.p50,
-      locationX: 0.5
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
     sprite: am5.Label.new(root, {
@@ -67,6 +68,23 @@ series.linkBullets.push(function(root, source, target) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.linkBullets.push(function(root, source, target) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Label.new(root, {
+      text: "Link",
+      fill: am5.color(0x000000),
+      centerX: am5.p50,
+      centerY: am5.p50,
+      locationX: 0.5
+    })
+  });
+});
+```
 
 ## Using node data
 
@@ -76,18 +94,9 @@ We can use that data to decorate the bullet accordingly, e.g. populate label tex
 
 The following will use source node's color, as well as target node's title for a label bullet:
 
-series.linkBullets.push(function(root, source, target) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Label.new(root, {
-      text: target.get("category"),
-      fill: source.get("fill"),
-      centerX: am5.p50,
-      centerY: am5.p50,
-      locationX: 0.5
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
     sprite: am5.Label.new(root, {
@@ -99,6 +108,23 @@ series.linkBullets.push(function(root, source, target) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.linkBullets.push(function(root, source, target) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Label.new(root, {
+      text: target.get("category"),
+      fill: source.get("fill"),
+      centerX: am5.p50,
+      centerY: am5.p50,
+      locationX: 0.5
+    })
+  });
+});
+```
 
 ## Relative rotation
 
@@ -108,22 +134,9 @@ It doesn't matter for a circle bullet, but might make perfect sense for other sh
 
 To enable auto-rotation, we just need to set `autoRotate: true` (default: `false`) on our bullet:
 
-series.linkBullets.push(function(root, source, target) {
-  return am5.Bullet.new(root, {
-    autoRotate: true,
-    autoRotateAngle: 90,
-    sprite: am5.Triangle.new(root, {
-      width: 10,
-      height: 15,
-      rotation: 45,
-      fill: source.get("fill"),
-      centerX: am5.p50,
-      centerY: am5.p50,
-      locationX: 0.5
-    })
-  });
-});
+TypeScript:
 
+```ts
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
     autoRotate: true,
@@ -139,6 +152,27 @@ series.linkBullets.push(function(root, source, target) {
     })
   });
 });
+```
+
+JavaScript:
+
+```js
+series.linkBullets.push(function(root, source, target) {
+  return am5.Bullet.new(root, {
+    autoRotate: true,
+    autoRotateAngle: 90,
+    sprite: am5.Triangle.new(root, {
+      width: 10,
+      height: 15,
+      rotation: 45,
+      fill: source.get("fill"),
+      centerX: am5.p50,
+      centerY: am5.p50,
+      locationX: 0.5
+    })
+  });
+});
+```
 
 Relative rotation can also be further tweaked using another bullet setting: `autoRotateAngle`.
 
@@ -146,6 +180,9 @@ If set, it will add additional degrees to the automatically-calculated angle.
 
 The following will create triangle arrowheads for bullets, and the `autoRotateAngle: 180` will make the point backwards:
 
+TypeScript:
+
+```ts
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -165,7 +202,11 @@ series.linkBullets.push(function(root, source, target) {
     })
   });
 });
+```
 
+JavaScript:
+
+```js
 series.linkBullets.push(function(root, source, target) {
   return am5.Bullet.new(root, {
     locationX: 0.5,
@@ -185,18 +226,172 @@ series.linkBullets.push(function(root, source, target) {
     })
   });
 });
+```
 
+Example: [Force-Directed Tree with bullets](https://docs.amcharts.com/embeds/v5/force-directed-tree-with-bullets/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/hierarchy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 94vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+var zoomableContainer = root.container.children.push(
+  am5.ZoomableContainer.new(root, {
+    width: am5.p100,
+    height: am5.p100,
+    wheelable: true,
+    pinchZoom: true
+  })
+);
+
+var zoomTools = zoomableContainer.children.push(
+  am5.ZoomTools.new(root, {
+    target: zoomableContainer
+  })
+);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
+var series = zoomableContainer.contents.children.push(
+  am5hierarchy.ForceDirected.new(root, {
+    singleBranchOnly: false,
+    downDepth: 1,
+    initialDepth: 10,
+    nodePadding: 30,
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children"
+  })
+);
+
+series.linkBullets.push(function (root, source, target) {
+  return am5.Bullet.new(root, {
+    autoRotate: true,
+    autoRotateAngle: 0,
+    locationX: 0.5,
+    sprite: am5.Label.new(root, {
+      text: target.get("category"),
+      fontSize: 12,
+      paddingBottom: 5,
+      fill: source.get("fill"),
+      centerX: am5.p50,
+      centerY: am5.p100
+    })
+  });
+});
+
+series.labels.template.set("minScale", 0);
+
+// Generate and set data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
+var maxLevels = 1;
+var maxNodes = 3;
+var maxValue = 100;
+
+var data = {
+  name: "Root",
+  children: []
+};
+
+generateLevel(data, "", 0);
+
+series.data.setAll([data]);
+series.set("selectedDataItem", series.dataItems[0]);
+
+function generateLevel(data, name, level) {
+  for (var i = 0; i < Math.ceil(maxNodes * Math.random()) + 1; i++) {
+    var nodeName = name + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
+    var child;
+    if (level < maxLevels) {
+      child = {
+        name: nodeName + level
+      };
+
+      if (level > 0 && Math.random() < 0.5) {
+        child.value = Math.round(Math.random() * maxValue);
+      } else {
+        child.children = [];
+        generateLevel(child, nodeName + i, level + 1);
+      }
+    } else {
+      child = {
+        name: name + i,
+        value: Math.round(Math.random() * maxValue)
+      };
+    }
+    data.children.push(child);
+  }
+
+  level++;
+  return data;
+}
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```
 
 ## Dynamic updates and animation
 
 We can update any bullet setting, including `locationX`, dynamically.
 
-bullet.set("locationX", 0.8);
+TypeScript:
 
+```ts
 bullet.set("locationX", 0.8);
+```
+
+JavaScript:
+
+```js
+bullet.set("locationX", 0.8);
+```
 
 We can also animate settings by creating a [setting animation](https://docs.amcharts.com/v5/concepts/animations/#animating-settings):
 
+TypeScript:
+
+```ts
 series.linkBullets.push(function(root, source, target) {
   const bullet = am5.Bullet.new(root, {
     locationX: 0.5,
@@ -220,14 +415,18 @@ series.linkBullets.push(function(root, source, target) {
     key: "locationX",
     to: 0.2,
     from: 0.8,
-    duration: Math.random() \* 1000 + 2000,
+    duration: Math.random() * 1000 + 2000,
     loops: Infinity,
     easing: am5.ease.quad
   });
 
   return bullet;
 });
+```
 
+JavaScript:
+
+```js
 series.linkBullets.push(function(root, source, target) {
   var bullet = am5.Bullet.new(root, {
     locationX: 0.5,
@@ -251,7 +450,116 @@ series.linkBullets.push(function(root, source, target) {
     key: "locationX",
     to: 0.2,
     from: 0.8,
-    duration: Math.random() \* 1000 + 2000,
+    duration: Math.random() * 1000 + 2000,
+    loops: Infinity,
+    easing: am5.ease.quad
+  });
+
+  return bullet;
+});
+```
+
+Example: [Force-Directed Tree with animated bullets](https://docs.amcharts.com/embeds/v5/force-directed-tree-with-animated-bullets/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/hierarchy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 94vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+var zoomableContainer = root.container.children.push(
+  am5.ZoomableContainer.new(root, {
+    width: am5.p100,
+    height: am5.p100,
+    wheelable: true,
+    pinchZoom: true
+  })
+);
+
+var zoomTools = zoomableContainer.children.push(
+  am5.ZoomTools.new(root, {
+    target: zoomableContainer
+  })
+);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/hierarchy/#adding
+var series = zoomableContainer.contents.children.push(
+  am5hierarchy.ForceDirected.new(root, {
+    singleBranchOnly: false,
+    downDepth: 1,
+    initialDepth: 10,
+    nodePadding: 20,
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children"
+  })
+);
+
+series.linkBullets.push(function (root, source, target) {
+  const bullet = am5.Bullet.new(root, {
+    locationX: 0.5,
+    autoRotate: true,
+    autoRotateAngle: 180,
+    sprite: am5.Graphics.new(root, {
+      fill: source.get("fill"),
+      centerY: am5.percent(50),
+      centerX: am5.percent(50),
+      draw: function (display) {
+        display.moveTo(0, -6);
+        display.lineTo(16, 0);
+        display.lineTo(0, 6);
+        display.lineTo(3, 0);
+        display.lineTo(0, -6);
+      }
+    })
+  });
+
+  bullet.animate({
+    key: "locationX",
+    to: -0.1,
+    from: 1.1,
+    duration: Math.random() * 500 + 1000,
     loops: Infinity,
     easing: am5.ease.quad
   });
@@ -259,7 +567,56 @@ series.linkBullets.push(function(root, source, target) {
   return bullet;
 });
 
+series.labels.template.set("minScale", 0);
+
+// Generate and set data
+// https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
+var maxLevels = 1;
+var maxNodes = 3;
+var maxValue = 100;
+
+var data = {
+  name: "Root",
+  children: []
+};
+
+generateLevel(data, "", 0);
+
+series.data.setAll([data]);
+series.set("selectedDataItem", series.dataItems[0]);
+
+function generateLevel(data, name, level) {
+  for (var i = 0; i < Math.ceil(maxNodes * Math.random()) + 1; i++) {
+    var nodeName = name + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i];
+    var child;
+    if (level < maxLevels) {
+      child = {
+        name: nodeName + level
+      };
+
+      if (level > 0 && Math.random() < 0.5) {
+        child.value = Math.round(Math.random() * maxValue);
+      } else {
+        child.children = [];
+        generateLevel(child, nodeName + i, level + 1);
+      }
+    } else {
+      child = {
+        name: name + i,
+        value: Math.round(Math.random() * maxValue)
+      };
+    }
+    data.children.push(child);
+  }
+
+  level++;
+  return data;
+}
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```
 
 ## Related tutorials
 
--   [Force-Directed Tree with directional labels on links](https://docs.amcharts.com/v5/tutorials/force-directed-tree-with-directional-labels-on-links/)
+* [Force-Directed Tree with directional labels on links](https://docs.amcharts.com/v5/tutorials/force-directed-tree-with-directional-labels-on-links/)

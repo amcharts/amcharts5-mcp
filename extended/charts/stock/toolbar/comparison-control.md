@@ -1,8 +1,10 @@
 ---
 title: "Comparison control"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/comparison-control/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
+
+> Comparison control can be added to stock toolbar, and is used to interactively add additional series to the Stock chart, so that they can be compared to main series.
 
 Comparison control can be added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/), and is used to interactively add additional series to the Stock chart, so that they can be compared to main series.
 
@@ -10,36 +12,44 @@ Comparison control can be added to [stock toolbar](https://docs.amcharts.com/v5/
 
 Like any other control, it should be instantiated using `new()` syntax, and pushed into toolbar's `controls` list:
 
+TypeScript:
+
+```ts
 // Add comparison control
 let comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
-  items: \[\]
+  items: []
 });
 
 // Add toolbar
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 // Add comparison control
 var comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
-  items: \[
-\]
+  items: [
+]
 });
 
 // Add toolbar
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
 This will add a control, but it won't be useful because it doesn't have any items to choose from, nor events to create compared series in.
 
@@ -53,97 +63,117 @@ To provide a list of items to choose from, we can use control's `items` setting.
 
 It accepts an array of objects like this:
 
+```json
 {
   label: "Apple",
   subLabel: "AAPL",
   id: "AAPL"
 }
+```
 
 The `label` and `id` are required, whereas `subLabel` is optional.
 
 Let's try and add a couple of items:
 
+TypeScript:
+
+```ts
 // Add comparison control
 let comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
-  items: \[
+  items: [
     { label: "Apple", subLabel: "AAPL", id: "AAPL" },
     { label: "Tesla", subLabel: "TSLA", id: "TSLA" },
-  \]
+  ]
 });
 
 // Add toolbar
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 // Add comparison control
 var comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
-  items: \[
+  items: [
     { label: "Apple", subLabel: "AAPL", id: "AAPL" },
     { label: "Tesla", subLabel: "TSLA", id: "TSLA" }
-  \]
+  ]
 });
 
 // Add toolbar
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
 Now, when we click the control, we'll get two items to choose from:
 
+![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/comparison-control/comparison_control.png)
 
 ### Enabling search
 
 If we would like out list to be searchable, we need to enable it by setting `searchable: true` in control's settings:
 
+TypeScript:
+
+```ts
 // Add comparison control
 let comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
  searchable: true,
-  items: \[
+  items: [
     { label: "Apple", subLabel: "AAPL", id: "AAPL" },
     { label: "Tesla", subLabel: "TSLA", id: "TSLA" },
-  \]
+  ]
 });
 
 // Add toolbar
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 // Add comparison control
 var comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
   searchable: true,
-  items: \[
+  items: [
     { label: "Apple", subLabel: "AAPL", id: "AAPL" },
     { label: "Tesla", subLabel: "TSLA", id: "TSLA" }
-  \]
+  ]
 });
 
 // Add toolbar
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
+![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/comparison-control/searchable_comparison_control.png)
 
 ### Dynamic search results
 
@@ -151,6 +181,9 @@ We can also hook up a custom function, that would provide dynamic item list base
 
 For that we have a setting `searchCallback` which should be set to a function that accepts query string as a parameter, and returns an item array or a `Promise`.
 
+TypeScript:
+
+```ts
 // Add comparison control
 let comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
@@ -164,11 +197,15 @@ let comparisonControl = am5stock.ComparisonControl.new(root, {
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 // Add comparison control
 var comparisonControl = am5stock.ComparisonControl.new(root, {
   stockChart: stockChart,
@@ -182,10 +219,11 @@ var comparisonControl = am5stock.ComparisonControl.new(root, {
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     comparisonControl
-  \]
+  ]
 });
+```
 
 The reason why the callback would return a `Promise` is that it would allow search results to be loaded asynchronously, such as ones loaded via AJAX.
 
@@ -195,6 +233,9 @@ After comparison item is selected, we need to actually create a series for it, c
 
 To catch the moment item is selected, we'll use comparison control's `selected` event.
 
+TypeScript:
+
+```ts
 comparisonControl.events.on("selected", function(ev) {
   let item = ev.item;
   let series = am5xy.LineSeries.new(root, {
@@ -209,7 +250,11 @@ comparisonControl.events.on("selected", function(ev) {
   let comparingSeries = stockChart.addComparingSeries(series);
   comparingSeries.data.set(newData);
 });
+```
 
+JavaScript:
+
+```js
 comparisonControl.events.on("selected", function(ev) {
   var item = ev.item;
   var series = am5xy.LineSeries.new(root, {
@@ -224,11 +269,15 @@ comparisonControl.events.on("selected", function(ev) {
   var comparingSeries = stockChart.addComparingSeries(series);
   comparingSeries.data.set(newData);
 });
+```
 
 #### Asynchronous data
 
 We can load data for the loaded series asynchronously, too.
 
+TypeScript:
+
+```ts
 comparisonControl.events.on("selected", function(ev) {
   let item = ev.item;
   let series = am5xy.LineSeries.new(root, {
@@ -241,7 +290,7 @@ comparisonControl.events.on("selected", function(ev) {
     legendValueText: "{valueY.formatNumber('#.00')}"
   });
   let comparingSeries = stockChart.addComparingSeries(series);
-  loadData(item.subLabel, \[comparingSeries\]);
+  loadData(item.subLabel, [comparingSeries]);
 });
 
 function loadData(ticker, series) {
@@ -259,9 +308,9 @@ function loadData(ticker, series) {
 
     // Process data (convert dates and values)
     let processor = am5.DataProcessor.new(root, {
-      dateFields: \["Date"\],
+      dateFields: ["Date"],
       dateFormat: "yyyy-MM-dd",
-      numericFields: \["Open", "High", "Low", "Close", "Adj Close", "Volume"\]
+      numericFields: ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
     });
     processor.processMany(data);
 
@@ -272,7 +321,11 @@ function loadData(ticker, series) {
   });
 
 }
+```
 
+JavaScript:
+
+```js
 comparisonControl.events.on("selected", function(ev) {
   var item = ev.item;
   var series = am5xy.LineSeries.new(root, {
@@ -285,7 +338,7 @@ comparisonControl.events.on("selected", function(ev) {
     legendValueText: "{valueY.formatNumber('#.00')}"
   });
   var comparingSeries = stockChart.addComparingSeries(series);
-  loadData(item.subLabel, \[comparingSeries\]);
+  loadData(item.subLabel, [comparingSeries]);
 });
 
 function loadData(ticker, series) {
@@ -303,9 +356,9 @@ function loadData(ticker, series) {
 
     // Process data (convert dates and values)
     var processor = am5.DataProcessor.new(root, {
-      dateFields: \["Date"\],
+      dateFields: ["Date"],
       dateFormat: "yyyy-MM-dd",
-      numericFields: \["Open", "High", "Low", "Close", "Adj Close", "Volume"\]
+      numericFields: ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
     });
     processor.processMany(data);
 
@@ -316,8 +369,9 @@ function loadData(ticker, series) {
   });
 
 }
+```
 
-NOTEThe above code is using amCharts 5 built-in [`net.load()` utility](https://docs.amcharts.com/v5/concepts/data/#external-data) as well as data parser and [processor](https://docs.amcharts.com/v5/concepts/data/#pre-processing-data) to asynchronously load and parse data.
+> **Note:** The above code is using amCharts 5 built-in [`net.load()` utility](https://docs.amcharts.com/v5/concepts/data/#external-data) as well as data parser and [processor](https://docs.amcharts.com/v5/concepts/data/#pre-processing-data) to asynchronously load and parse data.
 
 ## Percent scale
 
@@ -329,7 +383,753 @@ For more information, check out "[Percent mode](https://docs.amcharts.com/v5/cha
 
 ### Static list
 
+Example: [Stock chart with comparison](https://docs.amcharts.com/embeds/v5/stock-chart-with-comparison/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/stock.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartcontrols"></div>
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartcontrols {
+  height: auto;
+  padding: 5px 45px 0 15px;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 85vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create a stock chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
+var stockChart = root.container.children.push(am5stock.StockChart.new(root, {}));
+
+// Set global number format
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
+root.numberFormatter.set("numberFormat", "#,###.00");
+
+//
+// Main (value) panel
+//
+
+// Create a main stock panel (chart)
+// https://docs.amcharts.com/v5/charts/stock/panels/#adding-panels
+var mainPanel = stockChart.panels.push(
+  am5stock.StockPanel.new(root, {
+    wheelY: "zoomX",
+    panX: true,
+    panY: true,
+    height: am5.percent(70)
+  })
+);
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var valueAxis = mainPanel.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {
+      pan: "zoom"
+    }),
+
+    tooltip: am5.Tooltip.new(root, {}),
+    numberFormat: "#,###.00",
+    extraTooltipPrecision: 2
+  })
+);
+
+var dateAxis = mainPanel.xAxes.push(
+  am5xy.GaplessDateAxis.new(root, {
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+
+    groupData: true,
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var valueSeries = mainPanel.series.push(
+  am5xy.CandlestickSeries.new(root, {
+    name: "MSFT",
+    valueXField: "Date",
+    valueYField: "Close",
+    highValueYField: "High",
+    lowValueYField: "Low",
+    openValueYField: "Open",
+    calculateAggregates: true,
+    xAxis: dateAxis,
+    yAxis: valueAxis,
+    legendValueText: "{valueY}"
+  })
+);
+
+// Set main value series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
+stockChart.set("stockSeries", valueSeries);
+
+// Add a stock legend
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
+var valueLegend = mainPanel.plotContainer.children.push(
+  am5stock.StockLegend.new(root, {
+    stockChart: stockChart
+  })
+);
+
+valueLegend.data.setAll([valueSeries]);
+
+//
+// Secondary (volume) panel
+//
+
+// Create a main stock panel (chart)
+// https://docs.amcharts.com/v5/charts/stock/panels/#adding-panels
+var volumePanel = stockChart.panels.push(
+  am5stock.StockPanel.new(root, {
+    wheelY: "zoomX",
+    panX: true,
+    panY: true,
+    height: am5.percent(30)
+  })
+);
+
+// hide Close button as we don't want to allow users to turn off this panel
+volumePanel.panelControls.closeButton.set("forceHidden", true);
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var volumeValueAxis = volumePanel.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    numberFormat: "#.#a",
+    renderer: am5xy.AxisRendererY.new(root, {
+      pan: "zoom"
+    })
+  })
+);
+
+var volumeDateAxis = volumePanel.xAxes.push(
+  am5xy.GaplessDateAxis.new(root, {
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    tooltip: am5.Tooltip.new(root, {
+      forceHidden: true
+    })
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var volumeSeries = volumePanel.series.push(
+  am5xy.ColumnSeries.new(root, {
+    name: "MSFT",
+    valueXField: "Date",
+    valueYField: "Volume",
+    xAxis: volumeDateAxis,
+    yAxis: volumeValueAxis,
+    legendValueText: "{valueY.formatNumber('#,###')}"
+  })
+);
+
+volumeSeries.columns.template.set("strokeOpacity", 0);
+
+// color columns by stock rules
+volumeSeries.columns.template.adapters.add("fill", function (fill, target) {
+  var dataItem = target.dataItem;
+  if (dataItem) {
+    return stockChart.getVolumeColor(dataItem);
+  }
+  return fill;
+});
+
+// Set main value series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
+stockChart.set("volumeSeries", volumeSeries);
+
+// Add a stock legend
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
+var volumeLegend = volumePanel.plotContainer.children.push(
+  am5stock.StockLegend.new(root, {
+    stockChart: stockChart
+  })
+);
+
+volumeLegend.data.setAll([volumeSeries]);
+
+// Add cursor(s)
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
+mainPanel.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    yAxis: valueAxis,
+    xAxis: dateAxis,
+    snapToSeries: [valueSeries],
+    snapToSeriesBy: "y!"
+  })
+);
+
+var volumeCursor = volumePanel.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    yAxis: volumeValueAxis,
+    xAxis: volumeDateAxis,
+    snapToSeries: [volumeSeries],
+    snapToSeriesBy: "y!"
+  })
+);
+
+volumeCursor.lineY.set("forceHidden", true);
+
+// Add scrollbar
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
+var scrollbar = mainPanel.set(
+  "scrollbarX",
+  am5xy.XYChartScrollbar.new(root, {
+    orientation: "horizontal",
+    height: 50
+  })
+);
+
+stockChart.toolsContainer.children.push(scrollbar);
+
+var sbDateAxis = scrollbar.chart.xAxes.push(
+  am5xy.GaplessDateAxis.new(root, {
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+var sbValueAxis = scrollbar.chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+var sbSeries = scrollbar.chart.series.push(
+  am5xy.LineSeries.new(root, {
+    valueYField: "Close",
+    valueXField: "Date",
+    xAxis: sbDateAxis,
+    yAxis: sbValueAxis
+  })
+);
+
+sbSeries.fills.template.setAll({
+  visible: true,
+  fillOpacity: 0.3
+});
+
+// Function that dynamically loads data
+function loadData(ticker, series) {
+  // Load external data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
+  am5.net
+    .load("https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" + ticker + ".csv")
+    .then(function (result) {
+      // Parse loaded data
+      var data = am5.CSVParser.parse(result.response, {
+        delimiter: ",",
+        skipEmpty: true,
+        useColumnNames: true
+      });
+
+      // Process data (convert dates and values)
+      var processor = am5.DataProcessor.new(root, {
+        dateFields: ["Date"],
+        dateFormat: "yyyy-MM-dd",
+        numericFields: ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
+      });
+
+      processor.processMany(data);
+
+      // Set data
+      am5.array.each(series, function (item) {
+        item.data.setAll(data);
+      });
+    });
+}
+
+// Load initial data for the first series
+loadData("MSFT", [valueSeries, volumeSeries, sbSeries]);
+
+// Add comparison control
+var comparisonControl = am5stock.ComparisonControl.new(root, {
+  stockChart: stockChart,
+  searchable: true,
+  items: [
+    { label: "Apple", subLabel: "AAPL", id: "AAPL" },
+    { label: "Tesla", subLabel: "TSLA", id: "TSLA" }
+  ]
+});
+
+comparisonControl.events.on("selected", function (ev) {
+  var item = ev.item;
+  var series = am5xy.LineSeries.new(root, {
+    name: item.subLabel,
+    valueYField: "Close",
+    calculateAggregates: true,
+    valueXField: "Date",
+    xAxis: dateAxis,
+    yAxis: valueAxis,
+    legendValueText: "{valueY.formatNumber('#.00')}"
+  });
+
+  var comparingSeries = stockChart.addComparingSeries(series);
+  loadData(item.subLabel, [comparingSeries]);
+});
+
+// Add toolbar
+// https://docs.amcharts.com/v5/charts/stock/toolbar/
+const toolbar = am5stock.StockToolbar.new(root, {
+  container: document.getElementById("chartcontrols"),
+  stockChart: stockChart,
+  controls: [
+    comparisonControl,
+    am5stock.ResetControl.new(root, {
+      stockChart: stockChart
+    }),
+
+    am5stock.SettingsControl.new(root, {
+      stockChart: stockChart
+    })
+  ]
+});
+```
 
 ### Dynamic list
 
+Example: [Stock chart with comparison and dynamic search](https://docs.amcharts.com/embeds/v5/stock-chart-with-comparison-and-dynamic-search/)
 
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/stock.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartcontrols"></div>
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartcontrols {
+  height: auto;
+  padding: 5px 45px 0 15px;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 85vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create a stock chart
+// https://docs.amcharts.com/v5/charts/stock/#instantiating-the-chart
+var stockChart = root.container.children.push(am5stock.StockChart.new(root, {}));
+
+// Set global number format
+// https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
+root.numberFormatter.set("numberFormat", "#,###.00");
+
+//
+// Main (value) panel
+//
+
+// Create a main stock panel (chart)
+// https://docs.amcharts.com/v5/charts/stock/panels/#adding-panels
+var mainPanel = stockChart.panels.push(
+  am5stock.StockPanel.new(root, {
+    wheelY: "zoomX",
+    panX: true,
+    panY: true,
+    height: am5.percent(70)
+  })
+);
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var valueAxis = mainPanel.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {
+      pan: "zoom"
+    }),
+
+    tooltip: am5.Tooltip.new(root, {}),
+    numberFormat: "#,###.00",
+    extraTooltipPrecision: 2
+  })
+);
+
+var dateAxis = mainPanel.xAxes.push(
+  am5xy.GaplessDateAxis.new(root, {
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+
+    groupData: true,
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var valueSeries = mainPanel.series.push(
+  am5xy.CandlestickSeries.new(root, {
+    name: "MSFT",
+    valueXField: "Date",
+    valueYField: "Close",
+    highValueYField: "High",
+    lowValueYField: "Low",
+    openValueYField: "Open",
+    calculateAggregates: true,
+    xAxis: dateAxis,
+    yAxis: valueAxis,
+    legendValueText: "{valueY}"
+  })
+);
+
+// Set main value series
+// https://docs.amcharts.com/v5/charts/stock/#setting-main-series
+stockChart.set("stockSeries", valueSeries);
+
+// Add a stock legend
+// https://docs.amcharts.com/v5/charts/stock/stock-legend/
+var valueLegend = mainPanel.plotContainer.children.push(
+  am5stock.StockLegend.new(root, {
+    stockChart: stockChart
+  })
+);
+
+valueLegend.data.setAll([valueSeries]);
+
+// Add cursor(s)
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
+mainPanel.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    yAxis: valueAxis,
+    xAxis: dateAxis,
+    snapToSeries: [valueSeries],
+    snapToSeriesBy: "y!"
+  })
+);
+
+// Add scrollbar
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
+var scrollbar = mainPanel.set(
+  "scrollbarX",
+  am5xy.XYChartScrollbar.new(root, {
+    orientation: "horizontal",
+    height: 50
+  })
+);
+
+stockChart.toolsContainer.children.push(scrollbar);
+
+var sbDateAxis = scrollbar.chart.xAxes.push(
+  am5xy.GaplessDateAxis.new(root, {
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+var sbValueAxis = scrollbar.chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+var sbSeries = scrollbar.chart.series.push(
+  am5xy.LineSeries.new(root, {
+    valueYField: "Close",
+    valueXField: "Date",
+    xAxis: sbDateAxis,
+    yAxis: sbValueAxis
+  })
+);
+
+sbSeries.fills.template.setAll({
+  visible: true,
+  fillOpacity: 0.3
+});
+
+// Function that dynamically loads data
+function loadData(ticker, series) {
+  // Load external data
+  // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
+  am5.net
+    .load("https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" + ticker + ".csv")
+    .then(function (result) {
+      // Parse loaded data
+      var data = am5.CSVParser.parse(result.response, {
+        delimiter: ",",
+        skipEmpty: true,
+        useColumnNames: true
+      });
+
+      // Process data (convert dates and values)
+      var processor = am5.DataProcessor.new(root, {
+        dateFields: ["Date"],
+        dateFormat: "yyyy-MM-dd",
+        numericFields: ["Open", "High", "Low", "Close", "Adj Close", "Volume"]
+      });
+
+      processor.processMany(data);
+
+      // Set data
+      am5.array.each(series, function (item) {
+        item.data.setAll(data);
+      });
+    });
+}
+
+// Load initial data for the first series
+loadData("MSFT", [valueSeries, sbSeries]);
+
+// Add comparison control
+var comparisonControl = am5stock.ComparisonControl.new(root, {
+  stockChart: stockChart,
+  searchable: true,
+  searchCallback: function (query) {
+    return getTicker(query);
+  }
+});
+
+comparisonControl.events.on("selected", function (ev) {
+  var item = ev.item;
+  var series = am5xy.LineSeries.new(root, {
+    name: item.subLabel,
+    valueYField: "Close",
+    calculateAggregates: true,
+    valueXField: "Date",
+    xAxis: dateAxis,
+    yAxis: valueAxis,
+    legendValueText: "{valueY.formatNumber('#.00')}"
+  });
+
+  var comparingSeries = stockChart.addComparingSeries(series);
+  loadData(item.subLabel, [comparingSeries]);
+});
+
+// Add toolbar
+// https://docs.amcharts.com/v5/charts/stock/toolbar/
+const toolbar = am5stock.StockToolbar.new(root, {
+  container: document.getElementById("chartcontrols"),
+  stockChart: stockChart,
+  controls: [
+    comparisonControl,
+    am5stock.ResetControl.new(root, {
+      stockChart: stockChart
+    }),
+
+    am5stock.SettingsControl.new(root, {
+      stockChart: stockChart
+    })
+  ]
+});
+
+function getTicker(search) {
+  search = search.toLowerCase();
+  var tickers = [
+    { label: "Apple", subLabel: "AAPL", id: "AAPL" },
+    { label: "Saudi Aramco", subLabel: "2222.SR", id: "2222.SR" },
+    { label: "Microsoft", subLabel: "MSFT", id: "MSFT" },
+    { label: "Alphabet (Google)", subLabel: "GOOG", id: "GOOG" },
+    { label: "Amazon", subLabel: "AMZN", id: "AMZN" },
+    { label: "Tesla", subLabel: "TSLA", id: "TSLA" },
+    { label: "Berkshire Hathaway ", subLabel: "BRK-A", id: "BRK-A" },
+    { label: "NVIDIA", subLabel: "NVDA", id: "NVDA" },
+    { label: "Tencent", subLabel: "TCEHY", id: "TCEHY" },
+    { label: "Meta (Facebook)", subLabel: "FB", id: "FB" },
+    { label: "TSMC", subLabel: "TSM", id: "TSM" },
+    { label: "UnitedHealth", subLabel: "UNH", id: "UNH" },
+    { label: "Johnson &amp; Johnson", subLabel: "JNJ", id: "JNJ" },
+    { label: "Visa", subLabel: "V", id: "V" },
+    { label: "JPMorgan Chase", subLabel: "JPM", id: "JPM" },
+    { label: "Walmart", subLabel: "WMT", id: "WMT" },
+    { label: "Samsung", subLabel: "005930.KS", id: "005930.KS" },
+    { label: "Kweichow Moutai", subLabel: "600519.SS", id: "600519.SS" },
+    { label: "Procter &amp; Gamble", subLabel: "PG", id: "PG" },
+    { label: "Exxon Mobil", subLabel: "XOM", id: "XOM" },
+    { label: "LVMH", subLabel: "LVMUY", id: "LVMUY" },
+    { label: "Home Depot", subLabel: "HD", id: "HD" },
+    { label: "Bank of America ", subLabel: "BAC", id: "BAC" },
+    { label: "Alibaba", subLabel: "BABA", id: "BABA" },
+    { label: "Nestlé", subLabel: "NSRGY", id: "NSRGY" },
+    { label: "Mastercard", subLabel: "MA", id: "MA" },
+    { label: "Chevron", subLabel: "CVX", id: "CVX" },
+    { label: "Roche", subLabel: "RHHBY", id: "RHHBY" },
+    { label: "Pfizer", subLabel: "PFE", id: "PFE" },
+    { label: "AbbVie", subLabel: "ABBV", id: "ABBV" },
+    { label: "Eli Lilly", subLabel: "LLY", id: "LLY" },
+    { label: "ASML", subLabel: "ASML", id: "ASML" },
+    { label: "BHP Group", subLabel: "BHP", id: "BHP" },
+    { label: "Coca-Cola", subLabel: "KO", id: "KO" },
+    { label: "ICBC", subLabel: "1398.HK", id: "1398.HK" },
+    { label: "Walt Disney", subLabel: "DIS", id: "DIS" },
+    { label: "Broadcom", subLabel: "AVGO", id: "AVGO" },
+    { label: "Novo Nordisk", subLabel: "NVO", id: "NVO" },
+    { label: "Costco", subLabel: "COST", id: "COST" },
+    { label: "Toyota", subLabel: "TM", id: "TM" },
+    { label: "Cisco", subLabel: "CSCO", id: "CSCO" },
+    { label: "Reliance Industries", subLabel: "RELIANCE.NS", id: "RELIANCE.NS" },
+    { label: "Verizon", subLabel: "VZ", id: "VZ" },
+    { label: "Pepsico", subLabel: "PEP", id: "PEP" },
+    { label: "Thermo Fisher Scientific", subLabel: "TMO", id: "TMO" },
+    { label: "Prosus", subLabel: "PRX.AS", id: "PRX.AS" },
+    { label: "Oracle", subLabel: "ORCL", id: "ORCL" },
+    { label: "L'Oréal", subLabel: "OR.PA", id: "OR.PA" },
+    { label: "Abbott Laboratories", subLabel: "ABT", id: "ABT" },
+    { label: "Comcast", subLabel: "CMCSA", id: "CMCSA" },
+    { label: "Adobe", subLabel: "ADBE", id: "ADBE" },
+    { label: "CM Bank", subLabel: "3968.HK", id: "3968.HK" },
+    { label: "Accenture", subLabel: "ACN", id: "ACN" },
+    { label: "Salesforce", subLabel: "CRM", id: "CRM" },
+    { label: "CATL", subLabel: "300750.SZ", id: "300750.SZ" },
+    { label: "Nike", subLabel: "NKE", id: "NKE" },
+    { label: "Danaher", subLabel: "DHR", id: "DHR" },
+    { label: "Merck", subLabel: "MRK", id: "MRK" },
+    { label: "Wells Fargo", subLabel: "WFC", id: "WFC" },
+    { label: "Intel", subLabel: "INTC", id: "INTC" },
+    { label: "Shell", subLabel: "RYDAF", id: "RYDAF" },
+    { label: "Astrazeneca", subLabel: "AZN", id: "AZN" },
+    { label: "Novartis", subLabel: "NVS", id: "NVS" },
+    { label: "AMD", subLabel: "AMD", id: "AMD" },
+    { label: "China Construction Bank", subLabel: "CICHY", id: "CICHY" },
+    { label: "United Parcel Service", subLabel: "UPS", id: "UPS" },
+    { label: "QUALCOMM", subLabel: "QCOM", id: "QCOM" },
+    { label: "Tata Consultancy Services", subLabel: "TCS.NS", id: "TCS.NS" },
+    { label: "McDonald", subLabel: "MCD", id: "MCD" },
+    { label: "Union Pacific Corporation", subLabel: "UNP", id: "UNP" },
+    { label: "Agricultural Bank of China", subLabel: "ACGBY", id: "ACGBY" },
+    { label: "Meituan", subLabel: "MPNGF", id: "MPNGF" },
+    { label: "AT&amp;T", subLabel: "T", id: "T" },
+    { label: "Morgan Stanley", subLabel: "MS", id: "MS" },
+    { label: "Texas Instruments", subLabel: "TXN", id: "TXN" },
+    { label: "Charles Schwab", subLabel: "SCHW", id: "SCHW" },
+    { label: "Nextera Energy", subLabel: "NEE", id: "NEE" },
+    { label: "T-Mobile US", subLabel: "TMUS", id: "TMUS" },
+    { label: "PetroChina", subLabel: "PTR", id: "PTR" },
+    { label: "Netflix", subLabel: "NFLX", id: "NFLX" },
+    { label: "Royal Bank Of Canada", subLabel: "RY", id: "RY" },
+    { label: "Lowe's Companies", subLabel: "LOW", id: "LOW" },
+    { label: "Linde", subLabel: "LIN", id: "LIN" },
+    { label: "Ping An Insurance", subLabel: "PNGAY", id: "PNGAY" },
+    { label: "Bristol-Myers Squibb", subLabel: "BMY", id: "BMY" },
+    { label: "China Mobile", subLabel: "0941.HK", id: "0941.HK" },
+    { label: "Bank of China", subLabel: "BACHF", id: "BACHF" },
+    { label: "Philip Morris", subLabel: "PM", id: "PM" },
+    { label: "Toronto Dominion Bank", subLabel: "TD", id: "TD" },
+    { label: "Medtronic", subLabel: "MDT", id: "MDT" },
+    { label: "Raytheon Technologies", subLabel: "RTX", id: "RTX" },
+    { label: "CVS Health", subLabel: "CVS", id: "CVS" },
+    { label: "S&amp;P Global", subLabel: "SPGI", id: "SPGI" },
+    { label: "American Express", subLabel: "AXP", id: "AXP" },
+    { label: "Hermès", subLabel: "HESAF", id: "HESAF" },
+    { label: "SAP", subLabel: "SAP", id: "SAP" },
+    { label: "HSBC", subLabel: "HSBC", id: "HSBC" },
+    { label: "TotalEnergies", subLabel: "TTE", id: "TTE" },
+    { label: "Honeywell", subLabel: "HON", id: "HON" },
+    { label: "Commonwealth Bank", subLabel: "CBA.AX", id: "CBA.AX" }
+  ];
+
+  return tickers.filter(function (item) {
+    return item.label.toLowerCase().match(search) || item.subLabel.toLowerCase().match(search);
+  });
+}
+
+function generateData() {
+  var newdata = [];
+  for (var i = 0; i < data.length; i++) {
+    const row = {
+      Date: data[i].Date,
+      Close: data[i].Close + data[i].Close * (0.5 - Math.random())
+    };
+
+    newdata.push(row);
+  }
+  return newdata;
+}
+```

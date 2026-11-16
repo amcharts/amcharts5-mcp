@@ -1,7 +1,7 @@
 ---
 title: "Locales"
 source: "https://docs.amcharts.com/v5/concepts/locales/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 amCharts 5 comes with a set of locales. This pages shows how to load and use them.
@@ -14,17 +14,33 @@ Locale brings in various region-specific settings, such as text prompt translati
 
 Each locale is located in a separate file in `locales` folder. The file name comprises the syntax of language code (lowercase) + region code (uppercase). E.g. to load U.S. English, we would use file `en_US`.
 
-import am5locales\_en\_US from "@amcharts/amcharts5/locales/en\_US";
+TypeScript:
 
-<script src="//cdn.amcharts.com/lib/5/locales/en\_US.js"></script>
+```ts
+import am5locales_en_US from "@amcharts/amcharts5/locales/en_US";
+```
+
+JavaScript:
+
+```js
+<script src="//cdn.amcharts.com/lib/5/locales/en_US.js"></script>
+```
 
 ## Applying
 
 To apply the locale to the chart, simply set `locale` property of the [root element](https://docs.amcharts.com/v5/getting-started/#root-element):
 
-root.locale = am5locales\_en\_US;
+TypeScript:
 
-root.locale = am5locales\_en\_US;
+```ts
+root.locale = am5locales_en_US;
+```
+
+JavaScript:
+
+```js
+root.locale = am5locales_en_US;
+```
 
 ## Creating translations
 
@@ -40,11 +56,19 @@ Normally, the locale we are using will determine which week day is considered st
 
 If we want to override it, we can do so by modifying `firstDayOfWeek` value in the locale:
 
-// Start the week on Sunday
-root.locale.firstDayOfWeek = 0;
+TypeScript:
 
+```ts
 // Start the week on Sunday
 root.locale.firstDayOfWeek = 0;
+```
+
+JavaScript:
+
+```js
+// Start the week on Sunday
+root.locale.firstDayOfWeek = 0;
+```
 
 ## Right-to-left languages
 

@@ -1,8 +1,10 @@
 ---
 title: "Testing amCharts 5 with Cypress"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/cypress/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> This tutorial looks at how we can use a robust Cypress testing framework for end-to-end testing of amCharts components.
 
 This tutorial looks at how we can use a robust [Cypress testing framework](https://www.cypress.io/) for end-to-end testing of amCharts components.
 
@@ -14,7 +16,7 @@ In Cypress we can access it via `cy.window()` call, then use `am5.registry.rootE
 
 The following code will grab the first Root and its child chart of the page:
 
-```javascript
+```js
 describe("Check Legend", () => {
   it("passes", () => {
     cy.visit("https://my-test-url/");
@@ -37,7 +39,7 @@ We can use standard `throw` syntax to trigger errors of our custom tests.
 
 Cypress will fail the test on encountering an exception.
 
-```javascript
+```js
 describe("Check Legend", () => {
   it("passes", () => {
     cy.visit("https://my-test-url/");
@@ -61,7 +63,7 @@ describe("Check Legend", () => {
 
 amCharts 5 is rendered using Canvas, and thus does not have DOM elements for each of its internal objects.
 
-NOTE Since 5.21.0 a chart can be drawn as SVG instead (`renderer: am5.SVGRenderer` in `Root.new()` settings). Its shapes are then SVG nodes in the page, but they are not tagged per chart object, they are hidden from screen readers (`aria-hidden`), and pointer input is still resolved by the chart by position, not by the nodes. So the approach below - testing chart objects via their API, and focusable elements via the focus container - applies to both renderers.
+NOTE A chart can be drawn as SVG instead (`renderer: am5.SVGRenderer` in `Root.new()` settings). Its shapes are then SVG nodes in the page, but they are not tagged per chart object, so tests still find chart objects through the amCharts API, as above.
 
 That being said, some of the elements in amCharts 5 are focusable by default, or can be made so by setting `focusable: true`.
 
@@ -71,7 +73,7 @@ Focusable elements have actual DOM elements created under main chart container `
 
 As an example, the following Cypress query will select the first legend item focus element of a chart contained in a div with `"chartdiv"` id.
 
-```javascript
+```js
 cy.get("#chartdiv .am5-focus-container div[role=checkbox]:first")
 ```
 
@@ -81,14 +83,14 @@ We can combine object and DOM tests.
 
 The following Cypress test will:
 
--   Go to a demo page on amCharts website.
--   Select the first available chart.
--   Focus its first legend item.
--   Simulate pressing SPACE to toggle related series on.
--   Verify that the target series is indeed hidden via API.
--   Then toggle it back on by another simulated SPACE press.
+* Go to a demo page on amCharts website.
+* Select the first available chart.
+* Focus its first legend item.
+* Simulate pressing SPACE to toggle related series on.
+* Verify that the target series is indeed hidden via API.
+* Then toggle it back on by another simulated SPACE press.
 
-```javascript
+```js
 describe("Check Legend", () => {
   it("passes", () => {
     cy.viewport(1200, 1000);

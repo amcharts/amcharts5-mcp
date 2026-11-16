@@ -1,7 +1,7 @@
 ---
 title: "Value axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
 
 Value axis is used for plotting numeric values.
@@ -12,8 +12,11 @@ Value axis is used for plotting numeric values.
 
 Value axis will automatically calculate its scope (min and max values) based on range of values of visible data items from series.
 
-We can override those values by specifying `[min](https://docs.amcharts.com/v5/reference/valueaxis/#min_setting)` and `[max](https://docs.amcharts.com/v5/reference/valueaxis/#max_setting)` settings manually:
+We can override those values by specifying `min` and `max` settings manually:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 0,
@@ -21,7 +24,11 @@ let yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 0,
@@ -29,6 +36,7 @@ var yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
 We can specify both `min` and `max`, or just one of them. If either `min` or `max` is not set, the axis will use automatically-calculated value for it.
 
@@ -38,8 +46,11 @@ We can specify both `min` and `max`, or just one of them. If either `min` or `ma
 
 If we specify `min` and `max`, value axis will take it into consideration, but might still modify them in order to make scale look neater, based on available space and grid density, so that axis scale starts and ends at "nice" numbers.
 
-If we absolutely need axis to start and/or end and precise values set in `min` and/or `max`, we can set axis setting `[strictMinMax](https://docs.amcharts.com/v5/reference/valueaxis/#strictMinMax_setting)` to `true`:
+If we absolutely need axis to start and/or end and precise values set in `min` and/or `max`, we can set axis setting `strictMinMax` to `true`:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 20,
@@ -48,7 +59,11 @@ let yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 20,
@@ -57,6 +72,7 @@ var yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
 #### Strict min and max based on data values
 
@@ -64,39 +80,55 @@ We can also use `strictMinMax` without setting actual `min` and/or `max`.
 
 In such case, axis scale will be automatically capped at lowest and highest values from all data items in series attached to the axis.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     strictMinMax: true,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     strictMinMax: true,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
 `strictMinMax` will fix the scale at value extremes based out of all data items. This means that zooming the chart on X axis (e.g. date axis), will not affect the zoom on its Y axis (value axis).
 
 If we would like to limit scale to the values of only currently visible data items, we should use `strictMinMaxSelection` instead.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     strictMinMaxSelection: true,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     strictMinMaxSelection: true,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
-NOTEStrict scale means that data items with highest and lowest values will be plotted right on the edge of the plot area. If we would like to add some relative spacing before then, we should use `extraMin` and `extraMax` settings, as explained in "[Relative scope extension](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#relative-scope-extension)" of this tutorial.
+> **Note:** Strict scale means that data items with highest and lowest values will be plotted right on the edge of the plot area. If we would like to add some relative spacing before then, we should use `extraMin` and `extraMax` settings, as explained in "[Relative scope extension](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#relative-scope-extension)" of this tutorial.
 
 ### Dynamic min/max
 
@@ -106,12 +138,127 @@ If we would like to to disable it, we can set `min` and `max` as we saw in previ
 
 Setting `autoZoom: false` on the axis will automatically fix itself on the actual range of values, without us needing to provide specific values:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     autoZoom: false,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
+
+JavaScript:
+
+```js
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    autoZoom: false,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+```
+
+Example: [Fixing Y axis zoom](https://docs.amcharts.com/embeds/v5/fixing-y-axis-zoom/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 98vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Add legend
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  })
+);
+
+var data = [
+  {
+    year: "2021",
+    europe: 0.5
+  },
+  {
+    year: "2022",
+    europe: 2.6
+  },
+  {
+    year: "2023",
+    europe: 2.8
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    renderer: am5xy.AxisRendererX.new(root, {
+      cellStartLocation: 0.1,
+      cellEndLocation: 0.9
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
 
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
@@ -120,27 +267,68 @@ var yAxis = chart.yAxes.push(
   })
 );
 
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+function makeSeries(name, fieldName) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      categoryXField: "year",
+      stacked: true
+    })
+  );
+
+  series.data.setAll(data);
+  series.appear();
+  legend.data.push(series);
+}
+
+makeSeries("Europe", "europe");
+
+chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
+
 ### Relative scope extension
 
-We can also make value axis expand its scope relatively to automatically-calculated range, using its `[extraMin](https://docs.amcharts.com/v5/reference/valueaxis/#extraMin_setting)` and `[extraMax](https://docs.amcharts.com/v5/reference/valueaxis/#extraMax_setting)` settings.
+We can also make value axis expand its scope relatively to automatically-calculated range, using its `extraMin` and `extraMax` settings.
 
 Those are relative values indicating how much of the automatically-calculated value range to add to either `min` or `max`.
 
 For example, `extraMax: 0.1` will mean 10% of the current value range. If our axis scope is from 0 to 100, the new `max` will be 110.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     extraMax: 0.1,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     extraMax: 0.1,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
 ## Logarithmic scale
 
@@ -148,34 +336,43 @@ var yAxis = chart.yAxes.push(
 
 To enable logarithmic scale on a value axis, we can simply set its `logarithmic` setting to `true`:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     logarithmic: true,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     logarithmic: true,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/regular_scale.png "Regular scale (default)")
 
-Regular scale (default)
-
-
-Logarithmic scale
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/logarithmic_scale.png "Logarithmic scale")
 
 ### Avoiding zero values
 
 If our data contains zero values, logarithmic scale might be problematic, since logarithm of a zero is an invalid mathematical operation.
 
-To work around such cases, value axis adds a setting `[treatZeroAs](https://docs.amcharts.com/v5/reference/valueaxis/#treatZeroAs_setting)`.
+To work around such cases, value axis adds a setting `treatZeroAs`.
 
 We can set it to a small number, so when axis encounters a zero, it will consider the alternative number instead, preventing critical failure.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     logarithmic: true,
@@ -183,7 +380,11 @@ let yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     logarithmic: true,
@@ -191,6 +392,7 @@ var yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
 ## Base value
 
@@ -202,25 +404,33 @@ For example, column series plots columns upwards for positive numbers, and downw
 
 By default, base value is `0` (zero).
 
-Should we need to, we can change it using value axis' `[baseValue](https://docs.amcharts.com/v5/reference/valueaxis/#baseValue_method)` setting:
+Should we need to, we can change it using value axis' `baseValue` setting:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     baseValue: 100,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     baseValue: 100,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
-`baseValue: 0` (default)
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/basevalue_0.png "`baseValue: 0` (default)")
 
-`baseValue: 2`
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/basevalue_2.png "`baseValue: 2`")
 
 ## Calculated values
 
@@ -246,51 +456,63 @@ For example, setting it to `0` (zero) will force an all-integer scale.
 
 Please note that forcing `maxPrecision` will not just affect label formatting, but will also how and where grid lines are placed, as well as their density.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     maxPrecision: 0,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     maxPrecision: 0,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/max_precision_not_set.png "Default behavior")
 
-Default behavior
-
-
-`maxPrecision: 0`
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/all_integer_scale.png "`maxPrecision: 0`")
 
 ### Fixed number format
 
 We can specify a totally custom number format for the axis labels, too.
 
-For that we use `[numberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#numberFormat_setting)` setting:
+For that we use `numberFormat` setting:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     numberFormat: "#.00'%'",
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     numberFormat: "#.00'%'",
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/max_precision_not_set.png "Default behavior")
 
-Default behavior
-
-
-`numberFormat: "#.000'%'"`
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/axis_custom_numberformat.png "`numberFormat: '#.000'%''`")
 
 ## Tooltip number format
 
@@ -302,36 +524,45 @@ There are a couple of ways to modify it.
 
 ### Extra precision
 
-We can increase precision of the numbers displayed in the tooltip using `[extraTooltipPrecision](https://docs.amcharts.com/v5/reference/valueaxis/#extraTooltipPrecision_setting)` setting.
+We can increase precision of the numbers displayed in the tooltip using `extraTooltipPrecision` setting.
 
 It basically means: "use X more decimals in tooltip than we use for axis labels".
 
 It is useful in situations where we have grid lines with increments in 1, 0.1, etc.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     extraTooltipPrecision: 1,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     extraTooltipPrecision: 1,
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/default_tooltip_precision.png "Default behavior (uses label format)")
 
-Default behavior (uses label format)
-
-
-`extraTooltipPrecision: 1`
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/extra_tooltip_precision.png "`extraTooltipPrecision: 1`")
 
 ### Overriding format
 
-Similarly to how we can override format for axis labels using `numberFormat` setting, we can force specific format for tooltips using `[tooltipNumberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#tooltipNumberFormat_setting)` as well:
+Similarly to how we can override format for axis labels using `numberFormat` setting, we can force specific format for tooltips using `tooltipNumberFormat` as well:
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     numberFormat: "#.00'%'",
@@ -339,7 +570,11 @@ let yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     numberFormat: "#.00'%'",
@@ -347,6 +582,7 @@ var yAxis = chart.yAxes.push(
     renderer: am5xy.AxisRendererY.new(root, {})
   })
 );
+```
 
 ## Zooming
 
@@ -354,21 +590,37 @@ var yAxis = chart.yAxes.push(
 
 We can use value axis' method `zoomToValues()` to zoom the axis to specific value range:
 
-yAxis.zoomToValues(100, 200);
+TypeScript:
 
+```ts
 yAxis.zoomToValues(100, 200);
+```
+
+JavaScript:
+
+```js
+yAxis.zoomToValues(100, 200);
+```
 
 ### Pre-zooming
 
 Once data is loaded on some series the axis gets its scope of values from, we can use `zoomToValues` to pre-zoom it to some valuerange:
 
-series.events.once("datavalidated", function(ev) {
-  ev.target.get("xAxis").zoomToValues(100, 200);
-});
+TypeScript:
 
+```ts
 series.events.once("datavalidated", function(ev) {
   ev.target.get("xAxis").zoomToValues(100, 200);
 });
+```
+
+JavaScript:
+
+```js
+series.events.once("datavalidated", function(ev) {
+  ev.target.get("xAxis").zoomToValues(100, 200);
+});
+```
 
 Read more about pre-zooming using series events in "[XY chart axes: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
@@ -380,10 +632,12 @@ For that there's a value axis' setting: `syncWithAxis`.
 
 It needs to be set to an instance of another value axis that we want grid to be synced with.
 
+TypeScript:
+
+```ts
 let yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
-
 
 let yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   syncWithAxis: yAxis1,
@@ -391,11 +645,14 @@ let yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
     opposite: true
   })
 }));
+```
 
+JavaScript:
+
+```js
 var yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
-
 
 var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   syncWithAxis: yAxis1,
@@ -403,15 +660,159 @@ var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
     opposite: true
   })
 }));
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/unsynced_value_axes.png "Default behavior")
 
-Default behavior
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/synced_value_axes.png "Synced value axes")
 
+> **Note:** `syncWithAxis` setting is experimental and is not guaranteed to work perfectly in 100% of scenarios.
 
-Synced value axes
+Example: [Synced value axes](https://docs.amcharts.com/embeds/v5/synced-value-axes/)
 
-NOTE`syncWithAxis` setting is experimental and is not guaranteed to work perfectly in 100% of scenarios.
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+am5.addLicense("AM5C1231231321");
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Data
+var data = [
+  {
+    year: "2021",
+    europe: 250,
+    namerica: 25,
+    asia: 2.1
+  },
+  {
+    year: "2022",
+    europe: 260,
+    namerica: 27,
+    asia: 2.2
+  },
+  {
+    year: "2023",
+    europe: 280,
+    namerica: 29,
+    asia: 2.4
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    renderer: am5xy.AxisRendererX.new(root, {
+      cellStartLocation: 0.1,
+      cellEndLocation: 0.9
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+function makeSeriesAndAxis(name, fieldName) {
+  var yAxis = chart.yAxes.push(
+    am5xy.ValueAxis.new(root, {
+      renderer: am5xy.AxisRendererY.new(root, {})
+    })
+  );
+
+  if (chart.yAxes.indexOf(yAxis) > 0) {
+    yAxis.set("syncWithAxis", chart.yAxes.getIndex(0));
+  }
+
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      categoryXField: "year"
+    })
+  );
+
+  yAxis.get("renderer").labels.template.set("fill", series.get("fill"));
+
+  series.columns.template.setAll({
+    tooltipText: "{name}, {categoryX}: {valueY}",
+    width: am5.percent(90),
+    tooltipY: 0
+  });
+
+  series.data.setAll(data);
+
+  // Make stuff animate on load
+  // https://docs.amcharts.com/v5/concepts/animations/
+  series.appear();
+}
+
+makeSeriesAndAxis("Europe", "europe");
+makeSeriesAndAxis("North America", "namerica");
+makeSeriesAndAxis("Asia", "asia");
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ### Syncing zero lines
 
@@ -421,10 +822,12 @@ To enable it, set `syncZeros` to `true` in axis' settings. Please note, that `sy
 
 It will only work if both synced axes include zero in their range.
 
+TypeScript:
+
+```ts
 let yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
-
 
 let yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   syncWithAxis: yAxis1,
@@ -433,11 +836,14 @@ let yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
     opposite: true
   })
 }));
+```
 
+JavaScript:
+
+```js
 var yAxis1 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
-
 
 var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   syncWithAxis: yAxis1,
@@ -446,13 +852,17 @@ var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
     opposite: true
   })
 }));
+```
 
 ## Events
 
 Value axis does not have specific events that are triggered when it is zoomed.
 
-Instead, we can use private setting change events on `[selectionMin](https://docs.amcharts.com/v5/reference/valueaxis/#selectionMin_setting)` and `[selectionMax](https://docs.amcharts.com/v5/reference/valueaxis/#selectionMax_setting)` private settings:
+Instead, we can use private setting change events on `selectionMin` and `selectionMax` private settings:
 
+TypeScript:
+
+```ts
 xAxis.onPrivate("selectionMin", function(start, target) {
   console.log("Start value changed:", start);
 });
@@ -460,7 +870,11 @@ xAxis.onPrivate("selectionMin", function(start, target) {
 xAxis.onPrivate("selectionMax", function(end, target) {
   console.log("End value changed:", end);
 });
+```
 
+JavaScript:
+
+```js
 xAxis.onPrivate("selectionMin", function(start, target) {
   console.log("Start value changed:", start);
 });
@@ -468,6 +882,7 @@ xAxis.onPrivate("selectionMin", function(start, target) {
 xAxis.onPrivate("selectionMax", function(end, target) {
   console.log("End value changed:", end);
 });
+```
 
 ## Ghost label
 
@@ -483,21 +898,219 @@ This is why there's a ghost label, holding axis width constant, regardless of th
 
 If we'd like to disable this behavior, we can disable the ghost label:
 
-yAxis.ghostLabel.set("forceHidden", true);
+TypeScript:
 
+```ts
 yAxis.ghostLabel.set("forceHidden", true);
+```
+
+JavaScript:
+
+```js
+yAxis.ghostLabel.set("forceHidden", true);
+```
 
 Or, we can set specific width for it:
 
-yAxis.ghostLabel.set("minWidth", 200);
+TypeScript:
 
+```ts
 yAxis.ghostLabel.set("minWidth", 200);
+```
+
+JavaScript:
+
+```js
+yAxis.ghostLabel.set("minWidth", 200);
+```
 
 The following demo uses ghost label to sync width between two charts:
 
+Example: [Syncing axis widths across multiple charts](https://docs.amcharts.com/embeds/v5/syncing-axis-widths-across-multiple-charts/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 1000,
+    value2: 14200
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 800,
+    value2: 4500
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 700,
+    value2: 10000
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 1200,
+    value2: 8000
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 740,
+    value2: 9200
+  },
+  {
+    date: new Date(2021, 0, 6).getTime(),
+    value: 801,
+    value2: 11400
+  }
+];
+
+// Craete Y-axes
+var yAxis1 = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    x: am5.percent(100),
+    centerX: am5.percent(100),
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+var label1 = am5.Label.new(root, {
+  rotation: -90,
+  text: "Axis title 1",
+  y: am5.p50,
+  centerX: am5.p50
+  //x: am5.p0,
+  //centerY: am5.p0
+});
+
+yAxis1.children.unshift(label1);
+
+var yAxis2 = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    x: am5.percent(100),
+    centerX: am5.percent(100),
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+var label2 = am5.Label.new(root, {
+  rotation: -90,
+  text: "Axis title 2",
+  y: am5.p50,
+  centerX: am5.p50
+  //x: am5.p0,
+  //centerY: am5.p0
+});
+yAxis2.children.unshift(label2);
+
+yAxis2.axisHeader.set("paddingTop", 10);
+yAxis2.axisHeader.children.push(
+  am5.Label.new(root, {
+    fontWeight: "500"
+  })
+);
+
+yAxis1.ghostLabel.events.on("boundschanged", function () {
+  syncTitles();
+});
+
+yAxis2.ghostLabel.events.on("boundschanged", function () {
+  syncTitles();
+});
+
+function syncTitles() {
+  var g1w = yAxis1.ghostLabel.width();
+  var g2w = yAxis2.ghostLabel.width();
+
+  let max = Math.max(g1w, g2w);
+
+  yAxis1.ghostLabel.set("minWidth", max);
+  yAxis2.ghostLabel.set("minWidth", max);
+}
+
+// Stack Y-axes
+chart.leftAxesContainer.set("layout", root.verticalLayout);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 20
+    })
+  })
+);
+
+// Create series
+function createSeries(name, field, yAxis) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      clustered: false
+    })
+  );
+
+  series.data.setAll(data);
+}
+
+createSeries("Series #1", "value", yAxis1);
+createSeries("Series #2", "value2", yAxis2);
+```
 
 ## Related tutorials
 
--   [Using axis ranges to place labels at arbitrary values or dates](https://docs.amcharts.com/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
--   [Retaining Y-axis zoom after data update](https://docs.amcharts.com/v5/tutorials/retaining-y-axis-zoom-after-data-update/)
--   [Syncing zero grid line across multiple axes](https://docs.amcharts.com/v5/tutorials/syncing-zero-grid-line-across-multiple-axes/)
+* [Using axis ranges to place labels at arbitrary values or dates](https://docs.amcharts.com/v5/tutorials/using-axis-ranges-to-place-labels-at-arbitrary-values-or-dates/)
+* [Retaining Y-axis zoom after data update](https://docs.amcharts.com/v5/tutorials/retaining-y-axis-zoom-after-data-update/)
+* [Syncing zero grid line across multiple axes](https://docs.amcharts.com/v5/tutorials/syncing-zero-grid-line-across-multiple-axes/)

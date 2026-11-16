@@ -1,8 +1,10 @@
 ---
 title: "Getting the most out of net.load utility"
 source: "https://docs.amcharts.com/v5/concepts/data/net-load-utility/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
+
+> This tutorial walks through advanced uses of the net.load utility, which is used to load data in external URLs.
 
 This tutorial walks through advanced uses of the `net.load` utility, which is used to load data in external URLs.
 
@@ -16,6 +18,9 @@ We're assuming that you are familiar with what `net.load` utility is, what is it
 
 Doing so will not modify it, or set data on it, but will rather contain reference to it in all success/error handlers, so we can use generic load handler functions. E.g.:
 
+TypeScript:
+
+```ts
 function dataLoaded(result) {
   // Set data on all series of the chart
   const data = am5.JSONParser.parse(result.response);
@@ -25,7 +30,11 @@ function dataLoaded(result) {
 }
 
 am5.net.load("/data/mydata.json", chart).then(dataLoaded);
+```
 
+JavaScript:
+
+```js
 function dataLoaded(result) {
   // Set data on all series of the chart
   var data = am5.JSONParser.parse(result.response);
@@ -35,6 +44,7 @@ function dataLoaded(result) {
 }
 
 am5.net.load("/data/mydata.json", chart).then(dataLoaded);
+```
 
 ## HTTP request options
 
@@ -42,22 +52,15 @@ It's possible to pass in options to the HTTP request via third parameter to the 
 
 Supported properties are as follows:
 
-Option
+| Option            | Comment                                                                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `requestHeaders`  | An array of objects that define key and value of additional information to pass as a HTTP(S) request headers.                                                      |
+| `responseType`    | A response type expected from the server. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType))                              |
+| `withCredentials` | Whether to pass in web authentication credentials with the request. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials)) |
 
-Comment
+TypeScript:
 
-`requestHeaders`
-
-An array of objects that define key and value of additional information to pass as a HTTP(S) request headers.
-
-`responseType`
-
-A response type expected from the server. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType))
-
-`withCredentials`
-
-Whether to pass in web authentication credentials with the request. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/withCredentials))
-
+```ts
 function dataLoaded(result) {
   // Set data on all series of the chart
   const data = am5.JSONParser.parse(result.response);
@@ -67,12 +70,16 @@ function dataLoaded(result) {
 }
 
 am5.net.load("/data/mydata.json", chart, {
-  requestHeaders: \[{
+  requestHeaders: [{
     key: "x-user-token",
     value: "123456789"
-  }\]
+  }]
 }).then(dataLoaded);
+```
 
+JavaScript:
+
+```js
 function dataLoaded(result) {
   // Set data on all series of the chart
   var data = am5.JSONParser.parse(result.response);
@@ -82,40 +89,22 @@ function dataLoaded(result) {
 }
 
 am5.net.load("/data/mydata.json", chart, {
-  requestHeaders: \[{
+  requestHeaders: [{
     key: "x-user-token",
     value: "123456789"
-  }\]
+  }]
 }).then(dataLoaded);
+```
 
 ## Result object
 
 The result object passed in to load handler function contains much more than the `response`:
 
-Field
-
-Comment
-
-`xhr`
-
-The original `XMLHttpRequest` object used to make HTTP(S) request. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest))
-
-`response`
-
-A string response loaded from the web server.
-
-`blob`
-
-Response `Blob` if `responseType` in request options was set to `"blob"`.
-
-`type`
-
-A response type. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType))
-
-`error`
-
-`false` if loaded successfully; `true` if error occurred when loading.
-
-`target`
-
-A target data user object if it was specified. ([more info](https://docs.amcharts.com/v5/concepts/data/net-load-utility/#specifying-data-user))
+| Field      | Comment                                                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `xhr`      | The original `XMLHttpRequest` object used to make HTTP(S) request. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)) |
+| `response` | A string response loaded from the web server.                                                                                                     |
+| `blob`     | Response `Blob` if `responseType` in request options was set to `"blob"`.                                                                         |
+| `type`     | A response type. ([more info](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType))                                      |
+| `error`    | `false` if loaded successfully; `true` if error occurred when loading.                                                                            |
+| `target`   | A target data user object if it was specified. ([more info](#specifying-data-user))                                                               |

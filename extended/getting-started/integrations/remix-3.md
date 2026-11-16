@@ -1,8 +1,10 @@
 ---
 title: "Using amCharts 5 with Remix 3"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/remix-3/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> amCharts 5 works with Remix 3 through Remix's own tools: there is no separate package. For Remix 2, now React Router, see React Router.
 
 amCharts 5 works with [Remix 3](https://remix.run/) through Remix's own tools: there is no separate package. For Remix 2, now React Router, see [React Router](https://docs.amcharts.com/v5/getting-started/integrations/remix/).
 
@@ -19,7 +21,7 @@ The simplest way: the library's [`<am5-chart>` element](https://docs.amcharts.co
 
 Then render the element with its [JSON config](https://docs.amcharts.com/v5/concepts/serializing/). The server renders it like any HTML, and the browser builds the chart:
 
-```typescript
+```ts
 function SalesPage() {
   return () => (
     <am5-chart config={JSON.stringify(config)} data-rmx-preserve-dom></am5-chart>
@@ -33,7 +35,7 @@ function SalesPage() {
 
 Make the chart's component a client entry, so it runs in the browser, and create the root with Remix's `ref` mixin. It gives you the element once it is on the page, and a signal that aborts when it is removed: dispose the root then.
 
-```typescript
+```ts
 import { clientEntry, css, ref, type Handle } from "remix/component";
 
 export let SalesChart = clientEntry(
@@ -77,9 +79,9 @@ export let SalesChart = clientEntry(
 );
 ```
 
--   The first argument of `clientEntry()` is where your build serves this module, with the export's name.
--   The library is imported in the `ref` callback, which runs in the browser only, so the server never loads it.
--   Props of client entries are serialized to JSON: pass data, not functions.
+* The first argument of `clientEntry()` is where your build serves this module, with the export's name.
+* The library is imported in the `ref` callback, which runs in the browser only, so the server never loads it.
+* Props of client entries are serialized to JSON: pass data, not functions.
 
 For more on client entries and mixins, see Remix's [Hydration](https://github.com/remix-run/remix/blob/main/packages/component/docs/hydration.md) and [Mixins](https://github.com/remix-run/remix/blob/main/packages/component/docs/mixins.md) guides.
 

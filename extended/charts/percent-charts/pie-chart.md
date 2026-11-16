@@ -1,7 +1,7 @@
 ---
 title: "Pie chart"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will walk through most common aspects of creating pie and donut charts.
@@ -12,15 +12,19 @@ Everything required to create pie charts are two amCharts 5 modules: "index" and
 
 You can import those in your TypeScript / ES6 application as JavaScript modules:
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5percent from "@amcharts/amcharts5/percent";
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5percent from "@amcharts/amcharts5/percent";
+```
 
 For vanilla JavaScript applications and web pages, you can use "script" version:
 
+```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+```
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
+> **More info:** For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -28,17 +32,25 @@ As with any chart type in amCharts 5, we'll need to start with creation of the `
 
 In it we will create an instance of `PieChart` class to create a pie chart
 
+TypeScript:
+
+```ts
 let root = am5.Root.new("chartdiv");
 let chart = root.container.children.push(
   am5percent.PieChart.new(root, {})
 );
+```
 
+JavaScript:
+
+```js
 var root = am5.Root.new("chartdiv");
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {})
 );
+```
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
+> **More info:** The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Series
 
@@ -48,6 +60,9 @@ Pie chart supports one series type: `PieSeries`.
 
 Like everywhere else, we use its `new()` method to instantiate series, then push it into `series` list of the chart:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -55,7 +70,11 @@ let series = chart.series.push(
     valueField: "sales"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -63,6 +82,7 @@ var series = chart.series.push(
     valueField: "sales"
   })
 );
+```
 
 ### Data fields
 
@@ -74,7 +94,8 @@ They can be set via series' settings `categoryField` and `valueField`.
 
 Let's take sample data:
 
-\[{
+```json
+[{
   country: "France",
   sales: 100000
 }, {
@@ -83,10 +104,14 @@ Let's take sample data:
 }, {
   country: "United Kingdom",
   sales: 80000
-}\]
+}]
+```
 
 The following data fields would need to describe data fields like this:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -94,7 +119,11 @@ let series = chart.series.push(
     valueField: "sales"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -102,12 +131,16 @@ var series = chart.series.push(
     valueField: "sales"
   })
 );
+```
 
 ### Setting data
 
 The data is set directly on series via its `data` property:
 
-series.data.setAll(\[{
+TypeScript:
+
+```ts
+series.data.setAll([{
   country: "France",
   sales: 100000
 }, {
@@ -116,9 +149,13 @@ series.data.setAll(\[{
 }, {
   country: "United Kingdom",
   sales: 80000
-}\]);
+}]);
+```
 
-series.data.setAll(\[{
+JavaScript:
+
+```js
+series.data.setAll([{
   country: "France",
   sales: 100000
 }, {
@@ -127,11 +164,12 @@ series.data.setAll(\[{
 }, {
   country: "United Kingdom",
   sales: 80000
-}\]);
+}]);
+```
 
-IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
+> **Important:** It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
+> **More info:** There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Series appearance
 
@@ -141,6 +179,9 @@ For more information about configuring appearance of the pie series, refer to "[
 
 To add a legend, we simply need to create an instance of a `Legend` class (which is a part of "core" package), push it to chart's children (or any other place we want it to be), as well as set its data (in case of percent chart, we will probably want to have each slice as a legend item).
 
+TypeScript:
+
+```ts
 let legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.percent(50),
   x: am5.percent(50),
@@ -148,7 +189,11 @@ let legend = chart.children.push(am5.Legend.new(root, {
 }));
 
 legend.data.setAll(series.dataItems);
+```
 
+JavaScript:
+
+```js
 var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.percent(50),
   x: am5.percent(50),
@@ -156,13 +201,17 @@ var legend = chart.children.push(am5.Legend.new(root, {
 }));
 
 legend.data.setAll(series.dataItems);
+```
 
-MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
+> **More info:** For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Complete example
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5percent from "@amcharts/amcharts5/percent";
+TypeScript:
+
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5percent from "@amcharts/amcharts5/percent";
 
 // Create root and chart
 let root = am5.Root.new("chartdiv");
@@ -173,7 +222,7 @@ let chart = root.container.children.push(
 );
 
 // Define data
-let data = \[{
+let data = [{
   country: "France",
   sales: 100000
 }, {
@@ -182,7 +231,7 @@ let data = \[{
 }, {
   country: "United Kingdom",
   sales: 80000
-}\];
+}];
 
 // Create series
 let series = chart.series.push(
@@ -202,7 +251,11 @@ let legend = chart.children.push(am5.Legend.new(root, {
 }));
 
 legend.data.setAll(series.dataItems);
+```
 
+JavaScript:
+
+```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 
@@ -218,7 +271,7 @@ var chart = root.container.children.push(
 );
 
 // Define data
-var data = \[{
+var data = [{
   country: "France",
   sales: 100000
 }, {
@@ -227,7 +280,7 @@ var data = \[{
 }, {
   country: "United Kingdom",
   sales: 80000
-}\];
+}];
 
 // Create series
 var series = chart.series.push(
@@ -248,13 +301,103 @@ var legend = chart.children.push(am5.Legend.new(root, {
 
 legend.data.setAll(series.dataItems);
 </script>
+```
 
+Example: [Pie chart](https://docs.amcharts.com/embeds/v5/pie-chart/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series.data.setAll(data);
+
+// Add legend
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.percent(50),
+    x: am5.percent(50),
+    layout: root.horizontalLayout
+  })
+);
+
+legend.data.setAll(series.dataItems);
+```
 
 ## Start/end angles
 
 A pie chart is not limited to a full circle. It can start and end at any angle.
 
-For that we have to set chart's settings: `[startAngle](https://docs.amcharts.com/v5/reference/piechart/#startAngle_setting)` and `[endAngle](https://docs.amcharts.com/v5/reference/piechart/#endAngle_setting)`.
+For that we have to set chart's settings: `startAngle` and `endAngle`.
 
 These are numeric values denoting degrees.
 
@@ -264,8 +407,11 @@ Defaults are `-90` (`startAngle`) and `270` (`endAngle`) forming full circle sta
 
 We can change that any way we want.
 
-IMPORTANT For angles to work properly, we also need to replicate same angle settings on series, too.
+> **Important:** For angles to work properly, we also need to replicate same angle settings on series, too.
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     startAngle: -180,
@@ -282,7 +428,11 @@ let series = chart.series.push(
     endAngle: 0
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     startAngle: -180,
@@ -299,19 +449,105 @@ var series = chart.series.push(
     endAngle: 0
   })
 );
+```
 
 The above will result in a horizontal semi-circle:
 
-Default behavior
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_default_full_circle.png "Default behavior")
 
-`{ startAngle: -180, endAngle: 0 }`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_custom_angle.png "`\{ startAngle: -180, endAngle: 0 }`")
 
+Example: [Start and end angles of a pie chart](https://docs.amcharts.com/embeds/v5/start-and-end-angles-of-a-pie-chart/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    startAngle: -180,
+    endAngle: 0
+  })
+);
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country",
+    startAngle: -180,
+    endAngle: 0
+  })
+);
+
+series.data.setAll(data);
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
+```
 
 ## Pie radius
 
 ### Outer radius
 
-Chart's outer radius can be set using its `[radius](https://docs.amcharts.com/v5/reference/piechart/#radius_setting)` setting.
+Chart's outer radius can be set using its `radius` setting.
 
 It can be either percent value (relative to available space) or fixed pixel value.
 
@@ -319,23 +555,31 @@ Pie chart's `radius` is set to `80%` by default to leave some space for possible
 
 If we do not need that extra space, we can increase the radius:
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     radius: am5.percent(95)
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     radius: am5.percent(95)
   })
 );
+```
 
-`radius: am5.percent(80)` (default)
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_default_full_circle-1.png "`radius: am5.percent(80)` (default)")
 
-`radius: am5.percent(95)`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_95.png "`radius: am5.percent(95)`")
 
-`radius: 50`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_50px.png "`radius: 50`")
 
 ### Inner radius
 
@@ -345,26 +589,117 @@ As with `radius` it can be either a percent value or fixed pixel value.
 
 The difference is that `innerRadius` percent value is relative to the chart radius, rather than available space.
 
-We can also use negative values in `innerRadius`. Those will mean pixel distance from the outer radius. This allows creating fixed-width slices.
+We can also use negative values in `innerRadius`. Those will mean pixel distance from the outer radius. This allows creating fixed-width slices.
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     radius: am5.percent(95),
     innerRadius: am5.percent(50)
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
     radius: am5.percent(95),
     innerRadius: am5.percent(50)
   })
 );
+```
 
-`innerRadius: 0` (default)
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_95.png "`innerRadius: 0` (default)")
 
-`innerRadius: am5.percent(50)`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/donut.png "`innerRadius: am5.percent(50)`")
 
+Example: [Pie chart with inner radius (donut)](https://docs.amcharts.com/embeds/v5/pie-chart-with-inner-radius-donut/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    radius: am5.percent(90),
+    innerRadius: am5.percent(50)
+  })
+);
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series.data.setAll(data);
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
+```
 
 ## Nested pie series
 
@@ -372,10 +707,129 @@ Pie chart supports multiple series.
 
 If we add several series to the chart, it will automatically divvy up available the radius (as set by its `radius` and `innerRadius` settings) between all series, giving them equal space.
 
-Nested series
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/nested_pie_series.png "Nested series")
 
-Nested series with `innerRadius`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/nested_pie_series_inner_radius.png "Nested series with `innerRadius`")
 
+Example: [Multiple pie series](https://docs.amcharts.com/embeds/v5/multiple-pie-series/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    radius: am5.percent(90),
+    innerRadius: am5.percent(50)
+  })
+);
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series.data.setAll([
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80000
+  }
+]);
+
+// Configuring slices
+series.slices.template.setAll({
+  stroke: am5.color(0xffffff),
+  strokeWidth: 2
+});
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
+
+var series2 = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series2.data.setAll([
+  {
+    country: "France",
+    sales: 60000
+  },
+  {
+    country: "Spain",
+    sales: 60000
+  },
+  {
+    country: "United Kingdom",
+    sales: 120000
+  }
+]);
+
+// Configuring slices
+series2.slices.template.setAll({
+  stroke: am5.color(0xffffff),
+  strokeWidth: 2
+});
+
+// Disabling labels and ticks
+series2.labels.template.set("visible", false);
+series2.ticks.template.set("visible", false);
+```
 
 ## Animation
 
@@ -383,6 +837,9 @@ Normally, created series will appear on chart right away. Should we want to make
 
 `appear()` method can also be called on the chart itself.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -392,7 +849,11 @@ let series = chart.series.push(
 );
 series.appear();
 chart.appear();
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -402,10 +863,11 @@ var series = chart.series.push(
 );
 series.appear();
 chart.appear();
+```
 
 ## Related tutorials
 
--   [Applying custom formatting logic to PieChart legend values](https://docs.amcharts.com/v5/tutorials/applying-custom-formatting-logic-to-piechart-legend-values/)
--   [Using slice color for PieChart label backgrounds](https://docs.amcharts.com/v5/tutorials/using-slice-color-for-piechart-label-backgrounds/)
--   [Adding sum labels inside Donut chart](https://docs.amcharts.com/v5/tutorials/adding-sum-labels-inside-donut-chart/)
--   [Pie chart with a custom legend](https://docs.amcharts.com/v5/tutorials/pie-chart-with-a-custom-legend/)
+* [Applying custom formatting logic to PieChart legend values](https://docs.amcharts.com/v5/tutorials/applying-custom-formatting-logic-to-piechart-legend-values/)
+* [Using slice color for PieChart label backgrounds](https://docs.amcharts.com/v5/tutorials/using-slice-color-for-piechart-label-backgrounds/)
+* [Adding sum labels inside Donut chart](https://docs.amcharts.com/v5/tutorials/adding-sum-labels-inside-donut-chart/)
+* [Pie chart with a custom legend](https://docs.amcharts.com/v5/tutorials/pie-chart-with-a-custom-legend/)

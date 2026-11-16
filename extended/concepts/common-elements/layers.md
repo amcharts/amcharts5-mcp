@@ -1,7 +1,7 @@
 ---
 title: "Layers"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/layers/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will explain how layering functionality works in amCharts 5.
@@ -12,14 +12,14 @@ All visual elements in amCharts 5 are drawn in a `<canvas>` element, which is a 
 
 amCharts 5 supports having multiple `<canvas>` elements, overlaid over each other.
 
-NOTE Since 5.21.0 a chart can also be drawn as SVG, by setting `renderer: am5.SVGRenderer` on the root element (see "[Root element: Renderer](https://docs.amcharts.com/v5/getting-started/root-element/#renderer)"). Layers work the same way there: each layer is a nested `<svg>` element (class `am5-layer-<number>`), stacked in layer order inside one `<svg>`, instead of a separate `<canvas>`.
+NOTE With the SVG renderer (`renderer: am5.SVGRenderer` on the root element), a layer is an `<svg>` element instead of a `<canvas>`.
 
 Any element in the chart can go to any of the layers, and developers are free to create as many layers as needed.
 
 There is a couple of reasons for moving elements to other layers:
 
-1.  To ensure they are displayed over other elements.
-2.  To increase performance by moving elements that are updated often to a separate layer, so that when they are updated, the whole chart does not need to be re-rendered, but rather those elements in specific layer.
+1. To ensure they are displayed over other elements.
+2. To increase performance by moving elements that are updated often to a separate layer, so that less of the chart needs to be redrawn when they change. It doesn't fully isolate them: other layers may still be redrawn, e.g. when an element's size changes.
 
 Layers are represented by an integer number. Layers with higher number will be displayed on top of ones with lower numbers.
 
@@ -33,37 +33,15 @@ However, some of them are moved to other levels by default.
 
 The following table lists a few examples of default layer assignment.
 
-Element
-
-Default layer
-
-Legend
-
-`30`
-
-Zoom button
-
-`30`
-
-Scrollbar
-
-`30`
-
-Tooltips
-
-`30`
-
-Tooltips (if used with [extended bounds](https://docs.amcharts.com/v5/getting-started/root-element/#expanded-tooltip-bounds))
-
-`35`
-
-Cursor on an XY Chart
-
-`30`
-
-Panel controls of a Stock Chart
-
-`30`
+| Element                                                                                              | Default layer |
+| ---------------------------------------------------------------------------------------------------- | ------------- |
+| Legend                                                                                               | `30`          |
+| Zoom button                                                                                          | `30`          |
+| Scrollbar                                                                                            | `30`          |
+| Tooltips                                                                                             | `30`          |
+| Tooltips (if used with [extended bounds](https://docs.amcharts.com/v5/getting-started/root-element/#expanded-tooltip-bounds)) | `35`          |
+| Cursor on an XY Chart                                                                                | `30`          |
+| Panel controls of a Stock Chart                                                                      | `30`          |
 
 ## Assigning a layer to elements
 
@@ -73,19 +51,27 @@ If there's no such layer created already, it will be created automatically.
 
 The following example moves axis tooltip to a lower layer than other tooltips (30 by default), so that it does not overlap them:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   // ...
   tooltip: am5.Tooltip.new(root, {
     layer: 10
   })
 }));
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
   // ...
   tooltip: am5.Tooltip.new(root, {
     layer: 10
   })
 }));
+```
 
 ## Out-of-bounds layers
 
@@ -101,27 +87,33 @@ amCharts 5 provides a way to specify extended bounds for particular layers using
 
 The `layerMargin` accepts an object which specifies extended margins for `top`, `right`, `left`, and `bottom`.
 
-axisRenderer.labels.template.setAll({
-  layer: 20,
-  layerMargin: { left: 50, right: 50, top: 0, bottom: 0 }
-});
+TypeScript:
 
+```ts
 axisRenderer.labels.template.setAll({
   layer: 20,
   layerMargin: { left: 50, right: 50, top: 0, bottom: 0 }
 });
+```
+
+JavaScript:
+
+```js
+axisRenderer.labels.template.setAll({
+  layer: 20,
+  layerMargin: { left: 50, right: 50, top: 0, bottom: 0 }
+});
+```
 
 The above code will add extra 50 pixels to left and right sides of the layer `20`, so any elements contained in it - in this case axis labels - will have a bit of an extra space.
 
-Default behavior
+![](https://docs.amcharts.com/v5/images/concepts/common-elements/layers/8wyHZYXWzx.png "Default behavior")
 
-With `layerMargin`
+![](https://docs.amcharts.com/v5/images/concepts/common-elements/layers/chrome_ymWBa3qSVW.png "With `layerMargin`")
 
 ## Precautions
 
 Important thing to know when using layers is that each new layer will create a full-size `<canvas>` element.
-
-(With the SVG renderer, *(5.21.0)*, a layer is an `<svg>` element rather than a canvas.)
 
 Those elements will take up memory, and in some browsers (e.g. Safari) might hit a hardcoded RAM usage limit, resulting in chart render anomalies.
 

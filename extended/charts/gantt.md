@@ -398,8 +398,6 @@ Here's a full list of field settings:
 | `collapsedField` | `"collapsed"` | Whether category should start off collapsed. |
 | `colorField`     | `"color"`     | A category color.                            |
 
-NOTE `nameField` and `colorField` are fully honored since 5.21.0. Before, bar colors were always read from (and color-picker changes written to) `color`, whatever `colorField` said: on older versions, keep the field named `color`.
-
 #### Using same field for id and name
 
 If we can assure that we can keep category names unique, we can reuse the same field in data for both the ids and names, by setting `nameField` to the same value as `idField`, e.g. `"id"`:

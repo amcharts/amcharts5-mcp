@@ -87,7 +87,7 @@ JavaScript:
 <script src="https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional2022/flLow.js"></script>
 ```
 
-NOTE The global name is `am5geodata_` plus the path below `geodata/` with `/` turned into `_`. The US congressional maps come in versioned packs: `congressional` (117th Congress, the original set), `congressional2022` (118th), `congressional2025` (119th) and `congressional120` (120th, the newest, since geodata 5.1.6). Each pack has `usaCongressionalLow`/`High` and one map per state (`flLow`, `caLow`, …). The MCP server's `list_geodata` tool lists every map with its path, global name and import.
+NOTE The global name is `am5geodata_` plus the path below `geodata/` with `/` turned into `_`. The US congressional maps come in versioned packs: `congressional` (117th Congress, the original set), `congressional2022` (118th), `congressional2025` (119th) and `congressional120` (120th, the newest). Each pack has `usaCongressionalLow`/`High` and one map per state (`flLow`, `caLow`, …). The MCP server's `list_geodata` tool lists every map with its path, global name and import.
 
 > **More info:** For more information on how to use regional maps, visit "[Using regional maps](https://docs.amcharts.com/v5/tutorials/using-regional-maps/)" tutorial.
 

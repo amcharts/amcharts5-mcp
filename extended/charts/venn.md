@@ -1,8 +1,10 @@
 ---
 title: "Venn diagram"
 source: "https://docs.amcharts.com/v5/charts/venn/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
+
+> Venn diagrams are used to depict common qualities between different items by visualizing them as overlapping circles.
 
 [Venn diagrams](https://en.wikipedia.org/wiki/Venn_diagram) are used to depict common qualities between different items by visualizing them as overlapping circles.
 
@@ -12,15 +14,19 @@ Everything required to create Venn diagrams are two amCharts 5 modules: "index" 
 
 You can import those in your TypeScript / ES6 application as JavaScript modules:
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5venn from "@amcharts/amcharts5/venn";
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5venn from "@amcharts/amcharts5/venn";
+```
 
 For vanilla JavaScript applications and web pages, you can use "script" version:
 
+```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/venn.js"></script>
+```
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
+> **More info:** For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Venn series
 
@@ -32,6 +38,9 @@ Like everywhere else, we use its `new()` method to instantiate series, then push
 
 If we are not intending to add any other controls (e.g. legend, or title) to the chart, we can push directly to `root.container.children`, or we can create a [wrapper container](https://docs.amcharts.com/v5/charts/venn/#additional-controls) as explained later on in this tutorial.
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5venn.Venn.new(root, {
     categoryField: "name",
@@ -39,7 +48,11 @@ let series = root.container.children.push(
     intersectionsField: "sets"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5venn.Venn.new(root, {
     categoryField: "name",
@@ -47,14 +60,15 @@ var series = root.container.children.push(
     intersectionsField: "sets"
   })
 );
+```
 
 ### Data fields
 
 Venn diagram uses these data fields:
 
--   Category.
--   Value.
--   List of overlapping categories (optional).
+* Category.
+* Value.
+* List of overlapping categories (optional).
 
 Data fields basically mean which keys in data objects to look for specific value.
 
@@ -62,18 +76,23 @@ They can be set via series' settings `categoryField`, `valueField`, and `interse
 
 Let's take sample data:
 
-\[
+```json
+[
   { name: "A", value: 10 },
   { name: "B", value: 8 },
   { name: "C", value: 5 },
-  { name: "X", value: 2, sets: \["A", "B"\] },
-  { name: "Y", value: 2, sets: \["A", "C"\] },
-  { name: "Z", value: 2, sets: \["B", "C"\] },
-  { name: "Q", value: 1, sets: \["A", "B", "C"\]
-\]
+  { name: "X", value: 2, sets: ["A", "B"] },
+  { name: "Y", value: 2, sets: ["A", "C"] },
+  { name: "Z", value: 2, sets: ["B", "C"] },
+  { name: "Q", value: 1, sets: ["A", "B", "C"]
+]
+```
 
 The following data fields would need to describe data fields like this:
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5venn.Venn.new(root, {
     categoryField: "name",
@@ -81,7 +100,11 @@ let series = root.container.children.push(
     intersectionsField: "sets"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5venn.Venn.new(root, {
     categoryField: "name",
@@ -89,6 +112,7 @@ var series = root.container.children.push(
     intersectionsField: "sets"
   })
 );
+```
 
 ### Setting data
 
@@ -98,29 +122,37 @@ If there's a value in a data item for `intersectionsField`, the item will be an 
 
 The data is set directly on series via its `data` property:
 
-series.data.setAll(\[
+TypeScript:
+
+```ts
+series.data.setAll([
   { name: "A", value: 10 },
   { name: "B", value: 8 },
   { name: "C", value: 5 },
-  { name: "X", value: 2, sets: \["A", "B"\] },
-  { name: "Y", value: 2, sets: \["A", "C"\] },
-  { name: "Z", value: 2, sets: \["B", "C"\] },
-  { name: "Q", value: 1, sets: \["A", "B", "C"\]
-\]);
+  { name: "X", value: 2, sets: ["A", "B"] },
+  { name: "Y", value: 2, sets: ["A", "C"] },
+  { name: "Z", value: 2, sets: ["B", "C"] },
+  { name: "Q", value: 1, sets: ["A", "B", "C"]
+]);
+```
 
-series.data.setAll(\[
+JavaScript:
+
+```js
+series.data.setAll([
   { name: "A", value: 10 },
   { name: "B", value: 8 },
   { name: "C", value: 5 },
-  { name: "X", value: 2, sets: \["A", "B"\] },
-  { name: "Y", value: 2, sets: \["A", "C"\] },
-  { name: "Z", value: 2, sets: \["B", "C"\] },
-  { name: "Q", value: 1, sets: \["A", "B", "C"\]
-\]);
+  { name: "X", value: 2, sets: ["A", "B"] },
+  { name: "Y", value: 2, sets: ["A", "C"] },
+  { name: "Z", value: 2, sets: ["B", "C"] },
+  { name: "Q", value: 1, sets: ["A", "B", "C"]
+]);
+```
 
-IMPORTANTIt's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
+> **Important:** It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFOThere are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
+> **More info:** There are more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Circles vs intersections
 
@@ -128,14 +160,9 @@ If data for the item contains only category and value, it will be shown as a ful
 
 If there's also am array of intersecting categories (circles), it will be shown as an intersection of listed circles.
 
-Data:  
-`{ name: "A", value: 10 }`  
-`{ name: "B", value: 10 }`
+![](https://docs.amcharts.com/v5/images/charts/venn/venn.png "Data: | `\{ name: 'A', value: 10 }` | `\{ name: 'B', value: 10 }`")
 
-Data:  
-`{ name: "A", value: 10 }`  
-`{ name: "B", value: 10 }`  
-`{ name: "X", value: 4, sets: ["A", "B"] }`
+![](https://docs.amcharts.com/v5/images/charts/venn/venn_intersecting.png "Data: | `\{ name: 'A', value: 10 }` | `\{ name: 'B', value: 10 }` | `\{ name: 'X', value: 4, sets: ['A', 'B'] }`")
 
 Let's take a look at the above two examples.
 
@@ -165,28 +192,39 @@ A series will automatically assign a unique color to each slice from its own [co
 
 Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
-series.get("colors").set("colors", \[
+TypeScript:
+
+```ts
+series.get("colors").set("colors", [
   am5.color(0x095256),
   am5.color(0x087f8c),
   am5.color(0x5aaa95),
   am5.color(0x86a873),
   am5.color(0xbb9f06)
-\]);
+]);
+```
 
-series.get("colors").set("colors", \[
+JavaScript:
+
+```js
+series.get("colors").set("colors", [
   am5.color(0x095256),
   am5.color(0x087f8c),
   am5.color(0x5aaa95),
   am5.color(0x86a873),
   am5.color(0xbb9f06)
-\]);
+]);
+```
 
-MORE INFOA "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
+> **More info:** A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 #### Color data field
 
 We can use Venn's setting `fillField` to bind slice color to a field in data.
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5venn.Venn.new(root, {
     categoryField: "name",
@@ -196,12 +234,16 @@ let series = root.container.children.push(
   })
 );
 
-series.data.setAll(\[
+series.data.setAll([
   { name: "A", value: 10, color: am5.color(0x095256) },
   { name: "B", value: 10, color: am5.color(0x087f8c) },
-  { name: "X", value: 5, sets: \["A", "B"\], color: am5.color(0x5aaa95) }
-}\]);
+  { name: "X", value: 5, sets: ["A", "B"], color: am5.color(0x5aaa95) }
+}]);
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5venn.Venn.new(root, {
     categoryField: "name",
@@ -211,11 +253,12 @@ var series = root.container.children.push(
   })
 );
 
-series.data.setAll(\[
+series.data.setAll([
   { name: "A", value: 10, color: am5.color(0x095256) },
   { name: "B", value: 10, color: am5.color(0x087f8c) },
-  { name: "X", value: 5, sets: \["A", "B"\], color: am5.color(0x5aaa95) }
-}\]);
+  { name: "X", value: 5, sets: ["A", "B"], color: am5.color(0x5aaa95) }
+}]);
+```
 
 #### Template fields
 
@@ -223,27 +266,35 @@ We can also specify color for each slice through data and template fields.
 
 Template fields allow binding element's properties to an object in data:
 
+TypeScript:
+
+```ts
 series.slices.template.setAll({
   tooltipText: "{category}",
   templateField: "sliceSettings"
 });
 
-series.data.setAll(\[
+series.data.setAll([
   { name: "A", value: 10, sliceSettings: { fill: am5.color(0x095256) } },
   { name: "B", value: 10, sliceSettings: { fill: am5.color(0x087f8c) } },
-  { name: "X", value: 5, sets: \["A", "B"\], sliceSettings: { fill: am5.color(0x5aaa95) } }
-}\]);
+  { name: "X", value: 5, sets: ["A", "B"], sliceSettings: { fill: am5.color(0x5aaa95) } }
+}]);
+```
 
+JavaScript:
+
+```js
 series.slices.template.setAll({
   tooltipText: "{category}",
   templateField: "sliceSettings"
 });
 
-series.data.setAll(\[
+series.data.setAll([
   { name: "A", value: 10, sliceSettings: { fill: am5.color(0x095256) } },
   { name: "B", value: 10, sliceSettings: { fill: am5.color(0x087f8c) } },
-  { name: "X", value: 5, sets: \["A", "B"\], sliceSettings: { fill: am5.color(0x5aaa95) } }
-}\]);
+  { name: "X", value: 5, sets: ["A", "B"], sliceSettings: { fill: am5.color(0x5aaa95) } }
+}]);
+```
 
 For more information on how template fields work, refer to "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
@@ -253,37 +304,53 @@ Configuration of a slice is done via its template, which is accessible via serie
 
 We can set any setting via template:
 
+TypeScript:
+
+```ts
 series.slices.template.setAll({
   fillOpacity: 0.5,
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
+```
 
+JavaScript:
+
+```js
 series.slices.template.setAll({
   fillOpacity: 0.5,
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
+```
 
-NOTESetting a value on a template will also update existing slices created using it.
+> **Note:** Setting a value on a template will also update existing slices created using it.
 
 ### Hovers
 
 When a slice is hovered, a special visual element is shown over it to highlight the shape of a hovered slice.
 
-We can configure it using Venn's `hoverGraphics` which holds an instance of `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)` to configure its appearance.
+We can configure it using Venn's `hoverGraphics` which holds an instance of `Graphics` to configure its appearance.
 
+TypeScript:
+
+```ts
 series.hoverGraphics.setAll({
-  strokeDasharray: \[3, 3\],
+  strokeDasharray: [3, 3],
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
+```
 
+JavaScript:
+
+```js
 series.hoverGraphics.setAll({
-  strokeDasharray: \[3, 3\],
+  strokeDasharray: [3, 3],
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
+```
 
 The above will make the chart show a white dashed outline of the circle or intersection hovered.
 
@@ -293,19 +360,27 @@ The above will make the chart show a white dashed outline of the circle or inter
 
 Label configuration is done via its template, accessible via series property `labels.template`.
 
+TypeScript:
+
+```ts
 series.labels.template.setAll({
   fontSize: 20,
   fill: am5.color(0x550000),
   text: "{category}"
 });
+```
 
+JavaScript:
+
+```js
 series.labels.template.setAll({
   fontSize: 20,
   fill: am5.color(0x550000),
   text: "{category}"
 });
+```
 
-Pie series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` elements for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
+Pie series uses `Label` elements for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -313,9 +388,17 @@ Slice labels are pre-set to display name of the category.
 
 We can modify contents of the tooltips using `text` setting on a series label template:
 
-series.labels.template.set("text", "{category}: \[bold\]{value}\[/\])");
+TypeScript:
 
-series.labels.template.set("text", "{category}: \[bold\]{value}\[/\])");
+```ts
+series.labels.template.set("text", "{category}: [bold]{value}[/])");
+```
+
+JavaScript:
+
+```js
+series.labels.template.set("text", "{category}: [bold]{value}[/])");
+```
 
 Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
@@ -323,9 +406,17 @@ Contents of the label can include [data placeholders](https://docs.amcharts.com/
 
 To disable series labels, we can set `forceHidden` setting to `true` in their template:
 
-series.labels.template.set("forceHidden", true);
+TypeScript:
 
+```ts
 series.labels.template.set("forceHidden", true);
+```
+
+JavaScript:
+
+```js
+series.labels.template.set("forceHidden", true);
+```
 
 ## Tooltips
 
@@ -333,9 +424,17 @@ Slices in a Venn diagram are pre-set to display a tooltip on hover containing na
 
 We can modify contents of the tooltips using `tooltipText` on slice's template:
 
-series.slices.template.set("tooltipText", "{category}: \[bold\]{value}\[/\]");
+TypeScript:
 
-series.slices.template.set("tooltipText", "{category}: \[bold\]{value}\[/\]");
+```ts
+series.slices.template.set("tooltipText", "{category}: [bold]{value}[/]");
+```
+
+JavaScript:
+
+```js
+series.slices.template.set("tooltipText", "{category}: [bold]{value}[/]");
+```
 
 Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
@@ -347,6 +446,9 @@ If we don't need anything else besides series, we can add it directly to the con
 
 However, if we need to add other elements, we'll need to first create a "wrapper (or main) container", we'll be using add all the stuff (including Venn diagram itself) to:
 
+TypeScript:
+
+```ts
 let container = root.container.children.push(am5.Container.new(root, {
   width: am5.percent(100),
   height: am5.percent(100),
@@ -360,7 +462,11 @@ let series = root.container.children.push(
     intersectionsField: "sets"
   })
 );
+```
 
+JavaScript:
+
+```js
 var container = root.container.children.push(am5.Container.new(root, {
   width: am5.percent(100),
   height: am5.percent(100),
@@ -374,43 +480,63 @@ var series = root.container.children.push(
     intersectionsField: "sets"
   })
 );
+```
 
-NOTEThe `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
+> **Note:** The `layout` setting of the wrapper container will determine how chart elements are laid out. For more information, refer to "Containers: [Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)".
 
 ### Chart title
 
 Chart title can be added as a `Label` element child to the wrapper container:
 
+TypeScript:
+
+```ts
 let title = container.children.push(am5.Label.new(root, {
   text: "Types of coffee",
   fontSize: 20,
   x: am5.percent(50),
   centerX: am5.percent(50)
 }));
+```
 
+JavaScript:
+
+```js
 var title = container.children.push(am5.Label.new(root, {
   text: "Types of coffee",
   fontSize: 20,
   x: am5.percent(50),
   centerX: am5.percent(50)
 }));
+```
 
 ### Legend
 
 To add a legend, we simply need to create an instance of a `Legend` class (which is a part of "index" package), push it to our wrapper container's children (or any other place we want it to be), as well as set its data (in case of a Venn diagram, we will probably want to use series data items as legend items).
 
+TypeScript:
+
+```ts
 let legend = container.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.dataItems);
+```
 
+JavaScript:
+
+```js
 var legend = container.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.dataItems);
+```
 
-MORE INFOFor more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
+> **More info:** For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Complete example
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5venn from "@amcharts/amcharts5/venn";
+TypeScript:
+
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5venn from "@amcharts/amcharts5/venn";
 
 // Create root
 let root = am5.Root.new("chartdiv");
@@ -438,22 +564,22 @@ let series = container.children.push(
 );
 
 // Set data
-series.data.setAll(\[
+series.data.setAll([
   { name: "A", value: 10 },
   { name: "B", value: 10 },
   { name: "C", value: 5 },
-  { name: "X", value: 4, sets: \["A", "B"\] },
-  { name: "Y", value: 2, sets: \["A", "C"\] },
-  { name: "Z", value: 2, sets: \["B", "C"\] },
-  { name: "Q", value: 1, sets: \["A", "B", "C"\]
-}\]);
+  { name: "X", value: 4, sets: ["A", "B"] },
+  { name: "Y", value: 2, sets: ["A", "C"] },
+  { name: "Z", value: 2, sets: ["B", "C"] },
+  { name: "Q", value: 1, sets: ["A", "B", "C"]
+}]);
 
 // Set tooltip content
 series.slices.template.set("tooltipText", "{category}: {value}");
 
 // Set up hover appearance
 series.hoverGraphics.setAll({
-  strokeDasharray: \[3, 3\],
+  strokeDasharray: [3, 3],
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
@@ -466,7 +592,11 @@ let legend = container.children.push(
   })
 );
 legend.data.setAll(series.dataItems);
+```
 
+JavaScript:
+
+```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/venn.js"></script>
 
@@ -499,22 +629,22 @@ var series = container.children.push(
 );
 
 // Set data
-series.data.setAll(\[
+series.data.setAll([
   { name: "A", value: 10 },
   { name: "B", value: 10 },
   { name: "C", value: 5 },
-  { name: "X", value: 4, sets: \["A", "B"\] },
-  { name: "Y", value: 2, sets: \["A", "C"\] },
-  { name: "Z", value: 2, sets: \["B", "C"\] },
-  { name: "Q", value: 1, sets: \["A", "B", "C"\]
-}\]);
+  { name: "X", value: 4, sets: ["A", "B"] },
+  { name: "Y", value: 2, sets: ["A", "C"] },
+  { name: "Z", value: 2, sets: ["B", "C"] },
+  { name: "Q", value: 1, sets: ["A", "B", "C"]
+}]);
 
 // Set tooltip content
 series.slices.template.set("tooltipText", "{category}: {value}");
 
 // Set up hover appearance
 series.hoverGraphics.setAll({
-  strokeDasharray: \[3, 3\],
+  strokeDasharray: [3, 3],
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
@@ -528,5 +658,104 @@ var legend = container.children.push(
 );
 legend.data.setAll(series.dataItems);
 </script>
+```
 
+Example: [Venn diagram](https://docs.amcharts.com/embeds/v5/venn-diagram/)
 
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/venn.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create wrapper container
+var container = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.p100,
+    height: am5.p100,
+    layout: root.verticalLayout
+  })
+);
+
+// Create venn series
+var chart = container.children.push(
+  am5venn.Venn.new(root, {
+    categoryField: "name",
+    valueField: "value",
+    intersectionsField: "sets",
+    paddingTop: 40,
+    paddingBottom: 40,
+    paddingLeft: 40,
+    paddingRight: 40
+  })
+);
+
+// Set data
+chart.data.setAll([
+  { name: "A", value: 10 },
+  { name: "B", value: 10 },
+  { name: "C", value: 5 },
+  { name: "X", value: 4, sets: ["A", "B"] },
+  { name: "Y", value: 2, sets: ["A", "C"] },
+  { name: "Z", value: 2, sets: ["B", "C"] },
+  { name: "Q", value: 1, sets: ["A", "B", "C"] }
+]);
+
+// Set tooltip content
+chart.slices.template.set("tooltipText", "{category}: {value}");
+
+// Set up hover appearance
+chart.hoverGraphics.setAll({
+  strokeDasharray: [3, 3],
+  stroke: am5.color(0xffffff),
+  strokeWidth: 2
+});
+
+// Add legend
+var legend = container.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  })
+);
+
+legend.data.setAll(chart.dataItems);
+```

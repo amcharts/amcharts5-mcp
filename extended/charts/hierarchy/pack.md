@@ -1,7 +1,7 @@
 ---
 title: "Pack"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/pack/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will look at how to configure pack series.
@@ -12,17 +12,25 @@ In pack series, `circles.template` can be used to configure node circles. All no
 
 The template accepts all [`Circle` settings](https://docs.amcharts.com/v5/reference/circle/#settings).
 
-series.circles.template.setAll({
-  fillOpacity: 0.7,
-  strokeWidth: 1,
-  strokeOpacity: 1
-});
+TypeScript:
 
+```ts
 series.circles.template.setAll({
   fillOpacity: 0.7,
   strokeWidth: 1,
   strokeOpacity: 1
 });
+```
+
+JavaScript:
+
+```js
+series.circles.template.setAll({
+  fillOpacity: 0.7,
+  strokeWidth: 1,
+  strokeOpacity: 1
+});
+```
 
 ## Labels
 
@@ -30,19 +38,27 @@ series.circles.template.setAll({
 
 Series label configuration is done via its template, accessible via series property `labels.template`.
 
+TypeScript:
+
+```ts
 series.labels.template.setAll({
   fontSize: 20,
   fill: am5.color(0x550000),
   text: "{category}"
 });
+```
 
+JavaScript:
+
+```js
 series.labels.template.setAll({
   fontSize: 20,
   fill: am5.color(0x550000),
   text: "{category}"
 });
+```
 
-Pack series uses `[Label](https://docs.amcharts.com/v5/reference/label/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
+Pack series uses `Label` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/label/#settings).
 
 ### Label content
 
@@ -50,27 +66,43 @@ Node labels are pre-set to display name of the node.
 
 We can modify contents of the tooltips using `text` setting on a series label template:
 
-series.labels.template.setAll({
-  text: "{category}: \[bold\]{sum}\[/\]",
-  fontSize: 14
-});
+TypeScript:
 
+```ts
 series.labels.template.setAll({
-  text: "{category}: \[bold\]{sum}\[/\]",
+  text: "{category}: [bold]{sum}[/]",
   fontSize: 14
 });
+```
+
+JavaScript:
+
+```js
+series.labels.template.setAll({
+  text: "{category}: [bold]{sum}[/]",
+  fontSize: 14
+});
+```
 
 Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IPackDataItem](https://docs.amcharts.com/v5/reference/ipackdataitem/)` for available keys for the data placeholders.
+Refer to `IPackDataItem` for available keys for the data placeholders.
 
 ### Disabling labels
 
 To disable series labels, we can set `forceHidden` setting to `true` in their template:
 
-series.labels.template.set("forceHidden", true);
+TypeScript:
 
+```ts
 series.labels.template.set("forceHidden", true);
+```
+
+JavaScript:
+
+```js
+series.labels.template.set("forceHidden", true);
+```
 
 ## Tooltips
 
@@ -78,14 +110,357 @@ Nodes are pre-set to display a tooltip on hover containing name of the category 
 
 We can modify contents of the tooltips using `tooltipText` on rectangle's template:
 
-series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
+TypeScript:
 
-series.nodes.template.set("tooltipText", "{category}: \[bold\]{sum}\[/\]");
+```ts
+series.nodes.template.set("tooltipText", "{category}: [bold]{sum}[/]");
+```
+
+JavaScript:
+
+```js
+series.nodes.template.set("tooltipText", "{category}: [bold]{sum}[/]");
+```
 
 Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-Refer to `[IPackDataItem](https://docs.amcharts.com/v5/reference/ipackdataitem/)` for available keys for the data placeholders.
+Refer to `IPackDataItem` for available keys for the data placeholders.
 
 ## Example
 
+Example: [Pack chart](https://docs.amcharts.com/embeds/v5/pack-chart/)
 
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/hierarchy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var container = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.percent(100),
+    height: am5.percent(100),
+    layout: root.verticalLayout
+  })
+);
+
+var series = container.children.push(
+  am5hierarchy.Pack.new(root, {
+    downDepth: 1,
+    initialDepth: 1,
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children"
+  })
+);
+
+series.data.setAll([
+  {
+    name: "Root",
+    children: [
+      {
+        name: "A0",
+        children: [
+          {
+            name: "A0A1",
+            children: [
+              {
+                name: "A0A0A2",
+                value: 71
+              },
+              {
+                name: "A0A0B2",
+                children: [
+                  {
+                    name: "A0A0B1A3",
+                    value: 69
+                  },
+                  {
+                    name: "A0A0B1B3",
+                    value: 85
+                  }
+                ]
+              },
+
+              {
+                name: "A0A0C2",
+                value: 48
+              }
+            ]
+          },
+
+          {
+            name: "A0B1",
+            value: 27
+          },
+          {
+            name: "A0C1",
+            children: [
+              {
+                name: "A0C2A2",
+                value: 2
+              },
+              {
+                name: "A0C2B2",
+                children: [
+                  {
+                    name: "A0C2B1A3",
+                    value: 54
+                  },
+                  {
+                    name: "A0C2B1B3",
+                    value: 16
+                  }
+                ]
+              }
+            ]
+          },
+
+          {
+            name: "A0D1",
+            value: 89
+          }
+        ]
+      },
+
+      {
+        name: "B0",
+        children: [
+          {
+            name: "B1A1",
+            value: 9
+          },
+          {
+            name: "B1B1",
+            children: [
+              {
+                name: "B1B1A2",
+                children: [
+                  {
+                    name: "B1B1A0A3",
+                    value: 35
+                  },
+                  {
+                    name: "B1B1A0B3",
+                    value: 40
+                  }
+                ]
+              },
+
+              {
+                name: "B1B1B2",
+                value: 55
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        name: "C0",
+        children: [
+          {
+            name: "C2A1",
+            children: [
+              {
+                name: "C2A0A2",
+                value: 24
+              },
+              {
+                name: "C2A0B2",
+                value: 89
+              },
+              {
+                name: "C2A0C2",
+                children: [
+                  {
+                    name: "C2A0C2A3",
+                    children: [
+                      {
+                        name: "C2A0C2A0A4",
+                        children: [
+                          {
+                            name: "C2A0C2A0A00",
+                            value: 90
+                          },
+                          {
+                            name: "C2A0C2A0A01",
+                            value: 70
+                          },
+                          {
+                            name: "C2A0C2A0A02",
+                            value: 66
+                          },
+                          {
+                            name: "C2A0C2A0A03",
+                            value: 58
+                          }
+                        ]
+                      },
+
+                      {
+                        name: "C2A0C2A0B4",
+                        children: [
+                          {
+                            name: "C2A0C2A0B10",
+                            value: 80
+                          },
+                          {
+                            name: "C2A0C2A0B11",
+                            value: 40
+                          }
+                        ]
+                      }
+                    ]
+                  },
+
+                  {
+                    name: "C2A0C2B3",
+                    value: 44
+                  }
+                ]
+              },
+
+              {
+                name: "C2A0D2",
+                children: [
+                  {
+                    name: "C2A0D3A3",
+                    value: 28
+                  },
+                  {
+                    name: "C2A0D3B3",
+                    value: 14
+                  }
+                ]
+              }
+            ]
+          },
+
+          {
+            name: "C2B1",
+            value: 40
+          },
+          {
+            name: "C2C1",
+            children: [
+              {
+                name: "C2C2A2",
+                children: [
+                  {
+                    name: "C2C2A0A3",
+                    value: 28
+                  },
+                  {
+                    name: "C2C2A0B3",
+                    children: [
+                      {
+                        name: "C2C2A0B1A4",
+                        value: 19
+                      },
+                      {
+                        name: "C2C2A0B1B4",
+                        children: [
+                          {
+                            name: "C2C2A0B1B10",
+                            value: 11
+                          },
+                          {
+                            name: "C2C2A0B1B11",
+                            value: 10
+                          },
+                          {
+                            name: "C2C2A0B1B12",
+                            value: 97
+                          },
+                          {
+                            name: "C2C2A0B1B13",
+                            value: 47
+                          }
+                        ]
+                      },
+
+                      {
+                        name: "C2C2A0B1C4",
+                        children: [
+                          {
+                            name: "C2C2A0B1C20",
+                            value: 40
+                          },
+                          {
+                            name: "C2C2A0B1C21",
+                            value: 37
+                          },
+                          {
+                            name: "C2C2A0B1C22",
+                            value: 53
+                          }
+                        ]
+                      }
+                    ]
+                  },
+
+                  {
+                    name: "C2C2A0C3",
+                    value: 96
+                  }
+                ]
+              },
+
+              {
+                name: "C2C2B2",
+                value: 66
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]);
+
+series.set("selectedDataItem", series.dataItems[0]);
+
+container.children.unshift(
+  am5hierarchy.BreadcrumbBar.new(root, {
+    series: series
+  })
+);
+```

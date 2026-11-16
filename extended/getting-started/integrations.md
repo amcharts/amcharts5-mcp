@@ -1,7 +1,7 @@
 ---
 title: "Integrations"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
 
 Packages and tutorials for using amCharts 5 with frameworks.
@@ -10,17 +10,17 @@ Packages and tutorials for using amCharts 5 with frameworks.
 
 For these frameworks there are packages that create and dispose the chart with your component. They load the library in the browser only, so they work with server rendering, and take a chart written in code or a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/).
 
-| Framework | Package | Tutorials |
-| --- | --- | --- |
-| React | [`@amcharts/amcharts5-react`](https://www.npmjs.com/package/@amcharts/amcharts5-react) | [React](https://docs.amcharts.com/v5/getting-started/integrations/react/), [Next.js](https://docs.amcharts.com/v5/getting-started/integrations/next-js/), [React Router](https://docs.amcharts.com/v5/getting-started/integrations/remix/) |
-| Vue | [`@amcharts/amcharts5-vue`](https://www.npmjs.com/package/@amcharts/amcharts5-vue) | [Vue.js](https://docs.amcharts.com/v5/getting-started/integrations/vue/), [Nuxt](https://docs.amcharts.com/v5/getting-started/integrations/nuxt/) |
-| Angular | [`@amcharts/amcharts5-angular`](https://www.npmjs.com/package/@amcharts/amcharts5-angular) | [Angular](https://docs.amcharts.com/v5/getting-started/integrations/angular/) |
-| Svelte | [`@amcharts/amcharts5-svelte`](https://www.npmjs.com/package/@amcharts/amcharts5-svelte) | [SvelteKit](https://docs.amcharts.com/v5/getting-started/integrations/sveltekit/) |
-| React Native | [`@amcharts/amcharts5-react-native`](https://www.npmjs.com/package/@amcharts/amcharts5-react-native) | [React Native](https://docs.amcharts.com/v5/getting-started/integrations/react-native/) |
+| Framework    | Package                                                                                              | Tutorials                                                                                                                                                       |
+| ------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| React        | [`@amcharts/amcharts5-react`](https://www.npmjs.com/package/@amcharts/amcharts5-react)               | [React](https://docs.amcharts.com/v5/getting-started/integrations/react/), [Next.js](https://docs.amcharts.com/v5/getting-started/integrations/next-js/), [React Router](https://docs.amcharts.com/v5/getting-started/integrations/remix/) |
+| Vue          | [`@amcharts/amcharts5-vue`](https://www.npmjs.com/package/@amcharts/amcharts5-vue)                   | [Vue.js](https://docs.amcharts.com/v5/getting-started/integrations/vue/), [Nuxt](https://docs.amcharts.com/v5/getting-started/integrations/nuxt/)                                                                 |
+| Angular      | [`@amcharts/amcharts5-angular`](https://www.npmjs.com/package/@amcharts/amcharts5-angular)           | [Angular](https://docs.amcharts.com/v5/getting-started/integrations/angular/)                                                                                                            |
+| Svelte       | [`@amcharts/amcharts5-svelte`](https://www.npmjs.com/package/@amcharts/amcharts5-svelte)             | [SvelteKit](https://docs.amcharts.com/v5/getting-started/integrations/sveltekit/)                                                                                                        |
+| React Native | [`@amcharts/amcharts5-react-native`](https://www.npmjs.com/package/@amcharts/amcharts5-react-native) | [React Native](https://docs.amcharts.com/v5/getting-started/integrations/react-native/)                                                                                                  |
 
 Each package's README has the full API, and its [folder on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations) has example apps.
 
-NOTE With a commercial license, call `am5.addLicense()` once when the app starts, before any chart is made. In React Native, use the `licenses` prop.
+> **Note:** With a commercial license, call `am5.addLicense()` once when the app starts, before any chart is made. In React Native, use the `licenses` prop.
 
 ## Other tutorials
 

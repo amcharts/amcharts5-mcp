@@ -1,7 +1,7 @@
 ---
 title: "Map line series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/map-line-series/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
 
 Map line series are used to plot projected lines on the map.
@@ -10,17 +10,25 @@ Map line series are used to plot projected lines on the map.
 
 To create a map line series we need to call its [`new()` method](https://docs.amcharts.com/v5/getting-started/#new-element-syntax) and push the new object into chart's `series` list:
 
+TypeScript:
+
+```ts
 let lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
     // ...
   })
 );
+```
 
+JavaScript:
+
+```js
 var lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
     // ...
   })
 );
+```
 
 ## Configuring lines
 
@@ -28,31 +36,47 @@ var lineSeries = chart.series.push(
 
 Lines are configured using series' `mapLines.template`, which can be used to set any `MapLine` [setting](https://docs.amcharts.com/v5/reference/mapline/#settings).
 
-lineSeries.mapLines.template.setAll({
-  stroke: am5.color(0xff0000),
-  strokeWidth: 2,
-  strokeOpacity: 0.5
-});
+TypeScript:
 
+```ts
 lineSeries.mapLines.template.setAll({
   stroke: am5.color(0xff0000),
   strokeWidth: 2,
   strokeOpacity: 0.5
 });
+```
+
+JavaScript:
+
+```js
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xff0000),
+  strokeWidth: 2,
+  strokeOpacity: 0.5
+});
+```
 
 Line color can also be set directly via polygon series' setting `stroke`:
 
+TypeScript:
+
+```ts
 let lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
     stroke: am5.color(0x22ff55)
   })
 );
+```
 
+JavaScript:
+
+```js
 var lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
     stroke: am5.color(0x22ff55)
   })
 );
+```
 
 ### Curved or straight
 
@@ -62,38 +86,52 @@ This can be configured using `lineType` setting of the series.
 
 There are two options:
 
--   `"curved"` (default) - follows shortest distance. Can cross -180/180 longitude.
--   `"straight"` - will connect two points with a visually straight line. Will not cross -180/180 longitude.
+* `"curved"` (default) - follows shortest distance. Can cross -180/180 longitude.
+* `"straight"` - will connect two points with a visually straight line. Will not cross -180/180 longitude.
 
+TypeScript:
+
+```ts
 let lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
     lineType: "straight"
   })
 );
+```
 
+JavaScript:
+
+```js
 var lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {
     lineType: "straight"
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/map-chart/map-line-series/chrome_2022-09-27_12-29-01-1024x637.png "`lineType: 'curved'` (default)")
 
-`lineType: "curved"` (default)
-
-
-`lineType: "straight"`
+![](https://docs.amcharts.com/v5/images/charts/map-chart/map-line-series/2022-09-27_12-29-14-1024x637.png "`lineType: 'straight'`")
 
 ### Altitude
 
 Lines can be raised above the ground, so they arc like a flight path or a trajectory. The `altitude` setting of a line sets how high, in metres, each leg of the line (from one point to the next) rises in its middle. Each leg lands on its points at both ends.
 
-lineSeries.mapLines.template.setAll({
-  altitude: 800000
-});
+TypeScript:
 
+```ts
 lineSeries.mapLines.template.setAll({
   altitude: 800000
 });
+```
+
+JavaScript:
+
+```js
+lineSeries.mapLines.template.setAll({
+  altitude: 800000
+});
+```
 
 For scale: `400000` is about the height of the International Space Station. On a globe, lines rise away from its surface. On flat maps they rise up the screen.
 
@@ -101,15 +139,18 @@ Once `altitude` is set (even to `0`), the ends of each leg are placed at the hei
 
 To give each line its own height, set it via data using [template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/):
 
+TypeScript:
+
+```ts
 lineSeries.mapLines.template.set("templateField", "lineSettings");
 
-lineSeries.data.setAll(\[{
+lineSeries.data.setAll([{
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \]
-    \]
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ]
+    ]
   },
   lineSettings: {
     altitude: 500000
@@ -117,25 +158,29 @@ lineSeries.data.setAll(\[{
 }, {
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    coordinates: [
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
   },
   lineSettings: {
     altitude: 1200000
   }
-}\]);
+}]);
+```
 
+JavaScript:
+
+```js
 lineSeries.mapLines.template.set("templateField", "lineSettings");
 
-lineSeries.data.setAll(\[{
+lineSeries.data.setAll([{
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \]
-    \]
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ]
+    ]
   },
   lineSettings: {
     altitude: 500000
@@ -143,17 +188,169 @@ lineSeries.data.setAll(\[{
 }, {
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    coordinates: [
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
   },
   lineSettings: {
     altitude: 1200000
   }
-}\]);
+}]);
+```
 
-NOTE`altitude` is available since version 5.21.0. It has no effect on lines with `lineType: "straight"`.
+> **Note:** `altitude` is available since version 5.21.0. It has no effect on lines with `lineType: "straight"`.
+
+Example: [Flight routes arcing above a globe](https://docs.amcharts.com/embeds/v5/flight-routes-arcing-above-a-globe/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create the map chart: a globe
+// https://docs.amcharts.com/v5/charts/map-chart/
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "rotateY",
+    projection: am5map.geoOrthographic(),
+    rotationX: 30,
+    rotationY: -30
+  })
+);
+
+// Add water
+var backgroundSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+
+backgroundSeries.mapPolygons.template.setAll({
+  fill: root.interfaceColors.get("alternativeBackground"),
+  fillOpacity: 0.1,
+  strokeOpacity: 0
+});
+
+backgroundSeries.data.push({
+  geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+});
+
+// Create polygon series for countries
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow
+  })
+);
+
+// Create routes, each arcing to its own height (metres)
+// https://docs.amcharts.com/v5/charts/map-chart/map-line-series/#altitude
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xff5500),
+  strokeWidth: 2,
+  templateField: "lineSettings"
+});
+
+var london = [-0.454296, 51.47002];
+
+lineSeries.data.setAll([
+  {
+    id: "london-newyork",
+    geometry: { type: "LineString", coordinates: [london, [-73.778137, 40.641312]] },
+    lineSettings: { altitude: 800000 }
+  },
+  {
+    geometry: { type: "LineString", coordinates: [london, [116.597504, 40.072498]] },
+    lineSettings: { altitude: 1500000 }
+  },
+  {
+    geometry: { type: "LineString", coordinates: [london, [55.364444, 25.252778]] },
+    lineSettings: { altitude: 500000 }
+  },
+  {
+    geometry: { type: "LineString", coordinates: [london, [28.246, -26.139]] },
+    lineSettings: { altitude: 1100000 }
+  }
+]);
+
+// A point riding one of the routes, at the route's height
+var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+pointSeries.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 6,
+      fill: am5.color(0xffffff),
+      stroke: am5.color(0xff5500),
+      strokeWidth: 2,
+      animations: [
+        {
+          key: "positionOnLine",
+          target: "dataItem",
+          from: 0,
+          to: 1,
+          duration: 5000,
+          loops: 0,
+          yoyo: true,
+          easing: "sine",
+          ease: "inOut"
+        }
+      ]
+    })
+  });
+});
+
+pointSeries.data.setAll([
+  {
+    lineId: "london-newyork",
+    positionOnLine: 0
+  }
+]);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ## Data
 
@@ -165,40 +362,45 @@ Line series accepts data in GeoJSON format. It will pick out features of type `L
 
 Here's an example of a simple GeoJSON data, depicting flight route: JFK > Heathrow > Beijing.
 
+```json title="GeoJSON"
 {
   "type": "FeatureCollection",
-  "features": \[{
+  "features": [{
     "type": "Feature",
     "properties": {
     },
     "geometry": {
       "type": "LineString",
-      "coordinates": \[
-        \[ -73.778137, 40.641312 \],
-        \[ -0.454296, 51.470020 \],
-        \[ 116.597504, 40.072498 \]
-      \]
+      "coordinates": [
+        [ -73.778137, 40.641312 ],
+        [ -0.454296, 51.470020 ],
+        [ 116.597504, 40.072498 ]
+      ]
     }
-  }\]
+  }]
 }
+```
 
 We can set such data directly to series `geoJSON` property:
 
+TypeScript:
+
+```ts
 let routes = {
   "type": "FeatureCollection",
-  "features": \[{
+  "features": [{
     "type": "Feature",
     "properties": {
     },
     "geometry": {
       "type": "LineString",
-      "coordinates": \[
-        \[ -73.778137, 40.641312 \],
-        \[ -0.454296, 51.470020 \],
-        \[ 116.597504, 40.072498 \]
-      \]
+      "coordinates": [
+        [ -73.778137, 40.641312 ],
+        [ -0.454296, 51.470020 ],
+        [ 116.597504, 40.072498 ]
+      ]
     }
-  }\]
+  }]
 };
 
 // Create line series
@@ -207,22 +409,117 @@ let lineSeries = chart.series.push(
     geoJSON: routes
   })
 );
+```
 
+JavaScript:
+
+```js
 var routes = {
   "type": "FeatureCollection",
-  "features": \[{
+  "features": [{
     "type": "Feature",
     "properties": {
     },
     "geometry": {
       "type": "LineString",
-      "coordinates": \[
-        \[ -73.778137, 40.641312 \],
-        \[ -0.454296, 51.470020 \],
-        \[ 116.597504, 40.072498 \]
-      \]
+      "coordinates": [
+        [ -73.778137, 40.641312 ],
+        [ -0.454296, 51.470020 ],
+        [ 116.597504, 40.072498 ]
+      ]
     }
-  }\]
+  }]
+};
+
+// Create line series
+var lineSeries = chart.series.push(
+  am5map.MapLineSeries.new(root, {
+    geoJSON: routes
+  })
+);
+```
+
+Example: [Map with line series](https://docs.amcharts.com/embeds/v5/map-with-line-series/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "none",
+    projection: am5map.geoNaturalEarth1()
+  })
+);
+
+// Create polygon series
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"]
+  })
+);
+
+// Load routes in GeoJSON format
+var routes = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: {},
+
+      geometry: {
+        type: "LineString",
+        coordinates: [
+          [-73.778137, 40.641312],
+          [-0.454296, 51.47002],
+          [116.597504, 40.072498]
+        ]
+      }
+    }
+  ]
 };
 
 // Create line series
@@ -232,6 +529,12 @@ var lineSeries = chart.series.push(
   })
 );
 
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xff0000),
+  strokeWidth: 2,
+  strokeOpacity: 0.5
+});
+```
 
 ### Plain data
 
@@ -239,59 +542,243 @@ Another way to set data is via series `data` interface.
 
 Each item in data needs to have at least `geometry` key in it, that identifies line points. Basically, it's a subset of a GeoJSON format:
 
-lineSeries.data.setAll(\[{
+TypeScript:
+
+```ts
+lineSeries.data.setAll([{
   "geometry": {
     "type": "LineString",
-    "coordinates": \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    "coordinates": [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
   }
-}\]);
+}]);
+```
 
-lineSeries.data.setAll(\[{
+JavaScript:
+
+```js
+lineSeries.data.setAll([{
   "geometry": {
     "type": "LineString",
-    "coordinates": \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    "coordinates": [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
   }
-}\]);
+}]);
+```
 
+Example: [Map with line series via data](https://docs.amcharts.com/embeds/v5/map-with-line-series-via-data/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "none",
+    projection: am5map.geoNaturalEarth1()
+  })
+);
+
+// Create polygon series
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"]
+  })
+);
+
+// Create line series
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+
+lineSeries.data.setAll([
+  {
+    geometry: {
+      type: "LineString",
+      coordinates: [
+        [-73.778137, 40.641312],
+        [-0.454296, 51.47002],
+        [116.597504, 40.072498]
+      ]
+    }
+  }
+]);
+
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xff0000),
+  strokeWidth: 2,
+  strokeOpacity: 0.5
+});
+```
 
 ### Individual data items
 
 We can also use series `pushDataItem()` method to add data lines one-by-one.
 
-The parameter is an object that adheres to `[IMapLineSeriesDataItem](https://docs.amcharts.com/v5/reference/imaplineseriesdataitem/)` interface.
+The parameter is an object that adheres to `IMapLineSeriesDataItem` interface.
+
+TypeScript:
+
+```ts
+lineSeries.pushDataItem({
+  geometry: {
+    type: "LineString",
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
+  }
+});
+```
+
+JavaScript:
+
+```js
+lineSeries.pushDataItem({
+  geometry: {
+    type: "LineString",
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
+  }
+});
+```
+
+Example: [Map line pushing data items](https://docs.amcharts.com/embeds/v5/map-line-pushing-data-items/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "none",
+    projection: am5map.geoNaturalEarth1()
+  })
+);
+
+// Create polygon series
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"]
+  })
+);
+
+// Create line series
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 
 lineSeries.pushDataItem({
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    coordinates: [
+      [-73.778137, 40.641312],
+      [-0.454296, 51.47002],
+      [116.597504, 40.072498]
+    ]
   }
 });
 
-lineSeries.pushDataItem({
-  geometry: {
-    type: "LineString",
-    coordinates: \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
-  }
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xff0000),
+  strokeWidth: 2,
+  strokeOpacity: 1
 });
+```
 
-
-Or, if we have a map line series with points we'd like to connect, we can use `pointsToConnect` instead of `geometry`. See "[Connecting line series points](#Connecting_line_series_points)" section of this tutorial for further info.
+Or, if we have a map line series with points we'd like to connect, we can use `pointsToConnect` instead of `geometry`. See "[Connecting line series points](#connecting-line-series-points)" section of this tutorial for further info.
 
 ## Relation to point series
 
@@ -301,6 +788,9 @@ We can use actual data items from a [map point series](https://docs.amcharts.com
 
 This eliminates the need to define `geometry` for our lines, as we can use `pointsToConnect` setting instead, which is an array of map line series' data items:
 
+TypeScript:
+
+```ts
 // Create point series
 let pointSeries = chart.series.push(
   am5map.MapPointSeries.new(root, {})
@@ -316,9 +806,13 @@ let lineSeries = chart.series.push(
 );
 
 lineSeries.pushDataItem({
-  pointsToConnect: \[nyc, london, beijing\]
+  pointsToConnect: [nyc, london, beijing]
 });
+```
 
+JavaScript:
+
+```js
 // Create point series
 var pointSeries = chart.series.push(
   am5map.MapPointSeries.new(root, {})
@@ -334,16 +828,118 @@ var lineSeries = chart.series.push(
 );
 
 lineSeries.pushDataItem({
-  pointsToConnect: \[nyc, london, beijing\]
+  pointsToConnect: [nyc, london, beijing]
+});
+```
+
+Example: [Map line and point series used together](https://docs.amcharts.com/embeds/v5/map-line-and-point-series-used-together/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "none",
+    projection: am5map.geoNaturalEarth1()
+  })
+);
+
+// Create polygon series
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"]
+  })
+);
+
+// Create point series
+var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+pointSeries.bullets.push(function () {
+  let circle = am5.Circle.new(root, {
+    radius: 7,
+    tooltipY: 0,
+    fill: am5.color(0xffba00),
+    stroke: root.interfaceColors.get("background"),
+    strokeWidth: 2,
+    draggable: true
+  });
+
+  return am5.Bullet.new(root, {
+    sprite: circle
+  });
 });
 
+var nyc = pointSeries.pushDataItem({ latitude: 40.641312, longitude: -73.778137 });
+var london = pointSeries.pushDataItem({ latitude: 51.47002, longitude: -0.454296 });
+var beijing = pointSeries.pushDataItem({ latitude: 40.072498, longitude: 116.597504 });
+
+// Create line series
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+
+lineSeries.pushDataItem({
+  pointsToConnect: [nyc, london, beijing]
+});
+
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xffba00),
+  strokeWidth: 2,
+  strokeOpacity: 1
+});
+```
 
 ### Points on a line
 
 This can also work the other way around: we can make a data item form map line series "stick" to any point on a line.
 
-All we have to do is to set `lineDataItem` to a data item of the specific line, as well as `positionOnLine` to indicate relative position, when creating a point series data item (since 5.20.6 the same can be done in regular data — see "Points on a line via data" below):
+All we have to do is to set `lineDataItem` to a data item of the specific line, as well as `positionOnLine` to indicate relative position, when creating a point series data item:
 
+TypeScript:
+
+```ts
 // Create line series
 let lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {})
@@ -352,11 +948,11 @@ let lineSeries = chart.series.push(
 let route = lineSeries.pushDataItem({
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
   }
 });
 
@@ -379,7 +975,11 @@ let plane = pointSeries.pushDataItem({
   positionOnLine: 0.7,
   autoRotate: true
 });
+```
 
+JavaScript:
+
+```js
 // Create line series
 var lineSeries = chart.series.push(
   am5map.MapLineSeries.new(root, {})
@@ -388,11 +988,11 @@ var lineSeries = chart.series.push(
 var route = lineSeries.pushDataItem({
   geometry: {
     type: "LineString",
-    coordinates: \[
-      \[ -73.778137, 40.641312 \],
-      \[ -0.454296, 51.470020 \],
-      \[ 116.597504, 40.072498 \]
-    \]
+    coordinates: [
+      [ -73.778137, 40.641312 ],
+      [ -0.454296, 51.470020 ],
+      [ 116.597504, 40.072498 ]
+    ]
   }
 });
 
@@ -415,143 +1015,128 @@ var plane = pointSeries.pushDataItem({
   positionOnLine: 0.7,
   autoRotate: true
 });
+```
 
 Let's examine the code above.
 
 The `pointSeries.pushDataItem()` creates a new point in point (item) series. Normally it would contain a latitude/longitude information, but since we're sticking it to a line, we use different settings:
 
-Setting key
+| Setting key       | Comment                                                                                                                                                                                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `lineDataItem`    | A data item from map line series. Created with `pushDataItem()` on a line series, or extracted from series `dataItems`.                                                                                                                                                                                 |
+| `positionOnLine`  | Relative position on the line. `0` (zero) means the beginning, and `1` (one) the end. Any intermediate number will indicate relative position along the whole line. In case the line is multi-segmented, the position is calculated from the beginning of the first segment to the end of the last one. |
+| `autoRotate`      | If set to `true`, point bullet will be automatically rotated to the angle of the exact point in line.                                                                                                                                                                                                   |
+| `autoRotateAngle` | If set, this will be added to the angle calculated by `autoRotate`. Can be used to reverse the direction.                                                                                                                                                                                               |
 
-Comment
-
-`lineDataItem`
-
-A data item from map line series. Created with `pushDataItem()` on a line series, or extracted from series `dataItems`.
-
-`positionOnLine`
-
-Relative position on the line. `0` (zero) means the beginning, and `1` (one) the end. Any intermediate number will indicate relative position along the whole line.  
-In case the line is multi-segmented, the position is calculated from the beginning of the first segment to the end of the last one.
-
-`autoRotate`
-
-If set to `true`, point bullet will be automatically rotated to the angle of the exact point in line.
-
-`autoRotateAngle`
-
-If set, this will be added to the angle calculated by `autoRotate`. Can be used to reverse the direction.
-
-If the line has an [altitude](#Altitude), the point rides along the arc at the line's height.
+If the line has an [altitude](#altitude), the point rides along the arc at the line's height.
 
 The below example uses above code, albeit with the slightly more sophisticated image as a point bullet:
 
-### Points on a line via data (5.20.6)
+Example: [Map line and point series used together](https://docs.amcharts.com/embeds/v5/map-line-and-point-series-used-together-2/)
 
-Since 5.20.6, `lineId`, `positionOnLine`, `autoRotate` and `autoRotateAngle` can be given in point series' data, so a point placed on a line no longer needs to be created with `pushDataItem()` and a `lineDataItem`. `lineId` is the `id` of a line in this line series' data (the line series' `idField`, `"id"` by default). Pushing the line series to the chart before the point series is a safe precaution.
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/map.js, https://cdn.amcharts.com/lib/5/geodata/worldLow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
-The data fields are read via these point series settings, which all have defaults, so nothing needs to be set:
+HTML:
 
-Setting
+```html
+<div id="chartdiv"></div>
+```
 
-Default
+CSS:
 
-`lineIdField`
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
-`"lineId"`
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
 
-`positionOnLineField`
+JavaScript:
 
-`"positionOnLine"`
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
 
-`autoRotateField`
+// Create root
+var root = am5.Root.new("chartdiv");
 
-`"autoRotate"`
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
 
-`autoRotateAngleField`
-
-`"autoRotateAngle"`
-
-`autoRotate` and `autoRotateAngle` values in data take precedence over the same settings on the bullet.
-
-```javascript
-// Create line series
-var lineSeries = chart.series.push(
-  am5map.MapLineSeries.new(root, {})
+// Create chart
+var chart = root.container.children.push(
+  am5map.MapChart.new(root, {
+    panX: "rotateX",
+    panY: "none",
+    projection: am5map.geoNaturalEarth1()
+  })
 );
 
-lineSeries.data.setAll([{
-  id: "route",
+// Create polygon series
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow,
+    exclude: ["AQ"]
+  })
+);
+
+// Create line series
+var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+
+lineSeries.mapLines.template.setAll({
+  stroke: am5.color(0xffba00),
+  strokeWidth: 2,
+  strokeOpacity: 1
+});
+
+var route = lineSeries.pushDataItem({
   geometry: {
     type: "LineString",
     coordinates: [
-      [ -73.778137, 40.641312 ],
-      [ -0.454296, 51.470020 ],
-      [ 116.597504, 40.072498 ]
+      [-73.778137, 40.641312],
+      [-0.454296, 51.47002],
+      [116.597504, 40.072498]
     ]
   }
-}]);
+});
 
 // Create point series
-var pointSeries = chart.series.push(
-  am5map.MapPointSeries.new(root, {})
-);
+var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-pointSeries.bullets.push(function(root, series, dataItem) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: am5.color(0xff0000)
+pointSeries.bullets.push(function () {
+  var container = am5.Container.new(root, {});
+  container.children.push(
+    am5.Graphics.new(root, {
+      svgPath:
+        "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
+      scale: 0.06,
+      centerY: am5.p50,
+      centerX: am5.p50,
+      fill: am5.color(0x000000)
     })
-  });
+  );
+
+  return am5.Bullet.new(root, { sprite: container });
 });
 
-pointSeries.data.setAll([{
-  lineId: "route",
+var plane = pointSeries.pushDataItem({
+  lineDataItem: route,
   positionOnLine: 0.7,
   autoRotate: true
-}]);
-```
-
-NOTE This matters when the chart is [serialized](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/): points created with `pushDataItem()` are not data rows, so they are not part of a serialized config. Points given as data rows are.
-
-#### Animating a point along a line (5.20.8)
-
-To make a point travel along its line, give the bullet's sprite an [`animations`](https://docs.amcharts.com/v5/concepts/animations/) entry with `target: "dataItem"` that animates `positionOnLine`. Unlike a `dataItem.animate()` call in code, this is part of the config, so it survives serialization. (Since 5.21.0 `ChartSerializer` also writes a never-ending `dataItem.animate()` loop with a named easing as such an entry on the series' bullet - see "[Chart serializer](https://docs.amcharts.com/v5/concepts/serializing/chart-serializer/)" - but declaring it is the more direct way.)
-
-```javascript
-var planeSeries = chart.series.push(
-  am5map.MapPointSeries.new(root, {})
-);
-
-planeSeries.bullets.push(function(root, series, dataItem) {
-  return am5.Bullet.new(root, {
-    sprite: am5.Graphics.new(root, {
-      svgPath: "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-      scale: 0.06,
-      centerX: am5.p50,
-      centerY: am5.p50,
-      animations: [{
-        target: "dataItem",
-        key: "positionOnLine",
-        from: 0,
-        to: 1,
-        duration: 6000,
-        loops: 0,
-        yoyo: true,
-        easing: "cubic",
-        ease: "inOut"
-      }]
-    })
-  });
 });
-
-planeSeries.data.setAll([{
-  lineId: "route",
-  positionOnLine: 0,
-  autoRotate: true
-}]);
 ```
-
-Since 5.20.8, an auto-rotating point turns round (180° is added to its angle) while such an `animations` entry moves it back toward the start of the line — e.g. on the way back of a `yoyo` — so the plane faces the way it is travelling. This applies only to an `animations` entry on the bullet's sprite; a point moved from code with `dataItem.animate()` is not turned round, and that code is expected to turn it itself (e.g. via `autoRotateAngle`).
-
-

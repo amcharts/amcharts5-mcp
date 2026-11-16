@@ -1,13 +1,16 @@
 ---
 title: "XY chart series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial looks at general concepts behind series - a centerpiece of an XY chart.
 
 ## Adding series
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -17,7 +20,11 @@ let series = chart.series.push(
     valueXField: "date"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -27,23 +34,16 @@ var series = chart.series.push(
     valueXField: "date"
   })
 );
+```
 
 For more info, refer to "[Adding series](https://docs.amcharts.com/v5/charts/xy-chart/#adding-series)" section of the main "XY Chart" tutorial.
 
 ## Setting data
 
-series.data.setAll(\[{
-  category: "Research",
-  value: 1000
-}, {
-  category: "Marketing",
-  value: 1200
-}, {
-  category: "Sales",
-  value: 850
-}\]);
+TypeScript:
 
-series.data.setAll(\[{
+```ts
+series.data.setAll([{
   category: "Research",
   value: 1000
 }, {
@@ -52,11 +52,27 @@ series.data.setAll(\[{
 }, {
   category: "Sales",
   value: 850
-}\]);
+}]);
+```
+
+JavaScript:
+
+```js
+series.data.setAll([{
+  category: "Research",
+  value: 1000
+}, {
+  category: "Marketing",
+  value: 1200
+}, {
+  category: "Sales",
+  value: 850
+}]);
+```
 
 For more info, refer to "[Setting data](https://docs.amcharts.com/v5/charts/xy-chart/#setting-data)" section of the main "XY Chart" tutorial.
 
-IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
+> **Important:** It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
 ## Data fields
 
@@ -74,6 +90,9 @@ The actual name of the data field depends on the type of data we are plotting.
 
 For example, a series that is plotted on a category axis (X) and a value axis (Y) will need to define at least two data fields: `categoryXField` and `valueYField`.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -83,7 +102,11 @@ let series = chart.series.push(
     categoryXField: "department"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -93,9 +116,13 @@ var series = chart.series.push(
     categoryXField: "department"
   })
 );
+```
 
 Date axis operates in tiemstamps, that are numeric values, that's why we need to use `value*Field` for it, just like for value axis:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -105,7 +132,11 @@ let series = chart.series.push(
     valueXField: "date"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -115,10 +146,11 @@ var series = chart.series.push(
     valueXField: "date"
   })
 );
+```
 
 Some series types, like candlestick or OHLC, need more than two values. They will need more data fields defined. For more info refer to "[Candlestick and OHLC series](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)" tutorial.
 
-IMPORTANTIn order to work properly data fields need to be set when series object is created (via its `.new()` method). Setting them later on will not work as expected.
+> **Important:** In order to work properly data fields need to be set when series object is created (via its `.new()` method). Setting them later on will not work as expected.
 
 ### Open data input fields
 
@@ -140,57 +172,23 @@ Display fields are named similarly as input fields, except they end with an `"*S
 
 The value that needs to be used for display fields is a pre-set list of available calculated values:
 
-Value
-
-Comment
-
-`valueXChange`  
-`valueYChange`
-
-Change from the first value in a data set.
-
-`valueXChangePercent`  
-`valueYChangePercent`
-
-Change from the first value in data set in percent.
-
-`valueXChangeSelection`  
-`valueYChangeSelection`
-
-Change from the first value in current visible scope.
-
-`valueXChangeSelectionPercent`  
-`valueYChangeSelectionPercent`
-
-Change from the first value in current visible scope in percent.
-
-`valueXChangePrevious`  
-`valueYChangePrevious`
-
-Change from the previous value.
-
-`valueXChangePreviousPercent`  
-`valueYChangePreviousPercent`
-
-Change from the previous value in percent.
-
-`valueXTotal`  
-`valueYTotal`
-
-Sum of all absolute values (cast to positive) from all series on the same value axis in same category/interval.
-
-`valueXTotalPercent`  
-`valueYTotalPercent`
-
-Percent value of the value from the sum of all absolute values (cast to positive) from all series on the same value axis in same category/interval.
-
-`valueXSum`  
-`valueYSum`
-
-Sum of all previous values from the same series on the same value axis.
+| Value                                                         | Comment                                                                                                                                             |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `valueXChange` `valueYChange`                                 | Change from the first value in a data set.                                                                                                          |
+| `valueXChangePercent` `valueYChangePercent`                   | Change from the first value in data set in percent.                                                                                                 |
+| `valueXChangeSelection` `valueYChangeSelection`               | Change from the first value in current visible scope.                                                                                               |
+| `valueXChangeSelectionPercent` `valueYChangeSelectionPercent` | Change from the first value in current visible scope in percent.                                                                                    |
+| `valueXChangePrevious` `valueYChangePrevious`                 | Change from the previous value.                                                                                                                     |
+| `valueXChangePreviousPercent` `valueYChangePreviousPercent`   | Change from the previous value in percent.                                                                                                          |
+| `valueXTotal` `valueYTotal`                                   | Sum of all absolute values (cast to positive) from all series on the same value axis in same category/interval.                                     |
+| `valueXTotalPercent` `valueYTotalPercent`                     | Percent value of the value from the sum of all absolute values (cast to positive) from all series on the same value axis in same category/interval. |
+| `valueXSum` `valueYSum`                                       | Sum of all previous values from the same series on the same value axis.                                                                             |
 
 Let's say we need to display a 100% stacked chart with 3 column series. We would need to use `valueYTotalPercent` for `valueYShow` to make it work:
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -202,7 +200,11 @@ let series = chart.series.push(
     stacked: true
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -214,11 +216,130 @@ var series = chart.series.push(
     stacked: true
   }) 
 );
+```
 
-Stack using regular data fields
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/index/stacked_regular_values.png "Stack using regular data fields")
 
-`valueYShow: "valueYTotalPercent"`
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/index/stacked_total_percent.png "`valueYShow: 'valueYTotalPercent'`")
 
+Example: [Stacked column chart 100%](https://docs.amcharts.com/embeds/v5/stacked-column-chart-100/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    year: "2021",
+    europe: 5,
+    namerica: 2.5,
+    asia: 1
+  },
+  {
+    year: "2022",
+    europe: 2.6,
+    namerica: 6.7,
+    asia: 2.2
+  },
+  {
+    year: "2023",
+    europe: 4.8,
+    namerica: 1.9,
+    asia: 4.4
+  }
+];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    min: 0,
+    max: 100,
+    calculateTotals: true,
+    numberFormat: "#'%'",
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0.2,
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    categoryField: "year"
+  })
+);
+
+xAxis.data.setAll(data);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueYShow: "valueYTotalPercent",
+      categoryXField: "year",
+      stacked: true
+    })
+  );
+
+  series.data.setAll(data);
+}
+
+createSeries("Europe", "europe");
+createSeries("North America", "namerica");
+createSeries("Asia", "asia");
+```
 
 ### Changing data fields
 
@@ -226,6 +347,9 @@ All data fields that need to be used by series need to absolutely be set when se
 
 Setting data fields later via `set()` or `setAll()` methods will not work.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -237,7 +361,11 @@ let series = chart.series.push(
 
 // ERROR: This will not work as expected!
 series.set("categoryXField", "year");
+```
 
+JavaScript:
+
+```js
 series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -249,9 +377,13 @@ series = chart.series.push(
 
 // ERROR: This will not work as expected!
 series.set("categoryXField", "year");
+```
 
 Changing of the data field is only possible if it was first set when creating the series:
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -264,7 +396,11 @@ let series = chart.series.push(
 
 // This will now work!
 series.set("categoryXField", "year");
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -277,11 +413,15 @@ var series = chart.series.push(
 
 // This will now work!
 series.set("categoryXField", "year");
+```
 
 Please note that changing data fields dynamically will not automatically reparse data.
 
 This means that data always needs to be set after all data fields are set or changed:
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -296,8 +436,12 @@ let series = chart.series.push(
 series.set("categoryXField", "year");
 
 // Data needs to be set after data fields are set
-series.data.setAll(\[ ... \]);
+series.data.setAll([ ... ]);
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -312,7 +456,8 @@ var series = chart.series.push(
 series.set("categoryXField", "year");
 
 // Data needs to be set after data fields are set
-series.data.setAll(\[ ... \]);
+series.data.setAll([ ... ]);
+```
 
 ## Series colors
 
@@ -324,28 +469,39 @@ If we do not specify any color settings (`fill` and `stroke`) when creating seri
 
 Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
-chart.get("colors").set("colors", \[
+TypeScript:
+
+```ts
+chart.get("colors").set("colors", [
   am5.color(0x095256),
   am5.color(0x087f8c),
   am5.color(0x5aaa95),
   am5.color(0x86a873),
   am5.color(0xbb9f06)
-\]);
+]);
+```
 
-chart.get("colors").set("colors", \[
+JavaScript:
+
+```js
+chart.get("colors").set("colors", [
   am5.color(0x095256),
   am5.color(0x087f8c),
   am5.color(0x5aaa95),
   am5.color(0x86a873),
   am5.color(0xbb9f06)
-\]);
+]);
+```
 
-MORE INFO A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
+> **More info:** A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 ### Manual colors
 
 We can set colors to newly-created series manually, too. For that we will need to set series' `fill` and `stroke` settings:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -357,7 +513,11 @@ let series = chart.series.push(
     stroke: am5.color(0x095256)
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -369,6 +529,7 @@ var series = chart.series.push(
     stroke: am5.color(0x095256)
   })
 );
+```
 
 ## Configuring appearance
 
@@ -380,23 +541,31 @@ To set those up, series have properties holding template object we can modify se
 
 As an example, let's take column series. It has a property `columns.template` which is a `Template` accepting settings for a `RoundedRectangle` objects. If we need to make columns rounded on top, all we need to do is to modify the template:
 
-series.columns.template.setAll({
-  cornerRadiusTL: 5,
-  cornerRadiusTR: 5
-});
+TypeScript:
 
+```ts
 series.columns.template.setAll({
   cornerRadiusTL: 5,
   cornerRadiusTR: 5
 });
+```
+
+JavaScript:
+
+```js
+series.columns.template.setAll({
+  cornerRadiusTL: 5,
+  cornerRadiusTR: 5
+});
+```
 
 Please refer to dedicated series type tutorials for further info:
 
--   [Line and area series](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)
--   [Column series](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)
--   [Step line series](https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/)
--   [Candlestick and OHLC series](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)
--   [Smoothed series](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
+* [Line and area series](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)
+* [Column series](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)
+* [Step line series](https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/)
+* [Candlestick and OHLC series](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/)
+* [Smoothed series](https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/)
 
 ## Binding settings to data
 
@@ -408,12 +577,15 @@ For more information on how to do it, refer to "[Template fields](https://docs.a
 
 ### Data requirements
 
-IMPORTANTStacking requires that all stacked series have equal number of data items with the same timestamps / categories. Mismatched datasets will have visually odd results when series are plotted. For a workaround, please visit tutorial "[Stacking series with mismatched categories/dates](https://docs.amcharts.com/v5/tutorials/stacking-series-with-mismatched-categories-dates/)".
+> **Important:** Stacking requires that all stacked series have equal number of data items with the same timestamps / categories. Mismatched datasets will have visually odd results when series are plotted. For a workaround, please visit tutorial "[Stacking series with mismatched categories/dates](https://docs.amcharts.com/v5/tutorials/stacking-series-with-mismatched-categories-dates/)".
 
 ### Enabling stacking
 
 To make series stack to each other, it's enough to set their `stacked` setting to `true`. The chart will automatically arrange everything else accordingly.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -424,7 +596,11 @@ let series = chart.series.push(
     stacked: true
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.ColumnSeries.new(root, { 
     name: name,
@@ -435,6 +611,7 @@ var series = chart.series.push(
     stacked: true
   }) 
 );
+```
 
 ### Negative value stacking
 
@@ -442,17 +619,20 @@ In situations where there are both negative and positive values in stacks, we mi
 
 If it's set to `true` (default for column series) columns with positive values will stack from zero line upwards, whereas columns with negative value will start their stacking from zero line downwards.
 
-IMPORTANTThere is no way to make series stack correctly if it contains both positive and negative values in its data, regardless of the value set on `stackToNegative` setting.
+> **Important:** There is no way to make series stack correctly if it contains both positive and negative values in its data, regardless of the value set on `stackToNegative` setting.
 
 ### 100% stacks
 
 Enabling 100% stacks require few manipulation to chart setup:
 
--   Specifying [display data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#display-fields) for series to use calculated percent values instead of absolute values.
--   Setting `calculateTotals: true` on a value axis so that percent values are calculated and available for use in display data fields.
--   Capping value axis scale at `0` and `100` values.
--   Optionally, adding "%" sign to axis values using adapter or value axis' `[numberFormat](https://docs.amcharts.com/v5/reference/valueaxis/#numberFormat_setting)` setting.
+* Specifying [display data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#display-fields) for series to use calculated percent values instead of absolute values.
+* Setting `calculateTotals: true` on a value axis so that percent values are calculated and available for use in display data fields.
+* Capping value axis scale at `0` and `100` values.
+* Optionally, adding "%" sign to axis values using adapter or value axis' `numberFormat` setting.
 
+TypeScript:
+
+```ts
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 0,
@@ -474,7 +654,11 @@ let series = chart.series.push(
     stacked: true
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 0,
@@ -496,7 +680,126 @@ var series = chart.series.push(
     stacked: true
   }) 
 );
+```
 
+Example: [Stacked column chart 100%](https://docs.amcharts.com/embeds/v5/stacked-column-chart-100/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  {
+    year: "2021",
+    europe: 5,
+    namerica: 2.5,
+    asia: 1
+  },
+  {
+    year: "2022",
+    europe: 2.6,
+    namerica: 6.7,
+    asia: 2.2
+  },
+  {
+    year: "2023",
+    europe: 4.8,
+    namerica: 1.9,
+    asia: 4.4
+  }
+];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    min: 0,
+    max: 100,
+    calculateTotals: true,
+    numberFormat: "#'%'",
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0.2,
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    categoryField: "year"
+  })
+);
+
+xAxis.data.setAll(data);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueYShow: "valueYTotalPercent",
+      categoryXField: "year",
+      stacked: true
+    })
+  );
+
+  series.data.setAll(data);
+}
+
+createSeries("Europe", "europe");
+createSeries("North America", "namerica");
+createSeries("Asia", "asia");
+```
 
 ### Stack totals
 
@@ -518,20 +821,14 @@ If series uses fills, the fill will be towards that axis. Columns will also will
 
 If base axis is not set, it is assigned automatically per the following logic:
 
--   If Y axis is either category axis or date axis, it will become base axis.
--   All other setups will use X axis as a base axis.
+* If Y axis is either category axis or date axis, it will become base axis.
+* All other setups will use X axis as a base axis.
 
 To explicitly set a base axis for a series, us its `baseAxis` setting:
 
-var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-  xAxis: xAxis,
-  yAxis: yAxis,
-  baseAxis: xAxis,
-  openValueYField: "start",
-  valueYField:"end",
-  categoryXField: "category"
-}));
+TypeScript:
 
+```ts
 var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   xAxis: xAxis,
   yAxis: yAxis,
@@ -540,10 +837,24 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   valueYField:"end",
   categoryXField: "category"
 }));
+```
+
+JavaScript:
+
+```js
+var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+  xAxis: xAxis,
+  yAxis: yAxis,
+  baseAxis: xAxis,
+  openValueYField: "start",
+  valueYField:"end",
+  categoryXField: "category"
+}));
+```
 
 ## Bullets
 
-NOTE Bullets are not exclusive to XY chart. We are going to touch the topic briefly here, but for more information make sure to visit our dedicated "[Bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/)" tutorial.
+> **Note:** Bullets are not exclusive to XY chart. We are going to touch the topic briefly here, but for more information make sure to visit our dedicated "[Bullets](https://docs.amcharts.com/v5/concepts/common-elements/bullets/)" tutorial.
 
 ### Adding bullets
 
@@ -553,6 +864,9 @@ The functions must return a new `Bullet` object with its `sprite` property pre-p
 
 Those can be literally any visual element: from a simple `Circle` or `Label` to a whole other chart.
 
+TypeScript:
+
+```ts
 series.bullets.push(function() {
   return new am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
@@ -561,7 +875,11 @@ series.bullets.push(function() {
     })
   });
 });
+```
 
+JavaScript:
+
+```js
 series.bullets.push(function() {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
@@ -570,7 +888,163 @@ series.bullets.push(function() {
     })
   });
 });
+```
 
+Example: [Line series with bullets](https://docs.amcharts.com/embeds/v5/line-series-with-bullets/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout,
+    maxTooltipDistance: 0
+  })
+);
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 1,
+    value2: 2.5
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 3,
+    value2: 2.1
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 2,
+    value2: 3
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 1,
+    value2: 2
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 1.5,
+    value2: 0.5
+  }
+];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    extraTooltipPrecision: 1,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 20
+    })
+  })
+);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.LineSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {})
+    })
+  );
+
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fill: series.get("fill")
+      })
+    });
+  });
+
+  series.strokes.template.set("strokeWidth", 2);
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series #1", "value");
+createSeries("Series #2", "value2");
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomXY",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+```
 
 ### Relation to data
 
@@ -580,7 +1054,7 @@ That's why bullets can use [data placeholders](https://docs.amcharts.com/v5/conc
 
 ### Positioning bullets
 
-A `Bullet` object has two properties that help position them within the parent element/data item: `[locationX](https://docs.amcharts.com/v5/reference/bullet/#locationX_setting)` and `[locationY](https://docs.amcharts.com/v5/reference/bullet/#locationY_setting)`.
+A `Bullet` object has two properties that help position them within the parent element/data item: `locationX` and `locationY`.
 
 Those accept numeric values from `0` (zero) to `1` (one) indicating relative position within target element, with zero indicating beginning and one the end.
 
@@ -590,6 +1064,9 @@ However in those series that do have elements with actual shapes (e.g. column se
 
 Let's put a `Label` bullet in the middle of a column in a column series:
 
+TypeScript:
+
+```ts
 series.bullets.push(function() {
   return am5.Bullet.new(root, {
     sprite: am5.Label.new(root, {
@@ -600,7 +1077,11 @@ series.bullets.push(function() {
     })
   });
 });
+```
 
+JavaScript:
+
+```js
 series.bullets.push(function() {
   return am5.Bullet.new(root, {
     sprite: am5.Label.new(root, {
@@ -611,9 +1092,164 @@ series.bullets.push(function() {
     })
   });
 });
+```
 
-NOTE Please note the `populateText` use above. This is needed to force `Label` to populate data placeholders with actual data.
+> **Note:** Please note the `populateText` use above. This is needed to force `Label` to populate data placeholders with actual data.
 
+Example: [Column series with label bullets](https://docs.amcharts.com/embeds/v5/column-series-with-label-bullets/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout,
+    maxTooltipDistance: 0
+  })
+);
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 1,
+    value2: 2.5
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 3,
+    value2: 2.1
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 2,
+    value2: 3
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 1,
+    value2: 2
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 1.5,
+    value2: 0.5
+  }
+];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    extraTooltipPrecision: 1,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 20
+    })
+  })
+);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {})
+    })
+  );
+
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Label.new(root, {
+        text: "{valueY}",
+        centerX: am5.percent(50),
+        centerY: am5.percent(50),
+        populateText: true
+      })
+    });
+  });
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series #1", "value");
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomXY",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+```
 
 ### Auto-hiding bullets
 
@@ -631,6 +1267,9 @@ This setting is dynamic, and will react to changing conditions. I.e. when chart 
 
 If our chart setup has a cursor, we can assign a `Tooltip` object to series' `tooltip` setting, so that tooltip relevant to closest data item will be shown when cursor is hovering over the plot area.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     name: name,
@@ -639,13 +1278,17 @@ let series = chart.series.push(
     valueYField: field, 
     valueXField: "date",
     tooltip: am5.Tooltip.new(root, {
-      labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+      labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
     })
   }) 
 );
 
 series.data.setAll(data);
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     name: name,
@@ -654,13 +1297,159 @@ var series = chart.series.push(
     valueYField: field, 
     valueXField: "date",
     tooltip: am5.Tooltip.new(root, {
-      labelText: "\[bold\]{name}\[/\]\\n{valueX.formatDate()}: {valueY}"
+      labelText: "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}"
     })
   }) 
 );
 
 series.data.setAll(data);
+```
 
+Example: [Series tooltips and cursor](https://docs.amcharts.com/embeds/v5/series-tooltips-and-cursor/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout,
+    maxTooltipDistance: 0
+  })
+);
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 1,
+    value2: 2.5
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 3,
+    value2: 2.1
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 2,
+    value2: 3
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 1,
+    value2: 2
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 1.5,
+    value2: 0.5
+  }
+];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    extraTooltipPrecision: 1,
+    //baseValue: 2,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 20
+    })
+  })
+);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.LineSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {})
+    })
+  );
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series #1", "value");
+createSeries("Series #2", "value2");
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomXY",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+```
 
 ### Tooltips on series elements
 
@@ -668,14 +1457,25 @@ We can also make tooltips appear when hovered on individual series elements dire
 
 To make that happen, all we need to do is to set `tooltipText` on that elements template:
 
-series.columns.template.set("tooltipText", "{valueY}");
+TypeScript:
 
+```ts
 series.columns.template.set("tooltipText", "{valueY}");
+```
+
+JavaScript:
+
+```js
+series.columns.template.set("tooltipText", "{valueY}");
+```
 
 ## Animation
 
 Normally, created series will appear on chart right away. Should we want to make it play out initial animation, we can call it's `appear()` method right after creating its object:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -686,7 +1486,11 @@ let series = chart.series.push(
   })
 );
 series.appear();
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -697,11 +1501,15 @@ var series = chart.series.push(
   })
 );
 series.appear();
+```
 
 ## Pre-hiding series
 
 The correct way to pre-hide series is to set its `visible` setting to `false`.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -712,7 +1520,11 @@ let series = chart.series.push(
     visible: false
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -723,11 +1535,15 @@ var series = chart.series.push(
     visible: false
   })
 );
+```
 
-NOTECalling series `appear()` method will knock off `visible` setting value, and will make it visible again. To keep series pre-hidden, do not call this method.
+> **Note:** Calling series `appear()` method will knock off `visible` setting value, and will make it visible again. To keep series pre-hidden, do not call this method.
 
 If you are also using a legend, for best results use series `hide()` method instead, called after the legend data is set.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -741,7 +1557,11 @@ let series = chart.series.push(
 legend.data.push(series);
 
 series.hide();
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     name: "Series",
@@ -755,7 +1575,183 @@ var series = chart.series.push(
 legend.data.push(series);
 
 series.hide();
+```
 
+Example: [Pre-hiding series](https://docs.amcharts.com/embeds/v5/pre-hiding-series/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Add legend
+// https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  })
+);
+
+var data = [
+  {
+    year: "2021",
+    europe: 2.5,
+    namerica: 2.5,
+    asia: 2.1,
+    lamerica: 1,
+    meast: 0.8,
+    africa: 0.4
+  },
+  {
+    year: "2022",
+    europe: 2.6,
+    namerica: 2.7,
+    asia: 2.2,
+    lamerica: 0.5,
+    meast: 0.4,
+    africa: 0.3
+  },
+  {
+    year: "2023",
+    europe: 2.8,
+    namerica: 2.9,
+    asia: 2.4,
+    lamerica: 0.3,
+    meast: 0.9,
+    africa: 0.5
+  }
+];
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    renderer: am5xy.AxisRendererX.new(root, {
+      cellStartLocation: 0.1,
+      cellEndLocation: 0.9
+    }),
+
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+xAxis.data.setAll(data);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+function makeSeries(name, fieldName, hidden) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      categoryXField: "year"
+    })
+  );
+
+  series.columns.template.setAll({
+    tooltipText: "{name}, {categoryX}:{valueY}",
+    width: am5.percent(90),
+    tooltipY: 0
+  });
+
+  series.data.setAll(data);
+
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      locationY: 0,
+      sprite: am5.Label.new(root, {
+        text: "{valueY}",
+        fill: root.interfaceColors.get("alternativeText"),
+        centerY: 0,
+        centerX: am5.p50,
+        populateText: true
+      })
+    });
+  });
+
+  legend.data.push(series);
+
+  if (hidden) {
+    series.hide();
+  } else {
+    series.appear();
+  }
+}
+
+makeSeries("Europe", "europe");
+makeSeries("North America", "namerica");
+makeSeries("Asia", "asia");
+makeSeries("Latin America", "lamerica", true);
+makeSeries("Middle East", "meast", true);
+makeSeries("Africa", "africa", true);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+chart.appear(1000, 100);
+```
 
 ## Data item location
 
@@ -765,4 +1761,4 @@ The concept is explained in detail in "[Line series](https://docs.amcharts.com/v
 
 ## Related tutorials and demos
 
--   [Adding XY series dynamically](https://docs.amcharts.com/v5/tutorials/adding-xy-series-dynamically/)
+* [Adding XY series dynamically](https://docs.amcharts.com/v5/tutorials/adding-xy-series-dynamically/)

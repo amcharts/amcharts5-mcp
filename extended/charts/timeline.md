@@ -1,12 +1,18 @@
 ---
 title: "Timeline chart"
 source: "https://docs.amcharts.com/v5/charts/timeline/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 Timeline chart is used to create axis-based two-dimensional plots that can follow serpentine, spiral, or basically any custom shape. It can be used to depict linear data in a space-saving, non-boring way. The following sections will get you acquainted with this unique chart type.
 
 Below are a few of super-basic examples from our friends at [Data Viz Project](https://datavizproject.com/):
+
+![](https://docs.amcharts.com/v5/images/charts/timeline/DVP_1_100-17.png)
+
+![](https://docs.amcharts.com/v5/images/charts/timeline/DVP_101_200-38.png)
+
+![](https://docs.amcharts.com/v5/images/charts/timeline/DVP_1_100-97-1.png)
 
 However, as we will see during the course of this article, it can be much much more.
 
@@ -18,35 +24,14 @@ To keep it simple, we are going to provide bare basics here, and will not repeat
 
 In a nutshell, Timeline chart acts and is configured much like XY chart, except it uses different classes:
 
-Timeline class
-
-Equivalent XY class
-
-`CurveChart`  
-`SerpentineChart`  
-`SpiralChart`
-
-`XYChart`
-
-`CurveColumnSeries`
-
-`ColumnSeries`
-
-`CurveLineSeries`
-
-`LineSeries`
-
-`CurveCursor`
-
-`XYCursor`
-
-`AxisRendererCurveX`
-
-`AxisRendererX`
-
-`AxisRendererCurveY`
-
-`AxisRendererY`
+| Timeline class                               | Equivalent XY class |
+| -------------------------------------------- | ------------------- |
+| `CurveChart` `SerpentineChart` `SpiralChart` | `XYChart`           |
+| `CurveColumnSeries`                          | `ColumnSeries`      |
+| `CurveLineSeries`                            | `LineSeries`        |
+| `CurveCursor`                                | `XYCursor`          |
+| `AxisRendererCurveX`                         | `AxisRendererX`     |
+| `AxisRendererCurveY`                         | `AxisRendererY`     |
 
 Now that we have this out of the way, let's look at common components that Timeline chart is made of.
 
@@ -56,17 +41,19 @@ Timeline charts require three amCharts 5 modules: "index", "xy", and "timeline".
 
 You can import those in your TypeScript / ES6 application as JavaScript modules:
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5xy from "@amcharts/amcharts5/xy";
-import \* as am5timeline from "@amcharts/amcharts5/timeline";
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import * as am5timeline from "@amcharts/amcharts5/timeline";
+```
 
 For vanilla JavaScript applications and web pages, you can use "script" version:
 
-<script src="https://cdn.amcharts.com/lib/5/index.js"></script>  
-<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>  
-<script src="https://cdn.amcharts.com/lib/5/timeline.js"></script>
+```html
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script><script src="https://cdn.amcharts.com/lib/5/xy.js"></script><script src="https://cdn.amcharts.com/lib/5/timeline.js"></script>
+```
 
-MORE INFO For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
+> **More info:** For more information on installing amCharts 5 as well as loading modules refer to our "[Getting started](https://docs.amcharts.com/v5/getting-started/)" tutorial.
 
 ## Instantiating the chart
 
@@ -74,17 +61,25 @@ As with any chart type in amCharts 5, we'll need to start with creation of the `
 
 In it we will create an instance of one of the Timeline classes: `CurveChart`, `SerpentineChart`, or `SpiralChart`. We will look at the differences for each of those in later sections of this tutorial.
 
+TypeScript:
+
+```ts
 let root = am5.Root.new("chartdiv");
 let chart = root.container.children.push(
   am5timeline.SerpentineChart.new(root, {})
 );
+```
 
+JavaScript:
+
+```js
 var root = am5.Root.new("chartdiv");
 var chart = root.container.children.push(
   am5timeline.SerpentineChart.new(root, {})
 );
+```
 
-MORE INFO The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
+> **More info:** The notion of creating class instances using `.new()` method is described in "[Creating a chart](https://docs.amcharts.com/v5/getting-started/#creating-a-chart)" section in the "Getting started" tutorial. Make sure you check it out.
 
 ## Adding axes
 
@@ -96,6 +91,9 @@ The chart has two properties: `xAxes` and `yAxes`.
 
 To add axes to chart we just push their instances to the respective list:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveX.new(root, {})
@@ -107,7 +105,11 @@ let yAxis = chart.yAxes.push(
     renderer: am5timeline.AxisRendererCurveY.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveX.new(root, {})
@@ -119,6 +121,7 @@ var yAxis = chart.yAxes.push(
     renderer: am5timeline.AxisRendererCurveY.new(root, {})
   })
 );
+```
 
 The above will create a vertical axis of type `ValueAxis`, which is used to indicate numeric value, as well as a `DateAxis` to be used as "horizontal" axis.
 
@@ -140,68 +143,58 @@ Timeline chart uses two types of renderers: `AxisRendererCurveX` and `AxisRender
 
 Timeline chart supports 4 axis types:
 
-Class
-
-Comment
-
-`CategoryAxis`
-
-For plotting data with string identifiers - categories.
-
-[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)
-
-`CategoryDateAxis`
-
-For plotting time-based data without maintaining actual time scale. Grid/labels are displayed only where there is actual data.
-
-[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
-
-`DateAxis`
-
-For plotting time-based data. The axis will maintain natural time scale regardless on how actual data points are spaced out.
-
-[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)
-
-`ValueAxis`
-
-For plotting numeric values.
-
-[More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/)
+| Class              | Comment                                                                                                                        |                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- |
+| `CategoryAxis`     | For plotting data with string identifiers - categories.                                                                        | [More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)      |
+| `CategoryDateAxis` | For plotting time-based data without maintaining actual time scale. Grid/labels are displayed only where there is actual data. | [More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/) |
+| `DateAxis`         | For plotting time-based data. The axis will maintain natural time scale regardless on how actual data points are spaced out.   | [More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/)          |
+| `ValueAxis`        | For plotting numeric values.                                                                                                   | [More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/)         |
 
 Some axis types require additional configuration besides renderer to work.
 
 For example `CategoryAxis` needs `categoryField` which specifies a field in data that holds category names, as well as the actual data, so that it knows which categories to display:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveX.new(root, {}),
     categoryField: "category"
   })
 );
-xAxis.data.setAll(\[{
+xAxis.data.setAll([{
   category: "Research"
 }, {
   category: "Marketing"
 }, {
   category: "Sales"
-}\];
+}];
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveX.new(root, {}),
     categoryField: "category"
   })
 );
-xAxis.data.setAll(\[{
+xAxis.data.setAll([{
   category: "Research"
 }, {
   category: "Marketing"
 }, {
   category: "Sales"
-}\];
+}];
+```
 
 Similarly, `DateAxis` needs to know granularity of your data, set via `baseInterval` property:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveX.new(root, {}),
@@ -211,7 +204,11 @@ let xAxis = chart.xAxes.push(
     }
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveX.new(root, {}),
@@ -221,8 +218,9 @@ var xAxis = chart.xAxes.push(
     }
   })
 );
+```
 
-MORE INFO For information on configuring and using each axis type, please refer to the dedicated "[Axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)" tutorial, or click on an axis class name in the table above.
+> **More info:** For information on configuring and using each axis type, please refer to the dedicated "[Axes](https://docs.amcharts.com/v5/charts/xy-chart/axes/)" tutorial, or click on an axis class name in the table above.
 
 ### Configuring series
 
@@ -238,6 +236,9 @@ There is also a number of properties that need to be set for series, like its X 
 
 We will look at those shortly, but here's a very basic example of `CurveColumnSeries` usage:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5timeline.CurveColumnSeries.new(root, {
     name: "Series",
@@ -247,7 +248,11 @@ let series = chart.series.push(
     valueXField: "date"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5timeline.CurveColumnSeries.new(root, {
     name: "Series",
@@ -257,6 +262,7 @@ var series = chart.series.push(
     valueXField: "date"
   })
 );
+```
 
 Let's examine the above.
 
@@ -284,29 +290,18 @@ For example, if we have a `ValueAxis` as a Y-axis, and a `CategoryAxis` as an X-
 
 Some series can define additional data fields (e.g. for open values) to draw floating columns, or semi-filled area series.
 
-MORE INFO For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#data-fields)" section in our "Series" tutorial.
+> **More info:** For more information about data fields refer to "[Data fields](https://docs.amcharts.com/v5/charts/xy-chart/series/#data-fields)" section in our "Series" tutorial.
 
 ### Types of series
 
 Timeline chart currently supports these types of series:
 
-Class
+| Class               | Comment                   |                                                        |
+| ------------------- | ------------------------- | ------------------------------------------------------ |
+| `CurveColumnSeries` | Displays columns or bars. | [More info](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/) |
+| `CurveLineSeries`   | Displays lines or area.   | [More info](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)   |
 
-Comment
-
-`CurveColumnSeries`
-
-Displays columns or bars.
-
-[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)
-
-`CurveLineSeries`
-
-Displays lines or area.
-
-[More info](https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/)
-
-NOTE The links in the above table point to tutorial for XY chart equivalent series. Don't be alarmed, it's not a mistake. Timeline and XY series are configured identically.
+> **Note:** The links in the above table point to tutorial for XY chart equivalent series. Don't be alarmed, it's not a mistake. Timeline and XY series are configured identically.
 
 ### Configuring series
 
@@ -320,18 +315,10 @@ For that, each series has a property named `data`, which in turn is an object th
 
 The most common method for setting data is its `setAll()` method:
 
-series.data.setAll(\[{
-  category: "Research",
-  value: 1000
-}, {
-  category: "Marketing",
-  value: 1200
-}, {
-  category: "Sales",
-  value: 850
-}\]);
+TypeScript:
 
-series.data.setAll(\[{
+```ts
+series.data.setAll([{
   category: "Research",
   value: 1000
 }, {
@@ -340,13 +327,32 @@ series.data.setAll(\[{
 }, {
   category: "Sales",
   value: 850
-}\]);
+}]);
+```
+
+JavaScript:
+
+```js
+series.data.setAll([{
+  category: "Research",
+  value: 1000
+}, {
+  category: "Marketing",
+  value: 1200
+}, {
+  category: "Sales",
+  value: 850
+}]);
+```
 
 If we have more than one series, we will need to set data for each and everyone one of them, even if the data is identical.
 
 That's why it makes sense to have repeating data in a separate variable. E.g.:
 
-let data = \[{
+TypeScript:
+
+```ts
+let data = [{
   category: "Research",
   value1: 1000,
   value2: 588
@@ -358,11 +364,15 @@ let data = \[{
   category: "Sales",
   value1: 850,
   value2: 1230
-}\];
+}];
 series1.data.setAll(data);
 series2.data.setAll(data);
+```
 
-var data = \[{
+JavaScript:
+
+```js
+var data = [{
   category: "Research",
   value1: 1000,
   value2: 588
@@ -374,13 +384,14 @@ var data = \[{
   category: "Sales",
   value1: 850,
   value2: 1230
-}\];
+}];
 series1.data.setAll(data);
 series2.data.setAll(data);
+```
 
-IMPORTANT It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
+> **Important:** It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
-MORE INFO There's more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
+> **More info:** There's more ways to set, update, add, or load data. For more information please refer to our dedicated "[Data](https://docs.amcharts.com/v5/concepts/data/)" tutorial.
 
 ### Date-based data
 
@@ -388,7 +399,7 @@ A quick note about date-based charts (with a `DateAxis`): they expect data to be
 
 If you we have dates in any other format (as strings or `Date` objects), we'll need to set up a data processor to convert our dates to timestamps.
 
-MORE INFO For description how it works, please refer to "[Date-based data](https://docs.amcharts.com/v5/concepts/data/)" section in our "Data" tutorial.
+> **More info:** For description how it works, please refer to "[Parsing dates](https://docs.amcharts.com/v5/concepts/data/#parsing-dates)" section in our "Data" tutorial.
 
 ## Additional controls
 
@@ -396,31 +407,47 @@ MORE INFO For description how it works, please refer to "[Date-based data](http
 
 To add a legend, we simply need to create an instance of a `Legend` class (which is a part of "index" package), push it to chart's children (or any other place we want it to be), as well as set its data (in case of XY chart, we will probably want to use series as legend items).
 
+TypeScript:
+
+```ts
 let legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.series.values);
+```
 
+JavaScript:
+
+```js
 var legend = chart.children.push(am5.Legend.new(root, {}));
 legend.data.setAll(chart.series.values);
+```
 
-MORE INFO For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
+> **More info:** For more information on how to configure the legend, set its contents, and other tricks, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ### Cursor
 
 Adding chart cursor, which is a very useful tool, providing crosshairs and other functionality, like series and axis tooltips is pretty straightforward: we just need to create an instance of `CurveCursor` (from "timeline" module) and set it to chart's `cursor` property:
 
-chart.set("cursor", am5timeline.CurveCursor.new(root, {}));
+TypeScript:
 
+```ts
 chart.set("cursor", am5timeline.CurveCursor.new(root, {}));
+```
 
-MORE INFO For more information on how to configure the chart cursor make sure you visit "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
+JavaScript:
+
+```js
+chart.set("cursor", am5timeline.CurveCursor.new(root, {}));
+```
+
+> **More info:** For more information on how to configure the chart cursor make sure you visit "[Cursor](https://docs.amcharts.com/v5/charts/xy-chart/cursor/)" tutorial.
 
 ### Scrollbars
 
-MORE INFO For more info on using scrollbars, [read here](https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/).
+> **More info:** For more info on using scrollbars, [read here](https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/).
 
 ## Setting shape of the chart
 
-IMPORTANT While technically you can use curve of any complexity for your chart, there might be some situations where some elements of the chart are not renderer correctly. It's impossible to account for everything, and think of all the contingencies, so you might need to tinker with both your curve design and axis configuration to get a perfect result.
+> **Important:** While technically you can use curve of any complexity for your chart, there might be some situations where some elements of the chart are not renderer correctly. It's impossible to account for everything, and think of all the contingencies, so you might need to tinker with both your curve design and axis configuration to get a perfect result.
 
 The shape of the `CurveChart` is controlled via its X axis.
 
@@ -438,50 +465,47 @@ The curvature is set via array of control points, connected by straight lines.
 
 Graphically it looks something like this:
 
+![](https://docs.amcharts.com/v5/images/charts/timeline/timleine1.png)
+
+![](https://docs.amcharts.com/v5/images/charts/timeline/timleine2.png)
+
+![](https://docs.amcharts.com/v5/images/charts/timeline/timleine3.png)
+
 Each shape, however we put it is controlled by a few control points, connected by a straight line.
 
 #### How to set control points?
 
 Each point is expressed by its X/Y coordinate in form of the object, e.g.:
 
-{  
-  x: 100,  
-  y: 100  
-}
+```json
+{  x: 100,  y: 100}
+```
 
 Each shape is expressed by an array of such objects, e.g.:
 
-\[
+```json
+[
   { x: -400, y: 0 },
   { x: -250, y: 0 },
   { x: 0, y: 60 },
   { x: 250, y: 0 },
   { x: 400, y: 0 }
-\]
+]
+```
 
 And this array is set to X axis renderer's `points` property:
 
-let xRenderer = am5timeline.AxisRendererCurveX.new(root, {  
-  points: \[  
-    { x: -400, y: 0 },  
-    { x: -250, y: 0 },  
-    { x: 0, y: 60 },  
-    { x: 250, y: 0 },  
-    { x: 400, y: 0 }  
-  \],  
-  yRenderer: yRenderer  
-});
+TypeScript:
 
-var xRenderer = am5timeline.AxisRendererCurveX.new(root, {  
-  points: \[  
-    { x: -400, y: 0 },  
-    { x: -250, y: 0 },  
-    { x: 0, y: 60 },  
-    { x: 250, y: 0 },  
-    { x: 400, y: 0 }  
-  \],  
-  yRenderer: yRenderer  
-});
+```ts
+let xRenderer = am5timeline.AxisRendererCurveX.new(root, {  points: [    { x: -400, y: 0 },    { x: -250, y: 0 },    { x: 0, y: 60 },    { x: 250, y: 0 },    { x: 400, y: 0 }  ],  yRenderer: yRenderer});
+```
+
+JavaScript:
+
+```js
+var xRenderer = am5timeline.AxisRendererCurveX.new(root, {  points: [    { x: -400, y: 0 },    { x: -250, y: 0 },    { x: 0, y: 60 },    { x: 250, y: 0 },    { x: 400, y: 0 }  ],  yRenderer: yRenderer});
+```
 
 ### Auto-scale
 
@@ -489,7 +513,7 @@ While the points technically represent X and Y pixel coordinates, the chart will
 
 This means that if you have your shape control points from, say, -100 to 100, and a chart container that's 400 pixels wide, those coordinates will be adjusted accordingly.
 
-NOTE When auto-scaling, the chart will take both height and with of the chart into account. This means that the shape will be auto-adjusted to always fit into container both vertically and horizontally, while maintaining original aspect ratio.
+> **Note:** When auto-scaling, the chart will take both height and with of the chart into account. This means that the shape will be auto-adjusted to always fit into container both vertically and horizontally, while maintaining original aspect ratio.
 
 ### Auto-center
 
@@ -509,24 +533,12 @@ To control chart height, we will be using its Y axis.
 
 For that its renderer has two settings: `axisLength` and `axisLocation`.
 
-Setting
+| Setting        | Default | Comment                                                                                        |
+| -------------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `axisLength`   | 60      | Absolute axis length in pixels.                                                                |
+| `axisLocation` | 0.5     | Relative position of the horizontal axis in in relation to the vertical axis. From `0` to `1`. |
 
-Default
-
-Comment
-
-`axisLength`
-
-60
-
-Absolute axis length in pixels.
-
-`axisLocation`
-
-0.5
-
-Relative position of the horizontal axis in in relation to the vertical axis. From `0` to `1`.
-
+```js
 let yAxis = chart.yAxes.push(
   am5xy.ValueAxis.new(root, {
     renderer: am5timeline.AxisRendererCurveY.new(root, {
@@ -544,14 +556,15 @@ var yAxis = chart.yAxes.push(
     })
   })
 );
+```
 
 Here's how `radius axisLocation` setting affect the real chart:
 
-`axisLocation: 0.5` (default)
+![](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-48-59-1024x545.png "`axisLocation: 0.5` (default)")
 
-`axisLocation: 1`
+![](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-48-33-1024x545.png "`axisLocation: 1`")
 
-`axisLocation: 0`
+![](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-49-20-1024x545.png "`axisLocation: 0`")
 
 ### Using SVG paths
 
@@ -563,12 +576,12 @@ For the purpose of this tutorial, let's use [Inkscape](https://inkscape.org/) - 
 
 To create a path, follow these three steps:
 
-1.  Create a path in editor.
-2.  Save as SVG, open it in any text editor, and look for the `<path>` element. Then grab whatever in it's `d` attribute - it's the SVG path.
+1. Create a path in editor.
+2. Save as SVG, open it in any text editor, and look for the `<path>` element. Then grab whatever in it's `d` attribute - it's the SVG path.
 
-Create an SVG file with target curve of our chart
+![](https://docs.amcharts.com/v5/images/charts/timeline/inkscape_2019-09-10_12-22-45-1024x725.png "Create an SVG file with target curve of our chart")
 
-Open the file in editor and graph path data
+![](https://docs.amcharts.com/v5/images/charts/timeline/sublime_text_2019-09-10_12-24-06-1024x723.png "Open the file in editor and graph path data")
 
 #### Using existing SVG file
 
@@ -584,6 +597,168 @@ For that, simply use this pre-made tool.
 
 Paste your path data into the first text area. Click submit button. Grab converted point data from the second text area.
 
+Example: [SVG path converter to points](https://docs.amcharts.com/embeds/v5/svg-path-converter-to-points/)
+
+Scripts: https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css
+
+HTML:
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Enter SVG path</h5>
+          <textarea id="data">
+m -66.523809,44.372384 c 161.819672,0 158.605972,-79.22919 158.605972,-79.22919</textarea>
+          <input
+            type="button"
+            class="btn btn-primary"
+            value="Convert to points"
+            onclick="process()"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Preview</h5>
+          <svg
+            id="svg"
+            version="1.1"
+            x="0px"
+            y="0px"
+            width="100%"
+            height="200px"
+            xml:space="preserve"
+          >
+            <path
+              id="path"
+              fill="none"
+              stroke="#c00"
+              stroke-width="3"
+              stroke-miterlimit="10"
+              d=""
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Point info</h5>
+          <textarea id="result"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.container {
+  margin-top: 2em;
+  width: 98%;
+}
+
+#data {
+  width: 100%;
+  height: 100px;
+}
+
+#result {
+  width: 100%;
+  height: 440px;
+}
+
+svg {
+  border: 1px solid #eee;
+}
+```
+
+JavaScript:
+
+```js
+// The two important methods here are
+// path.getTotalLength and path.getPointAtLength
+
+// For more info see:
+// https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement
+
+function process() {
+  // Get path data
+  var data = document.getElementById("data").value;
+
+  // Set preview
+  var path = document.getElementById("path");
+  path.setAttribute("d", data);
+  fitPath();
+
+  // Length of path
+  var pathLength = Math.floor(path.getTotalLength());
+
+  var points = "[";
+  for (let i = 0; i < pathLength; i = i + 5) {
+    // Get x and y values at a certain point in the line
+    if (i > 0) {
+      points += ",";
+    }
+    pt = path.getPointAtLength(i);
+    points +=
+      "\n  { x: " + Math.round(pt.x * 10) / 10 + ", y: " + Math.round(pt.y * 10) / 10 + " }";
+  }
+  points += "\n]";
+
+  // Set result
+  var result = document.getElementById("result");
+  result.value = points;
+  result.focus();
+  result.select();
+}
+
+function fitPath() {
+  var path = document.getElementById("path");
+  var svg = document.getElementById("svg");
+
+  path.removeAttribute("transform");
+
+  var pathbox = path.getBoundingClientRect();
+  var svgbox = svg.getBoundingClientRect();
+
+  var transform = "";
+
+  // Reduce size if necessary
+  var kx = pathbox.width > svgbox.width ? pathbox.width / svgbox.width : 1;
+  var ky = pathbox.height > svgbox.height ? pathbox.height / svgbox.height : 1;
+  var k = Math.max(kx, ky);
+
+  if (k != 1) {
+    transform += " scale(" + k + ")";
+  }
+
+  // Position so it fits
+  var dx = Math.abs(svgbox.x - pathbox.x) + svgbox.width / 2 - (pathbox.width * k) / 2;
+  var dy = Math.abs(svgbox.y - pathbox.y) + svgbox.height / 2 - (pathbox.height * k) / 2;
+
+  if (dx || dy) {
+    transform += " translate(" + dx + " " + dy + ")";
+  }
+
+  if (transform != "") {
+    path.setAttribute("transform", transform);
+  }
+}
+```
 
 #### Why can't we use SVG path instead of points?
 
@@ -607,46 +782,396 @@ It's configured exactly the same way as `CurveChart` we already learned, except 
 
 Let's take a look at the few unique options available for `SerpentineChart`.
 
-Option
-
-Default
-
-Comment
-
-`levelCount`
-
-`3`
-
-Number of "levels" the chart will have. E.g. `3` (three) means there will be three straight lines of chart with two curved turns connecting them.
-
-`orientation`
-
-`"vertical"`
-
-Indicates the direction the "road" will weave in:  
-`"vertical"` (default) will make the chart start at the top and go down.  
-`"horizontal"` will start at the left and got to right.
-
-`startLocation`
-
-`0`
-
-A relative location to start the "road" in relation to the width of the chart. E.g. `0` means the start, `0.5` - the middle, and `1` - the end.
-
-`endLocation`
-
-`1`
-
-A relative location to end the "road" in relation to the width of the chart. E.g. `0` means the start, `0.5` - the middle, and `1` - the end.
-
-`yAxisRadius`
-
-`50%`
-
-This setting will be automatically applied to all Y axes' `radius`.
+| Option          | Default      | Comment                                                                                                                                                                            |
+| --------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `levelCount`    | `3`          | Number of "levels" the chart will have. E.g. `3` (three) means there will be three straight lines of chart with two curved turns connecting them.                                  |
+| `orientation`   | `"vertical"` | Indicates the direction the "road" will weave in: `"vertical"` (default) will make the chart start at the top and go down. `"horizontal"` will start at the left and got to right. |
+| `startLocation` | `0`          | A relative location to start the "road" in relation to the width of the chart. E.g. `0` means the start, `0.5` - the middle, and `1` - the end.                                    |
+| `endLocation`   | `1`          | A relative location to end the "road" in relation to the width of the chart. E.g. `0` means the start, `0.5` - the middle, and `1` - the end.                                      |
+| `yAxisRadius`   | `50%`        | This setting will be automatically applied to all Y axes' `radius`.                                                                                                                |
 
 #### Serpentine example
 
+Example: [Timeline chart: Serpentine](https://docs.amcharts.com/embeds/v5/timeline-chart-serpentine/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/timeline.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+var chart = root.container.children.push(
+  am5timeline.SerpentineChart.new(root, {
+    bendCount: 3,
+    startLocation: 0.2,
+    endLocation: 1,
+    wheelY: "zoomX"
+  })
+);
+
+chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+
+var yRenderer = am5timeline.AxisRendererCurveY.new(root, {});
+
+yRenderer.labels.template.setAll({
+  centerY: am5.p50,
+  centerX: am5.p100,
+  fontSize: 11
+});
+
+yRenderer.grid.template.set("forceHidden", true);
+
+// Create axes and their renderers
+var xRenderer = am5timeline.AxisRendererCurveX.new(root, {
+  yRenderer: yRenderer,
+  strokeDasharray: [2, 3],
+  strokeOpacity: 0.5,
+  stroke: am5.color(0x000000)
+});
+
+xRenderer.labels.template.setAll({
+  centerY: am5.p50,
+  fontSize: 11,
+  minPosition: 0.01
+});
+
+xRenderer.labels.template.setup = function (target) {
+  target.set("layer", 30);
+  target.set(
+    "background",
+    am5.Rectangle.new(root, {
+      fill: am5.color(0xffffff),
+      fillOpacity: 1
+    })
+  );
+};
+
+var yAxis = chart.yAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0,
+    categoryField: "category",
+    renderer: yRenderer
+  })
+);
+
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: xRenderer,
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+// Data
+var colorSet = chart.get("colors");
+
+var data = [
+  {
+    category: "Module #1",
+    start: new Date("2019-01-10").getTime(),
+    end: new Date("2019-01-13").getTime(),
+    color: colorSet.getIndex(0),
+    task: "Gathering requirements"
+  },
+  {
+    category: "Module #1",
+    start: new Date("2019-02-05").getTime(),
+    end: new Date("2019-04-18").getTime(),
+    color: colorSet.getIndex(0),
+    task: "Development"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-01-08").getTime(),
+    end: new Date("2019-01-10").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Gathering requirements"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-01-12").getTime(),
+    end: new Date("2019-01-15").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Producing specifications"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-01-16").getTime(),
+    end: new Date("2019-02-05").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Development"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-02-10").getTime(),
+    end: new Date("2019-02-18").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Testing and QA"
+  },
+  {
+    category: ""
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-01-01").getTime(),
+    end: new Date("2019-01-19").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Gathering requirements"
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-02-01").getTime(),
+    end: new Date("2019-02-10").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Producing specifications"
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-03-10").getTime(),
+    end: new Date("2019-04-15").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Development"
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-04-20").getTime(),
+    end: new Date("2019-04-30").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Testing and QA",
+    disabled2: false,
+    image2: "/wp-content/uploads/assets/timeline/rachel.jpg",
+    location: 0
+  },
+  {
+    category: "Module #4",
+    start: new Date("2019-01-15").getTime(),
+    end: new Date("2019-02-12").getTime(),
+    color: colorSet.getIndex(15),
+    task: "Gathering requirements",
+    disabled1: false,
+    image1: "/wp-content/uploads/assets/timeline/monica.jpg"
+  },
+  {
+    category: "Module #4",
+    start: new Date("2019-02-25").getTime(),
+    end: new Date("2019-03-10").getTime(),
+    color: colorSet.getIndex(15),
+    task: "Development"
+  },
+  {
+    category: "Module #4",
+    start: new Date("2019-03-23").getTime(),
+    end: new Date("2019-04-29").getTime(),
+    color: colorSet.getIndex(15),
+    task: "Testing and QA"
+  }
+];
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5timeline.CurveColumnSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    baseAxis: yAxis,
+    valueXField: "end",
+    openValueXField: "start",
+    categoryYField: "category",
+    layer: 30
+  })
+);
+
+series.columns.template.setAll({
+  height: am5.percent(10),
+  strokeOpacity: 0
+});
+
+series.bullets.push(function (root, series, dataItem) {
+  var circle = am5.Circle.new(root, {
+    radius: 4,
+    fill: chart.get("colors").getIndex(series.dataItems.indexOf(dataItem)),
+    strokeWidth: 2,
+    strokeOpacity: 0.5,
+    layer: 30
+  });
+
+  return am5.Bullet.new(root, {
+    sprite: circle,
+    locationX: 0,
+    locationY: 0.5
+  });
+});
+
+series.bullets.push(function (root, series, dataItem) {
+  var circle = am5.Circle.new(root, {
+    radius: 4,
+    fill: chart.get("colors").getIndex(series.dataItems.indexOf(dataItem)),
+    strokeWidth: 2,
+    strokeOpacity: 0.5,
+    layer: 30
+  });
+
+  return am5.Bullet.new(root, {
+    sprite: circle,
+    locationX: 1
+  });
+});
+
+series.columns.template.adapters.add("fill", function (fill, target) {
+  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
+});
+
+// line series for flags
+var lineSeries = chart.series.push(
+  am5timeline.CurveLineSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    categoryYField: "category",
+    valueXField: "date"
+  })
+);
+
+lineSeries.strokes.template.set("forceHidden", true);
+
+lineSeries.bullets.push(function (root, series, dataItem) {
+  var flag = am5.Tooltip.new(root, {
+    centerY: 28,
+    paddingBottom: 4,
+    paddingLeft: 7,
+    paddingRight: 7,
+    paddingTop: 4,
+    layer: 30
+  });
+
+  flag.get("background")?.setAll({
+    stroke: am5.color(0x000000),
+    cornerRadius: 0
+  });
+
+  flag.label.setAll({
+    fill: am5.color(0x000000),
+    text: dataItem.dataContext.letter,
+    fontSize: "0.8em"
+  });
+
+  flag.show();
+
+  return am5.Bullet.new(root, {
+    sprite: flag,
+    locationX: 0.5,
+    locationY: 0.5
+  });
+});
+
+lineSeries.data.setAll([
+  { category: "", eventDate: "2019-01-15", letter: "A", description: "Something happened here" },
+  {
+    category: "",
+    date: new Date("2019-01-23").getTime(),
+    letter: "B",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-02-10").getTime(),
+    letter: "C",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-02-29").getTime(),
+    letter: "D",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-03-06").getTime(),
+    letter: "E",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-03-12").getTime(),
+    letter: "F",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-03-22").getTime(),
+    letter: "G",
+    description: "Something happened here"
+  }
+]);
+
+var cursor = chart.set(
+  "cursor",
+  am5timeline.CurveCursor.new(root, {
+    behavior: "zoomX",
+    xAxis: xAxis,
+    yAxis: yAxis
+  })
+);
+
+series.data.setAll(data);
+
+yAxis.data.setAll([
+  { category: "Module #1" },
+  { category: "Module #2" },
+  { category: "" },
+  { category: "Module #3" },
+  { category: "Module #4" }
+]);
+
+// Animate chart and series in
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
+series.appear(1000);
+chart.appear(1000, 100);
+```
 
 ### Spiral
 
@@ -656,50 +1181,403 @@ This setting will be automatically applied to all Y axes' `radius`.
 
 Let's see what options are available for the `SpiralChart`.
 
-Option
-
-Default
-
-Comment
-
-`` `` `endAngle` `` ``
-
-`0`
-
-An angle the spiral will end at.
-
-`` `innerRadius` ``
-
-`20%`
-
-Inner radius of the the spiral.
-
-`levelCount`
-
-`3`
-
-Number of rings the spiral will consist of.
-
-`startAngle`
-
-\-90
-
-An angle the spiral will start at.
-
-`yAxisRadius`
-
-`60%`
-
-This setting will be automatically applied to all Y axes' `radius`.
+| Option        | Default | Comment                                                             |
+| ------------- | ------- | ------------------------------------------------------------------- |
+| `endAngle`    | `0`     | An angle the spiral will end at.                                    |
+| `innerRadius` | `20%`   | Inner radius of the the spiral.                                     |
+| `levelCount`  | `3`     | Number of rings the spiral will consist of.                         |
+| `startAngle`  | -90     | An angle the spiral will start at.                                  |
+| `yAxisRadius` | `60%`   | This setting will be automatically applied to all Y axes' `radius`. |
 
 #### Spiral example
 
+Example: [Timeline chart: Spiral](https://docs.amcharts.com/embeds/v5/timeline-chart-spiral/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/timeline.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+var chart = root.container.children.push(
+  am5timeline.SpiralChart.new(root, {
+    levelCount: 2,
+    wheelY: "zoomX"
+  })
+);
+
+chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+
+var yRenderer = am5timeline.AxisRendererCurveY.new(root, {});
+
+yRenderer.labels.template.setAll({
+  centerY: am5.p50,
+  centerX: am5.p100,
+  fontSize: 11
+});
+
+yRenderer.grid.template.set("forceHidden", true);
+
+// Create axes and their renderers
+var xRenderer = am5timeline.AxisRendererCurveX.new(root, {
+  yRenderer: yRenderer,
+  strokeDasharray: [2, 3],
+  strokeOpacity: 0.5,
+  stroke: am5.color(0x000000)
+});
+
+xRenderer.labels.template.setAll({
+  centerY: am5.p50,
+  fontSize: 11,
+  minPosition: 0.01
+});
+
+xRenderer.labels.template.setup = function (target) {
+  target.set("layer", 30);
+  target.set(
+    "background",
+    am5.Rectangle.new(root, {
+      fill: am5.color(0xffffff),
+      fillOpacity: 1
+    })
+  );
+};
+
+var yAxis = chart.yAxes.push(
+  am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0,
+    categoryField: "category",
+    renderer: yRenderer
+  })
+);
+
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: xRenderer,
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+// Data
+var colorSet = chart.get("colors");
+
+var data = [
+  {
+    category: "Module #1",
+    start: new Date("2019-01-10").getTime(),
+    end: new Date("2019-01-13").getTime(),
+    color: colorSet.getIndex(0),
+    task: "Gathering requirements"
+  },
+  {
+    category: "Module #1",
+    start: new Date("2019-02-05").getTime(),
+    end: new Date("2019-04-18").getTime(),
+    color: colorSet.getIndex(0),
+    task: "Development"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-01-08").getTime(),
+    end: new Date("2019-01-10").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Gathering requirements"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-01-12").getTime(),
+    end: new Date("2019-01-15").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Producing specifications"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-01-16").getTime(),
+    end: new Date("2019-02-05").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Development"
+  },
+  {
+    category: "Module #2",
+    start: new Date("2019-02-10").getTime(),
+    end: new Date("2019-02-18").getTime(),
+    color: colorSet.getIndex(5),
+    task: "Testing and QA"
+  },
+  {
+    category: ""
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-01-01").getTime(),
+    end: new Date("2019-01-19").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Gathering requirements"
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-02-01").getTime(),
+    end: new Date("2019-02-10").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Producing specifications"
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-03-10").getTime(),
+    end: new Date("2019-04-15").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Development"
+  },
+  {
+    category: "Module #3",
+    start: new Date("2019-04-20").getTime(),
+    end: new Date("2019-04-30").getTime(),
+    color: colorSet.getIndex(9),
+    task: "Testing and QA",
+    disabled2: false,
+    image2: "/wp-content/uploads/assets/timeline/rachel.jpg",
+    location: 0
+  },
+  {
+    category: "Module #4",
+    start: new Date("2019-01-15").getTime(),
+    end: new Date("2019-02-12").getTime(),
+    color: colorSet.getIndex(15),
+    task: "Gathering requirements",
+    disabled1: false,
+    image1: "/wp-content/uploads/assets/timeline/monica.jpg"
+  },
+  {
+    category: "Module #4",
+    start: new Date("2019-02-25").getTime(),
+    end: new Date("2019-03-10").getTime(),
+    color: colorSet.getIndex(15),
+    task: "Development"
+  },
+  {
+    category: "Module #4",
+    start: new Date("2019-03-23").getTime(),
+    end: new Date("2019-04-29").getTime(),
+    color: colorSet.getIndex(15),
+    task: "Testing and QA"
+  }
+];
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5timeline.CurveColumnSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    baseAxis: yAxis,
+    valueXField: "end",
+    openValueXField: "start",
+    categoryYField: "category",
+    layer: 30
+  })
+);
+
+series.columns.template.setAll({
+  height: am5.percent(10),
+  strokeOpacity: 0
+});
+
+series.bullets.push(function (root, series, dataItem) {
+  var circle = am5.Circle.new(root, {
+    radius: 4,
+    fill: chart.get("colors").getIndex(series.dataItems.indexOf(dataItem)),
+    strokeWidth: 2,
+    strokeOpacity: 0.5,
+    layer: 30
+  });
+
+  return am5.Bullet.new(root, {
+    sprite: circle,
+    locationX: 0,
+    locationY: 0.5
+  });
+});
+
+series.bullets.push(function (root, series, dataItem) {
+  var circle = am5.Circle.new(root, {
+    radius: 4,
+    fill: chart.get("colors").getIndex(series.dataItems.indexOf(dataItem)),
+    strokeWidth: 2,
+    strokeOpacity: 0.5,
+    layer: 30
+  });
+
+  return am5.Bullet.new(root, {
+    sprite: circle,
+    locationX: 1
+  });
+});
+
+series.columns.template.adapters.add("fill", function (fill, target) {
+  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
+});
+
+// Line series for flags
+var lineSeries = chart.series.push(
+  am5timeline.CurveLineSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    categoryYField: "category",
+    valueXField: "date"
+  })
+);
+
+lineSeries.strokes.template.set("forceHidden", true);
+
+lineSeries.bullets.push(function (root, series, dataItem) {
+  var flag = am5.Tooltip.new(root, {
+    centerY: 28,
+    paddingBottom: 4,
+    paddingLeft: 7,
+    paddingRight: 7,
+    paddingTop: 4,
+    layer: 30
+  });
+
+  flag.get("background")?.setAll({
+    stroke: am5.color(0x000000),
+    cornerRadius: 0
+  });
+
+  flag.label.setAll({
+    fill: am5.color(0x000000),
+    text: dataItem.dataContext.letter,
+    fontSize: "0.8em"
+  });
+
+  flag.show();
+
+  return am5.Bullet.new(root, {
+    sprite: flag,
+    locationX: 0.5,
+    locationY: 0.5
+  });
+});
+
+lineSeries.data.setAll([
+  { category: "", eventDate: "2019-01-15", letter: "A", description: "Something happened here" },
+  {
+    category: "",
+    date: new Date("2019-01-23").getTime(),
+    letter: "B",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-02-10").getTime(),
+    letter: "C",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-02-29").getTime(),
+    letter: "D",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-03-06").getTime(),
+    letter: "E",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-03-12").getTime(),
+    letter: "F",
+    description: "Something happened here"
+  },
+  {
+    category: "",
+    date: new Date("2019-03-22").getTime(),
+    letter: "G",
+    description: "Something happened here"
+  }
+]);
+
+var cursor = chart.set(
+  "cursor",
+  am5timeline.CurveCursor.new(root, {
+    behavior: "zoomX",
+    xAxis: xAxis,
+    yAxis: yAxis
+  })
+);
+
+series.data.setAll(data);
+
+yAxis.data.setAll([
+  { category: "Module #1" },
+  { category: "Module #2" },
+  { category: "" },
+  { category: "Module #3" },
+  { category: "Module #4" }
+]);
+
+// Animate chart and series in
+// https://docs.amcharts.com/v5/concepts/animations/#initial-animation
+series.appear(1000);
+chart.appear(1000, 100);
+```
 
 ## Complete example
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5xy from "@amcharts/amcharts5/xy";
-import \* as am5timeline from "@amcharts/amcharts5/timeline";
+TypeScript:
+
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import * as am5timeline from "@amcharts/amcharts5/timeline";
 
 // Create root and chart
 let root = am5.Root.new("chartdiv");
@@ -708,7 +1586,7 @@ let chart = root.container.children.push(
 );
 
 // Define data
-let data = \[{
+let data = [{
   date: new Date(2021, 0, 1).getTime(),
   value: 100
 }, {
@@ -750,7 +1628,7 @@ let data = \[{
 }, {
   date: new Date(2021, 0, 14).getTime(),
   value: 105
-}\];
+}];
 
 // Create axes
 let yRenderer = am5timeline.AxisRendererCurveY.new(root, {
@@ -759,7 +1637,7 @@ let yRenderer = am5timeline.AxisRendererCurveY.new(root, {
 });
 
 let xRenderer = am5timeline.AxisRendererCurveX.new(root, {
-  points: \[
+  points: [
     { x: 0, y: -300 },
     { x: 300, y: -300 },
     { x: 346.9, y: -296.3 },
@@ -802,7 +1680,7 @@ let xRenderer = am5timeline.AxisRendererCurveX.new(root, {
     { x: -392.7, y: -285.3 },
     { x: -346.9, y: -296.3 },
     { x: 0, y: -300 }
-  \],
+  ],
   yRenderer: yRenderer
 });
 
@@ -846,159 +1724,226 @@ let cursor = chart.set("cursor", am5timeline.CurveCursor.new(root, {
   xAxis: xAxis,
   yAxis
 }));
+```
 
-<script src="https://cdn.amcharts.com/lib/5/index.js"></script>  
-<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>  
-<script src="https://cdn.amcharts.com/lib/5/timeline.js"></script>  
-  
-<div id="chartdiv"></div>  
-  
-<script>  
-// Create root and chart  
-var root = am5.Root.new("chartdiv");  
-var chart = root.container.children.push(  
-  am5timeline.CurveChart.new(root, {})  
-);  
-  
-// Define data  
-var data = \[{  
-  date: new Date(2021, 0, 1).getTime(),  
-  value: 100  
-}, {  
-  date: new Date(2021, 0, 2).getTime(),  
-  value: 320  
-}, {  
-  date: new Date(2021, 0, 3).getTime(),  
-  value: 216  
-}, {  
-  date: new Date(2021, 0, 4).getTime(),  
-  value: 150  
-}, {  
-  date: new Date(2021, 0, 5).getTime(),  
-  value: 156  
-}, {  
-  date: new Date(2021, 0, 6).getTime(),  
-  value: 199  
-}, {  
-  date: new Date(2021, 0, 7).getTime(),  
-  value: 114  
-}, {  
-  date: new Date(2021, 0, 8).getTime(),  
-  value: 269  
-}, {  
-  date: new Date(2021, 0, 9).getTime(),  
-  value: 190  
-}, {  
-  date: new Date(2021, 0, 10).getTime(),  
-  value: 380  
-}, {  
-  date: new Date(2021, 0, 11).getTime(),  
-  value: 250  
-}, {  
-  date: new Date(2021, 0, 12).getTime(),  
-  value: 110  
-}, {  
-  date: new Date(2021, 0, 13).getTime(),  
-  value: 185  
-}, {  
-  date: new Date(2021, 0, 14).getTime(),  
-  value: 105  
-}\];  
-  
-// Create axes  
-var yRenderer = am5timeline.AxisRendererCurveY.new(root, {  
-  axisLocation: 0,  
-  axisLength: 150  
-});  
-  
-var xRenderer = am5timeline.AxisRendererCurveX.new(root, {  
-  points: \[  
-    { x: 0, y: -300 },  
-    { x: 300, y: -300 },  
-    { x: 346.9, y: -296.3 },  
-    { x: 392.7, y: -285.3 },  
-    { x: 436.2, y: -267.3 },  
-    { x: 476.3, y: -242.7 },  
-    { x: 512.1, y: -212.1 },  
-    { x: 542.7, y: -176.3 },  
-    { x: 567.3, y: -136.2 },  
-    { x: 585.3, y: -92.7 },  
-    { x: 596.3, y: -46.9 },  
-    { x: 600, y: 0 },  
-    { x: 596.3, y: 46.9 },  
-    { x: 585.3, y: 92.7 },  
-    { x: 567.3, y: 136.2 },  
-    { x: 542.7, y: 176.3 },  
-    { x: 512.1, y: 212.1 },  
-    { x: 476.3, y: 242.7 },  
-    { x: 436.2, y: 267.3 },  
-    { x: 392.7, y: 285.3 },  
-    { x: 346.9, y: 296.3 },  
-    { x: -300, y: 300 },  
-    { x: -346.9, y: 296.3 },  
-    { x: -392.7, y: 285.3 },  
-    { x: -436.2, y: 267.3 },  
-    { x: -476.3, y: 242.7 },  
-    { x: -512.1, y: 212.1 },  
-    { x: -542.7, y: 176.3 },  
-    { x: -567.3, y: 136.2 },  
-    { x: -585.3, y: 92.7 },  
-    { x: -596.3, y: 46.9 },  
-    { x: -600, y: 0 },  
-    { x: -596.3, y: -46.9 },  
-    { x: -585.3, y: -92.7 },  
-    { x: -567.3, y: -136.2 },  
-    { x: -542.7, y: -176.3 },  
-    { x: -512.1, y: -212.1 },  
-    { x: -476.3, y: -242.7 },  
-    { x: -436.2, y: -267.3 },  
-    { x: -392.7, y: -285.3 },  
-    { x: -346.9, y: -296.3 },  
-    { x: 0, y: -300 }  
-  \],  
-  yRenderer: yRenderer  
-});  
-  
-var yAxis = chart.yAxes.push(  
-  am5xy.ValueAxis.new(root, {  
-    renderer: yRenderer  
-  })  
-);  
-  
-var xAxis = chart.xAxes.push(  
-  am5xy.DateAxis.new(root, {  
-    baseInterval: { timeUnit: "day", count: 1 },  
-    renderer: xRenderer  
-  })  
-);  
-  
-// Create series  
-var series = chart.series.push(  
-  am5timeline.CurveColumnSeries.new(root, {  
-    name: "Series",  
-    xAxis: xAxis,  
-    yAxis: yAxis,  
-    valueYField: "value",  
-    valueXField: "date"  
-  })  
-);  
-  
-series.columns.template.setAll({  
-  width: am5.percent(30)  
-});  
-  
-series.data.setAll(data);  
-  
-// Add legend  
-var legend = chart.children.push(am5.Legend.new(root, {}));  
-legend.data.setAll(chart.series.values);  
-  
-// Add cursor  
-var cursor = chart.set("cursor", am5timeline.CurveCursor.new(root, {  
-  behavior: "zoomX",  
-  xAxis: xAxis,  
-  yAxis  
-}));  
-</script>
+JavaScript:
 
+```html
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script><script src="https://cdn.amcharts.com/lib/5/xy.js"></script><script src="https://cdn.amcharts.com/lib/5/timeline.js"></script><div id="chartdiv"></div><script>// Create root and chartvar root = am5.Root.new("chartdiv");var chart = root.container.children.push(  am5timeline.CurveChart.new(root, {}));// Define datavar data = [{  date: new Date(2021, 0, 1).getTime(),  value: 100}, {  date: new Date(2021, 0, 2).getTime(),  value: 320}, {  date: new Date(2021, 0, 3).getTime(),  value: 216}, {  date: new Date(2021, 0, 4).getTime(),  value: 150}, {  date: new Date(2021, 0, 5).getTime(),  value: 156}, {  date: new Date(2021, 0, 6).getTime(),  value: 199}, {  date: new Date(2021, 0, 7).getTime(),  value: 114}, {  date: new Date(2021, 0, 8).getTime(),  value: 269}, {  date: new Date(2021, 0, 9).getTime(),  value: 190}, {  date: new Date(2021, 0, 10).getTime(),  value: 380}, {  date: new Date(2021, 0, 11).getTime(),  value: 250}, {  date: new Date(2021, 0, 12).getTime(),  value: 110}, {  date: new Date(2021, 0, 13).getTime(),  value: 185}, {  date: new Date(2021, 0, 14).getTime(),  value: 105}];// Create axesvar yRenderer = am5timeline.AxisRendererCurveY.new(root, {  axisLocation: 0,  axisLength: 150});var xRenderer = am5timeline.AxisRendererCurveX.new(root, {  points: [    { x: 0, y: -300 },    { x: 300, y: -300 },    { x: 346.9, y: -296.3 },    { x: 392.7, y: -285.3 },    { x: 436.2, y: -267.3 },    { x: 476.3, y: -242.7 },    { x: 512.1, y: -212.1 },    { x: 542.7, y: -176.3 },    { x: 567.3, y: -136.2 },    { x: 585.3, y: -92.7 },    { x: 596.3, y: -46.9 },    { x: 600, y: 0 },    { x: 596.3, y: 46.9 },    { x: 585.3, y: 92.7 },    { x: 567.3, y: 136.2 },    { x: 542.7, y: 176.3 },    { x: 512.1, y: 212.1 },    { x: 476.3, y: 242.7 },    { x: 436.2, y: 267.3 },    { x: 392.7, y: 285.3 },    { x: 346.9, y: 296.3 },    { x: -300, y: 300 },    { x: -346.9, y: 296.3 },    { x: -392.7, y: 285.3 },    { x: -436.2, y: 267.3 },    { x: -476.3, y: 242.7 },    { x: -512.1, y: 212.1 },    { x: -542.7, y: 176.3 },    { x: -567.3, y: 136.2 },    { x: -585.3, y: 92.7 },    { x: -596.3, y: 46.9 },    { x: -600, y: 0 },    { x: -596.3, y: -46.9 },    { x: -585.3, y: -92.7 },    { x: -567.3, y: -136.2 },    { x: -542.7, y: -176.3 },    { x: -512.1, y: -212.1 },    { x: -476.3, y: -242.7 },    { x: -436.2, y: -267.3 },    { x: -392.7, y: -285.3 },    { x: -346.9, y: -296.3 },    { x: 0, y: -300 }  ],  yRenderer: yRenderer});var yAxis = chart.yAxes.push(  am5xy.ValueAxis.new(root, {    renderer: yRenderer  }));var xAxis = chart.xAxes.push(  am5xy.DateAxis.new(root, {    baseInterval: { timeUnit: "day", count: 1 },    renderer: xRenderer  }));// Create seriesvar series = chart.series.push(  am5timeline.CurveColumnSeries.new(root, {    name: "Series",    xAxis: xAxis,    yAxis: yAxis,    valueYField: "value",    valueXField: "date"  }));series.columns.template.setAll({  width: am5.percent(30)});series.data.setAll(data);// Add legendvar legend = chart.children.push(am5.Legend.new(root, {}));legend.data.setAll(chart.series.values);// Add cursorvar cursor = chart.set("cursor", am5timeline.CurveCursor.new(root, {  behavior: "zoomX",  xAxis: xAxis,  yAxis}));</script>
+```
 
+Example: [Timeline chart](https://docs.amcharts.com/embeds/v5/timeline-chart/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/timeline.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(am5timeline.CurveChart.new(root, {}));
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 100
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 320
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 216
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 150
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 156
+  },
+  {
+    date: new Date(2021, 0, 6).getTime(),
+    value: 199
+  },
+  {
+    date: new Date(2021, 0, 7).getTime(),
+    value: 114
+  },
+  {
+    date: new Date(2021, 0, 8).getTime(),
+    value: 269
+  },
+  {
+    date: new Date(2021, 0, 9).getTime(),
+    value: 190
+  },
+  {
+    date: new Date(2021, 0, 10).getTime(),
+    value: 380
+  },
+  {
+    date: new Date(2021, 0, 11).getTime(),
+    value: 250
+  },
+  {
+    date: new Date(2021, 0, 12).getTime(),
+    value: 110
+  },
+  {
+    date: new Date(2021, 0, 13).getTime(),
+    value: 185
+  },
+  {
+    date: new Date(2021, 0, 14).getTime(),
+    value: 105
+  }
+];
+
+// Create axes
+var yRenderer = am5timeline.AxisRendererCurveY.new(root, {
+  axisLocation: 0,
+  axisLength: 150
+});
+
+var xRenderer = am5timeline.AxisRendererCurveX.new(root, {
+  points: [
+    { x: 0, y: -300 },
+    { x: 300, y: -300 },
+    { x: 346.9, y: -296.3 },
+    { x: 392.7, y: -285.3 },
+    { x: 436.2, y: -267.3 },
+    { x: 476.3, y: -242.7 },
+    { x: 512.1, y: -212.1 },
+    { x: 542.7, y: -176.3 },
+    { x: 567.3, y: -136.2 },
+    { x: 585.3, y: -92.7 },
+    { x: 596.3, y: -46.9 },
+    { x: 600, y: 0 },
+    { x: 596.3, y: 46.9 },
+    { x: 585.3, y: 92.7 },
+    { x: 567.3, y: 136.2 },
+    { x: 542.7, y: 176.3 },
+    { x: 512.1, y: 212.1 },
+    { x: 476.3, y: 242.7 },
+    { x: 436.2, y: 267.3 },
+    { x: 392.7, y: 285.3 },
+    { x: 346.9, y: 296.3 },
+    { x: -300, y: 300 },
+    { x: -346.9, y: 296.3 },
+    { x: -392.7, y: 285.3 },
+    { x: -436.2, y: 267.3 },
+    { x: -476.3, y: 242.7 },
+    { x: -512.1, y: 212.1 },
+    { x: -542.7, y: 176.3 },
+    { x: -567.3, y: 136.2 },
+    { x: -585.3, y: 92.7 },
+    { x: -596.3, y: 46.9 },
+    { x: -600, y: 0 },
+    { x: -596.3, y: -46.9 },
+    { x: -585.3, y: -92.7 },
+    { x: -567.3, y: -136.2 },
+    { x: -542.7, y: -176.3 },
+    { x: -512.1, y: -212.1 },
+    { x: -476.3, y: -242.7 },
+    { x: -436.2, y: -267.3 },
+    { x: -392.7, y: -285.3 },
+    { x: -346.9, y: -296.3 },
+    { x: 0, y: -300 }
+  ],
+
+  yRenderer: yRenderer,
+  rotateLabels: true
+});
+
+xRenderer.labels.template.setAll({
+  paddingTop: 40
+});
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: yRenderer
+  })
+);
+
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: xRenderer
+  })
+);
+
+// Create series
+var series = chart.series.push(
+  am5timeline.CurveColumnSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date"
+  })
+);
+
+series.columns.template.setAll({
+  width: am5.percent(70)
+});
+
+series.data.setAll(data);
+
+// Add legend
+var legend = chart.children.push(am5.Legend.new(root, {}));
+legend.data.setAll(chart.series.values);
+
+// Add cursor
+var cursor = chart.set(
+  "cursor",
+  am5timeline.CurveCursor.new(root, {
+    behavior: "zoomX",
+    xAxis: xAxis,
+    yAxis: yAxis
+  })
+);
+
+series.appear(1000);
+```

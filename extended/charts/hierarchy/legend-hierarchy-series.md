@@ -1,7 +1,7 @@
 ---
 title: "Legend and hierarchy series"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/legend-hierarchy-series/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will walk through configuration options for legend content on a hierarchy chart.
@@ -14,13 +14,21 @@ Since hierarchy charts use tree-like data item structure, we will need to choose
 
 The most common scenario is to use second level data items, that can be accessed via top-level data item's (which is always one) `children` setting: `series.dataItems[0].get("children")`.
 
+TypeScript:
+
+```ts
 let legend = chart.children.push(am5.Legend.new(root, {}));
-legend.data.setAll(series.dataItems\[0\].get("children"));
+legend.data.setAll(series.dataItems[0].get("children"));
+```
 
+JavaScript:
+
+```js
 var legend = chart.children.push(am5.Legend.new(root, {}));
-legend.data.setAll(series.dataItems\[0\].get("children"));
+legend.data.setAll(series.dataItems[0].get("children"));
+```
 
-MORE INFO For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
+> **More info:** For more information on how to configure legend, its items, and layout, please visit our dedicated "[Legend](https://docs.amcharts.com/v5/concepts/legend/)" tutorial.
 
 ## Legend label content
 
@@ -28,26 +36,16 @@ MORE INFO For more information on how to configure legend, its items, and layout
 
 What goes into legend labels on a percent chart is controlled by four of the series' settings:
 
-Setting key
-
-Default
-
-Comment
-
-`legendLabelText`
-
-`{category}`
-
-Text for the legend item label.
-
-`legendValueText`
-
-`{value}`
-
-Text for the legend item value label.
+| Setting key       | Default      | Comment                               |
+| ----------------- | ------------ | ------------------------------------- |
+| `legendLabelText` | `{category}` | Text for the legend item label.       |
+| `legendValueText` | `{value}`    | Text for the legend item value label. |
 
 To change contents of the legend, we simply need to set corresponding setting value:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -57,7 +55,11 @@ let series = chart.series.push(
     legendValueText: "{value}"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -67,41 +69,393 @@ var series = chart.series.push(
     legendValueText: "{value}"
   })
 );
+```
 
 Labels support [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (references to data item settings in curly brackets) so the text will be populated with actual data and values.
 
-Since each legend item is constructed out of the series data items, their data will be used to populate it, e.g. `[ForceDirectedDataItem](https://docs.amcharts.com/v5/reference/iforcedirecteddataitem/)`.
+Since each legend item is constructed out of the series data items, their data will be used to populate it, e.g. `ForceDirectedDataItem`.
 
 ### In-line formatting
 
 Besides regular text and data placeholders, labels support square bracket [in-line formatting](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) blocks. E.g.:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
     categoryField: "country",
     valueField: "sales",
-    legendLabelText: "\[{fill}\]{category}\[/\]",
-    legendValueText: "\[bold {fill}\]{value}\[/\]"
+    legendLabelText: "[{fill}]{category}[/]",
+    legendValueText: "[bold {fill}]{value}[/]"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
     categoryField: "country",
     valueField: "sales",
-    legendLabelText: "\[{fill}\]{category}\[/\]",
-    legendValueText: "\[bold {fill}\]{value}\[/\]"
+    legendLabelText: "[{fill}]{category}[/]",
+    legendValueText: "[bold {fill}]{value}[/]"
   })
 );
+```
 
 The above will use slice's `fill` (color) for category and value, as well as make category names bold.
 
 ## Example
 
+Example: [Force-directed chart with legend](https://docs.amcharts.com/embeds/v5/force-directed-chart-with-legend/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/hierarchy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var container = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.percent(100),
+    height: am5.percent(100),
+    layout: root.verticalLayout
+  })
+);
+
+var series = container.children.push(
+  am5hierarchy.ForceDirected.new(root, {
+    downDepth: 1,
+    initialDepth: 2,
+    topDepth: 1,
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children"
+  })
+);
+
+series.data.setAll([
+  {
+    name: "Root",
+    children: [
+      {
+        name: "A0",
+        children: [
+          {
+            name: "A0A1",
+            children: [
+              {
+                name: "A0A0A2",
+                value: 71
+              },
+              {
+                name: "A0A0B2",
+                children: [
+                  {
+                    name: "A0A0B1A3",
+                    value: 69
+                  },
+                  {
+                    name: "A0A0B1B3",
+                    value: 85
+                  }
+                ]
+              },
+
+              {
+                name: "A0A0C2",
+                value: 48
+              }
+            ]
+          },
+
+          {
+            name: "A0B1",
+            value: 27
+          },
+          {
+            name: "A0C1",
+            children: [
+              {
+                name: "A0C2A2",
+                value: 2
+              },
+              {
+                name: "A0C2B2",
+                children: [
+                  {
+                    name: "A0C2B1A3",
+                    value: 54
+                  },
+                  {
+                    name: "A0C2B1B3",
+                    value: 16
+                  }
+                ]
+              }
+            ]
+          },
+
+          {
+            name: "A0D1",
+            value: 89
+          }
+        ]
+      },
+
+      {
+        name: "B0",
+        children: [
+          {
+            name: "B1A1",
+            value: 9
+          },
+          {
+            name: "B1B1",
+            children: [
+              {
+                name: "B1B1A2",
+                children: [
+                  {
+                    name: "B1B1A0A3",
+                    value: 35
+                  },
+                  {
+                    name: "B1B1A0B3",
+                    value: 40
+                  }
+                ]
+              },
+
+              {
+                name: "B1B1B2",
+                value: 55
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        name: "C0",
+        children: [
+          {
+            name: "C2A1",
+            children: [
+              {
+                name: "C2A0A2",
+                value: 24
+              },
+              {
+                name: "C2A0B2",
+                value: 89
+              },
+              {
+                name: "C2A0C2",
+                children: [
+                  {
+                    name: "C2A0C2A3",
+                    children: [
+                      {
+                        name: "C2A0C2A0A4",
+                        children: [
+                          {
+                            name: "C2A0C2A0A00",
+                            value: 90
+                          },
+                          {
+                            name: "C2A0C2A0A01",
+                            value: 70
+                          },
+                          {
+                            name: "C2A0C2A0A02",
+                            value: 66
+                          },
+                          {
+                            name: "C2A0C2A0A03",
+                            value: 58
+                          }
+                        ]
+                      },
+
+                      {
+                        name: "C2A0C2A0B4",
+                        children: [
+                          {
+                            name: "C2A0C2A0B10",
+                            value: 80
+                          },
+                          {
+                            name: "C2A0C2A0B11",
+                            value: 40
+                          }
+                        ]
+                      }
+                    ]
+                  },
+
+                  {
+                    name: "C2A0C2B3",
+                    value: 44
+                  }
+                ]
+              },
+
+              {
+                name: "C2A0D2",
+                children: [
+                  {
+                    name: "C2A0D3A3",
+                    value: 28
+                  },
+                  {
+                    name: "C2A0D3B3",
+                    value: 14
+                  }
+                ]
+              }
+            ]
+          },
+
+          {
+            name: "C2B1",
+            value: 40
+          },
+          {
+            name: "C2C1",
+            children: [
+              {
+                name: "C2C2A2",
+                children: [
+                  {
+                    name: "C2C2A0A3",
+                    value: 28
+                  },
+                  {
+                    name: "C2C2A0B3",
+                    children: [
+                      {
+                        name: "C2C2A0B1A4",
+                        value: 19
+                      },
+                      {
+                        name: "C2C2A0B1B4",
+                        children: [
+                          {
+                            name: "C2C2A0B1B10",
+                            value: 11
+                          },
+                          {
+                            name: "C2C2A0B1B11",
+                            value: 10
+                          },
+                          {
+                            name: "C2C2A0B1B12",
+                            value: 97
+                          },
+                          {
+                            name: "C2C2A0B1B13",
+                            value: 47
+                          }
+                        ]
+                      },
+
+                      {
+                        name: "C2C2A0B1C4",
+                        children: [
+                          {
+                            name: "C2C2A0B1C20",
+                            value: 40
+                          },
+                          {
+                            name: "C2C2A0B1C21",
+                            value: 37
+                          },
+                          {
+                            name: "C2C2A0B1C22",
+                            value: 53
+                          }
+                        ]
+                      }
+                    ]
+                  },
+
+                  {
+                    name: "C2C2A0C3",
+                    value: 96
+                  }
+                ]
+              },
+
+              {
+                name: "C2C2B2",
+                value: 66
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]);
+
+series.set("selectedDataItem", series.dataItems[0]);
+
+// Add legend
+var legend = container.children.push(
+  am5.Legend.new(root, {
+    width: am5.percent(100),
+    centerX: am5.percent(50),
+    x: am5.percent(50),
+    layout: root.horizontalLayout
+  })
+);
+
+legend.data.setAll(series.dataItems[0].get("children"));
+```
 
 ## Related tutorials
 
--   [Toggling multi-level Sunburst nodes with legend](https://docs.amcharts.com/v5/tutorials/toggling-multi-level-sunburst-nodes-with-legend/)
--   [Sunburst chart with a legend including all nodes](https://docs.amcharts.com/v5/tutorials/sunburst-chart-with-a-legend-including-all-nodes/)
+* [Toggling multi-level Sunburst nodes with legend](https://docs.amcharts.com/v5/tutorials/toggling-multi-level-sunburst-nodes-with-legend/)
+* [Sunburst chart with a legend including all nodes](https://docs.amcharts.com/v5/tutorials/sunburst-chart-with-a-legend-including-all-nodes/)

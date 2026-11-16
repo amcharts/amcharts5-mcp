@@ -1,8 +1,10 @@
 ---
 title: "Using amCharts 5 with Jest"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/jest/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> This tutorial will show you how to create unit tests for Jest.
 
 This tutorial will show you how to create unit tests for [Jest](https://jestjs.io/).
 
@@ -14,7 +16,7 @@ You must install the following packages in your `package.json`:
 
 ```json
 "dependencies": {
-  "@amcharts/amcharts5": "^5.21.0"
+  "@amcharts/amcharts5": "^5.21.4"
 },
 "devDependencies": {
   "@babel/core": "^7.18.10",
@@ -42,7 +44,7 @@ Now you must do `npm install` or `yarn install`.
 
 Lastly create a `babel.config.js` file:
 
-```javascript
+```js
 module.exports = {
   presets: [
     ['@babel/preset-env', {targets: {node: 'current'}}],
@@ -57,7 +59,7 @@ Now that you have everything setup, you can write your unit tests.
 
 Let's say that your chart code is in a `chart.js` file:
 
-```typescript
+```ts
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 
@@ -79,7 +81,7 @@ export function makeChart() {
 
 You can write your unit tests in a `chart.test.js` file, like this:
 
-```typescript
+```ts
 // Import chart code
 import { makeChart } from "./chart";
 
@@ -102,7 +104,7 @@ test("chart exists", () => {
 
 To test components that use our [framework packages](https://docs.amcharts.com/v5/getting-started/integrations/) without drawing their charts, mock the package. For React:
 
-```javascript
+```js
 jest.mock("@amcharts/amcharts5-react", () => ({
   useAmChart: () => ({ ref: () => {}, root: undefined, result: undefined }),
   AmChart: () => null

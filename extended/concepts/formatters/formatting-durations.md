@@ -1,7 +1,7 @@
 ---
 title: "Formatting durations"
 source: "https://docs.amcharts.com/v5/concepts/formatters/formatting-durations/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial takes a look at duration formatter - helper object used to format numbers as duration throughout the chart.
@@ -32,9 +32,17 @@ It can represent millisecond, second, minute, hour, day, etc.
 
 We call it a "base unit", and can set it globally using global duration formatter's `baseUnit` setting:
 
-root.durationFormatter.set("baseUnit", "hour");
+TypeScript:
 
+```ts
 root.durationFormatter.set("baseUnit", "hour");
+```
+
+JavaScript:
+
+```js
+root.durationFormatter.set("baseUnit", "hour");
+```
 
 Available base unit values are: `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, and `"year"`.
 
@@ -42,8 +50,8 @@ Available base unit values are: `"millisecond"`, `"second"`, `"minute"`, `"hour"
 
 There are two ways to set duration formats on a duration formatter:
 
--   A universal duration format which will be applied to all values that need to be formatted as a duration.
--   A list of duration formats tailored for each base unit.
+* A universal duration format which will be applied to all values that need to be formatted as a duration.
+* A list of duration formats tailored for each base unit.
 
 A global duration formatter will already have its `durationFormats` pre-set to a default values, that may depend on the [locale](https://docs.amcharts.com/v5/concepts/locales/) your chart is using, whereas the universal duration format won't be set.
 
@@ -51,27 +59,43 @@ A global duration formatter will already have its `durationFormats` pre-set to a
 
 If we want to set universal duration format throughout the chart, we can set formatter's `durationFormat` setting:
 
-root.durationFormatter.set("durationFormat", "mm:ss");
+TypeScript:
 
+```ts
 root.durationFormatter.set("durationFormat", "mm:ss");
+```
+
+JavaScript:
+
+```js
+root.durationFormatter.set("durationFormat", "mm:ss");
+```
 
 We can also override formats for specific base units by modifying its `durationFormats` setting:
 
-root.durationFormatter.get("durationFormats")\["hour"\] = {
-  hour: "hh'h'",
-  day: "d'd' hh'h'",
-  week: "d'd' hh'h'",
-  month: "M'm' dd'd' hh'h'",
-  year: "y'y' MM'm' dd'd' hh'h'"
-}
+TypeScript:
 
-root.durationFormatter.get("durationFormats")\["hour"\] = {
+```ts
+root.durationFormatter.get("durationFormats")["hour"] = {
   hour: "hh'h'",
   day: "d'd' hh'h'",
   week: "d'd' hh'h'",
   month: "M'm' dd'd' hh'h'",
   year: "y'y' MM'm' dd'd' hh'h'"
 }
+```
+
+JavaScript:
+
+```js
+root.durationFormatter.get("durationFormats")["hour"] = {
+  hour: "hh'h'",
+  day: "d'd' hh'h'",
+  week: "d'd' hh'h'",
+  month: "M'm' dd'd' hh'h'",
+  year: "y'y' MM'm' dd'd' hh'h'"
+}
+```
 
 The multiple entries can be used by a duration axis to use different duration formats for different granularities of grid/labels.
 
@@ -85,17 +109,25 @@ The values that will be shown in place of the placeholder will be formatted acco
 
 We can set names of the data placeholders that hold numbers and need to be formatted as such via global formatter's `durationFields` setting:
 
-root.durationFormatter.setAll({
-  baseUnit: "second",
-  durationFormat: "mm:ss",
-  durationFields: \["valueY"\]
-});
+TypeScript:
 
+```ts
 root.durationFormatter.setAll({
   baseUnit: "second",
   durationFormat: "mm:ss",
-  durationFields: \["valueY"\]
+  durationFields: ["valueY"]
 });
+```
+
+JavaScript:
+
+```js
+root.durationFormatter.setAll({
+  baseUnit: "second",
+  durationFormat: "mm:ss",
+  durationFields: ["valueY"]
+});
+```
 
 For more information on how it works, please refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
@@ -103,59 +135,36 @@ For more information on how it works, please refer to "[Data placeholders](https
 
 The following table outlines codes that can be used in duration formats.
 
-IMPORTANTCodes are case-sensitive.
+> **Important:** Codes are case-sensitive.
 
-Code
-
-Comment
-
-y
-
-Years (a year is 365 days)
-
-M
-
-Months (a month is 31 days)
-
-w
-
-Weeks (a week is 7 days)
-
-d
-
-Days (a day is 24 hours)
-
-h
-
-Hours (an hour is 60 minutes)
-
-m
-
-Minutes (a minute is 60 seconds)
-
-s
-
-Seconds (a second is 1000 milliseconds)
-
-S
-
-Milliseconds
-
-a
-
-Special indicator that must always go after other codes. Indicates that absolute value should be used. (no minus sign)
-
-' (single quote)
-
-Text enclosed in single quotes will be treated as text and will be displayed as is without parsing it for codes
+| Code             | Comment                                                                                                                |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| y                | Years (a year is 365 days)                                                                                             |
+| M                | Months (a month is 31 days)                                                                                            |
+| w                | Weeks (a week is 7 days)                                                                                               |
+| d                | Days (a day is 24 hours)                                                                                               |
+| h                | Hours (an hour is 60 minutes)                                                                                          |
+| m                | Minutes (a minute is 60 seconds)                                                                                       |
+| s                | Seconds (a second is 1000 milliseconds)                                                                                |
+| S                | Milliseconds                                                                                                           |
+| a                | Special indicator that must always go after other codes. Indicates that absolute value should be used. (no minus sign) |
+| ' (single quote) | Text enclosed in single quotes will be treated as text and will be displayed as is without parsing it for codes        |
 
 ## Styling text
 
 Text formats can also include in-line styling instructions:
 
-root.durationFormatter.set("durationFormat", "\[bold\]mm:ss");
+TypeScript:
 
-root.durationFormatter.set("durationFormat", "\[bold\]mm:ss");
+```ts
+root.durationFormatter.set("durationFormat", "[bold]mm:ss");
+```
+
+JavaScript:
+
+```js
+root.durationFormatter.set("durationFormat", "[bold]mm:ss");
+```
 
 Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" tutorial for more info.
 
@@ -163,7 +172,7 @@ Please refer to the "[Text styling and data binding](https://docs.amcharts.com/v
 
 ### Quotes
 
-To explicitly make formatter ignore a portion of text, enclose it within single quotes:
+To explicitly make formatter ignore a portion of text, enclose it within single quotes:
 
 `"d'days' hh'hours'"`
 

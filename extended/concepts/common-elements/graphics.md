@@ -1,27 +1,37 @@
 ---
 title: "Graphics"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/graphics/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
+
+> Graphics is an element which can be used to draw shapes using vector information. This tutorial will explore how it can be used to draw anything on the chart and its elements.
 
 `Graphics` is an element which can be used to draw shapes using vector information. This tutorial will explore how it can be used to draw anything on the chart and its elements.
 
 ## Creating
 
-To create a graphics element, we will need to instantiate a `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)` object using its `new()` method.
+To create a graphics element, we will need to instantiate a `Graphics` object using its `new()` method.
 
 By default, it would not display anything. For it to work, we will need to:
 
-1.  Set its `fill` and/or `stroke` settings to provide color.
-2.  Use drawing functions or an SVG path to define actual shape.
+1. Set its `fill` and/or `stroke` settings to provide color.
+2. Use drawing functions or an SVG path to define actual shape.
 
+TypeScript:
+
+```ts
 am5.Graphics.new(root, {
   // config
 });
+```
 
+JavaScript:
+
+```js
 am5.Picture.new(root, {
   // config
 });
+```
 
 ## Setting colors
 
@@ -29,17 +39,25 @@ Depending whether we will be drawing lines or filled shapes, we can set colors v
 
 Let's say, we will be drawing a filled shape, which we want to have a red fill, with black outline (stroke):
 
+TypeScript:
+
+```ts
 am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   fill: am5.color(0x990000)
 });
+```
 
+JavaScript:
+
+```js
 am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   fill: am5.color(0x990000)
 });
+```
 
-There are more drawing options we can set like opacities, line thickness, or even gradients and patterns. We'll get to those in the [Configuring](#Configuring) section.
+There are more drawing options we can set like opacities, line thickness, or even gradients and patterns. We'll get to those in the [Configuring](#configuring) section.
 
 ## Drawing shapes
 
@@ -55,22 +73,97 @@ We can use some sort of editor to produce a path, or just grab one from an exist
 
 The following is an example of a path that draws a heart shape:
 
+```html title="SVG"
 M45.418 10c-2.293-2.5-5.625-3.957-8.961-4.168h-.414c-4.168 0-7.918 2.086-10.418 5.418-2.293-4.375-6.668-7.082-11.457-7.082h-.211c-3.539 0-7.082 1.457-9.375 4.164-2.5 2.5-3.75 6.043-3.539 9.586C1.457 24.168 4.582 27.293 7.5 30c3.332 3.332 6.457 6.043 5.418 13.957 0 1.25.625 2.086 1.664 2.086.418 0 .625 0 1.25-.211C37.5 39.168 48.957 30.207 48.957 20.207V20c.211-3.957-1.039-7.293-3.539-10ZM14.582 44.793V43.75Zm0 0
+```
 
 To make graphics element use the path, we need to set it to its `svgPath` setting:
 
+TypeScript:
+
+```ts
 am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   fill: am5.color(0x990000),
   svgPath: "M45.418 10c-2.293-2.5-5.625-3.957-8.961-4.168h-.414c-4.168 0-7.918 2.086-10.418 5.418-2.293-4.375-6.668-7.082-11.457-7.082h-.211c-3.539 0-7.082 1.457-9.375 4.164-2.5 2.5-3.75 6.043-3.539 9.586C1.457 24.168 4.582 27.293 7.5 30c3.332 3.332 6.457 6.043 5.418 13.957 0 1.25.625 2.086 1.664 2.086.418 0 .625 0 1.25-.211C37.5 39.168 48.957 30.207 48.957 20.207V20c.211-3.957-1.039-7.293-3.539-10ZM14.582 44.793V43.75Zm0 0"
 });
+```
 
+JavaScript:
+
+```js
 am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   fill: am5.color(0x990000),
   svgPath: "M45.418 10c-2.293-2.5-5.625-3.957-8.961-4.168h-.414c-4.168 0-7.918 2.086-10.418 5.418-2.293-4.375-6.668-7.082-11.457-7.082h-.211c-3.539 0-7.082 1.457-9.375 4.164-2.5 2.5-3.75 6.043-3.539 9.586C1.457 24.168 4.582 27.293 7.5 30c3.332 3.332 6.457 6.043 5.418 13.957 0 1.25.625 2.086 1.664 2.086.418 0 .625 0 1.25-.211C37.5 39.168 48.957 30.207 48.957 20.207V20c.211-3.957-1.039-7.293-3.539-10ZM14.582 44.793V43.75Zm0 0"
 });
+```
 
+Example: [Using graphics elements](https://docs.amcharts.com/embeds/v5/using-graphics-elements/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 92vh;
+  margin: auto;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Create chart
+var chart = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.percent(100),
+    height: am5.percent(100)
+  })
+);
+
+chart.children.push(
+  am5.Graphics.new(root, {
+    stroke: am5.color(0x000000),
+    fill: am5.color(0x990000),
+    x: am5.percent(50),
+    y: am5.percent(50),
+    centerX: am5.percent(50),
+    centerY: am5.percent(50),
+    svgPath:
+      "M45.418 10c-2.293-2.5-5.625-3.957-8.961-4.168h-.414c-4.168 0-7.918 2.086-10.418 5.418-2.293-4.375-6.668-7.082-11.457-7.082h-.211c-3.539 0-7.082 1.457-9.375 4.164-2.5 2.5-3.75 6.043-3.539 9.586C1.457 24.168 4.582 27.293 7.5 30c3.332 3.332 6.457 6.043 5.418 13.957 0 1.25.625 2.086 1.664 2.086.418 0 .625 0 1.25-.211C37.5 39.168 48.957 30.207 48.957 20.207V20c.211-3.957-1.039-7.293-3.539-10ZM14.582 44.793V43.75Zm0 0"
+  })
+);
+```
 
 ### Custom draw functions
 
@@ -78,12 +171,15 @@ Another option is using low-level drawing functions, like `moveTo()`, `lineTo()`
 
 To use those, we need to assign a custom function to graphics element's [`draw` setting](https://docs.amcharts.com/v5/reference/graphics/#draw_setting).
 
-The function will receive a "display object" (implementing the `IGraphics` interface), which will provide the drawing functions we mentioned earlier.
+The function will receive a "display object" (`CanvasGraphics`), which will provide the drawing functions we mentioned earlier.
 
-NOTE Older versions of this page named the display object `CanvasGraphics`. Since 5.21.0 that class is renamed `SceneGraphics` (`CanvasGraphics` remains as a deprecated alias), and the same object is used whichever renderer draws the chart (canvas or SVG). Its drawing methods are those of `IGraphics`.
+NOTE The display object's class is `SceneGraphics` (`CanvasGraphics` is a deprecated alias of it). The same object draws whichever renderer the chart uses, canvas or SVG. Its drawing methods are those of `IGraphics`.
 
 Let's draw a triangle:
 
+TypeScript:
+
+```ts
 am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   fill: am5.color(0x990000),
@@ -94,7 +190,11 @@ am5.Graphics.new(root, {
     display.lineTo(25, 0);
   }
 });
+```
 
+JavaScript:
+
+```js
 am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   fill: am5.color(0x990000),
@@ -105,33 +205,95 @@ am5.Graphics.new(root, {
     display.lineTo(25, 0);
   }
 });
+```
 
-For a full list of drawing methods, refer to `[IGraphics](https://docs.amcharts.com/v5/reference/igraphics/)` reference.
+For a full list of drawing methods, refer to `CanvasGraphics` reference.
 
+Example: [Using graphics elements](https://docs.amcharts.com/embeds/v5/using-graphics-elements-2/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 92vh;
+  margin: auto;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Create chart
+var chart = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.percent(100),
+    height: am5.percent(100)
+  })
+);
+
+chart.children.push(
+  am5.Graphics.new(root, {
+    stroke: am5.color(0x000000),
+    fill: am5.color(0x990000),
+    x: am5.percent(50),
+    y: am5.percent(50),
+    centerX: am5.percent(50),
+    centerY: am5.percent(50),
+    draw: function (display) {
+      display.moveTo(25, 0);
+      display.lineTo(50, 50);
+      display.lineTo(0, 50);
+      display.lineTo(25, 0);
+    }
+  })
+);
+```
 
 #### The complete list of drawing functions
 
 All number parameters are absolute pixel values.
 
-Method
-
-`arc(x, y, radius, startAngle, endAngle [, counterclockwise])`
-
-`arcTo(x1, y1, x2, y2, radius)`
-
-`bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)`
-
-`drawCircle(x, y, radius)`
-
-`drawEllipse(x, y, radiusX, radiusY)`
-
-`drawRect(x, y, width, height)`
-
-`lineTo(x, y)`
-
-`moveTo(x, y)`
-
-`quadraticCurveTo(cpX, cpY, toX, toY)`
+| Method                                                         |
+| -------------------------------------------------------------- |
+| `arc(x, y, radius, startAngle, endAngle [, counterclockwise])` |
+| `arcTo(x1, y1, x2, y2, radius)`                                |
+| `bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)`                  |
+| `drawCircle(x, y, radius)`                                     |
+| `drawEllipse(x, y, radiusX, radiusY)`                          |
+| `drawRect(x, y, width, height)`                                |
+| `lineTo(x, y)`                                                 |
+| `moveTo(x, y)`                                                 |
+| `quadraticCurveTo(cpX, cpY, toX, toY)`                         |
 
 ## Configuring
 
@@ -139,10 +301,13 @@ There are more settings to graphics element than just `fill` and `stroke` (that 
 
 For example `fillOpacity` will control fill transparency.
 
-MORE INFOFor a complete list of available settings, check out [`Graphics` reference](https://docs.amcharts.com/v5/reference/graphics/#settings).
+> **More info:** For a complete list of available settings, check out [`Graphics` reference](https://docs.amcharts.com/v5/reference/graphics/#settings).
 
 Here's another example, that uses `drawRect()` drawing method to draw a rotated semi-transparent rectangle:
 
+TypeScript:
+
+```ts
 chart.children.push(am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   strokeWidth: 3,
@@ -153,7 +318,11 @@ chart.children.push(am5.Graphics.new(root, {
     display.drawRect(0, 0, 50, 50)
   }
 }));
+```
 
+JavaScript:
+
+```js
 chart.children.push(am5.Graphics.new(root, {
   stroke: am5.color(0x000000),
   strokeWidth: 3,
@@ -164,5 +333,74 @@ chart.children.push(am5.Graphics.new(root, {
     display.drawRect(0, 0, 50, 50)
   }
 }));
+```
 
+Example: [Using graphics elements](https://docs.amcharts.com/embeds/v5/using-graphics-elements-3/)
 
+Scripts: https://cdn.amcharts.com/lib/5/index.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 92vh;
+  margin: auto;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root
+var root = am5.Root.new("chartdiv");
+
+// Create chart
+var chart = root.container.children.push(
+  am5.Container.new(root, {
+    width: am5.percent(100),
+    height: am5.percent(100)
+  })
+);
+
+chart.children.push(
+  am5.Graphics.new(root, {
+    stroke: am5.color(0x000000),
+    strokeWidth: 3,
+    fill: am5.color(0x990000),
+    fillOpacity: 0.5,
+    x: am5.percent(50),
+    y: am5.percent(50),
+    rotation: 45,
+    centerX: am5.percent(50),
+    centerY: am5.percent(50),
+    draw: function (display) {
+      display.drawRect(0, 0, 50, 50);
+    }
+  })
+);
+```

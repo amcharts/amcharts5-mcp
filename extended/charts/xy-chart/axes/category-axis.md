@@ -1,7 +1,7 @@
 ---
 title: "Category axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 Category axis type allows plotting data attached to string-based names (categories).
@@ -12,8 +12,13 @@ Category axis is the only axis type that requires its own data as well as data f
 
 It's needed because the axis needs to know what categories to plot.
 
+NOTE Series items are drawn even when the series' data is not in the same order as the axis categories, e.g. a Gantt-like column chart where several items share a category and the data is sorted by date. A line series connects its points in data order, so for lines keep the series data in category order.
+
 It can be the same data we use for the actual series, e.g.:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "category",
@@ -34,7 +39,11 @@ let series = chart.series.push(
 );
 
 series.data.setAll(data);
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "category",
@@ -55,15 +64,17 @@ var series = chart.series.push(
 );
 
 series.data.setAll(data);
+```
 
 Or it can be a subset of data.
 
-IMPORTANTThe order of categories needs to be the same in both series' and axis' data.
-
-NOTE Since 5.20.6, series items are drawn even when the series' data is not in the same order as the axis categories — for example, a Gantt-like column chart where several items share a category and the data is sorted by date. (Before, some of those items were not drawn at all.) A line series, however, still connects its points in data order, so for lines keep the series data in category order.
+> **Important:** The order of categories needs to be the same in both series' and axis' data.
 
 Having different data for category axis makes sense in the situations where we want to have only specific categories displayed:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "category",
@@ -71,14 +82,18 @@ let xAxis = chart.xAxes.push(
   })
 );
 
-xAxis.data.setAll(\[{
+xAxis.data.setAll([{
   category: "Research"
 }, {
   category: "Marketing"
 }, {
   category: "Sales"
-}\]);
+}]);
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.CategoryAxis.new(root, {
     categoryField: "category",
@@ -86,17 +101,18 @@ var xAxis = chart.xAxes.push(
   })
 );
 
-xAxis.data.setAll(\[{
+xAxis.data.setAll([{
   category: "Research"
 }, {
   category: "Marketing"
 }, {
   category: "Sales"
-}\]);
+}]);
+```
 
-NOTESeries will display only those data items with categories that are in the category axis' data.
+> **Note:** Series will display only those data items with categories that are in the category axis' data.
 
-IMPORTANTIt's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
+> **Important:** It's a good practice to make sure that setting data happens as late into code as possible. Once you set data, all related objects are created, so any configuration settings applied afterwards might not carry over.
 
 ## Zooming
 
@@ -104,35 +120,59 @@ IMPORTANTIt's a good practice to make sure that setting data happens as late int
 
 We can use value axis' method `zoomToCategories()` to zoom the axis to specific range between two categories:
 
-xAxis.zoomToCategories("Mike", "Dorothy");
+TypeScript:
 
+```ts
 xAxis.zoomToCategories("Mike", "Dorothy");
+```
+
+JavaScript:
+
+```js
+xAxis.zoomToCategories("Mike", "Dorothy");
+```
 
 ### Zooming to index range
 
 We can also make category axis zoom to specific indexes via `zoomToIndexes()`:
 
-xAxis.zoomToIndexes(10, 20);
+TypeScript:
 
+```ts
 xAxis.zoomToIndexes(10, 20);
+```
+
+JavaScript:
+
+```js
+xAxis.zoomToIndexes(10, 20);
+```
 
 ### Pre-zooming
 
 Category axis uses own data, so we can use its own `datavalidated` event to invoke zooming functions:
 
-xAxis.events.once("datavalidated", function(ev) {
-  ev.target.zoomToIndexes(10, 20);
-});
+TypeScript:
 
+```ts
 xAxis.events.once("datavalidated", function(ev) {
   ev.target.zoomToIndexes(10, 20);
 });
+```
+
+JavaScript:
+
+```js
+xAxis.events.once("datavalidated", function(ev) {
+  ev.target.zoomToIndexes(10, 20);
+});
+```
 
 Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
 ## Related tutorials
 
--   [Using adapters on category axis labels](https://docs.amcharts.com/v5/tutorials/using-adapters-on-category-axis-labels/)
--   [Auto-wrapping category axis labels](https://docs.amcharts.com/v5/tutorials/auto-wrapping-category-axis-labels/)
--   [Column labels as categories](https://docs.amcharts.com/v5/tutorials/column-labels-as-categories/)
--   [Handling long category axis labels](https://docs.amcharts.com/v5/tutorials/handling-long-category-axis-labels/)
+* [Using adapters on category axis labels](https://docs.amcharts.com/v5/tutorials/using-adapters-on-category-axis-labels/)
+* [Auto-wrapping category axis labels](https://docs.amcharts.com/v5/tutorials/auto-wrapping-category-axis-labels/)
+* [Column labels as categories](https://docs.amcharts.com/v5/tutorials/column-labels-as-categories/)
+* [Handling long category axis labels](https://docs.amcharts.com/v5/tutorials/handling-long-category-axis-labels/)

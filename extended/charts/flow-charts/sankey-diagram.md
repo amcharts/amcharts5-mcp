@@ -1,7 +1,7 @@
 ---
 title: "Sankey diagram"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 ## Flow chart
@@ -14,6 +14,9 @@ Sankey diagram is drawn horizontal (links flow from left to right) by default.
 
 We can change it using series' `orientation` setting:
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -22,7 +25,11 @@ let series = root.container.children.push(
     orientation: "vertical"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -31,10 +38,11 @@ var series = root.container.children.push(
     orientation: "vertical"
   })
 );
+```
 
-`orientation: "horizontal"` (default)
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/horizontal_sankey.png "`orientation: 'horizontal'` (default)")
 
-`orientation: "vertical"`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/vertical_sankey.png "`orientation: 'vertical'`")
 
 ## Nodes
 
@@ -42,8 +50,11 @@ var series = root.container.children.push(
 
 Nodes (colored bands) are 10 pixel wide by default.
 
-We can use series setting `[nodeWidth](https://docs.amcharts.com/v5/reference/sankey/#nodeWidth_setting)` to change that:
+We can use series setting `nodeWidth` to change that:
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -52,7 +63,11 @@ let series = root.container.children.push(
     nodeWidth: 5
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -61,20 +76,122 @@ var series = root.container.children.push(
     nodeWidth: 5
   })
 );
+```
 
-`nodeWidth: 10` (default)
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`nodeWidth: 10` (default)")
 
-`nodeWidth: 5`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_5.png "`nodeWidth: 5`")
 
-`nodeWidth: 30`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_30.png "`nodeWidth: 30`")
 
 ### Configuring nodes
 
-Nodes in flow diagrams are represented by their own series, accessible via read-only property `nodes` which is an object of type `[SankeyNodes](https://docs.amcharts.com/v5/reference/sankeynodes/)`.
+Nodes in flow diagrams are represented by their own series, accessible via read-only property `nodes` which is an object of type `SankeyNodes`.
 
 It subsequently has a property `rectangles` which is a list of all nodes in series.
 
-Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `[RoundedRectangle](https://docs.amcharts.com/v5/reference/slice/)`:
+Since it's a "list template", we can use its `template` property to set any setting for the node, which is of type `RoundedRectangle`:
+
+TypeScript:
+
+```ts
+series.nodes.rectangles.template.setAll({
+  fillOpacity: 0.5,
+  stroke: am5.color(0x000000),
+  strokeWidth: 1,
+  cornerRadiusTL: 4,
+  cornerRadiusTR: 4,
+  cornerRadiusBL: 4,
+  cornerRadiusBR: 4
+});
+```
+
+JavaScript:
+
+```js
+series.nodes.rectangles.template.setAll({
+  fillOpacity: 0.5,
+  stroke: am5.color(0x000000),
+  strokeWidth: 1,
+  cornerRadiusTL: 4,
+  cornerRadiusTR: 4,
+  cornerRadiusBL: 4,
+  cornerRadiusBR: 4
+});
+```
+
+Example: [Sankey diagram](https://docs.amcharts.com/embeds/v5/sankey-diagram-2/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    nodeWidth: 20
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+// Set data
+series.data.setAll([
+  { from: "A", to: "B", value: 10 },
+  { from: "B", to: "C", value: 8 },
+  { from: "C", to: "D", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
 
 series.nodes.rectangles.template.setAll({
   fillOpacity: 0.5,
@@ -86,16 +203,12 @@ series.nodes.rectangles.template.setAll({
   cornerRadiusBR: 4
 });
 
-series.nodes.rectangles.template.setAll({
-  fillOpacity: 0.5,
-  stroke: am5.color(0x000000),
-  strokeWidth: 1,
-  cornerRadiusTL: 4,
-  cornerRadiusTR: 4,
-  cornerRadiusBL: 4,
-  cornerRadiusBR: 4
+series.nodes.labels.template.setAll({
+  x: am5.percent(50),
+  centerX: am5.percent(50),
+  textAlign: "center"
 });
-
+```
 
 ### Node data
 
@@ -107,123 +220,237 @@ In some cases, we might need more than just node id which comes from Sankey data
 
 For that we can set own data on `series.nodes.data`:
 
-series.nodes.data.setAll(\[
-  { id: "A", name: "Node A" },
-  { id: "B", name: "Node B" },
-  { id: "C", name: "Node C" }
-\]);
+TypeScript:
 
-series.nodes.data.setAll(\[
+```ts
+series.nodes.data.setAll([
   { id: "A", name: "Node A" },
   { id: "B", name: "Node B" },
   { id: "C", name: "Node C" }
-\]);
+]);
+```
+
+JavaScript:
+
+```js
+series.nodes.data.setAll([
+  { id: "A", name: "Node A" },
+  { id: "B", name: "Node B" },
+  { id: "C", name: "Node C" }
+]);
+```
 
 #### Modifying data fields
 
 Node series (which is `SankeyNodes`) is automatically set up for these data fields:
 
-Data field
-
-Default value
-
-Comment
-
-`idField`
-
-`"id"`
-
-ID of the node.
-
-`nameField`
-
-`"id"`
-
-Name of the node.
-
-`fillField`
-
-`"fill"`
-
-Fill color for the node.
+| Data field  | Default value | Comment                  |
+| ----------- | ------------- | ------------------------ |
+| `idField`   | `"id"`        | ID of the node.          |
+| `nameField` | `"id"`        | Name of the node.        |
+| `fillField` | `"fill"`      | Fill color for the node. |
 
 We can modify those to suit our data:
 
+TypeScript:
+
+```ts
 series.nodes.setAll({
   idField: "id",
   nameField: "name"
 });
 
-series.nodes.data.setAll(\[
+series.nodes.data.setAll([
   { id: "A", name: "Node A" },
   { id: "B", name: "Node B" },
   { id: "C", name: "Node C" }
-\]);
+]);
+```
 
+JavaScript:
+
+```js
 series.nodes.setAll({
   idField: "id",
   nameField: "name"
 });
 
-series.nodes.data.setAll(\[
+series.nodes.data.setAll([
   { id: "A", name: "Node A" },
   { id: "B", name: "Node B" },
   { id: "C", name: "Node C" }
-\]);
+]);
+```
 
-IMPORTANTData fields need to be set before data or they will not work as expected.
+> **Important:** Data fields need to be set before data or they will not work as expected.
 
 #### Node colors via data
 
 We can also specify custom colors for nodes via node data:
 
-series.nodes.data.setAll(\[
-  { id: "A", name: "Node A", fill: am5.color(0xFF621F) },
-  { id: "B", name: "Node B", fill: am5.color(0x297373) },
-  { id: "C", name: "Node C", fill: am5.color(0x946B49) }
-\]);
+TypeScript:
 
-series.nodes.data.setAll(\[
+```ts
+series.nodes.data.setAll([
   { id: "A", name: "Node A", fill: am5.color(0xFF621F) },
   { id: "B", name: "Node B", fill: am5.color(0x297373) },
   { id: "C", name: "Node C", fill: am5.color(0x946B49) }
-\]);
+]);
+```
+
+JavaScript:
+
+```js
+series.nodes.data.setAll([
+  { id: "A", name: "Node A", fill: am5.color(0xFF621F) },
+  { id: "B", name: "Node B", fill: am5.color(0x297373) },
+  { id: "C", name: "Node C", fill: am5.color(0x946B49) }
+]);
+```
 
 The fill color will be lookup up in a `"fill"` field of the data. If we need to use something else, we will need to configure node series' `fillField` as well:
 
+TypeScript:
+
+```ts
 series.nodes.setAll({
   idField: "id",
   nameField: "name",
   fillField: "color"
 });
 
-series.nodes.data.setAll(\[
+series.nodes.data.setAll([
   { id: "A", name: "Node A", color: am5.color(0xFF621F) },
   { id: "B", name: "Node B", color: am5.color(0x297373) },
   { id: "C", name: "Node C", color: am5.color(0x946B49) }
-\]);
+]);
+```
 
+JavaScript:
+
+```js
 series.nodes.setAll({
   idField: "id",
   nameField: "name",
   fillField: "color"
 });
 
-series.nodes.data.setAll(\[
+series.nodes.data.setAll([
   { id: "A", name: "Node A", color: am5.color(0xFF621F) },
   { id: "B", name: "Node B", color: am5.color(0x297373) },
   { id: "C", name: "Node C", color: am5.color(0x946B49) }
-\]);
+]);
+```
 
+Example: [Custom Sankey node colors](https://docs.amcharts.com/embeds/v5/custom-sankey-node-colors/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/flow-charts/
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 60
+  })
+);
+
+series.nodes.setAll({
+  nameField: "name"
+});
+
+series.nodes.rectangles.template.set("templateField", "nodeSettings");
+series.links.template.set("templateField", "linkSettings");
+
+series.nodes.data.setAll([
+  { id: "A", name: "Node A", fill: am5.color(0xff621f) },
+  { id: "B", name: "Node B", fill: am5.color(0x297373) },
+  { id: "C", name: "Node C", fill: am5.color(0xff621f) },
+  { id: "D", name: "Node D", fill: am5.color(0x946b49) },
+  { id: "E", name: "Node E", fill: am5.color(0x297373) },
+  { id: "G", name: "Node G", fill: am5.color(0xff621f) },
+  { id: "H", name: "Node H", fill: am5.color(0x297373) },
+  { id: "I", name: "Node I", fill: am5.color(0x946b49) },
+  { id: "J", name: "Node J", fill: am5.color(0x297373) }
+]);
+
+// Set data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
+series.data.setAll([
+  { from: "A", to: "D", value: 10 },
+  { from: "B", to: "D", value: 8 },
+  { from: "B", to: "E", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```
 
 ### Gaps between nodes
 
 Sankey diagrams display a tiny gap between each node by default.
 
-We can control the size of it using series' `[nodePadding](https://docs.amcharts.com/v5/reference/sankey/#nodePadding_setting)` setting.
+We can control the size of it using series' `nodePadding` setting.
 
 It accepts a numeric value in degrees.
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -232,7 +459,11 @@ let series = root.container.children.push(
     nodePadding: 5
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -241,21 +472,25 @@ var series = root.container.children.push(
     nodePadding: 5
   })
 );
+```
 
-`nodePadding: 10` (default)
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`nodePadding: 10` (default)")
 
-`nodePadding: 0`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodepadding_0.png "`nodePadding: 0`")
 
-`nodePadding: 100`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodepadding_100.png "`nodePadding: 100`")
 
 ### Alignment
 
 Sankey will position all of its nodes aligned to left, which might not work for complex flows.
 
-To control it, we have a Sankey setting: `[nodeAlign](https://docs.amcharts.com/v5/reference/sankey/#nodeAlign_setting)`.
+To control it, we have a Sankey setting: `nodeAlign`.
 
 It accepts four values: `"left"` (default), `"right"`, `"center"`, and `"justify"`.
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -264,7 +499,11 @@ let series = root.container.children.push(
     nodeAlign: "justify"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -273,15 +512,89 @@ var series = root.container.children.push(
     nodeAlign: "justify"
   })
 );
+```
 
-`nodeAlign = "left"` (default)
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_left-1024x771.png "`nodeAlign = 'left'` (default)")
 
-`nodeAlign = "right"`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_right-1024x771.png "`nodeAlign = 'right'`")
 
-`nodeAlign = "justify"`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_justify-1024x771.png "`nodeAlign = 'justify'`")
 
-`nodeAlign: "center"`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_center-1024x771.png "`nodeAlign: 'center'`")
 
+Example: [Alignment of nodes on Sankey diagram](https://docs.amcharts.com/embeds/v5/alignment-of-nodes-on-sankey-diagram/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 20,
+    nodeAlign: "justify"
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+// Set data
+series.data.setAll([
+  { from: "A", to: "B", value: 10 },
+  { from: "B", to: "C", value: 10 },
+  { from: "E", to: "D", value: 10 },
+  { from: "D", to: "F", value: 10 },
+  { from: "F", to: "B", value: 10 },
+  { from: "F", to: "G", value: 10 },
+  { from: "G", to: "H", value: 10 },
+  { from: "I", to: "F", value: 10 },
+  { from: "J", to: "H", value: 10 },
+  { from: "H", to: "O", value: 10 }
+]);
+```
 
 ### Disabling dragging and toggling
 
@@ -289,15 +602,23 @@ Nodes are draggable and click-togglable in Sankey diagram by default.
 
 To disable it, simply set `draggable: false` and `toggleKey: "none"` settings on node template:
 
-series.nodes.nodes.template.setAll({
-  draggable: false, // disables dragging
-  toggleKey: "none" // disables toggling
-});
+TypeScript:
 
+```ts
 series.nodes.nodes.template.setAll({
   draggable: false, // disables dragging
   toggleKey: "none" // disables toggling
 });
+```
+
+JavaScript:
+
+```js
+series.nodes.nodes.template.setAll({
+  draggable: false, // disables dragging
+  toggleKey: "none" // disables toggling
+});
+```
 
 ## Links
 
@@ -305,12 +626,15 @@ series.nodes.nodes.template.setAll({
 
 Sankey links are smooth curves by default.
 
-We can configure how "tight" the curve is via series `[linkTension](https://docs.amcharts.com/v5/reference/sankey/#linkTension_setting)` setting.
+We can configure how "tight" the curve is via series `linkTension` setting.
 
 With default of `0.5` it accepts a numeric value between `0` (zero) and `1` (one).
 
 The smaller the number, the more loose the curve. `1` will result in maximum tension, i.e. perfectly straight line.
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -319,7 +643,11 @@ let series = root.container.children.push(
     linkTension: 1
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -328,60 +656,62 @@ var series = root.container.children.push(
     linkTension: 1
   })
 );
+```
 
-`linkTension: 0.5` (default)
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`linkTension: 0.5` (default)")
 
-`linkTension: 0`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_linktension_0.png "`linkTension: 0`")
 
-`linkTension: 1`
+![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_linktension_1.png "`linkTension: 1`")
 
 ### Configuring links
 
 We can configure links using series property `links.template`. Via template, we can set any [`SankeyLink` setting](https://docs.amcharts.com/v5/reference/sankeylink/#settings).
 
-series.links.template.setAll({
-  fillOpacity: 0.5
-});
+TypeScript:
 
+```ts
 series.links.template.setAll({
   fillOpacity: 0.5
 });
+```
+
+JavaScript:
+
+```js
+series.links.template.setAll({
+  fillOpacity: 0.5
+});
+```
 
 ### Color mode
 
 Sankey links can be colored in a number of ways via link template's `fillStyle` setting:
 
-series.links.template.setAll({
-  fillStyle: "solid"
-});
+TypeScript:
 
+```ts
 series.links.template.setAll({
   fillStyle: "solid"
 });
+```
+
+JavaScript:
+
+```js
+series.links.template.setAll({
+  fillStyle: "solid"
+});
+```
 
 These values are available for `fillStyle`:
 
-`fillStyle`
-
-Comment
-
-Example
-
-`"solid"`
-
-Solid color.
-
-`"gradient"` (default)
-
-Gradient from source node color to target node color.
-
-`"source"`
-
-Source node color.
-
-`"target"`
-
-Target node color.
+| `fillStyle`            | Comment                                               | Example                                                                       |
+| ---------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `"solid"`              | Solid color.                                          | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_solid.png)  |
+| `"gradient"` (default) | Gradient from source node color to target node color. | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png)     |
+| `"source"`             | Source node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_source.png) |
+| `"target"`             | Target node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_target.png) |
 
 ### Bend point
 
@@ -389,17 +719,25 @@ A bend (or control point) is a position where link's elbows bend forming an "elb
 
 By default this happens 20% of either end of the link.
 
-We can control it using link setting: `[controlPointDistance](https://docs.amcharts.com/v5/reference/sankeylink/#controlPointDistance_setting)`.
+We can control it using link setting: `controlPointDistance`.
 
 It accepts numeric values between `0` (zero) and `1` (one). The smaller the number the closer the elbow will be to the ends of the link.
 
-series.links.template.setAll({
-  controlPointDistance: 0.4
-});
+TypeScript:
 
+```ts
 series.links.template.setAll({
   controlPointDistance: 0.4
 });
+```
+
+JavaScript:
+
+```js
+series.links.template.setAll({
+  controlPointDistance: 0.4
+});
+```
 
 ### Link sort order
 
@@ -409,13 +747,16 @@ We can modify the logic using `linkSort` setting.
 
 It accepts two types of values:
 
-1.  `null`. Setting it to `null` will make links appear exactly in the same order as they are set in data.
-2.  `function`. The setting can also accept a reference to a custom function that accepts two parameters with a D3 sankey link objects.
+1. `null`. Setting it to `null` will make links appear exactly in the same order as they are set in data.
+2. `function`. The setting can also accept a reference to a custom function that accepts two parameters with a D3 sankey link objects.
 
 #### Sorting by data
 
 Setting `linkSort` to `null` will make the links appear in exact same order as they are defined in data:
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -424,7 +765,11 @@ let series = root.container.children.push(
     linkSort: null
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(
   am5flow.Sankey.new(root, {
     sourceIdField: "from",
@@ -433,6 +778,7 @@ var series = root.container.children.push(
     linkSort: null
   })
 );
+```
 
 #### Sorting with custom function
 
@@ -440,6 +786,9 @@ var series = root.container.children.push(
 
 Similarly to JavaScript's `Array.sort(a, b)` function, `linkSort` function will receive two instances of a D3 link objects, and should return `-1` if the first link should precede the second, `1` if it's the other way around, or `0` if they are both equal in priority.
 
+TypeScript:
+
+```ts
 let series = root.container.children.push(am5flow.Sankey.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
@@ -451,7 +800,11 @@ let series = root.container.children.push(am5flow.Sankey.new(root, {
     return 0;
   }
 }));
+```
 
+JavaScript:
+
+```js
 var series = root.container.children.push(am5flow.Sankey.new(root, {
   sourceIdField: "from",
   targetIdField: "to",
@@ -463,6 +816,7 @@ var series = root.container.children.push(am5flow.Sankey.new(root, {
     return 0;
   }
 }));
+```
 
 The above will order all links by their value in descending order.
 
@@ -474,17 +828,25 @@ Sankey diagram will display a label next to its nodes by default.
 
 Labels in Sankey diagram are attached to nodes, so they can be configured via `nodes` sub-series, specifically `nodes.labels.template`:
 
-series.nodes.labels.template.setAll({
-  fontSize: 20,
-  maxWidth: 150,
-  oversizedBehavior: "wrap"
-});
+TypeScript:
 
+```ts
 series.nodes.labels.template.setAll({
   fontSize: 20,
   maxWidth: 150,
   oversizedBehavior: "wrap"
 });
+```
+
+JavaScript:
+
+```js
+series.nodes.labels.template.setAll({
+  fontSize: 20,
+  maxWidth: 150,
+  oversizedBehavior: "wrap"
+});
+```
 
 Refer to [`Label` class reference](https://docs.amcharts.com/v5/reference/label/#settings) for a full list of available settings.
 
@@ -492,17 +854,25 @@ Refer to [`Label` class reference](https://docs.amcharts.com/v5/reference/label/
 
 To change label content, we only need to set `text` property of the label template:
 
-series.nodes.labels.template.setAll({
-  text: "\[bold\]{name}\[/\] ({sumOutgoing})"
-});
+TypeScript:
 
+```ts
 series.nodes.labels.template.setAll({
-  text: "\[bold\]{name}\[/\] ({sumOutgoing})"
+  text: "[bold]{name}[/] ({sumOutgoing})"
 });
+```
+
+JavaScript:
+
+```js
+series.nodes.labels.template.setAll({
+  text: "[bold]{name}[/] ({sumOutgoing})"
+});
+```
 
 Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[ISankeyNodesDataItem](https://docs.amcharts.com/v5/reference/isankeynodesdataitem/)`.
+For available data placeholder fields refer to `ISankeyNodesDataItem`.
 
 ### Positioning labels
 
@@ -510,44 +880,22 @@ Labels are positioned to the right (or bottom) of the node by default.
 
 There are a few settings that can be used to control position of the label:
 
-Setting key
-
-Comment
-
-`x`
-
-Horizontal position: absolute pixel values or percent relative to node height.
-
-`y`
-
-Vertical position: absolute pixel values or percent relative to node height.
-
-`centerX`
-
-Horizontal center of the label: absolute pixel value or percent relative to the width of the label.
-
-`centerY`
-
-Vertical center of the label: absolute pixel value or percent relative to the width of the label.
-
-`paddingTop`
-
-Top padding in pixels.
-
-`paddingRight`
-
-Right padding in pixels.
-
-`paddingBottom`
-
-Bottom padding in pixels.
-
-`paddingLeft`
-
-Left padding in pixels.
+| Setting key     | Comment                                                                                             |
+| --------------- | --------------------------------------------------------------------------------------------------- |
+| `x`             | Horizontal position: absolute pixel values or percent relative to node height.                      |
+| `y`             | Vertical position: absolute pixel values or percent relative to node height.                        |
+| `centerX`       | Horizontal center of the label: absolute pixel value or percent relative to the width of the label. |
+| `centerY`       | Vertical center of the label: absolute pixel value or percent relative to the width of the label.   |
+| `paddingTop`    | Top padding in pixels.                                                                              |
+| `paddingRight`  | Right padding in pixels.                                                                            |
+| `paddingBottom` | Bottom padding in pixels.                                                                           |
+| `paddingLeft`   | Left padding in pixels.                                                                             |
 
 The below code will put labels inside and up top on the node:
 
+TypeScript:
+
+```ts
 series.nodes.labels.template.setAll({
   x: am5.percent(50),
   centerX: am5.percent(50),
@@ -555,6 +903,102 @@ series.nodes.labels.template.setAll({
   centerY: am5.percent(0),
   paddingLeft: 0,
   paddingRight: 0
+});
+```
+
+JavaScript:
+
+```js
+series.nodes.labels.template.setAll({
+  x: am5.percent(50),
+  centerX: am5.percent(50),
+  y: am5.percent(0),
+  centerY: am5.percent(0),
+  paddingLeft: 0,
+  paddingRight: 0
+});
+```
+
+Example: [Sankey diagram with labels inside node](https://docs.amcharts.com/embeds/v5/sankey-diagram-with-labels-inside-node/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    nodeWidth: 20
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+// Set data
+series.data.setAll([
+  { from: "A", to: "B", value: 10 },
+  { from: "B", to: "C", value: 8 },
+  { from: "C", to: "D", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
+
+series.nodes.rectangles.template.setAll({
+  stroke: am5.color(0x000000),
+  strokeWidth: 1,
+  cornerRadiusTL: 4,
+  cornerRadiusTR: 4,
+  cornerRadiusBL: 4,
+  cornerRadiusBR: 4
 });
 
 series.nodes.labels.template.setAll({
@@ -565,17 +1009,25 @@ series.nodes.labels.template.setAll({
   paddingLeft: 0,
   paddingRight: 0
 });
+```
 
-
-MORE INFOFor selectively aligning labels, check out "[Selectively positioning Sankey diagram labels](https://docs.amcharts.com/v5/tutorials/selectively-positioning-sankey-diagram-labels/)".
+> **More info:** For selectively aligning labels, check out "[Selectively positioning Sankey diagram labels](https://docs.amcharts.com/v5/tutorials/selectively-positioning-sankey-diagram-labels/)".
 
 ### Disabling labels
 
 To disable labels, we can simply set their `visible` to `false`:
 
-series.nodes.labels.template.set("visible", false);
+TypeScript:
 
+```ts
 series.nodes.labels.template.set("visible", false);
+```
+
+JavaScript:
+
+```js
+series.nodes.labels.template.set("visible", false);
+```
 
 ## Tooltips
 
@@ -585,68 +1037,204 @@ Links will display a tooltip when hovered/touched. The default content is `"{sou
 
 To change it, we can use link's `tooltipText` setting:
 
-series.links.template.setAll({
-  tooltipText: "From: \[bold\]{sourceId}\[/\]\\nTo: \[bold\]{targetId}\\nValue: \[bold\]{value}\[/\]"
-});
+TypeScript:
 
+```ts
 series.links.template.setAll({
-  tooltipText: "From: \[bold\]{sourceId}\[/\]\\nTo: \[bold\]{targetId}\\nValue: \[bold\]{value}\[/\]"
+  tooltipText: "From: [bold]{sourceId}[/]\nTo: [bold]{targetId}\nValue: [bold]{value}[/]"
 });
+```
+
+JavaScript:
+
+```js
+series.links.template.setAll({
+  tooltipText: "From: [bold]{sourceId}[/]\nTo: [bold]{targetId}\nValue: [bold]{value}[/]"
+});
+```
 
 Contents of the tooltip can include data placeholders (codes in curly brackets that will be replaced by actual data) and in-line formatting blocks (formatting instructions enclosed in square brackets).
 
-For available data placeholder fields refer to `[ISankeyDataItem](https://docs.amcharts.com/v5/reference/isankeydataitem/)`.
+For available data placeholder fields refer to `ISankeyDataItem`.
 
 ### On nodes
 
 To add tooltips to nodes, simple set `tooltipText` on node template:
 
-series.nodes.rectangles.template.setAll({
-  tooltipText: "\[bold\]{name}\[/\]\\nOutgoing: {sumOutgoing}\\nIncoming: {sumIncoming}"
-});
+TypeScript:
 
+```ts
 series.nodes.rectangles.template.setAll({
-  tooltipText: "\[bold\]{name}\[/\]\\nOutgoing: {sumOutgoing}\\nIncoming: {sumIncoming}"
+  tooltipText: "[bold]{name}[/]\nOutgoing: {sumOutgoing}\nIncoming: {sumIncoming}"
 });
+```
 
-For available data placeholder fields refer to `[ISankeyNodesDataItem](https://docs.amcharts.com/v5/reference/isankeynodesdataitem/)`.
+JavaScript:
+
+```js
+series.nodes.rectangles.template.setAll({
+  tooltipText: "[bold]{name}[/]\nOutgoing: {sumOutgoing}\nIncoming: {sumIncoming}"
+});
+```
+
+For available data placeholder fields refer to `ISankeyNodesDataItem`.
 
 ## Using template fields
 
 [Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/) can also be used to configure various diagram elements, such as node rectangles and link graphics.
 
+TypeScript:
+
+```ts
 series.nodes.rectangles.template.set("templateField", "nodeSettings");
 series.links.template.set("templateField", "linkSettings");
 
-series.nodes.data.setAll(\[
+series.nodes.data.setAll([
   { id: "A", nodeSettings: { fill: am5.color(0xFF621F), stroke: am5.color(0x000000 } },
   { id: "B", nodeSettings: { fill: am5.color(0x297373), stroke: am5.color(0x000000 } },
   { id: "C", nodeSettings: { fill: am5.color(0xFF621F), stroke: am5.color(0x000000 } },
-\])
+])
 
-series.data.setAll(\[
+series.data.setAll([
   { from: "A", to: "B", value: 10, linkSettings: { fill: am5.color(0x297373), fillOpacity: 0.5, fillStyle: "solid" } },
   { from: "B", to: "C", value: 8, linkSettings: { fill: am5.color(0xFF621F), fillOpacity: 0.5, fillStyle: "solid" } }
-\]);
+]);
+```
+
+JavaScript:
+
+```js
+series.nodes.rectangles.template.set("templateField", "nodeSettings");
+series.links.template.set("templateField", "linkSettings");
+
+series.nodes.data.setAll([
+  { id: "A", nodeSettings: { fill: am5.color(0xFF621F), stroke: am5.color(0x000000 } },
+  { id: "B", nodeSettings: { fill: am5.color(0x297373), stroke: am5.color(0x000000 } },
+  { id: "C", nodeSettings: { fill: am5.color(0xFF621F), stroke: am5.color(0x000000 } },
+])
+
+series.data.setAll([
+  { from: "A", to: "B", value: 10, linkSettings: { fill: am5.color(0x297373), fillOpacity: 0.5, fillStyle: "solid" } },
+  { from: "B", to: "C", value: 8, linkSettings: { fill: am5.color(0xFF621F), fillOpacity: 0.5, fillStyle: "solid" } }
+]);
+```
+
+Example: [Using templateField in Sankey diagram](https://docs.amcharts.com/embeds/v5/using-templatefield-in-sankey-diagram/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/flow.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/flow-charts/
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 60
+  })
+);
+
+series.nodes.setAll({
+  nameField: "name"
+});
 
 series.nodes.rectangles.template.set("templateField", "nodeSettings");
 series.links.template.set("templateField", "linkSettings");
 
-series.nodes.data.setAll(\[
-  { id: "A", nodeSettings: { fill: am5.color(0xFF621F), stroke: am5.color(0x000000 } },
-  { id: "B", nodeSettings: { fill: am5.color(0x297373), stroke: am5.color(0x000000 } },
-  { id: "C", nodeSettings: { fill: am5.color(0xFF621F), stroke: am5.color(0x000000 } },
-\])
+series.nodes.data.setAll([
+  { id: "A", name: "Name A", nodeSettings: { fill: am5.color(0xff621f) } },
+  { id: "B", name: "Name B", nodeSettings: { fill: am5.color(0x297373) } },
+  { id: "C", name: "Name C", nodeSettings: { fill: am5.color(0xff621f) } },
+  { id: "D", name: "Name D", nodeSettings: { fill: am5.color(0x946b49) } },
+  { id: "E", name: "Name E", nodeSettings: { fill: am5.color(0x297373) } },
+  { id: "G", name: "Name G", nodeSettings: { fill: am5.color(0xff621f) } },
+  { id: "H", name: "Name H", nodeSettings: { fill: am5.color(0x297373) } },
+  { id: "I", name: "Name I", nodeSettings: { fill: am5.color(0x946b49) } },
+  { id: "J", name: "Name J", nodeSettings: { fill: am5.color(0x297373) } }
+]);
 
-series.data.setAll(\[
-  { from: "A", to: "B", value: 10, linkSettings: { fill: am5.color(0x297373), fillOpacity: 0.5, fillStyle: "solid" } },
-  { from: "B", to: "C", value: 8, linkSettings: { fill: am5.color(0xFF621F), fillOpacity: 0.5, fillStyle: "solid" } }
-\]);
+// Set data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
+series.data.setAll([
+  { from: "A", to: "D", value: 10 },
+  { from: "B", to: "D", value: 8 },
+  {
+    from: "B",
+    to: "E",
+    value: 4,
+    linkSettings: { fill: am5.color(0x297373), fillOpacity: 0.5, fillStyle: "solid" }
+  },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  {
+    from: "E",
+    to: "H",
+    value: 6,
+    linkSettings: { fill: am5.color(0x297373), fillOpacity: 0.5, fillStyle: "solid" }
+  },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  {
+    from: "H",
+    to: "J",
+    value: 9,
+    linkSettings: { fill: am5.color(0x297373), fillOpacity: 0.5, fillStyle: "solid" }
+  }
+]);
 
+// Make stuff animate on load
+series.appear(1000, 100);
+```
 
-NOTEFor more information on how template fields work, visit "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
+> **Note:** For more information on how template fields work, visit "[Template fields](https://docs.amcharts.com/v5/concepts/settings/template-fields/)" tutorial.
 
 ## Related tutorials
 
--   [Images in Sankey nodes](https://docs.amcharts.com/v5/tutorials/images-in-sankey-nodes/)
--   [Selectively positioning Sankey diagram labels](https://docs.amcharts.com/v5/tutorials/selectively-positioning-sankey-diagram-labels/)
+* [Images in Sankey nodes](https://docs.amcharts.com/v5/tutorials/images-in-sankey-nodes/)
+* [Selectively positioning Sankey diagram labels](https://docs.amcharts.com/v5/tutorials/selectively-positioning-sankey-diagram-labels/)

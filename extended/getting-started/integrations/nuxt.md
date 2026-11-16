@@ -1,18 +1,34 @@
 ---
 title: "Using amCharts 5 with Nuxt 3"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/nuxt/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> Nuxt is a Vue framework: use our @amcharts/amcharts5-vue package, as in the Vue.js tutorial. It works with Nuxt's server rendering: there is no need for <ClientOnly>, and nothing to set in nuxt.config.ts.
+
+## Using
 
 Nuxt is a Vue framework: use our [`@amcharts/amcharts5-vue`](https://www.npmjs.com/package/@amcharts/amcharts5-vue) package, as in the [Vue.js tutorial](https://docs.amcharts.com/v5/getting-started/integrations/vue/). It works with Nuxt's server rendering: there is no need for `<ClientOnly>`, and nothing to set in `nuxt.config.ts`.
 
 Follow the directions for [installing Nuxt](https://nuxt.com/docs/getting-started/installation), then install amCharts:
 
-```shell
+```sh
 npm install @amcharts/amcharts5 @amcharts/amcharts5-vue
 ```
 
-Use the package in any component:
+Add this to `nuxt.config.ts`. Without it, the dev server prepares amCharts while the first page loads, and the charts fail to load until it is started again:
+
+```ts
+export default defineNuxtConfig({
+  vite: {
+    optimizeDeps: {
+      include: ["@amcharts/amcharts5", "@amcharts/amcharts5/element"]
+    }
+  }
+});
+```
+
+Then use the package in any component:
 
 ```html
 <script setup>
@@ -34,7 +50,7 @@ useAmChart(useTemplateRef("chart"), (root) => {
 
 A license key goes in a client plugin, e.g. `plugins/amcharts.client.ts`:
 
-```typescript
+```ts
 import * as am5 from "@amcharts/amcharts5";
 
 export default defineNuxtPlugin(() => {
@@ -43,6 +59,10 @@ export default defineNuxtPlugin(() => {
 ```
 
 An [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/vue/examples/nuxt) is on GitHub.
+
+## Example
+
+» [amCharts 5 with Nuxt](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/vue/examples/nuxt?file=app%2Fapp.vue)
 
 ## Without the package
 

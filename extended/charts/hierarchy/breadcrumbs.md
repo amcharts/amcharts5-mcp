@@ -1,30 +1,38 @@
 ---
 title: "Breadcrumb navigation"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/breadcrumbs/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 Breadcrumb bar is a control helps with the drill-down navigation of hierarchy charts. This tutorial looks at how we can configure it.
 
 ## Adding
 
-Breadcrumb control is instantiated via `[BreadcrumbBar](https://docs.amcharts.com/v5/reference/breadcrumbbar/)` class's `new()` method.
+Breadcrumb control is instantiated via `BreadcrumbBar` class's `new()` method.
 
 Like any other element or control, we can just add to the main chart's container.
 
 Since we want control to appear on top, we are going to use `unshift()` method rather than `push()` which would make it appear on the bottom.
 
-container.children.unshift(
-  am5hierarchy.BreadcrumbBar.new(root, {
-    series: series
-  })
-);
+TypeScript:
 
+```ts
 container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
   })
 );
+```
+
+JavaScript:
+
+```js
+container.children.unshift(
+  am5hierarchy.BreadcrumbBar.new(root, {
+    series: series
+  })
+);
+```
 
 ## Relation to series
 
@@ -42,6 +50,9 @@ To configure links in the path, we can use breadcrumb bar's `labels.template`.
 
 It accepts any [`Label` setting](https://docs.amcharts.com/v5/reference/label/#settings).
 
+TypeScript:
+
+```ts
 let nav = container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
@@ -63,7 +74,11 @@ nav.labels.template.states.create("hover", {
 nav.labels.template.states.create("down", {
   fill: am5.color(0x88ff88)
 });
+```
 
+JavaScript:
+
+```js
 var nav = container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
@@ -85,11 +100,15 @@ nav.labels.template.states.create("hover", {
 nav.labels.template.states.create("down", {
   fill: am5.color(0x88ff88)
 });
+```
 
 ### Handling events
 
 We can also attach [event handlers](https://docs.amcharts.com/v5/concepts/events/) to links via their template:
 
+TypeScript:
+
+```ts
 let nav = container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
@@ -99,7 +118,11 @@ let nav = container.children.unshift(
 nav.labels.template.events.on("click", function(ev) {
   console.log(ev.target.dataItem);
 });
+```
 
+JavaScript:
+
+```js
 var nav = container.children.unshift(
   am5hierarchy.BreadcrumbBar.new(root, {
     series: series
@@ -109,3 +132,4 @@ var nav = container.children.unshift(
 nav.labels.template.events.on("click", function(ev) {
   console.log(ev.target.dataItem);
 });
+```

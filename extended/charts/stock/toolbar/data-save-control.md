@@ -1,10 +1,12 @@
 ---
 title: "Data save control"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/data-save-control/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
 
-Data save control when added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/) will provide users a way to save current indicators and drawings to browser's local storage so that they can be restored afterwards.
+> Data save control when added to stock toolbar will provide users a way to save current indicators and drawings to browser's local storage so that they can be restored afterwards.
+
+Data save control when added to [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/) will provide users a way to save current indicators and drawings to browser's local storage so that they can be restored afterwards.
 
 ## What it does?
 
@@ -12,8 +14,8 @@ Adding Data save control will add ability for the users to retain their annotati
 
 It allows two modes of operation:
 
--   Manual
--   Automatic
+* Manual
+* Automatic
 
 ### Manual mode
 
@@ -25,10 +27,13 @@ To restore the annotations, users can select "Restore saved data".
 
 The data can be cleared by selecting "Clear" option.
 
+![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-1.png)
 
 ### Automatic mode
 
 Automatic mode can be enabled by selecting "Auto-save drawings and indicators".
+
+![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-2.png)
 
 When enabled, the chart will automatically save all changes to drawings and indicators (including deletion) to browser's memory.
 
@@ -42,10 +47,10 @@ Data saver control saves ONLY drawings and indicators as well as their settings.
 
 It DOES NOT save:
 
--   Zoom position
--   Chart settings
--   Any series settings
--   Any other selection like main series type, selected main or compared indexes, etc.
+* Zoom position
+* Chart settings
+* Any series settings
+* Any other selection like main series type, selected main or compared indexes, etc.
 
 If we'd need to store current state of any of the above, we'd need to implement custom code to do so.
 
@@ -53,31 +58,39 @@ If we'd need to store current state of any of the above, we'd need to implement 
 
 Like any other control, it should be instantiated using `new()` syntax, and pushed into toolbar's `controls` list:
 
+TypeScript:
+
+```ts
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.DataSaveControl.new(root, {
       stockChart: stockChart
     }),
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart
     })
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.DataSaveControl.new(root, {
       stockChart: stockChart
     }),
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart
     })
-  \]
+  ]
 });
+```
 
 ## Storage scope
 
@@ -93,10 +106,13 @@ While this ensure data isolation, it might not suit all of the scenarios, e.g. i
 
 For such scenarios, we can use a manually provided storage id via `storageId` setting:
 
+TypeScript:
+
+```ts
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.DataSaveControl.new(root, {
       stockChart: stockChart,
       storageId: "myChart123"
@@ -104,13 +120,17 @@ let toolbar = am5stock.StockToolbar.new(root, {
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart
     })
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.DataSaveControl.new(root, {
       stockChart: stockChart,
       storageId: "myChart123"
@@ -118,8 +138,9 @@ var toolbar = am5stock.StockToolbar.new(root, {
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart
     })
-  \]
+  ]
 });
+```
 
 The above will ensure that any chart that we set `storageId: "myChart123"` will use the same storage for saved indicators and drawings and will save and restore them across all reloads and sessions.
 
@@ -129,10 +150,13 @@ By default, automatic save mode is turned off.
 
 We can turn it on by setting `autoSave` setting to `true`:
 
+TypeScript:
+
+```ts
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.DataSaveControl.new(root, {
       stockChart: stockChart,
       storageId: "myChart123",
@@ -141,13 +165,17 @@ let toolbar = am5stock.StockToolbar.new(root, {
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart
     })
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.DataSaveControl.new(root, {
       stockChart: stockChart,
       storageId: "myChart123",
@@ -156,40 +184,50 @@ var toolbar = am5stock.StockToolbar.new(root, {
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart
     })
-  \]
+  ]
 });
+```
 
-NOTEAutomatic node will be turned on regardless of this setting if user explicitly check auto-save box.
+> **Note:** Automatic node will be turned on regardless of this setting if user explicitly check auto-save box.
 
 ## Relation to Settings control
 
 Auto-saving can be enabled via [Settings control](https://docs.amcharts.com/v5/charts/stock/toolbar/settings-control/), too.
 
+![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-3.png)
 
 If you already have Data save control added to the Stock toolbar, the auto-save functionality in Settings control will use the same configuration options.
 
 If there's no Data save control (which is optional), we can configure auto-save related options via Settings control's settings:
 
+TypeScript:
+
+```ts
 let toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart,
       storageId: "myChart123",
       autoSave: true
     })
-  \]
+  ]
 });
+```
 
+JavaScript:
+
+```js
 var toolbar = am5stock.StockToolbar.new(root, {
   container: document.getElementById("chartcontrols"),
   stockChart: stockChart,
-  controls: \[
+  controls: [
     am5stock.SettingsControl.new(root, {
       stockChart: stockChart,
       storageId: "myChart123",
       autoSave: true
     })
-  \]
+  ]
 });
+```

@@ -1,7 +1,7 @@
 ---
 title: "Settings"
 source: "https://docs.amcharts.com/v5/concepts/settings/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 Settings is a set of key - value pairs that each and every element of the chart has, that are used to configure its appearance and behavior. Settings can be manipulated in a number of ways, and, as we will see later in this tutorial, is the main method of configuring most of the things.
@@ -10,14 +10,17 @@ Settings is a set of key - value pairs that each and every element of the chart 
 
 There are three main ways to set settings directly on the elment:
 
-1.  By passing in an object as a second parameter to `new()` method when instantiating an element.
-2.  By using `set()` method of the element object.
-3.  By using `setAll()` method of the element object.
+1. By passing in an object as a second parameter to `new()` method when instantiating an element.
+2. By using `set()` method of the element object.
+3. By using `setAll()` method of the element object.
 
 ### When creating an element
 
 The most common and convenient way to specify element's settings is to pass those in when creating it by its `new()` method:
 
+TypeScript:
+
+```ts
 const series = chart.series.push(
   am5pie.PieSeries.new(
     root, {
@@ -26,7 +29,11 @@ const series = chart.series.push(
     }
   )
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5pie.PieSeries.new(
     root, {
@@ -35,6 +42,7 @@ var series = chart.series.push(
     }
   )
 );
+```
 
 ### On an element object
 
@@ -42,20 +50,31 @@ Once we have element object, we can also set settings via its `set()` (to set si
 
 The above can be refactored to this:
 
+TypeScript:
+
+```ts
 const series = chart.series.push(
   am5pie.PieSeries.new(root, {})
 );
 series.set("valueField", "value");
 series.set("categoryField", "category");
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5pie.PieSeries.new(root, {})
 );
 series.set("valueField", "value");
 series.set("categoryField", "category");
+```
 
 Or even like this:
 
+TypeScript:
+
+```ts
 const series = chart.series.push(
   am5pie.PieSeries.new(root, {})
 );
@@ -63,7 +82,11 @@ series.setAll({
   valueField: "value",
   categoryField: "category"
 });
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5pie.PieSeries.new(root, {})
 );
@@ -71,6 +94,7 @@ series.setAll({
   valueField: "value",
   categoryField: "category"
 });
+```
 
 All three approaches are correct and will produce identical output.
 
@@ -80,15 +104,25 @@ We can find out what settings each element has by consulting the class reference
 
 Each class' reference will have a separate section named "Settings", accessible via right-hand menu:
 
+![](https://docs.amcharts.com/v5/images/concepts/settings/index/image-1-1024x873.png)
+
 As an example, check out `DateAxis` settings [here](https://docs.amcharts.com/v5/reference/dateaxis/#settings).
 
 ## Getting setting value
 
 Use element's `get()` method to read current value of the setting. E.g.:
 
-series.get("valueField");
+TypeScript:
 
+```ts
 series.get("valueField");
+```
+
+JavaScript:
+
+```js
+series.get("valueField");
+```
 
 ## Binding to data
 
@@ -124,8 +158,16 @@ Some objects have "private" settings.
 
 Those are mostly informational values that can be retrieved using `getPrivate()` method.
 
+TypeScript:
+
+```ts
 let cursorPosition = cursor.getPrivate("positionX");
+```
 
+JavaScript:
+
+```js
 var cursorPosition = cursor.getPrivate("positionX");
+```
 
-IMPORTANT Private settings are read-only and cannot be set by any user code.
+> **Important:** Private settings are read-only and cannot be set by any user code.

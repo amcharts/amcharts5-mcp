@@ -1,45 +1,53 @@
 ---
 title: "Date axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
 
 Date axis is used to display date-based data with a natural time scale.
 
 ## Data order
 
-IMPORTANTDate axis expects series data to be sorted in ascending order. Otherwise, chart will be prone to all kinds of plotting anomalies.
+> **Important:** Date axis expects series data to be sorted in ascending order. Otherwise, chart will be prone to all kinds of plotting anomalies.
 
 ## Data granularity
 
 The single most important setting for a date axis is `baseInterval` which describes granularity of data used in the chart.
 
-The value of `baseInterval` is an object of type `[ITimeInterval](https://docs.amcharts.com/v5/reference/itimeinterval/)` which has two keys:
+The value of `baseInterval` is an object of type `ITimeInterval` which has two keys:
 
--   `timeUnit` - what time unit is used in data.
--   `count` - number of time units.
+* `timeUnit` - what time unit is used in data.
+* `count` - number of time units.
 
 For example, if we have daily data (one data item per day), we'd set up axis like this:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 },
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 },
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 The `timeUnit` can be one of the following: `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, `"year"`.
 
-NOTE A lot of of other aspects and functionality of a date axis depends on a value of `baseInterval` as we will see throughout this tutorial.
+> **Note:** A lot of of other aspects and functionality of a date axis depends on a value of `baseInterval` as we will see throughout this tutorial.
 
-IMPORTANT For month-based date axes, the value of `count` for `baseInterval` must be a divider of 12, i.e. `1`, `2`, `3`, `4`, `6`, `12`, `24`, etc.
+> **Important:** For month-based date axes, the value of `count` for `baseInterval` must be a divider of 12, i.e. `1`, `2`, `3`, `4`, `6`, `12`, `24`, etc.
 
 ## Grid granularity
 
@@ -65,47 +73,56 @@ If that still not enough to display grids spaced out enough, it will revert to d
 
 The granularity depends on current date range of the axis, meaning that it will update dynamically when zooming the chart in and out:
 
-Zoomed out chart. Grid granularity at 5 days.
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5.png "Zoomed out chart. Grid granularity at 5 days.")
 
-Zooming in. Granularity is reverting to 1 day.
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day1.png "Zooming in. Granularity is reverting to 1 day.")
 
 ### Customizing grid granularity
 
-We can control to what time intervals we want grid of the date axis to switch by setting its `[gridIntervals](https://docs.amcharts.com/v5/reference/dateaxis/#gridIntervals_setting)` setting.
+We can control to what time intervals we want grid of the date axis to switch by setting its `gridIntervals` setting.
 
-It's an array of `[ITimeInterval](https://docs.amcharts.com/v5/reference/itimeinterval/)` objects, each specifying an allowed option for grid lines.
+It's an array of `ITimeInterval` objects, each specifying an allowed option for grid lines.
 
 Date axis will use the most granular interval that satisfies [grid density restrictions](https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-density).
 
 For example, let's restrict grid to just days and months:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 },
-    gridIntervals: \[
+    gridIntervals: [
       { timeUnit: "day", count: 1 },
       { timeUnit: "month", count: 1 }
-    \],
+    ],
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 },
-    gridIntervals: \[
+    gridIntervals: [
       { timeUnit: "day", count: 1 },
       { timeUnit: "month", count: 1 }
-    \],
+    ],
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 ### Default grid intervals
 
 The default value for `gridIntervals` is:
 
-\[
+```json
+[
   { timeUnit: "millisecond", count: 1 },
   { timeUnit: "millisecond", count: 5 },
   { timeUnit: "millisecond", count: 10 },
@@ -148,7 +165,8 @@ The default value for `gridIntervals` is:
   { timeUnit: "year", count: 5000 },
   { timeUnit: "year", count: 10000 },
   { timeUnit: "year", count: 100000 }
-\]
+]
+```
 
 ### Labels and ticks
 
@@ -166,12 +184,13 @@ Instead of using date format as set in a [global date formatter](https://docs.am
 
 #### Label date formats
 
-The formats used for each time unit are set in date axis' `[dateFormats](https://docs.amcharts.com/v5/reference/dateaxis/#dateFormats_setting)` setting.
+The formats used for each time unit are set in date axis' `dateFormats` setting.
 
 It's an object with a key corresponding to each time unit ( `"millisecond"`, `"second"`, `"minute"`, `"hour"`, `"day"`, `"week"`, `"month"`, `"year"`) with a value corresponding to its format.
 
 Here's how it looks like by default, with International English locale:
 
+```json
 {
   "millisecond": "mm:ss SSS",
   "second": "HH:mm:ss",
@@ -182,25 +201,35 @@ Here's how it looks like by default, with International English locale:
   "month": "MMM",
   "year": "yyyy"
 }
+```
 
 We can easily change the formats as needed:
 
-xAxis.get("dateFormats")\["day"\] = "MM/dd";
+TypeScript:
 
-xAxis.get("dateFormats")\["day"\] = "MM/dd";
+```ts
+xAxis.get("dateFormats")["day"] = "MM/dd";
+```
 
+JavaScript:
 
-Default format
+```js
+xAxis.get("dateFormats")["day"] = "MM/dd";
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5-1.png "Default format")
 
-`dateFormats` modified
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis_dateformat.png "`dateFormats` modified")
 
 #### Period change date formats
 
 A label representing start of a period, e.g. start of the month when grid uses daily time unit, will be formatted according to different format, by default.
 
-We can turn this behavior off by setting `[markUnitChange](https://docs.amcharts.com/v5/reference/dateaxis/#markUnitChange_setting)` setting to `false` on a date axis.
+We can turn this behavior off by setting `markUnitChange` setting to `false` on a date axis.
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 },
@@ -208,7 +237,11 @@ let xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     baseInterval: { timeUnit: "day", count: 1 },
@@ -216,23 +249,221 @@ var xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 We can also override the date format for such labels.
 
-Similarly to `dateFormats` there's another setting: `[periodChangeDateFormats](https://docs.amcharts.com/v5/reference/dateaxis/#periodChangeDateFormats_setting)`.
+Similarly to `dateFormats` there's another setting: `periodChangeDateFormats`.
 
 Formats from `periodChangeDateFormats` will be used only for the period beginning labels, like for January 1st in the following example.
 
-xAxis.get("periodChangeDateFormats")\["day"\] = "MMM";
+TypeScript:
 
-xAxis.get("periodChangeDateFormats")\["day"\] = "MMM";
+```ts
+xAxis.get("periodChangeDateFormats")["day"] = "MMM";
+```
 
+JavaScript:
 
-Default format
+```js
+xAxis.get("periodChangeDateFormats")["day"] = "MMM";
+```
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5-1.png "Default format")
 
-Both label and period label formats customized
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis_periodchangedateformats.png "Both label and period label formats customized")
 
+Example: [Formatting date axis labels](https://docs.amcharts.com/embeds/v5/formatting-date-axis-labels/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: false,
+    wheelY: "zoomX",
+    layout: root.verticalLayout,
+    maxTooltipDistance: 0
+  })
+);
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 100
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 320
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 270
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 150
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 156
+  },
+  {
+    date: new Date(2021, 0, 6).getTime(),
+    value: 199
+  },
+  {
+    date: new Date(2021, 0, 7).getTime(),
+    value: 114
+  },
+  {
+    date: new Date(2021, 0, 8).getTime(),
+    value: 320
+  },
+  {
+    date: new Date(2021, 0, 9).getTime(),
+    value: 90
+  },
+  {
+    date: new Date(2021, 0, 10).getTime(),
+    value: 300
+  },
+  {
+    date: new Date(2021, 0, 11).getTime(),
+    value: 150
+  },
+  {
+    date: new Date(2021, 0, 12).getTime(),
+    value: 320
+  },
+  {
+    date: new Date(2021, 0, 13).getTime(),
+    value: 185
+  },
+  {
+    date: new Date(2021, 0, 14).getTime(),
+    value: 100
+  }
+];
+
+data = data.filter(function (item) {
+  return item.date !== null;
+});
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    extraTooltipPrecision: 1,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+let xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+xAxis.get("dateFormats")["day"] = "MM/dd";
+xAxis.get("periodChangeDateFormats")["day"] = "MMM";
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.LineSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {}),
+      connect: false
+    })
+  );
+
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fill: series.get("fill")
+      })
+    });
+  });
+
+  series.strokes.template.set("strokeWidth", 2);
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series", "value");
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomXY",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+```
 
 #### Minor grid formats
 
@@ -242,17 +473,9 @@ Should we nee to, we can specify different formats using axis' setting `minorDat
 
 Contrary to other date format lists (e.g. `dateFormats`), this setting is not pre-set to anything, so we need to set it to an object:
 
-xAxis.set("minorDateFormats") = {
-  millisecond: "ff",
-  second: "ss",
-  minute: "mm",
-  hour: "hh",
-  day: "dd",
-  week: "dd",
-  month: "MM",
-  year: "yyyy"
-};
+TypeScript:
 
+```ts
 xAxis.set("minorDateFormats") = {
   millisecond: "ff",
   second: "ss",
@@ -263,6 +486,22 @@ xAxis.set("minorDateFormats") = {
   month: "MM",
   year: "yyyy"
 };
+```
+
+JavaScript:
+
+```js
+xAxis.set("minorDateFormats") = {
+  millisecond: "ff",
+  second: "ss",
+  minute: "mm",
+  hour: "hh",
+  day: "dd",
+  week: "dd",
+  month: "MM",
+  year: "yyyy"
+};
+```
 
 ### Axis tooltip
 
@@ -282,12 +521,21 @@ These can be overridden using date axis' `tooltipDateFormats` setting.
 
 It works exactly the same way as [label formats](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#label-date-formats), i.e. by setting appropriate base interval key:
 
-xAxis.get("tooltipDateFormats")\["day"\] = "MM/dd";
+TypeScript:
 
-xAxis.get("tooltipDateFormats")\["day"\] = "MM/dd";
+```ts
+xAxis.get("tooltipDateFormats")["day"] = "MM/dd";
+```
+
+JavaScript:
+
+```js
+xAxis.get("tooltipDateFormats")["day"] = "MM/dd";
+```
 
 Here's how defaults look like in International English locale:
 
+```json
 {
   "millisecond": "mm:ss SSS MMM dd, yyyy",
   "second": "HH:mm:ss MMM dd, yyyy",
@@ -298,24 +546,33 @@ Here's how defaults look like in International English locale:
   "month": "MMM yyyy",
   "year": "yyyy"
 }
+```
 
 #### Fixed tooltip format
 
-If we do not want to define different format for each base interval, we can also override it with a single setting: `[tooltipDateFormat](https://docs.amcharts.com/v5/reference/valueaxis/#tooltipNumberFormat_setting)`.
+If we do not want to define different format for each base interval, we can also override it with a single setting: `tooltipDateFormat`.
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     tooltipDateFormat: "MMM d, yyyy",
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     tooltipDateFormat: "MMM d, yyyy",
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 #### Time offset
 
@@ -323,7 +580,7 @@ A date axis is divided into cells by grid in certain increments. For example the
 
 Normally, an axis tooltip will display timestamp representing cell's beginning - same as corresponding axis tooltip, even if it does not correspond with the actual position of the cursor line.
 
-This is controlled by axis' `[tooltipIntervalOffset](https://docs.amcharts.com/v5/reference/idateaxissettings/#tooltipIntervalOffset_property)` setting.
+This is controlled by axis' `tooltipIntervalOffset` setting.
 
 It's a numeric value denoting how timestamp used for the tooltip should be offset relatively to the length of the cell.
 
@@ -331,14 +588,22 @@ The default of `-0.5` ensures that the tooltip uses a cell's beginning timestamp
 
 Resetting it to `0` (zero) would make it display timestamp from the actual position of the cursor's line.
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_-05.png "`tooltipIntervalOffset: -0.5` (default)")
 
-`tooltipIntervalOffset: -0.5` (default)
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_0.png "`tooltipIntervalOffset: 0`")
 
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_05.png "`tooltipIntervalOffset: 0.5`")
 
-`tooltipIntervalOffset: 0`
+## Time zones
 
+A date axis shows dates in the chart's time zone, which is the user's own unless the root element sets another. With `root.timezone` set, the axis follows that zone:
 
-`tooltipIntervalOffset: 0.5`
+* Grid lines fall at that zone's midnight, hours, weeks, and months.
+* Labels and the axis tooltip show date and time in that zone.
+* Data items are grouped by that zone's days, weeks, and months.
+* Where its clocks change for daylight saving, a day is 23 or 25 hours long.
+
+> **More info:** For how to set it, see "[Root element: Time zone](https://docs.amcharts.com/v5/getting-started/root-element/#time-zone)". To see it in action, check out the "[Time Zones and Daylight Saving](https://www.amcharts.com/demos/time-zones-and-daylight-saving/)" demo.
 
 ## Axis date scope
 
@@ -348,10 +613,13 @@ There are a few ways to override those start and end timestamps.
 
 ### Custom scope
 
-We can set start date using `[min](https://docs.amcharts.com/v5/reference/dateaxis/#min_setting)` setting of the axis. Similarly, end date can be overridden using `[max](https://docs.amcharts.com/v5/reference/dateaxis/#max_setting)`.
+We can set start date using `min` setting of the axis. Similarly, end date can be overridden using `max`.
 
 Those are numeric values of timestamps:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     min: new Date(2021, 0, 1).getTime(),
@@ -359,7 +627,11 @@ let xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     min: new Date(2021, 0, 1).getTime(),
@@ -367,6 +639,9 @@ var xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
+
+> **Note:** `new Date(2021, 0, 1)` is midnight in the user's own time zone. If the chart uses UTC (`root.utc = true`), use `Date.UTC(2021, 0, 1)` instead; if it sets `root.timezone`, use the timestamp of midnight in that zone, or the axis will start at an odd hour.
 
 The above will make date axis display scale from Jan 1st to Feb 1st, 2021.
 
@@ -374,25 +649,33 @@ We can specify both `min` and `max`, or just one of them. If either `min` or `ma
 
 ### Relative scope extension
 
-We can also make date axis expand its scope relatively to automatically-calculated range, using its `[extraMin](https://docs.amcharts.com/v5/reference/dateaxis/#extraMin_setting)` and `[extraMax](https://docs.amcharts.com/v5/reference/dateaxis/#extraMax_setting)` settings.
+We can also make date axis expand its scope relatively to automatically-calculated range, using its `extraMin` and `extraMax` settings.
 
 Those are relative values indicating how much of the automatically-calculated value range to add to either `min` or `max`.
 
 For example, `extraMax: 0.1` will make axis expand its scope by 10 past last data item.
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     extraMax: 0.1,
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     extraMax: 0.1,
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 ## Dynamic data item grouping
 
@@ -408,24 +691,178 @@ Data grouping is also dynamic. If user zooms in, and time scope changes, chart m
 
 Here's a very basic chart with data grouping and 50K data points:
 
+Example: [Data grouping](https://docs.amcharts.com/embeds/v5/data-grouping/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: "none",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    groupData: true,
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+xAxis.get("dateFormats")["day"] = "MM/dd";
+xAxis.get("periodChangeDateFormats")["day"] = "MMMM";
+
+// Generate random data
+var date = new Date();
+date.setHours(0, 0, 0, 0);
+var value = 100;
+
+function generateData() {
+  value = Math.round(Math.random() * 10 - 5 + value);
+  am5.time.add(date, "day", 1);
+  return {
+    date: date.getTime(),
+    value: value
+  };
+}
+
+function generateDatas(count) {
+  var data = [];
+  for (var i = 0; i < count; ++i) {
+    data.push(generateData());
+  }
+  return data;
+}
+var data = generateDatas(50000);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.LineSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {})
+    })
+  );
+
+  series.strokes.template.set("strokeWidth", 2);
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series", "value");
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomXY",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+```
 
 ### Enabling grouping
 
-To enable grouping simply set axis' `[groupData](https://docs.amcharts.com/v5/reference/dateaxis/#groupData_setting)` setting to `true`:
+To enable grouping simply set axis' `groupData` setting to `true`:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 ### Grouping threshold
 
@@ -435,18 +872,21 @@ Please note that this is number of intervals, not actual data items.
 
 For example, let's say we have a daily data (`baseInterval: { timeUnit: "day" }`) which spans 10 years.
 
-That means ~3650 base intervals, which is way more than 500.
+That means \~3650 base intervals, which is way more than 500.
 
 Grouping kicks in.
 
-The chart now tries to group into weeks, resulting in ~520 weeks, which is still more than 500.
+The chart now tries to group into weeks, resulting in \~520 weeks, which is still more than 500.
 
 The chart now goes on to months, which gives us just 120 aggregate data items. Threshold is bigger, so that's how the chart will be shown: in monthly increments.
 
 If zoom changes, the chart will re-evaluate the current range and number of intervals in it, and will adjust granularity of displayed data items as necessary.
 
-The threshold can be change using `[groupCount](https://docs.amcharts.com/v5/reference/dateaxis/#groupCount_setting)` setting:
+The threshold can be change using `groupCount` setting:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
@@ -454,7 +894,11 @@ let xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
@@ -462,12 +906,14 @@ var xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 ### Grouping intervals
 
 The groups into which the chart will try to group data items is set via `groupIntervals` setting, with the default being this:
 
-groupIntervals: \[
+```json
+groupIntervals: [
   { timeUnit: "millisecond", count: 1 },
   { timeUnit: "millisecond", count: 10 },
   { timeUnit: "millisecond", count: 100 },
@@ -480,42 +926,54 @@ groupIntervals: \[
   { timeUnit: "week", count: 1 },
   { timeUnit: "month", count: 1 },
   { timeUnit: "year", count: 1 }
-\]
+]
+```
 
 Let's say we don't want to group data items into weeks, or anything smaller than day, we can do this:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
-    groupIntervals: \[
+    groupIntervals: [
 
       { timeUnit: "day", count: 1 },
       { timeUnit: "month", count: 1 },
       { timeUnit: "year", count: 1 }
-    \],
+    ],
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
-    groupIntervals: \[
+    groupIntervals: [
 
       { timeUnit: "day", count: 1 },
       { timeUnit: "month", count: 1 },
       { timeUnit: "year", count: 1 }
-    \],
+    ],
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 ### Forcing group interval
 
 We can also force the chart to group data items into specific interval, regardless if the threshold (`groupCount`) hasn't been passed.
 
-The setting `[groupInterval](https://docs.amcharts.com/v5/reference/dateaxis/#groupInterval_setting)` is for that:
+The setting `groupInterval` is for that:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
@@ -523,7 +981,11 @@ let xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
@@ -531,10 +993,11 @@ var xAxis = chart.xAxes.push(
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 The above will force grouping into months.
 
-IMPORTANTFor `groupInterval` to work, the equivalent interval dfinition must be present in `groupIntervals` array.
+> **Important:** For `groupInterval` to work, the equivalent interval dfinition must be present in `groupIntervals` array.
 
 ### Aggregation function
 
@@ -544,25 +1007,35 @@ By default, it will use value from the last data item in group for aggregate dat
 
 Let's examine specific case. Here's a data for data items that go into a single group:
 
+```json
 { date: 1638451170000, value: 120 },
 { date: 1638451190000, value: 90 },
 { date: 1638451190000, value: 145 }
+```
 
 For data like that, we probably have the following data fields set up for our series:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.LineSeries.new(root, {
     valueXField: "date",
     valueYField: "value"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.LineSeries.new(root, {
     valueXField: "date",
     valueYField: "value"
   })
 );
+```
 
 When the three data items are grouped into a single one, the value for it will be `145` (last data item's value), and the open value `120` (first data point's value).
 
@@ -576,6 +1049,9 @@ Possible values for any of the aggregate-function settings are: `"open"`, `"clos
 
 The following will make series sum up all values from a group, rather than use the last value:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     valueXField: "date",
@@ -583,7 +1059,11 @@ let series = chart.series.push(
     valueYGrouped: "sum"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     valueXField: "date",
@@ -591,9 +1071,13 @@ var series = chart.series.push(
     valueYGrouped: "sum"
   })
 );
+```
 
 For series, that use more than one value, several `*Grouped` settings can be used as well:
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     valueXField: "date",
@@ -605,7 +1089,11 @@ let series = chart.series.push(
     openValueYGrouped: "low"
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5xy.ColumnSeries.new(root, {
     valueXField: "date",
@@ -617,6 +1105,7 @@ var series = chart.series.push(
     openValueYGrouped: "low"
   })
 );
+```
 
 The above will make columns float starting with the lowest open value and ending with the highest close value.
 
@@ -630,6 +1119,9 @@ We can set it to a function, which will receive group data item as well as the t
 
 The custom function can then do whatever it needs to do to analyze source data items, and modify the end values of the aggregate data item.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis,
@@ -643,7 +1135,11 @@ let series = chart.series.push(
     }
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis,
@@ -657,6 +1153,7 @@ var series = chart.series.push(
     }
   }) 
 );
+```
 
 The above example replaces actual group value with the number of source data items that comprise the group.
 
@@ -664,6 +1161,9 @@ The data item received by custom grouping function contains `originals` setting,
 
 If we need to calculate our custom value based on original values, we can iterate through that list to do our calculations.
 
+TypeScript:
+
+```ts
 let series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis,
@@ -684,7 +1184,11 @@ let series = chart.series.push(
     }
   }) 
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push( 
   am5xy.LineSeries.new(root, { 
     xAxis: xAxis,
@@ -705,11 +1209,169 @@ var series = chart.series.push(
     }
   }) 
 );
+```
 
 The above will iterate through "originals" to determine highest value, then use it as a group value.
 
-IMPORTANTFor `originals` to be included in the related data items, series needs its `groupWithOriginals: true` set.
+> **Important:** For `originals` to be included in the related data items, series needs its `groupWithOriginals: true` set.
 
+Example: [Custom data grouping function](https://docs.amcharts.com/embeds/v5/custom-data-grouping-function/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panY: "none",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  })
+);
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+// Create X-Axis
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    groupData: true,
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {})
+  })
+);
+
+xAxis.get("dateFormats")["day"] = "MM/dd";
+xAxis.get("periodChangeDateFormats")["day"] = "MMMM";
+
+// Generate random data
+var date = new Date();
+date.setHours(0, 0, 0, 0);
+var value = 100;
+
+function generateData() {
+  value = Math.round(Math.random() * 10 - 5 + value);
+  am5.time.add(date, "day", 1);
+  return {
+    date: date.getTime(),
+    value: value
+  };
+}
+
+function generateDatas(count) {
+  var data = [];
+  for (var i = 0; i < count; ++i) {
+    data.push(generateData());
+  }
+  return data;
+}
+var data = generateDatas(50000);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.LineSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {}),
+      groupDataCallback: function (dataItem, interval) {
+        var originals = dataItem.get("originals");
+        var high = -10000;
+        for (var i = 0; i < originals.length; i++) {
+          if (dataItem.get("valueY") > high) {
+            high = dataItem.get("valueY");
+          }
+        }
+        dataItem.set("valueY", high);
+        dataItem.set("valueYWorking", high);
+      }
+    })
+  );
+
+  series.strokes.template.set("strokeWidth", 2);
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series", "value");
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomXY",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+```
 
 ### Selectively disabling grouping
 
@@ -717,6 +1379,9 @@ Setting `groupData: true` on a date axis will automatically enable grouping for 
 
 We can selectively disable grouping for individual series by setting its `groupDataDisabled`.
 
+TypeScript:
+
+```ts
 // Grouping enabled
 let series1 = chart.series.push(
   am5xy.ColumnSeries.new(root, {
@@ -733,7 +1398,11 @@ let series2 = chart.series.push(
     groupDataDisabled: true
   })
 );
+```
 
+JavaScript:
+
+```js
 // Grouping enabled
 var series1 = chart.series.push(
   am5xy.ColumnSeries.new(root, {
@@ -750,6 +1419,7 @@ var series2 = chart.series.push(
     groupDataDisabled: true
   })
 );
+```
 
 ### Performance implications
 
@@ -773,25 +1443,33 @@ We can tweak `groupIntervals` list to include only those intervals we absolutely
 
 For example, if we have a few days worth of minute-based data, it could be enough to let the the series group its data to maximum of an hour:
 
+TypeScript:
+
+```ts
 let xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
-    groupIntervals: \[
+    groupIntervals: [
       { timeUnit: "hour", count: 1 }
-    \],
+    ],
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var xAxis = chart.xAxes.push(
   am5xy.DateAxis.new(root, {
     groupData: true,
-    groupIntervals: \[
+    groupIntervals: [
       { timeUnit: "hour", count: 1 }
-    \],
+    ],
     renderer: am5xy.AxisRendererX.new(root, {})
   })
 );
+```
 
 ## Zooming
 
@@ -799,21 +1477,37 @@ var xAxis = chart.xAxes.push(
 
 We can use date axis' method `zoomToDates()` to zoom the axis to specific date range:
 
-xAxis.zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
+TypeScript:
 
+```ts
 xAxis.zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
+```
+
+JavaScript:
+
+```js
+xAxis.zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
+```
 
 ### Pre-zooming
 
 Once data is loaded on some series the date axis gets its scope of dates from, we can use `zoomToDates` to pre-zoom it to some date range:
 
-series.events.once("datavalidated", function(ev) {
-  ev.target.get("xAxis").zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
-});
+TypeScript:
 
+```ts
 series.events.once("datavalidated", function(ev) {
   ev.target.get("xAxis").zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
 });
+```
+
+JavaScript:
+
+```js
+series.events.once("datavalidated", function(ev) {
+  ev.target.get("xAxis").zoomToDates(new Date(2021, 0, 1), new Date(2022, 0, 1));
+});
+```
 
 Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming axes](https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pre-zooming-axes)".
 
@@ -821,8 +1515,11 @@ Read more about pre-zooming using series events in "[Zoom and pan: Pre-zooming a
 
 Date axis does not have specific events that are triggered when it is zoomed.
 
-Instead, we can use private setting change events on `[selectionMin](https://docs.amcharts.com/v5/reference/dateaxis/#selectionMin_setting)` and `[selectionMax](https://docs.amcharts.com/v5/reference/dateaxis/#selectionMax_setting)` private settings:
+Instead, we can use private setting change events on `selectionMin` and `selectionMax` private settings:
 
+TypeScript:
+
+```ts
 xAxis.onPrivate("selectionMin", function(value, target) {
   var start = new Date(value);
   console.log("Start date changed:", start);
@@ -832,7 +1529,11 @@ xAxis.onPrivate("selectionMax", function(value, target) {
   var end = new Date(value);
   console.log("End date changed:", end);
 });
+```
 
+JavaScript:
+
+```js
 xAxis.onPrivate("selectionMin", function(value, target) {
   var start = new Date(value);
   console.log("Start date changed:", start);
@@ -842,7 +1543,155 @@ xAxis.onPrivate("selectionMax", function(value, target) {
   var end = new Date(value);
   console.log("End date changed:", end);
 });
+```
 
+Example: [Date axis zoom events](https://docs.amcharts.com/embeds/v5/date-axis-zoom-events/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create chart
+// https://docs.amcharts.com/v5/charts/xy-chart/
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX"
+  })
+);
+
+// Add cursor
+// https://docs.amcharts.com/v5/charts/xy-chart/cursor/
+var cursor = chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomX"
+  })
+);
+
+cursor.lineY.set("visible", false);
+
+// Generate random data
+var date = new Date();
+date.setHours(0, 0, 0, 0);
+var value = 100;
+
+function generateData() {
+  value = Math.round(Math.random() * 10 - 5 + value);
+
+  am5.time.add(date, "day", 1);
+  return { date: date.getTime(), value: value };
+}
+
+function generateDatas(count) {
+  var data = [];
+  for (var i = 0; i < count; ++i) {
+    data.push(generateData());
+  }
+  return data;
+}
+
+// Create axes
+// https://docs.amcharts.com/v5/charts/xy-chart/axes/
+var xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {}),
+    tooltip: am5.Tooltip.new(root, {})
+  })
+);
+
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+
+xAxis.onPrivate("selectionMin", function (value, target) {
+  var start = new Date(value);
+  console.log("Start date changed:", start);
+});
+
+xAxis.onPrivate("selectionMax", function (value, target) {
+  var end = new Date(value);
+  console.log("End date changed:", end);
+});
+
+// Add series
+// https://docs.amcharts.com/v5/charts/xy-chart/series/
+var series = chart.series.push(
+  am5xy.LineSeries.new(root, {
+    name: "Series",
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date"
+  })
+);
+
+series.data.setAll(generateDatas(100));
+
+var tooltip = series.set("tooltip", am5.Tooltip.new(root, {}));
+tooltip.label.set("text", "{valueY}");
+
+// Add scrollbar
+// https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
+var scrollbar = chart.set(
+  "scrollbarX",
+  am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  })
+);
+
+// Make stuff animate on load
+// https://docs.amcharts.com/v5/concepts/animations/
+series.appear(1000);
+chart.appear(1000, 100);
+```
 
 ## Gapless date axis
 
@@ -854,19 +1703,15 @@ It can be used to display irregularly-spaced date-based data, where maintaining 
 
 For more information, please refer to "[Gapless date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/)" tutorial.
 
-Regular date axis with irregular data
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis.png "Regular date axis with irregular data")
 
-Category date axis with irregular data
+![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/categorydateaxis.png "Category date axis with irregular data")
 
 ## Related tutorials
 
--   [Additional axis tooltip to display totals](https://docs.amcharts.com/v5/tutorials/additional-axis-tooltip-to-display-totals/)
--   [Location of items on date axis and date-based series](https://docs.amcharts.com/v5/tutorials/location-of-items-on-date-axis-and-date-based-series/)
--   [Different bullet styling of grouped data items](https://docs.amcharts.com/v5/tutorials/different-bullet-styling-of-grouped-data-items/)
--   [Axis zoom end event](https://docs.amcharts.com/v5/tutorials/axis-zoom-end-event/)
--   [Dual date axis with both month and year labels](https://docs.amcharts.com/v5/tutorials/dual-date-axis-with-both-month-and-year-labels/)
--   [Show a range of dates in a tooltip of a DateAxis when grouping data](https://docs.amcharts.com/v5/tutorials/show-a-range-of-dates-in-a-tooltip-of-a-dateaxis-when-grouping-data/)
-
-## Related class references
-
--   [DateAxis](https://docs.amcharts.com/v5/reference/dateaxis/)
+* [Additional axis tooltip to display totals](https://docs.amcharts.com/v5/tutorials/additional-axis-tooltip-to-display-totals/)
+* [Location of items on date axis and date-based series](https://docs.amcharts.com/v5/tutorials/location-of-items-on-date-axis-and-date-based-series/)
+* [Different bullet styling of grouped data items](https://docs.amcharts.com/v5/tutorials/different-bullet-styling-of-grouped-data-items/)
+* [Axis zoom end event](https://docs.amcharts.com/v5/tutorials/axis-zoom-end-event/)
+* [Dual date axis with both month and year labels](https://docs.amcharts.com/v5/tutorials/dual-date-axis-with-both-month-and-year-labels/)
+* [Show a range of dates in a tooltip of a DateAxis when grouping data](https://docs.amcharts.com/v5/tutorials/show-a-range-of-dates-in-a-tooltip-of-a-dateaxis-when-grouping-data/)

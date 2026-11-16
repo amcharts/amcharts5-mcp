@@ -1,7 +1,7 @@
 ---
 title: "Gauge charts"
 source: "https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 This tutorial will address how to build gauges using radar chart components.
@@ -14,25 +14,41 @@ That means that the process of creating a gauge is identical as creating a [rada
 
 ### Loading required modules
 
-import \* as am5 from "@amcharts/amcharts5";
-import \* as am5xy from "@amcharts/amcharts5/xy";
-import \* as am5radar from "@amcharts/amcharts5/radar";
+TypeScript:
 
+```ts
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
+import * as am5radar from "@amcharts/amcharts5/radar";
+```
+
+JavaScript:
+
+```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+```
 
 ### Creating chart instance
 
+TypeScript:
+
+```ts
 let root = am5.Root.new("chartdiv");
 let chart = root.container.children.push(
   am5radar.RadarChart.new(root, {})
 );
+```
 
+JavaScript:
+
+```js
 var root = am5.Root.new("chartdiv");
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {})
 );
+```
 
 ## Axes
 
@@ -42,22 +58,33 @@ Gauges are one-dimensional chart, that's why we will only need one circular axis
 
 We can use any axis type in gauge/radar, by pushing it into chart's `xAxes` list:
 
+TypeScript:
+
+```ts
 let axis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     renderer: am5radar.AxisRendererCircular.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var axis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     renderer: am5radar.AxisRendererCircular.new(root, {})
   })
 );
+```
 
 ### Axis scale
 
 Since gauges do not have any actual series, its axis can't calculate it's own scale, so we will need to set it manually using axis' `min` and `max` settings:
 
+TypeScript:
+
+```ts
 let axis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 0,
@@ -65,7 +92,11 @@ let axis = chart.xAxes.push(
     renderer: am5radar.AxisRendererCircular.new(root, {})
   })
 );
+```
 
+JavaScript:
+
+```js
 var axis = chart.xAxes.push(
   am5xy.ValueAxis.new(root, {
     min: 0,
@@ -73,11 +104,15 @@ var axis = chart.xAxes.push(
     renderer: am5radar.AxisRendererCircular.new(root, {})
   })
 );
+```
 
 ### Grid and ticks
 
 Grid and ticks can be configured using like on any other axis: via its `grid.template` and `ticks.template`:
 
+TypeScript:
+
+```ts
 // Create axis renderer
 let axisRenderer = am5radar.AxisRendererCircular.new(root, {
   strokeOpacity: 0.1,
@@ -94,7 +129,11 @@ axisRenderer.ticks.template.setAll({
 axisRenderer.grid.template.setAll({
   visible: false
 });
+```
 
+JavaScript:
+
+```js
 // Create axis renderer
 var axisRenderer = am5radar.AxisRendererCircular.new(root, {
   strokeOpacity: 0.1,
@@ -111,6 +150,7 @@ axisRenderer.ticks.template.setAll({
 axisRenderer.grid.template.setAll({
   visible: false
 });
+```
 
 For more information about configuration of grid and ticks, refer to "[Axes: Grid](https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid)" and "[Axes: Ticks](https://docs.amcharts.com/v5/charts/xy-chart/axes/#ticks)".
 
@@ -122,7 +162,7 @@ For more information on how to configure axes - labels, ticks, grid, individual 
 
 Gauges (radar chart) is not limited to a full circle. It can start and end at any angle.
 
-For that we have to chart's settings: `[startAngle](https://docs.amcharts.com/v5/reference/radarchart/#startAngle_setting)` and `[radarAngle](https://docs.amcharts.com/v5/reference/piechart/#endAngle_setting)`.
+For that we have to chart's settings: `startAngle` and `radarAngle`.
 
 These are numeric values denoting degrees.
 
@@ -132,33 +172,103 @@ Defaults are `-90` (`startAngle`) and `270` (`endAngle`) forming full circle sta
 
 We can change that any way we want.
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     startAngle: -180,
     endAngle: 0
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     startAngle: -180,
     endAngle: 0
   })
 );
+```
 
 The above will result in a horizontal semi-circle:
 
-Default behavior
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_full_circle.png "Default behavior")
 
-`{ startAngle: -180, endAngle: 0 }`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_half_circle.png "`\{ startAngle: -180, endAngle: 0 }`")
 
+Example: [Gauge chart](https://docs.amcharts.com/embeds/v5/gauge-chart/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/radar.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5radar.RadarChart.new(root, {
+    panX: false,
+    panY: false,
+    startAngle: -180,
+    endAngle: 0
+  })
+);
+
+var axisRenderer = am5radar.AxisRendererCircular.new(root, {
+  innerRadius: am5.percent(98),
+  strokeOpacity: 0.1,
+  minGridDistance: 20
+});
+
+axisRenderer.onPrivate("radius", function () {
+  axisRenderer.set("minGridDistance", axisRenderer.getPrivate("radius", 1) / 5);
+});
+
+var xAxis = chart.xAxes.push(
+  am5xy.ValueAxis.new(root, {
+    maxDeviation: 0,
+    min: 0,
+    max: 100,
+    strictMinMax: true,
+    renderer: axisRenderer
+  })
+);
+```
 
 ## Chart radius
 
 Radar chart (which is used for gauges) have two radius settings:
 
--   `radius` - outer radius.
--   `innerRadius` - inner radius.
+* `radius` - outer radius.
+* `innerRadius` - inner radius.
 
 Both can be either percent value (relative to available space) or fixed pixel value.
 
@@ -168,21 +278,29 @@ Both can be either percent value (relative to available space) or fixed pixel va
 
 We can also use negative values in `innerRadius`. Those will mean pixel distance from the outer radius. This allows creating fixed-width bands.
 
-The inner radius will affect grid length as well as width of the [bands](#Bands).
+The inner radius will affect grid length as well as width of the [bands](#bands).
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     radius: am5.percent(95),
     innerRadius: -20
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     radius: am5.percent(95),
     innerRadius: -20
   })
 );
+```
 
 For more information about chart radii settings, refer to "[Radar chart: Radius](https://docs.amcharts.com/v5/charts/radar-chart/#chart-radius)".
 
@@ -194,10 +312,13 @@ To add colored bands to axis, we can use [axis ranges](https://docs.amcharts.com
 
 Creating an axis range requires:
 
--   Creating an axis data item using axis' `makeDataItem()` method.
--   Creating an axis range from a data item using axis' `createAxisRange()` method.
--   Specifying start and end value/date/category (depending on axis type used) for the range.
+* Creating an axis data item using axis' `makeDataItem()` method.
+* Creating an axis range from a data item using axis' `createAxisRange()` method.
+* Specifying start and end value/date/category (depending on axis type used) for the range.
 
+TypeScript:
+
+```ts
 // Create range axis data item
 let rangeDataItem = axis.makeDataItem({
   value: 0,
@@ -206,7 +327,11 @@ let rangeDataItem = axis.makeDataItem({
 
 // Create a range
 let range = axis.createAxisRange(rangeDataItem);
+```
 
+JavaScript:
+
+```js
 // Create range axis data item
 var rangeDataItem = axis.makeDataItem({
   value: 0,
@@ -215,46 +340,63 @@ var rangeDataItem = axis.makeDataItem({
 
 // Create a range
 var range = axis.createAxisRange(rangeDataItem);
+```
 
 For more information about setting start and end values depending on axis type, refer to "[Axis ranges: Range start and end](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#range-start-and-end)" tutorial.
 
 ### Setting fill
 
-Range fills are not visible by default. We need to configure them using `axisFill` setting, which is a generic object of type `[Graphics](https://docs.amcharts.com/v5/reference/graphics/)`.
+Range fills are not visible by default. We need to configure them using `axisFill` setting, which is a generic object of type `Graphics`.
 
+TypeScript:
+
+```ts
 rangeDataItem.get("axisFill").setAll({
   fill: color,
   fillOpacity: 0.2
 });
+```
 
+JavaScript:
+
+```js
 rangeDataItem.get("axisFill").setAll({
   fill: color,
   fillOpacity: 0.2
 });
+```
 
 ### Band width
 
 Bad widths depend on the chart's [`radius` and `innerRadius` settings](https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/#chart-radius).
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     innerRadius: -20
   })
 );
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
     innerRadius: -20
   })
 );
+```
 
 The above will make bands 2% the radius of the chart itself.
 
-`innerRadius: 0` (default)
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_0.png "`innerRadius: 0` (default)")
 
-`innerRadius: -30`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_90.png "`innerRadius: -30`")
 
-`innerRadius: am5.percent(98)`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_98.png "`innerRadius: am5.percent(98)`")
 
 ### Variable-width bands
 
@@ -262,25 +404,147 @@ We can set `radius` and `innerRadius` directly on axis range fill data item, too
 
 This way we can make each range/band specific width:
 
+TypeScript:
+
+```ts
 rangeDataItem.get("axisFill").setAll({
   visible: true,
   fill: color,
   fillOpacity: 0.8,
   innerRadius: -45
 });
+```
 
+JavaScript:
+
+```js
 rangeDataItem.get("axisFill").setAll({
   visible: true,
   fill: color,
   fillOpacity: 0.8,
   innerRadius: -45
 });
+```
 
+Example: [Variable-radius ranges on a gauge](https://docs.amcharts.com/embeds/v5/variable-radius-ranges-on-a-gauge/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/radar.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5radar.RadarChart.new(root, {
+    panX: false,
+    panY: false,
+    startAngle: -180,
+    endAngle: 0
+    //innerRadius: -20
+  })
+);
+
+var axisRenderer = am5radar.AxisRendererCircular.new(root, {
+  strokeOpacity: 0.1,
+  minGridDistance: 30
+});
+
+axisRenderer.ticks.template.setAll({
+  visible: true,
+  strokeOpacity: 0.5
+});
+
+axisRenderer.grid.template.setAll({
+  visible: false
+});
+
+var axis = chart.xAxes.push(
+  am5xy.ValueAxis.new(root, {
+    maxDeviation: 0,
+    min: 0,
+    max: 100,
+    strictMinMax: true,
+    renderer: axisRenderer
+  })
+);
+
+function createRange(start, end, color, label, innerRadius) {
+  var rangeDataItem = axis.makeDataItem({
+    value: start,
+    endValue: end
+  });
+
+  var range = axis.createAxisRange(rangeDataItem);
+
+  rangeDataItem.get("axisFill").setAll({
+    visible: true,
+    fill: color,
+    fillOpacity: 0.8,
+    innerRadius: innerRadius
+  });
+
+  rangeDataItem.get("tick").setAll({
+    visible: false
+  });
+
+  rangeDataItem.get("label").setAll({
+    text: label,
+    inside: true,
+    radius: innerRadius / -2 - 5,
+    fontSize: "0.9em",
+    fill: am5.color(0xffffff)
+  });
+}
+
+createRange(0, 70, am5.color(0x297373), "Safe", -20);
+createRange(70, 90, am5.color(0x946b49), "Warning", -40);
+createRange(90, 100, am5.color(0xff621f), "Danger", -60);
+```
 
 ### Band labels
 
 To add labels to a band/axis range, use `label` setting:
 
+TypeScript:
+
+```ts
 rangeDataItem.get("label").setAll({
   text: "Warning",
   inside: true,
@@ -288,7 +552,11 @@ rangeDataItem.get("label").setAll({
   fontSize: "0.9em",
   fill: am5.color(0xffffff)
 });
+```
 
+JavaScript:
+
+```js
 rangeDataItem.get("label").setAll({
   text: "Warning",
   inside: true,
@@ -296,7 +564,118 @@ rangeDataItem.get("label").setAll({
   fontSize: "0.9em",
   fill: am5.color(0xffffff)
 });
+```
 
+Example: [Gauge chart](https://docs.amcharts.com/embeds/v5/gauge-chart-2/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/radar.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5radar.RadarChart.new(root, {
+    panX: false,
+    panY: false,
+    startAngle: -180,
+    endAngle: 0,
+    innerRadius: -20
+  })
+);
+
+var axisRenderer = am5radar.AxisRendererCircular.new(root, {
+  strokeOpacity: 0.1,
+  minGridDistance: 30
+});
+
+axisRenderer.ticks.template.setAll({
+  visible: true,
+  strokeOpacity: 0.5
+});
+
+axisRenderer.grid.template.setAll({
+  visible: false
+});
+
+var axis = chart.xAxes.push(
+  am5xy.ValueAxis.new(root, {
+    maxDeviation: 0,
+    min: 0,
+    max: 100,
+    strictMinMax: true,
+    renderer: axisRenderer
+  })
+);
+
+function createRange(start, end, color, label) {
+  var rangeDataItem = axis.makeDataItem({
+    value: start,
+    endValue: end
+  });
+
+  var range = axis.createAxisRange(rangeDataItem);
+
+  rangeDataItem.get("axisFill").setAll({
+    visible: true,
+    fill: color,
+    fillOpacity: 0.8
+  });
+
+  rangeDataItem.get("tick").setAll({
+    visible: false
+  });
+
+  rangeDataItem.get("label").setAll({
+    text: label,
+    inside: true,
+    radius: 5,
+    fontSize: "0.9em",
+    fill: am5.color(0xffffff)
+  });
+}
+
+createRange(0, 70, am5.color(0x297373), "Safe");
+createRange(70, 90, am5.color(0x946b49), "Warning");
+createRange(90, 100, am5.color(0xff621f), "Danger");
+```
 
 For more information about labels on a circular axis, refer to "[Radar axes: Labels](https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/#labels-on-a-circular-axis)".
 
@@ -306,8 +685,11 @@ For more information about labels on a circular axis, refer to "[Radar axes: Lab
 
 In amCharts 5, clock hands are added as an [axis range bullet](https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/#bullet).
 
-As a "sprite" for the axis bullet, we are going to be using special element of type `[ClockHand](https://docs.amcharts.com/v5/reference/clockhand/)`:
+As a "sprite" for the axis bullet, we are going to be using special element of type `ClockHand`:
 
+TypeScript:
+
+```ts
 let handDataItem = axis.makeDataItem({
   value: 0
 });
@@ -319,7 +701,11 @@ let hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
 }));
 
 axis.createAxisRange(handDataItem);
+```
 
+JavaScript:
+
+```js
 var handDataItem = axis.makeDataItem({
   value: 0
 });
@@ -331,6 +717,7 @@ var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
 }));
 
 axis.createAxisRange(handDataItem);
+```
 
 ### Setting value
 
@@ -338,45 +725,69 @@ axis.createAxisRange(handDataItem);
 
 As per code snippet above, initial hand value is set via data item's `value` setting:
 
+TypeScript:
+
+```ts
 let handDataItem = axis.makeDataItem({
   value: 55
 });
+```
 
+JavaScript:
+
+```js
 var handDataItem = axis.makeDataItem({
   value: 55
 });
+```
 
 #### Dynamic value
 
 To move the clock hand to different value, all we need to do is to set `value` setting of the data item again:
 
-handDataItem.set("value", 20);
+TypeScript:
 
+```ts
 handDataItem.set("value", 20);
+```
+
+JavaScript:
+
+```js
+handDataItem.set("value", 20);
+```
 
 Or, if we want the hand to smoothly turn to a new value, we can [animate its `value` setting](https://docs.amcharts.com/v5/concepts/animations/#animating-settings):
 
-handDataItem.animate({
-  key: "value",
-  to: 20,
-  duration: 800,
-  easing: am5.ease.out(am5.ease.cubic)
-});
+TypeScript:
 
+```ts
 handDataItem.animate({
   key: "value",
   to: 20,
   duration: 800,
   easing: am5.ease.out(am5.ease.cubic)
 });
+```
+
+JavaScript:
+
+```js
+handDataItem.animate({
+  key: "value",
+  to: 20,
+  duration: 800,
+  easing: am5.ease.out(am5.ease.cubic)
+});
+```
 
 ### Radius
 
 There are three clock hand settings that effect its radii:
 
--   `radius` - radius from the center of the chart to the tip of the hand.
--   `innerRadius` - radius from the center of the chart to the base of the hand.
--   `pinRadius` - radius of the pin - a circle at the center of the chart.
+* `radius` - radius from the center of the chart to the tip of the hand.
+* `innerRadius` - radius from the center of the chart to the base of the hand.
+* `pinRadius` - radius of the pin - a circle at the center of the chart.
 
 All radii can be either set in absolute pixel values from the center of the chart, as well as percent values.
 
@@ -384,6 +795,9 @@ Percent values are relative to the axis radius.
 
 Radii can also be set in negative absolute value. In such case the radius will be counted from the axis, rather then from the center of the chart.
 
+TypeScript:
+
+```ts
 let hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: am5radar.ClockHand.new(root, {
     radius: am5.percent(85),
@@ -391,7 +805,11 @@ let hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
     pinRadius: 10
   })
 }));
+```
 
+JavaScript:
+
+```js
 var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: am5radar.ClockHand.new(root, {
     radius: am5.percent(85),
@@ -399,16 +817,13 @@ var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
     pinRadius: 10
   })
 }));
+```
 
-(Default)  
-`radius: am5.percent(90)`  
-`innerRadius: 0`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius1.png "(Default) | `radius: am5.percent(90)` | `innerRadius: 0`")
 
-`radius: am5.percent(98)`  
-`innerRadius: 15`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius2.png "`radius: am5.percent(98)` | `innerRadius: 15`")
 
-`radius: -3`  
-`innerRadius: -15`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius3.png "`radius: -3` | `innerRadius: -15`")
 
 ### Configuring hand elements
 
@@ -418,6 +833,9 @@ There are two properties on a clock hand: `hand` and `pin`.
 
 They are both elements of type `Graphics` that can be used to set basic settings like `fill` and `stroke`.
 
+TypeScript:
+
+```ts
 hand.get("sprite").pin.setAll({
   fill: am5.color(0x946b49),
   fillOpacity: 0.5
@@ -427,7 +845,11 @@ hand.get("sprite").hand.setAll({
   fill: am5.color(0x946b49),
   fillOpacity: 0.9
 });
+```
 
+JavaScript:
+
+```js
 hand.get("sprite").pin.setAll({
   fill: am5.color(0x946b49),
   fillOpacity: 0.5
@@ -437,27 +859,43 @@ hand.get("sprite").hand.setAll({
   fill: am5.color(0x946b49),
   fillOpacity: 0.9
 });
+```
 
 Or, if we need to disable an element, we can simply set its `visible` setting:
 
-hand.get("sprite").pin.set("visible", false);
+TypeScript:
 
+```ts
 hand.get("sprite").pin.set("visible", false);
+```
+
+JavaScript:
+
+```js
+hand.get("sprite").pin.set("visible", false);
+```
 
 #### Setting hand end widths
 
 Besides radius settings, a clock hand also has two additional settings that control widths of hand's ends:
 
--   `[topWidth](https://docs.amcharts.com/v5/reference/clockhand/#topWidth_setting)` - width of the hand's tip, in pixels (default: `1`).
--   `[bottomWidth](https://docs.amcharts.com/v5/reference/clockhand/#bottomWidth_setting)` - width of the hand's base, in pixels (default: `10`).
+* `topWidth` - width of the hand's tip, in pixels (default: `1`).
+* `bottomWidth` - width of the hand's base, in pixels (default: `10`).
 
+TypeScript:
+
+```ts
 let hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: am5radar.ClockHand.new(root, {
     topWidth: 5,
     bottomWidth: 5
   })
 }));
+```
 
+JavaScript:
+
+```js
 var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: am5radar.ClockHand.new(root, {
     radius: am5.percent(85),
@@ -465,19 +903,15 @@ var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
     bottomWidth: 5
   })
 }));
+```
 
 The above will create a straight hand line, 5 pixel wide.
 
-`topWidth: 5`  
-`bottomWidth: 5`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths1.png "`topWidth: 5` | `bottomWidth: 5`")
 
-`topWidth: 5`  
-`bottomWidth: 20`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths2.png "`topWidth: 5` | `bottomWidth: 20`")
 
-`topWidth: 20`  
-`bottomWidth: 1`  
-`radius: am5.percent(110)`  
-`innerRadius: am5percent(102)`
+![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths3.png "`topWidth: 20` | `bottomWidth: 1` | `radius: am5.percent(110)` | `innerRadius: am5percent(102)`")
 
 ### Disabling ticks and grid
 
@@ -485,18 +919,340 @@ Clock hand is an axis data item, which in turn may have a tick and grid enabled.
 
 If we don't want those to show up next to our hand, we need to disable them:
 
-handDataItem.get("grid").set("visible", false);
-handDataItem.get("tick").set("visible", false);
+TypeScript:
 
+```ts
 handDataItem.get("grid").set("visible", false);
 handDataItem.get("tick").set("visible", false);
+```
+
+JavaScript:
+
+```js
+handDataItem.get("grid").set("visible", false);
+handDataItem.get("tick").set("visible", false);
+```
 
 ## Example
 
+Example: [Gauge chart with hand](https://docs.amcharts.com/embeds/v5/gauge-chart-with-hand/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/radar.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5radar.RadarChart.new(root, {
+    panX: false,
+    panY: false,
+    startAngle: -180,
+    endAngle: 0,
+    innerRadius: -26
+  })
+);
+
+var axisRenderer = am5radar.AxisRendererCircular.new(root, {
+  strokeOpacity: 0.1,
+  minGridDistance: 30
+});
+
+axisRenderer.ticks.template.setAll({
+  visible: true,
+  strokeOpacity: 0.5
+});
+
+axisRenderer.grid.template.setAll({
+  visible: false
+});
+
+var axis = chart.xAxes.push(
+  am5xy.ValueAxis.new(root, {
+    maxDeviation: 0,
+    min: 0,
+    max: 100,
+    strictMinMax: true,
+    renderer: axisRenderer
+  })
+);
+
+function createRange(start, end, color, label) {
+  var rangeDataItem = axis.makeDataItem({
+    value: start,
+    endValue: end
+  });
+
+  var range = axis.createAxisRange(rangeDataItem);
+
+  rangeDataItem.get("axisFill").setAll({
+    visible: true,
+    fill: color,
+    fillOpacity: 0.8
+  });
+
+  rangeDataItem.get("tick").setAll({
+    visible: false
+  });
+
+  rangeDataItem.get("label").setAll({
+    text: label,
+    inside: true,
+    radius: 8,
+    fontSize: "0.9em",
+    fill: am5.color(0xffffff)
+  });
+}
+
+createRange(0, 70, am5.color(0x297373), "Safe");
+createRange(70, 90, am5.color(0x946b49), "Warning");
+createRange(90, 100, am5.color(0xff621f), "Danger");
+
+// Add clock hand
+var handDataItem = axis.makeDataItem({
+  value: 0
+});
+
+var hand = handDataItem.set(
+  "bullet",
+  am5xy.AxisBullet.new(root, {
+    sprite: am5radar.ClockHand.new(root, {
+      radius: am5.percent(99)
+    })
+  })
+);
+
+axis.createAxisRange(handDataItem);
+
+handDataItem.get("grid").set("visible", false);
+handDataItem.get("tick").set("visible", false);
+
+setInterval(() => {
+  handDataItem.animate({
+    key: "value",
+    to: Math.round(Math.random() * 100),
+    duration: 800,
+    easing: am5.ease.out(am5.ease.cubic)
+  });
+}, 2000);
+```
 
 And here's a more advanced example, using multiple axes and hands at different start/end angles:
 
+Example: [Multi-part Gauge](https://docs.amcharts.com/embeds/v5/multi-part-gauge/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/xy.js, https://cdn.amcharts.com/lib/5/radar.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5radar.RadarChart.new(root, {
+    panX: false,
+    panY: false,
+    radius: am5.percent(90),
+    innerRadius: -20
+  })
+);
+
+function createAxis(min, max, start, end, color) {
+  var axisRenderer = am5radar.AxisRendererCircular.new(root, {
+    strokeOpacity: 0.1,
+    minGridDistance: 30,
+    startAngle: start,
+    endAngle: end,
+    stroke: color
+  });
+
+  axisRenderer.ticks.template.setAll({
+    visible: true,
+    strokeOpacity: 0.8,
+    stroke: color
+  });
+
+  axisRenderer.grid.template.setAll({
+    visible: false
+  });
+
+  var axis = chart.xAxes.push(
+    am5xy.ValueAxis.new(root, {
+      maxDeviation: 0,
+      min: min,
+      max: max,
+      strictMinMax: true,
+      renderer: axisRenderer
+    })
+  );
+
+  var rangeDataItem = axis.makeDataItem({
+    value: min,
+    endValue: max
+  });
+
+  var range = axis.createAxisRange(rangeDataItem);
+
+  rangeDataItem.get("axisFill").setAll({
+    visible: true,
+    fill: color,
+    fillOpacity: 0.8,
+    stroke: color,
+    strokeOpacity: 0.8,
+    strokeWidth: 1
+  });
+
+  rangeDataItem.get("tick").setAll({
+    visible: false
+  });
+
+  return axis;
+}
+
+function createHand(axis) {
+  var color = axis.get("renderer").get("stroke");
+  var handDataItem = axis.makeDataItem({
+    value: 0
+  });
+
+  var hand = handDataItem.set(
+    "bullet",
+    am5xy.AxisBullet.new(root, {
+      sprite: am5radar.ClockHand.new(root, {
+        radius: am5.percent(90),
+        innerRadius: am5.percent(70)
+      })
+    })
+  );
+
+  hand.get("sprite").pin.setAll({
+    forceHidden: true
+  });
+
+  hand.get("sprite").hand.setAll({
+    fill: color,
+    fillOpacity: 0.9
+  });
+
+  axis.createAxisRange(handDataItem);
+
+  return hand;
+}
+
+var axis1 = createAxis(0, 100, -85, -5, am5.color(0xef6f6c));
+var axis2 = createAxis(0, 200, 5, 85, am5.color(0x426a5a));
+var axis3 = createAxis(0, 20, 95, 175, am5.color(0x7fb685));
+var axis4 = createAxis(0, 100, 185, 265, am5.color(0xddae7e));
+
+var hand1 = createHand(axis1);
+var hand2 = createHand(axis2);
+var hand3 = createHand(axis3);
+var hand4 = createHand(axis4);
+
+setInterval(function () {
+  hand1.get("sprite").dataItem.animate({
+    key: "value",
+    to: Math.random() * hand1.axis.get("max"),
+    duration: 800,
+    easing: am5.ease.out(am5.ease.cubic)
+  });
+
+  hand2.get("sprite").dataItem.animate({
+    key: "value",
+    to: Math.random() * hand2.axis.get("max"),
+    duration: 800,
+    easing: am5.ease.out(am5.ease.cubic)
+  });
+
+  hand3.get("sprite").dataItem.animate({
+    key: "value",
+    to: Math.random() * hand3.axis.get("max"),
+    duration: 800,
+    easing: am5.ease.out(am5.ease.cubic)
+  });
+
+  hand4.get("sprite").dataItem.animate({
+    key: "value",
+    to: Math.random() * hand4.axis.get("max"),
+    duration: 800,
+    easing: am5.ease.out(am5.ease.cubic)
+  });
+}, 2000);
+```
 
 ## Related tutorials
 
--   [Gauge chart with custom ClockHand](https://docs.amcharts.com/v5/tutorials/gauge-chart-with-custom-clockhand/) (demo)
+* [Gauge chart with custom ClockHand](https://docs.amcharts.com/v5/tutorials/gauge-chart-with-custom-clockhand/) (demo)

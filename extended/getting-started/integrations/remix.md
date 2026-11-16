@@ -1,14 +1,18 @@
 ---
-title: "Using amCharts 5 with Remix"
+title: "Using amCharts 5 with Remix / React Router"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/remix/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> Remix 2 is now React Router, in its framework mode. This tutorial shows amCharts 5 in a React Router app. For Remix 3, see Remix 3.
+
+## Using amCharts
 
 Remix 2 is now [React Router](https://reactrouter.com/), in its framework mode. This tutorial shows amCharts 5 in a React Router app. For Remix 3, see [Remix 3](https://docs.amcharts.com/v5/getting-started/integrations/remix-3/).
 
 Create a project and install amCharts with our React package:
 
-```shell
+```sh
 npx create-react-router@latest my-project
 cd my-project
 npm install @amcharts/amcharts5 @amcharts/amcharts5-react
@@ -16,7 +20,7 @@ npm install @amcharts/amcharts5 @amcharts/amcharts5-react
 
 React Router renders pages on the server with Node, which cannot load amCharts' files on its own. Add amCharts to the server build in `vite.config.ts`:
 
-```typescript
+```ts
 import { defineConfig } from "vite";
 import { reactRouter } from "@react-router/dev/vite";
 
@@ -30,7 +34,7 @@ export default defineConfig({
 
 Then use `useAmChart()` and `<AmChart>` in a route, e.g. `app/routes/home.tsx`. There is no need for a `.client.tsx` file or `ClientOnly`: the package loads the library in the browser only.
 
-```typescript
+```ts
 import { useAmChart, AmChart } from "@amcharts/amcharts5-react";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import config from "../chart-config.json";
@@ -52,4 +56,8 @@ export default function Home() {
 
 See the [React tutorial](https://docs.amcharts.com/v5/getting-started/integrations/react/) for everything the package does, and the [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/react/examples/react-router) on GitHub.
 
-NOTE Astro needs the same setting, under `vite` in `astro.config.mjs`.
+> **Note:** Astro needs the same setting, under `vite` in `astro.config.mjs`.
+
+## Example
+
+» [amCharts 5 with React Router](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/react/examples/react-router?file=app%2FCharts.tsx)

@@ -1,7 +1,7 @@
 ---
 title: "Creating translations"
 source: "https://docs.amcharts.com/v5/concepts/locales/creating-translations/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
 amCharts 5 uses locale objects to modify textual prompts as well as other location-specific options like number separators, date formats, etc. This tutorial will look at ways to create your own locales or modify existing ones.
@@ -16,13 +16,13 @@ If we you're not yet familiar how localization works in amCharts 5, we suggest r
 
 The best way to get started is to grab existing locale file from amCharts 5 sources, and creating a copy of it.
 
-We suggest using `[en.ts](https://github.com/amcharts/amcharts5/blob/master/src/locales/en.ts)` file which is for International English and is a default locale.
+We suggest using `en.ts` file which is for International English and is a default locale.
 
 ### Naming the file
 
-Name the file using syntax `language_COUNTRY.ts` (e.g. `pt_BR` meaning Brazilian Portuguese).
+Name the file using syntax `language_COUNTRY.ts` (e.g. `pt_BR` meaning Brazilian Portuguese).
 
-NOTEIf we are creating a plain JavaScript locale file, we'll want to use `.js` extension instead.
+> **Note:** If we are creating a plain JavaScript locale file, we'll want to use `.js` extension instead.
 
 ### Adding a header
 
@@ -32,23 +32,31 @@ It can also contain information about the author of the translation.
 
 Make sure you include appropriate header with your locale file.
 
-The template `en.ts` already includes a header placeholder, which you can use as a template.
+The template `en.ts` already includes a header placeholder, which you can use as a template.
 
 Example:
 
-/\*\*
- \* amCharts 5 Translation file
- \* Locale: es\_ES
- \* Language: Spanish (Spain)
- \* Author: Dominick Green
- \*/
+TypeScript:
 
-/\*\*
- \* amCharts 5 Translation file
- \* Locale: es\_ES
- \* Language: Spanish (Spain)
- \* Author: Dominick Green
- \*/
+```ts
+/**
+ * amCharts 5 Translation file
+ * Locale: es_ES
+ * Language: Spanish (Spain)
+ * Author: Dominick Green
+ */
+```
+
+JavaScript:
+
+```js
+/**
+ * amCharts 5 Translation file
+ * Locale: es_ES
+ * Language: Spanish (Spain)
+ * Author: Dominick Green
+ */
+```
 
 ### File structure
 
@@ -58,6 +66,7 @@ Each key is a prompt/format ID (usually a version of the prompt in International
 
 A sample locale might look like this:
 
+```json
 {
 
   // ...
@@ -75,15 +84,19 @@ A sample locale might look like this:
   "December": "Diciembre",
   // ...
 }
+```
 
 The actual code will depend on whether we are creating a translation for use in TypeScript or plain JavaScript.
 
-/\*\*
- \* amCharts 5 Translation file
- \* Locale: es\_ES
- \* Language: Spanish (Spain)
- \* Author: Dominick Green
- \*/
+TypeScript:
+
+```ts
+/**
+ * amCharts 5 Translation file
+ * Locale: es_ES
+ * Language: Spanish (Spain)
+ * Author: Dominick Green
+ */
 
 export default {
 
@@ -102,15 +115,19 @@ export default {
   "December": "Diciembre",
   // ...
 }
+```
 
-/\*\*
- \* amCharts 5 Translation file
- \* Locale: es\_ES
- \* Language: Spanish (Spain)
- \* Author: Dominick Green
- \*/
+JavaScript:
 
-var am5locales\_es\_ES = default {
+```js
+/**
+ * amCharts 5 Translation file
+ * Locale: es_ES
+ * Language: Spanish (Spain)
+ * Author: Dominick Green
+ */
+
+var am5locales_es_ES = default {
 
   // ...
   "January": "Enero",
@@ -127,6 +144,7 @@ var am5locales\_es\_ES = default {
   "December": "Diciembre",
   // ...
 }
+```
 
 If we are creating a JavaScript locale file, we need to pay attention to the name of the global variable we are defining.
 
@@ -142,6 +160,9 @@ Let's explore these different types of translatable elements.
 
 Those are the base of the translations. They come in a very predictable pattern: English phrase or word as a key, and exact translation as a value. E.g.:
 
+TypeScript:
+
+```ts
 export default {
   // ...
   "Zoom Out": "Uitzoomen",
@@ -149,14 +170,19 @@ export default {
   "Stop": "Stoppen",
   // ...
 }
+```
 
-var am5locales\_nl\_NL = {
+JavaScript:
+
+```js
+var am5locales_nl_NL = {
   // ...
   "Zoom Out": "Uitzoomen",
   "Play": "Afspelen",
   "Stop": "Stoppen",
   // ...
 }
+```
 
 #### Special keys
 
@@ -164,29 +190,37 @@ Each locale is responsible not only for translating words and phrases, but also 
 
 Some keys in the translation files are not phrases in English, but rather some internal code, denoting a specific format:
 
+TypeScript:
+
+```ts
 export default {
   // ...
-  "\_decimalSeparator": ",",
-  "\_thousandSeparator": " ",
+  "_decimalSeparator": ",",
+  "_thousandSeparator": " ",
   // ...
-  "\_date\_day": "yyyy-MM-dd",
-  // ...
-}
-
-var am5locales\_nl\_NL = {
-  // ...
-  "\_decimalSeparator": ",",
-  "\_thousandSeparator": " ",
-  // ...
-  "\_date\_day": "yyyy-MM-dd",
+  "_date_day": "yyyy-MM-dd",
   // ...
 }
+```
 
-The `"_decimalSeparator"` above instructs that we want to use a comma as a decimal separator in numbers. The `"_thousandSeparator"` says we want our thousands to be separate by a space.
+JavaScript:
 
-`"_date_day"` set the default date format when we want to show a particular date.
+```js
+var am5locales_nl_NL = {
+  // ...
+  "_decimalSeparator": ",",
+  "_thousandSeparator": " ",
+  // ...
+  "_date_day": "yyyy-MM-dd",
+  // ...
+}
+```
 
-`en.ts` file might contain further tips and guidelines for each group of such special translations.
+The `"_decimalSeparator"` above instructs that we want to use a comma as a decimal separator in numbers. The `"_thousandSeparator"` says we want our thousands to be separate by a space.
+
+`"_date_day"` set the default date format when we want to show a particular date.
+
+`en.ts` file might contain further tips and guidelines for each group of such special translations.
 
 #### Ordinals
 
@@ -200,9 +234,12 @@ We can't predict how different languages treat ordinals, so we must leave to a t
 
 Here's how ordinal function looks like for English:
 
+TypeScript:
+
+```ts
 export default {
   // ...
-  "\_dateOrd": function(day: number): string {
+  "_dateOrd": function(day: number): string {
     let res = "th";
     if ((day < 11) || (day > 13)) {
       switch (day % 10) {
@@ -221,10 +258,14 @@ export default {
   }",
   // ...
 }
+```
 
-var am5locales\_en\_US = {
+JavaScript:
+
+```js
+var am5locales_en_US = {
   // ...
-  "\_dateOrd": function(day: number): string {
+  "_dateOrd": function(day: number): string {
     let res = "th";
     if ((day < 11) || (day > 13)) {
       switch (day % 10) {
@@ -243,29 +284,41 @@ var am5locales\_en\_US = {
   }",
   // ...
 }
+```
 
 For some languages, like Lithuanian, ordinals do not differ for numbers, so the function would look quite straightforward:
 
+TypeScript:
+
+```ts
 export default {
   // ...
-  "\_dateOrd": function(day: number): string {
+  "_dateOrd": function(day: number): string {
     return "-a(s)";
   },",
   // ...
 }
+```
 
-var am5locales\_lt\_LT = {
+JavaScript:
+
+```js
+var am5locales_lt_LT = {
   // ...
-  "\_dateOrd": function(day: number): string {
+  "_dateOrd": function(day: number): string {
     return "-a(s)";
   },",
   // ...
 }
+```
 
 ### Placeholders
 
 You will also notice, that some prompts contain numbers prefixed with a percent sign, e.g.:
 
+TypeScript:
+
+```ts
 export default {
   // ...
   "From %1 to %2": "",
@@ -273,21 +326,29 @@ export default {
   "To %1": "",
   // ...
 }
+```
 
-var am5locales\_en\_US = {
+JavaScript:
+
+```js
+var am5locales_en_US = {
   // ...
   "From %1 to %2": "",
   "From %1": "",
   "To %1": "",
   // ...
 }
+```
 
 Those are placeholders, that will be replaced with actual values.
 
-IMPORTANTThe translation **must** include all the same placeholders, however their position is not important. Choose the position which suits the translation best.
+> **Important:** The translation **must** include all the same placeholders, however their position is not important. Choose the position which suits the translation best.
 
 Here's how Spanish translation might look for the above:
 
+TypeScript:
+
+```ts
 export default {
   // ...
   "From %1 to %2": "De %1 a %2",
@@ -295,38 +356,47 @@ export default {
   "To %1": "Hasta %1",
   // ...
 }
+```
 
-var am5locales\_es\_ES = {
+JavaScript:
+
+```js
+var am5locales_es_ES = {
   // ...
   "From %1 to %2": "De %1 a %2",
   "From %1": "Desde %1",
   "To %1": "Hasta %1",
   // ...
 }
+```
 
 ### Untranslated prompts
 
-An empty string `""` in translation means "use default English" prompt.
+An empty string `""` in translation means "use default English" prompt.
 
 If the translation is not necessary, e.g. as most prompts and formats in variations of English, or if you can't translate some of the prompts right now, simply leave the translation as an empty string. The chart will fall back to English for just those untranslated ones.
 
 ### Empty prompts
 
-If for some reason you want to display nothing instead of an English phrase, use `null` instead:
+If for some reason you want to display nothing instead of an English phrase, use `null` instead:
 
+```ts
 export default {
   // ...
   "AM": null,
   "PM": null,
   // ...
 }
+```
 
-var am5locales\_nl\_NL = {
+```ts
+var am5locales_nl_NL = {
   // ...
   "AM": null,
   "PM": null,
   // ...
 }
+```
 
 ## Using a custom locale
 
@@ -336,21 +406,40 @@ There are a few ways to use newly-created locales.
 
 We can save the locale as a `.ts` or `.js` file, then load it like any other bundled locale:
 
-import am5locales\_xx\_XX from "our/custom/locale.ts";
+TypeScript:
 
+```ts
+import am5locales_xx_XX from "our/custom/locale.ts";
+```
+
+JavaScript:
+
+```html
 <script src="/our/custom/locale.js"></script>
+```
 
 Then just set it via `root.locale`:
 
-root.locale = am5locales\_xx\_XX;
+TypeScript:
 
-root.locale = am5locales\_xx\_XX;
+```ts
+root.locale = am5locales_xx_XX;
+```
+
+JavaScript:
+
+```js
+root.locale = am5locales_xx_XX;
+```
 
 ### In-line translation
 
 We can also create translations in-line, directly with our chart code:
 
-const am5locales\_nl\_NL = {
+TypeScript:
+
+```ts
+const am5locales_nl_NL = {
   // ...
   "Zoom Out": "Uitzoomen",
   "Play": "Afspelen",
@@ -358,9 +447,13 @@ const am5locales\_nl\_NL = {
   // ...
 }
 
-root.locale = am5locales\_nl\_NL;
+root.locale = am5locales_nl_NL;
+```
 
-var am5locales\_nl\_NL = {
+JavaScript:
+
+```js
+var am5locales_nl_NL = {
   // ...
   "Zoom Out": "Uitzoomen",
   "Play": "Afspelen",
@@ -368,18 +461,14 @@ var am5locales\_nl\_NL = {
   // ...
 }
 
-root.locale = am5locales\_nl\_NL;
+root.locale = am5locales_nl_NL;
+```
 
 Or even setting it directly to `root.locale`, without creating a variable:
 
-root.locale = {
-  // ...
-  "Zoom Out": "Uitzoomen",
-  "Play": "Afspelen",
-  "Stop": "Stoppen",
-  // ...
-};
+TypeScript:
 
+```ts
 root.locale = {
   // ...
   "Zoom Out": "Uitzoomen",
@@ -387,6 +476,19 @@ root.locale = {
   "Stop": "Stoppen",
   // ...
 };
+```
+
+JavaScript:
+
+```js
+root.locale = {
+  // ...
+  "Zoom Out": "Uitzoomen",
+  "Play": "Afspelen",
+  "Stop": "Stoppen",
+  // ...
+};
+```
 
 ## Modifying individual prompts
 
@@ -394,13 +496,21 @@ In some cases we might be generally happy with existing default or bundled trans
 
 This way we can directly access the locale object and modify its values:
 
-root.locale\["\_decimalSeparator"\] = ",";
-root.locale\["\_thousandSeparator"\] = " ";
-root.locale\["Export"\] = "Save";
+TypeScript:
 
-root.locale\["\_decimalSeparator"\] = ",";
-root.locale\["\_thousandSeparator"\] = " ";
-root.locale\["Export"\] = "Save";
+```ts
+root.locale["_decimalSeparator"] = ",";
+root.locale["_thousandSeparator"] = " ";
+root.locale["Export"] = "Save";
+```
+
+JavaScript:
+
+```js
+root.locale["_decimalSeparator"] = ",";
+root.locale["_thousandSeparator"] = " ";
+root.locale["Export"] = "Save";
+```
 
 ## Extending locale with custom prompts
 
@@ -416,31 +526,55 @@ We can use `Language` methods `setTranslationAny()` and `setTranslationsAny()` t
 
 `setTranslationAny()` adds a single translation:
 
-root.language.setTranslationAny("Hello!", "¡Hola!");
+TypeScript:
 
+```ts
 root.language.setTranslationAny("Hello!", "¡Hola!");
+```
+
+JavaScript:
+
+```js
+root.language.setTranslationAny("Hello!", "¡Hola!");
+```
 
 We can also add many translations in one go using `setTranslationsAny()`:
 
+TypeScript:
+
+```ts
 root.language.setTranslationsAny({
   "Hello!": "¡Hola!",
   "Bye": "Adios"
 });
+```
 
+JavaScript:
+
+```js
 root.language.setTranslationsAny({
   "Hello!": "¡Hola!",
   "Bye": "Adios"
 });
+```
 
-NOTE`setTranslationsAny()` method is available from version `5.3.3` and up.
+> **Note:** `setTranslationsAny()` method is available from version `5.3.3` and up.
 
 ### Translating custom prompts
 
 A `translateAny()` method, as the name implies, will translate any prompt - both built-in and custom ones.
 
-console.log(root.language.translateAny("Hello!"));
+TypeScript:
 
+```ts
 console.log(root.language.translateAny("Hello!"));
+```
+
+JavaScript:
+
+```js
+console.log(root.language.translateAny("Hello!"));
+```
 
 ### Translating Stock Chart
 
