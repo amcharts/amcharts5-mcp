@@ -2,7 +2,7 @@
 title: "IGanttCategoryAxisRendererSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iganttcategoryaxisrenderersettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -30,7 +30,7 @@ _(none declared here — all inherited)_
 Names only — see the declaring interface's page (e.g. `get_api_reference("IAxisRendererYSettings")`) for types, defaults and descriptions.
 
 - _IAxisRendererYSettings_: inside, opposite
-- _IAxisRendererSettings_: cellEndLocation, cellStartLocation, minorGridEnabled, minorLabelsEnabled, pan, panSensitivity
+- _IAxisRendererSettings_: autoLabels, cellEndLocation, cellStartLocation, minorGridEnabled, minorLabelsEnabled, pan, panSensitivity
 - _IGraphicsSettings_: blendMode, draw, fill, fillGradient, fillOpacity, fillPattern, lineCap, lineJoin, nonScalingStroke, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, strokeDasharray, strokeDashoffset, strokeGradient, strokePattern, strokeWidth, svgPath
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

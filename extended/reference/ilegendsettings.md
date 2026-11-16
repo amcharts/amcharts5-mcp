@@ -2,7 +2,7 @@
 title: "ILegendSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ilegendsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -19,6 +19,7 @@ TypeScript: `am5.ILegendSettings` (`import type { ILegendSettings } from "@amcha
 - **fillField** (`string`) — default `"fill"` _(theme)_ — Setting of each legend item to take its marker's fill color from.
 - **strokeField** (`string`) — default `"stroke"` _(theme)_ — Setting of each legend item to take its marker's stroke color from.
 - **clickTarget** (`"none" | "itemContainer" | "marker"`) — default `"itemContainer"` _(theme)_ — Which part of a legend item toggles the chart item when clicked: • `"itemContainer"` - the whole legend item (default). • `"marker"` - the marker only. • `"none"` - nothing; the legend items cannot be toggled. _Since 5.0.13._
+- **autoFit** (`boolean`) — default `false` — Fits the legend into the chart, a step at a time as room runs out: • Empty value labels give their room back. • Then the legend gets smaller, down to three quarters of its size. • Then an item label still too wide for the legend is shortened, and a legend still too tall scrolls. • When not even one row fits, the legend is hidden. Above or below the chart, the legend takes at most 30% of the chart's height; beside it, at most 40% of its width. A `width`, `height`, `maxWidth`, `maxHeight`, `scale` or `verticalScrollbar` set on the legend is kept. _Since 5.22.0._ Docs: https://docs.amcharts.com/v5/concepts/legend/#fitting-into-the-chart
 
 ## Inherited settings with a different default on Legend
 
@@ -29,8 +30,8 @@ TypeScript: `am5.ILegendSettings` (`import type { ILegendSettings } from "@amcha
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("ISeriesSettings")`) for types, defaults and descriptions.
 
-- _ISeriesSettings_: calculateAggregates, customValueField, excludeFromAggregate, fill, fillGradient, fillPattern, heatRules, idField, legendDataItem, legendLabelText, legendValueText, linkTarget, name, sequencedDelay, sequencedInterpolation, stroke, strokeGradient, urlField, valueField
+- _ISeriesSettings_: autoLabels, calculateAggregates, customValueField, excludeFromAggregate, fill, fillGradient, fillPattern, heatRules, idField, legendDataItem, legendLabelText, legendValueText, linkTarget, name, sequencedDelay, sequencedInterpolation, stroke, strokeGradient, urlField, valueField
 - _IComponentSettings_: interpolationDuration, interpolationEasing
-- _IContainerSettings_: background, html, interactiveChildren, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _IContainerSettings_: background, direction, html, interactiveChildren, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

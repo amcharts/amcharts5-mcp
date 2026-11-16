@@ -2,7 +2,7 @@
 title: "StockToolbar"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stocktoolbar/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A toolbar of `StockControl` buttons for a `StockChart`, placed in an HTML element outside the chart.

@@ -2,7 +2,7 @@
 title: "ForceDirected"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/forcedirected/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A force-directed tree: node circles sized by value, which a force simulation spreads out. Nodes can be dragged.

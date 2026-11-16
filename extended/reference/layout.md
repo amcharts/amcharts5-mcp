@@ -2,7 +2,7 @@
 title: "Layout"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/layout/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Base class for `Container` layouts.

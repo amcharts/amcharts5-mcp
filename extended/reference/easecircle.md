@@ -1,7 +1,7 @@
 ---
 title: "ease.circle"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Starts slowly and speeds up steeply near the end, following a quarter circle.

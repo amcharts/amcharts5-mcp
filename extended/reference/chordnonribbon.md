@@ -2,7 +2,7 @@
 title: "ChordNonRibbon"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chordnonribbon/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Chord diagram with thin lines for links instead of ribbons. All nodes get arcs of the same size, whatever the link values.

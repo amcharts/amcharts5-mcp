@@ -2,7 +2,7 @@
 title: "IExportingXLSXOptions"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iexportingxlsxoptions/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance

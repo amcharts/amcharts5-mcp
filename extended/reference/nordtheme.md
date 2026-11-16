@@ -2,7 +2,7 @@
 title: "NordTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/nordtheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 "Nord": the light side of the Nord palette by Arctic Ice Studio, with muted Frost and Aurora colors on the off-white "Snow Storm" `#eceff4` background. Cool and deliberately low in contrast. Pairs with `NordDark`.

@@ -2,7 +2,7 @@
 title: "SlicedChart"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/slicedchart/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A chart for `FunnelSeries`, `PyramidSeries` and `PictorialStackedSeries`. Several series in it sit side by side.

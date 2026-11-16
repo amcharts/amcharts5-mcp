@@ -1,7 +1,7 @@
 ---
 title: "Gauge with Clock Hand (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.21.5: examples/gauge/config.json"
+source: "@amcharts/amcharts5@5.22.0: examples/gauge/config.json"
 ---
 
 # Gauge with Clock Hand (JSON config)
@@ -10,9 +10,9 @@ A gauge made from a radar chart: a half-circle value axis and a clock hand that 
 
 Chart family: radar · Tags: gauge, radar, clock hand, axis range
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/gauge/config.json, version 5.21.5). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/gauge/config.json, version 5.22.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
-Themes are not part of a config. The example is meant for: Animated, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
+Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
 ## Required resources
 
@@ -21,6 +21,7 @@ Themes are not part of a config. The example is meant for: Animated, set with `r
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js (theme, applied separately)
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js (theme, applied separately)
 
 ## JSON config
 

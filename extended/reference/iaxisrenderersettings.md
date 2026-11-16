@@ -2,7 +2,7 @@
 title: "IAxisRendererSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iaxisrenderersettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -14,7 +14,8 @@ TypeScript: `am5xy.IAxisRendererSettings` (`import type { IAxisRendererSettings 
 
 ## Settings
 
-- **minGridDistance** (`number`) — The smallest distance between grid lines, in pixels. The axis spaces its grid, and so its labels, at least this far apart. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-density
+- **minGridDistance** (`number`) — default `50` _(code fallback)_ — The smallest distance between grid lines, in pixels. The axis spaces its grid, and so its labels, at least this far apart. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#grid-density
+- **autoLabels** (`boolean`) — default `false` — Lets the axis arrange its labels to fit the chart: • A short axis gets more labels than `minGridDistance` would leave, up to about eight before rounding to a step the axis shows, and labels never come closer than their own size, so they may end up farther apart than `minGridDistance`. • On a category axis, every label that fits is shown, even closer than `minGridDistance`. Labels stacked like lines of text, such as labels on a vertical axis or rotated labels on a horizontal one, may come as close as lines of text set solid. When only some fit, each stays in the middle of its category, and its tick with it. A category with an empty label, such as a gap between groups, starts the count again, so every group shows the same labels. • A label that would be cut off at the edge of the chart's drawing area, or overlap a label of another axis, is hidden. Where two axes' labels meet, a value axis gives way to a category or date axis; between two of a kind, the vertical one gives way. An axis with this setting always gives way to an axis without it. On a radar chart, labels are not hidden for overlapping the other axis's. _Since 5.22.0._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#fitting-labels
 - **minorGridEnabled** (`boolean`) — default `false` — Draws a fainter minor grid between the main grid lines. On a `CategoryAxis`, it marks the categories that `minGridDistance` left without grid, so avoid it there with many categories. _Since 5.6.0._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#minor-grid
 - **minorLabelsEnabled** (`boolean`) — default `false` — Shows labels on the minor grid too. Turns the minor grid on, unless `minorGridEnabled` is set to `false`. _Since 5.6.0._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#enabling-minor-grid-labels
 - **inversed** (`boolean`) — default `false` — Reverses the axis: it runs right to left on X, and top to bottom on Y. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#inversed-axes

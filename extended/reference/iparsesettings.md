@@ -2,7 +2,7 @@
 title: "IParseSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iparsesettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -22,6 +22,8 @@ TypeScript: not exported by name from the package.
   ```
 
   _Since 5.21.4._
+
+- **trusted** (`boolean`) — default `false` — Parses the config as code you wrote yourself. Its refs and `properties` can then reach any object, and its `root` section can set anything on the `Root`, `sanitizeHTML` included. By default a config is data, so one from users or other sites cannot run script: refs and `properties` go only through chart objects and plain data, and the `root` section sets only what `ChartSerializer` writes. Anything left out is named in a console warning. _Since 5.22.0._
 
 ## Notes
 

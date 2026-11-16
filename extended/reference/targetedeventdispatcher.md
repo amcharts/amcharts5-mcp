@@ -2,7 +2,7 @@
 title: "TargetedEventDispatcher"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/targetedeventdispatcher/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A version of the `EventDispatcher` that dispatches events for a specific target object.

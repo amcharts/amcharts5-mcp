@@ -2,7 +2,7 @@
 title: "Legend"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/legend/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A list of items, one per series or data item, that can be clicked to show or hide them.

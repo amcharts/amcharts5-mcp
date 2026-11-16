@@ -2,7 +2,7 @@
 title: "IHeatRule"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iheatrule/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A rule that sets a setting of each series element, such as its color or size, by its data item's value: from `min` at the lowest value to `max` at the highest.
@@ -23,7 +23,7 @@ TypeScript: not exported by name from the package.
 - **stops** (`any[]`) — Setting values for a scale through more than two, in place of `min` and `max`: the element with the lowest value gets the first, the one with the highest the last, and the ones between blend through the stops between. Numbers, percents or colors, all of one kind, e.g. `[negative, warning, positive]` from the interface colors. Values outside `minValue` and `maxValue` get the first or last stop. _Since 5.21.2._
 - **dataField** (`string`) — Data item field that holds the value, e.g. `"value"` or `"valueY"`.
 - **key** (`string`) — The setting to set, e.g. `"fill"`.
-- **minValue** (`number`) — Lowest value of the range. If not set, the series' lowest value is used, which needs `calculateAggregates`.
-- **maxValue** (`number`) — Highest value of the range. If not set, the series' highest value is used, which needs `calculateAggregates`.
-- **logarithmic** (`boolean`) — default `false` — Spreads the values between `min` and `max` on a logarithmic scale.
+- **minValue** (`number`) — Lowest value of the range. If not set, the series' lowest value is used, which needs `calculateAggregates`. Lower values get `min`.
+- **maxValue** (`number`) — Highest value of the range. If not set, the series' highest value is used, which needs `calculateAggregates`. Higher values get `max`.
+- **logarithmic** (`boolean`) — default `false` — Spreads the values between `min` and `max` on a logarithmic scale. Values of zero or less get `min`. If `minValue` is zero or less, the lowest value above zero is used instead.
 - **customFunction** (`(target: Sprite, minValue: number, maxValue: number, value?: any) => void`) — A function that sets the element's settings itself, in place of `min`, `max` and `key`. It is called for each element, also for one with no value.

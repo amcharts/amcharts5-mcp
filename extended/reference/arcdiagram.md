@@ -2,7 +2,7 @@
 title: "ArcDiagram"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/arcdiagram/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Arc diagram: nodes as circles in a row or column, sized by their values and linked by arcs.

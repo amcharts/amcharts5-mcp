@@ -2,7 +2,7 @@
 title: "MaterialDarkTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/materialdarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 "Material Dark": the `Material` palette on a dark background, with neutral dark interface colors. Colors too dark to show on the background are lightened. Use it in place of `Material`.

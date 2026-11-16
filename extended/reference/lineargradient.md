@@ -2,7 +2,7 @@
 title: "LinearGradient"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/lineargradient/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A gradient that changes color along a straight line.

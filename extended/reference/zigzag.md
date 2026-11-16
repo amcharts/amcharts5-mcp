@@ -2,7 +2,7 @@
 title: "ZigZag"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/zigzag/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ZigZag indicator: straight lines between the price's turning points, ignoring moves smaller than `deviation`. Drawn over the main series.

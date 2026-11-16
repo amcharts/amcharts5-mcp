@@ -2,7 +2,7 @@
 title: "PyramidSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/pyramidseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A pyramid series for a `SlicedChart`: one shape, `topWidth` wide at the top and `bottomWidth` at the bottom, cut into slices by value. `bottomRatio` has no effect here.

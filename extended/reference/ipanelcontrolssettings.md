@@ -2,7 +2,7 @@
 title: "IPanelControlsSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ipanelcontrolssettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -32,6 +32,6 @@ TypeScript: `am5stock.IPanelControlsSettings` (`import type { IPanelControlsSett
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
 
-- _IContainerSettings_: background, html, interactiveChildren, mask, maskContent, paddingBottom, paddingLeft, reverseChildren, setStateOnChildren, verticalScrollbar
+- _IContainerSettings_: background, direction, html, interactiveChildren, mask, maskContent, paddingBottom, paddingLeft, reverseChildren, setStateOnChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

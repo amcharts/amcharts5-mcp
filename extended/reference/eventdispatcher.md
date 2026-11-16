@@ -2,7 +2,7 @@
 title: "EventDispatcher"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/eventdispatcher/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Universal Event Dispatcher.

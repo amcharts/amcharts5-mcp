@@ -2,7 +2,7 @@
 title: "IRootSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/irootsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -38,3 +38,14 @@ TypeScript: not exported by name from the package.
   _Since 5.21.0._
 
 - **forcedColors** (`boolean`) — default `true` — Makes the chart's interface colors (labels, grid, axes, buttons) follow the system colors when the page is in a forced colors mode, such as Windows High Contrast, so they stay visible. Series colors are kept. _Since 5.21.0._
+- **direction** (`"ltr" | "rtl"`) — The chart's text and legend direction. Set to `"rtl"` for a right-to-left language: text with no `direction` of its own is drawn right to left, and legends lay out from the right, each marker on the right of its name. `"ltr"` keeps everything left to right, e.g. an English chart on a `dir="rtl"` page. Not set, text follows the CSS direction of the chart's element and legends stay left to right. Unlike a container's `direction`, which lays out its children only, this applies to text and legends across the chart.
+
+  ```ts
+  const root = am5.Root.new("chartdiv", {
+    direction: "rtl"
+  });
+  ```
+
+  Set it when the Root is created (or in a JSON config's `root` section); it has no setter of its own.
+
+  _Since 5.22.0._ Docs: https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/

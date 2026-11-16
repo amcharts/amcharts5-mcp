@@ -2,7 +2,7 @@
 title: "ILinkedHierarchyPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ilinkedhierarchyprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance

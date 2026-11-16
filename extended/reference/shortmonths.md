@@ -2,7 +2,7 @@
 title: "ShortMonths"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/shortmonths/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 TypeScript: not exported by name from the package.

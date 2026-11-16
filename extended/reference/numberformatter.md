@@ -2,7 +2,7 @@
 title: "NumberFormatter"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/numberformatter/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Formats numbers in labels, tooltips and other text.

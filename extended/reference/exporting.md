@@ -2,7 +2,7 @@
 title: "Exporting"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/exporting/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A plugin that exports the chart as an image, PDF or print, and its data as JSON, CSV, XLSX, HTML or a PDF table.

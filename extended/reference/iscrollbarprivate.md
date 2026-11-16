@@ -2,7 +2,7 @@
 title: "IScrollbarPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iscrollbarprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -13,6 +13,7 @@ TypeScript: `am5.IScrollbarPrivate` (`import type { IScrollbarPrivate } from "@a
 
 ## Private settings
 
+- **autoHidden** (`boolean`) — _(internal)_ Whether `autoHide` hides the scrollbar.
 - **isBusy** (`boolean`) — _(internal)_
 - **positionTextFunction** (`(position: number, isEnd?: boolean) => string`) — _(internal)_
 

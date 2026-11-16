@@ -2,7 +2,7 @@
 title: "IContainerSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/icontainersettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -26,6 +26,7 @@ TypeScript: `am5.IContainerSettings` (`import type { IContainerSettings } from "
 - **setStateOnChildren** (`boolean`) — default `false` _(theme)_ — Applies every state set on the container to its children too. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/
 - **verticalScrollbar** (`Scrollbar`) — A `Scrollbar` that scrolls the content vertically when it does not fit in the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#scrollbar
 - **reverseChildren** (`boolean`) — Lays out the children in reverse order. _Since 5.1.1._
+- **direction** (`"ltr" | "rtl"`) — With `"rtl"`, a horizontal or grid layout places the children from right to left, as a mirror image of `"ltr"`: a child's `marginLeft` ends up on its right. Rows of a grid still go from top to bottom. A vertical layout lines up children with no `x` of their own on the right. For right-to-left languages, e.g. on a legend: `am5.Legend.new(root, { direction: "rtl" })`. A container with a width of its own starts at its right edge; one sized by its content keeps its size. Not set, a legend follows the root element's `direction`, and a legend's items follow their legend; other containers are left to right. _Since 5.22.0._
 - **html** (`string`) — default `""` _(code fallback)_ — HTML content of the container. It can hold data placeholders, such as `{category}`. _Since 5.2.11._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/html-content/
 
 ## Other inherited settings

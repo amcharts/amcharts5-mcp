@@ -2,7 +2,7 @@
 title: "IMapChartSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/imapchartsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -29,8 +29,8 @@ TypeScript: `am5map.IMapChartSettings` (`import type { IMapChartSettings } from 
   _Since 5.19.0._
 
 - **zoomLevel** (`number`) — default `1` _(theme)_ — The map's zoom level: `1` shows the whole map fitted to the chart, `2` shows it twice as large.
-- **translateX** (`number`) — default `0` _(code fallback)_ — Horizontal position of the projection's center, in pixels from the left of the map's area. Changes as the map is panned.
-- **translateY** (`number`) — default `0` _(code fallback)_ — Vertical position of the projection's center, in pixels from the top of the map's area. Changes as the map is panned.
+- **translateX** (`number`) — Horizontal position of the projection's center, in pixels from the left of the map's area. Changes as the map is panned.
+- **translateY** (`number`) — Vertical position of the projection's center, in pixels from the top of the map's area. Changes as the map is panned.
 - **rotationY** (`number`) — default `0` _(theme)_ — Tilts the map north or south, in degrees: the latitude `-rotationY` comes to the middle, so `-30` centers latitude 30. Needs a projection that can rotate. Docs: https://docs.amcharts.com/v5/charts/map-chart/#centering-the-map
 - **rotationX** (`number`) — default `0` _(theme)_ — Turns the map around the poles, in degrees: the longitude `-rotationX` comes to the middle, so `-74` centers longitude 74. Needs a projection that can rotate. Docs: https://docs.amcharts.com/v5/charts/map-chart/#centering-the-map
 - **rotationZ** (`number`) — default `0` _(theme)_ — Spins the map around its middle, in degrees. Needs a projection that can rotate. Docs: https://docs.amcharts.com/v5/charts/map-chart/#centering-the-map
@@ -69,6 +69,6 @@ TypeScript: `am5map.IMapChartSettings` (`import type { IMapChartSettings } from 
 Names only — see the declaring interface's page (e.g. `get_api_reference("ISerialChartSettings")`) for types, defaults and descriptions.
 
 - _ISerialChartSettings_: colors, patterns
-- _IContainerSettings_: background, html, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _IContainerSettings_: background, direction, html, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

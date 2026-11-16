@@ -2,7 +2,7 @@
 title: "PercentDefaultTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/percentdefaulttheme/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Built-in theme rules: `PercentChart` adds this theme to its default themes, so its rules apply to that element and everything inside it.

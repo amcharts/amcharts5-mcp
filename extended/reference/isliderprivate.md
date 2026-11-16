@@ -2,7 +2,7 @@
 title: "ISliderPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/isliderprivate/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -19,6 +19,6 @@ _(none declared here — all inherited)_
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IScrollbarPrivate")`) for types, defaults and descriptions.
 
-- _IScrollbarPrivate_: isBusy, positionTextFunction
+- _IScrollbarPrivate_: autoHidden, isBusy, positionTextFunction
 - _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
 - _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

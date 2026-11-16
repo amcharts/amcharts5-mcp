@@ -2,7 +2,7 @@
 title: "Venn"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/venn/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A Venn diagram: circles sized by their values, overlapping as much as the values of their overlaps say.

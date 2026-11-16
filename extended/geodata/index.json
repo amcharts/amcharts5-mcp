@@ -1,7 +1,8 @@
 {
   "package": "@amcharts/amcharts5-geodata",
-  "version": "5.1.6",
+  "version": "5.2.0",
   "cdnBase": "https://cdn.amcharts.com/lib/5/",
+  "npmCdnBase": "https://unpkg.com/@amcharts/amcharts5-geodata@5.2.0/dist/",
   "rules": {
     "cdn": "geodata/<path><Variant>.js, relative to cdnBase",
     "global": "am5geodata_<path with / replaced by _><Variant> (set by the CDN script)",
@@ -219,7 +220,7 @@
     {"group":"countries","path":"niger","variants":["Low","High"],"areas":8,"codes":["NE"],"label":"Niger: regions (+1 other area)"},
     {"group":"countries","path":"nigeria","variants":["Low","High"],"areas":37,"codes":["NG"],"label":"Nigeria: states (+1 other area)"},
     {"group":"countries","path":"northernMariana","variants":["Low","High"],"areas":4,"codes":["MP"],"label":"Northern Mariana Islands: municipalities"},
-    {"group":"countries","path":"northKorea","variants":["Low","High"],"areas":12,"codes":["KP"],"label":"Korea, Democratic People's Republic of: provinces (+3 other areas)"},
+    {"group":"countries","path":"northKorea","variants":["Low","High"],"areas":12,"codes":["KP"],"label":"Korea, Democratic People's Republic of"},
     {"group":"countries","path":"northMacedonia","variants":["Low","High"],"areas":71,"codes":["MK"],"label":"North Macedonia: municipalities"},
     {"group":"countries","path":"norway","variants":["Low","High"],"areas":18,"codes":["NO"],"label":"Norway: counties"},
     {"group":"countries","path":"norway2020","variants":["Low","High"],"areas":11,"codes":["NO"],"label":"Norway: fylkes"},

@@ -1,7 +1,7 @@
 ---
 title: "Timeline on a Custom Path (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.21.5: examples/timeline-linear-process-diagram/config.json"
+source: "@amcharts/amcharts5@5.22.0: examples/timeline-linear-process-diagram/config.json"
 ---
 
 # Timeline on a Custom Path (JSON config)
@@ -10,9 +10,9 @@ A day as a timeline that follows a hand-made path: a curve chart whose axis runs
 
 Chart family: timeline · Tags: curve chart, custom path, bullets, icons, scrollbar
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-linear-process-diagram/config.json, version 5.21.5). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-linear-process-diagram/config.json, version 5.22.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
-Themes are not part of a config. The example is meant for: Animated, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
+Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
 It loads files by relative path, which must be served beside the page: `icons/alarm.svg`, `icons/water.svg`, `icons/exercise.svg`, `icons/breakfast.svg`, `icons/car.svg`, `icons/work.svg`, `icons/home.svg`, `icons/beer.svg`, `icons/dance.svg`, `icons/drink.svg`, `icons/drunk.svg`, `icons/bed.svg`, `icons/coffee.svg`, `icons/dinner.svg`, `icons/book.svg`.
 
@@ -23,6 +23,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js (theme, applied separately)
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js (theme, applied separately)
 
 ## JSON config
 

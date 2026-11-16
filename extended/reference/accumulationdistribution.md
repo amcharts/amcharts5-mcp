@@ -2,7 +2,7 @@
 title: "AccumulationDistribution"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/accumulationdistribution/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Accumulation/Distribution indicator: a running total of where each close is within its high-low range, weighted by volume. Drawn in a panel of its own.

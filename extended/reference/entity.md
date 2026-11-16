@@ -2,7 +2,7 @@
 title: "Entity"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/entity/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Base class of amCharts objects with settings, states, adapters and events: elements, series, charts, formatters and more.

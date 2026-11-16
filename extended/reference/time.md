@@ -2,7 +2,7 @@
 title: "Time"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/time/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Animation progress, from `0` (start) to `1` (end). A number converts to a `Time`, but a `Time` does not convert back to a number.

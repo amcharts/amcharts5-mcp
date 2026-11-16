@@ -2,7 +2,7 @@
 title: "WilliamsR"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/williamsr/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Williams %R indicator: where the close is within the high-low range of the last `period` data items, from `0` (at the high) to `-100` (at the low). Drawn in a panel of its own.

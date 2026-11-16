@@ -2,7 +2,7 @@
 title: "EllipseSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/ellipseseries/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Draws ellipses, for the Ellipse tool of a `StockChart`.

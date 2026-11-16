@@ -2,7 +2,7 @@
 title: "AxisBullet"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/axisbullet/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Draws a bullet on an axis.

@@ -2,7 +2,7 @@
 title: "Listener"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/listener/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A callback queued for a frame, called with the current time in milliseconds.

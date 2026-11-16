@@ -2,7 +2,7 @@
 title: "IXYSeriesAxisRange"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ixyseriesaxisrange/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 An axis range of a series: a stretch of an axis within which the series can look different.

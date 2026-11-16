@@ -1,7 +1,7 @@
 ---
 title: "disposeAllRootElements"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Disposes all `Root` elements.

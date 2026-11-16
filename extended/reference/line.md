@@ -2,7 +2,7 @@
 title: "Line"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/line/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Draws a line through `points` or `segments`. With neither, it draws a straight line from its top-left corner to its bottom-right one, at its `width` and `height`.

@@ -2,7 +2,7 @@
 title: "SeriesTypeControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/seriestypecontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A dropdown control for picking the type of the main series of a `StockChart`, such as line or candles. Applying the picked type is up to a `selected` event handler.

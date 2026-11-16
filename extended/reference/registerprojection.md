@@ -1,7 +1,7 @@
 ---
 title: "registerProjection"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Registers a projection factory under `name`, for `MapChart`'s `projectionName`.

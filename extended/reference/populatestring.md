@@ -1,7 +1,7 @@
 ---
 title: "populateString"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Populates the curly-bracket placeholders with actual values from a `Sprite`.

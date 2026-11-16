@@ -2,7 +2,7 @@
 title: "ChaikinMoneyFlow"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chaikinmoneyflow/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Chaikin Money Flow indicator: volume-weighted money flow over `period`, from `-1` to `1`. Drawn in a panel of its own.

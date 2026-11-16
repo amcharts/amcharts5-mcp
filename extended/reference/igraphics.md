@@ -2,14 +2,14 @@
 title: "IGraphics"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/igraphics/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
 
 Extends: IDisplayObject
 All ancestors: IDisplayObject, IDisposer
-TypeScript: not exported by name from the package.
+TypeScript: `am5.IGraphics` (`import type { IGraphics } from "@amcharts/amcharts5"`)
 
 ## Properties
 

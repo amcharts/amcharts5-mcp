@@ -35,7 +35,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const GEODATA_VERSION = "5.1.6";
+const GEODATA_VERSION = "5.2.0";
 
 const ROOT = path.join(__dirname, "..");
 const PKG_DIR = process.env.GEODATA_PKG ? path.resolve(process.env.GEODATA_PKG) : fetchPackage();

@@ -2,7 +2,7 @@
 title: "iRGB"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/irgb/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Represents an interface for an object that represents an RGB color.

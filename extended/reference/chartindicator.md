@@ -2,7 +2,7 @@
 title: "ChartIndicator"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chartindicator/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Base class for `StockChart` indicators drawn in a panel of their own.

@@ -2,7 +2,7 @@
 title: "ISeriesSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iseriessettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -33,12 +33,13 @@ TypeScript: `am5.ISeriesSettings` (`import type { ISeriesSettings } from "@amcha
 - **strokeGradient** (`Gradient`) — Series stroke gradient. Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/
 - **legendDataItem** (`DataItem<ILegendDataItem>`) — The series' data item in a `Legend`.
 - **excludeFromAggregate** (`string[]`) — Fields to leave out of `calculateAggregates`, to save work where their aggregates are not needed. _Since 5.14.4._
+- **autoLabels** (`boolean`) — default `false` — Hides a label in the series' bullets where it would overlap a label shown before it, or be cut off at the edge of the area it is drawn in. Labels of the chart's earlier series come first, then those of earlier data items. A hidden label comes back once it fits. Only labels are hidden: a bullet's circle or other shape stays. A label with its own `forceHidden`, or in a bullet with `stacked` set, is left as it is. Labels of series without this setting are never hidden, and the others make room for them. _Since 5.22.0._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/#hiding-overlapping-labels
 
 ## Other inherited settings
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IComponentSettings")`) for types, defaults and descriptions.
 
 - _IComponentSettings_: interpolationDuration, interpolationEasing
-- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _IContainerSettings_: background, direction, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

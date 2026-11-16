@@ -1,7 +1,7 @@
 ---
 title: "Satellite Image Globe (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.21.5: examples/map-satellite-globe/config.json"
+source: "@amcharts/amcharts5@5.22.0: examples/map-satellite-globe/config.json"
 ---
 
 # Satellite Image Globe (JSON config)
@@ -10,9 +10,9 @@ A slowly turning globe that shows a satellite image with MapRasterSeries, with c
 
 Chart family: map · Tags: globe, satellite, raster, image, animations
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-satellite-globe/config.json, version 5.21.5). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-satellite-globe/config.json, version 5.22.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
-Themes are not part of a config. The example is meant for: Animated, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
+Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
 ## Required resources
 
@@ -21,6 +21,7 @@ Themes are not part of a config. The example is meant for: Animated, set with `r
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js (theme, applied separately)
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js (theme, applied separately)
 
 ## JSON config
 

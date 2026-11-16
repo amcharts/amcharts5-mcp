@@ -2,7 +2,7 @@
 title: "Sunburst"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/sunburst/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A sunburst diagram: the hierarchy as rings of slices, each level a ring further out, each node spanning as much of its ring as its value. A click on a node zooms into it.

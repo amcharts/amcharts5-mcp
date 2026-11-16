@@ -2,7 +2,7 @@
 title: "PVT"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/pvt/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Price Volume Trend indicator: a running total of each close's percentage change from the previous one, times volume. Drawn in a panel of its own.

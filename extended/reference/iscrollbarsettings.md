@@ -2,7 +2,7 @@
 title: "IScrollbarSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iscrollbarsettings/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 ## Inheritance
@@ -21,6 +21,7 @@ TypeScript: `am5.IScrollbarSettings` (`import type { IScrollbarSettings } from "
 - **animationEasing** (`(t: Time) => Time`) — default `am5.ease.out(am5.ease.cubic)` _(theme)_ — Easing function of scroll animations. Docs: https://docs.amcharts.com/v5/concepts/animations/#easing-functions
 - **opposite** (`boolean`) — default `false` — Puts the scrollbar on the opposite side of the chart: a horizontal scrollbar below the plot area instead of above it, a vertical one on the left instead of the right. It can be changed at any time. Works only for scrollbars set as a chart's `scrollbarX` or `scrollbarY`. _Since 5.20.2._
 - **outsideAxes** (`boolean`) — Where the scrollbar sits relative to the axes on its side: `true` beyond them (outermost), `false` between them and the plot area. If not set, the chart decides. It can be changed at any time. Like `opposite`, works only for scrollbars set as a chart's `scrollbarX` or `scrollbarY`. _Since 5.21.0._
+- **autoHide** (`number`) — Hides the scrollbar where the chart is this many pixels across it or less: a vertical scrollbar when the chart is that narrow, a horizontal one when it is that low, so the plot gets the room. While it is hidden, the chart turns on `pinchZoomX` or `pinchZoomY`, unless that is set in code, as on a phone a chart is zoomed by pinching. A scrollbar with `forceHidden` set in code is left alone. On a stock chart, the whole stock chart is measured, not the panel the scrollbar is on. Works only for scrollbars set as a chart's `scrollbarX` or `scrollbarY`. _Since 5.22.0._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/#hiding-on-small-charts
 
 ## Inherited settings with a different default on Scrollbar
 
@@ -30,6 +31,6 @@ TypeScript: `am5.IScrollbarSettings` (`import type { IScrollbarSettings } from "
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
 
-- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
+- _IContainerSettings_: background, direction, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

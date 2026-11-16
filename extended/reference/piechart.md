@@ -2,7 +2,7 @@
 title: "PieChart"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/piechart/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A pie or donut chart. Several `PieSeries` in one chart split the space between `innerRadius` and `radius` into concentric rings, unless they set their own radii.

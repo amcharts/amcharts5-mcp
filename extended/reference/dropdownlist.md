@@ -2,7 +2,7 @@
 title: "DropdownList"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/dropdownlist/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A dropdown list for the controls of a `StockToolbar`.

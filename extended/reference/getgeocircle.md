@@ -1,7 +1,7 @@
 ---
 title: "getGeoCircle"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 Returns a circle on the globe as GeoJSON geometry, for the `geometry` of a `MapPolygon`.

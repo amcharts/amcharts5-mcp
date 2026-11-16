@@ -2,7 +2,7 @@
 title: "DrawingToolControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/drawingtoolcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.21.5"
+generatedFrom: "@amcharts/amcharts5@5.22.0"
 ---
 
 A dropdown for picking a drawing tool. Created by `DrawingControl`; not meant to be used on its own.
