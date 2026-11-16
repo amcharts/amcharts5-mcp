@@ -1,7 +1,7 @@
 ---
 title: "amCharts MCP Server"
 source: "https://docs.amcharts.com/v5/ai/mcp/"
-scraped: "2026-11-14"
+scraped: "2026-11-16"
 ---
 
 The amCharts 5 MCP Server gives your AI assistant on-demand access to 1,500+ documents: documentation pages, working code examples, and class API references. It queries only what it needs, keeping your context lean and your code accurate.
@@ -10,7 +10,7 @@ The amCharts 5 MCP Server gives your AI assistant on-demand access to 1,500+ doc
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) is an open standard that lets AI tools connect to external data sources. Instead of relying solely on training data, the AI can fetch current documentation and examples in real time. Most popular tools already support it, including Claude Code, Claude Desktop, claude.ai, ChatGPT, Cursor, Windsurf, VS Code with GitHub Copilot, Codex CLI, Gemini CLI, and Cline.
 
-In Claude, the quickest way is the **amCharts 5 plugin**, which also adds the amCharts 5 skill. Elsewhere, connect in one of two ways: the **hosted server** (just add a URL, nothing to install) or a **local install** via npm.
+In Claude and ChatGPT, the quickest way is the **amCharts 5 plugin**, which also adds the amCharts 5 skill. Elsewhere, connect in one of two ways: the **hosted server** (just add a URL, nothing to install) or a **local install** via npm.
 
 ## Installation
 
@@ -33,6 +33,12 @@ claude plugin install amcharts5@anthropic-plugin-directory
 
 To add only the server, without the skill, use the Claude Code command or the Connectors Directory link under [Hosted server](https://docs.amcharts.com/v5/ai/mcp/#hosted-server-no-install).
 
+### ChatGPT: the amCharts 5 plugin
+
+The [amCharts 5 plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ada25db53b4819184e6dc760cb5daf5) adds this MCP server (hosted) and the [amCharts 5 skill](https://docs.amcharts.com/v5/ai/#5-use-the-amcharts-ai-skill) together. Open it and install it.
+
+To add only the server, without the skill, see ChatGPT under [Hosted server](https://docs.amcharts.com/v5/ai/mcp/#hosted-server-no-install).
+
 ### Hosted server (no install)
 
 The simplest option: point your AI client at our hosted endpoint. No package to install, and it always runs the latest version.
@@ -53,7 +59,7 @@ Add `-s user` after `add` to make it available in all projects instead of just t
 
 **Claude Desktop / claude.ai** - the [plugin](https://docs.amcharts.com/v5/ai/mcp/#claude-the-amcharts-5-plugin) adds the server and the skill. For the server only, [add amCharts 5 to Claude](https://claude.ai/directory/amcharts) from the Connectors Directory, or go to **Settings > Connectors > Add custom connector** and paste `https://mcp.amcharts.com/mcp`.
 
-**ChatGPT** (Free plan too) - open [Plugins](https://chatgpt.com/plugins) > **+** > **Add custom MCP server**. Name it amCharts, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then click **Create as a plugin**. In a chat, type **@amCharts** to use it.
+**ChatGPT** - the [plugin](https://docs.amcharts.com/v5/ai/mcp/#chatgpt-the-amcharts-5-plugin) adds the server and the skill. For the server only (also on the Free plan), open [Plugins](https://chatgpt.com/plugins) > **+** > **Add custom MCP server**. Name it amCharts, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then click **Create as a plugin**. In a chat, type **@amCharts** to use it.
 
 **Cursor** - add to `.cursor/mcp.json` (or `~/.cursor/mcp.json` for all projects):
 

@@ -1,7 +1,7 @@
 ---
 title: "Hierarchy charts"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/"
-scraped: "2026-11-14"
+scraped: "2026-11-16"
 ---
 
 Hierarchy charts (Treemap, Sunburst, Force-directed tree, etc.) are used to display multi-level data, in a branching parent-child tree.
@@ -13,7 +13,8 @@ Everything required to create hierarchy charts are two amCharts 5 modules: "inde
 You can import those in your TypeScript / ES6 application as JavaScript modules:
 
 ```ts
-
+import * as am5 from "@amcharts/amcharts5";
+import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 ```
 
 For vanilla JavaScript applications and web pages, you can use "script" version:

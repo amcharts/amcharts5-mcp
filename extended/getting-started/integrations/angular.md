@@ -1,8 +1,10 @@
 ---
 title: "Using amCharts 5 with Angular"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/angular/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> This tutorial will provide basic information, needed to run amCharts 5 with Angular framework.
 
 This tutorial will provide basic information, needed to run amCharts 5 with [Angular](https://angular.dev/) framework.
 
@@ -16,7 +18,7 @@ For older versions of Angular, see "[Before Angular 16](#before-angular-16)".
 
 Our [`@amcharts/amcharts5-angular`](https://www.npmjs.com/package/@amcharts/amcharts5-angular) package creates and disposes the chart with the element, works with server-side rendering, and keeps the chart's animations out of Angular's change detection. It needs Angular 19 or later.
 
-```shell
+```sh
 npm install @amcharts/amcharts5 @amcharts/amcharts5-angular
 ```
 
@@ -24,12 +26,13 @@ npm install @amcharts/amcharts5 @amcharts/amcharts5-angular
 
 The `[amChart]` directive gives your function a new root in the element. Build the chart in it as in any amCharts example:
 
-```typescript
+```ts
 import { Component, input } from '@angular/core';
 import { AmChartDirective } from '@amcharts/amcharts5-angular';
 import type { Root } from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+import am5themes_ResponsiveMax from '@amcharts/amcharts5/themes/ResponsiveMax';
 
 @Component({
   selector: 'app-chart',
@@ -41,7 +44,7 @@ export class Chart {
 
   // An arrow function, so that `this` is the component
   buildChart = (root: Root) => {
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     const chart = root.container.children.push(am5xy.XYChart.new(root, {}));
 
@@ -69,23 +72,24 @@ export class Chart {
 }
 ```
 
-| Input or output | What it is |
-| --- | --- |
-| `[amChart]` | The function that builds the chart in the root it gets. |
-| `[amChartDeps]` | Values that make the chart again when one of them changes. Leave it out to make the chart once. |
-| `[amChartRenderer]` | `"svg"` draws the chart as SVG; the default is canvas. |
-| `(amChartReady)` | `{ root, result }` once the chart is built: `result` is what the function returned. To change the chart without making it again, keep what you need from it, e.g. `result.data.setAll(newData)`. |
-| `(amChartError)` | The error, when the function threw. It goes to Angular's `ErrorHandler` too. |
+| Input or output     | What it is                                                                                                                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `[amChart]`         | The function that builds the chart in the root it gets.                                                                                                                                          |
+| `[amChartDeps]`     | Values that make the chart again when one of them changes. Leave it out to make the chart once.                                                                                                  |
+| `[amChartRenderer]` | `"svg"` draws the chart as SVG; the default is canvas.                                                                                                                                           |
+| `(amChartReady)`    | `{ root, result }` once the chart is built: `result` is what the function returned. To change the chart without making it again, keep what you need from it, e.g. `result.data.setAll(newData)`. |
+| `(amChartError)`    | The error, when the function threw. It goes to Angular's `ErrorHandler` too.                                                                                                                     |
 
 ### A chart from a JSON config
 
 `AmChartComponent` is the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) with inputs and outputs Angular can check. It builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/), with no chart code:
 
-```typescript
+```ts
 import { Component } from '@angular/core';
 import { AmChartComponent } from '@amcharts/amcharts5-angular';
 import type { IChartElementReadyEvent } from '@amcharts/amcharts5/element';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+import am5themes_ResponsiveMax from '@amcharts/amcharts5/themes/ResponsiveMax';
 
 @Component({
   selector: 'app-dashboard',
@@ -94,7 +98,7 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 })
 export class Dashboard {
   config = { /* the chart's JSON config */ };
-  themes = [am5themes_Animated];
+  themes = [am5themes_Animated, am5themes_ResponsiveMax];
 
   onReady({ root, chart }: IChartElementReadyEvent) {
     // the chart is built
@@ -102,14 +106,32 @@ export class Dashboard {
 }
 ```
 
-| Input or output | What it is |
-| --- | --- |
-| `[config]` | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again. |
-| `[src]` | A URL to load the config from, used when there is no `config`. |
-| `[themes]` | Theme classes, e.g. `[am5themes_Animated]`. Themes are not part of a config. |
-| `[renderer]` | `"svg"` draws the chart as SVG; the default is canvas. |
-| `(amChartReady)` | `{ root, chart }` once the chart is built. |
-| `(amChartError)` | The error, when the chart could not be built. |
+| Input or output  | What it is                                                                                                                                                                                                            |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[config]`       | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again.                                                                                                        |
+| `[src]`          | A URL to load the config from, used when there is no `config`.                                                                                                                                                        |
+| `[themes]`       | Theme classes, e.g. `[am5themes_Animated, am5themes_ResponsiveMax]`, or a class with its settings as a pair: `[am5themes_Animated, [am5themes_Adaptive, { baseColor: "#4150a0" }]]`. Themes are not part of a config. |
+| `[resources]`    | Geodata and locales the config names, e.g. `{ am5geodata_worldLow }` for `"geoJSON": "am5geodata_worldLow"`. See below.                                                                                               |
+| `[renderer]`     | `"svg"` draws the chart as SVG; the default is canvas.                                                                                                                                                                |
+| `(amChartReady)` | `{ root, chart }` once the chart is built.                                                                                                                                                                            |
+| `(amChartError)` | The error, when the chart could not be built.                                                                                                                                                                         |
+
+A map's config names its geodata (`"geoJSON": "am5geodata_worldLow"`), and a config may name a locale (`"locale": "am5locales_de_DE"`), instead of carrying them. With npm imports they are not globals: import the files the config names and give them in `resources`, under the same names:
+
+TypeScript:
+
+```ts
+import am5geodata_worldLow from '@amcharts/amcharts5-geodata/worldLow';
+
+// in the component
+resources = { am5geodata_worldLow };
+```
+
+HTML:
+
+```html
+<am5-chart [config]="mapConfig" [resources]="resources" style="height: 400px"></am5-chart>
+```
 
 With a commercial license, call `am5.addLicense()` once in `main.ts`, before `bootstrapApplication()`.
 
@@ -121,14 +143,14 @@ To manage the chart yourself, without the package:
 
 First, create a new Angular project:
 
-```shell
+```sh
 npx -p @angular/cli ng new my-project
 cd my-project
 ```
 
 You can now run your project by using this command:
 
-```shell
+```sh
 npm start
 ```
 
@@ -136,13 +158,13 @@ If you load `http://localhost:4200/` in a browser, you should see your new proje
 
 Now it's time to add in an amCharts 5 chart. First install amCharts 5:
 
-```shell
+```sh
 npm install @amcharts/amcharts5
 ```
 
 Then create a new chart component:
 
-```shell
+```sh
 npx ng generate component chart
 ```
 
@@ -154,9 +176,9 @@ Put the chart's element in `src/app/chart/chart.html`. It needs a height:
 <div #chartdiv style="width: 100%; height: 500px"></div>
 ```
 
-And use the following code in `src/app/chart/chart.ts`:
+And use the following code in `src/app/chart/chart.ts`:
 
-```typescript
+```ts
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, PLATFORM_ID, ViewChild, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -164,6 +186,7 @@ import { isPlatformBrowser } from '@angular/common';
 import * as am5 from '@amcharts/amcharts5';
 import * as am5xy from '@amcharts/amcharts5/xy';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
+import am5themes_ResponsiveMax from '@amcharts/amcharts5/themes/ResponsiveMax';
 
 @Component({
   selector: 'app-chart',
@@ -187,7 +210,7 @@ export class Chart implements AfterViewInit, OnDestroy {
     this.zone.runOutsideAngular(() => {
       const root = am5.Root.new(this.chartdiv.nativeElement);
 
-      root.setThemes([am5themes_Animated.new(root)]);
+      root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
       const chart = root.container.children.push(
         am5xy.XYChart.new(root, {
@@ -272,13 +295,15 @@ export class Chart implements AfterViewInit, OnDestroy {
 }
 ```
 
-The chart code goes inside the `ngAfterViewInit` method, when the chart's element is there.
+The chart code goes inside the `ngAfterViewInit` method, when the chart's element is there.
 
 Lastly, add the component to your app: add `Chart` to the `imports` of the component in `src/app/app.ts`, and `<app-chart></app-chart>` to `src/app/app.html`.
 
 Now you can run `npm start` again and you should see a chart.
 
 ## Working example
+
+» [amCharts 5 with Angular](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/angular/examples/angular?file=src%2Fapp%2Fapp.ts)
 
 ## Before Angular 16
 
@@ -290,12 +315,16 @@ Instead of importing amCharts 5 modules, add them as `<script>` tags in `src/ind
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
 
 As well as declare amCharts globals that are created by scripts:
 
-```typescript
+```ts
 declare const am5: any;
 declare const am5xy: any;
 declare const am5themes_Animated: any;
+declare const am5themes_ResponsiveMax: any;
 ```
+
+» [Angular with the script version of amCharts 5, on CodeSandbox](https://codesandbox.io/s/amcharts5-angular-demo-script-yr2eu)

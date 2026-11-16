@@ -1,8 +1,10 @@
 ---
 title: "Using amCharts 5 with Vue.js"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/vue/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> Use amCharts 5 in Vue.js with our @amcharts/amcharts5-vue package. It creates and disposes the chart with your component, and works with server rendering.
 
 Use amCharts 5 in [Vue.js](https://vuejs.org/) with our [`@amcharts/amcharts5-vue`](https://www.npmjs.com/package/@amcharts/amcharts5-vue) package. It creates and disposes the chart with your component, and works with server rendering.
 
@@ -10,13 +12,13 @@ Use amCharts 5 in [Vue.js](https://vuejs.org/) with our [`@amcharts/amcharts5-vu
 
 Create a project, if you do not have one, and install amCharts with the package:
 
-```shell
+```sh
 npm create vue@latest my-project
 cd my-project
 npm install @amcharts/amcharts5 @amcharts/amcharts5-vue
 ```
 
-It needs Vue 3.5.2 or later and amCharts 5.21.0 or later.
+It needs Vue 3.5.2 or later and amCharts 5.21.4 or later.
 
 ## A chart written in code
 
@@ -29,11 +31,12 @@ import { useAmChart } from "@amcharts/amcharts5-vue";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 
 const props = defineProps(["data"]);
 
 useAmChart(useTemplateRef("chart"), (root) => {
-  root.setThemes([am5themes_Animated.new(root)]);
+  root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
   const chart = root.container.children.push(
     am5xy.XYChart.new(root, {
@@ -79,16 +82,16 @@ useAmChart(useTemplateRef("chart"), (root) => {
 </template>
 ```
 
--   `watch` makes the chart again when it changes. It takes what Vue's `watch()` takes: a getter, a ref, a reactive object or an array of them. Leave it out to make the chart once. Add `deep: true` to also react to changes inside, e.g. `props.data.push()`.
--   The chart is made when the element is there, also when it is rendered later with `v-if`, and disposed when it goes.
--   `{ renderer: "svg" }` in the options draws the chart as SVG.
--   If your function throws, the error goes to `app.config.errorHandler`.
+* `watch` makes the chart again when it changes. It takes what Vue's `watch()` takes: a getter, a ref, a reactive object or an array of them. Leave it out to make the chart once. Add `deep: true` to also react to changes inside, e.g. `props.data.push()`.
+* The chart is made when the element is there, also when it is rendered later with `v-if`, and disposed when it goes.
+* `{ renderer: "svg" }` in the options draws the chart as SVG.
+* If your function throws, the error goes to `app.config.errorHandler`.
 
 ### Updating without making the chart again
 
 `useAmChart()` returns `root`, and `result`: what your function returned, as shallow refs. Keep what you need there and change it when the data changes:
 
-```typescript
+```ts
 import { useTemplateRef, watchEffect } from "vue";
 import { useAmChart } from "@amcharts/amcharts5-vue";
 
@@ -106,7 +109,7 @@ watchEffect(() => {
 });
 ```
 
-IMPORTANT Give amCharts plain data and keep amCharts objects out of Vue's reactive state: use `shallowRef()` for data, or pass `toRaw(data)`. Reactive proxies make charts slow and can cause errors.
+> **Important:** Give amCharts plain data and keep amCharts objects out of Vue's reactive state: use `shallowRef()` for data, or pass `toRaw(data)`. Reactive proxies make charts slow and can cause errors.
 
 ## A chart from a JSON config
 
@@ -116,8 +119,9 @@ IMPORTANT Give amCharts plain data and keep amCharts objects out of Vue's react
 <script setup>
 import { AmChart } from "@amcharts/amcharts5-vue";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 
-const themes = [am5themes_Animated];
+const themes = [am5themes_Animated, am5themes_ResponsiveMax];
 </script>
 
 <template>
@@ -125,24 +129,33 @@ const themes = [am5themes_Animated];
 </template>
 ```
 
-| Prop or event | What it is |
-| --- | --- |
-| `config` | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again; the same content written inline does not. |
-| `src` | A URL to load the config from, used when there is no `config`. |
-| `themes` | Theme classes, e.g. `[am5themes_Animated]`. Themes are not part of a config. |
-| `renderer` | `"svg"` draws the chart as SVG; the default is canvas. |
-| `@ready` | `{ root, chart }`, when the chart is built. |
-| `@error` | When it could not be built. |
+| Prop or event | What it is                                                                                                                                                                                                            |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `config`      | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again; the same content written inline does not.                                                              |
+| `src`         | A URL to load the config from, used when there is no `config`.                                                                                                                                                        |
+| `themes`      | Theme classes, e.g. `[am5themes_Animated, am5themes_ResponsiveMax]`, or a class with its settings as a pair: `[am5themes_Animated, [am5themes_Adaptive, { baseColor: "#4150a0" }]]`. Themes are not part of a config. |
+| `resources`   | Geodata and locales the config names, e.g. `{ am5geodata_worldLow }` for `"geoJSON": "am5geodata_worldLow"`. See below.                                                                                               |
+| `renderer`    | `"svg"` draws the chart as SVG; the default is canvas.                                                                                                                                                                |
+| `@ready`      | `{ root, chart }`, when the chart is built.                                                                                                                                                                           |
+| `@error`      | When it could not be built.                                                                                                                                                                                           |
 
 It is the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/): the component exposes it as `element`. Without a height, it is 400 pixels high.
+
+A map's config names its geodata (`"geoJSON": "am5geodata_worldLow"`), and a config may name a locale (`"locale": "am5locales_de_DE"`), instead of carrying them. With npm imports they are not globals: import the files the config names and give them in `resources`, under the same names:
+
+```html
+<script setup lang="ts">
+import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
+</script>
+
+<template>
+  <AmChart :config="mapConfig" :resources="{ am5geodata_worldLow }" style="height: 400px" />
+</template>
+```
 
 ## License
 
 With a commercial license, call `am5.addLicense()` once in `main.js`, before `createApp()`. Not in your chart function: a chart decides on the logo when its root is made.
-
-## Without the package
-
-To manage the chart yourself, create the root when the component is mounted and dispose it before it is unmounted:
 
 ```html
 <script setup>
@@ -181,4 +194,10 @@ Keep amCharts objects in plain variables, not in reactive state. If you need the
 
 ## Examples
 
+» [amCharts 5 with Vue and Vite](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/vue/examples/vite?file=src%2FApp.vue)
+
 Example apps for Vite and Nuxt are [on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations/vue/examples).
+
+## Without the package
+
+To manage the chart yourself, create the root when the component is mounted and dispose it before it is unmounted:

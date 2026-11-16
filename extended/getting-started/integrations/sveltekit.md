@@ -1,20 +1,37 @@
 ---
 title: "Using amCharts 5 with SvelteKit"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/sveltekit/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
 
-Use amCharts 5 in Svelte and [SvelteKit](https://svelte.dev/docs/kit) with our [`@amcharts/amcharts5-svelte`](https://www.npmjs.com/package/@amcharts/amcharts5-svelte) package. It creates and disposes the chart with the element, and works with server rendering: nothing has to be configured.
+> Use amCharts 5 in Svelte and SvelteKit with our @amcharts/amcharts5-svelte package. It creates and disposes the chart with the element, and works with server rendering.
+
+Use amCharts 5 in Svelte and [SvelteKit](https://svelte.dev/docs/kit) with our [`@amcharts/amcharts5-svelte`](https://www.npmjs.com/package/@amcharts/amcharts5-svelte) package. It creates and disposes the chart with the element, and works with server rendering.
 
 Create a project, if you do not have one, and install amCharts with the package:
 
-```shell
+```sh
 npx sv create my-app
 cd my-app
 npm install @amcharts/amcharts5 @amcharts/amcharts5-svelte
 ```
 
-It needs Svelte 4 or later and amCharts 5.21.0 or later.
+It needs Svelte 4 or later and amCharts 5.21.4 or later.
+
+SvelteKit's dev server leaves amCharts to Node, which cannot load its files on its own. Add it to the server build in `vite.config.ts`. The production build does not need it:
+
+```ts
+import adapter from "@sveltejs/adapter-node";
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [sveltekit({ adapter: adapter() })],
+  ssr: {
+    noExternal: ["@amcharts/amcharts5"]
+  }
+});
+```
 
 ## Using the package
 
@@ -26,6 +43,7 @@ In Svelte 5.29 or later, use attachments. `attachAmChart()` gives your function 
   import type { Root } from "@amcharts/amcharts5";
   import * as am5xy from "@amcharts/amcharts5/xy";
   import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+  import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 
   let { data, config } = $props();
 
@@ -33,7 +51,7 @@ In Svelte 5.29 or later, use attachments. `attachAmChart()` gives your function 
   let series = $state.raw<am5xy.ColumnSeries>();
 
   function buildChart(root: Root) {
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     const chart = root.container.children.push(am5xy.XYChart.new(root, {}));
 
@@ -67,14 +85,25 @@ In Svelte 5.29 or later, use attachments. `attachAmChart()` gives your function 
 
 <div {@attach attachAmChart(buildChart)} style="height: 500px"></div>
 
-<am5-chart {@attach attachAmChartConfig({ config, themes: [am5themes_Animated] })} style="height: 500px"></am5-chart>
+<am5-chart {@attach attachAmChartConfig({ config, themes: [am5themes_Animated, am5themes_ResponsiveMax] })} style="height: 500px"></am5-chart>
 ```
 
--   The chart is made when the element is there, and disposed when it goes. Like any attachment, it is made again when state read in its expression changes.
--   `attachAmChart(buildChart, { renderer: "svg" })` draws the chart as SVG.
--   `attachAmChart(buildChart, { onError })` gets errors from your function. Without it, they are reported as uncaught errors.
--   Give amCharts plain data: `$state.snapshot()` turns Svelte state into it.
--   The `<am5-chart>` element dispatches `ready` (`event.detail` has `root` and `chart`) and `error`: listen with `onready` and `onerror`.
+* The chart is made when the element is there, and disposed when it goes. Like any attachment, it is made again when state read in its expression changes.
+* `attachAmChart(buildChart, { renderer: "svg" })` draws the chart as SVG.
+* A theme with settings is a pair: `themes: [am5themes_Animated, [am5themes_Adaptive, { baseColor: "#4150a0" }]]`.
+* `attachAmChart(buildChart, { onError })` gets errors from your function. Without it, they are reported as uncaught errors.
+* Give amCharts plain data: `$state.snapshot()` turns Svelte state into it.
+* The `<am5-chart>` element dispatches `ready` (`event.detail` has `root` and `chart`) and `error`: listen with `onready` and `onerror`.
+
+A map's config names its geodata (`"geoJSON": "am5geodata_worldLow"`), and a config may name a locale (`"locale": "am5locales_de_DE"`), instead of carrying them. With npm imports they are not globals: import the files the config names and give them in `resources`, under the same names:
+
+```html
+<script>
+  import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
+</script>
+
+<am5-chart {@attach attachAmChartConfig({ config: mapConfig, resources: { am5geodata_worldLow } })} style="height: 400px"></am5-chart>
+```
 
 ### Svelte 4 and older Svelte 5
 
@@ -91,6 +120,10 @@ Use the actions instead. With `deps`, the chart is made again when a value in it
 With a commercial license, call `am5.addLicense()` once in `src/hooks.client.ts`, which runs when the app starts in the browser.
 
 An [example app](https://github.com/amcharts/amcharts5/tree/master/integrations/svelte/examples/sveltekit) is on GitHub.
+
+## Example
+
+» [amCharts 5 with SvelteKit](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/svelte/examples/sveltekit?file=src%2Froutes%2F%2Bpage.svelte)
 
 ## Without the package
 

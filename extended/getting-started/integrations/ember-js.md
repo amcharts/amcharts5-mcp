@@ -1,8 +1,10 @@
 ---
 title: "Using amCharts 5 with Ember.js"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/ember-js/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> This tutorial will show you every step you need to use amCharts 5 with Ember.js.
 
 This tutorial will show you every step you need to use amCharts 5 with [Ember.js](https://emberjs.com/).
 
@@ -10,14 +12,14 @@ This tutorial will show you every step you need to use amCharts 5 with [Ember.js
 
 ​First, create a new Ember project:
 
-```shell
+```sh
 npx -p ember-cli@latest ember new my-project --lang en
 cd my-project
 ```
 
 ​You can now run your project by using this command:
 
-```shell
+```sh
 npm start
 ```
 
@@ -25,7 +27,7 @@ npm start
 
 ​Now it's time to add in an amCharts 5 chart. Use this command to install amCharts 5:
 
-```shell
+```sh
 npm install --save-dev @ember/render-modifiers @amcharts/amcharts5
 ```
 
@@ -41,13 +43,14 @@ npm install --save-dev @ember/render-modifiers @amcharts/amcharts5
 
 ​Also create a new `app/components/chart.js` file:
 
-```typescript
+```ts
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
 ​
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ​
 export default class ChartComponent extends Component {
     @action
@@ -55,7 +58,8 @@ export default class ChartComponent extends Component {
         const root = am5.Root.new(element);
 ​
         root.setThemes([
-            am5themes_Animated.new(root)
+            am5themes_Animated.new(root),
+            am5themes_ResponsiveMax.new(root)
         ]);
 ​
         root.dateFormatter.setAll({
@@ -168,7 +172,7 @@ export default class ChartComponent extends Component {
 }
 ```
 
-​  
+​\
 Lastly, change the `app/templates/application.hbs` file and add the `<Chart />` component:
 
 ```html
@@ -181,7 +185,7 @@ Lastly, change the `app/templates/application.hbs` file and add the `<Chart />` 
 
 ​Now if you run `npm start` you should see a working chart.​
 
-# Updating the chart
+## Updating the chart
 
 ​If you want to update the chart when an attribute changes, you can use the `did-update` modifier.
 
@@ -189,13 +193,13 @@ For this example, let's update the chart data whenever the `data` attribute chan
 
 ​First, let's change the chart code so that it uses the data from the attributes:
 
-```typescript
+```ts
 series.data.setAll(this.args.data);
 ```
 
 ​Next, add in a new `@action` to the `ChartComponent` which will update the data:
 
-```typescript
+```ts
 @action
 updateData() {
     if (this.series) {

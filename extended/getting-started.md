@@ -1,7 +1,7 @@
 ---
 title: "Getting started"
 source: "https://docs.amcharts.com/v5/getting-started/"
-scraped: "2026-11-14"
+scraped: "2026-11-16"
 ---
 
 During the course of this tutorial we'll get acquainted with the general concepts behind amCharts 5, terminology used, and other things to get you started.
@@ -32,7 +32,7 @@ yarn add @amcharts/amcharts5
 
 Keep code splitting on when you bundle amCharts. Most bundlers, such as webpack and Vite, do it by default.
 
-Stock charts, [`<am5-chart>`](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/), the JSON plugin and the exporting plugin load the exporting plugin's PDF, Excel and annotation code (pdfmake, xlsx and markerjs2) only when needed. A single-file bundle, e.g. an IIFE build or esbuild without `splitting`, takes it in up front: about 1 MB more gzipped.
+The exporting plugin loads its PDF, Excel and annotation code (pdfmake, xlsx and markerjs2) only when needed. So do the parts that can reach it: the stock toolbar's drawing and indicator controls, [`<am5-chart>`](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/) and the JSON plugin. A single-file bundle, e.g. an IIFE build or esbuild without `splitting`, takes that code in up front, about 1 MB more gzipped. It also does when the whole stock module is kept, e.g. `import * as am5stock` assigned to `window`. A stock chart without those controls doesn't.
 
 ### Compiled JavaScript
 
@@ -50,19 +50,46 @@ All amCharts libraries and plugins are available as a ready-to-include CDN resou
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/locales/de_DE.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/germanyLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/fonts/notosans-sc.js"></script>
 ```
 
-amCharts 5 is also available on [cdnjs](https://cdnjs.com/libraries/amcharts5) and jsDelivr, with the same file layout. Use them where only well-known public CDNs are allowed, such as AI chat sandboxes (e.g. Claude artifacts) or sites with a strict Content Security Policy:
+amCharts 5 is also available on [cdnjs](https://cdnjs.com/libraries/amcharts5) and jsDelivr (`https://cdn.jsdelivr.net/gh/amcharts/amcharts5-dist@5/`), with the same file layout. Use them where only well-known public CDNs are allowed, such as sites with a strict Content Security Policy, or AI chat sandboxes (e.g. Claude artifacts), which allow cdnjs:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.21.3/index.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.21.3/xy.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.22.0/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.22.0/xy.js"></script>
 ```
 
 > **More info:** For what each CDN includes, see "[Public CDNs](https://www.amcharts.com/download/#public-cdn)" on our Downloads page.
+
+#### npm package
+
+Since version 5.22.0, the npm package `@amcharts/amcharts5` has the same files in its `dist/` folder. Load them from your own `node_modules`, or from an npm CDN (jsDelivr or unpkg). Use this when:
+
+* You install amCharts from npm but load it with `<script>` tags, without a bundler.
+* A sandbox or online code editor allows npm CDNs but not ours. AI chat sandboxes such as Claude artifacts also allow cdnjs, but it has only low-detail maps; unpkg has every map.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/xy.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/themes/Animated.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/themes/ResponsiveMax.js"></script>
+```
+
+| Source         | URL prefix                                                      |
+| -------------- | --------------------------------------------------------------- |
+| `node_modules` | `/node_modules/@amcharts/amcharts5/dist/`                       |
+| jsDelivr       | `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/` |
+| unpkg          | `https://unpkg.com/@amcharts/amcharts5@5.22.0/dist/`            |
+
+* Pin the version and load every file from the same one.
+* Use plain `<script>` tags, not `type="module"`. The exporting plugin's PDF, Excel and annotation code loads on first use from the `deps/` folder next to `index.js`, wherever that is served from.
+* Load order is the same as on our CDN: `index.js` first.
+* Two maps are included: `geodata/worldLow.js` (`am5geodata_worldLow`) and `geodata/usaLow.js` (`am5geodata_usaLow`). All maps are in the `@amcharts/amcharts5-geodata` package's `dist/`, which loads from unpkg but not jsDelivr (the package is over jsDelivr's size limit): `https://unpkg.com/@amcharts/amcharts5-geodata@5.2.0/dist/germanyLow.js`. See "[Geodata (maps)](https://docs.amcharts.com/v5/charts/map-chart/#geodata-maps)".
+* Fonts for PDF export aren't included. With `<script>` tags, load them from our CDN, e.g. `https://cdn.amcharts.com/lib/5/fonts/notosans-sc.js`. The `@amcharts/amcharts5-fonts` package has them for bundlers.
 
 #### Download
 
@@ -75,7 +102,7 @@ Besides the library itself, both the npm package and the ZIP download include:
 * **Examples** - ready-made charts of every type, with comments explaining most settings. In the ZIP download, open `examples/index.html` for a gallery that shows each chart above its source code, drawn on canvas or as SVG. In the npm package, they come as plain source files (`examples/<name>/index.ts`).
 * **Docs for AI coding agents** - an `AGENTS.md` file and a `docs/` folder with a reference for every chart type. Tools like Claude Code, Cursor, or Copilot can read them, so they work from docs that match the version you installed.
 
-> **More info:** For more on using AI to build charts, see "[amCharts + AI](https://docs.amcharts.com/v5/ai/)". In Claude, the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) adds our skill and MCP server in one step.
+> **More info:** For more on using AI to build charts, see "[amCharts + AI](https://docs.amcharts.com/v5/ai/)". In Claude and ChatGPT, the amCharts 5 plugin ([Claude](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude), [ChatGPT](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt)) adds our skill and MCP server in one step.
 
 ## Modules
 
@@ -96,7 +123,8 @@ Just like "radar" module depends on "xy", every single module depends on the "co
 In a TypeScript or ES6 app, e.g. one created using Angular or React, you would want to import amCharts as a module:
 
 ```ts
-
+import * as am5 from "@amcharts/amcharts5";
+import * as am5xy from "@amcharts/amcharts5/xy";
 ```
 
 You can name and scope imported modules as you need, but for the sake of simplicity as well as consistency across all code snippets we will be importing "core" module as `am5`, while other modules will take in the `am5[module name]` naming syntax.
@@ -116,7 +144,7 @@ The easiest option is to use our free high-availability CDN server. Just point y
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 ```
 
-CDN URLs will always load the latest version of the library. Version-specific URLs are also available, as well as public CDNs (cdnjs, jsDelivr). Refer to our [Downloads page](https://www.amcharts.com/download/) for more details.
+CDN URLs will always load the latest version of the library. Version-specific URLs are also available, as well as public CDNs (cdnjs, jsDelivr). Refer to our [Downloads page](https://www.amcharts.com/download/) for more details. The npm package has the same files: see "[npm package](https://docs.amcharts.com/v5/getting-started/#npm-package)".
 
 Or, you can download, set up and load them from your own web server. E.g.:
 
@@ -159,6 +187,26 @@ The container needs to have a height. The chart fills its container, so a `<div>
 
 ```html
 <div id="chartdiv" style="width: 100%; height: 500px;"></div>
+```
+
+Then apply the `Animated` and `ResponsiveMax` [themes](https://docs.amcharts.com/v5/concepts/themes/), as in every chart. `Animated` turns on animations. `ResponsiveMax` fits the chart to the room it has, e.g. on a phone:
+
+TypeScript:
+
+```ts
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
+]);
+```
+
+JavaScript:
+
+```js
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
+]);
 ```
 
 > **More info:** For more information, refer to "[Root element](https://docs.amcharts.com/v5/getting-started/root-element/)" tutorial.
@@ -220,7 +268,8 @@ Our "core" package does not include `PieChart` so we will need to import another
 In TypeScript / ES6 applications we import "core" and "percent" packages:
 
 ```ts
-
+import * as am5 from "@amcharts/amcharts5";
+import * as am5percent from "@amcharts/amcharts5/percent";
 ```
 
 For `<script>` version, we load the matching files:
@@ -423,11 +472,17 @@ Here's everything from above put together in a single HTML page:
 ```html
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 
 <div id="chartdiv" style="width: 100%; height: 500px;"></div>
 
 <script>
 var root = am5.Root.new("chartdiv");
+root.setThemes([
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
+]);
 
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {})

@@ -8,7 +8,7 @@ scraped: "2026-11-16"
 
 AI models know amCharts 5 well - but *how* you use them makes a big difference. This guide covers the key scenarios and how to get the most out of each one.
 
-> **Using Claude?** Install the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude): the skill and the MCP server in one step.
+> **Using Claude or ChatGPT?** Install the amCharts 5 plugin for [Claude](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) or [ChatGPT](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt): the skill and the MCP server in one step.
 >
 > **Quick downloads** - drop these into your project for immediately better AI-generated charts:
 >
@@ -44,6 +44,12 @@ In Claude, one plugin adds both the amCharts 5 skill and our hosted MCP server. 
 
 For the MCP server only, without the skill, add the [amCharts 5 connector](https://claude.ai/directory/amcharts) on claude.ai, or run `claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp` in Claude Code. See the [MCP server guide](https://docs.amcharts.com/v5/ai/mcp/).
 
+## The amCharts 5 plugin for ChatGPT
+
+In ChatGPT, the [amCharts 5 plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ada25db53b4819184e6dc760cb5daf5) adds the amCharts 5 skill and our hosted MCP server. Open it and install it.
+
+To add only the MCP server yourself (also on the Free plan), open [Plugins](https://chatgpt.com/plugins) > **+** > **Add custom MCP server**, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, click **Create as a plugin**, then type **@amCharts** in a chat. See the [MCP server guide](https://docs.amcharts.com/v5/ai/mcp/).
+
 ## Docs that come with the library
 
 Since version 5.21.0, both the npm package and the ZIP download include docs written for AI coding agents:
@@ -77,7 +83,7 @@ This happens automatically in most cases - you don't need to do anything special
 **Even better:** give the chat direct, on-demand access to the full amCharts documentation, examples, and API reference:
 
 * **Claude** (claude.ai and the Desktop app): install the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude). It adds our hosted MCP server and the amCharts 5 skill, so Claude applies the amCharts rules in every chat.
-* **ChatGPT** (Free plan too): open [Plugins](https://chatgpt.com/plugins) > **+** > **Add custom MCP server**, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, click **Create as a plugin**, then type **@amCharts** in a chat. See the [MCP server guide](https://docs.amcharts.com/v5/ai/mcp/).
+* **ChatGPT**: install the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt). It adds our hosted MCP server and the amCharts 5 skill. The MCP server can also be [added on its own](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt), on the Free plan too.
 
 Without the plugin, you can add the pieces to Claude separately: the MCP server from the [Connectors Directory](https://claude.ai/directory/amcharts), and the skill by downloading the [amCharts 5 Skill](https://github.com/amcharts/amcharts5-skill) repo as a ZIP and uploading it under **Settings > Skills > Upload skill**.
 
@@ -115,7 +121,7 @@ amCharts 5 is available on [cdnjs](https://cdnjs.com/libraries/amcharts5), which
 
 ```sh title="Prompt"
 Load amCharts 5 from cdnjs, not cdn.amcharts.com:
-https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.20.8/index.js
+https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.22.0/index.js
 File paths are the same as on cdn.amcharts.com/lib/5/ (xy.js, themes/Animated.js, geodata/worldLow.js, etc.).
 ```
 
@@ -128,13 +134,13 @@ Since version 5.22.0, the npm packages work too, with maps of every detail:
 
 ### Web search availability by platform
 
-| Platform                            | Web search     | Notes                                                                                                                                |
-| ----------------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [Claude](https://claude.ai)         | Yes - Built-in | Searches automatically when needed. The [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) adds our skill and MCP server. |
-| [ChatGPT](https://chatgpt.com)      | Yes - Built-in | Available on all plans, including free. MCP servers can be added as plugins, also on all plans.                                      |
-| [Gemini](https://gemini.google.com) | Yes - Built-in | Uses Google Search grounding.                                                                                                        |
-| [Mistral](https://chat.mistral.ai)  | Yes - Built-in | Web search available in Le Chat.                                                                                                     |
-| [Meta AI](https://meta.ai)          | Yes - Built-in | Can search the web for current info.                                                                                                 |
+| Platform                            | Web search     | Notes                                                                                                                                     |
+| ----------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| [Claude](https://claude.ai)         | Yes - Built-in | Searches automatically when needed. The [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) adds our skill and MCP server.      |
+| [ChatGPT](https://chatgpt.com)      | Yes - Built-in | Available on all plans, including free. The [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt) adds our skill and MCP server. |
+| [Gemini](https://gemini.google.com) | Yes - Built-in | Uses Google Search grounding.                                                                                                             |
+| [Mistral](https://chat.mistral.ai)  | Yes - Built-in | Web search available in Le Chat.                                                                                                          |
+| [Meta AI](https://meta.ai)          | Yes - Built-in | Can search the web for current info.                                                                                                      |
 
 > **Pro tip:** If the AI produces code that doesn't look right, paste the error back and ask it to check the amCharts docs. Models with web search can self-correct very effectively.
 >
@@ -258,7 +264,7 @@ The AI reads `SKILL.md` first (core patterns + which reference to load), then re
 
 > **Note:** The same content comes with the library, as its [`docs/` folder](https://docs.amcharts.com/v5/ai/#docs-that-come-with-the-library). If amCharts 5 is installed in your project, you may not need to download the skill separately.
 
-**For Claude Code and claude.ai** - the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) includes the skill. The steps below are for adding the skill on its own.
+**For Claude Code, claude.ai and ChatGPT** - the amCharts 5 plugin for [Claude](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) or [ChatGPT](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt) includes the skill. The steps below are for adding the skill on its own.
 
 **For Claude Code** - copy the skill folder into your project's `.claude/skills/` folder and it is picked up automatically. The skill is in the `amcharts5-skill` subfolder of the repository:
 
@@ -305,7 +311,7 @@ This guarantees the AI has the right information, regardless of its training dat
 | **Best for**         | Tools without MCP support; offline or air-gapped setups | Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI, and claude.ai / ChatGPT (via connector) |
 | **Stays up to date** | Manual update needed (git pull)                         | Hosted server is always current; local install updates via npx                                                                   |
 
-> **Recommendation:** If your tool supports MCP, use the [MCP server](https://docs.amcharts.com/v5/ai/mcp/) - it has much more content and uses context more efficiently. If your tool doesn't support MCP, use the skill. You can also use both: in Claude, the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) installs both at once.
+> **Recommendation:** If your tool supports MCP, use the [MCP server](https://docs.amcharts.com/v5/ai/mcp/) - it has much more content and uses context more efficiently. If your tool doesn't support MCP, use the skill. You can also use both: in Claude and ChatGPT, the amCharts 5 plugin ([Claude](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude), [ChatGPT](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt)) installs both at once.
 
 ## Scenario 3: Using the API
 
@@ -430,7 +436,7 @@ Not all AI models produce equally good chart code. Based on our testing, here ar
 
 ## Summary
 
-1. **Browser-based chat** gives the best results out of the box - web search is built in and handles most cases automatically. In Claude, the [amCharts 5 plugin](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude) makes it even better; in ChatGPT, add the MCP server. For charts shown inside the chat, [load amCharts from cdnjs](https://docs.amcharts.com/v5/ai/#charts-shown-inside-the-chat).
+1. **Browser-based chat** gives the best results out of the box - web search is built in and handles most cases automatically. In Claude and ChatGPT, the amCharts 5 plugin ([Claude](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude), [ChatGPT](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt)) makes it even better. For charts shown inside the chat, [load amCharts from cdnjs](https://docs.amcharts.com/v5/ai/#charts-shown-inside-the-chat).
 2. **Code editors and CLI agents** need a little setup but can match browser-quality results. The [**MCP server**](https://docs.amcharts.com/v5/ai/mcp/) is the fastest path - add the hosted URL (or one install command) and the AI gets 1,500+ documentation pages, code examples, and API references.
 3. **The single biggest improvement** in any scenario is making sure the AI has access to the [amCharts 5 documentation](https://docs.amcharts.com/v5/), whether through MCP, web search, doc indexing, the skill, the [bundled docs](https://docs.amcharts.com/v5/ai/#docs-that-come-with-the-library), or pasting docs into the prompt.
 4. **Always specify amCharts 5** in your prompts to avoid confusion with older versions. An `AGENTS.md` with our rules file does this for every prompt.

@@ -1,32 +1,35 @@
 ---
 title: "Using amCharts 5 with React"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/react/"
-scraped: "2026-10-22"
+scraped: "2026-11-16"
 ---
+
+> Use amCharts 5 in React with our @amcharts/amcharts5-react package. It creates and disposes the chart with your component, and works with server rendering.
 
 Use amCharts 5 in React with our [`@amcharts/amcharts5-react`](https://www.npmjs.com/package/@amcharts/amcharts5-react) package. It creates and disposes the chart with your component, and works with server rendering.
 
 ## Installation
 
-```shell
+```sh
 npm install @amcharts/amcharts5 @amcharts/amcharts5-react
 ```
 
-It needs React 18 or later and amCharts 5.21.0 or later.
+It needs React 18 or later and amCharts 5.21.4 or later.
 
 ## A chart written in code
 
 `useAmChart()` gives your function a new root. Build the chart in it as in any amCharts example, and put the returned `ref` on an element with a height:
 
-```typescript
+```ts
 import { useAmChart } from "@amcharts/amcharts5-react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 
 function Chart({ data }) {
   const { ref } = useAmChart((root) => {
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
@@ -72,17 +75,17 @@ function Chart({ data }) {
 export default Chart;
 ```
 
--   The chart is made again when a value in the second argument (`[data]` here) changes. Leave it out to make the chart once.
--   The chart is disposed when the component goes away. The double mount of React's strict mode is handled.
--   The element can be rendered later, e.g. after a loading message: the chart is made when it is there.
--   `useAmChart(setup, deps, { renderer: "svg" })` draws the chart as SVG.
--   If your function throws, the error goes to the nearest error boundary.
+* The chart is made again when a value in the second argument (`[data]` here) changes. Leave it out to make the chart once.
+* The chart is disposed when the component goes away. The double mount of React's strict mode is handled.
+* The element can be rendered later, e.g. after a loading message: the chart is made when it is there.
+* `useAmChart(setup, deps, { renderer: "svg" })` draws the chart as SVG.
+* If your function throws, the error goes to the nearest error boundary.
 
 ### Updating without making the chart again
 
 `useAmChart()` also returns `root`, and `result`: what your function returned. Keep what you need there and change it when the data changes:
 
-```typescript
+```ts
 import { useEffect } from "react";
 import { useAmChart } from "@amcharts/amcharts5-react";
 
@@ -108,29 +111,39 @@ function Chart({ data }) {
 
 `<AmChart>` builds a chart from a [JSON config](https://docs.amcharts.com/v5/concepts/serializing/), with no chart code:
 
-```typescript
+```ts
 import { AmChart } from "@amcharts/amcharts5-react";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 
 <AmChart
   config={config}
-  themes={[am5themes_Animated]}
+  themes={[am5themes_Animated, am5themes_ResponsiveMax]}
   style={{ height: "500px" }}
   onReady={({ root, chart }) => { /* the chart is built */ }}
 />
 ```
 
-| Prop | What it is |
-| --- | --- |
-| `config` | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again; the same content written inline on every render does not. |
-| `src` | A URL to load the config from, used when there is no `config`. |
-| `themes` | Theme classes, e.g. `[am5themes_Animated]`. Themes are not part of a config. |
-| `renderer` | `"svg"` draws the chart as SVG; the default is canvas. |
-| `onReady` | Called with `{ root, chart }` when the chart is built. |
-| `onError` | Called when it could not be built. |
-| `id`, `className`, `style` | For the chart's element. Without a height, it is 400 pixels high. |
+| Prop                       | What it is                                                                                                                                                                                                            |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `config`                   | The chart as a JSON config: an object or a JSON string. A config with different content makes the chart again; the same content written inline on every render does not.                                              |
+| `src`                      | A URL to load the config from, used when there is no `config`.                                                                                                                                                        |
+| `themes`                   | Theme classes, e.g. `[am5themes_Animated, am5themes_ResponsiveMax]`, or a class with its settings as a pair: `[am5themes_Animated, [am5themes_Adaptive, { baseColor: "#4150a0" }]]`. Themes are not part of a config. |
+| `resources`                | Geodata and locales the config names, e.g. `{ am5geodata_worldLow }` for `"geoJSON": "am5geodata_worldLow"`. See below.                                                                                               |
+| `renderer`                 | `"svg"` draws the chart as SVG; the default is canvas.                                                                                                                                                                |
+| `onReady`                  | Called with `{ root, chart }` when the chart is built.                                                                                                                                                                |
+| `onError`                  | Called when it could not be built.                                                                                                                                                                                    |
+| `id`, `className`, `style` | For the chart's element. Without a height, it is 400 pixels high.                                                                                                                                                     |
 
 It is the library's [`<am5-chart>` element](https://docs.amcharts.com/v5/getting-started/integrations/am5-chart-element/): a `ref` on it gives that element.
+
+A map's config names its geodata (`"geoJSON": "am5geodata_worldLow"`), and a config may name a locale (`"locale": "am5locales_de_DE"`), instead of carrying them. With npm imports they are not globals: import the files the config names and give them in `resources`, under the same names:
+
+```ts
+import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
+
+<AmChart config={mapConfig} resources={{ am5geodata_worldLow }} style={{ height: 400 }} />
+```
 
 ## Server rendering
 
@@ -144,11 +157,12 @@ With a commercial license, call `am5.addLicense()` once when the app starts, e.g
 
 To manage the chart yourself, create the root in an effect and dispose it in the effect's cleanup:
 
-```typescript
+```ts
 import { useLayoutEffect, useRef } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 
 function Chart({ data }) {
   const chartdiv = useRef(null);
@@ -156,7 +170,7 @@ function Chart({ data }) {
   useLayoutEffect(() => {
     const root = am5.Root.new(chartdiv.current);
 
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     const chart = root.container.children.push(
       am5xy.XYChart.new(root, {})
@@ -183,6 +197,8 @@ The sandboxes below create the chart without the package.
 
 ### Simple chart
 
-### With data binding
+» [amCharts 5 with React and Vite](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/react/examples/vite?file=src%2FApp.tsx)
 
 ### Stock chart
+
+» [Stock chart with a toolbar, on CodeSandbox](https://codesandbox.io/s/amcharts5-react-stock-toolbar-demo-r5zd5s)

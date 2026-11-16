@@ -305,7 +305,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 42, method: "tools/call", params: { name: "get_doc", arguments: { path: "getting-started/integrations/react-native" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes("@amcharts/amcharts5-react-native") && text.includes("| `licenses` |") ? "PASS" : "FAIL";
+      return text.includes("@amcharts/amcharts5-react-native") && /\|\s*`licenses`\s*\|/.test(text) ? "PASS" : "FAIL";
     },
     label: "get_doc('getting-started/integrations/react-native') — new page, props table",
   },
