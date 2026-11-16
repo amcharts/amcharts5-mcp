@@ -1,6 +1,8 @@
 # amCharts 5 MCP Server
 
 > **Using Claude?** Install the [amCharts 5 plugin](https://claude.ai/customize/plugins/id/88417dfb-479c-409d-8571-796c3a299aac%40anthropic-plugin-directory): it bundles this server and the skill. In Claude Code: `/plugin install amcharts5@anthropic-plugin-directory`.
+>
+> **Using ChatGPT?** Install the [amCharts 5 plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ada25db53b4819184e6dc760cb5daf5): it bundles this server and the skill.
 
 An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that gives AI assistants on-demand access to the complete amCharts 5 knowledge base: **160+ documentation pages**, **350+ code examples** (including 60+ complete JSON configs), and **1,300+ API reference pages**.
 
@@ -72,7 +74,7 @@ claude mcp add --transport http amcharts5 https://mcp.amcharts.com/mcp
 }
 ```
 
-**ChatGPT** (also on the Free plan) — open [Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server**. Give it a name, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then **Create as a plugin**. In a chat, type **@amCharts** to use it.
+**ChatGPT** — install the [amCharts 5 plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ada25db53b4819184e6dc760cb5daf5), which bundles this server and the skill. To add the server yourself (also on the Free plan), open [Plugins](https://chatgpt.com/plugins) → **+** → **Add custom MCP server**. Name it `amCharts`, set the URL to `https://mcp.amcharts.com/mcp` and Authentication to **No authentication**, then **Create as a plugin**. In a chat, type **@amCharts** to use it.
 
 **Figma Make and the Figma agent** (paid Figma plans) — in the chat, open **Add context** → **Connectors** → **Manage** → **Create**. Name it `amCharts`, set the URL to `https://mcp.amcharts.com/mcp` with no authentication, and set its tools to **Always run**. Then name amCharts in the prompt (Make picks Recharts otherwise), e.g. "Build a sales dashboard with amCharts: a world map colored by revenue and a line chart of monthly sales". Make installs `@amcharts/amcharts5` and looks up the code through the server. A pasted amcharts.com demo or docs link works as context too.
 
