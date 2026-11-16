@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [Unreleased]
+
+### Added
+- 3 new tests (102).
+
+### Changed
+- **Search hits name their parent section.** Long skill sections are searched by their subsections (since 1.9.5): json.md's "The rules" and map.md's "Series types". A hit on one of those subsections now shows the section it belongs to, e.g. "JSON Configs — Writing a Chart as JSON → The rules → 7. Bullets" instead of "… → 7. Bullets". This applies to `search_all` and `search_docs`. The `get_section` call in the hit still takes the subsection heading alone.
+
+### Fixed
+- `search_docs` no longer ends the title of a section without a heading (SKILL.md's opening) with a bare "→".
+
 ## [1.9.5] - 2026-11-16
 
 ### Added

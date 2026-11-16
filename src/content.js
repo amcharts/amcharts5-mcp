@@ -456,11 +456,13 @@ function buildSearchIndex(content) {
           { kind: "skill", file: name, docTitle: doc.title, heading: section.heading, body },
           section.heading || doc.title, `${doc.title} ${name}`, body, [section.heading]);
         // Each subsection on its own; the parent heading is not its title, or
-        // every part of "Series types" would match "series"
+        // every part of "Series types" would match "series". It is shown in
+        // the hit's title (section), so a short name such as json.md's
+        // "7. Bullets" (under "The rules") reads in context
         for (const part of parts) {
           if (!part.heading) continue;
           add(KIND_SKILL,
-            { kind: "skill", file: name, docTitle: doc.title, heading: part.heading, body: part.text },
+            { kind: "skill", file: name, docTitle: doc.title, section: section.heading, heading: part.heading, body: part.text },
             part.heading, `${doc.title} ${name}`, part.text, [part.heading]);
         }
         continue;

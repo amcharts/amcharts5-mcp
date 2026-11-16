@@ -491,7 +491,7 @@ export function registerTools(server, content) {
         // and point at get_example for the full code.
         const isExample = r.kind === "example";
         const id = isExample ? r.file : `${r.kind}/${r.file}`;
-        text += isExample ? `## [example] ${r.docTitle}\n` : `## ${r.docTitle} → ${r.heading}\n`;
+        text += isExample ? `## [example] ${r.docTitle}\n` : `## ${r.docTitle}${r.section ? ` → ${r.section}` : ""}${r.heading ? ` → ${r.heading}` : ""}\n`;
         text += `*(source: ${id}.md, relevance: ${r.score})*\n\n`;
         let body = r.body;
         if (body.length > budget) {
@@ -706,7 +706,7 @@ export function registerTools(server, content) {
       let text = `${lead}# Search results for "${echo(query)}" (${total} total, showing ${results.length})\n\n`;
       for (const r of results) {
         const source = r.kind === "skill" ? `skill/${r.file}` : r.file;
-        text += `## [${TYPE_LABEL[r.kind]}] ${r.docTitle}${r.heading ? ` → ${r.heading}` : ""}\n`;
+        text += `## [${TYPE_LABEL[r.kind]}] ${r.docTitle}${r.section ? ` → ${r.section}` : ""}${r.heading ? ` → ${r.heading}` : ""}\n`;
         text += `*Source: ${source} | Relevance: ${r.score}*\n\n`;
         text += r.body.slice(0, 300);
         // The answer is often further down (an example's prose comes before

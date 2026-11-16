@@ -857,6 +857,39 @@ const tests = [
     },
     label: "get_quick_start('candlestick') — says the example is not a candlestick one",
   },
+  {
+    send: { jsonrpc: "2.0", id: 100, method: "tools/call", params: { name: "search_all", arguments: { query: "map polygon no data tooltip", maxResults: 3, scope: "skill" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const hit = text.split("\n## ").find((h) => h.split("\n")[0].includes("→ MapPolygonSeries"));
+      if (!hit) return "FAIL (no MapPolygonSeries hit)";
+      const title = hit.split("\n")[0];
+      if (!title.includes("→ Series types → MapPolygonSeries")) return `FAIL (no parent section: ${title})`;
+      // the same hit's pointer takes the subsection heading alone
+      return hit.includes('heading: "MapPolygonSeries (countries, regions)"') ? "PASS" : "FAIL (the hit's get_section pointer is not the subsection heading alone)";
+    },
+    label: "search_all — a subsection hit names its parent section",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 101, method: "tools/call", params: { name: "search_docs", arguments: { query: "bullets in a JSON config", maxResults: 4 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const titles = text.split("\n").filter((l) => l.startsWith("## "));
+      return titles.some((t) => t.endsWith("→ The rules → 7. Bullets")) ? "PASS" : `FAIL (${titles.slice(0, 2).join(" | ")})`;
+    },
+    label: "search_docs — a subsection hit names its parent section",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 102, method: "tools/call", params: { name: "search_docs", arguments: { query: "amCharts 5 skill overview when to use", maxResults: 4 } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const titles = text.split("\n").filter((l) => l.startsWith("## "));
+      const bare = titles.find((t) => /→\s*$/.test(t));
+      if (bare) return `FAIL (a title ends with an arrow: ${bare})`;
+      return titles.includes("## amCharts 5") ? "PASS" : `FAIL (no untitled SKILL.md hit: ${titles.slice(0, 2).join(" | ")})`;
+    },
+    label: "search_docs — a section without a heading gets no trailing arrow",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
