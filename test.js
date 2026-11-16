@@ -448,7 +448,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 23, method: "tools/call", params: { name: "get_section", arguments: { file: "skill/SKILL.md", heading: "Recent API changes" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes("Recent API changes") && text.includes("5.20") ? "PASS (label resolves)" : "FAIL";
+      return text.includes("Recent API changes") && text.includes("Latest release covered here") ? "PASS (label resolves)" : "FAIL";
     },
     label: "get_section('skill/SKILL.md', 'Recent API changes') — search label resolves",
   },
