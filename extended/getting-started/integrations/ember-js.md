@@ -10,28 +10,28 @@ This tutorial will show you every step you need to use amCharts 5 with [Ember.js
 
 ## Installation
 
-​First, create a new Ember project:
+First, create a new Ember project:
 
 ```sh
 npx -p ember-cli@latest ember new my-project --lang en
 cd my-project
 ```
 
-​You can now run your project by using this command:
+You can now run your project by using this command:
 
 ```sh
 npm start
 ```
 
-​If you open up the URL `http://localhost:4200/` you should see a working app.
+If you open up the URL `http://localhost:4200/` you should see a working app.
 
-​Now it's time to add in an amCharts 5 chart. Use this command to install amCharts 5:
+Now it's time to add in an amCharts 5 chart. Use this command to install amCharts 5:
 
 ```sh
 npm install --save-dev @ember/render-modifiers @amcharts/amcharts5
 ```
 
-​Create a new `app/components/chart.hbs` file:
+Create a new `app/components/chart.hbs` file:
 
 ```html
 <div
@@ -41,43 +41,43 @@ npm install --save-dev @ember/render-modifiers @amcharts/amcharts5
 </div>
 ```
 
-​Also create a new `app/components/chart.js` file:
+Also create a new `app/components/chart.js` file:
 
 ```ts
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
-​
+
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
-​
+
 export default class ChartComponent extends Component {
     @action
     create(element) {
         const root = am5.Root.new(element);
-​
+
         root.setThemes([
             am5themes_Animated.new(root),
             am5themes_ResponsiveMax.new(root)
         ]);
-​
+
         root.dateFormatter.setAll({
             dateFields: ["valueX"]
         });
-​
+
         const chart = root.container.children.push(am5xy.XYChart.new(root, {
             panX: false,
             panY: false,
             wheelX: "panX",
             wheelY: "zoomX"
         }));
-​
+
         const cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
             behavior: "zoomX"
         }));
         cursor.lineY.set("visible", false);
-​
+
         const xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
             maxDeviation: 0.5,
             baseInterval: {
@@ -89,14 +89,14 @@ export default class ChartComponent extends Component {
             }),
             tooltip: am5.Tooltip.new(root, {})
         }));
-​
+
         const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
             maxDeviation:1,
             renderer: am5xy.AxisRendererY.new(root, {
                 pan:"zoom"
             })
         }));
-​
+
         const series = chart.series.push(am5xy.LineSeries.new(root, {
             name: "Series",
             xAxis: xAxis,
@@ -107,11 +107,11 @@ export default class ChartComponent extends Component {
                 labelText: "{valueX}: {valueY}"
             })
         }));
-​
+
         chart.set("scrollbarX", am5.Scrollbar.new(root, {
             orientation: "horizontal"
         }));
-​
+
         const data = [
             {
                 "date": 1686034800000,
@@ -155,14 +155,14 @@ export default class ChartComponent extends Component {
             }
         ];
         series.data.setAll(data);
-​
+
         series.appear(1000);
         chart.appear(1000, 100);
-​
+
         this.series = series;
         this.root = root;
     }
-​
+
     @action
     cleanup() {
         if (this.root) {
@@ -176,27 +176,27 @@ Lastly, change the `app/templates/application.hbs` file and add the `<Chart />` 
 
 ```html
 {{page-title "MyProject"}}
-​
+
 <Chart />
-​
+
 {{outlet}}
 ```
 
-​Now if you run `npm start` you should see a working chart.​
+Now if you run `npm start` you should see a working chart.
 
 ## Updating the chart
 
-​If you want to update the chart when an attribute changes, you can use the `did-update` modifier.
+If you want to update the chart when an attribute changes, you can use the `did-update` modifier.
 
 For this example, let's update the chart data whenever the `data` attribute changes.
 
-​First, let's change the chart code so that it uses the data from the attributes:
+First, let's change the chart code so that it uses the data from the attributes:
 
 ```ts
 series.data.setAll(this.args.data);
 ```
 
-​Next, add in a new `@action` to the `ChartComponent` which will update the data:
+Next, add in a new `@action` to the `ChartComponent` which will update the data:
 
 ```ts
 @action
@@ -207,7 +207,7 @@ updateData() {
 }
 ```
 
-​Lastly, add the `did-update` modifier into your `app/components/chart.hbs` file:​
+Lastly, add the `did-update` modifier into your `app/components/chart.hbs` file:
 
 ```html
 <div
@@ -218,13 +218,13 @@ updateData() {
 </div>
 ```
 
-​Now you can pass in data to the `<Chart />` component:​
+Now you can pass in data to the `<Chart />` component:
 
 ```html
 <Chart @data={{this.data}} />
 ```
 
-​If you want to update the chart when multiple different attributes change, you can use the `did-update` modifier multiple times:​
+If you want to update the chart when multiple different attributes change, you can use the `did-update` modifier multiple times:
 
 ```html
 <div

@@ -42,9 +42,7 @@ There are no 3D-esque chart types in amCharts 5, like 3D columns, pies, or cylin
 
 ### Canvas by default
 
-amCharts 5 draws on canvas by default. It can draw with SVG instead: see "[Drawing with SVG](https://docs.amcharts.com/v5/getting-started/root-element/#drawing-with-svg)".
-
-NOTE With the SVG renderer the chart's SVG nodes are not tagged per chart object, and the chart handles pointer input itself, so chart elements are still configured and styled through amCharts settings, not DOM or CSS.
+amCharts 5 draws on canvas by default. It can draw with SVG instead: see "[Renderer](https://docs.amcharts.com/v5/getting-started/root-element/#renderer)". Either way, chart elements can't be targeted with JavaScript or CSS as in amCharts 4: style them through their settings.
 
 Charts drawn either way can be exported as SVG. See "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
 

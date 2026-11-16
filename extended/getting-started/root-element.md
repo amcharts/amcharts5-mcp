@@ -292,7 +292,7 @@ JavaScript:
 am5.Root.defaultRenderer = am5.SVGRenderer;
 ```
 
-The renderer can only be chosen when the root element is created. Charts look and behave the same with either one: text is measured the same way, so labels wrap and truncate identically, and all interactions work as usual.
+The renderer can only be chosen when the root element is created. Charts look and behave the same with either one: text is measured the same way, so labels wrap and truncate identically, and all interactions work as usual. Either way, chart elements are styled through their settings: the SVG isn't marked up per chart element, and the chart handles mouse and touch input itself, so CSS and DOM events can't target single elements.
 
 The only difference: blend modes `DST_OVER`, `SRC_ATOP`, and `XOR` are canvas-only. In SVG they are drawn as normal, with a warning in the console.
 
@@ -519,32 +519,6 @@ The direction can only be set when the root element is created.
 > **Note:** `direction` is available since version 5.22.0.
 
 > **More info:** For more information, see "[Right-to-left support](https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/)".
-
-### Drawing with SVG
-
-Charts are drawn on canvas. To draw with SVG instead, set `renderer` to `am5.SVGRenderer` when creating the root element:
-
-TypeScript:
-
-```ts
-let root = am5.Root.new("chartdiv", {
-  renderer: am5.SVGRenderer
-});
-```
-
-JavaScript:
-
-```js
-var root = am5.Root.new("chartdiv", {
-  renderer: am5.SVGRenderer
-});
-```
-
-The renderer can only be set when the root element is created. To make SVG the default for every root element, set `am5.Root.defaultRenderer = am5.SVGRenderer` before creating them.
-
-> **Note:** `renderer` is available since version 5.21.0.
-
-> **More info:** Charts drawn either way can be exported as SVG. See "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
 
 ### Other configuration options
 
