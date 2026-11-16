@@ -4,7 +4,7 @@
 >
 > **Using ChatGPT?** Install the [amCharts 5 plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ada25db53b4819184e6dc760cb5daf5): it bundles this server and the skill.
 
-An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that gives AI assistants on-demand access to the complete amCharts 5 knowledge base: **160+ documentation pages**, **350+ code examples** (including 60+ complete JSON configs), and **1,300+ API reference pages**.
+An [MCP (Model Context Protocol)](https://modelcontextprotocol.io) server that gives AI assistants on-demand access to the complete amCharts 5 knowledge base: **160+ documentation pages**, **690+ code examples** (including 60+ complete JSON configs and 330+ demos from the docs pages), and **1,300+ API reference pages**.
 
 Works with **Claude Code**, **Claude Desktop**, **Cursor**, **Windsurf**, **VS Code + GitHub Copilot**, and any other MCP-compatible AI tool.
 
@@ -222,7 +222,7 @@ npm start
 | `get_doc` | Get a full documentation page by its path (e.g. "charts/xy-chart/axes", "concepts/events") or its docs.amcharts.com address |
 | `get_section` | Get a specific section from a reference file by heading (a `###` subsection heading returns just that subsection) |
 | `get_quick_start` | Get a minimal working template for any chart type |
-| `list_examples` | Browse all 350+ examples, optionally filtered by category |
+| `list_examples` | Browse all 690+ examples, optionally filtered by category |
 | `get_example` | Get the full code for a specific example, by its path or its amcharts.com demo address |
 | `get_api_reference` | Get the API reference for a class, interface or function — settings with their defaults, events, inheritance and the import line |
 | `list_geodata` | Find map (geodata) files — world, continents, countries, regional packs and the per-Congress US congressional district packs — with each file's CDN path (and its unpkg address, for pages limited to npm CDNs), script global and ES import |
@@ -245,7 +245,7 @@ Once connected, your AI assistant can:
 The server includes **1,900+ documents**:
 
 - **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides for amCharts' React, Vue, Angular, Svelte and React Native packages (with Next.js, Nuxt, SvelteKit, React Router and Remix 3)
-- **350+ code examples** — 290+ working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more, plus 60+ complete JSON configs from the amCharts npm package
+- **690+ code examples** — 290+ working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more, plus 60+ complete JSON configs from the amCharts npm package and 330+ demos embedded in the docs pages (each page links its demos)
 - **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), events, properties, data item fields, the inheritance chain and the import line
 - **670+ geodata entries** — every map in `@amcharts/amcharts5-geodata`, for `list_geodata`
 - **Curated skill reference** — quick-start templates, chart-specific guides and a guide to writing JSON configs, from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)

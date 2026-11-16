@@ -39,6 +39,11 @@ function docPathFromInput(input) {
 }
 
 // The demo slug of an amcharts.com demo address ("…/demos/sankey-diagram/")
+// The docs pages' embedded demos, kept as examples of their own
+// (scripts/docs-demos.mjs)
+const DOCS_DEMOS = "docs-demos";
+const DOCS_DEMO = /docs\.amcharts\.com\/embeds\/v5\/([^/?#]+)/i;
+
 function demoSlug(input) {
   const m = /amcharts\.com\/demos\/([^/?#]+)/i.exec(String(input ?? ""));
   return m ? m[1].toLowerCase() : null;
@@ -299,11 +304,23 @@ export function registerTools(server, content) {
   function resolveExample(input) {
     const demo = demoSlug(input);
     if (demo && exampleByDemo.has(demo)) return exampleByDemo.get(demo);
+    // A docs page's embedded demo ("https://docs.amcharts.com/embeds/v5/<slug>/")
+    const embed = DOCS_DEMO.exec(String(input ?? ""));
+    if (embed) {
+      const k = `examples/${DOCS_DEMOS}/${embed[1].toLowerCase()}`;
+      return examples.has(k) ? k : null;
+    }
+    // Any other address is not an example name: its last part ("map-chart" of
+    // a docs page) must not pick a demo of the same name
+    if (!demo && /:\/\/|amcharts\.com\//i.test(String(input ?? ""))) return null;
     const key = String(input ?? "").trim().replace(/[?#].*$/, "").replace(/^\/+|\/+$/g, "").replace(/\.md$/i, "");
     if (examples.has(key)) return key;
     if (examples.has(`examples/${key}`)) return `examples/${key}`;
     const bySlug = exampleBySlug.get(key.split("/").pop().toLowerCase()) || [];
-    return bySlug.length === 1 ? bySlug[0] : null;
+    if (bySlug.length === 1) return bySlug[0];
+    // A name shared with a docs page's demo means the amcharts.com demo
+    const main = bySlug.filter((k) => !k.startsWith(`examples/${DOCS_DEMOS}/`));
+    return main.length === 1 ? main[0] : null;
   }
 
   // Keys sharing an example name, for a not-found message ("pie-chart" is both
@@ -338,9 +355,16 @@ export function registerTools(server, content) {
     }
     const v4 = /amcharts\.com\/demos-v4\/([^/?#]+)/i.exec(link);
     if (v4) {
-      const v5 = resolveExample(v4[1].toLowerCase().replace(/-v4$/, ""));
+      const name = v4[1].toLowerCase().replace(/-v4$/, "");
+      const v5 = exampleByDemo.get(name) || resolveExample(name);
       return `${link} is an amCharts 4 demo; this server covers amCharts 5.` +
         (v5 ? ` The amCharts 5 version is get_example(path: "${v5}").` : " search_all finds the closest amCharts 5 examples.");
+    }
+    if (DOCS_DEMO.test(link)) {
+      const key = resolveExample(link);
+      return key
+        ? `${link} is the demo "${examples.get(key).title}" from the amCharts docs: its full code is get_example(path: "${key}").`
+        : `${link} is a docs demo this server doesn't have; search_all finds similar examples.`;
     }
     if (demoSlug(link)) {
       const key = resolveExample(link);
@@ -826,7 +850,7 @@ export function registerTools(server, content) {
       title: "List examples",
       description: "List all available amCharts 5 code examples, optionally filtered by category.",
       inputSchema: {
-        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid', or 'json-configs' (complete JSON configs from the amCharts npm package). Without it, all categories are listed."),
+        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid', 'json-configs' (complete JSON configs from the amCharts npm package), or 'docs-demos' (the demos embedded in the docs pages). Without it, all categories are listed."),
       },
       annotations: READ_ONLY,
     },
@@ -879,7 +903,10 @@ export function registerTools(server, content) {
     async ({ path: exPath }) => {
       const key = resolveExample(exPath);
       if (!key) {
-        const named = examplesNamed(exPath);
+        // An address is answered by where it points, not by its last part
+        // ("…/flow-charts/sankey-diagram/" is a docs page, not two examples)
+        const isAddress = /:\/\/|amcharts\.com\//i.test(String(exPath ?? ""));
+        const named = isAddress ? [] : examplesNamed(exPath);
         const pointer = linkPointer(exPath);
         const text = named.length > 1
           ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`

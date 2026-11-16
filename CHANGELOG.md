@@ -10,9 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- 3 new tests (102).
+- **The docs pages' demos are examples of their own.** The docs site writes each embedded demo out in full after its "Example:" link, which was half of the docs text: the clustered point series page was 207,000 characters, 196,000 of them demo code. The 332 demos (354 embeds; some pages share one) are now examples in the new `docs-demos` category: `get_example(path: "examples/docs-demos/<name>")`, each with its JavaScript, HTML, the chart's CSS and its scripts, and the docs page it comes from. A page keeps the link and points to the example. The docs copy shrinks from 3.7 to 1.9 MB.
+  - `get_example` takes a demo's embed address (`https://docs.amcharts.com/embeds/v5/<name>/`), and so do the pasted-link pointers.
+  - A name shared with an amcharts.com demo (`sankey-diagram`) still means the amcharts.com demo.
+  - In search, the docs demos rank below the amcharts.com demos and the skill on shared words, but first when searched by name.
+  - `scripts/import-docs-md.mjs` moves the demos out on import (`scripts/docs-demos.mjs`).
+- 7 new tests (106).
 
 ### Changed
+- **The skill describes only the latest release.** Version history is out of the skill, the references and the cursorrules copy: "since 5.x" and "fixed in" notes, "(5.21.0)" tags, the release blocks from 5.20.6 to 5.21.5, pitfalls for fixed bugs and workarounds no longer needed. What those blocks described and still holds is in the body as current behaviour. One "New in 5.22.0" list stays. Version numbers remain only where they decide what code to write: the framework packages' minimum versions and the CDN pins. SKILL.md is 14% smaller.
+  - Critical rule 16 no longer has a caveat for versions before 5.22.0: every chart gets `Animated` and `ResponsiveMax`.
+  - JSON: palette colors in a data row are references, read when the row and the object holding them are marked `"__parse": true`, which the serializer writes and a hand-written config needs.
+  - `root.timezone` is in "Root element setup".
+  - The candlestick-on-a-`ValueAxis` wick workaround is out: it is a library bug, reported to the library team.
+- **The docs copy is from the live site.** The 136 pages left from the October HTML scrape are re-imported from docs.amcharts.com's Markdown: code in fenced, labelled TypeScript and JavaScript blocks instead of two unlabelled copies run into the text (121 pages had that). Every code line of the docs source is present. Our hand-added notes stay only where they state current behaviour that the page and the skill lack, without version history. Two live statements that are wrong for 5.22.0 are corrected in our copy and reported: string dates without `dateFormat`, and SVG in the amCharts 4 migration guide.
 - **Search hits name their parent section.** Long skill sections are searched by their subsections (since 1.9.5): json.md's "The rules" and map.md's "Series types". A hit on one of those subsections now shows the section it belongs to, e.g. "JSON Configs — Writing a Chart as JSON → The rules → 7. Bullets" instead of "… → 7. Bullets". This applies to `search_all` and `search_docs`. The `get_section` call in the hit still takes the subsection heading alone.
 
 ### Fixed

@@ -391,6 +391,11 @@ const TITLE_WEIGHTS = [[1.5, 1.0], [1.5, 1.0], [2.5, 0.5]];
 // The skill is the curated layer; nudge it ahead of the exhaustive extended
 // docs on near-ties.
 const KIND_BOOST = [1.1, 1.0, 1.0];
+// The docs pages' embedded demos (examples/docs-demos/) illustrate a page that
+// is indexed itself; their short titles ("Cursor and legend labels") would
+// otherwise outrank the skill and the amcharts.com demos on shared words.
+const DOCS_DEMO_PREFIX = "examples/docs-demos/";
+const DOCS_DEMO_BOOST = 0.5;
 // Weight of an identifier's humps when the identifier itself is in the query.
 const AUX_FACTOR = 0.3;
 // Score factor for the 2nd, 3rd, … section of the same doc in one result list.
@@ -612,6 +617,7 @@ export function rankContent(content, query, { kinds = KIND_NAMES, maxResults = 1
     const titleCoverage = Math.min(1, titled[u] / totalWeight);
     let s = score[u] * coverage * coverage * (1 + 2 * titleCoverage * titleCoverage) * KIND_BOOST[kind];
     if (exactQuery && exactTitles[u].includes(exactQuery)) s *= 2;
+    if (kind === KIND_EXAMPLE && units[u].file.startsWith(DOCS_DEMO_PREFIX)) s *= DOCS_DEMO_BOOST;
     if (!(s > 0)) continue; // matched auxiliary terms only
     ranked.push(explain ? { u, s, why: { bm25: score[u], coverage, titleCoverage } } : { u, s });
   }

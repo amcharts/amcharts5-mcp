@@ -1,0 +1,118 @@
+---
+title: "Sankey diagram with animated bullets"
+source: "https://docs.amcharts.com/embeds/v5/sankey-diagram-with-animated-bullets/"
+category: "docs-demos"
+scraped: "2026-11-16"
+docsPages: ["charts/flow-charts/flow-chart-bullets"]
+---
+
+A demo from the docs page "Flow chart bullets" (get_doc(path: "charts/flow-charts/flow-chart-bullets")).
+
+## JavaScript
+
+```javascript
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+am5.addLicense("AM5C12312313");
+
+// Create root element
+// https://docs.amcharts.com/v5/getting-started/#root-element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://docs.amcharts.com/v5/concepts/themes/
+root.setThemes([am5themes_Animated.new(root)]);
+
+// Create series
+// https://docs.amcharts.com/v5/charts/flow-charts/
+var series = root.container.children.push(
+  am5flow.Sankey.new(root, {
+    sourceIdField: "from",
+    targetIdField: "to",
+    valueField: "value",
+    paddingRight: 50
+  })
+);
+
+series.nodes.get("colors").set("step", 2);
+
+series.bullets.push(function (root, series, dataItem) {
+  var bullet = am5.Bullet.new(root, {
+    locationX: 0.5,
+    autoRotate: true,
+    sprite: am5.Graphics.new(root, {
+      fill: dataItem.get("source").get("fill"),
+      centerY: am5.percent(50),
+      centerX: am5.percent(50),
+      draw: function (display) {
+        display.moveTo(0, -6);
+        display.lineTo(16, 0);
+        display.lineTo(0, 6);
+        display.lineTo(0, -6);
+      }
+    })
+  });
+
+  bullet.animate({
+    key: "locationX",
+    to: 0.8,
+    from: 0.2,
+    duration: Math.random() * 1000 + 2000,
+    loops: Infinity,
+    easing: am5.ease.quad
+  });
+
+  return bullet;
+});
+
+// Set data
+// https://docs.amcharts.com/v5/charts/flow-charts/#setting-data
+series.data.setAll([
+  { from: "A", to: "D", value: 10 },
+  { from: "B", to: "D", value: 8 },
+  { from: "B", to: "E", value: 4 },
+  { from: "C", to: "E", value: 3 },
+  { from: "D", to: "G", value: 5 },
+  { from: "D", to: "I", value: 2 },
+  { from: "D", to: "H", value: 3 },
+  { from: "E", to: "H", value: 6 },
+  { from: "G", to: "J", value: 5 },
+  { from: "I", to: "J", value: 1 },
+  { from: "H", to: "J", value: 9 }
+]);
+
+// Make stuff animate on load
+series.appear(1000, 100);
+```
+
+## HTML
+
+```html
+<div id="chartdiv"></div>
+```
+
+## CSS
+
+```css
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+## Required resources
+
+- https://cdn.amcharts.com/lib/5/index.js
+- https://cdn.amcharts.com/lib/5/xy.js
+- https://cdn.amcharts.com/lib/5/flow.js
+- https://cdn.amcharts.com/lib/5/themes/Animated.js

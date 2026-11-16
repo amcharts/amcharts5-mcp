@@ -1,0 +1,242 @@
+---
+title: "Axis ranges"
+source: "https://docs.amcharts.com/embeds/v5/axis-ranges/"
+category: "docs-demos"
+scraped: "2026-11-16"
+docsPages: ["charts/xy-chart/axes/axis-ranges"]
+---
+
+A demo from the docs page "Axis ranges" (get_doc(path: "charts/xy-chart/axes/axis-ranges")).
+
+## JavaScript
+
+```javascript
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    wheelY: "zoomX"
+  })
+);
+
+// Define data
+var data = [
+  {
+    date: new Date(2021, 0, 1).getTime(),
+    value: 100,
+    value2: 220
+  },
+  {
+    date: new Date(2021, 0, 2).getTime(),
+    value: 320,
+    value2: 300
+  },
+  {
+    date: new Date(2021, 0, 3).getTime(),
+    value: 216,
+    value2: 120
+  },
+  {
+    date: new Date(2021, 0, 4).getTime(),
+    value: 150,
+    value2: 190
+  },
+  {
+    date: new Date(2021, 0, 5).getTime(),
+    value: 156,
+    value2: 190
+  },
+  {
+    date: new Date(2021, 0, 6).getTime(),
+    value: 199,
+    value2: 120
+  },
+  {
+    date: new Date(2021, 0, 7).getTime(),
+    value: 114,
+    value2: 300
+  },
+  {
+    date: new Date(2021, 0, 8).getTime(),
+    value: 269,
+    value2: 290
+  },
+  {
+    date: new Date(2021, 0, 9).getTime(),
+    value: 190,
+    value2: 290
+  },
+  {
+    date: new Date(2021, 0, 10).getTime(),
+    value: 380,
+    value2: 170
+  },
+  {
+    date: new Date(2021, 0, 11).getTime(),
+    value: 250,
+    value2: 200
+  },
+  {
+    date: new Date(2021, 0, 12).getTime(),
+    value: 110,
+    value2: 210
+  },
+  {
+    date: new Date(2021, 0, 13).getTime(),
+    value: 185,
+    value2: 85
+  },
+  {
+    date: new Date(2021, 0, 14).getTime(),
+    value: 105,
+    value2: 244
+  }
+];
+
+// Create Y-axis
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    extraTooltipPrecision: 1,
+    renderer: am5xy.AxisRendererY.new(root, {
+      minGridDistance: 30
+    })
+  })
+);
+
+// Create X-Axis
+let xAxis = chart.xAxes.push(
+  am5xy.DateAxis.new(root, {
+    baseInterval: { timeUnit: "day", count: 1 },
+    renderer: am5xy.AxisRendererX.new(root, {
+      minGridDistance: 20,
+      cellStartLocation: 0.2,
+      cellEndLocation: 0.8
+    })
+  })
+);
+
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push(
+    am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: field,
+      valueXField: "date",
+      tooltip: am5.Tooltip.new(root, {}),
+      clustered: true
+    })
+  );
+
+  series.get("tooltip").label.set("text", "[bold]{name}[/]\n{valueX.formatDate()}: {valueY}");
+  series.data.setAll(data);
+}
+
+createSeries("Series #1", "value");
+createSeries("Series #2", "value2");
+
+// Create axis ranges
+function createRange(value, endValue, color) {
+  var rangeDataItem = yAxis.makeDataItem({
+    value: value,
+    endValue: endValue
+  });
+
+  var range = yAxis.createAxisRange(rangeDataItem);
+
+  if (endValue) {
+    range.get("axisFill").setAll({
+      fill: color,
+      fillOpacity: 0.2,
+      visible: true
+    });
+
+    range.get("label").setAll({
+      fill: am5.color(0xffffff),
+      text: value + "-" + endValue,
+      location: 1,
+      background: am5.RoundedRectangle.new(root, {
+        fill: color
+      })
+    });
+  } else {
+    range.get("label").setAll({
+      fill: am5.color(0xffffff),
+      text: value,
+      background: am5.RoundedRectangle.new(root, {
+        fill: color
+      })
+    });
+  }
+
+  range.get("grid").setAll({
+    stroke: color,
+    strokeOpacity: 1,
+    location: 1
+  });
+}
+
+createRange(175, 275, am5.color(0xff621f));
+createRange(120, undefined, am5.color(0x297373));
+
+// Add cursor
+chart.set(
+  "cursor",
+  am5xy.XYCursor.new(root, {
+    behavior: "zoomX",
+    xAxis: xAxis
+  })
+);
+
+xAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+
+yAxis.set(
+  "tooltip",
+  am5.Tooltip.new(root, {
+    themeTags: ["axis"]
+  })
+);
+```
+
+## HTML
+
+```html
+<div id="chartdiv"></div>
+```
+
+## CSS
+
+```css
+#chartdiv {
+  width: 100%;
+  height: 400px;
+}
+```
+
+## Required resources
+
+- https://cdn.amcharts.com/lib/5/index.js
+- https://cdn.amcharts.com/lib/5/xy.js
+- https://cdn.amcharts.com/lib/5/radar.js
+- https://cdn.amcharts.com/lib/5/themes/Animated.js

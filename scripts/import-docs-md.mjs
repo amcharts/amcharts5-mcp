@@ -14,12 +14,17 @@
 // writing, the report lists, per page, the lines that MCP commits added to the
 // repo copy (not the first import, 94598cd) and whose words the new page lacks.
 // Carry the ones that still hold over by hand after writing.
+//
+// The site writes each embedded demo out in full after its "Example:" link.
+// Those demos become examples of their own, extended/examples/docs-demos/<slug>.md,
+// and the page keeps the link with a get_example pointer (scripts/docs-demos.mjs).
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
 import { createRequire } from "module";
+import { takeDemos, writeDemos, DEMO_CATEGORY } from "./docs-demos.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const { rewriteDocsLinks } = createRequire(import.meta.url)("./docs-links.cjs");
@@ -46,7 +51,9 @@ for (const page of pages) {
     if (next && next.trim() === lines[0].slice(2).trim()) lines.shift();
   }
   while (lines.length && !lines[0].trim()) lines.shift();
-  const body = rewriteDocsLinks(lines.join("\n").replace(/\n{3,}/g, "\n\n").trimEnd() + "\n");
+  // Embedded demos become examples of their own (scripts/docs-demos.mjs)
+  const { markdown: withoutDemos, demos } = takeDemos(lines.join("\n"));
+  const body = rewriteDocsLinks(withoutDemos.replace(/\n{3,}/g, "\n\n").trimEnd() + "\n");
   const out = `---\ntitle: ${JSON.stringify(title)}\nsource: "https://docs.amcharts.com/v5/${page}/"\nscraped: "${today}"\n---\n\n${body}`;
 
   // Lines MCP commits added to the repo copy that the new page doesn't cover
@@ -64,10 +71,11 @@ for (const page of pages) {
       }
     }
   }
-  console.log(`\n== ${page}: ${out.length} chars; ${missing.length} added line(s) the new page may lack`);
+  console.log(`\n== ${page}: ${out.length} chars, ${demos.length} demo(s) to examples/${DEMO_CATEGORY}/; ${missing.length} added line(s) the new page may lack`);
   for (const m of [...new Set(missing)].slice(0, 20)) console.log("   " + m);
   if (write) {
     mkdirSync(dirname(join(ROOT, file)), { recursive: true });
     writeFileSync(join(ROOT, file), out);
+    writeDemos(ROOT, { path: page, title }, demos, today);
   }
 }

@@ -890,6 +890,39 @@ const tests = [
     },
     label: "search_docs — a section without a heading gets no trailing arrow",
   },
+  {
+    send: { jsonrpc: "2.0", id: 103, method: "tools/call", params: { name: "get_doc", arguments: { path: "charts/map-chart/clustered-point-series" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (text.length > 30000) return `FAIL (${text.length} chars: demo code left in the page)`;
+      return text.includes('get_example(path: "examples/docs-demos/') ? "PASS" : "FAIL (no pointer to the page's demos)";
+    },
+    label: "get_doc — a page's embedded demos are pointers, not code",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 104, method: "tools/call", params: { name: "get_example", arguments: { path: "https://docs.amcharts.com/embeds/v5/stacked-column-chart-100/" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("A demo from the docs page") && text.includes("## JavaScript") && text.includes("## Required resources") ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "get_example(a docs demo's embed address) → the demo, with its docs page",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 105, method: "tools/call", params: { name: "get_example", arguments: { path: "sankey-diagram" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("*Category: flow*") ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "get_example — a name shared with a docs demo means the amcharts.com demo",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 106, method: "tools/call", params: { name: "get_example", arguments: { path: "https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('get_doc(path: "extended/charts/flow-charts/sankey-diagram")') ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "get_example(a docs address ending in a shared example name) → get_doc",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
