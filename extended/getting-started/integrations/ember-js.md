@@ -172,7 +172,6 @@ export default class ChartComponent extends Component {
 }
 ```
 
-​\
 Lastly, change the `app/templates/application.hbs` file and add the `<Chart />` component:
 
 ```html

@@ -454,7 +454,7 @@ The following format codes are supported when parsing dates:
 |            |      |      |                          |                                                                                           |
 | **other**  | i    | 1    | 2017-10-14T05:24:17.872Z | Date/time formatted according to [ISO8601 format](http://en.wikipedia.org/wiki/ISO_8601). |
 
-> **Note:** If `dateFormat` is not set, string dates are read by the browser's `Date` (as `new Date(string)` would), not with the chart-wide date format (`root.dateFormatter.dateFormat`). The browser takes a date-only string such as `"2024-03-15"` as midnight UTC, and a date-time string such as `"2024-03-15T10:00:00"` as local time. For strings in any other form, set `dateFormat`.
+> **Note:** If `dateFormat` is not set, the processor leaves a string to the browser (`new Date(value)`), not to the chart's date format. The browser reads `"2024-03-15"` as midnight UTC, and `"2024-03-15T10:00:00"` as local time. For any other form, set `dateFormat`.
 
 Example: [Step line chart](https://docs.amcharts.com/embeds/v5/step-line-chart/). Its code: get_example(path: "examples/docs-demos/step-line-chart").
 

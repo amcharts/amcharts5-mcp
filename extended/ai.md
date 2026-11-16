@@ -301,15 +301,15 @@ This guarantees the AI has the right information, regardless of its training dat
 
 ### MCP server vs. Skill
 
-|                      | Skill                                                   | MCP server                                                                                                                       |
-| -------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **How it works**     | Loads reference docs into context upfront               | AI queries only what it needs on demand                                                                                          |
-| **Content**          | Curated skill reference                                 | 1,500+ docs, examples, and class API references                                                                                  |
-| **Context usage**    | Higher - a whole reference file loaded at once          | Lower - only relevant sections fetched                                                                                           |
-| **Setup**            | Copy files into project, or upload to claude.ai         | Add the hosted URL - or one install command to run it locally                                                                    |
-| **Works with**       | Any AI tool (Claude, ChatGPT, Cursor, Copilot, etc.)    | MCP-compatible tools (see [MCP setup guide](https://docs.amcharts.com/v5/ai/mcp/))                                                                        |
-| **Best for**         | Tools without MCP support; offline or air-gapped setups | Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI, and claude.ai / ChatGPT (via connector) |
-| **Stays up to date** | Manual update needed (git pull)                         | Hosted server is always current; local install updates via npx                                                                   |
+|                      | Skill                                                   | MCP server                                                                                                                             |
+| -------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **How it works**     | Loads reference docs into context upfront               | AI queries only what it needs on demand                                                                                                |
+| **Content**          | Curated skill reference                                 | 1,500+ docs, examples, and class API references                                                                                        |
+| **Context usage**    | Higher - a whole reference file loaded at once          | Lower - only relevant sections fetched                                                                                                 |
+| **Setup**            | Copy files into project, or upload to claude.ai         | Add the hosted URL - or one install command to run it locally                                                                          |
+| **Works with**       | Any AI tool (Claude, ChatGPT, Cursor, Copilot, etc.)    | MCP-compatible tools (see [MCP setup guide](https://docs.amcharts.com/v5/ai/mcp/))                                                                              |
+| **Best for**         | Tools without MCP support; offline or air-gapped setups | Claude Code, Claude Desktop, Cursor, Windsurf, VS Code + Copilot, Codex CLI, Gemini CLI, and claude.ai / ChatGPT (plugin or connector) |
+| **Stays up to date** | Manual update needed (git pull)                         | Hosted server is always current; local install updates via npx                                                                         |
 
 > **Recommendation:** If your tool supports MCP, use the [MCP server](https://docs.amcharts.com/v5/ai/mcp/) - it has much more content and uses context more efficiently. If your tool doesn't support MCP, use the skill. You can also use both: in Claude and ChatGPT, the amCharts 5 plugin ([Claude](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-claude), [ChatGPT](https://docs.amcharts.com/v5/ai/#the-amcharts-5-plugin-for-chatgpt)) installs both at once.
 

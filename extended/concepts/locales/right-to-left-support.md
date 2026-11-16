@@ -35,7 +35,7 @@ var root = am5.Root.new("chartdiv", {
 
 The direction can only be set when the root element is created.
 
-> **Important:** If your legend uses `reverseChildren` for right to left (the [setup for older versions](https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/#before-version-5220)), remove it when you set `direction`. Otherwise the two undo each other, and the markers end up on the left again.
+> **Important:** If your legend uses `reverseChildren` for right to left, remove it when you set `direction`. Otherwise the two undo each other, and the markers end up on the left again.
 
 Example: [Right-to-left chart](https://docs.amcharts.com/embeds/v5/right-to-left-chart/). Its code: get_example(path: "examples/docs-demos/right-to-left-chart").
 
@@ -99,8 +99,6 @@ A label with a `width` aligns its text inside that box with `textAlign`. `"left"
 | `"end"`     | Right              | Left               |
 | `"center"`  | Center             | Center             |
 
-Before version 5.22.0, RTL text in a label with a `width` could be drawn outside its box.
-
 ### Gotchas
 
 #### Numbers
@@ -126,16 +124,6 @@ So, the correct usage is: `... [bold]xxxxx[/] ...`.
 #### Right-to-left pages
 
 Since version 5.22.0, text with no `direction` of its own follows the direction of the chart's element. On a page with `dir="rtl"`, it's drawn right to left, in its place. To keep it left to right, set the root's `direction` to `"ltr"`.
-
-Before 5.22.0, the browser drew such text right to left, but amCharts laid it out left to right. Each label, e.g. a legend name, an axis label or a tooltip, ended up about its own width to the left of where it belonged.
-
-Either give those labels a `direction` of their own (`"rtl"` for RTL text, `"ltr"` for the rest), or keep the chart's own element left to right, which covers every label at once:
-
-```html
-<div id="chartdiv" dir="ltr"></div>
-```
-
-Labels with `direction: "rtl"` stay right to left inside it.
 
 ## Legend
 
@@ -181,36 +169,3 @@ legend.data.setAll(chart.series.values);
 | `valueLabels.template` `textAlign: "right"`  | Keeps each value next to its name. Without it, the values line up at the left.                                                            |
 
 `direction` works on any container with a horizontal or grid layout, not only legends. See "[Containers: Right to left](https://docs.amcharts.com/v5/concepts/common-elements/containers/#right-to-left)".
-
-### Before version 5.22.0
-
-Older versions don't have the `direction` setting. Use `reverseChildren` instead:
-
-TypeScript:
-
-```ts
-let legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.p50,
-  x: am5.p50,
-  reverseChildren: true
-}));
-legend.itemContainers.template.set("reverseChildren", true);
-```
-
-JavaScript:
-
-```js
-var legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.p50,
-  x: am5.p50,
-  reverseChildren: true
-}));
-legend.itemContainers.template.set("reverseChildren", true);
-```
-
-It reverses the order of the children instead of mirroring them:
-
-* In a legend with more than one row, the first item ends up at the bottom.
-* Margins stay on the same side, so each name touches its marker.
-
-When you upgrade to 5.22.0 and use `direction`, remove `reverseChildren`. The two undo each other.

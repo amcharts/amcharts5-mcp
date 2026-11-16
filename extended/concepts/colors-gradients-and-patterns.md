@@ -166,33 +166,33 @@ To get a color for a specific purpose, we use its `get()` method.
 
 ### List of purposes
 
-| Setting (purpose)       | Default      | Comment                                                                                                                         |
-| ----------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| `stroke`                | **0xe5e5e5** | Used for all line elements and outlines.                                                                                        |
-| `fill`                  | **0xf3f3f3** | Used for element fills.                                                                                                         |
-| `primaryButton`         | **0x6794dc** | Primary button background color (e.g. zoom out button).                                                                         |
-| `primaryButtonHover`    | **0x6771dc** | Primary button background when hovered.                                                                                         |
-| `primaryButtonDown`     | **0x68dc76** | Primary button background when pressed.                                                                                         |
-| `primaryButtonActive`   | **0x68dc76** | Primary button background when active.                                                                                          |
-| `primaryButtonText`     | **0xffffff** | Primary button text color.                                                                                                      |
-| `primaryButtonDisabled` | **0xdadada** | Primary button background when disabled. |
-| `primaryButtonTextDisabled` | **0xffffff** | Primary button text color when disabled. |
-| `primaryButtonStroke`   | **0xffffff** | Primary button border/outline color.                                                                                            |
-| `secondaryButton`       | **0xd9d9d9** | Secondary button background color (e.g. scrollbar grip).                                                                        |
-| `secondaryButtonHover`  | **0xa3a3a3** | Secondary button background when hovered.                                                                                       |
-| `secondaryButtonDown`   | **0x8d8d8d** | Secondary button background when pressed.                                                                                       |
-| `secondaryButtonActive` | **0xe6e6e6** | Secondary button background when active.                                                                                        |
-| `secondaryButtonText`   | **0x000000** | Secondary button text color.                                                                                                    |
-| `secondaryButtonStroke` | **0xffffff** | Secondary button border/outline color.                                                                                          |
-| `grid`                  | **0x000000** | Axis grid color. Also used for some other elements like, ticks, hierarchy links, etc.                                           |
-| `background`            | **0xffffff** | Background color.                                                                                                               |
-| `alternativeBackground` | **0x000000** | Alternative background. Used for chart cursor's lines, axis fills, clock hands.                                                 |
-| `text`                  | **0x000000** | Default color text.                                                                                                             |
-| `alternativeText`       | **0xffffff** | Alternative color text.                                                                                                         |
-| `disabled`              | **0xadadad** | Fill color for disabled elements.                                                                                               |
-| `positive`              | **0x50b300** | Color to express positive value (e.g. in candlesticks).                                                                         |
-| `negative`              | **0xb30000** | Color to express negative value (e.g. in candlesticks).                                                                         |
-| `warning`               | **0xf2c230** | A yellow between `negative` and `positive`, e.g. for a warning or the middle of a scale from bad to good. Since version 5.21.2. |
+| Setting (purpose)           | Default      | Comment                                                                                                                         |
+| --------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `stroke`                    | **0xe5e5e5** | Used for all line elements and outlines.                                                                                        |
+| `fill`                      | **0xf3f3f3** | Used for element fills.                                                                                                         |
+| `primaryButton`             | **0x6794dc** | Primary button background color (e.g. zoom out button).                                                                         |
+| `primaryButtonHover`        | **0x6771dc** | Primary button background when hovered.                                                                                         |
+| `primaryButtonDown`         | **0x68dc76** | Primary button background when pressed.                                                                                         |
+| `primaryButtonActive`       | **0x68dc76** | Primary button background when active.                                                                                          |
+| `primaryButtonDisabled`     | **0xdadada** | Primary button background when disabled.                                                                                        |
+| `primaryButtonText`         | **0xffffff** | Primary button text color.                                                                                                      |
+| `primaryButtonTextDisabled` | **0xffffff** | Primary button text color when disabled.                                                                                        |
+| `primaryButtonStroke`       | **0xffffff** | Primary button border/outline color.                                                                                            |
+| `secondaryButton`           | **0xd9d9d9** | Secondary button background color (e.g. scrollbar grip).                                                                        |
+| `secondaryButtonHover`      | **0xa3a3a3** | Secondary button background when hovered.                                                                                       |
+| `secondaryButtonDown`       | **0x8d8d8d** | Secondary button background when pressed.                                                                                       |
+| `secondaryButtonActive`     | **0xe6e6e6** | Secondary button background when active.                                                                                        |
+| `secondaryButtonText`       | **0x000000** | Secondary button text color.                                                                                                    |
+| `secondaryButtonStroke`     | **0xffffff** | Secondary button border/outline color.                                                                                          |
+| `grid`                      | **0x000000** | Axis grid color. Also used for some other elements like, ticks, hierarchy links, etc.                                           |
+| `background`                | **0xffffff** | Background color.                                                                                                               |
+| `alternativeBackground`     | **0x000000** | Alternative background. Used for chart cursor's lines, axis fills, clock hands.                                                 |
+| `text`                      | **0x000000** | Default color text.                                                                                                             |
+| `alternativeText`           | **0xffffff** | Alternative color text.                                                                                                         |
+| `disabled`                  | **0xadadad** | Fill color for disabled elements.                                                                                               |
+| `positive`                  | **0x50b300** | Color to express positive value (e.g. in candlesticks).                                                                         |
+| `negative`                  | **0xb30000** | Color to express negative value (e.g. in candlesticks).                                                                         |
+| `warning`                   | **0xf2c230** | A yellow between `negative` and `positive`, e.g. for a warning or the middle of a scale from bad to good. Since version 5.21.2. |
 
 > **Note:** Default colors may be overridden by [themes](https://docs.amcharts.com/v5/concepts/themes/).
 

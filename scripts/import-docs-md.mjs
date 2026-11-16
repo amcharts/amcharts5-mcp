@@ -57,8 +57,9 @@ for (const page of pages) {
   const out = `---\ntitle: ${JSON.stringify(title)}\nsource: "https://docs.amcharts.com/v5/${page}/"\nscraped: "${today}"\n---\n\n${body}`;
 
   // Lines MCP commits added to the repo copy that the new page doesn't cover
+  // (the page's demos count as covered: they move to examples, not away)
   const file = `extended/${page}.md`;
-  const fresh = norm(out);
+  const fresh = norm(out + "\n" + demos.map((d) => [d.scripts.join(", "), d.html, d.css, d.js].join("\n")).join("\n"));
   const missing = [];
   if (existsSync(join(ROOT, file))) {
     const shas = execFileSync("git", ["-C", ROOT, "log", "--format=%h", "--", file], { encoding: "utf8" }).split("\n").filter(Boolean).filter((s) => s !== "94598cd");

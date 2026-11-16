@@ -107,9 +107,7 @@ Another option is using low-level drawing functions, like `moveTo()`, `lineTo()`
 
 To use those, we need to assign a custom function to graphics element's [`draw` setting](https://docs.amcharts.com/v5/reference/graphics/#draw_setting).
 
-The function will receive a "display object" (`CanvasGraphics`), which will provide the drawing functions we mentioned earlier.
-
-NOTE The display object's class is `SceneGraphics` (`CanvasGraphics` is a deprecated alias of it). The same object draws whichever renderer the chart uses, canvas or SVG. Its drawing methods are those of `IGraphics`.
+The function will receive a "display object" (`SceneGraphics`), which will provide the drawing functions we mentioned earlier.
 
 Let's draw a triangle:
 
@@ -143,7 +141,7 @@ am5.Graphics.new(root, {
 });
 ```
 
-For a full list of drawing methods, refer to `CanvasGraphics` reference.
+For a full list of drawing methods, refer to the [`IGraphics` reference](https://docs.amcharts.com/v5/reference/igraphics/).
 
 Example: [Using graphics elements](https://docs.amcharts.com/embeds/v5/using-graphics-elements-2/). Its code: get_example(path: "examples/docs-demos/using-graphics-elements-2").
 

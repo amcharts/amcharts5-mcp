@@ -16,7 +16,7 @@ The code between the two is not interchangeable.
 
 In a few words: amCharts 5 was designed to be fast and use less memory footprint than its predecessor.
 
-amCharts 5 draws with the Canvas API by default, whereas amCharts 4 used SVG. It can also draw a chart as SVG (see "Canvas and SVG" below).
+amCharts 5 draws on canvas by default, whereas amCharts 4 used SVG.
 
 Canvas API is generally way faster than SVG, however it paints outside DOM tree, which means you can't target individual chart elements via JavaScript or CSS.
 
@@ -40,11 +40,13 @@ amCharts 5 offers object/procedural approach as well as limited [JSON config](ht
 
 There are no 3D-esque chart types in amCharts 5, like 3D columns, pies, or cylinders.
 
-### Canvas and SVG
+### Canvas by default
 
-amCharts 5 draws on canvas by default. To draw a chart as SVG, set `renderer: am5.SVGRenderer` in `Root.new()` settings, or `am5.Root.defaultRenderer = am5.SVGRenderer` for every chart on the page. The chart looks and behaves the same. Its SVG nodes are not tagged per chart object, and the chart handles pointer input itself, so chart elements are still configured and styled through amCharts settings, not DOM or CSS. See "[Root element: Renderer](https://docs.amcharts.com/v5/getting-started/root-element/#renderer)".
+amCharts 5 draws on canvas by default. It can draw with SVG instead: see "[Drawing with SVG](https://docs.amcharts.com/v5/getting-started/root-element/#drawing-with-svg)".
 
-A chart drawn by either renderer can be exported as an SVG image: the Exporting plugin's `"svg"` format (also in the default export menu), or `am5.renderToSVG(root)`. See "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
+NOTE With the SVG renderer the chart's SVG nodes are not tagged per chart object, and the chart handles pointer input itself, so chart elements are still configured and styled through amCharts settings, not DOM or CSS.
+
+Charts drawn either way can be exported as SVG. See "[Exporting to SVG](https://docs.amcharts.com/v5/concepts/exporting/exporting-svg/)".
 
 ## Browser support
 

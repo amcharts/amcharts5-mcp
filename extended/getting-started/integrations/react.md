@@ -193,12 +193,10 @@ export default Chart;
 
 Example apps for Vite, Next.js, React Router and Astro are [on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations/react/examples).
 
-The sandboxes below create the chart without the package.
-
 ### Simple chart
 
-» [amCharts 5 with React and Vite](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/react/examples/vite?file=src%2FApp.tsx)
+» [amCharts 5 with React and Vite](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/react/examples/vite?file=src%2FApp.tsx) (the Vite example app, on StackBlitz)
 
 ### Stock chart
 
-» [Stock chart with a toolbar, on CodeSandbox](https://codesandbox.io/s/amcharts5-react-stock-toolbar-demo-r5zd5s)
+» [Stock chart with a toolbar, on CodeSandbox](https://codesandbox.io/s/amcharts5-react-stock-toolbar-demo-r5zd5s). It creates the chart [without the package](https://docs.amcharts.com/v5/getting-started/integrations/react/#without-the-package).

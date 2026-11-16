@@ -453,8 +453,6 @@ A label in the middle of a donut, e.g. a total, is made smaller where it wouldn'
 
 The [`ResponsiveMax` theme](https://docs.amcharts.com/v5/concepts/responsive-max/) turns it on.
 
-For older versions, see the "[Handling pie chart labels that don't fit](https://docs.amcharts.com/v5/tutorials/handling-pie-chart-labels-that-dont-fit/)" tutorial.
-
 ## Ticks
 
 ### Configuring ticks
