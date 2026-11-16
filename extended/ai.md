@@ -1,7 +1,7 @@
 ---
 title: "amCharts + AI"
 source: "https://docs.amcharts.com/v5/ai/"
-scraped: "2026-11-14"
+scraped: "2026-11-16"
 ---
 
 > AI models know amCharts 5 well - but how you use them makes a big difference. This guide covers the key scenarios and how to get the most out of each one.
@@ -121,6 +121,11 @@ File paths are the same as on cdn.amcharts.com/lib/5/ (xy.js, themes/Animated.js
 
 cdnjs URLs always need a version number. Any 5.x version works; the latest one is listed on [cdnjs](https://cdnjs.com/libraries/amcharts5). Only low-detail maps (`*Low.js`) are available there. See [Public CDNs](https://www.amcharts.com/download/#public-cdn) for details.
 
+Since version 5.22.0, the npm packages work too, with maps of every detail:
+
+* The library on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/index.js`. See "[npm package](https://docs.amcharts.com/v5/getting-started/#npm-package)".
+* Maps on unpkg only: `https://unpkg.com/@amcharts/amcharts5-geodata@5.2.0/dist/worldHigh.js`. `worldLow.js` and `usaLow.js` are also in the library's `dist/geodata/`.
+
 ### Web search availability by platform
 
 | Platform                            | Web search     | Notes                                                                                                                                |
@@ -220,7 +225,7 @@ Or write your own minimal version:
 When generating charts, always use amCharts 5 (not v4).
 Import from @amcharts/amcharts5 and related packages.
 Use am5.Root.new() to create the root element.
-Apply the Animated theme by default.
+Apply the Animated and ResponsiveMax themes by default.
 ```
 
 #### 5. Use the amCharts AI skill
@@ -377,7 +382,7 @@ You are an expert in amCharts 5 data visualization library.
 Always use amCharts 5 (not v4). When generating chart code:
 - Use am5.Root.new() for the root element
 - Import from @amcharts/amcharts5 and sub-packages
-- Apply am5themes_Animated theme by default
+- Apply am5themes_Animated and am5themes_ResponsiveMax themes by default
 - If unsure about any API detail, search the documentation
   at https://docs.amcharts.com/v5/ before writing code
 ```

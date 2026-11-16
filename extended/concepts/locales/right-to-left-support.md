@@ -1,42 +1,196 @@
 ---
 title: "Right-to-left support"
 source: "https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
-This tutorial how you can enable right-to-left support for various elements in amCharts 5.
+> How to lay out labels, legends and other containers for right-to-left languages in amCharts 5.
+
+This tutorial shows how to lay out labels, legends and other containers for right-to-left (RTL) languages, such as Arabic or Hebrew.
+
+## Whole chart
+
+Since version 5.22.0, set `direction` when creating the [root element](https://docs.amcharts.com/v5/getting-started/root-element/#text-direction):
+
+TypeScript:
+
+```ts
+const root = am5.Root.new("chartdiv", {
+  direction: "rtl"
+});
+```
+
+JavaScript:
+
+```js
+var root = am5.Root.new("chartdiv", {
+  direction: "rtl"
+});
+```
+
+* Text with no `direction` of its own is drawn right to left.
+* Legends lay out from the right: the first item is at the top right, and each item has its marker on the right of its name.
+* `"ltr"` keeps everything left to right, e.g. for a chart in English on a page with `dir="rtl"`.
+* Not set, text follows the direction of the chart's element, e.g. a page with `dir="rtl"`, and legends stay left to right.
+
+The direction can only be set when the root element is created.
+
+> **Important:** If your legend uses `reverseChildren` for right to left (the [setup for older versions](https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/#before-version-5220)), remove it when you set `direction`. Otherwise the two undo each other, and the markers end up on the left again.
+
+Example: [Right-to-left chart](https://docs.amcharts.com/embeds/v5/right-to-left-chart/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 95vh;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart: right to left
+var root = am5.Root.new("chartdiv", {
+  direction: "rtl"
+});
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    layout: root.verticalLayout
+  })
+);
+
+// Define data
+var data = [
+  { category: "تفاح", value: 501.9 },
+  { category: "برتقال", value: 301.9 },
+  { category: "موز", value: 201.1 },
+  { category: "عنب", value: 165.8 },
+  { category: "فراولة", value: 139.9 },
+  { category: "كرز", value: 128.3 },
+  { category: "مانجو", value: 99.5 },
+  { category: "أناناس", value: 60.2 }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "value",
+    categoryField: "category"
+  })
+);
+
+series.labels.template.setAll({
+  textAlign: "start",
+  text: "[bold]فاكهة[/]\n{category}: {valuePercentTotal.formatNumber('#.#')}%"
+});
+
+series.data.setAll(data);
+
+// Add legend: with the root's direction, items go from right to left,
+// the marker on the right of each item
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerX: am5.p50,
+    x: am5.p50
+  })
+);
+
+legend.data.setAll(series.dataItems);
+```
 
 ## Labels
 
-To enable support for RTL on any label, we use its `direction` setting with a `"rtl"` value.
+To enable RTL on a single label, set its `direction` to `"rtl"`. With the root's `direction: "rtl"`, that's the default for every label without a `direction` of its own.
 
 Let's take this label definition (used for a pie chart slice):
 
+TypeScript:
+
+```ts
 pieSeries.labels.template.setAll({
-  text: <span style="background-color: inherit; font-family: monospace; font-size: inherit;">"\[bold\]فاكهة\[/\]\\n{category}: {value.percent.formatNumber('#.#')}%"</span>
+  text: "[bold]فاكهة[/]\n{category}: {value.percent.formatNumber('#.#')}%"
 });
+```
 
+JavaScript:
+
+```js
 pieSeries.labels.template.setAll({
-  text: <span style="background-color: inherit; font-family: monospace; font-size: inherit;">"\[bold\]فاكهة\[/\]\\n{category}: {value.percent.formatNumber('#.#')}%"</span>
+  text: "[bold]فاكهة[/]\n{category}: {value.percent.formatNumber('#.#')}%"
 });
+```
 
-When browser rendering engine encounters RTL text withing regular text, a pretty weird fuzzy logic kicks in, resulting in labels, that are formatted in definitely not right way:
+When the browser's rendering engine encounters RTL text within regular text, its own ordering rules kick in, and the label comes out in the wrong order:
 
-Incorrect result (`direction = "ltr"` - default)
+![](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-14.png "Incorrect result (`direction = 'ltr'` - default)")
 
 Enabling RTL fixes it by properly laying out the labels:
 
+TypeScript:
+
+```ts
 pieSeries.labels.template.setAll({
-  text: <span style="background-color: inherit; font-family: monospace; font-size: inherit;">"\[bold\]فاكهة\[/\]\\n{category}: {value.percent.formatNumber('#.#')}%"</span>,
+  text: "[bold]فاكهة[/]\n{category}: {value.percent.formatNumber('#.#')}%",
   direction: "rtl"
 });
+```
 
+JavaScript:
+
+```js
 pieSeries.labels.template.setAll({
-  text: <span style="background-color: inherit; font-family: monospace; font-size: inherit;">"\[bold\]فاكهة\[/\]\\n{category}: {value.percent.formatNumber('#.#')}%"</span>,
+  text: "[bold]فاكهة[/]\n{category}: {value.percent.formatNumber('#.#')}%",
   direction: "rtl"
 });
+```
 
-Correct result (`direction = "rtl"`)
+![](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-15.png "Correct result (`direction = 'rtl'`)")
+
+### Text alignment
+
+A label with a `width` aligns its text inside that box with `textAlign`. `"left"` and `"right"` are the box's sides. `"start"` and `"end"` follow the direction:
+
+| `textAlign` | `direction: "ltr"` | `direction: "rtl"` |
+| ----------- | ------------------ | ------------------ |
+| `"left"`    | Left               | Left               |
+| `"right"`   | Right              | Right              |
+| `"start"`   | Left               | Right              |
+| `"end"`     | Right              | Left               |
+| `"center"`  | Center             | Center             |
+
+Before version 5.22.0, RTL text in a label with a `width` could be drawn outside its box.
 
 ### Gotchas
 
@@ -46,62 +200,108 @@ As we can see from the above screenshots, enabling RTL reverses order of blocks,
 
 This is true for the mixed-language content only.
 
-If our labels would contain only Latin (letf-to-right) text or numbers/symbols, it would remain as is: `rtl` setting would have no effect over it.
+If our labels would contain only Latin (left-to-right) text or numbers/symbols, it would remain as is: `rtl` setting would have no effect over it.
 
-For labels with just numbers and symbols `direction` setting is ignored
+![](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-16.png "For labels with just numbers and symbols `direction` setting is ignored")
 
 #### Formatting blocks
 
 Another thing that does not respect `rtl` setting is [inline formatting block syntax](https://docs.amcharts.com/v5/concepts/formatters/text-styling/).
 
-One might expect for the RTL label the opening and closing blocks to work from right to left to right as well, e.g. `... [/]xxxxx[bold] ...`, e.g. the "xxxxx" to be bold.
+One might expect the opening and closing blocks of an RTL label to work from right to left as well, e.g. `... [/]xxxxx[bold] ...` to make "xxxxx" bold.
 
-That is not how it works. The formatting block (i.e. `[bold]`) always affects text to the right of it, until it encounters closing block (`[/]`).
+That is not how it works. The formatting block (i.e. `[bold]`) always affects text after it, until it encounters closing block (`[/]`).
 
 So, the correct usage is: `... [bold]xxxxx[/] ...`.
 
+#### Right-to-left pages
+
+Since version 5.22.0, text with no `direction` of its own follows the direction of the chart's element. On a page with `dir="rtl"`, it's drawn right to left, in its place. To keep it left to right, set the root's `direction` to `"ltr"`.
+
+Before 5.22.0, the browser drew such text right to left, but amCharts laid it out left to right. Each label, e.g. a legend name, an axis label or a tooltip, ended up about its own width to the left of where it belonged.
+
+Either give those labels a `direction` of their own (`"rtl"` for RTL text, `"ltr"` for the rest), or keep the chart's own element left to right, which covers every label at once:
+
+```html
+<div id="chartdiv" dir="ltr"></div>
+```
+
+Labels with `direction: "rtl"` stay right to left inside it.
+
 ## Legend
 
-For RTL languages, reversing order of legend items as well as items within single legend entry (marker to the right, then label, then value) might seem more natural.
+With the root's `direction: "rtl"`, legends need no settings of their own. See "[Whole chart](https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/#whole-chart)".
 
-Luckily this is easy to do as well: for that we have a universal `reverseChildren` setting.
+### One legend
 
-### Flipping entry elements
+Since version 5.22.0, a single legend can be set up for an RTL language with its own `direction` setting:
 
-Each legend entry is a `Container` with a "horizontal" layout. All we have to do to reverse the order of its elements, is to set `reverseChildren` of the template for the legend item containers:
+TypeScript:
 
-legend.itemContainers.template.setAll({
-  reverseChildren: true
-});
-
-legend.itemContainers.template.setAll({
-  reverseChildren: true
-});
-
-`reverseChildren: false` (default)
-
-`reverseChildren: true`
-
-### Changing item order
-
-We might also want to change the order of the items in legend, so that first item starts on the right.
-
-For that we can simple use the `reverseChildren` on the legend itself.
-
+```ts
 let legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.percent(50),
-  x: am5.percent(50),
-  layout: root.horizontalLayout,
-  reverseChildren: true
+  centerX: am5.p50,
+  x: am5.p50,
+  direction: "rtl"
 }));
+legend.itemContainers.template.set("direction", "rtl");
+legend.labels.template.set("direction", "rtl");
+legend.valueLabels.template.set("textAlign", "right");
+legend.data.setAll(chart.series.values);
+```
 
+JavaScript:
+
+```js
 var legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.percent(50),
-  x: am5.percent(50),
-  layout: root.horizontalLayout,
+  centerX: am5.p50,
+  x: am5.p50,
+  direction: "rtl"
+}));
+legend.itemContainers.template.set("direction", "rtl");
+legend.labels.template.set("direction", "rtl");
+legend.valueLabels.template.set("textAlign", "right");
+legend.data.setAll(chart.series.values);
+```
+
+| Setting                                      | Effect                                                                                                                                    |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Legend's `direction: "rtl"`                  | Items go from right to left. The first one is at the top right, and a part-filled last row is on the right.                               |
+| `itemContainers.template` `direction: "rtl"` | In each item, the marker is on the right, then the name, then the value.                                                                  |
+| `labels.template` `direction: "rtl"`         | Needed for names in an RTL language, unless the page has `dir="rtl"`. See "[Labels](https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/#labels)". |
+| `valueLabels.template` `textAlign: "right"`  | Keeps each value next to its name. Without it, the values line up at the left.                                                            |
+
+`direction` works on any container with a horizontal or grid layout, not only legends. See "[Containers: Right to left](https://docs.amcharts.com/v5/concepts/common-elements/containers/#right-to-left)".
+
+### Before version 5.22.0
+
+Older versions don't have the `direction` setting. Use `reverseChildren` instead:
+
+TypeScript:
+
+```ts
+let legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.p50,
+  x: am5.p50,
   reverseChildren: true
 }));
+legend.itemContainers.template.set("reverseChildren", true);
+```
 
-### Legend example
+JavaScript:
 
+```js
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.p50,
+  x: am5.p50,
+  reverseChildren: true
+}));
+legend.itemContainers.template.set("reverseChildren", true);
+```
 
+It reverses the order of the children instead of mirroring them:
+
+* In a legend with more than one row, the first item ends up at the bottom.
+* Margins stay on the same side, so each name touches its marker.
+
+When you upgrade to 5.22.0 and use `direction`, remove `reverseChildren`. The two undo each other.

@@ -1,7 +1,7 @@
 ---
 title: "Pie series"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/pie-series/"
-scraped: "2026-10-08"
+scraped: "2026-11-16"
 ---
 
 This tutorial is about configuring various aspects of a pie series appearance.
@@ -20,23 +20,31 @@ A series will automatically assign a unique color to each slice from its own [co
 
 Should we want to, we can override the whole list of colors by either setting it directly on series color set, creating a [quick theme](https://docs.amcharts.com/v5/concepts/themes/#quick-custom-theme), or a [reusable full theme](https://docs.amcharts.com/v5/concepts/themes/creating-themes/), e.g.:
 
-series.get("colors").set("colors", \[
+TypeScript:
+
+```ts
+series.get("colors").set("colors", [
   am5.color(0x095256),
   am5.color(0x087f8c),
   am5.color(0x5aaa95),
   am5.color(0x86a873),
   am5.color(0xbb9f06)
-\]);
+]);
+```
 
-series.get("colors").set("colors", \[
+JavaScript:
+
+```js
+series.get("colors").set("colors", [
   am5.color(0x095256),
   am5.color(0x087f8c),
   am5.color(0x5aaa95),
   am5.color(0x86a873),
   am5.color(0xbb9f06)
-\]);
+]);
+```
 
-MORE INFO A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
+> **More info:** A "[Color sets](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/#setting-own-list-of-colors)" section of our color tutorial has more details and code samples.
 
 #### Manual slice colors
 
@@ -50,19 +58,27 @@ Configuration of a slice is done via its template, which is accessible via serie
 
 We can set any setting via template:
 
+TypeScript:
+
+```ts
 series.slices.template.setAll({
   fillOpacity: 0.5,
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
+```
 
+JavaScript:
+
+```js
 series.slices.template.setAll({
   fillOpacity: 0.5,
   stroke: am5.color(0xffffff),
   strokeWidth: 2
 });
+```
 
-NOTE Setting a value on a template will also update existing slices created using it.
+> **Note:** Setting a value on a template will also update existing slices created using it.
 
 ### Modifying hover state
 
@@ -70,15 +86,23 @@ Slice will grow a bit when hovered, by default.
 
 We can modify `hover` state to modify that look. The below code will make a donut slice grow inwards, as opposed to outwards when hovered:
 
-series.slices.template.states.create("hover", {
-  scale: 1,
-  innerRadius: 80
-});
+TypeScript:
 
+```ts
 series.slices.template.states.create("hover", {
   scale: 1,
   innerRadius: 80
 });
+```
+
+JavaScript:
+
+```js
+series.slices.template.states.create("hover", {
+  scale: 1,
+  innerRadius: 80
+});
+```
 
 ### Slice pull-out
 
@@ -90,9 +114,17 @@ What happens here is that slice has its `togglable` setting set to `true` by def
 
 To disable pull-out, we can simply set `toggleKey` setting on slice template to `"none"`:
 
-series.slices.template.set("toggleKey", "none");
+TypeScript:
 
+```ts
 series.slices.template.set("toggleKey", "none");
+```
+
+JavaScript:
+
+```js
+series.slices.template.set("toggleKey", "none");
+```
 
 #### Modifying active state
 
@@ -100,18 +132,110 @@ We can also modify `active` state to change how a slice behaves or looks when cl
 
 The default `active` state defines single setting: `shiftRadius: 20`. We can set our own stuff there:
 
+TypeScript:
+
+```ts
 series.slices.template.states.create("active", {
   shiftRadius: 0,
   stroke: am5.color(0x995522),
   strokeWidth: 5
 });
+```
+
+JavaScript:
+
+```js
+series.slices.template.states.create("active", {
+  shiftRadius: 0,
+  stroke: am5.color(0x995522),
+  strokeWidth: 5
+});
+```
+
+Example: [Modifying active state on pie slices](https://docs.amcharts.com/embeds/v5/modifying-active-state-on-pie-slices/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(am5percent.PieChart.new(root, {}));
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 160000
+  },
+  {
+    country: "United Kingdom",
+    sales: 80001
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country"
+  })
+);
+
+series.data.setAll(data);
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
 
 series.slices.template.states.create("active", {
   shiftRadius: 0,
   stroke: am5.color(0x995522),
   strokeWidth: 5
 });
-
+```
 
 ## Labels
 
@@ -119,19 +243,27 @@ series.slices.template.states.create("active", {
 
 Series label configuration is done via its template, accessible via series property `labels.template`.
 
+TypeScript:
+
+```ts
 series.labels.template.setAll({
   fontSize: 20,
   fill: am5.color(0x550000),
   text: "{category}"
 });
+```
 
+JavaScript:
+
+```js
 series.labels.template.setAll({
   fontSize: 20,
   fill: am5.color(0x550000),
   text: "{category}"
 });
+```
 
-Pie series uses `[RadialLabel](https://docs.amcharts.com/v5/reference/radiallabel/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/radiallabel/#settings).
+Pie series uses `RadialLabel` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/radiallabel/#settings).
 
 ### Label content
 
@@ -139,9 +271,17 @@ Slice labels are pre-set to display name of the category and its percent value.
 
 We can modify contents of the tooltips using `text` setting on a series label template:
 
-series.labels.template.set("text", "{category}: \[bold\]{valuePercentTotal.formatNumber('0.00')}%\[/\] ({value})");
+TypeScript:
 
-series.labels.template.set("text", "{category}: \[bold\]{valuePercentTotal.formatNumber('0.00')}%\[/\] ({value})");
+```ts
+series.labels.template.set("text", "{category}: [bold]{valuePercentTotal.formatNumber('0.00')}%[/] ({value})");
+```
+
+JavaScript:
+
+```js
+series.labels.template.set("text", "{category}: [bold]{valuePercentTotal.formatNumber('0.00')}%[/] ({value})");
+```
 
 Contents of the label can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
@@ -149,9 +289,17 @@ Contents of the label can include [data placeholders](https://docs.amcharts.com/
 
 To disable series labels, we can set `forceHidden` setting to `true` in their template:
 
-series.labels.template.set("forceHidden", true);
+TypeScript:
 
+```ts
 series.labels.template.set("forceHidden", true);
+```
+
+JavaScript:
+
+```js
+series.labels.template.set("forceHidden", true);
+```
 
 ### Alignment
 
@@ -159,6 +307,9 @@ Pie series labels can either be aligned into two columns (default) or position t
 
 This can be disabled using series setting `alignLabels`.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -167,7 +318,11 @@ let series = chart.series.push(
     alignLabels: false
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     name: "Series",
@@ -176,11 +331,106 @@ var series = chart.series.push(
     alignLabels: false
   })
 );
+```
 
-`alignLabels: true` (default)
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/aligned_labels.png "`alignLabels: true` (default)")
 
-`alignLabels: false`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/unaligned_labels.png "`alignLabels: false`")
 
+Example: [Turning off label alignment](https://docs.amcharts.com/embeds/v5/turning-off-label-alignment/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(am5percent.PieChart.new(root, {}));
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 60000
+  },
+  {
+    country: "UK",
+    sales: 80000
+  },
+  {
+    country: "Belgium",
+    sales: 68000
+  },
+  {
+    country: "Germany",
+    sales: 80000
+  },
+  {
+    country: "Netherlands",
+    sales: 70000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country",
+    alignLabels: false
+  })
+);
+
+series.data.setAll(data);
+
+series.labels.template.setAll({
+  fontSize: 12,
+  text: "{category}",
+  textType: "adjusted",
+  radius: 10
+});
+```
 
 ### Radius
 
@@ -188,13 +438,21 @@ Label setting `radius` that can be set via its template controls distance from t
 
 It's a number in pixels. The higher the radius, the further from the slice edge the label will be:
 
-series.labels.template.setAll({
-  radius: 10
-});
+TypeScript:
 
+```ts
 series.labels.template.setAll({
   radius: 10
 });
+```
+
+JavaScript:
+
+```js
+series.labels.template.setAll({
+  radius: 10
+});
+```
 
 ### Labels inside the slice
 
@@ -202,56 +460,174 @@ We can set `inside` setting to `true` on the label template, if we want the labe
 
 If we do so, the `radius` setting will revert: it will mean radius in pixels inwards, rather than outwards from the slice's outer edge.
 
-series.labels.template.setAll({
-  radius: 10,
-  inside: true
-});
+TypeScript:
 
+```ts
 series.labels.template.setAll({
   radius: 10,
   inside: true
 });
+```
+
+JavaScript:
+
+```js
+series.labels.template.setAll({
+  radius: 10,
+  inside: true
+});
+```
 
 ### Circular labels
 
 We can also arrange labels to curve along the outer edge of the slice by setting `textType: "circular"` on the label template.
 
+TypeScript:
+
+```ts
 series.labels.template.setAll({
   text: "{category}",
   textType: "circular",
   inside: true,
   radius: 10
 });
+```
 
+JavaScript:
+
+```js
 series.labels.template.setAll({
   text: "{category}",
   textType: "circular",
   inside: true,
   radius: 10
 });
+```
 
-IMPORTANT Pie series' `alignLabels` (default: `true`) takes precedence over the `textType` setting. Make sure you set `alignLabels: false` on series, too.
+> **Important:** Pie series' `alignLabels` (default: `true`) takes precedence over the `textType` setting. Make sure you set `alignLabels: false` on series, too.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     // ...
     alignLabels: false
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     // ...
     alignLabels: false
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/circular_labels_outside.png "`\{ textType: 'circular', inside: false }`")
 
-`{ textType: "circular", inside: false }`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/circular_labels_inside.png "`\{ textType: 'circular', inside: true }`")
 
+Example: [Circular labels](https://docs.amcharts.com/embeds/v5/circular-labels/)
 
-`{ textType: "circular", inside: true }`
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(am5percent.PieChart.new(root, {}));
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 60000
+  },
+  {
+    country: "UK",
+    sales: 80000
+  },
+  {
+    country: "Belgium",
+    sales: 68000
+  },
+  {
+    country: "Germany",
+    sales: 80000
+  },
+  {
+    country: "Netherlands",
+    sales: 70000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country",
+    alignLabels: false
+  })
+);
+
+series.data.setAll(data);
+
+series.labels.template.setAll({
+  fontSize: 12,
+  text: "{category}",
+  textType: "circular",
+  inside: true,
+  radius: 10,
+  fill: am5.color(0xffffff)
+});
+```
 
 ### Radial labels
 
@@ -263,44 +639,187 @@ We'll also need to use `centerX` setting to control anchor point of the label. A
 
 A value of `100` means end of the label, which means that labels will end at the slice outer edge, effectively putting them inside the slice.
 
+TypeScript:
+
+```ts
 series.labels.template.setAll({
   text: "{category}",
   textType: "radial",
   centerX: am5.percent(100)
 });
+```
 
+JavaScript:
+
+```js
 series.labels.template.setAll({
   text: "{category}",
   textType: "radial",
   centerX: am5.percent(100)
 });
+```
 
-IMPORTANT Pie series' `alignLabels` (default: `true`) takes precedence over the `textType` setting. Make sure you set `alignLabels: false` on series, too.
+> **Important:** Pie series' `alignLabels` (default: `true`) takes precedence over the `textType` setting. Make sure you set `alignLabels: false` on series, too.
 
+TypeScript:
+
+```ts
 let series = chart.series.push(
   am5percent.PieSeries.new(root, {
     // ...
     alignLabels: false
   })
 );
+```
 
+JavaScript:
+
+```js
 var series = chart.series.push(
   am5percent.PieSeries.new(root, {
     // ...
     alignLabels: false
   })
 );
+```
 
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/radial_labels_outside.png "`\{ textType: 'radial', centerX: am5.percent(0) }`")
 
-`{ textType: "radial", centerX: am5.percent(0) }`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/radial_labels_inside.png "`\{ textType: 'radial', centerX: am5.percent(100) }`")
 
+Example: [Radial labels](https://docs.amcharts.com/embeds/v5/radial-labels/)
 
-`{ textType: "radial", centerX: am5.percent(100) }`
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js
 
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([am5themes_Animated.new(root)]);
+
+var chart = root.container.children.push(am5percent.PieChart.new(root, {}));
+
+// Define data
+var data = [
+  {
+    country: "France",
+    sales: 100000
+  },
+  {
+    country: "Spain",
+    sales: 60000
+  },
+  {
+    country: "UK",
+    sales: 80000
+  },
+  {
+    country: "Belgium",
+    sales: 68000
+  },
+  {
+    country: "Germany",
+    sales: 80000
+  },
+  {
+    country: "Netherlands",
+    sales: 70000
+  }
+];
+
+// Create series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    name: "Series",
+    valueField: "sales",
+    categoryField: "country",
+    alignLabels: false
+  })
+);
+
+series.data.setAll(data);
+
+series.labels.template.setAll({
+  fontSize: 12,
+  text: "{category}",
+  textType: "radial",
+  radius: 0,
+  centerX: am5.percent(100),
+  fill: am5.color(0xffffff)
+});
+```
 
 ### Labels that don't fit
 
-Check out the "[Handling pie chart labels that don't fit](https://docs.amcharts.com/v5/tutorials/handling-pie-chart-labels-that-dont-fit/)" tutorial for many useful techniques.
+Since version 5.22.0, the series' `autoLabels` fits the labels into the chart:
+
+TypeScript:
+
+```ts
+let series = chart.series.push(am5percent.PieSeries.new(root, {
+  valueField: "value",
+  categoryField: "category",
+  autoLabels: true
+}));
+```
+
+JavaScript:
+
+```js
+var series = chart.series.push(am5percent.PieSeries.new(root, {
+  valueField: "value",
+  categoryField: "category",
+  autoLabels: true
+}));
+```
+
+A step at a time, as room runs out:
+
+* The pie moves aside so each side gets the room its widest label needs, then gets smaller, down to half the chart's shorter side.
+* A label too wide for its column wraps onto up to three lines, or is shortened where there's no height to spare.
+* Labels of the smallest slices are hidden where a column can't hold them all.
+* When no label fits, all are hidden, and the pie keeps its size.
+
+A label in the middle of a donut, e.g. a total, is made smaller where it wouldn't fit the hole. A `maxWidth` on the labels template is the most a label may take.
+
+The [`ResponsiveMax` theme](https://docs.amcharts.com/v5/concepts/responsive-max/) turns it on.
+
+For older versions, see the "[Handling pie chart labels that don't fit](https://docs.amcharts.com/v5/tutorials/handling-pie-chart-labels-that-dont-fit/)" tutorial.
 
 ## Ticks
 
@@ -308,25 +827,41 @@ Check out the "[Handling pie chart labels that don't fit](https://docs.amcharts.
 
 Series tick configuration is done via its template, accessible via series property `ticks.template`.
 
+TypeScript:
+
+```ts
 series.ticks.template.setAll({
   stroke: am5.color(0x550000),
   strokeWidth: 2
 });
+```
 
+JavaScript:
+
+```js
 series.ticks.template.setAll({
   stroke: am5.color(0x550000),
   strokeWidth: 2
 });
+```
 
-Series uses `[Tick](https://docs.amcharts.com/v5/reference/radiallabel/)` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/tick/#settings).
+Series uses `Tick` for its labels. Check out its class reference for all the [possible settings](https://docs.amcharts.com/v5/reference/tick/#settings).
 
 ### Disabling ticks
 
 To disable series ticks, we can set `visible` setting to `true` in their template:
 
-series.ticks.template.set("visible", false);
+TypeScript:
 
+```ts
 series.ticks.template.set("visible", false);
+```
+
+JavaScript:
+
+```js
+series.ticks.template.set("visible", false);
+```
 
 ### Tick location
 
@@ -336,24 +871,29 @@ That can be changed using tick template setting `location`.
 
 It's a numeric value from `0` (zero) to `1` (one) indicating relative position within the slice.
 
-series.ticks.template.setAll({
-  location: 0.5
-});
+TypeScript:
 
+```ts
 series.ticks.template.setAll({
   location: 0.5
 });
+```
+
+JavaScript:
+
+```js
+series.ticks.template.setAll({
+  location: 0.5
+});
+```
 
 The above will make tick point to the middle of the slice.
 
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_1.png "`location: 1` (default)")
 
-`location: 1` (default)
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_08.png "`location: 0.8`")
 
-
-`location: 0.8`
-
-
-`location: 0.5`
+![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_05.png "`location: 0.5`")
 
 ## Tooltips
 
@@ -361,17 +901,33 @@ Slices in a pie series are pre-set to display a tooltip on hover containing name
 
 We can modify contents of the tooltips using `tooltipText` on slice's template:
 
-series.slices.template.set("tooltipText", "{category}: \[bold\]{valuePercentTotal.formatNumber('0.00')}%\[/\] ({value})");
+TypeScript:
 
-series.slices.template.set("tooltipText", "{category}: \[bold\]{valuePercentTotal.formatNumber('0.00')}%\[/\] ({value})");
+```ts
+series.slices.template.set("tooltipText", "{category}: [bold]{valuePercentTotal.formatNumber('0.00')}%[/] ({value})");
+```
+
+JavaScript:
+
+```js
+series.slices.template.set("tooltipText", "{category}: [bold]{valuePercentTotal.formatNumber('0.00')}%[/] ({value})");
+```
 
 Contents of the tooltip can include [data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/) (codes in curly brackets that will be replaced by actual data) and [in-line formatting blocks](https://docs.amcharts.com/v5/concepts/formatters/text-styling/) (formatting instructions enclosed in square brackets).
 
 To disable tooltips, set `tooltipText` to an empty string:
 
-series.slices.template.set("tooltipText", "");
+TypeScript:
 
+```ts
 series.slices.template.set("tooltipText", "");
+```
+
+JavaScript:
+
+```js
+series.slices.template.set("tooltipText", "");
+```
 
 ## Binding settings to data
 
@@ -381,16 +937,10 @@ For more information on how to do it, refer to "[Template fields](https://docs.a
 
 ## Related tutorials
 
--   [One pulled slice per pie series](https://docs.amcharts.com/v5/tutorials/one-pulled-slice-per-pie-series/)
--   [Sum label inside a donut chart](https://docs.amcharts.com/v5/tutorials/sum-label-inside-a-donut-chart/)
--   [Pre-hiding pie chart slices](https://docs.amcharts.com/v5/tutorials/pre-hiding-pie-chart-slices/)
--   [Hiding labels and ticks for small pie slices](https://docs.amcharts.com/v5/tutorials/hiding-labels-and-ticks-for-small-pie-slices/)
--   [Selectively displaying pie chart labels inside or outside slices](https://docs.amcharts.com/v5/tutorials/selectively-displaying-pie-chart-labels-inside-or-outside-slices/)
--   [Using slice color for PieChart label backgrounds](https://docs.amcharts.com/v5/tutorials/using-slice-color-for-piechart-label-backgrounds/)
--   [Coloring pie labels and ticks by slice](https://docs.amcharts.com/v5/tutorials/coloring-pie-labels-and-ticks-by-slice/)
-
-## Related class references
-
--   [PieSeries](https://docs.amcharts.com/v5/reference/pieseries/
-    )
--   [PieChart](https://docs.amcharts.com/v5/reference/piechart/)
+* [One pulled slice per pie series](https://docs.amcharts.com/v5/tutorials/one-pulled-slice-per-pie-series/)
+* [Sum label inside a donut chart](https://docs.amcharts.com/v5/tutorials/sum-label-inside-a-donut-chart/)
+* [Pre-hiding pie chart slices](https://docs.amcharts.com/v5/tutorials/pre-hiding-pie-chart-slices/)
+* [Hiding labels and ticks for small pie slices](https://docs.amcharts.com/v5/tutorials/hiding-labels-and-ticks-for-small-pie-slices/)
+* [Selectively displaying pie chart labels inside or outside slices](https://docs.amcharts.com/v5/tutorials/selectively-displaying-pie-chart-labels-inside-or-outside-slices/)
+* [Using slice color for PieChart label backgrounds](https://docs.amcharts.com/v5/tutorials/using-slice-color-for-piechart-label-backgrounds/)
+* [Coloring pie labels and ticks by slice](https://docs.amcharts.com/v5/tutorials/coloring-pie-labels-and-ticks-by-slice/)

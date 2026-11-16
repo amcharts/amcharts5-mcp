@@ -1,55 +1,86 @@
 ---
-title: "Responsive"
+title: "Responsive theme"
 source: "https://docs.amcharts.com/v5/concepts/responsive/"
-scraped: "2026-03-15"
+scraped: "2026-11-16"
 ---
 
-Responsive features in amCharts 5 are activated via Responsive theme.
+> The Responsive theme changes chart settings at the sizes you choose, with rules of your own.
+
+> **More info:** To make a chart fit any size without writing rules, use the [`ResponsiveMax` theme](https://docs.amcharts.com/v5/concepts/responsive-max/) (since version 5.22.0). Which to use: "[Responsive charts](https://docs.amcharts.com/v5/concepts/responsive-charts/)".
+
+The `Responsive` theme changes settings of chart elements when a condition you set is met, e.g. the chart is 400 px wide or less. Use it to decide yourself what changes at which size. The rules on this page work in the `ResponsiveMax` theme too.
 
 ## Loading
 
 Responsive is loaded just like any other [theme](https://docs.amcharts.com/v5/concepts/themes/):
 
-import am5themes\_Responsive from "@amcharts/amcharts5/themes/Responsive";
+TypeScript:
 
+```ts
+import am5themes_Responsive from "@amcharts/amcharts5/themes/Responsive";
+```
+
+JavaScript:
+
+```js
 <script src="//cdn.amcharts.com/lib/5/themes/Responsive.js"></script>
+```
 
 ## Applying
 
 If we do not wish to modify anything in the responsive rules, we can just instantiate the `Responsive` theme using its static `new()` method, passing in the root element.
 
-root.setThemes(\[
-  am5themes\_Responsive.new(root)
-\]);
+TypeScript:
 
-root.setThemes(\[
-  am5themes\_Responsive.new(root)
-\]);
+```ts
+root.setThemes([
+  am5themes_Responsive.new(root)
+]);
+```
+
+JavaScript:
+
+```js
+root.setThemes([
+  am5themes_Responsive.new(root)
+]);
+```
 
 This will instantiate the responsive theme with all default rules available.
 
 However, if we are going to be adding our own rules, we may want to start off without default rules. In such case we'd use `newEmpty()` method instead:
 
-root.setThemes(\[
-  am5themes\_Responsive.newEmpty(root)
-\]);
+TypeScript:
 
-root.setThemes(\[
-  am5themes\_Responsive.newEmpty(root)
-\]);
+```ts
+root.setThemes([
+  am5themes_Responsive.newEmpty(root)
+]);
+```
+
+JavaScript:
+
+```js
+root.setThemes([
+  am5themes_Responsive.newEmpty(root)
+]);
+```
 
 ## Adding custom rules
 
 Basically responsive works like this:
 
--   If condition is met (e.g. chart width is smaller than X), apply certain setting value.
--   If condition is no longer applicable (e.g. chart grows larger), reset setting to original value (or no value at all of it wasn't set before).
+* If condition is met (e.g. chart width is smaller than X), apply certain setting value.
+* If condition is no longer applicable (e.g. chart grows larger), reset setting to original value (or no value at all of it wasn't set before).
 
 A responsive rule defines all those elements: condition and setting values to override.
 
 To create a rule, we use responsive theme's `addRule()` method. Since we need to call the method on theme object, we will need to pre-create the object:
 
-const responsive = am5themes\_Responsive.new(root);
+TypeScript:
+
+```ts
+const responsive = am5themes_Responsive.new(root);
 
 responsive.addRule({
   name: "AxisRendererY",
@@ -61,12 +92,16 @@ responsive.addRule({
   }
 });
 
-root.setThemes(\[
+root.setThemes([
   AnimatedTheme.new(root),
   responsive
-\]);
+]);
+```
 
-const responsive = am5themes\_Responsive.new(root);
+JavaScript:
+
+```js
+const responsive = am5themes_Responsive.new(root);
 
 responsive.addRule({
   name: "AxisRendererY",
@@ -78,10 +113,11 @@ responsive.addRule({
   }
 });
 
-root.setThemes(\[
+root.setThemes([
   AnimatedTheme.new(root),
   responsive
-\]);
+]);
+```
 
 Let's examine what's going on in the above snippet.
 
@@ -93,7 +129,9 @@ Let's examine what's going on in the above snippet.
 
 The class name of the element is represented by its class' `className` and `classNames` properties.
 
-Take a look at class reference of the `[AxisRendererY](https://docs.amcharts.com/v5/reference/axisrenderery/#className_property)` from the example above:
+Take a look at class reference of the `AxisRendererY` from the example above:
+
+![](https://docs.amcharts.com/v5/images/concepts/responsive/image.png)
 
 We can target elements by any of the class names. E.g. using `AxisRenderer` would target all axis renderers, not just ones for the Y axis.
 
@@ -101,20 +139,12 @@ We can target elements by any of the class names. E.g. using `AxisRenderer` woul
 
 It's possible to refine targeting by using theme tags of the element:
 
-responsive.addRule({
-  name: "AxisRendererY",
-  tags: \["opposite"\],
-  relevant: function(width, height) {
-    return width < 1000;
-  },
-  settings: {
-    inside: true
-  }
-});
+TypeScript:
 
+```ts
 responsive.addRule({
   name: "AxisRendererY",
-  tags: \["opposite"\],
+  tags: ["opposite"],
   relevant: function(width, height) {
     return width < 1000;
   },
@@ -122,6 +152,22 @@ responsive.addRule({
     inside: true
   }
 });
+```
+
+JavaScript:
+
+```js
+responsive.addRule({
+  name: "AxisRendererY",
+  tags: ["opposite"],
+  relevant: function(width, height) {
+    return width < 1000;
+  },
+  settings: {
+    inside: true
+  }
+});
+```
 
 The above will target vertical axis renderer, but only if it's placed on the right-side of the chart (`opposite: true`).
 
@@ -137,237 +183,143 @@ Responsive theme comes with some helpful condition functions as well as breakpoi
 
 #### Breakpoints
 
-Accessible via
-
-Value
-
-`am5themes_Responsive.XXS`
-
-`100`
-
-`am5themes_Responsive.XS`
-
-`200`
-
-`am5themes_Responsive.S`
-
-`300`
-
-`am5themes_Responsive.M`
-
-`400`
-
-`am5themes_Responsive.L`
-
-`600`
-
-`am5themes_Responsive.XL`
-
-`800`
-
-`am5themes_Responsive.XXL`
-
-`1000`
+| Accessible via             | Value  |
+| -------------------------- | ------ |
+| `am5themes_Responsive.XXS` | `100`  |
+| `am5themes_Responsive.XS`  | `200`  |
+| `am5themes_Responsive.S`   | `300`  |
+| `am5themes_Responsive.M`   | `400`  |
+| `am5themes_Responsive.L`   | `600`  |
+| `am5themes_Responsive.XL`  | `800`  |
+| `am5themes_Responsive.XXL` | `1000` |
 
 Using breakpoints we can rewrite our example above:
 
-responsive.addRule({
-  name: "AxisRendererY",
-  relevant: function(width, height) {
-    return width < am5themes\_Responsive.XXL;
-  },
-  settings: {
-    inside: true
-  }
-});
+TypeScript:
 
+```ts
 responsive.addRule({
   name: "AxisRendererY",
   relevant: function(width, height) {
-    return width < am5themes\_Responsive.XXL;
+    return width < am5themes_Responsive.XXL;
   },
   settings: {
     inside: true
   }
 });
+```
+
+JavaScript:
+
+```js
+responsive.addRule({
+  name: "AxisRendererY",
+  relevant: function(width, height) {
+    return width < am5themes_Responsive.XXL;
+  },
+  settings: {
+    inside: true
+  }
+});
+```
 
 #### Conditional functions
 
-Accessible via
-
-Check
-
-`am5themes_Responsive.widthXXS`
-
-`width <= 100`
-
-`am5themes_Responsive.widthXS`
-
-`width <= 200`
-
-`am5themes_Responsive.widthS`
-
-`width <= 300`
-
-`am5themes_Responsive.widthM`
-
-`width <= 400`
-
-`am5themes_Responsive.widthL`
-
-`width <= 600`
-
-`am5themes_Responsive.widthXL`
-
-`width <= 800`
-
-`am5themes_Responsive.widthXXL`
-
-`width <= 1000`
-
- 
-
-`am5themes_Responsive.heightXXS`
-
-`height <= 100`
-
-`am5themes_Responsive.heightXS`
-
-`height <= 200`
-
-`am5themes_Responsive.heightS`
-
-`height <= 300`
-
-`am5themes_Responsive.heightM`
-
-`height <= 400`
-
-`am5themes_Responsive.heightL`
-
-`height <= 600`
-
-`am5themes_Responsive.heightXL`
-
-`height <= 800`
-
-`am5themes_Responsive.heightXXL`
-
-`height <= 1000`
-
- 
-
-`am5themes_Responsive.maybeXXS`
-
-`width <= 100 || height <= 100`
-
-`am5themes_Responsive.maybeXS`
-
-`width <= 200 || height <= 200`
-
-`am5themes_Responsive.maybeS`
-
-`width <= 300 || height <= 300`
-
-`am5themes_Responsive.maybeM`
-
-`width <= 400 || height <= 400`
-
-`am5themes_Responsive.maybeL`
-
-`width <= 600 || height <= 600`
-
-`am5themes_Responsive.maybeXL`
-
-`width <= 800 || height <= 800`
-
-`am5themes_Responsive.maybeXXL`
-
-`width <= 1000 || height <= 1000`
-
- 
-
-`am5themes_Responsive.isXXS`
-
-`width <= 100 && height <= 100`
-
-`am5themes_Responsive.isXS`
-
-`width <= 200 && height <= 200`
-
-`am5themes_Responsive.isS`
-
-`width <= 300 && height <= 300`
-
-`am5themes_Responsive.isM`
-
-`width <= 400 && height <= 400`
-
-`am5themes_Responsive.isL`
-
-`width <= 600 && height <= 600`
-
-`am5themes_Responsive.isXL`
-
-`width <= 800 && height <= 800`
-
-`am5themes_Responsive.isXXL`
-
-`width <= 1000 && height <= 1000`
+| Accessible via                   | Check                               |
+| -------------------------------- | ----------------------------------- |
+| `am5themes_Responsive.widthXXS`  | `width <= 100`                      |
+| `am5themes_Responsive.widthXS`   | `width <= 200`                      |
+| `am5themes_Responsive.widthS`    | `width <= 300`                      |
+| `am5themes_Responsive.widthM`    | `width <= 400`                      |
+| `am5themes_Responsive.widthL`    | `width <= 600`                      |
+| `am5themes_Responsive.widthXL`   | `width <= 800`                      |
+| `am5themes_Responsive.widthXXL`  | `width <= 1000`                     |
+|                                  |                                     |
+| `am5themes_Responsive.heightXXS` | `height <= 100`                     |
+| `am5themes_Responsive.heightXS`  | `height <= 200`                     |
+| `am5themes_Responsive.heightS`   | `height <= 300`                     |
+| `am5themes_Responsive.heightM`   | `height <= 400`                     |
+| `am5themes_Responsive.heightL`   | `height <= 600`                     |
+| `am5themes_Responsive.heightXL`  | `height <= 800`                     |
+| `am5themes_Responsive.heightXXL` | `height <= 1000`                    |
+|                                  |                                     |
+| `am5themes_Responsive.maybeXXS`  | `width <= 100 \|\| height <= 100`   |
+| `am5themes_Responsive.maybeXS`   | `width <= 200 \|\| height <= 200`   |
+| `am5themes_Responsive.maybeS`    | `width <= 300 \|\| height <= 300`   |
+| `am5themes_Responsive.maybeM`    | `width <= 400 \|\| height <= 400`   |
+| `am5themes_Responsive.maybeL`    | `width <= 600 \|\| height <= 600`   |
+| `am5themes_Responsive.maybeXL`   | `width <= 800 \|\| height <= 800`   |
+| `am5themes_Responsive.maybeXXL`  | `width <= 1000 \|\| height <= 1000` |
+|                                  |                                     |
+| `am5themes_Responsive.isXXS`     | `width <= 100 && height <= 100`     |
+| `am5themes_Responsive.isXS`      | `width <= 200 && height <= 200`     |
+| `am5themes_Responsive.isS`       | `width <= 300 && height <= 300`     |
+| `am5themes_Responsive.isM`       | `width <= 400 && height <= 400`     |
+| `am5themes_Responsive.isL`       | `width <= 600 && height <= 600`     |
+| `am5themes_Responsive.isXL`      | `width <= 800 && height <= 800`     |
+| `am5themes_Responsive.isXXL`     | `width <= 1000 && height <= 1000`   |
 
 Let's simplify our example even further:
 
-responsive.addRule({
-  name: "AxisRendererY",
-  relevant: am5themes\_Responsive.widthXXL,
-  settings: {
-    inside: true
-  }
-});
+TypeScript:
 
+```ts
 responsive.addRule({
   name: "AxisRendererY",
-  relevant: am5themes\_Responsive.widthXXL,
+  relevant: am5themes_Responsive.widthXXL,
   settings: {
     inside: true
   }
 });
+```
+
+JavaScript:
+
+```js
+responsive.addRule({
+  name: "AxisRendererY",
+  relevant: am5themes_Responsive.widthXXL,
+  settings: {
+    inside: true
+  }
+});
+```
 
 ### Setting overrides
 
 Final property of the rule is `settings` which supplies `key` - `value` pairs to override for the element if the condition is met.
 
-NOTE [Settings](https://docs.amcharts.com/v5/concepts/settings/) are not regular properties of the element, which cannot be set by the responsive rule. For more complex overrides, please refer to the "[Custom apply/remove functions](#Custom_apply_remove_functions)" section of this tutorial. Also, read about "[Settings](https://docs.amcharts.com/v5/concepts/settings/)".
+> **Note:** [Settings](https://docs.amcharts.com/v5/concepts/settings/) are not regular properties of the element, which cannot be set by the responsive rule. For more complex overrides, please refer to the "[Custom apply/remove functions](#custom-apply-remove-functions)" section of this tutorial. Also, read about "[Settings](https://docs.amcharts.com/v5/concepts/settings/)".
 
 ### Note about user-set settings
 
-IMPORTANTSettings set in a responsive rule will not override settings, that are set directly on an element.
+> **Important:** Settings set in a responsive rule will not override settings, that are set directly on an element.
 
 As an example, let's take an `XYChart` which has `layout` set directly on it:
 
+TypeScript:
+
+```ts
 let chart = root.container.children.push(am5xy.XYChart.new(root, {
   layout: root.verticalLayout
 }));
+```
 
+JavaScript:
+
+```js
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   layout: root.verticalLayout
 }));
+```
 
 Let's say we want to change layout to vertical, if chart is less than 1000px width.
 
 The assumption would be that the following responsive rule should do it:
 
-// THIS WILL NOT WORK AS EXPECTED!
-responsive.addRule({
-  name: "XYChart",
-  relevant: function(width, height) {
-    return width < 1000;
-  },
-  settings: {
-    layout: root.horizontalLayout
-  }
-});
+TypeScript:
 
+```ts
 // THIS WILL NOT WORK AS EXPECTED!
 responsive.addRule({
   name: "XYChart",
@@ -378,11 +330,30 @@ responsive.addRule({
     layout: root.horizontalLayout
   }
 });
+```
+
+JavaScript:
+
+```js
+// THIS WILL NOT WORK AS EXPECTED!
+responsive.addRule({
+  name: "XYChart",
+  relevant: function(width, height) {
+    return width < 1000;
+  },
+  settings: {
+    layout: root.horizontalLayout
+  }
+});
+```
 
 However, this will not work, because `layout` set directly on chart's object will take precedence over the rule's template.
 
 The solution is to remove `layout` setting from the `XYChart` and create two responsive rules instead to handle situations when the chart is below and above 1000px in width:
 
+TypeScript:
+
+```ts
 responsive.addRule({
   name: "XYChart",
   relevant: function(width, height) {
@@ -408,7 +379,11 @@ responsive.addRule({
 let chart = root.container.children.push(am5xy.XYChart.new(root, {
   //layout: root.verticalLayout
 }));
+```
 
+JavaScript:
+
+```js
 responsive.addRule({
   name: "XYChart",
   relevant: function(width, height) {
@@ -434,6 +409,7 @@ responsive.addRule({
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
   //layout: root.verticalLayout
 }));
+```
 
 ## Custom apply/remove functions
 
@@ -443,8 +419,11 @@ They are supplied via rule's `applying` and `removing` properties, respectively.
 
 As an example, let's move the chart's legend to bottom of the chart when its width gets smaller than 400 pixels.
 
+TypeScript:
+
+```ts
 responsive.addRule({
-  relevant: am5themes\_Responsive.widthM,
+  relevant: am5themes_Responsive.widthM,
   applying: function() {
     chart.set("layout", root.verticalLayout);
     legend.setAll({
@@ -464,9 +443,13 @@ responsive.addRule({
     });
   }
 });
+```
 
+JavaScript:
+
+```js
 responsive.addRule({
-  relevant: am5themes\_Responsive.widthM,
+  relevant: am5themes_Responsive.widthM,
   applying: function() {
     chart.set("layout", root.verticalLayout);
     legend.setAll({
@@ -486,8 +469,112 @@ responsive.addRule({
     });
   }
 });
+```
 
+Example: [Custom responsive functions](https://docs.amcharts.com/embeds/v5/custom-responsive-functions/)
+
+Scripts: https://cdn.amcharts.com/lib/5/index.js, https://cdn.amcharts.com/lib/5/percent.js, https://cdn.amcharts.com/lib/5/themes/Animated.js, https://cdn.amcharts.com/lib/5/themes/Responsive.js
+
+HTML:
+
+```html
+<div id="chartdiv"></div>
+```
+
+CSS:
+
+```css
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+```
+
+JavaScript:
+
+```js
+/**
+ * ---------------------------------------
+ * This demo was created using amCharts 5.
+ *
+ * For more information visit:
+ * https://www.amcharts.com/
+ *
+ * Documentation is available at:
+ * https://docs.amcharts.com/v5/
+ * ---------------------------------------
+ */
+
+var root = am5.Root.new("chartdiv");
+
+var responsive = am5themes_Responsive.newEmpty(root);
+
+responsive.addRule({
+  relevant: am5themes_Responsive.widthM,
+  applying: function () {
+    chart.set("layout", root.verticalLayout);
+    legend.setAll({
+      y: null,
+      centerY: null,
+      x: am5.p0,
+      centerX: am5.p0
+    });
+  },
+  removing: function () {
+    chart.set("layout", root.horizontalLayout);
+    legend.setAll({
+      y: am5.p50,
+      centerY: am5.p50,
+      x: null,
+      centerX: null
+    });
+  }
+});
+
+root.setThemes([am5themes_Animated.new(root), responsive]);
+
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    layout: root.horizontalLayout
+  })
+);
+
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    valueField: "value",
+    categoryField: "category"
+  })
+);
+
+series.data.setAll([
+  { value: 10, category: "One" },
+  { value: 9, category: "Two" },
+  { value: 6, category: "Three" },
+  { value: 5, category: "Four" },
+  { value: 4, category: "Five" },
+  { value: 3, category: "Six" },
+  { value: 1, category: "Seven" }
+]);
+
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    centerY: am5.percent(50),
+    y: am5.percent(50),
+    marginTop: 15,
+    marginBottom: 15,
+    layout: root.verticalLayout
+  })
+);
+
+legend.data.setAll(series.dataItems);
+```
 
 ## Related tutorials
 
--   [Adaptive label placement based on available space](https://docs.amcharts.com/v5/tutorials/adaptive-label-placement-based-on-available-space/)
+* [Adaptive label placement based on available space](https://docs.amcharts.com/v5/tutorials/adaptive-label-placement-based-on-available-space/)
