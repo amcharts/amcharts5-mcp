@@ -225,7 +225,7 @@ npm start
 | `list_examples` | Browse all 690+ examples, optionally filtered by category |
 | `get_example` | Get the full code for a specific example, by its path or its amcharts.com demo address |
 | `get_api_reference` | Get the API reference for a class, interface or function — settings with their defaults, events, inheritance and the import line |
-| `list_geodata` | Find map (geodata) files — world, continents, countries, regional packs and the per-Congress US congressional district packs — with each file's CDN path (and its unpkg address, for pages limited to npm CDNs), script global and ES import |
+| `list_geodata` | Find map (geodata) files — world, continents, countries, regional packs and the per-Congress US congressional district packs — with each file's CDN path (and its jsDelivr address, for pages limited to npm CDNs), script global and ES import |
 
 ## Example Usage
 
