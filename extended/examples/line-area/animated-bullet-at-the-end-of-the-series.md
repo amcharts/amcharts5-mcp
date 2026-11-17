@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a dashed line chart of a week of daily values with a pulsing marker on the last point: a circle with a ring around it that keeps growing and fading out, once a second. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line thickness, Line dash, Value labels, Axis on the right, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

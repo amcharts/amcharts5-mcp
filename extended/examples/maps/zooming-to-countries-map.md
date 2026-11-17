@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable world map of the countries, with each country’s name in a tooltip. Clicking a country zooms the map to it and highlights it; clicking it again, or clicking the ocean, zooms back out. Add zoom buttons with a home button. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Zoom time, Selected color, Grid opacity.
+
 ## JavaScript
 
 ```javascript

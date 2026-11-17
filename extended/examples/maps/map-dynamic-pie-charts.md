@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of the continents with a small pie chart on each of four regions, showing made-up sales of four product lines. Size each pie by the region’s total sales, and add a legend as a key to the product lines. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Region names, Legend, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

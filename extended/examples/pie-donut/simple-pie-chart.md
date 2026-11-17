@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a basic pie chart of seven sample categories, each slice in its own color, with labels around the pie and tooltips showing each category’s share. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Pie size, Rounded corners, Labels, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

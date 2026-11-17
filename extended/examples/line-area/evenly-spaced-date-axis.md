@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about 200 weekdays of values on a date axis that spaces the dates evenly, so the weekends leave no gaps. Show the weekday in the axis tooltip, and add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Line color, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

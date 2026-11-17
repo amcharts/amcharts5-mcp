@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a nested donut chart comparing nine countries in two rings, the inner ring by bottles and the outer ring by liters, with labels on the outer ring only and tooltips showing each share and amount. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Stroke width, Labels, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radial line graph of a house’s monthly energy use over a year (sample data), with one line for heating and one for cooling, the month names around the circle, round bullets and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line thickness, Line dash, Curved labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

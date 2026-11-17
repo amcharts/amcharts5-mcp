@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal clustered bar chart comparing income and expenses over five years, each bar labeled with its value and its series name. Add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded ends, Cursor lines, Axis on top, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

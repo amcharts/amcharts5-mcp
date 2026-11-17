@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a bubble chart of 12 days on a date axis with two series, one drawn as circles and the other as diamonds, each bubble sized by its own value, with tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Shadow opacity, Shadow blur, Shadow distance, Line opacity, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

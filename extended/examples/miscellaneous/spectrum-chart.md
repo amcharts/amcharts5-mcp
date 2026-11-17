@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a spectrum chart: one horizontal bar that shows a machine’s status through an afternoon as back-to-back periods colored by status (normal operation, minor alarm, anomaly, critical error), with the start time of each period marked under the bar and a legend of the statuses. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar height, Time labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radar column chart of eleven countries around most of a circle that sorts itself live: every 1.5 seconds the values change at random, the columns grow or shrink, and then they move into their new order, largest first. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Value labels, Curved labels, Rounded corners.
+
 ## JavaScript
 
 ```javascript

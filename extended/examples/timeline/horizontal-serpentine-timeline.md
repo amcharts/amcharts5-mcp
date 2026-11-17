@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal serpentine timeline chart whose date axis winds up and down across six columns, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, and a lane of lettered milestones. Make the timeline zoomable. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Columns, Lane width, Start location, End location, Lane names, Date line dash.
+
 ## JavaScript
 
 ```javascript

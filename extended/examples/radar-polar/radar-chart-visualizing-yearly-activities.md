@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radar chart of a year of bicycle rides: weekly distance totals as columns colored by distance, and every ride as a bubble on its weekday ring, sized by its length. Month bands around the outside zoom to a month when clicked, and the year’s total sits in the middle. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bubble size, Date grid, Distance grid, Day grid.
+
 ## JavaScript
 
 ```javascript

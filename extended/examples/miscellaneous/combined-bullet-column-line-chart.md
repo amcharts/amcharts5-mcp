@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a chart of two weeks of daily sales: target sales as wide faint columns with actual sales as narrower columns in front, like a bullet graph, and two smoothed lines of market figures with bullets on a second value axis. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Target width, Value labels, Second line dash, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

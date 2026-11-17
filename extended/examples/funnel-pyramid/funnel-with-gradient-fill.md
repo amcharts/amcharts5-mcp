@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical funnel chart of seven sample categories where each slice has a horizontal gradient of its own color, darker at the edges and brighter in the middle, for a softly rounded look, with labels on the slices and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Taper, Link opacity, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

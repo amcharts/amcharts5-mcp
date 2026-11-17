@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pictogram comparing men and women: each group is a grid of 100 person icons with the counted ones colored, and a large label beside each grid with the count out of 100. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Empty figure opacity, Fill from the top, Gap between groups.
+
 ## JavaScript
 
 ```javascript

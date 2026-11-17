@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a forest plot for a meta-analysis of five studies and their summary: each study’s interval as a line with a square sized by its weight, the summary as a diamond with a dashed line through its value, and each estimate with its interval listed on the right. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line thickness, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

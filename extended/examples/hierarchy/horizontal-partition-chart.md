@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal partition (icicle) chart of a 100-person company by department and team, with the levels running left to right. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Layout, Stroke width, Rounded corners, Labels.
+
 ## JavaScript
 
 ```javascript

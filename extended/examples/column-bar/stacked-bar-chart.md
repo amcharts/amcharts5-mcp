@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal stacked bar chart of six regions’ values over three years, with the years down the side, each segment labeled with its value, and tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded corners, Oldest year on top, Cell padding, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

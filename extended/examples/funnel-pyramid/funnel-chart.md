@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical funnel chart of a month in an online store, with five stages from visiting the store to paying, each as wide as its count and joined to the next by a see-through link. Add a legend that hides a stage when clicked. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Taper, Gap between slices, Labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

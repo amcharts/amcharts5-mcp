@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a sunburst chart of what fills a laptop drive, with the drive in the middle and each level of folders as a ring around it. Clicking a segment zooms into it, and clicking the middle goes back up a level. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rotate, Rounded corners.
+
 ## JavaScript
 
 ```javascript

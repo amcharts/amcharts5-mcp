@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of 16 values taken every 30 minutes, with round bullets and a label above each point that shows its value in a small outlined box. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Bullets and labels, Bullet size, Line thickness, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

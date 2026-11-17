@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a treemap of a monthly household budget, with items such as rent, groceries and savings grouped into six groups and colored by their group. Clicking an item zooms to its group, and clicking again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Layout, Labels, Gap between boxes, Rounded corners.
+
 ## JavaScript
 
 ```javascript

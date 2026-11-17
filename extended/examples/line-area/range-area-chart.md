@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a range area chart of about 200 days of data: a shaded band between a low and a high line that wanders, widening and narrowing but never pinching shut. Add tooltips with the low and high values, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Area opacity, Line opacity, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

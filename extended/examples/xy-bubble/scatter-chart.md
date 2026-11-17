@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a scatter chart with two series of points drawn as triangles, one pointing up and the other down, each with a linear trend line worked out from its points. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Trend lines, Trend line dash, Line opacity, Axis on the right, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

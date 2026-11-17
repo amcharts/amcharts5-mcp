@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a semi-circle donut chart that covers only the top half of a circle, showing seven sample categories with labels and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Rounded corners, Hole size, Slice shift.
+
 ## JavaScript
 
 ```javascript

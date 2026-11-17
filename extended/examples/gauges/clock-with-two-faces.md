@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a working analog clock from a circular gauge chart with two dials: an outer dial for the hour and minute hands and a small inner dial for the second hand, with today’s date in the middle. The hands follow the current local time. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Date, Seconds dial, Numbers, Rim thickness.
+
 ## JavaScript
 
 ```javascript

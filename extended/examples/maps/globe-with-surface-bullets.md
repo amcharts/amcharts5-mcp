@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a draggable globe with map pins on 12 cities around the world that lie on the globe’s surface, as if painted on it, so they flatten towards its edge, with the city’s name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, On the surface, Pin size, Pin color, Grid opacity.
+
 ## JavaScript
 
 ```javascript

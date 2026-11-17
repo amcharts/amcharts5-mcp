@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create a network waterfall chart like Chrome DevTools' network panel, with generated data: the 17 requests of a shop's home page (the HTML, styles, scripts, fonts, images, API calls, analytics, favicon) down the side in request order, time in milliseconds along the top. Each request's phases are floating bars on its row, one column series per phase (Queueing in faint gray, then DNS lookup, Connecting, Waiting for server and Content download in theme colors) with a legend; DNS and connecting only on the first request to each server; later requests to it queue until that connection is up. Mark DOMContentLoaded and Load with dashed vertical lines labeled with their times; Load waits for the files, images and the analytics script, not for fetch() calls. Tooltips: the file, the phase and its duration, the type, size and server. Buttons switch the network speed with Chrome's throttling presets (off; fast 4G, 8.1 Mbps and 165 ms; slow 4G, 1.44 Mbps and 562.5 ms; 3G, 400 kbps and 2,000 ms) and recompute the timings. On phones hide the legend and the milestone labels. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Network, Milestones, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

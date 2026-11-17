@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a smoothed line chart of about five months of daily values that follow a slow wave, dipping below zero in the middle. Color the line and its fill differently below zero. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Threshold, Color below, Area opacity, Fading fill, Smoothing, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

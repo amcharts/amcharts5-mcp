@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a two-level drill-down map of the United States: clicking a state zooms to it, loads its congressional districts map and shows the state’s name as the title. A back button returns to the whole country. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hover color, Stroke width, Title, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

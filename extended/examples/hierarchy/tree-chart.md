@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a tree chart of a four-generation family tree, laid out top to bottom, with names in the circles. Clicking a parent folds or opens its branch, nodes can be dragged, and the tree can be zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Layout, Flip, Leaves in one row, Node size.
+
 ## JavaScript
 
 ```javascript

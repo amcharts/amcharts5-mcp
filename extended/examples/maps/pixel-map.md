@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map that draws each country as a grid of dots, a pixel map, colored from light to dark by the median age of its people, with the country and its median age in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Pixel shape, Pixel size, Pixel spacing, Offset rows, Even grid, Equal area, Column height.
+
 ## JavaScript
 
 ```javascript

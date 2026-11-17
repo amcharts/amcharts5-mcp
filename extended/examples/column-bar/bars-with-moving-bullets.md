@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal bar chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the start of their bar. Hovering a bar slides its photo along to the bar’s end. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar opacity, Most steps on top, Minor grid, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

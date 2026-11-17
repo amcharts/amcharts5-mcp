@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a collapsible force-directed tree of the coffee taster’s flavor wheel, with bubbles sized by how many flavors they hold. Show the first two levels at first; clicking a bubble opens the levels below it, or folds it. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Node size, Spread out, Bubble opacity, Shadow opacity, Shadow blur, Shadow distance.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable candlestick chart of about five years of simulated daily prices, where zooming out merges the candles into weeks or months. Start on the last three months, and add a cursor, tooltips, a legend and a scrollbar with a price preview. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Candle width, Rising candles, Axis on the right, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

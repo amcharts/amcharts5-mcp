@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical dumbbell plot of about thirty people, each a thin line from a start value up to a higher end value with a dot at each end in two colors, and the names running vertically under them. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet shape, Bullet size, Upper bullet color, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

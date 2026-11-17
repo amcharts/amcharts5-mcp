@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a store locator map of the United States that drills down in three levels: bubbles with the number of stores per state, then per city when a state is clicked, then each store when a city is clicked, with a button to zoom back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Counts on bubbles, Hover color, Stroke width.
+
 ## JavaScript
 
 ```javascript

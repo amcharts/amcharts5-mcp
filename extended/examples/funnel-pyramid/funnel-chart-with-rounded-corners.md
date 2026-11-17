@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical funnel chart of four sample stages where each slice slopes down to the width of the next one, with rounded corners and small gaps instead of links, labels with ticks, and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded corners, Gap between slices, Taper, Labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

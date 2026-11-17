@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a range area chart of daily Open and Close values over about a year and a half. Fill the area between the two lines in the Open line's color where Open is above Close and in the Close line's color where Close is above Open, switching exactly where the lines cross. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Area opacity, Line thickness, Line opacity, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

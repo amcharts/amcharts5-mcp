@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of eleven countries that re-sorts itself live: every second or two the values change at random, and the columns slide into their new order, largest first, with value labels counting up or down. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Fading columns, Axis line opacity, Shadow opacity, Shadow blur, Shadow distance, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

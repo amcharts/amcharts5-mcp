@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical Sankey diagram of an example breakdown of company cash, from all non-financial companies down to the five biggest tech companies, ending as cash in the U.S. or overseas. Hide the nodes, give the bands a gradient, and put the labels on the bands. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Node alignment, Gap between bands, Labels on the bands.
+
 ## JavaScript
 
 ```javascript

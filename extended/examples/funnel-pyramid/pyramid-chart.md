@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pyramid chart of seven sample categories with the largest at the base, where each level’s area, not its height, matches its share, with labels and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Size slices by, Top width, Labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

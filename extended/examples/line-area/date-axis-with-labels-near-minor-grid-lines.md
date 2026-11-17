@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of a month of daily values on a date axis with two rows of labels: small day numbers on the minor grid lines under every day, and the week labels in a second row below them. Add round bullets, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Minor labels, Bullets, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a word cloud shaped like a human head in profile: about 90 words of very different weights, from Money, Sex, Family and Work down to small ones, fill the head, with its outline drawn around them. Use the Animated theme. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Head fill opacity, Words over the edge, Stroke width.
+
 ## JavaScript
 
 ```javascript

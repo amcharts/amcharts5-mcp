@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create a flame chart of a web page's main thread like Chrome DevTools' performance panel, with generated data: 1.6 seconds of page load and start-up, time in milliseconds along the top, call stack depth down (0 at the top, no labels). Each frame is a floating bar from its start to its end on its depth's row, with its name inside, cut to the bar's width. One column series per category (Task in faint gray, Loading, Scripting, Rendering, Painting in theme colors) with a legend; tasks over 50 ms get red stripes over the part past 50 ms, the limit a parameter of the function that finds them. Tooltips: name, total time, and self time (the total less the calls one row down inside it), category. On phones hide the legend. Zoom with the wheel, pan by dragging, and a scrollbar under the plot. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Long tasks, Long task over, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

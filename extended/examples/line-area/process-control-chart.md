@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a process control chart of 23 samples, with a shaded band between the lower and upper control limits, solid lines for both limits and a dashed line for the process average, each labeled inside the plot. Add round markers, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Zone opacity, Limit line dash, Bullets, Bullet size, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

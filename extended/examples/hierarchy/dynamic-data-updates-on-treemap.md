@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a treemap of visitors on the pages of an online store, with the pages colored by their store section. Every two seconds the visitor counts change a little at random, and the boxes animate to their new sizes and places. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Labels, Layout, Rounded corners.
+
 ## JavaScript
 
 ```javascript

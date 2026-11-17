@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a black and white Venn diagram joke: a white "Polar bear" circle and a black "Black bear" circle overlap in "Panda", filled with a pattern of white dots on black. Outline the area under the pointer with a dashed line. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Outline dash, Labels.
+
 ## JavaScript
 
 ```javascript

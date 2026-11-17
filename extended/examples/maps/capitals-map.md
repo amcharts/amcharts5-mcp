@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map in the style of a printed atlas that marks every country’s capital with a star, with the capital and its country in a tooltip. The capitals’ names appear next to their stars once the map is zoomed in. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Star size, Star points, On the surface, Ocean opacity, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pictorial stacked chart that fills the outline of a person from head to feet with seven sample categories, each band as tall as its share, with labels at the side. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Fill level, Gap between slices, Labels.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a heat map of values by weekday and hour of the day, highest in weekday working hours, with the cells colored by value and a heat legend that marks a cell’s value when the pointer is over it. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Heat legend, Rounded corners.
+
 ## JavaScript
 
 ```javascript

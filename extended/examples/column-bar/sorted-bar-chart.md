@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal bar chart of user counts for twelve social networks that re-sorts itself live: every second or two the values change at random and the bars slide into their new order, longest on top, each in its own color. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value labels, Rounded ends, Longest bar at the bottom, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Google Analytics-style line chart comparing this week with last week, day by day: a solid line for this week and a dotted line for last week, each with its own bullet shape. The tooltip shows both dates and both values. Add a cursor. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Last week line dash, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

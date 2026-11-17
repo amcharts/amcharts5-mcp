@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of ten series of daily values with a legend on the right that shows each series’ value. Hovering a legend item highlights its line: it gets thicker and the other lines fade. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, X axis labels, Y axis labels, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

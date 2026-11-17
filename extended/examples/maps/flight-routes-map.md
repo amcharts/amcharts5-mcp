@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a flight routes map with two origin cities, London and Vilnius, and their destinations across Europe and in New York. Clicking an origin shows its routes as lines and moves the map to them. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Origin, Arc height, Line dash, Grid opacity.
+
 ## JavaScript
 
 ```javascript

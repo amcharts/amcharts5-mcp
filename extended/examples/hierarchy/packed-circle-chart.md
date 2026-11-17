@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a packed circle chart of one listener’s year of music in hours, with each genre holding its styles, and a legend of the genres that can hide them. Clicking a genre zooms into it, and clicking it again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Gap between circles, Stroke width, Stroke opacity, Circle opacity, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

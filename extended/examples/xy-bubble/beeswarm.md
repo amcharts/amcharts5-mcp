@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a beeswarm chart of 500 random values on a value axis, each a dot sized by a second value, spread up and down by a D3 force simulation so no dots overlap, and packed again when the axis is zoomed. Use the amCharts 5 library with its ResponsiveMax theme, and D3.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet opacity, Axis on top, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

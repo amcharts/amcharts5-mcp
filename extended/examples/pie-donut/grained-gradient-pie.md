@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a donut chart comparing four countries with grainy gradient fills: each slice is shaded by a radial gradient that darkens toward the middle, with a fine noise texture on top. Add a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Grain opacity, Grain density, Grain size, Rounded corners, Hole size, Start angle, End angle, Legend.
+
 ## JavaScript
 
 ```javascript

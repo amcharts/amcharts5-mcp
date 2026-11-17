@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a bubble heat map of days of the week by hours of the day, with a circle in each cell sized by its value that fits its cell at any chart size. Every second, the values change a little and the bubbles grow and shrink smoothly. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bubble size, Bubble opacity, Hours on top, Sunday at the top.
+
 ## JavaScript
 
 ```javascript

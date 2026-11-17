@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pictorial column chart of the heights of five famous skyscrapers, from the Burj Khalifa to the Empire State Building, each drawn as a silhouette that grows to its height, with its height in meters above it, over a vertical gradient. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tower opacity, Height labels, Grid dash, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

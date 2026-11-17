@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a directed chord diagram of the connections between the six friends of the TV show Friends and the people linked to them. Clicking a node switches its ribbons off and on, and dragging a node turns the ring. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Arrow heads, Minimum node size, Ribbon opacity, Rotate.
+
 ## JavaScript
 
 ```javascript

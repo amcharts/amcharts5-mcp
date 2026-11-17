@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radial ridgeline of a year of sample solar output from a 10 kW array: twelve rings, one per month from November 2025 to October 2026, each the month's average day in 15-minute steps. Use a radar chart with the 24 hours round a date axis over one day, midnight at the bottom and noon at the top, and one smoothed line per month on a ring of its own, the oldest innermost, lifted off its ring by the output so summer noons swell out over the next rings. Draw the eleven earlier months as thin gray lines and the latest month in the theme's first color; the line under the pointer turns blue. Label each ring with its month at midnight, on a small background so the line passes behind it. A cursor (a spoke only) shows only the tooltip of the line nearest the pointer: the month and the average output at that time in kW. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Ridge height, Inner radius.
+
 ## JavaScript
 
 ```javascript

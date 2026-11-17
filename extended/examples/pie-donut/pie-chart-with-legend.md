@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pie chart of seven sample categories with labels around the pie and a legend; clicking a legend item hides or shows its slice. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Slice shift, Values in the legend, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

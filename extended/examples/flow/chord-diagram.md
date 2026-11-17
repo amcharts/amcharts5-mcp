@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a chord diagram of the flows between five European cities, with a link for every pair in each direction and values that differ by direction. Clicking a city switches its ribbons off and on, and dragging a city turns the ring. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Link color, Ring width.
+
 ## JavaScript
 
 ```javascript

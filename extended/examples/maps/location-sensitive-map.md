@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of the visitor’s own country, found from their IP address or, failing that, their browser’s language, and loaded from the amCharts geodata. Color its regions by random values as a heat map, with a heat legend and the country’s name above the map. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hover color, Stroke width, Heat legend, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

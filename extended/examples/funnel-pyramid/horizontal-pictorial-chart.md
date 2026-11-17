@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal pictorial stacked chart that fills a sausage-shaped outline from left to right with seven sample categories, each part as wide as its share, with labels below the shape showing the name and the share. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Fill level, Gap between slices, Labels.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart comparing eleven countries, each column in its own color, with the country names rotated to run vertically under their columns. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Label angle, Rounded tops, Smallest first, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

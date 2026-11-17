@@ -13,6 +13,8 @@ To make your own version, open it in Chart Maker and change it without code, or 
 
 Prompt: Create a globe covered with NASA’s satellite picture of the Earth, with the country borders over it, where clicking a country turns the globe to center it, puts a ring on it, and flies a plane there from the country clicked before along a dotted arc raised above the surface. Add the countries’ names, hidden at first, each shown only where it fits. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Find a country, Satellite view, Country names, Arc height, On the surface, Grid opacity.
+
 ## JavaScript
 
 ```javascript

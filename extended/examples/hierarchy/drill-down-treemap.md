@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a drill-down treemap of 2017 US car sales that shows one level at a time: the best-selling brands first, then a brand’s models when it is clicked. Add a breadcrumb bar that leads back up, and put each brand’s logo faintly in its box. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Breadcrumbs, Layout, Stroke width, Rounded corners.
+
 ## JavaScript
 
 ```javascript

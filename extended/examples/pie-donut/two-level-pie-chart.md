@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a two-level pie chart of three equal parts: a thin ring shows First, Second and Remaining, and a faint, wider band behind it spans only First and Second to group them. Write the names along the curve of the rings. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Band opacity, Labels.
+
 ## JavaScript
 
 ```javascript

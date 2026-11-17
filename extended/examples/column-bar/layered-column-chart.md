@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a layered column chart comparing six countries across two years, with the later year’s narrower, striped columns in front of the earlier year’s wider ones in the same space. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Front column width, Back layer opacity, Pattern type, Pattern angle, Pattern opacity, Pattern size, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

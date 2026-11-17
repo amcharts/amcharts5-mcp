@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a chart of a two-week road trip with three measures on one date axis: miles driven each day as columns, the latitude of each night’s town as a line with bullets sized by the town’s size, and the driving time as a line on a duration axis that shows hours and minutes. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value labels, Rounded tops, Latitude line dash, Duration grid, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

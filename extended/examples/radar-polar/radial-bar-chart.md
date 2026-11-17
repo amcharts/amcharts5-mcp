@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stacked radial bar chart of minutes a day spent on the phone by age group and activity (sample data): one ring per age group, the youngest outside, with bars stacked by activity around three quarters of the circle, and a legend of the activities. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Arc, Hole size, Stroke width, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

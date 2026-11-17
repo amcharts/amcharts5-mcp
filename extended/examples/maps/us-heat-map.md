@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a heat map of US state populations from the 2000 census, shading each state from light to dark by its population, with the state and its population in a tooltip and a heat legend that marks the hovered state’s value. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Heat legend, Legend steps, Border color.
+
 ## JavaScript
 
 ```javascript

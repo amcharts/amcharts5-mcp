@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map where clicking countries selects them: each click switches a country between selected and not, so any number can be picked, and a few start selected. Show each country’s name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Hover color, Selected color, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

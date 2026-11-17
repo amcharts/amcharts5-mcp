@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a force-directed network of three separate trees, with extra links joining the first tree to the second and the second to the third. Clicking a node folds or opens the level below it, and nodes can be dragged. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Node size, Shadow opacity, Shadow blur, Shadow distance, Link dash, Link thickness.
+
 ## JavaScript
 
 ```javascript

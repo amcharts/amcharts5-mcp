@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a slowly turning globe drawn only by its parallels, one every 1.5 degrees, with no country shapes. Take the heights from https://www.amcharts.com/static/demo-data/relief-parallels.js, which sets reliefParallels: NOAA ETOPO1 elevation, one row per parallel from 84°N to 84°S, 360 heights in metres each (the sea as 0). Each parallel lies flat on the globe over the sea and rises over land by the real elevation, exaggerated 200 times, drawn as map lines whose points carry their own heights. Color the land lines by height band in the theme's colors, 2px wide, keep the sea lines faint (a quarter opaque), credit the data, and let the globe be dragged and zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Height scale, Line spacing, Rotation speed.
+
 ## JavaScript
 
 ```javascript

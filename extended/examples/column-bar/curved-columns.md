@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart comparing nine countries, where each column is drawn as a curved hill and neighboring columns overlap a little, each in its own color. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Curve width, Curve opacity, Value labels, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

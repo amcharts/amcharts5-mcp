@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a compass from a circular gauge, with the eight main directions and fine degree ticks around the dial, and a north-south needle that stays still while the dial beneath it turns to a random heading every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Needle width, Needle tip color, Rim thickness.
+
 ## JavaScript
 
 ```javascript

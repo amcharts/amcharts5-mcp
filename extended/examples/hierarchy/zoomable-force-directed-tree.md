@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable force-directed tree of the coffee flavor wheel, with the flavor families, their subgroups and about 85 flavors as linked colored circles. The chart can be zoomed and panned, and clicking a node folds or unfolds its branch. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Links, Link thickness, Link dash, Gap between nodes, Shadow opacity, Shadow blur, Shadow distance.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a live market depth chart for ETH/BTC from Binance’s public order book API (https://data-api.binance.vision/api/v3/depth?symbol=ETHBTC&limit=50), reloaded every 30 seconds. Show the cumulative bids and asks as step lines with faint fills, and the volume at each price as faint columns. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Volume columns, Risers, Area opacity, Fading fill, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

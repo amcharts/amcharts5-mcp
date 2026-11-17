@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a live line chart that adds a new random value every second and drops the oldest, so the window keeps moving, with each new point animating in from the previous one. Add round markers, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line dash, Bullets, Bullet size, Area opacity, Fading fill, Axis on the right, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a globe of crude oil exports through the Strait of Hormuz, drawn as a map Sankey of flows from Gulf terminals to ports in Asia and Europe. Waypoints keep the routes at sea, and small oil drops travel along each band. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Band width, Curvature, End points, Grid opacity.
+
 ## JavaScript
 
 ```javascript

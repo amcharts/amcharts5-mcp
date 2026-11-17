@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a 100% stacked area chart of yearly values for cars, motorcycles and bicycles from 2007 to 2025, showing each as its share of the year’s total, with tooltips that show both the share and the actual value. Add a legend, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Axis on the right, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map of the continents, each filled with its own color and its own pattern (stripes, checks, dots, triangles or stars), with the continent’s name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Pattern color, Pattern opacity, Hover color, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

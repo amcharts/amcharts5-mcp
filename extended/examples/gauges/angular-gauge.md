@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a simple angular gauge: a half-circle dial from 0 to 100 with a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Needle width, Needle color.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an interactive wheel of life: a radar column chart of eight areas of life, such as health, career and family, that starts empty. Above it, a question asks you to rate one area at a time from 1 to 10 with buttons; each answer fills that area’s column, and a button starts over at the end. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Scale numbers, Grid dash.
+
 ## JavaScript
 
 ```javascript

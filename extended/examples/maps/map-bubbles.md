@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world bubble map of population by country in 2011, with a bubble at the center of each country sized by its population and colored by continent, and the country and population in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, On the surface, Bubble opacity, Stroke opacity, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

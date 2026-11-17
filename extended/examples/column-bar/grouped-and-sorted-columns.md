@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of items grouped by four providers and sorted by value within each, with each provider’s name under its group, and a line of each provider’s quantity on a second value axis. Add value labels, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Value labels, Quantity line, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a dashed line chart of hourly values over New Year’s Eve, from 6 pm to 2 am, where each point’s bullet is a circle with its own icon inside, picked in the data. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line thickness, Line dash, Line opacity, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

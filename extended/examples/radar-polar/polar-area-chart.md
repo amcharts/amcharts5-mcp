@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a polar area chart as a wind rose: sixteen compass directions, each with stacked columns showing how often the wind blew from there at five speed ranges (sample data), and a legend of the speeds. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke opacity, Rounded corners, Curved labels, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

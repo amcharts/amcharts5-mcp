@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a star atlas on a map chart: the night sky with about 100 named bright stars at their real positions, sized by brightness, stick figures of the main constellations, the celestial equator and the ecliptic. The sky slowly rotates and can be dragged and zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Constellations, Line thickness, Ecliptic and equator, Grid opacity.
+
 ## JavaScript
 
 ```javascript

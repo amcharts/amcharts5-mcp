@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a lollipop chart of about thirty people, each value a thin stem from zero with a dot on top, and the names running vertically under the stems. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet shape, Bullet size, Value labels, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

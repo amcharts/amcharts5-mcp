@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map that morphs smoothly into the next projection every few seconds: Equal Earth, Equirectangular and a globe, then round again. Dragging sideways turns the world, and dragging up and down tilts the globe. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Ocean opacity, Grid opacity.
+
 ## JavaScript
 
 ```javascript

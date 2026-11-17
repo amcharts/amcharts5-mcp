@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a directed chord diagram of six nodes joined by nine weighted, one-way links, with each node drawn as a circle with its letter inside. Small dots travel along every ribbon from source to target in endless loops. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Moving bullets, Arrow heads, Gap between arcs.
+
 ## JavaScript
 
 ```javascript

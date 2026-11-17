@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a gauge chart with seven colored, labeled bands from Unsustainable to High Performing, and a wide needle that takes the color of the band it points at, with the value in its pin. Every 2 seconds the needle moves to a random value. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Band labels, Pin size.
+
 ## JavaScript
 
 ```javascript

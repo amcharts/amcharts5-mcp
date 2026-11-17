@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a solid gauge: a three-quarter circle of four rings, one per department, each filled in its own color up to its percentage over a faint full-length track, with tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Hole size, Rounded ends.
+
 ## JavaScript
 
 ```javascript

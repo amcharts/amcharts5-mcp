@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create two donut charts side by side, separated by a dashed line, with six countries split between them. Each slice can be dragged across the line to move it to the other donut; dropped short of the line, it snaps back. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Rounded corners, Labels.
+
 ## JavaScript
 
 ```javascript

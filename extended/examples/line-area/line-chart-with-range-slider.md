@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about three years of daily values with a draggable handle on the date axis that splits the series in two: the part after the handle is drawn in another color over a striped fill. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Color past the handle, Stripe opacity, Area opacity, Fading fill, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

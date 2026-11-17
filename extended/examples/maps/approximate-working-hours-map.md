@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map that shows where it is roughly working hours (9 AM to 5 PM) right now: work out the sun’s position from the current time, mark it with a pulsing sun, and shade the rest of the world. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Time, Off-hours opacity, 9 AM and 5 PM lines, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

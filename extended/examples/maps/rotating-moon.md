@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create a 3D globe of the Moon that turns slowly on its own, a full turn every two minutes, covered with the amCharts CDN's picture of the Moon's surface (https://cdn.amcharts.com/lib/5/geodata/images/moon2048.jpg) and a faint latitude and longitude grid. Mark the six Apollo landing sites with orange circles holding the mission number, laid flat on the surface, with the mission, the place and the landing date on hover. Credit the picture to NASA's Scientific Visualization Studio. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tilt, On the surface, Grid opacity.
+
 ## JavaScript
 
 ```javascript

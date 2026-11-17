@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a spiral timeline chart whose date axis starts in the middle and winds outward, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, a lane of lettered milestones and a legend of the modules. Make the timeline zoomable. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Turns, Start angle, End angle, Hole size, Lane width, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

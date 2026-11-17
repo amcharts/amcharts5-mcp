@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world heat map of the US reciprocal tariff rates announced in April 2025, shading each country from light to dark by its rate, with the rate in a tooltip and a heat legend that marks the rate of the country under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Rates, Heat legend, Stroke width, No-data color, Grid opacity.
+
 ## JavaScript
 
 ```javascript

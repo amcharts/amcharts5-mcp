@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world time zone map from the amCharts time zone geodata: the zone areas on land in soft colors, the zone bands over them with the zone in a tooltip, and each whole-hour offset from UTC labeled along the bottom. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Offset labels, Band opacity, Zone opacity, Grid opacity.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable world map with two layers: the world’s countries, and the US states drawn over the United States in their own color. Both layers show the region’s name in a tooltip, and a click highlights a country or state until clicked again. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, US states, States color, Stroke width, Grid opacity.
+
 ## JavaScript
 
 ```javascript

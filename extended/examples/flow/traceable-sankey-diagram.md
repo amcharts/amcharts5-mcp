@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a traceable Sankey diagram of 13 paths through four columns of nodes, with faint bands: pointing at a band lights up its whole path from the first column to the last. Nodes can be dragged. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Top to bottom, Link tension, Gap between nodes, Band opacity.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a flower chart: a radar chart comparing light and dark roast coffee scored on eight tasting notes (sample data), with columns that fill only the middle of each slice so they look like petals, and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded corners, Side by side, Cell padding, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

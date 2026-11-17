@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical arc diagram of the connections between the six friends of the TV show Friends and people around them, with the nodes in a column, sized by their totals, and the arcs to one side. Small dots travel along every arc in endless loops. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Arc dash, Gap between nodes.
+
 ## JavaScript
 
 ```javascript

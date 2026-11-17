@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable bubble chart of 168 countries, GDP per capita against life expectancy, with a series per continent and the bubbles sized by population on one scale for all countries, and a legend that shows and hides continents. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Logarithmic scale, Bubble size, Stroke width, Minor grid, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbars.
+
 ## JavaScript
 
 ```javascript

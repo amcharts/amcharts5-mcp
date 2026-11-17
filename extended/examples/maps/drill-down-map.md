@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a two-level drill-down world map: it starts with the continents, and clicking one zooms to it and shows the countries. A back button with a house icon, or the home button, zooms out and brings the continents back. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Hover color, Stroke width, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

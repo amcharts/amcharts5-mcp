@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stacked area radar chart of the cash 24 companies hold abroad and in the US (sample data), with the companies around the circle sorted from most to least cash abroad, and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Line opacity.
+
 ## JavaScript
 
 ```javascript

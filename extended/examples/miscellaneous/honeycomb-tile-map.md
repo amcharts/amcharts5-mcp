@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a honeycomb tile map of the US states as an XY chart: each state is a hexagon in a layout that follows the map, colored by population with its state code, and a heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Heat legend.
+
 ## JavaScript
 
 ```javascript

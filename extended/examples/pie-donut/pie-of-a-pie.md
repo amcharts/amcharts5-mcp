@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pie-of-a-pie chart comparing six countries: clicking a slice turns the main pie until that slice faces a smaller pie beside it, which shows that country’s breakdown, with two lines joining the slice to the smaller pie. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Small pie hole, Labels on the big pie.
+
 ## JavaScript
 
 ```javascript

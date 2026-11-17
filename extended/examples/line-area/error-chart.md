@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of values for seven countries where each point has a vertical error bar with caps at both ends and a circle marker on top. The tooltips show the value plus or minus the error. Add a cursor. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line opacity, Line dash, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

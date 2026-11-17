@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an animated bar chart race of the users of social networks from 2002 to 2018: horizontal bars that grow to each year’s values and slide into place as they overtake each other, with the year in large faint text. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded ends, Bar opacity, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

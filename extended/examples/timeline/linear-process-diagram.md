@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a process diagram of one day along a custom winding path, with the main routine on one track and things done alongside it on a second. Draw each event as a colored stretch of the path with an icon card at its start. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Gap between tracks, Road, Scrollbar.
+
 ## JavaScript
 
 ```javascript

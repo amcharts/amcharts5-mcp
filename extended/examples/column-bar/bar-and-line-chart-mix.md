@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal bar and line chart of income and expenses over five years: income as bars, expenses as a line with circle markers through the middle of each row. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line dash, 2021 at the top, Bar height, Vertical grid, Horizontal grid, Legend.
+
 ## JavaScript
 
 ```javascript

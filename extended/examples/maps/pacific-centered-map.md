@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map centered on the Pacific Ocean that turns when dragged sideways, with each country in its own soft color that brightens on hover and the country’s name in a tooltip. Add zoom buttons with a home button. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Map center, Grid dash, Grid opacity.
+
 ## JavaScript
 
 ```javascript

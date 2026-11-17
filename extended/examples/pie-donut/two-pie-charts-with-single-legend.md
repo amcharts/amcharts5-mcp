@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create two donut charts side by side that compare the same four countries in two sets of data, with each total in the middle and one shared legend. Hovering, clicking or toggling a country in either chart or the legend does the same in both. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Rounded corners, Labels.
+
 ## JavaScript
 
 ```javascript

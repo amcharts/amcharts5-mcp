@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a population pyramid of US census data by sex and age group next to a map of the United States. Clicking a state shows that state’s pyramid, and clicking it again goes back to the whole country. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded ends, Ages on the right too, Grid dash, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

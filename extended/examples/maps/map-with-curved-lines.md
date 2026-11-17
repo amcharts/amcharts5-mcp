@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of Europe and the North Atlantic with cities as circles and lines from London to ten of them that follow great circles, so they curve on the flat map, each with an arrow in the middle pointing to its destination. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Line type, Arc height, Arrows, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

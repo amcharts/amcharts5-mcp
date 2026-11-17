@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a non-ribbon chord diagram, with thin curved lines instead of ribbons, of six nodes joined by eight weighted links, each node drawn as a circle with its letter inside. Small dots travel back and forth along every line in endless loops. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line type, Line dash, Ring width, Gap between arcs.
+
 ## JavaScript
 
 ```javascript

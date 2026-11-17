@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of Europe and the North Atlantic with lines from London to ten cities that draw themselves over and over, growing out from London and shrinking away into the far city, all at the same speed. Show the cities as dots with name tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Line thickness, Line dash, City bullets, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

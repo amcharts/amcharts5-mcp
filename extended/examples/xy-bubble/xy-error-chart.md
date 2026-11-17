@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY scatter chart with error bars on two value axes: each of seven points has an error in both directions, drawn as horizontal and vertical bars with short caps, with the point as a hollow circle on top. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Space around points, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a step line chart of 50 daily values with the vertical risers turned off, so only the flat steps show, over a light fill. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Step width, Risers, Area opacity, Fading fill, Bullets, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a half-circle gauge from 0 to 100 percent whose thick band changes color at the current value, with an outlined hand and the value shown in its pin. Every 2 seconds the hand and the color change move together to a random value. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Filled part, Empty part, Labels.
+
 ## JavaScript
 
 ```javascript

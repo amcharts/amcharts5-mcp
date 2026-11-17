@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable word cloud of the most frequent words in the king’s first speech in Shakespeare’s Hamlet, counted from the plain text, packed into a curved, mustache-like shape with every word tilted 45 degrees one way or the other. Use the Animated theme. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Word angles, Shortest word, Number of words.
+
 ## JavaScript
 
 ```javascript

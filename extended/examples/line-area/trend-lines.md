@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about three weeks of daily values with round bullets, and two straight trend lines drawn over it, one along a rise and one along a fall. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Trend lines, Trend line thickness, Trend line dash, Bullets, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

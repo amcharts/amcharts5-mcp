@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a violin chart that compares how values are spread in four regions: count the values in bins and draw each region as a mirrored smoothed shape in its own row, whose width shows how many values fall in each bin, labeled with the region’s name. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Smoothing, Region names, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

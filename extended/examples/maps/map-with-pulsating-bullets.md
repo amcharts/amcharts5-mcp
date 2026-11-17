@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map of 18 capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again, each city at its own random pace. Clicking a marker opens the city’s Wikipedia page. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Pulse, Bullet size, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

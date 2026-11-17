@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable column chart of three weeks of daily values on a date axis, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Fading columns, Value labels, Minor labels, Grid dash, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

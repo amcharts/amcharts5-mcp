@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a five-chart dashboard around a world heat map of a sample rate by country: a donut of the share of countries above 10%, a radial chart of the average per continent, a line and a column chart. Pointing at a country highlights its continent in the radial chart; pointing at a continent there fades the rest of the map. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Grid opacity, Rounded corners, Hole size, Heat legend, Scrollbar.
+
 ## JavaScript
 
 ```javascript

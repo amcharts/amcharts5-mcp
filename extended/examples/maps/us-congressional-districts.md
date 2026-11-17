@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of the US congressional districts colored by party with example data (Democrats, Republicans or no data), with the state, party and district in a tooltip and a legend of the three. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: District opacity, Border color, Legend.
+
 ## JavaScript
 
 ```javascript

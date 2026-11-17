@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about six months of daily values whose dates come as text strings, with a soft fill under the line and circle bullets that appear only once you zoom in far enough to space them out. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Area opacity, Fading fill, Line thickness, Grid dash, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

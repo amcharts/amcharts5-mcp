@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart comparing a year of daily prices in 2023 with a year in 2025, each series on its own date axis, one under the other, both sharing one value axis. Color each date axis’s labels like its line. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Line thickness, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

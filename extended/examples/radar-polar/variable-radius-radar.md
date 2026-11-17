@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a half-circle radar chart of stacked columns, open at the bottom, showing a shop’s quarterly sales of six products (sample data), with one stacked series per quarter and a legend of the quarters. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Arc, Hole size, Curved labels, Columns grow inward, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

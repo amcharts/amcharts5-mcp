@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a fitness-app-style step count chart: a month of daily steps as columns, about ten days in view and dragged sideways to scroll, with days under the goal grayed out and lines at the goal and twice the goal. A cursor fixed in the middle shows the day under it. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Goal lines, Value labels.
+
 ## JavaScript
 
 ```javascript

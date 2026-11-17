@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an infographic comparing the share of men and women in six departments, with men as bars to the left and women to the right. Fill each bar with repeating person icons, over faint icons that show the empty places. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Empty figure opacity, Percent axis, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

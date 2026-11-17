@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a drill-down sunburst chart of an online store’s sales by department, category and product. Clicking a segment makes it the inner ring with its children around it, clicking the inner ring goes back up, and a breadcrumb bar shows the path. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Breadcrumbs, Labels.
+
 ## JavaScript
 
 ```javascript

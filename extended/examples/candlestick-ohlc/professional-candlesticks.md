@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a professional (hollow) candlestick chart of simulated daily prices: a candle is hollow when the day closed above its open and filled when below, and green or red by whether it closed above or below the day before. Add a cursor, tooltips, a legend and a scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Falling candles, Grid dash, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

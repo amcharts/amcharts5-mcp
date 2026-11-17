@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a draggable globe turned to South Asia, with a circle on each of 40 countries sized by its population in 2011. The circles lie on the globe’s surface, so they flatten towards its edge, and show the country and population in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Satellite view, On the surface, Globe center, Circle opacity, Grid opacity.
+
 ## JavaScript
 
 ```javascript

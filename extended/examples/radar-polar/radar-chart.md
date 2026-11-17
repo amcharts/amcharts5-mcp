@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radar (spider) chart comparing nine countries around the circle, drawn as one line with a light filled area and round bullets at each point, with a cursor and value tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Area opacity, Line dash, Minor grid.
+
 ## JavaScript
 
 ```javascript

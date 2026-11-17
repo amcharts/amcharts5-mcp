@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY chart of three vertically stacked panes, each with its own value axis, sharing an X axis of names for a made-up sales team: deals closed and calls made as lines with bullets, and revenue as columns. The X axis labels move under the pane the cursor is in. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Gap between panes, Revenue pane height, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

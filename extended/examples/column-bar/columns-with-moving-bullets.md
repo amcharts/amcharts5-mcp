@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the foot of their column. Hovering a column makes its photo climb to the top. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded corners, Axis on the right, Grid dash, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

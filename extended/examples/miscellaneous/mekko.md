@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Mekko chart of trucks, SUVs and cars: stacked columns of different widths, so both the width and the height of each block carry meaning, with each block’s value in its middle and a legend that hides a series. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Area opacity, Line dash, Value labels, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

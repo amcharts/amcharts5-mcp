@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stacked area chart of yearly values for cars, motorcycles and bicycles from 2007 to 2025, with two events marked as shaded bands with vertical labels: higher fines for speeding and a new motorcycle fee. Add tooltips, a cursor, a legend and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Event notes, Area opacity, Line thickness, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

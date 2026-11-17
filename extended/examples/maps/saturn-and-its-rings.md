@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create Saturn as a map chart in globe projection as a time-lapse, a Saturn day in 30 seconds: the planet as cream latitude bands with darker belts (map polygons) and a few storms as markers lying flat on its surface that go round once a day, the C, B and A rings and the Cassini Division as circles of map lines round the equator raised to their real distances from the center, each as opaque as the ring is dense, and the six largest moons as map points raised onto faint dashed orbits, each going round in its real period at the same scale, their distances beyond the rings squeezed logarithmically so Titan fits. View it from 18.5 degrees above the ring plane with the planet leaning 20 degrees, on a dark background. Tooltips: the planet's size, each ring's name and span, each moon's name and real distance. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tilt, Lean, Moons.
+
 ## JavaScript
 
 ```javascript

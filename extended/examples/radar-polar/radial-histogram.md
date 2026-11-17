@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radial histogram of 20 numbered categories with random values: columns around most of a circle with a hole in the middle, each in its own color, with the value scale in the gap at the top. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Rounded corners, Color per bar, Scrollbar.
+
 ## JavaScript
 
 ```javascript

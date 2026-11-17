@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of 40 daily values where pressing on the plot and dragging up or down changes the value of the nearest point, live. Show circle markers on the points and a resize cursor on hover. Add tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line thickness, Line dash, Grid bands, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

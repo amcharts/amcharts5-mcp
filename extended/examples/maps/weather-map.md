@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a weather map of Europe with seven cities, each showing an animated weather icon (sun, clouds, rain or thunder) and a label with the city and its temperature, using made-up weather. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Satellite view, Icon size, City labels, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stacked column chart in three groups: sales in Europe, the Americas and Asia over four years, each year split into store and online sales, with each region’s name under its group. Give each region its own color, lighter for online, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Column width, Region names, Grid dash, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

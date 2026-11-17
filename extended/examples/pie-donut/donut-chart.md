@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a donut chart of a monthly household budget split into six spending categories, with the category names curved along the ring, the total written in the hole, and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Rounded corners, Labels, Start angle, End angle, Slice shift, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a 5 by 5 risk heat map, both axes running from Very good to Critical, with the cells colored from green to red by risk, each holding a circle sized by its value and the value itself. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded corners, Stroke width.
+
 ## JavaScript
 
 ```javascript

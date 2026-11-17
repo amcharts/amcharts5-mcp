@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a chart of about 200 trading days of price and volume on a date axis that skips the weekends, so the days sit side by side with no gaps. Draw the price as a line and the volume as columns along the bottom of the plot. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Column width, Volume height, Axis on the right, Grid dash, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

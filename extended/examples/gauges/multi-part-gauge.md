@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a gauge made of four separate parts around one circle, with small gaps between them, each with its own range, color and short needle. Every 2 seconds all four needles move to random values within their ranges. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Needle length, Arc opacity, Labels.
+
 ## JavaScript
 
 ```javascript

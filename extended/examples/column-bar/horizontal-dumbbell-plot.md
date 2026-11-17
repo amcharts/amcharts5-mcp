@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal dumbbell plot of eighteen people, each row a thin line from a start value to a higher end value with a dot at each end in two colors. Add a cursor and tooltips with both values. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet shape, Bullet size, Bar height, Axis on top, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

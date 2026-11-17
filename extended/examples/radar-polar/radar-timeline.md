@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radar timeline of temperature anomalies for about a hundred countries grouped by continent, with columns colored from cold to warm and the year in large text in the middle. Clicking a continent band zooms to its countries, and switching the year animates the columns to its values. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Year, Continent bands, Country names, Grid opacity.
+
 ## JavaScript
 
 ```javascript

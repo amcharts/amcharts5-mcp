@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Venn diagram of three sets and their overlaps, each area sized by its value and labeled with its name, with a legend under it where a click hides an area. Use the Animated theme. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Labels, Fading fill, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

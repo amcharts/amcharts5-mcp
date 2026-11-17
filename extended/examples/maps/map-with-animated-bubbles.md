@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map with bubbles on eight countries, each with its value inside and the country’s name beside it. Every two seconds each country gets a new random value, and the bubbles grow and shrink smoothly to match. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Bubble color, Bubble opacity, Country names, On the surface, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

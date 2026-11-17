@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY chart of three panes side by side, each with its own value axis, sharing a Y axis of names for a made-up sales team: deals closed as bars, and calls made and revenue as lines with bullets. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Gap between panes, Deals pane width, Value labels, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

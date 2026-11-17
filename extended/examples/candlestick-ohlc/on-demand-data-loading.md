@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a candlestick chart with a volume panel below that loads its data on demand: it starts with recent daily prices from a server and fetches earlier or later data as users pan and zoom. Add buttons for hourly, daily and monthly data, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Candle width, Volume height, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

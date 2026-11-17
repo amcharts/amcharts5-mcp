@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a working analog clock from a circular gauge chart, with the hour numbers around the face and hour, minute and second hands that show the current local time and move every second. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rim thickness, Numbers, Second hand, Second hand color.
+
 ## JavaScript
 
 ```javascript

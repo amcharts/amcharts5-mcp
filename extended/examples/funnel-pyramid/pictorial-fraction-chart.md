@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pictorial stacked chart that fills the outline of a coffee cup with two parts, milk on top of coffee, each as tall as its share, with percentage labels and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cup fill, Labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

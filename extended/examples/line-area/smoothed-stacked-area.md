@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a smoothed stacked area chart of yearly values for cars, motorcycles and bicycles from 2014 to 2025, with curved layers separated by borders and grainy fills. Add tooltips, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Smoothing, Grain opacity, Grain density, Grain size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

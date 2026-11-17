@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a globe that shows the path of totality of the total solar eclipse of August 2, 2027, as a band drawn around its central line, with two wider, fainter bands around it. Clicking a country turns the globe to center it. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Path color, Path opacity, Grid opacity.
+
 ## JavaScript
 
 ```javascript

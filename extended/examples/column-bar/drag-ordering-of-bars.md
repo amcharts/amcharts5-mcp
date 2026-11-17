@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal bar chart of five countries where users drag the bars up or down to reorder them, the other bars sliding into their new rows. Color the bars by position, so the colors stay in order. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar height, Axis on top, Grid dash, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

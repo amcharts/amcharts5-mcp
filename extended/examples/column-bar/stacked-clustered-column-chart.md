@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart that is both stacked and clustered: six regions over three years, shown as two stacked columns side by side for each year. Label the segments with their values, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Shadow opacity, Shadow blur, Shadow distance, Axis on the right, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a half-circle gauge from 0 to 100 whose scale is a thick band with a gradient running from safe to dangerous colors, and a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rim thickness, Needle color, Labels.
+
 ## JavaScript
 
 ```javascript

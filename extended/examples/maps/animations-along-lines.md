@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map zoomed to a travel route through four cities, from Paris to Havana, with a plane icon that flies back and forth along it and turns with the route. The cities can be dragged, and the route follows them. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Arc height, Line dash, Route opacity, Plane size, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

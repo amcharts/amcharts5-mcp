@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about three years of daily values where clicking the plot places points that form a second, drawn line. Each placed point can be dragged, and a click between two points inserts a new one there. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Data line, Area opacity, Fading fill, Line thickness, Grid bands, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

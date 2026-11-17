@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal Sankey diagram of an example breakdown of company cash, from all non-financial companies down to the five biggest tech companies, ending as cash in the U.S. or overseas. Value labels float along every band in endless loops, sized by their value. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bend point, Labels and amounts.
+
 ## JavaScript
 
 ```javascript

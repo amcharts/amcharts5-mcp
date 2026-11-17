@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map on the Airy projection from D3’s d3-geo-projection library, which offers over a hundred projections a map chart can use. Fill the ocean with a light tint so the projection’s outline shows, and let the world turn when dragged sideways. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Tilt, Ocean color, Ocean opacity, Land color, Grid opacity.
+
 ## JavaScript
 
 ```javascript

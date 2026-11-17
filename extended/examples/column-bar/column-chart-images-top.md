@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of values for four people, each column in its own color with the person’s photo sitting on its top. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Picture size, Column width, Grid dash, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

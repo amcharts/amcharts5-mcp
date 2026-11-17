@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Venn diagram of coffee drinks and their ingredients: circles for milk, milk foam, espresso and water, whose overlaps are drinks such as flat white, macchiato, cappuccino and americano. Color the areas in coffee tones and outline the area under the pointer. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Circle opacity, Stroke opacity, Labels.
+
 ## JavaScript
 
 ```javascript

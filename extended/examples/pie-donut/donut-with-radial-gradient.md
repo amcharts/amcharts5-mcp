@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a donut chart of sales in nine countries, where each slice is shaded with a soft radial gradient made from its own color, so the ring looks rounded, with labels showing each country and its share. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Rounded corners, Labels, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a waffle chart: a 10 by 10 grid of squares, one per percent, showing how visitors reached a website by search, direct, social or email, each source in its own color. Add tooltips and a legend with each share. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded corners, Stroke width, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

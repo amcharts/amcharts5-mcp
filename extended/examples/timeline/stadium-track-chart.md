@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stadium track chart: an oval running track with one lane per runner, where each runner’s value is a bar running round their lane from the start line. In the middle, a legend shows a photo of each runner; pointing at one lights up their bar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Full lap, Bar opacity, Distance markers.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a waterfall chart from net revenue to operating income, each cost or gain floating from where the step before ended, with totals, increases and decreases in their own colors, joined by a dashed line. Label each column with its amount. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Connector line dash, Decrease color, Rounded corners, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

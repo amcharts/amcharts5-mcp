@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal arc diagram of the connections between the six friends of the TV show Friends and the people linked to them, ordered so the arcs stay short. Size the circles by each node’s total, and make the arcs as thick as the values. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Size circles by, Arc opacity.
+
 ## JavaScript
 
 ```javascript

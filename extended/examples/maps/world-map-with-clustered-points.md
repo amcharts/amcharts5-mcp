@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map of the capital cities as points that cluster: points close together merge into a group showing their count, and clicking a group zooms in until it breaks up into single cities, each with its name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Satellite view, Bullet color, Bullet size, Land opacity, Grid opacity.
+
 ## JavaScript
 
 ```javascript

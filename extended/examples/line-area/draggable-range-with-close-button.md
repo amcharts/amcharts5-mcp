@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about 300 daily values with a draggable stop-loss line: a dashed horizontal line with a small box showing its value, which updates as the box is dragged up or down. A close button in the box removes it. Add a fill under the line, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Stop loss color, Area opacity, Fading fill, Axis on the right, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a polar chart of the average wind speed at a beach from eight compass directions (sample data), drawn as one line with round bullets, with shaded sectors marking the onshore and offshore wind directions. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Shaded sectors, Bullets, Bullet size.
+
 ## JavaScript
 
 ```javascript

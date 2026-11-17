@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a two-panel chart of daily Microsoft (MSFT) stock prices loaded from a CSV file: candlesticks above and trading volume columns below, sharing a date axis and cursor, with the days grouped into weeks or months when zoomed out. Add tooltips, legends and a scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Volume height, Rising candles, Grid dash, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

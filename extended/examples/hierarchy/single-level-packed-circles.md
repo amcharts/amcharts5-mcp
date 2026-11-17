@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a packed circle chart of 500 items on a single level, each circle sized by its value and labeled with it, inside a container that can be zoomed and panned. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Labels, Circle opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

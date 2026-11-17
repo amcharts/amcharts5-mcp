@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a tile map of the US states as an XY chart: each state is a circle in a grid that follows the map, colored by population with its state code, and stays round at any size. A heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tile size, Heat legend.
+
 ## JavaScript
 
 ```javascript

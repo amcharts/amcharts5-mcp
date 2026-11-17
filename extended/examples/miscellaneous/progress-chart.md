@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a progress chart: one horizontal bar from 0 to 100% split into five stages of different lengths, each in its own color, with the percentage where each stage starts marked under the bar and a legend of the stages. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded ends, Bar height, Percent labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

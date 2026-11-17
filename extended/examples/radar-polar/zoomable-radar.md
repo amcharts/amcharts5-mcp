@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable radar chart of stacked columns showing website visits per month by source (search, direct, social and email). Zoom with the mouse wheel, by dragging around the ring, or with scrollbars for the months and the values. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Curved labels, Scrollbars.
+
 ## JavaScript
 
 ```javascript

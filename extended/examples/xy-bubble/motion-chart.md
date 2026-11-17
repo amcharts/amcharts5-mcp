@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Gapminder-style motion chart of the world’s countries as bubbles with made-up data from 1903 to 2025, colored by continent, with a play button and a slider for the years. Clicking a bubble draws its path through the years, and a small world map filters the bubbles by continent. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bubble size, Vertical grid, Horizontal grid, World map, Year in the background, Scrollbars.
+
 ## JavaScript
 
 ```javascript

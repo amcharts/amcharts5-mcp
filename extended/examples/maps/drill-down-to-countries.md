@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a drill-down world map with the countries colored by continent. Clicking a country zooms to it and loads its map of regions from the amCharts geodata, and a back button returns to the world map. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Zoom time, Hover color, Stroke width, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Pareto chart of website visits from ten countries: columns sorted from most to fewest visits, each in its own color, and a line of the running share of the total on a second, percentage axis. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value labels, Line dash, Fading columns, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

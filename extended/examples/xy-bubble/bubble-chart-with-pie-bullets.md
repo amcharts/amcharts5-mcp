@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY chart with two value axes where each of four data points is drawn as a small pie chart of its own breakdown, sized by its value, with tooltips on the slices. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Pie size, Hole size, Pie rotation, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical line chart with the dates running up the Y axis and the values on the X axis: about five weeks of daily values as a dashed line with small markers, over two shaded value zones. Add a cursor, tooltips and a vertical scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line thickness, Line dash, Zone boundary, Zone opacity, Dates top to bottom, Values on top, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

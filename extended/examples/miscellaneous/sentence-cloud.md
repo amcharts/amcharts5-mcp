@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a sentence cloud of what a café’s customers say in their reviews: eight short phrases sized by how many reviews mention each, all level, on rounded boxes in different colors that never overlap. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Text size, Word angles, Scatter.
+
 ## JavaScript
 
 ```javascript

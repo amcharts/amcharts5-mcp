@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a force-directed tree of a software company: the company in the middle, its departments around it and their teams around them, sized by headcount. Clicking a department folds or unfolds its teams. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Link dash, Shadow opacity, Shadow blur, Shadow distance.
+
 ## JavaScript
 
 ```javascript

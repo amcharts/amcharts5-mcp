@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a US population pyramid by sex and age group next to a timeline of the US population from 1950 to 2100, with the projected years dashed. Moving the cursor over the timeline redraws the pyramid for that year. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar height, Area opacity, Vertical grid, Horizontal grid, Minor grid.
+
 ## JavaScript
 
 ```javascript

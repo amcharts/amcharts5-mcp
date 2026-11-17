@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about 2,000 daily values that zooms along the value axis: drag up or down on the plot to zoom to a band of values, use the mouse wheel, or move the band with a vertical scrollbar. Add a fill under the line, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value scrollbar, Area opacity, Fading fill, Minor grid, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

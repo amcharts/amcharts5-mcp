@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a vertical partition (icicle) chart of the 168 hours of one person’s week by activity, with the levels running top to bottom. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Layout, Rounded corners, Labels.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a progress bar toward net zero: a row of segments counting down from 15 to 0 in red, yellow and green, with a map pin over the current level, a round GOAL ZERO badge at the end and a few scale labels under the bar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Rounded ends, Scale labels.
+
 ## JavaScript
 
 ```javascript

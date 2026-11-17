@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about 300 daily values with a dotted horizontal target line and its label. The part of the line below the target is drawn in a different color. Add a fill under the line, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Target, Target line dash, Area opacity, Fading fill, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

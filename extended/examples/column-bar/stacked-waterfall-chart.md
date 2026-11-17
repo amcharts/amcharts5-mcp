@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stacked waterfall chart of two budgets spent over eight stages: the first stage stacks both budgets from zero, and each later stage floats where the one before ended, taking its share of each budget, down to zero at the end. Label the parts and each stage’s total. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stage totals, Column width, Axis on the right, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

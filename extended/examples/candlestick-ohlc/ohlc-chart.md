@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable OHLC chart of about five years of simulated daily prices, each bar a line from low to high with ticks for the open and close, merging into weeks or months when zoomed out. Add a cursor, tooltips, a legend and a scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Tick width, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

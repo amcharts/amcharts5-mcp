@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create a schedule chart on a date axis, shown in Berlin time with root.timezone: three rows (a Berlin office, a New York office, and the hours both are open), with a bar for each weekday's 9:00 to 17:00 on each office's own clock, over three weeks around the 2026 autumn daylight saving changes. Mark the days that are not 24 hours long in the chart's time zone. Add a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Time zone, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

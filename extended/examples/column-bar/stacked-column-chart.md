@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a stacked column chart of six regions’ values over three years, each segment labeled with its value, with tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Grid dash, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

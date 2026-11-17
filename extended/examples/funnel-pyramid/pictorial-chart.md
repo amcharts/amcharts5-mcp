@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pictorial stacked chart in the shape of a wine glass, with two wines filling the bowl. Below the glass, add a slider: dragging it lowers the top wine, as if it were being drunk. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tick dash, Tick thickness.
+
 ## JavaScript
 
 ```javascript

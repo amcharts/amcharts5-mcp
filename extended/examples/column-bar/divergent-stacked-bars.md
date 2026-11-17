@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a diverging stacked bar chart of survey answers about eleven sources of information: Never and Unlikely stack to the left of zero, Sometimes and Very often to the right. Label the segments with their shares, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar height, Rounded ends, Row bands, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

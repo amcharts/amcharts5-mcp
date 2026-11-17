@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart comparing six countries, each column in its own color with fully rounded tops, a gradient that darkens toward the bottom and a grainy texture. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Shadow opacity, Shadow blur, Shadow distance, Grain opacity, Grain density, Grain size.
+
 ## JavaScript
 
 ```javascript

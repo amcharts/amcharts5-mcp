@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable word cloud of the most frequent words in King Claudius’s first speech in Shakespeare’s Hamlet, counted from the plain text, with each word set level or upright. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Biggest words, Word angles, Scatter, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

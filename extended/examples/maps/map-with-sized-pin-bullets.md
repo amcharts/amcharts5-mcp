@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of the continents with pin-shaped markers on four regions, showing made-up yearly sales growth: each pin is a pole with a round head that carries the value, and bigger values make bigger, taller pins. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Pin titles, Land opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

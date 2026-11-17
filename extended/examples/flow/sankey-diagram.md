@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a Sankey diagram of an example energy budget: sources flow into electricity and fuels, then to homes, industry and transport, and end as useful energy or lost heat. Color each band with a gradient between its nodes, and let the nodes be dragged. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Link color, Band opacity, Node width, Labels.
+
 ## JavaScript
 
 ```javascript

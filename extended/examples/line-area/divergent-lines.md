@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a smoothed line chart of monthly values for 2025: a solid line of observed data from January to July, then three dashed lines that start from July and diverge until December (easing rules, stricter rules and a projection). Add a legend, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Smoothing, Forecast line dash, Bullets, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

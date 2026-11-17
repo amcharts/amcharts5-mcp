@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a donut chart of support tickets by rating (Critical, Acceptable, Good) next to a bar chart. Clicking a slice pulls it out, shows its share in the donut’s middle and fills the bar chart with that slice’s breakdown by ticket type. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Value labels, Rounded ends, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

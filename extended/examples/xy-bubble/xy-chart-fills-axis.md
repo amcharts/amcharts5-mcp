@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY chart with two value axes and two line series with semi-transparent area fills: one fills down to the X axis and the other across to the Y axis, so the shaded areas face different directions. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Lower area opacity, Upper area opacity, Bullets, Bullet size, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

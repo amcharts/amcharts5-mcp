@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of yearly values from 1970 to 2025 that grow from single digits to tens of thousands, on a logarithmic value axis so the small early values and the large later ones are both readable. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Logarithmic scale, Line dash, Bullets, Bullet size, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

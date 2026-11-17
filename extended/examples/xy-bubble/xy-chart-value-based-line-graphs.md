@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY chart with two value axes and two dashed line series, one with circle bullets and the other with star bullets, each bullet sized by a value. Some points have a value for only one series, and the lines connect across the gaps. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Line opacity, Line dash, Bubble size, Bubble opacity, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

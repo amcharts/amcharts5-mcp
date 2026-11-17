@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a clustered column chart comparing six regions over three years, with each year’s columns side by side in a group and a value label on every column. Add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cell padding, Rounded tops, Label position, Label alignment, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

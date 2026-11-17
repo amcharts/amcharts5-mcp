@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of yearly values from 2015 to 2025, split into three phases, each with its own color for the line, the fill under it and the bullets, set in the data. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value labels, Area opacity, Fading fill, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

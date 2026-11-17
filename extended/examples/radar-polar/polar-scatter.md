@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a polar scatter plot on a 24-hour clock of commuter trips by start time and duration (sample data), with dots for three ways to travel (car, bike and train), a legend, and tooltips showing when each trip left. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Curved labels, Minor grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create a performance timeline like the overview of Chrome DevTools' performance panel, with generated data: a 10-second recording sampled every 20 ms. Top panel (60%): CPU use stacked by category as filled areas, 0 to 100% (Loading, Scripting, Rendering, Painting in theme colors, System in faint gray). Bottom panel: the JavaScript heap in MB as a line with a light fill, sawing down at each garbage collection, with a dot at each collection (larger for a major one). Both panels share the time axis in seconds (stacked y axes, each with an upright title). Mark long tasks (the processor busy at 95% or more for over 50 ms, whatever with) as faint red bands across the plot. Add a legend that shows each value at the cursor, a cursor that zooms on drag, and a scrollbar under the plot. On phones hide the legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Long tasks, Vertical grid, Horizontal grid, Area opacity.
+
 ## JavaScript
 
 ```javascript

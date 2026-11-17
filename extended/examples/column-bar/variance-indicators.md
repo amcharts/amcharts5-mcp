@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of seven yearly values with variance indicators between neighboring years: a thin line from each value to the next, topped by an arrow and the percent change, green and pointing up for a rise, red and pointing down for a fall. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Column width, Value labels, Change arrows, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

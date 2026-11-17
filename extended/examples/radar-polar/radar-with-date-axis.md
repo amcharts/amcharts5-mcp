@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radar chart with the year around the circle as a date axis and one ring per holiday home, showing the periods each home was booked (sample data) as bars from start to end date. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Rounded ends, Reversed rings, Scrollbar.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a tag cloud of the most used programming languages in the 2021 Stack Overflow survey, with a title above it and the words colored by weight so the most used stand out most. Clicking a word opens Stack Overflow’s questions with that tag. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Word angles, Whole boxes, no nesting, Title.
+
 ## JavaScript
 
 ```javascript

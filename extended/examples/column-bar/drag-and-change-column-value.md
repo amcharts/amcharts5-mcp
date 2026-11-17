@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of about three weeks of daily values that users set by pressing on the plot and dragging up or down; dragging sideways sets the next columns too. Give each column its own color. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value labels, Rounded tops, Minor grid, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

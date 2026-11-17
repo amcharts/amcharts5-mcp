@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable scatter plot of 20,000 points in four colored clusters, drawn fast by painting all the points into a single graphics element instead of one bullet each. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet opacity, Minor grid, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

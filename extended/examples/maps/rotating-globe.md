@@ -13,6 +13,8 @@ To make your own version, open it in Chart Maker and change it without code, or 
 
 Prompt: Create a slowly rotating globe covered with NASA’s satellite picture of the Earth, with the country borders over it, that can be dragged and zoomed. Clicking a country turns the globe to it and zooms in, and zoom buttons with a home button bring back the whole globe. Add the countries’ names, hidden at first, each shown only where it fits, so more appear as the globe zooms in. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rotation speed, Rotate to random country, Satellite view, Country names, Tilt, Grid opacity.
+
 ## JavaScript
 
 ```javascript

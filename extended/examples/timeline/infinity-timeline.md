@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a timeline of the Apollo 11 mission along a custom path shaped like a figure eight, with each logged event as a small dot that shows its time and description in a tooltip. Put a rotating globe inside the big loop and the Moon inside the small one. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tilt, Path dash.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable bubble chart with two series on two value axes, one drawn as circles and the other as eight-pointed stars, each shape sized by its value, with tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bubble size, Star points, Bubble opacity, Shadow opacity, Shadow blur, Shadow distance, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

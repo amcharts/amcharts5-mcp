@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a nested donut chart drawn as an open arc over the top, with a thin inner ring of liters in shades of one color and a wide outer ring of bottles for nine countries, no labels, and the total liters in large text in the middle. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Rounded corners, Total in the middle.
+
 ## JavaScript
 
 ```javascript

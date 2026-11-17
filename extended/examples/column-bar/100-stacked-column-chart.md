@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a 100% stacked column chart of six world regions over three years, where the chart works out each region’s share of the year from raw values. Label every segment with its percentage, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Rounded corners, Column width, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

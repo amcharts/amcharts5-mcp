@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a half-circle gauge with two scales of different ranges, one inside the arc and one outside, each with its own color, its own needle and a readout of its value above the center. Every 2 seconds both needles move to random values. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, Readouts, Rim thickness.
+
 ## JavaScript
 
 ```javascript

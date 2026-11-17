@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a strip plot of made-up social media posts: a row for each of 12 networks, and each post a dot placed by its time of day, sized by its likes and colored by network. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet size, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a radar heat map with the 24 hours of the day around the circle and the seven weekdays as rings around a hole in the middle. Color each cell by its value, and add a heat legend that marks the value of the cell under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Arc, Stroke width, Day names.
+
 ## JavaScript
 
 ```javascript

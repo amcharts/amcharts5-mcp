@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pair of bullet charts, one above the other, each with an actual value as a bar and a target as a short line over a scale colored from poor to good: a smooth gradient in the first, five solid bands in the second. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar and target color, Band opacity, Bar height, Full-height target.
+
 ## JavaScript
 
 ```javascript

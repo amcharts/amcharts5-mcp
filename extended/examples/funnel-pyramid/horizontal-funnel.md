@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal funnel chart of seven sample categories running from left to right, with each slice sloping to the height of the next one, labels on the slices and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Taper, Gap between slices, Labels, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

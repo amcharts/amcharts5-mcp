@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a world map timeline of countries joining a fictional treaty from 1963 to 2025, with a play button and a year slider under the map. Moving the slider highlights every country that had joined by that year, and play runs through the years. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Stroke width, Title, Grid opacity, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

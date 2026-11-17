@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of visits from 16 countries, each column in its own color, with an export menu that saves the chart as an image or PDF, prints it, or saves its data as JSON, CSV, Excel, PDF or HTML. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Value labels, Rounded tops, Fading columns, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

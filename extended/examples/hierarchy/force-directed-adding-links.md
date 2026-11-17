@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a force-directed chart of 15 people as circles of different sizes, where you link people by clicking: click one person to select them, then another to link the two, or to remove the link if they are already linked. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Node size, Gap between circles, Circle opacity, Shadow opacity, Shadow blur, Shadow distance.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a slowly turning globe covered with NASA’s satellite picture of the Earth, with the country borders drawn over it as thin lines and the country’s name in a tooltip. Give the globe a soft glow, and let it be dragged in any direction and zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Image, Tilt, Image opacity, Country borders, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

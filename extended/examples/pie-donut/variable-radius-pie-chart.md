@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pie chart where each slice’s radius grows with its value, so the larger values reach further from the center, showing six sample categories with labels and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Stroke width, Labels, Start angle, End angle, Slice shift, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

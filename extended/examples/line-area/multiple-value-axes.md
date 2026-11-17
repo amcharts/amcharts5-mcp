@@ -23,6 +23,8 @@ Think twice when:
 
 Prompt: Create a line chart of three series of daily values of very different sizes on one date axis, each with its own value axis (one on the left, two on the right) colored like its series, synced so they share one set of grid lines. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Two axes on the right, Grid opacity, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

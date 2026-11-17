@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of about three years of daily values where dragging across the plot marks a date range as a shaded band. Several ranges can be marked: a new one stops at the edge of an earlier one, or replaces a range it covers. Add tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Mark color, Mark opacity, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

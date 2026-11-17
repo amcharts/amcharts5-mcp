@@ -326,6 +326,10 @@ function extractDemoConfigPage(doc) {
     if (heading && items.length) description.push(`${text(heading)}:\n${items.join("\n")}`);
   }
   if (config.prompt) description.push(`Prompt: ${config.prompt}`);
+  // The page adds its own controls (demo.json "controls", run from the page's
+  // controls.js), which copied code never has; the lead may name them
+  const controls = (config.controls || []).map((c) => decode(String(c.label || "")).trim()).filter(Boolean);
+  if (controls.length) description.push(`The demo's page on amcharts.com adds controls that are not part of this code: ${controls.join(", ")}.`);
 
   const javascript = codeEl.textContent.replace(/\s+$/, "");
 

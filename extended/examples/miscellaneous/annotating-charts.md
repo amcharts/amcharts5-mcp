@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pie chart with an export menu that has an extra Annotate item, so anyone can draw callouts, arrows and text on the chart and save the result. Start with a few saved annotations on the slices. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Notes, Hole size, Rounded corners.
+
 ## JavaScript
 
 ```javascript

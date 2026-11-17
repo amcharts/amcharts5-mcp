@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a horizontal bar chart of sales in the mainland US states, grouped into four regions, sorted by sales within each region and colored by region, with each region’s name beside its group. Add a cursor, tooltips and a legend of the regions. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Logarithmic scale, Bar height, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

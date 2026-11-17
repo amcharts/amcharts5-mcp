@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create a 3D globe of Mars that turns slowly on its own, a full turn every two minutes, covered with the amCharts CDN's picture of Mars (https://cdn.amcharts.com/lib/5/geodata/images/mars2048.jpg) and a faint latitude and longitude grid, seen a little from above, with zoom buttons. Mark the ten landers and rovers that worked on Mars (Viking 1 and 2, Pathfinder, Spirit, Opportunity, Phoenix, Curiosity, InSight, Perseverance, Zhurong) with orange circles that hide when they turn to the far side, their names beside them, and the mission, what it was, the place and the landing date on hover. Add, in teal and clearly marked fictional, the Ares 3 site (31.3N, 28.7W, Acidalia Planitia) and the Ares 4 site (3.96S, 15.2E, Schiaparelli crater) from Andy Weir's novel The Martian. Credit the picture to the USGS Astrogeology Science Center and NASA Ames Research Center. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tilt, Labels, The Martian (fiction), Image opacity.
+
 ## JavaScript
 
 ```javascript

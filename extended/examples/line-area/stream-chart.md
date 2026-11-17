@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a streamgraph of Olympic medal counts for the United Kingdom, the Soviet Union, Russia, the United States and China at each Summer Games from 1896 to 2008, drawn as smoothed layers centered on zero. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Smoothing, Layer opacity, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

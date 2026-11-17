@@ -20,6 +20,8 @@ Think twice when:
 
 Prompt: Create Jupiter as a map chart in globe projection wearing the amCharts CDN's picture of Jupiter (https://cdn.amcharts.com/lib/5/geodata/images/jupiter2048.jpg), as a time-lapse: the map turns once a Jupiter day in 30 seconds. Add Io, Europa, Ganymede and Callisto as map points raised onto barely visible solid orbits (dashes would spin with the turning map) round the equator, their distances squeezed with a logarithm so Callisto fits, each sized by the square root of its radius and colored like the moon, going round at its real relative speed (its longitude on the turning map moves at its speed less the planet's). View it from 12 degrees above the equator on a dark background; a drag up or down tilts it. Tooltips: each moon's diameter, real distance and period. Credit the picture to NASA/JPL/Space Science Institute. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Tilt, Moons, Orbit opacity.
+
 ## JavaScript
 
 ```javascript

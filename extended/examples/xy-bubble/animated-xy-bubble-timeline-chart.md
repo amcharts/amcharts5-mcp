@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an animated bubble chart of 50 bubbles with made-up values that drift from 1953 to 2025, on a plot split into four colored quadrants, with the year in large faint text and a play button and a slider that run through the years. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Quadrant opacity, Year in the background, Minor grid, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

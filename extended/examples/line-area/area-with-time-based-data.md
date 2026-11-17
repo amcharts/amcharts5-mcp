@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an area chart of about eight hours of minute-by-minute visits ending now, zoomed to the last hour when it opens. Add tooltips, a cursor and a horizontal scrollbar with a preview of the whole series. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Area opacity, Fading fill, Preview height, Axis on the right, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

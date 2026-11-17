@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a word cloud of programming languages weighted by how many developers used them in the 2021 Stack Overflow survey. Every few seconds, give the words new random weights, so they glide to new sizes and places. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Biggest words, Word angles, Scatter, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

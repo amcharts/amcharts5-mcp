@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of 100 daily values where each segment is green when the value rises from the day before and red when it falls, with the tooltip in the color of the segment under it. Add a cursor and a horizontal scrollbar with a preview of the line. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Line thickness, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

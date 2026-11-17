@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column and line chart of income and expenses over six years: income as columns, expenses as a line with circle markers, and the last year shown as a projection with a dashed, faded column and a dashed line. Add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Expense labels, Column width, Vertical grid, Horizontal grid, Legend.
+
 ## JavaScript
 
 ```javascript

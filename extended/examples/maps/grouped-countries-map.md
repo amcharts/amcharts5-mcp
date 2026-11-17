@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a map of Europe showing the European Union’s member countries grouped by when they joined (before 2004, in 2004, 2007 and 2013), each group in its own color. Hovering a country highlights its whole group, and a legend turns groups off and on. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Stroke width, Other countries, Grid opacity, Legend.
+
 ## JavaScript
 
 ```javascript

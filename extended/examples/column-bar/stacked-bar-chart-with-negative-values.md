@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a population pyramid: a horizontal bar chart of age groups, the oldest on top, with men’s shares to the left of zero and women’s to the right, both shown as positive numbers. Mark the two sides Male and Female, and add value labels and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar height, Rounded ends, Bar opacity, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

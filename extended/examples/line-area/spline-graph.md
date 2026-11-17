@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a spline (smoothed line) chart of 15 daily values with star-shaped bullets, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Smoothing, Line dash, Bullets, Bullet size, Grid bands, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

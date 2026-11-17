@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a circular Voronoi treemap of world population, with the continents divided into their countries and each continent’s smallest countries grouped into an Others cell. Clicking a country zooms to its continent, clicking again zooms back out, and the chart can be zoomed and panned. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Corner count, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a floating bar chart of four people’s working hours on one day, each bar running from the hour they start to the hour they finish, in its own color. Add tooltips with the start and end. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bar height, Rounded corners, Hours on top, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

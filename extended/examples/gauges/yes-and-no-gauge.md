@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a half-circle gauge split into a YES half and a NO half, with no numbers on the scale, and a needle that swings from one side to the other every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Start angle, End angle, YES color, NO color, Needle width.
+
 ## JavaScript
 
 ```javascript

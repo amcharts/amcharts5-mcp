@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a smoothed line chart of yearly values from 1950 to 2005 with two stretches of missing years, where the line breaks instead of joining across the gap. Color the line, its fill and its bullets differently above and below zero. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Connect across gaps, Smoothing, Area opacity, Fading fill, Bullets, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

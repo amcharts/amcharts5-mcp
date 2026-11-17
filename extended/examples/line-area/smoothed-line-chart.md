@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a smoothed line chart of 50 daily values with round bullets and a light fill under the line. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Smoothing, Line thickness, Area opacity, Fading fill, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

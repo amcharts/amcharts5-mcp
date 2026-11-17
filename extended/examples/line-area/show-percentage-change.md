@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a line chart of two price series over about two years, shown as percent change from the first visible day, so the change counts again from the new start as you zoom or scroll. The legend and tooltips show each price and its change, colored for a gain or a loss. Add a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Change since, Line thickness, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

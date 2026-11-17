@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a step line chart of yearly temperature anomalies from 1950 to 2005, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Risers, Line thickness, Line dash, Minor grid, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

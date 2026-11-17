@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pie chart comparing seven countries, each slice sized by its value, with tooltips showing the country and its share of the total. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Pie size, Labels, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a donut chart of an economy’s sectors that plays through twenty years of data on its own, changing to the next year every 4 seconds and looping, with the year in large text in the hole. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Rounded corners, Labels, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

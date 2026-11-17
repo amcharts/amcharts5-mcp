@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a draggable globe with two routes around the world, a northern and a southern one, each linking major cities in a loop. Draw each route in its own color as a dashed line raised into arcs above the surface. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Satellite view, Arc height, Line dash, Tilt, Cities, Grid opacity.
+
 ## JavaScript
 
 ```javascript

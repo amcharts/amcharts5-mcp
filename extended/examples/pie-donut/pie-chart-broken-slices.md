@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a pie chart of fossil and green energy that drills down in place: clicking a slice breaks it into its sources (oil, coal and gas, or hydro, wind and other), pulled out in the parent’s color, and clicking one of them puts the parent slice back. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Labels, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

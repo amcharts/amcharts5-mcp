@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a nested pie chart of EU enlargement: the inner ring shows the population that joined in each year, and the outer ring splits each year into its countries, in lighter shades of that year’s color, with tooltips showing the populations. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Hole size, Stroke width, Country names, Start angle, End angle, Slice shift.
+
 ## JavaScript
 
 ```javascript

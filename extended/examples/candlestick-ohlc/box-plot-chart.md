@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a box plot of nine days of values, each day a box from the first to the third quartile, with whiskers to the minimum and maximum and a line at the median. Add a cursor and tooltips with all five values. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Box width, Median labels, Whisker width, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

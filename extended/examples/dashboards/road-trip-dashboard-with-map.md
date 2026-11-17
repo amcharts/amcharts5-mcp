@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a road trip dashboard with two linked charts: a serpentine timeline of 13 daily stops from Vilnius to Palermo, drawn as a winding road with the cities sized by population, and a map of Europe with the route and the same cities. Pointing at a city in either chart enlarges it in both. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Timeline rows, Route line dash, Distance markers, Land color, Grid opacity.
+
 ## JavaScript
 
 ```javascript

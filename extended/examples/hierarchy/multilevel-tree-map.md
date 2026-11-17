@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a treemap of a year of US car sales by brand and model, with each brand in its own color and its logo faintly in the middle of its box. Clicking a model zooms into its brand, and clicking again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Layout, Rounded corners, Zoom buttons.
+
 ## JavaScript
 
 ```javascript

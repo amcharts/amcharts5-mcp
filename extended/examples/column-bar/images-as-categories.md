@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a column chart of website visits from eleven countries, each column in its own color, with each country’s flag under its column and the country name below the flag. Label every column with its value, and add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rounded tops, Label position, Label alignment, Axis on the right, Vertical grid, Horizontal grid.
+
 ## JavaScript
 
 ```javascript

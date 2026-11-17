@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable line chart of 50,000 daily values that groups the data into weeks, months or years when zoomed out and shows the daily values when zoomed in. Add a light fill under the line, a cursor, tooltips and a scrollbar with a preview of the whole series. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Group data, Line thickness, Area opacity, Fading fill, Grid dash, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

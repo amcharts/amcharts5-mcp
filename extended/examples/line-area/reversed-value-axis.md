@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a ranking line chart of where three teams finished in a league table each year from 2015 to 2025, on an inverted value axis so rank 1 is at the top. Give each team its own bullet shape, and thicken a team’s line when its legend item is hovered. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rank 1 on top, Line thickness, Axis on the right, Vertical grid, Horizontal grid, Legend, Legend position, Scrollbar.
+
 ## JavaScript
 
 ```javascript

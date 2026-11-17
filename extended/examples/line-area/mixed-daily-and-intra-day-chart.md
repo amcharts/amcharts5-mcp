@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a chart with two time scales: a line of hourly values over ten days, with columns behind it showing each day’s average. Each series has its own date axis, but they share one value axis. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Hourly line, Line dash, Column width, Fading columns, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

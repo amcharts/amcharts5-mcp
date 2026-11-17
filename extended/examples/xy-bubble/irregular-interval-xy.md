@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create an XY chart of an elevation profile over 50 km: six stretches of different lengths drawn as columns that span their stretch, in alternating colors, with the distance marked at every point where a stretch begins or ends. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Axis starts at, Value labels, Rounded corners, Vertical grid, Horizontal grid, Scrollbars.
+
 ## JavaScript
 
 ```javascript

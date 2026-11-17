@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a sunburst chart styled as a coffee aroma wheel, inspired by the CoffeeMind Aroma Wheel, with flavor families in the inner ring, their aromas in the outer ring and a title in the hole. Clicking a family opens it to fill the wheel, and clicking it again goes back. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Rotate, Hole size, Labels.
+
 ## JavaScript
 
 ```javascript

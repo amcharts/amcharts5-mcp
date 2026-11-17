@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a force-directed tree of a city’s power network: a power plant feeds four substations, which feed districts sized by their demand in megawatts. Arrows travel along every link from parent to child, over and over, and clicking a substation folds or unfolds its districts. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Link opacity, Link thickness, Gap between nodes, Shadow opacity, Shadow blur, Shadow distance.
+
 ## JavaScript
 
 ```javascript

@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a control chart of 16 readings taken every 30 minutes, with a center line and dashed upper and lower control limits, labeled at the right. Mark the readings beyond a limit, and a long run above the center line, with differently styled markers. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Limit line opacity, Line dash, Bullets, Bullet size, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript

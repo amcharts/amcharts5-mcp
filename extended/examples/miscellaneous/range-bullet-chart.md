@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a range bullet chart of the scores of two options, Reduce Expenses and Increase Expenses: each a bar from the lowest to the highest score with a circle at each end and a triangle marking the average, with a legend above the chart. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Bullet size, Vertical grid, Horizontal grid, Legend, Legend position.
+
 ## JavaScript
 
 ```javascript

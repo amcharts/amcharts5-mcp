@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a globe that spins slowly on its own and can be dragged in any direction. Draw a circle on the surface of each country, sized by its population and colored by continent, with the country and population in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Projection, Satellite view, Circle opacity, Countries, Grid opacity.
+
 ## JavaScript
 
 ```javascript

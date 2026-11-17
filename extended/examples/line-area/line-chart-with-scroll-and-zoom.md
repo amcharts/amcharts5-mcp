@@ -21,6 +21,8 @@ Think twice when:
 
 Prompt: Create a zoomable line chart of about 2,000 daily values with a horizontal scrollbar that holds a miniature preview of the whole series. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
+The demo's page on amcharts.com adds controls that are not part of this code: Cursor mode, Preview height, Axis on the right, Grid bands, Vertical grid, Horizontal grid, Scrollbar.
+
 ## JavaScript
 
 ```javascript
