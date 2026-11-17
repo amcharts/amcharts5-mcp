@@ -933,6 +933,15 @@ const tests = [
     },
     label: "get_api_reference('ValueAxis') — its methods, with signatures, and the inherited ones by name",
   },
+  {
+    send: { jsonrpc: "2.0", id: 108, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "europe" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("npm CDN (AI sandboxes, strict CSPs): https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@")) return `FAIL (no jsDelivr base: ${text.slice(0, 200)})`;
+      return /not jsDelivr/.test(text) ? "FAIL (still says not jsDelivr)" : "PASS";
+    },
+    label: "list_geodata — the npm-CDN base is jsDelivr (unpkg serves the same path)",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

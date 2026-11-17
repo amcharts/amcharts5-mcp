@@ -130,7 +130,7 @@ cdnjs URLs always need a version number. Any 5.x version works; the latest one i
 Since version 5.22.0, the npm packages work too, with maps of every detail:
 
 * The library on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/index.js`. See "[npm package](https://docs.amcharts.com/v5/getting-started/#npm-package)".
-* Maps on unpkg only: `https://unpkg.com/@amcharts/amcharts5-geodata@5.2.0/dist/worldHigh.js`. `worldLow.js` and `usaLow.js` are also in the library's `dist/geodata/`.
+* Maps on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/worldHigh.js`. `worldLow.js` and `usaLow.js` are also in the library's `dist/geodata/`.
 
 ### Web search availability by platform
 

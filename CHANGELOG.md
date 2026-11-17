@@ -10,11 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.9.7] - 2026-11-17
 
 ### Fixed
-- **The Claude plugin passes the plugin directory's policy check.** The directory refused 1.9.5 and 1.9.6 with "Package registry redirected" (`LAUNCHER_REGISTRY_REDIRECT`) on SKILL.md, naming no line. The rule reads the word "npm" in a paragraph that also sets a config with `=` (`element.config = {…}`) as an npm registry setting. Four SKILL.md paragraphs had that: they, and the "Maps and locales" serializer note for consistency, now say "ES module imports" or "in a bundled app" instead of "npm". The rule is newer than 1.9.4's check: 1.9.4's own SKILL.md is refused today. The jsDelivr `<script>` block that 1.9.6 turned into a sentence was not the cause. Found by scanning test versions of SKILL.md on a test branch the directory tracked; the portal's Validate and `claude plugin validate` don't run this check.
+- **The Claude plugin passes the plugin directory's policy check.** The directory refused 1.9.5 and 1.9.6 with "Package registry redirected" (`LAUNCHER_REGISTRY_REDIRECT`) on SKILL.md, naming no line. The rule reads the word "npm" in a paragraph that also sets a config with `=` (`element.config = {…}`) as an npm registry setting. Three SKILL.md paragraphs had that: they, and for consistency pitfall 41 and the "Maps and locales" serializer note, now say "ES module imports" or "in a bundled app" instead of "npm". The rule is newer than 1.9.4's check: 1.9.4's own SKILL.md is refused today. The jsDelivr `<script>` block that 1.9.6 turned into a sentence was not the cause. Found by scanning test versions of SKILL.md on a test branch the directory tracked; the portal's Validate and `claude plugin validate` don't run this check.
 - SKILL.md's Frameworks section names the packages to install instead of giving an `npm install` command.
+- 1 new test (108): `list_geodata` gives the jsDelivr base.
 
 ### Changed
-- **Maps load from jsDelivr too.** jsDelivr now serves `@amcharts/amcharts5-geodata`, at the same paths as unpkg. The skill (SKILL.md "Maps", pitfall 21 and the New list, map.md, cursorrules), the geodata index's npm-CDN base and `list_geodata` give the jsDelivr address, with unpkg as the alternative, and no longer say jsDelivr refuses the package.
+- **Maps load from jsDelivr too.** jsDelivr now serves `@amcharts/amcharts5-geodata`, at the same paths as unpkg. The skill (SKILL.md "Maps", pitfall 21 and the New list, map.md, cursorrules), the geodata index's npm-CDN base and `list_geodata` give the jsDelivr address, with unpkg as the alternative, and no longer say jsDelivr refuses the package. So does our copy of four docs pages (getting-started, map-chart, ai, React Native), which the docs team has fixed too.
 
 ## [1.9.6] - 2026-11-17
 

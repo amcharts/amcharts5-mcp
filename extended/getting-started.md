@@ -70,7 +70,7 @@ amCharts 5 is also available on [cdnjs](https://cdnjs.com/libraries/amcharts5) a
 Since version 5.22.0, the npm package `@amcharts/amcharts5` has the same files in its `dist/` folder. Load them from your own `node_modules`, or from an npm CDN (jsDelivr or unpkg). Use this when:
 
 * You install amCharts from npm but load it with `<script>` tags, without a bundler.
-* A sandbox or online code editor allows npm CDNs but not ours. AI chat sandboxes such as Claude artifacts also allow cdnjs, but it has only low-detail maps; unpkg has every map.
+* A sandbox or online code editor allows npm CDNs but not ours. AI chat sandboxes such as Claude artifacts also allow cdnjs, but it has only low-detail maps; jsDelivr and unpkg have every map.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/index.js"></script>
@@ -88,7 +88,7 @@ Since version 5.22.0, the npm package `@amcharts/amcharts5` has the same files i
 * Pin the version and load every file from the same one.
 * Use plain `<script>` tags, not `type="module"`. The exporting plugin's PDF, Excel and annotation code loads on first use from the `deps/` folder next to `index.js`, wherever that is served from.
 * Load order is the same as on our CDN: `index.js` first.
-* Two maps are included: `geodata/worldLow.js` (`am5geodata_worldLow`) and `geodata/usaLow.js` (`am5geodata_usaLow`). All maps are in the `@amcharts/amcharts5-geodata` package's `dist/`, which loads from unpkg but not jsDelivr (the package is over jsDelivr's size limit): `https://unpkg.com/@amcharts/amcharts5-geodata@5.2.0/dist/germanyLow.js`. See "[Geodata (maps)](https://docs.amcharts.com/v5/charts/map-chart/#geodata-maps)".
+* Two maps are included: `geodata/worldLow.js` (`am5geodata_worldLow`) and `geodata/usaLow.js` (`am5geodata_usaLow`). All maps are in the `@amcharts/amcharts5-geodata` package's `dist/`, on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/germanyLow.js`. See "[Geodata (maps)](https://docs.amcharts.com/v5/charts/map-chart/#geodata-maps)".
 * Fonts for PDF export aren't included. With `<script>` tags, load them from our CDN, e.g. `https://cdn.amcharts.com/lib/5/fonts/notosans-sc.js`. The `@amcharts/amcharts5-fonts` package has them for bundlers.
 
 #### Download
