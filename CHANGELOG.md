@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - `search_docs` no longer ends the title of a section without a heading (SKILL.md's opening) with a bare "→".
+- **Claude plugin: SKILL.md's jsDelivr `<script src>` block is a sentence.** The plugin directory refused 1.9.5 with "Package registry redirected" on SKILL.md, without naming a line. The directory's validation passes once the block is a sentence, so SKILL.md now gives the same jsDelivr folder and file names in one, as the references do. The guidance is unchanged.
 
 ## [1.9.5] - 2026-11-16
 
