@@ -10,7 +10,7 @@ Build charts and maps with [amCharts 5](https://www.amcharts.com/), the JavaScri
   It also covers setup, themes, colors, legends, tooltips, exporting, JSON configs, and amCharts' packages for React, Vue, Angular, Svelte and React Native. It lists the mistakes that code written from older knowledge makes most often. The assistant reads the skill when a request is about amCharts or a chart it can build, and opens a chart type's reference only when it needs it.
 - **The amCharts MCP server** at `https://mcp.amcharts.com/mcp`. It gives the assistant:
   - the amCharts 5 documentation;
-  - 290+ working code examples;
+  - 690+ working code examples;
   - the API reference for every class, generated from the library's typings;
   - the list of map files.
 

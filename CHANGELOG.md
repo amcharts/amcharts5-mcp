@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.9.6] - 2026-11-17
 
 ### Added
-- **The docs pages' demos are examples of their own.** The docs site writes each embedded demo out in full after its "Example:" link, which was half of the docs text: the clustered point series page was 207,000 characters, 196,000 of them demo code. The 332 demos (354 embeds; some pages share one) are now examples in the new `docs-demos` category: `get_example(path: "examples/docs-demos/<name>")`, each with its JavaScript, HTML, the chart's CSS and its scripts, and the docs page it comes from. A page keeps the link and points to the example. The docs copy shrinks from 3.7 to 1.9 MB.
+- **The docs pages' demos are examples of their own.** The docs site's Markdown writes each embedded demo out in full after its "Example:" link, which would be half of the docs text: the clustered point series page would be 207,000 characters, 196,000 of them demo code. The 332 demos (354 embeds; some pages share one) are now examples in the new `docs-demos` category: `get_example(path: "examples/docs-demos/<name>")`, each with its JavaScript, HTML, the chart's CSS and its scripts, and the docs page it comes from. A page keeps the link and points to the example. Moving them out keeps the docs copy at 1.9 MB instead of 3.7 MB.
   - `get_example` takes a demo's embed address (`https://docs.amcharts.com/embeds/v5/<name>/`), and so do the pasted-link pointers.
   - A name shared with an amcharts.com demo (`sankey-diagram`) still means the amcharts.com demo.
   - In search, the docs demos rank below the amcharts.com demos and the skill on shared words, but first when searched by name.

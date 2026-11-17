@@ -242,7 +242,7 @@ Once connected, your AI assistant can:
 
 ## Content
 
-The server includes **1,900+ documents**:
+The server includes **2,200+ documents**:
 
 - **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides for amCharts' React, Vue, Angular, Svelte and React Native packages (with Next.js, Nuxt, SvelteKit, React Router and Remix 3)
 - **690+ code examples** — 300+ working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more, plus 60+ complete JSON configs from the amCharts npm package and 330+ demos embedded in the docs pages (each page links its demos)
