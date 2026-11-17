@@ -803,7 +803,8 @@ function addPage(title, type, body, { source = true, heading } = {}) {
   const file = title.toLowerCase().replace(/[^a-z0-9]/g, "") + ".md";
   if (pages.has(file)) {
     const p = pages.get(file);
-    p.body = p.body.trimEnd() + `\n\n## ${heading || `${title} (${type})`}\n\n` + body.replace(/^## /gm, "### ");
+    // A methods placeholder in the appended body is filled in later: mark it, so its headings are demoted too
+    p.body = p.body.trimEnd() + `\n\n## ${heading || `${title} (${type})`}\n\n` + body.replace(/^## /gm, "### ").replace(/\u0000methods:/g, "\u0000methods-sub:");
     stats.appended.push(`${title} (${type}) → ${file}`);
     return file;
   }
@@ -986,7 +987,7 @@ function emitClass(node, secondary = false) {
   // Methods are rendered after every page is written (see "Methods" below):
   // printing their signatures earlier changes how the checker prints other types
   const methodsMark = `\u0000methods:${name}:${pendingMethods.length}\u0000`;
-  pendingMethods.push({ mark: methodsMark, node, sym, name, chain, secondary });
+  pendingMethods.push({ mark: methodsMark, node, sym, name, chain });
   parts.push(methodsMark);
 
   finishPage(name, "class", parts.join("\n\n"), node, secondary);
@@ -1172,9 +1173,12 @@ for (const ns of namespaces) emitNamespace(ns);
 for (const p of pages.values()) counts[p.type] = (counts[p.type] || 0) + 1;
 
 // --- Methods (second pass) ---------------------------------------------------
-const methodText = new Map(pendingMethods.map((m) => [m.mark, m.secondary ? methodSections(m).replace(/^## /gm, "### ") : methodSections(m)]));
+const methodText = new Map(pendingMethods.map((m) => [m.mark, methodSections(m)]));
 for (const p of pages.values()) {
-  p.body = p.body.replace(/\u0000methods:[^\u0000]*\u0000/g, (mark) => methodText.get(mark) || "");
+  p.body = p.body.replace(/\u0000methods(-sub)?:[^\u0000]*\u0000/g, (mark, sub) => {
+    const text = methodText.get(mark.replace("methods-sub:", "methods:")) || "";
+    return sub ? text.replace(/^## /gm, "### ") : text;
+  });
 }
 
 // --- Runtime-only cross-check -------------------------------------------------

@@ -39,7 +39,7 @@ import * as am5plugins_json from "@amcharts/amcharts5/plugins/json";
 
 Extends: (none)
 
-## Methods
+### Methods
 
 - `parse<E extends Entity>(object: unknown, settings?: IParseSettings): Promise<E>` — Builds the chart objects a config describes, loading the classes it needs first. Parameters: `object`: Config, as a plain object; `settings`: Parse settings. Returns: A promise of the object the config builds, usually the chart
 - `parseString<E extends Entity>(string: string, settings?: IParseSettings): Promise<E>` — Builds the chart objects a config describes, from a JSON string. Parameters: `string`: JSON string; `settings`: Parse settings. Returns: A promise of the object the config builds, usually the chart
