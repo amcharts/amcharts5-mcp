@@ -1,7 +1,7 @@
 ---
 title: "Getting started"
 source: "https://docs.amcharts.com/v5/getting-started/"
-scraped: "2026-11-16"
+scraped: "2026-11-17"
 ---
 
 During the course of this tutorial we'll get acquainted with the general concepts behind amCharts 5, terminology used, and other things to get you started.

@@ -1,7 +1,7 @@
 ---
 title: "Map chart"
 source: "https://docs.amcharts.com/v5/charts/map-chart/"
-scraped: "2026-11-16"
+scraped: "2026-11-17"
 ---
 
 Map chart is a chart type used to display geographical maps. This tutorial walks through the basics of creating such charts.
@@ -34,7 +34,7 @@ Map chart uses geodata in [GeoJSON](https://geojson.org/) format. There are hund
 
 They are available as a zipped download from our [downloads page](https://www.amcharts.com/download/), or as an NPM package `@amcharts/amcharts5-geodata`, or via CDN.
 
-Since version 5.2.0, the npm package also has the script versions in `dist/`, so you can load them from `node_modules` or from an npm CDN (jsDelivr or unpkg), e.g. `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/worldLow.js`. Paths are the same as under `geodata/` on our CDN; regional maps are under `dist/region/`.
+Since version 5.2.0, the npm package also has the script versions in `dist/`, so you can load them from `node_modules` or from an npm CDN (jsDelivr or unpkg), e.g. `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/worldLow.js`. Paths are the same as under `geodata/` on our CDN: regional maps are under `dist/region/`.
 
 ### Geodata detail
 

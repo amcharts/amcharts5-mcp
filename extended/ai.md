@@ -1,7 +1,7 @@
 ---
 title: "amCharts + AI"
 source: "https://docs.amcharts.com/v5/ai/"
-scraped: "2026-11-16"
+scraped: "2026-11-17"
 ---
 
 > AI models know amCharts 5 well - but how you use them makes a big difference. This guide covers the key scenarios and how to get the most out of each one.

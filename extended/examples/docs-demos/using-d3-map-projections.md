@@ -2,7 +2,7 @@
 title: "Using D3 map projections"
 source: "https://docs.amcharts.com/embeds/v5/using-d3-map-projections/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-17"
 docsPages: ["charts/map-chart"]
 ---
 
