@@ -2,7 +2,7 @@
 title: "Network Waterfall Chart"
 source: "https://www.amcharts.com/demos/network-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 The requests a shop's home page makes as it loads, the way the browser's network panel draws them: each request a row, split into its phases, with its DOMContentLoaded and Load moments marked. Throttle the network with Chrome's presets to see what a slow connection does.
@@ -18,7 +18,7 @@ Think twice when:
 - Hundreds of requests: group or filter them first
 - Totals per phase: a stacked bar chart is clearer
 
-Prompt: Create a network waterfall chart like Chrome DevTools' network panel, with generated data: the 17 requests of a shop's home page (the HTML, styles, scripts, fonts, images, API calls, analytics, favicon) down the side in request order, time in milliseconds along the top. Each request's phases are floating bars on its row, one column series per phase (Queueing in faint gray, then DNS lookup, Connecting, Waiting for server and Content download in theme colors) with a legend; DNS and connecting only on the first request to each server; later requests to it queue until that connection is up. Mark DOMContentLoaded and Load with dashed vertical lines labeled with their times; Load waits for the files, images and the analytics script, not for fetch() calls. Tooltips: the file, the phase and its duration, the type, size and server. Buttons switch the network speed with Chrome's throttling presets (off; fast 4G, 8.1 Mbps and 165 ms; slow 4G, 1.44 Mbps and 562.5 ms; 3G, 400 kbps and 2,000 ms) and recompute the timings. On phones hide the legend and the milestone labels. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a network waterfall chart like Chrome DevTools' network panel, with generated data: the 17 requests of a shop's home page (the HTML, styles, scripts, fonts, images, API calls, analytics, favicon) down the side in request order, time in milliseconds along the top. Each request's phases are floating bars on its row, one column series per phase (Queueing in faint gray, then DNS lookup, Connecting, Waiting for server and Content download in theme colors) with a legend; DNS and connecting only on the first request to each server; later requests to it queue until that connection is up. Mark DOMContentLoaded and Load with dashed vertical lines labeled with their times; Load waits for the files, images and the analytics script, not for fetch() calls. Tooltips: the file, the phase and its duration, the type, size and server. Buttons switch the network speed with Chrome's throttling presets (off; fast 4G, 8.1 Mbps and 165 ms; slow 4G, 1.44 Mbps and 562.5 ms; 3G, 400 kbps and 2,000 ms) and recompute the timings. On phones hide the legend and the milestone labels. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -263,7 +263,7 @@ var loadRange = milestone(root.interfaceColors.get("negative"), 1);
 // On a narrow chart (a phone) the legend would take most of the height: it is hidden there, and so are the milestones' labels (their lines stay). The rule is
 // undone on a wider chart
 responsive.addRule({
-  relevant: am5themes_Responsive.widthM, // the chart is 600px wide or less
+  relevant: am5themes_ResponsiveMax.widthM, // the chart is 600px wide or less
   applying: function() {
     legend.set("forceHidden", true);
     dclRange.get("label").set("forceHidden", true); // the lines stay
@@ -317,4 +317,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

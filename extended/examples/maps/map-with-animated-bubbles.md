@@ -2,7 +2,7 @@
 title: "Map with Animated Bubbles"
 source: "https://www.amcharts.com/demos/map-with-animated-bubbles/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Bubbles on eight countries that grow and shrink as their values change every two seconds, with the value inside each bubble and the country's name beside it.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact comparisons: bubble sizes are hard to judge, a bar chart is easier
 - Values that change once a day: a still map is calmer
 
-Prompt: Create a world map with bubbles on eight countries, each with its value inside and the country’s name beside it. Every two seconds each country gets a new random value, and the bubbles grow and shrink smoothly to match. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map with bubbles on eight countries, each with its value inside and the country’s name beside it. Every two seconds each country gets a new random value, and the bubbles grow and shrink smoothly to match. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -67,7 +67,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Colors from the theme, so the map follows the theme
 var colors = am5.ColorSet.new(root, {});
@@ -296,4 +296,4 @@ satelliteSeries.on("visible", function(visible) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

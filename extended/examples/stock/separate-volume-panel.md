@@ -2,7 +2,7 @@
 title: "Separate Volume Panel"
 source: "https://www.amcharts.com/demos/separate-volume-panel/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Candlesticks on top and trading volume in a panel of its own below. The two panels zoom, scroll and follow the cursor together, and volume gets its own scale instead of a strip under the candles.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who ignore volume: leave it out
 - Several stocks compared: one stock’s volume confuses
 
-Prompt: Create a stock chart of a year of daily prices for a made-up ticker, with candlesticks in the main panel and volume columns in a separate panel below, plus a toolbar with indicators, date ranges, series types and drawing tools. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of a year of daily prices for a made-up ticker, with candlesticks in the main panel and volume columns in a separate panel below, plus a toolbar with indicators, date ranges, series types and drawing tools. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -650,4 +650,4 @@ sbSeries.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

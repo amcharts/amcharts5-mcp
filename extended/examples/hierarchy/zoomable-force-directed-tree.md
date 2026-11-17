@@ -2,7 +2,7 @@
 title: "Zoomable Force Directed Tree"
 source: "https://www.amcharts.com/demos/zoomable-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A force-directed tree lays out a hierarchy as linked bubbles that push apart until they settle. This one holds the coffee flavor wheel, 85 flavors in nine families, in a view you can zoom and pan.
@@ -19,7 +19,7 @@ Think twice when:
 - A strict top-down order: use a tree chart
 - Printed pages, where nobody can zoom
 
-Prompt: Create a zoomable force-directed tree of the coffee flavor wheel, with the flavor families, their subgroups and about 85 flavors as linked colored circles. The chart can be zoomed and panned, and clicking a node folds or unfolds its branch. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable force-directed tree of the coffee flavor wheel, with the flavor families, their subgroups and about 85 flavors as linked colored circles. The chart can be zoomed and panned, and clicking a node folds or unfolds its branch. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = {
@@ -588,4 +588,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

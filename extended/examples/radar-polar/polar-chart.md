@@ -2,7 +2,7 @@
 title: "Polar Chart"
 source: "https://www.amcharts.com/demos/polar-chart/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A polar chart places values by direction: the farther a point from the middle, the higher the value. Here, the average wind speed at a beach from eight directions, with onshore winds shaded blue and offshore winds red.
@@ -19,7 +19,7 @@ Think twice when:
 - Several series: the lines tangle
 - Precise values: distances from the middle are hard to judge
 
-Prompt: Create a polar chart of the average wind speed at a beach from eight compass directions (sample data), drawn as one line with round bullets, with shaded sectors marking the onshore and offshore wind directions. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a polar chart of the average wind speed at a beach from eight compass directions (sample data), drawn as one line with round bullets, with shaded sectors marking the onshore and offshore wind directions. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -180,4 +180,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

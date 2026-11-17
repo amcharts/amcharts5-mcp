@@ -2,7 +2,7 @@
 title: "Two Linked Pie Charts with a Legend"
 source: "https://www.amcharts.com/demos/two-pie-charts-with-single-legend/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two donuts, one legend: the same four countries in two groups side by side, each with its total in the middle. Point at a slice and its twin lights up in the other donut.
@@ -19,7 +19,7 @@ Think twice when:
 - Small changes in share: they are hard to spot between pies
 - Different categories in each pie: one legend can’t cover both
 
-Prompt: Create two donut charts side by side that compare the same four countries in two sets of data, with each total in the middle and one shared legend. Hovering, clicking or toggling a country in either chart or the legend does the same in both. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create two donut charts side by side that compare the same four countries in two sets of data, with each total in the middle and one shared legend. Hovering, clicking or toggling a country in either chart or the legend does the same in both. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // the two charts on top, the shared legend under them
@@ -295,4 +295,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

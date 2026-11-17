@@ -2,7 +2,7 @@
 title: "Solar Eclipse Map"
 source: "https://www.amcharts.com/demos/solar-eclipse-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The path of the total solar eclipse of August 2, 2027, on a globe: a band up to 259 km wide where the Moon covers the whole Sun, from the Atlantic across North Africa and Arabia to the Indian Ocean.
@@ -19,7 +19,7 @@ Think twice when:
 - Local detail: zoom in, or use a country map
 - Exact edges: real paths vary in width, use published outlines
 
-Prompt: Create a globe that shows the path of totality of the total solar eclipse of August 2, 2027, as a band drawn around its central line, with two wider, fainter bands around it. Clicking a country turns the globe to center it. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a globe that shows the path of totality of the total solar eclipse of August 2, 2027, as a band drawn around its central line, with two wider, fainter bands around it. Clicking a country turns the globe to center it. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -143,7 +143,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme: the path and the buttons in its first color
@@ -403,4 +403,4 @@ chart.animate({ key: "rotationX", to: -20, duration: 2500, easing: am5.ease.inOu
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/percent-charts/legend-percent-series"]
 ---
 
-A demo from the docs page "Legend and Pie/Sliced series" (get_doc(path: "charts/percent-charts/legend-percent-series")).
+A demo from the docs page "Legend and Pie/Sliced series" (get_doc(path: "charts/percent-charts/legend-percent-series")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

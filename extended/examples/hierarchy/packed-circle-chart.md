@@ -2,7 +2,7 @@
 title: "Packed Circle Chart"
 source: "https://www.amcharts.com/demos/packed-circle-chart/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A packed circle chart nests circles inside circles, each sized by its value. Here, one listener’s year of music: 1,000 hours, grouped by genre and style.
@@ -19,7 +19,7 @@ Think twice when:
 - Using all the space: a treemap fills the rectangle
 - Values close in size: the circles look alike
 
-Prompt: Create a packed circle chart of one listener’s year of music in hours, with each genre holding its styles, and a legend of the genres that can hide them. Clicking a genre zooms into it, and clicking it again zooms back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a packed circle chart of one listener’s year of music in hours, with each genre holding its styles, and a legend of the genres that can hide them. Clicking a genre zooms into it, and clicking it again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -40,7 +40,7 @@ myTheme.rule("Label", ["pack", "node", "depth1"]).set("forceHidden", true);
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -157,4 +157,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

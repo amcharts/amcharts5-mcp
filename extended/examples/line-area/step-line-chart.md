@@ -2,7 +2,7 @@
 title: "Step Line Chart"
 source: "https://www.amcharts.com/demos/step-line-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line that moves in steps: each value stays flat until the next one, then jumps straight up or down. Here, yearly temperature anomalies from 1950 to 2005.
@@ -19,7 +19,7 @@ Think twice when:
 - Hundreds of points close together: the steps turn into a jagged blur
 - Separate totals you want to compare: columns read better
 
-Prompt: Create a step line chart of yearly temperature anomalies from 1950 to 2005, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a step line chart of yearly temperature anomalies from 1950 to 2005, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ root.dateFormatter.setAll({
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -196,4 +196,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Rotating Moon"
 source: "https://www.amcharts.com/demos/rotating-moon/"
 category: "maps"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 The Moon as a slowly turning globe, covered with NASA's map of its surface, and the six places where Apollo astronauts landed, all on the side that faces the Earth.
@@ -18,7 +18,7 @@ Think twice when:
 - Comparing places on the far side: one side shows at a time
 - Exact positions: a flat map is easier to read
 
-Prompt: Create a 3D globe of the Moon that turns slowly on its own, a full turn every two minutes, covered with the amCharts CDN's picture of the Moon's surface (https://cdn.amcharts.com/lib/5/geodata/images/moon2048.jpg) and a faint latitude and longitude grid. Mark the six Apollo landing sites with orange circles holding the mission number, laid flat on the surface, with the mission, the place and the landing date on hover. Credit the picture to NASA's Scientific Visualization Studio. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a 3D globe of the Moon that turns slowly on its own, a full turn every two minutes, covered with the amCharts CDN's picture of the Moon's surface (https://cdn.amcharts.com/lib/5/geodata/images/moon2048.jpg) and a faint latitude and longitude grid. Mark the six Apollo landing sites with orange circles holding the mission number, laid flat on the surface, with the mission, the place and the landing date on hover. Credit the picture to NASA's Scientific Visualization Studio. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The buttons (the zoom control) in a dark slate that suits the night sky, instead of the default blue
@@ -179,4 +179,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "U.S. Congressional Districts"
 source: "https://www.amcharts.com/demos/us-congressional-districts/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The 435 U.S. congressional districts, colored by party: blue for Democrats, red for Republicans, gray where there is no data. The party data is example data from an earlier Congress.
@@ -19,7 +19,7 @@ Think twice when:
 - Dense cities: add insets or zoom in
 - Margins of victory: shade by margin, not only by winner
 
-Prompt: Create a map of the US congressional districts colored by party with example data (Democrats, Republicans or no data), with the state, party and district in a tooltip and a legend of the three. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of the US congressional districts colored by party with example data (Democrats, Republicans or no data), with the state, party and district in a tooltip and a legend of the three. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -492,7 +492,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -580,4 +580,4 @@ legend.data.setAll([{
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional120/usaCongressionalLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

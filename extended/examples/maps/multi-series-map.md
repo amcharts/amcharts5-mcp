@@ -2,7 +2,7 @@
 title: "Multi-Series Map"
 source: "https://www.amcharts.com/demos/multi-series-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One map, two layers: a polygon series of world countries, and a second one of US states drawn on top in a color of its own.
@@ -19,7 +19,7 @@ Think twice when:
 - Two layers colored by value: give each its own color scale
 - A single country: load its own map
 
-Prompt: Create a zoomable world map with two layers: the world’s countries, and the US states drawn over the United States in their own color. Both layers show the region’s name in a tooltip, and a click highlights a country or state until clicked again. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable world map with two layers: the world’s countries, and the US states drawn over the United States in their own color. Both layers show the region’s name in a tooltip, and a click highlights a country or state until clicked again. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -159,4 +159,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/geodata/usaLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

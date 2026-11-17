@@ -2,7 +2,7 @@
 title: "Stock Intraday Data"
 source: "https://www.amcharts.com/demos/stock-intraday-data/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One trading day in 390 one-minute candles, 9:30 to 16:00, with each minute’s volume below. The axis shows New York time, wherever you are.
@@ -19,7 +19,7 @@ Think twice when:
 - Many days of minutes: load them on demand or group them
 - Readers in other time zones: say which time the axis shows
 
-Prompt: Create a stock chart of one trading day in one-minute candles with volume for a made-up ticker, from 9:30 to 16:00 New York time, with the axis showing those times in every time zone. Add a toolbar with indicators, series types and drawing tools. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of one trading day in one-minute candles with volume for a made-up ticker, from 9:30 to 16:00 New York time, with the axis showing those times in every time zone. Add a toolbar with indicators, series types and drawing tools. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -43,7 +43,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -741,4 +741,4 @@ sbSeries.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

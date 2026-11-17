@@ -2,7 +2,7 @@
 title: "Pictorial Stacked Chart"
 source: "https://www.amcharts.com/demos/pictorial-stacked-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Seven values stacked inside the outline of a person, from head to feet, each band sized by its share. An infographic look for data about people.
@@ -19,7 +19,7 @@ Think twice when:
 - More than seven parts: the bands get too thin to label
 - Data that isn’t about people: pick a shape that matches
 
-Prompt: Create a pictorial stacked chart that fills the outline of a person from head to feet with seven sample categories, each band as tall as its share, with labels at the side. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a pictorial stacked chart that fills the outline of a person from head to feet with seven sample categories, each band as tall as its share, with labels at the side. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -94,4 +94,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

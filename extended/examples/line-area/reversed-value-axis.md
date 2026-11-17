@@ -2,7 +2,7 @@
 title: "Reversed Value Axis"
 source: "https://www.amcharts.com/demos/reversed-value-axis/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A ranking chart: the value axis is flipped so first place sits at the top, where people look for the winner. Here, where three teams finished in a league each year (sample data).
@@ -19,7 +19,7 @@ Think twice when:
 - More than five or six lines: the crossings become a tangle
 - Close races: a rank hides how near the scores were
 
-Prompt: Create a ranking line chart of where three teams finished in a league table each year from 2015 to 2025, on an inverted value axis so rank 1 is at the top. Give each team its own bullet shape, and thicken a team’s line when its legend item is hovered. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a ranking line chart of where three teams finished in a league table each year from 2015 to 2025, on an inverted value axis so rank 1 is at the top. Give each team its own bullet shape, and thicken a team’s line when its legend item is hovered. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -275,4 +275,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

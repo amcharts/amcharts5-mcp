@@ -2,7 +2,7 @@
 title: "Changing Map Projection"
 source: "https://www.amcharts.com/demos/changing-map-projection/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One world map, three projections: every 4 seconds it morphs from Equal Earth to Equirectangular to a globe and back, until you pick one with the Projection buttons. Drag the map to spin the world.
@@ -19,7 +19,7 @@ Think twice when:
 - A globe for comparisons: half the world is hidden
 - Switching often: readers lose their bearings
 
-Prompt: Create a world map that morphs smoothly into the next projection every few seconds: Equal Earth, Equirectangular and a globe, then round again. Dragging sideways turns the world, and dragging up and down tilts the globe. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map that morphs smoothly into the next projection every few seconds: Equal Earth, Equirectangular and a globe, then round again. Dragging sideways turns the world, and dragging up and down tilts the globe. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -153,6 +153,6 @@ var cycle = setInterval(function() {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://d3js.org/d3-array.v1.min.js
 - https://d3js.org/d3-geo.v1.min.js

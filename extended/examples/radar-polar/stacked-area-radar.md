@@ -2,7 +2,7 @@
 title: "Stacked Area Radar"
 source: "https://www.amcharts.com/demos/stacked-area-radar/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A radar chart with stacked areas: the inner area is one part, and the outer edge is the total. Here, the cash 24 companies hold abroad and in the US.
@@ -19,7 +19,7 @@ Think twice when:
 - A handful of categories: a stacked bar chart is clearer
 - Values far apart in size: small ones disappear in the middle
 
-Prompt: Create a stacked area radar chart of the cash 24 companies hold abroad and in the US (sample data), with the companies around the circle sorted from most to least cash abroad, and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stacked area radar chart of the cash 24 companies hold abroad and in the US (sample data), with the companies around the circle sorted from most to least cash abroad, and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -328,4 +328,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Logarithmic Scale"
 source: "https://www.amcharts.com/demos/logarithmic-scale/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart whose value axis climbs in multiples of ten instead of equal steps. Values from 2 to over 23,000 fit on one chart, and the small early ones stay readable.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who expect equal steps: label the axis clearly
 - Differences in amount: a linear axis shows them truly
 
-Prompt: Create a line chart of yearly values from 1970 to 2025 that grow from single digits to tens of thousands, on a logarithmic value axis so the small early values and the large later ones are both readable. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of yearly values from 1970 to 2025 that grow from single digits to tens of thousands, on a logarithmic value axis so the small early values and the large later ones are both readable. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ root.dateFormatter.setAll({
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -194,4 +194,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

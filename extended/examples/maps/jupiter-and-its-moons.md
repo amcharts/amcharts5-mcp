@@ -2,7 +2,7 @@
 title: "Jupiter and Its Moons"
 source: "https://www.amcharts.com/demos/jupiter-and-its-moons/"
 category: "maps"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 Jupiter as a globe wearing Cassini's map of its clouds, spinning a Jupiter day in 30 seconds, with its four largest moons going round at their real relative speeds: Io in under two days, Callisto in over sixteen.
@@ -18,7 +18,7 @@ Think twice when:
 - Exact distances: the moons' distances are squeezed to fit
 - Today's weather on Jupiter: the picture is from 2000
 
-Prompt: Create Jupiter as a map chart in globe projection wearing the amCharts CDN's picture of Jupiter (https://cdn.amcharts.com/lib/5/geodata/images/jupiter2048.jpg), as a time-lapse: the map turns once a Jupiter day in 30 seconds. Add Io, Europa, Ganymede and Callisto as map points raised onto barely visible solid orbits (dashes would spin with the turning map) round the equator, their distances squeezed with a logarithm so Callisto fits, each sized by the square root of its radius and colored like the moon, going round at its real relative speed (its longitude on the turning map moves at its speed less the planet's). View it from 12 degrees above the equator on a dark background; a drag up or down tilts it. Tooltips: each moon's diameter, real distance and period. Credit the picture to NASA/JPL/Space Science Institute. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create Jupiter as a map chart in globe projection wearing the amCharts CDN's picture of Jupiter (https://cdn.amcharts.com/lib/5/geodata/images/jupiter2048.jpg), as a time-lapse: the map turns once a Jupiter day in 30 seconds. Add Io, Europa, Ganymede and Callisto as map points raised onto barely visible solid orbits (dashes would spin with the turning map) round the equator, their distances squeezed with a logarithm so Callisto fits, each sized by the square root of its radius and colored like the moon, going round at its real relative speed (its longitude on the turning map moves at its speed less the planet's). View it from 12 degrees above the equator on a dark background; a drag up or down tilts it. Tooltips: each moon's diameter, real distance and period. Credit the picture to NASA/JPL/Space Science Institute. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The buttons (the zoom control) in a dark slate that suits the night sky, instead of the default blue
@@ -206,4 +206,4 @@ chart.children.push(am5.Label.new(root, {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

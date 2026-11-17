@@ -2,7 +2,7 @@
 title: "Mars Landing Sites"
 source: "https://www.amcharts.com/demos/mars-landing-sites/"
 category: "maps"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 Mars as a slowly turning globe, covered with the Viking orbiters' color map of its surface, and the ten landers and rovers that worked there, from Viking 1 in 1976 to Perseverance and Zhurong in 2021. In teal, two places that are fiction: the Ares 3 and Ares 4 sites from the novel The Martian.
@@ -18,7 +18,7 @@ Think twice when:
 - Comparing places on the far side: one side shows at a time
 - Exact positions: a flat map is easier to read
 
-Prompt: Create a 3D globe of Mars that turns slowly on its own, a full turn every two minutes, covered with the amCharts CDN's picture of Mars (https://cdn.amcharts.com/lib/5/geodata/images/mars2048.jpg) and a faint latitude and longitude grid, seen a little from above, with zoom buttons. Mark the ten landers and rovers that worked on Mars (Viking 1 and 2, Pathfinder, Spirit, Opportunity, Phoenix, Curiosity, InSight, Perseverance, Zhurong) with orange circles that hide when they turn to the far side, their names beside them, and the mission, what it was, the place and the landing date on hover. Add, in teal and clearly marked fictional, the Ares 3 site (31.3N, 28.7W, Acidalia Planitia) and the Ares 4 site (3.96S, 15.2E, Schiaparelli crater) from Andy Weir's novel The Martian. Credit the picture to the USGS Astrogeology Science Center and NASA Ames Research Center. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a 3D globe of Mars that turns slowly on its own, a full turn every two minutes, covered with the amCharts CDN's picture of Mars (https://cdn.amcharts.com/lib/5/geodata/images/mars2048.jpg) and a faint latitude and longitude grid, seen a little from above, with zoom buttons. Mark the ten landers and rovers that worked on Mars (Viking 1 and 2, Pathfinder, Spirit, Opportunity, Phoenix, Curiosity, InSight, Perseverance, Zhurong) with orange circles that hide when they turn to the far side, their names beside them, and the mission, what it was, the place and the landing date on hover. Add, in teal and clearly marked fictional, the Ares 3 site (31.3N, 28.7W, Acidalia Planitia) and the Ares 4 site (3.96S, 15.2E, Schiaparelli crater) from Andy Weir's novel The Martian. Credit the picture to the USGS Astrogeology Science Center and NASA Ames Research Center. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The buttons (the zoom control) in a dark slate that suits the night sky, instead of the default blue
@@ -245,4 +245,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

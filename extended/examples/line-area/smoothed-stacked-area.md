@@ -2,7 +2,7 @@
 title: "Smoothed Stacked Area"
 source: "https://www.amcharts.com/demos/smoothed-stacked-area/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A stacked area chart with soft curves and a grain texture: cars, motorcycles and bicycles from 2014 to 2025. Each layer’s thickness is its value.
@@ -19,7 +19,7 @@ Think twice when:
 - Negative values: a stack needs everything above zero
 - Shares rather than totals: use a 100% stacked area
 
-Prompt: Create a smoothed stacked area chart of yearly values for cars, motorcycles and bicycles from 2014 to 2025, with curved layers separated by borders and grainy fills. Add tooltips, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a smoothed stacked area chart of yearly values for cars, motorcycles and bicycles from 2014 to 2025, with curved layers separated by borders and grainy fills. Add tooltips, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -224,4 +224,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

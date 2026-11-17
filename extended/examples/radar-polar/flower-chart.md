@@ -2,7 +2,7 @@
 title: "Flower Chart"
 source: "https://www.amcharts.com/demos/flower-chart/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A radar column chart where the columns fill only the middle of each slice, so they stand apart like petals. Here, two coffees scored on eight tasting notes.
@@ -19,7 +19,7 @@ Think twice when:
 - Criteria on different scales
 - Exact differences: a grouped bar chart lines them up
 
-Prompt: Create a flower chart: a radar chart comparing light and dark roast coffee scored on eight tasting notes (sample data), with columns that fill only the middle of each slice so they look like petals, and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a flower chart: a radar chart comparing light and dark roast coffee scored on eight tasting notes (sample data), with columns that fill only the middle of each slice so they look like petals, and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Data: two coffees scored from 0 to 10 on eight tasting notes (sample data)
@@ -191,4 +191,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

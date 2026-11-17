@@ -2,7 +2,7 @@
 title: "Rotating Globe with Circles"
 source: "https://www.amcharts.com/demos/rotating-globe-with-circles/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A spinning globe with circles on 169 countries, each sized by the country's population and colored by its continent.
@@ -19,7 +19,7 @@ Think twice when:
 - Every country at once: switch Projection to a flat map
 - Exact numbers: keep them in tooltips or a table
 
-Prompt: Create a globe that spins slowly on its own and can be dragged in any direction. Draw a circle on the surface of each country, sized by its population and colored by continent, with the country and population in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a globe that spins slowly on its own and can be dragged in any direction. Draw a circle on the surface of each country, sized by its population and colored by continent, with the country and population in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -412,4 +412,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

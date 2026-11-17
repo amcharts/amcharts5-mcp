@@ -2,7 +2,7 @@
 title: "Bars with Moving Bullets"
 source: "https://www.amcharts.com/demos/bars-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bar chart with a photo on each bar. Point at a bar and the photo slides along it to the end. Here, step counts for six friends, the bars darker the more they walked.
@@ -19,7 +19,7 @@ Think twice when:
 - Reports and printouts: nothing moves on paper
 - Values close together: label them, the bars alone won’t tell them apart
 
-Prompt: Create a horizontal bar chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the start of their bar. Hovering a bar slides its photo along to the bar’s end. Add tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal bar chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the start of their bar. Hovering a bar slides its photo along to the bar’s end. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [
@@ -298,4 +298,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

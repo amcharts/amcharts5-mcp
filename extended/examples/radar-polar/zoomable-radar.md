@@ -2,7 +2,7 @@
 title: "Zoomable Radar"
 source: "https://www.amcharts.com/demos/zoomable-radar/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A radar chart of stacked columns that zooms every way: drag around the ring, scroll, or use the two scrollbars. Here, a year of website visits by where they came from.
@@ -19,7 +19,7 @@ Think twice when:
 - Printed reports, where nobody can zoom
 - Exact comparisons: stacked bars line up better
 
-Prompt: Create a zoomable radar chart of stacked columns showing website visits per month by source (search, direct, social and email). Zoom with the mouse wheel, by dragging around the ring, or with scrollbars for the months and the values. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable radar chart of stacked columns showing website visits per month by source (search, direct, social and email). Zoom with the mouse wheel, by dragging around the ring, or with scrollbars for the months and the values. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Data: visits to a website per month, in thousands, by where the visitors came from
@@ -148,4 +148,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Micro Charts & Sparklines"
 source: "https://www.amcharts.com/demos/micro-charts-sparklines/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Micro charts are tiny charts with no axes, grid or labels, small enough for a table row. Here, 40 made-up stock tickers, each with a price line and volume columns.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing levels between rows: each line has its own scale
 - One trend that matters: give it a proper chart
 
-Prompt: Create a table of about 40 stock tickers as plain HTML rows, each with its change in percent, a small sparkline of the price colored by whether it went up or down, and a micro column chart of the daily volume, from random data. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a table of about 40 stock tickers as plain HTML rows, each with its change in percent, a small sparkline of the price colored by whether it went up or down, and a micro column chart of the daily volume, from random data. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -115,7 +115,7 @@ function createValueChart(div, data, rising) {
   // the Micro theme drops axis labels, grid and padding, to suit a tiny chart
   root.setThemes([
     am5themes_Micro.new(root),
-    am5themes_Responsive.new(root)
+    am5themes_ResponsiveMax.new(root)
   ]);
 
   var chart = root.container.children.push(am5xy.XYChart.new(root, {
@@ -165,7 +165,7 @@ function createVolumeChart(div, data) {
 
   root.setThemes([
     am5themes_Micro.new(root),
-    am5themes_Responsive.new(root)
+    am5themes_ResponsiveMax.new(root)
   ]);
 
   var chart = root.container.children.push(am5xy.XYChart.new(root, {
@@ -229,4 +229,4 @@ function createVolumeChart(div, data) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Micro.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

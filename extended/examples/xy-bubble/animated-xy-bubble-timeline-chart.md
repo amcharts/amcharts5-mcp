@@ -2,7 +2,7 @@
 title: "Animated XY Bubble Timeline Chart"
 source: "https://www.amcharts.com/demos/animated-xy-bubble-timeline-chart/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Fifty bubbles with made-up values wander across four colored quadrants as the years run from 1953 to 2025. Press play to watch them move and grow, or drag the slider to any year.
@@ -19,7 +19,7 @@ Think twice when:
 - Many more bubbles: the motion turns into noise
 - Quadrant lines with no real meaning: plain axes are more honest
 
-Prompt: Create an animated bubble chart of 50 bubbles with made-up values that drift from 1953 to 2025, on a plot split into four colored quadrants, with the year in large faint text and a play button and a slider that run through the years. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an animated bubble chart of 50 bubbles with made-up values that drift from 1953 to 2025, on a plot split into four colored quadrants, with the year in large faint text and a play button and a slider that run through the years. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var yearData = {};
@@ -335,4 +335,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

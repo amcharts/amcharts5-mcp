@@ -51,6 +51,15 @@ These cover the skill (SKILL.md, the references, cursorrules), the tool descript
 - **Embedded demos.** The site writes each embedded demo out in full. The importer moves them to `extended/examples/docs-demos/<name>.md` and leaves a `get_example` pointer on the page (`scripts/docs-demos.mjs`).
 - **Old links.** Links to the old `www.amcharts.com/docs/v5/` addresses are rewritten by `scripts/docs-links.cjs`; `npm test` fails on any that remain.
 
+## The amcharts.com demos (`extended/examples/<category>/`)
+
+- **Import.** `npm run build:examples` scrapes every demo listed in amcharts.com's demos sitemap (`/demos/sitemap.xml`), then cleans and checks them.
+  - `npm run build:examples -- --changed` scrapes only the demos that are new or whose source changed (the sitemap's `<lastmod>`) after our copy was scraped.
+  - `npm run build:examples -- <name>` scrapes one.
+- **Folders.** A demo we already have keeps its folder. A new demo's category comes from its page's link to its gallery section; `CATEGORY_NAMES` in `scripts/scrape-demos.js` maps the site's names to our folders.
+- **Removed demos.** The import lists examples whose demo is gone from the site; delete them if that is intended.
+- **When.** Re-import when demos are added or changed on the site (the website team tells the MCP maintainers), and before each release, so the examples follow the skill's rules and the current library.
+
 ## Making changes
 
 - **Setup.** Clone with the submodule, `git clone --recurse-submodules` (or run `git submodule update --init` in a clone), then `npm ci`. Without the submodule the tests and builds fail.

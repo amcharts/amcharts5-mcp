@@ -2,7 +2,7 @@
 title: "Force-Directed Adding Links"
 source: "https://www.amcharts.com/demos/force-directed-adding-links/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A network you draw yourself: click one person, then another, and a line joins them; click a linked pair again to cut it. The forces pull linked people together as you go.
@@ -19,7 +19,7 @@ Think twice when:
 - Phones: tapping small circles is fiddly
 - Dozens of nodes: the links get hard to follow
 
-Prompt: Create a force-directed chart of 15 people as circles of different sizes, where you link people by clicking: click one person to select them, then another to link the two, or to remove the link if they are already linked. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a force-directed chart of 15 people as circles of different sizes, where you link people by clicking: click one person to select them, then another to link the two, or to remove the link if they are already linked. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Fifteen people; the value sets the size of each circle
@@ -166,4 +166,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

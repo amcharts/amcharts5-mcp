@@ -2,7 +2,7 @@
 title: "Drill-Down Map"
 source: "https://www.amcharts.com/demos/drill-down-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map of the continents that drills down to countries: click a continent to zoom in and see its countries, then click the house to go back.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who won’t click: put the key detail in the first view
 - Only a few areas: one flat map is enough
 
-Prompt: Create a two-level drill-down world map: it starts with the continents, and clicking one zooms to it and shows the countries. A back button with a house icon, or the home button, zooms out and brings the continents back. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a two-level drill-down world map: it starts with the continents, and clicking one zooms to it and shows the countries. A back button with a house icon, or the home button, zooms out and brings the continents back. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -172,4 +172,4 @@ zoomControl.homeButton.events.on("click", goBack);
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

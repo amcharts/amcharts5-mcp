@@ -2,7 +2,7 @@
 title: "Candlestick Chart"
 source: "https://www.amcharts.com/demos/candlestick-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A candlestick chart packs a day of trading into one mark: the body spans the opening and closing price, the wick the day’s low and high. This one holds 2,000 days; zoom out and they merge into weekly, then monthly candles.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers new to finance: explain the colors, or use a line
 - Comparing several stocks: draw lines of percent change
 
-Prompt: Create a zoomable candlestick chart of about five years of simulated daily prices, where zooming out merges the candles into weeks or months. Start on the last three months, and add a cursor, tooltips, a legend and a scrollbar with a price preview. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable candlestick chart of about five years of simulated daily prices, where zooming out merges the candles into weeks or months. Start on the last three months, and add a cursor, tooltips, a legend and a scrollbar with a price preview. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // 2000 days of random prices, up to today
@@ -253,4 +253,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

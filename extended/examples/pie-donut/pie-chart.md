@@ -2,7 +2,7 @@
 title: "Pie Chart"
 source: "https://www.amcharts.com/demos/pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The classic way to show parts of a whole: one circle, cut into slices sized by their share. Here, seven countries.
@@ -19,7 +19,7 @@ Think twice when:
 - Values that don’t add up to a whole, like ratings or averages
 - More than six or seven parts: group the small ones as Other
 
-Prompt: Create a pie chart comparing seven countries, each slice sized by its value, with tooltips showing the country and its share of the total. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pie chart comparing seven countries, each slice sized by its value, with tooltips showing the country and its share of the total. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -107,4 +107,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

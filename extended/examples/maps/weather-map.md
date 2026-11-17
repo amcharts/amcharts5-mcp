@@ -2,7 +2,7 @@
 title: "Weather Map"
 source: "https://www.amcharts.com/demos/weather-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A weather map of Europe: an animated icon and the temperature for seven capitals, picked from the data through template fields. The weather is made up.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact values: a table or a chart
 - Icons that need explaining: add labels or a legend
 
-Prompt: Create a weather map of Europe with seven cities, each showing an animated weather icon (sun, clouds, rain or thunder) and a label with the city and its temperature, using made-up weather. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a weather map of Europe with seven cities, each showing an animated weather icon (sun, clouds, rain or thunder) and a label with the city and its temperature, using made-up weather. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -152,7 +152,7 @@ pointSeries.bullets.push(function() {
 pointSeries.data.setAll([{
   geometry: { type: "Point", coordinates: [-3.703790, 40.416775] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/rainy-1.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/rainy-1.svg"
   },
   labelSettings: {
     text: "Madrid: +22°C"
@@ -161,7 +161,7 @@ pointSeries.data.setAll([{
 {
   geometry: { type: "Point", coordinates: [2.352222, 48.856614] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/thunder.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/thunder.svg"
   },
   labelSettings: {
     text: "Paris: +18°C"
@@ -170,7 +170,7 @@ pointSeries.data.setAll([{
 {
   geometry: { type: "Point", coordinates: [13.404954, 52.520007] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/cloudy-day-1.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/cloudy-day-1.svg"
   },
   labelSettings: {
     text: "Berlin: +13°C"
@@ -179,7 +179,7 @@ pointSeries.data.setAll([{
 {
   geometry: { type: "Point", coordinates: [21.012229, 52.229676] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/day.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/day.svg"
   },
   labelSettings: {
     text: "Warsaw: +22°C"
@@ -188,7 +188,7 @@ pointSeries.data.setAll([{
 {
   geometry: { type: "Point", coordinates: [12.480180, 41.872389] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/day.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/day.svg"
   },
   labelSettings: {
     text: "Rome: +29°C"
@@ -197,7 +197,7 @@ pointSeries.data.setAll([{
 {
   geometry: { type: "Point", coordinates: [-0.127758, 51.507351] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/rainy-7.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/rainy-7.svg"
   },
   labelSettings: {
     text: "London: +10°C"
@@ -206,7 +206,7 @@ pointSeries.data.setAll([{
 {
   geometry: { type: "Point", coordinates: [18.068581, 59.329323] },
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/weather/animated/rainy-1.svg"
+    src: "https://www.amcharts.com/static/img/weather-icons/animated/rainy-1.svg"
   },
   labelSettings: {
     text: "Stockholm: +8°C"
@@ -274,4 +274,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

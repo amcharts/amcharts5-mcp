@@ -2,7 +2,7 @@
 title: "Zoomable Multilevel Tree Map"
 source: "https://www.amcharts.com/demos/multilevel-tree-map/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A treemap splits one rectangle into boxes sized by value. This one has two levels, car brands and their models, from a year of US car sales, with each brand’s logo behind its models.
@@ -19,7 +19,7 @@ Think twice when:
 - Negative values: a box can’t be smaller than nothing
 - A handful of items: a pie or bar chart reads faster
 
-Prompt: Create a treemap of a year of US car sales by brand and model, with each brand in its own color and its logo faintly in the middle of its box. Clicking a model zooms into its brand, and clicking again zooms back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a treemap of a year of US car sales by brand and model, with each brand in its own color and its logo faintly in the middle of its box. Clicking a model zooms into its brand, and clicking again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -53,7 +53,7 @@ myTheme.rule("Label", ["node", "depth2"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -520,4 +520,4 @@ series.bullets.push(function (root, series, dataItem) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

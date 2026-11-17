@@ -2,7 +2,7 @@
 title: "Map with Dynamic Pie Charts"
 source: "https://www.amcharts.com/demos/map-dynamic-pie-charts/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Pie charts on a map: each of four regions gets its own pie of made-up sales by product line, sized by the region’s total sales.
@@ -19,7 +19,7 @@ Think twice when:
 - Close comparisons: bars beside the map
 - More than four or five slices: they get too thin
 
-Prompt: Create a map of the continents with a small pie chart on each of four regions, showing made-up sales of four product lines. Size each pie by the region’s total sales, and add a legend as a key to the product lines. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of the continents with a small pie chart on each of four regions, showing made-up sales of four product lines. Size each pie by the region’s total sales, and add a legend as a key to the product lines. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // ====================================
@@ -239,4 +239,4 @@ for (var i = 0; i < regions.length; i++) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

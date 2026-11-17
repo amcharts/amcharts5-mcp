@@ -2,7 +2,7 @@
 title: "No-Gap Date Axis"
 source: "https://www.amcharts.com/demos/no-gap-date-axis/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Stock markets close at weekends, leaving holes on a calendar axis. This axis skips days with no data: 200 trading days of price and volume, one after another.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who might take equal spacing for equal time
 - Data with no gaps: a regular date axis does the same job
 
-Prompt: Create a chart of about 200 trading days of price and volume on a date axis that skips the weekends, so the days sit side by side with no gaps. Draw the price as a line and the volume as columns along the bottom of the plot. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a chart of about 200 trading days of price and volume on a date axis that skips the weekends, so the days sit side by side with no gaps. Draw the price as a line and the volume as columns along the bottom of the plot. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -197,4 +197,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

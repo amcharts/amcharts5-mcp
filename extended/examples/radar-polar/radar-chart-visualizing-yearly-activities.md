@@ -2,7 +2,7 @@
 title: "Radar Chart Visualizing Yearly Activities"
 source: "https://www.amcharts.com/demos/radar-chart-visualizing-yearly-activities/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A year of bike rides in one circle: weekly distances as columns, every ride as a bubble sized by its length, and the year’s total in the middle.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact weekly figures: a column chart lines them up
 - Small screens: the week labels get crowded
 
-Prompt: Create a radar chart of a year of bicycle rides: weekly distance totals as columns colored by distance, and every ride as a bubble on its weekday ring, sized by its length. Month bands around the outside zoom to a month when clicked, and the year’s total sits in the middle. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radar chart of a year of bicycle rides: weekly distance totals as columns colored by distance, and every ride as a bubble on its weekday ring, sized by its length. Month bands around the outside zoom to a month when clicked, and the year’s total sits in the middle. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -36,7 +36,16 @@ myTheme.rule("Grid").set("strokeOpacity", 0.06); // very faint grid lines
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_Responsive.new(root)]);
+var responsive = am5themes_ResponsiveMax.new(root);
+root.setThemes([am5themes_Animated.new(root), myTheme, responsive]);
+
+// On a chart 400px wide or narrower, the ride bubbles are drawn at 60% of their size
+responsive.addRule({
+  name: "Circle",
+  tags: ["ride"],
+  relevant: am5themes_ResponsiveMax.widthM,
+  settings: { scale: 0.6 }
+});
 
 // tell that valueX should be formatted as a date (show week number)
 root.dateFormatter.setAll({
@@ -902,6 +911,7 @@ bubbleSeries.strokes.template.set("forceHidden", true);
 var circleTemplate = am5.Template.new({});
 bubbleSeries.bullets.push(function () {
   var graphics = am5.Circle.new(root, {
+    themeTags: ["ride"],               // for the responsive rule at the top
     fill: distanceSeries.get("fill"),  // the series color of the weekly columns
     tooltipText: "{title}: {value} km" // the ride's name and distance
   }, circleTemplate);
@@ -1017,4 +1027,4 @@ function createRange(name, index) {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Line Chart with Scroll and Zoom"
 source: "https://www.amcharts.com/demos/line-chart-with-scroll-and-zoom/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Five and a half years of daily values. The scrollbar on top holds a small copy of the whole line, so you can see where you are while you zoom into a few weeks.
@@ -19,7 +19,7 @@ Think twice when:
 - Small screens: the preview takes height from the chart
 - Printed charts, where nobody can drag
 
-Prompt: Create a zoomable line chart of about 2,000 daily values with a horizontal scrollbar that holds a miniature preview of the whole series. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable line chart of about 2,000 daily values with a horizontal scrollbar that holds a miniature preview of the whole series. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -165,4 +165,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

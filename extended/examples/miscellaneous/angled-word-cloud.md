@@ -2,7 +2,7 @@
 title: "Angled Word Cloud"
 source: "https://www.amcharts.com/demos/angled-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A word cloud made from the plain text of a speech, with every word tilted to one side or the other, packed into a curved shape. Here, the king’s first speech in Shakespeare’s Hamlet: the more often a word appears, the bigger it is.
@@ -19,7 +19,7 @@ Think twice when:
 - Long words: tilted, they take more room
 - Common words like "the" and "and": raise the shortest word length
 
-Prompt: Create a zoomable word cloud of the most frequent words in the king’s first speech in Shakespeare’s Hamlet, counted from the plain text, packed into a curved, mustache-like shape with every word tilted 45 degrees one way or the other. Use the Animated theme. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable word cloud of the most frequent words in the king’s first speech in Shakespeare’s Hamlet, counted from the plain text, packed into a curved, mustache-like shape with every word tilted 45 degrees one way or the other. Use the Animated theme. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a container for the series
@@ -108,4 +108,4 @@ series.labels.template.setAll({
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

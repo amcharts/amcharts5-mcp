@@ -2,7 +2,7 @@
 title: "Irregular Interval XY"
 source: "https://www.amcharts.com/demos/irregular-interval-xy/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart where each column is as wide as the stretch it covers: the elevation profile of a 50 km route, in six stretches of different lengths.
@@ -19,7 +19,7 @@ Think twice when:
 - Values that change smoothly: a line or area chart shows the slope
 - Readers who might take the area of a column, not its height, as the value
 
-Prompt: Create an XY chart of an elevation profile over 50 km: six stretches of different lengths drawn as columns that span their stretch, in alternating colors, with the distance marked at every point where a stretch begins or ends. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an XY chart of an elevation profile over 50 km: six stretches of different lengths drawn as columns that span their stretch, in alternating colors, with the distance marked at every point where a stretch begins or ends. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -196,4 +196,4 @@ chart.appear(1000, 10);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Pie"
 source: "https://www.amcharts.com/demos/variable-radius-nested-pie/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 How the EU grew: the inner ring is each enlargement, from the founding members in 1957 to 2007, and the outer ring the countries that joined, sized by their population today.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing parts across groups: a grouped bar chart is clearer
 - More than two levels: use a sunburst chart
 
-Prompt: Create a nested pie chart of EU enlargement: the inner ring shows the population that joined in each year, and the outer ring splits each year into its countries, in lighter shades of that year’s color, with tooltips showing the populations. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a nested pie chart of EU enlargement: the inner ring shows the population that joined in each year, and the outer ring splits each year into its countries, in lighter shades of that year’s color, with tooltips showing the populations. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -198,4 +198,4 @@ series1.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

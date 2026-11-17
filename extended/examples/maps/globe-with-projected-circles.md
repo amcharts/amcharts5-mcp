@@ -2,7 +2,7 @@
 title: "Globe with Projected Circles"
 source: "https://www.amcharts.com/demos/globe-with-projected-circles/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Circles sized by the population of 40 countries in 2011, lying on the surface of the globe: they flatten into ovals as they near its edge, like the land under them.
@@ -19,7 +19,7 @@ Think twice when:
 - Every country at once: a flat map shows them all
 - Crowded regions: circles overlap, zoom in or make them smaller
 
-Prompt: Create a draggable globe turned to South Asia, with a circle on each of 40 countries sized by its population in 2011. The circles lie on the globe’s surface, so they flatten towards its edge, and show the country and population in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a draggable globe turned to South Asia, with a circle on each of 40 countries sized by its population in 2011. The circles lie on the globe’s surface, so they flatten towards its edge, and show the country and population in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the globe follows the theme
@@ -248,4 +248,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

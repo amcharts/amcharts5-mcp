@@ -2,7 +2,7 @@
 title: "Animations Along Lines"
 source: "https://www.amcharts.com/demos/animations-along-lines/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A plane flies back and forth along a route from Paris to Toronto, Los Angeles and Havana. Drag a city and the route and the plane follow it.
@@ -19,7 +19,7 @@ Think twice when:
 - When each leg happens: a timeline says it better
 - Print: the motion is lost
 
-Prompt: Create a world map zoomed to a travel route through four cities, from Paris to Havana, with a plane icon that flies back and forth along it and turns with the route. The cities can be dragged, and the route follows them. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map zoomed to a travel route through four cities, from Paris to Havana, with a plane icon that flies back and forth along it and turns with the route. The cities can be dragged, and the route follows them. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -295,4 +295,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

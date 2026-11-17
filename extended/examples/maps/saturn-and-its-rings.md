@@ -2,7 +2,7 @@
 title: "Saturn and Its Rings"
 source: "https://www.amcharts.com/demos/saturn-and-its-rings/"
 category: "maps"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 Saturn drawn with a map chart: the planet is a globe of colored bands spinning under its storms, the rings are map lines raised above it at their real distances, as strong as the rings are dense, and the six largest moons go round at their real relative speeds.
@@ -18,7 +18,7 @@ Think twice when:
 - Exact distances: the moons' distances are squeezed to fit
 - Plain data on a planet: a flat map is easier to read
 
-Prompt: Create Saturn as a map chart in globe projection as a time-lapse, a Saturn day in 30 seconds: the planet as cream latitude bands with darker belts (map polygons) and a few storms as markers lying flat on its surface that go round once a day, the C, B and A rings and the Cassini Division as circles of map lines round the equator raised to their real distances from the center, each as opaque as the ring is dense, and the six largest moons as map points raised onto faint dashed orbits, each going round in its real period at the same scale, their distances beyond the rings squeezed logarithmically so Titan fits. View it from 18.5 degrees above the ring plane with the planet leaning 20 degrees, on a dark background. Tooltips: the planet's size, each ring's name and span, each moon's name and real distance. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create Saturn as a map chart in globe projection as a time-lapse, a Saturn day in 30 seconds: the planet as cream latitude bands with darker belts (map polygons) and a few storms as markers lying flat on its surface that go round once a day, the C, B and A rings and the Cassini Division as circles of map lines round the equator raised to their real distances from the center, each as opaque as the ring is dense, and the six largest moons as map points raised onto faint dashed orbits, each going round in its real period at the same scale, their distances beyond the rings squeezed logarithmically so Titan fits. View it from 18.5 degrees above the ring plane with the planet leaning 20 degrees, on a dark background. Tooltips: the planet's size, each ring's name and span, each moon's name and real distance. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The buttons (the zoom control) in a dark slate that suits the night sky, instead of the default blue
@@ -283,4 +283,4 @@ moonSeries.data.setAll(MOONS.map(function(moon, i) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

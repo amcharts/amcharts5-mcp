@@ -2,7 +2,7 @@
 title: "Stock Chart"
 source: "https://www.amcharts.com/demos/stock-chart/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 amCharts Stock Chart is a complete trading chart: candlesticks with volume, a scrollbar, and a toolbar with 34 indicators, 22 drawing tools and period buttons. Circled letters on the date axis mark a stock split and two dividend dates.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers new to finance: offer fewer controls
 - Data that isn’t prices: use an XY chart with a scrollbar
 
-Prompt: Create a stock chart of a year of daily prices for a made-up ticker, as candlesticks with volume along the bottom and a toolbar of indicators, date ranges, series types and drawing tools. Mark a stock split and two dividends on the date axis. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of a year of daily prices for a made-up ticker, as candlesticks with volume along the bottom and a toolbar of indicators, date ranges, series types and drawing tools. Mark a stock split and two dividends on the date axis. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -661,4 +661,4 @@ sbSeries.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

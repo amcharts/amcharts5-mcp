@@ -2,7 +2,7 @@
 title: "Chord Diagram with Animated Bullets"
 source: "https://www.amcharts.com/demos/chord-diagram-with-animated-bullets/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A directed chord diagram with dots that keep running along the ribbons, so the direction of every flow is plain to see. Here, six nodes and nine flows.
@@ -19,7 +19,7 @@ Think twice when:
 - Many ribbons: the dots turn into noise
 - Readers who find motion distracting: offer a still version
 
-Prompt: Create a directed chord diagram of six nodes joined by nine weighted, one-way links, with each node drawn as a circle with its letter inside. Small dots travel along every ribbon from source to target in endless loops. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a directed chord diagram of six nodes joined by nine weighted, one-way links, with each node drawn as a circle with its letter inside. Small dots travel along every ribbon from source to target in endless loops. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create series
 // https://docs.amcharts.com/v5/charts/flow-charts/
@@ -138,4 +138,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

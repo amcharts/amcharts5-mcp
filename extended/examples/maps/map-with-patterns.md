@@ -2,7 +2,7 @@
 title: "Map with Patterns"
 source: "https://www.amcharts.com/demos/map-with-patterns/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map of the continents, each filled with a pattern of its own over a color: stripes, checks, dots, triangles or stars.
@@ -19,7 +19,7 @@ Think twice when:
 - Small countries: patterns need room to show
 - Many categories: use colors and a legend
 
-Prompt: Create a world map of the continents, each filled with its own color and its own pattern (stripes, checks, dots, triangles or stars), with the continent’s name in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map of the continents, each filled with its own color and its own pattern (stripes, checks, dots, triangles or stars), with the continent’s name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -104,7 +104,9 @@ polygonSeries.data.setAll([{
     fill: colors.next(),                     // the next theme color
     fillPattern: am5.LinePattern.new(root, { // lines...
       color: am5.color(0xffffff), // ...in white...
-      angle: 45,                  // ...at 45 degrees (angle turns the lines; rotation would turn the whole tile and show its seams)...
+      // ...slanting down to the right (angle, not rotation: rotation turns the whole tile, and the lines
+      // would break where tiles meet)...
+      angle: -45,
       strokeWidth: 1              // ...1px thick
     })
   }
@@ -165,7 +167,7 @@ polygonSeries.data.setAll([{
     fill: colors.next(),                     // the next theme color
     fillPattern: am5.LinePattern.new(root, { // lines...
       color: am5.color(0xffffff), // ...in white...
-      angle: -45,                 // ...slanting the other way...
+      angle: 45,                  // ...slanting the other way...
       strokeWidth: 1              // ...1px thick
     })
   }
@@ -194,4 +196,4 @@ polygonSeries.data.setAll([{
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

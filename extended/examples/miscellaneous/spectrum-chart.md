@@ -2,7 +2,7 @@
 title: "Spectrum Chart"
 source: "https://www.amcharts.com/demos/spectrum-chart/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A spectrum chart is a single bar split into periods and colored by status, like a strip of colored tape along a time line. Here, a machine’s afternoon from 11:00 to 17:30: normal running, alarms, anomalies and one critical error.
@@ -19,7 +19,7 @@ Think twice when:
 - Values, not states: a line chart
 - Many short periods: zoom in, or they become slivers
 
-Prompt: Create a spectrum chart: one horizontal bar that shows a machine’s status through an afternoon as back-to-back periods colored by status (normal operation, minor alarm, anomaly, critical error), with the start time of each period marked under the bar and a legend of the statuses. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a spectrum chart: one horizontal bar that shows a machine’s status through an afternoon as back-to-back periods colored by status (normal operation, minor alarm, anomaly, critical error), with the start time of each period marked under the bar and a legend of the statuses. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -197,4 +197,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

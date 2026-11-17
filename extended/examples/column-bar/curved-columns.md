@@ -2,7 +2,7 @@
 title: "Curved Columns"
 source: "https://www.amcharts.com/demos/curved-columns/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Columns with a shape of their own: each is drawn as two curves meeting at a peak, wider than its slot, so neighbors overlap like a row of hills. Nine countries, each in its own color.
@@ -19,7 +19,7 @@ Think twice when:
 - Many categories: the overlapping curves blur together
 - Formal reports: plain columns are calmer
 
-Prompt: Create a column chart comparing nine countries, where each column is drawn as a curved hill and neighboring columns overlap a little, each in its own color. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart comparing nine countries, where each column is drawn as a curved hill and neighboring columns overlap a little, each in its own color. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -189,4 +189,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

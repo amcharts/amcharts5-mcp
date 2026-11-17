@@ -2,7 +2,7 @@
 title: "Star Atlas"
 source: "https://www.amcharts.com/demos/star-atlas/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A star atlas: the night sky drawn on a map chart, with the brightest stars, about 25 constellations and the path of the sun. It can be shown flat or as a globe.
@@ -19,7 +19,7 @@ Think twice when:
 - Thousands of stars: label only the brightest
 - Plain data: a world map or an XY chart may suit better
 
-Prompt: Create a star atlas on a map chart: the night sky with about 100 named bright stars at their real positions, sized by brightness, stick figures of the main constellations, the celestial equator and the ecliptic. The sky slowly rotates and can be dragged and zoomed. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a star atlas on a map chart: the night sky with about 100 named bright stars at their real positions, sized by brightness, stick figures of the main constellations, the celestial equator and the ecliptic. The sky slowly rotates and can be dragged and zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Every color comes from the theme: the stars and labels in the text color, the sky and the grid in the alternative
 // background color, and the lines from the theme's color set (the equator in its first color, the ecliptic and the
@@ -544,4 +544,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

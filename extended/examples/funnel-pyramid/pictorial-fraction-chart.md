@@ -2,7 +2,7 @@
 title: "Pictorial Fraction Chart"
 source: "https://www.amcharts.com/demos/pictorial-fraction-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A fraction shown as a picture: the cup is the whole, filled 60% coffee and 40% milk. The shape says what the numbers are about before anyone reads a label.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who judge by area: the bands split the height, and the cup narrows
 - Comparing several splits: use stacked bars
 
-Prompt: Create a pictorial stacked chart that fills the outline of a coffee cup with two parts, milk on top of coffee, each as tall as its share, with percentage labels and a legend. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a pictorial stacked chart that fills the outline of a coffee cup with two parts, milk on top of coffee, each as tall as its share, with percentage labels and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
@@ -112,4 +112,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

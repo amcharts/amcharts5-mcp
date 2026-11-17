@@ -2,7 +2,7 @@
 title: "Stream / ThemeRiver Chart"
 source: "https://www.amcharts.com/demos/stream-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A streamgraph: layers that flow around a center line instead of stacking up from zero. Here, Olympic medal counts for five countries from 1896 to 2008.
@@ -19,7 +19,7 @@ Think twice when:
 - Small changes: they get lost in the flow
 - Few data points: the curves suggest more detail than there is
 
-Prompt: Create a streamgraph of Olympic medal counts for the United Kingdom, the Soviet Union, Russia, the United States and China at each Summer Games from 1896 to 2008, drawn as smoothed layers centered on zero. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a streamgraph of Olympic medal counts for the United Kingdom, the Soviet Union, Russia, the United States and China at each Summer Games from 1896 to 2008, drawn as smoothed layers centered on zero. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -220,4 +220,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

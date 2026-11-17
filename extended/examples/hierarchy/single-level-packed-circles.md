@@ -2,7 +2,7 @@
 title: "Single-Level Packed Circles"
 source: "https://www.amcharts.com/demos/single-level-packed-circles/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Five hundred circles, each sized by its value, packed as tight as they fit. One level and no groups: a quick way to spot the few big items among hundreds of small ones.
@@ -19,7 +19,7 @@ Think twice when:
 - Items that belong to groups: nest them in a packed circle chart
 - Small screens without zoom: the small circles disappear
 
-Prompt: Create a packed circle chart of 500 items on a single level, each circle sized by its value and labeled with it, inside a container that can be zoomed and panned. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a packed circle chart of 500 items on a single level, each circle sized by its value and labeled with it, inside a container that can be zoomed and panned. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -601,4 +601,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

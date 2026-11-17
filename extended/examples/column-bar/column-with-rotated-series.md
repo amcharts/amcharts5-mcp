@@ -2,7 +2,7 @@
 title: "Column with Rotated Labels"
 source: "https://www.amcharts.com/demos/column-with-rotated-series/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart with its axis labels turned on their side, so eleven country names fit under narrow columns without overlapping. Each column has its own color.
@@ -19,7 +19,7 @@ Think twice when:
 - Short names that fit level: keep them level, they read faster
 - Dozens of categories: show the top ten, or let people zoom
 
-Prompt: Create a column chart comparing eleven countries, each column in its own color, with the country names rotated to run vertically under their columns. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart comparing eleven countries, each column in its own color, with the country names rotated to run vertically under their columns. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -175,4 +175,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

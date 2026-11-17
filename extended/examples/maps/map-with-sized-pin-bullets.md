@@ -2,7 +2,7 @@
 title: "Map with Sized Pin Bullets"
 source: "https://www.amcharts.com/demos/map-with-sized-pin-bullets/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Pins on a map, each sized by its value: a head with the number on it, on a pole that fades toward the ground. Here, made-up yearly sales growth in four markets.
@@ -19,7 +19,7 @@ Think twice when:
 - Places close together: the pins overlap
 - Precise comparisons: a bar chart
 
-Prompt: Create a map of the continents with pin-shaped markers on four regions, showing made-up yearly sales growth: each pin is a pole with a round head that carries the value, and bigger values make bigger, taller pins. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of the continents with pin-shaped markers on four regions, showing made-up yearly sales growth: each pin is a pole with a round head that carries the value, and bigger values make bigger, taller pins. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // ====================================
@@ -195,4 +195,4 @@ for (var i = 0; i < data.length; i++) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["concepts/common-elements/buttons"]
 ---
 
-A demo from the docs page "Buttons" (get_doc(path: "concepts/common-elements/buttons")).
+A demo from the docs page "Buttons" (get_doc(path: "concepts/common-elements/buttons")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

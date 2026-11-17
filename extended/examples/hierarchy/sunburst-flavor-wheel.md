@@ -2,7 +2,7 @@
 title: "Sunburst Flavor Wheel"
 source: "https://www.amcharts.com/demos/sunburst-flavor-wheel/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A sunburst chart shows a hierarchy as rings: the inner ring holds the groups, the outer ring what each is made of. This one is a coffee aroma wheel, 75 aromas in 13 families, each with its own color.
@@ -19,7 +19,7 @@ Think twice when:
 - Many levels: the outer rings get too thin
 - Exact values: a treemap or bar chart is clearer
 
-Prompt: Create a sunburst chart styled as a coffee aroma wheel, inspired by the CoffeeMind Aroma Wheel, with flavor families in the inner ring, their aromas in the outer ring and a title in the hole. Clicking a family opens it to fill the wheel, and clicking it again goes back. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a sunburst chart styled as a coffee aroma wheel, inspired by the CoffeeMind Aroma Wheel, with flavor families in the inner ring, their aromas in the outer ring and a title in the hole. Clicking a family opens it to fill the wheel, and clicking it again goes back. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -37,7 +37,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -332,4 +332,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

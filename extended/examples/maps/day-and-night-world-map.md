@@ -2,24 +2,18 @@
 title: "Day and Night World Map"
 source: "https://www.amcharts.com/demos/day-and-night-world-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
-A live map of where it is day and where it is night right now, with the twilight in between, the sun where it stands overhead and the moon in its phase. The Time slider moves it up to a day either way, Date picks another day, and Satellite view shows the Earth from space.
+A live map of where it is day and where it is night right now, with the city lights on the night side, the twilight in between, and the sun and moon where they stand overhead. Click a country to see whether it is day or night there.
 
-Showing day and night: A night series works out where the sun stands overhead at any moment, shades the half of the world where it has set, and draws the twilight in steps. With sunDate set to "now" it keeps up with the clock by itself; set a date to show any other moment. It suits maps where local daylight matters: travel, shipping, or teams around the world.
+Where it is day and night right now: The map uses NASA’s satellite pictures of the Earth, the sunlit side by day and the city lights at night, and moves on with the clock. The yellow dot marks where the sun is straight overhead, and the moon is drawn in its current phase. Click a country to see its flag and whether it is day, twilight or night there, or turn on Country names to label the countries.
 
-Good for:
-- Live dashboards that run around the clock
-- Travel, aviation and shipping
-- Teaching seasons and time zones
+Drag the Time slider to move up to a day either way, or press its play button to watch the night sweep across the map. Pick a date to see any other day. Around the June solstice, for example, the Arctic stays in daylight all day long. Globe shows the same on a 3D globe.
 
-Think twice when:
-- The time in a given city: a clock or a time zone map is clearer
-- Night over colored data: it darkens the colors, keep it light
-- Print: the map shows a single moment
+To make your own version, open it in Chart Maker and change it without code, or copy the code below.
 
-Prompt: Create a live world map that shades the night side of the Earth, with twilight in steps, and moves on with the clock. Mark the sun and the moon where each stands overhead, draw the moon in its current phase, and show the time in a label. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a live world map over NASA’s satellite pictures of the Earth, by day where the sun is up and city lights where it is night, that shades the night side with twilight in steps and moves on with the clock. Mark the sun and the moon where each stands overhead, draw the moon in its current phase, show the time in a label, and add the countries’ names, hidden at first, each shown only where it fits. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,9 +24,10 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Create the map chart
@@ -55,15 +50,14 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 
 // Satellite view: NASA's pictures of the Earth, by day where the sun is up and city lights where it is night,
-// blended across the twilight, under the countries. Hidden at first (visible: false). The images are read from
-// the amCharts CDN
+// blended across the twilight, under the countries. Hide the series (visible: false) for the plain map. The images
+// are read from the amCharts CDN
 // https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
   src: "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg", // the Earth by day...
   // ...and its city lights by night
   nightSrc: "https://cdn.amcharts.com/lib/5/geodata/images/earthNight2048.jpg",
-  sunDate: "now", // split between day and night for the current time
-  visible: false
+  sunDate: "now" // split between day and night for the current time
 }));
 
 // Create main polygon series for countries
@@ -86,9 +80,24 @@ var credit = chart.children.push(am5.Label.new(root, {
   x: am5.p100,               // at the right edge...
   centerX: am5.p100,         // ...measured from the label's right end...
   dx: -10,                   // ...10px in from it
-  y: 10,                     // 10px from the top
-  visible: false             // shown with the satellite view only
+  y: 10                      // 10px from the top (it hides with the satellite view, see below)
 }));
+
+// On a narrow chart (a phone) the top is needed for other things: the credit moves to the bottom left, in smaller
+// type, just above the time. The rule is undone on a wider chart
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    credit.setAll({
+      x: 20, centerX: 0, dx: 0,                 // 20px in from the left edge, like the time...
+      y: am5.p100, centerY: am5.p100, dy: -40,  // ...and just above it
+      fontSize: 10                              // smaller print
+    });
+  },
+  removing: function () {
+    credit.setAll({ x: am5.p100, centerX: am5.p100, dx: -10, y: 10, centerY: 0, dy: 0, fontSize: 12 });
+  }
+});
 
 // The countries' own look, to go back to
 var landTemplate = polygonSeries.mapPolygons.template;
@@ -98,15 +107,18 @@ var landLook = {
   strokeOpacity: landTemplate.get("strokeOpacity", 1)
 };
 
-// The image credit shows with the pictures, the countries turn to white outlines over them, the grid lines turn
-// white, and the map then sits in near-black space, with white text
-satelliteSeries.on("visible", function (visible) {
+// With the pictures, the image credit shows, the countries are white outlines over them, the grid lines are white,
+// and the map sits in near-black space, with white text; without them, the map has its own look. Set once the time
+// label is made (below), and again whenever the pictures are shown or hidden
+satelliteSeries.on("visible", showSatellite);
+
+function showSatellite(visible) {
   credit.set("visible", visible);
   chart.get("background").set("fillOpacity", visible ? 1 : 0);
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
   timeLabel.set("fill", visible ? am5.color(0xffffff) : root.interfaceColors.get("text"));
-});
+}
 
 // Create night series: it shades the part of the world where it is night,
 // with the twilight in steps, and shows the sun where it is directly overhead.
@@ -236,6 +248,84 @@ function updateMoon(date) {
   moonTemplate.set("tooltipText", "[bold]" + moonPhases[Math.round(phase * 8) % 8] + "[/]\n" + Math.round((1 - cos) / 2 * 100) + "% lit");
 }
 
+// Country names: a label in the middle of each country, on top of everything. Hidden at first (visible: false):
+// make the series visible to show them
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#relation-to-polygon-series
+var nameSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+  polygonIdField: "polygonId", // each name sits in the middle of the country with this id
+  visible: false
+}));
+
+nameSeries.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Label.new(root, {
+      text: "{name}",
+      populateText: true,               // fill in {name} from the point's data
+      fontSize: 11,
+      fill: am5.color(0xffffff),        // white...
+      shadowColor: am5.color(0x000000), // ...with a dark glow, so it reads over day, night and the plain map
+      shadowBlur: 3,
+      centerX: am5.p50,                 // centered on the point
+      centerY: am5.p50,
+      templateField: "labelSettings"    // settings from the country's data: small countries' names hidden (see below)
+    })
+  });
+});
+
+// Does a name fit on its country? The country must be about as big on screen as the name is wide. On this map,
+// which keeps areas true (Equal Earth), a country of area A (in steradians) covers about A × scale² on screen, so it
+// is about √A × scale across; a name takes about 5.5px a letter at 11px, and may be a little wider than its country
+function nameFits(name, area, scale) {
+  return Math.sqrt(area) * scale >= name.length * 5.5 * 0.8;
+}
+
+// One name per country, once the countries are in. Each keeps its country's area, to tell whether the name fits.
+// The data hides the names that don't fit on a map about 1,000px wide (a scale of 180), so a copy of the chart
+// without the code below, such as its JSON in Chart Maker, shows only the big countries' names
+polygonSeries.events.on("datavalidated", function () {
+  nameSeries.data.setAll(polygonSeries.dataItems.map(function (dataItem) {
+    var name = dataItem.dataContext.name; // the country's name, from the map's geodata
+    // in steradians; three digits are plenty, and keep the chart's JSON short
+    var area = +am5map.getGeoArea(dataItem.get("mapPolygon").get("geometry")).toPrecision(3);
+    return {
+      polygonId: dataItem.get("id"),
+      name: name,
+      area: area,
+      labelSettings: nameFits(name, area, 180) ? undefined : { forceHidden: true }
+    };
+  }));
+});
+
+// Here, the names that fit right now show. The projection's scale grows as the map zooms in, so zooming in brings
+// out the smaller countries' names. On a globe (an orthographic projection, which shows one side), a country
+// towards the edge is seen at a slant and covers less: its area times the cosine of its angle from the middle
+var rad = Math.PI / 180; // degrees to radians
+root.events.on("frameended", function () {
+  if (!nameSeries.get("visible")) {
+    return;
+  }
+  var projection = chart.get("projection");
+  var scale = projection.scale();
+  var onGlobe = projection.clipAngle() > 0; // a globe hides its far side
+  // the point in the middle of the globe, as it's turned now
+  var midLongitude = -chart.get("rotationX", 0) * rad;
+  var midLatitude = -chart.get("rotationY", 0) * rad;
+  nameSeries.dataItems.forEach(function (dataItem) {
+    var label = dataItem.bullets && dataItem.bullets[0].get("sprite");
+    if (label) {
+      var slant = 1;
+      if (onGlobe) {
+        var longitude = dataItem.get("longitude") * rad;
+        var latitude = dataItem.get("latitude") * rad;
+        slant = Math.sin(latitude) * Math.sin(midLatitude) +
+          Math.cos(latitude) * Math.cos(midLatitude) * Math.cos(longitude - midLongitude);
+      }
+      var area = dataItem.dataContext.area * Math.max(0, slant);
+      label.set("forceHidden", !nameFits(dataItem.dataContext.name, area, scale));
+    }
+  });
+});
+
 // Add zoom control
 // https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
@@ -255,6 +345,8 @@ var timeLabel = chart.children.push(am5.Label.new(root, {
   centerY: am5.p100,
   dy: -15      // ...15px up from it
 }));
+
+showSatellite(satelliteSeries.get("visible", true)); // the satellite view's look, now that everything it changes is made
 
 // Move the night, the sun, the moon and the satellite pictures to the time, and show it
 function updateDayNight() {
@@ -305,4 +397,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

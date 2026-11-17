@@ -3,8 +3,9 @@
 /**
  * Refreshes extended/examples from amcharts.com: scrape, clean, check.
  *
- * Usage: npm run build:examples [-- slug | category/slug ...]
- *   With no arguments every demo is re-scraped; otherwise only the named ones.
+ * Usage: npm run build:examples [-- --changed] [-- slug | category/slug ...]
+ *   With no arguments every demo on amcharts.com (its demos sitemap) is
+ *   re-scraped; --changed only the new or changed ones; otherwise the named ones.
  *
  * Cleaning always runs after the scrape, even when some demos failed: the ones
  * that did scrape are raw until cleaned, and must not be left that way. The

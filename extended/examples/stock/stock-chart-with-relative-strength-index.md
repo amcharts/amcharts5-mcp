@@ -2,7 +2,7 @@
 title: "Stock Chart with Relative Strength Index"
 source: "https://www.amcharts.com/demos/stock-chart-with-relative-strength-index/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The Relative Strength Index rates how strongly a price has risen or fallen over the last 14 days, on a scale of 0 to 100. It has its own panel under the candles, with lines at 80 for overbought and 20 for oversold.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers new to trading: explain the scale
 - Short histories: the line starts only after 14 days
 
-Prompt: Create a stock chart of a year of daily prices for a made-up ticker, as candlesticks with volume along the bottom, with a Relative Strength Index indicator in its own panel underneath and a toolbar for adding indicators and drawings. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of a year of daily prices for a made-up ticker, as candlesticks with volume along the bottom, with a Relative Strength Index indicator in its own panel underneath and a toolbar for adding indicators and drawings. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -546,4 +546,4 @@ sbSeries.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

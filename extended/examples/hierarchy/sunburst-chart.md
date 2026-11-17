@@ -2,7 +2,7 @@
 title: "Sunburst Chart"
 source: "https://www.amcharts.com/demos/sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A sunburst chart draws a hierarchy as rings: the whole in the middle, each ring one level deeper. Here, what fills a laptop’s drive, folder by folder.
@@ -19,7 +19,7 @@ Think twice when:
 - One level only: a donut chart is simpler
 - Hundreds of small parts: the outer rings turn into slivers
 
-Prompt: Create a sunburst chart of what fills a laptop drive, with the drive in the middle and each level of folders as a ring around it. Clicking a segment zooms into it, and clicking the middle goes back up a level. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a sunburst chart of what fills a laptop drive, with the drive in the middle and each level of folders as a ring around it. Clicking a segment zooms into it, and clicking the middle goes back up a level. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -137,4 +137,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Polar Scatter"
 source: "https://www.amcharts.com/demos/polar-scatter/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A scatter plot on a 24-hour clock: each dot is one commuter trip, placed by the time it started and how long it took. Car trips stretch out at rush hour; train trips take about the same time all day.
@@ -19,7 +19,7 @@ Think twice when:
 - Many points near the middle: the inner rings are small
 - Precise distances: a square grid is easier to read
 
-Prompt: Create a polar scatter plot on a 24-hour clock of commuter trips by start time and duration (sample data), with dots for three ways to travel (car, bike and train), a legend, and tooltips showing when each trip left. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a polar scatter plot on a 24-hour clock of commuter trips by start time and duration (sample data), with dots for three ways to travel (car, bike and train), a legend, and tooltips showing when each trip left. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -263,4 +263,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

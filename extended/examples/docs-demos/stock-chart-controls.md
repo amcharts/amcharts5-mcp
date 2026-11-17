@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/stock/stock-annotations","charts/stock/toolbar","charts/stock/toolbar/drawing-control","charts/stock/toolbar/reset-control","charts/stock/toolbar/settings-control"]
 ---
 
-A demo from the docs pages "Stock annotations" (get_doc(path: "charts/stock/stock-annotations")), "Stock toolbar" (get_doc(path: "charts/stock/toolbar")), "Drawing control" (get_doc(path: "charts/stock/toolbar/drawing-control")), "Reset control" (get_doc(path: "charts/stock/toolbar/reset-control")) and "Settings control" (get_doc(path: "charts/stock/toolbar/settings-control")).
+A demo from the docs pages "Stock annotations" (get_doc(path: "charts/stock/stock-annotations")), "Stock toolbar" (get_doc(path: "charts/stock/toolbar")), "Drawing control" (get_doc(path: "charts/stock/toolbar/drawing-control")), "Reset control" (get_doc(path: "charts/stock/toolbar/reset-control")) and "Settings control" (get_doc(path: "charts/stock/toolbar/settings-control")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

@@ -2,7 +2,7 @@
 title: "Horizontal Serpentine Timeline"
 source: "https://www.amcharts.com/demos/horizontal-serpentine-timeline/"
 category: "timeline"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A timeline that winds up and down in six columns across the page, for a wide, short space. Four project modules keep their lanes and colors at every turn.
@@ -19,7 +19,7 @@ Think twice when:
 - Phones: rows fit a narrow screen better than columns
 - Many lanes: columns get crowded at the turns
 
-Prompt: Create a horizontal serpentine timeline chart whose date axis winds up and down across six columns, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, and a lane of lettered milestones. Make the timeline zoomable. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal serpentine timeline chart whose date axis winds up and down across six columns, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, and a lane of lettered milestones. Make the timeline zoomable. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -322,4 +322,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

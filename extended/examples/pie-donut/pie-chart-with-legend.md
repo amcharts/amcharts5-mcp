@@ -2,7 +2,7 @@
 title: "Pie Chart with Legend"
 source: "https://www.amcharts.com/demos/pie-chart-with-legend/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pie chart with a legend under it. The legend names every slice and works as a switch: click an item and the pie redraws without it.
@@ -19,7 +19,7 @@ Think twice when:
 - Colors that look alike: matching them to the legend gets hard
 - Small screens: a legend under the pie makes the pie smaller
 
-Prompt: Create a pie chart of seven sample categories with labels around the pie and a legend; clicking a legend item hides or shows its slice. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pie chart of seven sample categories with labels around the pie and a legend; clicking a legend item hides or shows its slice. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -97,4 +97,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

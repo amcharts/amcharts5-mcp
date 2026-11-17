@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["concepts/common-elements/modal-popups"]
 ---
 
-A demo from the docs page "Modal popups" (get_doc(path: "concepts/common-elements/modal-popups")).
+A demo from the docs page "Modal popups" (get_doc(path: "concepts/common-elements/modal-popups")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

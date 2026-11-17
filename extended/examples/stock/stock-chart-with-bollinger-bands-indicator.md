@@ -2,7 +2,7 @@
 title: "Stock Chart with Bollinger Bands Indicator"
 source: "https://www.amcharts.com/demos/stock-chart-with-bollinger-bands-indicator/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Bollinger Bands wrap the price in a channel: a 20-day moving average in the middle, with bands two standard deviations above and below it. The bands widen when prices swing hard and narrow when they calm down.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers new to trading: a plain moving average is simpler
 - Signals on their own: the bands describe the past, they don’t predict
 
-Prompt: Create a stock chart of a year of daily prices for a made-up ticker, as candlesticks with volume along the bottom, with a Bollinger Bands indicator on the price panel and a toolbar for adding indicators and drawings. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of a year of daily prices for a made-up ticker, as candlesticks with volume along the bottom, with a Bollinger Bands indicator on the price panel and a toolbar for adding indicators and drawings. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -549,4 +549,4 @@ sbSeries.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

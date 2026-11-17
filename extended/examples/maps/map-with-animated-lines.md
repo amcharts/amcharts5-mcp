@@ -2,7 +2,7 @@
 title: "Map with Animated Lines"
 source: "https://www.amcharts.com/demos/map-with-animated-lines/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Lines from London that draw themselves to ten cities, over and over, all at the same speed, so the long route to New York takes longest.
@@ -19,7 +19,7 @@ Think twice when:
 - Many routes at once: it gets busy
 - Comparing amounts: vary the line width instead
 
-Prompt: Create a map of Europe and the North Atlantic with lines from London to ten cities that draw themselves over and over, growing out from London and shrinking away into the far city, all at the same speed. Show the cities as dots with name tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of Europe and the North Atlantic with lines from London to ten cities that draw themselves over and over, growing out from London and shrinking away into the far city, all at the same speed. Show the cities as dots with name tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -384,4 +384,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

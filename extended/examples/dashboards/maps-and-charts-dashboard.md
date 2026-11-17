@@ -2,7 +2,7 @@
 title: "Maps and Charts Dashboard"
 source: "https://www.amcharts.com/demos/maps-and-charts-dashboard/"
 category: "dashboards"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Five charts in one dashboard: a world heat map of sample rates for 200 countries, a donut, a radar chart, a line and a column chart. The donut and the radar chart sum up the map; point at a country and its continent lights up.
@@ -19,7 +19,7 @@ Think twice when:
 - Small screens: stack the charts instead
 - Many small charts: each gets too small to read
 
-Prompt: Create a five-chart dashboard around a world heat map of a sample rate by country: a donut of the share of countries above 10%, a radial chart of the average per continent, a line and a column chart. Pointing at a country highlights its continent in the radial chart; pointing at a continent there fades the rest of the map. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a five-chart dashboard around a world heat map of a sample rate by country: a donut of the share of countries above 10%, a radial chart of the average per continent, a line and a column chart. Pointing at a country highlights its continent in the radial chart; pointing at a continent there fades the rest of the map. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -256,7 +256,7 @@ myTheme.rule("AxisLabel", ["minor"]).setAll({
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_ResponsiveMax.new(root)]);
 
 // Colors from the theme, so the dashboard follows the theme: a main color and a pale one for the rest
 var colors = am5.ColorSet.new(root, {});
@@ -283,7 +283,7 @@ var topRow = root.container.children.push(am5.Container.new(root, {
 var bottomRow = root.container.children.push(am5.Container.new(root, {
   width: am5.p100,              // full width...
   height: am5.percent(60),      // ...the other 60% of the height...
-  layout: root.horizontalLayout // ...the map, its heat legend and the column chart side by side
+  layout: root.horizontalLayout // ...the map, with its heat legend under it, and the column chart side by side
 }));
 
 // What the donut and the radar chart show:
@@ -361,7 +361,7 @@ function makeLineSeriesChart(parent) {
       panY: false,                // ...in either direction
       wheelX: "panX",             // a horizontal wheel or trackpad swipe pans...
       wheelY: "zoomX",            // ...and the vertical wheel zooms in on the years
-      paddingLeft: 0,             // the value labels sit at the chart's left edge
+      paddingLeft: 0,             // the plot starts at the chart's left edge
       layout: root.verticalLayout // the chart's parts are stacked top to bottom
     })
   );
@@ -429,7 +429,8 @@ function makeLineSeriesChart(parent) {
     am5xy.ValueAxis.new(root, {
       min: 0, // start at zero
       renderer: am5xy.AxisRendererY.new(root, {
-        strokeOpacity: 0.1 // a faint axis line
+        strokeOpacity: 0.1, // a faint axis line
+        inside: true        // the value labels inside the plot, so the plot takes the whole width
       })
     })
   );
@@ -525,12 +526,10 @@ function makeRadarGauge(parent, averages) {
 
   // Create axes and their renderers
   // https://docs.amcharts.com/v5/charts/radar-chart/#adding-axes
-  var xRenderer = am5radar.AxisRendererCircular.new(root, {
-    minGridDistance: 40 // at least 40px between the percent labels around the circle
-  });
+  var xRenderer = am5radar.AxisRendererCircular.new(root, {});
 
   xRenderer.labels.template.setAll({
-    radius: 10 // labels 10px further out from the rings
+    forceHidden: true // no percent labels around the rings (the tooltips give the values)
   });
 
   xRenderer.grid.template.setAll({
@@ -697,7 +696,7 @@ function makeColumnChart(parent) {
     panY: false,            // ...in either direction
     wheelX: "panX",         // a horizontal wheel or trackpad swipe pans...
     wheelY: "zoomX",        // ...and the vertical wheel zooms in on the days
-    paddingLeft: 0          // the value labels sit at the chart's left edge
+    paddingLeft: 0          // the plot starts at the chart's left edge
   }));
 
   // Add cursor
@@ -750,9 +749,24 @@ function makeColumnChart(parent) {
     "month": "MM" // ...or the month
   });
 
+  var yRenderer = am5xy.AxisRendererY.new(root, {
+    inside: true // the value labels inside the plot...
+  });
+
+  // ...on a box of the background color, so the first columns don't hide them
+  yRenderer.labels.template.setAll({
+    background: am5.RoundedRectangle.new(root, {
+      fill: root.interfaceColors.get("background"),
+      fillOpacity: 0.8
+    })
+  });
+
   var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-    renderer: am5xy.AxisRendererY.new(root, {})
+    renderer: yRenderer
   }));
+
+  // the labels are drawn above the columns
+  yAxis.labelsContainer.set("layer", 30);
 
   // Add series
   // https://docs.amcharts.com/v5/charts/xy-chart/series/
@@ -798,13 +812,19 @@ function makeColumnChart(parent) {
 }
 
 function makeMapChart(parent) {
+  // The map with its heat legend under it, 60% of the bottom row's width
+  var column = parent.children.push(am5.Container.new(root, {
+    width: am5.percent(60),
+    height: am5.p100,
+    layout: root.verticalLayout
+  }));
+
   // Create the map chart
   // https://docs.amcharts.com/v5/charts/map-chart/
-  var chart = parent.children.push(am5map.MapChart.new(root, {
+  var chart = column.children.push(am5map.MapChart.new(root, {
     minZoomLevel: 0.5, // can zoom out to half the fitted size
     // go to the home view once the map is fitted
     autoHome: true,
-    width: am5.percent(60), // 60% of the bottom row's width
     // the map shares the root with the other charts, so it keeps its countries within its own area
     maskContent: true,
     projection: am5map.geoEqualEarth() // a projection that keeps the countries' areas true
@@ -919,18 +939,18 @@ function makeMapChart(parent) {
 
   polygonSeries.data.setAll(data);
 
-  // The heat legend, in the row next to the map, so it never covers a country
+  // The heat legend, under the map, so it never covers a country
   // https://docs.amcharts.com/v5/concepts/legend/heat-legend/
-  var heatLegend = parent.children.push(am5.HeatLegend.new(root, {
-    orientation: "vertical",                       // standing upright
+  var heatLegend = column.children.push(am5.HeatLegend.new(root, {
+    orientation: "horizontal",                     // lying flat
     startColor: am5.Color.lighten(mainColor, 0.6), // the same colors...
     endColor: am5.Color.brighten(mainColor, -0.5), // ...as the heat rule
     startText: "Lowest", // words at the ends instead of numbers
     endText: "Highest",
     stepCount: 8,        // eight blocks of color instead of a smooth gradient
-    paddingRight: 20,    // room around it
-    paddingTop: 20,
-    paddingBottom: 20
+    paddingLeft: 20,     // room around it
+    paddingRight: 20,
+    paddingTop: 10
   }));
 
   heatLegend.startLabel.setAll({
@@ -979,4 +999,4 @@ function makeMapChart(parent) {
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/geodata/data/countries2.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

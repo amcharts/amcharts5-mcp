@@ -2,7 +2,7 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A step counter in the style of a fitness app: one column per day, gray below the 6,000-step goal and colored above it. Drag the chart sideways, and the day under the fixed cursor shows its count.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact comparisons between days: switch on value labels
 - Desktop readers: a cursor that follows the mouse is quicker than dragging
 
-Prompt: Create a fitness-app-style step count chart: a month of daily steps as columns, about ten days in view and dragged sideways to scroll, with days under the goal grayed out and lines at the goal and twice the goal. A cursor fixed in the middle shows the day under it. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a fitness-app-style step count chart: a month of daily steps as columns, about ten days in view and dragged sideways to scroll, with days under the goal grayed out and lines at the goal and twice the goal. A cursor fixed in the middle shows the day under it. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [
@@ -385,4 +385,4 @@ chart.appear(1000, 50);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

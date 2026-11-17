@@ -2,7 +2,7 @@
 title: "Divergent Lines"
 source: "https://www.amcharts.com/demos/divergent-lines/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One solid line for what has happened, then three dashed lines for what might: a projection, and what easing or tightening the rules could do by December.
@@ -19,7 +19,7 @@ Think twice when:
 - Forecasts with a known margin of error: a shaded band shows it better
 - Readers who may take a forecast for fact: label it clearly
 
-Prompt: Create a smoothed line chart of monthly values for 2025: a solid line of observed data from January to July, then three dashed lines that start from July and diverge until December (easing rules, stricter rules and a projection). Add a legend, a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a smoothed line chart of monthly values for 2025: a solid line of observed data from January to July, then three dashed lines that start from July and diverge until December (easing rules, stricter rules and a projection). Add a legend, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -125,6 +125,7 @@ var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
 
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   maxDeviation: 0.3, // the values can be panned 30% past their range too
+  numberFormat: "#.#a", // short numbers: 3.5M instead of 3,500,000
   renderer: am5xy.AxisRendererY.new(root, {})
 }));
 
@@ -221,4 +222,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

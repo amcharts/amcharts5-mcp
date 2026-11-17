@@ -2,7 +2,7 @@
 title: "XY Chart with Value-Based Line Graphs"
 source: "https://www.amcharts.com/demos/xy-chart-value-based-line-graphs/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two lines with numbers on both axes, not dates or categories; where a line has no value, it runs on to the next point. Circle and star sizes add a third value.
@@ -19,7 +19,7 @@ Think twice when:
 - Points with no order: drop the lines and use a scatter chart
 - Sizes people must read exactly: label them or use a table
 
-Prompt: Create an XY chart with two value axes and two dashed line series, one with circle bullets and the other with star bullets, each bullet sized by a value. Some points have a value for only one series, and the lines connect across the gaps. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an XY chart with two value axes and two dashed line series, one with circle bullets and the other with star bullets, each bullet sized by a value. Some points have a value for only one series, and the lines connect across the gaps. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -311,4 +311,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

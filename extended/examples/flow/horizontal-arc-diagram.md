@@ -2,7 +2,7 @@
 title: "Horizontal Arc Diagram"
 source: "https://www.amcharts.com/demos/horizontal-arc-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 An arc diagram lines the nodes up in a row and joins them with arcs, each as thick as the link. Here, the six friends of the TV show Friends in the middle, with the people linked to each of them close by.
@@ -19,7 +19,7 @@ Think twice when:
 - Long rows of nodes: the arcs over them grow tall
 - Flows with an amount and a direction: try a chord or Sankey diagram
 
-Prompt: Create a horizontal arc diagram of the connections between the six friends of the TV show Friends and the people linked to them, ordered so the arcs stay short. Size the circles by each node’s total, and make the arcs as thick as the values. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a horizontal arc diagram of the connections between the six friends of the TV show Friends and the people linked to them, ordered so the arcs stay short. Size the circles by each node’s total, and make the arcs as thick as the values. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -172,4 +172,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

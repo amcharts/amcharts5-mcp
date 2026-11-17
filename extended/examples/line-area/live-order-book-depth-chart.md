@@ -2,7 +2,7 @@
 title: "Crypto Order Book Depth Chart"
 source: "https://www.amcharts.com/demos/live-order-book-depth-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A market depth chart built from the live ETH/BTC order book on Binance and reloaded every 30 seconds: buy orders in green, sell orders in red.
@@ -19,7 +19,7 @@ Think twice when:
 - Thin markets with few orders: the steps say little
 - Audiences new to trading: explain bids and asks first
 
-Prompt: Create a live market depth chart for ETH/BTC from Binance’s public order book API (https://data-api.binance.vision/api/v3/depth?symbol=ETHBTC&limit=50), reloaded every 30 seconds. Show the cumulative bids and asks as step lines with faint fills, and the volume at each price as faint columns. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a live market depth chart for ETH/BTC from Binance’s public order book API (https://data-api.binance.vision/api/v3/depth?symbol=ETHBTC&limit=50), reloaded every 30 seconds. Show the cumulative bids and asks as step lines with faint fills, and the volume at each price as faint columns. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -285,4 +285,4 @@ function processData(list, type, desc, res) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

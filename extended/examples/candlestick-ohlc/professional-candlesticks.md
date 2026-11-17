@@ -2,7 +2,7 @@
 title: "Professional Candlesticks"
 source: "https://www.amcharts.com/demos/professional-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Candlesticks in the hollow style traders call professional. Each candle says two things: hollow if the day closed above its open, filled if below, and green or red for a close above or below the day before.
@@ -19,7 +19,7 @@ Think twice when:
 - Zoomed far out: the bodies get too thin to show hollow or filled
 - Printing in gray: the colors merge, only hollow or filled still reads
 
-Prompt: Create a professional (hollow) candlestick chart of simulated daily prices: a candle is hollow when the day closed above its open and filled when below, and green or red by whether it closed above or below the day before. Add a cursor, tooltips, a legend and a scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a professional (hollow) candlestick chart of simulated daily prices: a candle is hollow when the day closed above its open and filled when below, and green or red by whether it closed above or below the day before. Add a cursor, tooltips, a legend and a scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 // random daily prices for the last 1000 days, with an open, low and high around each close
 function generateChartData() {
@@ -243,4 +243,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

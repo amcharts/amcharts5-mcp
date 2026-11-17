@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/series/step-line-series"]
 ---
 
-A demo from the docs page "Step line series" (get_doc(path: "charts/xy-chart/series/step-line-series")).
+A demo from the docs page "Step line series" (get_doc(path: "charts/xy-chart/series/step-line-series")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

@@ -2,7 +2,7 @@
 title: "Directed Chord Diagram"
 source: "https://www.amcharts.com/demos/toggleable-chord-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A directed chord diagram: every ribbon runs from one person to another and takes the color of the one it starts from. Here, the six Friends characters and everyone linked to them.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact values: ribbon widths are hard to measure, add a table
 - Flows through several stages: use a Sankey diagram
 
-Prompt: Create a directed chord diagram of the connections between the six friends of the TV show Friends and the people linked to them. Clicking a node switches its ribbons off and on, and dragging a node turns the ring. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a directed chord diagram of the connections between the six friends of the TV show Friends and the people linked to them. Clicking a node switches its ribbons off and on, and dragging a node turns the ring. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a container for the series
@@ -204,4 +204,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

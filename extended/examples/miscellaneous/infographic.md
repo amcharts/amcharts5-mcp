@@ -2,7 +2,7 @@
 title: "Infographic"
 source: "https://www.amcharts.com/demos/infographic/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 An infographic-style bar chart drawn with person icons instead of solid bars. It compares the share of men and women in six departments: men to the left of the middle, women to the right, and the empty places in gray.
@@ -19,7 +19,7 @@ Think twice when:
 - Many rows or groups: the icons get crowded
 - Values far from round numbers: a partly drawn icon is hard to read
 
-Prompt: Create an infographic comparing the share of men and women in six departments, with men as bars to the left and women to the right. Fill each bar with repeating person icons, over faint icons that show the empty places. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an infographic comparing the share of men and women in six departments, with men as bars to the left and women to the right. Fill each bar with repeating person icons, over faint icons that show the empty places. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -256,4 +256,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

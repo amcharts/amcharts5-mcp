@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["concepts/common-elements/containers","concepts/legend"]
 ---
 
-A demo from the docs pages "Containers" (get_doc(path: "concepts/common-elements/containers")) and "Legend" (get_doc(path: "concepts/legend")).
+A demo from the docs pages "Containers" (get_doc(path: "concepts/common-elements/containers")) and "Legend" (get_doc(path: "concepts/legend")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

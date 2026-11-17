@@ -2,7 +2,7 @@
 title: "US Heat (Choropleth) Map"
 source: "https://www.amcharts.com/demos/us-heat-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A heat map of the United States, also called a choropleth: each state is colored by its population in the 2000 census, from a light shade for the fewest people to a dark one for the most.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact comparisons: a sorted bar chart
 - Tiny areas like DC: add labels or an inset
 
-Prompt: Create a heat map of US state populations from the 2000 census, shading each state from light to dark by its population, with the state and its population in a tooltip and a heat legend that marks the hovered state’s value. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a heat map of US state populations from the 2000 census, shading each state from light to dark by its population, with the state and its population in a tooltip and a heat legend that marks the hovered state’s value. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -192,4 +192,4 @@ polygonSeries.events.on("datavalidated", function () {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/usaLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

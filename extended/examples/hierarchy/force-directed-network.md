@@ -2,7 +2,7 @@
 title: "Force-Directed Network"
 source: "https://www.amcharts.com/demos/force-directed-network/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A network graph: nodes joined by lines, laid out by forces that push them apart and pull linked ones together. Here, three separate trees held together by two cross-links.
@@ -19,7 +19,7 @@ Think twice when:
 - Reading exact values: node size is only a rough guide
 - A strict hierarchy: a tree chart is easier to follow
 
-Prompt: Create a force-directed network of three separate trees, with extra links joining the first tree to the second and the second to the third. Clicking a node folds or opens the level below it, and nodes can be dragged. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a force-directed network of three separate trees, with extra links joining the first tree to the second and the second to the third. Clicking a node folds or opens the level below it, and nodes can be dragged. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = {
@@ -196,4 +196,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/stock/percent-mode","charts/stock/toolbar/comparison-control"]
 ---
 
-A demo from the docs pages "Percent scale" (get_doc(path: "charts/stock/percent-mode")) and "Comparison control" (get_doc(path: "charts/stock/toolbar/comparison-control")).
+A demo from the docs pages "Percent scale" (get_doc(path: "charts/stock/percent-mode")) and "Comparison control" (get_doc(path: "charts/stock/toolbar/comparison-control")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

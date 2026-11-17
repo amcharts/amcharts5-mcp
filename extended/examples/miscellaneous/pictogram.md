@@ -2,7 +2,7 @@
 title: "Pictogram"
 source: "https://www.amcharts.com/demos/pictogram/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pictogram shows a share as a grid of small figures, one for each person in a hundred, so a number becomes something you can see. Here, 58 of 100 men and 67 of 100 women, the counted figures in color over gray ones.
@@ -19,7 +19,7 @@ Think twice when:
 - Shares that aren’t whole numbers of 100: the last figure can’t show a fraction
 - Small differences, like 58 and 59: they look the same
 
-Prompt: Create a pictogram comparing men and women: each group is a grid of 100 person icons with the counted ones colored, and a large label beside each grid with the count out of 100. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pictogram comparing men and women: each group is a grid of 100 person icons with the counted ones colored, and a large label beside each grid with the count out of 100. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -65,7 +65,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -228,4 +228,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

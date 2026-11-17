@@ -2,7 +2,7 @@
 title: "Interactive Wheel of Life"
 source: "https://www.amcharts.com/demos/wheel-of-life/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A wheel of life asks how satisfied you are with eight areas of life and draws the answers as a ring of slices. Pick a score for each area and watch the wheel fill in.
@@ -19,7 +19,7 @@ Think twice when:
 - Scores on different scales
 - More than a dozen areas: the slices get thin
 
-Prompt: Create an interactive wheel of life: a radar column chart of eight areas of life, such as health, career and family, that starts empty. Above it, a question asks you to rate one area at a time from 1 to 10 with buttons; each answer fills that area’s column, and a button starts over at the end. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an interactive wheel of life: a radar column chart of eight areas of life, such as health, career and family, that starts empty. Above it, a question asks you to rate one area at a time from 1 to 10 with buttons; each answer fills that area’s column, and a button starts over at the end. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -247,4 +247,4 @@ ask(0);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Horizontal Partition Chart"
 source: "https://www.amcharts.com/demos/horizontal-partition-chart/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A partition chart, also called an icicle chart, lays a hierarchy out in columns: the whole on the left, each column one level deeper, each box as tall as its share. Here, a 100-person company by department and team.
@@ -19,7 +19,7 @@ Think twice when:
 - Structure without sizes: a tree chart shows it better
 - A square space: a sunburst or treemap is more compact
 
-Prompt: Create a horizontal partition (icicle) chart of a 100-person company by department and team, with the levels running left to right. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal partition (icicle) chart of a 100-person company by department and team, with the levels running left to right. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -159,4 +159,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

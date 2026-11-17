@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/gantt/serializing-gantt-data"]
 ---
 
-A demo from the docs page "Events and Gantt data serialization" (get_doc(path: "charts/gantt/serializing-gantt-data")).
+A demo from the docs page "Events and Gantt data serialization" (get_doc(path: "charts/gantt/serializing-gantt-data")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

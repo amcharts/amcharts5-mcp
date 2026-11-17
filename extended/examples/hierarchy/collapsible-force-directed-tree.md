@@ -2,7 +2,7 @@
 title: "Collapsible Force-Directed Tree"
 source: "https://www.amcharts.com/demos/collapsible-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A force-directed tree links bubbles with lines and lets them push and pull until they settle. This one maps the flavors of coffee, from families like Fruity down to single notes, and opens a branch when you click it.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact sizes: bubbles are hard to compare
 - Printed pages, where nothing opens
 
-Prompt: Create a collapsible force-directed tree of the coffee taster’s flavor wheel, with bubbles sized by how many flavors they hold. Show the first two levels at first; clicking a bubble opens the levels below it, or folds it. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a collapsible force-directed tree of the coffee taster’s flavor wheel, with bubbles sized by how many flavors they hold. Show the first two levels at first; clicking a bubble opens the levels below it, or folds it. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = {
@@ -578,4 +578,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

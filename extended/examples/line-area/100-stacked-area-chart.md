@@ -2,7 +2,7 @@
 title: "100% Stacked Area Chart"
 source: "https://www.amcharts.com/demos/100-stacked-area-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Every year adds up to 100%, so the chart shows shares instead of amounts: how a total splits between cars, motorcycles and bicycles from 2007 to 2025.
@@ -19,7 +19,7 @@ Think twice when:
 - Very small parts: thin bands are hard to read
 - Comparing the middle bands: lines show them better
 
-Prompt: Create a 100% stacked area chart of yearly values for cars, motorcycles and bicycles from 2007 to 2025, showing each as its share of the year’s total, with tooltips that show both the share and the actual value. Add a legend, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a 100% stacked area chart of yearly values for cars, motorcycles and bicycles from 2007 to 2025, showing each as its share of the year’s total, with tooltips that show both the share and the actual value. Add a legend, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -252,4 +252,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Zoomable Value Axis"
 source: "https://www.amcharts.com/demos/zoomable-value-axis/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart that zooms up and down as well as across. Pick a band of values to see the small moves inside it; the scrollbar on the right shows where you are.
@@ -19,7 +19,7 @@ Think twice when:
 - Charts read without the full range: a zoomed axis can mislead
 - Two series on very different scales: use two value axes
 
-Prompt: Create a line chart of about 2,000 daily values that zooms along the value axis: drag up or down on the plot to zoom to a band of values, use the mouse wheel, or move the band with a vertical scrollbar. Add a fill under the line, a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about 2,000 daily values that zooms along the value axis: drag up or down on the plot to zoom to a band of values, use the mouse wheel, or move the band with a vertical scrollbar. Add a fill under the line, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -146,4 +146,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

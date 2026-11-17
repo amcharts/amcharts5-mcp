@@ -2,7 +2,7 @@
 title: "Stadium Track Chart"
 source: "https://www.amcharts.com/demos/stadium-track-chart/"
 category: "timeline"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Six values as a race: each runner has a lane on an oval track, and their bar runs from the start line around the oval as far as their value takes it. Photos in the middle name the runners.
@@ -19,7 +19,7 @@ Think twice when:
 - More than eight runners: the lanes get thin
 - Values with no maximum to race towards
 
-Prompt: Create a stadium track chart: an oval running track with one lane per runner, where each runner’s value is a bar running round their lane from the start line. In the middle, a legend shows a photo of each runner; pointing at one lights up their bar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stadium track chart: an oval running track with one lane per runner, where each runner’s value is a bar running round their lane from the start line. In the middle, a legend shows a photo of each runner; pointing at one lights up their bar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -275,4 +275,4 @@ function getPoints() {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

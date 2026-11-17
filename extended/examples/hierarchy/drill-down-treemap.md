@@ -2,7 +2,7 @@
 title: "Drill-Down Treemap"
 source: "https://www.amcharts.com/demos/drill-down-treemap/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A treemap you explore one level at a time: the first view shows the 18 brands that sold over 200,000 vehicles in the US in 2017, and clicking a brand opens its models. The breadcrumb bar on top leads back.
@@ -19,7 +19,7 @@ Think twice when:
 - Printed reports, where nobody can click
 - Just a few items: a simple treemap shows them all
 
-Prompt: Create a drill-down treemap of 2017 US car sales that shows one level at a time: the best-selling brands first, then a brand’s models when it is clicked. Add a breadcrumb bar that leads back up, and put each brand’s logo faintly in its box. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a drill-down treemap of 2017 US car sales that shows one level at a time: the best-selling brands first, then a brand’s models when it is clicked. Add a breadcrumb bar that leads back up, and put each brand’s logo faintly in its box. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -53,7 +53,7 @@ myTheme.rule("Label", ["node", "depth2"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -512,4 +512,4 @@ series.bullets.push(function (root, series, dataItem) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

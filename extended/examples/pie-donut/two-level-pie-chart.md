@@ -2,7 +2,7 @@
 title: "Two-Level Pie Chart"
 source: "https://www.amcharts.com/demos/two-level-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A thin ring of parts inside a wider, see-through band that groups some of them together. Here the band shows that First and Second belong together.
@@ -19,7 +19,7 @@ Think twice when:
 - Groups that overlap: each part must belong to one group
 - Many parts per group: the inner slices get thin
 
-Prompt: Create a two-level pie chart of three equal parts: a thin ring shows First, Second and Remaining, and a faint, wider band behind it spans only First and Second to group them. Write the names along the curve of the rings. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a two-level pie chart of three equal parts: a thin ring shows First, Second and Remaining, and a faint, wider band behind it spans only First and Second to group them. Write the names along the curve of the rings. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -180,4 +180,4 @@ series1.data.setAll([{
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

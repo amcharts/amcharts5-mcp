@@ -2,7 +2,7 @@
 title: "Stacked and Clustered Column Chart"
 source: "https://www.amcharts.com/demos/stacked-clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Stacks side by side: each year, North America stacks on Europe in one column, and Latin America, the Middle East and Africa stack on Asia in the next. Two groups, and what each is made of.
@@ -19,7 +19,7 @@ Think twice when:
 - More than three stacks per category: the chart gets busy
 - Groups readers can’t guess from the legend: label them on the chart
 
-Prompt: Create a column chart that is both stacked and clustered: six regions over three years, shown as two stacked columns side by side for each year. Label the segments with their values, and add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart that is both stacked and clustered: six regions over three years, shown as two stacked columns side by side for each year. Label the segments with their values, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -201,4 +201,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

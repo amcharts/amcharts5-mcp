@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/percent-charts/pie-chart"]
 ---
 
-A demo from the docs page "Pie chart" (get_doc(path: "charts/percent-charts/pie-chart")).
+A demo from the docs page "Pie chart" (get_doc(path: "charts/percent-charts/pie-chart")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

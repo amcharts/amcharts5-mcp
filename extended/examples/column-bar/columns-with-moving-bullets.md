@@ -2,7 +2,7 @@
 title: "Columns with Moving Bullets"
 source: "https://www.amcharts.com/demos/columns-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The column version of moving photos: each column has a photo at its foot, and when you point at a column, the photo climbs to its top. Step counts for six friends, darker the higher.
@@ -19,7 +19,7 @@ Think twice when:
 - Touch screens: with no hover, few people find the motion
 - Values close together: add value labels
 
-Prompt: Create a column chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the foot of their column. Hovering a column makes its photo climb to the top. Add tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart of step counts for six people, shaded from light to dark by value, with each person’s round photo at the foot of their column. Hovering a column makes its photo climb to the top. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [{
@@ -291,4 +291,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

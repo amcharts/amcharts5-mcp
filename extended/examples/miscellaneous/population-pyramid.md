@@ -2,7 +2,7 @@
 title: "Population Pyramid"
 source: "https://www.amcharts.com/demos/population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A population pyramid puts men and women back to back, one bar per age group, the youngest at the bottom: its shape shows how old a population is. Here, the United States; click a state on the map for its own pyramid.
@@ -19,7 +19,7 @@ Think twice when:
 - Uneven age groups: a 3-year group looks short next to a 5-year one
 - More than two groups per age: use a stacked bar chart
 
-Prompt: Create a population pyramid of US census data by sex and age group next to a map of the United States. Clicking a state shows that state’s pyramid, and clicking it again goes back to the whole country. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a population pyramid of US census data by sex and age group next to a map of the United States. Clicking a state shows that state’s pyramid, and clicking it again goes back to the whole country. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -4117,7 +4117,7 @@ usData = aggregateData(usData); // shares for the whole country, shown first
 var root = am5.Root.new("chartdiv");
 
 // Set themes
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -4380,4 +4380,4 @@ map.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/usaLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

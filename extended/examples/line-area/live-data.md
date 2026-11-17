@@ -2,7 +2,7 @@
 title: "Live Data"
 source: "https://www.amcharts.com/demos/live-data/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart that never sits still: every second a new point slides in on the right and the oldest one drops off the left.
@@ -19,7 +19,7 @@ Think twice when:
 - Updates faster than people can read: group them first
 - Careful comparisons: moving data is hard to study
 
-Prompt: Create a live line chart that adds a new random value every second and drops the oldest, so the window keeps moving, with each new point animating in from the previous one. Add round markers, a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a live line chart that adds a new random value every second and drops the oldest, so the window keeps moving, with each new point animating in from the previous one. Add round markers, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Generate random data
@@ -221,4 +221,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

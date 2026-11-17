@@ -2,7 +2,7 @@
 title: "Violin Chart"
 source: "https://www.amcharts.com/demos/violin-chart/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A violin chart shows how values are spread: the shape is widest where most values fall and thin where few do, mirrored around its middle line. Here, about 200 values in each of four regions, one violin per row.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who want medians and quartiles: a box plot
 - Many groups: the rows get thin
 
-Prompt: Create a violin chart that compares how values are spread in four regions: count the values in bins and draw each region as a mirrored smoothed shape in its own row, whose width shows how many values fall in each bin, labeled with the region’s name. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a violin chart that compares how values are spread in four regions: count the values in bins and draw each region as a mirrored smoothed shape in its own row, whose width shows how many values fall in each bin, labeled with the region’s name. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Source data
@@ -223,4 +223,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

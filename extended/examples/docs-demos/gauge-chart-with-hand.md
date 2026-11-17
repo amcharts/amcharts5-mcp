@@ -6,7 +6,7 @@ scraped: "2026-11-14"
 docsPages: ["charts/radar-chart/gauge-charts","concepts/animations"]
 ---
 
-A demo from the docs pages "Gauge charts" (get_doc(path: "charts/radar-chart/gauge-charts")) and "Animations" (get_doc(path: "concepts/animations")).
+A demo from the docs pages "Gauge charts" (get_doc(path: "charts/radar-chart/gauge-charts")) and "Animations" (get_doc(path: "concepts/animations")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

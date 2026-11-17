@@ -2,7 +2,7 @@
 title: "Annotating Charts"
 source: "https://www.amcharts.com/demos/annotating-charts/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pie chart with notes drawn on it: a callout and arrows saying which slices need work. They come from the exporting menu’s Annotate tool, which lets anyone draw on a chart and save the result.
@@ -19,7 +19,7 @@ Think twice when:
 - Notes tied to data: label or range bullets move with it
 - Long explanations: put them next to the chart
 
-Prompt: Create a pie chart with an export menu that has an extra Annotate item, so anyone can draw callouts, arrows and text on the chart and save the result. Start with a few saved annotations on the slices. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a pie chart with an export menu that has an extra Annotate item, so anyone can draw callouts, arrows and text on the chart and save the result. Start with a few saved annotations on the slices. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -139,5 +139,5 @@ menuitems.push({
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://cdn.amcharts.com/lib/5/plugins/exporting.js

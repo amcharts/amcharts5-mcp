@@ -2,7 +2,7 @@
 title: "Manipulate Chart Data with Mouse"
 source: "https://www.amcharts.com/demos/manipulate-chart-data-with-mouse/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart you can edit by hand: press anywhere on the plot and drag up or down, and the nearest point follows. Handy for what-if plans and rough forecasts.
@@ -19,7 +19,7 @@ Think twice when:
 - Hundreds of points: each one is too close to the next to pick
 - Data that must not change, like reported results
 
-Prompt: Create a line chart of 40 daily values where pressing on the plot and dragging up or down changes the value of the nearest point, live. Show circle markers on the points and a resize cursor on hover. Add tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of 40 daily values where pressing on the plot and dragging up or down changes the value of the nearest point, live. Show circle markers on the points and a resize cursor on hover. Add tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -39,7 +39,7 @@ myTheme.rule("AxisLabel").setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -203,4 +203,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

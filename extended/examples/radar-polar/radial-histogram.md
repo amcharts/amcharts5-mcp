@@ -2,7 +2,7 @@
 title: "Radial Histogram"
 source: "https://www.amcharts.com/demos/radial-histogram/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart bent into a ring: twenty bars stand around an open middle, each in its own color, with a gap at the top for the scale.
@@ -19,7 +19,7 @@ Think twice when:
 - A few bars: a plain column chart is clearer
 - Long category names: there is little room around the ring
 
-Prompt: Create a radial histogram of 20 numbered categories with random values: columns around most of a circle with a hole in the middle, each in its own color, with the value scale in the gap at the top. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radial histogram of 20 numbered categories with random values: columns around most of a circle with a hole in the middle, each in its own color, with the value scale in the gap at the top. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -146,4 +146,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

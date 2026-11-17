@@ -2,7 +2,7 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Sankey diagram you can follow one path through: point at a band and every step of that path lights up, from the first column to the last. Here, thirteen paths through four stages.
@@ -19,7 +19,7 @@ Think twice when:
 - A handful of paths: a plain Sankey already shows them
 - Data with no id for each path: the chart can’t tell which bands belong together
 
-Prompt: Create a traceable Sankey diagram of 13 paths through four columns of nodes, with faint bands: pointing at a band lights up its whole path from the first column to the last. Nodes can be dragged. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a traceable Sankey diagram of 13 paths through four columns of nodes, with faint bands: pointing at a band lights up its whole path from the first column to the last. Nodes can be dragged. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create a container for the series
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
@@ -42,7 +42,7 @@ var series = chart.series.push(
     sourceIdField: "from",
     targetIdField: "to",
     valueField: "value",
-    paddingRight: 50, // room on the right for the last column's names
+    paddingRight: 25, // room on the right for the last column's one-letter names
     // each link keeps the id from its data, which the hover code below reads
     idField: "id"
   })
@@ -152,4 +152,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

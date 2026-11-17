@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/axes","concepts/settings/heat-rules"]
 ---
 
-A demo from the docs pages "Axes" (get_doc(path: "charts/xy-chart/axes")) and "Heat rules" (get_doc(path: "concepts/settings/heat-rules")).
+A demo from the docs pages "Axes" (get_doc(path: "charts/xy-chart/axes")) and "Heat rules" (get_doc(path: "concepts/settings/heat-rules")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

@@ -2,7 +2,7 @@
 title: "Shaped Word Cloud"
 source: "https://www.amcharts.com/demos/shaped-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A word cloud that fills a shape: the words pack into the outline of a head, each sized by its weight. Here, what might be on someone’s mind, from money, family and work down to socks and wifi.
@@ -19,7 +19,7 @@ Think twice when:
 - Reading exact weights: a bar chart of the top words
 - Shapes that say nothing about the topic: a plain cloud is clearer
 
-Prompt: Create a word cloud shaped like a human head in profile: about 90 words of very different weights, from Money, Sex, Family and Work down to small ones, fill the head, with its outline drawn around them. Use the Animated theme. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a word cloud shaped like a human head in profile: about 90 words of very different weights, from Money, Sex, Family and Work down to small ones, fill the head, with its outline drawn around them. Use the Animated theme. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Head in profile, facing right. Drawn in a 250x250 box; the series scales it
@@ -77,6 +77,7 @@ series.shape.setAll({
 });
 
 series.labels.template.setAll({
+  fontFamily: "Courier New",         // a typewriter font
   fontWeight: "500",                 // medium weight
   tooltipText: "{category}: {value}" // hover a word for its weight
 });
@@ -196,4 +197,4 @@ series.data.setAll([
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

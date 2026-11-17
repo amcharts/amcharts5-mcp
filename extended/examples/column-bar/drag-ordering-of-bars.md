@@ -2,7 +2,7 @@
 title: "Drag-Ordering of Bars"
 source: "https://www.amcharts.com/demos/drag-ordering-of-bars/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bar chart you put in order by hand: grab a bar, drag it above or below the others and let go, and the bars settle into their new order.
@@ -19,7 +19,7 @@ Think twice when:
 - An order that follows the values: sort in code instead
 - Keyboard users: offer buttons to move items too
 
-Prompt: Create a horizontal bar chart of five countries where users drag the bars up or down to reorder them, the other bars sliding into their new rows. Color the bars by position, so the colors stay in order. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal bar chart of five countries where users drag the bars up or down to reorder them, the other bars sliding into their new rows. Color the bars by position, so the colors stay in order. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -40,7 +40,7 @@ myTheme.rule("Grid", ["base"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -233,4 +233,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

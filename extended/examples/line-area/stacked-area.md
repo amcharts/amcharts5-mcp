@@ -2,7 +2,7 @@
 title: "Stacked Area"
 source: "https://www.amcharts.com/demos/stacked-area/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Cars, motorcycles and bicycles from 2007 to 2025 as three stacked areas, so the top edge is the total. Shaded bands mark two events at the biggest drops.
@@ -19,7 +19,7 @@ Think twice when:
 - Many thin parts: group the small ones
 - Shares rather than amounts: use a 100% stacked area
 
-Prompt: Create a stacked area chart of yearly values for cars, motorcycles and bicycles from 2007 to 2025, with two events marked as shaded bands with vertical labels: higher fines for speeding and a new motorcycle fee. Add tooltips, a cursor, a legend and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stacked area chart of yearly values for cars, motorcycles and bicycles from 2007 to 2025, with two events marked as shaded bands with vertical labels: higher fines for speeding and a new motorcycle fee. Add tooltips, a cursor, a legend and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -315,4 +315,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

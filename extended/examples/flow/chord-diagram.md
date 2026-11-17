@@ -2,7 +2,7 @@
 title: "Chord Diagram"
 source: "https://www.amcharts.com/demos/chord-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A chord diagram puts the items around a circle and joins them with ribbons, each as wide as the flow between them. Here, five European cities and the flows between every pair, which are rarely the same both ways.
@@ -19,7 +19,7 @@ Think twice when:
 - More than 20 or so items: the ring gets crowded
 - Exact numbers: a table or a heat map reads more precisely
 
-Prompt: Create a chord diagram of the flows between five European cities, with a link for every pair in each direction and values that differ by direction. Clicking a city switches its ribbons off and on, and dragging a city turns the ring. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a chord diagram of the flows between five European cities, with a link for every pair in each direction and values that differ by direction. Clicking a city switches its ribbons off and on, and dragging a city turns the ring. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create series
@@ -101,4 +101,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

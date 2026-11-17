@@ -2,7 +2,7 @@
 title: "OHLC Chart"
 source: "https://www.amcharts.com/demos/ohlc-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 An OHLC chart shows the same four prices as a candlestick, drawn as a bar: a line from low to high, a tick to the left for the open and one to the right for the close. Zoom out and 2,000 days group into weeks and months.
@@ -19,7 +19,7 @@ Think twice when:
 - One price per day: a line chart is clearer
 - Small screens: the open and close ticks get too short to see
 
-Prompt: Create a zoomable OHLC chart of about five years of simulated daily prices, each bar a line from low to high with ticks for the open and close, merging into weeks or months when zoomed out. Add a cursor, tooltips, a legend and a scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable OHLC chart of about five years of simulated daily prices, each bar a line from low to high with ticks for the open and close, merging into weeks or months when zoomed out. Add a cursor, tooltips, a legend and a scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 // 2000 days of random prices: each day's close, open, low and high
 function generateChartData() {
@@ -227,4 +227,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

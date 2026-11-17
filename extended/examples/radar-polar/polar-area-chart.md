@@ -2,7 +2,7 @@
 title: "Polar Area Chart"
 source: "https://www.amcharts.com/demos/polar-area-chart/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A polar area chart, also called a rose or coxcomb chart, draws a stacked column for every direction around a circle. Here, a wind rose: where the wind comes from, and how strong.
@@ -19,7 +19,7 @@ Think twice when:
 - Precise reading of the outer parts: area grows faster than length
 - Many stacked parts: the inner ones get thin
 
-Prompt: Create a polar area chart as a wind rose: sixteen compass directions, each with stacked columns showing how often the wind blew from there at five speed ranges (sample data), and a legend of the speeds. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a polar area chart as a wind rose: sixteen compass directions, each with stacked columns showing how often the wind blew from there at five speed ranges (sample data), and a legend of the speeds. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Data: a wind rose. How often the wind blew from each direction over a year, in % of the time,
@@ -171,4 +171,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

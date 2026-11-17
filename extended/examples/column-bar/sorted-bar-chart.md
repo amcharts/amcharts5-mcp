@@ -2,7 +2,7 @@
 title: "Sorted Bar Chart"
 source: "https://www.amcharts.com/demos/sorted-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bar chart that keeps its ranking up to date. Every second and a half, twelve social networks get new user counts, and the bars slide into their new order, the longest on top.
@@ -19,7 +19,7 @@ Think twice when:
 - Updates faster than the slide: the bars never settle
 - How the ranking changed over time: a bar chart race keeps the history
 
-Prompt: Create a horizontal bar chart of user counts for twelve social networks that re-sorts itself live: every second or two the values change at random and the bars slide into their new order, longest on top, each in its own color. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal bar chart of user counts for twelve social networks that re-sorts itself live: every second or two the values change at random and the bars slide into their new order, longest on top, each in its own color. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -41,7 +41,7 @@ root.numberFormatter.setAll({
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -277,4 +277,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

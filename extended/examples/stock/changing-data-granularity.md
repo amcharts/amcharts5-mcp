@@ -2,7 +2,7 @@
 title: "Changing Data Granularity"
 source: "https://www.amcharts.com/demos/changing-data-granularity/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A stock chart that loads new data when you change the interval: a year of Microsoft prices as daily, weekly or monthly candles, or a single day in one-minute candles. Each interval is its own file, fetched when you pick it.
@@ -19,7 +19,7 @@ Think twice when:
 - A slow server: every switch waits for a download
 - One timeframe is all readers need: skip the switcher
 
-Prompt: Create a stock chart of Microsoft prices as candlesticks with volume, with a toolbar switch between one-minute, daily, weekly and monthly data, each loaded from its own CSV file. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of Microsoft prices as candlesticks with volume, with a toolbar switch between one-minute, daily, weekly and monthly data, each loaded from its own CSV file. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -39,7 +39,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -427,4 +427,4 @@ var toolbar = am5stock.StockToolbar.new(root, {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Pacific-Centered Map"
 source: "https://www.amcharts.com/demos/pacific-centered-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map turned to put the Pacific Ocean in the middle, so Asia, Australia and the Americas sit side by side. Each country takes the next color of the palette.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing areas: Mercator swells the poles, Equal Earth keeps areas true
 - Only the ocean matters: a globe centered on it
 
-Prompt: Create a world map centered on the Pacific Ocean that turns when dragged sideways, with each country in its own soft color that brightens on hover and the country’s name in a tooltip. Add zoom buttons with a home button. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map centered on the Pacific Ocean that turns when dragged sideways, with each country in its own soft color that brightens on hover and the country’s name in a tooltip. Add zoom buttons with a home button. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -206,4 +206,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

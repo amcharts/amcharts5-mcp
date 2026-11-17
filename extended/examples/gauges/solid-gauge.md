@@ -2,7 +2,7 @@
 title: "Solid Gauge"
 source: "https://www.amcharts.com/demos/solid-gauge/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Four progress bars bent into rings, one inside the other, each filling its track up to a percentage. Here, four departments from 35% to 92%.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact comparisons: an outer ring looks longer for the same value
 - Values over 100%: the ring has nowhere to go
 
-Prompt: Create a solid gauge: a three-quarter circle of four rings, one per department, each filled in its own color up to its percentage over a faint full-length track, with tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a solid gauge: a three-quarter circle of four rings, one per department, each filled in its own color up to its percentage over a faint full-length track, with tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -200,4 +200,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

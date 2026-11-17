@@ -2,7 +2,7 @@
 title: "Exporting Chart to Image"
 source: "https://www.amcharts.com/demos/exporting-chart-to-image/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart with an export menu: the icon at the top right saves the chart as an image or a PDF, saves its data as a spreadsheet, or prints it. Change the chart with the controls first, and the export shows it as changed.
@@ -19,7 +19,7 @@ Think twice when:
 - Very large data: export the data from its source instead
 - Kiosk or embedded screens with no use for files
 
-Prompt: Create a column chart of visits from 16 countries, each column in its own color, with an export menu that saves the chart as an image or PDF, prints it, or saves its data as JSON, CSV, Excel, PDF or HTML. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart of visits from 16 countries, each column in its own color, with an export menu that saves the chart as an image or PDF, prints it, or saves its data as JSON, CSV, Excel, PDF or HTML. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -241,5 +241,5 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://cdn.amcharts.com/lib/5/plugins/exporting.js

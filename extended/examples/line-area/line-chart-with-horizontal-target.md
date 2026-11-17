@@ -2,7 +2,7 @@
 title: "Line Chart with Horizontal Target"
 source: "https://www.amcharts.com/demos/line-chart-with-horizontal-target/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart with a dotted target line at 40. Whatever falls below the target changes color, so the days that missed it stand out at once.
@@ -19,7 +19,7 @@ Think twice when:
 - Upper and lower limits: shade the band between them
 - Several targets on one chart: the dashed lines get confusing
 
-Prompt: Create a line chart of about 300 daily values with a dotted horizontal target line and its label. The part of the line below the target is drawn in a different color. Add a fill under the line, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about 300 daily values with a dotted horizontal target line and its label. The part of the line below the target is drawn in a different color. Add a fill under the line, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
     am5themes_Animated.new(root),
-    am5themes_Responsive.new(root)
+    am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -197,4 +197,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

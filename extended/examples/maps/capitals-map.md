@@ -2,7 +2,7 @@
 title: "Capitals Map"
 source: "https://www.amcharts.com/demos/capitals-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map with the capital of every country, 196 in all, each marked with a star as in a printed atlas. Zoom in and the names appear.
@@ -19,7 +19,7 @@ Think twice when:
 - Thousands of points: cluster them
 - Data for whole countries: color the countries instead
 
-Prompt: Create a world map in the style of a printed atlas that marks every country’s capital with a star, with the capital and its country in a tooltip. The capitals’ names appear next to their stars once the map is zoomed in. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map in the style of a printed atlas that marks every country’s capital with a star, with the capital and its country in a tooltip. The capitals’ names appear next to their stars once the map is zoomed in. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -289,7 +289,7 @@ var capitals = [
   { title: "Maputo", country: "Mozambique", latitude: -25.95, longitude: 32.59 },
   { title: "Naypyidaw", country: "Myanmar", latitude: 19.77, longitude: 96.12 },
   { title: "Windhoek", country: "Namibia", latitude: -22.57, longitude: 17.08 },
-  { title: "Yaren", country: "Nauru", latitude: -0.55, longitude: 166.92 },
+  { title: "Yaren", country: "Naoero", latitude: -0.55, longitude: 166.92 },
   { title: "Kathmandu", country: "Nepal", latitude: 27.72, longitude: 85.31 },
   { title: "Amsterdam", country: "Netherlands", latitude: 52.35, longitude: 4.91 },
   { title: "Wellington", country: "New Zealand", latitude: -41.3, longitude: 174.78 },
@@ -455,4 +455,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

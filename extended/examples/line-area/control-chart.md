@@ -2,7 +2,7 @@
 title: "Control Chart"
 source: "https://www.amcharts.com/demos/control-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A control chart tracks readings against a center line and two control limits. Readings beyond a limit turn red; a long run above the center line gets red rings, an early warning that the process is drifting.
@@ -19,7 +19,7 @@ Think twice when:
 - Only a few readings: limits need enough data to be trusted
 - Readers who don’t know the rules: add a key to the colors
 
-Prompt: Create a control chart of 16 readings taken every 30 minutes, with a center line and dashed upper and lower control limits, labeled at the right. Mark the readings beyond a limit, and a long run above the center line, with differently styled markers. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a control chart of 16 readings taken every 30 minutes, with a center line and dashed upper and lower control limits, labeled at the right. Mark the readings beyond a limit, and a long run above the center line, with differently styled markers. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -237,4 +237,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

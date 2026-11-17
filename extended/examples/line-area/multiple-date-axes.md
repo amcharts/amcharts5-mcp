@@ -2,7 +2,7 @@
 title: "Multiple Date Axes"
 source: "https://www.amcharts.com/demos/multiple-date-axes/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two years on one chart: 2023 and 2025 each get their own date axis, so both start at the left edge and line up day by day. Each axis is labeled in the color of its line.
@@ -19,7 +19,7 @@ Think twice when:
 - More than two or three periods: the date axes stack up
 - Weekly patterns: a date falls on a different weekday each year
 
-Prompt: Create a line chart comparing a year of daily prices in 2023 with a year in 2025, each series on its own date axis, one under the other, both sharing one value axis. Color each date axis’s labels like its line. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart comparing a year of daily prices in 2023 with a year in 2025, each series on its own date axis, one under the other, both sharing one value axis. Color each date axis’s labels like its line. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -49,7 +49,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -204,4 +204,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

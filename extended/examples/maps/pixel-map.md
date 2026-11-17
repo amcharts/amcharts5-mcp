@@ -2,7 +2,7 @@
 title: "Pixel Map"
 source: "https://www.amcharts.com/demos/pixel-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map drawn as a grid of dots, each colored by its country's approximate median age: the older the population, the darker.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact values: columns are hard to compare, add a table or a bar chart
 - Borders that matter: a polygon map draws them exactly
 
-Prompt: Create a world map that draws each country as a grid of dots, a pixel map, colored from light to dark by the median age of its people, with the country and its median age in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map that draws each country as a grid of dots, a pixel map, colored from light to dark by the median age of its people, with the country and its median age in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -207,4 +207,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

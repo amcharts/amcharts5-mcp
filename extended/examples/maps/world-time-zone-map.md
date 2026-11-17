@@ -2,7 +2,7 @@
 title: "World Time Zone Map"
 source: "https://www.amcharts.com/demos/world-time-zone-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The world's time zones in two layers: colored areas show the zone each piece of land keeps, and faint bands run from pole to pole, with each whole-hour offset from UTC labeled along the bottom.
@@ -19,7 +19,7 @@ Think twice when:
 - Daylight saving matters: offsets change during the year
 - Current offsets: a few countries have changed zones since this geodata was made
 
-Prompt: Create a world time zone map from the amCharts time zone geodata: the zone areas on land in soft colors, the zone bands over them with the zone in a tooltip, and each whole-hour offset from UTC labeled along the bottom. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world time zone map from the amCharts time zone geodata: the zone areas on land in soft colors, the zone bands over them with the zone in a tooltip, and each whole-hour offset from UTC labeled along the bottom. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -200,4 +200,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js
 - https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

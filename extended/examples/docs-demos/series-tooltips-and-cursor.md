@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/cursor","charts/xy-chart/series"]
 ---
 
-A demo from the docs pages "Cursor" (get_doc(path: "charts/xy-chart/cursor")) and "XY chart series" (get_doc(path: "charts/xy-chart/series")).
+A demo from the docs pages "Cursor" (get_doc(path: "charts/xy-chart/cursor")) and "XY chart series" (get_doc(path: "charts/xy-chart/series")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

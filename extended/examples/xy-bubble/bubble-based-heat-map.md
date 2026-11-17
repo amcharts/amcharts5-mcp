@@ -2,7 +2,7 @@
 title: "Bubble-Based Heat Map"
 source: "https://www.amcharts.com/demos/bubble-based-heat-map/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A heat map drawn with bubbles instead of colored cells: a week of hourly values, one row per day, and the bigger the bubble, the higher the value. The values change every second.
@@ -19,7 +19,7 @@ Think twice when:
 - Dozens of rows and columns: the bubbles shrink to dots
 - Negative values: use colored cells with a two-color scale
 
-Prompt: Create a bubble heat map of days of the week by hours of the day, with a circle in each cell sized by its value that fits its cell at any chart size. Every second, the values change a little and the bubbles grow and shrink smoothly. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a bubble heat map of days of the week by hours of the day, with a circle in each cell sized by its value that fits its cell at any chart size. Every second, the values change a little and the bubbles grow and shrink smoothly. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -894,4 +894,4 @@ setInterval(function () {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

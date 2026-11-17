@@ -2,7 +2,7 @@
 title: "Divergent Stacked Bars"
 source: "https://www.amcharts.com/demos/divergent-stacked-bars/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A diverging stacked bar chart, the usual way to show answers on a scale: negative answers stack to the left of zero, positive ones to the right. Here, how often people turn to eleven sources of information.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing the outer answers: only the segments at zero line up
 - One question only: a single 100% bar is enough
 
-Prompt: Create a diverging stacked bar chart of survey answers about eleven sources of information: Never and Unlikely stack to the left of zero, Sometimes and Very often to the right. Label the segments with their shares, and add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a diverging stacked bar chart of survey answers about eleven sources of information: Never and Unlikely stack to the left of zero, Sometimes and Very often to the right. Label the segments with their shares, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -259,4 +259,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

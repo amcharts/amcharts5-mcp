@@ -2,7 +2,7 @@
 title: "Trump’s Reciprocal Tariffs Map"
 source: "https://www.amcharts.com/demos/trumps-reciprocal-tariffs-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world heat map of US reciprocal tariff rates by country from April 2025, as first announced and as updated: the darker the color, the higher the rate.
@@ -19,7 +19,7 @@ Think twice when:
 - Small island countries: hard to see, list them as well
 - Counts like population: bubbles suit totals better
 
-Prompt: Create a world heat map of the US reciprocal tariff rates announced in April 2025, shading each country from light to dark by its rate, with the rate in a tooltip and a heat legend that marks the rate of the country under the pointer. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world heat map of the US reciprocal tariff rates announced in April 2025, shading each country from light to dark by its rate, with the rate in a tooltip and a heat legend that marks the rate of the country under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -1042,7 +1042,7 @@ myTheme.rule("Label").setAll({
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), myTheme, am5themes_ResponsiveMax.new(root)]);
 
 // Colors from the theme, so the map follows the theme: the rates and the buttons in its first color
 var colors = am5.ColorSet.new(root, {});
@@ -1190,4 +1190,4 @@ zoomControl.homeButton.set("visible", true); // a button that goes back to the h
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Vertically Stacked Axes Chart"
 source: "https://www.amcharts.com/demos/vertically-stacked-axes-chart/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One chart split into three panes stacked on top of each other, each with its own value axis, and one row of names along the bottom for all three. Here, a sales team’s quarter: deals closed, calls made and revenue per person.
@@ -19,7 +19,7 @@ Think twice when:
 - More than four panes: each gets too short
 - Comparing exact values across panes: a table is clearer
 
-Prompt: Create an XY chart of three vertically stacked panes, each with its own value axis, sharing an X axis of names for a made-up sales team: deals closed and calls made as lines with bullets, and revenue as columns. The X axis labels move under the pane the cursor is in. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an XY chart of three vertically stacked panes, each with its own value axis, sharing an X axis of names for a made-up sales team: deals closed and calls made as lines with bullets, and revenue as columns. The X axis labels move under the pane the cursor is in. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -80,7 +80,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -276,4 +276,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Multiple Value Axes"
 source: "https://www.amcharts.com/demos/multiple-value-axes/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Three series with very different ranges, each with its own axis in its color and one shared set of grid lines, so every line gets the full height.
@@ -21,7 +21,7 @@ Think twice when:
 - More than three axes: readers lose track of which is which
 - Readers who take a crossing as a meaningful point
 
-Prompt: Create a line chart of three series of daily values of very different sizes on one date axis, each with its own value axis (one on the left, two on the right) colored like its series, synced so they share one set of grid lines. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of three series of daily values of very different sizes on one date axis, each with its own value axis (one on the left, two on the right) colored like its series, synced so they share one set of grid lines. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -34,7 +34,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -186,4 +186,4 @@ function generateChartData(value) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

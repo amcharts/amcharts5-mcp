@@ -2,7 +2,7 @@
 title: "Simple Column Chart"
 source: "https://www.amcharts.com/demos/simple-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart gives each period its own bar standing on the axis, so the highs and lows stand out. This one holds three weeks of daily values, with a scrollbar to zoom in on a few days.
@@ -19,7 +19,7 @@ Think twice when:
 - Values that don’t count up from zero, like temperatures: use a line
 - Several measures per period: cluster or stack the columns
 
-Prompt: Create a zoomable column chart of three weeks of daily values on a date axis, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable column chart of three weeks of daily values on a date axis, with a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -39,7 +39,7 @@ myTheme.rule("AxisLabel", ["minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -162,4 +162,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

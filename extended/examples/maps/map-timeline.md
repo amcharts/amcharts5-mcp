@@ -2,7 +2,7 @@
 title: "Map Timeline"
 source: "https://www.amcharts.com/demos/map-timeline/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A map with a year slider: drag it, or press play, and countries light up as the slider passes the year they joined a treaty. The treaty is fictional.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing two years: two maps side by side
 - Many small changes: readers miss them while it plays
 
-Prompt: Create a world map timeline of countries joining a fictional treaty from 1963 to 2025, with a play button and a year slider under the map. Moving the slider highlights every country that had joined by that year, and play runs through the years. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map timeline of countries joining a fictional treaty from 1963 to 2025, with a play button and a year slider under the map. Moving the slider highlights every country that had joined by that year, and play runs through the years. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -205,7 +205,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -511,4 +511,4 @@ function updateCountries(year) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

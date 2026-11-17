@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["concepts/common-elements/images"]
 ---
 
-A demo from the docs page "Images" (get_doc(path: "concepts/common-elements/images")).
+A demo from the docs page "Images" (get_doc(path: "concepts/common-elements/images")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

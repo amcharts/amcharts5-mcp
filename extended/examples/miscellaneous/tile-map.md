@@ -2,7 +2,7 @@
 title: "Tile Map"
 source: "https://www.amcharts.com/demos/tile-map/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Every state gets one same-size tile, roughly where it lies, so small states count as much as big ones. Here, the 50 states and D.C., by population.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who don’t know the layout: the codes need a key
 - Exact values: add a sorted bar chart
 
-Prompt: Create a tile map of the US states as an XY chart: each state is a circle in a grid that follows the map, colored by population with its state code, and stays round at any size. A heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a tile map of the US states as an XY chart: each state is a circle in a grid that follows the map, colored by population with its state code, and stays round at any size. A heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Short numbers: 39,250,000 shows as 39.3M
@@ -519,4 +519,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

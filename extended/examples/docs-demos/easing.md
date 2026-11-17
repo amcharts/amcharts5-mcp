@@ -6,7 +6,7 @@ scraped: "2026-11-14"
 docsPages: ["concepts/animations"]
 ---
 
-A demo from the docs page "Animations" (get_doc(path: "concepts/animations")).
+A demo from the docs page "Animations" (get_doc(path: "concepts/animations")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

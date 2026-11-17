@@ -2,7 +2,7 @@
 title: "Stock Chart Candlesticks"
 source: "https://www.amcharts.com/demos/stock-chart-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Fifteen years of daily Microsoft prices as candlesticks over volume. It is a plain XY chart: two value axes stacked over one date axis that skips the weekends.
@@ -19,7 +19,7 @@ Think twice when:
 - Several stocks at once: a volume pane each gets crowded
 - Prices across a stock split: adjust them, or the chart shows a false drop
 
-Prompt: Create a two-panel chart of daily Microsoft (MSFT) stock prices loaded from a CSV file: candlesticks above and trading volume columns below, sharing a date axis and cursor, with the days grouped into weeks or months when zoomed out. Add tooltips, legends and a scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a two-panel chart of daily Microsoft (MSFT) stock prices loaded from a CSV file: candlesticks above and trading volume columns below, sharing a date axis and cursor, with the days grouped into weeks or months when zoomed out. Add tooltips, legends and a scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -37,7 +37,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -306,4 +306,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

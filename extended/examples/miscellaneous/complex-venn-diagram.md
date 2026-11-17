@@ -2,7 +2,7 @@
 title: "Complex Venn Diagram"
 source: "https://www.amcharts.com/demos/complex-venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Venn diagram with four circles for coffee’s ingredients, and the drinks where they overlap: espresso and milk make a flat white, espresso and water an Americano, espresso, milk and foam a cappuccino or a latte.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact overlap sizes: circles only approximate them
 - Long names: the small areas have no room for them
 
-Prompt: Create a Venn diagram of coffee drinks and their ingredients: circles for milk, milk foam, espresso and water, whose overlaps are drinks such as flat white, macchiato, cappuccino and americano. Color the areas in coffee tones and outline the area under the pointer. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a Venn diagram of coffee drinks and their ingredients: circles for milk, milk foam, espresso and water, whose overlaps are drinks such as flat white, macchiato, cappuccino and americano. Color the areas in coffee tones and outline the area under the pointer. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -29,7 +29,7 @@ var root = am5.Root.new("chartdiv");
 
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -114,4 +114,4 @@ series.data.setAll([
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/venn.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Globe with Surface Bullets"
 source: "https://www.amcharts.com/demos/globe-with-surface-bullets/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Twelve city pins that lie on the surface of the globe, as if painted on it: they turn with the globe and flatten towards its edge.
@@ -19,7 +19,7 @@ Think twice when:
 - Text labels: keep them upright
 - Hundreds of places: small dots or clusters are lighter
 
-Prompt: Create a draggable globe with map pins on 12 cities around the world that lie on the globe’s surface, as if painted on it, so they flatten towards its edge, with the city’s name in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a draggable globe with map pins on 12 cities around the world that lie on the globe’s surface, as if painted on it, so they flatten towards its edge, with the city’s name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the globe follows the theme
@@ -198,4 +198,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

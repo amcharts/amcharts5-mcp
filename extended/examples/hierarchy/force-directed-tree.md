@@ -2,7 +2,7 @@
 title: "Force-Directed Tree"
 source: "https://www.amcharts.com/demos/force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A force-directed tree draws a hierarchy as bubbles linked to their parents, placed by a physics simulation. Here, a company of 118 people: departments around it, teams around them, sized by headcount.
@@ -19,7 +19,7 @@ Think twice when:
 - Hundreds of nodes: add zoom, or use a treemap
 - Comparing sizes exactly: use a bar chart
 
-Prompt: Create a force-directed tree of a software company: the company in the middle, its departments around it and their teams around them, sized by headcount. Clicking a department folds or unfolds its teams. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a force-directed tree of a software company: the company in the middle, its departments around it and their teams around them, sized by headcount. Clicking a department folds or unfolds its teams. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -152,4 +152,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

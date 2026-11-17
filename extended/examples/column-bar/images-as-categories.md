@@ -2,7 +2,7 @@
 title: "Images as Categories"
 source: "https://www.amcharts.com/demos/images-as-categories/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart with a flag above each country name on the axis. Any picture can go there, like logos, product shots or faces: here, visits from eleven countries.
@@ -19,7 +19,7 @@ Think twice when:
 - Pictures that look alike, like many similar flags
 - Black-and-white print
 
-Prompt: Create a column chart of website visits from eleven countries, each column in its own color, with each country’s flag under its column and the country name below the flag. Label every column with its value, and add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart of website visits from eleven countries, each column in its own color, with each country’s flag under its column and the country name below the flag. Label every column with its value, and add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -54,63 +54,50 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 cursor.lineY.set("visible", false); // no horizontal cursor line
 
 // Data
-var colors = chart.get("colors");
-
 var data = [{
   country: "US",
   visits: 725,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/us.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/us.svg" }
 }, {
   country: "UK",
   visits: 625,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/gb.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/gb.svg" }
 }, {
   country: "China",
   visits: 602,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/cn.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/cn.svg" }
 }, {
   country: "Japan",
   visits: 509,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/jp.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/jp.svg" }
 }, {
   country: "Germany",
   visits: 322,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/de.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/de.svg" }
 }, {
   country: "France",
   visits: 214,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/fr.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/fr.svg" }
 }, {
   country: "India",
   visits: 204,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/in.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/in.svg" }
 }, {
   country: "Spain",
   visits: 198,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/es.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/es.svg" }
 }, {
   country: "Netherlands",
   visits: 165,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/nl.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/nl.svg" }
 }, {
   country: "South Korea",
   visits: 93,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/kr.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/kr.svg" }
 }, {
   country: "Canada",
   visits: 41,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/ca.svg" },
-  columnSettings: { fill: colors.next() }
+  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/ca.svg" }
 }];
 
 // Create axes
@@ -175,6 +162,8 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   yAxis: yAxis,
   valueYField: "visits",
   categoryXField: "country",
+  // each column in its own color, one after another from the theme's palette
+  colorByDataItem: true,
   // the label on the tallest column may stand above the plot, so it is not cut off at its edge
   maskBullets: false
 }));
@@ -182,9 +171,7 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 series.columns.template.setAll({
   tooltipText: "{categoryX}: {valueY}", // as "US: 725"
   tooltipY: 0,                          // the tooltip points at the top of the column
-  strokeOpacity: 0,                     // no outline
-  // each column's color comes from columnSettings in its data
-  templateField: "columnSettings"
+  strokeOpacity: 0                      // no outline
 });
 
 // Value labels: where they sit on the columns (0 at the bottom, 0.5 in the middle, 1 at the top), all from one template,
@@ -236,4 +223,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

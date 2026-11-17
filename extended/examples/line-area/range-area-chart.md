@@ -2,7 +2,7 @@
 title: "Range Area Chart"
 source: "https://www.amcharts.com/demos/range-area-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A band instead of a line: the shaded area runs between a low and a high value for each day, so you see the spread as well as the trend.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who need the middle value: draw it as a line inside the band
 - Several bands at once: they overlap and muddy each other
 
-Prompt: Create a range area chart of about 200 days of data: a shaded band between a low and a high line that wanders, widening and narrowing but never pinching shut. Add tooltips with the low and high values, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a range area chart of about 200 days of data: a shaded band between a low and a high line that wanders, widening and narrowing but never pinching shut. Add tooltips with the low and high values, a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
@@ -190,4 +190,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

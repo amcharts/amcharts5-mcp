@@ -2,7 +2,7 @@
 title: "100% Stacked Column Chart"
 source: "https://www.amcharts.com/demos/100-stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 In a 100% stacked column chart every column is a whole, split into shares. Here, six regions over three years: the chart works out the percentages from the raw numbers in the data.
@@ -19,7 +19,7 @@ Think twice when:
 - Many small shares: they become slivers, so group them as Other
 - Following one middle segment over time: give it its own line
 
-Prompt: Create a 100% stacked column chart of six world regions over three years, where the chart works out each region’s share of the year from raw values. Label every segment with its percentage, and add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a 100% stacked column chart of six world regions over three years, where the chart works out each region’s share of the year from raw values. Label every segment with its percentage, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -200,4 +200,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

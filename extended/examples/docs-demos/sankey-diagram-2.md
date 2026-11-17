@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/flow-charts/sankey-diagram"]
 ---
 
-A demo from the docs page "Sankey diagram" (get_doc(path: "charts/flow-charts/sankey-diagram")).
+A demo from the docs page "Sankey diagram" (get_doc(path: "charts/flow-charts/sankey-diagram")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

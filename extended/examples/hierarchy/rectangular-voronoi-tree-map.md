@@ -2,7 +2,7 @@
 title: "Rectangular Drill-Down Voronoi Tree Map"
 source: "https://www.amcharts.com/demos/rectangular-voronoi-tree-map/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Voronoi treemap splits a rectangle into irregular cells sized by value. Here, the world’s people: one cell per country, grouped by continent, with countries under five million gathered into Others.
@@ -19,7 +19,7 @@ Think twice when:
 - Data that changes often: the cells reshape completely
 - Tiny values: group them as Others, as here
 
-Prompt: Create a rectangular Voronoi treemap of world population, with the continents divided into their countries and each continent’s smallest countries grouped into an Others cell. Clicking a country zooms to its continent, and clicking again zooms back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a rectangular Voronoi treemap of world population, with the continents divided into their countries and each continent’s smallest countries grouped into an Others cell. Clicking a country zooms to its continent, and clicking again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -77,7 +77,7 @@ myTheme.rule("Label", ["node", "depth1"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Prepare data
@@ -1143,7 +1143,7 @@ var data = {
         },
         {
           "id": "NR",
-          "name": "Nauru",
+          "name": "Naoero",
           "population": 10084
         },
         {
@@ -1329,4 +1329,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Road Trip Dashboard with Map"
 source: "https://www.amcharts.com/demos/road-trip-dashboard-with-map/"
 category: "dashboards"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A road trip from Vilnius to Palermo told twice: on a timeline that winds like a road, measured in kilometers driven, and on a map of Europe. Circles are sized by population, and pointing at a city in either chart highlights it in the other.
@@ -19,7 +19,7 @@ Think twice when:
 - Legs to compare: a bar chart of distances
 - Dozens of stops: the road gets crowded
 
-Prompt: Create a road trip dashboard with two linked charts: a serpentine timeline of 13 daily stops from Vilnius to Palermo, drawn as a winding road with the cities sized by population, and a map of Europe with the route and the same cities. Pointing at a city in either chart enlarges it in both. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a road trip dashboard with two linked charts: a serpentine timeline of 13 daily stops from Vilnius to Palermo, drawn as a winding road with the cities sized by population, and a map of Europe with the route and the same cities. Pointing at a city in either chart enlarges it in both. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -138,7 +138,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -591,4 +591,4 @@ function makeMapChart() {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/region/world/europeLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Motion Chart"
 source: "https://www.amcharts.com/demos/motion-chart/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Gapminder-style motion chart of made-up data: each bubble is a country, colored by continent and sized by a third value. Press play for 1903 to 2025.
@@ -19,7 +19,7 @@ Think twice when:
 - Print and PDF reports, where nothing moves
 - Two or three items: a line chart shows every year at once
 
-Prompt: Create a Gapminder-style motion chart of the world’s countries as bubbles with made-up data from 1903 to 2025, colored by continent, with a play button and a slider for the years. Clicking a bubble draws its path through the years, and a small world map filters the bubbles by continent. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a Gapminder-style motion chart of the world’s countries as bubbles with made-up data from 1903 to 2025, colored by continent, with a play button and a slider for the years. Clicking a bubble draws its path through the years, and a small world map filters the bubbles by continent. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var colorSet = am5.ColorSet.new(root, { step: 2 }); // every second theme color, so the continents differ more
@@ -197,7 +197,7 @@ var countries = { // every country's name and continent
   "MZ": { "name": "Mozambique", "continent": "AF" },
   "MM": { "name": "Myanmar", "continent": "AS" },
   "NA": { "name": "Namibia", "continent": "AF" },
-  "NR": { "name": "Nauru", "continent": "OC" },
+  "NR": { "name": "Naoero", "continent": "OC" },
   "NP": { "name": "Nepal", "continent": "AS" },
   "NL": { "name": "Netherlands", "continent": "EU" },
   "NC": { "name": "New Caledonia", "continent": "OC" },
@@ -770,4 +770,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

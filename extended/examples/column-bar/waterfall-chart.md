@@ -2,7 +2,7 @@
 title: "Waterfall Chart"
 source: "https://www.amcharts.com/demos/waterfall-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A waterfall chart walks from one total to another a step at a time: here, from net revenue to operating income. Decreases hang down in red, increases climb in green, and dashed lines carry each level on.
@@ -19,7 +19,7 @@ Think twice when:
 - Parts that don’t add up to the total: the chart relies on the sum
 - A trend over time: a line chart shows it better
 
-Prompt: Create a waterfall chart from net revenue to operating income, each cost or gain floating from where the step before ended, with totals, increases and decreases in their own colors, joined by a dashed line. Label each column with its amount. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a waterfall chart from net revenue to operating income, each cost or gain floating from where the step before ended, with totals, increases and decreases in their own colors, joined by a dashed line. Label each column with its amount. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -219,4 +219,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

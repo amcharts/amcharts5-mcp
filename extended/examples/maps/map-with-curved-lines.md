@@ -2,7 +2,7 @@
 title: "Map with Curved Lines"
 source: "https://www.amcharts.com/demos/map-with-curved-lines/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Lines from London to ten cities in Europe and North America, with an arrow pointing to each destination. They take the shortest way over the globe, which bends them on a flat map.
@@ -19,7 +19,7 @@ Think twice when:
 - Volumes on each route: a map Sankey sizes the bands
 - Short local trips: straight and curved look the same
 
-Prompt: Create a map of Europe and the North Atlantic with cities as circles and lines from London to ten of them that follow great circles, so they curve on the flat map, each with an arrow in the middle pointing to its destination. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of Europe and the North Atlantic with cities as circles and lines from London to ten of them that follow great circles, so they curve on the flat map, each with an arrow in the middle pointing to its destination. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -321,4 +321,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Tag Cloud"
 source: "https://www.amcharts.com/demos/tag-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Tags sized and colored by weight, each one a link: the languages most used in the 2021 Stack Overflow survey. Click one to open its questions.
@@ -19,7 +19,7 @@ Think twice when:
 - Tags of very similar weight: the cloud looks flat
 - Phones: small words are hard to tap
 
-Prompt: Create a tag cloud of the most used programming languages in the 2021 Stack Overflow survey, with a title above it and the words colored by weight so the most used stand out most. Clicking a word opens Stack Overflow’s questions with that tag. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a tag cloud of the most used programming languages in the 2021 Stack Overflow survey, with a title above it and the words colored by weight so the most used stand out most. Clicking a word opens Stack Overflow’s questions with that tag. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Add wrapper container
@@ -157,4 +157,4 @@ series.data.setAll([
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

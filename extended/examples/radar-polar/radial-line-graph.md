@@ -2,7 +2,7 @@
 title: "Radial Line Graph"
 source: "https://www.amcharts.com/demos/radial-line-graph/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart wrapped around a circle, January at the top and the months running clockwise. Heating and cooling at home peak in opposite seasons, so the two lines point opposite ways.
@@ -19,7 +19,7 @@ Think twice when:
 - Data with no repeating cycle
 - Precise values: distances on a circle are hard to judge
 
-Prompt: Create a radial line graph of a house’s monthly energy use over a year (sample data), with one line for heating and one for cooling, the month names around the circle, round bullets and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radial line graph of a house’s monthly energy use over a year (sample data), with one line for heating and one for cooling, the month names around the circle, round bullets and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -79,9 +79,11 @@ xAxis.get("tooltipDateFormats")["month"] = "MMMM"; // the full month name in the
 var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   min: 0,                  // the center is zero
   numberFormat: "#' kWh'", // values shown as "500 kWh"
-  // the value labels run between December and January, clear of the month names
-  renderer: am5radar.AxisRendererRadial.new(root, { axisAngle: -105 })
+  renderer: am5radar.AxisRendererRadial.new(root, {}) // the value labels run straight up from the middle
 }));
+
+// no label at the very top, where it would sit on "Jan"
+yAxis.get("renderer").labels.template.set("maxPosition", 0.98);
 
 // Create series
 // https://docs.amcharts.com/v5/charts/radar-chart/#adding-series
@@ -172,4 +174,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

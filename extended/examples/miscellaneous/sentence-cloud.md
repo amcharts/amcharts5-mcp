@@ -2,7 +2,7 @@
 title: "Sentence Cloud"
 source: "https://www.amcharts.com/demos/sentence-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A word cloud of whole phrases, each in its own colored box and sized by how often it comes up. Here, what a café’s customers say most in their reviews.
@@ -19,7 +19,7 @@ Think twice when:
 - Long sentences: they turn into blocks of text
 - Exact counts: show them in a bar chart
 
-Prompt: Create a sentence cloud of what a café’s customers say in their reviews: eight short phrases sized by how many reviews mention each, all level, on rounded boxes in different colors that never overlap. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a sentence cloud of what a café’s customers say in their reviews: eight short phrases sized by how many reviews mention each, all level, on rounded boxes in different colors that never overlap. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Add series
@@ -99,4 +99,4 @@ series.data.setAll([
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

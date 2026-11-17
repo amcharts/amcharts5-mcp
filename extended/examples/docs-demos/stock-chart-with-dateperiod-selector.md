@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/stock/toolbar/date-range-selector","charts/stock/toolbar/period-selector"]
 ---
 
-A demo from the docs pages "Date range selector" (get_doc(path: "charts/stock/toolbar/date-range-selector")) and "Period selector" (get_doc(path: "charts/stock/toolbar/period-selector")).
+A demo from the docs pages "Date range selector" (get_doc(path: "charts/stock/toolbar/date-range-selector")) and "Period selector" (get_doc(path: "charts/stock/toolbar/period-selector")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

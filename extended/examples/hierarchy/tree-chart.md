@@ -2,7 +2,7 @@
 title: "Tree Chart"
 source: "https://www.amcharts.com/demos/tree-chart/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A tree chart draws a hierarchy as nodes and lines, each parent above its children. Here, a family tree from a grandmother to her great-grandchildren.
@@ -19,7 +19,7 @@ Think twice when:
 - Hundreds of nodes: start folded, or use a force-directed tree
 - Links across branches: a network graph handles them
 
-Prompt: Create a tree chart of a four-generation family tree, laid out top to bottom, with names in the circles. Clicking a parent folds or opens its branch, nodes can be dragged, and the tree can be zoomed. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a tree chart of a four-generation family tree, laid out top to bottom, with names in the circles. Clicking a parent folds or opens its branch, nodes can be dragged, and the tree can be zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -62,7 +62,7 @@ var series = chart.series.push(am5hierarchy.Tree.new(root, {
   categoryField: "name",
   childDataField: "children",
   // room on the right, so the last column of a left-to-right tree clears the zoom buttons
-  paddingRight: 80
+  paddingRight: 40
 }));
 
 // names shrink as far as needed to fit their circle instead of hiding
@@ -152,4 +152,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

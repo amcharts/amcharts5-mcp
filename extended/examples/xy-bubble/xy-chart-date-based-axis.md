@@ -2,7 +2,7 @@
 title: "XY Chart with Date-Based Axis"
 source: "https://www.amcharts.com/demos/xy-chart-date-based-axis/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bubble chart over time: the horizontal axis holds dates, here 12 days in January 2026, and each point is sized by a third value. Circles and diamonds mark two series.
@@ -19,7 +19,7 @@ Think twice when:
 - Many events on the same day: the bubbles cover each other
 - Thousands of events: the sizes stop being readable
 
-Prompt: Create a bubble chart of 12 days on a date axis with two series, one drawn as circles and the other as diamonds, each bubble sized by its own value, with tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a bubble chart of 12 days on a date axis with two series, one drawn as circles and the other as diamonds, each bubble sized by its own value, with tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // {valueX} in the tooltips is a date, shown as 2026-01-05
@@ -296,4 +296,4 @@ body {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

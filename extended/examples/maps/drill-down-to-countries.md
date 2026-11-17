@@ -2,7 +2,7 @@
 title: "Drill-Down to Countries"
 source: "https://www.amcharts.com/demos/drill-down-to-countries/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map colored by continent that loads a country's regions when you click it. The detailed map is fetched only then, so the page stays light.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing regions of several countries: one map with all of them
 - Slow connections: each click waits for a download
 
-Prompt: Create a drill-down world map with the countries colored by continent. Clicking a country zooms to it and loads its map of regions from the amCharts geodata, and a back button returns to the world map. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a drill-down world map with the countries colored by continent. Clicking a country zooms to it and loads its map of regions from the amCharts geodata, and a back button returns to the world map. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -45,7 +45,7 @@ var colors = am5.ColorSet.new(root, {}); // the theme's palette, for the contine
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -239,6 +239,6 @@ zoomControl.homeButton.events.on("click", goBack);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://cdn.amcharts.com/lib/5/geodata/data/countries2.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js

@@ -2,7 +2,7 @@
 title: "Historical Population Pyramid"
 source: "https://www.amcharts.com/demos/historical-population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A population pyramid tied to a timeline: hover a year in the U.S. population chart and the pyramid redraws its age groups for that year, from 1950 to the UN projection for 2100.
@@ -19,7 +19,7 @@ Think twice when:
 - Few years of data: two pyramids compare better
 - Exact numbers: a table of age groups
 
-Prompt: Create a US population pyramid by sex and age group next to a timeline of the US population from 1950 to 2100, with the projected years dashed. Moving the cursor over the timeline redraws the pyramid for that year. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a US population pyramid by sex and age group next to a timeline of the US population from 1950 to 2100, with the projected years dashed. Moving the cursor over the timeline redraws the pyramid for that year. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -218,7 +218,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The data is in thousands: show 1,000 as "1M", without the minus sign of the female values
@@ -519,4 +519,4 @@ popChart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

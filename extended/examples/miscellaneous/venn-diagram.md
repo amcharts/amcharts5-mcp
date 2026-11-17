@@ -2,7 +2,7 @@
 title: "Venn Diagram"
 source: "https://www.amcharts.com/demos/venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Venn diagram draws each group as a circle and puts what groups share where the circles overlap. Here, three sets, A, B and C, with areas sized by how many items each part holds.
@@ -19,7 +19,7 @@ Think twice when:
 - Four or more groups: a matrix or bar chart of combinations
 - Overlaps of very different sizes: the small ones get hard to see
 
-Prompt: Create a Venn diagram of three sets and their overlaps, each area sized by its value and labeled with its name, with a legend under it where a click hides an area. Use the Animated theme. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a Venn diagram of three sets and their overlaps, each area sized by its value and labeled with its name, with a legend under it where a click hides an area. Use the Animated theme. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -104,4 +104,4 @@ legend.data.setAll(series.dataItems);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/venn.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

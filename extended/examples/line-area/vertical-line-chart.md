@@ -2,7 +2,7 @@
 title: "Vertical Line Chart"
 source: "https://www.amcharts.com/demos/vertical-line-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart turned on its side: dates run up the left edge and values across, so the line climbs the page. Two colored zones split the values below and above 70.
@@ -19,7 +19,7 @@ Think twice when:
 - Wide screens: a standard line chart uses the width better
 - Many series: the lines tangle in a narrow chart
 
-Prompt: Create a vertical line chart with the dates running up the Y axis and the values on the X axis: about five weeks of daily values as a dashed line with small markers, over two shaded value zones. Add a cursor, tooltips and a vertical scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a vertical line chart with the dates running up the Y axis and the values on the X axis: about five weeks of daily values as a dashed line with small markers, over two shaded value zones. Add a cursor, tooltips and a vertical scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [
@@ -199,8 +199,7 @@ var chart = root.container.children.push(
     panY: true,
     // the wheel pans and zooms the date axis, which runs up the chart here
     wheelX: "panY",
-    wheelY: "zoomY",
-    paddingLeft: 45 // room at the left for the cursor's date on the axis, which is wider than the labels
+    wheelY: "zoomY"
   })
 );
 
@@ -215,7 +214,8 @@ var yAxis = chart.yAxes.push(
       count: 1
     },
     renderer: am5xy.AxisRendererY.new(root, {
-      minorGridEnabled: true // fainter grid lines between the labeled ones
+      minorGridEnabled: true, // fainter grid lines between the labeled ones
+      inside: true            // the dates inside the plot, so it takes the whole width
     }),
     tooltip: am5.Tooltip.new(root, {}) // shows the cursor's date on the axis
   })
@@ -237,10 +237,9 @@ var series = chart.series.push(
     yAxis: yAxis,
     valueXField: "value",
     valueYField: "date", // dates up the vertical axis, values across: a vertical line
-    // the text color: dark in light mode, light in dark mode, so the line
-    // stands out from the colored zones in both
-    stroke: root.interfaceColors.get("text"),
-    fill: root.interfaceColors.get("text"),
+    // the theme's first color, which stands out from the two colored zones
+    stroke: chart.get("colors").getIndex(0),
+    fill: chart.get("colors").getIndex(0),
     tooltip: am5.Tooltip.new(root, {
       pointerOrientation: "vertical", // the tooltip sits above or below the point, not beside it
       dy: -3,                         // moved 3px up
@@ -256,8 +255,8 @@ series.data.processor = am5.DataProcessor.new(root, {
   dateFields: ["date"]
 });
 
-// a 2px dashed line: 4px dashes with 4px gaps
-series.strokes.template.setAll({ strokeDasharray: [4, 4], strokeWidth: 2 });
+// a 1px dashed line: 2px dashes with 2px gaps
+series.strokes.template.setAll({ strokeDasharray: [2, 2], strokeWidth: 1 });
 series.data.setAll(data);
 
 series.bullets.push(function () {
@@ -343,4 +342,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

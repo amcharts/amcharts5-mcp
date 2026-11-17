@@ -2,7 +2,7 @@
 title: "Data Grouping 50K Points"
 source: "https://www.amcharts.com/demos/data-grouping-50k-points/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 50,000 daily values, about 137 years, in one line chart. Zoomed out, it shows one point per year; zoom in and it switches to months, weeks and finally days.
@@ -19,7 +19,7 @@ Think twice when:
 - A few hundred points: no need to group
 - Data that isn’t over time: grouping needs a date axis
 
-Prompt: Create a zoomable line chart of 50,000 daily values that groups the data into weeks, months or years when zoomed out and shows the daily values when zoomed in. Add a light fill under the line, a cursor, tooltips and a scrollbar with a preview of the whole series. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable line chart of 50,000 daily values that groups the data into weeks, months or years when zoomed out and shows the daily values when zoomed in. Add a light fill under the line, a cursor, tooltips and a scrollbar with a preview of the whole series. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -188,4 +188,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

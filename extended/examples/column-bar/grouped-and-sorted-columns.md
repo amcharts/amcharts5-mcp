@@ -2,7 +2,7 @@
 title: "Grouped and Sorted Columns"
 source: "https://www.amcharts.com/demos/grouped-and-sorted-columns/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Columns grouped by provider and sorted from smallest to largest within each group, with the provider names on a second row of labels. A line marks each provider’s quantity, centered over its group.
@@ -19,7 +19,7 @@ Think twice when:
 - Groups of very different sizes: the small ones get lost
 - Two value axes can confuse: label them, or draw two charts
 
-Prompt: Create a column chart of items grouped by four providers and sorted by value within each, with each provider’s name under its group, and a line of each provider’s quantity on a second value axis. Add value labels, a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart of items grouped by four providers and sorted by value within each, with each provider’s name under its group, and a line of each provider’s quantity on a second value axis. Add value labels, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -295,4 +295,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

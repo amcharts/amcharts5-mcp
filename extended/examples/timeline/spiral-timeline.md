@@ -2,7 +2,7 @@
 title: "Spiral Timeline"
 source: "https://www.amcharts.com/demos/spiral-timeline/"
 category: "timeline"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The same project plan wound into a spiral: time starts in the middle and turns outward, two laps from January to early May. Each module keeps its lane and color all the way round.
@@ -19,7 +19,7 @@ Think twice when:
 - Finding exact dates: a serpentine timeline reads more easily
 - Many lanes: they get thin on a small spiral
 
-Prompt: Create a spiral timeline chart whose date axis starts in the middle and winds outward, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, a lane of lettered milestones and a legend of the modules. Make the timeline zoomable. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a spiral timeline chart whose date axis starts in the middle and winds outward, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, a lane of lettered milestones and a legend of the modules. Make the timeline zoomable. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -28,7 +28,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -362,4 +362,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

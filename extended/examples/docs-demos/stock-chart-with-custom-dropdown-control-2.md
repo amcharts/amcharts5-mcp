@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/stock/toolbar/dropdown-list-control"]
 ---
 
-A demo from the docs page "Dropdown list control" (get_doc(path: "charts/stock/toolbar/dropdown-list-control")).
+A demo from the docs page "Dropdown list control" (get_doc(path: "charts/stock/toolbar/dropdown-list-control")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

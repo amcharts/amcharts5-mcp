@@ -2,7 +2,7 @@
 title: "Horizontally Stacked Axes"
 source: "https://www.amcharts.com/demos/horizontally-stacked-axes/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Stacked axes turned on their side: three panes next to each other, each with its own value axis, and one list of names down the left for all three. Here, a sales team’s deals, calls and revenue per person.
@@ -19,7 +19,7 @@ Think twice when:
 - Many measures: the panes get too narrow
 - Only two measures: one pane with two axes can do
 
-Prompt: Create an XY chart of three panes side by side, each with its own value axis, sharing a Y axis of names for a made-up sales team: deals closed as bars, and calls made and revenue as lines with bullets. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an XY chart of three panes side by side, each with its own value axis, sharing a Y axis of names for a made-up sales team: deals closed as bars, and calls made and revenue as lines with bullets. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -80,7 +80,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -251,4 +251,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Selecting Multiple Areas Map"
 source: "https://www.amcharts.com/demos/selecting-multiple-areas-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map where you pick countries: click a country to select it, click it again to clear it, and select as many as you like.
@@ -19,7 +19,7 @@ Think twice when:
 - Long selections: list the picked names beside the map
 - A single choice: zoom to the clicked country instead
 
-Prompt: Create a world map where clicking countries selects them: each click switches a country between selected and not, so any number can be picked, and a few start selected. Show each country’s name in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map where clicking countries selects them: each click switches a country between selected and not, so any number can be picked, and a few start selected. Show each country’s name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -146,4 +146,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

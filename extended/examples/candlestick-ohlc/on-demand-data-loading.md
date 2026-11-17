@@ -2,7 +2,7 @@
 title: "On-Demand Data Loading"
 source: "https://www.amcharts.com/demos/on-demand-data-loading/"
 category: "candlestick-ohlc"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A candlestick chart with volume that fetches its data from the server only as needed: it starts with 50 days and loads more as you drag back in time. The buttons under it switch to hourly or monthly candles.
@@ -19,7 +19,7 @@ Think twice when:
 - Slow connections: the chart is empty until each piece arrives
 - Charts that must work offline: bundle the data with the page
 
-Prompt: Create a candlestick chart with a volume panel below that loads its data on demand: it starts with recent daily prices from a server and fetches earlier or later data as users pan and zoom. Add buttons for hourly, daily and monthly data, a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a candlestick chart with a volume panel below that loads its data on demand: it starts with recent daily prices from a server and fetches earlier or later data as users pan and zoom. Add buttons for hourly, daily and monthly data, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -42,7 +42,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -509,4 +509,4 @@ chart.appear(1000, 500);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

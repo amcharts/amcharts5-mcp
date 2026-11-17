@@ -2,7 +2,7 @@
 title: "Bullet Chart"
 source: "https://www.amcharts.com/demos/bullet-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bullet chart says what a gauge says in a strip: the bar is the actual value, the short line is the target, and the colors behind say how good each level is. Two styles: a smooth gradient and five bands.
@@ -19,7 +19,7 @@ Think twice when:
 - Change over time: a line with a target line keeps the history
 - Readers who don’t know what the colors mean: label the ranges
 
-Prompt: Create a pair of bullet charts, one above the other, each with an actual value as a bar and a target as a short line over a scale colored from poor to good: a smooth gradient in the first, five solid bands in the second. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pair of bullet charts, one above the other, each with an actual value as a bar and a target as a short line over a scale colored from poor to good: a smooth gradient in the first, five solid bands in the second. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Two bullet charts in one root, one above the other
@@ -216,4 +216,4 @@ createBulletChart(false); // ...and the bottom one, with solid bands
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

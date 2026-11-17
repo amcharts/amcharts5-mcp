@@ -2,7 +2,7 @@
 title: "Radar Chart"
 source: "https://www.amcharts.com/demos/radar-chart/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A radar chart, also called a spider or web chart, puts each category on its own spoke and joins the values into one shape. Here, nine countries, one value each.
@@ -19,7 +19,7 @@ Think twice when:
 - Ranking many items: a bar chart is easier to read
 - More than three shapes on top of each other
 
-Prompt: Create a radar (spider) chart comparing nine countries around the circle, drawn as one line with a light filled area and round bullets at each point, with a cursor and value tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radar (spider) chart comparing nine countries around the circle, drawn as one line with a light filled area and round bullets at each point, with a cursor and value tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -168,4 +168,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -4,8 +4,10 @@
  * Scrapes amCharts 5 demo pages and saves them as markdown files
  * in the extended/examples/ directory, organized by category.
  *
- * Usage: node scripts/scrape-demos.js [slug | category/slug ...]
- *   With no arguments every demo is scraped; otherwise only the named ones.
+ * Usage: node scripts/scrape-demos.js [--changed] [slug | category/slug ...]
+ *   With no arguments every demo on amcharts.com (its demos sitemap) is scraped;
+ *   otherwise only the named ones. --changed scrapes only demos that are new or
+ *   changed since our copy was scraped (sitemap <lastmod> after the example's date).
  *   The output is raw and still needs the cleaning passes, so prefer
  *     npm run build:examples [-- slug ...]     (scrape + clean + check)
  *
@@ -17,358 +19,21 @@ import path from "path";
 import { JSDOM } from "jsdom";
 import { CDN, requiredScripts } from "./am5-scripts.js";
 
-// All demo slugs organized by category
-const DEMOS_BY_CATEGORY = {
-  "column-bar": [
-    "flame-chart",
-    "network-waterfall-chart",
-    "time-zones-and-daylight-saving",
-    "column-with-rotated-series",
-    "simple-column-chart",
-    "100-stacked-column-chart",
-    "clustered-column-chart",
-    "columns-with-grainy-gradients",
-    "images-as-categories",
-    "stacked-clustered-column-chart",
-    "stacked-column-chart",
-    "stacked-bar-chart",
-    "clustered-bar-chart",
-    "columns-with-moving-bullets",
-    "bars-with-moving-bullets",
-    "drag-and-change-column-value",
-    "bar-chart-race",
-    "real-time-data-sorting",
-    "sorted-bar-chart",
-    "drag-ordering-of-bars",
-    "pictorial-column-chart",
-    "column-and-line-mix",
-    "bar-and-line-chart-mix",
-    "pareto-diagram",
-    "stacked-bar-chart-with-negative-values",
-    "bullet-chart",
-    "layered-column-chart",
-    "column-chart-images-top",
-    "heat-map-with-legend",
-    "risk-heatmap",
-    "step-count-chart",
-    "curved-columns",
-    "horizontal-dumbbell-plot",
-    "lollipop-chart",
-    "dumbbell-plot",
-    "variance-indicators",
-    "divergent-stacked-bars",
-    "partitioned-bar-chart",
-    "grouped-and-sorted-columns",
-    "waterfall-chart",
-    "stacked-waterfall-chart",
-    "carbon-zero-progress",
-    "floating-bar-chart",
-    "waffle-chart",
-    "grouped-stacks",
-  ],
-
-  "line-area": [
-    "cpu-and-memory-timeline",
-    "date-axis-with-labels-near-minor-grid-lines",
-    "line-with-data-labels",
-    "spline-graph",
-    "line-graph",
-    "draggable-range-with-close-button",
-    "line-chart-with-horizontal-target",
-    "manipulate-chart-data-with-mouse",
-    "line-chart-with-range-slider",
-    "line-chart-adding-data-every-second",
-    "highlighting-line-chart-series-on-legend-hover",
-    "selecting-and-marking-multiple-ranges",
-    "no-gap-date-axis",
-    "data-grouping-50k-points",
-    "smoothed-stacked-area",
-    "range-chart-with-different-fill-colors",
-    "date-based-data",
-    "line-chart-with-scroll-and-zoom",
-    "drawing-chart-series-with-mouse-or-touch",
-    "show-percentage-change",
-    "evenly-spaced-date-axis",
-    "comparing-different-date-values-google-analytics-style",
-    "duration-on-value-axis",
-    "animated-bullet-at-the-end-of-the-series",
-    "line-different-colors-ups-downs",
-    "zoomable-value-axis",
-    "smoothed-line-chart",
-    "trend-lines",
-    "line-with-changing-color",
-    "stacked-area",
-    "100-stacked-area-chart",
-    "area-with-time-based-data",
-    "range-area-chart",
-    "step-line-chart",
-    "step-line-without-risers",
-    "line-with-custom-bullets",
-    "vertical-line-chart",
-    "chart-with-gaps-in-data",
-    "reversed-value-axis",
-    "error-chart",
-    "multiple-value-axes",
-    "multiple-date-axes",
-    "logarithmic-scale",
-    "control-chart",
-    "mixed-daily-and-intra-day-chart",
-    "date-based-line-chart",
-    "live-order-book-depth-chart",
-    "live-data",
-    "divergent-lines",
-    "stream-chart",
-    "process-control-chart",
-  ],
-
-  "pie-donut": [
-    "pie-chart",
-    "two-pie-charts-with-single-legend",
-    "grained-gradient-pie",
-    "dragging-pie-slices",
-    "simple-pie-chart",
-    "variable-radius-nested-donut-chart",
-    "two-level-pie-chart",
-    "donut-with-radial-gradient",
-    "animated-time-line-pie-chart",
-    "donut-chart",
-    "nested-donut-chart",
-    "pie-chart-with-legend",
-    "pie-chart-broken-slices",
-    "variable-radius-pie-chart",
-    "semi-circle-pie-chart",
-    "pie-of-a-pie",
-    "variable-radius-nested-pie",
-  ],
-
-  "xy-bubble": [
-    "motion-chart",
-    "scatter-plot-with-tens-of-thousands-points",
-    "bubble-chart",
-    "xy-chart-date-based-axis",
-    "bubble-based-heat-map",
-    "animated-xy-bubble-timeline-chart",
-    "bubble-chart-with-pie-bullets",
-    "xy-chart-fills-axis",
-    "zoomable-bubble-chart",
-    "scatter-chart",
-    "xy-error-chart",
-    "xy-chart-value-based-line-graphs",
-    "irregular-interval-xy",
-    "beeswarm",
-  ],
-
-  "maps": [
-    "rotating-moon",
-    "saturn-and-its-rings",
-    "jupiter-and-its-moons",
-    "mars-landing-sites",
-    "trumps-reciprocal-tariffs-map",
-    "solar-eclipse-map",
-    "world-map-with-clustered-points",
-    "map-with-animated-bubbles",
-    "animations-along-lines",
-    "rotate-globe-to-a-selected-country",
-    "multi-series-map",
-    "rotating-globe-with-circles",
-    "zooming-to-countries-map",
-    "pacific-centered-map",
-    "map-using-d3-projections",
-    "world-time-zone-map",
-    "map-with-curved-lines",
-    "day-and-night-world-map",
-    "map-with-pulsating-bullets",
-    "drill-down-to-countries",
-    "map-with-patterns",
-    "approximate-working-hours-map",
-    "capitals-map",
-    "flight-routes-map",
-    "changing-map-projection",
-    "location-sensitive-map",
-    "us-heat-map",
-    "grouped-countries-map",
-    "map-bubbles",
-    "drill-down-map",
-    "selecting-multiple-areas-map",
-    "map-image-drill-down",
-    "weather-map",
-    "map-dynamic-pie-charts",
-    "rotating-globe",
-    "map-with-sized-pin-bullets",
-    "map-timeline",
-    "us-congressional-districts",
-    "drill-down-congressional-map",
-    "map-with-animated-lines",
-    "pixel-map",
-    "satellite-image-globe",
-    "globe-with-raised-arcs",
-    "globe-with-surface-bullets",
-    "globe-with-projected-circles",
-    "globe-with-raised-parallels",
-    "sankey-map-with-waypoints",
-    "star-atlas",
-  ],
-
-  "candlestick-ohlc": [
-    "candlestick-chart",
-    "professional-candlesticks",
-    "on-demand-data-loading",
-    "stock-chart-candlesticks",
-    "box-plot-chart",
-    "ohlc-chart",
-  ],
-
-  "stock": [
-    "stock-chart",
-    "stock-chart-comparing-prices",
-    "stock-chart-with-bollinger-bands-indicator",
-    "stock-chart-with-relative-strength-index",
-    "stock-chart-with-volume-profile",
-    "changing-data-granularity",
-    "stock-data-grouping",
-    "stock-intraday-data",
-    "live-stock-data",
-    "separate-volume-panel",
-  ],
-
-  "gantt": [
-    "gantt-chart",
-    "editable-multilevel-gantt-chart",
-    "gantt-chart-playground",
-    "gantt-chart-in-read-only-mode",
-    "gantt-chart-dates",
-    "gantt-with-hundreds-of-items",
-  ],
-
-  "gauges": [
-    "gauge-with-bands",
-    "gauge-with-gradient-fill",
-    "yes-and-no-gauge",
-    "clock",
-    "clock-with-two-faces",
-    "animated-gauge",
-    "angular-gauge",
-    "solid-gauge",
-    "angular-gauge-with-two-axes",
-    "multi-part-gauge",
-    "compass-chart",
-  ],
-
-  "radar-polar": [
-    "radial-ridgeline-chart",
-    "radar-chart-visualizing-yearly-activities",
-    "radial-histogram",
-    "zoomable-radar",
-    "polar-area-chart",
-    "radar-heat-map",
-    "radial-line-graph",
-    "radar-chart",
-    "radar-timeline",
-    "flower-chart",
-    "live-sorting-of-radar-columns",
-    "polar-chart",
-    "polar-scatter",
-    "wheel-of-life",
-    "stacked-area-radar",
-    "radar-with-date-axis",
-    "radial-bar-chart",
-    "variable-radius-radar",
-  ],
-
-  "hierarchy": [
-    "collapsible-force-directed-tree",
-    "force-directed-network",
-    "packed-circle-chart",
-    "rectangular-voronoi-tree-map",
-    "drill-down-sunburst-chart",
-    "horizontal-partition-chart",
-    "vertical-partition-chart",
-    "tree-chart",
-    "force-directed-adding-links",
-    "zoomable-force-directed-tree",
-    "multilevel-tree-map",
-    "sunburst-chart",
-    "single-level-packed-circles",
-    "force-directed-tree",
-    "sunburst-flavor-wheel",
-    "simple-treemap",
-    "drill-down-treemap",
-    "dynamic-data-updates-on-treemap",
-    "voronoi-treemap",
-    "force-directed-tree-with-animated-bullets",
-  ],
-
-  "timeline": [
-    "serpentine-timeline-chart",
-    "spiral-timeline",
-    "linear-process-diagram",
-    "horizontal-serpentine-timeline",
-    "infinity-timeline",
-    "stadium-track-chart",
-  ],
-
-  "flow": [
-    "sankey-diagram",
-    "vertical-sankey-diagram",
-    "traceable-sankey-diagram",
-    "toggleable-chord-diagram",
-    "chord-diagram-with-animated-bullets",
-    "chord-diagram",
-    "animated-sankey-diagram",
-    "non-ribbon-chord-diagram",
-    "horizontal-arc-diagram",
-    "vertical-arc-diagram",
-  ],
-
-  "funnel-pyramid": [
-    "pictorial-fraction-chart",
-    "funnel-chart-with-rounded-corners",
-    "pictorial-chart",
-    "pyramid-chart",
-    "funnel-with-gradient-fill",
-    "funnel-chart",
-    "horizontal-funnel",
-    "pictorial-stacked-chart",
-    "horizontal-pictorial-chart",
-  ],
-
-  "miscellaneous": [
-    "population-pyramid",
-    "word-cloud",
-    "changing-data-word-cloud",
-    "annotating-charts",
-    "historical-population-pyramid",
-    "sentence-cloud",
-    "tile-map",
-    "honeycomb-tile-map",
-    "vertically-stacked-axes-chart",
-    "pictogram",
-    "infographic",
-    "venn-diagram-with-patterns",
-    "strip-plot",
-    "complex-venn-diagram",
-    "horizontally-stacked-axes",
-    "violin-chart",
-    "tag-cloud",
-    "hybrid-drill-down-pie-bar-chart",
-    "mekko",
-    "combined-bullet-column-line-chart",
-    "micro-charts-sparklines",
-    "exporting-chart-to-image",
-    "venn-diagram",
-    "spectrum-chart",
-    "progress-chart",
-    "forest-plot",
-    "range-bullet-chart",
-    "shaped-word-cloud",
-    "angled-word-cloud",
-  ],
-
-  "dashboards": [
-    "maps-and-charts-dashboard",
-    "road-trip-dashboard-with-map",
-  ],
+// The demo list comes from amcharts.com: /demos/sitemap.xml lists every demo
+// with the date its source last changed (<lastmod>), and each demo's page
+// links to its gallery section ("../../demos/#pie"), which is its category.
+// The site's category names that differ from our folder names:
+const CATEGORY_NAMES = {
+  pie: "pie-donut",
+  radar: "radar-polar",
+  candlestick: "candlestick-ohlc",
+  misc: "miscellaneous",
 };
+const SITEMAP_URL = "https://www.amcharts.com/demos/sitemap.xml";
+// Our category folders for amcharts.com demos
+const KNOWN_CATEGORIES = new Set(["candlestick-ohlc", "column-bar", "dashboards", "flow", "funnel-pyramid", "gantt", "gauges", "hierarchy", "line-area", "maps", "miscellaneous", "pie-donut", "radar-polar", "stock", "timeline", "xy-bubble"]);
+// Folders that hold examples from elsewhere, never scraped demos
+const OTHER_FOLDERS = new Set(["json-configs", "docs-demos"]);
 
 const DELAY_MS = 1000;
 const BASE_DEMO_URL = "https://www.amcharts.com/demos/";
@@ -382,20 +47,51 @@ function sleep(ms) {
 }
 
 /**
- * Build a flat list of { url, category, slug } from the category map.
+ * The examples we have from amcharts.com: slug -> { category, scraped, source }.
  */
-function buildDemoList() {
-  const demos = [];
-  for (const [category, slugs] of Object.entries(DEMOS_BY_CATEGORY)) {
-    for (const slug of slugs) {
-      demos.push({
-        url: `${BASE_DEMO_URL}${slug}/`,
-        category,
-        slug,
-      });
+async function existingExamples() {
+  const found = new Map();
+  for (const dir of await fs.readdir(OUTPUT_DIR, { withFileTypes: true })) {
+    if (!dir.isDirectory() || OTHER_FOLDERS.has(dir.name)) continue;
+    for (const file of await fs.readdir(path.join(OUTPUT_DIR, dir.name))) {
+      if (!file.endsWith(".md")) continue;
+      const text = await fs.readFile(path.join(OUTPUT_DIR, dir.name, file), "utf-8");
+      const scraped = /^scraped:\s*"([^"]*)"/m.exec(text)?.[1] || "";
+      const source = /^source:\s*"([^"]*)"/m.exec(text)?.[1] || "";
+      found.set(file.slice(0, -3), { category: dir.name, scraped, source });
     }
   }
+  return found;
+}
+
+/**
+ * Every demo on amcharts.com, from its sitemap: [{ url, slug, lastmod, category }].
+ * A demo we already have keeps its folder; a new one gets its category from
+ * its page (processDemo).
+ */
+async function buildDemoList(existing) {
+  const xml = await fetchPage(SITEMAP_URL);
+  const demos = [];
+  for (const m of xml.matchAll(/<url>[\s\S]*?<\/url>/g)) {
+    const loc = /<loc>https:\/\/www\.amcharts\.com\/demos\/([a-z0-9-]+)\/<\/loc>/.exec(m[0]);
+    if (!loc) continue; // the gallery itself
+    const lastmod = /<lastmod>([^<]+)<\/lastmod>/.exec(m[0])?.[1] || "";
+    const slug = loc[1];
+    demos.push({ url: `${BASE_DEMO_URL}${slug}/`, slug, lastmod, category: existing.get(slug)?.category || null });
+  }
+  if (!demos.length) throw new Error(`No demos in ${SITEMAP_URL}`);
   return demos;
+}
+
+/**
+ * A demo page's category: its link back to its gallery section, in our folder names.
+ */
+function categoryOf(html) {
+  const m = /href="[^"]*demos\/#([a-z0-9-]+)"/.exec(html);
+  if (!m) throw new Error("no category link (../../demos/#<category>) on the page");
+  const category = CATEGORY_NAMES[m[1]] || m[1];
+  if (!KNOWN_CATEGORIES.has(category)) console.warn(`  New category "${category}": a new folder (add it to CATEGORY_NAMES if it should map to an existing one)`);
+  return category;
 }
 
 /**
@@ -663,9 +359,10 @@ function extractDemoConfigPage(doc) {
  * Process a single demo URL: fetch, extract, save as markdown.
  */
 async function processDemo(demo) {
-  const { url, category, slug } = demo;
+  const { url, slug } = demo;
 
   const html = await fetchPage(url);
+  const category = demo.category || categoryOf(html);
   const dom = new JSDOM(html);
   const doc = dom.window.document;
 
@@ -719,21 +416,39 @@ async function processDemo(demo) {
  * Main entry point.
  */
 async function main() {
-  const only = process.argv.slice(2);
-  const all = buildDemoList();
+  const args = process.argv.slice(2);
+  const changedOnly = args.includes("--changed");
+  const flags = args.filter((a) => a.startsWith("--"));
+  const unknownFlags = flags.filter((f) => f !== "--changed");
+  if (unknownFlags.length) {
+    console.error(`Unknown option(s): ${unknownFlags.join(", ")}. The only option is --changed.`);
+    process.exit(1);
+  }
+  const only = args.filter((a) => !a.startsWith("--"));
+  const existing = await existingExamples();
+  const all = await buildDemoList(existing);
+
+  // Examples of demos the site no longer has: reported, not deleted
+  const live = new Set(all.map((d) => d.slug));
+  const gone = [...existing].filter(([slug, ex]) => ex.source.startsWith(BASE_DEMO_URL) && !live.has(slug));
+  if (gone.length) {
+    console.log(`No longer on amcharts.com (delete the examples if that is intended): ${gone.map(([slug, ex]) => `${ex.category}/${slug}`).join(", ")}`);
+  }
   const unknown = only.filter((a) => !all.some((d) => a === d.slug || a === `${d.category}/${d.slug}`));
   if (unknown.length) {
     console.error(`Unknown demo(s): ${unknown.join(", ")}`);
     process.exit(1);
   }
+  // --changed: new demos, and those whose source changed after our copy was scraped
+  const isChanged = (d) => !existing.has(d.slug) || !existing.get(d.slug).scraped || d.lastmod.slice(0, 10) >= existing.get(d.slug).scraped; // both are dates: a same-day edit is scraped again
   const demos = all.filter(
-    (d) => !only.length || only.includes(d.slug) || only.includes(`${d.category}/${d.slug}`)
+    (d) => (!only.length || only.includes(d.slug) || only.includes(`${d.category}/${d.slug}`)) && (!changedOnly || isChanged(d))
   );
 
   console.log(`amCharts 5 Demo Scraper`);
   console.log(`================================`);
   console.log(`Total demos to scrape: ${demos.length}`);
-  console.log(`Categories: ${Object.keys(DEMOS_BY_CATEGORY).length}`);
+  console.log(`Demos on amcharts.com: ${all.length}${changedOnly ? " (only new or changed ones are scraped)" : ""}`);
   console.log(`Output directory: ${OUTPUT_DIR}`);
   console.log();
 

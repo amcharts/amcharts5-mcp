@@ -2,7 +2,7 @@
 title: "Map with Pulsating Bullets"
 source: "https://www.amcharts.com/demos/map-with-pulsating-bullets/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Eighteen capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again at random moments, to draw the eye.
@@ -19,7 +19,7 @@ Think twice when:
 - Dozens of points: pulse only the ones that matter
 - Readers sensitive to motion: offer a still version
 
-Prompt: Create a world map of 18 capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again, each city at its own random pace. Clicking a marker opens the city’s Wikipedia page. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map of 18 capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again, each city at its own random pace. Clicking a marker opens the city’s Wikipedia page. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create the map chart
 // https://docs.amcharts.com/v5/charts/map-chart/
@@ -354,4 +354,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

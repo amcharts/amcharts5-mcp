@@ -2,7 +2,7 @@
 title: "Grouped Countries Map"
 source: "https://www.amcharts.com/demos/grouped-countries-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A map of the 27 countries of the European Union, grouped by when they joined. Hover a country and its whole group lights up; the legend switches groups off and on.
@@ -19,7 +19,7 @@ Think twice when:
 - Many groups: the colors blur together
 - Changes over time: a map with a timeline
 
-Prompt: Create a map of Europe showing the European Union’s member countries grouped by when they joined (before 2004, in 2004, 2007 and 2013), each group in its own color. Hovering a country highlights its whole group, and a legend turns groups off and on. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of Europe showing the European Union’s member countries grouped by when they joined (before 2004, in 2004, 2007 and 2013), each group in its own color. Hovering a country highlights its whole group, and a legend turns groups off and on. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -78,7 +78,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -220,4 +220,4 @@ am5.array.each(groupData, function(group) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

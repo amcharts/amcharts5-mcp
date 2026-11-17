@@ -2,7 +2,7 @@
 title: "Live Sorting of Radar Columns"
 source: "https://www.amcharts.com/demos/live-sorting-of-radar-columns/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart bent into a ring that keeps itself sorted. Every 1.5 seconds, eleven countries get new values, and the columns slide into their new places, biggest first.
@@ -19,7 +19,7 @@ Think twice when:
 - Long names: there is little room around the ring
 - Printed reports: use a sorted bar chart
 
-Prompt: Create a radar column chart of eleven countries around most of a circle that sorts itself live: every 1.5 seconds the values change at random, the columns grow or shrink, and then they move into their new order, largest first. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radar column chart of eleven countries around most of a circle that sorts itself live: every 1.5 seconds the values change at random, the columns grow or shrink, and then they move into their new order, largest first. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -235,4 +235,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

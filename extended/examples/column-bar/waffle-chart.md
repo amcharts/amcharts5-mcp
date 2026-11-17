@@ -2,7 +2,7 @@
 title: "Waffle Chart"
 source: "https://www.amcharts.com/demos/waffle-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A waffle chart shows parts of a whole as a grid of 100 squares, one per percent. Here, how visitors reached a website: 52 squares for search, 28 direct, 12 social and 8 email.
@@ -19,7 +19,7 @@ Think twice when:
 - Shares with decimals: each square is a whole percent
 - Several wholes side by side: 100% stacked bars
 
-Prompt: Create a waffle chart: a 10 by 10 grid of squares, one per percent, showing how visitors reached a website by search, direct, social or email, each source in its own color. Add tooltips and a legend with each share. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a waffle chart: a 10 by 10 grid of squares, one per percent, showing how visitors reached a website by search, direct, social or email, each source in its own color. Add tooltips and a legend with each share. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -185,4 +185,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

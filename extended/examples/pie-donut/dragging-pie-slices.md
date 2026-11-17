@@ -2,7 +2,7 @@
 title: "Dragging Pie Slices"
 source: "https://www.amcharts.com/demos/dragging-pie-slices/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two donuts with a line between them. Drag a slice across the line and it moves to the other donut; let go too early and it snaps back.
@@ -19,7 +19,7 @@ Think twice when:
 - More than two groups
 - Results that need saving: the chart keeps no record of its own
 
-Prompt: Create two donut charts side by side, separated by a dashed line, with six countries split between them. Each slice can be dragged across the line to move it to the other donut; dropped short of the line, it snaps back. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create two donut charts side by side, separated by a dashed line, with six countries split between them. Each slice can be dragged across the line to move it to the other donut; dropped short of the line, it snaps back. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Label").set("fontSize", "0.8em"); // all labels a little smaller
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -297,4 +297,4 @@ container.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Variable-Radius Radar"
 source: "https://www.amcharts.com/demos/variable-radius-radar/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One chart, three shapes: the Arc slider bends stacked columns from a flat bar chart into a half circle or a full ring. Here, a shop’s sales of six products, by quarter.
@@ -19,7 +19,7 @@ Think twice when:
 - Long category names on a tight arc
 - A printed report: pick one shape and drop the slider
 
-Prompt: Create a half-circle radar chart of stacked columns, open at the bottom, showing a shop’s quarterly sales of six products (sample data), with one stacked series per quarter and a legend of the quarters. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a half-circle radar chart of stacked columns, open at the bottom, showing a shop’s quarterly sales of six products (sample data), with one stacked series per quarter and a legend of the quarters. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Data: a shop's sales of six products, in thousands of units, by quarter (sample data)
@@ -153,4 +153,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/radar-chart/radar-axes"]
 ---
 
-A demo from the docs page "Radar axes" (get_doc(path: "charts/radar-chart/radar-axes")).
+A demo from the docs page "Radar axes" (get_doc(path: "charts/radar-chart/radar-axes")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

@@ -5,7 +5,7 @@ category: "maps"
 added: "2026-06-04"
 ---
 
-`MapSankeySeries` (added in amCharts 5.17.0) draws variable-width curved bands between geographic points on a `MapChart` — a Sankey diagram projected onto a map, where band thickness encodes a numeric `value`. It extends `MapPolygonSeries` and generates real GeoJSON geometry, so bands follow the projection during pan, zoom, and globe rotation.
+`MapSankeySeries` draws variable-width curved bands between geographic points on a `MapChart` — a Sankey diagram projected onto a map, where band thickness encodes a numeric `value`. It extends `MapPolygonSeries` and generates real GeoJSON geometry, so bands follow the projection during pan, zoom, and globe rotation.
 
 Key implementation details
 A `MapSankeySeries` needs a reference `polygonSeries` (a `MapPolygonSeries` with geodata) to resolve country IDs to geographic centroids. Provide flow data as `{ sourceId, targetId, value }` using ISO 3166-1 alpha-2 country codes, or as explicit `{ sourceLongitude, sourceLatitude, targetLongitude, targetLatitude, value }` coordinates. When using `sourceId`/`targetId`, the series automatically waits for `polygonSeries` to finish parsing its geoJSON before resolving centroids — no `datavalidated` wrapper around `data.setAll()` is needed.
@@ -28,7 +28,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create the map chart
 // https://docs.amcharts.com/v5/charts/map-chart/
@@ -149,3 +149,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

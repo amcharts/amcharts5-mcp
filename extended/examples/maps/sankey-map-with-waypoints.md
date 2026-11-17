@@ -2,7 +2,7 @@
 title: "Sankey Map with Waypoints"
 source: "https://www.amcharts.com/demos/sankey-map-with-waypoints/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Oil exports from six terminals in the Gulf states to ports in Asia and Europe, drawn as Sankey bands on a globe: the wider the band, the more oil. The bands follow sea lanes through waypoints, with drops of oil traveling along them.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact volumes: a table or bar chart compares them
 - Flows with no set route: plain curved lines are simpler
 
-Prompt: Create a globe of crude oil exports through the Strait of Hormuz, drawn as a map Sankey of flows from Gulf terminals to ports in Asia and Europe. Waypoints keep the routes at sea, and small oil drops travel along each band. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a globe of crude oil exports through the Strait of Hormuz, drawn as a map Sankey of flows from Gulf terminals to ports in Asia and Europe. Waypoints keep the routes at sea, and small oil drops travel along each band. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The colors, all from the theme, so the map follows it and dark mode: the oil (bands, terminals, drops) in its
@@ -390,4 +390,4 @@ setTimeout(function () {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

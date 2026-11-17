@@ -2,7 +2,7 @@
 title: "Variance Indicators"
 source: "https://www.amcharts.com/demos/variance-indicators/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart that shows the change from each year to the next: an arrow runs from one column’s height to the next one’s, with the change in percent, green for a rise and red for a fall.
@@ -19,7 +19,7 @@ Think twice when:
 - Changes that build on each other: a waterfall adds them up
 - Small base values: a big percent can mislead, so show the amounts too
 
-Prompt: Create a column chart of seven yearly values with variance indicators between neighboring years: a thin line from each value to the next, topped by an arrow and the percent change, green and pointing up for a rise, red and pointing down for a fall. Add tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart of seven yearly values with variance indicators between neighboring years: a thin line from each value to the next, topped by an arrow and the percent change, green and pointing up for a rise, red and pointing down for a fall. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -212,4 +212,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

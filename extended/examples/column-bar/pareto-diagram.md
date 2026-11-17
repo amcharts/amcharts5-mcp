@@ -2,7 +2,7 @@
 title: "Pareto Diagram"
 source: "https://www.amcharts.com/demos/pareto-diagram/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Pareto chart sorts the columns from largest to smallest and adds a line that sums them up as it goes. Here, visits from 10 countries: the first four bring two thirds of all visits.
@@ -19,7 +19,7 @@ Think twice when:
 - Negative values: the running total stops making sense
 - Only three or four categories: a sorted bar chart says enough
 
-Prompt: Create a Pareto chart of website visits from ten countries: columns sorted from most to fewest visits, each in its own color, and a line of the running share of the total on a second, percentage axis. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a Pareto chart of website visits from ten countries: columns sorted from most to fewest visits, each in its own color, and a line of the running share of the total on a second, percentage axis. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -229,4 +229,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

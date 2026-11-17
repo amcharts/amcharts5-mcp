@@ -2,7 +2,7 @@
 title: "Horizontal Pictorial Chart"
 source: "https://www.amcharts.com/demos/horizontal-pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Seven values fill a sausage-shaped outline from left to right, each slice as wide as its share. Any SVG path can be the outline.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact comparisons: the curves distort the slices
 - Many small values: the last slices get too thin to label
 
-Prompt: Create a horizontal pictorial stacked chart that fills a sausage-shaped outline from left to right with seven sample categories, each part as wide as its share, with labels below the shape showing the name and the share. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a horizontal pictorial stacked chart that fills a sausage-shaped outline from left to right with seven sample categories, each part as wide as its share, with labels below the shape showing the name and the share. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,15 +32,15 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
 var chart = root.container.children.push(am5percent.SlicedChart.new(root, {
   layout: root.verticalLayout,
-  paddingLeft: 80, // 80px of space on the left...
-  paddingRight: 80 // ...and on the right
+  paddingLeft: 20, // 20px of space on the left...
+  paddingRight: 20 // ...and on the right
 }));
 
 // Create series
@@ -60,6 +60,9 @@ series.ticks.template.set("location", 0.8);
 // The shape is scaled to the chart's width, so the labels under it are kept short:
 // name and share on two lines, leaving the height to the shape
 series.labels.template.set("text", "{category}\n{valuePercentTotal.formatNumber('0.0p')}");
+// The labels are turned on their side, so their top and bottom padding is width: 2px instead of 8px lets all seven
+// fit side by side on a phone
+series.labels.template.setAll({ paddingTop: 2, paddingBottom: 2 });
 // the tooltip, as "One: 26.3%"
 series.slices.template.set("tooltipText", "{category}: {valuePercentTotal.formatNumber('0.0p')}");
 
@@ -101,4 +104,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

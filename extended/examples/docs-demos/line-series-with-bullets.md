@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/series","concepts/common-elements/bullets"]
 ---
 
-A demo from the docs pages "XY chart series" (get_doc(path: "charts/xy-chart/series")) and "Bullets" (get_doc(path: "concepts/common-elements/bullets")).
+A demo from the docs pages "XY chart series" (get_doc(path: "charts/xy-chart/series")) and "Bullets" (get_doc(path: "concepts/common-elements/bullets")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

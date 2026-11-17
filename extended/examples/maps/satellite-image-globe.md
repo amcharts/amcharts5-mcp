@@ -2,7 +2,7 @@
 title: "Satellite Image Globe"
 source: "https://www.amcharts.com/demos/satellite-image-globe/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A 3D globe covered with a satellite image of the whole Earth, turning slowly on its own. The image is redrawn to fit the globe at every turn and zoom, with the country borders on top.
@@ -19,7 +19,7 @@ Think twice when:
 - Slow connections: the image adds about 300 KB
 - Data in pale colors: the busy image drowns it, dim the image or use strong colors
 
-Prompt: Create a slowly turning globe covered with NASA’s satellite picture of the Earth, with the country borders drawn over it as thin lines and the country’s name in a tooltip. Give the globe a soft glow, and let it be dragged in any direction and zoomed. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a slowly turning globe covered with NASA’s satellite picture of the Earth, with the country borders drawn over it as thin lines and the country’s name in a tooltip. Give the globe a soft glow, and let it be dragged in any direction and zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,11 +30,23 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
 ]);
+
+// The buttons (the zoom control) in a dark slate that suits the night sky, instead of the default blue
+root.interfaceColors.setAll({
+  primaryButton: am5.color(0x2a3042),
+  primaryButtonHover: am5.color(0x3a4259),
+  primaryButtonDown: am5.color(0x485170),
+  primaryButtonActive: am5.color(0x485170),
+  primaryButtonStroke: am5.color(0x4a5370),
+  primaryButtonText: am5.color(0xe6e8f0),
+  primaryButtonDisabled: am5.color(0x1c2030),     // the minus button, zoomed out as far as it goes
+  primaryButtonTextDisabled: am5.color(0x5c6278)
+});
 
 // Create the map chart: a globe that turns once every two minutes
 // https://docs.amcharts.com/v5/charts/map-chart/
@@ -160,4 +172,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

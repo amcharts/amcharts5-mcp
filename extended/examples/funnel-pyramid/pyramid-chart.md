@@ -2,7 +2,7 @@
 title: "Pyramid Chart"
 source: "https://www.amcharts.com/demos/pyramid-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pyramid stacks the parts of a whole from the largest at the base to the smallest at the top. Each level’s area matches its share; switch to height to compare.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact comparisons: sloped sides make levels hard to measure
 - A base that isn’t the biggest part: the shape will mislead
 
-Prompt: Create a pyramid chart of seven sample categories with the largest at the base, where each level’s area, not its height, matches its share, with labels and a legend. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a pyramid chart of seven sample categories with the largest at the base, where each level’s area, not its height, matches its share, with labels and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -104,4 +104,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

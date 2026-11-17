@@ -2,7 +2,7 @@
 title: "XY Error Chart"
 source: "https://www.amcharts.com/demos/xy-error-chart/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Error bars show how sure a measurement is: the point is the value measured, the bars the range the true value may lie in. Here seven points, each with an error in both x and y.
@@ -19,7 +19,7 @@ Think twice when:
 - Dozens of points: the bars cross and turn into a mesh
 - Errors that differ up and down: draw the low and high ends separately
 
-Prompt: Create an XY scatter chart with error bars on two value axes: each of seven points has an error in both directions, drawn as horizontal and vertical bars with short caps, with the point as a hollow circle on top. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an XY scatter chart with error bars on two value axes: each of seven points has an error in both directions, drawn as horizontal and vertical bars with short caps, with the point as a hollow circle on top. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -69,7 +69,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -234,4 +234,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

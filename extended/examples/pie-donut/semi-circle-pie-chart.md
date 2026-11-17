@@ -2,7 +2,7 @@
 title: "Semi-Circle Pie Chart"
 source: "https://www.amcharts.com/demos/semi-circle-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Half a donut: the same shares as a pie, in half the height. It fits in a dashboard row or across the top of a report.
@@ -19,7 +19,7 @@ Think twice when:
 - Precise comparisons: use a bar chart
 - Audiences who might read the empty half as missing data
 
-Prompt: Create a semi-circle donut chart that covers only the top half of a circle, showing seven sample categories with labels and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a semi-circle donut chart that covers only the top half of a circle, showing seven sample categories with labels and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -108,4 +108,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

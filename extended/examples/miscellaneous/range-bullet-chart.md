@@ -2,7 +2,7 @@
 title: "Range Bullet Chart"
 source: "https://www.amcharts.com/demos/range-bullet-chart/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A range bullet chart shows the spread of a score as a bar from its lowest to its highest value, with a marker for the average. Here, the scores two options got: a circle at each end and a triangle at the average.
@@ -19,7 +19,7 @@ Think twice when:
 - Many rows: a dumbbell plot is lighter
 - A target to compare against: a bullet chart
 
-Prompt: Create a range bullet chart of the scores of two options, Reduce Expenses and Increase Expenses: each a bar from the lowest to the highest score with a circle at each end and a triangle marking the average, with a legend above the chart. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a range bullet chart of the scores of two options, Reduce Expenses and Increase Expenses: each a bar from the lowest to the highest score with a circle at each end and a triangle marking the average, with a legend above the chart. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -213,4 +213,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Gauge with Bands"
 source: "https://www.amcharts.com/demos/gauge-with-bands/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A gauge split into seven colored bands, from Unsustainable to High Performing. The needle takes the color of the band it points at, and the score sits in its pin.
@@ -19,7 +19,7 @@ Think twice when:
 - Many narrow bands: the labels get cramped
 - Several scores side by side: use bars
 
-Prompt: Create a gauge chart with seven colored, labeled bands from Unsustainable to High Performing, and a wide needle that takes the color of the band it points at, with the value in its pin. Every 2 seconds the needle moves to a random value. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a gauge chart with seven colored, labeled bands from Unsustainable to High Performing, and a wide needle that takes the color of the band it points at, with the value in its pin. Every 2 seconds the needle moves to a random value. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -40,6 +40,7 @@ root.setThemes([
 var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panX: false, // no dragging
   panY: false,
+  radius: am5.percent(95), // the gauge fills its area, past the default 80%
   // a 220-degree arc, open at the bottom
   startAngle: 160,
   endAngle: 380
@@ -215,4 +216,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

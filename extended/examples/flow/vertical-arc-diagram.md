@@ -2,7 +2,7 @@
 title: "Vertical Arc Diagram"
 source: "https://www.amcharts.com/demos/vertical-arc-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 An arc diagram standing up: the nodes in a column with their names beside them, the arcs bulging out to the right. Here, 23 links between the friends of the TV show Friends and people around them, with dots running along each arc.
@@ -19,7 +19,7 @@ Think twice when:
 - Links with amounts people must compare
 - Dense networks: try a chord diagram
 
-Prompt: Create a vertical arc diagram of the connections between the six friends of the TV show Friends and people around them, with the nodes in a column, sized by their totals, and the arcs to one side. Small dots travel along every arc in endless loops. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a vertical arc diagram of the connections between the six friends of the TV show Friends and people around them, with the nodes in a column, sized by their totals, and the arcs to one side. Small dots travel along every arc in endless loops. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a container for the series
@@ -57,9 +57,7 @@ series.nodes.setAll({
 // https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/#labels
 series.nodes.labels.template.setAll({
   fontSize: "0.85em", // 85% of the chart's text size
-  paddingLeft: 20,    // 20px of room on both sides of each name
-  paddingRight: 20,
-  width: 160 // every name gets the same 160px of width
+  paddingRight: 20    // each name ends 20px left of its node
 });
 
 // Arcs take the color of the node they start from
@@ -144,4 +142,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

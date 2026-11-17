@@ -2,7 +2,7 @@
 title: "Stock Chart Comparing Prices"
 source: "https://www.amcharts.com/demos/stock-chart-comparing-prices/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A year of Microsoft prices as candles, with Apple added as a line for comparison. With two stocks on the chart, the axis switches from dollars to percent change, so both start from the same zero line.
@@ -19,7 +19,7 @@ Think twice when:
 - More than four or five stocks: the lines tangle
 - One stock with huge swings: it flattens the others
 
-Prompt: Create a stock chart for comparing stocks: daily Microsoft prices from a CSV file as candlesticks with volume, with Apple added as a comparison line, which switches the value axis to percent change. The toolbar lets you pick the main ticker and add up to five more. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart for comparing stocks: daily Microsoft prices from a CSV file as candlesticks with volume, with Apple added as a comparison line, which switches the value axis to percent change. The toolbar lets you pick the main ticker and add up to five more. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -500,4 +500,4 @@ var toolbar = am5stock.StockToolbar.new(root, {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Horizontal Funnel"
 source: "https://www.amcharts.com/demos/horizontal-funnel/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A funnel turned on its side, so the stages read left to right like a timeline. The slices slope into each other and carry their own labels.
@@ -19,7 +19,7 @@ Think twice when:
 - Phones held upright: the funnel gets very thin
 - Many stages: the last slices get too narrow to label
 
-Prompt: Create a horizontal funnel chart of seven sample categories running from left to right, with each slice sloping to the height of the next one, labels on the slices and a legend. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a horizontal funnel chart of seven sample categories running from left to right, with each slice sloping to the height of the next one, labels on the slices and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
@@ -109,4 +109,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

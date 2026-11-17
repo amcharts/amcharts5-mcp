@@ -2,7 +2,7 @@
 title: "Map Image Drill-Down"
 source: "https://www.amcharts.com/demos/map-image-drill-down/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A store locator that drills down: bubbles count the stores of a U.S. retail chain in each state. Click a state’s bubble to see its cities, then a city’s to see each store.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing regions exactly: a bar chart
 - Readers looking for one address: add a search
 
-Prompt: Create a store locator map of the United States that drills down in three levels: bubbles with the number of stores per state, then per city when a state is clicked, then each store when a city is clicked, with a button to zoom back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a store locator map of the United States that drills down in three levels: bubbles with the number of stores per state, then per city when a state is clicked, then each store when a city is clicked, with a button to zoom back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -34,7 +34,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -352,4 +352,4 @@ function createSeries(heatfield) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/usaLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

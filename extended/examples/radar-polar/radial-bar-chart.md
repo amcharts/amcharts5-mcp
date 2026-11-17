@@ -2,7 +2,7 @@
 title: "Radial Bar Chart"
 source: "https://www.amcharts.com/demos/radial-bar-chart/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A stacked bar chart bent into rings: each ring is an age group, and its bar runs around the circle, split by activity. Here, minutes a day spent on the phone.
@@ -19,7 +19,7 @@ Think twice when:
 - Many categories: the inner rings get short
 - Long category names: the gap at the top is small
 
-Prompt: Create a stacked radial bar chart of minutes a day spent on the phone by age group and activity (sample data): one ring per age group, the youngest outside, with bars stacked by activity around three quarters of the circle, and a legend of the activities. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stacked radial bar chart of minutes a day spent on the phone by age group and activity (sample data): one ring per age group, the youngest outside, with bars stacked by activity around three quarters of the circle, and a legend of the activities. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Data: minutes a day spent on the phone, by age group and activity (sample data)
@@ -184,4 +184,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

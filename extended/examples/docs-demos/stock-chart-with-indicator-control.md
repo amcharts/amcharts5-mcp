@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/stock/indicators","charts/stock/toolbar/indicator-control"]
 ---
 
-A demo from the docs pages "Indicators" (get_doc(path: "charts/stock/indicators")) and "Indicator control" (get_doc(path: "charts/stock/toolbar/indicator-control")).
+A demo from the docs pages "Indicators" (get_doc(path: "charts/stock/indicators")) and "Indicator control" (get_doc(path: "charts/stock/toolbar/indicator-control")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

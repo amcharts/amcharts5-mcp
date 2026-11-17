@@ -2,7 +2,7 @@
 title: "Forest Plot"
 source: "https://www.amcharts.com/demos/forest-plot/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A forest plot sums up the studies on one question: each row shows a study’s result as a square, sized by how much it counts, with a line for its range of uncertainty. The diamond at the bottom is all the studies combined.
@@ -19,7 +19,7 @@ Think twice when:
 - Dozens of studies: group them or split the plot
 - Readers outside research: explain the squares and the diamond
 
-Prompt: Create a forest plot for a meta-analysis of five studies and their summary: each study’s interval as a line with a square sized by its weight, the summary as a diamond with a dashed line through its value, and each estimate with its interval listed on the right. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a forest plot for a meta-analysis of five studies and their summary: each study’s interval as a line with a square sized by its weight, the summary as a diamond with a dashed line through its value, and each estimate with its interval listed on the right. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -266,4 +266,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

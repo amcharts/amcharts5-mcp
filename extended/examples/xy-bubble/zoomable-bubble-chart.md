@@ -2,7 +2,7 @@
 title: "Zoomable Bubble Chart"
 source: "https://www.amcharts.com/demos/zoomable-bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Each bubble is a country: wealth along the bottom, life expectancy up the side, population as size, continent as color. Zoom in where they crowd.
@@ -19,7 +19,7 @@ Think twice when:
 - A handful of items: a labeled scatter chart or a table is clearer
 - Change over the years: animate it, as in the motion chart
 
-Prompt: Create a zoomable bubble chart of 168 countries, GDP per capita against life expectancy, with a series per continent and the bubbles sized by population on one scale for all countries, and a legend that shows and hides continents. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable bubble chart of 168 countries, GDP per capita against life expectancy, with a series per continent and the bubbles sized by population on one scale for all countries, and a legend that shows and hides continents. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -1579,4 +1579,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

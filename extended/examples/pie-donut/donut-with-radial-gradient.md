@@ -2,7 +2,7 @@
 title: "Donut with Radial Gradient"
 source: "https://www.amcharts.com/demos/donut-with-radial-gradient/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A donut where every slice is softly shaded, darker at its edges than in the middle of the ring. The shade is made from the slice colors, so it follows any theme.
@@ -19,7 +19,7 @@ Think twice when:
 - Two or three slices: a flat pie is clearer
 - When people need to compare slices closely
 
-Prompt: Create a donut chart of sales in nine countries, where each slice is shaded with a soft radial gradient made from its own color, so the ring looks rounded, with labels showing each country and its share. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a donut chart of sales in nine countries, where each slice is shaded with a soft radial gradient made from its own color, so the ring looks rounded, with labels showing each country and its share. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -131,4 +131,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

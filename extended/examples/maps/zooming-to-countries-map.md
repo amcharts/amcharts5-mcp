@@ -2,7 +2,7 @@
 title: "Zooming to Countries Map"
 source: "https://www.amcharts.com/demos/zooming-to-countries-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map that zooms to any country you click. Click the country again, or the sea, to zoom back out.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing countries: color them by value instead
 - Print and static reports: zooming needs a reader
 
-Prompt: Create a zoomable world map of the countries, with each country’s name in a tooltip. Clicking a country zooms the map to it and highlights it; clicking it again, or clicking the ocean, zooms back out. Add zoom buttons with a home button. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable world map of the countries, with each country’s name in a tooltip. Clicking a country zooms the map to it and highlights it; clicking it again, or clicking the ocean, zooms back out. Add zoom buttons with a home button. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -224,4 +224,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

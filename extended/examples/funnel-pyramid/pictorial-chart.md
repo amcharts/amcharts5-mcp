@@ -2,7 +2,7 @@
 title: "Pictorial Chart"
 source: "https://www.amcharts.com/demos/pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pictorial chart that fills only the bowl of a wine glass, with two wines in their own colors. The slider under it drinks the glass down, and the shares follow.
@@ -19,7 +19,7 @@ Think twice when:
 - Many categories: a glass holds two or three bands, not ten
 - Reading exact values: the round bowl distorts the areas
 
-Prompt: Create a pictorial stacked chart in the shape of a wine glass, with two wines filling the bowl. Below the glass, add a slider: dragging it lowers the top wine, as if it were being drunk. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a pictorial stacked chart in the shape of a wine glass, with two wines filling the bowl. Below the glass, add a slider: dragging it lowers the top wine, as if it were being drunk. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -151,4 +151,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

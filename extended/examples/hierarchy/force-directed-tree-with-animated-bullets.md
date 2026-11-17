@@ -2,7 +2,7 @@
 title: "Force-Directed Tree with Animated Bullets"
 source: "https://www.amcharts.com/demos/force-directed-tree-with-animated-bullets/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A force-directed tree with arrows running along every link, from parent to child, to show that something flows. Here, power flows from a plant through four substations to the city’s districts, sized by their demand.
@@ -19,7 +19,7 @@ Think twice when:
 - Large trees: dozens of arrows turn into noise
 - Flows whose size matters: a Sankey diagram shows how much goes where
 
-Prompt: Create a force-directed tree of a city’s power network: a power plant feeds four substations, which feed districts sized by their demand in megawatts. Arrows travel along every link from parent to child, over and over, and clicking a substation folds or unfolds its districts. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a force-directed tree of a city’s power network: a power plant feeds four substations, which feed districts sized by their demand in megawatts. Arrows travel along every link from parent to child, over and over, and clicking a substation folds or unfolds its districts. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -181,4 +181,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

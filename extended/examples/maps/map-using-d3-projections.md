@@ -2,10 +2,10 @@
 title: "Map Using D3 Projections"
 source: "https://www.amcharts.com/demos/map-using-d3-projections/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
-One world map, 104 projections. The Projection list holds the projections of the d3-geo-projection library: pick one, or step through them with the arrows.
+One world map, 102 projections. The Projection list holds the projections of the d3-geo-projection library: pick one, or step through them with the arrows.
 
 Picking a projection: Every flat map distorts the globe, and the projection decides how. Equal-area ones like Mollweide keep sizes true, Mercator keeps shapes, and compromises like Robinson or Winkel Tripel balance the two. A map chart takes any d3 projection, so stepping through this list is a quick way to find the one your data needs.
 
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing country sizes: avoid Mercator
 - Data for one region: a projection centered on it
 
-Prompt: Create a world map on the Airy projection from D3’s d3-geo-projection library, which offers over a hundred projections a map chart can use. Fill the ocean with a light tint so the projection’s outline shows, and let the world turn when dragged sideways. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map on the Airy projection from D3’s d3-geo-projection library, which offers over a hundred projections a map chart can use. Fill the ocean with a light tint so the projection’s outline shows, and let the world turn when dragged sideways. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -46,6 +46,9 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   autoHome: true,
   panX: "rotateX", // dragging sideways turns the globe...
   panY: "none",    // ...but not up and down
+  // the home view is the map straight, untilted: the home button turns it back
+  homeRotationX: 0,
+  homeRotationY: 0,
   // the first projection of the list; the others come from d3-geo-projection
   projection: d3.geoAiry()
 }));
@@ -86,6 +89,10 @@ graticuleSeries.mapLines.template.setAll({
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow // the world's countries, in low detail
 }));
+
+polygonSeries.mapPolygons.template.setAll({
+  fill: am5.Color.lighten(colors.getIndex(0), 0.3) // the land in the theme's first color, lightened 30%
+});
 ```
 
 ## HTML
@@ -110,7 +117,7 @@ var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://d3js.org/d3-array.v1.min.js
 - https://d3js.org/d3-geo.v1.min.js
 - https://d3js.org/d3-geo-projection.v2.min.js

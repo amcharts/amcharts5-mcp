@@ -2,7 +2,7 @@
 title: "Grouped Stacks"
 source: "https://www.amcharts.com/demos/grouped-stacks/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Stacked columns in groups: sales in three regions over four years, each year split into store and online sales. Each region has its own pair of colors, its name under its years and a gap before the next.
@@ -19,7 +19,7 @@ Think twice when:
 - Many groups: the legend grows by a pair each time
 - Shares rather than amounts: stack to 100%
 
-Prompt: Create a stacked column chart in three groups: sales in Europe, the Americas and Asia over four years, each year split into store and online sales, with each region’s name under its group. Give each region its own color, lighter for online, and add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stacked column chart in three groups: sales in Europe, the Americas and Asia over four years, each year split into store and online sales, with each region’s name under its group. Give each region its own color, lighter for online, and add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -234,4 +234,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

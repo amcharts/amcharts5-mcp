@@ -1,25 +1,17 @@
 ---
-title: "Rotate Globe to a Selected Country"
+title: "Interactive World Globe"
 source: "https://www.amcharts.com/demos/rotate-globe-to-a-selected-country/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
-A globe that turns to any country you click, with a plane flying a route around the world through eight cities. Satellite view shows the Earth from space.
+A 3D world globe, seen from space. Click a country or find it by name: the globe turns to it, shows its flag and name, and a plane flies there from the country before.
 
-Turning the globe to a place: A globe shows only half the world at a time, so the map brings the place to the reader: on a click, the code animates rotationX and rotationY to the country's center. The same works for a search box or a list of places beside the map. The plane is a point on the route's line, so it follows the route and turns with it.
+Find any country on the globe: Click a country, or type its name in Find a country, and the globe turns to it and shows its flag. Each country you pick becomes the next stop on a trip, and a plane flies there from the previous one along a dotted line. The globe uses NASA’s satellite image of the Earth. Switch Satellite view off for a plain map, or turn on Country names to label the countries.
 
-Good for:
-- Pickers and search results on a globe
-- Round-the-world routes and trips
-- Story maps that travel from place to place
+To make your own version, open it in Chart Maker and change it without code, or copy the code below.
 
-Think twice when:
-- Places far apart: a flat map shows both at once
-- Small countries: zoom in as well as turning
-- Details of each leg: add a table of the route
-
-Prompt: Create a globe of the world’s countries where clicking a country turns the globe to center it. Add eight draggable cities around the world, linked by a dotted route raised above the surface, with a plane icon flying along the route. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a globe covered with NASA’s satellite picture of the Earth, with the country borders over it, where clicking a country turns the globe to center it, puts a ring on it, and flies a plane there from the country clicked before along a dotted arc raised above the surface. Add the countries’ names, hidden at first, each shown only where it fits. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,9 +22,10 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -49,7 +42,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   boxZoom: "shift",
   minZoomLevel: 0.5,                    // can zoom out to half the size of the fitted globe
   projection: am5map.geoOrthographic(), // draws the world as a globe
-  // Start (and go home) tilted towards the northern hemisphere, where the route runs
+  // Start (and go home) over the Atlantic, tilted towards the north
   rotationX: 20,
   rotationY: -35,
   homeRotationX: 20,
@@ -86,14 +79,20 @@ backgroundSeries.data.push({
   geometry: am5map.getGeoRectangle(90, 180, -90, -180) // north, east, south and west edges: the whole world
 });
 
-// Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hidden at first
-// (visible: false): make it visible for the satellite view
+// Satellite view: NASA's picture of the Earth by day, under the grid lines and the countries. Hide the series
+// (visible: false) for the plain map
 // https://docs.amcharts.com/v5/charts/map-chart/map-raster-series/
 var satelliteSeries = chart.series.push(am5map.MapRasterSeries.new(root, {
-  visible: false,
+  src: "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg",
   // the map fits the countries, not the whole picture
   affectsBounds: false
 }));
+
+// The color of the stops and the plane: white over the satellite picture, and on the plain map the 11th theme
+// color, the one the flights are drawn in, which stands out on land and sea in light and dark themes alike
+function markColor() {
+  return satelliteSeries.get("visible") ? am5.color(0xffffff) : colors.getIndex(10);
+}
 
 // Create graticule series
 // https://docs.amcharts.com/v5/charts/map-chart/graticule-series/
@@ -102,7 +101,8 @@ var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
 }));
 
 graticuleSeries.mapLines.template.setAll({
-  stroke: root.interfaceColors.get("alternativeBackground"), // the contrast color...
+  // white over the satellite picture, the theme's contrast color on the plain map...
+  stroke: satelliteSeries.get("visible") ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"),
   strokeOpacity: 0.08 // ...very faint
 });
 
@@ -131,39 +131,27 @@ polygonSeries.mapPolygons.template.states.create("active", {
   fillOpacity: 1
 });
 
-// Create point series for the cities on the route
+// Create point series for the stops of the trip: a ring on each country picked
 // https://docs.amcharts.com/v5/charts/map-chart/map-point-series/
-var citySeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+var stopSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-citySeries.bullets.push(function() {
-  // Cities can be dragged; the route and the plane follow
+stopSeries.bullets.push(function() {
   var container = am5.Container.new(root, {
-    tooltipText: "{name}",
-    draggable: true,
-    cursorOverStyle: "move" // a move cursor over the city
-  });
-
-  container.events.on("dragged", function(ev) {
-    // turn the drop spot into a longitude and latitude and move the city there
-    var geoPoint = chart.invert({ x: container.x(), y: container.y() });
-    ev.target.dataItem.setAll({
-      longitude: geoPoint.longitude,
-      latitude: geoPoint.latitude
-    });
+    tooltipText: "{name}" // the country's name on hover
   });
 
   // Outer ring
   container.children.push(am5.Circle.new(root, {
-    radius: 7,      // 7px...
-    fillOpacity: 0, // ...hollow...
-    stroke: root.interfaceColors.get("alternativeBackground"), // ...in the theme's contrast color...
-    strokeWidth: 2 // ...2px wide
+    radius: 7,           // 7px...
+    fillOpacity: 0,      // ...hollow...
+    stroke: markColor(), // ...white or in the flights' color (see above)...
+    strokeWidth: 2       // ...2px wide
   }));
 
   // Dot in the middle
   container.children.push(am5.Circle.new(root, {
     radius: 3, // a 3px dot
-    fill: root.interfaceColors.get("alternativeBackground")
+    fill: markColor()
   }));
 
   return am5.Bullet.new(root, {
@@ -171,24 +159,11 @@ citySeries.bullets.push(function() {
   });
 });
 
-citySeries.data.setAll([
-  { id: "london", name: "London", latitude: 51.5074, longitude: -0.1278 },
-  { id: "new-york", name: "New York", latitude: 40.7128, longitude: -74.0060 },
-  { id: "los-angeles", name: "Los Angeles", latitude: 34.0522, longitude: -118.2437 },
-  { id: "tokyo", name: "Tokyo", latitude: 35.6762, longitude: 139.6503 },
-  { id: "sydney", name: "Sydney", latitude: -33.8688, longitude: 151.2093 },
-  { id: "singapore", name: "Singapore", latitude: 1.3521, longitude: 103.8198 },
-  { id: "dubai", name: "Dubai", latitude: 25.2048, longitude: 55.2708 },
-  { id: "sao-paulo", name: "Sao Paulo", latitude: -23.5505, longitude: -46.6333 }
-]);
-
-// Create line series for the route around the world
+// Create line series for the flights from stop to stop
 // https://docs.amcharts.com/v5/charts/map-chart/map-line-series/
-var routeSeries = chart.series.push(am5map.MapLineSeries.new(root, {
-  pointSeries: citySeries // the route's pointIds name cities in this series
-}));
+var flightSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
 
-routeSeries.mapLines.template.setAll({
+flightSeries.mapLines.template.setAll({
   stroke: colors.getIndex(10), // the 11th theme color
   strokeOpacity: 0.9,          // nearly opaque
   strokeWidth: 1.5,            // 1.5px wide
@@ -197,47 +172,70 @@ routeSeries.mapLines.template.setAll({
   altitude: 1000000
 });
 
-// The route connects the cities by their ids and ends where it started
-routeSeries.data.setAll([
-  { id: "route", pointIds: ["london", "new-york", "los-angeles", "tokyo", "sydney", "singapore", "dubai", "sao-paulo", "london"] }
-]);
-
-// Create point series for the plane that flies the route
+// Create point series for the plane, which sits on the last flight's line
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#points-on-a-line
 var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
 planeSeries.bullets.push(function() {
   return am5.Bullet.new(root, {
     sprite: am5.Graphics.new(root, {
       svgPath: "M28 15h-6.5L14.9 5.2C14.7 4.8 14.2 4.6 13.8 4.6 12.8 4.6 12.2 5.5 12.5 6.4L15.6 15H8.5c0 0 0 0-1.8-2.2C6.5 12.6 6.3 12.4 6 12.4H5.3C4.8 12.4 4.5 12.8 4.6 13.2L5.9 17.6l-1.3 4.4C4.5 22.4 4.8 22.8 5.3 22.8h.8c.3 0 .5-.2.7-.4C8.5 20.2 8.5 20.2 8.5 20.2h7.1l-3.2 8.6C12.2 29.7 12.8 30.6 13.8 30.6c.5 0 .9-.2 1.2-.6L21.5 20.2h6.5c1.4 0 2.6-1.2 2.6-2.6S29.4 15 28 15z",
-      scale: 0.7,       // 70% of the icon's size
-      centerX: am5.p50, // the plane's middle...
-      centerY: am5.p50, // ...on the route
-      fill: root.interfaceColors.get("alternativeBackground"), // the theme's contrast color
+      scale: 0.7,        // 70% of the icon's size
+      centerX: am5.p50,  // the plane's middle...
+      centerY: am5.p50,  // ...on the line
+      fill: markColor(), // white or the flights' color (see above)
       // Shadow on the ground makes the plane look like it's flying above the globe: dark in light and dark mode
       shadowColor: am5.color(0x000000),
-      shadowBlur: 4,      // blurred over 4px
-      shadowOffsetX: 4,   // 4px to the right...
-      shadowOffsetY: 6,   // ...and 6px down
-      shadowOpacity: 0.7, // 70% opaque
-      // Fly around the world, over and over
-      animations: [{
-        target: "dataItem",    // animates a value of the data item, not of the sprite
-        key: "positionOnLine", // how far along the route, from 0 to 1
-        from: 0,
-        to: 1,
-        duration: 30000, // 30 seconds a lap
-        loops: 0         // 0 means forever
-      }]
+      shadowBlur: 4,     // blurred over 4px
+      shadowOffsetX: 4,  // 4px to the right...
+      shadowOffsetY: 6,  // ...and 6px down
+      shadowOpacity: 0.7 // 70% opaque
     })
   });
 });
 
-// The plane sits on the route and turns to follow it
-planeSeries.data.setAll([
-  { lineId: "route", positionOnLine: 0, autoRotate: true }
-]);
+// The trip: the countries picked, one after another. The first gets a ring; from the second on, the plane flies
+var lastStop;    // where the plane is: the country's id and the point its ring sits on
+var flights = 0; // flights so far, to give each its own id
 
-// Rotate the globe to the country that was clicked
+// A stop at a country: a ring on it, an arc to it from the stop before, and the plane flying that arc, over
+// so many milliseconds (0: it is there at once)
+function addStop(dataItem, duration) {
+  var id = dataItem.get("id");
+  if (lastStop && lastStop.id === id) {
+    return; // the plane is there already
+  }
+  var point = dataItem.get("mapPolygon").visualCentroid(); // the middle of the country's biggest part
+  stopSeries.data.push({ name: dataItem.dataContext.name, longitude: point.longitude, latitude: point.latitude });
+  if (lastStop) {
+    flights++;
+    flightSeries.data.push({
+      id: "flight-" + flights,
+      geometry: {
+        type: "LineString",
+        coordinates: [[lastStop.longitude, lastStop.latitude], [point.longitude, point.latitude]]
+      }
+    });
+    // the plane moves to the new line (at its start, or at its end when there's no flying) and turns along it
+    planeSeries.data.setAll([{ lineId: "flight-" + flights, positionOnLine: duration ? 0 : 1, autoRotate: true }]);
+    if (duration) {
+      planeSeries.dataItems[0].animate({
+        key: "positionOnLine", // how far along the line, from 0 to 1
+        to: 1,
+        duration: duration,
+        easing: am5.ease.inOut(am5.ease.cubic) // speeds up, then slows down to land
+      });
+    }
+    // only the last ten flights stay on the globe, with their stops
+    if (flightSeries.data.length > 10) {
+      flightSeries.data.removeIndex(0);
+      stopSeries.data.removeIndex(0);
+    }
+  }
+  lastStop = { id: id, longitude: point.longitude, latitude: point.latitude };
+}
+
+// Rotate the globe to the country that was clicked, and fly there
 var previousPolygon;
 
 polygonSeries.mapPolygons.template.on("active", function(active, target) {
@@ -250,17 +248,19 @@ polygonSeries.mapPolygons.template.on("active", function(active, target) {
   previousPolygon = target;
 });
 
-// turn the globe so the country is in the middle
+// turn the globe so the country is in the middle, as the plane flies there from the stop before
 function selectCountry(id) {
   var dataItem = polygonSeries.getDataItemById(id);
   var target = dataItem.get("mapPolygon");
   if (target) {
-    var centroid = target.geoCentroid(); // the country's center, as longitude and latitude
-    if (centroid) {
-      // rotating by minus the country's center brings it to the middle of the globe
-      chart.animate({ key: "rotationX", to: -centroid.longitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
-      chart.animate({ key: "rotationY", to: -centroid.latitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
-    }
+    var center = target.visualCentroid(); // the middle of the country's biggest part, as longitude and latitude
+    // rotating by minus the country's middle brings it to the middle of the globe. rotationX can be any number of
+    // degrees, so turn by the shortest difference (-180 to 180), not past the other side of the world
+    var fromX = chart.get("rotationX", 0);
+    var toX = fromX + ((-center.longitude - fromX) % 360 + 540) % 360 - 180;
+    chart.animate({ key: "rotationX", to: toX, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+    chart.animate({ key: "rotationY", to: -center.latitude, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+    addStop(dataItem, 2500); // the flight takes 2.5 seconds
   }
 }
 
@@ -273,9 +273,30 @@ var credit = chart.children.push(am5.Label.new(root, {
   x: am5.p100,               // at the right edge...
   centerX: am5.p100,         // ...measured to the label's right end...
   dx: -10,                   // ...then 10px back in
-  y: 10,                     // 10px from the top
-  visible: false             // shown only with the satellite picture
+  y: 10                      // 10px from the top (it hides with the satellite picture, see below)
 }));
+
+// On a narrow chart (a phone) the globe takes the whole width and the top right corner is no longer free:
+// the credit moves to the bottom left corner, in smaller type on two lines. The rule is undone on a wider chart
+responsive.addRule({
+  relevant: function (width) { return width < 600; }, // the chart is under 600px wide
+  applying: function () {
+    credit.setAll({
+      x: 0, centerX: 0, dx: 10,                 // 10px in from the left edge...
+      y: am5.p100, centerY: am5.p100, dy: -10,  // ...and from the bottom
+      fontSize: 10,                             // smaller print
+      maxWidth: 100, oversizedBehavior: "wrap"  // wrapped at 100px, two lines
+    });
+  },
+  removing: function () {
+    credit.setAll({
+      x: am5.p100, centerX: am5.p100, dx: -10,
+      y: 10, centerY: 0, dy: 0,
+      fontSize: 12,
+      maxWidth: undefined, oversizedBehavior: "none"
+    });
+  }
+});
 
 // The countries' own look, to go back to
 var landTemplate = polygonSeries.mapPolygons.template;
@@ -291,12 +312,13 @@ var activeState = landTemplate.states.lookup("active");
 var markedLook = { fillOpacity: 1, strokeOpacity: landLook.strokeOpacity, strokeWidth: landTemplate.get("strokeWidth", 1) };
 var outlineLook = { fillOpacity: 0, strokeOpacity: 1, strokeWidth: 2 };
 
-// The picture loads the first time it shows. Then the countries turn to white outlines over it, the grid lines,
-// the cities and the plane turn white, the credit shows and the map sits in near-black space
-satelliteSeries.on("visible", function(visible) {
-  if (visible) {
-    satelliteSeries.set("src", "https://cdn.amcharts.com/lib/5/geodata/images/earthDay2048.jpg");
-  }
+// With the satellite picture, the countries are white outlines over it, the grid lines, the stops and the plane
+// are white, the credit shows and the map sits in near-black space; without it, the map has its own look. Set
+// now, and again whenever the picture is shown or hidden
+showSatellite(satelliteSeries.get("visible", true));
+satelliteSeries.on("visible", showSatellite);
+
+function showSatellite(visible) {
   credit.set("visible", visible);
   chart.get("background").set("fillOpacity", visible ? 1 : 0);
   var look = visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook;
@@ -312,21 +334,95 @@ satelliteSeries.on("visible", function(visible) {
     }
     polygon.setAll(polygon.get("active") ? (visible ? outlineLook : markedLook) : look);
   });
-  // white over the picture, where the theme's contrast color is lost on the dark ocean
-  var markColor = visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground");
-  graticuleSeries.mapLines.template.set("stroke", markColor);
-  // each city's ring and dot, and the plane, were drawn by their bullet functions: recolor the drawn ones
-  citySeries.dataItems.forEach(function (dataItem) {
-    var city = dataItem.bullets && dataItem.bullets[0].get("sprite");
-    if (city) {
-      city.children.getIndex(0).set("stroke", markColor); // the outer ring
-      city.children.getIndex(1).set("fill", markColor);   // the dot in the middle
+  // the grid lines white over the picture, in the theme's contrast color on the plain map
+  graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+  // each stop's ring and dot, and the plane, were drawn by their bullet functions: recolor the drawn ones (white,
+  // or the flights' color; see markColor above)
+  var color = visible ? am5.color(0xffffff) : colors.getIndex(10);
+  stopSeries.dataItems.forEach(function (dataItem) {
+    var stop = dataItem.bullets && dataItem.bullets[0].get("sprite");
+    if (stop) {
+      stop.children.getIndex(0).set("stroke", color); // the outer ring
+      stop.children.getIndex(1).set("fill", color);   // the dot in the middle
     }
   });
   planeSeries.dataItems.forEach(function (dataItem) {
     var plane = dataItem.bullets && dataItem.bullets[0].get("sprite");
     if (plane) {
-      plane.set("fill", markColor);
+      plane.set("fill", color);
+    }
+  });
+}
+
+// Country names: a label in the middle of each country, on top of everything. Hidden at first (visible: false):
+// make the series visible to show them
+// https://docs.amcharts.com/v5/charts/map-chart/map-point-series/#relation-to-polygon-series
+var nameSeries = chart.series.push(am5map.MapPointSeries.new(root, {
+  polygonIdField: "polygonId", // each name sits in the middle of the country with this id
+  visible: false
+}));
+
+nameSeries.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Label.new(root, {
+      text: "{name}",
+      populateText: true,               // fill in {name} from the point's data
+      fontSize: 11,
+      fill: am5.color(0xffffff),        // white...
+      shadowColor: am5.color(0x000000), // ...with a dark glow, so it reads over land, sea and clouds
+      shadowBlur: 3,
+      centerX: am5.p50,                 // centered on the point
+      centerY: am5.p50,
+      templateField: "labelSettings"    // settings from the country's data: small countries' names hidden (see below)
+    })
+  });
+});
+
+// Does a name fit on its country? The country must be about as big on screen as the name is wide. A country of
+// area A (in steradians) is about √A globe radii across; a name takes about 5.5px a letter at 11px, and may be a
+// little wider than its country (names in the middle of their countries rarely touch)
+function nameFits(name, area, radius) {
+  return Math.sqrt(area) * radius >= name.length * 5.5 * 0.8;
+}
+
+// One name per country, once the countries are in. Each keeps its country's area, to tell whether the name fits.
+// The data hides the names that don't fit on a globe 500px tall (a radius of 250px), so a copy of the chart without
+// the code below, such as its JSON in Chart Maker, shows only the big countries' names
+polygonSeries.events.on("datavalidated", function () {
+  nameSeries.data.setAll(polygonSeries.dataItems.map(function (dataItem) {
+    var name = dataItem.dataContext.name; // the country's name, from the map's geodata
+    // in steradians; three digits are plenty, and keep the chart's JSON short
+    var area = +am5map.getGeoArea(dataItem.get("mapPolygon").get("geometry")).toPrecision(3);
+    return {
+      polygonId: dataItem.get("id"),
+      name: name,
+      area: area,
+      labelSettings: nameFits(name, area, 250) ? undefined : { forceHidden: true }
+    };
+  }));
+});
+
+// Here, the names that fit right now show. The projection's scale is the globe's radius on screen (it grows as
+// the map zooms in), so zooming in brings out the smaller countries' names. Towards the globe's edge a country is
+// seen at a slant and covers less: its area times the cosine of its angle from the middle
+var rad = Math.PI / 180; // degrees to radians
+root.events.on("frameended", function () {
+  if (!nameSeries.get("visible")) {
+    return;
+  }
+  var radius = chart.get("projection").scale();
+  // the point in the middle of the globe, as it's turned now
+  var midLongitude = -chart.get("rotationX", 0) * rad;
+  var midLatitude = -chart.get("rotationY", 0) * rad;
+  nameSeries.dataItems.forEach(function (dataItem) {
+    var label = dataItem.bullets && dataItem.bullets[0].get("sprite");
+    if (label) {
+      var longitude = dataItem.get("longitude") * rad;
+      var latitude = dataItem.get("latitude") * rad;
+      var slant = Math.sin(latitude) * Math.sin(midLatitude) +
+        Math.cos(latitude) * Math.cos(midLatitude) * Math.cos(longitude - midLongitude);
+      var area = dataItem.dataContext.area * Math.max(0, slant);
+      label.set("forceHidden", !nameFits(dataItem.dataContext.name, area, radius));
     }
   });
 });
@@ -357,4 +453,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

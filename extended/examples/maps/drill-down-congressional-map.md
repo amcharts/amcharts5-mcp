@@ -2,7 +2,7 @@
 title: "Drill-Down Congressional Map"
 source: "https://www.amcharts.com/demos/drill-down-congressional-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A map of the United States that drills down to congressional districts: click a state to zoom in and load the map of its districts.
@@ -19,7 +19,7 @@ Think twice when:
 - Offline use: the maps load from the CDN
 - Readers who won’t click: lead with the key area
 
-Prompt: Create a two-level drill-down map of the United States: clicking a state zooms to it, loads its congressional districts map and shows the state’s name as the title. A back button returns to the whole country. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a two-level drill-down map of the United States: clicking a state zooms to it, loads its congressional districts map and shows the state’s name as the title. A back button returns to the whole country. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Hover colors come from the theme's palette
@@ -196,5 +196,5 @@ var title = chart.children.push(am5.Label.new(root, {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://cdn.amcharts.com/lib/5/geodata/usaLow.js

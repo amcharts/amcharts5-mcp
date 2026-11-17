@@ -2,7 +2,7 @@
 title: "Stacked Column Chart"
 source: "https://www.amcharts.com/demos/stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A stacked column chart piles the series on top of each other, so each column shows a total and what it is made of. Here, six regions over three years, with each value written on its segment where it fits.
@@ -19,7 +19,7 @@ Think twice when:
 - Shares rather than amounts: stack to 100%
 - Negative values: they need a chart that stacks both ways
 
-Prompt: Create a stacked column chart of six regions’ values over three years, each segment labeled with its value, with tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stacked column chart of six regions’ values over three years, each segment labeled with its value, with tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -188,4 +188,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

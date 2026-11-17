@@ -2,7 +2,7 @@
 title: "Bar and Line Chart Mix"
 source: "https://www.amcharts.com/demos/bar-and-line-chart-mix/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Bars and a line on one chart, turned on its side: income as horizontal bars, expenses as a line that climbs through the years. In 2025, expenses overtook income.
@@ -19,7 +19,7 @@ Think twice when:
 - Categories with no order: a line between them means nothing, so use two bars
 - Many categories: the line zigzags
 
-Prompt: Create a horizontal bar and line chart of income and expenses over five years: income as bars, expenses as a line with circle markers through the middle of each row. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal bar and line chart of income and expenses over five years: income as bars, expenses as a line with circle markers through the middle of each row. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -203,4 +203,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

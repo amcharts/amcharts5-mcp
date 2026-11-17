@@ -2,7 +2,7 @@
 title: "Scatter Plot with Tens of Thousands Points"
 source: "https://www.amcharts.com/demos/scatter-plot-with-tens-of-thousands-points/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A scatter plot with 20,000 points in four clusters, all drawn in one go, so the chart stays quick to zoom and pan. This is where the Canvas renderer shines: switch to SVG under the chart and every move has to rebuild one huge shape.
@@ -19,7 +19,7 @@ Think twice when:
 - A few dozen items: regular bullets allow labels and hover effects
 - Exact counts per area: a heat map of counts is more precise
 
-Prompt: Create a zoomable scatter plot of 20,000 points in four colored clusters, drawn fast by painting all the points into a single graphics element instead of one bullet each. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable scatter plot of 20,000 points in four colored clusters, drawn fast by painting all the points into a single graphics element instead of one bullet each. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -186,4 +186,4 @@ series.data.setAll(data);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

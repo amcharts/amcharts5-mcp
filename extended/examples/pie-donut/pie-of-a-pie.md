@@ -2,7 +2,7 @@
 title: "Pie of a Pie (Exploding Pie Chart)"
 source: "https://www.amcharts.com/demos/pie-of-a-pie/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two pies joined by lines: click a slice of the big pie and it turns to face the small one, which shows what that slice is made of.
@@ -19,7 +19,7 @@ Think twice when:
 - Many slices with their own breakdown: a sunburst chart shows them all
 - Printed reports, where nobody can click
 
-Prompt: Create a pie-of-a-pie chart comparing six countries: clicking a slice turns the main pie until that slice faces a smaller pie beside it, which shows that country’s breakdown, with two lines joining the slice to the smaller pie. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pie-of-a-pie chart comparing six countries: clicking a slice turns the main pie until that slice faces a smaller pie beside it, which shows that country’s breakdown, with two lines joining the slice to the smaller pie. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 var container = root.container.children.push(
   am5.Container.new(root, {
@@ -291,4 +291,4 @@ series.events.on("datavalidated", function() {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

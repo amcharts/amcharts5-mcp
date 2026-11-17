@@ -2,7 +2,7 @@
 title: "Trend Lines"
 source: "https://www.amcharts.com/demos/trend-lines/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart with two trend lines drawn over it: green along a rise, red along a fall. Each trend line is simply its own line series with two points.
@@ -19,7 +19,7 @@ Think twice when:
 - Noisy data with no clear direction
 - Letting readers draw their own: the Stock Chart has drawing tools
 
-Prompt: Create a line chart of about three weeks of daily values with round bullets, and two straight trend lines drawn over it, one along a rise and one along a fall. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about three weeks of daily values with round bullets, and two straight trend lines drawn over it, one along a rise and one along a fall. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [
@@ -293,4 +293,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

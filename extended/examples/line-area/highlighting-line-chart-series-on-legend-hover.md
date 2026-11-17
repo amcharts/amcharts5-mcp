@@ -2,7 +2,7 @@
 title: "Highlighting Line Chart Series on Legend Hover"
 source: "https://www.amcharts.com/demos/highlighting-line-chart-series-on-legend-hover/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Ten lines on one chart get tangled. Point at a name in the legend and that line thickens while the others fade, so you can follow it from start to end.
@@ -19,7 +19,7 @@ Think twice when:
 - Two or three lines: label them directly
 - One line that matters most: color it and gray the rest from the start
 
-Prompt: Create a line chart of ten series of daily values with a legend on the right that shows each series’ value. Hovering a legend item highlights its line: it gets thicker and the other lines fade. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of ten series of daily values with a legend on the right that shows each series’ value. Hovering a legend item highlights its line: it gets thicker and the other lines fade. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -48,7 +48,7 @@ myTheme.rule("Grid", ["x", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -65,7 +65,8 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   paddingRight: 10,
   // room under the date axis for the cursor's date tooltip
   paddingBottom: 15,
-  paddingLeft: 10
+  paddingLeft: 10,
+  layout: root.verticalLayout // the plot, then the legend under it
 }));
 
 var date = new Date();
@@ -153,11 +154,9 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 // Add legend
 // https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/
-// as wide as a series name and its value need
-var legend = chart.rightAxesContainer.children.push(am5.Legend.new(root, {
-  width: 130,
-  paddingLeft: 10,         // 10px from the plot
-  height: am5.percent(100) // as tall as the plot
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.p50, // centered under the plot
+  x: am5.p50
 }));
 
 // When legend item container is hovered, dim all the series except the hovered one
@@ -196,12 +195,6 @@ legend.itemContainers.template.events.on("pointerout", function(e) {
   });
 })
 
-legend.itemContainers.template.set("width", am5.p100); // legend items fill the legend's width...
-legend.valueLabels.template.setAll({
-  width: am5.p100,   // ...so the values...
-  textAlign: "right" // ...line up on the right
-});
-
 // It's important to set legend data after all the events are set on template, otherwise events won't be copied
 legend.data.setAll(chart.series.values);
 
@@ -232,4 +225,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

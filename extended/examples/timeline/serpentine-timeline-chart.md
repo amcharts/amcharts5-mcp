@@ -2,7 +2,7 @@
 title: "Serpentine Timeline Chart"
 source: "https://www.amcharts.com/demos/serpentine-timeline-chart/"
 category: "timeline"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A project plan on a winding road, so four months fit on one screen. Each module has its own lane and color, and lettered badges mark the milestones.
@@ -19,7 +19,7 @@ Think twice when:
 - Many lanes: the bars get thin and the turns crowd
 - Small screens: rows shrink fast, so use fewer of them
 
-Prompt: Create a serpentine timeline chart whose date axis winds left and right across three rows, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, and a lane of lettered milestones. Make the timeline zoomable. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a serpentine timeline chart whose date axis winds left and right across three rows, showing a few months of a project: four modules in their own lanes, with tasks as thick bars, and a lane of lettered milestones. Make the timeline zoomable. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -317,4 +317,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

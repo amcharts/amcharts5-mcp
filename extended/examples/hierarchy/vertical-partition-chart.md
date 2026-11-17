@@ -2,7 +2,7 @@
 title: "Vertical Partition Chart"
 source: "https://www.amcharts.com/demos/vertical-partition-chart/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A partition chart, or icicle chart, stacks a hierarchy in rows: the whole on top, each row one level deeper, each box as wide as its share. Here, the 168 hours of one person’s week.
@@ -19,7 +19,7 @@ Think twice when:
 - Many levels: the rows get short
 - Comparing items from different groups: a bar chart lines them up
 
-Prompt: Create a vertical partition (icicle) chart of the 168 hours of one person’s week by activity, with the levels running top to bottom. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a vertical partition (icicle) chart of the 168 hours of one person’s week by activity, with the levels running top to bottom. Labels turn sideways in narrow boxes, and clicking a box zooms into it or back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -135,4 +135,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

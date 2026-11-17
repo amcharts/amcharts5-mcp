@@ -2,7 +2,7 @@
 title: "Selecting and Marking Multiple Ranges"
 source: "https://www.amcharts.com/demos/selecting-and-marking-multiple-ranges/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Drag across this line chart to mark a stretch of dates, then mark another, and another. A new mark that runs into an old one stops at its edge, so marks never overlap.
@@ -19,7 +19,7 @@ Think twice when:
 - Phones: dragging across a small chart is fiddly
 - Fixed periods everyone needs: draw them as axis ranges in code
 
-Prompt: Create a line chart of about three years of daily values where dragging across the plot marks a date range as a shaded band. Several ranges can be marked: a new one stops at the edge of an earlier one, or replaces a range it covers. Add tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about three years of daily values where dragging across the plot marks a date range as a shaded band. Several ranges can be marked: a new one stops at the edge of an earlier one, or replaces a range it covers. Add tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -234,4 +234,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Drawing Chart Series with Mouse or Touch"
 source: "https://www.amcharts.com/demos/drawing-chart-series-with-mouse-or-touch/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart you can draw on: click anywhere to place a point, and your points join into a second line, drawn over three years of data.
@@ -19,7 +19,7 @@ Think twice when:
 - Phones: small points are hard to grab with a finger
 - Drawings that must be kept: add your own saving
 
-Prompt: Create a line chart of about three years of daily values where clicking the plot places points that form a second, drawn line. Each placed point can be dragged, and a click between two points inserts a new one there. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about three years of daily values where clicking the plot places points that form a second, drawn line. Each placed point can be dragged, and a click between two points inserts a new one there. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -240,4 +240,4 @@ function sortData() {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

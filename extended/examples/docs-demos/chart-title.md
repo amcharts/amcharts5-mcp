@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/xy-chart-containers"]
 ---
 
-A demo from the docs page "Containers of an XY chart" (get_doc(path: "charts/xy-chart/xy-chart-containers")).
+A demo from the docs page "Containers of an XY chart" (get_doc(path: "charts/xy-chart/xy-chart-containers")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

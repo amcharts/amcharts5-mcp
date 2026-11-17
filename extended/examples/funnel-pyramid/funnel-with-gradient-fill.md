@@ -2,7 +2,7 @@
 title: "Funnel with Gradient Fill"
 source: "https://www.amcharts.com/demos/funnel-with-gradient-fill/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A funnel where every slice is dark at the edges and light in the middle, so it looks round, like a stack of tubes. The shading is made from each slice’s own color, so it follows any theme.
@@ -19,7 +19,7 @@ Think twice when:
 - Black-and-white print: the dark edges can merge
 - Small charts, where the shading turns muddy
 
-Prompt: Create a vertical funnel chart of seven sample categories where each slice has a horizontal gradient of its own color, darker at the edges and brighter in the middle, for a softly rounded look, with labels on the slices and a legend. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a vertical funnel chart of seven sample categories where each slice has a horizontal gradient of its own color, darker at the edges and brighter in the middle, for a softly rounded look, with labels on the slices and a legend. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/
@@ -116,4 +116,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

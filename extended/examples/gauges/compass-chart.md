@@ -2,7 +2,7 @@
 title: "Compass Chart"
 source: "https://www.amcharts.com/demos/compass-chart/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A compass made from a gauge: the dial with N, E, S and W turns, while the needle stays put and points at the heading. Every two seconds it swings to a new direction.
@@ -19,7 +19,7 @@ Think twice when:
 - Direction over time: a polar chart shows the pattern
 - Readers who expect the needle to move
 
-Prompt: Create a compass from a circular gauge, with the eight main directions and fine degree ticks around the dial, and a north-south needle that stays still while the dial beneath it turns to a random heading every 2 seconds. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a compass from a circular gauge, with the eight main directions and fine degree ticks around the dial, and a north-south needle that stays still while the dial beneath it turns to a random heading every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -213,4 +213,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Clock with Two Faces"
 source: "https://www.amcharts.com/demos/clock-with-two-faces/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A clock with a dial inside a dial: hours and minutes on the outer face, seconds on a small inner face, and today’s date in the middle.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact readings: show the digits as well
 - More than two scales: the face gets busy
 
-Prompt: Create a working analog clock from a circular gauge chart with two dials: an outer dial for the hour and minute hands and a small inner dial for the second hand, with today’s date in the middle. The hands follow the current local time. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a working analog clock from a circular gauge chart with two dials: an outer dial for the hour and minute hands and a small inner dial for the second hand, with today’s date in the middle. The hands follow the current local time. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -263,4 +263,4 @@ document.addEventListener("visibilitychange", onVisibilityChange);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

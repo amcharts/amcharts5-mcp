@@ -2,7 +2,7 @@
 title: "Smoothed Line Chart"
 source: "https://www.amcharts.com/demos/smoothed-line-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart with the corners rounded off. The curve makes a trend easier to follow, and a soft fill under it gives the shape some weight.
@@ -19,7 +19,7 @@ Think twice when:
 - Values that jump in steps, like prices or stock levels: use a step line
 - Only a few data points: straight lines are more honest
 
-Prompt: Create a smoothed line chart of 50 daily values with round bullets and a light fill under the line. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a smoothed line chart of 50 daily values with round bullets and a light fill under the line. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -170,4 +170,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

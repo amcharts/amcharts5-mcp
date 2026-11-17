@@ -2,7 +2,7 @@
 title: "Layered Column Chart"
 source: "https://www.amcharts.com/demos/layered-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two years in one column: 2024 as a wide column at the back, 2025 as a narrower, striped one in front. Where the front column rises above the back one, the country grew.
@@ -19,7 +19,7 @@ Think twice when:
 - The difference itself is the point: a variance chart or dumbbell plot shows it directly
 - Readers new to the style: say which layer is which, as the legend does here
 
-Prompt: Create a layered column chart comparing six countries across two years, with the later year’s narrower, striped columns in front of the earlier year’s wider ones in the same space. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a layered column chart comparing six countries across two years, with the later year’s narrower, striped columns in front of the earlier year’s wider ones in the same space. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -149,12 +149,11 @@ series1.columns.template.setAll({
   fillPattern: am5.LinePattern.new(root, {
     color: root.interfaceColors.get("background"),
     fill: series1.get("fill"),
-    rotation: 45,   // diagonal stripes
+    // diagonal stripes, down to the right: angle draws the lines at that slant, so the pattern's small default
+    // tile repeats without seams (rotation would turn the whole tile, and need a huge one to hide them)
+    angle: -45,
     strokeWidth: 1, // each stripe 1px wide...
-    gap: 6,         // ...with 6px of the column's color between stripes
-    // a big tile, about half the chart, so the seams where tiles meet are few
-    width: 490,
-    height: 490
+    gap: 6          // ...with 6px of the column's color between stripes
   })
 });
 
@@ -202,4 +201,4 @@ series1.appear();
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

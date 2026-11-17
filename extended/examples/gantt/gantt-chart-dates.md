@@ -2,7 +2,7 @@
 title: "Editable Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart-dates/"
 category: "gantt"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Seven project phases in a Gantt chart you can change in place: drag and resize the bars, drag a bar’s small triangle to set its progress, and draw links between tasks from the dot at a bar’s end.
@@ -19,7 +19,7 @@ Think twice when:
 - Many people editing at once: you need to sync and merge changes
 - Phones: grips and dots are small for fingers
 
-Prompt: Create an editable Gantt chart of seven project phases, from idea to release, linked in order, where you can drag and resize the bars, drag to set a task’s progress and draw links between tasks. Use the amCharts 5 library.
+Prompt: Create an editable Gantt chart of seven project phases, from idea to release, linked in order, where you can drag and resize the bars, drag to set a task’s progress and draw links between tasks. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create Gantt chart
@@ -139,3 +140,4 @@ gantt.appear();
 - https://cdn.amcharts.com/lib/5/plugins/colorPicker.js
 - https://cdn.amcharts.com/lib/5/gantt.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

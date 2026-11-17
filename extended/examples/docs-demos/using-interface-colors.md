@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["concepts/colors-gradients-and-patterns"]
 ---
 
-A demo from the docs page "Colors, gradients, and patterns" (get_doc(path: "concepts/colors-gradients-and-patterns")).
+A demo from the docs page "Colors, gradients, and patterns" (get_doc(path: "concepts/colors-gradients-and-patterns")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

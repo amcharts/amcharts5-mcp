@@ -2,7 +2,7 @@
 title: "Changing Data of Word Cloud"
 source: "https://www.amcharts.com/demos/changing-data-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A word cloud with live data: every five seconds each language gets a new weight, and the words grow, shrink and move to new places. It starts from the share of developers using each language in the 2021 Stack Overflow survey.
@@ -19,7 +19,7 @@ Think twice when:
 - Fast updates: give each layout a few seconds
 - Values that barely change: a still cloud is calmer
 
-Prompt: Create a word cloud of programming languages weighted by how many developers used them in the 2021 Stack Overflow survey. Every few seconds, give the words new random weights, so they glide to new sizes and places. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a word cloud of programming languages weighted by how many developers used them in the 2021 Stack Overflow survey. Every few seconds, give the words new random weights, so they glide to new sizes and places. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a container for the series
@@ -135,4 +135,4 @@ series.data.setAll([
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

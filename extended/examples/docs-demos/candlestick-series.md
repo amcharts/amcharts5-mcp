@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/series/candlestick-series"]
 ---
 
-A demo from the docs page "Candlestick and OHLC series" (get_doc(path: "charts/xy-chart/series/candlestick-series")).
+A demo from the docs page "Candlestick and OHLC series" (get_doc(path: "charts/xy-chart/series/candlestick-series")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

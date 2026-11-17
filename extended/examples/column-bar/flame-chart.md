@@ -2,7 +2,7 @@
 title: "Flame Chart"
 source: "https://www.amcharts.com/demos/flame-chart/"
 category: "column-bar"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 A page's main thread for 1.6 seconds as it loads and starts up, the way the browser's performance tools draw it: each task on top, the calls it made stacked below it, colored by what they do. The part of a task past 50 ms is striped red.
@@ -18,7 +18,7 @@ Think twice when:
 - Totals per function: a sorted bar chart is clearer
 - Thousands of tiny frames: aggregate first
 
-Prompt: Create a flame chart of a web page's main thread like Chrome DevTools' performance panel, with generated data: 1.6 seconds of page load and start-up, time in milliseconds along the top, call stack depth down (0 at the top, no labels). Each frame is a floating bar from its start to its end on its depth's row, with its name inside, cut to the bar's width. One column series per category (Task in faint gray, Loading, Scripting, Rendering, Painting in theme colors) with a legend; tasks over 50 ms get red stripes over the part past 50 ms, the limit a parameter of the function that finds them. Tooltips: name, total time, and self time (the total less the calls one row down inside it), category. On phones hide the legend. Zoom with the wheel, pan by dragging, and a scrollbar under the plot. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a flame chart of a web page's main thread like Chrome DevTools' performance panel, with generated data: 1.6 seconds of page load and start-up, time in milliseconds along the top, call stack depth down (0 at the top, no labels). Each frame is a floating bar from its start to its end on its depth's row, with its name inside, cut to the bar's width. One column series per category (Task in faint gray, Loading, Scripting, Rendering, Painting in theme colors) with a legend; tasks over 50 ms get red stripes over the part past 50 ms, the limit a parameter of the function that finds them. Tooltips: name, total time, and self time (the total less the calls one row down inside it), category. On phones hide the legend. Zoom with the wheel, pan by dragging, and a scrollbar under the plot. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -268,7 +268,9 @@ longSeries.columns.template.setAll({
   fillOpacity: 0,
   fillPattern: am5.LinePattern.new(root, {
     color: red,
-    rotation: 45,
+    // diagonal stripes, down to the right: angle draws the lines at that slant on a small tile; rotation would
+    // turn the whole tile instead, and the stripes would break where tiles meet
+    angle: -45,
     strokeWidth: 3,
     gap: 6,
     // the stripes on the chart's background, which covers the task's gray: the legend's swatch looks the same
@@ -283,7 +285,7 @@ legend.data.push(longSeries);
 // On a narrow chart (a phone) the legend would take most of the height: it is hidden there. The rule is
 // undone on a wider chart
 responsive.addRule({
-  relevant: am5themes_Responsive.widthM, // the chart is 600px wide or less
+  relevant: am5themes_ResponsiveMax.widthM, // the chart is 600px wide or less
   applying: function() {
     legend.set("forceHidden", true);
   },
@@ -325,4 +327,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

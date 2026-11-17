@@ -2,7 +2,7 @@
 title: "Sankey Diagram"
 source: "https://www.amcharts.com/demos/sankey-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Sankey diagram shows how a quantity flows from one stage to the next, each band as wide as its share. Here, an example energy budget: of every 100 units that go in, 40 end up doing useful work.
@@ -19,7 +19,7 @@ Think twice when:
 - Many tiny flows: they shrink to hairlines, so group them as Other
 - Change over time: use a line or area chart
 
-Prompt: Create a Sankey diagram of an example energy budget: sources flow into electricity and fuels, then to homes, industry and transport, and end as useful energy or lost heat. Color each band with a gradient between its nodes, and let the nodes be dragged. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a Sankey diagram of an example energy budget: sources flow into electricity and fuels, then to homes, industry and transport, and end as useful energy or lost heat. Color each band with a gradient between its nodes, and let the nodes be dragged. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create series
@@ -107,4 +107,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Range Chart with Different Fill Colors"
 source: "https://www.amcharts.com/demos/range-chart-with-different-fill-colors/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two lines with the gap between them filled: in one color while Open is above Close, in another while Close is on top. The color changes exactly where the lines cross.
@@ -19,7 +19,7 @@ Think twice when:
 - More than two series
 - Series in different units: they can’t share an axis
 
-Prompt: Create a range area chart of daily Open and Close values over about a year and a half. Fill the area between the two lines in the Open line's color where Open is above Close and in the Close line's color where Close is above Open, switching exactly where the lines cross. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a range area chart of daily Open and Close values over about a year and a half. Fill the area between the two lines in the Open line's color where Open is above Close and in the Close line's color where Close is above Open, switching exactly where the lines cross. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -266,4 +266,4 @@ function getLineIntersection(pointA1, pointA2, pointB1, pointB2) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

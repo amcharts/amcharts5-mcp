@@ -6,7 +6,7 @@ scraped: "2026-11-14"
 docsPages: ["charts/hierarchy/hierarchy-drill-down","charts/hierarchy/treemap"]
 ---
 
-A demo from the docs pages "Hierarchy drill-down" (get_doc(path: "charts/hierarchy/hierarchy-drill-down")) and "Treemap" (get_doc(path: "charts/hierarchy/treemap")).
+A demo from the docs pages "Hierarchy drill-down" (get_doc(path: "charts/hierarchy/hierarchy-drill-down")) and "Treemap" (get_doc(path: "charts/hierarchy/treemap")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

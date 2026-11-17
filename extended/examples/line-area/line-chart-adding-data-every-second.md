@@ -2,7 +2,7 @@
 title: "Line Chart Adding Data Every Second"
 source: "https://www.amcharts.com/demos/line-chart-adding-data-every-second/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart fed live: every second a new point slides in on the right, the oldest drops off the left, and a pulsing dot marks the latest value.
@@ -19,7 +19,7 @@ Think twice when:
 - Many updates per second: add them in batches
 - Values people need to study: they move on in a second
 
-Prompt: Create a real-time line chart that adds a new random value every second and drops the oldest, so the window keeps moving. A pulsing circle marks the latest point, and each new point slides smoothly into view. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a real-time line chart that adds a new random value every second and drops the oldest, so the window keeps moving. A pulsing circle marks the latest point, and each new point slides smoothly into view. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Generate random data
@@ -258,4 +258,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

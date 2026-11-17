@@ -2,7 +2,7 @@
 title: "Line with Changing Color"
 source: "https://www.amcharts.com/demos/line-with-changing-color/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One line in three colors: each stretch of years gets its own color for the line, the area under it and the points. The colors are set in the data, so you choose where each stretch begins.
@@ -19,7 +19,7 @@ Think twice when:
 - More than three or four phases
 - Different measures: use separate series with a legend
 
-Prompt: Create a line chart of yearly values from 2015 to 2025, split into three phases, each with its own color for the line, the fill under it and the bullets, set in the data. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of yearly values from 2015 to 2025, split into three phases, each with its own color for the line, the fill under it and the bullets, set in the data. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -248,4 +248,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

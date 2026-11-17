@@ -2,7 +2,7 @@
 title: "Line with Different Negative Color"
 source: "https://www.amcharts.com/demos/date-based-line-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart that turns red where it drops below zero, line and fill alike. The same trick works for any threshold, not just zero.
@@ -19,7 +19,7 @@ Think twice when:
 - Data that hovers around the threshold: the color flickers
 - Readers who can’t tell the colors apart: label the threshold too
 
-Prompt: Create a smoothed line chart of about five months of daily values that follow a slow wave, dipping below zero in the middle. Color the line and its fill differently below zero. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a smoothed line chart of about five months of daily values that follow a slow wave, dipping below zero in the middle. Color the line and its fill differently below zero. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -27,7 +27,7 @@ Prompt: Create a smoothed line chart of about five months of daily values that f
 // Create root and chart
 var root = am5.Root.new("chartdiv");
 
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
@@ -181,4 +181,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

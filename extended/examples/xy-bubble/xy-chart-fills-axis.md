@@ -2,7 +2,7 @@
 title: "XY Chart with Fills to the Axis"
 source: "https://www.amcharts.com/demos/xy-chart-fills-axis/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 An area chart on two number axes, where the shading can face either way: the lower line fills down to the X axis, the upper one across to the Y axis.
@@ -19,7 +19,7 @@ Think twice when:
 - Fills that cross each other: lower the opacity or drop one
 - Many series: shade one or two and draw the rest as lines
 
-Prompt: Create an XY chart with two value axes and two line series with semi-transparent area fills: one fills down to the X axis and the other across to the Y axis, so the shaded areas face different directions. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an XY chart with two value axes and two line series with semi-transparent area fills: one fills down to the X axis and the other across to the Y axis, so the shaded areas face different directions. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -108,7 +108,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -238,4 +238,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

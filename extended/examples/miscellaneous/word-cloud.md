@@ -2,7 +2,7 @@
 title: "Word Cloud"
 source: "https://www.amcharts.com/demos/word-cloud/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A word cloud sizes each word by how often it appears in a text, so the words used most stand out at once. Here, the king’s first speech in Shakespeare’s Hamlet.
@@ -19,7 +19,7 @@ Think twice when:
 - Short texts: every word appears once or twice
 - Words that matter only in context, like "not good"
 
-Prompt: Create a zoomable word cloud of the most frequent words in King Claudius’s first speech in Shakespeare’s Hamlet, counted from the plain text, with each word set level or upright. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable word cloud of the most frequent words in King Claudius’s first speech in Shakespeare’s Hamlet, counted from the plain text, with each word set level or upright. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -91,4 +91,4 @@ series.labels.template.setAll({
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/wc.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

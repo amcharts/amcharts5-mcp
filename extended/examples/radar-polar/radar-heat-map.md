@@ -2,7 +2,7 @@
 title: "Radar Heat Map"
 source: "https://www.amcharts.com/demos/radar-heat-map/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A heat map bent into a ring: the 24 hours run around the circle, the seven days of the week from the outside in, and color shows how busy each hour was.
@@ -19,7 +19,7 @@ Think twice when:
 - Long day names on small charts: the rings get thin
 - Comparing far-apart cells: a grid heat map lines them up
 
-Prompt: Create a radar heat map with the 24 hours of the day around the circle and the seven weekdays as rings around a hole in the middle. Color each cell by its value, and add a heat legend that marks the value of the cell under the pointer. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radar heat map with the 24 hours of the day around the circle and the seven weekdays as rings around a hole in the middle. Color each cell by its value, and add a heat legend that marks the value of the cell under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -896,4 +896,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

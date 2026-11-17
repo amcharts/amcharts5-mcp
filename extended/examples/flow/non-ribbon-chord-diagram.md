@@ -2,7 +2,7 @@
 title: "Non-Ribbon Chord Diagram"
 source: "https://www.amcharts.com/demos/non-ribbon-chord-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A chord diagram with thin lines instead of wide ribbons: it shows which nodes are connected rather than how much flows between them. Dots travel back and forth along each line.
@@ -19,7 +19,7 @@ Think twice when:
 - Hundreds of links: try a force-directed network
 - Readers who need to follow one line across the circle
 
-Prompt: Create a non-ribbon chord diagram, with thin curved lines instead of ribbons, of six nodes joined by eight weighted links, each node drawn as a circle with its letter inside. Small dots travel back and forth along every line in endless loops. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a non-ribbon chord diagram, with thin curved lines instead of ribbons, of six nodes joined by eight weighted links, each node drawn as a circle with its letter inside. Small dots travel back and forth along every line in endless loops. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create series
@@ -130,4 +130,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

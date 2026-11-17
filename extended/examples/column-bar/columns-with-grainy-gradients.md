@@ -2,7 +2,7 @@
 title: "Columns with Grainy Gradients"
 source: "https://www.amcharts.com/demos/columns-with-grainy-gradients/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Columns styled like a poster: each one fades from its own color to a dark shade of it, with a film-grain texture, a fully rounded top and a soft shadow that grows on hover.
@@ -19,7 +19,7 @@ Think twice when:
 - Many columns: the texture turns into noise
 - Black-and-white print: the colors all turn to similar grays
 
-Prompt: Create a column chart comparing six countries, each column in its own color with fully rounded tops, a gradient that darkens toward the bottom and a grainy texture. Add tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart comparing six countries, each column in its own color with fully rounded tops, a gradient that darkens toward the bottom and a grainy texture. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -175,4 +175,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

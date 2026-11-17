@@ -2,7 +2,7 @@
 title: "Clock"
 source: "https://www.amcharts.com/demos/clock/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 An analog clock made from a gauge: the dial is a circular axis from 0 to 12, and the hours, minutes and seconds are three clock hands. It shows the time on your device, live.
@@ -19,7 +19,7 @@ Think twice when:
 - Small spaces: a digital clock takes less room
 - Values that aren’t times: use a regular gauge
 
-Prompt: Create a working analog clock from a circular gauge chart, with the hour numbers around the face and hour, minute and second hands that show the current local time and move every second. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a working analog clock from a circular gauge chart, with the hour numbers around the face and hour, minute and second hands that show the current local time and move every second. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -213,4 +213,4 @@ document.addEventListener("visibilitychange", onVisibilityChange);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

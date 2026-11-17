@@ -2,7 +2,7 @@
 title: "Mixed Daily and Intra-Day Chart"
 source: "https://www.amcharts.com/demos/mixed-daily-and-intra-day-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Hourly readings and daily averages on one chart: the line has a point for every hour, each column the average of that day. Two date axes keep them in step.
@@ -19,7 +19,7 @@ Think twice when:
 - Months or years of data: hourly detail turns into noise
 - Readers who may take a column for one hour: say what each shows
 
-Prompt: Create a chart with two time scales: a line of hourly values over ten days, with columns behind it showing each day’s average. Each series has its own date axis, but they share one value axis. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a chart with two time scales: a line of hourly values over ten days, with columns behind it showing each day’s average. Each series has its own date axis, but they share one value axis. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -193,4 +193,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

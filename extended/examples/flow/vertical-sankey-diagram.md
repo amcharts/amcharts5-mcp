@@ -2,7 +2,7 @@
 title: "Vertical Sankey Diagram"
 source: "https://www.amcharts.com/demos/vertical-sankey-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Sankey diagram that runs from top to bottom instead of left to right. Here, an example of how $1.77 trillion of company cash splits by industry, and how much of it is held overseas.
@@ -19,7 +19,7 @@ Think twice when:
 - Wide, short spaces like a dashboard row: go horizontal
 - Exact comparisons between the end values: add a bar chart
 
-Prompt: Create a vertical Sankey diagram of an example breakdown of company cash, from all non-financial companies down to the five biggest tech companies, ending as cash in the U.S. or overseas. Hide the nodes, give the bands a gradient, and put the labels on the bands. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a vertical Sankey diagram of an example breakdown of company cash, from all non-financial companies down to the five biggest tech companies, ending as cash in the U.S. or overseas. Hide the nodes, give the bands a gradient, and put the labels on the bands. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create a container for the series
 var chart = root.container.children.push(am5.SerialChartContainer.new(root, {}));
@@ -273,4 +273,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

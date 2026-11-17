@@ -2,7 +2,7 @@
 title: "Simple Treemap"
 source: "https://www.amcharts.com/demos/simple-treemap/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A treemap shows a total as nested rectangles, each sized by its value and colored by its group. Here, a $4,000 monthly budget split into six groups and 20 items.
@@ -19,7 +19,7 @@ Think twice when:
 - Negative numbers: a box can’t have negative area
 - Change over time: use a line or stacked column chart
 
-Prompt: Create a treemap of a monthly household budget, with items such as rent, groceries and savings grouped into six groups and colored by their group. Clicking an item zooms to its group, and clicking again zooms back out. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a treemap of a monthly household budget, with items such as rent, groceries and savings grouped into six groups and colored by their group. Clicking an item zooms to its group, and clicking again zooms back out. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -157,4 +157,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

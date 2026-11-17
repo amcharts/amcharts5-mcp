@@ -2,7 +2,7 @@
 title: "Drill-Down Sunburst Chart"
 source: "https://www.amcharts.com/demos/drill-down-sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A sunburst you explore one branch at a time: click a category and it becomes the inner ring, with its own breakdown around it. Here, a year of an online store’s sales.
@@ -19,7 +19,7 @@ Think twice when:
 - Printed reports, where nobody can click
 - Two levels or fewer: a nested donut chart does the job
 
-Prompt: Create a drill-down sunburst chart of an online store’s sales by department, category and product. Clicking a segment makes it the inner ring with its children around it, clicking the inner ring goes back up, and a breadcrumb bar shows the path. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a drill-down sunburst chart of an online store’s sales by department, category and product. Clicking a segment makes it the inner ring with its children around it, clicking the inner ring goes back up, and a breadcrumb bar shows the path. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -153,4 +153,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

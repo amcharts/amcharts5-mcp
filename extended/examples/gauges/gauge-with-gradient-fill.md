@@ -2,7 +2,7 @@
 title: "Gauge with Gradient Fill"
 source: "https://www.amcharts.com/demos/gauge-with-gradient-fill/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A gauge shows one value as a needle on a dial. Here the dial is one arc fading from green to red, so you see at once how close the value is to its maximum.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who can’t tell green from red: add a number
 - Several values: a bar chart fits more in less space
 
-Prompt: Create a half-circle gauge from 0 to 100 whose scale is a thick band with a gradient running from safe to dangerous colors, and a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a half-circle gauge from 0 to 100 whose scale is a thick band with a gradient running from safe to dangerous colors, and a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -137,4 +137,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

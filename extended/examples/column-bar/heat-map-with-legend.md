@@ -2,7 +2,7 @@
 title: "Heat Map with Legend"
 source: "https://www.amcharts.com/demos/heat-map-with-legend/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A week, hour by hour: each cell is colored by its value, and the legend below gives the scale. Weekday working hours stand out, while the weekend stays quiet.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers with color vision deficiency: pick a scale that also changes in lightness
 - A trend over weeks or months: a line chart shows it better
 
-Prompt: Create a heat map of values by weekday and hour of the day, highest in weekday working hours, with the cells colored by value and a heat legend that marks a cell’s value when the pointer is over it. Add tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a heat map of values by weekday and hour of the day, highest in weekday working hours, with the cells colored by value and a heat legend that marks a cell’s value when the pointer is over it. Add tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -863,4 +863,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

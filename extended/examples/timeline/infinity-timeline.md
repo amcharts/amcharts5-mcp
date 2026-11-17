@@ -2,7 +2,7 @@
 title: "Infinity Timeline"
 source: "https://www.amcharts.com/demos/infinity-timeline/"
 category: "timeline"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Apollo 11, July 15 to 24, 1969, as a figure eight from Earth to the Moon and back. Each of its 229 dots is a logged event, from countdown to quarantine.
@@ -19,7 +19,7 @@ Think twice when:
 - Events that need labels on the chart: there is no room
 - Data that changes a lot: this path is a fixed list of points
 
-Prompt: Create a timeline of the Apollo 11 mission along a custom path shaped like a figure eight, with each logged event as a small dot that shows its time and description in a tooltip. Put a rotating globe inside the big loop and the Moon inside the small one. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a timeline of the Apollo 11 mission along a custom path shaped like a figure eight, with each logged event as a small dot that shows its time and description in a tooltip. Put a rotating globe inside the big loop and the Moon inside the small one. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -460,4 +460,4 @@ moon.adapters.add("height", function (height) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/continentsLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

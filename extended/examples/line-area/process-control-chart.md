@@ -2,7 +2,7 @@
 title: "Process Control Chart"
 source: "https://www.amcharts.com/demos/process-control-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A process control chart: 23 samples against an upper and a lower limit, with the zone between them shaded. Three fall outside, the signal to look for a cause.
@@ -19,7 +19,7 @@ Think twice when:
 - Several processes at once: give each its own small chart
 - Subtle drifts inside the band: flag runs of points too
 
-Prompt: Create a process control chart of 23 samples, with a shaded band between the lower and upper control limits, solid lines for both limits and a dashed line for the process average, each labeled inside the plot. Add round markers, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a process control chart of 23 samples, with a shaded band between the lower and upper control limits, solid lines for both limits and a dashed line for the process average, each labeled inside the plot. Add round markers, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [
@@ -198,7 +198,7 @@ function createRange(value, endValue, label, color, dashed) {
     range.get("label").setAll({
       text: label,
       location: 1,
-      fontSize: 19,    // large text, in pixels
+      fontSize: 15,    // a little larger than the axis labels, in pixels
       inside: true,    // inside the plot, not next to the axis
       centerX: am5.p0, // the label starts at the left edge of the plot and runs right
       // the label's bottom on the line, so the text sits just above it
@@ -231,4 +231,4 @@ function createRange(value, endValue, label, color, dashed) {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

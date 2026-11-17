@@ -2,7 +2,7 @@
 title: "Location-Sensitive Map"
 source: "https://www.amcharts.com/demos/location-sensitive-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A map that loads the visitor’s own country: it looks up your country from your IP address, then loads that country’s map with a random value for each region. Where the lookup can’t answer, it goes by your browser’s language setting.
@@ -19,7 +19,7 @@ Think twice when:
 - Privacy-minded readers: say why you guess their country
 - Exact locations: ask the browser, with the visitor’s permission
 
-Prompt: Create a map of the visitor’s own country, found from their IP address or, failing that, their browser’s language, and loaded from the amCharts geodata. Color its regions by random values as a heat map, with a heat legend and the country’s name above the map. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a map of the visitor’s own country, found from their IP address or, failing that, their browser’s language, and loaded from the amCharts geodata. Color its regions by random values as a heat map, with a heat legend and the country’s name above the map. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -201,5 +201,5 @@ polygonSeries.events.on("datavalidated", function () {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://cdn.amcharts.com/lib/5/geodata/data/countries2.js

@@ -2,7 +2,7 @@
 title: "Evenly Spaced Date Axis"
 source: "https://www.amcharts.com/demos/evenly-spaced-date-axis/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart of weekdays only: Saturdays and Sundays have no values, so the axis leaves them out and Friday sits right next to Monday, with no empty gap.
@@ -19,7 +19,7 @@ Think twice when:
 - Readings at irregular times, like sensor data: keep a real date axis
 - Comparing durations: a long break looks as short as a weekend
 
-Prompt: Create a line chart of about 200 weekdays of values on a date axis that spaces the dates evenly, so the weekends leave no gaps. Show the weekday in the axis tooltip, and add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about 200 weekdays of values on a date axis that spaces the dates evenly, so the weekends leave no gaps. Show the weekday in the axis tooltip, and add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -161,4 +161,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

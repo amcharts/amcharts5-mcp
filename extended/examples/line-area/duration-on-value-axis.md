@@ -2,7 +2,7 @@
 title: "Duration on Value Axis"
 source: "https://www.amcharts.com/demos/duration-on-value-axis/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A two-week road trip in one chart: miles driven each day, hours behind the wheel and how far north each stop is. The right-hand axis is a duration axis: the data is in minutes, the labels read as hours and minutes.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who might take 08:00 for a clock time: name the axis
 - More than two scales in one chart: split it in two
 
-Prompt: Create a chart of a two-week road trip with three measures on one date axis: miles driven each day as columns, the latitude of each night’s town as a line with bullets sized by the town’s size, and the driving time as a line on a duration axis that shows hours and minutes. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a chart of a two-week road trip with three measures on one date axis: miles driven each day as columns, the latitude of each night’s town as a line with bullets sized by the town’s size, and the driving time as a line on a duration axis that shows hours and minutes. Add a cursor, tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -132,7 +132,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -321,4 +321,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

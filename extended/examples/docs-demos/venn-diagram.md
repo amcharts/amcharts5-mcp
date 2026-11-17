@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/venn"]
 ---
 
-A demo from the docs page "Venn diagram" (get_doc(path: "charts/venn")).
+A demo from the docs page "Venn diagram" (get_doc(path: "charts/venn")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

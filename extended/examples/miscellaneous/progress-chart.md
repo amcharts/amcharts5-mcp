@@ -2,7 +2,7 @@
 title: "Progress Chart"
 source: "https://www.amcharts.com/demos/progress-chart/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A progress chart shows how far something has come on one bar from 0 to 100%, here in five stages of different lengths, each with its own color and start mark.
@@ -19,7 +19,7 @@ Think twice when:
 - Several projects to compare: a bar per project
 - Stages that overlap in time: a Gantt chart
 
-Prompt: Create a progress chart: one horizontal bar from 0 to 100% split into five stages of different lengths, each in its own color, with the percentage where each stage starts marked under the bar and a legend of the stages. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a progress chart: one horizontal bar from 0 to 100% split into five stages of different lengths, each in its own color, with the percentage where each stage starts marked under the bar and a legend of the stages. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -217,4 +217,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

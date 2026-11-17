@@ -2,7 +2,7 @@
 title: "Line Chart with Range Slider"
 source: "https://www.amcharts.com/demos/line-chart-with-range-slider/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart split in two by a handle you can drag. Everything past the handle changes color and turns striped: a way to mark a forecast, a target period or figures still to be confirmed.
@@ -19,7 +19,7 @@ Think twice when:
 - Printed reports: nobody can drag, so set the date in code
 - Readers who can’t tell colors apart: keep the stripes, not only the color
 
-Prompt: Create a line chart of about three years of daily values with a draggable handle on the date axis that splits the series in two: the part after the handle is drawn in another color over a striped fill. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about three years of daily values with a draggable handle on the date axis that splits the series in two: the part after the handle is drawn in another color over a striped fill. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -142,10 +142,10 @@ var rangeColor = chart.get("colors").getIndex(8);
 
 seriesRange.fills.template.set("fillPattern", am5.LinePattern.new(root, {
   color: rangeColor, // stripes in that color...
-  rotation: 45,      // ...diagonal...
+  angle: -45,        // ...diagonal, down to the right...
   strokeWidth: 2,    // ...2px wide
-  width: 2000,       // one tile big enough to cover the plot
-  height: 2000,
+  // angle draws the lines at that slant, so the small default tile repeats without seams (rotation would turn
+  // the whole tile, and need one as big as the plot to hide them)
   // the gaps between the stripes take the chart's background color, so they work in light and dark mode
   fill: root.interfaceColors.get("background")
 }));
@@ -230,4 +230,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

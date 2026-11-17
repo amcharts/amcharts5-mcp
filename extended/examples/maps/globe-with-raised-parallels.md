@@ -2,7 +2,7 @@
 title: "Globe with Raised Parallels"
 source: "https://www.amcharts.com/demos/globe-with-raised-parallels/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The Earth drawn with nothing but its parallels, one every 1.5 degrees. Over the sea they lie flat on the globe; over land they rise by the real height of the ground, 200 times exaggerated, so mountains and ice sheets stand out.
@@ -19,7 +19,7 @@ Think twice when:
 - Slow devices: thousands of raised points are redrawn as the globe turns
 - Values by country: color the countries instead
 
-Prompt: Create a slowly turning globe drawn only by its parallels, one every 1.5 degrees, with no country shapes. Take the heights from https://www.amcharts.com/static/demo-data/relief-parallels.js, which sets reliefParallels: NOAA ETOPO1 elevation, one row per parallel from 84°N to 84°S, 360 heights in metres each (the sea as 0). Each parallel lies flat on the globe over the sea and rises over land by the real elevation, exaggerated 200 times, drawn as map lines whose points carry their own heights. Color the land lines by height band in the theme's colors, 2px wide, keep the sea lines faint (a quarter opaque), credit the data, and let the globe be dragged and zoomed. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a slowly turning globe drawn only by its parallels, one every 1.5 degrees, with no country shapes. Take the heights from https://www.amcharts.com/static/demo-data/relief-parallels.js, which sets reliefParallels: NOAA ETOPO1 elevation, one row per parallel from 84°N to 84°S, 360 heights in metres each (the sea as 0). Each parallel lies flat on the globe over the sea and rises over land by the real elevation, exaggerated 200 times, drawn as map lines whose points carry their own heights. Color the land lines by height band in the theme's colors, 2px wide, keep the sea lines faint (a quarter opaque), credit the data, and let the globe be dragged and zoomed. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // At most 30 frames a second: plenty for a slow turn, and it leaves the browser time for the rest of the page,
@@ -277,5 +277,5 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://www.amcharts.com/static/demo-data/relief-parallels.js

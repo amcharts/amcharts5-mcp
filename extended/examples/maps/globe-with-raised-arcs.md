@@ -2,7 +2,7 @@
 title: "Globe with Raised Arcs"
 source: "https://www.amcharts.com/demos/globe-with-raised-arcs/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two routes around the world on a globe, one through the north and one through the south, drawn as arcs that rise above the surface like flight paths. Where a route runs over the edge of the globe, its arc stays in view.
@@ -19,7 +19,7 @@ Think twice when:
 - Volumes on each route: a map Sankey sizes the bands
 - Paths on the ground, like roads or rivers: keep the lines flat
 
-Prompt: Create a draggable globe with two routes around the world, a northern and a southern one, each linking major cities in a loop. Draw each route in its own color as a dashed line raised into arcs above the surface. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a draggable globe with two routes around the world, a northern and a southern one, each linking major cities in a loop. Draw each route in its own color as a dashed line raised into arcs above the surface. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the globe follows the theme
@@ -223,4 +223,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Radar Timeline"
 source: "https://www.amcharts.com/demos/radar-timeline/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Temperature anomalies for 104 countries around a circle, grouped by continent, and a play button that runs through the years from 1973 to 2016.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who can’t interact, like in print
 - A few categories: a bar chart race is clearer
 
-Prompt: Create a radar timeline of temperature anomalies for about a hundred countries grouped by continent, with columns colored from cold to warm and the year in large text in the middle. Clicking a continent band zooms to its countries, and switching the year animates the columns to its values. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radar timeline of temperature anomalies for about a hundred countries grouped by continent, with columns colored from cold to warm and the year in large text in the middle. Clicking a continent band zooms to its countries, and switching the year animates the columns to its values. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -39,7 +39,7 @@ myTheme.rule("Grid").set("strokeOpacity", 0.06); // very faint grid lines
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Data
@@ -177,6 +177,7 @@ var chart = root.container.children.push(am5radar.RadarChart.new(root, {
   panY: false,
   wheelX: "panX",               // a horizontal wheel or trackpad swipe moves a zoomed view around...
   wheelY: "zoomX",              // ...and the vertical wheel zooms in on some countries
+  radius: am5.percent(65),      // a smaller ring than the default 80%, so the country names fit
   innerRadius: am5.percent(40), // a hole in the middle, 40% of the radius, for the year
   // a 340-degree ring with a gap at the bottom, where the value axis shows its labels
   startAngle: 270 - 170,
@@ -371,4 +372,4 @@ function updateRadarData(year) {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

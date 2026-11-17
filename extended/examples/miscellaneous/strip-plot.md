@@ -2,7 +2,7 @@
 title: "Strip Plot"
 source: "https://www.amcharts.com/demos/strip-plot/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A strip plot puts every value of a group on one line, so you see how they spread instead of a single average. Here, made-up posts on twelve social networks: when each went out and, by its size, how many likes it got.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing averages only: a bar chart is simpler
 - Points that overlap exactly: a beeswarm spreads them out
 
-Prompt: Create a strip plot of made-up social media posts: a row for each of 12 networks, and each post a dot placed by its time of day, sized by its likes and colored by network. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a strip plot of made-up social media posts: a row for each of 12 networks, and each post a dot placed by its time of day, sized by its likes and colored by network. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -44,7 +44,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -227,4 +227,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

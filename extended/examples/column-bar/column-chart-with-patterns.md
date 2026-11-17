@@ -1,6 +1,6 @@
 ---
 title: "Column Chart with Patterns"
-source: "amcharts5-mcp: written for the skill, checked in a browser with amCharts 5.21.3"
+source: "amcharts5-mcp: written for the skill, checked in a browser"
 category: "column-bar"
 ---
 
@@ -20,7 +20,7 @@ Think twice when:
 Things that go wrong:
 - `templateField` set on the series instead of on `series.columns.template`: the series ignores it, and the columns stay plain.
 - A pattern `color` equal to the fill behind it: the stripes vanish and the column looks solid. The gaps show the column's `fill`, or the pattern's own `fill` if it has one.
-- No pattern `color`: the shapes are drawn black whatever the column's colors (5.21.3).
+- No pattern `color`: the shapes are drawn black whatever the column's colors.
 - `rotation` on a LinePattern turns the whole tile, and at 45° its edges show as broken lines. Set the line direction with `angle`.
 
 Prompt: Create a column chart of website visits by traffic source (Search, Social, Email, Direct), with a different black-and-white fill pattern in each column and the value above it. Use the amCharts 5 library.
@@ -33,7 +33,8 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
@@ -168,3 +169,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

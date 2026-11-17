@@ -2,7 +2,7 @@
 title: "Stock Data Grouping"
 source: "https://www.amcharts.com/demos/stock-data-grouping/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 More than six years of daily Microsoft prices, about 1,600 trading days, in one chart. Zoomed out, the days merge into monthly candles so that no more than 150 are on screen; zoom in and they split into weeks, then single days.
@@ -19,7 +19,7 @@ Think twice when:
 - Averages, not totals: set how each value is grouped
 - Huge data sets: load them by interval instead
 
-Prompt: Create a stock chart of about six years of daily Microsoft prices from a CSV file, with candlesticks in the main panel and volume in a panel below. Turn on data grouping, so that zoomed out the days merge into weeks or months. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a stock chart of about six years of daily Microsoft prices from a CSV file, with candlesticks in the main panel and volume in a panel below. Turn on data grouping, so that zoomed out the days merge into weeks or months. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -38,7 +38,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({ // no minor grid lines in 
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -359,4 +359,4 @@ var toolbar = am5stock.StockToolbar.new(root, {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

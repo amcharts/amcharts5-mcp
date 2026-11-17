@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart"
 source: "https://www.amcharts.com/demos/stacked-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A stacked chart on its side: each bar is a year’s total, split into six regions and labeled segment by segment. Bars leave room for long names and long lists.
@@ -19,7 +19,7 @@ Think twice when:
 - Shares rather than amounts: stack to 100%
 - Comparing one middle segment across bars: cluster the bars
 
-Prompt: Create a horizontal stacked bar chart of six regions’ values over three years, with the years down the side, each segment labeled with its value, and tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal stacked bar chart of six regions’ values over three years, with the years down the side, each segment labeled with its value, and tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -40,7 +40,7 @@ myTheme.rule("Grid", ["base"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -187,4 +187,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

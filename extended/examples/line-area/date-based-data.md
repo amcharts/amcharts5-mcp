@@ -2,7 +2,7 @@
 title: "Date Based Data"
 source: "https://www.amcharts.com/demos/date-based-data/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Half a year of daily values, July 2025 to January 2026. The dates come in as plain text, like 2025-07-27, and the chart turns them into a real timeline.
@@ -19,7 +19,7 @@ Think twice when:
 - Times of day: put the hours and minutes in the format too
 - Data without dates: use a category axis
 
-Prompt: Create a line chart of about six months of daily values whose dates come as text strings, with a soft fill under the line and circle bullets that appear only once you zoom in far enough to space them out. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about six months of daily values whose dates come as text strings, with a soft fill under the line and circle bullets that appear only once you zoom in far enough to space them out. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var data = [{
@@ -720,4 +720,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

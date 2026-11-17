@@ -2,7 +2,7 @@
 title: "Live Stock Data"
 source: "https://www.amcharts.com/demos/live-stock-data/"
 category: "stock"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A candlestick chart fed by a simulated live feed: a new price every second, a new candle every minute. The label on the price axis follows the latest price, green while it is above the minute’s open and red below.
@@ -19,7 +19,7 @@ Think twice when:
 - Many charts on one page: feed them from one connection
 - Long sessions: drop old candles so the data doesn’t grow forever
 
-Prompt: Create a live stock chart of one-minute candles of random prices for a made-up ticker, updated every second: the last candle moves, and a new one starts each minute. Mark the latest price on the value axis with a line and a label that follows it. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a live stock chart of one-minute candles of random prices for a made-up ticker, updated every second: the last candle moves, and a new one starts each minute. Mark the latest price on the value axis with a line and a label that follows it. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -39,7 +39,7 @@ myTheme.rule("Grid", ["scrollbar", "minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create a stock chart
@@ -349,4 +349,4 @@ setInterval(function () {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/stock.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

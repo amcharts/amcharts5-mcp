@@ -2,7 +2,7 @@
 title: "Horizontal Dumbbell Plot"
 source: "https://www.amcharts.com/demos/horizontal-dumbbell-plot/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A dumbbell plot puts two values on one row, a dot for each joined by a bar, so the gap between them is what you see first. Here, a made-up start and end value for each of 18 people.
@@ -19,7 +19,7 @@ Think twice when:
 - Totals that matter: bars from zero show them
 - Changes that go both ways: color the rises and falls apart
 
-Prompt: Create a horizontal dumbbell plot of eighteen people, each row a thin line from a start value to a higher end value with a dot at each end in two colors. Add a cursor and tooltips with both values. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal dumbbell plot of eighteen people, each row a thin line from a start value to a higher end value with a dot at each end in two colors. Add a cursor and tooltips with both values. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -198,4 +198,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

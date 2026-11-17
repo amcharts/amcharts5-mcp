@@ -2,7 +2,7 @@
 title: "Animated Time-Line Pie Chart"
 source: "https://www.amcharts.com/demos/animated-time-line-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A donut that plays through 1995 to 2014: every four seconds it moves on a year, and each slice grows or shrinks with its sector’s share of the economy.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who need to stop and look: show a still chart too
 - Small shifts from year to year: the motion hides them
 
-Prompt: Create a donut chart of an economy’s sectors that plays through twenty years of data on its own, changing to the next year every 4 seconds and looping, with the year in large text in the hole. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a donut chart of an economy’s sectors that plays through twenty years of data on its own, changing to the next year every 4 seconds and looping, with the year in large text in the hole. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -216,7 +216,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -309,4 +309,4 @@ loop();
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

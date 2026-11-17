@@ -2,7 +2,7 @@
 title: "Date Axis with Labels Near Minor Grid Lines"
 source: "https://www.amcharts.com/demos/date-axis-with-labels-near-minor-grid-lines/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart where every day gets a number on the axis: small day numbers along the bottom, week labels under them, so each point’s date is easy to read.
@@ -19,7 +19,7 @@ Think twice when:
 - Narrow charts on phones: keep the main labels only
 - Charts read for the trend, where the exact day doesn’t matter
 
-Prompt: Create a line chart of a month of daily values on a date axis with two rows of labels: small day numbers on the minor grid lines under every day, and the week labels in a second row below them. Add round bullets, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of a month of daily values on a date axis with two rows of labels: small day numbers on the minor grid lines under every day, and the week labels in a second row below them. Add round bullets, a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -55,7 +55,7 @@ myTheme.rule("Grid", ["minor"]).setAll({
 root.setThemes([
   am5themes_Animated.new(root),
   myTheme,
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -190,4 +190,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

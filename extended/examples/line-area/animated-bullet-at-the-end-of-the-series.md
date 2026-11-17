@@ -2,7 +2,7 @@
 title: "Animated Bullet at the End of the Series"
 source: "https://www.amcharts.com/demos/animated-bullet-at-the-end-of-the-series/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart that draws the eye to its latest value: the last point pulses like a live signal, while the dashed line keeps the history in the background.
@@ -19,7 +19,7 @@ Think twice when:
 - Reports and print: the motion is lost
 - Pages read for a long time: constant motion tires the eye
 
-Prompt: Create a dashed line chart of a week of daily values with a pulsing marker on the last point: a circle with a ring around it that keeps growing and fading out, once a second. Add a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a dashed line chart of a week of daily values with a pulsing marker on the last point: a circle with a ring around it that keeps growing and fading out, once a second. Add a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -185,4 +185,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

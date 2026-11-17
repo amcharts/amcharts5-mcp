@@ -2,7 +2,7 @@
 title: "Animated Gauge"
 source: "https://www.amcharts.com/demos/animated-gauge/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A percentage gauge whose arc fills up to the needle: below the value one color, above it another. Every two seconds the needle, the fill and the number move to a new value together.
@@ -19,7 +19,7 @@ Think twice when:
 - Several values at once: a solid gauge fits more
 - Small changes: a percent or two barely moves the fill
 
-Prompt: Create a half-circle gauge from 0 to 100 percent whose thick band changes color at the current value, with an outlined hand and the value shown in its pin. Every 2 seconds the hand and the color change move together to a random value. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a half-circle gauge from 0 to 100 percent whose thick band changes color at the current value, with an outlined hand and the value shown in its pin. Every 2 seconds the hand and the color change move together to a random value. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -213,4 +213,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

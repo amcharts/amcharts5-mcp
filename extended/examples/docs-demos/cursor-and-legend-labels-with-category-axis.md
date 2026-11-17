@@ -6,7 +6,7 @@ scraped: "2026-11-14"
 docsPages: ["charts/xy-chart/legend-xy-series"]
 ---
 
-A demo from the docs page "Legend and XY series" (get_doc(path: "charts/xy-chart/legend-xy-series")).
+A demo from the docs page "Legend and XY series" (get_doc(path: "charts/xy-chart/legend-xy-series")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

@@ -2,7 +2,7 @@
 title: "Time Zones and Daylight Saving"
 source: "https://www.amcharts.com/demos/time-zones-and-daylight-saving/"
 category: "column-bar"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 Two offices open 9 to 5 on their own clocks. The chart shows them in Berlin time, or any zone you pick: its days start at that zone's midnight, and where its clocks change, a day has 25 hours.
@@ -18,7 +18,7 @@ Think twice when:
 - Data about each viewer's own day: leave the zone unset
 - Plain UTC: root.utc is simpler and faster
 
-Prompt: Create a schedule chart on a date axis, shown in Berlin time with root.timezone: three rows (a Berlin office, a New York office, and the hours both are open), with a bar for each weekday's 9:00 to 17:00 on each office's own clock, over three weeks around the 2026 autumn daylight saving changes. Mark the days that are not 24 hours long in the chart's time zone. Add a cursor and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a schedule chart on a date axis, shown in Berlin time with root.timezone: three rows (a Berlin office, a New York office, and the hours both are open), with a bar for each weekday's 9:00 to 17:00 on each office's own clock, over three weeks around the 2026 autumn daylight saving changes. Mark the days that are not 24 hours long in the chart's time zone. Add a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -37,7 +37,7 @@ root.timezone = am5.Timezone.new("Europe/Berlin");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // The data: three weeks around the autumn clock changes of 2026, Europe's on Sunday, October 25 and America's on
@@ -239,4 +239,4 @@ chart.appear(1000, 100).then(function() {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

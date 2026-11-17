@@ -2,7 +2,7 @@
 title: "Gantt with Hundreds of Items"
 source: "https://www.amcharts.com/demos/gantt-with-hundreds-of-items/"
 category: "gantt"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 About 200 tasks in 40 groups, generated from today’s date, to show the Gantt chart keeps up with a big plan. Scroll through the list, fold groups away, or press the fit button to zoom the timeline to the tasks in view.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers after the big picture: start with the groups folded
 - Tasks of an hour or less: set the duration unit to hours
 
-Prompt: Create a Gantt chart with about 200 generated tasks in 40 groups, where the subtasks of each group run one after another from today, with random lengths and progress, each linked to the next. Use the amCharts 5 library.
+Prompt: Create a Gantt chart with about 200 generated tasks in 40 groups, where the subtasks of each group run one after another from today, with random lengths and progress, each linked to the next. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create Gantt chart
@@ -140,3 +141,4 @@ gantt.series.data.setAll(ganttData.series);
 - https://cdn.amcharts.com/lib/5/plugins/colorPicker.js
 - https://cdn.amcharts.com/lib/5/gantt.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Approximate Working Hours Map"
 source: "https://www.amcharts.com/demos/approximate-working-hours-map/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A world map of where it’s working hours right now: the band between the 9 AM and 5 PM lines stays clear, the rest is shaded, and the sun marks where it’s overhead. The Time slider goes up to a day back or forward.
@@ -19,7 +19,7 @@ Think twice when:
 - Daylight saving time: this map ignores it
 - Countries that span several hours: label the cities that matter
 
-Prompt: Create a world map that shows where it is roughly working hours (9 AM to 5 PM) right now: work out the sun’s position from the current time, mark it with a pulsing sun, and shade the rest of the world. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map that shows where it is roughly working hours (9 AM to 5 PM) right now: work out the sun’s position from the current time, mark it with a pulsing sun, and shade the rest of the world. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -379,4 +379,4 @@ function eccentricityEarthOrbit(centuries) {
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

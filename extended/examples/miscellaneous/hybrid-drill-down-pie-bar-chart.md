@@ -2,7 +2,7 @@
 title: "Hybrid Drill-Down Pie/Bar Chart"
 source: "https://www.amcharts.com/demos/hybrid-drill-down-pie-bar-chart/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A donut that drives a bar chart: click a slice and the bars show what it’s made of. Here, 280 support tickets rated Critical, Acceptable or Good, split by type.
@@ -19,7 +19,7 @@ Think twice when:
 - Print: only one breakdown shows
 - Many slices: the donut gets hard to click
 
-Prompt: Create a donut chart of support tickets by rating (Critical, Acceptable, Good) next to a bar chart. Clicking a slice pulls it out, shows its share in the donut’s middle and fills the bar chart with that slice’s breakdown by ticket type. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a donut chart of support tickets by rating (Critical, Acceptable, Good) next to a bar chart. Clicking a slice pulls it out, shows its share in the donut’s middle and fills the bar chart with that slice’s breakdown by ticket type. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -81,10 +81,25 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
+var responsive = am5themes_ResponsiveMax.new(root);
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
+
+// On a chart 400px wide or narrower, the bar chart's category names stand upright, reading
+// up along their bars, so the bars get the width
+responsive.addRule({
+  name: "AxisLabel",
+  tags: ["y"],
+  relevant: am5themes_ResponsiveMax.widthM,
+  settings: {
+    rotation: -90,
+    centerX: am5.p50,  // centered on the row...
+    centerY: am5.p100, // ...beside the axis
+    paddingBottom: 6   // turned upright, the bottom padding is the gap to the axis
+  }
+});
 
 // Create wrapper container
 var container = root.container.children.push(am5.Container.new(root, {
@@ -265,4 +280,4 @@ pieSeries.events.on("datavalidated", function() {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

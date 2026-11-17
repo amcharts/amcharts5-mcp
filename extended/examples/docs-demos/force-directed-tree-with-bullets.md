@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/hierarchy/hierarchy-link-bullets"]
 ---
 
-A demo from the docs page "Hierarchy link bullets" (get_doc(path: "charts/hierarchy/hierarchy-link-bullets")).
+A demo from the docs page "Hierarchy link bullets" (get_doc(path: "charts/hierarchy/hierarchy-link-bullets")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

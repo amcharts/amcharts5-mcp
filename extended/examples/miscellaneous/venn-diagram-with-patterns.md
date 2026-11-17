@@ -2,7 +2,7 @@
 title: "Venn Diagram with Patterns"
 source: "https://www.amcharts.com/demos/venn-diagram-with-patterns/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Venn diagram draws each group as a circle, and the overlap holds what belongs to both. Here, a joke in black and white: a polar bear and a black bear overlap in a panda, filled with a dot pattern.
@@ -19,7 +19,7 @@ Think twice when:
 - Small areas: the pattern has no room to show
 - Exact sizes: a Venn diagram only approximates the overlaps
 
-Prompt: Create a black and white Venn diagram joke: a white "Polar bear" circle and a black "Black bear" circle overlap in "Panda", filled with a pattern of white dots on black. Outline the area under the pointer with a dashed line. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a black and white Venn diagram joke: a white "Polar bear" circle and a black "Black bear" circle overlap in "Panda", filled with a pattern of white dots on black. Outline the area under the pointer with a dashed line. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create wrapper container
@@ -132,4 +132,4 @@ series.hoverGraphics.setAll({
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/venn.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Mekko Chart"
 source: "https://www.amcharts.com/demos/mekko/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Mekko chart is a stacked column chart whose columns have different widths: the width shows how big each column is, the height how it splits up. Here, five columns of different sizes, each stacked from trucks, SUVs and cars.
@@ -19,7 +19,7 @@ Think twice when:
 - Many columns or segments: the thin ones become unreadable
 - Readers new to the form: explain what the width means
 
-Prompt: Create a Mekko chart of trucks, SUVs and cars: stacked columns of different widths, so both the width and the height of each block carry meaning, with each block’s value in its middle and a legend that hides a series. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a Mekko chart of trucks, SUVs and cars: stacked columns of different widths, so both the width and the height of each block carry meaning, with each block’s value in its middle and a legend that hides a series. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -218,4 +218,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

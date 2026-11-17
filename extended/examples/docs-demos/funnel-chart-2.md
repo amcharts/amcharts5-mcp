@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/percent-charts/sliced-chart"]
 ---
 
-A demo from the docs page "Funnel, pyramid, and pictorial charts" (get_doc(path: "charts/percent-charts/sliced-chart")).
+A demo from the docs page "Funnel, pyramid, and pictorial charts" (get_doc(path: "charts/percent-charts/sliced-chart")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

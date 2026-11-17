@@ -2,7 +2,7 @@
 title: "Show Percentage Change"
 source: "https://www.amcharts.com/demos/show-percentage-change/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two prices drawn as percent change, so both start from the same zero and you see which grew faster. Change since sets where the change is counted from: the first day in view, or the first day of the data.
@@ -19,7 +19,7 @@ Think twice when:
 - Values close to zero: tiny bases give huge percentages
 - Data that can go negative, like profit
 
-Prompt: Create a line chart of two price series over about two years, shown as percent change from the first visible day, so the change counts again from the new start as you zoom or scroll. The legend and tooltips show each price and its change, colored for a gain or a loss. Add a cursor and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of two price series over about two years, shown as percent change from the first visible day, so the change counts again from the new start as you zoom or scroll. The legend and tooltips show each price and its change, colored for a gain or a loss. Add a cursor and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -216,4 +216,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

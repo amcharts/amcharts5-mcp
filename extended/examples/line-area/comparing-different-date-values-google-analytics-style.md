@@ -2,7 +2,7 @@
 title: "Comparing Different Date Values Google Analytics Style"
 source: "https://www.amcharts.com/demos/comparing-different-date-values-google-analytics-style/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 This week against last week, the way analytics dashboards show it: a solid line for the current days, a dotted line for the same weekdays a week earlier, and both dates in one tooltip.
@@ -19,7 +19,7 @@ Think twice when:
 - More than two periods: the lines get tangled
 - When the change itself is the story: show the difference as columns
 
-Prompt: Create a Google Analytics-style line chart comparing this week with last week, day by day: a solid line for this week and a dotted line for last week, each with its own bullet shape. The tooltip shows both dates and both values. Add a cursor. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a Google Analytics-style line chart comparing this week with last week, day by day: a solid line for this week and a dotted line for last week, each with its own bullet shape. The tooltip shows both dates and both values. Add a cursor. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -216,4 +216,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "World Map with Clustered Points"
 source: "https://www.amcharts.com/demos/world-map-with-clustered-points/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The capitals of 165 countries on a world map. Where the dots crowd, they merge into groups with a count, and the groups break up into single cities as you zoom in.
@@ -19,7 +19,7 @@ Think twice when:
 - Density over a region: color the regions instead
 - A few dozen points: plain markers are clearer
 
-Prompt: Create a world map of the capital cities as points that cluster: points close together merge into a group showing their count, and clicking a group zooms in until it breaks up into single cities, each with its name in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world map of the capital cities as points that cluster: points close together merge into a group showing their count, and clicking a group zooms in until it breaks up into single cities, each with its name in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Colors from the theme, so the map follows the theme
@@ -423,4 +423,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Angular Gauge"
 source: "https://www.amcharts.com/demos/angular-gauge/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 The classic gauge: a needle on a half-circle dial from 0 to 100, like a speedometer. It shows one value and how far along its range it is.
@@ -19,7 +19,7 @@ Think twice when:
 - Trends: a line chart shows where the value came from
 - Values with no fixed range
 
-Prompt: Create a simple angular gauge: a half-circle dial from 0 to 100 with a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a simple angular gauge: a half-circle dial from 0 to 100 with a needle that moves to a random value every 2 seconds. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -113,4 +113,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

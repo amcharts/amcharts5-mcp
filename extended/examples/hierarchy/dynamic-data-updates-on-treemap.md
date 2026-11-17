@@ -2,7 +2,7 @@
 title: "Dynamic Data Updates on Treemap"
 source: "https://www.amcharts.com/demos/dynamic-data-updates-on-treemap/"
 category: "hierarchy"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A treemap that keeps changing: every two seconds the values move and the boxes slide to new sizes. Here, made-up visits to an online store’s pages.
@@ -19,7 +19,7 @@ Think twice when:
 - Reports that need one fixed picture
 - Small changes: a bar chart with values shows them better
 
-Prompt: Create a treemap of visitors on the pages of an online store, with the pages colored by their store section. Every two seconds the visitor counts change a little at random, and the boxes animate to their new sizes and places. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a treemap of visitors on the pages of an online store, with the pages colored by their store section. Every two seconds the visitor counts change a little at random, and the boxes animate to their new sizes and places. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -39,7 +39,7 @@ myTheme.rule("HierarchyNode", ["depth1"]).setAll({
 
 root.setThemes([
   myTheme, am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ])
 
 // Create wrapper container
@@ -174,4 +174,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/hierarchy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

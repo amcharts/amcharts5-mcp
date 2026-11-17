@@ -2,7 +2,7 @@
 title: "Pictorial Column Chart"
 source: "https://www.amcharts.com/demos/pictorial-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart where each column is a picture of what it measures: five famous skyscrapers, each drawn to its height against a sunset sky.
@@ -19,7 +19,7 @@ Think twice when:
 - Many items or close values: plain columns compare better
 - Dashboards read every day: the pictures get in the way
 
-Prompt: Create a pictorial column chart of the heights of five famous skyscrapers, from the Burj Khalifa to the Empire State Building, each drawn as a silhouette that grows to its height, with its height in meters above it, over a vertical gradient. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pictorial column chart of the heights of five famous skyscrapers, from the Burj Khalifa to the Empire State Building, each drawn as a silhouette that grows to its height, with its height in meters above it, over a vertical gradient. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -43,7 +43,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -246,4 +246,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart/"
 category: "gantt"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Gantt chart lays a project out on a calendar: one bar per task, grouped into phases, with arrows for the order the work must follow. Diamonds mark milestones, and the striped part of a bar is the work still to do.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing amounts rather than dates: use a bar chart
 - Hundreds of tiny tasks: group them into phases first
 
-Prompt: Create a Gantt chart of a software project over about a month: a start milestone, design, programming and testing phases with their subtasks, and an end milestone, with each task’s progress and links to the task that follows. Mark two dates on the timeline. Use the amCharts 5 library.
+Prompt: Create a Gantt chart of a software project over about a month: a start milestone, design, programming and testing phases with their subtasks, and an end milestone, with each task’s progress and links to the task that follows. Mark two dates on the timeline. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create Gantt chart
@@ -240,3 +241,4 @@ gantt.appear();
 - https://cdn.amcharts.com/lib/5/plugins/colorPicker.js
 - https://cdn.amcharts.com/lib/5/gantt.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

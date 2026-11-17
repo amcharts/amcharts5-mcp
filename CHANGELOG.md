@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - A name shared with an amcharts.com demo (`sankey-diagram`) still means the amcharts.com demo.
   - In search, the docs demos rank below the amcharts.com demos and the skill on shared words, but first when searched by name.
   - `scripts/import-docs-md.mjs` moves the demos out on import (`scripts/docs-demos.mjs`).
+  - The docs keep their demos to the setting they show, so most load only `Animated`. Each docs demo says that a chart built from it starts with `Animated` and `ResponsiveMax`.
+- **The amcharts.com demos are current**: all 303 re-imported. They use `ResponsiveMax`, as the site's demos now do, and there is one new demo, "London's Busiest Roads" (`examples/maps/london-traffic-map`). Our two hand-written examples (column chart with patterns, Map Sankey) use `ResponsiveMax` too.
+  - `npm run build:examples` takes the demo list from the site's demos sitemap instead of a list in the scraper, so new demos are found. With `-- --changed` it scrapes only the demos changed on the site since our copy, and it reports examples whose demo is gone.
 - **A maintainer guide:** `AGENTS.md`, with the rules for what the skill and the server say, the docs copy and how to make changes, and `docs/architecture.md`, with how the server is built. `CLAUDE.md` imports `AGENTS.md`, and the skill repo has its own `AGENTS.md`.
 - 7 new tests (106).
 

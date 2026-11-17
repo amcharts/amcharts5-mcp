@@ -2,7 +2,7 @@
 title: "Map with Bubbles"
 source: "https://www.amcharts.com/demos/map-bubbles/"
 category: "maps"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bubble map of world population in 2011: each country gets a bubble at its center, sized by its population and colored by continent.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact values: a sorted bar chart
 - Small countries packed together: zoom in or cluster
 
-Prompt: Create a world bubble map of population by country in 2011, with a bubble at the center of each country sized by its population and colored by continent, and the country and population in a tooltip. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a world bubble map of population by country in 2011, with a bubble at the center of each country sized by its population and colored by continent, and the country and population in a tooltip. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create the map chart
@@ -1231,4 +1231,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/map.js
 - https://cdn.amcharts.com/lib/5/geodata/worldLow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

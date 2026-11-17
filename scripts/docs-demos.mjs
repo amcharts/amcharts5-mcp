@@ -57,6 +57,10 @@ const quote = (s) => JSON.stringify(s);
 const BODY_FONT = /body\s*\{\s*font-family:[^}]*\}\s*/;
 export const demoCss = (css) => (css || "").replace(BODY_FONT, "").trim();
 
+// The docs keep their demos to the setting they show, so most load only the
+// Animated theme. A chart built from one should still follow the skill.
+export const FOCUSED = "It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.";
+
 /** The example file for a demo shown on the given docs pages ([{ path, title }]). */
 export function demoExample(demo, pages, scraped) {
   const where = pages.map((p) => `"${p.title}" (get_doc(path: "${p.path}"))`);
@@ -70,7 +74,7 @@ export function demoExample(demo, pages, scraped) {
     `docsPages: ${JSON.stringify(pages.map((p) => p.path))}`,
     "---",
     "",
-    `A demo from ${from}.`,
+    `A demo from ${from}.${/ResponsiveMax/.test(demo.js) ? "" : ` ${FOCUSED}`}`,
     "",
     "## JavaScript",
     "",

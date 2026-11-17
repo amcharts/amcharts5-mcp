@@ -2,7 +2,7 @@
 title: "Variable Radius Pie Chart"
 source: "https://www.amcharts.com/demos/variable-radius-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pie where slices differ in length as well as width: the bigger the value, the further a slice reaches from the middle. The largest parts stand out at once.
@@ -19,7 +19,7 @@ Think twice when:
 - Values that are all about the same: every slice looks alike
 - Readers who take the area as the value
 
-Prompt: Create a pie chart where each slice’s radius grows with its value, so the larger values reach further from the center, showing six sample categories with labels and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pie chart where each slice’s radius grows with its value, so the larger values reach further from the center, showing six sample categories with labels and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -132,4 +132,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

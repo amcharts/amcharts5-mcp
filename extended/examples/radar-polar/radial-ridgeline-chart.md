@@ -2,7 +2,7 @@
 title: "Radial Ridgeline Chart"
 source: "https://www.amcharts.com/demos/radial-ridgeline-chart/"
 category: "radar-polar"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 A year of a solar array's output as twelve rings, each a month's average day: midnight at the bottom, noon at the top. The latest month is in color and the eleven before it in gray, so it shows at a glance how this month compares with the rest of the year.
@@ -19,7 +19,7 @@ Think twice when:
 - A few series: plain lines are clearer
 - Data with no daily or yearly cycle
 
-Prompt: Create a radial ridgeline of a year of sample solar output from a 10 kW array: twelve rings, one per month from November 2025 to October 2026, each the month's average day in 15-minute steps. Use a radar chart with the 24 hours round a date axis over one day, midnight at the bottom and noon at the top, and one smoothed line per month on a ring of its own, the oldest innermost, lifted off its ring by the output so summer noons swell out over the next rings. Draw the eleven earlier months as thin gray lines and the latest month in the theme's first color; the line under the pointer turns blue. Label each ring with its month at midnight, on a small background so the line passes behind it. A cursor (a spoke only) shows only the tooltip of the line nearest the pointer: the month and the average output at that time in kW. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radial ridgeline of a year of sample solar output from a 10 kW array: twelve rings, one per month from November 2025 to October 2026, each the month's average day in 15-minute steps. Use a radar chart with the 24 hours round a date axis over one day, midnight at the bottom and noon at the top, and one smoothed line per month on a ring of its own, the oldest innermost, lifted off its ring by the output so summer noons swell out over the next rings. Draw the eleven earlier months as thin gray lines and the latest month in the theme's first color; the line under the pointer turns blue. Label each ring with its month at midnight, on a small background so the line passes behind it. A cursor (a spoke only) shows only the tooltip of the line nearest the pointer: the month and the average output at that time in kW. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -158,6 +158,8 @@ var xRenderer = am5radar.AxisRendererCircular.new(root, {
 xRenderer.labels.template.setAll({
   multiLocation: 0,    // each hour at its spoke, not between two
   textType: "regular", // upright, not turned along the circle
+  centerX: am5.p50,    // each hour centered on its point, so the ones at the sides and the bottom stay inside
+  centerY: am5.p50,    // the chart (a curved label's rule would hang it right and down from its point)
   radius: 16,          // out from the rim, clear of the highest noon
   maxPosition: 0.99    // the day's end is its start: one 00:00, not two on top of each other
 });
@@ -323,4 +325,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

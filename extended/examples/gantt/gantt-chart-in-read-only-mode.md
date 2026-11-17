@@ -2,7 +2,7 @@
 title: "Gantt Chart in Read-Only Mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Gantt chart locked for viewing: no dragging and no editing, just the plan to read, scroll and point at. The pencil button in the toolbar unlocks it for whoever needs to make changes.
@@ -19,7 +19,7 @@ Think twice when:
 - Keeping changes out for real: check them on your server, a hidden button is not access control
 - A printed plan: export an image instead
 
-Prompt: Create a read-only Gantt chart of seven project phases, from idea to release, each with its progress and linked in order, with an edit button that lets users switch editing on. Use the amCharts 5 library.
+Prompt: Create a read-only Gantt chart of seven project phases, from idea to release, each with its progress and linked in order, with an edit button that lets users switch editing on. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create Gantt chart
@@ -140,3 +141,4 @@ gantt.appear();
 - https://cdn.amcharts.com/lib/5/plugins/colorPicker.js
 - https://cdn.amcharts.com/lib/5/gantt.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

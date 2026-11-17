@@ -2,7 +2,7 @@
 title: "Linear Process Diagram"
 source: "https://www.amcharts.com/demos/linear-process-diagram/"
 category: "timeline"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A day from 6 a.m. to 2 a.m. drawn as a winding road, with an icon card for each activity. Things done alongside the main routine, like coffee and reading, run on a second track.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing exact durations: a Gantt chart does it better
 - Data that changes a lot: this road is drawn for this one day
 
-Prompt: Create a process diagram of one day along a custom winding path, with the main routine on one track and things done alongside it on a second. Draw each event as a colored stretch of the path with an icon card at its start. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a process diagram of one day along a custom winding path, with the main routine on one track and things done alongside it on a second. Draw each event as a colored stretch of the path with an icon card at its start. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -45,10 +45,19 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
+var responsive = am5themes_ResponsiveMax.new(root);
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  responsive
 ]);
+
+// On a chart 400px wide or narrower, the icon cards are drawn at 70% of their size
+responsive.addRule({
+  name: "Container",
+  tags: ["pin"],
+  relevant: am5themes_ResponsiveMax.widthM,
+  settings: { scale: 0.7 }
+});
 
 // Create chart
 var chart = root.container.children.push(am5timeline.CurveChart.new(root, {
@@ -138,7 +147,10 @@ series.bullets.push(function (root, series, dataItem) {
   var lift = dataItem.dataContext.lift || 0;
 
   // Above the time labels, so no icon is cut
-  var container = am5.Container.new(root, { layer: 31 });
+  var container = am5.Container.new(root, {
+    layer: 31,
+    themeTags: ["pin"] // for the responsive rule at the top
+  });
 
   container.children.push(am5.PointedRectangle.new(root, {
     cornerRadius: 5,           // rounded corners
@@ -414,4 +426,4 @@ function getPoints() {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/timeline.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

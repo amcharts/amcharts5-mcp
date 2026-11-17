@@ -2,7 +2,7 @@
 title: "CPU and Memory Timeline"
 source: "https://www.amcharts.com/demos/cpu-and-memory-timeline/"
 category: "line-area"
-scraped: "2026-10-25"
+scraped: "2026-11-17"
 ---
 
 A 10-second recording of a web page, like the overview strip of the browser's performance tools: how busy the processor was and with what, and below it the memory the page's JavaScript held, sawing down at each garbage collection. Long tasks are marked in red.
@@ -18,7 +18,7 @@ Think twice when:
 - Measures with no common time: separate charts
 - Many panels: a dashboard of small charts reads better
 
-Prompt: Create a performance timeline like the overview of Chrome DevTools' performance panel, with generated data: a 10-second recording sampled every 20 ms. Top panel (60%): CPU use stacked by category as filled areas, 0 to 100% (Loading, Scripting, Rendering, Painting in theme colors, System in faint gray). Bottom panel: the JavaScript heap in MB as a line with a light fill, sawing down at each garbage collection, with a dot at each collection (larger for a major one). Both panels share the time axis in seconds (stacked y axes, each with an upright title). Mark long tasks (the processor busy at 95% or more for over 50 ms, whatever with) as faint red bands across the plot. Add a legend that shows each value at the cursor, a cursor that zooms on drag, and a scrollbar under the plot. On phones hide the legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a performance timeline like the overview of Chrome DevTools' performance panel, with generated data: a 10-second recording sampled every 20 ms. Top panel (60%): CPU use stacked by category as filled areas, 0 to 100% (Loading, Scripting, Rendering, Painting in theme colors, System in faint gray). Bottom panel: the JavaScript heap in MB as a line with a light fill, sawing down at each garbage collection, with a dot at each collection (larger for a major one). Both panels share the time axis in seconds (stacked y axes, each with an upright title). Mark long tasks (the processor busy at 95% or more for over 50 ms, whatever with) as faint red bands across the plot. Add a legend that shows each value at the cursor, a cursor that zooms on drag, and a scrollbar under the plot. On phones hide the legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-var responsive = am5themes_Responsive.new(root); // kept in a variable: a rule of its own is added below
+var responsive = am5themes_ResponsiveMax.new(root); // kept in a variable: a rule of its own is added below
 root.setThemes([
   am5themes_Animated.new(root),
   responsive
@@ -116,6 +116,7 @@ var chart = root.container.children.push(am5xy.XYChart.new(root, {
   panY: false,
   wheelX: "panX",   // a sideways wheel pans...
   wheelY: "zoomX",  // ...the wheel zooms in on the time
+  paddingLeft: 0,   // the axis names start at the chart's left edge
   layout: root.verticalLayout
 }));
 
@@ -150,7 +151,9 @@ function axisTitle(axis, text) {
     rotation: -90,
     y: am5.p50,
     centerX: am5.p50,
-    fontWeight: "500"
+    fontWeight: "500",
+    paddingTop: 0,   // turned upright, the top and bottom padding are its sides:
+    paddingBottom: 4 // none on the left, 4px before the value labels
   }));
 }
 
@@ -261,7 +264,7 @@ legend.data.push(gcSeries);
 // On a narrow chart (a phone) the legend would take most of the height: it is hidden there. The rule is
 // undone on a wider chart
 responsive.addRule({
-  relevant: am5themes_Responsive.widthM, // the chart is 600px wide or less
+  relevant: am5themes_ResponsiveMax.widthM, // the chart is 600px wide or less
   applying: function() {
     legend.set("forceHidden", true);
   },
@@ -345,4 +348,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

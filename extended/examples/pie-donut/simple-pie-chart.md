@@ -2,7 +2,7 @@
 title: "Simple Pie Chart"
 source: "https://www.amcharts.com/demos/simple-pie-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pie chart with nothing extra: seven values, seven slices, and no legend or settings in the way. A clean starting point for your own.
@@ -19,7 +19,7 @@ Think twice when:
 - Numbers that overlap, like survey answers where people could pick several
 - The same split across several years: use stacked columns
 
-Prompt: Create a basic pie chart of seven sample categories, each slice in its own color, with labels around the pie and tooltips showing each category’s share. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a basic pie chart of seven sample categories, each slice in its own color, with labels around the pie and tooltips showing each category’s share. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -86,4 +86,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Multi-Part Gauge"
 source: "https://www.amcharts.com/demos/multi-part-gauge/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Four small gauges in one circle: each quarter is its own arc with its own scale, color and needle, so one chart shows four readings side by side.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing the four values: their scales differ
 - More than four parts: the arcs get too short
 
-Prompt: Create a gauge made of four separate parts around one circle, with small gaps between them, each with its own range, color and short needle. Every 2 seconds all four needles move to random values within their ranges. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a gauge made of four separate parts around one circle, with small gaps between them, each with its own range, color and short needle. Every 2 seconds all four needles move to random values within their ranges. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,7 @@ var root = am5.Root.new("chartdiv");
 
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -193,4 +193,4 @@ setInterval(function() {
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

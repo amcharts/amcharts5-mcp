@@ -2,7 +2,7 @@
 title: "Gantt Chart Playground"
 source: "https://www.amcharts.com/demos/gantt-chart-playground/"
 category: "gantt"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Gantt chart to try things on. It starts with a small sample plan: add tasks with the + button and drag them around, or clear everything with the bin and start from nothing. Your plan is saved in this browser.
@@ -19,7 +19,7 @@ Think twice when:
 - Several people editing: the chart has no syncing of its own
 - Plans that should only be read: switch editing off
 
-Prompt: Create an editable Gantt chart playground that saves its tasks and marked dates in the browser and loads them on the next visit. With nothing saved yet, start from a short sample plan for this week, with a few tasks in progress and a launch milestone. Use the amCharts 5 library.
+Prompt: Create an editable Gantt chart playground that saves its tasks and marked dates in the browser and loads them on the next visit. With nothing saved yet, start from a short sample plan for this week, with a few tasks in progress and a launch milestone. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,8 @@ const root = am5.Root.new("chartdiv");
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create Gantt chart
@@ -151,3 +152,4 @@ gantt.appear();
 - https://cdn.amcharts.com/lib/5/plugins/colorPicker.js
 - https://cdn.amcharts.com/lib/5/gantt.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Lollipop Chart"
 source: "https://www.amcharts.com/demos/lollipop-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A lollipop chart is a column chart drawn with thin stems and a dot on top, lighter on the eye when there are many categories. Here, made-up values for 28 people, with a scrollbar to zoom in on a few names.
@@ -19,7 +19,7 @@ Think twice when:
 - Values close together: switch on the value labels
 - A trend over time: a line chart joins the points
 
-Prompt: Create a lollipop chart of about thirty people, each value a thin stem from zero with a dot on top, and the names running vertically under the stems. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a lollipop chart of about thirty people, each value a thin stem from zero with a dot on top, and the names running vertically under the stems. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -189,4 +189,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

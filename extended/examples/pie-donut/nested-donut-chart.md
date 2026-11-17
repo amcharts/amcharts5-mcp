@@ -2,7 +2,7 @@
 title: "Nested Donut Chart"
 source: "https://www.amcharts.com/demos/nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Two rings, one inside the other, for two measures of the same countries: bottles sold inside, litres outside. Where the rings don’t line up, the measures disagree.
@@ -19,7 +19,7 @@ Think twice when:
 - Rings with different categories: use two separate charts
 - Exact differences between rings: a grouped bar chart shows them better
 
-Prompt: Create a nested donut chart comparing nine countries in two rings, the inner ring by bottles and the outer ring by liters, with labels on the outer ring only and tooltips showing each share and amount. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a nested donut chart comparing nine countries in two rings, the inner ring by bottles and the outer ring by liters, with labels on the outer ring only and tooltips showing each share and amount. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -148,4 +148,4 @@ series1.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

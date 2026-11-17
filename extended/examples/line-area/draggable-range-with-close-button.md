@@ -2,7 +2,7 @@
 title: "Draggable Range with a Close Button"
 source: "https://www.amcharts.com/demos/draggable-range-with-close-button/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A stop-loss line you can move: drag the box up or down and the value in it follows. Click the X and the line is gone.
@@ -19,7 +19,7 @@ Think twice when:
 - Exact values: offer an input box too, dragging is approximate
 - Touch screens: make the box bigger, so a finger can grab it
 
-Prompt: Create a line chart of about 300 daily values with a draggable stop-loss line: a dashed horizontal line with a small box showing its value, which updates as the box is dragged up or down. A close button in the box removes it. Add a fill under the line, a cursor and tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of about 300 daily values with a draggable stop-loss line: a dashed horizontal line with a small box showing its value, which updates as the box is dragged up or down. A close button in the box removes it. Add a fill under the line, a cursor and tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -290,4 +290,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/hierarchy/tree"]
 ---
 
-A demo from the docs page "Tree" (get_doc(path: "charts/hierarchy/tree")).
+A demo from the docs page "Tree" (get_doc(path: "charts/hierarchy/tree")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

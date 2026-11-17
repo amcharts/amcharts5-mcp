@@ -2,7 +2,7 @@
 title: "Animated Sankey Diagram"
 source: "https://www.amcharts.com/demos/animated-sankey-diagram/"
 category: "flow"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Sankey diagram with amounts that keep floating along the bands, bigger numbers on bigger flows. Here, an example of $1.77 trillion in company cash, split by industry and by where it is held.
@@ -19,7 +19,7 @@ Think twice when:
 - Printed reports: only the still labels remain
 - Many small flows: tiny moving numbers turn into noise
 
-Prompt: Create a horizontal Sankey diagram of an example breakdown of company cash, from all non-financial companies down to the five biggest tech companies, ending as cash in the U.S. or overseas. Value labels float along every band in endless loops, sized by their value. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a horizontal Sankey diagram of an example breakdown of company cash, from all non-financial companies down to the five biggest tech companies, ending as cash in the U.S. or overseas. Value labels float along every band in endless loops, sized by their value. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
 	am5themes_Animated.new(root),
-	am5themes_Responsive.new(root)
+	am5themes_ResponsiveMax.new(root)
 ]);
 
 var serialChartContainer = root.container.children.push(
@@ -51,9 +51,10 @@ var series = serialChartContainer.series.push(
 		targetIdField: "to",
 		valueField: "value",
 		nodePadding: 5,            // 5px between the nodes stacked in one column
-		// room for the labels left of the first node and right of the last ones
+		// room for the labels, upright, left of the first node and right of the last ones,
+		// which may wrap onto four lines on a short chart
 		paddingLeft: 45,
-		paddingRight: 130
+		paddingRight: 70
 	})
 );
 
@@ -93,6 +94,14 @@ series.nodes.labels.template.setAll({
 	templateField: "labelSettings" // settings from each node's labelSettings
 });
 
+// An upright label is no longer than its node is tall: on a short node, as on a phone, it wraps onto more lines
+series.nodes.nodes.template.on("height", function (height, node) {
+	var label = node.dataItem && node.dataItem.get("label");
+	if (label && label.get("rotation")) {
+		label.set("maxHeight", height); // turned upright, its height on screen is its length
+	}
+});
+
 series.nodes.data.setAll([
 	{
 		id: "Non-financial companies",
@@ -102,6 +111,7 @@ series.nodes.data.setAll([
 			textAlign: "center",
 			forceHidden: false, // this node's label shows
 			rotation: -90,      // reading upward along the first node
+			oversizedBehavior: "wrap-no-break",
 			centerX: am5.p50,
 			centerY: am5.p100,
 			paddingLeft: 0,
@@ -115,8 +125,14 @@ series.nodes.data.setAll([
 		fill: usColor, // the bands into it turn to the theme's first color
 		labelSettings: {
 			text: "CASH IN THE U.S.\n[bold]$459 BILLION",
+			textAlign: "center",
 			forceHidden: false,
-			paddingLeft: 8
+			rotation: 90, // reading downward along the node, as the first one reads upward
+			oversizedBehavior: "wrap-no-break",
+			centerX: am5.p50,
+			centerY: am5.p100,
+			paddingLeft: 0,
+			paddingBottom: 6
 		}
 	},
 	{
@@ -124,8 +140,14 @@ series.nodes.data.setAll([
 		fill: overseasColor, // and these to its sixth
 		labelSettings: {
 			text: "CASH OVERSEAS\n[bold]$1.31 TRILLION",
+			textAlign: "center",
 			forceHidden: false,
-			paddingLeft: 8
+			rotation: 90, // reading downward along the node, as the first one reads upward
+			oversizedBehavior: "wrap-no-break",
+			centerX: am5.p50,
+			centerY: am5.p100,
+			paddingLeft: 0,
+			paddingBottom: 6
 		}
 	},
 	{ id: "Rest of tech", fill: companyColor },
@@ -293,4 +315,4 @@ series.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/flow.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

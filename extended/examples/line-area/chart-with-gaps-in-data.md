@@ -2,7 +2,7 @@
 title: "Chart with Gaps in Data"
 source: "https://www.amcharts.com/demos/chart-with-gaps-in-data/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line that breaks where data is missing instead of drawing across the hole. Here, 1967 to 1970 and 1984 to 1988 have no values, and the years above zero take a second color.
@@ -19,7 +19,7 @@ Think twice when:
 - Many short gaps: the line falls apart into dashes
 - Smoothing next to a gap: the curve can swing past the real values
 
-Prompt: Create a smoothed line chart of yearly values from 1950 to 2005 with two stretches of missing years, where the line breaks instead of joining across the gap. Color the line, its fill and its bullets differently above and below zero. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a smoothed line chart of yearly values from 1950 to 2005 with two stretches of missing years, where the line breaks instead of joining across the gap. Color the line, its fill and its bullets differently above and below zero. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 root.dateFormatter.setAll({
@@ -337,4 +337,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

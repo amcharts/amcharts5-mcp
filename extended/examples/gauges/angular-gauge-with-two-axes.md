@@ -2,7 +2,7 @@
 title: "Angular Gauge with Two Axes"
 source: "https://www.amcharts.com/demos/angular-gauge-with-two-axes/"
 category: "gauges"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 One dial, two scales: the inner one runs to 160 and the outer one to 240, each with its own needle and readout in matching colors.
@@ -19,7 +19,7 @@ Think twice when:
 - More than two needles: use separate gauges
 - Small sizes: two rings of labels get crowded
 
-Prompt: Create a half-circle gauge with two scales of different ranges, one inside the arc and one outside, each with its own color, its own needle and a readout of its value above the center. Every 2 seconds both needles move to random values. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a half-circle gauge with two scales of different ranges, one inside the arc and one outside, each with its own color, its own needle and a readout of its value above the center. Every 2 seconds both needles move to random values. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -277,4 +277,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

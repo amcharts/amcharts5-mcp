@@ -2,7 +2,7 @@
 title: "Column and Line Mix"
 source: "https://www.amcharts.com/demos/column-and-line-mix/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Income as columns and expenses as a line on one chart, so the gap between them shows year by year. The last year is a projection, drawn faint and dashed.
@@ -19,7 +19,7 @@ Think twice when:
 - Many years: two lines read more cleanly
 - More than two measures: the mix gets hard to read
 
-Prompt: Create a column and line chart of income and expenses over six years: income as columns, expenses as a line with circle markers, and the last year shown as a projection with a dashed, faded column and a dashed line. Add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column and line chart of income and expenses over six years: income as columns, expenses as a line with circle markers, and the last year shown as a projection with a dashed, faded column and a dashed line. Add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
@@ -221,4 +221,4 @@ series2.appear();
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

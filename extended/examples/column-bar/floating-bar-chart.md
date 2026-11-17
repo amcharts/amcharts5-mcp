@@ -2,7 +2,7 @@
 title: "Floating Bar Chart"
 source: "https://www.amcharts.com/demos/floating-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 Floating bars start and end wherever the data says, not at zero: here, four people’s working hours on one day, from John’s 8:00 start to Eaton’s 19:00 finish.
@@ -19,7 +19,7 @@ Think twice when:
 - Many tasks with dates and links: a Gantt chart
 - The two ends matter more than the span: a dumbbell plot
 
-Prompt: Create a floating bar chart of four people’s working hours on one day, each bar running from the hour they start to the hour they finish, in its own color. Add tooltips with the start and end. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a floating bar chart of four people’s working hours on one day, each bar running from the hour they start to the hour they finish, in its own color. Add tooltips with the start and end. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -53,41 +53,23 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 cursor.lineY.set("visible", false); // no horizontal cursor line
 
-var colors = chart.get("colors");
-
 // Data
 var data = [{
   name: "John",
   startTime: 8,
-  endTime: 11,
-  columnSettings: {
-    stroke: colors.getIndex(1),
-    fill: colors.getIndex(1)
-  }
+  endTime: 11
 }, {
   name: "Joe",
   startTime: 10,
-  endTime: 13,
-  columnSettings: {
-    stroke: colors.getIndex(3),
-    fill: colors.getIndex(3)
-  }
+  endTime: 13
 }, {
   name: "Susan",
   startTime: 11,
-  endTime: 18,
-  columnSettings: {
-    stroke: colors.getIndex(5),
-    fill: colors.getIndex(5)
-  }
+  endTime: 18
 }, {
   name: "Eaton",
   startTime: 15,
-  endTime: 19,
-  columnSettings: {
-    stroke: colors.getIndex(7),
-    fill: colors.getIndex(7)
-  }
+  endTime: 19
 }];
 
 // Create axes
@@ -130,13 +112,14 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
   openValueXField: "startTime",
   valueXField: "endTime",
   categoryYField: "name",
-  sequencedInterpolation: true // on load, the bars grow one after another
+  sequencedInterpolation: true, // on load, the bars grow one after another
+  // each bar in its own color: every second one from the theme's palette, starting with the second
+  colorByDataItem: true,
+  colors: am5.ColorSet.new(root, { startIndex: 1, step: 2 })
 }));
 
 series.columns.template.setAll({
   height: am5.percent(100), // each bar fills its row's full height
-  // each bar's fill and stroke come from columnSettings in its data row
-  templateField: "columnSettings",
   tooltipText: "[bold]{categoryY}[/]: {openValueX}:00 to {valueX}:00" // as "John: 8:00 to 11:00"
 });
 
@@ -169,4 +152,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/percent-charts/grouping-slices"]
 ---
 
-A demo from the docs page "Grouping slices" (get_doc(path: "charts/percent-charts/grouping-slices")).
+A demo from the docs page "Grouping slices" (get_doc(path: "charts/percent-charts/grouping-slices")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

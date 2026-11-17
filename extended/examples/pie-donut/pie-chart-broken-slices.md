@@ -2,7 +2,7 @@
 title: "Pie Chart with Broken Down Slices"
 source: "https://www.amcharts.com/demos/pie-chart-broken-slices/"
 category: "pie-donut"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A pie that opens up when clicked: click a slice and it breaks into the parts it is made of, while the other slices stay put. Here, fossil and green energy.
@@ -19,7 +19,7 @@ Think twice when:
 - Several levels: a sunburst chart shows them all at once
 - Printed reports, where nobody can click
 
-Prompt: Create a pie chart of fossil and green energy that drills down in place: clicking a slice breaks it into its sources (oil, coal and gas, or hydro, wind and other), pulled out in the parent’s color, and clicking one of them puts the parent slice back. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a pie chart of fossil and green energy that drills down in place: clicking a slice breaks it into its sources (oil, coal and gas, or hydro, wind and other), pulled out in the parent’s color, and clicking one of them puts the parent slice back. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -29,7 +29,7 @@ var root = am5.Root.new("chartdiv");
 
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 var chart = root.container.children.push(
@@ -145,4 +145,4 @@ function generateChartData() {
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

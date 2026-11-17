@@ -2,7 +2,7 @@
 title: "Clustered Column Chart"
 source: "https://www.amcharts.com/demos/clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A clustered column chart puts the series side by side in each category, so you compare them group by group. Here, six regions over three years, each column labeled with its value.
@@ -19,7 +19,7 @@ Think twice when:
 - More than six series or ten groups: the clusters blur together
 - A trend over many years: draw one line per series
 
-Prompt: Create a clustered column chart comparing six regions over three years, with each year’s columns side by side in a group and a value label on every column. Add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a clustered column chart comparing six regions over three years, with each year’s columns side by side in a group and a value label on every column. Add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -193,4 +193,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

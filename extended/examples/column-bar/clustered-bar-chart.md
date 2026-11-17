@@ -2,7 +2,7 @@
 title: "Clustered Bar Chart"
 source: "https://www.amcharts.com/demos/clustered-bar-chart/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A clustered bar chart lays the series side by side for each category. Here, income and expenses for five years: each bar carries its name inside its end and its value just past it.
@@ -19,7 +19,7 @@ Think twice when:
 - Many years: a line per series shows the trend better
 - More than three series: the clusters get hard to read
 
-Prompt: Create a horizontal clustered bar chart comparing income and expenses over five years, each bar labeled with its value and its series name. Add tooltips and a legend. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a horizontal clustered bar chart comparing income and expenses over five years, each bar labeled with its value and its series name. Add tooltips and a legend. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -197,4 +197,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

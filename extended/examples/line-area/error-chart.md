@@ -2,7 +2,7 @@
 title: "Error Chart"
 source: "https://www.amcharts.com/demos/error-chart/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart with error bars: each country’s value comes with a bar showing how far off it could be. Where two bars overlap, the two values could be the same.
@@ -19,7 +19,7 @@ Think twice when:
 - Readers who don’t know what the bars mean: say it in a note
 - Errors bigger on one side: draw low and high ends separately, or use a range area
 
-Prompt: Create a line chart of values for seven countries where each point has a vertical error bar with caps at both ends and a circle marker on top. The tooltips show the value plus or minus the error. Add a cursor. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of values for seven countries where each point has a vertical error bar with caps at both ends and a circle marker on top. The tooltips show the value plus or minus the error. Add a cursor. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -70,7 +70,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -225,4 +225,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

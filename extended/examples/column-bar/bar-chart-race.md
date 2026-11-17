@@ -2,7 +2,7 @@
 title: "Bar Chart Race"
 source: "https://www.amcharts.com/demos/bar-chart-race/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bar chart that plays like a race. Bars grow, shrink and overtake each other as the years tick by: here, 19 social networks from 2002 to 2018.
@@ -19,7 +19,7 @@ Think twice when:
 - Only a few time steps: the animation has nothing to show
 - More than about twenty bars: the race becomes hard to follow
 
-Prompt: Create an animated bar chart race of the users of social networks from 2002 to 2018: horizontal bars that grow to each year’s values and slide into place as they overtake each other, with the year in large faint text. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create an animated bar chart race of the users of social networks from 2002 to 2018: horizontal bars that grow to each year’s values and slide into place as they overtake each other, with the year in large faint text. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -406,7 +406,7 @@ var stepDuration = 2000; // each year takes 2 seconds
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
@@ -637,4 +637,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

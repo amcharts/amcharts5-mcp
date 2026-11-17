@@ -2,7 +2,7 @@
 title: "Beeswarm"
 source: "https://www.amcharts.com/demos/beeswarm/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A beeswarm chart shows every value as a dot along one axis, nudging dots up and down so none overlap. The shape of the swarm shows where values bunch up: here, 500 random values, most of them near zero.
@@ -19,7 +19,7 @@ Think twice when:
 - Comparing many groups at once: a box plot per group takes less room
 - Small charts: the dots need height to spread out
 
-Prompt: Create a beeswarm chart of 500 random values on a value axis, each a dot sized by a second value, spread up and down by a D3 force simulation so no dots overlap, and packed again when the axis is zoomed. Use the amCharts 5 library with its Responsive theme, and D3.
+Prompt: Create a beeswarm chart of 500 random values on a value axis, each a dot sized by a second value, spread up and down by a D3 force simulation so no dots overlap, and packed again when the axis is zoomed. Use the amCharts 5 library with its ResponsiveMax theme, and D3.
 
 ## JavaScript
 
@@ -94,7 +94,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -254,5 +254,5 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
 - https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js

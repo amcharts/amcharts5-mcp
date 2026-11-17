@@ -2,7 +2,7 @@
 title: "Carbon-Zero Progress"
 source: "https://www.amcharts.com/demos/carbon-zero-progress/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A progress bar toward net zero, built from a column chart: fifteen cells from red at 20+ through yellow to green, a pin on the current level, 10, and a GOAL ZERO badge at the end.
@@ -19,7 +19,7 @@ Think twice when:
 - Precise values: the steps round them off
 - Readers who can’t tell red from green: keep the labels
 
-Prompt: Create a progress bar toward net zero: a row of segments counting down from 15 to 0 in red, yellow and green, with a map pin over the current level, a round GOAL ZERO badge at the end and a few scale labels under the bar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a progress bar toward net zero: a row of segments counting down from 15 to 0 in red, yellow and green, with a map pin over the current level, a round GOAL ZERO badge at the end and a few scale labels under the bar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -325,4 +325,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

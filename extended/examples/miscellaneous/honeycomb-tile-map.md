@@ -2,7 +2,7 @@
 title: "Honeycomb Tile Map"
 source: "https://www.amcharts.com/demos/honeycomb-tile-map/"
 category: "miscellaneous"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A tile map made of hexagons, which fit together like a honeycomb and give each state up to six neighbors, so the layout follows the real map more closely than squares or circles can.
@@ -19,7 +19,7 @@ Think twice when:
 - Many small regions, like counties: the layout gets hard to read
 - Exact values: add a table or a bar chart
 
-Prompt: Create a honeycomb tile map of the US states as an XY chart: each state is a hexagon in a layout that follows the map, colored by population with its state code, and a heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a honeycomb tile map of the US states as an XY chart: each state is a hexagon in a layout that follows the map, colored by population with its state code, and a heat legend under the map marks the state under the pointer. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -44,7 +44,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Short numbers: 39,250,000 shows as 39.3M
@@ -550,4 +550,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

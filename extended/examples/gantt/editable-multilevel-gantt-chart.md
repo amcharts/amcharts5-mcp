@@ -2,7 +2,7 @@
 title: "Editable Multilevel Gantt Chart"
 source: "https://www.amcharts.com/demos/editable-multilevel-gantt-chart/"
 category: "gantt"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A Gantt chart with tasks grouped under their stage. Each stage’s bar covers its tasks, its progress comes from theirs, and a click folds it away.
@@ -19,7 +19,7 @@ Think twice when:
 - A handful of tasks: skip the grouping
 - Plans nobody should change: switch editing off
 
-Prompt: Create an editable Gantt chart on two levels: an idea milestone, preparation and implementation stages with their tasks, and a release milestone, with each task’s progress and links to the task that follows. Use the amCharts 5 library.
+Prompt: Create an editable Gantt chart on two levels: an idea milestone, preparation and implementation stages with their tasks, and a release milestone, with each task’s progress and links to the task that follows. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -31,7 +31,8 @@ var root = am5.Root.new("chartdiv");
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
-  am5themes_Animated.new(root)
+  am5themes_Animated.new(root),
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create Gantt chart
@@ -157,3 +158,4 @@ gantt.appear();
 - https://cdn.amcharts.com/lib/5/plugins/colorPicker.js
 - https://cdn.amcharts.com/lib/5/gantt.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

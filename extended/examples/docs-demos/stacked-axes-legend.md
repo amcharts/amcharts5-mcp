@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["charts/xy-chart/axes/axis-headers"]
 ---
 
-A demo from the docs page "Axis headers" (get_doc(path: "charts/xy-chart/axes/axis-headers")).
+A demo from the docs page "Axis headers" (get_doc(path: "charts/xy-chart/axes/axis-headers")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

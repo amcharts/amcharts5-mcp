@@ -2,7 +2,7 @@
 title: "Radar with Date Axis"
 source: "https://www.amcharts.com/demos/radar-with-date-axis/"
 category: "radar-polar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A timeline wrapped into a ring: the year runs clockwise from the top, and each ring is one row of date ranges. Here, when five holiday homes were booked in 2025.
@@ -19,7 +19,7 @@ Think twice when:
 - Many rows: the inner rings get short
 - Spans of several years: use a straight timeline
 
-Prompt: Create a radar chart with the year around the circle as a date axis and one ring per holiday home, showing the periods each home was booked (sample data) as bars from start to end date. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a radar chart with the year around the circle as a date axis and one ring per holiday home, showing the periods each home was booked (sample data) as bars from start to end date. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -30,7 +30,7 @@ var root = am5.Root.new("chartdiv");
 
 // Set themes
 // https://docs.amcharts.com/v5/concepts/themes/
-root.setThemes([am5themes_Animated.new(root), am5themes_Responsive.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 // Create chart
 // https://docs.amcharts.com/v5/charts/radar-chart/
@@ -171,4 +171,4 @@ chart.appear(2000, 100);
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/radar.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Real-Time Data Sorting"
 source: "https://www.amcharts.com/demos/real-time-data-sorting/"
 category: "column-bar"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A column chart that keeps itself sorted. Every second and a half, eleven countries get new values, and the columns slide into their new order, tallest first, with the numbers counting as they go.
@@ -19,7 +19,7 @@ Think twice when:
 - Updates faster than the slide: the columns never settle
 - Trends over time: a line chart keeps the history
 
-Prompt: Create a column chart of eleven countries that re-sorts itself live: every second or two the values change at random, and the columns slide into their new order, largest first, with value labels counting up or down. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a column chart of eleven countries that re-sorts itself live: every second or two the values change at random, and the columns slide into their new order, largest first, with value labels counting up or down. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -256,4 +256,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

@@ -2,7 +2,7 @@
 title: "Bubble Chart"
 source: "https://www.amcharts.com/demos/bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A bubble chart places each item on two axes and sizes it by a third value. Here two series share the plot: one drawn as circles, the other as eight-pointed stars.
@@ -19,7 +19,7 @@ Think twice when:
 - Sizes that differ only a little: the eye can’t tell them apart
 - Zero or negative sizes: a bubble can’t show them
 
-Prompt: Create a zoomable bubble chart with two series on two value axes, one drawn as circles and the other as eight-pointed stars, each shape sized by its value, with tooltips. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a zoomable bubble chart with two series on two value axes, one drawn as circles and the other as eight-pointed stars, each shape sized by its value, with tooltips. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -254,4 +254,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

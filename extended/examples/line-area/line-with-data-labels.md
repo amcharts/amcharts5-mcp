@@ -2,7 +2,7 @@
 title: "Line with Data Labels"
 source: "https://www.amcharts.com/demos/line-with-data-labels/"
 category: "line-area"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A line chart that writes the value above every point, so the numbers are there without hovering. Here, sixteen readings half an hour apart through one night.
@@ -19,7 +19,7 @@ Think twice when:
 - Several lines close together: their labels overlap
 - Trends where the shape matters more than the numbers
 
-Prompt: Create a line chart of 16 values taken every 30 minutes, with round bullets and a label above each point that shows its value in a small outlined box. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its Responsive theme.
+Prompt: Create a line chart of 16 values taken every 30 minutes, with round bullets and a label above each point that shows its value in a small outlined box. Add a cursor, tooltips and a horizontal scrollbar. Use the amCharts 5 library with its ResponsiveMax theme.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -230,4 +230,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/xy.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js

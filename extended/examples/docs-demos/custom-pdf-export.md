@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["concepts/exporting/exporting-pdf"]
 ---
 
-A demo from the docs page "Exporting PDF" (get_doc(path: "concepts/exporting/exporting-pdf")).
+A demo from the docs page "Exporting PDF" (get_doc(path: "concepts/exporting/exporting-pdf")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

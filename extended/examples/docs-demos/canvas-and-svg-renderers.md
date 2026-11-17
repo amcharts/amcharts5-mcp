@@ -6,7 +6,7 @@ scraped: "2026-11-16"
 docsPages: ["getting-started/root-element"]
 ---
 
-A demo from the docs page "Root element" (get_doc(path: "getting-started/root-element")).
+A demo from the docs page "Root element" (get_doc(path: "getting-started/root-element")). It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.
 
 ## JavaScript
 

@@ -2,7 +2,7 @@
 title: "Funnel Chart"
 source: "https://www.amcharts.com/demos/funnel-chart/"
 category: "funnel-pyramid"
-scraped: "2026-10-18"
+scraped: "2026-11-17"
 ---
 
 A funnel chart shows how a number shrinks as people move through the steps of a process. Here, a month in an online store, from 10,000 visits to 2,300 payments.
@@ -19,7 +19,7 @@ Think twice when:
 - Two funnels to compare, like this month and last: try grouped bars
 - Counts that can grow from one step to the next: a funnel reads as always narrowing
 
-Prompt: Create a vertical funnel chart of a month in an online store, with five stages from visiting the store to paying, each as wide as its count and joined to the next by a see-through link. Add a legend that hides a stage when clicked. Use the Animated and Responsive themes and the amCharts 5 library.
+Prompt: Create a vertical funnel chart of a month in an online store, with five stages from visiting the store to paying, each as wide as its count and joined to the next by a see-through link. Add a legend that hides a stage when clicked. Use the Animated and ResponsiveMax themes and the amCharts 5 library.
 
 ## JavaScript
 
@@ -32,7 +32,7 @@ var root = am5.Root.new("chartdiv");
 // https://docs.amcharts.com/v5/concepts/themes/
 root.setThemes([
   am5themes_Animated.new(root),
-  am5themes_Responsive.new(root)
+  am5themes_ResponsiveMax.new(root)
 ]);
 
 // Create chart
@@ -108,4 +108,4 @@ chart.appear(1000, 100);
 - https://cdn.amcharts.com/lib/5/index.js
 - https://cdn.amcharts.com/lib/5/percent.js
 - https://cdn.amcharts.com/lib/5/themes/Animated.js
-- https://cdn.amcharts.com/lib/5/themes/Responsive.js
+- https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js
