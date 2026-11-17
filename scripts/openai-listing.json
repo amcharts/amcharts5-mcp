@@ -73,6 +73,6 @@
     "demo_recording_url": "https://drive.google.com/file/d/1cNVv96IurF51xnC3CxDe0wbnxKTiHfbj/view?usp=sharing"
   },
   "publication": {
-    "release_notes": "1.9.5: amCharts 5.22.0 and geodata 5.2.0. Every chart starts with the new ResponsiveMax theme, which fits labels, legends and scrollbars to the space they have. The new settings are covered: autoLabels, autoFit, autoHide, keepInView, and right-to-left charts with the Root direction setting. JSON chart configs are treated as data, not code. The library files load from npm CDNs (jsDelivr, unpkg), so charts also work in chat sandboxes that allow only those. Search quotes the matching lines and searches long sections by subsection. Quick starts return a runnable example for the asked chart type. 34 docs pages were refreshed from docs.amcharts.com."
+    "release_notes": "1.9.6: The amcharts.com demos are re-imported and use the ResponsiveMax theme, with a new London traffic map. The 330+ demos embedded in the docs pages are now examples of their own, so the docs pages are half the size, and get_example opens a demo by its docs address. The API reference lists each class's methods with their signatures and parameters. All docs pages come from docs.amcharts.com's current text. The skill describes only the latest amCharts release, 5.22.0, without version history, so it is smaller. Search results name the section a hit belongs to."
   }
 }

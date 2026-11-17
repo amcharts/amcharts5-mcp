@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
-## [Unreleased]
+## [1.9.6] - 2026-11-17
 
 ### Added
 - **The docs pages' demos are examples of their own.** The docs site writes each embedded demo out in full after its "Example:" link, which was half of the docs text: the clustered point series page was 207,000 characters, 196,000 of them demo code. The 332 demos (354 embeds; some pages share one) are now examples in the new `docs-demos` category: `get_example(path: "examples/docs-demos/<name>")`, each with its JavaScript, HTML, the chart's CSS and its scripts, and the docs page it comes from. A page keeps the link and points to the example. The docs copy shrinks from 3.7 to 1.9 MB.
