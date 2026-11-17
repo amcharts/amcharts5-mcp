@@ -32,3 +32,15 @@ Extends: PercentSeries → Series → Component → Container → Sprite → Ent
 Public properties (not settings):
 
 - **chart** (`PieChart`) — The chart the series belongs to.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("PercentSeries")`) for signatures and descriptions.
+
+- _PercentSeries_: hide, hideDataItem, hoverDataItem, show, showDataItem, unhoverDataItem
+- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

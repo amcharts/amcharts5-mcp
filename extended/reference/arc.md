@@ -26,3 +26,8 @@ Public properties (not settings):
 - **radius** (`number`)
 - **startAngle** (`number`)
 - **type** (`"arc"`)
+
+## Methods
+
+- `addBounds(bounds: IBounds): void`
+- `path(sink: IPathSink): void`

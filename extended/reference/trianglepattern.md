@@ -26,6 +26,13 @@ Extends: Pattern → Entity → Settings
 - Settings: `ITrianglePatternSettings` — get_api_reference shows it after this page
 - Private settings: `ITrianglePatternPrivate`
 
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Entity")`) for signatures and descriptions.
+
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll
+
 ## Notes
 
 ```javascript

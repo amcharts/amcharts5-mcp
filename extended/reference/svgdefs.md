@@ -20,3 +20,10 @@ Extends: (none)
 Public properties (not settings):
 
 - **used** (`Set<string>`)
+
+## Methods
+
+- `begin(): void`
+- `id(kind: string, markup: string): string` — The id of a def given as markup without an id attribute.
+- `sweep(): void` — Forgets defs not used since `begin()`.
+- `withId(markup: string): string` — The def as it goes into `<defs>`.

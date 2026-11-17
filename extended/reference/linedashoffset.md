@@ -21,3 +21,9 @@ Public properties (not settings):
 
 - **dashOffset** (`number`)
 - **type** (`"lineDashOffset"`)
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Op")`) for signatures and descriptions.
+
+- _Op_: addBounds, path

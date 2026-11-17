@@ -35,3 +35,21 @@ Extended by: BreadcrumbBar, Button, Chart, ClockHand, ColorPicker, ColorPickerBu
 Public properties (not settings):
 
 - **children** (`Children<Sprite>`) — The container's child elements.
+
+## Methods
+
+- `allChildren(): Array<Sprite>` — Returns all children, including the background, vertical scrollbar and mask.
+- `contentHeight(): number`
+- `contentWidth(): number`
+- `eachChildren(f: (child: Sprite) => void): void` — Calls `f` for each child, including the background, vertical scrollbar and mask.
+- `innerHeight(): number` — Returns the container's height without padding, in pixels. Returns: Inner height (px)
+- `innerWidth(): number` — Returns the container's width without padding, in pixels. Returns: Inner width (px)
+- `scrollToChild(child: Sprite): void` — Scrolls the container so that the child comes into view, if it is out of view. Works only on a container with a `verticalScrollbar`. Parameters: `child`: Child to scroll to. _Since 5.10.5._
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Sprite")`) for signatures and descriptions.
+
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

@@ -18,3 +18,8 @@ Extends: (none)
 Public properties (not settings):
 
 - **dirty** (`boolean`)
+
+## Methods
+
+- `get(): T`
+- `set(value: T): void`

@@ -17,3 +17,9 @@ import * as am5 from "@amcharts/amcharts5";
 
 Extends: DisposerClass
 Extended by: CanvasRenderer, InteractionManager, SVGRenderer
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DisposerClass")`) for signatures and descriptions.
+
+- _DisposerClass_: dispose, isDisposed

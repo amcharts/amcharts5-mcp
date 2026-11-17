@@ -20,3 +20,9 @@ root.setThemes([am5themes_ColorblindDark.new(root)]);
 ## Inheritance
 
 Extends: ColorblindTheme → Theme
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Theme")`) for signatures and descriptions.
+
+- _Theme_: rule, ruleRaw

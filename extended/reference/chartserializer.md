@@ -26,3 +26,16 @@ Extends: Serializer → Entity → Settings
 - Settings: `IChartSerializerSettings` — get_api_reference shows it after this page
 - Private settings: `IChartSerializerPrivate`
 - Events: `IChartSerializerEvents`
+
+## Methods
+
+- `reset(): void` — Clears what the serializer remembers from an earlier `serializeAll()`. Call it before serializing again with the same serializer.
+- `serializeAll(source: Container): any` — Serializes a chart, or a container with charts, into a config object. Parameters: `source`: Chart or container. Returns: Config
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Serializer")`) for signatures and descriptions.
+
+- _Serializer_: serialize
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

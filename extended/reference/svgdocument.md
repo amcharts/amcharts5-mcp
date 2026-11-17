@@ -28,3 +28,14 @@ Public properties (not settings):
 - **nonExportable** (`boolean`)
 - **precision** (`number`)
 - **resolution** (`number`)
+
+## Methods
+
+- `clip(mask: SceneGraphics): string`
+- `color(kind: string, css: string): string` — A CSS color as a color plus a separate opacity, which more SVG consumers understand than `rgba()`.
+- `cssFilter(filter: string, m: Matrix, bounds?: IBounds): string` — A CSS filter with canvas semantics: canvas measures filter lengths in device pixels, unaffected by the element's transform, while SVG measures them in the element's user space.
+- `defsMarkup(): string` — `<defs>` content used by this document.
+- `matrix(m: Matrix, crisp?: boolean): string`
+- `n(value: number): string`
+- `paint(kind: "fill" | "stroke", paint: GraphicsPaint): string` — `fill="..."` / `stroke="..."` attributes for a paint.
+- `shadow(color: string, blur: number, offsetX: number, offsetY: number, m: Matrix, bounds?: IBounds, extra?: number): string | undefined` — A drop shadow with canvas semantics: offsets and blur are in device pixels, unaffected by the element's transform.

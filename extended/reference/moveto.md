@@ -22,3 +22,8 @@ Public properties (not settings):
 - **type** (`"moveTo"`)
 - **x** (`number`)
 - **y** (`number`)
+
+## Methods
+
+- `addBounds(bounds: IBounds): void`
+- `path(sink: IPathSink): void`

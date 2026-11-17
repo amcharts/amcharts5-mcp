@@ -29,3 +29,17 @@ Extended by: ComparisonControl, DataSaveControl, IndicatorControl, IntervalContr
 - Settings: `IDropdownListControlSettings` — get_api_reference shows it after this page
 - Private settings: `IDropdownListControlPrivate`
 - Events: `IDropdownListControlEvents`
+
+## Methods
+
+- `getItemById(id: string): IDropdownListItem | string | undefined` — Returns the item with an ID from `items`. Parameters: `id`: Item ID. Returns: Dropdown item _Since 5.9.0._
+- `setItem(item: string | IDropdownListItem): void` — Shows an item on the button as the selected one, unless `fixedLabel` is set. Does not dispatch `selected`. Parameters: `item`: Item.
+- `setItemById(id: string): void` — Selects an item by its ID: shows it on the button and dispatches `selected`. Parameters: `id`: Item ID. _Since 5.9.0._
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("StockControl")`) for signatures and descriptions.
+
+- _StockControl_: hide, isAccessible, show
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

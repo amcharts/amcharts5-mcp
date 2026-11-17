@@ -35,3 +35,23 @@ Public properties (not settings):
 - **slicesContainer** (`Container`)
 - **ticks** (`ListTemplate<this["_tickType"]>`) — List of the ticks that join labels to their slices; configure them all through `ticks.template`.
 - **ticksContainer** (`Container`)
+
+## Methods
+
+- `hide(duration?: number): Promise<void>` — Hides the series. Parameters: `duration`: Animation duration in milliseconds. Returns: Animation promise
+- `hideDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Hides a slice, with its label and tick, shrinking its value to zero. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `hoverDataItem(dataItem: DataItem<this["_dataItemSettings"]>): void` — Puts a data item's slice in its hover state, unless it is hidden. Parameters: `dataItem`: Target data item. _Since 5.0.7._
+- `show(duration?: number): Promise<void>` — Shows hidden series. Parameters: `duration`: Animation duration in milliseconds. Returns: Animation promise
+- `showDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Shows a hidden slice, with its label and tick, growing its value back. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `unhoverDataItem(dataItem: DataItem<this["_dataItemSettings"]>): void` — Takes a data item's slice out of its hover state. Parameters: `dataItem`: Target data item. _Since 5.0.7._
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Series")`) for signatures and descriptions.
+
+- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

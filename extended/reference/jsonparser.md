@@ -19,6 +19,10 @@ import * as am5 from "@amcharts/amcharts5";
 
 Extends: (none)
 
+## Static methods
+
+- `JSONParser.parse(input: string, options?: IJSONParserOptions): any` — Parses a JSON string. An array or object is returned as it is, and invalid JSON gives `undefined`. Parameters: `input`: JSON; `options`: Options. Returns: Data
+
 ## JsonParser (class)
 
 Builds charts from JSON configs.
@@ -34,3 +38,8 @@ import * as am5plugins_json from "@amcharts/amcharts5/plugins/json";
 ### Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `parse<E extends Entity>(object: unknown, settings?: IParseSettings): Promise<E>` — Builds the chart objects a config describes, loading the classes it needs first. Parameters: `object`: Config, as a plain object; `settings`: Parse settings. Returns: A promise of the object the config builds, usually the chart
+- `parseString<E extends Entity>(string: string, settings?: IParseSettings): Promise<E>` — Builds the chart objects a config describes, from a JSON string. Parameters: `string`: JSON string; `settings`: Parse settings. Returns: A promise of the object the config builds, usually the chart

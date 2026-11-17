@@ -27,3 +27,17 @@ Extended by: SettingsModal
 - Settings: `IModalSettings` — get_api_reference shows it after this page
 - Private settings: `IModalPrivate`
 - Events: `IModalEvents`
+
+## Methods
+
+- `cancel(): void` — Closes the modal and dispatches `"cancelled"` instead of `"closed"`.
+- `close(): void` — Closes the modal and dispatches `"closed"`.
+- `isOpen(): boolean` — Returns `true` if the modal is open. Returns: Modal open?
+- `open(): void` — Opens the modal.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Entity")`) for signatures and descriptions.
+
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

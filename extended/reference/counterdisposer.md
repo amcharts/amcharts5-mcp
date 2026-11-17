@@ -16,3 +16,13 @@ import * as am5 from "@amcharts/amcharts5";
 ## Inheritance
 
 Extends: Disposer
+
+## Methods
+
+- `increment(): Disposer` — Increments the counter and returns a disposer that decrements it.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Disposer")`) for signatures and descriptions.
+
+- _Disposer_: dispose, isDisposed

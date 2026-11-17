@@ -20,3 +20,9 @@ Extends: EventDispatcher
 Public properties (not settings):
 
 - **target** (`Target`) — A target object which is originating events using this dispatcher.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("EventDispatcher")`) for signatures and descriptions.
+
+- _EventDispatcher_: disable, disableType, dispatch, dispose, enable, enableType, has, hasListeners, hasListenersByType, isDisposed, isEnabled, off, on, onAll, onDebounced, once, removeType

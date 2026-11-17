@@ -21,3 +21,9 @@ Public properties (not settings):
 - **duration** (`number`)
 - **easing** (`Easing`)
 - **events** (`EventDispatcher<Events<this, this["_events"]>>`)
+
+## Methods
+
+- `jumpTo(value: Time): void`
+- `stop(): void`
+- `tweenTo(value: Time): void`

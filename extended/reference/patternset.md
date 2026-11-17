@@ -25,3 +25,19 @@ Extends: Entity → Settings
 
 - Settings: `IPatternSetSettings` — get_api_reference shows it after this page
 - Private settings: `IPatternSetPrivate`
+
+## Methods
+
+- `getCirclePattern(settings: ICirclePatternSettings): CirclePattern` — Creates a `CirclePattern` with these settings. Parameters: `settings`: Pattern settings. Returns: Pattern object
+- `getIndex(index: number): Pattern` — Returns the `Pattern` at `index`. Parameters: `index`: Index. Returns: Pattern
+- `getLinePattern(settings: ILinePatternSettings): LinePattern` — Creates a `LinePattern` with these settings. Parameters: `settings`: Pattern settings. Returns: Pattern object
+- `getRectanglePattern(settings: IRectanglePatternSettings): RectanglePattern` — Creates a `RectanglePattern` with these settings. Parameters: `settings`: Pattern settings. Returns: Pattern object
+- `next(): Pattern` — Returns the next `Pattern` in the list, `step` positions after the last one. Returns: Pattern
+- `reset(): void` — Starts over, so the next `next()` returns the pattern at `startIndex`.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Entity")`) for signatures and descriptions.
+
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

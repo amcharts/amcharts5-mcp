@@ -31,3 +31,19 @@ Extended by: AccelerationBands, ChartIndicator, MACross, MovingAverage, SuperTre
 Public properties (not settings):
 
 - **series** (`XYSeries`)
+
+## Methods
+
+- `hide(duration?: number): Promise<any>` — Hides the element and returns a `Promise` that resolves when its hiding animations finish.
+- `markDataDirty(): void` — Recalculates the indicator's data after the current frame.
+- `setCustomData(name: string, value?: any): void` — Stores a value in the indicator series' `customData`, where text such as a legend label can show it as `{name}`. Parameters: `name`: Key; `value`: Value.
+- `show(duration?: number): Promise<any>` — Shows the element and returns a `Promise` that resolves when its showing animations finish.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Container")`) for signatures and descriptions.
+
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

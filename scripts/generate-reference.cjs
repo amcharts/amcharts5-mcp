@@ -62,8 +62,24 @@ const NOTES_FILE = path.resolve(process.env.NOTES_FILE || path.join(__dirname, "
 const VERSION = JSON.parse(fs.readFileSync(path.join(PKG, "package.json"), "utf8")).version;
 const GENERATED_FROM = `@amcharts/amcharts5@${VERSION}`;
 const SITE = "https://docs.amcharts.com/v5/reference/";
+// --defaults-json <file>: also write every class's resolved setting defaults as
+// JSON, for other generators (e.g. the docs site's class reference).
+// --defaults-only: write only that file, no pages (needs only the package and typescript).
+const argAfter = (flag) => {
+  const i = process.argv.indexOf(flag);
+  if (i < 0) return null;
+  const v = process.argv[i + 1];
+  if (!v || v.startsWith("--")) { console.error(`${flag} needs a file name`); process.exit(1); }
+  return v;
+};
+const DEFAULTS_JSON = argAfter("--defaults-json") ? path.resolve(argAfter("--defaults-json")) : null;
+const DEFAULTS_ONLY = process.argv.includes("--defaults-only");
+if (DEFAULTS_ONLY && !DEFAULTS_JSON) {
+  console.error("--defaults-only needs --defaults-json <file>");
+  process.exit(1);
+}
 // The typings' @see links still point at the old docs address; written pages get the new one
-const { rewriteDocsLinks } = require("./docs-links.cjs");
+const { rewriteDocsLinks } = DEFAULTS_ONLY ? { rewriteDocsLinks: (s) => s } : require("./docs-links.cjs");
 
 const stats = {
   themeRules: 0, themeTaggedRules: 0, classDefaults: 0, conditionalClassDefaults: 0,
@@ -78,7 +94,7 @@ const isGeneratedPage = (file) => /^---\n(?:.*\n)*?generatedFrom: "@amcharts\/am
   .test(fs.readFileSync(file, "utf8").slice(0, 4000).replace(/\r\n/g, "\n"));
 const existingPages = fs.existsSync(OUT) ? fs.readdirSync(OUT).filter((f) => f.endsWith(".md")) : [];
 const foreignPages = existingPages.filter((f) => !isGeneratedPage(path.join(OUT, f)));
-if (foreignPages.length) {
+if (!DEFAULTS_ONLY && foreignPages.length) {
   console.error(`Refusing to write to ${OUT}: ${foreignPages.length} .md file(s) there were not made by this generator ` +
     `(e.g. ${foreignPages.slice(0, 3).join(", ")}). Check OUT_DIR, or move those files out of it first.`);
   process.exit(1);
@@ -510,6 +526,7 @@ function contextFor(className) {
   const tags = new Set(code.flatMap((c) => c.tags));
 
   const theme = new Map();
+  const themeFrom = new Map(); // setting -> the rule it came from: { theme file, class, tags }
   for (const cls of chain.slice().reverse()) { // root ancestor first; the class itself wins
     const cand = [];
     applicable.forEach((f, fi) => {
@@ -518,19 +535,37 @@ function contextFor(className) {
       }
     });
     cand.sort((a, b) => a.r.tags.length - b.r.tags.length || a.fi - b.fi || a.r.seq - b.r.seq);
-    for (const { r } of cand) for (const [k, v] of r.settings) theme.set(k, v);
+    for (const { r, fi } of cand) for (const [k, v] of r.settings) {
+      theme.set(k, v);
+      themeFrom.set(k, { theme: path.basename(applicable[fi], ".js"), rule: r.cls, tags: r.tags });
+    }
   }
   const pick = (key) => {
     const m = new Map();
     for (const c of code) for (const [k, v] of c[key]) if (!m.has(k)) m.set(k, v);
     return m;
   };
-  const ctx = { className, chain, theme, soft: pick("soft"), setDefault: pick("setDefault"), fallback: pick("fallback") };
+  const ctx = { className, chain, theme, themeFrom, soft: pick("soft"), setDefault: pick("setDefault"), fallback: pick("fallback") };
   for (const [k, v] of ctx.soft) if (theme.has(k) && theme.get(k) !== v) stats.softOverTheme.push(`${className}.${k}: _setSoft ${v} over theme ${theme.get(k)}`);
   ctxCache.set(className, ctx);
   return ctx;
 }
-const EMPTY_CTX = { className: null, theme: new Map(), soft: new Map(), setDefault: new Map(), fallback: new Map(), chain: [] };
+const EMPTY_CTX = { className: null, theme: new Map(), themeFrom: new Map(), soft: new Map(), setDefault: new Map(), fallback: new Map(), chain: [] };
+
+// --defaults-json: class -> { settings interface, setting -> resolved default }
+const defaultsOut = new Map();
+function recordDefaults(className, settingsName, syms, ctx) {
+  const out = {};
+  for (const s of [...syms].sort((a, b) => a.getName().localeCompare(b.getName()))) {
+    const d = resolveDefault(s, ctx);
+    if (!d) continue;
+    const entry = d.dynamic ? { default: null, dynamic: true, source: d.src } : { default: d.v, source: d.src };
+    if (d.src === "theme" && ctx.themeFrom.has(s.getName())) entry.theme = ctx.themeFrom.get(s.getName());
+    entry.declaredIn = ownerName(s) || settingsName;
+    out[s.getName()] = entry;
+  }
+  defaultsOut.set(className, { settings: settingsName, defaults: out });
+}
 
 function jsdocDefault(sym) {
   for (const t of sym.getJsDocTags(checker)) {
@@ -833,6 +868,7 @@ function emitInterface(node, secondary = false) {
   }
   const inherited = checker.getPropertiesOfType(type).filter((s) => !ownNames.has(s.getName()));
   const { direct, all } = interfaceAncestors(node);
+  if (hasClass && DEFAULTS_JSON && !secondary) recordDefaults(className, name, [...own, ...inherited], ctx);
 
   const parts = [];
   const desc = docSection(sym, name);
@@ -947,7 +983,90 @@ function emitClass(node, secondary = false) {
   props.sort((a, b) => a.name.localeCompare(b.name));
   if (props.length) parts.push("## Properties\n\nPublic properties (not settings):\n\n" + props.map((p) => p.line).join("\n"));
 
+  // Methods are rendered after every page is written (see "Methods" below):
+  // printing their signatures earlier changes how the checker prints other types
+  const methodsMark = `\u0000methods:${name}:${pendingMethods.length}\u0000`;
+  pendingMethods.push({ mark: methodsMark, node, sym, name, chain, secondary });
+  parts.push(methodsMark);
+
   finishPage(name, "class", parts.join("\n\n"), node, secondary);
+}
+
+const pendingMethods = [];
+
+// A class's methods: its own public ones in full (static ones as Class.method);
+// inherited ones by name, per declaring class (like inherited settings, and left
+// out of search the same way). `new` is left out: the Import section shows it.
+const isPublicMethod = (m, wantStatic = false) => ts.isMethodDeclaration(m) && m.name && ts.isIdentifier(m.name) && !m.name.text.startsWith("_") &&
+  !(ts.getCombinedModifierFlags(m) & (ts.ModifierFlags.Private | ts.ModifierFlags.Protected)) &&
+  !!(ts.getCombinedModifierFlags(m) & ts.ModifierFlags.Static) === wantStatic;
+function methodSections({ node, sym, name, chain }) {
+  const collect = (wantStatic) => {
+    const found = new Map(); // name -> overload declarations
+    for (const m of node.members) {
+      if (!isPublicMethod(m, wantStatic) || (wantStatic && m.name.text === "new")) continue;
+      const msym = checker.getSymbolAtLocation(m.name);
+      if (!msym || tagsOf(msym).ignore) continue;
+      if (!found.has(m.name.text)) found.set(m.name.text, []);
+      found.get(m.name.text).push(m);
+    }
+    return found;
+  };
+  const out = [];
+  const own = collect(false);
+  if (own.size) out.push("## Methods\n\n" + [...own.keys()].sort().map((m) => renderMethod(name, m, own.get(m))).join("\n"));
+  const statics = collect(true);
+  if (statics.size) out.push("## Static methods\n\n" + [...statics.keys()].sort().map((m) => renderMethod(name, m, statics.get(m), `${name}.`)).join("\n"));
+  const byClass = new Map();
+  for (const p of checker.getPropertiesOfType(checker.getDeclaredTypeOfSymbol(sym))) {
+    const decl = p.valueDeclaration || (p.declarations || [])[0];
+    if (!decl || !isPublicMethod(decl) || own.has(p.getName()) || tagsOf(p).ignore) continue;
+    const owner = decl.parent && ts.isClassDeclaration(decl.parent) && decl.parent.name ? decl.parent.name.text : null;
+    if (!owner || owner === name) continue;
+    if (!byClass.has(owner)) byClass.set(owner, []);
+    byClass.get(owner).push(p.getName());
+  }
+  if (byClass.size) {
+    const order = [...byClass.keys()].sort((a, b) => {
+      const ia = chain.indexOf(a), ib = chain.indexOf(b);
+      return (ia < 0 ? 1e9 : ia) - (ib < 0 ? 1e9 : ib) || a.localeCompare(b);
+    });
+    out.push("## Other inherited methods\n\n" +
+      `Names only — see the declaring class's page (e.g. \`get_api_reference("${order[0]}")\`) for signatures and descriptions.\n\n` +
+      order.map((o) => `- _${o}_: ${byClass.get(o).sort().join(", ")}`).join("\n"));
+  }
+  return out.join("\n\n");
+}
+
+// A method as one list entry: its signature(s), description, parameters and return
+function renderMethod(className, mname, decls, prefix = "") {
+  const msym = checker.getSymbolAtLocation(decls[0].name);
+  const tags = tagsOf(msym);
+  const since = sinceOverride(`member:${className}.${mname}`) || tags.since;
+  const note = memberNote(`${className}.${mname}`);
+  const text = docBlocks(docOf(msym)).filter((b) => b.text).map((b) => b.text).join(" ");
+  const jsdocText = (t) => linkify(collapse(typeof t.comment === "string" ? t.comment : ts.getTextOfJSDocComment(t.comment) || ""));
+  // Every overload's documented parameters, each name once (get(key) / get(key, fallback))
+  const params = [];
+  const seen = new Set();
+  for (const d of decls) for (const p of d.parameters) {
+    const pname = p.name.getText();
+    if (seen.has(pname)) continue;
+    const doc = ts.getJSDocParameterTags(p).map(jsdocText).join(" ");
+    if (doc) { params.push(`\`${pname}\`: ${doc}`); seen.add(pname); }
+  }
+  const rtag = decls.map((d) => ts.getJSDocReturnTag(d)).find(Boolean);
+  const rdoc = rtag ? jsdocText(rtag) : "";
+  const words = [];
+  if (tags.deprecated) words.push(`**Deprecated:** ${tags.deprecated}`);
+  if (text) words.push(text);
+  if (params.length) words.push(`Parameters: ${params.join("; ")}.`);
+  if (rdoc) words.push(`Returns: ${rdoc}`);
+  if (since) words.push(`_Since ${since}._`);
+  if (tags.see.length) words.push(`Docs: ${tags.see.join(", ")}`);
+  if (note) words.push(`_Note:_ ${note}`);
+  const line = "- " + decls.map((d) => "`" + prefix + signatureText(mname, d) + "`").join(" / ");
+  return words.length ? `${line} — ${words.join(" ")}` : line;
 }
 
 function emitEnum(node, secondary = false) {
@@ -1052,6 +1171,12 @@ for (const fn of exportedFunctions.values()) emitFunction(fn);
 for (const ns of namespaces) emitNamespace(ns);
 for (const p of pages.values()) counts[p.type] = (counts[p.type] || 0) + 1;
 
+// --- Methods (second pass) ---------------------------------------------------
+const methodText = new Map(pendingMethods.map((m) => [m.mark, m.secondary ? methodSections(m).replace(/^## /gm, "### ") : methodSections(m)]));
+for (const p of pages.values()) {
+  p.body = p.body.replace(/\u0000methods:[^\u0000]*\u0000/g, (mark) => methodText.get(mark) || "");
+}
+
 // --- Runtime-only cross-check -------------------------------------------------
 // Settings a class reads with this.get("k") that its settings interface (with
 // everything it inherits) does not declare: they work, but TypeScript won't offer them.
@@ -1064,6 +1189,38 @@ for (const [cname, ci] of classIndex) {
 }
 
 // --- Write -------------------------------------------------------------------
+if (DEFAULTS_JSON) {
+  // Classes without a settings interface of their own name (I<Class>Settings):
+  // the interface their `_settings` member names, on the class or its nearest
+  // ancestor (SmoothedXYLineSeries: SmoothedXYLineSeriesProperties)
+  for (const [cname] of classIndex) {
+    if (defaultsOut.has(cname)) continue;
+    let iname = null;
+    for (const c of classChain(cname)) {
+      const ci = classIndex.get(c);
+      const m = ci && ci.node.members.find((x) => ts.isPropertyDeclaration(x) && x.name && x.name.getText() === "_settings" && x.type);
+      if (m) { iname = m.type.getText().replace(/<.*$/, ""); break; }
+    }
+    const iface = iname && interfaceIndex.get(iname);
+    if (!iface) continue;
+    const props = checker.getPropertiesOfType(checker.getDeclaredTypeOfSymbol(checker.getSymbolAtLocation(iface.name)));
+    recordDefaults(cname, iname, props, contextFor(cname));
+  }
+  const classes = Object.fromEntries([...defaultsOut].sort((a, b) => a[0].localeCompare(b[0])));
+  fs.mkdirSync(path.dirname(DEFAULTS_JSON), { recursive: true });
+  fs.writeFileSync(DEFAULTS_JSON, JSON.stringify({
+    generatedFrom: GENERATED_FROM,
+    sources: {
+      class: "set by the class itself (_setSoft, which wins over theme rules, or _setDefault, which theme rules override)",
+      theme: "a theme rule: the root DefaultTheme, or a chart module's own default theme for that module's classes; see \"theme\"",
+      jsdoc: "the @default tag in the typings",
+      fallback: "the fallback in the code's this.get(key, fallback)",
+    },
+    classes,
+  }, null, 1) + "\n");
+  console.error(`Wrote the defaults of ${defaultsOut.size} classes to ${DEFAULTS_JSON}`);
+  if (DEFAULTS_ONLY) process.exit(0);
+}
 // Only pages this generator made are replaced (see the check at the top).
 fs.mkdirSync(OUT, { recursive: true });
 for (const f of existingPages) {

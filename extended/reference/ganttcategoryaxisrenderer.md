@@ -38,3 +38,12 @@ Public properties (not settings):
 - **labels** (`ListTemplate<EditableAxisLabel>`) — The task name labels, which the user can edit. Configure them through `labels.template`.
 - **progressPies** (`ListTemplate<ProgressPie>`) — Pies that show each task's progress. Clicking one toggles the task between done and its previous progress.
 - **taskBullets** (`ListTemplate<Button>`) — Bullets left of the labels: a triangle that collapses and expands a task's subtasks, or a circle for a task without any.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("AxisRendererY")`) for signatures and descriptions.
+
+- _AxisRendererY_: positionToCoordinate, positionToPoint
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

@@ -24,3 +24,8 @@ Public properties (not settings):
 - **toX** (`number`)
 - **toY** (`number`)
 - **type** (`"quadraticCurveTo"`)
+
+## Methods
+
+- `addBounds(bounds: IBounds): void`
+- `path(sink: IPathSink): void`

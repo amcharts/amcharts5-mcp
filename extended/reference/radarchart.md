@@ -31,3 +31,13 @@ Extends: XYChart → SerialChart → Chart → Container → Sprite → Entity �
 Public properties (not settings):
 
 - **radarContainer** (`Container`) — default `Container.new()` — Container at the chart's center that holds its axes, grid, series and cursor.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("XYChart")`) for signatures and descriptions.
+
+- _XYChart_: handleWheel, zoomOut
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

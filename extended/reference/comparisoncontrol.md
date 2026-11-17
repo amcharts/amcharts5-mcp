@@ -24,3 +24,12 @@ Extends: DropdownListControl → StockControl → Entity → Settings
 - Settings: `IComparisonControlSettings` — get_api_reference shows it after this page
 - Private settings: `IComparisonControlPrivate`
 - Events: `IComparisonControlEvents`
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DropdownListControl")`) for signatures and descriptions.
+
+- _DropdownListControl_: getItemById, setItem, setItemById
+- _StockControl_: hide, isAccessible, show
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

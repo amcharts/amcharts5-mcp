@@ -45,3 +45,31 @@ Public properties (not settings):
 - **startBullets** (`ListTemplate<Circle>`) — Circles at the start of the bars. Hidden until a link being drawn hovers a task it can end on.
 - **startGrips** (`ListTemplate<Rectangle>`) — Grips for dragging the start of the bars.
 - **zeroRectangles** (`ListTemplate<RoundedRectangle>`) — Diamonds shown instead of bars for tasks with zero duration.
+
+## Methods
+
+- `disposeDataItem(dataItem: DataItem<this["_dataItemSettings"]>): void` — Disposes a data item with all its elements and links. Parameters: `dataItem`: Data item.
+- `disposeLinks(dataItem: DataItem<IGanttSeriesDataItem>): void` — Removes all links from and to a task. Parameters: `dataItem`: Data item.
+- `getDataItemDuration(dataItem: DataItem<IGanttSeriesDataItem>): number` — Returns a task's duration in `durationUnit` units, without the weekends and holidays it spans (see `excludeWeekends`). Parameters: `dataItem`: Data item. Returns: Duration in units
+- `getDepth(dataItem: DataItem<IGanttSeriesDataItem>): number` — Returns how deep a task is in the hierarchy: `0` for a top-level task. Parameters: `dataItem`: Data item. Returns: Depth level
+- `getEndValue(openValue: number, duration: number): number` — Returns the end of a task with the given start and duration. With `excludeWeekends`, weekends and holidays don't count toward the duration. Parameters: `openValue`: Start timestamp in milliseconds; `duration`: Duration in `durationUnit` units. Returns: End timestamp in milliseconds
+- `getHolidayCount(start: number, end: number): number` — Counts the `durationUnit` steps between two timestamps that fall on weekends or holidays, leaving out those at the very end of the range. Parameters: `start`: Start timestamp in milliseconds; `end`: End timestamp in milliseconds. Returns: Count of holiday units
+- `getOpenValue(openValue: number): number` — Returns a task start moved off weekends and holidays to the next working unit. With `excludeWeekends` off, returns it unchanged. Parameters: `openValue`: Start timestamp in milliseconds. Returns: Adjusted start timestamp
+- `getUnitDuration(): number` — Returns the length of one `durationUnit` in milliseconds. Returns: Duration in milliseconds
+- `hideDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Hides a task's bar, with its grips, bullets and links. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `isCollapsed(dataItem: DataItem<IGanttSeriesDataItem>): boolean` — Checks whether the task is hidden inside a collapsed parent task, at any level above it. Parameters: `dataItem`: Data item. Returns: Inside a collapsed parent?
+- `isHoliday(value: number): boolean` — Checks whether a timestamp falls on one of the `weekends` days or a `holidays` date. Always `false` while `excludeWeekends` is off. Parameters: `value`: Timestamp in milliseconds. Returns: `true` on a weekend or holiday
+- `showDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Shows a task's bar, with its grips, bullets and links. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("BaseColumnSeries")`) for signatures and descriptions.
+
+- _BaseColumnSeries_: createAxisRange
+- _XYSeries_: hide, hideTooltip, resetExtremes, show, showDataItemTooltip
+- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

@@ -12,3 +12,7 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `run(): void`

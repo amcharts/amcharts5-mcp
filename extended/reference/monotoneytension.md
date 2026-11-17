@@ -12,3 +12,11 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `areaEnd(): void`
+- `areaStart(): void`
+- `lineEnd(): void`
+- `lineStart(): void`
+- `point(x: number, y: number): void`

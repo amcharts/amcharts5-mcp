@@ -33,3 +33,16 @@ Extends: DateAxis → ValueAxis → Axis → Component → Container → Sprite 
 Public properties (not settings):
 
 - **gantt** (`Gantt`) — A reference to the parent `Gantt` chart.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DateAxis")`) for signatures and descriptions.
+
+- _DateAxis_: baseDuration, baseMainDuration, dateToPosition, getCellWidthPosition, getGroupInterval, getIntervalMax, getIntervalMin, getSeriesItem, getTooltipText, positionToDate, zoomToDates, zoomToValues
+- _ValueAxis_: basePosition, baseValue, getX, getY, positionToValue, valueToPosition
+- _Axis_: coordinateToPosition, createAxisRange, toAxisPosition, toGlobalPosition, updateTooltip, zoom
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

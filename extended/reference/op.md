@@ -13,3 +13,8 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 
 Extends: (none)
 Extended by: Arc, ArcTo, BeginFill, BeginGroup, BeginPath, BezierCurveTo, ClosePath, DrawCircle, DrawEllipse, DrawRect, EndFill, EndGroup, EndStroke, GraphicsImage, LineDash, LineDashOffset, LineStyle, LineTo, MoveTo, QuadraticCurveTo, Shadow
+
+## Methods
+
+- `addBounds(_bounds: IBounds): void`
+- `path(_sink: IPathSink): void`

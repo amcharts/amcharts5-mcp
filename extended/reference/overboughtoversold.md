@@ -38,3 +38,14 @@ Public properties (not settings):
 - **overSold** (`DataItem<IValueAxisDataItem>`) — Y axis data item of the oversold line.
 - **overSoldRange** (`ILineSeriesAxisRange`) — Axis range that colors the part of the series below `overSold`.
 - **series** (`LineSeries`) — The indicator's series.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("ChartIndicator")`) for signatures and descriptions.
+
+- _ChartIndicator_: hide, show
+- _Indicator_: markDataDirty, setCustomData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

@@ -36,3 +36,22 @@ Public properties (not settings):
 - **labelsContainer** (`Container`) — default `Container.new()` — Holds all labels.
 - **slices** (`ListTemplate<Graphics>`) — All slices of the series. Configure them through `slices.template`.
 - **slicesContainer** (`Container`) — default `Container.new()` — Holds all slices: circles and overlaps.
+
+## Methods
+
+- `getDataItemByCategory(id: string): DataItem<this["_dataItemSettings"]> | undefined` — Returns the data item of a circle by its category. Parameters: `id`: Category. Returns: Data item
+- `hideDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Hides a data item. Hiding a circle hides the overlaps it is part of too. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `hoverDataItem(dataItem: DataItem<this["_dataItemSettings"]>): void` — Hovers the slice of a data item. Parameters: `dataItem`: Target data item. _Since 5.0.7._
+- `showDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Shows a data item. Showing an overlap shows its circles too; showing a circle shows again the overlaps whose circles are all shown. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `unhoverDataItem(dataItem: DataItem<this["_dataItemSettings"]>): void` — Unhovers the slice of a data item. Parameters: `dataItem`: Target data item. _Since 5.0.7._
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Series")`) for signatures and descriptions.
+
+- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

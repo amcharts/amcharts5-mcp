@@ -25,3 +25,11 @@ Public properties (not settings):
 - **radius** (`number`)
 - **startAngle** (`number`)
 - **textType** (`"regular" | "circular" | "radial" | "aligned" | "adjusted"`)
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("SceneText")`) for signatures and descriptions.
+
+- _SceneText_: invalidateBounds, invalidateVisibility
+- _SceneNode_: clear, contains, dragging, getAdjustedBounds, getCanvas, getLayer, getLocalBounds, hovering, markDirtyLayer, on, setLayer, shouldCancelTouch, toGlobal, toLocal
+- _DisposerClass_: dispose, isDisposed

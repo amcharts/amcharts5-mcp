@@ -28,3 +28,15 @@ root.setThemes([am5themes_ResponsiveMax.new(root)]);
 ## Inheritance
 
 Extends: ResponsiveBaseTheme → Theme
+
+## Methods
+
+- `addRule(rule: IResponsiveRule): IResponsiveRule` — Adds a responsive rule and returns it. It applies at once if it is relevant. Parameters: `rule`: Responsive rule. Returns: Responsive rule
+- `dispose(): void`
+- `removeRule(rule: IResponsiveRule): void` — Removes a responsive rule from the theme, taking back its settings if it applies. Parameters: `rule`: Responsive rule.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Theme")`) for signatures and descriptions.
+
+- _Theme_: rule, ruleRaw

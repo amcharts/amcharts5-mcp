@@ -16,3 +16,9 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: DisposerClass
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DisposerClass")`) for signatures and descriptions.
+
+- _DisposerClass_: dispose, isDisposed

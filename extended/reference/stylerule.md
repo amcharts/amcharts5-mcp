@@ -22,3 +22,13 @@ Extends: DisposerClass
 Public properties (not settings):
 
 - **selector** (`string`) — A CSS selector text. E.g.: `.myClass p`
+
+## Methods
+
+- `setStyle(name: string, value: string): void` — Sets a value for specific style attribute. Parameters: `name`: Attribute; `value`: Value.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DisposerClass")`) for signatures and descriptions.
+
+- _DisposerClass_: dispose, isDisposed

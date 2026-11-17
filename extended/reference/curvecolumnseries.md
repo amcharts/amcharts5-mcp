@@ -33,3 +33,16 @@ Public properties (not settings):
 
 - **chart** (`CurveChart`) — The chart the series belongs to.
 - **columns** (`ListTemplate<Polygon>`) — The columns, drawn as polygons that follow the curve. Configure them through `columns.template`.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("BaseColumnSeries")`) for signatures and descriptions.
+
+- _BaseColumnSeries_: createAxisRange, hideDataItem, showDataItem
+- _XYSeries_: hide, hideTooltip, resetExtremes, show, showDataItemTooltip
+- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

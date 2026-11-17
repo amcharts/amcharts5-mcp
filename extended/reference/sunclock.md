@@ -14,3 +14,9 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `dispose(): void`
+- `isDisposed(): boolean`
+- `update(): void` — Applies the entity's `sunDate`; call it when that changes.

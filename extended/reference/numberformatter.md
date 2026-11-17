@@ -25,3 +25,14 @@ Extends: Entity → Settings
 
 - Settings: `INumberFormatterSettings` — get_api_reference shows it after this page
 - Private settings: `INumberFormatterPrivate`
+
+## Methods
+
+- `format(value: number | string, format?: string | Intl.NumberFormatOptions, precision?: number): string` — Formats a number as a string. Parameters: `value`: Value to format; `format`: Format string or `Intl.NumberFormat` options; `numberFormat` if not given; `precision`: Minimum number of decimals, padded with zeros; ignored for a format with a modifier. Returns: Formatted number
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Entity")`) for signatures and descriptions.
+
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

@@ -18,3 +18,8 @@ Extends: (none)
 Public properties (not settings):
 
 - **sensor** (`Sensor`)
+
+## Methods
+
+- `dispose(): void`
+- `isDisposed(): boolean`

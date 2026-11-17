@@ -25,3 +25,15 @@ Extends: Entity → Settings
 
 - Settings: `IDateFormatterSettings` — get_api_reference shows it after this page
 - Private settings: `IDateFormatterPrivate`
+
+## Methods
+
+- `format(source: any, format?: string | Intl.DateTimeFormatOptions, ignoreTimezone?: boolean): string` — Formats a `Date` as a string. Parameters: `source`: Date; `format`: Format string or `Intl.DateTimeFormat` options; `dateFormat` if not given; `ignoreTimezone`: Ignore the root's `utc` and `timezone` settings. Returns: Formatted date
+- `parse(source: any, format: string, utc?: boolean): Date` — Parses a date string in `format` into a `Date`. A `Date` is returned as it is and a number is read as a timestamp. A string that doesn't match the format is passed to the `Date` constructor. Parameters: `source`: Date string; `format`: Format of the string, such as `"yyyy-MM-dd"`; `utc`: Parse as UTC; the root's `utc` setting if not given. Returns: Date
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Entity")`) for signatures and descriptions.
+
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

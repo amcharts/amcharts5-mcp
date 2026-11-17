@@ -21,3 +21,11 @@ Public properties (not settings):
 - **imageArray** (`Uint8ClampedArray<ArrayBufferLike>`)
 - **margin** (`IMargin`)
 - **view** (`HTMLCanvasElement`)
+
+## Methods
+
+- `clear(): void`
+- `getImageArray(point: IPoint): Array<number>`
+- `getImageData(point: IPoint, bbox: DOMRect): ImageData`
+- `resize(canvasWidth: number, canvasHeight: number, domWidth: number, domHeight: number, resolution: number): void`
+- `setMargin(layers: Array<CanvasLayer>): void`

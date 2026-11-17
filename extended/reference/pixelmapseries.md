@@ -40,3 +40,21 @@ Extends: MapPolygonSeries → MapSeries → Series → Component → Container �
 Public properties (not settings):
 
 - **pixels** (`Graphics`) — The element that draws all pixels.
+
+## Methods
+
+- `getPolygonByPoint(point: IPoint): MapPolygon | undefined` — Returns the polygon whose pixel cell, or column, is at a point. Parameters: `point`: Point in pixels, relative to the root. Returns: Polygon
+- `markDirtyValues(dataItem: DataItem<this["_dataItemSettings"]>): void` — Redraws the pixels of `dataItem`, laying them out again if its geometry changed. Parameters: `dataItem`: Data item whose pixels to redraw.
+- `pixelCount(): number` — Returns the number of pixels in the grid.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("MapPolygonSeries")`) for signatures and descriptions.
+
+- _MapPolygonSeries_: getPolygonByGeoPoint, zoomToDataItem, zoomToDataItems
+- _Series_: addBullet, endIndex, hideDataItem, openUrl, showDataItem, startIndex
+- _Component_: getDataItemById, makeDataItem, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

@@ -17,3 +17,8 @@ import * as am5 from "@amcharts/amcharts5";
 
 Extends: (none)
 Extended by: CounterDisposer
+
+## Methods
+
+- `dispose(): void` — Disposes the object.
+- `isDisposed(): boolean` — Checks if object is disposed. Returns: Disposed?

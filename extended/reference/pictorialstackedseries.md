@@ -33,3 +33,16 @@ Public properties (not settings):
 
 - **seriesGraphics** (`Graphics`) — The `svgPath` shape drawn behind the slices, as a faint background.
 - **seriesMask** (`Graphics`) — The shape that masks the slices, drawn from `svgPath`. To change it, set `svgPath` on the series.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("FunnelSeries")`) for signatures and descriptions.
+
+- _FunnelSeries_: hideDataItem, showDataItem
+- _PercentSeries_: hide, hoverDataItem, show, unhoverDataItem
+- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

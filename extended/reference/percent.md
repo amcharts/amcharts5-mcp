@@ -40,6 +40,15 @@ Public properties (not settings):
   console.log(value * percent.value); // outputs 128
   ```
 
+## Methods
+
+- `interpolate(min: number, max: number): number` — Returns the number this percent of the way from `min` to `max`. Parameters: `min`: Value at 0%; `max`: Value at 100%. Returns: Value
+- `toString(): string` — Returns the value as a string, such as `"50%"`. Returns: String
+
+## Static methods
+
+- `Percent.normalize(percent: Percent | number, min: number, max: number): Percent` — Returns where `percent` falls between `min` and `max` as a `Percent`, from 0% to 100%. A `Percent` is returned as it is. Parameters: `percent`: Value; `min`: Value at 0%; `max`: Value at 100%. Returns: Percent
+
 ## Function `am5.percent()`
 
 Creates a `Percent` from a number in percent: `am5.percent(80)` is 80%.

@@ -12,3 +12,8 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `add(box: IBounds): void`
+- `hits(box: IBounds): boolean`

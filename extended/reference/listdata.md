@@ -24,3 +24,9 @@ Extends: List
 Public properties (not settings):
 
 - **processor** (`DataProcessor`) — A `DataProcessor` that processes each data item as it is added or replaced. Docs: https://docs.amcharts.com/v5/concepts/data/#pre-processing-data
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("List")`) for signatures and descriptions.
+
+- _List_: clear, contains, copyFrom, each, eachReverse, getIndex, hasIndex, indexOf, insertIndex, moveValue, pop, push, pushAll, removeIndex, removeValue, setAll, setIndex, shift, swap, unshift

@@ -18,3 +18,7 @@ import * as am5 from "@amcharts/amcharts5";
 ## Inheritance
 
 Extends: (none)
+
+## Static methods
+
+- `CSVParser.parse(input: string, options?: ICSVParserOptions): any` — Parses a CSV string into an array of objects, one per row. All values are strings. Parameters: `input`: CSV; `options`: Options. Returns: Data

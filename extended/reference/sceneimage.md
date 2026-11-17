@@ -28,3 +28,15 @@ Public properties (not settings):
 - **shadowOpacity** (`number`)
 - **tainted** (`boolean`)
 - **width** (`number`)
+
+## Methods
+
+- `clear(): void`
+- `getLocalBounds(): IBounds`
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("SceneNode")`) for signatures and descriptions.
+
+- _SceneNode_: contains, dragging, getAdjustedBounds, getCanvas, getLayer, hovering, invalidateBounds, markDirtyLayer, on, setLayer, shouldCancelTouch, toGlobal, toLocal
+- _DisposerClass_: dispose, isDisposed

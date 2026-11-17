@@ -16,3 +16,7 @@ import * as am5 from "@amcharts/amcharts5";
 ## Inheritance
 
 Extends: (none)
+
+## Static methods
+
+- `TextFormatter.getTextStyle(style: string): ITextStyle` — Reads a style block, such as `[bold #f00 fontSize: 20px]`, into text style settings: a font weight, `underline` or `line-through`, a color, and any `key: value` pairs. Parameters: `style`: Style block. Returns: Text style

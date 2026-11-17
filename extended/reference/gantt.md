@@ -50,3 +50,19 @@ Public properties (not settings):
 - **yAxis** (`GanttCategoryAxis<GanttCategoryAxisRenderer>`) — The `GanttCategoryAxis` that lists the tasks on the left.
 - **zoomControls** (`Container`) — Container with the fit and zoom-out buttons, at the top right of the plot area.
 - **zoomOutButton** (`Button`) — Button that zooms the date axis fully out.
+
+## Methods
+
+- `addNewTask(name?: string, start?: number, duration?: number, parentId?: string, progress?: number, linkToPrevious?: boolean): void` — Adds a new task, with an ID generated for it, and scrolls the task list to it. Parameters: `name`: Task name; `"New Task"` if not given; `start`: Start timestamp in milliseconds; if not given, the end of the parent or of the last task; `duration`: Duration in `durationUnit` units; `parentId`: ID of the parent task; the selected task if not given; `progress`: Initial progress, `0` to `1`; `linkToPrevious`: Link the previous task to this one; `linkNewTasks` if not given.
+- `clearAll(): void` — Deletes all tasks and date marks, restarts the colors and resets the timeline to start today.
+- `markDate(date: number): void` — Marks a date with a dashed line across the plot area, as a click on the lower date axis does. Parameters: `date`: Timestamp in milliseconds.
+- `unmarkDate(date: number): void` — Removes the mark of a date set by `markDate()` or a click. Parameters: `date`: Timestamp in milliseconds.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Container")`) for signatures and descriptions.
+
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

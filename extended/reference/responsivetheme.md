@@ -20,3 +20,10 @@ root.setThemes([am5themes_Responsive.new(root)]);
 ## Inheritance
 
 Extends: ResponsiveBaseTheme → Theme
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("ResponsiveBaseTheme")`) for signatures and descriptions.
+
+- _ResponsiveBaseTheme_: addRule, dispose, removeRule
+- _Theme_: rule, ruleRaw

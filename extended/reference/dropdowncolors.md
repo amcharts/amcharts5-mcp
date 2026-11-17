@@ -24,3 +24,15 @@ Extends: Dropdown → Entity → Settings
 - Settings: `IDropdownColorsSettings` — get_api_reference shows it after this page
 - Private settings: `IDropdownColorsPrivate`
 - Events: `IDropdownColorsEvents`
+
+## Methods
+
+- `addItem(color: Color): void` — Adds a color to the end of the list as shown. Parameters: `color`: Color.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Dropdown")`) for signatures and descriptions.
+
+- _Dropdown_: hide, isAccessible, isOpen, show, toggle
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

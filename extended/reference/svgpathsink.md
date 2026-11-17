@@ -22,3 +22,16 @@ Extends: (none)
 Public properties (not settings):
 
 - **d** (`string`)
+
+## Methods
+
+- `arc(cx: number, cy: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void`
+- `arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void`
+- `bezierCurveTo(cpX: number, cpY: number, cpX2: number, cpY2: number, toX: number, toY: number): void`
+- `clear(): void`
+- `closePath(): void`
+- `ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void`
+- `lineTo(x: number, y: number): void`
+- `moveTo(x: number, y: number): void`
+- `quadraticCurveTo(cpX: number, cpY: number, toX: number, toY: number): void`
+- `rect(x: number, y: number, width: number, height: number): void`

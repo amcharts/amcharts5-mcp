@@ -20,3 +20,9 @@ root.setThemes([am5themes_MaterialDark.new(root)]);
 ## Inheritance
 
 Extends: MaterialTheme → Theme
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Theme")`) for signatures and descriptions.
+
+- _Theme_: rule, ruleRaw

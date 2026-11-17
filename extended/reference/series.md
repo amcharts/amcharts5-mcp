@@ -32,3 +32,22 @@ Public properties (not settings):
 - **bullets** (`List<(<D extends DataItem<this["_dataItemSettings"]>>(root: Root, series: Series, dataItem: D) => Bullet | undefined)>`) — Functions that make the series' bullets: each is called for every data item and returns a `Bullet`, or nothing for no bullet. Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/
 - **bulletsContainer** (`Container`) — The `Container` that holds the series' bullets.
 - **chart** (`Chart`) — The chart the series belongs to.
+
+## Methods
+
+- `addBullet(dataItem: DataItem<this["_dataItemSettings"]>, bullet: Bullet): void` — Adds a bullet to one data item. Unlike `series.bullets`, it takes a `Bullet` instance, not a function. Parameters: `dataItem`: Target data item; `bullet`: Bullet instance. _Since 5.6.0._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/#adding-directly-to-data-item
+- `endIndex(): number` — Returns the index after the last data item in the visible range.
+- `hideDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Hides a data item and its bullets. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `openUrl(dataItem: DataItem<this["_dataItemSettings"]>): void` — Opens a data item's URL in the window set by `linkTarget`. Override to intercept links, e.g. in an editor. Parameters: `dataItem`: Data item. _Since 5.20.7._
+- `showDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Shows a data item and its bullets. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
+- `startIndex(): number` — Returns the index of the first data item in the visible range.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Component")`) for signatures and descriptions.
+
+- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

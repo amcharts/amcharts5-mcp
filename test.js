@@ -923,6 +923,16 @@ const tests = [
     },
     label: "get_example(a docs address ending in a shared example name) → get_doc",
   },
+  {
+    send: { jsonrpc: "2.0", id: 107, method: "tools/call", params: { name: "get_api_reference", arguments: { className: "ValueAxis" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("## Methods")) return "FAIL (no Methods section)";
+      if (!text.includes("`zoomToValues(start: number, end: number, duration?: number): void`")) return "FAIL (zoomToValues signature missing)";
+      return text.includes("## Other inherited methods") ? "PASS" : "FAIL (no inherited methods list)";
+    },
+    label: "get_api_reference('ValueAxis') — its methods, with signatures, and the inherited ones by name",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

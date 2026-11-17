@@ -12,3 +12,8 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `run(): void`
+- `test(name: string, fn: () => boolean): void`

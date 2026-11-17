@@ -40,3 +40,27 @@ Public properties (not settings):
 - **wheelable** (`boolean`)
 - **x** (`number`)
 - **y** (`number`)
+
+## Methods
+
+- `clear(): void`
+- `contains(child: SceneNode): boolean`
+- `dragging(): boolean`
+- `getAdjustedBounds(bounds: IBounds): IBounds`
+- `getCanvas(): HTMLCanvasElement`
+- `getLayer(): ILayer`
+- `getLocalBounds(): IBounds`
+- `hovering(): boolean`
+- `invalidateBounds(): void`
+- `markDirtyLayer(): void`
+- `on<C, Key extends keyof IRendererEvents>(key: Key, callback: (this: C, event: IRendererEvents[Key]) => void, context?: C): IDisposer`
+- `setLayer(order: number | undefined, margin: IMargin | undefined): void`
+- `shouldCancelTouch(): boolean`
+- `toGlobal(point: IPoint): IPoint`
+- `toLocal(point: IPoint): IPoint`
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DisposerClass")`) for signatures and descriptions.
+
+- _DisposerClass_: dispose, isDisposed

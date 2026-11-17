@@ -26,3 +26,8 @@ Public properties (not settings):
 - **toX** (`number`)
 - **toY** (`number`)
 - **type** (`"bezierCurveTo"`)
+
+## Methods
+
+- `addBounds(bounds: IBounds): void`
+- `path(sink: IPathSink): void`

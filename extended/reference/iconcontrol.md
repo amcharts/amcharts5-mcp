@@ -24,3 +24,17 @@ Extends: StockControl → Entity → Settings
 - Settings: `IIconControlSettings` — get_api_reference shows it after this page
 - Private settings: `IIconControlPrivate`
 - Events: `IIconControlEvents`
+
+## Methods
+
+- `getIconByPath(path: string): IIcon | undefined` — Returns the icon with an SVG path from `icons`. Parameters: `path`: SVG path of the icon. Returns: Icon _Since 5.9.0._
+- `setIcon(icon: IIcon): void` — Shows an icon on the button. Does not dispatch `selected`. Parameters: `icon`: Icon.
+- `setIconByPath(path: string): void` — Selects an icon by its SVG path: shows it on the button and dispatches `selected`. Parameters: `path`: SVG path of the icon. _Since 5.9.0._
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("StockControl")`) for signatures and descriptions.
+
+- _StockControl_: hide, isAccessible, show
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

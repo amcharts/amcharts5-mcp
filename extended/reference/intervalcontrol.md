@@ -24,3 +24,12 @@ Extends: DropdownListControl → StockControl → Entity → Settings
 - Settings: `IIntervalControlSettings` — get_api_reference shows it after this page
 - Private settings: `IIntervalControlPrivate`
 - Events: `IIntervalControlEvents`
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DropdownListControl")`) for signatures and descriptions.
+
+- _DropdownListControl_: getItemById, setItem, setItemById
+- _StockControl_: hide, isAccessible, show
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

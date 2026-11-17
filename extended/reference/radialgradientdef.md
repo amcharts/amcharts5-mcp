@@ -27,3 +27,7 @@ Public properties (not settings):
 - **x2** (`number`)
 - **y1** (`number`)
 - **y2** (`number`)
+
+## Methods
+
+- `addColorStop(offset: number, color: string): void`

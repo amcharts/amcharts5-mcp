@@ -34,3 +34,13 @@ Public properties (not settings):
 - **series** (`ColumnSeries`) — Series of the down volume columns.
 - **upSeries** (`ColumnSeries`) — Series of the up volume columns, drawn after the down volume.
 - **xAxis** (`ValueAxis<AxisRendererX>`) — Horizontal axis the rows' volume is measured on.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Indicator")`) for signatures and descriptions.
+
+- _Indicator_: hide, markDataDirty, setCustomData, show
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

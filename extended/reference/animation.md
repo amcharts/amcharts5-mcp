@@ -33,3 +33,10 @@ Public properties (not settings):
 - **playing** (`boolean`) — `true` while the animation plays, `false` when it is paused or stopped.
 - **stopped** (`boolean`) — `true` once the animation has stopped. A stopped animation can't be played again.
 - **to** (`Value`) — The value the animation goes to.
+
+## Methods
+
+- `pause(): void` — Pauses the animation; `play()` resumes it.
+- `play(): void` — Resumes a paused animation.
+- `stop(): void` — Stops the animation, leaving the setting at its current value.
+- `waitForStop(): Promise<void>` — Returns a promise that resolves when the animation stops. Returns: Promise

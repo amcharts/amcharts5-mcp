@@ -31,3 +31,8 @@ Public properties (not settings):
 - **view** (`HTMLCanvasElement`)
 - **visible** (`boolean`)
 - **width** (`number`)
+
+## Methods
+
+- `clear(): void`
+- `resize(canvasWidth: number, canvasHeight: number, domWidth: number, domHeight: number, resolution: number): void`

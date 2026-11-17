@@ -16,3 +16,9 @@ import * as am5radar from "@amcharts/amcharts5/radar";
 ## Inheritance
 
 Extends: Theme
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Theme")`) for signatures and descriptions.
+
+- _Theme_: rule, ruleRaw

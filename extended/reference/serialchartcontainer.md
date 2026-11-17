@@ -32,3 +32,12 @@ Extends: SerialChart → Chart → Container → Sprite → Entity → Settings
 Public properties (not settings):
 
 - **zoomableContainer** (`ZoomableContainer`) — The `ZoomableContainer` that holds the series and their bullets, so they can be zoomed and panned. _Note:_ Theme tag `serialchartcontainer`: the default theme sets `wheelable: false`, `pinchZoom: false` and `maskContent: true` on it.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Container")`) for signatures and descriptions.
+
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

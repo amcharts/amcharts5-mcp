@@ -25,3 +25,10 @@ Public properties (not settings):
 
 - **make** (`() => A`)
 - **template** (`Template<A>`)
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("ListAutoDispose")`) for signatures and descriptions.
+
+- _ListAutoDispose_: dispose, isDisposed, swap
+- _List_: clear, contains, copyFrom, each, eachReverse, getIndex, hasIndex, indexOf, insertIndex, moveValue, pop, push, pushAll, removeIndex, removeValue, setAll, setIndex, shift, unshift

@@ -16,3 +16,8 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 ## Inheritance
 
 Extends: (none)
+
+## Methods
+
+- `hit(root: SceneNode, defaultLayer: ILayer, point: IPoint): SceneNode | undefined`
+- `invalidate(): void` — Call after every render: the scene may have changed.

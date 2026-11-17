@@ -246,7 +246,7 @@ The server includes **1,900+ documents**:
 
 - **160+ documentation pages** — getting started, chart guides, concepts (themes, events, adapters, data binding, animations, accessibility, etc.), and framework integration guides for amCharts' React, Vue, Angular, Svelte and React Native packages (with Next.js, Nuxt, SvelteKit, React Router and Remix 3)
 - **690+ code examples** — 290+ working demos across 16 categories including column/bar, line/area, pie/donut, maps, hierarchy, flow, radar/polar, stock, gauges, Gantt, timeline, and more, plus 60+ complete JSON configs from the amCharts npm package and 330+ demos embedded in the docs pages (each page links its demos)
-- **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), events, properties, data item fields, the inheritance chain and the import line
+- **1,300+ API reference pages** — every class, interface and function in the amCharts 5 library, generated from the release's typings: settings with their real defaults (theme rules included), methods, events, properties, data item fields, the inheritance chain and the import line
 - **670+ geodata entries** — every map in `@amcharts/amcharts5-geodata`, for `list_geodata`
 - **Curated skill reference** — quick-start templates, chart-specific guides and a guide to writing JSON configs, from the [amCharts 5 AI Skill](https://github.com/amcharts/amcharts5-skill)
 

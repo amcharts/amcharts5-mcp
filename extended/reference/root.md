@@ -53,3 +53,19 @@ Public properties (not settings):
 - **updateTick** (`boolean`) — Whether the chart updates and redraws. Stops the chart from updating and redrawing with `false`, until set back to `true`.
 - **utc** (`boolean`) — Treats dates as UTC instead of the user's local time, when formatting and parsing them and when placing date axis grid. It takes precedence over `timezone`. Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/#utc-and-time-zones
 - **verticalLayout** (`VerticalLayout`) — default `VerticalLayout.new()` — A shared `VerticalLayout` for a `Container`'s `layout` setting.
+
+## Methods
+
+- `dispose(): void` — Disposes the Root and everything in it, and removes the chart from the page.
+- `documentPointToRoot(point: IPoint): IPoint` — Converts a point from viewport coordinates, such as a pointer event's `clientX` and `clientY`, to coordinates within the root. Parameters: `point`: Viewport point. Returns: Root point
+- `eachFrame(f: (currentTime: number) => void): IDisposer` — Calls a function on every frame, which keeps the chart rendering, until the returned disposer is disposed. Parameters: `f`: Function, given the frame's time in milliseconds. Returns: Disposer that stops the calls
+- `focused(target: Sprite): boolean` — Returns `true` if `target` is currently focused. Parameters: `target`: Target. Returns: Focused?
+- `height(): number` — Returns the chart's height in pixels: the container's, or the one from `calculateSize` if set. Returns: Height
+- `isDisposed(): boolean` — Returns `true` if the Root is disposed. Returns: Disposed?
+- `markDirtyGlobal(container?: Container): void` — Makes every element inside a container update and re-measure on the next frame. Parameters: `container`: Container; the main `container` if not given.
+- `moveDOM(id: string | HTMLElement): void` — Moves the chart to another HTML element and resizes it to fit there. Nothing happens if no element with that `id` exists. Parameters: `id`: The element, or its `id`.
+- `readerAlert(text: string): void` — Makes screen readers read out a message. Parameters: `text`: Alert text. Docs: https://docs.amcharts.com/v5/concepts/accessibility/
+- `resize(): void` — Resizes the chart to fit its container. Call it after the container's size changes when `autoResize` is `false`.
+- `rootPointToDocument(point: IPoint): IPoint` — Converts a point from coordinates within the root to viewport coordinates, as in a pointer event's `clientX` and `clientY`. Parameters: `point`: Root point. Returns: Viewport point
+- `setThemes(themes: Array<Theme>): void` — Sets the chart's themes, replacing any set before. Parameters: `themes`: A list of themes. Docs: https://docs.amcharts.com/v5/concepts/themes/
+- `width(): number` — Returns the chart's width in pixels: the container's, or the one from `calculateSize` if set. Returns: Width

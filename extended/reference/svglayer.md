@@ -24,3 +24,7 @@ Public properties (not settings):
 - **order** (`number`)
 - **visible** (`boolean`)
 - **width** (`number`)
+
+## Methods
+
+- `resize(width: number, height: number): void`

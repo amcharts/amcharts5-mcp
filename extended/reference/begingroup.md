@@ -22,3 +22,9 @@ Public properties (not settings):
 - **id** (`string`)
 - **name** (`string`)
 - **type** (`"beginGroup"`)
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Op")`) for signatures and descriptions.
+
+- _Op_: addBounds, path

@@ -15,3 +15,8 @@ Not exported from any `@amcharts/amcharts5` entry point (internal class).
 
 Extends: (none)
 Extended by: ArrayDisposer, MultiDisposer, MutableValueDisposer, SceneNode, StyleRule, StyleSheet
+
+## Methods
+
+- `dispose(): void` — Disposes the object.
+- `isDisposed(): boolean` — Checks if object is disposed. Returns: Disposed?

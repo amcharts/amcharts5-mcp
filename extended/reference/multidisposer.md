@@ -22,3 +22,9 @@ Extends: DisposerClass
 Public properties (not settings):
 
 - **disposers** (`IDisposer[]`)
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DisposerClass")`) for signatures and descriptions.
+
+- _DisposerClass_: dispose, isDisposed

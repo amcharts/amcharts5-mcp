@@ -22,3 +22,15 @@ Public properties (not settings):
 - **interactionsEnabled** (`boolean`)
 - **tapToActivate** (`boolean`)
 - **tapToActivateTimeout** (`number`)
+
+## Methods
+
+- `addEvent<C, Key extends keyof IRendererEvents>(object: N, key: Key, callback: (this: C, event: IRendererEvents[Key]) => void, context?: C): IDisposer`
+- `afterRender(): void` — Re-runs hover for the last pointer position, after a render may have moved things under it.
+- `removeHovering(obj: N): void`
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("DisposerClass")`) for signatures and descriptions.
+
+- _DisposerClass_: dispose, isDisposed

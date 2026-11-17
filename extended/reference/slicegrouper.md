@@ -32,3 +32,14 @@ Extends: Entity → Settings
 Public properties (not settings):
 
 - **zoomOutButton** (`Button`) — Button shown while the small slices are shown after a click on the group slice; it groups them again. Made only when `clickBehavior` is not `"none"`.
+
+## Methods
+
+- `zoomOut(): void` — Groups the small slices again, as a click on `zoomOutButton` does.
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Entity")`) for signatures and descriptions.
+
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll

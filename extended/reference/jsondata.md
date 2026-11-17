@@ -22,3 +22,8 @@ Extends: (none)
 Public properties (not settings):
 
 - **processor** (`DataProcessor`) — An optional processor for data. Docs: https://docs.amcharts.com/v5/concepts/data/#pre-processing-data
+
+## Methods
+
+- `decrementRef(): void`
+- `incrementRef(): void`

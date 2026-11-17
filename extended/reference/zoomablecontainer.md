@@ -32,3 +32,19 @@ Extends: Container → Sprite → Entity → Settings
 Public properties (not settings):
 
 - **contents** (`Container`) — The container that zooms and pans. Add elements to `contents.children`, not to the ZoomableContainer's own `children`. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#zoomable-container
+
+## Methods
+
+- `goHome(): void` — Takes the contents back to their home view: scale `1`, not panned.
+- `zoomIn(): Animation<this["_settings"]["scale"]> | undefined` — Zooms in by `zoomStep`, around the container's center. Returns: Zoom animation
+- `zoomOut(): Animation<this["_settings"]["scale"]> | undefined` — Zooms out by `zoomStep`, around the container's center. Returns: Zoom animation
+- `zoomToPoint(point: IPoint, level: number): Animation<this["_settings"]["scale"]> | undefined` — Zooms to a level, keeping the contents under `point` in place. The level is kept between `minZoomLevel` and `maxZoomLevel`. Parameters: `point`: Point in the container's coordinates; `level`: Zoom level. Returns: Zoom animation
+
+## Other inherited methods
+
+Names only — see the declaring class's page (e.g. `get_api_reference("Container")`) for signatures and descriptions.
+
+- _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
+- _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
+- _Entity_: get, isType, remove, set, setTimeout
+- _Settings_: animate, dispose, has, isDisposed, off, offDebounced, offDebouncedPrivate, offPrivate, on, onDebounced, onPrivate, onPrivateDebounced, once, onceDebounced, removeAll, setAll
