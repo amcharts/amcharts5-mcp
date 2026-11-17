@@ -319,10 +319,9 @@ function build() {
     package: PKG.name,
     version: PKG.version,
     cdnBase: CDN_BASE,
-    // The same script files in the package's dist/, which unpkg serves (not
-    // jsDelivr: the package is over its size limit). Only in releases that
-    // have dist/; null before.
-    npmCdnBase: fs.existsSync(path.join(PKG_DIR, "dist")) ? `https://unpkg.com/${PKG.name}@${PKG.version}/dist/` : null,
+    // The same script files in the package's dist/, which jsDelivr (and unpkg)
+    // serve. Only in releases that have dist/; null before.
+    npmCdnBase: fs.existsSync(path.join(PKG_DIR, "dist")) ? `https://cdn.jsdelivr.net/npm/${PKG.name}@${PKG.version}/dist/` : null,
     rules: {
       cdn: "geodata/<path><Variant>.js, relative to cdnBase",
       global: "am5geodata_<path with / replaced by _><Variant> (set by the CDN script)",

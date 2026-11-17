@@ -2,7 +2,7 @@
   "package": "@amcharts/amcharts5-geodata",
   "version": "5.2.0",
   "cdnBase": "https://cdn.amcharts.com/lib/5/",
-  "npmCdnBase": "https://unpkg.com/@amcharts/amcharts5-geodata@5.2.0/dist/",
+  "npmCdnBase": "https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/",
   "rules": {
     "cdn": "geodata/<path><Variant>.js, relative to cdnBase",
     "global": "am5geodata_<path with / replaced by _><Variant> (set by the CDN script)",

@@ -89,9 +89,9 @@ function formatEntry(e) {
 
 function header(index) {
   // Where only npm CDNs are allowed (AI sandboxes, strict CSPs): the same
-  // path below geodata/, under the package's dist/ on unpkg
+  // path below geodata/, under the package's dist/ on jsDelivr (or unpkg)
   const npmCdn = index.npmCdnBase
-    ? `npm CDN (AI sandboxes, strict CSPs): unpkg ${index.npmCdnBase} + the path below \`geodata/\` (e.g. \`region/world/europeLow.js\`), same global; not jsDelivr\n`
+    ? `npm CDN (AI sandboxes, strict CSPs): ${index.npmCdnBase} + the path below \`geodata/\` (e.g. \`region/world/europeLow.js\`), same global; unpkg serves the same path\n`
     : "";
   return `Package \`${index.package}\` ${index.version} · CDN base ${index.cdnBase}\n` + npmCdn +
     `Names below are for the first detail level listed (usually Low, the smallest); for High or Ultra, swap the suffix in all three. ` +
