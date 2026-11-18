@@ -1,5 +1,5 @@
 import { spawn } from "child_process";
-import { readFileSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -941,6 +941,28 @@ const tests = [
       return /not jsDelivr/.test(text) ? "FAIL (still says not jsDelivr)" : "PASS";
     },
     label: "list_geodata — the npm-CDN base is jsDelivr (unpkg serves the same path)",
+  },
+  {
+    // Docs demos must not call am5.addLicense(), and no served file may carry a key-shaped string.
+    send: { jsonrpc: "2.0", id: 109, method: "tools/call", params: { name: "get_example", arguments: { path: "examples/docs-demos/synced-value-axes" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes("am5.Root.new")) return `FAIL (demo not served: ${text.slice(0, 120)})`;
+      if (/addLicense/.test(text)) return "FAIL (the demo still sets a license)";
+      const key = /["'`]AM5[CMSG][^"'`\s]{5,}["'`]/;
+      const found = [];
+      const walk = (dir) => {
+        for (const e of readdirSync(dir, { withFileTypes: true })) {
+          const p = dir + "/" + e.name;
+          if (e.isDirectory()) walk(p);
+          else if (/\.(md|json|js)$/.test(e.name) && key.test(readFileSync(p, "utf8"))) found.push(p.slice(ROOT.length + 1));
+        }
+      };
+      for (const d of ["extended", "amcharts5-skill/amcharts5-skill", "plugin"]) walk(ROOT + "/" + d);
+      if (key.test(readFileSync(ROOT + "/amcharts5-skill/cursorrules", "utf8"))) found.push("amcharts5-skill/cursorrules");
+      return found.length ? `FAIL (license keys in ${found.join(", ")})` : "PASS";
+    },
+    label: "no license key the library would accept in the docs demos, docs, skill or plugin",
   },
 ];
 

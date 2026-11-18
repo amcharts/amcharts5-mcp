@@ -61,6 +61,10 @@ export const demoCss = (css) => (css || "").replace(BODY_FONT, "").trim();
 // Animated theme. A chart built from one should still follow the skill.
 export const FOCUSED = "It shows one setting in isolation: for a chart you build, start the themes with `Animated` and `ResponsiveMax`.";
 
+// A demo never needs a license key: drop any line that sets one, so none is copied into a chart.
+export const LICENSE_LINE = /^[ \t]*am5\.(?:addLicense|registry\.licenses\.push)\([^)]*\);?[ \t]*\r?\n(?:[ \t]*\r?\n)?/gm;
+export const demoJs = (js) => js.replace(LICENSE_LINE, "");
+
 /** The example file for a demo shown on the given docs pages ([{ path, title }]). */
 export function demoExample(demo, pages, scraped) {
   const where = pages.map((p) => `"${p.title}" (get_doc(path: "${p.path}"))`);
@@ -79,7 +83,7 @@ export function demoExample(demo, pages, scraped) {
     "## JavaScript",
     "",
     "```javascript",
-    demo.js,
+    demoJs(demo.js),
     "```",
     "",
     "## HTML",

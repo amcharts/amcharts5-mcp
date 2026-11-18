@@ -22,8 +22,6 @@ A demo from the docs page "Value axis" (get_doc(path: "charts/xy-chart/axes/valu
  * https://docs.amcharts.com/v5/
  * ---------------------------------------
  */
-am5.addLicense("AM5C1231231321");
-
 // Create root element
 // https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");

@@ -23,8 +23,6 @@ A demo from the docs page "Flow chart bullets" (get_doc(path: "charts/flow-chart
  * ---------------------------------------
  */
 
-am5.addLicense("AM5C12312313");
-
 // Create root element
 // https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");

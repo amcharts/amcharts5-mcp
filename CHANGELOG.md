@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [Unreleased]
+
+### Added
+- **License guidance in the skill**, only when it's relevant: when the user asks about the logo, licensing, pricing or branding, or the chart is for a commercial product, and only what was asked. amCharts 5 is free in any project, commercial included, with a small logo on each chart; a commercial license key removes it; which license fits, when asked (Basic, SaaS, OEM, Extended OEM; Charts, Maps, Stock Chart and Gantt licensed separately); and the informational page https://www.amcharts.com/pricing/licenses-explained/. No prices or store links. SKILL.md "License and the amCharts logo", and cursorrules.
+- The skill doesn't write code that hides the logo (code, CSS, cropping, editing the library): it says the free license requires the logo and points to a license key.
+- 1 new test (109): docs demos don't call `am5.addLicense()`, and no served file carries a key-shaped string.
+
+### Changed
+- License placeholders are `"YOUR-AMCHARTS-LICENSE-KEY"` instead of `"AM5C-…"`, and the skill never writes or invents a key.
+- gantt.md's XY example is "Gantt-like timeline with an XY chart" instead of "Simulated Gantt with XY chart (no Gantt license needed)", with a line on when `am5gantt.Gantt` is the better choice (editable tasks, task links, progress bars, the task list with editable names and collapsible groups).
+- Docs: getting-started, map-chart, ai and react-native re-imported after the docs' geodata-on-jsDelivr fix went live (same content as 1.9.7's corrections).
+
+### Fixed
+- **Five docs demos called `am5.addLicense()` with made-up keys**, so a chart copied from them could hide the logo without a license. The docs-demo import drops license lines (`scripts/docs-demos.mjs`), and the five demos are cleaned. Reported to the docs team.
+
 ## [1.9.7] - 2026-11-17
 
 ### Fixed
