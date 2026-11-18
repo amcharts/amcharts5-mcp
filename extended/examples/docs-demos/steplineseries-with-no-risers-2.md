@@ -2,7 +2,7 @@
 title: "StepLineSeries with no risers"
 source: "https://docs.amcharts.com/embeds/v5/steplineseries-with-no-risers-2/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-18"
 docsPages: ["charts/xy-chart/series/step-line-series"]
 ---
 
@@ -22,6 +22,7 @@ A demo from the docs page "Step line series" (get_doc(path: "charts/xy-chart/ser
  * https://docs.amcharts.com/v5/
  * ---------------------------------------
  */
+
 // Create root and chart
 var root = am5.Root.new("chartdiv");
 

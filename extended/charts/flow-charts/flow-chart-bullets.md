@@ -1,7 +1,7 @@
 ---
 title: "Flow chart bullets"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/flow-chart-bullets/"
-scraped: "2026-11-16"
+scraped: "2026-11-18"
 ---
 
 This tutorial will look at how we can use bullets on flow charts.

@@ -1,7 +1,7 @@
 ---
 title: "Step line series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-18"
 ---
 
 > A step line series is basically the same thing as line series, except instead of connecting data items with direct lines, it displays a stepped plot using only horizontal and vertical lines.

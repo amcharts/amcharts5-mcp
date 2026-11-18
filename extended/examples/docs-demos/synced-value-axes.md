@@ -2,7 +2,7 @@
 title: "Synced value axes"
 source: "https://docs.amcharts.com/embeds/v5/synced-value-axes/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-18"
 docsPages: ["charts/xy-chart/axes/value-axis"]
 ---
 
@@ -22,6 +22,7 @@ A demo from the docs page "Value axis" (get_doc(path: "charts/xy-chart/axes/valu
  * https://docs.amcharts.com/v5/
  * ---------------------------------------
  */
+
 // Create root element
 // https://docs.amcharts.com/v5/getting-started/#root-element
 var root = am5.Root.new("chartdiv");

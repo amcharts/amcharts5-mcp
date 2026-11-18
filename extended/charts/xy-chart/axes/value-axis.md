@@ -1,7 +1,7 @@
 ---
 title: "Value axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/"
-scraped: "2026-11-16"
+scraped: "2026-11-18"
 ---
 
 Value axis is used for plotting numeric values.

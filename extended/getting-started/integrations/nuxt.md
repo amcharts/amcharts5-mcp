@@ -1,7 +1,7 @@
 ---
 title: "Using amCharts 5 with Nuxt 3"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/nuxt/"
-scraped: "2026-11-16"
+scraped: "2026-11-18"
 ---
 
 > Nuxt is a Vue framework: use our @amcharts/amcharts5-vue package, as in the Vue.js tutorial. It works with Nuxt's server rendering: there is no need for <ClientOnly>, and nothing to set in nuxt.config.ts.
@@ -54,7 +54,7 @@ A license key goes in a client plugin, e.g. `plugins/amcharts.client.ts`:
 import * as am5 from "@amcharts/amcharts5";
 
 export default defineNuxtPlugin(() => {
-  am5.addLicense("AM5C-...");
+  am5.addLicense("YOUR-AMCHARTS-LICENSE-KEY");
 });
 ```
 
