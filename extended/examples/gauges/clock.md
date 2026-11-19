@@ -2,10 +2,10 @@
 title: "Clock"
 source: "https://www.amcharts.com/demos/clock/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-An analog clock made from a gauge: the dial is a circular axis from 0 to 12, and the hours, minutes and seconds are three clock hands. It shows the time on your device, live.
+An analog clock made from a gauge: the dial is a circular axis from 0 to 12, and three clock hands show the time on your device, live.
 
 Gauges beyond numbers: A clock is a gauge with three needles on one scale. Built with a chart library, the face can match the rest of a dashboard, with the same fonts, colors and themes, and the hands can follow any time you give them, like the time in another office.
 

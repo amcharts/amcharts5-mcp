@@ -2,10 +2,10 @@
 title: "Chart with Gaps in Data"
 source: "https://www.amcharts.com/demos/chart-with-gaps-in-data/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A line that breaks where data is missing instead of drawing across the hole. Here, 1967 to 1970 and 1984 to 1988 have no values, and the years above zero take a second color.
+A line that breaks where data is missing. Here, 1967 to 1970 and 1984 to 1988 have no values, and the years above zero take a second color.
 
 Why show the gaps: A line drawn across missing data invents values nobody measured. Breaking it tells readers the record has a hole, which matters for sensor outages, closed markets or years without a survey. Switch on Connect across gaps above to see what the bridge hides.
 

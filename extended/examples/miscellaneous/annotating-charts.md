@@ -2,10 +2,10 @@
 title: "Annotating Charts"
 source: "https://www.amcharts.com/demos/annotating-charts/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A pie chart with notes drawn on it: a callout and arrows saying which slices need work. They come from the exporting menu’s Annotate tool, which lets anyone draw on a chart and save the result.
+A pie chart with a callout and arrows drawn on it, made with the exporting menu’s Annotate tool, which lets anyone draw on a chart and save it.
 
 When to annotate a chart: A note on the chart says what to look at before anyone asks. The Annotate tool lets readers add their own arrows and callouts and download the result, and the code can load notes made earlier, like the ones here.
 

@@ -2,10 +2,10 @@
 title: "Linear Process Diagram"
 source: "https://www.amcharts.com/demos/linear-process-diagram/"
 category: "timeline"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A day from 6 a.m. to 2 a.m. drawn as a winding road, with an icon card for each activity. Things done alongside the main routine, like coffee and reading, run on a second track.
+A day from 6 a.m. to 2 a.m. as a winding road with an icon card for each activity, and side activities like coffee and reading on a second track.
 
 When a process diagram works: Laying steps along a road turns a schedule into a story: people follow it from start to finish, and the icons say what happens without a legend. Time runs at an even pace along the road, so long steps take up more of it than short ones.
 

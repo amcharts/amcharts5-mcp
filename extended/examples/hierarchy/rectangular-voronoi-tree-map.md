@@ -2,10 +2,10 @@
 title: "Rectangular Drill-Down Voronoi Tree Map"
 source: "https://www.amcharts.com/demos/rectangular-voronoi-tree-map/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A Voronoi treemap splits a rectangle into irregular cells sized by value. Here, the world’s people: one cell per country, grouped by continent, with countries under five million gathered into Others.
+A Voronoi treemap splits a rectangle into irregular cells sized by value. Here, the world’s people by country and continent, small countries in Others.
 
 When a Voronoi treemap works: Like any treemap, it shows how a total splits into groups and parts, by area. The irregular cells make the groups easy to tell apart and look less like a spreadsheet, at some cost to precision: odd shapes are harder to compare than boxes.
 

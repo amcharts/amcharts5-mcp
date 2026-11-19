@@ -2,10 +2,10 @@
 title: "Waffle Chart"
 source: "https://www.amcharts.com/demos/waffle-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A waffle chart shows parts of a whole as a grid of 100 squares, one per percent. Here, how visitors reached a website: 52 squares for search, 28 direct, 12 social and 8 email.
+A waffle chart shows parts of a whole as 100 squares, one per percent. Here, how visitors reached a website: 52 search, 28 direct, 12 social and 8 email.
 
 When to use a waffle chart: A waffle chart turns percentages into squares you can count, so reading it is more like counting than judging angles. It works best with a few parts and whole numbers, and small shares like 8% still get a block of their own. For close comparisons, a bar chart is clearer.
 

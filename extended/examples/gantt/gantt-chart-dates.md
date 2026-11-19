@@ -2,10 +2,10 @@
 title: "Editable Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart-dates/"
 category: "gantt"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-Seven project phases in a Gantt chart you can change in place: drag and resize the bars, drag a bar’s small triangle to set its progress, and draw links between tasks from the dot at a bar’s end.
+A Gantt chart of seven phases to edit in place: drag and resize bars, drag a bar’s triangle to set its progress, and draw links from the dot at its end.
 
 When people edit the plan: An editable Gantt chart turns the schedule into the planning tool itself: people move and stretch tasks where they see them, instead of typing dates into a form. Linked tasks move along, and every change fires an event your code can use to save the plan.
 

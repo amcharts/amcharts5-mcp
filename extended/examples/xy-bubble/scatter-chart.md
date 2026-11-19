@@ -2,10 +2,10 @@
 title: "Scatter Chart"
 source: "https://www.amcharts.com/demos/scatter-chart/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A scatter chart places each point by two values, one along each axis. Here two sets of 12 points, one drawn as upward triangles and one as downward, each with its trend line.
+A scatter chart places each point by two values, one per axis. Here, two sets of 12 points, as upward and downward triangles, each with its trend line.
 
 When a scatter chart works: A scatter chart answers one question: when one value goes up, does the other follow? Each point is one pair of values, and a trend line sums up the direction and how steep it is. With two series, the two lines show which group rises faster.
 

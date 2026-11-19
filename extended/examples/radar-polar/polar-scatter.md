@@ -2,10 +2,10 @@
 title: "Polar Scatter"
 source: "https://www.amcharts.com/demos/polar-scatter/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A scatter plot on a 24-hour clock: each dot is one commuter trip, placed by the time it started and how long it took. Car trips stretch out at rush hour; train trips take about the same time all day.
+A scatter plot on a 24-hour clock, each dot a commuter trip placed by its start and duration. Car trips stretch out at rush hour; train trips hardly change.
 
 When a polar scatter plot works: When one of the two values goes round in a cycle, like the hour of the day or a compass bearing, a circle joins its ends: trips just before and after midnight sit side by side. Clusters then show as clumps at their time of day. For values that don’t wrap around, a regular scatter plot is easier to read.
 

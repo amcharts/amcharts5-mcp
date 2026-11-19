@@ -2,10 +2,10 @@
 title: "Shaped Word Cloud"
 source: "https://www.amcharts.com/demos/shaped-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A word cloud that fills a shape: the words pack into the outline of a head, each sized by its weight. Here, what might be on someone’s mind, from money, family and work down to socks and wifi.
+A word cloud packed into the outline of a head, each word sized by its weight: what might be on someone’s mind, from money and family down to socks and wifi.
 
 When to give a word cloud a shape: A shape tells the topic before a single word is read: a head for thoughts, a heart for what people love, a country’s outline for what its people say. It makes a poster or a title slide, but the shape takes the space a plain cloud would use, so the smallest words shrink further.
 

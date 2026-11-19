@@ -2,10 +2,10 @@
 title: "Separate Volume Panel"
 source: "https://www.amcharts.com/demos/separate-volume-panel/"
 category: "stock"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-Candlesticks on top and trading volume in a panel of its own below. The two panels zoom, scroll and follow the cursor together, and volume gets its own scale instead of a strip under the candles.
+Candlesticks on top and trading volume in its own panel below, with its own scale. The two panels zoom, scroll and follow the cursor together.
 
 Volume in its own panel: Volume at the bottom of the price panel saves room, but it shares that room with the lowest prices and has no scale to read. A panel of its own gives volume an axis and gridlines, and readers can resize the panels or swap their order with the buttons in each panel’s corner.
 

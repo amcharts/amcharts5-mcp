@@ -2,10 +2,10 @@
 title: "Line with Changing Color"
 source: "https://www.amcharts.com/demos/line-with-changing-color/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-One line in three colors: each stretch of years gets its own color for the line, the area under it and the points. The colors are set in the data, so you choose where each stretch begins.
+One line in three colors: each stretch of years colors its line, area and points, and the colors are set in the data, so you choose where each begins.
 
 When to change a line’s color: Changing color along a line splits one series into chapters without breaking it: before and after a launch, a new policy or a new owner. The line stays one line, so the trend still reads across the change.
 

@@ -2,7 +2,7 @@
 title: "Day and Night World Map"
 source: "https://www.amcharts.com/demos/day-and-night-world-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
 A live map of where it is day and where it is night right now, with the city lights on the night side, the twilight in between, and the sun and moon where they stand overhead. Click a country to see whether it is day or night there.
@@ -15,7 +15,7 @@ To make your own version, open it in Chart Maker and change it without code, or 
 
 Prompt: Create a live world map over NASA’s satellite pictures of the Earth, by day where the sun is up and city lights where it is night, that shades the night side with twilight in steps and moves on with the clock. Mark the sun and the moon where each stands overhead, draw the moon in its current phase, show the time in a label, and add the countries’ names, hidden at first, each shown only where it fits. Use the amCharts 5 library with its ResponsiveMax theme.
 
-The demo's page on amcharts.com adds controls that are not part of this code: Time, Date, Projection, Satellite view, Country names, Moon, Twilight, Night opacity.
+The demo's page on amcharts.com adds controls that are not part of this code: Time, Date, Projection, Satellite view, Country names, Moon, Twilight, City clocks.
 
 ## JavaScript
 

@@ -2,10 +2,10 @@
 title: "Zoomable Force Directed Tree"
 source: "https://www.amcharts.com/demos/zoomable-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A force-directed tree lays out a hierarchy as linked bubbles that push apart until they settle. This one holds the coffee flavor wheel, 85 flavors in nine families, in a view you can zoom and pan.
+A force-directed tree lays out a hierarchy as linked bubbles that push apart until they settle: here the coffee flavor wheel, 85 flavors in nine families.
 
 When to zoom a force-directed tree: A big tree squeezed into one view turns into a cloud of dots. Zooming lets the whole structure stay on screen while people move in on one branch to read its names, which suits taxonomies and catalogs with a hundred items or more.
 

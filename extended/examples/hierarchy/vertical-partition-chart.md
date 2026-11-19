@@ -2,10 +2,10 @@
 title: "Vertical Partition Chart"
 source: "https://www.amcharts.com/demos/vertical-partition-chart/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A partition chart, or icicle chart, stacks a hierarchy in rows: the whole on top, each row one level deeper, each box as wide as its share. Here, the 168 hours of one person’s week.
+A partition (icicle) chart stacks a hierarchy in rows, the whole on top and each box as wide as its share. Here, the 168 hours of one person’s week.
 
 Rows or columns?: A vertical partition reads from the top down, like icicles, and fits a wide space such as the top of a dashboard. In narrow boxes the labels turn sideways, so it suits short names; for long ones, the horizontal layout keeps them level.
 

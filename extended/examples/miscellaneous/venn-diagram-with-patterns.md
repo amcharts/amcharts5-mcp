@@ -2,10 +2,10 @@
 title: "Venn Diagram with Patterns"
 source: "https://www.amcharts.com/demos/venn-diagram-with-patterns/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A Venn diagram draws each group as a circle, and the overlap holds what belongs to both. Here, a joke in black and white: a polar bear and a black bear overlap in a panda, filled with a dot pattern.
+A Venn diagram draws each group as a circle, the overlap holding what belongs to both. Here, a polar bear and a black bear overlap in a dotted panda.
 
 When to fill with patterns: Patterns tell areas apart without color: they survive black-and-white printing, help people who can’t tell some colors apart, and can carry meaning of their own, like the panda’s spots. Keep them few and simple, so they don’t buzz.
 

@@ -2,10 +2,10 @@
 title: "Time Zones and Daylight Saving"
 source: "https://www.amcharts.com/demos/time-zones-and-daylight-saving/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-Two offices open 9 to 5 on their own clocks. The chart shows them in Berlin time, or any zone you pick: its days start at that zone's midnight, and where its clocks change, a day has 25 hours.
+Two offices open 9 to 5 local time, shown in Berlin time or any zone you pick: days start at its midnight, and where its clocks change, a day has 25 hours.
 
 Dates belong to a time zone: A timestamp is a moment; which day and hour it falls on depends on where it is read. Set root.timezone and the chart reads every moment in that zone, whatever the viewer's own: the date axis puts its day lines at the zone's midnight, writes labels and tooltips in its time, and stretches a day to 25 hours, or shrinks it to 23, where the zone's clocks change. Between Europe's change on October 25 and America's on November 1, the two offices are five hours apart instead of six, and share three hours a day instead of two.
 

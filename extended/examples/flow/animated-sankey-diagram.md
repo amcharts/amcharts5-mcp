@@ -2,10 +2,10 @@
 title: "Animated Sankey Diagram"
 source: "https://www.amcharts.com/demos/animated-sankey-diagram/"
 category: "flow"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A Sankey diagram with amounts that keep floating along the bands, bigger numbers on bigger flows. Here, an example of $1.77 trillion in company cash, split by industry and by where it is held.
+A Sankey diagram with amounts floating along its bands. Here, an example of $1.77 trillion in company cash, split by industry and by where it is held.
 
 When to animate a flow: Floating numbers make a still Sankey diagram move the way the money does. That catches attention on a landing page or in a talk; for careful reading, the labels on the bands carry the same numbers and stay put.
 

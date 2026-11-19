@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **License guidance in the skill**, only when it's relevant: when the user asks about the logo, licensing, pricing or branding, or the chart is for a commercial product, and only what was asked. amCharts 5 is free in any project, commercial included, with a small logo on each chart; a commercial license key removes it; which license fits, when asked (Basic, SaaS, OEM, Extended OEM; Charts, Maps, Stock Chart and Gantt licensed separately); and the informational page https://www.amcharts.com/pricing/licenses-explained/. No prices or store links. SKILL.md "License and the amCharts logo", and cursorrules.
 - The skill doesn't write code that hides the logo (code, CSS, cropping, editing the library): it says the free license requires the logo and points to a license key.
+- Example `examples/gauges/world-clock`, new on amcharts.com: four live analog clocks (yours, New York, London, Tokyo) with the time in digits, the offset from yours and a dark face at night, and an optional dotted world map (`PixelMapSeries`) with each city in its clock's color.
 - 3 new tests (111): docs demos don't call `am5.addLicense()`, and no served file carries a key-shaped string (109); `get_quick_start("map sankey")` and `get_quick_start("globe")` name the moved examples (110, 111).
 
 ### Changed
@@ -22,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - stock.md's chart with a volume panel and Bollinger Bands: `examples/stock/stock-chart-with-volume-and-bollinger-bands`.
   The plugin's text is 444 KB instead of 486 KB. Each reference keeps the examples `get_quick_start` serves; `get_quick_start` lists the moved ones too, and names the one asked for ("map sankey" → the coffee Map Sankey; "globe" and "bollinger", new chart-type words for map and stock, → the globe and Bollinger examples). map.md's Waypoints note says each waypoint is `{ longitude, latitude }`, which the oil example's text said before.
 - Examples: five map demos re-imported after amcharts.com changed them: the heat legends of `trumps-reciprocal-tariffs-map`, `location-sensitive-map` and `us-heat-map` run horizontally under the map; `map-timeline`'s title wraps at the chart's width; `solar-eclipse-map` has no chart padding.
+- Examples: 38 demos re-imported after amcharts.com shortened their leads (the text under the title, which opens each example), and `day-and-night-world-map`, whose note on the page's own controls names "City clocks" instead of "Night opacity".
 - Docs re-imported: getting-started, map-chart, ai and react-native after the docs' geodata-on-jsDelivr fix went live (same content as 1.9.7's corrections); nuxt (license placeholder `YOUR-AMCHARTS-LICENSE-KEY`) and the pages with the cleaned demos (flow-chart bullets, step-line series, value axis) after the docs' license fix.
 
 ### Fixed

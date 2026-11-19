@@ -2,10 +2,10 @@
 title: "U.S. Congressional Districts"
 source: "https://www.amcharts.com/demos/us-congressional-districts/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-The 435 U.S. congressional districts, colored by party: blue for Democrats, red for Republicans, gray where there is no data. The party data is example data from an earlier Congress.
+The 435 U.S. congressional districts colored by party, blue for Democrats and red for Republicans, with example data from an earlier Congress.
 
 Mapping election results: Coloring each district by its winner is the classic election map, and it shows where each party is strong. But districts hold about the same number of people, so the big rural ones look more important than they are, while dense city districts all but vanish. Zoom in, or pair the map with a seat count.
 

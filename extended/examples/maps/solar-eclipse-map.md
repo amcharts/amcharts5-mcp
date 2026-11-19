@@ -5,7 +5,7 @@ category: "maps"
 scraped: "2026-11-19"
 ---
 
-The path of the total solar eclipse of August 2, 2027, on a globe: a band up to 259 km wide where the Moon covers the whole Sun, from the Atlantic across North Africa and Arabia to the Indian Ocean.
+The total solar eclipse of August 2, 2027, on a globe: a band up to 259 km wide from the Atlantic across North Africa and Arabia to the Indian Ocean.
 
 Drawing a path on the globe: The data is only the eclipse's central line, a list of points. The code widens it into a polygon by stepping half the path's width to each side of every point, along the curve of the Earth, so the band follows any projection, globe or flat. Two wider, lighter bands around it soften its edges.
 

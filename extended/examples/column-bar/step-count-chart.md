@@ -2,10 +2,10 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A step counter in the style of a fitness app: one column per day, gray below the 6,000-step goal and colored above it. Drag the chart sideways, and the day under the fixed cursor shows its count.
+A fitness-app step counter: one column per day, gray below the 6,000-step goal and colored above. Drag it sideways to read the day under the cursor.
 
 When a goal line helps: Daily figures mean more next to a goal: the reader sees at once which days made it, and the gray columns show the misses without a single number. A fixed cursor with the chart sliding under it is a pattern people know from phone apps, and it works well with touch.
 

@@ -2,10 +2,10 @@
 title: "Line with Custom Bullets"
 source: "https://www.amcharts.com/demos/line-with-custom-bullets/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A line chart where each point carries its own icon, so the line tells a story. Here, New Year’s Eve hour by hour: water and coffee early on, then beer, cocktails and the midnight toast.
+A line chart where each point carries its own icon. Here, New Year’s Eve hour by hour: water and coffee early on, then beer, cocktails and the midnight toast.
 
 When pictures help a line: Icons on the points turn a line into a story people can follow without reading the axis: what happened at each step, not just how much. They work for a handful of points with clear moments; with dozens, the pictures crowd each other out.
 

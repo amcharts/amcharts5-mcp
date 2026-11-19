@@ -2,10 +2,10 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A Sankey diagram you can follow one path through: point at a band and every step of that path lights up, from the first column to the last. Here, thirteen paths through four stages.
+A Sankey diagram you can trace: point at a band and every step of its path lights up, from the first column to the last. Here, thirteen paths, four stages.
 
 When tracing helps: In a busy Sankey diagram the bands cross and merge, and a single route gets lost. Tracing lets people pick one band and see where it came from and where it goes, so the chart can stay dense without hiding the paths.
 

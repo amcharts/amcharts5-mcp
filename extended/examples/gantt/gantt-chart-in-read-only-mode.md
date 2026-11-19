@@ -2,10 +2,10 @@
 title: "Gantt Chart in Read-Only Mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A Gantt chart locked for viewing: no dragging and no editing, just the plan to read, scroll and point at. The pencil button in the toolbar unlocks it for whoever needs to make changes.
+A Gantt chart locked for viewing: no dragging or editing, just the plan to read, scroll and point at, until the toolbar’s pencil button unlocks it.
 
 When to lock a Gantt chart: Most people who open a plan only need to read it. Read-only mode hides the grips, buttons and connector dots that invite changes, so the chart is calmer and nobody moves a task by accident, while the people who plan can still switch editing on.
 

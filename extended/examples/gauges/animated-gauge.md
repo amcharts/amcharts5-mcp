@@ -2,10 +2,10 @@
 title: "Animated Gauge"
 source: "https://www.amcharts.com/demos/animated-gauge/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A percentage gauge whose arc fills up to the needle: below the value one color, above it another. Every two seconds the needle, the fill and the number move to a new value together.
+A percentage gauge whose arc fills up to the needle, one color below the value and another above. Every two seconds all of it moves to a new value.
 
 When a filling gauge works: Filling the arc up to the value makes the reading visible from across a room: you see how full the gauge is before you read the number. It suits values with a natural maximum, like a share of a goal, a capacity or progress.
 

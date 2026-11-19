@@ -2,10 +2,10 @@
 title: "Bubble-Based Heat Map"
 source: "https://www.amcharts.com/demos/bubble-based-heat-map/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A heat map drawn with bubbles instead of colored cells: a week of hourly values, one row per day, and the bigger the bubble, the higher the value. The values change every second.
+A heat map drawn with bubbles instead of colored cells: a week of hourly values, one row per day, each bubble sized by its value, changing every second.
 
 Bubbles or colored cells?: A heat map shows one value for every pair of two categories, here day and hour. Colored cells are compact, but people compare sizes more easily than shades, so bubbles make the busy and quiet times stand out. Each bubble is sized between the smallest and the largest value on the chart.
 

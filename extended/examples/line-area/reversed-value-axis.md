@@ -2,10 +2,10 @@
 title: "Reversed Value Axis"
 source: "https://www.amcharts.com/demos/reversed-value-axis/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A ranking chart: the value axis is flipped so first place sits at the top, where people look for the winner. Here, where three teams finished in a league each year (sample data).
+A ranking chart with the value axis flipped, so first place sits at the top. Here, where three teams finished in a league each year (sample data).
 
 When to flip the axis: In a ranking, a smaller number is better, so a normal axis puts the winner at the bottom. Flipping it puts first place on top, and a line that climbs means a team that climbs.
 

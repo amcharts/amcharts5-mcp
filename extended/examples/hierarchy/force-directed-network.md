@@ -2,10 +2,10 @@
 title: "Force-Directed Network"
 source: "https://www.amcharts.com/demos/force-directed-network/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A network graph: nodes joined by lines, laid out by forces that push them apart and pull linked ones together. Here, three separate trees held together by two cross-links.
+A network graph laid out by forces that push nodes apart and pull linked ones together. Here, three trees held together by two cross-links.
 
 Trees with cross-links: Real structures are rarely pure trees: one team works with another, one page links to another section. Cross-links add those connections on top of the hierarchy, and the forces pull the linked groups together, so clusters and the bridges between them show up on their own.
 

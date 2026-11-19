@@ -2,10 +2,10 @@
 title: "Real-Time Data Sorting"
 source: "https://www.amcharts.com/demos/real-time-data-sorting/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A column chart that keeps itself sorted. Every second and a half, eleven countries get new values, and the columns slide into their new order, tallest first, with the numbers counting as they go.
+A column chart that keeps itself sorted: every second and a half, eleven countries get new values and the columns slide into order as their numbers count.
 
 When to sort live: When values keep changing, a fixed order hides the story: the reader has to hunt for the leader after every update. Re-sorting keeps the ranking readable, and the slide shows who moved up and who fell back.
 

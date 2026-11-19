@@ -2,10 +2,10 @@
 title: "World Time Zone Map"
 source: "https://www.amcharts.com/demos/world-time-zone-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-The world's time zones in two layers: colored areas show the zone each piece of land keeps, and faint bands run from pole to pole, with each whole-hour offset from UTC labeled along the bottom.
+The world's time zones in two layers: colored areas for the zone each land keeps, and faint pole-to-pole bands with their UTC offsets along the bottom.
 
 Two layers of time zones: Time zones follow borders on land but run straight across the sea, so this map uses two geodata files: the zone areas on land, colored apart, and the full bands. The whole-hour offsets are labeled in a row along the bottom; the zones that are off by half or three quarters of an hour show theirs in the tooltip. The map shows standard time, without daylight saving.
 

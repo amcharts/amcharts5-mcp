@@ -2,10 +2,10 @@
 title: "Variable-Radius Nested Pie"
 source: "https://www.amcharts.com/demos/variable-radius-nested-pie/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-How the EU grew: the inner ring is each enlargement, from the founding members in 1957 to 2007, and the outer ring the countries that joined, sized by their population today.
+How the EU grew: the inner ring shows each enlargement from 1957 to 2007, the outer ring the countries that joined, sized by population today.
 
 When a nested pie fits: When data has two levels, totals and the items inside them, a nested pie shows both: each inner slice is the sum of the outer slices around it. Here that is each round of EU enlargement and the countries it brought in.
 

@@ -2,10 +2,10 @@
 title: "Columns with Grainy Gradients"
 source: "https://www.amcharts.com/demos/columns-with-grainy-gradients/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-Columns styled like a poster: each one fades from its own color to a dark shade of it, with a film-grain texture, a fully rounded top and a soft shadow that grows on hover.
+Columns styled like a poster: each fades from its color to a darker shade, with film grain, a rounded top and a soft shadow that grows on hover.
 
 When to style the columns: Gradients, grain and shadows don’t change what a column chart says, but they set its mood: this one would sit well in a magazine, on a landing page or in a year-in-review. Keep it to a handful of columns, so the styling doesn’t bury the numbers.
 

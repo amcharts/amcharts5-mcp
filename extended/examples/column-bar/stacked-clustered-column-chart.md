@@ -2,10 +2,10 @@
 title: "Stacked and Clustered Column Chart"
 source: "https://www.amcharts.com/demos/stacked-clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-Stacks side by side: each year, North America stacks on Europe in one column, and Latin America, the Middle East and Africa stack on Asia in the next. Two groups, and what each is made of.
+Stacks side by side: each year, North America stacks on Europe in one column, and Latin America, the Middle East and Africa on Asia in the next.
 
 When to stack and cluster: Combine the two when your series fall into groups: the clusters compare the groups, the stacks show what each is made of. Readers need the legend to tell which series belongs to which stack, so keep the groups few and obvious.
 

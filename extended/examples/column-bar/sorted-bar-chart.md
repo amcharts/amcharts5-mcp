@@ -2,10 +2,10 @@
 title: "Sorted Bar Chart"
 source: "https://www.amcharts.com/demos/sorted-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A bar chart that keeps its ranking up to date. Every second and a half, twelve social networks get new user counts, and the bars slide into their new order, the longest on top.
+A bar chart that keeps its ranking up to date: every second and a half, twelve social networks get new user counts and the bars slide into order.
 
 When a sorted bar chart works: Sorting turns a bar chart into a ranking: the leader is on top, and each bar’s place says as much as its length. Horizontal bars leave room for names of any length, and sorting again after each update keeps the ranking true while the numbers move.
 

@@ -2,10 +2,10 @@
 title: "Layered Column Chart"
 source: "https://www.amcharts.com/demos/layered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-Two years in one column: 2024 as a wide column at the back, 2025 as a narrower, striped one in front. Where the front column rises above the back one, the country grew.
+Two years in one column: 2024 wide at the back, 2025 narrower and striped in front. Where the front column rises above the back one, the country grew.
 
 When to layer columns: Layering puts two values for each category in the same place, so the change between them shows without the eye jumping between neighbors. It works for two series where one is the reference for the other, like last year and this year, or target and actual.
 

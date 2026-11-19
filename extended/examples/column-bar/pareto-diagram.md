@@ -2,10 +2,10 @@
 title: "Pareto Diagram"
 source: "https://www.amcharts.com/demos/pareto-diagram/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A Pareto chart sorts the columns from largest to smallest and adds a line that sums them up as it goes. Here, visits from 10 countries: the first four bring two thirds of all visits.
+A Pareto chart sorts columns from largest to smallest, with a line that sums them up. Here, visits from 10 countries, two thirds of them from the first four.
 
 When a Pareto chart helps: A Pareto chart shows which few causes make up most of the total, so you know where to act first. Read the line against the right-hand axis: where it passes 80%, the columns to its left are the vital few, and the ones to its right add little.
 

@@ -2,10 +2,10 @@
 title: "Historical Population Pyramid"
 source: "https://www.amcharts.com/demos/historical-population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
-A population pyramid tied to a timeline: hover a year in the U.S. population chart and the pyramid redraws its age groups for that year, from 1950 to the UN projection for 2100.
+A population pyramid tied to a timeline: hover a year in the U.S. population chart and the pyramid redraws for it, from 1950 to the UN projection for 2100.
 
 Why link a pyramid to a timeline: A single pyramid is a snapshot; moving through the years shows how a population ages. Here the baby boom of the 1950s climbs the pyramid decade by decade, and the oldest group swells late in the century. The totals chart says how many, the pyramid says who.
 
