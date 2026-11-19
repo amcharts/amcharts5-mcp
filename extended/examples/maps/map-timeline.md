@@ -2,7 +2,7 @@
 title: "Map Timeline"
 source: "https://www.amcharts.com/demos/map-timeline/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
 A map with a year slider: drag it, or press play, and countries light up as the slider passes the year they joined a treaty. The treaty is fictional.
@@ -236,19 +236,28 @@ var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {})); //
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
 
-// Title, in the room above the map ("absolute" places it from the chart's top edge, not inside the padding)
-var title = chart.children.unshift(am5.Label.new(root, {
+// Title, in the room above the map ("absolute" places it from the chart's top edge, not inside the padding). Pushed
+// after the map, so it is drawn over it: a map dragged or zoomed up toward it goes under the title
+var title = chart.children.push(am5.Label.new(root, {
   text: "Countries that joined a fictional treaty",
   fontSize: 22,        // large...
   fontWeight: "400",   // ...regular-weight text...
   textAlign: "center", // ...with wrapped lines centered
-  // wraps on a narrow screen instead of being cut off
+  // wraps on a narrow screen instead of being cut off (at maxWidth, set below)
   oversizedBehavior: "wrap",
-  maxWidth: am5.percent(90), // at most 90% of the chart's width
   position: "absolute",
   x: am5.percent(50),        // in the middle...
   centerX: am5.percent(50)   // ...anchored by its center
 }));
+
+// The title wraps where a line would be wider than the chart. maxWidth is in pixels at the title's own size, and the
+// ResponsiveMax theme draws the title smaller on a small chart (its scale), so the chart's width is divided by that.
+// Set again when the chart changes size or the theme changes the scale
+function fitTitle() {
+  title.set("maxWidth", chart.width() / title.get("scale", 1));
+}
+chart.events.on("boundschanged", fitTitle);
+title.on("scale", fitTitle);
 
 // Create series for the water: a faint fill behind the countries
 // https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#background-polygon

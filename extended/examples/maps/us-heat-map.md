@@ -2,7 +2,7 @@
 title: "US Heat (Choropleth) Map"
 source: "https://www.amcharts.com/demos/us-heat-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
 A heat map of the United States, also called a choropleth: each state is colored by its population in the 2000 census, from a light shade for the fewest people to a dark one for the most.
@@ -47,8 +47,8 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   panX: "translateX", // drag the map to move it sideways...
   panY: "translateY", // ...and up and down
   projection: am5map.geoAlbersUsa(), // Alaska and Hawaii shown below the lower 48 states
-  // the heat legend, added to the chart below, sits to the right of the map
-  layout: root.horizontalLayout
+  // room under the map for the heat legend added below: the map fits inside the padding
+  paddingBottom: 50
 }));
 
 // Create polygon series
@@ -137,23 +137,25 @@ polygonSeries.data.setAll([
   { id: "US-WY", value: 493782 }
 ]);
 
-// the color scale, to the right of the map (the chart's horizontal layout)
+// the color scale, under the map
 var heatLegend = chart.children.push(am5.HeatLegend.new(root, {
-  orientation: "vertical", // a bar that runs up and down
+  orientation: "horizontal", // a bar that runs left to right
   startColor: am5.Color.lighten(colors.getIndex(0), 0.6), // the same colors as the heat rule
   endColor: am5.Color.brighten(colors.getIndex(0), -0.5),
   startText: "Lowest", // words at the ends instead of numbers
   endText: "Highest",
-  stepCount: 5 // 5 blocks of color instead of a smooth gradient
+  stepCount: 5, // 5 blocks of color instead of a smooth gradient
+  x: am5.p50,   // centered...
+  centerX: am5.p50,
+  y: am5.p100,  // ...with its top at the map's bottom edge, in the room the chart's paddingBottom leaves
+  centerY: 0,
+  width: am5.percent(50), // half the chart's width
+  paddingTop: 10          // a little room from the map
 }));
 
-// Add zoom control
+// Add zoom control: at the bottom right, by default
 // https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
-var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {
-  x: 0, // at the bottom left, clear of the heat legend on the right
-  centerX: 0,
-  paddingLeft: 10 // a small gap from the edge
-}));
+var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 zoomControl.homeButton.set("visible", true); // a button that goes back to the home view
 
 // smaller labels on the heat legend

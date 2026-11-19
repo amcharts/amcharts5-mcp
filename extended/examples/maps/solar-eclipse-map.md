@@ -2,7 +2,7 @@
 title: "Solar Eclipse Map"
 source: "https://www.amcharts.com/demos/solar-eclipse-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
 The path of the total solar eclipse of August 2, 2027, on a globe: a band up to 259 km wide where the Moon covers the whole Sun, from the Atlantic across North Africa and Arabia to the Indian Ocean.
@@ -173,14 +173,10 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   autoHome: true,
   panX: "rotateX",                      // a sideways drag spins the globe
   panY: "rotateY",                      // an up or down drag tilts it
-  projection: am5map.geoOrthographic(), // a globe, seen from space
-  paddingBottom: 20,                    // 20px of space around the globe on each side
-  paddingTop: 20,
-  paddingLeft: 20,
-  paddingRight: 20
+  projection: am5map.geoOrthographic() // a globe, seen from space
 }));
 
-// Zoom control, in the buttons' main color
+// Zoom control, in the buttons' main color, in its default place: the chart's bottom right corner
 // https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 

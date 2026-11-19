@@ -2,7 +2,7 @@
 title: "Trump’s Reciprocal Tariffs Map"
 source: "https://www.amcharts.com/demos/trumps-reciprocal-tariffs-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
 A world heat map of US reciprocal tariff rates by country from April 2025, as first announced and as updated: the darker the color, the higher the rate.
@@ -1069,7 +1069,8 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   minZoomLevel: 0.5,
   // go to the home view once the map is fitted
   autoHome: true,
-  projection: am5map.geoEqualEarth() // equal-area: countries keep their true relative size
+  projection: am5map.geoEqualEarth(), // equal-area: countries keep their true relative size
+  paddingBottom: 50 // room under the map for the heat legend: the map fits inside the padding
 }));
 
 // Create series for the water: a faint fill behind the countries
@@ -1133,16 +1134,17 @@ polygonSeries.data.setAll(data);
 // Create heat legend
 // https://docs.amcharts.com/v5/charts/map-chart/
 var heatLegend = chart.children.push(am5.HeatLegend.new(root, {
-  orientation: "vertical",                       // a bar that runs up and down
+  orientation: "horizontal",                     // a bar that runs left to right, under the map
   startColor: am5.Color.lighten(mainColor, 0.6), // the same colors as the heat rule
   endColor: am5.Color.brighten(mainColor, -0.5),
   // 8 blocks of color instead of a smooth gradient
   stepCount: 8,
-  x: am5.p100, // at the right edge...
-  centerX: am5.p100,
-  y: am5.percent(10), // ...from 10% down
-  height: am5.percent(60), // 60% of the map's height, which leaves the zoom buttons room below it
-  paddingRight: 20         // a little room from the edge
+  x: am5.p50, // centered...
+  centerX: am5.p50,
+  y: am5.p100, // ...with its top at the map's bottom edge, in the room the chart's paddingBottom leaves
+  centerY: 0,
+  width: am5.percent(50), // half the chart's width
+  paddingTop: 10          // a little room from the map
 }));
 
 heatLegend.startLabel.setAll({

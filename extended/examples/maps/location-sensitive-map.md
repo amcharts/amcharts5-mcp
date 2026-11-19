@@ -2,7 +2,7 @@
 title: "Location-Sensitive Map"
 source: "https://www.amcharts.com/demos/location-sensitive-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-19"
 ---
 
 A map that loads the visitor’s own country: it looks up your country from your IP address, then loads that country’s map with a random value for each region. Where the lookup can’t answer, it goes by your browser’s language setting.
@@ -50,15 +50,15 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
   panY: "translateY",               // ...and up and down (the Albers USA projection can't turn)
   projection: am5map.geoMercator(), // the starting projection; loadGeodata() may switch it
   boxZoom: "shift",                 // hold Shift and drag to zoom into a box
-  layout: root.horizontalLayout,    // the map and the heat legend side by side
-  // room at the top for the country's name
-  paddingTop: 36
+  // room at the top for the country's name, and under the map for the heat legend: the map fits inside the padding
+  paddingTop: 36,
+  paddingBottom: 50
 }));
 
 // Add zoom control
 // https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {
-  position: "absolute" // + and - zoom buttons over the map, left out of the side-by-side layout
+  position: "absolute" // + and - zoom buttons over the map
 }));
 
 // the home button is hidden by default
@@ -139,7 +139,7 @@ function loadGeodata(country) {
     polygonSeries.data.setAll(data);
   });
 
-  // Country name above the map: "absolute" keeps it out of the layout that puts the map and heat legend side by side
+  // Country name above the map, in the room the chart's paddingTop leaves
   chart.children.push(am5.Label.new(root, {
     position: "absolute",
     x: 0,                     // the top left corner
@@ -149,22 +149,23 @@ function loadGeodata(country) {
   }));
 }
 
-// a color scale beside the map, in the same colors as the heat rules
+// a color scale under the map, in the same colors as the heat rules
 var heatLegend = chart.children.push(
   am5.HeatLegend.new(root, {
-    orientation: "vertical", // standing upright
+    orientation: "horizontal", // a bar that runs left to right
     startColor: am5.Color.lighten(colors.getIndex(0), 0.6), // the lowest color...
     endColor: am5.Color.brighten(colors.getIndex(0), -0.5), // ...and the highest, the same as in the heat rules
     startText: "Lowest", // words at the ends instead of numbers
     endText: "Highest",
-    stepCount: 5         // five blocks of color instead of a smooth gradient
+    stepCount: 5,         // five blocks of color instead of a smooth gradient
+    x: am5.p50,           // centered...
+    centerX: am5.p50,
+    y: am5.p100,          // ...with its top at the map's bottom edge, in the room the chart's paddingBottom leaves
+    centerY: 0,
+    width: am5.percent(50), // half the chart's width
+    paddingTop: 10          // a little room from the map
   })
 );
-
-// the zoom buttons keep to the left of the heat legend
-heatLegend.events.on("boundschanged", function () {
-  zoomControl.set("dx", -heatLegend.width());
-});
 
 // smaller labels on the heat legend
 heatLegend.startLabel.setAll({
