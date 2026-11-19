@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.8] - 2026-11-19
+
 ### Added
 - **License guidance in the skill**, only when it's relevant: when the user asks about the logo, licensing, pricing or branding, or the chart is for a commercial product, and only what was asked. amCharts 5 is free in any project, commercial included, with a small logo on each chart; a commercial license key removes it; which license fits, when asked (Basic, SaaS, OEM, Extended OEM; Charts, Maps, Stock Chart and Gantt licensed separately); and the informational page https://www.amcharts.com/pricing/licenses-explained/. No prices or store links. SKILL.md "License and the amCharts logo", and cursorrules.
 - The skill doesn't write code that hides the logo (code, CSS, cropping, editing the library): it says the free license requires the logo and points to a license key.

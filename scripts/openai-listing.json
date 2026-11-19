@@ -73,6 +73,6 @@
     "demo_recording_url": "https://drive.google.com/file/d/1cNVv96IurF51xnC3CxDe0wbnxKTiHfbj/view?usp=sharing"
   },
   "publication": {
-    "release_notes": "1.9.7: Map files now load from jsDelivr as well as unpkg, so a chat sandbox that allows either npm CDN can show any map. 1.9.6: The amcharts.com demos are re-imported and use the ResponsiveMax theme, with a new London traffic map. 330+ demos from the docs pages are new examples, which get_example opens by their address on docs.amcharts.com. The API reference lists each class's methods with their signatures and parameters. The skill describes only the latest amCharts release, 5.22.0."
+    "release_notes": "1.9.8: The skill covers amCharts 5.23.0: on phones a chart lets the page scroll (touchGestures), price axes show whole numbers or cents (preferredDecimals), and the stock toolbar folds to fit. It answers questions about licensing and the amCharts logo. get_quick_start understands plural chart types and names the longer examples. A new World Clock example and 38 re-imported amcharts.com demos. 1.9.7: Map files now load from jsDelivr as well as unpkg, so a chat sandbox that allows either npm CDN can show any map."
   }
 }
