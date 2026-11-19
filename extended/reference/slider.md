@@ -2,7 +2,7 @@
 title: "Slider"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/slider/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A slider with a single grip, for picking one value from `0` to `1`, which it keeps in `start`.

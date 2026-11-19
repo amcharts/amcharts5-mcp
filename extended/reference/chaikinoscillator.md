@@ -2,7 +2,7 @@
 title: "ChaikinOscillator"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chaikinoscillator/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Chaikin Oscillator indicator: the fast (`period`) minus the slow (`slowPeriod`) exponential moving average of the accumulation/distribution line. Drawn in a panel of its own.

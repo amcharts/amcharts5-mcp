@@ -2,7 +2,7 @@
 title: "CurveCursor"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/curvecursor/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Cursor for a `CurveChart`, `SerpentineChart` or `SpiralChart`: one line across the curve and one along it.

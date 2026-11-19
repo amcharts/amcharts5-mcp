@@ -2,7 +2,7 @@
 title: "Bullet"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/bullet/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Holds an element (`sprite`) that a series places at a data item.

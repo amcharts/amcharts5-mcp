@@ -2,7 +2,7 @@
 title: "Keyof"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/keyof/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 `Keyof<T>` is the same as `keyof T` except it only accepts string keys, not numbers or symbols.

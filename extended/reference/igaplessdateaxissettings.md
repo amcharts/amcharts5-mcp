@@ -2,7 +2,7 @@
 title: "IGaplessDateAxisSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/igaplessdateaxissettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -26,7 +26,7 @@ _(none declared here — all inherited)_
 Names only — see the declaring interface's page (e.g. `get_api_reference("IDateAxisSettings")`) for types, defaults and descriptions.
 
 - _IDateAxisSettings_: baseInterval, dateFormats, endLocation, gridIntervals, groupCount, groupData, groupInterval, groupIntervals, markUnitChange, minorDateFormats, periodChangeDateFormats, skipFirstMinor, startLocation, tooltipDateFormat, tooltipDateFormats, tooltipIntervalOffset, weekLabelLocation
-- _IValueAxisSettings_: autoZoom, baseValue, calculateTotals, extraMax, extraMin, extraTooltipPrecision, fillRule, logarithmic, max, maxPrecision, min, numberFormat, strictMinMaxSelection, syncWithAxis, syncZeros, tooltipNumberFormat, treatZeroAs
+- _IValueAxisSettings_: autoZoom, baseValue, calculateTotals, extraMax, extraMin, extraTooltipPrecision, fillRule, logarithmic, max, maxPrecision, min, numberFormat, preferredDecimals, strictMinMaxSelection, syncWithAxis, syncZeros, tooltipNumberFormat, treatZeroAs
 - _IAxisSettings_: bullet, end, fixAxisSize, maxDeviation, maxZoomCount, minorAxisFillsEnabled, minZoomCount, panX, panY, renderer, snapTooltip, start, tooltip, tooltipLocation, zoomable, zoomOut, zoomX, zoomY
 - _IComponentSettings_: interpolationDuration, interpolationEasing
 - _IContainerSettings_: background, direction, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar

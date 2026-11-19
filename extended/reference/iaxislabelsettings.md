@@ -2,7 +2,7 @@
 title: "IAxisLabelSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iaxislabelsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -19,7 +19,7 @@ TypeScript: `am5xy.IAxisLabelSettings` (`import type { IAxisLabelSettings } from
 - **inside** (`boolean`) — Shows the label inside the plot area. If not set, the renderer's `inside` applies. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#labelsticks-inside-plot-area
 - **minPosition** (`number`) — default `0` — Hides the label when it is closer to the start of the visible part of the axis than this, from `0` to `1`: `0.1` hides labels in the first 10%. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#startend-labels-and-ticks
 - **maxPosition** (`number`) — default `1` — Hides the label when it is closer to the end of the visible part of the axis than this, from `0` to `1`: `0.9` hides labels in the last 10%. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#startend-labels-and-ticks
-- **keepInView** (`boolean`) — default `false` — Where the label's cell is only partly in view, slides the label into the part that is, and hides it where that part is too short for it: the first month on a date axis keeps its label while the month goes on in view. For labels placed inside their cell (`location` or `multiLocation` above `0` and below `1`): with a grid step of several periods, such as every 2 months, labels sit on the grid lines (`multiLocation: 0`) unless `multiLocation` is set. Rotated labels are left where they are. _Since 5.22.0._
+- **keepInView** (`boolean`) — default `false` — Where the label's cell is only partly in view, slides the label into the part that is, and hides it where that part is too short for it: the first month on a date axis keeps its label while the month goes on in view. For labels placed inside their cell (`location` or `multiLocation` above `0` and below `1`): with a grid step of several periods, such as every 2 months, labels sit on the grid lines (`multiLocation: 0`) unless `multiLocation` is set. Rotated labels, and those of edge cells cut by the axis' `startLocation` or `endLocation`, are left where they are. _Since 5.22.0._
 
 ## Inherited settings with a different default on AxisLabel
 

@@ -2,7 +2,7 @@
 title: "IValueAxisSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ivalueaxissettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -26,6 +26,7 @@ TypeScript: `am5xy.IValueAxisSettings` (`import type { IValueAxisSettings } from
 - **maxPrecision** (`number`) — Most decimal places the labels may have. It also limits the grid step: `0` allows whole-number steps only. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#label-format
 - **fillRule** (`(dataItem: DataItem<IValueAxisDataItem>) => void`) — default `(function)` _(theme)_ — Function that decides which axis fills show; it is called for each grid step. The default fills every other step. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/#axis-fills
 - **numberFormat** (`string`) — Number format for the labels. If not set, the number formatter's default format is used, with as many decimals as the grid step needs. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#label-format
+- **preferredDecimals** (`number[]`) — Decimal counts the labels may show, such as `[0, 2]` for prices. Each label gets the fewest in the list that the grid step needs: 80 and 100, or 48.50 and 49.00 instead of 48.5 and 49.0. A step finer than the last count keeps its own decimals, such as 0.0012. The axis tooltip shows the step's decimals plus `extraTooltipPrecision`, rounded up to the list too. Used only for labels formatted without the axis's own `numberFormat`. Logarithmic axes ignore it. _Since 5.23.0._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#label-format
 - **tooltipNumberFormat** (`string | Intl.NumberFormatOptions`) — Number format for the axis tooltip. If not set, `numberFormat` is used. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#tooltip-number-format
 - **extraTooltipPrecision** (`number`) — default `0` _(code fallback)_ — Extra decimal places for the axis tooltip, beyond those of the labels: with labels like `1.1` and `1.2`, `1` lets the tooltip show `1.15`. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#tooltip-number-format
 - **calculateTotals** (`boolean`) — Calculates totals across the axis's series for each data item in view: `valueYTotal`, `valueYSum` and `valueYTotalPercent` (or the `valueX` ones on an X axis), as used by 100% stacked charts. Series with `excludeFromTotal` are left out. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/#calculated-values

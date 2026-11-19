@@ -2,7 +2,7 @@
 title: "SceneNode"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/scenenode/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A renderer-neutral display object: state, place in the tree, transform and bounds. Backends paint it.
@@ -36,6 +36,7 @@ Public properties (not settings):
 - **mask** (`SceneGraphics`)
 - **pivot** (`ScenePivot`)
 - **scale** (`number`)
+- **touchAxis** (`"x" | "xy"`)
 - **visible** (`boolean`)
 - **wheelable** (`boolean`)
 - **x** (`number`)

@@ -2,7 +2,7 @@
 title: "StockToolbar"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stocktoolbar/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A toolbar of `StockControl` buttons for a `StockChart`, placed in an HTML element outside the chart.
@@ -26,6 +26,10 @@ Extends: Entity → Settings
 - Settings: `IStockToolbarSettings` — get_api_reference shows it after this page
 - Private settings: `IStockToolbarPrivate`
 - Events: `IStockToolbarEvents`
+
+## Methods
+
+- `fit(): void` — Folds the controls step by step until they fit in one row (see `autoFit`). The toolbar does this itself when its container is resized or its controls change; call it after changing a control's label. _Since 5.23.0._
 
 ## Other inherited methods
 

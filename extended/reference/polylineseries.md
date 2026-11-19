@@ -2,7 +2,7 @@
 title: "PolylineSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/polylineseries/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Draws a line through any number of points (a polyline).

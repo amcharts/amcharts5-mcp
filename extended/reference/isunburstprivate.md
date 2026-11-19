@@ -2,7 +2,7 @@
 title: "ISunburstPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/isunburstprivate/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -24,6 +24,6 @@ Names only — see the declaring interface's page (e.g. `get_api_reference("IPar
 
 - _IPartitionPrivate_: scaleX, scaleY
 - _IHierarchyPrivate_: maxDepth
-- _ISeriesPrivate_: adjustedStartIndex, baseValueSeries, chart, customValueAbsoluteSum, customValueAverage, customValueClose, customValueCount, customValueHigh, customValueLow, customValueOpen, customValueSum, endIndex, startIndex, valueAbsoluteSum, valueAverage, valueClose, valueCount, valueHigh, valueLow, valueOpen, valueSum
+- _ISeriesPrivate_: adjustedEndIndex, adjustedStartIndex, baseValueSeries, chart, customValueAbsoluteSum, customValueAverage, customValueClose, customValueCount, customValueHigh, customValueLow, customValueOpen, customValueSum, endIndex, startIndex, valueAbsoluteSum, valueAverage, valueClose, valueCount, valueHigh, valueLow, valueOpen, valueSum
 - _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
 - _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

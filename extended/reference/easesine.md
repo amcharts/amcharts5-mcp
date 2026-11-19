@@ -1,7 +1,7 @@
 ---
 title: "ease.sine"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Starts gently and speeds up, following a sine curve.

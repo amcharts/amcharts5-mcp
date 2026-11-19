@@ -2,7 +2,7 @@
 title: "CounterDisposer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/counterdisposer/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A disposer that disposes itself once every disposer returned by `increment()` has been disposed.

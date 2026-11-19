@@ -2,7 +2,7 @@
 title: "FunnelSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/funnelseries/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A funnel series for a `SlicedChart`: slices of equal height, each as wide as its value relative to the largest one.

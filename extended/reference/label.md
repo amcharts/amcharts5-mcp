@@ -2,7 +2,7 @@
 title: "Label"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/label/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A text element with padding and an optional background. Its text can hold in-line formatting and data placeholders.

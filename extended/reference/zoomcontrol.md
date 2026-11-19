@@ -2,7 +2,7 @@
 title: "ZoomControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/zoomcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Buttons that zoom a `MapChart` in and out, set as its `zoomControl`. A home button is there too, hidden by default.

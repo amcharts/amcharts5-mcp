@@ -2,7 +2,7 @@
 title: "Root"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/root/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 The root of a chart: it ties the chart to an HTML element and holds its global settings, formatters, locale and themes.
@@ -46,10 +46,11 @@ Public properties (not settings):
 - **skipRenderFrame** (`boolean`)
 - **systemTooltip** (`Tooltip`) — A shared `Tooltip` (theme tag `"system"`) for interface elements such as the logo and buttons, created on first use. _Since 5.14.0._
 - **tabindex** (`number`) — Tab index for the whole chart. Docs: https://docs.amcharts.com/v5/concepts/accessibility/
-- **tapToActivate** (`boolean`) — default `false` — Makes touch gestures such as zoom and pan work only after a tap on the chart, so the page can still be scrolled over it. _Since 5.2.9._ Docs: https://docs.amcharts.com/v5/getting-started/root-element/#touch-related-options
+- **tapToActivate** (`boolean`) — default `false` — Makes touch gestures such as zoom and pan work only after a tap on the chart, so the page can still be scrolled over it. The same as setting `touchGestures` to `"tap"`; `false` sets it back to `"chart"`, or to `"auto"` with the ResponsiveMax theme (an `"auto"` is left as it is). _Since 5.2.9._ Docs: https://docs.amcharts.com/v5/getting-started/root-element/#touch-related-options
 - **tapToActivateTimeout** (`number`) — default `3000` — How long in milliseconds the chart stays active after the last touch, with `tapToActivate`, before handing touch gestures back to the page. `0` keeps it active until a tap outside the chart. _Since 5.2.9._ Docs: https://docs.amcharts.com/v5/getting-started/root-element/#touch-related-options
 - **timezone** (`Timezone`) — Time zone to show dates in, instead of the user's local one. Set it to a `Timezone` with an IANA name, e.g. `am5.Timezone.new("America/Vancouver")`. For UTC, `utc` is faster. Every date is converted, which can slow down charts with large data sets. _Since 5.1.0._ Docs: https://docs.amcharts.com/v5/getting-started/root-element/#time-zone
 - **tooltipContainer** (`Container`) — The `Container` tooltips are drawn in, above the chart.
+- **touchGestures** (`TouchGestures`) — default `"chart"` — Who gets a touch gesture that starts on the chart, the chart or the page around it: • `"chart"`: the chart, wherever it drags, pans, zooms or selects. • `"tap"`: the page, until the chart is tapped; then the chart, until `tapToActivateTimeout` passes without a touch (as `tapToActivate`). • `"auto"`: a vertical swipe scrolls the page. A swipe that starts sideways, and any made with two fingers, goes to the chart, which then follows it both ways: a chart that pans vertically, a map or a globe also moves or turns up and down. Scrollbar grips, buttons and other things that are dragged, drawing on a stock chart, a cursor selecting only up and down and a radar chart take any swipe that starts on them. With `"tap"` and `"auto"`, a swipe the page scrolls with does not move the chart. The ResponsiveMax theme, set on the root with `setThemes()`, sets `"auto"`, unless `touchGestures` or `tapToActivate` is set in code. Turning `tapToActivate` off again goes back to what was there before it: the value set in code, or else the theme's choice. _Since 5.23.0._
 - **updateTick** (`boolean`) — Whether the chart updates and redraws. Stops the chart from updating and redrawing with `false`, until set back to `true`.
 - **utc** (`boolean`) — Treats dates as UTC instead of the user's local time, when formatting and parsing them and when placing date axis grid. It takes precedence over `timezone`. Docs: https://docs.amcharts.com/v5/concepts/formatters/formatting-dates/#utc-and-time-zones
 - **verticalLayout** (`VerticalLayout`) — default `VerticalLayout.new()` — A shared `VerticalLayout` for a `Container`'s `layout` setting.

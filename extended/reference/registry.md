@@ -2,7 +2,7 @@
 title: "Registry"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/registry/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Import

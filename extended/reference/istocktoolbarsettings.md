@@ -2,7 +2,7 @@
 title: "IStockToolbarSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/istocktoolbarsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -17,6 +17,7 @@ TypeScript: `am5stock.IStockToolbarSettings` (`import type { IStockToolbarSettin
 - **container** (`HTMLElement`) — The HTML element the toolbar's buttons are placed in.
 - **controls** (`StockControl[]`) — default `[]` _(code fallback)_ — Controls to show in the toolbar, in order.
 - **useDefaultCSS** (`boolean`) — default `true` — Loads the toolbar's default CSS. Set to `false` to style it yourself.
+- **autoFit** (`boolean`) — default `false` — Folds the controls when they do not fit in one row, a step at a time: first the labels of Indicators, Draw, Comparison and the series type control, which keep their icons, then the period buttons, into one button that opens them as a list. Needs the default CSS. The ResponsiveMax theme turns it on. _Since 5.23.0._
 - **deactivateRoot** (`boolean`) — Has no effect: the toolbar does not use it.
 - **focusable** (`boolean`) — default `true` — Setting this to `true` will essentially enable accessibility for the toolbar items. E.g. buttons will be focusable using TAB key. Lists navigable using arrow keys, etc.
 

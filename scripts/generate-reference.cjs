@@ -13,7 +13,7 @@
 //   - compiled *DefaultTheme.js files: theme rules (`r("X").setAll({...})`,
 //     block form `const rule = r("X"); rule.setAll/set(...)`, `setColor(...)`);
 //   - compiled class .js files: `this._setSoft/_setDefault/_setRawDefault("k", v)`
-//     in `_afterNew()`, the class's own theme tags, and `this.get("k", fallback)`.
+//     and `this._setDefaultFn/_setDefaultTagged("k", …, () => v)` in `_afterNew()`, the class's own theme tags, and `this.get("k", fallback)`.
 //   All JS is read through the TypeScript parser, so commented-out code is
 //   never picked up.
 //
@@ -23,7 +23,8 @@
 //      only for classes of that chart module; rules for ancestor classes
 //      apply, the most specific class wins; tagged rules only when the class
 //      tags itself with those tags                          → _(theme)_
-//   3. `_setDefault` / `_setRawDefault`                     → _(class default)_
+//   3. `_setDefault` / `_setRawDefault` / `_setDefaultFn` /
+//      `_setDefaultTagged`                                   → _(class default)_
 //   4. JSDoc `@default`                                      → (unlabelled)
 //   5. the fallback in `this.get("k", fallback)`             → _(code fallback)_
 // A layer-1–3 value that depends on runtime state (e.g. a list built in code) is
@@ -288,14 +289,29 @@ function readClass(cls, sf) {
   const isThisCall = (e, names) => ts.isCallExpression(e) && ts.isPropertyAccessExpression(e.expression) &&
     e.expression.expression.kind === ts.SyntaxKind.ThisKeyword && names.includes(e.expression.name.text);
   const SETTERS = ["_setSoft", "_setDefault", "_setRawDefault"];
+  // `_setDefaultFn("k", () => X)` and `_setDefaultTagged("k", tags, () => X)` make X
+  // when nothing (a theme rule, the user) has set the key, like `_setDefault`
+  const FN_SETTERS = ["_setDefaultFn", "_setDefaultTagged"];
+  const madeBy = (f) => {
+    if (!f || !(ts.isArrowFunction(f) || ts.isFunctionExpression(f))) return null;
+    if (!ts.isBlock(f.body)) return f.body;
+    const [only] = f.body.statements;
+    return f.body.statements.length === 1 && ts.isReturnStatement(only) && only.expression ? only.expression : null;
+  };
   for (const m of cls.members) {
     if (!ts.isMethodDeclaration(m) || !m.body || !m.name || m.name.getText(sf) !== "_afterNew") continue;
     // Only unconditional calls directly in the method body count as defaults.
     let all = 0, top = 0;
-    (function countCalls(n) { if (isThisCall(n, SETTERS)) all++; ts.forEachChild(n, countCalls); })(m.body);
+    (function countCalls(n) { if (isThisCall(n, [...SETTERS, ...FN_SETTERS])) all++; ts.forEachChild(n, countCalls); })(m.body);
     for (const st of m.body.statements) {
       if (!ts.isExpressionStatement(st)) continue;
       const e = st.expression;
+      if (isThisCall(e, FN_SETTERS) && e.arguments.length >= 2 && ts.isStringLiteralLike(e.arguments[0])) {
+        top++;
+        const made = madeBy(e.arguments[e.arguments.length - 1]);
+        const v = made && valueOf(made, sf);
+        if (!info.setDefault.has(e.arguments[0].text)) { info.setDefault.set(e.arguments[0].text, v == null ? DYNAMIC : v); stats.classDefaults++; }
+      }
       if (isThisCall(e, SETTERS) && e.arguments.length >= 2 && ts.isStringLiteralLike(e.arguments[0])) {
         top++;
         const v = valueOf(e.arguments[1], sf);

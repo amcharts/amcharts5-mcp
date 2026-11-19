@@ -2,7 +2,7 @@
 title: "Role"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/role/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ARIA roles an element can have.

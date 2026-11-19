@@ -2,7 +2,7 @@
 title: "Color"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/color/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A color. Every color setting takes a `Color` object, usually created with `am5.color()`, e.g. `am5.color(0xff0000)`.

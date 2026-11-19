@@ -2,7 +2,7 @@
 title: "MapSankeySeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/mapsankeyseries/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A map series of Sankey-style flow bands between places, each as wide as its value. The bands are polygons on the map, so they follow it as it is panned, zoomed and rotated.

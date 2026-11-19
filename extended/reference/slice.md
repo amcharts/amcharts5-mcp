@@ -2,7 +2,7 @@
 title: "Slice"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/slice/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A slice of a circle or ring, as in a pie chart.

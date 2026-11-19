@@ -2,7 +2,7 @@
 title: "ClosePath"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/closepath/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 An `Op` subclass.

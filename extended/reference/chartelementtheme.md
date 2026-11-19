@@ -2,7 +2,7 @@
 title: "ChartElementTheme"
 type: "type"
 source: "https://docs.amcharts.com/v5/reference/chartelementtheme/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A theme for `<am5-chart>`: a theme class, e.g. `am5themes_Animated`, or a theme class with its settings, e.g. `[am5themes_Adaptive, { baseColor: "#4150a0" }]`.

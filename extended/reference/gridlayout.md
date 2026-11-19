@@ -2,7 +2,7 @@
 title: "GridLayout"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/gridlayout/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Lays out a `Container`'s children in rows from left to right, with as many columns as fit its width. With the container's `direction: "rtl"`, rows go from right to left, so a partly filled last row is on the right.
@@ -25,6 +25,10 @@ Extends: Layout → Entity → Settings
 
 - Settings: `IGridLayoutSettings` — get_api_reference shows it after this page
 - Private settings: `IGridLayoutPrivate`
+
+## Methods
+
+- `getColumnWidths(container: Container, columnCount: number, maxCellWidth: number, availableWidth: number, extra?: (child: Sprite) => number): number[]`
 
 ## Other inherited methods
 

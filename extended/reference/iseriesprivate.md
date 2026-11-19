@@ -2,7 +2,7 @@
 title: "ISeriesPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iseriesprivate/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -17,6 +17,7 @@ TypeScript: `am5.ISeriesPrivate` (`import type { ISeriesPrivate } from "@amchart
 - **startIndex** (`number`)
 - **endIndex** (`number`)
 - **adjustedStartIndex** (`number`)
+- **adjustedEndIndex** (`number`)
 - **valueAverage** (`number`) — Average of all data items' values (with `calculateAggregates`).
 - **valueCount** (`number`) — Number of data items with a value (with `calculateAggregates`).
 - **valueSum** (`number`) — Sum of all data items' values (with `calculateAggregates`).

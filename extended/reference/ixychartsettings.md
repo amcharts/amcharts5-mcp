@@ -2,7 +2,7 @@
 title: "IXYChartSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ixychartsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -25,7 +25,7 @@ TypeScript: `am5xy.IXYChartSettings` (`import type { IXYChartSettings } from "@a
 - **wheelStep** (`number`) — default `0.25` _(theme)_ — How far one wheel step zooms or pans, as a share of the visible range.
 - **cursor** (`XYCursor`) — The chart's cursor. Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/
 - **maxTooltipDistance** (`number`) — Limits the cursor's series tooltips to the one closest to the pointer, plus any within this many pixels of it. `-1` shows only the closest one, even when others are at the same spot. If not set, every series shows its tooltip. Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#tooltips
-- **maxTooltipDistanceBy** (`"xy" | "x" | "y"`) — default `"xy"` _(code fallback)_ — How `maxTooltipDistance` measures distance: `"xy"` by straight distance, `"x"` or `"y"` along one direction only. _Since 5.2.6._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#tooltips
+- **maxTooltipDistanceBy** (`"x" | "xy" | "y"`) — default `"xy"` _(code fallback)_ — How `maxTooltipDistance` measures distance: `"xy"` by straight distance, `"x"` or `"y"` along one direction only. _Since 5.2.6._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#tooltips
 - **arrangeTooltips** (`boolean`) — default `true` _(theme)_ — Moves the series tooltips shown by the cursor apart vertically so they don't overlap. Works only with a `cursor`. Docs: https://docs.amcharts.com/v5/charts/xy-chart/cursor/#tooltips
 - **pinchZoomX** (`boolean`) — default `false` _(theme)_ — Zooms the chart horizontally with a pinch gesture on the plot area. Not supported in a `RadarChart`. _Since 5.1.8._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pinch-zoom
 - **pinchZoomY** (`boolean`) — default `false` _(theme)_ — Zooms the chart vertically with a pinch gesture on the plot area. Not supported in a `RadarChart`. _Since 5.1.8._ Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#pinch-zoom

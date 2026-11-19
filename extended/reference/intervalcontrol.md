@@ -2,7 +2,7 @@
 title: "IntervalControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/intervalcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A dropdown control for picking the data interval of a `StockChart`, such as 1 day or 1 week. Applying the picked interval is up to a `selected` event handler.

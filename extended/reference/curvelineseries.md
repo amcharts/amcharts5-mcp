@@ -2,7 +2,7 @@
 title: "CurveLineSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/curvelineseries/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A line series for a `CurveChart`, `SerpentineChart` or `SpiralChart`.

@@ -2,7 +2,7 @@
 title: "NumberFormatter"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/numberformatter/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Formats numbers in labels, tooltips and other text.
@@ -28,7 +28,7 @@ Extends: Entity → Settings
 
 ## Methods
 
-- `format(value: number | string, format?: string | Intl.NumberFormatOptions, precision?: number): string` — Formats a number as a string. Parameters: `value`: Value to format; `format`: Format string or `Intl.NumberFormat` options; `numberFormat` if not given; `precision`: Minimum number of decimals, padded with zeros; ignored for a format with a modifier. Returns: Formatted number
+- `format(value: number | string, format?: string | Intl.NumberFormatOptions, precision?: number): string` — Formats a number as a string. Parameters: `value`: Value to format; `format`: Format string or `Intl.NumberFormat` options; `numberFormat` if not given; `precision`: Minimum number of decimals, padded with zeros, shown even where the format keeps fewer; ignored for a format with a modifier. Returns: Formatted number
 
 ## Other inherited methods
 

@@ -2,7 +2,7 @@
 title: "ResetControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/resetcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A control that removes all drawings and indicators when clicked.

@@ -2,7 +2,7 @@
 title: "Container"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/container/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 An element that holds child elements, arranges them with a layout, and can have a background.

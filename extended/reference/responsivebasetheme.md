@@ -2,7 +2,7 @@
 title: "ResponsiveBaseTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/responsivebasetheme/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 What the responsive themes share: the breakpoints, the functions that test them, and the rules that apply while the chart's size meets a condition.

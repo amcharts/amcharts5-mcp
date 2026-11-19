@@ -2,7 +2,7 @@
 title: "IEditableAxisLabelSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ieditableaxislabelsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -18,6 +18,7 @@ _(none declared here — all inherited)_
 
 ## Inherited settings with a different default on EditableAxisLabel
 
+- **background** (`Graphics`) — default `RoundedRectangle.new(root, {})` _(class default)_ — _from IContainerSettings_ — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#background
 - **paddingBottom** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
 - **paddingLeft** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
 - **paddingRight** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Right padding in pixels.
@@ -30,6 +31,6 @@ Names only — see the declaring interface's page (e.g. `get_api_reference("IEdi
 
 - _IEditableLabelSettings_: editOn, multiLine
 - _ILabelSettings_: baselineRatio, breakWords, direction, ellipsis, fill, fillGradient, fillOpacity, fontFamily, fontSize, fontStyle, fontVariant, fontWeight, ignoreFormatting, lineHeight, maxChars, minScale, opacity, oversizedBehavior, populateText, shadowBlur, shadowColor, shadowOffsetX, shadowOffsetY, shadowOpacity, text, textAlign, textBaseline, textDecoration
-- _IContainerSettings_: background, html, interactiveChildren, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
+- _IContainerSettings_: html, interactiveChildren, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTagsSelf, userData

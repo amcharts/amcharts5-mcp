@@ -2,7 +2,7 @@
 title: "IExportingEvents"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iexportingevents/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance

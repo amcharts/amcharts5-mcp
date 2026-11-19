@@ -2,7 +2,7 @@
 title: "HeikinAshi"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/heikinashi/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Heikin Ashi indicator: candlesticks of averaged prices, which smooth out noise and show the trend more clearly. Drawn in a panel of its own.

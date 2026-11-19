@@ -2,7 +2,7 @@
 title: "Language"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/language/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Translates the text prompts of charts into the root's locale. Available as `root.language`.

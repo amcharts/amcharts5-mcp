@@ -2,7 +2,7 @@
 title: "IPlaced"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iplaced/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 A child placed left to right: its `x` and the left and right of its bounds.

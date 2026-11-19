@@ -2,7 +2,7 @@
 title: "IRadialText"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iradialtext/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -26,5 +26,5 @@ TypeScript: not exported by name from the package.
 Names only — see the declaring interface's page (e.g. `get_api_reference("IText")`) for types, defaults and descriptions.
 
 - _IText_: invalidateVisibility, resolution, style, text, textVisible, truncated
-- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, visible, wheelable, x, y
+- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, touchAxis, visible, wheelable, x, y
 - _IDisposer_: dispose, isDisposed

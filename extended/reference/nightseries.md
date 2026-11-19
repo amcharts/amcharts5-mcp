@@ -2,7 +2,7 @@
 title: "NightSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/nightseries/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Shades the part of a map where it is night, with the twilight in steps, and shows the sun.

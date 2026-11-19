@@ -2,7 +2,7 @@
 title: "LabelFit"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/labelfit/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Keeps the labels its owner hid for not fitting, with the box and place they had, and tells when one would fit again.

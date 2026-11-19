@@ -2,7 +2,7 @@
 title: "IGraphics"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/igraphics/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -42,5 +42,5 @@ TypeScript: `am5.IGraphics` (`import type { IGraphics } from "@amcharts/amcharts
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IDisplayObject")`) for types, defaults and descriptions.
 
-- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, visible, wheelable, x, y
+- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, touchAxis, visible, wheelable, x, y
 - _IDisposer_: dispose, isDisposed

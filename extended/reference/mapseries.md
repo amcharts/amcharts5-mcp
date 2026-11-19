@@ -2,7 +2,7 @@
 title: "MapSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/mapseries/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Base class for map series.

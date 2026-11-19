@@ -2,7 +2,7 @@
 title: "IButtonSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ibuttonsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -19,6 +19,7 @@ TypeScript: `am5.IButtonSettings` (`import type { IButtonSettings } from "@amcha
 
 ## Inherited settings with a different default on Button
 
+- **background** (`Graphics`) — default `RoundedRectangle.new(root, {})` _(class default)_ — _from IContainerSettings_ — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#background
 - **focusable** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Can element be focused, i.e. selected using TAB key. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#focusing-elements
 - **interactive** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Makes the element respond to the pointer. Adding a pointer event listener to it turns this on.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
@@ -33,6 +34,6 @@ TypeScript: `am5.IButtonSettings` (`import type { IButtonSettings } from "@amcha
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
 
-- _IContainerSettings_: background, direction, html, mask, maskContent, reverseChildren, verticalScrollbar
+- _IContainerSettings_: direction, html, mask, maskContent, reverseChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

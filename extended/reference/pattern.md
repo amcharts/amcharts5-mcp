@@ -2,7 +2,7 @@
 title: "Pattern"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/pattern/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Base class for patterns.

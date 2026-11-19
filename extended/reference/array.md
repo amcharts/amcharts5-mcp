@@ -1,7 +1,7 @@
 ---
 title: "array"
 type: "namespace"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Helpers exported as `am5.array`.

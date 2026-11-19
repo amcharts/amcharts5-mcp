@@ -2,7 +2,7 @@
 title: "Chord"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chord/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Chord diagram: nodes as arcs around a circle, linked by ribbons. A node's arc shows its outgoing total, and a ribbon is as wide at each end as the flow out of that end, so a one-way link narrows to a point at its target. For one-way flows, see `ChordDirected`.

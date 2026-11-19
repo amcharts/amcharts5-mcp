@@ -2,7 +2,7 @@
 title: "IZigZagSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/izigzagsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance

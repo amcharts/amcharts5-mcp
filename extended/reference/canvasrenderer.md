@@ -2,7 +2,7 @@
 title: "CanvasRenderer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/canvasrenderer/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 An `ArrayDisposer` subclass.
@@ -28,6 +28,7 @@ Public properties (not settings):
 - **resolution** (`number`)
 - **tapToActivate** (`boolean`)
 - **tapToActivateTimeout** (`number`)
+- **touchGestures** (`TouchGestures`)
 - **view** (`HTMLElement`)
 
 ## Methods

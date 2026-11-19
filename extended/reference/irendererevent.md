@@ -2,7 +2,7 @@
 title: "IRendererEvent"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/irendererevent/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -17,3 +17,4 @@ TypeScript: not exported by name from the package.
 - **id** (`number`)
 - **simulated** (`boolean`)
 - **native** (`boolean`)
+- **cancelled** (`boolean`)

@@ -2,7 +2,7 @@
 title: "MapSankeyNodes"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/mapsankeynodes/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 The nodes of a `MapSankeySeries`, available as its `nodes`.

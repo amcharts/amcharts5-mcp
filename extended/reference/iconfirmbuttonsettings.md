@@ -2,7 +2,7 @@
 title: "IConfirmButtonSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iconfirmbuttonsettings/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -18,10 +18,11 @@ _(none declared here — all inherited)_
 
 ## Inherited settings with a different default on ConfirmButton
 
+- **background** (`Graphics`) — default `RoundedRectangle.new(root, {})` _(class default)_ — _from IContainerSettings_ — Element drawn behind the container's content, sized to fill the container. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#background
 - **focusable** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Can element be focused, i.e. selected using TAB key. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#focusing-elements
 - **interactive** (`boolean`) — default `true` _(theme)_ — _from ISpriteSettings_ — Makes the element respond to the pointer. Adding a pointer event listener to it turns this on.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
-- **label** (`Label`) — default `Label.new(root, { text: root.language.translate("Confirm"), forceHidden: true })` _(theme)_ — _from IButtonSettings_ — A `Label` shown on the button. A label it replaces is disposed.
+- **label** (`Label`) — default `Label.new(root, { text: root.language.translate("Confirm"), forceHidden: true })` _(class default)_ — _from IButtonSettings_ — A `Label` shown on the button. A label it replaces is disposed.
 - **layout** (`Layout`) — default `root.horizontalLayout` _(theme)_ — _from IContainerSettings_ — How children are arranged, e.g. `root.horizontalLayout`, `root.verticalLayout` or `root.gridLayout`. Without a layout, children are placed by their own `x` and `y`. Docs: https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout
 - **paddingBottom** (`number`) — default `8` _(theme)_ — _from IContainerSettings_ — Bottom padding in pixels.
 - **paddingLeft** (`number`) — default `10` _(theme)_ — _from IContainerSettings_ — Left padding in pixels.
@@ -35,6 +36,6 @@ _(none declared here — all inherited)_
 Names only — see the declaring interface's page (e.g. `get_api_reference("IButtonSettings")`) for types, defaults and descriptions.
 
 - _IButtonSettings_: icon
-- _IContainerSettings_: background, direction, html, mask, maskContent, reverseChildren, verticalScrollbar
+- _IContainerSettings_: direction, html, mask, maskContent, reverseChildren, verticalScrollbar
 - _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

@@ -2,7 +2,7 @@
 title: "IInteractionEvent"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iinteractionevent/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 ## Inheritance
@@ -19,4 +19,4 @@ TypeScript: not exported by name from the package.
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IRendererEvent")`) for types, defaults and descriptions.
 
-- _IRendererEvent_: event, id, native, point, simulated
+- _IRendererEvent_: cancelled, event, id, native, point, simulated

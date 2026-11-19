@@ -2,7 +2,7 @@
 title: "iHSL"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ihsl/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Represents an interface for an object that represents an HSL color.

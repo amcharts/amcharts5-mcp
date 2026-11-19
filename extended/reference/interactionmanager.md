@@ -2,7 +2,7 @@
 title: "InteractionManager"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/interactionmanager/"
-generatedFrom: "@amcharts/amcharts5@5.22.0"
+generatedFrom: "@amcharts/amcharts5@5.23.0"
 ---
 
 Pointer input for one renderer: DOM listeners, hover, drag, click, double-click, wheel, cursor and tap-to-activate. Renderer-neutral; the host supplies coordinates and the hit test.
@@ -22,6 +22,7 @@ Public properties (not settings):
 - **interactionsEnabled** (`boolean`)
 - **tapToActivate** (`boolean`)
 - **tapToActivateTimeout** (`number`)
+- **touchGestures** (`TouchGestures`) — Who gets a touch gesture on the chart, see `Root.touchGestures`.
 
 ## Methods
 

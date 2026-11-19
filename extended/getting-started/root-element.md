@@ -1,7 +1,7 @@
 ---
 title: "Root element"
 source: "https://docs.amcharts.com/v5/getting-started/root-element/"
-scraped: "2026-11-16"
+scraped: "2026-11-19"
 ---
 
 All charts and their controls are created in a root element. This tutorial examines some of its functionality and configuration options.
@@ -629,15 +629,37 @@ root.resize();
 
 ## Touch-related options
 
-There are a few options that can be used to tweak built-in touch-related functionality of the charts.
+A chart that pans, zooms or selects by dragging takes touch gestures that start on it, so the page can't be scrolled by swiping over the chart. The root's `touchGestures` property (since 5.23.0) sets who gets a gesture that starts on the chart:
 
-Charts that use touch gestures for their functionality, like zooming or panning the chart or map, will hijack page gestures such as scroll.
+| Value               | Gesture goes to                                                                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `"chart"` (default) | The chart, wherever it drags, pans, zooms or selects.                                                                                            |
+| `"tap"`             | The page, until the chart is tapped. Then the chart, until `tapToActivateTimeout` passes without a touch.                                        |
+| `"auto"`            | A vertical swipe scrolls the page. A swipe that starts sideways, or uses two fingers, goes to the chart, which then follows it in any direction. |
 
-If we set root element's `tapToActivate` property to `true`, user will first need to tap on the chart before those functions are enabled.
+TypeScript:
 
-Once "activated" chart's gesture-based functionality will start to work normally, and will revert back to "inactive" state after 3 seconds of inactivity.
+```ts
+root.touchGestures = "auto";
+```
 
-The default timeout can be modified via `tapToActivateTimeout` property, which accepts time in milliseconds.
+JavaScript:
+
+```js
+root.touchGestures = "auto";
+```
+
+With `"auto"`, some elements take any swipe that starts on them: scrollbar grips, buttons and other draggable elements, drawing on a stock chart, a cursor that selects only up and down, and radar charts.
+
+With `"tap"` or `"auto"`, a swipe that scrolls the page doesn't move the chart.
+
+The [ResponsiveMax](https://docs.amcharts.com/v5/concepts/responsive-max/) theme, set on the root, sets `"auto"` unless `touchGestures` or `tapToActivate` is set in code. To keep the chart taking every gesture, set `"chart"`.
+
+### Tap to activate
+
+`tapToActivate = true` is the same as `touchGestures = "tap"`. Setting it back to `false` restores what was there before: the value set in code, or the theme's.
+
+`tapToActivateTimeout` is how long in milliseconds the chart stays active after the last touch. Default: `3000`. With `0`, it stays active until a tap outside the chart.
 
 TypeScript:
 
