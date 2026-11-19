@@ -4,7 +4,7 @@
 
 Docs: https://docs.amcharts.com/v5/charts/timeline/
 
-Timeline charts are "curved XY charts" — they use XY-style axes and series but bend the chart into serpentine, spiral, or custom shapes. Added in amCharts 5.12.0.
+Timeline charts are "curved XY charts" — they use XY-style axes and series but bend the chart into serpentine, spiral, or custom shapes.
 
 ## Key differences from XY charts
 
@@ -29,6 +29,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5timeline from "@amcharts/amcharts5/timeline";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN / script tags
@@ -37,7 +38,10 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/timeline.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
+
+From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Chart types
 
@@ -121,7 +125,7 @@ const xRenderer = am5timeline.AxisRendererCurveX.new(root, {
 });
 ```
 
-On a `CurveChart` the `AxisRendererCurveX` `points` are scaled and centered to fit the plot area. Before 5.21.1 a path scaled down this way got far too many labels and grid lines.
+On a `CurveChart` the `AxisRendererCurveX` `points` are scaled and centered to fit the plot area.
 
 ## Axes
 
@@ -298,6 +302,7 @@ chart.get("cursor").events.on("cursormoved", function(ev) {
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/timeline.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>
     #chartdiv { width: 100%; height: 600px; }
   </style>
@@ -306,7 +311,7 @@ chart.get("cursor").events.on("cursormoved", function(ev) {
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     // Create serpentine chart
     var chart = root.container.children.push(
@@ -392,6 +397,7 @@ chart.get("cursor").events.on("cursormoved", function(ev) {
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/timeline.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>
     #chartdiv { width: 100%; height: 600px; }
   </style>
@@ -400,7 +406,7 @@ chart.get("cursor").events.on("cursormoved", function(ev) {
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(
       am5timeline.SpiralChart.new(root, {

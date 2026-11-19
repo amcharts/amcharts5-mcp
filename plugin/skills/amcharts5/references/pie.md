@@ -10,6 +10,7 @@
 import * as am5 from "@amcharts/amcharts5";
 import * as am5percent from "@amcharts/amcharts5/percent";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN
@@ -17,13 +18,16 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
+
+From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Pie / Donut chart setup
 
 ```js
 const root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 const chart = root.container.children.push(
   am5percent.PieChart.new(root, {
@@ -57,7 +61,7 @@ chart.appear(1000, 100);
 | Setting | Type | Description |
 |---------|------|-------------|
 | `radius` | percent/number | Outer radius (default: `am5.percent(80)`) |
-| `innerRadius` | percent/number | Inner hole for donut (default: 0). Percent is relative to radius. `am5.percent(0)` broke the chart before 5.21.0 — use `0` (or omit it) for a plain pie |
+| `innerRadius` | percent/number | Inner hole for donut (default: 0, a plain pie). Percent is relative to radius |
 | `startAngle` | number | Start angle in degrees (default: -90) |
 | `endAngle` | number | End angle in degrees (default: 270) |
 
@@ -104,6 +108,26 @@ series.labels.template.set("forceHidden", true);
 series.ticks.template.set("forceHidden", true);
 ```
 
+**Labels that fit: `autoLabels: true`** on the `PieSeries` fits the labels into the chart, a step at a time as room runs out:
+1. The pie moves aside so each side gets the room its widest label needs. Then it gets smaller, down to half the chart's shorter side.
+2. A label too wide for its column wraps onto up to three lines where there is height to spare, and is shortened where there is not.
+3. The labels of the smallest slices are hidden where a column can't hold them all.
+
+More details:
+- With `alignLabels: false`, labels stay next to their slices: the pie gets smaller, labels wrap or are shortened, and where two still overlap, the smaller slice's label is hidden.
+- A `maxWidth` on `labels.template` is the most a label may take. `oversizedBehavior: "truncate"` there only shortens; `"wrap"` wraps first.
+- A label in the middle of a donut (in `chart.seriesContainer.children`) is made smaller where it wouldn't fit the hole.
+
+Without it, long labels on a small chart run off the edges.
+
+```js
+var series = chart.series.push(am5percent.PieSeries.new(root, {
+  valueField: "value",
+  categoryField: "category",
+  autoLabels: true
+}));
+```
+
 ### Slice appearance
 
 ```js
@@ -126,7 +150,7 @@ series.slices.template.states.create("active", {
 ```js
 // Set colors per slice from data
 series.slices.template.adapters.add("fill", function(fill, target) {
-  return chart.get("colors").getIndex(series.slices.indexOf(target));
+  return series.get("colors").getIndex(series.slices.indexOf(target));
 });
 
 // Or in data:
@@ -276,7 +300,7 @@ am5percent.PictorialStackedSeries.new(root, {
 ```js
 series.bullets.push(function(root, series, dataItem) {
   return am5.Bullet.new(root, {
-    locationX: 0.5, locationY: 0.5,          // fractions of the slice (funnel/pyramid: along the sloping edges since 5.20.2)
+    locationX: 0.5, locationY: 0.5,          // fractions of the slice (funnel/pyramid: along the sloping edges)
     sprite: am5.Circle.new(root, {
       radius: 6,
       fill: am5.color(0xffffff)              // set a paint — an unpainted bullet takes its own slice's color and is invisible
@@ -285,7 +309,7 @@ series.bullets.push(function(root, series, dataItem) {
 });
 ```
 
-Percent series have **no series-level `fill`**: a bullet `Graphics` with no `fill`/`stroke` is auto-colored per data item from its own slice (5.20.0+), so it blends in unless stroked, offset, or given a contrasting fill. Slice tooltips need no `am5.Tooltip` instance — `series.slices.template.set("tooltipText", "{category}: {value}")` uses the root's shared tooltip.
+Percent series have **no series-level `fill`**: a bullet `Graphics` with no `fill`/`stroke` is auto-colored per data item from its own slice, so it blends in unless stroked, offset, or given a contrasting fill. Slice tooltips need no `am5.Tooltip` instance — `series.slices.template.set("tooltipText", "{category}: {value}")` uses the root's shared tooltip.
 
 ## Legend (for all percent charts)
 
@@ -331,9 +355,9 @@ outerSeries.data.setAll(outerData);
 innerSeries.data.setAll(innerData);
 ```
 
-A negative `innerRadius` (pixels in from the outer edge, a fixed-width ring) with several series sizes the rings correctly since 5.21.0.
+A negative `innerRadius` (pixels in from the outer edge) gives a fixed-width ring, also with several series.
 
-**`calculateAggregates` on pie/funnel series (5.21.0):** with `calculateAggregates: true` the change fields — `{valueChange}`/`{valueChangePercent}` (vs. the first slice) and `{valueChangePrevious}`/`{valueChangePreviousPercent}` (vs. the previous one) — are real numbers; before 5.21.0 they were `NaN` on non-XY series (pie, map heat maps). `{valuePercentTotal}` and the totals were not affected.
+**`calculateAggregates` on pie/funnel series:** with `calculateAggregates: true` the change fields — `{valueChange}`/`{valueChangePercent}` (vs. the first slice) and `{valueChangePrevious}`/`{valueChangePreviousPercent}` (vs. the previous one) — are real numbers, as on map heat maps.
 
 ## Data-driven slice colors (templateField)
 
@@ -362,14 +386,14 @@ series.slices.template.events.on("pointerout", function(ev) {
   ev.target.set("scale", 1);
 });
 
-// Open a URL on click without a handler (5.20.7) — pie, funnel, pyramid and pictorial slices (and bullets)
+// Open a URL on click without a handler — pie, funnel, pyramid and pictorial slices (and bullets)
 series.set("urlField", "url");          // data row: { category: "A", value: 40, url: "https://…" }
 series.set("linkTarget", "_blank");     // default "_self"
 ```
 
 `urlField` has no default (links off until set); the pointer cursor is set automatically unless you set `cursorOverStyle`; `javascript:`/`data:`/`vbscript:` URLs are never opened; override `series.openUrl(dataItem)` to intercept.
 
-**Keyboard (5.21.0):** `series.slices.template.set("focusable", true)` makes slices TAB-reachable — before 5.21.0 focusable pie slices could not be focused. A focusable slice that toggles on click is exposed as a toggle button (`aria-pressed`).
+**Keyboard:** `series.slices.template.set("focusable", true)` makes slices TAB-reachable. A focusable slice that toggles on click is exposed as a toggle button (`aria-pressed`).
 
 ## Disposal
 
@@ -395,13 +419,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(
       am5percent.PieChart.new(root, { layout: root.verticalLayout })
@@ -463,13 +488,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(am5percent.PieChart.new(root, {
       layout: root.verticalLayout,
@@ -528,13 +554,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 400px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(am5percent.PieChart.new(root, {
       startAngle: 180,
@@ -581,13 +608,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(
       am5percent.SlicedChart.new(root, { layout: root.verticalLayout })
@@ -651,13 +679,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(
       am5percent.SlicedChart.new(root, { layout: root.horizontalLayout })

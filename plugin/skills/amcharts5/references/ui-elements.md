@@ -15,6 +15,8 @@ All UI elements are in the core package (`am5`) except ColorPicker (and Exportin
 <script src="https://cdn.amcharts.com/lib/5/plugins/colorPicker.js"></script>
 ```
 
+From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
+
 ### ES modules
 ```ts
 import * as am5 from "@amcharts/amcharts5";
@@ -198,7 +200,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 }));
 ```
 
-`opposite` (5.20.2) and `outsideAxes` (5.21.0) work only for scrollbars set as a chart's `scrollbarX`/`scrollbarY` (not to be confused with the axis renderer's `opposite`). A scrollbar hidden with `visible: false`, `forceHidden` or `hide()` no longer leaves an empty band (5.21.0).
+`opposite` and `outsideAxes` work only for scrollbars set as a chart's `scrollbarX`/`scrollbarY` (not to be confused with the axis renderer's `opposite`). A scrollbar hidden with `visible: false`, `forceHidden` or `hide()` leaves no empty band.
 
 ### Styling
 
@@ -302,7 +304,7 @@ An HTML overlay dialog.
 ```js
 var modal = am5.Modal.new(root, {
   content: "<h2>Notice</h2><p>Chart data is loading...</p>",
-  ariaLabel: "Loading"   // (5.21.0) dialog name for screen readers; default: the first heading in content
+  ariaLabel: "Loading"   // dialog name for screen readers; default: the first heading in content
 });
 
 modal.open();
@@ -315,13 +317,13 @@ modal.events.on("closed", function() {
 modal.close();
 ```
 
-Since 5.21.0 a `Modal` (also the one `StockChart` settings use) is a dialog to screen readers: focus moves into it when it opens, TAB stays inside it, and closing it gives focus back.
+A `Modal` (also the one `StockChart` settings use) is a dialog to screen readers: focus moves into it when it opens, TAB stays inside it, and closing it gives focus back.
 
 ---
 
 ## ExportingMenu
 
-The exporting plugin's menu (`am5plugins_exporting.ExportingMenu`, requires `plugins/exporting.js`) is an HTML overlay too; see SKILL.md → Exporting. Since 5.21.0 it lists an **SVG** image item by default — remove it with `svgOptions: { disabled: true }` on the `Exporting` object — and is accessible: items are menu items to screen readers, the icon tells whether the menu is open, and closing the menu returns focus to the icon.
+The exporting plugin's menu (`am5plugins_exporting.ExportingMenu`, requires `plugins/exporting.js`) is an HTML overlay too; see SKILL.md → Exporting. It lists an **SVG** image item by default — remove it with `svgOptions: { disabled: true }` on the `Exporting` object — and is accessible: items are menu items to screen readers, the icon tells whether the menu is open, and closing the menu returns focus to the icon.
 
 ```js
 am5plugins_exporting.Exporting.new(root, {
@@ -426,3 +428,10 @@ var chart = row.children.push(am5xy.XYChart.new(root, {
   height: am5.percent(100)
 }));
 ```
+
+## Custom visuals from core sprites
+
+amCharts has no 3D chart, but a 3D scatter (or another custom view) works with core sprites:
+- one `am5.Container` per point (a `Circle` and a `Label`), moved each frame from your own projection with `setAll({ x, y, scale, opacity })`. `label.set("scale", 1 / k)` keeps names one size. Tooltips and hover states work as usual.
+- all lines of one style in one `am5.Graphics`, redrawn with a new `draw` closure each frame (SKILL.md pitfall 42).
+- many differently coloured polygons (a mesh, a hand-made heatmap) in one Graphics: `beginPath()` / `beginFill()` / `endFill()` per shape (SKILL.md pitfall 37).

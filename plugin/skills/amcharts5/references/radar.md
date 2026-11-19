@@ -11,6 +11,7 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5radar from "@amcharts/amcharts5/radar";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN
@@ -19,13 +20,16 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
+
+From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Radar chart setup
 
 ```js
 const root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root)]);
+root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
 const chart = root.container.children.push(
   am5radar.RadarChart.new(root, {
@@ -46,11 +50,11 @@ const chart = root.container.children.push(
 | Setting | Type | Description |
 |---------|------|-------------|
 | `radius` | percent/number | Outer radius (default: `am5.percent(80)`) |
-| `innerRadius` | percent/number | Inner radius / hole size (default: 0). `am5.percent(0)` broke the chart before 5.21.0 — use `0` there |
+| `innerRadius` | percent/number | Inner radius / hole size (default: 0) |
 | `startAngle` | number | Start angle in degrees (default: -90) |
 | `endAngle` | number | End angle in degrees (default: 270) |
 
-Since 5.21.0 the radar's radius also leaves room for a legend placed inside the chart (it ignored it).
+The radar's radius leaves room for a legend placed inside the chart.
 
 ## Axes — use circular + radial renderers
 
@@ -72,7 +76,7 @@ const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 ```
 
-`AxisRendererRadial` takes its own `radius`/`innerRadius` (pixels or `Percent` of the chart's radius) and `startAngle`/`endAngle`; unset, the chart's are used. A **negative** `radius` is measured in from the chart's radius, as on `AxisRendererCircular` — e.g. `radius: -20` leaves a 20 px ring outside the axis (it broke the axis before 5.21.0); a negative `innerRadius` is measured in from the axis' outer radius. With an `innerRadius` on a renderer, `RadarColumnSeries` tooltips point at the right place since 5.21.0.
+`AxisRendererRadial` takes its own `radius`/`innerRadius` (pixels or `Percent` of the chart's radius) and `startAngle`/`endAngle`; unset, the chart's are used. A **negative** `radius` is measured in from the chart's radius, as on `AxisRendererCircular` — e.g. `radius: -20` leaves a 20 px ring outside the axis; a negative `innerRadius` is measured in from the axis' outer radius.
 
 ### Circular renderer label options
 
@@ -93,7 +97,7 @@ xAxis.get("renderer").labels.template.setAll({
 |-------|---------|
 | `am5radar.RadarLineSeries` | Lines on radar chart (spider chart) |
 | `am5radar.RadarColumnSeries` | Columns on radar chart |
-| `am5radar.SmoothedRadarLineSeries` | Smoothed/curved radar lines (`tension`, default `0.5`; `1` = straight — changing it after creation works since 5.21.0) |
+| `am5radar.SmoothedRadarLineSeries` | Smoothed/curved radar lines (`tension`, default `0.5`; `1` = straight; it can be changed after creation) |
 
 ```js
 // Radar line series (spider chart)
@@ -340,13 +344,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(am5radar.RadarChart.new(root, {
       panX: false,
@@ -427,13 +432,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 400px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(am5radar.RadarChart.new(root, {
       panX: false,
@@ -526,13 +532,14 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
 
     var chart = root.container.children.push(am5radar.RadarChart.new(root, {
       panX: false,
