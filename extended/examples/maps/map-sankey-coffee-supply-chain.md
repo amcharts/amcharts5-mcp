@@ -4,7 +4,7 @@ source: "amcharts5-mcp: written for the skill, checked in a browser"
 category: "maps"
 ---
 
-Demonstrates: `MapSankeySeries` with `sourceId`/`targetId` data (country codes), multi-level flows (producers > hubs > consumers), custom theme, country highlighting, animated coffee bean bullets, Globe/Map projection toggle, and auto-rotation. Based on the `map-sankey` shared example.
+Demonstrates: `MapSankeySeries` with `sourceId`/`targetId` data (country codes), multi-level flows (producers > hubs > consumers), custom theme, country highlighting, animated coffee bean bullets, Globe/Map projection toggle, and auto-rotation. Based on the JSON config example `get_example(path: "examples/json-configs/map-sankey")`.
 
 ## JavaScript
 

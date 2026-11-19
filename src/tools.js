@@ -123,6 +123,22 @@ function pickExample(doc, asked) {
 // Keywords whose example has another word in its title
 const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org chart": "tree" };
 
+// A reference's "More examples" section: its longer complete examples, which
+// live in the MCP's examples. Each bullet is "- <title>: `get_example(path: "…")`".
+function moreExamples(doc) {
+  const section = doc.sections.find(s => /^More examples$/i.test(s.heading));
+  if (!section) return [];
+  return [...section.body.matchAll(/^- (.+?): `get_example\(path: "([^"]+)"\)`/gm)].map(m => ({ title: m[1], path: m[2] }));
+}
+
+// The "More examples" entry whose title names what was asked, if any
+function moreExampleNamed(extra, asked) {
+  const words = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/ (charts?|diagrams?|graphs?)$/, "");
+  if (!words) return null;
+  const re = new RegExp(`\\b${words.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+  return extra.find(e => re.test(e.title.toLowerCase().replace(/[\s_-]+/g, " "))) || null;
+}
+
 // Keywords that name a whole family: its first example is the right answer
 const FAMILY_WORDS = new Set(["xy", "pie", "map", "geo", "geographic", "country", "hierarchy", "flow", "radar", "polar",
   "stock", "financial", "trading", "timeline", "curve", "gantt", "project timeline", "wordcloud", "word cloud", "tag cloud", "venn"]);
@@ -625,14 +641,21 @@ export function registerTools(server, content) {
       const { example, named } = pickExample(doc, chartType) || {};
       if (example) {
         const others = doc.sections.filter(s => s !== example && /^Example\b/i.test(s.heading) && /```html/.test(s.body));
+        // The reference's longer examples, kept in the MCP's examples
+        const extra = moreExamples(doc);
+        const longer = extra.length ? ` Longer examples: ${extra.map(e => `get_example(path: "${e.path}") (${e.title})`).join(", ")}.` : "";
         const more = others.length
-          ? `\n\nOther examples here: ${others.map(s => `get_section("${key}", ${JSON.stringify(s.heading)})`).join(", ")}. The whole reference: get_chart_reference("${key}").`
-          : `\n\nThe whole reference: get_chart_reference("${key}").`;
-        // Asked for a type no example here shows ("candlestick", "waterfall"): say so
+          ? `\n\nOther examples here: ${others.map(s => `get_section("${key}", ${JSON.stringify(s.heading)})`).join(", ")}.${longer} The whole reference: get_chart_reference("${key}").`
+          : `\n\n${longer ? longer.trim() + " " : ""}The whole reference: get_chart_reference("${key}").`;
+        // Asked for a type no example here shows ("candlestick", "waterfall"): say so,
+        // or name the longer example that shows it ("map sankey")
         const asked = chartType.trim().toLowerCase().replace(/[\s_-]+/g, " ");
-        const unnamed = !named && asked !== key && !FAMILY_WORDS.has(asked)
-          ? `> No example in this reference shows "${echo(chartType.trim())}"; this is its first. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
-          : "";
+        const longerNamed = !named && moreExampleNamed(extra, chartType);
+        const unnamed = longerNamed
+          ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's first example.\n\n`
+          : !named && asked !== key && !FAMILY_WORDS.has(asked)
+            ? `> No example in this reference shows "${echo(chartType.trim())}"; this is its first. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
+            : "";
         const title = `# Quick Start: ${example.heading.replace(/^Example\s*\d*:\s*/i, "")}\n*(source: skill/${key}.md, ${doc.title}: "${example.heading}")*\n\n${unnamed}`;
         if (format === "esm") {
           const esm = importSection ? extractImportBlock(importSection.body, "esm") : "";

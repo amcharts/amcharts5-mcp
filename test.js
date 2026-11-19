@@ -964,6 +964,17 @@ const tests = [
     },
     label: "no license key the library would accept in the docs demos, docs, skill or plugin",
   },
+  {
+    // The longest examples moved from the references to the MCP's examples: a quick start
+    // asked for one points to it, and lists the others
+    send: { jsonrpc: "2.0", id: 110, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "map sankey" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      if (!text.includes('The complete example for "map sankey" is') || !text.includes('get_example(path: "examples/maps/map-sankey-coffee-supply-chain")')) return `FAIL (${text.slice(0, 200)})`;
+      return text.includes('get_example(path: "examples/maps/globe-with-animated-flight-path")') ? "PASS" : "FAIL (the other longer examples aren't listed)";
+    },
+    label: "get_quick_start('map sankey') — names the moved Map Sankey example and lists the longer ones",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

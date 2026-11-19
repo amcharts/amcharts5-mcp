@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **License guidance in the skill**, only when it's relevant: when the user asks about the logo, licensing, pricing or branding, or the chart is for a commercial product, and only what was asked. amCharts 5 is free in any project, commercial included, with a small logo on each chart; a commercial license key removes it; which license fits, when asked (Basic, SaaS, OEM, Extended OEM; Charts, Maps, Stock Chart and Gantt licensed separately); and the informational page https://www.amcharts.com/pricing/licenses-explained/. No prices or store links. SKILL.md "License and the amCharts logo", and cursorrules.
 - The skill doesn't write code that hides the logo (code, CSS, cropping, editing the library): it says the free license requires the logo and points to a license key.
-- 1 new test (109): docs demos don't call `am5.addLicense()`, and no served file carries a key-shaped string.
+- 2 new tests (110): docs demos don't call `am5.addLicense()`, and no served file carries a key-shaped string (109); `get_quick_start("map sankey")` names the moved Map Sankey example (110).
 
 ### Changed
 - License placeholders are `"YOUR-AMCHARTS-LICENSE-KEY"` instead of `"AM5C-…"`, and the skill never writes or invents a key.
@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **The skill is smaller**, so that the Claude plugin directory's automated policy review reads all of it (it held 1.9.7, which has about 486 KB of text, with "Files the policy review couldn't cover"; 1.9.4, about 443 KB, went through). The four longest complete examples are MCP examples now, checked in a browser on 5.22.0, and the references list them under "More examples":
   - map.md's globe with an animated flight path, and its two Map Sankeys: `examples/maps/globe-with-animated-flight-path`, `examples/maps/map-sankey-coffee-supply-chain`, `examples/maps/map-sankey-oil-export-flows`;
   - stock.md's chart with a volume panel and Bollinger Bands: `examples/stock/stock-chart-with-volume-and-bollinger-bands`.
-  The plugin's text is 444 KB instead of 486 KB. Each reference keeps the examples `get_quick_start` serves.
+  The plugin's text is 444 KB instead of 486 KB. Each reference keeps the examples `get_quick_start` serves; `get_quick_start` lists the moved ones too, and names the one asked for ("map sankey" → the coffee Map Sankey). map.md's Waypoints note says each waypoint is `{ longitude, latitude }`, which the oil example's text said before.
 - Examples: five map demos re-imported after amcharts.com changed them: the heat legends of `trumps-reciprocal-tariffs-map`, `location-sensitive-map` and `us-heat-map` run horizontally under the map; `map-timeline`'s title wraps at the chart's width; `solar-eclipse-map` has no chart padding.
 - Docs re-imported: getting-started, map-chart, ai and react-native after the docs' geodata-on-jsDelivr fix went live (same content as 1.9.7's corrections); nuxt (license placeholder `YOUR-AMCHARTS-LICENSE-KEY`) and the pages with the cleaned demos (flow-chart bullets, step-line series, value axis) after the docs' license fix.
 
