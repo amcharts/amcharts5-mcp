@@ -1054,6 +1054,15 @@ const tests = [
     },
     label: "get_quick_start('globes') — the moved example named by the singular",
   },
+  {
+    send: { jsonrpc: "2.0", id: 120, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "bubble maps" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Map with point markers (bubble map)") && !text.includes("No example in this reference shows")
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('bubble maps') — the singular 'bubble map' (a map) wins over 'bubble' (an XY chart)",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

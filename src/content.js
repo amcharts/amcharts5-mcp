@@ -67,17 +67,20 @@ export function singularOf(name, sep = "-") {
 // and plurals of them: "stocks", "word clouds", "us maps"
 export function chartKeyOf(input) {
   const known = (k) => Object.hasOwn(CHART_TYPE_MAP, k);
-  const knownKeyOf = (w) => {
-    if (known(w)) return CHART_TYPE_MAP[w];
-    const bare = w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
-    if (known(bare)) return CHART_TYPE_MAP[bare];
-    // A name of several words with a known one in it: "us-map", "3d-pie",
-    // "radar-column" (the first known word names the family)
-    const part = w.split("-").find(known);
-    return part ? CHART_TYPE_MAP[part] : null;
-  };
+  const bareOf = (w) => w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
   const w = String(input ?? "").trim().toLowerCase().replace(/[\s_]+/g, "-");
-  return knownKeyOf(w) ?? knownKeyOf(singularOf(w)) ?? w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
+  // The name as written and singular, each step for both before the next, so
+  // "bubble-maps" is "bubble-map" (a map) before "bubble" (an XY chart)
+  const forms = [w, singularOf(w)];
+  for (const f of forms) if (known(f)) return CHART_TYPE_MAP[f];
+  for (const f of forms) if (known(bareOf(f))) return CHART_TYPE_MAP[bareOf(f)];
+  // A name of several words with a known one in it: "us-map", "3d-pie",
+  // "radar-column" (the first known word names the family)
+  for (const f of forms) {
+    const part = f.split("-").find(known);
+    if (part) return CHART_TYPE_MAP[part];
+  }
+  return bareOf(w);
 }
 
 // A section longer than this is offered by its ### subsections: in overviews,
