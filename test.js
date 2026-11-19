@@ -1012,6 +1012,15 @@ const tests = [
     },
     label: "get_quick_start('world map') — the map reference's first example, without a 'No example' note",
   },
+  {
+    send: { jsonrpc: "2.0", id: 115, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "World Map charts" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("<title>World Choropleth Map</title>") && !text.includes("No example in this reference shows")
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('World Map charts') — the family words with a trailing 'charts', without a 'No example' note",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **License guidance in the skill**, only when it's relevant: when the user asks about the logo, licensing, pricing or branding, or the chart is for a commercial product, and only what was asked. amCharts 5 is free in any project, commercial included, with a small logo on each chart; a commercial license key removes it; which license fits, when asked (Basic, SaaS, OEM, Extended OEM; Charts, Maps, Stock Chart and Gantt licensed separately); and the informational page https://www.amcharts.com/pricing/licenses-explained/. No prices or store links. SKILL.md "License and the amCharts logo", and cursorrules.
 - The skill doesn't write code that hides the logo (code, CSS, cropping, editing the library): it says the free license requires the logo and points to a license key.
 - Example `examples/gauges/world-clock`, new on amcharts.com: four live analog clocks (yours, New York, London, Tokyo) with the time in digits, the offset from yours and a dark face at night, and an optional dotted world map (`PixelMapSeries`) with each city in its clock's color.
-- 6 new tests (114): docs demos don't call `am5.addLicense()`, and no served file carries a key-shaped string (109); `get_quick_start("map sankey")`, `("globe")`, `("map sankey oil")` and `("bollinger band")` name the moved examples (110–113); `get_quick_start("world map")` serves the map reference's first example without a "No example" note (114).
+- 7 new tests (115): docs demos don't call `am5.addLicense()`, and no served file carries a key-shaped string (109); `get_quick_start("map sankey")`, `("globe")`, `("map sankey oil")` and `("bollinger band")` name the moved examples (110–113); `get_quick_start("world map")` and `("World Map charts")` serve the map reference's first example without a "No example" note (114, 115).
 
 ### Changed
 - License placeholders are `"YOUR-AMCHARTS-LICENSE-KEY"` instead of `"AM5C-…"`, and the skill never writes or invents a key.
@@ -28,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - **Five docs demos called `am5.addLicense()` with made-up keys**, so a chart copied from them could hide the logo without a license. The docs-demo import drops license lines (`scripts/docs-demos.mjs`), and the five demos are cleaned. Reported to the docs team.
-- `get_quick_start("world map")` said no example in the map reference shows a world map, above its World Choropleth Map example.
+- `get_quick_start("world map")` said no example in the map reference shows a world map, above its World Choropleth Map example; so did a family's own word with a trailing "s" or "chart" ("world maps", "World Map chart").
 
 ## [1.9.7] - 2026-11-17
 

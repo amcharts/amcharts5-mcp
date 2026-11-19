@@ -142,7 +142,7 @@ function moreExampleNamed(extra, asked) {
   const has = (title, w) => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(norm(title));
   const whole = extra.find(e => has(e.title, words));
   if (whole) return whole;
-  const each = words.split(" ");
+  const each = words.split(" ").filter(w => w && !FILLER_WORDS.has(w));
   const kinds = each.filter(w => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w));
   let best = null, most = 0;
   for (const e of extra) {
@@ -152,6 +152,9 @@ function moreExampleNamed(extra, asked) {
   }
   return best;
 }
+
+// Words that don't tell examples apart ("globe with map sankey")
+const FILLER_WORDS = new Set(["a", "an", "and", "the", "of", "on", "in", "for", "to", "with", "by"]);
 
 // Keywords that name a whole family: its first example is the right answer
 const FAMILY_WORDS = new Set(["xy", "pie", "map", "world map", "geo", "geographic", "country", "hierarchy", "flow", "radar", "polar",
@@ -664,10 +667,13 @@ export function registerTools(server, content) {
         // Asked for a type no example here shows ("candlestick", "waterfall"): say so,
         // or name the longer example that shows it ("map sankey")
         const asked = chartType.trim().toLowerCase().replace(/[\s_-]+/g, " ");
+        // the family's own words, also as "world maps" or "World Map chart"
+        const plain = asked.replace(/ (charts?|diagrams?|graphs?)$/, "").replace(/s$/, "");
+        const family = [asked, plain].some(a => a === key || FAMILY_WORDS.has(a));
         const longerNamed = !named && moreExampleNamed(extra, chartType);
         const unnamed = longerNamed
           ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's first example.\n\n`
-          : !named && asked !== key && !FAMILY_WORDS.has(asked)
+          : !named && !family
             ? `> No example in this reference shows "${echo(chartType.trim())}"; this is its first. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
             : "";
         const title = `# Quick Start: ${example.heading.replace(/^Example\s*\d*:\s*/i, "")}\n*(source: skill/${key}.md, ${doc.title}: "${example.heading}")*\n\n${unnamed}`;
