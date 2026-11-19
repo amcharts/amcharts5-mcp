@@ -10,7 +10,6 @@
 import * as am5 from "@amcharts/amcharts5";
 import * as am5hierarchy from "@amcharts/amcharts5/hierarchy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN
@@ -18,10 +17,7 @@ import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
-
-From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Data structure (shared by all hierarchy types)
 
@@ -63,7 +59,7 @@ series.data.setAll(data);
 
 ```js
 const root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+root.setThemes([am5themes_Animated.new(root)]);
 
 const container = root.container.children.push(am5.Container.new(root, {
   width: am5.percent(100),
@@ -75,7 +71,7 @@ const series = container.children.push(am5hierarchy.Treemap.new(root, {
   valueField: "value",
   categoryField: "name",
   childDataField: "children",
-  initialDepth: 2,           // levels opened below topDepth on load: here depths 1–3
+  initialDepth: 2,           // how many levels visible initially
   topDepth: 1,               // hide root node (start from first children)
   layoutAlgorithm: "squarify",  // "squarify" | "binary" | "slice" | "dice" | "sliceDice"
   nodePaddingOuter: 4,
@@ -102,26 +98,8 @@ series.labels.template.setAll({
 });
 
 series.data.setAll(data);
-series.set("selectedDataItem", series.dataItems[0]);  // after the data: the BreadcrumbBar shows the root, topDepth hides it
 series.appear(1000);
 ```
-
-### Group headers (parent labels above the children)
-
-`nodePaddingTop` is room inside every parent tile above its children, so it can hold the group's name. A parent's label is centred by default, behind its children. Move a tile's label into the band while that tile's children are showing. This keeps a named band on the tile you drilled into, and centred labels on collapsed tiles. Add it before `series.data.setAll()`: template adapters reach only the labels made after them.
-
-```js
-series.set("nodePaddingTop", 20);   // header band in every parent tile; drop nodePaddingOuter from the block above, it overrides this
-
-function isOpen(label) {            // the tile's children are showing
-  var di = label.dataItem;
-  return !!(di && di.get("children") && !di.get("disabled"));
-}
-series.labels.template.adapters.add("y", function (y, label) { return isOpen(label) ? 0 : y; });
-series.labels.template.adapters.add("centerY", function (cy, label) { return isOpen(label) ? 0 : cy; });
-```
-
-Drilled views scale the band with the zoom. With `topDepth: 1`, the hidden root's own band stays as an empty strip above the top level. `nodePaddingOuter` overrides `nodePaddingTop`. Docs: https://docs.amcharts.com/v5/charts/hierarchy/treemap/#parent-node-headers.
 
 ## Force-Directed Tree
 
@@ -171,7 +149,7 @@ series.data.setAll(data);
 
 On `ForceDirected`, `nodePadding` (default `0`) is room in pixels kept free around each node (its collision radius is its radius + `nodePadding`), so neighbours stay at least twice that apart. It is not the `Sankey` `nodePadding`, which is a real gap between nodes.
 
-Changing `manyBodyStrength`, `centerStrength`, or a link's `distance`/`strength` takes effect after the layout has settled — no need to re-set the data to apply new forces.
+Since 5.21.0 changing `manyBodyStrength`, `centerStrength`, or a link's `distance`/`strength` takes effect after the layout has settled (it used to do nothing) — no need to re-set the data to apply new forces.
 
 ## Sunburst
 
@@ -192,7 +170,7 @@ series.labels.template.set("forceHidden", true);  // hide labels if crowded
 series.data.setAll(data);
 ```
 
-`Sunburst` ignores `singleBranchOnly` — drilling down always collapses the other branches (they would overlap the zoomed one), so don't set it.
+`Sunburst` ignores `singleBranchOnly` since 5.21.0 — drilling down always collapses the other branches (they would overlap the zoomed one), so don't set it. Also fixed in 5.21.0: with only one of `startAngle`/`endAngle` set the chart was sized for other angles; changing the angles on a drawn chart left labels and bullets behind; changing `nodePadding` (also on `Partition`) after drawing had no effect until a resize.
 
 ## Pack (Packed Circles)
 
@@ -320,29 +298,9 @@ series.get("colors").set("colors", [
 Clicking a node zooms into its children. Configure with:
 ```js
 series.set("topDepth", 1);       // hide root
-series.set("initialDepth", 2);   // levels opened below topDepth on load
+series.set("initialDepth", 2);   // initial visible depth
 series.set("downDepth", 1);      // how many levels to reveal on drill-down
 ```
-
-`initialDepth` counts the levels opened below `topDepth`: with `topDepth: 1`, `initialDepth: 1` draws depths 1 and 2, and `initialDepth: 2` draws depths 1–3. On a Treemap the deepest drawn level covers its parents, so only its tiles show. `initialDepth` works without `selectedDataItem`, but still call `series.set("selectedDataItem", series.dataItems[0])` after `data.setAll()`. Without it a `BreadcrumbBar` stays empty, and `topDepth` doesn't hide the root node. Docs: https://docs.amcharts.com/v5/charts/hierarchy/#tree-depth.
-
-A click selects the clicked node itself. On a Treemap that shows nested levels, a click on an inner tile drills straight to that tile, two levels from the top view. `downDepth` and `upDepth` don't change which node is selected. For one level per click, replace the built-in click:
-
-```js
-series.nodes.template.set("toggleKey", "none");   // turn off the built-in click
-series.nodes.template.events.on("click", function (ev) {
-  var selected = series.get("selectedDataItem");
-  var di = ev.target.dataItem;
-  if (di === selected) {                           // the open node's own header band: up a level
-    if (di.get("parent")) series.selectDataItem(di);
-    return;
-  }
-  while (di && di.get("parent") !== selected) di = di.get("parent");   // climb to a child of the open node
-  if (di && di.get("children")) series.selectDataItem(di);
-});
-```
-
-Add it before `series.data.setAll()` (template events reach only the nodes made after them), and set `selectedDataItem` after the data (see above). The way back up is a click on the open tile's header band, so give it one (`nodePaddingTop`, "Group headers"). Docs: https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-drill-down/#drilling-one-level-per-click.
 
 ### Breadcrumbs (for navigation)
 
@@ -369,11 +327,11 @@ series.events.on("datavalidated", function() {
 });
 ```
 
-**Keyboard:** focusable nodes in a `focusableGroup` are one TAB stop; arrow keys move between them even though nodes are draggable, and SHIFT + arrow keys drag them. Nodes with children get `aria-expanded` (the `ariaExpanded` setting).
+**Keyboard (5.21.0):** focusable nodes in a `focusableGroup` are one TAB stop; arrow keys move between them even though nodes are draggable, and SHIFT + arrow keys drag them. Nodes with children get `aria-expanded` (the new `ariaExpanded` setting). `Pack`, `ForceDirected` and `Tree` nodes could not be focused before 5.21.0, and a `Sunburst` node's focus outline was misplaced.
 
-## Zoomable / pannable hierarchy — `SerialChartContainer`
+## Zoomable / pannable hierarchy — `SerialChartContainer` (5.20.2)
 
-`am5.SerialChartContainer` (exported from the **`am5` root module**, not `am5hierarchy`) is a directly usable `SerialChart` whose `seriesContainer` sits inside a `ZoomableContainer`, so a large `ForceDirected`, `Tree` or `Pack` can be wheel-zoomed and dragged. Prefer it over hand-wrapping the chart in `am5.ZoomableContainer` — it round-trips through `ChartSerializer` with its `zoomTools` wired up. A manual `ZoomableContainer`'s `contents` are saved, but a `ZoomTools` added to it comes back pointing at a copy and must be re-targeted after `parse()`.
+`am5.SerialChartContainer` (exported from the **`am5` root module**, not `am5hierarchy`) is a directly usable `SerialChart` whose `seriesContainer` sits inside a `ZoomableContainer`, so a large `ForceDirected`, `Tree` or `Pack` can be wheel-zoomed and dragged. Prefer it over hand-wrapping the chart in `am5.ZoomableContainer` — it round-trips through `ChartSerializer` with its `zoomTools` wired up. A manual `ZoomableContainer`'s `contents` are saved since 5.21.0 (not before), but a `ZoomTools` added to it comes back pointing at a copy and must be re-targeted after `parse()`.
 
 ```js
 const chart = root.container.children.push(am5.SerialChartContainer.new(root, {
@@ -390,7 +348,7 @@ series.data.setAll(data);
 chart.zoomableContainer.setAll({ maxZoomLevel: 8 });   // the ZoomableContainer holding the series
 ```
 
-Bullets on series inside a `SerialChartContainer` are drawn, and flow-chart (`Sankey`/`Chord`/`ArcDiagram`) bullets are placed correctly inside one.
+Bullets on series inside a `SerialChartContainer` are drawn as of 5.20.4, and flow-chart (`Sankey`/`Chord`/`ArcDiagram`) bullets are placed correctly inside one as of 5.20.5.
 
 ## Disposal
 
@@ -416,14 +374,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var container = root.container.children.push(am5.Container.new(root, {
       width: am5.percent(100),
@@ -497,14 +454,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 600px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var container = root.container.children.push(am5.Container.new(root, {
       width: am5.percent(100),
@@ -589,14 +545,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 600px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var container = root.container.children.push(am5.Container.new(root, {
       width: am5.percent(100),

@@ -13,7 +13,6 @@ Venn diagrams show overlapping relationships between sets. There is NO `VennDiag
 import * as am5 from "@amcharts/amcharts5";
 import * as am5venn from "@amcharts/amcharts5/venn";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN / script tags
@@ -21,10 +20,7 @@ import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/venn.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
-
-From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Setup
 
@@ -32,7 +28,7 @@ From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://c
 
 ```js
 const root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+root.setThemes([am5themes_Animated.new(root)]);
 
 // Create a wrapper container (optional, useful for adding legend)
 const container = root.container.children.push(am5.Container.new(root, {
@@ -155,7 +151,7 @@ series.labels.template.adapters.add("text", function(text, target) {
 
 ## Serialization gotcha: `hoverGraphics` is not captured
 
-`series.hoverGraphics` (the dashed set outline used in the amCharts venn demo) is **not** written by `am5plugins_json.ChartSerializer` — a venn rebuilt from JSON loses that outline. Re-apply `hoverGraphics.setAll({...})` in code after `JsonParser.parse()`. Slice-template states (`slices.template.states.create("hover", …)`) and `slices.template.tooltipText` do round-trip.
+`series.hoverGraphics` (the dashed set outline used in the amCharts venn demo) is **not** written by `am5plugins_json.ChartSerializer` as of 5.21.0 — a venn rebuilt from JSON loses that outline. Re-apply `hoverGraphics.setAll({...})` in code after `JsonParser.parse()`. Slice-template states (`slices.template.states.create("hover", …)`) and `slices.template.tooltipText` do round-trip. Before 5.21.0 a `Venn` pushed straight into `root.container` could not be serialized on its own (stack overflow) — wrap it in a `Container` or upgrade.
 
 ## Click events
 
@@ -166,7 +162,7 @@ series.slices.template.events.on("click", function(ev) {
 });
 ```
 
-To open a URL on click, no handler is needed: `am5venn.Venn.new(root, { …, urlField: "url", linkTarget: "_blank" })` (`linkTarget` default `"_self"`) links each slice — sets and intersections — to the `url` in its data row; the pointer cursor is set automatically.
+To open a URL on click, no handler is needed (5.20.7): `am5venn.Venn.new(root, { …, urlField: "url", linkTarget: "_blank" })` (`linkTarget` default `"_self"`) links each slice — sets and intersections — to the `url` in its data row; the pointer cursor is set automatically.
 
 ## Legend
 
@@ -214,7 +210,6 @@ series.data.setAll([
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/venn.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>
     #chartdiv { width: 100%; height: 500px; }
   </style>
@@ -223,7 +218,7 @@ series.data.setAll([
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var container = root.container.children.push(am5.Container.new(root, {
       width: am5.p100,
@@ -296,7 +291,6 @@ series.data.setAll([
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/venn.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>
     #chartdiv { width: 100%; height: 500px; }
   </style>
@@ -305,7 +299,7 @@ series.data.setAll([
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var container = root.container.children.push(am5.Container.new(root, {
       width: am5.p100,

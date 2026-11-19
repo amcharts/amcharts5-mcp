@@ -15,7 +15,6 @@ import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5gantt from "@amcharts/amcharts5/gantt";
 import am5plugins_colorPicker from "@amcharts/amcharts5/plugins/colorPicker";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN / script tags
@@ -25,16 +24,13 @@ import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 <script src="https://cdn.amcharts.com/lib/5/plugins/colorPicker.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/gantt.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
-
-From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Core setup
 
 ```js
 var root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+root.setThemes([am5themes_Animated.new(root)]);
 
 var chart = root.container.children.push(
   am5gantt.Gantt.new(root, {
@@ -105,7 +101,7 @@ chart.yAxis.setAll({
 });
 ```
 
-`nameField` and `colorField` are honored: bar colors are read from, and color-picker changes written to, the field `colorField` names.
+`nameField` and `colorField` are fully honored since 5.21.0. Before, bar colors were always read from (and color-picker changes written to) `color` whatever `colorField` said — on older versions keep the field named `color`.
 
 ### Series data fields
 
@@ -156,10 +152,6 @@ Access: `chart.xAxis` (primary) and `chart.xAxisMinor` (secondary).
 // Hide the secondary axis
 chart.xAxisMinor.hide();
 ```
-
-The date rows' labels have `keepInView: true`: a month or week running out of view keeps its label in the part still showing (see `references/xy.md`, "keepInView").
-
-**Small Gantt charts:** with `am5themes_ResponsiveMax`, a chart 600 px wide or less drops the expand, collapse and color buttons, keeping add, link and clear. Both scrollbars hide at 500 px wide or less, and the horizontal one also at 400 px tall or less; the plot is dragged to move through time and tasks.
 
 ## Weekend & holiday configuration
 
@@ -213,7 +205,7 @@ chart.controls.hide(0);
 chart.editButton.show(0);
 ```
 
-**Keyboard:** tasks with subtasks expose `aria-expanded` (`ariaExpanded`), only tasks with subtasks have an expand/collapse TAB stop, toolbar and task buttons have screen-reader names, and scrollbar grips include the category in their name.
+**Keyboard (5.21.0):** tasks with subtasks expose `aria-expanded` (`ariaExpanded`), the expand/collapse button of a task without subtasks is no longer a TAB stop, toolbar and task buttons have screen-reader names, scrollbar grips include the category in their name, and an `EditableLabel` (task names) no longer stops ENTER working elsewhere on the page.
 
 ## Series customization
 
@@ -285,10 +277,9 @@ chart.series.data.setAll(restored.series);
   <title>Gantt Chart</title>
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/plugins/colorPicker.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/gantt.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/plugins/colorPicker.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>
     #chartdiv { width: 100%; height: 500px; }
   </style>
@@ -297,7 +288,7 @@ chart.series.data.setAll(restored.series);
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var chart = root.container.children.push(
       am5gantt.Gantt.new(root, {
@@ -344,20 +335,17 @@ chart.series.data.setAll(restored.series);
 </html>
 ```
 
-## Example 2: Gantt-like timeline with an XY chart
-
-A plain XY chart with columns on a date axis is enough for a read-only timeline. Use `am5gantt.Gantt` (Example 1) when tasks are edited, linked or tracked: it has editable tasks (add, edit, remove, drag), task links (dependencies), progress bars, a task list on the left with editable names and collapsible groups, and weekends/holidays built in.
+## Example 2: Simulated Gantt with XY chart (no Gantt license needed)
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Gantt-like timeline (XY)</title>
+  <title>Simulated Gantt (XY)</title>
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>
     #chartdiv { width: 100%; height: 400px; }
   </style>
@@ -366,7 +354,7 @@ A plain XY chart with columns on a date axis is enough for a read-only timeline.
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var chart = root.container.children.push(am5xy.XYChart.new(root, {
       panX: false,

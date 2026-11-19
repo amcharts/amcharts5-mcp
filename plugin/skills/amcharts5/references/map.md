@@ -10,7 +10,6 @@
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 ```
 
@@ -20,16 +19,12 @@ import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
-
-From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Geodata (map files)
 
 NPM: `@amcharts/amcharts5-geodata`
 CDN: `https://cdn.amcharts.com/lib/5/geodata/{mapName}.js`
-npm CDN (AI sandboxes, strict CSPs): jsDelivr and unpkg serve the geodata package's `dist/` (`https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/{mapName}.js`). Files have the same path as below `geodata/` on the amCharts CDN (e.g. `dist/region/world/europeLow.js`) and the same globals.
 
 | Map | ES import | CDN global |
 |-----|----------|-----------|
@@ -56,7 +51,7 @@ Pattern: camelCase country name + detail level. E.g. `germanyLow`, `canadaHigh`,
 | `congressional` | 117th Congress (the original set; the 116th used the same districts) |
 | `congressional2022` | 118th |
 | `congressional2025` | 119th |
-| `congressional120` | 120th, the newest (includes proposed changes) |
+| `congressional120` | 120th, the newest (geodata 5.1.6; includes proposed changes) |
 
 **Global names** are `am5geodata_` + the path below `geodata/`, with `/` → `_` and case kept: `geodata/region/usa/congressional120/usaCongressionalLow.js` → `am5geodata_region_usa_congressional120_usaCongressionalLow`; ES import `@amcharts/amcharts5-geodata/region/usa/congressional120/usaCongressionalLow`. The npm package has the same maps (default exports, raw GeoJSON under `json/`, also on the CDN as `geodata/json/<path>.json`), and its `loadMap("region/usa/congressional120/txLow")` loads any map by path. Where the amCharts MCP server is connected, its `list_geodata(filter)` tool lists every map with its CDN path, global name and ES import.
 
@@ -64,7 +59,7 @@ Pattern: camelCase country name + detail level. E.g. `germanyLow`, `canadaHigh`,
 
 ```js
 const root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+root.setThemes([am5themes_Animated.new(root)]);
 
 const chart = root.container.children.push(
   am5map.MapChart.new(root, {
@@ -73,7 +68,7 @@ const chart = root.container.children.push(
     projection: am5map.geoMercator(),
     // homeGeoPoint: { latitude: 48.8566, longitude: 2.3522 },
     // homeZoomLevel: 5,
-    // autoHome: true              // start at the home position
+    // autoHome: true              // (5.21.0) start at the home position
   })
 );
 
@@ -118,9 +113,6 @@ const polygonSeries = chart.series.push(
     calculateAggregates: true   // needed for heat rules
   })
 );
-// GeoJSON feature properties are data fields too: with valueField "value", a custom GeoJSON's
-// "properties": { "value": 12 } gives the polygon its value without data rows.
-// When include and exclude both list an item, exclude wins.
 
 // Polygon appearance
 polygonSeries.mapPolygons.template.setAll({
@@ -143,18 +135,19 @@ polygonSeries.data.setAll([
 ]);
 ```
 
-**Custom GeoJSON: exterior rings must be CLOCKWISE.** amCharts projects on a sphere (d3-geo), where a ring's winding order decides which side is "inside". The GeoJSON spec (RFC 7946) winds exterior rings counter-clockwise, and d3-geo reads a CCW ring as *the whole globe minus the polygon* — so every polygon fills the entire viewport and the real shape shows only as a sliver (looks like a zoom/fit bug, is not). GIS exports are usually already clockwise; programmatically generated GeoJSON (grids, cells, buffers) usually is not. amCharts does **not** auto-rewind, so reverse the polygons that come out inside out yourself:
+**Custom GeoJSON: exterior rings must be CLOCKWISE.** amCharts projects on a sphere (d3-geo), where a ring's winding order decides which side is "inside". The GeoJSON spec (RFC 7946) winds exterior rings counter-clockwise, and d3-geo reads a CCW ring as *the whole globe minus the polygon* — so every polygon fills the entire viewport and the real shape shows only as a sliver (looks like a zoom/fit bug, is not). GIS exports are usually already clockwise; programmatically generated GeoJSON (grids, cells, buffers) usually is not. amCharts does **not** auto-rewind, so reverse the rings yourself:
 
 ```js
-// Fix winding before handing custom GeoJSON to MapPolygonSeries: reverse only polygons that are inside out
-geojson.features.forEach(function (f) {
-  var g = f.geometry;
-  var polys = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
-  polys.forEach(function (poly) {
-    if (am5map.getGeoArea({ type: "Polygon", coordinates: poly }) > 2 * Math.PI) {   // more than half the globe
-      poly.forEach(function (ring) { ring.reverse(); });
-    }
-  });
+// Fix winding before handing custom GeoJSON to MapPolygonSeries
+geojson.features.forEach(function(feature) {
+  var g = feature.geometry;
+  if (g.type === "Polygon") {
+    g.coordinates = g.coordinates.map(function(ring) { return ring.slice().reverse(); });
+  } else if (g.type === "MultiPolygon") {
+    g.coordinates = g.coordinates.map(function(poly) {
+      return poly.map(function(ring) { return ring.slice().reverse(); });
+    });
+  }
 });
 polygonSeries.set("geoJSON", geojson);
 
@@ -162,9 +155,7 @@ polygonSeries.set("geoJSON", geojson);
 chart.zoomToGeoBounds({ left: -8.6, right: 1.8, top: 60.9, bottom: 49.9 }, 500);
 ```
 
-The area check makes this safe on data that is already clockwise, where a blind reverse floods the map. It also catches small rings that simplifying or rounding turned over, even in clockwise data: a flipped 4-point islet measured 4π and filled the whole map, while no worldLow country exceeds 0.42.
-
-`zoomToGeoBounds(bounds, duration?, rotationX?, rotationY?)` is the most direct way to fit custom polygons. Bounds with `right` less than `left`, or past ±180, cross the date line; on a flat map the two sides meet only with a rotation passed, e.g. `zoomToGeoBounds(bounds, 500, -180)`. Called before the map is drawn, `zoomToGeoBounds()` and `zoomToGeoPoint()` zoom once it is. It uses the `duration` you pass and leaves the bounds object unchanged; `goHome()` also works when called before the map is ready or on a rotated map, and `autoHome: true` does the initial trip for you (see "Zoom controls").
+`zoomToGeoBounds(bounds, duration?)` is the most direct way to fit custom polygons. Since 5.21.0 it uses the `duration` you pass (it rotated with `animationDuration`) and no longer modifies the bounds object; `goHome()` also works when called before the map is ready or on a rotated map, and `autoHome: true` does the initial trip for you (see "Zoom controls").
 
 ### Choropleth (heat map) via heat rules
 
@@ -188,22 +179,7 @@ const heatLegend = chart.children.push(am5.HeatLegend.new(root, {
 }));
 ```
 
-**Keep the heat legend off the map.** In `chart.children` the legend is drawn over the map, and zooms fit into the whole chart, so a zoomed country runs under it: after `clickZoom` on Brazil, its south was 38 px under a bottom legend. Stack the legend below the map and clip the map to its own area:
-
-```js
-root.container.set("layout", root.verticalLayout);
-var chart = root.container.children.push(am5map.MapChart.new(root, {
-  projection: am5map.geoEqualEarth(),
-  maskContent: true                        // the zoomed map doesn't draw into the legend's strip
-}));
-// ... series ...
-var heatLegend = root.container.children.push(am5.HeatLegend.new(root, {   // pushed after the chart: below it
-  orientation: "horizontal", startColor: am5.color(0xf7e9b9), endColor: am5.color(0x5a1d6e),
-  width: 360, x: am5.percent(50), centerX: am5.percent(50), paddingBottom: 20
-}));
-```
-
-For a scale through more than two colors, give the heat rule `stops` instead of `min`/`max` and the legend `colors` instead of `startColor`/`endColor`: see SKILL.md "Heat rules". `Adaptive` and `Monochrome` themes take `mapShade: true` for map land in a lighter shade of their base color.
+For a scale through more than two colors (5.21.2), give the heat rule `stops` instead of `min`/`max` and the legend `colors` instead of `startColor`/`endColor`: see SKILL.md "Heat rules". `Adaptive` and `Monochrome` themes take `mapShade: true` (5.21.2) for map land in a lighter shade of their base color.
 
 **Styling heat-legend segments.** With `stepCount: N` the legend draws N discrete `RoundedRectangle` markers inside `heatLegend.markerContainer`, all styled through `heatLegend.markers.template` (it accepts the usual Graphics settings — `stroke`, `strokeWidth`, `strokeOpacity`, `fillOpacity`, `cornerRadius*`, `tooltipText` for a per-block hover tooltip). Segment **thickness** is the marker's cross-axis size: a **vertical** legend uses the marker `width` (default `15`) with `height: 100%`; a **horizontal** legend uses `height` (default `15`) with `width: 100%`. Style via the template — `heatLegend.markers.values` can read empty even while `markerContainer.children` holds the rectangles.
 
@@ -213,34 +189,6 @@ heatLegend.markers.template.setAll({
   stroke: am5.color(0xffffff),
   strokeWidth: 1,
   tooltipText: "{value}"
-});
-```
-
-**A panel behind the heat legend.** When the legend stays over the map, it has no background, so a zoomed or panned map shows through it. `HeatLegend` is a `Container`, so give it a `background` and padding:
-
-```js
-var heatLegend = chart.children.push(am5.HeatLegend.new(root, {
-  orientation: "horizontal",
-  startColor: am5.color(0xeeeeee), endColor: am5.color(0x0000cc),
-  x: am5.p50, centerX: am5.p50, y: am5.percent(100), centerY: am5.percent(100), width: am5.percent(50),
-  paddingTop: 8, paddingBottom: 8, paddingLeft: 12, paddingRight: 12,
-  background: am5.RoundedRectangle.new(root, { fill: am5.color(0xffffff), fillOpacity: 0.9 })
-}));
-```
-
-The HeatLegend blocks above leave the end labels empty: set `startValue`/`endValue` from the series on `datavalidated` (SKILL.md "Heat rules") to show the numbers, or give `startText`/`endText` (e.g. "Low", "High"), which replace them.
-
-**Countries without data** keep the template's fill, or the heat rule's `neutral` value, and `{value}` in their tooltip is empty ("Canada: "). Give them their own text with an adapter (docs: https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/#tooltips-for-polygons-without-data):
-
-```js
-polygonSeries.set("heatRules", [{
-  target: polygonSeries.mapPolygons.template, dataField: "value",
-  min: am5.color(0xffd19a), max: am5.color(0xb3261e),
-  neutral: am5.color(0xdddddd),   // polygons with no value
-  key: "fill"
-}]);
-polygonSeries.mapPolygons.template.adapters.add("tooltipText", function (text, target) {
-  return target.dataItem && target.dataItem.get("value") == null ? "{name}: no data" : text;
 });
 ```
 
@@ -266,7 +214,7 @@ pointSeries.bullets.push(function(root, series, dataItem) {
 });
 
 // Add points via data. Fields named "latitude"/"longitude" are the series
-// defaults; any other naming must be declared via
+// defaults since 5.16.1; any other naming must be declared via
 // latitudeField/longitudeField or the points silently won't render.
 pointSeries.data.setAll([
   { latitude: 48.8566, longitude: 2.3522, name: "Paris" },
@@ -284,11 +232,7 @@ pointSeries2.data.setAll([
 ]);
 ```
 
-`surfaceBullets: true` lays the bullets onto the map surface, and `altitudeField` raises points — see "Bullets on the surface" and "Raised lines and points" below.
-
-**`affectsBounds`** says whether a series' shapes count when the map fits itself to its area: `true` on `MapPolygonSeries`, `false` on point, line, Sankey and night series (from the theme). Give overlay polygon series (highlights, storms) `affectsBounds: false` so the map fits the countries.
-
-**`autoScale: true`** (default `false`) scales a point series' bullets with `zoomLevel`.
+`surfaceBullets: true` (5.21.0) lays the bullets onto the map surface, and `altitudeField` (5.21.0) raises points — see "Bullets on the surface" and "Raised lines and points" below.
 
 **A point's bullet sprite:** `dataItem.bullets` is a plain array property, not a setting (`dataItem.get("bullets")` is `undefined`), on every series type:
 
@@ -296,9 +240,7 @@ pointSeries2.data.setAll([
 var sprite = pointSeries.dataItems[0].bullets?.[0]?.get("sprite");   // the Circle made by the bullet function
 ```
 
-A Container bullet with `tooltipText` gets a tooltip with no background: put `tooltipText` on a child with a fill (SKILL.md → "Shared vs per-sprite tooltip").
-
-**Points on lines as data rows:** `MapPointSeries` has `lineIdField` (default `"lineId"`), `positionOnLineField` (default `"positionOnLine"`), `autoRotateField` (default `"autoRotate"`) and `autoRotateAngleField` (default `"autoRotateAngle"`), so a point on a `MapLine` can be a plain row — `{ lineId: "jfk-lhr", positionOnLine: 0.5, autoRotate: true }`, where `lineId` is the line's data `id` in a `MapLineSeries` of the same chart — instead of `pushDataItem({ lineDataItem, positionOnLine })`. Data values of `autoRotate`/`autoRotateAngle` win over the bullet's own setting. `polygonIdField` still has **no** default — declare it as above. See "Animating bullets along lines".
+**Points on lines as data rows (5.20.6):** `MapPointSeries` has `lineIdField` (default `"lineId"`), `positionOnLineField` (default `"positionOnLine"`), `autoRotateField` (default `"autoRotate"`) and `autoRotateAngleField` (default `"autoRotateAngle"`), so a point on a `MapLine` can be a plain row — `{ lineId: "jfk-lhr", positionOnLine: 0.5, autoRotate: true }`, where `lineId` is the line's data `id` in a `MapLineSeries` of the same chart — instead of `pushDataItem({ lineDataItem, positionOnLine })`. Data values of `autoRotate`/`autoRotateAngle` win over the bullet's own setting. `polygonIdField` still has **no** default — declare it as above. See "Animating bullets along lines".
 
 ### MapLineSeries (connections, routes)
 
@@ -330,7 +272,7 @@ lineSeries.pushDataItem({
   }
 });
 
-// OR name the points by id — data-driven, JSON-friendly, no data-item references needed
+// OR (5.20.3) name the points by id — data-driven, JSON-friendly, no data-item references needed
 const pointSeries2 = chart.series.push(am5map.MapPointSeries.new(root, {}));   // ids come from the "id" data field
 pointSeries2.data.setAll([
   { id: "JFK", latitude: 40.64, longitude: -73.78 },
@@ -345,9 +287,7 @@ lineSeries2.data.setAll([
 ]);
 ```
 
-`pointsToConnect` wins if a data item has both. Fixed points (`fixed: true`) cannot be used with either. `altitude` on `mapLines.template` arcs lines above the surface — see "Raised lines and points". `lineType` (`"curved"` default, or `"straight"`) is set on the series or as a data field (`{ geometry, lineType: "straight" }`), not on `MapLine`: on `mapLines.template` it is ignored (and a TypeScript error). Changing it redraws lines already drawn.
-
-Each leg follows the great circle (`lineType: "curved"`, the default), so a long east–west leg bows toward the pole: a 924 km leg along 41°N passes 15 km north of the parallel at its middle. `lineType: "straight"` (on the series or a data item) draws legs straight on screen. For a line that must follow a path drawn in lon/lat, such as a sea route kept off land, add intermediate points: shorter legs bow less.
+`pointsToConnect` wins if a data item has both. Fixed points (`fixed: true`) cannot be used with either. `altitude` on `mapLines.template` (5.21.0) arcs lines above the surface — see "Raised lines and points". Changing `lineType` on the series or a data item redraws lines already drawn since 5.21.0.
 
 ### MapSankeySeries (geographic flow bands)
 
@@ -402,7 +342,7 @@ sankeySeries.data.setAll([
 ]);
 ```
 
-**Waypoints** — route flows through intermediate points, each `{ longitude, latitude }` (not `lon`/`lat`):
+**Waypoints** — route flows through intermediate points:
 ```js
 sankeySeries.data.setAll([
   {
@@ -442,7 +382,7 @@ polygonSeries.events.on("datavalidated", function() {
 | `nodeWidth` | number | `1` | Bar width in degrees (bar nodeType only) |
 | `nodePadding` | number | `0.3` | Extra padding on node shapes in degrees |
 | `antimeridian` | string | `"short"` | `"short"` for shortest path, `"long"` to avoid ±180° crossing |
-| `linkColorMode` | string | `"solid"` | `"solid"`: every band takes `mapPolygons.template`'s fill; `"source"` / `"target"`: each band takes that node's fill, so the nodes need colors (see "Band appearance"). Followed also when node fills change |
+| `linkColorMode` | string | `"solid"` | `"solid"`: every band takes `mapPolygons.template`'s fill; `"source"` / `"target"`: each band takes that node's fill, so the nodes need colors (see "Band appearance"). Followed since 5.21.1, also when node fills change |
 | `sourceIdField` | string | `"sourceId"` | Data field for source polygon ID |
 | `targetIdField` | string | `"targetId"` | Data field for target polygon ID |
 | `sourceLongitudeField` | string | `"sourceLongitude"` | Data field for source longitude |
@@ -540,7 +480,7 @@ sankeySeries.events.on("datavalidated", function() {
 });
 ```
 
-Bullets automatically hide on the back side of the globe (orthographic projection). They are drawn above the flows, and bullets that are not moving along their flow follow the map when it moves.
+Bullets automatically hide on the back side of the globe (orthographic projection). Since 5.21.0 they are drawn above the flows, and bullets that are not moving along their flow follow the map when it moves (before, they stayed behind).
 
 #### Multi-level flows
 
@@ -559,7 +499,7 @@ sankeySeries.data.setAll([
 
 ### Animating bullets along lines (positionOnLine)
 
-`MapPointSeries` data items have a `positionOnLine` setting (0–1) that positions the point along a line. Combined with `lineDataItem` (or a `lineId` data field) and `autoRotate`, this enables flight-path-style animations.
+`MapPointSeries` data items have a `positionOnLine` setting (0–1) that positions the point along a line. Combined with `lineDataItem` (or, since 5.20.6, a `lineId` data field) and `autoRotate`, this enables flight-path-style animations.
 
 ```js
 // Create a point that follows a line
@@ -591,7 +531,7 @@ plane.on("positionOnLine", function(pos) {
 });
 ```
 
-**Data-row form + declared flight** — no data-item references and no `animate()` call, so the whole thing survives `ChartSerializer` (points added with `pushDataItem()` are not serialized; `data` rows are):
+**Data-row form + declared flight (5.20.6 / 5.20.8)** — no data-item references and no `animate()` call, so the whole thing survives `ChartSerializer` (points added with `pushDataItem()` are not serialized; `data` rows are):
 
 ```js
 var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));   // push before the point series
@@ -613,60 +553,14 @@ planeSeries.bullets.push(function (root, series, dataItem) {
 planeSeries.data.setAll([{ lineId: "jfk-lhr", positionOnLine: 0, autoRotate: true }]);
 ```
 
-**Direction on the way back:** an `autoRotate` point turns round to face its travel direction **only** while an `animations` entry on its bullet sprite (`target: "dataItem"`, `key: "positionOnLine"`) moves it back toward the line start. A point moved by `dataItem.animate()` from code keeps facing the line's direction — that code has to turn it (the globe flight-path example, `get_example(path: "examples/maps/globe-with-animated-flight-path")`, rotates its plane between segments itself). An endless loop started on a data item in code is saved by `ChartSerializer`: loops that differ per point are saved in each point's data row, under the bullet sprite's `templateField` (`"bulletSettings"` if none is set); one loop shared by all points still goes on the sprite. Where the rows can't hold them, the first one still goes on the sprite for all: points made from geodata, a sprite with its own `animations`, or a loop animating object values. Every point placed on a line follows the line when it changes (e.g. gets an `altitude`), not just one of them.
+**Direction on the way back (5.20.8):** an `autoRotate` point turns round to face its travel direction **only** while an `animations` entry on its bullet sprite (`target: "dataItem"`, `key: "positionOnLine"`) moves it back toward the line start. A point moved by `dataItem.animate()` from code keeps facing the line's direction — that code has to turn it (Example 4 rotates its plane between segments itself). An endless loop started on a data item in code is saved by `ChartSerializer` since 5.21.0 (not in 5.20.8). In 5.21.0–5.21.2 only the first one found was saved, on the bullet sprite, so after parsing every point played it. Since 5.21.3 loops that differ per point are saved in each point's data row, under the bullet sprite's `templateField` (`"bulletSettings"` if none is set); one loop shared by all points still goes on the sprite. Where the rows can't hold them, the first one still goes on the sprite for all: points made from geodata, a sprite with its own `animations`, or a loop animating object values. Since 5.21.0 every point placed on a line follows the line when it changes (e.g. gets an `altitude`), not just one of them.
 
 **IMPORTANT — Multi-segment lines and `positionOnLine`:**
 - `positionOnLine` treats the entire line as one unit (0 = start, 1 = end). If a line has multiple segments (i.e. `pointsToConnect` has 3+ points), position 0.5 is the midpoint of the *entire* path.
 - For advanced per-segment animations (e.g., scaling the bullet differently at the midpoint of each segment, or pausing between segments), use **single-segment lines** (2 points each) instead of one multi-segment line. This gives you full control: animate `positionOnLine` from 0 to 1 on each segment line sequentially, with independent timing, easing, and callbacks per segment.
 - Example: instead of one line with points [A, B, C, D], create three lines: [A,B], [B,C], [C,D] and animate the bullet across them one at a time.
 
-### Live updates: moving points, growing lines
-
-- **Move a point:** set `latitude`/`longitude` on its data item. The bullet moves on the next frame, and no `markDirtyValues()` is needed. `series.data.setIndex(i, row)` animates the move under the Animated theme. Setting only `geometry` doesn't move it.
-- **Change a line or polygon every frame:** set a new `geometry` object on the element (`dataItem.get("mapLine")` / `"mapPolygon"`). The same object, changed, goes unnoticed. `data.setIndex()` animates each field over `interpolationDuration` (600 ms in the Animated theme), and a geometry can't be animated, so it switches only when that time ends. A row replaced every frame keeps its first shape. With `setIndex`, set `interpolationDuration: 0` on the series.
-- **A line that grows** (a track, a route drawn as it happens): keep one data item and set a new geometry on its line each frame, rather than replacing the data.
-
-```js
-var track = chart.series.push(am5map.MapLineSeries.new(root, {}));
-track.data.setAll([{ geometry: { type: "LineString", coordinates: [[0, 0], [1, 0]] } }]);
-
-function grow(coords) {   // call from your own timer
-  track.dataItems[0].get("mapLine").set("geometry", { type: "LineString", coordinates: coords });
-}
-```
-
-- **Many lines moving the same way** (traffic, flows): group them into a few lines with a `MultiLineString` each and animate those. With 1,500 two-point roads, one animated line per road ran at 12 fps; six bands ran at 31 fps (headless Chromium).
-
-```js
-var roads = chart.series.push(am5map.MapLineSeries.new(root, {}));
-roads.mapLines.template.setAll({
-  stroke: am5.color(0xe03030), strokeWidth: 2, strokeDasharray: [6, 4],
-  animations: [{ key: "strokeDashoffset", from: 0, to: -10, duration: 1000, loops: 0 }]   // -10 = one dash + gap; 0 = forever
-});
-roads.data.setAll([
-  { geometry: { type: "MultiLineString", coordinates: [[[-10, 40], [20, 50]], [[-10, 30], [20, 35]]] } },   // one band: all its roads
-  { geometry: { type: "MultiLineString", coordinates: [[[30, 0], [40, 20], [50, 10]]] } }
-]);
-```
-
-### Textures in map shapes (clouds, smoke, storms)
-
-A `PicturePattern` on polygons shows a texture inside their shapes. Blobs from `am5map.getGeoCircle(point, radiusDegrees)` make soft outlines, and several overlapping ones a ragged edge.
-
-```js
-var storms = chart.series.push(am5map.MapPolygonSeries.new(root, { affectsBounds: false }));
-storms.mapPolygons.template.setAll({
-  fill: am5.color(0x996633), fillOpacity: 0.25,   // a haze under the texture
-  strokeOpacity: 0,
-  fillPattern: am5.PicturePattern.new(root, { src: textureUrl, width: 16, height: 16, fit: "pattern" })
-});
-storms.data.setAll([{ geometry: am5map.getGeoCircle({ longitude: 0, latitude: 0 }, 30) }]);
-```
-
-- The pattern is drawn over the fill, at its own opacity: `fillOpacity` dims only the fill. With a see-through texture, a full fill turns its gaps into one flat color.
-- To move the shapes, set a new `geometry` on each `mapPolygon` (see "Live updates").
-
-### Raised lines and points — `altitude`
+### Raised lines and points — `altitude` (5.21.0)
 
 `altitude` on a `MapLine` lifts each leg (one point to the next) into an arc, in **metres** at its middle (`400000` ≈ the ISS). Once set (even `0`), the line's ends sit at the `altitude` of the points it connects (or the third value of their coordinates); without it the line stays on the surface. Not applied to `lineType: "straight"`. On flat maps lines rise up the screen.
 
@@ -699,7 +593,7 @@ satSeries.bullets.push(function (root, series, dataItem) {
 satSeries.data.setAll([{ latitude: 10, longitude: 0, altitude: 400000 }]);   // metres
 ```
 
-A point on a line takes the line's altitude. `mapLine.positionToAltitude(position)` returns the altitude (m) at `0`–`1` along a line. Works best on a globe (`geoOrthographic`, see `map-altitude-arcs` in the npm package examples).
+A point on a line takes the line's altitude. `mapLine.positionToAltitude(position)` returns the altitude (m) at `0`–`1` along a line. Works best on a globe (`geoOrthographic`, see `map-altitude-arcs` in the npm package examples). Raised lines draw 3–4 times faster since 5.21.1.
 
 **Heights per coordinate:** once a line's `altitude` is set (`0` for none), the third value of each coordinate is that point's height in metres, and a non-zero `altitude` adds its arc to each leg on top. One line can then change height along its length (a descent from orbit, relief along a parallel); without `altitude` the third values are ignored. The demo "Globe with raised parallels" (`maps/globe-with-raised-parallels`) does this.
 
@@ -716,7 +610,7 @@ pathSeries.data.setAll([{ geometry: { type: "LineString",
 
 **`ClusteredPointSeries` with `altitudeField`:** a cluster's bullet floats at the average altitude of its points (the cluster data item gets `altitude`); points still cluster by their distance on screen.
 
-### Bullets on the surface — `surfaceBullets`
+### Bullets on the surface — `surfaceBullets` (5.21.0)
 
 `surfaceBullets: true` on a `MapPointSeries` lays its bullets onto the map: each turns, squashes and stretches with the projection, as if painted on — on a globe they flatten towards the edge, on Mercator they grow towards the poles. Default `false` (bullets stay upright and unscaled).
 
@@ -741,7 +635,7 @@ pointSeries.data.setAll([
 
 Heat-rule-sized circles work too (`polygonIdField` + a bullet `am5.Template` as the rule target) — circles that lie flat on a globe.
 
-### Pixel maps — `PixelMapSeries`
+### Pixel maps — `PixelMapSeries` (5.21.0)
 
 `am5map.PixelMapSeries` extends `MapPolygonSeries` and draws its polygons as a grid of pixels that rotate and zoom with the map. Each pixel takes the look of the polygon it falls in, so **style `mapPolygons.template`, not the pixels** — heat rules, `templateField`, states and tooltips work as on `MapPolygonSeries` (the polygons stay, invisible, to take hover and clicks).
 
@@ -825,7 +719,7 @@ var hashed = chart.series.push(am5map.PixelMapSeries.new(root, {
 }));
 ```
 
-### Satellite images — `MapRasterSeries`
+### Satellite images — `MapRasterSeries` (5.21.0)
 
 `am5map.MapRasterSeries` shows one image of the whole world, reprojected as the map turns and zooms (on the GPU with WebGL2 for orthographic, equirectangular, Mercator, Equal Earth and Natural Earth; on the CPU otherwise). With `nightSrc` and a sun position it shows day where the sun is up and night where it is down, blended across twilight.
 
@@ -839,18 +733,12 @@ raster.events.on("loaded", function () { /* src (and nightSrc) are drawn */ });
 raster.events.on("loaderror", function () { /* failed, or cross-origin without CORS */ });
 ```
 
-- The image must be **equirectangular** ("plate carrée": longitude −180…180 left to right, latitude 90…−90 top to bottom). The CDN has `geodata/images/`, e.g. `https://cdn.amcharts.com/lib/5/geodata/images/moon2048.jpg`:
-  - `earthDay`, `earthNight`, `moon`, `mars`, `venus`, `io` and `ganymede`, each at 1024, 2048 and 4096 px wide;
-  - `jupiter` at 1024 and 2048 only.
-
-  Use 1024 for small charts, 2048 for most charts and phones, and 4096 for large charts and zooming in; a 4096 image takes 32 MB of memory once decoded. The geodata npm package has them in `images/`, and a bundler turns an import into the URL: `import moon from "@amcharts/amcharts5-geodata/images/moon2048.jpg"`.
-
-  All are NASA, JPL or USGS works in the public domain, and credit is appreciated, not required. For the Earth images, a credit line reads "Imagery: NASA Earth Observatory", e.g. in a small `am5.Label`.
+- The image must be **equirectangular** ("plate carrée": longitude −180…180 left to right, latitude 90…−90 top to bottom). The CDN has `geodata/images/{earthDay,earthNight,moon,mars}{2048,4096}.jpg`, e.g. `https://cdn.amcharts.com/lib/5/geodata/images/moon4096.jpg` (the npm geodata package has no images). The Earth images are from NASA Earth Observatory: credit the source, e.g. with a small `am5.Label`.
 - `cors` (default `"anonymous"`): a cross-origin image is drawn only if its server sends CORS headers. A page opened from disk (`file://`) cannot read an image file beside it — serve the page, or use the CDN copy.
 - The series counts as the whole world in the map's bounds; on a regional map set `affectsBounds: false`. The projection needs `invert`, so nothing is drawn while `animateProjection()` runs.
 - Draw country borders over it with a `MapPolygonSeries` pushed after it, `fillOpacity: 0` on `mapPolygons.template`. `twilight` (default `12` degrees of sun height) sets how wide the day/night blend is.
 
-### Night shading — `NightSeries` and `getSunPosition()`
+### Night shading — `NightSeries` and `getSunPosition()` (5.21.0)
 
 `am5map.NightSeries` shades the part of the map where it is night, with the twilight in steps, and shows the sun. It never affects the map's bounds.
 
@@ -894,9 +782,9 @@ chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 // its home button is hidden by default: zoomControl.homeButton.set("visible", true)
 
 // Programmatic zoom
-chart.zoomToGeoPoint({ latitude: 48.86, longitude: 2.35 }, 5, true);  // zoom level 5; true centers the point
+chart.zoomToGeoPoint({ latitude: 48.86, longitude: 2.35 }, 5);  // zoom level 5
 
-// Zoom to a polygon (prefer clickZoom, below)
+// Zoom to a polygon (5.21.0: prefer clickZoom, below)
 polygonSeries.mapPolygons.template.events.on("click", function(ev) {
   polygonSeries.zoomToDataItem(ev.target.dataItem);
 });
@@ -912,7 +800,7 @@ chart.chartContainer.children.push(am5.Button.new(root, {
 chart.zoomToGeoBounds({ left: -10, right: 40, top: 70, bottom: 35 }, 800);
 ```
 
-**Pointer zoom behaviors:** a double click/tap zooms in and shift + double click zooms out **by default** (`doubleClickZoom: true`; set `false` to turn it off). `boxZoom` lets the user drag a rectangle to zoom into — its value is the key that must be held: `"shift"`, `"ctrl"`, `"alt"`, or `"drag"` for no key (then set `panX`/`panY: "none"`, since a plain drag otherwise pans); default `"none"`. The rectangle being drawn is `chart.boxZoomSelection` (a `Rectangle`, style its `fill`/`stroke`).
+**Pointer zoom behaviors (5.20.2):** a double click/tap zooms in and shift + double click zooms out **by default** (`doubleClickZoom: true`; set `false` to turn it off). `boxZoom` lets the user drag a rectangle to zoom into — its value is the key that must be held: `"shift"`, `"ctrl"`, `"alt"`, or `"drag"` for no key (then set `panX`/`panY: "none"`, since a plain drag otherwise pans); default `"none"`. The rectangle being drawn is `chart.boxZoomSelection` (a `Rectangle`, style its `fill`/`stroke`).
 
 ```js
 am5map.MapChart.new(root, {
@@ -922,7 +810,7 @@ am5map.MapChart.new(root, {
 chart.boxZoomSelection.setAll({ fill: am5.color(0x1e88e5), fillOpacity: 0.15 });
 ```
 
-**Zoom to a clicked polygon — `clickZoom`.** One setting does what a click handler with `zoomToDataItem` and a background click would: a click zooms to the polygon (on a map panned by rotating — `panX: "rotateX"`/`panY: "rotateY"` — the globe also turns to it); clicking it again or the map background goes back home. The polygon zoomed to is `active`, so an `"active"` state marks it. Default `false`; works from JSON.
+**Zoom to a clicked polygon — `clickZoom` (5.21.0).** One setting replaces the click-handler + `zoomToDataItem` + background-click recipe: a click zooms to the polygon (on a map panned by rotating — `panX: "rotateX"`/`panY: "rotateY"` — the globe also turns to it); clicking it again or the map background goes back home. The polygon zoomed to is `active`, so an `"active"` state marks it. Default `false`; works from JSON.
 
 ```js
 var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -937,7 +825,7 @@ polygonSeries.mapPolygons.template.states.create("active", {
 
 `clickZoom` sets `active` itself, so `toggleKey: "active"` is not needed (with it, the two still agree).
 
-**Start at the home position — `autoHome`.** Goes to the home position (`homeGeoPoint`, `homeZoomLevel`, `homeRotationX`/`homeRotationY`) once the map is loaded, as `goHome()` does — animated when `animationDuration` is set (the Animated theme sets it), at once otherwise. No `goHome()` call in a `datavalidated` handler needed, so a map loaded from JSON can start zoomed in. Default `false`.
+**Start at the home position — `autoHome` (5.21.0).** Goes to the home position (`homeGeoPoint`, `homeZoomLevel`, `homeRotationX`/`homeRotationY`) once the map is loaded, as `goHome()` does — animated when `animationDuration` is set (the Animated theme sets it), at once otherwise. No `goHome()` call in a `datavalidated` handler needed, so a map loaded from JSON can start zoomed in. Default `false`.
 
 ```js
 var chart = root.container.children.push(am5map.MapChart.new(root, {
@@ -948,9 +836,7 @@ var chart = root.container.children.push(am5map.MapChart.new(root, {
 }));
 ```
 
-With `autoHome` and no `homeZoomLevel`, home zoom is `1`, so a starting `zoomLevel` is overridden: set `homeZoomLevel` to the same value. Without `autoHome`, a `zoomLevel` given to `MapChart.new()` is the starting zoom.
-
-**Detailed geodata: make the first fit instant.** Every frame of an animated zoom re-projects the whole map. A 1 s `zoomToGeoPoint()` on worldUltra cost 1.4 s of main-thread work against 0.2 s instant, and ran at about 3 fps with the CPU slowed 4×. Use `chart.goHome(0)` (safe before the map loads) or a duration of `0`, not `autoHome`, which animates under the Animated theme (`animationDuration` 1000).
+With `autoHome` and no `homeZoomLevel`, home zoom is `1`, so a starting `zoomLevel` is overridden: set `homeZoomLevel` to the same value. Without `autoHome`, a `zoomLevel` given to `MapChart.new()` is the starting zoom (since 5.21.1; before, one set before the map loaded was ignored or left the map blank).
 
 **Home on a globe.** On a map that pans by rotating (`panX: "rotateX"`, `panY: "rotateY"`), `goHome()` and the home button restore the rotation only from `homeRotationX` / `homeRotationY` (−longitude / −latitude). `homeGeoPoint` alone leaves the rotation as it is and shifts the globe sideways.
 
@@ -965,6 +851,8 @@ var globe = root.container.children.push(am5map.MapChart.new(root, {
 ```
 
 **`zoomStep`** (default `2`) is a multiplier, not an increment: `zoomIn()` and the + button multiply `zoomLevel` by it, `zoomOut()` divides, and the mouse wheel and double clicks use it too, one step per wheel event whatever its size. So keep it above `1` (`1` does nothing, below `1` reverses); `zoomStep: 1.1`–`1.2` gives fine control, e.g. on trackpads, which fire many small wheel events. `wheelSensitivity` does not affect wheel zoom, only wheel rotation.
+
+Fixed in 5.21.0: `goHome()` went to the wrong place before the map was ready or on a rotated map (globe); a zoomed-in map could not be dragged to its edges (with `maxPanOut: 0` not at all); `zoomToGeoBounds()` rotated with `animationDuration` instead of the given duration and changed the bounds object; `MapPointSeries.zoomToDataItems(items, true)` / `ClusteredPointSeries.zoomToCluster()` turned a globe to the wrong point; `chart.geoPoint()` and `getPolygonByGeoPoint()` were off on charts with padding.
 
 ## Globe (orthographic projection)
 
@@ -1022,7 +910,7 @@ worldSeries.mapPolygons.template.events.on("click", function(ev) {
   // Load country geodata dynamically
   import("@amcharts/amcharts5-geodata/usaLow").then(function(geodata) {
     countrySeries.set("geoJSON", geodata.default);
-    worldSeries.zoomToDataItem(ev.target.dataItem);
+    chart.zoomToDataItem(ev.target.dataItem);
   });
 });
 
@@ -1048,17 +936,15 @@ am5map.MapChart.new(root, {
   wheelY: "zoom",           // "zoom", "rotateX", "rotateY", "none"
   zoomStep: 2,              // zoom multiplier per step: buttons, wheel, double click (see "Zoom controls")
   wheelSensitivity: 1,      // how far the wheel rotates the map ("rotateX"/"rotateY" only), not zoom speed
-  doubleClickZoom: true,    // double click zooms in, shift+double click out — default true
-  boxZoom: "none",          // "none" | "drag" | "shift" | "ctrl" | "alt" — key held to drag a zoom box
-  autoHome: false,          // true = go to homeGeoPoint/homeZoomLevel once loaded
+  doubleClickZoom: true,    // (5.20.2) double click zooms in, shift+double click out — default true
+  boxZoom: "none",          // (5.20.2) "none" | "drag" | "shift" | "ctrl" | "alt" — key held to drag a zoom box
+  autoHome: false,          // (5.21.0) true = go to homeGeoPoint/homeZoomLevel once loaded
 })
 ```
 
-`maxPanOut: 0` with `panX: "translateX"` stops all dragging at zoom level 1, on both axes. On a world map, pair it with `panX: "rotateX"`, which `maxPanOut` does not limit.
-
 **Polygon IDs** use ISO 3166-1 alpha-2 codes (e.g., `"US"`, `"CN"`, `"DE"`, `"FR"`).
 
-**Accessibility:** focusable map polygons can be focused, objects left out with `include`/`exclude` get no focus element, objects panned or zoomed out of view are not TAB stops until at least partly back in view, and the zoom level is announced to screen readers once zooming settles.
+**Accessibility (5.21.0):** focusable map polygons can be focused (they could not before), objects left out with `include`/`exclude` get no focus element, objects panned or zoomed out of view are not TAB stops until at least partly back in view, and the zoom level is announced to screen readers once zooming settles.
 
 ## Events on map elements
 
@@ -1084,7 +970,7 @@ chart.on("zoomLevel", function(zoomLevel) {
   console.log("Zoom:", zoomLevel);
 });
 
-// Links without a click handler: urlField on MapPolygonSeries, MapLineSeries or MapPointSeries (bullets)
+// Links without a click handler (5.20.7): urlField on MapPolygonSeries, MapLineSeries or MapPointSeries (bullets)
 var linkedSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
   geoJSON: am5geodata_worldLow, urlField: "url", linkTarget: "_blank"   // linkTarget default "_self"
 }));
@@ -1092,8 +978,6 @@ linkedSeries.data.setAll([{ id: "US", url: "https://en.wikipedia.org/wiki/United
 ```
 
 `urlField` has no default (links are off until set); the pointer cursor is set automatically unless you set `cursorOverStyle`; `javascript:`/`data:`/`vbscript:` URLs are never opened; override `series.openUrl(dataItem)` to intercept. `MapSankeySeries` nodes are not linked — keep a `click` handler there.
-
-**Which pixels:** `chart.convert(geoPoint)` and `chart.invert(point)` work in the map's area, inside the chart's padding (`chart.seriesContainer`'s space). A pointer event's `ev.point` is relative to the root. So the place clicked is `chart.invert(chart.seriesContainer.toLocal(ev.point))`, and a geo point's page position is `chart.seriesContainer.toGlobal(chart.convert(geoPoint))` plus the chart div's `getBoundingClientRect()`. `chart.invert(ev.point)` on its own is right only for a chart at the root's top-left with no padding. Docs: https://docs.amcharts.com/v5/charts/map-chart/map-api/#converting-between-screen-and-geographical-coordinates.
 
 ## Disposal
 
@@ -1120,14 +1004,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var chart = root.container.children.push(am5map.MapChart.new(root, {
       panX: "rotateX",
@@ -1197,14 +1080,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var chart = root.container.children.push(am5map.MapChart.new(root, {
       panX: "translateX",
@@ -1273,14 +1155,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var chart = root.container.children.push(am5map.MapChart.new(root, {
       panX: "translateX",
@@ -1337,9 +1218,904 @@ root.dispose();
 </html>
 ```
 
-## More examples
+## Example 4: Globe with animated flight path (positionOnLine + globe rotation)
 
-Longer complete examples are in the amCharts MCP server's examples (https://mcp.amcharts.com/mcp; the same files are in the amcharts/amcharts5-mcp repository, under `extended/examples/`):
-- Globe with animated flight path (positionOnLine + globe rotation): `get_example(path: "examples/maps/globe-with-animated-flight-path")`
-- Map Sankey — Global Coffee Supply Chain (sourceId/targetId): `get_example(path: "examples/maps/map-sankey-coffee-supply-chain")`
-- Map Sankey — Oil Export Flows with Waypoints (explicit coordinates): `get_example(path: "examples/maps/map-sankey-oil-export-flows")`
+Demonstrates: orthographic projection, single-segment lines for per-segment animation control, `positionOnLine` animation, globe auto-rotation to follow the plane, bullet scale animation, and city expand/shrink effects.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Globe Flight Path</title>
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <style>#chartdiv { width: 100%; height: 600px; background: #0a0a1a; }</style>
+</head>
+<body>
+  <div id="chartdiv"></div>
+  <script>
+    var root = am5.Root.new("chartdiv");
+    root.setThemes([am5themes_Animated.new(root)]);
+    var orange = am5.color(0xff6b35);
+    var cityColor = am5.color(0xcc4a1a);
+
+    var cities = [
+      { name: "London", latitude: 51.5074, longitude: -0.1278 },
+      { name: "Dubai", latitude: 25.2048, longitude: 55.2708 },
+      { name: "Singapore", latitude: 1.3521, longitude: 103.8198 },
+      { name: "Sydney", latitude: -33.8688, longitude: 151.2093 },
+      { name: "Tokyo", latitude: 35.6762, longitude: 139.6503 },
+      { name: "Honolulu", latitude: 21.3069, longitude: -157.8583 },
+      { name: "Los Angeles", latitude: 34.0522, longitude: -118.2437 },
+      { name: "São Paulo", latitude: -23.5505, longitude: -46.6333 },
+      { name: "New York", latitude: 40.7128, longitude: -74.006 },
+      { name: "London", latitude: 51.5074, longitude: -0.1278 }
+    ];
+
+    // Globe centered on first city (note: NEGATIVE lat/lon for rotation)
+    var chart = root.container.children.push(am5map.MapChart.new(root, {
+      panX: "rotateX",
+      panY: "rotateY",
+      projection: am5map.geoOrthographic(),
+      rotationX: -cities[0].longitude,
+      rotationY: -cities[0].latitude
+    }));
+
+    // Ocean background
+    var bgSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+    bgSeries.mapPolygons.template.setAll({
+      fill: am5.color(0x1a1a2e), fillOpacity: 1, strokeOpacity: 0
+    });
+    bgSeries.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
+
+    // Graticule
+    var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
+    graticuleSeries.mapLines.template.setAll({
+      stroke: am5.color(0x4a4a65), strokeOpacity: 0.5, strokeWidth: 0.8
+    });
+
+    // Continents
+    var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+      geoJSON: am5geodata_continentsLow
+    }));
+    polygonSeries.mapPolygons.template.setAll({
+      fill: am5.color(0x2a2a45), stroke: am5.color(0x3a3a55),
+      strokeWidth: 0.5, strokeOpacity: 0.6
+    });
+
+    // Dashed route lines — one per segment for animation control
+    var lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+    lineSeries.mapLines.template.setAll({
+      stroke: orange, strokeOpacity: 0.35, strokeWidth: 1.5, strokeDasharray: [3, 3]
+    });
+
+    // City points with pulse + label
+    var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+    pointSeries.bullets.push(function(root, series, dataItem) {
+      var container = am5.Container.new(root, {});
+      container.children.push(am5.Circle.new(root, {
+        radius: 3.5, fill: cityColor, fillOpacity: 0.9,
+        stroke: orange, strokeWidth: 4, strokeOpacity: 0
+      }));
+      container.children.push(am5.Label.new(root, {
+        text: "{name}", fill: am5.color(0xffffff), fontSize: 11,
+        fontWeight: "600", centerX: am5.p50, centerY: am5.p100,
+        dy: -8, opacity: 0, populateText: true
+      }));
+      return am5.Bullet.new(root, { sprite: container });
+    });
+
+    var pointsToConnect = [];
+    for (var i = 0; i < cities.length; i++) {
+      if (i === cities.length - 1) {
+        pointsToConnect.push(pointsToConnect[0]); // loop back
+      } else {
+        pointsToConnect.push(pointSeries.pushDataItem({
+          latitude: cities[i].latitude, longitude: cities[i].longitude,
+          name: cities[i].name
+        }));
+      }
+    }
+
+    // Single-segment lines (one per city pair) for per-segment control
+    var segmentLines = [];
+    var numSegments = cities.length - 1;
+    for (var i = 0; i < numSegments; i++) {
+      segmentLines.push(lineSeries.pushDataItem({
+        pointsToConnect: [pointsToConnect[i], pointsToConnect[i + 1]]
+      }));
+    }
+
+    // Plane series — one per segment, all hidden initially
+    var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+    planeSeries.bullets.push(function(root, series, dataItem) {
+      return am5.Bullet.new(root, {
+        sprite: am5.Graphics.new(root, {
+          svgPath: "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
+          scale: 0.04, centerY: am5.p50, centerX: am5.p50,
+          fill: orange, forceHidden: true
+        })
+      });
+    });
+
+    var planes = [];
+    for (var i = 0; i < numSegments; i++) {
+      planes.push(planeSeries.pushDataItem({
+        lineDataItem: segmentLines[i], positionOnLine: 0, autoRotate: true
+      }));
+    }
+
+    var baseScale = 0.04, peakScale = 0.065;
+
+    // Haversine distance for proportional timing
+    function haversine(lat1, lon1, lat2, lon2) {
+      var R = 6371, dLat = (lat2 - lat1) * Math.PI / 180,
+          dLon = (lon2 - lon1) * Math.PI / 180;
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    var msPerKm = 0.4;
+    var segDurations = [];
+    for (var i = 0; i < numSegments; i++) {
+      var d = haversine(cities[i].latitude, cities[i].longitude,
+                        cities[i + 1].latitude, cities[i + 1].longitude);
+      segDurations.push(Math.max(800, Math.round(d * msPerKm)));
+    }
+
+    var activeCityIdx = -1;
+
+    function expandCity(idx) {
+      var di = pointsToConnect[idx];
+      if (!di || !di.bullets || !di.bullets[0]) return;
+      var container = di.bullets[0].get("sprite");
+      var dot = container.children.getIndex(0);
+      var label = container.children.getIndex(1);
+      activeCityIdx = idx;
+      dot.animate({ key: "radius", to: 14, duration: 400, easing: am5.ease.out(am5.ease.cubic) });
+      dot.animate({ key: "fillOpacity", to: 0, duration: 400, easing: am5.ease.out(am5.ease.cubic) });
+      dot.animate({ key: "strokeOpacity", to: 1, duration: 400, easing: am5.ease.out(am5.ease.cubic) });
+      label.setAll({ opacity: 0, dy: 0 });
+      label.animate({ key: "opacity", to: 1, duration: 300, easing: am5.ease.out(am5.ease.cubic) });
+      label.animate({ key: "dy", to: -10, duration: 300, easing: am5.ease.out(am5.ease.cubic) });
+    }
+
+    function shrinkCity(idx) {
+      var di = pointsToConnect[idx];
+      if (!di || !di.bullets || !di.bullets[0]) return;
+      var container = di.bullets[0].get("sprite");
+      var dot = container.children.getIndex(0);
+      var label = container.children.getIndex(1);
+      dot.animate({ key: "radius", to: 3.5, duration: 500, easing: am5.ease.cubic });
+      dot.animate({ key: "fillOpacity", to: 0.9, duration: 500, easing: am5.ease.cubic });
+      dot.animate({ key: "strokeOpacity", to: 0, duration: 500, easing: am5.ease.cubic });
+      label.animate({ key: "opacity", to: 0, duration: 400, easing: am5.ease.cubic });
+      activeCityIdx = -1;
+    }
+
+    var lastRotation = null;
+    var activeFlightDisposer = null;
+
+    function startFlight(plane, sprite, idx) {
+      if (activeCityIdx >= 0) shrinkCity(activeCityIdx);
+      var nextIdx = (idx + 1) % numSegments;
+      var expanded = false;
+
+      if (activeFlightDisposer) { activeFlightDisposer.dispose(); activeFlightDisposer = null; }
+
+      // Track position: rotate globe + scale bullet + expand destination city early
+      activeFlightDisposer = plane.on("positionOnLine", function (pos) {
+        chart.set("rotationX", -plane.get("longitude"));
+        chart.set("rotationY", -plane.get("latitude"));
+        var s = baseScale + (peakScale - baseScale) * Math.sin(pos * Math.PI);
+        if (plane.bullets && plane.bullets[0]) {
+          plane.bullets[0].get("sprite").set("scale", s);
+        }
+        if (!expanded && pos >= 0.85) { expanded = true; expandCity(nextIdx); }
+      });
+
+      var anim = plane.animate({
+        key: "positionOnLine", to: 1, duration: segDurations[idx],
+        easing: am5.ease.inOut(am5.ease.cubic)
+      });
+      anim.events.on("stopped", function () {
+        lastRotation = sprite.get("rotation", 0);
+        sprite.set("forceHidden", true);
+        flySegment(nextIdx);
+      });
+    }
+
+    function flySegment(idx) {
+      var plane = planes[idx];
+      var sprite = plane.bullets[0].get("sprite");
+      plane.set("positionOnLine", 0);
+      sprite.set("forceHidden", false);
+
+      if (lastRotation === null) {
+        sprite.set("opacity", 0);
+        sprite.animate({ key: "opacity", to: 1, duration: 400, easing: am5.ease.out(am5.ease.cubic) });
+      }
+
+      if (lastRotation !== null) {
+        var targetRotation = sprite.get("rotation", 0);
+        plane.set("autoRotate", false);
+        sprite.set("rotation", lastRotation);
+        var diff = targetRotation - lastRotation;
+        while (diff > 180) diff -= 360;
+        while (diff < -180) diff += 360;
+        var rotAnim = sprite.animate({
+          key: "rotation", to: lastRotation + diff, duration: 500,
+          easing: am5.ease.out(am5.ease.cubic)
+        });
+        rotAnim.events.on("stopped", function () {
+          plane.set("autoRotate", true);
+          startFlight(plane, sprite, idx);
+        });
+      } else {
+        startFlight(plane, sprite, idx);
+      }
+    }
+
+    chart.appear(1000, 100);
+    expandCity(0);
+    setTimeout(function () { flySegment(0); }, 1500);
+  </script>
+</body>
+</html>
+```
+
+## Example 5: Map Sankey — Global Coffee Supply Chain (sourceId/targetId)
+
+Demonstrates: `MapSankeySeries` with `sourceId`/`targetId` data (country codes), multi-level flows (producers > hubs > consumers), custom theme, country highlighting, animated coffee bean bullets, Globe/Map projection toggle, and auto-rotation. Based on the `map-sankey` shared example.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Map Sankey — Global Coffee Supply Chain</title>
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <style>body { margin: 0; background: #f0e6d6; } #chartdiv { width: 100%; height: 600px; }</style>
+</head>
+<body>
+  <div id="chartdiv"></div>
+  <script>
+    var root = am5.Root.new("chartdiv");
+
+    // Coffee theme — warm earth tones
+    var coffeeTheme = am5.Theme.new(root);
+    coffeeTheme.rule("InterfaceColors").setAll({
+      primaryButton: am5.color(0x8b5e3c),
+      primaryButtonHover: am5.color(0x5c3a1e),
+      primaryButtonDown: am5.color(0x3c1e0e),
+      primaryButtonActive: am5.color(0xc4956a),
+      primaryButtonText: am5.color(0xf5ece0),
+      secondaryButton: am5.color(0xe8d5b7),
+      secondaryButtonHover: am5.color(0xd4c4a8),
+      secondaryButtonDown: am5.color(0xc4956a),
+      secondaryButtonText: am5.color(0x3c1e0e),
+      background: am5.color(0xe8d5b7),
+      text: am5.color(0x3c1e0e)
+    });
+    root.setThemes([am5themes_Animated.new(root), coffeeTheme]);
+
+    // Grainy paper background
+    root.container.set("background", am5.Rectangle.new(root, {
+      fill: am5.color(0xf0e6d6),
+      fillPattern: am5.GrainPattern.new(root, {
+        density: 0.4,
+        maxOpacity: 0.07,
+        colors: [am5.color(0x000000)]
+      })
+    }));
+
+    // Coffee palette
+    var espresso = am5.color(0x3c1e0e);
+    var darkRoast = am5.color(0x5c3a1e);
+    var mediumRoast = am5.color(0x8b5e3c);
+    var lightRoast = am5.color(0xc4956a);
+    var crema = am5.color(0xe8d5b7);
+    var cream = am5.color(0xf5ece0);
+
+    var chart = root.container.children.push(am5map.MapChart.new(root, {
+      panX: "rotateX",
+      panY: "rotateY",
+      projection: am5map.geoOrthographic(),
+      rotationX: -15,
+      rotationY: -20,
+      minZoomLevel: 0.5,
+      zoomLevel: 0.9
+    }));
+
+    // Ocean / globe background
+    var bgSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+    bgSeries.mapPolygons.template.setAll({
+      fill: am5.color(0xede4d4), fillOpacity: 1, strokeOpacity: 0
+    });
+    bgSeries.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
+
+    // Graticule
+    var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
+    graticuleSeries.mapLines.template.setAll({
+      stroke: mediumRoast, strokeOpacity: 0.15, strokeWidth: 0.5
+    });
+
+    // Countries
+    var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+      geoJSON: am5geodata_worldLow
+    }));
+    polygonSeries.mapPolygons.template.setAll({
+      fill: cream, stroke: lightRoast, strokeWidth: 0.5, strokeOpacity: 0.5
+    });
+
+    // Highlight producer, hub, and consumer countries
+    var producerIds = ["BR", "VN", "CO", "ET", "ID", "HN"];
+    var hubIds = ["DE", "BE", "IT", "US"];
+    var consumerIds = ["FR", "PL", "SE", "RU", "GB", "NL", "GR", "AT", "CA", "JP"];
+
+    polygonSeries.events.on("datavalidated", function() {
+      am5.array.each(polygonSeries.dataItems, function(di) {
+        var id = di.get("id");
+        if (id && producerIds.indexOf(id) !== -1) {
+          di.get("mapPolygon").setAll({ fill: am5.color(0x8fae7e) });
+        } else if (id && hubIds.indexOf(id) !== -1) {
+          di.get("mapPolygon").setAll({ fill: am5.color(0xc4a878) });
+        } else if (id && consumerIds.indexOf(id) !== -1) {
+          di.get("mapPolygon").setAll({ fill: am5.color(0xddc8a0) });
+        }
+      });
+    });
+
+    // MapSankeySeries — coffee supply chain
+    var sankeySeries = chart.series.push(am5map.MapSankeySeries.new(root, {
+      polygonSeries: polygonSeries,
+      maxWidth: 2,
+      controlPointDistance: 0.4,
+      resolution: 60,
+      nodePadding: 0.3
+    }));
+
+    sankeySeries.mapPolygons.template.setAll({
+      fill: mediumRoast,
+      fillOpacity: 0.65,
+      strokeOpacity: 0,
+      tooltipText: "{sourceNode.name} > {targetNode.name}\n{value}k tonnes"
+    });
+
+    sankeySeries.nodes.mapPolygons.template.setAll({
+      fill: espresso,
+      stroke: crema,
+      strokeWidth: 1.5,
+      fillOpacity: 0.95,
+      strokeOpacity: 1,
+      tooltipText: "{name}\n{sum}k tonnes"
+    });
+
+    // Animated coffee bean bullets
+    sankeySeries.bullets.push(function(root, series, dataItem) {
+      return am5.Bullet.new(root, {
+        locationX: 0,
+        autoRotate: true,
+        sprite: am5.Graphics.new(root, {
+          svgPath: "M-4,-2.5 C-4,-5 -1.5,-6.5 1,-6.5 C3.5,-6.5 5,-4.5 5,-2 C5,1 3,3.5 0.5,5 C-0.5,5.7 -1.5,5.7 -2.5,5 C-5,3.5 -6,1 -4,-2.5 Z M-1,-5 C-1,-1 -1,2 -0.5,4.5",
+          fill: espresso,
+          stroke: darkRoast,
+          strokeWidth: 0.5,
+          centerX: am5.p50,
+          centerY: am5.p50,
+          scale: 0.35,
+          visible: false
+        })
+      });
+    });
+
+    // Set data directly — MapSankeySeries auto-resolves sourceId/targetId
+    // once polygonSeries finishes loading.
+    sankeySeries.data.setAll([
+      // Producers > Hubs
+      { sourceId: "BR", targetId: "DE", value: 350 },
+      { sourceId: "BR", targetId: "US", value: 450 },
+      { sourceId: "BR", targetId: "IT", value: 200 },
+      { sourceId: "VN", targetId: "DE", value: 200 },
+      { sourceId: "VN", targetId: "BE", value: 150 },
+      { sourceId: "CO", targetId: "US", value: 250 },
+      { sourceId: "CO", targetId: "DE", value: 80 },
+      { sourceId: "ET", targetId: "DE", value: 60 },
+      { sourceId: "ET", targetId: "BE", value: 40 },
+      { sourceId: "ID", targetId: "US", value: 80 },
+      { sourceId: "HN", targetId: "DE", value: 60 },
+      { sourceId: "HN", targetId: "BE", value: 40 },
+      // Hubs > Consumer Markets
+      { sourceId: "DE", targetId: "FR", value: 150 },
+      { sourceId: "DE", targetId: "PL", value: 100 },
+      { sourceId: "DE", targetId: "SE", value: 80 },
+      { sourceId: "DE", targetId: "RU", value: 120 },
+      { sourceId: "BE", targetId: "GB", value: 100 },
+      { sourceId: "BE", targetId: "NL", value: 80 },
+      { sourceId: "IT", targetId: "GR", value: 50 },
+      { sourceId: "IT", targetId: "AT", value: 40 },
+      { sourceId: "US", targetId: "CA", value: 120 },
+      { sourceId: "US", targetId: "JP", value: 80 }
+    ]);
+
+    // Set country names on auto-created nodes and animate bullets
+    var countryNames = {
+      BR: "Brazil", VN: "Vietnam", CO: "Colombia", ET: "Ethiopia",
+      ID: "Indonesia", HN: "Honduras", DE: "Germany", BE: "Belgium",
+      IT: "Italy", US: "United States", FR: "France", PL: "Poland",
+      SE: "Sweden", RU: "Russia", GB: "United Kingdom", NL: "Netherlands",
+      GR: "Greece", AT: "Austria", CA: "Canada", JP: "Japan"
+    };
+
+    sankeySeries.events.on("datavalidated", function() {
+      am5.array.each(sankeySeries.nodes.dataItems, function(di) {
+        var id = di.get("id");
+        if (id && countryNames[id]) {
+          di.set("name", countryNames[id]);
+        }
+      });
+
+      am5.array.each(sankeySeries.dataItems, function(dataItem) {
+        var bullets = dataItem.bullets;
+        if (bullets) {
+          am5.array.each(bullets, function(bullet) {
+            var randomDur = 3000 + Math.random() * 3000;
+            var delay = Math.random() * randomDur;
+            setTimeout(function() {
+              var sprite = bullet.get("sprite");
+              if (sprite) sprite.set("visible", true);
+              bullet.animate({
+                key: "locationX",
+                from: 0,
+                to: 1,
+                duration: randomDur,
+                easing: am5.ease.linear,
+                loops: Infinity
+              });
+            }, delay);
+          });
+        }
+      });
+    });
+
+    // Title
+    var titleCont = chart.children.push(am5.Container.new(root, {
+      layout: root.verticalLayout,
+      x: am5.p50, centerX: am5.p50,
+      y: am5.p100, centerY: am5.p100,
+      position: "absolute", paddingBottom: 16
+    }));
+    titleCont.children.push(am5.Label.new(root, {
+      text: "Global Coffee Supply Chain",
+      fontSize: 18, fontWeight: "600", fill: espresso,
+      x: am5.p50, centerX: am5.p50
+    }));
+    titleCont.children.push(am5.Label.new(root, {
+      text: "(Thousands of tonnes)",
+      fontSize: 11, fill: mediumRoast,
+      x: am5.p50, centerX: am5.p50
+    }));
+
+    // Globe / Map toggle
+    var switchCont = chart.children.push(am5.Container.new(root, {
+      layout: root.horizontalLayout, x: 20, y: 40
+    }));
+    switchCont.children.push(am5.Label.new(root, {
+      centerY: am5.p50, text: "Globe", fill: espresso, fontSize: 13
+    }));
+    var switchButton = switchCont.children.push(am5.Button.new(root, {
+      themeTags: ["switch"], centerY: am5.p50,
+      icon: am5.Circle.new(root, { themeTags: ["icon"] })
+    }));
+
+    var easing = am5.ease.inOut(am5.ease.cubic);
+    var duration = 1500;
+    var fadeDuration = 300;
+
+    function zoomToGlobe() {
+      chart.set("projection", am5map.geoOrthographic());
+      chart.set("panX", "rotateX");
+      chart.set("panY", "rotateY");
+      chart.animate({ key: "rotationX", to: -15, duration: duration, easing: easing });
+      chart.animate({ key: "rotationY", to: -20, duration: duration, easing: easing });
+      bgSeries.mapPolygons.template.set("fillOpacity", 1);
+      chart.set("minZoomLevel", 0.9);
+      chart.animate({ key: "zoomLevel", to: 0.9, duration: duration, easing: easing });
+    }
+
+    function zoomToMap() {
+      chart.set("projection", am5map.geoMercator());
+      chart.set("panX", "translateX");
+      chart.set("panY", "translateY");
+      chart.animate({ key: "rotationX", to: 0, duration: duration, easing: easing });
+      chart.animate({ key: "rotationY", to: 0, duration: duration, easing: easing });
+      bgSeries.mapPolygons.template.set("fillOpacity", 0);
+      chart.set("minZoomLevel", 1);
+      chart.animate({ key: "zoomLevel", to: 1.7, duration: duration, easing: easing });
+    }
+
+    switchButton.on("active", function() {
+      chart.goHome(duration);
+      setTimeout(function() {
+        chart.seriesContainer.animate({ key: "opacity", to: 0, duration: fadeDuration });
+      }, duration - fadeDuration);
+      setTimeout(function() {
+        if (switchButton.get("active")) { zoomToMap(); } else { zoomToGlobe(); }
+        chart.seriesContainer.animate({ key: "opacity", to: 1, duration: fadeDuration });
+      }, duration);
+    });
+
+    switchCont.children.push(am5.Label.new(root, {
+      centerY: am5.p50, text: "Map", fill: espresso, fontSize: 13
+    }));
+
+    // Zoom controls
+    var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+    zoomControl.homeButton.set("visible", true);
+
+    // Auto-rotate globe until user interaction
+    var rotationAnimation = chart.animate({
+      key: "rotationX", from: -15, to: -15 + 360,
+      duration: 120000, loops: Infinity, easing: am5.ease.linear
+    });
+    chart.chartContainer.events.on("pointerdown", function() {
+      if (rotationAnimation) { rotationAnimation.stop(); rotationAnimation = null; }
+    });
+
+    chart.appear(1000, 100);
+  </script>
+</body>
+</html>
+```
+
+## Example 6: Map Sankey — Oil Export Flows with Waypoints (explicit coordinates)
+
+Demonstrates: `MapSankeySeries` with explicit `sourceLongitude`/`sourceLatitude` coordinates, maritime waypoints for realistic shipping routes, oil drop SVG bullets with proportional animation speed, dark theme, country highlighting, and Globe/Map projection toggle. Based on the `map-sankey-waypoints` shared example.
+
+**IMPORTANT — waypoints must use `longitude`/`latitude` keys** (not shorthand like `lon`/`lat`). Source/target location objects can use any keys because the `flow()` helper maps them to `sourceLongitude`/`sourceLatitude`, but waypoints are read directly by the series via `wp.longitude` and `wp.latitude`.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Map Sankey — Oil Export Flows</title>
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <style>body { margin: 0; background: #0a0e12; } #chartdiv { width: 100%; height: 600px; }</style>
+</head>
+<body>
+  <div id="chartdiv"></div>
+  <script>
+    var root = am5.Root.new("chartdiv");
+
+    // Oil/dark theme
+    var oilTheme = am5.Theme.new(root);
+    oilTheme.rule("InterfaceColors").setAll({
+      primaryButton: am5.color(0x1e2824),
+      primaryButtonHover: am5.color(0x3a5040),
+      primaryButtonDown: am5.color(0x0a0e12),
+      primaryButtonActive: am5.color(0xc8890a),
+      primaryButtonText: am5.color(0xf5d090),
+      secondaryButton: am5.color(0x1e2824),
+      secondaryButtonHover: am5.color(0x3a5040),
+      secondaryButtonDown: am5.color(0x141a1a),
+      secondaryButtonText: am5.color(0xf5d090),
+      background: am5.color(0x0a0e12),
+      text: am5.color(0xf5d090)
+    });
+    root.setThemes([am5themes_Animated.new(root), oilTheme]);
+
+    // Palette
+    var deepCrude = am5.color(0x141a1a);
+    var slick = am5.color(0x1e2824);
+    var pipeline = am5.color(0x3a5040);
+    var amber = am5.color(0xc8890a);
+    var sulfur = am5.color(0xa89050);
+    var flare = am5.color(0xf5d090);
+
+    var chart = root.container.children.push(am5map.MapChart.new(root, {
+      panX: "rotateX",
+      panY: "rotateY",
+      projection: am5map.geoOrthographic(),
+      homeGeoPoint: { longitude: 0, latitude: 0 },
+      homeRotationX: 0,
+      homeRotationY: 0,
+      homeZoomLevel: 1,
+      minZoomLevel: 0.8,
+      zoomLevel: 1
+    }));
+
+    // Ocean
+    var bgSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {}));
+    bgSeries.mapPolygons.template.setAll({
+      fill: deepCrude, fillOpacity: 1, strokeOpacity: 0
+    });
+    bgSeries.data.push({ geometry: am5map.getGeoRectangle(90, 180, -90, -180) });
+
+    // Graticule
+    var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {}));
+    graticuleSeries.mapLines.template.setAll({
+      stroke: pipeline, strokeOpacity: 0.25, strokeWidth: 0.5
+    });
+
+    // Countries
+    var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+      geoJSON: am5geodata_worldLow
+    }));
+    polygonSeries.mapPolygons.template.setAll({
+      fill: slick, stroke: pipeline, strokeWidth: 0.5, strokeOpacity: 0.6
+    });
+
+    // Highlight producer & importer countries
+    var producerIds = ["SA", "IQ", "AE", "KW", "IR", "QA"];
+    var importerIds = ["CN", "JP", "KR", "IN", "SG", "IT", "GR", "NL"];
+    polygonSeries.events.on("datavalidated", function() {
+      am5.array.each(polygonSeries.dataItems, function(di) {
+        var id = di.get("id");
+        if (producerIds.indexOf(id) !== -1) {
+          di.get("mapPolygon").setAll({ fill: am5.color(0x6b5a10), tooltipText: "{name}" });
+        } else if (importerIds.indexOf(id) !== -1) {
+          di.get("mapPolygon").setAll({ fill: am5.color(0x2a4030), tooltipText: "{name}" });
+        }
+      });
+    });
+
+    // MapSankeySeries
+    var sankeySeries = chart.series.push(am5map.MapSankeySeries.new(root, {
+      polygonSeries: polygonSeries,
+      maxWidth: 0.8,
+      controlPointDistance: 0.4,
+      resolution: 60,
+      nodePadding: 0.1
+    }));
+
+    sankeySeries.mapPolygons.template.setAll({
+      fill: amber, fillOpacity: 0.4, strokeOpacity: 0,
+      tooltipText: "{source} > {target}\n{value}k bbl/day"
+    });
+
+    sankeySeries.nodes.mapPolygons.template.setAll({
+      fill: amber, stroke: flare, strokeWidth: 1.5,
+      fillOpacity: 0.95, strokeOpacity: 1, tooltipText: "{name}"
+    });
+
+    // Animated oil drop bullets
+    sankeySeries.bullets.push(function(root, series, dataItem) {
+      return am5.Bullet.new(root, {
+        locationX: 0,
+        autoRotate: true,
+        autoRotateAngle: -90,
+        sprite: am5.Graphics.new(root, {
+          svgPath: "M0,-7 C2,-4 5,0 5,3 C5,6 3,8 0,8 C-3,8 -5,6 -5,3 C-5,0 -2,-4 0,-7 Z",
+          fill: amber, stroke: am5.color(0x8b6914), strokeWidth: 0.5,
+          centerX: am5.p50, centerY: am5.p50, scale: 0.45, visible: false
+        })
+      });
+    });
+
+    sankeySeries.events.on("datavalidated", function() {
+      // Scale animation duration proportionally to path length
+      var maxLength = 0;
+      am5.array.each(sankeySeries.dataItems, function(dataItem) {
+        var len = sankeySeries.getPathLength(dataItem);
+        if (len > maxLength) maxLength = len;
+      });
+
+      var baseDuration = 8000;
+      var minDuration = 2000;
+
+      am5.array.each(sankeySeries.dataItems, function(dataItem) {
+        var pathLength = sankeySeries.getPathLength(dataItem) || maxLength;
+        var dur = maxLength > 0
+          ? Math.max(minDuration, (pathLength / maxLength) * baseDuration)
+          : baseDuration;
+        var bullets = dataItem.bullets;
+        if (bullets) {
+          am5.array.each(bullets, function(bullet) {
+            var randomDur = dur * (0.8 + Math.random() * 0.4);
+            var delay = Math.random() * randomDur;
+            setTimeout(function() {
+              var sprite = bullet.get("sprite");
+              if (sprite) sprite.set("visible", true);
+              bullet.animate({
+                key: "locationX", from: 0, to: 1,
+                duration: randomDur, easing: am5.ease.linear, loops: Infinity
+              });
+            }, delay);
+          });
+        }
+      });
+    });
+
+    // Gulf export terminals (source/target objects can use any key names
+    // because the flow() helper maps them to sourceLongitude/sourceLatitude)
+    var rasTanura   = { lon: 50.17, lat: 26.64 };
+    var basra       = { lon: 48.80, lat: 29.69 };
+    var fujairah    = { lon: 56.33, lat: 25.12 };
+    var minaAhmadi  = { lon: 48.17, lat: 29.08 };
+    var khargIsland = { lon: 50.32, lat: 29.23 };
+    var rasLaffan   = { lon: 51.56, lat: 25.93 };
+
+    // Import terminals
+    var ningbo    = { lon: 121.97, lat: 29.87 };
+    var qingdao   = { lon: 120.38, lat: 36.07 };
+    var yokohama  = { lon: 139.64, lat: 35.44 };
+    var chiba     = { lon: 140.10, lat: 35.60 };
+    var ulsan     = { lon: 129.38, lat: 35.50 };
+    var jamnagar  = { lon: 69.66, lat: 22.42 };
+    var mumbai    = { lon: 72.88, lat: 19.08 };
+    var singapore = { lon: 103.84, lat: 1.26 };
+    var trieste   = { lon: 13.78, lat: 45.65 };
+    var piraeus   = { lon: 23.63, lat: 37.94 };
+    var rotterdam = { lon: 4.12, lat: 51.95 };
+
+    function flow(src, srcName, tgt, tgtName, value, wp) {
+      var result = {
+        sourceLongitude: src.lon, sourceLatitude: src.lat,
+        targetLongitude: tgt.lon, targetLatitude: tgt.lat,
+        source: srcName, target: tgtName, value: value
+      };
+      if (wp) result.waypoints = wp;
+      return result;
+    }
+
+    // IMPORTANT: waypoints must use { longitude: ..., latitude: ... }
+    // (NOT shorthand like { lon, lat }) — the series reads wp.longitude / wp.latitude directly
+    var wpHormuz     = { longitude: 58,  latitude: 24 };
+    var wpArabianSea = { longitude: 64,  latitude: 18 };
+    var wpSouthIndia = { longitude: 78,  latitude: 6 };
+    var wpMalacca    = { longitude: 101, latitude: 3 };
+    var wpAden       = { longitude: 47,  latitude: 12 };
+    var wpSuez       = { longitude: 34,  latitude: 29 };
+
+    // Route templates
+    var viaJapan      = [{ longitude: 58, latitude: 26 }, { longitude: 80, latitude: 9 },  { longitude: 104, latitude: 7 }];
+    var viaKorea      = [{ longitude: 58, latitude: 24 }, { longitude: 78, latitude: 6 },  { longitude: 101, latitude: 3 }];
+    var viaChina      = [{ longitude: 58, latitude: 22 }, { longitude: 76, latitude: 3 },  { longitude: 99, latitude: 1 }];
+    var viaChinaNorth = [{ longitude: 58, latitude: 22 }, { longitude: 76, latitude: 3 },  { longitude: 99, latitude: 1 }, { longitude: 124, latitude: 32 }];
+    var viaIndiaNear  = [wpHormuz];
+    var viaIndiaFar   = [wpHormuz, wpArabianSea];
+    var viaSingapore  = [wpHormuz, wpSouthIndia];
+    var viaSuez       = [wpHormuz, wpAden, wpSuez];
+    var wpSouthGreece = { longitude: 22, latitude: 35 };
+    var wpOtranto     = { longitude: 18.5, latitude: 40 };
+    var viaSuezItaly  = [wpHormuz, wpAden, wpSuez, wpSouthGreece, wpOtranto];
+    var wpSicily      = { longitude: 13, latitude: 37 };
+    var wpPortugal    = { longitude: -10, latitude: 39 };
+    var viaAtlantic   = [wpHormuz, wpAden, wpSuez, wpSicily, wpPortugal];
+
+    sankeySeries.data.setAll([
+      // Ras Tanura (Saudi Arabia)
+      flow(rasTanura, "Ras Tanura", ningbo,    "Ningbo",    1100, viaChina),
+      flow(rasTanura, "Ras Tanura", qingdao,   "Qingdao",    600, viaChinaNorth),
+      flow(rasTanura, "Ras Tanura", yokohama,  "Yokohama",   700, viaJapan),
+      flow(rasTanura, "Ras Tanura", chiba,     "Chiba",      300, viaJapan),
+      flow(rasTanura, "Ras Tanura", ulsan,     "Ulsan",      800, viaKorea),
+      flow(rasTanura, "Ras Tanura", jamnagar,  "Jamnagar",   500, viaIndiaNear),
+      flow(rasTanura, "Ras Tanura", mumbai,    "Mumbai",     300, viaIndiaFar),
+      flow(rasTanura, "Ras Tanura", rotterdam, "Rotterdam",  350, viaAtlantic),
+      // Basra Oil Terminal (Iraq)
+      flow(basra, "Basra", ningbo,   "Ningbo",    700, viaChina),
+      flow(basra, "Basra", qingdao,  "Qingdao",   400, viaChinaNorth),
+      flow(basra, "Basra", jamnagar, "Jamnagar",  600, viaIndiaNear),
+      flow(basra, "Basra", mumbai,   "Mumbai",    400, viaIndiaFar),
+      flow(basra, "Basra", ulsan,    "Ulsan",     400, viaKorea),
+      flow(basra, "Basra", trieste,  "Trieste",   350, viaSuezItaly),
+      flow(basra, "Basra", piraeus,  "Piraeus",   250, viaSuez),
+      // Fujairah (UAE) — already outside Hormuz
+      flow(fujairah, "Fujairah", yokohama,  "Yokohama",   400, viaJapan.slice(1)),
+      flow(fujairah, "Fujairah", chiba,     "Chiba",      200, viaJapan.slice(1)),
+      flow(fujairah, "Fujairah", jamnagar,  "Jamnagar",   300),
+      flow(fujairah, "Fujairah", mumbai,    "Mumbai",     200, [wpArabianSea]),
+      flow(fujairah, "Fujairah", ningbo,    "Ningbo",     250, viaChina.slice(1)),
+      flow(fujairah, "Fujairah", ulsan,     "Ulsan",      350, viaKorea.slice(1)),
+      flow(fujairah, "Fujairah", singapore, "Singapore",  250, [wpSouthIndia]),
+      // Mina Al Ahmadi (Kuwait)
+      flow(minaAhmadi, "Mina Al Ahmadi", ulsan,    "Ulsan",    400, viaKorea),
+      flow(minaAhmadi, "Mina Al Ahmadi", yokohama, "Yokohama", 300, viaJapan),
+      flow(minaAhmadi, "Mina Al Ahmadi", ningbo,   "Ningbo",   300, viaChina),
+      flow(minaAhmadi, "Mina Al Ahmadi", jamnagar, "Jamnagar", 200, viaIndiaNear),
+      // Kharg Island (Iran)
+      flow(khargIsland, "Kharg Island", ningbo,   "Ningbo",   400, viaChina),
+      flow(khargIsland, "Kharg Island", qingdao,  "Qingdao",  200, viaChinaNorth),
+      flow(khargIsland, "Kharg Island", jamnagar, "Jamnagar", 200, viaIndiaNear),
+      flow(khargIsland, "Kharg Island", piraeus,  "Piraeus",  100, viaSuez),
+      // Ras Laffan (Qatar)
+      flow(rasLaffan, "Ras Laffan", yokohama, "Yokohama",  300, viaJapan),
+      flow(rasLaffan, "Ras Laffan", ulsan,    "Ulsan",     200, viaKorea),
+      flow(rasLaffan, "Ras Laffan", jamnagar, "Jamnagar",  150, viaIndiaNear),
+      flow(rasLaffan, "Ras Laffan", singapore,"Singapore",  120, viaSingapore)
+    ]);
+
+    // Title
+    var titleCont = chart.children.push(am5.Container.new(root, {
+      layout: root.verticalLayout,
+      x: am5.p50, centerX: am5.p50, y: 0,
+      position: "absolute", paddingTop: 16
+    }));
+    titleCont.children.push(am5.Label.new(root, {
+      text: "Strait of Hormuz — Oil Export Flows",
+      fontSize: 18, fontWeight: "600", fill: amber,
+      x: am5.p50, centerX: am5.p50
+    }));
+    titleCont.children.push(am5.Label.new(root, {
+      text: "Gulf Producers > Major Importers  (thousands of barrels/day)",
+      fontSize: 11, fill: sulfur,
+      x: am5.p50, centerX: am5.p50
+    }));
+
+    // Globe / Map toggle
+    var switchCont = chart.children.push(am5.Container.new(root, {
+      layout: root.horizontalLayout, x: 20, y: 40
+    }));
+    switchCont.children.push(am5.Label.new(root, {
+      centerY: am5.p50, text: "Globe", fill: flare, fontSize: 13
+    }));
+    var switchButton = switchCont.children.push(am5.Button.new(root, {
+      themeTags: ["switch"], centerY: am5.p50,
+      icon: am5.Circle.new(root, { themeTags: ["icon"] })
+    }));
+
+    var easing = am5.ease.inOut(am5.ease.cubic);
+    var duration = 1500;
+    var fadeDuration = 300;
+
+    function zoomToGlobe() {
+      chart.set("projection", am5map.geoOrthographic());
+      chart.set("panX", "rotateX");
+      chart.set("panY", "rotateY");
+      chart.animate({ key: "rotationX", to: -74, duration: duration, easing: easing });
+      chart.animate({ key: "rotationY", to: -30, duration: duration, easing: easing });
+      chart.animate({ key: "zoomLevel", to: 1.6, duration: duration, easing: easing });
+      bgSeries.mapPolygons.template.set("fillOpacity", 1);
+    }
+
+    function zoomToMap() {
+      chart.set("projection", am5map.geoMercator());
+      chart.set("panX", "translateX");
+      chart.set("panY", "translateY");
+      chart.animate({ key: "rotationY", to: 0, duration: duration, easing: easing });
+      setTimeout(function() {
+        chart.zoomToGeoPoint({ longitude: 67, latitude: 32 }, 3.5, true, duration);
+      }, 100);
+      bgSeries.mapPolygons.template.set("fillOpacity", 0);
+    }
+
+    switchButton.on("active", function() {
+      chart.goHome(duration);
+      setTimeout(function() {
+        chart.seriesContainer.animate({ key: "opacity", to: 0, duration: fadeDuration });
+      }, duration - fadeDuration);
+      setTimeout(function() {
+        if (switchButton.get("active")) { zoomToMap(); } else { zoomToGlobe(); }
+        chart.seriesContainer.animate({ key: "opacity", to: 1, duration: fadeDuration });
+      }, duration);
+    });
+
+    switchCont.children.push(am5.Label.new(root, {
+      centerY: am5.p50, text: "Map", fill: flare, fontSize: 13
+    }));
+
+    // Zoom controls
+    var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+    zoomControl.homeButton.set("visible", true);
+
+    chart.appear(1000, 100);
+
+    // Initial animation: rotate to globe position
+    setTimeout(function() { zoomToGlobe(); }, 1000);
+  </script>
+</body>
+</html>
+```

@@ -10,7 +10,6 @@
 import * as am5 from "@amcharts/amcharts5";
 import * as am5flow from "@amcharts/amcharts5/flow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 ```
 
 ### CDN
@@ -18,10 +17,7 @@ import am5themes_ResponsiveMax from "@amcharts/amcharts5/themes/ResponsiveMax";
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/flow.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
 ```
-
-From an npm CDN (AI sandboxes, strict CSPs), the same files are under `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/`, one pinned version for all: see SKILL.md "Plain HTML, no bundler".
 
 ## Data structure (shared by all flow types)
 
@@ -54,7 +50,7 @@ Node IDs ("A", "B", etc.) are automatically extracted — you don't define nodes
 
 ```js
 const root = am5.Root.new("chartdiv");
-root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+root.setThemes([am5themes_Animated.new(root)]);
 
 const series = root.container.children.push(
   am5flow.Sankey.new(root, {
@@ -120,32 +116,6 @@ series.appear(1000);
 | `nodeWidth` | number | Width of nodes in pixels (default: 10) |
 | `nodePadding` | number | Gap between nodes (default: 10) |
 | `linkSort` | function \| null | Custom link sort, `null` for no sorting |
-
-### Link colors and highlighting connected links
-
-Links default to `fillStyle: "gradient"` (source colour to target colour) at `fillOpacity: 0.2`, with a `"hover"` state of 0.5. On a dense diagram this looks washed out, and the pale end can look like a gap before the target node, though links do reach it. Colour links by their source and raise the hover state along with the opacity. Hovering a node already highlights its own links. For the links connected to a hovered link, apply their `"hover"` state. Don't call `link.hover()` as the traceable-sankey-diagram example does: it also shows each link's tooltip, so the shared tooltip ends up on the last link.
-
-```js
-series.links.template.setAll({ fillStyle: "source", fillOpacity: 0.35 });   // "source" | "target" | "solid" | "gradient"
-series.links.template.states.create("hover", { fillOpacity: 0.8 });
-
-function highlightLinks(test, except) {
-  series.dataItems.forEach(function (di) {
-    var link = di.get("link");
-    if (link !== except) link.states.applyAnimate(test(di) ? "hover" : "default");
-  });
-}
-// links that share the hovered link's source or target
-series.links.template.events.on("pointerover", function (ev) {
-  var s = ev.target.dataItem.get("sourceId"), t = ev.target.dataItem.get("targetId");
-  highlightLinks(function (di) { return di.get("sourceId") === s || di.get("targetId") === t; }, ev.target);
-});
-series.links.template.events.on("pointerout", function (ev) {
-  highlightLinks(function () { return false; }, ev.target);
-});
-```
-
-To trace whole paths (traceable-sankey-diagram), give each row an `id` that names its path and step (`idField: "id"`, ids like `"A0-1"`). Then test `di.get("id").split("-")[0] === ev.target.dataItem.get("id").split("-")[0]` in the same helper.
 
 ## Chord diagram
 
@@ -286,13 +256,13 @@ series.links.template.events.on("click", function(ev) {
 });
 ```
 
-**Keyboard:** in a `focusableGroup`, arrow keys move between nodes even though flow nodes are draggable, and SHIFT + arrow keys drag them.
+**Keyboard (5.21.0):** in a `focusableGroup`, arrow keys move between nodes even though flow nodes are draggable, and SHIFT + arrow keys drag them. Also fixed: setting a `Chord`'s `sort` back to `"none"` restores the original order.
 
-`urlField` / `linkTarget` do **not** link flow nodes or links — to open a URL from a node or link, keep a `click` handler like the ones above (e.g. `window.open(ev.target.dataItem.dataContext.url, "_blank", "noopener")`).
+`urlField` / `linkTarget` (5.20.7) do **not** link flow nodes or links — to open a URL from a node or link, keep a `click` handler like the ones above (e.g. `window.open(ev.target.dataItem.dataContext.url, "_blank", "noopener")`).
 
-## Bullets on nodes
+## Bullets on nodes (5.20.2)
 
-Bullets pushed to `series.nodes.bullets` are children of the node: drawn above the node shape and below its label, positioned relative to the node (`locationX`/`locationY` as fractions of it). On `ArcDiagram` they sit on the node circle. A bullet `Graphics` with no `fill`/`stroke` of its own takes the **node's** color, i.e. the same color as what it sits on — give it a contrasting `fill`, a `stroke`, or an offset or it is invisible. Node/link tooltips need no `am5.Tooltip` instance: set `tooltipText` on `series.nodes.nodes.template` / `series.links.template` and the root's shared tooltip is used.
+Bullets pushed to `series.nodes.bullets` are children of the node since 5.20.2: drawn above the node shape and below its label, positioned relative to the node (`locationX`/`locationY` as fractions of it). On `ArcDiagram` they sit on the node circle — before 5.20.2 they were created but never placed. A bullet `Graphics` with no `fill`/`stroke` of its own takes the **node's** color, i.e. the same color as what it sits on — give it a contrasting `fill`, a `stroke`, or an offset or it is invisible. Node/link tooltips need no `am5.Tooltip` instance: set `tooltipText` on `series.nodes.nodes.template` / `series.links.template` and the root's shared tooltip is used.
 
 ## Animated bullets along links
 
@@ -371,7 +341,7 @@ bullet.on("locationY", function() {
 - Random duration per bullet creates natural asynchronous flow
 - The opacity adapter formula `0.5 - Math.abs(0.5 - location)` gives a bell curve: invisible at edges, max at center
 - `bullet.on("locationX"/"locationY", ...)` is needed to trigger the adapter as position changes
-- Declarative alternative for the loop: `am5.Bullet.new(root, { locationX: 0, sprite: label, autoRotate: true, animations: [{ key: "locationX", from: 0, to: 1, duration: 4000, loops: 0 }] })` instead of `bullet.animate(...)` — it lives in a JSON config; the opacity adapter still does not survive serialization
+- Declarative alternative for the loop (5.20.8): `am5.Bullet.new(root, { locationX: 0, sprite: label, autoRotate: true, animations: [{ key: "locationX", from: 0, to: 1, duration: 4000, loops: 0 }] })` instead of `bullet.animate(...)` — it lives in a JSON config; the opacity adapter still does not survive serialization
 
 ## Disposal
 
@@ -397,14 +367,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/flow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 500px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var series = root.container.children.push(am5flow.Sankey.new(root, {
       sourceIdField: "from",
@@ -462,14 +431,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/flow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 600px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var series = root.container.children.push(am5flow.Chord.new(root, {
       sourceIdField: "from",
@@ -524,14 +492,13 @@ root.dispose();
   <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/flow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-  <script src="https://cdn.amcharts.com/lib/5/themes/ResponsiveMax.js"></script>
   <style>#chartdiv { width: 100%; height: 600px; }</style>
 </head>
 <body>
   <div id="chartdiv"></div>
   <script>
     var root = am5.Root.new("chartdiv");
-    root.setThemes([am5themes_Animated.new(root), am5themes_ResponsiveMax.new(root)]);
+    root.setThemes([am5themes_Animated.new(root)]);
 
     var series = root.container.children.push(am5flow.Sankey.new(root, {
       sourceIdField: "from",
