@@ -7,7 +7,7 @@
 // ---------------------------------------------------------------------------
 
 import { z } from "zod";
-import { CHART_TYPE_MAP, chartKeyOf, extractImportBlock, firstMatchIndex, lineMatchCount, rankContent, searchDocs, SPLIT_OVER, splitSubsections } from "./content.js";
+import { CHART_TYPE_MAP, chartKeyOf, extractImportBlock, firstMatchIndex, lineMatchCount, rankContent, searchDocs, singularOf, SPLIT_OVER, splitSubsections } from "./content.js";
 import { listGeodata } from "./geodata.js";
 
 // Every tool only reads the bundled content (skill, docs, examples, reference,
@@ -112,11 +112,13 @@ function boldLead(doc, asked) {
 function pickExample(doc, asked) {
   const examples = doc.sections.filter(s => /^Example\b/i.test(s.heading) && /```html/.test(s.body));
   if (!examples.length) return null;
-  let words = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/ (charts?|diagrams?|graphs?)$/, "");
-  words = EXAMPLE_WORDS[words] || words;
-  if (!words) return { example: examples[0], named: false };
-  const re = new RegExp(`\\b${words.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
-  const named = examples.find(s => re.test(s.heading.toLowerCase().replace(/[\s_-]+/g, " ")));
+  const asWords = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/ (charts?|diagrams?|graphs?)$/, "");
+  if (!asWords) return { example: examples[0], named: false };
+  // the words as asked, then singular ("funnels")
+  const named = [asWords, singularOf(asWords, " ")].map(w => EXAMPLE_WORDS[w] || w).map(w => {
+    const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
+    return examples.find(s => re.test(s.heading.toLowerCase().replace(/[\s_-]+/g, " ")));
+  }).find(Boolean);
   return { example: named || examples[0], named: !!named };
 }
 
@@ -140,14 +142,17 @@ function moreExampleNamed(extra, asked) {
   const words = norm(asked).replace(/ (charts?|diagrams?|graphs?)$/, "");
   if (!words) return null;
   const has = (title, w) => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(norm(title));
-  const whole = extra.find(e => has(e.title, words));
+  // a word in the title as asked or singular ("globes"; "bands" in "Bollinger Bands")
+  const hasEither = (title, w) => has(title, w) || has(title, singularOf(w, " "));
+  const whole = extra.find(e => hasEither(e.title, words));
   if (whole) return whole;
   const each = words.split(" ").filter(w => w && !FILLER_WORDS.has(w));
-  const kinds = each.filter(w => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w));
+  const isKind = (w) => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w);
+  const kinds = each.filter(w => isKind(w) || isKind(singularOf(w, " ")));
   let best = null, most = 0;
   for (const e of extra) {
-    if (!kinds.some(w => has(e.title, w))) continue;
-    const count = each.filter(w => has(e.title, w)).length;
+    if (!kinds.some(w => hasEither(e.title, w))) continue;
+    const count = each.filter(w => hasEither(e.title, w)).length;
     if (count > most) { best = e; most = count; }
   }
   return best;
@@ -668,7 +673,7 @@ export function registerTools(server, content) {
         // or name the longer example that shows it ("map sankey")
         const asked = chartType.trim().toLowerCase().replace(/[\s_-]+/g, " ");
         // the family's own words, also as "world maps" or "World Map chart"
-        const plain = asked.replace(/ (charts?|diagrams?|graphs?)$/, "").replace(/s$/, "");
+        const plain = singularOf(asked.replace(/ (charts?|diagrams?|graphs?)$/, ""), " ");
         const family = [asked, plain].some(a => a === key || FAMILY_WORDS.has(a));
         const longerNamed = !named && moreExampleNamed(extra, chartType);
         const unnamed = longerNamed

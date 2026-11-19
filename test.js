@@ -1021,6 +1021,39 @@ const tests = [
     },
     label: "get_quick_start('World Map charts') — the family words with a trailing 'charts', without a 'No example' note",
   },
+  {
+    send: { jsonrpc: "2.0", id: 116, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "stocks" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Stock & Financial Charts") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_chart_reference('stocks') — a plural reaches the reference its singular does",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 117, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "word clouds" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("(source: skill/wordcloud.md") && !text.includes("No reference found") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('word clouds') — a plural of several words",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 118, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "funnels" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Funnel") && !text.includes("No example in this reference shows") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('funnels') — the example named by the singular",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 119, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "globes" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return /^> The complete example for "globes" is [^\n]*get_example\(path: "examples\/maps\/globe-with-animated-flight-path"\)/m.test(text)
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('globes') — the moved example named by the singular",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

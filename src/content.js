@@ -51,18 +51,33 @@ export const CHART_TYPE_MAP = {
   "json": "json", "json-config": "json", "config": "json", "serialized": "json",
 };
 
+// Each word of a name made singular: "stocks" → "stock", "word-clouds" →
+// "word-cloud", "pies" → "pie", "hierarchies" → "hierarchy". Words of three
+// letters or less, "series", and words ending in "ss" or "us" stay as they are.
+export function singularOf(name, sep = "-") {
+  return String(name ?? "").split(sep).map((p) => {
+    if (p.length <= 3 || p === "series") return p;
+    if (p.length > 5 && /ies$/.test(p)) return p.slice(0, -3) + "y";
+    return /[^su]s$/.test(p) ? p.slice(0, -1) : p;
+  }).join(sep);
+}
+
 // The reference a chart-type keyword names, however it is written: "pie",
-// " Pie chart ", "word cloud", "stacked bar chart", "world map", "org chart"
+// " Pie chart ", "word cloud", "stacked bar chart", "world map", "org chart",
+// and plurals of them: "stocks", "word clouds", "us maps"
 export function chartKeyOf(input) {
   const known = (k) => Object.hasOwn(CHART_TYPE_MAP, k);
+  const knownKeyOf = (w) => {
+    if (known(w)) return CHART_TYPE_MAP[w];
+    const bare = w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
+    if (known(bare)) return CHART_TYPE_MAP[bare];
+    // A name of several words with a known one in it: "us-map", "3d-pie",
+    // "radar-column" (the first known word names the family)
+    const part = w.split("-").find(known);
+    return part ? CHART_TYPE_MAP[part] : null;
+  };
   const w = String(input ?? "").trim().toLowerCase().replace(/[\s_]+/g, "-");
-  if (known(w)) return CHART_TYPE_MAP[w];
-  const bare = w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
-  if (known(bare)) return CHART_TYPE_MAP[bare];
-  // A name of several words with a known one in it: "us-map", "3d-pie",
-  // "radar-column" (the first known word names the family)
-  const part = w.split("-").find(known);
-  return part ? CHART_TYPE_MAP[part] : bare;
+  return knownKeyOf(w) ?? knownKeyOf(singularOf(w)) ?? w.replace(/-(charts?|diagrams?|graphs?|plots?|maps?)$/, "");
 }
 
 // A section longer than this is offered by its ### subsections: in overviews,
