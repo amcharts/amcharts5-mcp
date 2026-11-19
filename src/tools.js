@@ -131,16 +131,30 @@ function moreExamples(doc) {
   return [...section.body.matchAll(/^- (.+?): `get_example\(path: "([^"]+)"\)`/gm)].map(m => ({ title: m[1], path: m[2] }));
 }
 
-// The "More examples" entry whose title names what was asked, if any
+// The "More examples" entry whose title names what was asked, if any: the
+// whole phrase ("map sankey"), or else a chart-type word of it ("rotating
+// globe", "bollinger band"), the entry with the most of the asked words
+// winning ("map sankey oil")
 function moreExampleNamed(extra, asked) {
-  const words = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/ (charts?|diagrams?|graphs?)$/, "");
+  const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—]+/g, " ");
+  const words = norm(asked).replace(/ (charts?|diagrams?|graphs?)$/, "");
   if (!words) return null;
-  const re = new RegExp(`\\b${words.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
-  return extra.find(e => re.test(e.title.toLowerCase().replace(/[\s_-]+/g, " "))) || null;
+  const has = (title, w) => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(norm(title));
+  const whole = extra.find(e => has(e.title, words));
+  if (whole) return whole;
+  const each = words.split(" ");
+  const kinds = each.filter(w => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w));
+  let best = null, most = 0;
+  for (const e of extra) {
+    if (!kinds.some(w => has(e.title, w))) continue;
+    const count = each.filter(w => has(e.title, w)).length;
+    if (count > most) { best = e; most = count; }
+  }
+  return best;
 }
 
 // Keywords that name a whole family: its first example is the right answer
-const FAMILY_WORDS = new Set(["xy", "pie", "map", "geo", "geographic", "country", "hierarchy", "flow", "radar", "polar",
+const FAMILY_WORDS = new Set(["xy", "pie", "map", "world map", "geo", "geographic", "country", "hierarchy", "flow", "radar", "polar",
   "stock", "financial", "trading", "timeline", "curve", "gantt", "project timeline", "wordcloud", "word cloud", "tag cloud", "venn"]);
 
 // The inline script of an example page, unindented

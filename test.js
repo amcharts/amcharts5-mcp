@@ -984,6 +984,34 @@ const tests = [
     },
     label: "get_quick_start('globe') — the map reference, naming the moved globe example",
   },
+  {
+    send: { jsonrpc: "2.0", id: 112, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "map sankey oil" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return /^> The complete example for "map sankey oil" is "Map Sankey — Oil[^\n]*get_example\(path: "examples\/maps\/map-sankey-oil-export-flows"\)/m.test(text)
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('map sankey oil') — names the moved example with the most of the asked words",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 113, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "bollinger band" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return /^> The complete example for "bollinger band" is [^\n]*get_example\(path: "examples\/stock\/stock-chart-with-volume-and-bollinger-bands"\)/m.test(text)
+        && !text.includes("No example in this reference shows")
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('bollinger band') — a chart-type word of the phrase names the moved example",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 114, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "world map" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("<title>World Choropleth Map</title>") && !text.includes("No example in this reference shows")
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('world map') — the map reference's first example, without a 'No example' note",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
