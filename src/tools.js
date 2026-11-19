@@ -643,7 +643,7 @@ export function registerTools(server, content) {
         const others = doc.sections.filter(s => s !== example && /^Example\b/i.test(s.heading) && /```html/.test(s.body));
         // The reference's longer examples, kept in the MCP's examples
         const extra = moreExamples(doc);
-        const longer = extra.length ? ` Longer examples: ${extra.map(e => `get_example(path: "${e.path}") (${e.title})`).join(", ")}.` : "";
+        const longer = extra.length ? ` Longer examples: ${extra.map(e => `${e.title}: get_example(path: "${e.path}")`).join("; ")}.` : "";
         const more = others.length
           ? `\n\nOther examples here: ${others.map(s => `get_section("${key}", ${JSON.stringify(s.heading)})`).join(", ")}.${longer} The whole reference: get_chart_reference("${key}").`
           : `\n\n${longer ? longer.trim() + " " : ""}The whole reference: get_chart_reference("${key}").`;

@@ -975,6 +975,15 @@ const tests = [
     },
     label: "get_quick_start('map sankey') — names the moved Map Sankey example and lists the longer ones",
   },
+  {
+    send: { jsonrpc: "2.0", id: 111, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "globe" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('The complete example for "globe" is') && text.includes('get_example(path: "examples/maps/globe-with-animated-flight-path")')
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('globe') — the map reference, naming the moved globe example",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

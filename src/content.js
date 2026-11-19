@@ -21,6 +21,7 @@ export const CHART_TYPE_MAP = {
   // Map
   "map": "map", "choropleth": "map", "geo": "map", "geographic": "map",
   "world": "map", "country": "map", "bubble-map": "map", "point-map": "map",
+  "globe": "map",
   // Hierarchy
   "hierarchy": "hierarchy", "treemap": "hierarchy", "sunburst": "hierarchy",
   "force-directed": "hierarchy", "pack": "hierarchy", "partition": "hierarchy",
@@ -33,6 +34,7 @@ export const CHART_TYPE_MAP = {
   "speedometer": "radar", "meter": "radar",
   // Stock
   "stock": "stock", "financial": "stock", "trading": "stock",
+  "bollinger": "stock", "bollinger-bands": "stock",
   // Timeline
   "timeline": "timeline", "serpentine": "timeline", "spiral": "timeline",
   "curve": "timeline",
