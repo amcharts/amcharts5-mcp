@@ -17,7 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - License placeholders are `"YOUR-AMCHARTS-LICENSE-KEY"` instead of `"AM5C-…"`, and the skill never writes or invents a key.
 - gantt.md's XY example is "Gantt-like timeline with an XY chart" instead of "Simulated Gantt with XY chart (no Gantt license needed)", with a line on when `am5gantt.Gantt` is the better choice (editable tasks, task links, progress bars, the task list with editable names and collapsible groups).
-- Docs: getting-started, map-chart, ai and react-native re-imported after the docs' geodata-on-jsDelivr fix went live (same content as 1.9.7's corrections).
+- **The skill is smaller**, so that the Claude plugin directory's automated policy review reads all of it (it held 1.9.7, which has about 486 KB of text, with "Files the policy review couldn't cover"; 1.9.4, about 443 KB, went through). The four longest complete examples are MCP examples now, checked in a browser on 5.22.0, and the references list them under "More examples":
+  - map.md's globe with an animated flight path, and its two Map Sankeys: `examples/maps/globe-with-animated-flight-path`, `examples/maps/map-sankey-coffee-supply-chain`, `examples/maps/map-sankey-oil-export-flows`;
+  - stock.md's chart with a volume panel and Bollinger Bands: `examples/stock/stock-chart-with-volume-and-bollinger-bands`.
+  The plugin's text is 444 KB instead of 486 KB. Each reference keeps the examples `get_quick_start` serves.
+- Examples: five map demos re-imported after amcharts.com changed them: the heat legends of `trumps-reciprocal-tariffs-map`, `location-sensitive-map` and `us-heat-map` run horizontally under the map; `map-timeline`'s title wraps at the chart's width; `solar-eclipse-map` has no chart padding.
+- Docs re-imported: getting-started, map-chart, ai and react-native after the docs' geodata-on-jsDelivr fix went live (same content as 1.9.7's corrections); nuxt (license placeholder `YOUR-AMCHARTS-LICENSE-KEY`) and the pages with the cleaned demos (flow-chart bullets, step-line series, value axis) after the docs' license fix.
 
 ### Fixed
 - **Five docs demos called `am5.addLicense()` with made-up keys**, so a chart copied from them could hide the logo without a license. The docs-demo import drops license lines (`scripts/docs-demos.mjs`), and the five demos are cleaned. Reported to the docs team.

@@ -607,7 +607,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 54, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "map", full: true } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.length > 90000 && !text.includes("## Not shown in this overview") ? `PASS (${text.length} chars)` : `FAIL (${text.length} chars)`;
+      return text.length > 60000 && !text.includes("## Not shown in this overview") ? `PASS (${text.length} chars)` : `FAIL (${text.length} chars)`;
     },
     label: "get_chart_reference('map', full: true) — the whole file",
   },
