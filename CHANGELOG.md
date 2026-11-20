@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- The stock price recipe drops `extraTooltipPrecision: 2` from the price axis (stock.md's core setup and Example 1, cursorrules). With it, the axis tooltip ran past the chart's right edge: 15 px at 400 and 360 px wide, 3 px at 1100 px. Without it, the tooltip shows the labels' decimals and fits. `preferredDecimals: [0, 2]` and the `"#,###.00##"` number format stay. SKILL.md's "Value axis decimals" says the tooltip shows the labels' decimals instead of naming `extraTooltipPrecision`. Checked in Chromium on the 5.23.0 CDN.
+
 ## [1.9.8] - 2026-11-19
 
 ### Added
