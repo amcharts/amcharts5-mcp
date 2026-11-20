@@ -2,7 +2,7 @@
 title: "World Clock"
 source: "https://www.amcharts.com/demos/world-clock/"
 category: "gauges"
-scraped: "2026-11-19"
+scraped: "2026-11-20"
 ---
 
 Your time next to New York, London and Tokyo on four live analog clocks, with the time in digits, how far ahead or behind, and a dark face at night.
@@ -116,6 +116,7 @@ var cities = [{
 var nightFaces = true; // a dark face while it is night in the city, from 6 pm to 6 am
 var digits = "auto";   // the time in digits: "auto" (the way your browser writes times), "12", "24" or "off"
 var showMap = false;   // a map of the cities under the clocks: true shows it (never on a narrow screen)
+var secondHandMove = "tick"; // the second hand: "tick" (a step each second), "smooth" (round without stopping) or "off"
 
 // a color for each clock: its rim, and its city's dot on the map
 var colors = am5.ColorSet.new(root, {});
@@ -266,6 +267,7 @@ function makeClock(city, index) {
   var secondHand = makeHand(80, 2, 3); // long and thin...
   secondHand.hand.hand.set("fill", root.interfaceColors.get("negative")); // ...in the theme's red
   secondHand.hand.pin.set("fill", root.interfaceColors.get("negative"));
+  secondHand.hand.set("forceHidden", secondHandMove === "off");
 
   // the city's name, the time in digits and how far it is from yours (their sizes follow the clock's, see layoutClocks)
   var nameLabel = group.children.push(am5.Label.new(root, {
@@ -328,7 +330,7 @@ function makeClock(city, index) {
     });
   }
 
-  // Point the hands at the city's time, and write it out; duration is the second hand's step
+  // Point the hands at the city's time, and write it out; duration is the second hand's step when it ticks
   function update(duration) {
     var now = new Date();
     var time = wallTime(now, city.zone);
@@ -338,15 +340,22 @@ function makeClock(city, index) {
     // all hands sit on the 12-hour axis, so minutes and seconds are scaled to 0-12
     hourHand.dataItem.set("value", hours % 12 + minutes / 60 + seconds / 3600);
     minuteHand.dataItem.set("value", 12 * (minutes + seconds / 60) / 60);
-    var from = secondHand.dataItem.get("value", 0);
-    var to = 12 * seconds / 60;
-    if (to == 0) {
-      to = 11.999; // the hand ends at 12 instead of running back to 0...
+    if (secondHandMove === "tick") { // ("smooth" moves it on every frame: see the end of the code)
+      var from = secondHand.dataItem.get("value", 0);
+      var to = 12 * seconds / 60;
+      if (to == 0) {
+        to = 11.999; // the hand ends at 12 instead of running back to 0...
+      }
+      if (from > 11.99) {
+        from = 0;    // ...and starts again from 0
+      }
+      if (Math.abs(to - from) > 0.25) {
+        // more than a second's step away (0.2 on the 0-12 axis): the page was in the background, or the computer
+        // asleep. The hand goes straight there, rather than racing round, or even back
+        duration = 0;
+      }
+      secondHand.dataItem.animate({ key: "value", from: from, to: to, duration: duration });
     }
-    if (from > 11.99) {
-      from = 0;    // ...and starts again from 0
-    }
-    secondHand.dataItem.animate({ key: "value", from: from, to: to, duration: duration });
 
     var isNight = nightFaces && (hours < 6 || hours >= 18);
     if (isNight !== night) {
@@ -399,6 +408,10 @@ function makeClock(city, index) {
     update: update,
     placeCity: placeCity,
     secondHand: secondHand.hand,
+    // the second hand at a point of the minute, on the 0-12 axis
+    sweep: function(value) {
+      secondHand.dataItem.set("value", value);
+    },
     repaint: function() { night = null; },
     // another city on this clock: its name, its dot on the map, and the hands and text at its time at once
     setCity: function(newCity) {
@@ -458,6 +471,18 @@ setInterval(function() {
     clock.update(300); // the second hand takes 0.3 seconds to step
   });
 }, 1000);
+
+// "smooth": the second hands move on every frame the chart draws, to the millisecond. Moving them makes the chart draw
+// the next frame too, so they keep going until secondHandMove changes. The seconds are the same in every time zone
+root.events.on("frameended", function() {
+  if (secondHandMove === "smooth") {
+    var now = new Date();
+    var value = 12 * (now.getSeconds() + now.getMilliseconds() / 1000) / 60; // on the 0-12 axis, from 0 up to just under 12
+    clocks.forEach(function(clock) {
+      clock.sweep(value);
+    });
+  }
+});
 
 // Set the hands straight away when the page is shown again: timers slow down in a background tab
 function onVisibilityChange() {
