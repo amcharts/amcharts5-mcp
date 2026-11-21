@@ -1325,6 +1325,14 @@ const tests = [
     },
     label: "get_quick_start('heat map of usa') — the map reference, not the XY heat map demo",
   },
+  {
+    send: { jsonrpc: "2.0", id: 168, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "bubble map of earthquakes" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Map with point markers (bubble map)") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_quick_start('bubble map of earthquakes') — a bubble map before a bubble chart",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

@@ -74,6 +74,12 @@ export function chartKeyOf(input) {
   const forms = [w, singularOf(w)];
   for (const f of forms) if (known(f)) return CHART_TYPE_MAP[f];
   for (const f of forms) if (known(bareOf(f))) return CHART_TYPE_MAP[bareOf(f)];
+  // A longer request that starts with a name of several words
+  // ("bubble-map-of-earthquakes" is a bubble map before it is a bubble)
+  const head = w.split(/-(?:with|from|for|of|showing|using)-/)[0];
+  if (head !== w) {
+    for (const f of [head, singularOf(head)]) if (f.includes("-") && known(f)) return CHART_TYPE_MAP[f];
+  }
   // A name of several words with a known one in it: "us-map", "3d-pie",
   // "radar-column" (the first known word names the family)
   for (const f of forms) {
@@ -81,7 +87,6 @@ export function chartKeyOf(input) {
     if (part) return CHART_TYPE_MAP[part];
   }
   // The chart a longer request starts with ("word-cloud-from-a-sentence")
-  const head = w.split(/-(?:with|from|for|of|showing|using)-/)[0];
   if (head !== w) {
     for (const f of [head, singularOf(head)]) {
       if (known(f)) return CHART_TYPE_MAP[f];
