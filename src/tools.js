@@ -70,14 +70,14 @@ export function serverInfo(version) {
 export const SERVER_INSTRUCTIONS = `amCharts 5 docs, examples and API reference. These tools are for tasks that use amCharts 5; they don't apply to other chart libraries.
 
 Before writing amCharts 5 code, look it up here: the API differs from amCharts 4 and may be newer than what you remember.
-- A chart: get_quick_start with the chart type ("gauge", "stacked column", "map", or a framework such as "react") returns a complete working example.
+- A chart: get_quick_start with the chart type ("gauge", "stacked column", "map") returns a working example. With a framework ("react", "vue") it returns how to use amCharts there.
 - A feature or setting: search_all, then get_section or get_api_reference.
 - A demo's full code: get_example.
 
 Three common mistakes:
 - A Label you create with {placeholders} in its text needs populateText: true.
 - The number format "#,###" doesn't round (6,708.044). Use "#,###." for whole numbers.
-- Add template.events.on() before data.setAll(): pie slices, hierarchy nodes and map polygons don't get a listener added later.`;
+- Add template.events.on() before data.setAll(): pie and funnel slices, hierarchy and flow nodes and map polygons don't get a listener added later.`;
 
 // An amcharts.com address in a text: a demo, a docs page, the docs' new host
 // (Markdown around it, a code span's backtick or bold's asterisks, ends it)
@@ -759,9 +759,9 @@ export function registerTools(server, content) {
     "get_quick_start",
     {
       title: "Get quick-start template",
-      description: "Get a quick-start template for a specific chart type — a minimal working example ready to customize.",
+      description: "Get a working example to start from for a chart type: the reference's example, or the amCharts demo of that name. For a longer request it gives the closest example and says so. For a framework ('react', 'vue', 'angular', 'svelte') it gives how to use amCharts there.",
       inputSchema: {
-        chartType: z.string().describe("Chart type, e.g. 'pie', 'line', 'bar', 'map', 'sankey', 'treemap'"),
+        chartType: z.string().describe("Chart type, e.g. 'pie', 'line', 'stacked column', 'map', 'sankey', 'treemap', or a framework, e.g. 'react'"),
         format: z.enum(["html", "esm"]).optional().default("html").describe("Output format: 'html' for script tags (cdn.amcharts.com, with the npm-CDN equivalent on jsDelivr/unpkg for pages that may load only from npm CDNs), 'esm' for ES module imports"),
       },
       annotations: READ_ONLY,
