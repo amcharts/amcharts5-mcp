@@ -1185,6 +1185,88 @@ const tests = [
     },
     label: "list_examples('banana') — no such category: lists the categories",
   },
+  // A word that isn't a demo's name gets no demo
+  ...[["network", "Network Waterfall"], ["legend", "Heat Map with Legend"], ["export", "Oil Export"], ["with", "Gauge with Bands"], ["multi series", "Multi-Series Map"]].map(([word, wrong], i) => ({
+    send: { jsonrpc: "2.0", id: 135 + i, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: word } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return !text.startsWith(`# Quick Start: ${wrong}`) && !text.includes(`(source: the amCharts demo`) ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: `get_quick_start('${word}') — no demo that only has the word in its title`,
+  })),
+  {
+    send: { jsonrpc: "2.0", id: 140, method: "tools/call", params: { name: "get_example", arguments: { path: "timeline" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("not found") && !text.startsWith("# Map Timeline") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_example('timeline') — a category's name is not a demo",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 141, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "real-time line chart with scrolling date axis" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Multi-series line chart") && text.includes("this is the closest") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('real-time line chart with scrolling date axis') — the closest example, a line chart",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 142, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "usa county" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const missing = ["region/usa/tx", "region/usa/ak", "region/usa/la", "region/usa/dc"].filter(p => !text.includes(p));
+      return !missing.length ? "PASS" : `FAIL (missing ${missing.join(", ")})`;
+    },
+    label: "list_geodata('usa county') — the county maps, with the states that call them something else",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 143, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "counties" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return !text.includes("Jamaica") && !text.includes("Andorra") ? "PASS" : "FAIL (parishes of other countries)";
+    },
+    label: "list_geodata('counties') — other countries' parishes are not counties",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 144, method: "tools/call", params: { name: "get_example", arguments: { path: "", name: "stacked column" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Stacked Column Chart\n") && text.includes("populateText: true") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_example(path: '', name) — the argument with a value, and what to watch for when adapting",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 145, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "Svelte 5" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# amCharts 5 in Svelte") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_quick_start('Svelte 5') — a framework with its version",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 146, method: "tools/call", params: { name: "get_api_reference", arguments: { name: "XYCursor" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("XYCursor") && !text.includes("No API reference found") && !r.error ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_api_reference(name: 'XYCursor') — name is the same as className",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 147, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "tree map" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Treemap") && !text.includes("No example in this reference") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_quick_start('tree map') — the Treemap example",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 148, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "time line" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("(source: skill/timeline.md") && !text.includes("No example in this reference") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_quick_start('time line') — the timeline reference",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

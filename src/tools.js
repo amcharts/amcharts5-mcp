@@ -119,7 +119,19 @@ function pickExample(doc, asked) {
     const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
     return examples.find(s => re.test(s.heading.toLowerCase().replace(/[\s_-]+/g, " ")));
   }).find(Boolean);
-  return { example: named || examples[0], named: !!named };
+  if (named) return { example: named, named: true };
+  // A longer request ("real-time line chart with a date axis"): the example
+  // whose title has the most of its words
+  const wordsOf = (s) => new Set(s.toLowerCase().replace(/[^a-z0-9%\s-]/g, " ").split(/[\s_-]+/).map(w => singularOf(w, " "))
+    .filter(w => w.length > 2 && !FILLER_WORDS.has(w) && !/^(chart|diagram|graph|plot|example)$/.test(w)));
+  const wanted = wordsOf(asWords);
+  let closest = null, most = 0;
+  for (const s of examples) {
+    const title = wordsOf(s.heading.replace(/^Example\s*\d*:\s*/i, ""));
+    const count = [...wanted].filter(w => title.has(w)).length;
+    if (count > most) { closest = s; most = count; }
+  }
+  return { example: closest || examples[0], named: false, closest: !!closest };
 }
 
 // Frameworks asked for as a chart type, and their docs pages
@@ -130,12 +142,24 @@ const FRAMEWORK_PAGES = {
   "vue": "vue", "vuejs": "vue", "vue js": "vue", "vue 3": "vue", "vue3": "vue",
   "nuxt": "nuxt", "nuxtjs": "nuxt", "nuxt js": "nuxt",
   "angular": "angular", "svelte": "sveltekit", "sveltekit": "sveltekit",
-  "react native": "react-native", "expo": "react-native",
+  "react native": "react-native", "reactnative": "react-native", "expo": "react-native",
 };
 const FRAMEWORK_NAMES = { "react": "React", "next-js": "Next.js", "vue": "Vue", "nuxt": "Nuxt", "angular": "Angular", "sveltekit": "Svelte", "react-native": "React Native" };
 
+// Mistakes agents made with a working example in hand (each checked in a
+// browser): said where they copy from, as many never read SKILL.md's rules
+const WHEN_ADAPTING = `\n\n**When you adapt this:** a \`Label\` you create with \`{placeholders}\` in its text needs \`populateText: true\`. \`"#,###"\` doesn't round (\`6,708.044\`): use \`"#,###."\` for whole numbers. Add \`template.events.on()\` before \`data.setAll()\`: pie and funnel slices, hierarchy nodes and map polygons are made when the data is set, and a listener added later never reaches them.`;
+
+// The first argument that has a value ("" doesn't)
+const firstGiven = (...values) => values.find(v => v != null && String(v).trim() !== "");
+
+// Words that don't name a kind of chart: a request of only these is not a demo's name
+const NOT_A_CHART_NAME = new Set(["a", "an", "and", "the", "of", "on", "in", "for", "to", "with", "by", "multi", "series", "time", "date", "value", "axis",
+  "data", "label", "legend", "grid", "tooltip", "color", "colour", "zoom", "hover", "image", "animated", "simple", "mixed", "combined", "gradient", "negative",
+  "chart", "graph", "diagram", "plot", "export", "exporting", "bullets"]);
+
 // Keywords whose example has another word in its title
-const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org chart": "tree" };
+const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org chart": "tree", "tree map": "treemap" };
 
 // A reference's "More examples" section: its longer complete examples, which
 // live in the MCP's examples. Each bullet is "- <title>: `get_example(path: "…")`".
@@ -175,7 +199,7 @@ const FILLER_WORDS = new Set(["a", "an", "and", "the", "of", "on", "in", "for", 
 
 // Keywords that name a whole family: its first example is the right answer
 const FAMILY_WORDS = new Set(["xy", "pie", "map", "world map", "geo", "geographic", "country", "hierarchy", "flow", "radar", "polar",
-  "stock", "financial", "trading", "timeline", "curve", "gantt", "project timeline", "wordcloud", "word cloud", "tag cloud", "venn"]);
+  "stock", "financial", "trading", "timeline", "time line", "curve", "gantt", "project timeline", "wordcloud", "word cloud", "tag cloud", "venn"]);
 
 // The inline script of an example page, unindented
 function scriptOf(body) {
@@ -387,10 +411,13 @@ export function registerTools(server, content) {
     return text + `\n${withoutTitle(ex.content, ex.title)}`;
   }
 
+  // An example with what to watch for when adapting its code (a JSON config has no code)
+  const exampleWithNote = (key) => exampleText(key) + (key.startsWith("examples/json-configs/") ? "" : WHEN_ADAPTING);
+
   // A framework asked for as a chart type ("react", "Next.js"): SKILL.md's
   // Frameworks section, with the framework's docs page. Null for anything else.
   function frameworkAnswer(asked) {
-    const w = String(asked ?? "").trim().toLowerCase().replace(/\./g, " ").replace(/[\s_-]+/g, " ").replace(/ (app|apps|component|chart|charts)$/, "").trim();
+    const w = String(asked ?? "").trim().toLowerCase().replace(/\./g, " ").replace(/[\s_-]+/g, " ").replace(/ (app|apps|component|components|chart|charts)$/, "").replace(/ v?\d+( \d+)*$/, "").trim();
     const page = Object.hasOwn(FRAMEWORK_PAGES, w) ? FRAMEWORK_PAGES[w] : null;
     const section = page && docs.get("SKILL")?.sections.find(s => /^Frameworks\b/.test(s.heading));
     if (!section) return null;
@@ -399,29 +426,36 @@ export function registerTools(server, content) {
       `${FRAMEWORK_NAMES[page]}'s docs page: get_doc("getting-started/integrations/${page}").\n\n## ${section.heading}\n\n${section.body.trim()}`;
   }
 
-  // The amcharts.com demo whose title has the whole phrase asked
-  // ("stacked column" → "Stacked Column Chart"): titles that start with it
-  // first, then the shortest. Not the docs pages' demos or the JSON configs.
+  // The amcharts.com demo a request names. One word must be the whole title
+  // but for "chart" and the like ("candlestick" is "Candlestick Chart", not
+  // "network" for "Network Waterfall Chart"), two words must start it ("heat
+  // map"), three or more may be anywhere in it ("drill down pie"). Not the docs
+  // pages' demos or the JSON configs.
   function demoNamed(asked) {
     const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—/]+/g, " ");
-    const words = norm(asked).replace(/ (charts?|diagrams?|graphs?|plots?)$/, "");
+    const bare = (s) => { while (/ (charts?|diagrams?|graphs?|plots?)$/.test(s)) s = s.replace(/ \S+$/, ""); return s; };
+    const words = bare(norm(asked)).replace(/^heatmap$/, "heat map");
     if (!words || words.length > 120) return null; // longer than any title
+    const count = words.split(" ").length;
+    if (words.split(" ").every(w => NOT_A_CHART_NAME.has(w) || NOT_A_CHART_NAME.has(singularOf(w, " ")))) return null;
     const forms = [...new Set([words, singularOf(words, " ")])];
     const found = [];
     for (const [key, ex] of examples) {
       if (!/^examples\/[^/]+\/[^/]+$/.test(key) || key.startsWith(`examples/${DOCS_DEMOS}/`) || key.startsWith("examples/json-configs/")) continue;
       const title = norm(ex.title);
-      const form = forms.find(f => new RegExp(`(^| )${f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}( |$)`).test(title));
-      if (form) found.push({ key, title: ex.title, starts: title.startsWith(form), length: title.length });
+      const whole = forms.includes(bare(title));
+      const starts = forms.some(f => `${title} `.startsWith(`${f} `));
+      const within = forms.some(f => ` ${title} `.includes(` ${f} `));
+      if (whole || (count >= 2 && starts) || (count >= 3 && within)) found.push({ key, title: ex.title, whole, starts, length: title.length });
     }
-    found.sort((a, b) => (b.starts - a.starts) || (a.length - b.length) || a.key.localeCompare(b.key));
+    found.sort((a, b) => (b.whole - a.whole) || (b.starts - a.starts) || (a.length - b.length) || a.key.localeCompare(b.key));
     return found[0] || null;
   }
 
   // get_quick_start's answer from a demo: the demo, as get_example gives it
   function demoQuickStart(demo, more) {
     const body = exampleText(demo.key).split("\n").slice(1).join("\n").trim();
-    return `# Quick Start: ${demo.title}\n*(source: the amCharts demo get_example(path: "${demo.key}"))*\n\n${body}${more}`;
+    return `# Quick Start: ${demo.title}\n*(source: the amCharts demo get_example(path: "${demo.key}"))*\n\n${body}${WHEN_ADAPTING}${more}`;
   }
 
   // A link someone pasted (Figma, for one, invites "a link from amCharts" as
@@ -648,7 +682,8 @@ export function registerTools(server, content) {
     },
     async ({ file: fileArg, chartType, heading }) => {
       // `chartType` as get_chart_reference names it ("treemap" is in "hierarchy")
-      const file = fileArg ?? (chartType != null && !docs.has(String(chartType).trim()) ? chartKeyOf(chartType) : chartType);
+      const named = firstGiven(fileArg, chartType);
+      const file = named === fileArg || docs.has(String(named ?? "").trim()) ? named : chartKeyOf(named);
       if (file == null || !String(file).trim()) {
         return { content: [{ type: "text", text: `Name the doc in \`file\` (a skill file such as "SKILL", "xy", "hierarchy", or a source label from search results), with the section's \`heading\`.` }], isError: true };
       }
@@ -727,7 +762,7 @@ export function registerTools(server, content) {
       // A complete, runnable example: the one whose title names what was asked
       // ("funnel", "donut", "chord"), else the reference's first. html gives the
       // page as it is; esm the page's script under the ES module imports.
-      const { example, named } = pickExample(doc, chartType) || {};
+      const { example, named, closest } = pickExample(doc, chartType) || {};
       if (example) {
         const others = doc.sections.filter(s => s !== example && /^Example\b/i.test(s.heading) && /```html/.test(s.body));
         // The reference's longer examples, kept in the MCP's examples
@@ -752,7 +787,7 @@ export function registerTools(server, content) {
           : demo
           ? `> The complete example for "${echo(chartType.trim())}" is the amCharts demo "${demo.title}": get_example(path: "${demo.key}"). It loads amCharts with script tags; below is this reference's first example under ES module imports.\n\n`
           : !named && !family
-            ? `> No example in this reference shows "${echo(chartType.trim())}"; this is its first. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
+            ? `> No example in this reference shows "${echo(chartType.trim())}"; this is ${closest ? "the closest" : "its first"}. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
             : "";
         const title = `# Quick Start: ${example.heading.replace(/^Example\s*\d*:\s*/i, "")}\n*(source: skill/${key}.md, ${doc.title}: "${example.heading}")*\n\n${unnamed}`;
         if (format === "esm") {
@@ -767,14 +802,14 @@ export function registerTools(server, content) {
             const ids = [...new Set([...example.body.matchAll(/<div id="([^"]+)"/g)].map(m => m[1]))];
             const div = ids.length ? `\n\nThe code draws into ${ids.map(id => `\`<div id="${id}">\``).join(" and ")} on the page${ids.includes("chartdiv") ? `; the chart's div needs a height (e.g. \`style="height: 500px"\`)` : ""}.` : "";
             const text = title + `## Imports (ES modules)\n${esm}\n` + (geodata.length ? "```js\n" + geodata.join("\n") + "\n```\n" : "") +
-              `\n## Code\n\`\`\`js\n${code}\n\`\`\`${div}${more}${FRAMEWORK_NOTE}`;
+              `\n## Code\n\`\`\`js\n${code}\n\`\`\`${div}${WHEN_ADAPTING}${more}${FRAMEWORK_NOTE}`;
             return { content: [{ type: "text", text }] };
           }
         } else {
           // The npm-CDN pointer from the reference's script-tag imports
           const cdn = importSection ? extractImportBlock(importSection.body, "html") : "";
           const pointer = cdn.split(/```[\s\S]*?```/).join("\n").split("\n").map(l => l.trim()).filter(Boolean).join("\n");
-          return { content: [{ type: "text", text: title + example.body.trim() + (pointer ? `\n\n${pointer}` : "") + more }] };
+          return { content: [{ type: "text", text: title + example.body.trim() + (pointer ? `\n\n${pointer}` : "") + WHEN_ADAPTING + more }] };
         }
       }
 
@@ -914,12 +949,17 @@ export function registerTools(server, content) {
       title: "Get API reference",
       description: "Get the per-class API reference for an amCharts 5 class: the class page plus its settings table (with defaults) and, optionally, its private/read-only settings. It is generated from the library's typings, so it has the exact setting names and default values (e.g. tooltip background cornerRadius, axis tick `visible` default). Takes a class name in any casing, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'AxisRendererX'.",
       inputSchema: {
-        className: z.string().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored. Its reference address works too: 'https://docs.amcharts.com/v5/reference/xycursor/'."),
+        className: z.string().optional().describe("amCharts 5 class name, e.g. 'XYCursor', 'Tooltip', 'PieSeries', 'ColumnSeries', 'AxisRendererX'. Casing/punctuation are ignored. Its reference address works too: 'https://docs.amcharts.com/v5/reference/xycursor/'."),
+        name: z.string().optional().describe("The same as `className`."),
         includePrivate: z.boolean().optional().default(false).describe("Also include the private (read-only / internal) settings table. Default false."),
       },
       annotations: READ_ONLY,
     },
-    async ({ className, includePrivate }) => {
+    async ({ className: classArg, name: nameArg, includePrivate }) => {
+      const className = firstGiven(classArg, nameArg);
+      if (className == null) {
+        return { content: [{ type: "text", text: `Name the class in \`className\`, e.g. "XYCursor". search_all finds the right class.` }], isError: true };
+      }
       // Normalize: "XYCursor" / "xy-cursor" / "XY Cursor" → "xycursor"; an
       // address or path ("…/docs/v5/reference/xycursor/") gives its last part
       // and a namespaced name ("am5xy.XYChart") its class name
@@ -977,7 +1017,7 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ category: categoryArg, type }) => {
-      const category = categoryArg ?? type;
+      const category = firstGiven(categoryArg, type);
       if (!category) {
         // List categories with counts
         const cats = {};
@@ -1030,8 +1070,8 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ path: pathArg, name }) => {
-      const exPath = pathArg ?? name;
-      if (exPath == null || !String(exPath).trim()) {
+      const exPath = firstGiven(pathArg, name);
+      if (exPath == null) {
         return { content: [{ type: "text", text: `Name the example in \`path\`, e.g. "examples/flow/sankey-diagram". list_examples lists them; search_all finds them by what they show.` }], isError: true };
       }
       const key = resolveExample(exPath);
@@ -1043,14 +1083,15 @@ export function registerTools(server, content) {
         const pointer = linkPointer(exPath);
         // A demo's name in words ("stacked column"): that demo
         const demo = !isAddress && named.length <= 1 && !pointer ? demoNamed(String(exPath).replace(/^examples\//, "")) : null;
-        if (demo) return { content: [{ type: "text", text: exampleText(demo.key) }] };
-        const words = String(exPath).trim().replace(/^examples\//, "").replace(/[/_-]+/g, " ");
+        if (demo) return { content: [{ type: "text", text: exampleWithNote(demo.key) }] };
+        const words = isAddress ? "" : String(exPath).trim().replace(/^examples\//, "").replace(/[/_-]+/g, " ").trim();
+        const hint = words ? `search_all(${JSON.stringify(echo(words))}) finds examples by what they show. ` : "";
         const text = named.length > 1
           ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`
-          : pointer || `Example "${echo(exPath)}" not found. search_all(${JSON.stringify(echo(words))}) finds examples by what they show. Use list_examples to browse available examples.`;
+          : pointer || `Example "${echo(exPath)}" not found. ${hint}Use list_examples to browse available examples.`;
         return { content: [{ type: "text", text }] };
       }
-      return { content: [{ type: "text", text: exampleText(key) }] };
+      return { content: [{ type: "text", text: exampleWithNote(key) }] };
     }
   );
 

@@ -36,7 +36,7 @@ export const CHART_TYPE_MAP = {
   "stock": "stock", "financial": "stock", "trading": "stock",
   "bollinger": "stock", "bollinger-bands": "stock",
   // Timeline
-  "timeline": "timeline", "serpentine": "timeline", "spiral": "timeline",
+  "timeline": "timeline", "time-line": "timeline", "serpentine": "timeline", "spiral": "timeline",
   "curve": "timeline",
   // Gantt
   "gantt": "gantt", "project-timeline": "gantt",

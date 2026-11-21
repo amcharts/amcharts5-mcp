@@ -72,13 +72,14 @@ function matches(e, packNote, words) {
       entrySet = entrySet || entryWords(e, packNote);
       return entrySet.has(w);
     }
-    return hay.includes(w) || (COUNTY_WORDS[w] || []).some((a) => hay.includes(a));
+    if (w === "county" || w === "counties") return hay.includes("counties") || (e.path.startsWith("region/usa/") && COUNTY_LIKE.some((a) => hay.includes(a)));
+    return hay.includes(w);
   });
 }
 
-// "counties" also finds the states whose county-level areas have other names
-// (Alaska's boroughs, Louisiana's parishes, the District of Columbia)
-const COUNTY_WORDS = { counties: ["boroughs", "parishes", "federal districts"], county: ["borough", "parish", "federal district"] };
+// "county" and "counties" also find the US states whose county-level areas
+// have other names (Alaska's boroughs, Louisiana's parishes, DC)
+const COUNTY_LIKE = ["boroughs", "parishes", "federal districts"];
 
 function formatEntry(e) {
   const v = e.variants ? e.variants[0] : "";
