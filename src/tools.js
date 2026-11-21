@@ -440,7 +440,7 @@ export function registerTools(server, content) {
   // "network" for "Network Waterfall Chart"), two words must start it ("heat
   // map"), three or more may be anywhere in it ("drill down pie"). Not the docs
   // pages' demos or the JSON configs.
-  function demoNamed(asked) {
+  function demoNamed(asked, wholeRequestOnly = false) {
     const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—/]+/g, " ");
     const bare = (s) => { while (/ (charts?|diagrams?|graphs?|plots?)$/.test(s)) s = s.replace(/ \S+$/, ""); return s; };
     const match = (phrase) => {
@@ -464,7 +464,7 @@ export function registerTools(server, content) {
     // The whole request, or else the chart it starts with ("bubble chart with legend")
     const phrase = norm(asked);
     const head = phrase.split(REQUEST_DETAIL)[0];
-    return match(phrase) || (head !== phrase ? match(head) : null);
+    return match(phrase) || (head !== phrase && !wholeRequestOnly ? match(head) : null);
   }
 
   // get_quick_start's answer from a demo: the demo, as get_example gives it
@@ -795,7 +795,7 @@ export function registerTools(server, content) {
         const longerNamed = !named && moreExampleNamed(extra, chartType);
         // else an amCharts demo named so ("stacked column" → "Stacked Column Chart"):
         // the demo itself, or under ES modules a pointer to it
-        const demo = !named && !headNamed && !family && !longerNamed ? demoNamed(chartType) : null;
+        const demo = !named && !family && !longerNamed ? demoNamed(chartType, headNamed) : null;
         if (demo && format !== "esm") return { content: [{ type: "text", text: demoQuickStart(demo, more) }] };
         const unnamed = longerNamed
           ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's ${closest ? "closest" : "first"} example.\n\n`
