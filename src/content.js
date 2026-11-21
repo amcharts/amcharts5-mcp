@@ -71,7 +71,9 @@ export function chartKeyOf(input) {
   const w = String(input ?? "").trim().toLowerCase().replace(/[\s_]+/g, "-");
   // The name as written and singular, each step for both before the next, so
   // "bubble-maps" is "bubble-map" (a map) before "bubble" (an XY chart)
-  const forms = [w, singularOf(w)];
+  // and then the chart a longer request starts with ("word-cloud-from-a-sentence")
+  const head = w.split(/-(?:with|from|for|of|showing|using)-/)[0];
+  const forms = [w, singularOf(w), ...(head !== w ? [head, singularOf(head)] : [])];
   for (const f of forms) if (known(f)) return CHART_TYPE_MAP[f];
   for (const f of forms) if (known(bareOf(f))) return CHART_TYPE_MAP[bareOf(f)];
   // A name of several words with a known one in it: "us-map", "3d-pie",

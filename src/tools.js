@@ -112,27 +112,36 @@ function boldLead(doc, asked) {
 function pickExample(doc, asked) {
   const examples = doc.sections.filter(s => /^Example\b/i.test(s.heading) && /```html/.test(s.body));
   if (!examples.length) return null;
-  const asWords = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/ (charts?|diagrams?|graphs?)$/, "");
+  const asWords = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/^(a|an|the) /, "").replace(/ (charts?|diagrams?|graphs?)$/, "");
   if (!asWords) return { example: examples[0], named: false };
   // the words as asked, then singular ("funnels")
-  const named = [asWords, singularOf(asWords, " ")].map(w => EXAMPLE_WORDS[w] || w).map(w => {
+  const namedBy = (phrase) => [phrase, singularOf(phrase, " ")].map(w => EXAMPLE_WORDS[w] || w).map(w => {
     const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
     return examples.find(s => re.test(s.heading.toLowerCase().replace(/[\s_-]+/g, " ")));
   }).find(Boolean);
+  const named = namedBy(asWords);
   if (named) return { example: named, named: true };
+  // "funnel chart with legend": the chart the request starts with
+  const head = asWords.split(REQUEST_DETAIL)[0].replace(/ (charts?|diagrams?|graphs?)$/, "");
+  const byHead = head && head !== asWords ? namedBy(head) : null;
+  if (byHead) return { example: byHead, named: false, closest: true, headNamed: true };
   // A longer request ("real-time line chart with a date axis"): the example
-  // whose title has the most of its words
+  // whose title has the most of its words, a chart type's word counting most
   const wordsOf = (s) => new Set(s.toLowerCase().replace(/[^a-z0-9%\s-]/g, " ").split(/[\s_-]+/).map(w => singularOf(w, " "))
     .filter(w => w.length > 2 && !FILLER_WORDS.has(w) && !/^(chart|diagram|graph|plot|example)$/.test(w)));
+  const weight = (w) => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w) && w !== "stacked" ? 10 : 1;
   const wanted = wordsOf(asWords);
   let closest = null, most = 0;
   for (const s of examples) {
     const title = wordsOf(s.heading.replace(/^Example\s*\d*:\s*/i, ""));
-    const count = [...wanted].filter(w => title.has(w)).length;
-    if (count > most) { closest = s; most = count; }
+    const score = [...wanted].reduce((n, w) => n + (title.has(w) ? weight(w) : 0), 0);
+    if (score > most) { closest = s; most = score; }
   }
   return { example: closest || examples[0], named: false, closest: !!closest };
 }
+
+// Where a request's details start: "funnel chart with legend"
+const REQUEST_DETAIL = / (?:with|from|for|of|showing|using) /;
 
 // Frameworks asked for as a chart type, and their docs pages
 // (getting-started/integrations/<page>)
@@ -148,7 +157,7 @@ const FRAMEWORK_NAMES = { "react": "React", "next-js": "Next.js", "vue": "Vue", 
 
 // Mistakes agents made with a working example in hand (each checked in a
 // browser): said where they copy from, as many never read SKILL.md's rules
-const WHEN_ADAPTING = `\n\n**When you adapt this:** a \`Label\` you create with \`{placeholders}\` in its text needs \`populateText: true\`. \`"#,###"\` doesn't round (\`6,708.044\`): use \`"#,###."\` for whole numbers. Add \`template.events.on()\` before \`data.setAll()\`: pie and funnel slices, hierarchy nodes and map polygons are made when the data is set, and a listener added later never reaches them.`;
+const WHEN_ADAPTING = `\n\n**When you adapt this:** a \`Label\` you create with \`{placeholders}\` in its text needs \`populateText: true\`. \`"#,###"\` doesn't round (\`6,708.044\`): use \`"#,###."\` for whole numbers. Add \`template.events.on()\` before \`data.setAll()\`: pie and funnel slices, hierarchy and flow nodes and map polygons are made when the data is set, and a listener added later never reaches them.`;
 
 // The first argument that has a value ("" doesn't)
 const firstGiven = (...values) => values.find(v => v != null && String(v).trim() !== "");
@@ -159,7 +168,7 @@ const NOT_A_CHART_NAME = new Set(["a", "an", "and", "the", "of", "on", "in", "fo
   "chart", "graph", "diagram", "plot", "export", "exporting", "bullets"]);
 
 // Keywords whose example has another word in its title
-const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org chart": "tree", "tree map": "treemap" };
+const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org": "tree", "org chart": "tree", "tree map": "treemap" };
 
 // A reference's "More examples" section: its longer complete examples, which
 // live in the MCP's examples. Each bullet is "- <title>: `get_example(path: "…")`".
@@ -434,22 +443,28 @@ export function registerTools(server, content) {
   function demoNamed(asked) {
     const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—/]+/g, " ");
     const bare = (s) => { while (/ (charts?|diagrams?|graphs?|plots?)$/.test(s)) s = s.replace(/ \S+$/, ""); return s; };
-    const words = bare(norm(asked)).replace(/^heatmap$/, "heat map");
-    if (!words || words.length > 120) return null; // longer than any title
-    const count = words.split(" ").length;
-    if (words.split(" ").every(w => NOT_A_CHART_NAME.has(w) || NOT_A_CHART_NAME.has(singularOf(w, " ")))) return null;
-    const forms = [...new Set([words, singularOf(words, " ")])];
-    const found = [];
-    for (const [key, ex] of examples) {
-      if (!/^examples\/[^/]+\/[^/]+$/.test(key) || key.startsWith(`examples/${DOCS_DEMOS}/`) || key.startsWith("examples/json-configs/")) continue;
-      const title = norm(ex.title);
-      const whole = forms.includes(bare(title));
-      const starts = forms.some(f => `${title} `.startsWith(`${f} `));
-      const within = forms.some(f => ` ${title} `.includes(` ${f} `));
-      if (whole || (count >= 2 && starts) || (count >= 3 && within)) found.push({ key, title: ex.title, whole, starts, length: title.length });
-    }
-    found.sort((a, b) => (b.whole - a.whole) || (b.starts - a.starts) || (a.length - b.length) || a.key.localeCompare(b.key));
-    return found[0] || null;
+    const match = (phrase) => {
+      const words = bare(phrase).replace(/^heatmap\b/, "heat map");
+      if (!words || words.length > 120) return null; // longer than any title
+      const count = words.split(" ").length;
+      if (words.split(" ").every(w => NOT_A_CHART_NAME.has(w) || NOT_A_CHART_NAME.has(singularOf(w, " ")))) return null;
+      const forms = [...new Set([words, singularOf(words, " ")])];
+      const found = [];
+      for (const [key, ex] of examples) {
+        if (!/^examples\/[^/]+\/[^/]+$/.test(key) || key.startsWith(`examples/${DOCS_DEMOS}/`) || key.startsWith("examples/json-configs/")) continue;
+        const title = norm(ex.title);
+        const whole = forms.includes(bare(title));
+        const starts = forms.some(f => `${title} `.startsWith(`${f} `));
+        const within = forms.some(f => ` ${title} `.includes(` ${f} `));
+        if (whole || (count >= 2 && starts) || (count >= 3 && within)) found.push({ key, title: ex.title, whole, starts, length: title.length });
+      }
+      found.sort((a, b) => (b.whole - a.whole) || (b.starts - a.starts) || (a.length - b.length) || a.key.localeCompare(b.key));
+      return found[0] || null;
+    };
+    // The whole request, or else the chart it starts with ("bubble chart with legend")
+    const phrase = norm(asked);
+    const head = phrase.split(REQUEST_DETAIL)[0];
+    return match(phrase) || (head !== phrase ? match(head) : null);
   }
 
   // get_quick_start's answer from a demo: the demo, as get_example gives it
@@ -762,7 +777,7 @@ export function registerTools(server, content) {
       // A complete, runnable example: the one whose title names what was asked
       // ("funnel", "donut", "chord"), else the reference's first. html gives the
       // page as it is; esm the page's script under the ES module imports.
-      const { example, named, closest } = pickExample(doc, chartType) || {};
+      const { example, named, closest, headNamed } = pickExample(doc, chartType) || {};
       if (example) {
         const others = doc.sections.filter(s => s !== example && /^Example\b/i.test(s.heading) && /```html/.test(s.body));
         // The reference's longer examples, kept in the MCP's examples
@@ -773,19 +788,19 @@ export function registerTools(server, content) {
           : `\n\n${longer ? longer.trim() + " " : ""}The whole reference: get_chart_reference("${key}").`;
         // Asked for a type no example here shows ("candlestick", "waterfall"): say so,
         // or name the longer example that shows it ("map sankey")
-        const asked = chartType.trim().toLowerCase().replace(/[\s_-]+/g, " ");
+        const asked = chartType.trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/^(a|an|the) /, "");
         // the family's own words, also as "world maps" or "World Map chart"
         const plain = singularOf(asked.replace(/ (charts?|diagrams?|graphs?)$/, ""), " ");
         const family = [asked, plain].some(a => a === key || FAMILY_WORDS.has(a));
         const longerNamed = !named && moreExampleNamed(extra, chartType);
         // else an amCharts demo named so ("stacked column" → "Stacked Column Chart"):
         // the demo itself, or under ES modules a pointer to it
-        const demo = !named && !family && !longerNamed ? demoNamed(chartType) : null;
+        const demo = !named && !headNamed && !family && !longerNamed ? demoNamed(chartType) : null;
         if (demo && format !== "esm") return { content: [{ type: "text", text: demoQuickStart(demo, more) }] };
         const unnamed = longerNamed
-          ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's first example.\n\n`
+          ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's ${closest ? "closest" : "first"} example.\n\n`
           : demo
-          ? `> The complete example for "${echo(chartType.trim())}" is the amCharts demo "${demo.title}": get_example(path: "${demo.key}"). It loads amCharts with script tags; below is this reference's first example under ES module imports.\n\n`
+          ? `> The complete example for "${echo(chartType.trim())}" is the amCharts demo "${demo.title}": get_example(path: "${demo.key}"). It loads amCharts with script tags; below is this reference's ${closest ? "closest" : "first"} example under ES module imports.\n\n`
           : !named && !family
             ? `> No example in this reference shows "${echo(chartType.trim())}"; this is ${closest ? "the closest" : "its first"}. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
             : "";
@@ -1085,7 +1100,10 @@ export function registerTools(server, content) {
         const demo = !isAddress && named.length <= 1 && !pointer ? demoNamed(String(exPath).replace(/^examples\//, "")) : null;
         if (demo) return { content: [{ type: "text", text: exampleWithNote(demo.key) }] };
         const words = isAddress ? "" : String(exPath).trim().replace(/^examples\//, "").replace(/[/_-]+/g, " ").trim();
-        const hint = words ? `search_all(${JSON.stringify(echo(words))}) finds examples by what they show. ` : "";
+        const category = words.toLowerCase().replace(/ /g, "-");
+        const hint = !words ? "" : new Set([...examples.values()].map(e => e.category)).has(category)
+          ? `"${category}" is a category: list_examples(category: "${category}") lists its examples. `
+          : `search_all(${JSON.stringify(echo(words))}) finds examples by what they show. `;
         const text = named.length > 1
           ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`
           : pointer || `Example "${echo(exPath)}" not found. ${hint}Use list_examples to browse available examples.`;

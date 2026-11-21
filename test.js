@@ -1267,6 +1267,39 @@ const tests = [
     },
     label: "get_quick_start('time line') — the timeline reference",
   },
+  // A longer request: the chart it starts with
+  ...[["funnel chart with legend", "# Quick Start: Funnel"], ["bubble chart with legend", "# Quick Start: Bubble Chart"], ["heatmap with legend", "# Quick Start: Heat Map with Legend"], ["candlestick chart with volume", "# Quick Start: Candlestick Chart"], ["org chart", "# Quick Start: Force-directed tree"]].map(([asked, start], i) => ({
+    send: { jsonrpc: "2.0", id: 149 + i, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: asked } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith(start) ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: `get_quick_start('${asked}') — the chart the request names`,
+  })),
+  {
+    send: { jsonrpc: "2.0", id: 154, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "word cloud from a sentence" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("(source: skill/wordcloud.md") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_quick_start('word cloud from a sentence') — the word cloud reference",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 155, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "stacked bar", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Horizontal bar chart") && text.includes("closest example under ES module imports") && !text.includes("first example") ? "PASS" : `FAIL (${text.slice(0, 320)})`;
+    },
+    label: "get_quick_start('stacked bar', esm) — the bar example, and the note says it is the closest",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 156, method: "tools/call", params: { name: "get_example", arguments: { path: "maps" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('list_examples(category: "maps")') ? "PASS" : `FAIL (${text.slice(0, 160)})`;
+    },
+    label: "get_example('maps') — a category: names list_examples",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
