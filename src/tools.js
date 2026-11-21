@@ -971,11 +971,13 @@ export function registerTools(server, content) {
       title: "List examples",
       description: "List all available amCharts 5 code examples, optionally filtered by category.",
       inputSchema: {
-        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid', 'json-configs' (complete JSON configs from the amCharts npm package), or 'docs-demos' (the demos embedded in the docs pages). Without it, all categories are listed."),
+        category: z.string().optional().describe("Filter by category, e.g. 'column-bar', 'line-area', 'pie-donut', 'maps', 'flow', 'hierarchy', 'stock', 'gantt', 'gauges', 'radar-polar', 'timeline', 'funnel-pyramid', 'json-configs' (complete JSON configs from the amCharts npm package), or 'docs-demos' (the demos embedded in the docs pages). A word of a category works too ('gauge', 'line', 'pie'). Without it, all categories are listed."),
+        type: z.string().optional().describe("The same as `category`."),
       },
       annotations: READ_ONLY,
     },
-    async ({ category }) => {
+    async ({ category: categoryArg, type }) => {
+      const category = categoryArg ?? type;
       if (!category) {
         // List categories with counts
         const cats = {};
@@ -992,8 +994,13 @@ export function registerTools(server, content) {
       }
 
       const wanted = category.trim().toLowerCase();
+      const allCats = [...new Set([...examples.values()].map(e => e.category))];
+      // The category as named, or else the one with this word in its name
+      // ("gauge" is gauges, "line" is line-area, "pie" is pie-donut)
+      const word = singularOf(wanted.replace(/[\s_]+/g, "-").replace(/-(charts?|diagrams?|graphs?)$/, ""));
+      const cat = allCats.find(c => c.toLowerCase() === wanted) ?? allCats.find(c => c.toLowerCase().split("-").some(p => singularOf(p) === word));
       const matching = [...examples.entries()]
-        .filter(([, ex]) => ex.category.toLowerCase() === wanted)
+        .filter(([, ex]) => ex.category === cat)
         .sort((a, b) => a[1].title.localeCompare(b[1].title));
 
       if (matching.length === 0) {

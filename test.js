@@ -1160,6 +1160,31 @@ const tests = [
     },
     label: "get_quick_start(5,000 characters) — the answer doesn't repeat them",
   },
+  // list_examples by a word of the category, and by `type`
+  {
+    send: { jsonrpc: "2.0", id: 132, method: "tools/call", params: { name: "list_examples", arguments: { type: "gauge" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# gauges examples") && text.includes("examples/gauges/angular-gauge") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "list_examples(type: 'gauge') — the gauges category",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 133, method: "tools/call", params: { name: "list_examples", arguments: { category: "pie" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# pie-donut examples") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "list_examples('pie') — the pie-donut category",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 134, method: "tools/call", params: { name: "list_examples", arguments: { category: "banana" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith('No examples in category "banana"') && text.includes("column-bar") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "list_examples('banana') — no such category: lists the categories",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
