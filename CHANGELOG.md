@@ -21,7 +21,7 @@ Found by giving agents (Claude Sonnet, with only this server) realistic requests
 - `get_section` takes `chartType` as well as `file` (`chartType: "treemap"` is the hierarchy reference). `get_example` takes `name` as well as `path`, and a demo's name in words ("stacked column"); for a name no demo has, it suggests the `search_all` call.
 - `list_geodata`: matches past the first 25 are listed a line each (up to 75 more), so "usa counties" lists every state. "counties" also finds Alaska's boroughs, Louisiana's parishes and the District of Columbia.
 - hierarchy.md: the `BreadcrumbBar` goes above the chart with `container.children.unshift()`; the one-level click's comment says that selecting the open node again opens its parent.
-- 10 tests (130): `get_quick_start` "stacked column" (html and esm), "candlestick", "dumbbell", "react"; `get_section(chartType: "treemap")`; `list_geodata("usa counties")`; `get_example(name:)` by words, with hyphens, and not found. Test 99 asks "column with line", which no example or demo is named for.
+- 11 tests (131): `get_quick_start` "stacked column" (html and esm), "candlestick", "dumbbell", "react"; `get_section(chartType: "treemap")`; `list_geodata("usa counties")`; `get_example(name:)` by words, with hyphens, and not found; a 5,000-character chart type isn't repeated back. Test 99 asks "column with line", which no example or demo is named for.
 - Docs copy, Vue page: the code for a chart without the package was under "License"; it is under "Without the package", which ended on a colon (the live page has the same slip; reported to the docs team).
 
 ### Changed

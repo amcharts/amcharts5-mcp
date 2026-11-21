@@ -1152,6 +1152,14 @@ const tests = [
     },
     label: "get_example(name: 'purple-unicorn') — no such demo: points to search_all with the words",
   },
+  {
+    send: { jsonrpc: "2.0", id: 131, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "q".repeat(5000) } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("No reference or demo found") && text.length < 700 ? "PASS" : `FAIL (${text.length} chars)`;
+    },
+    label: "get_quick_start(5,000 characters) — the answer doesn't repeat them",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

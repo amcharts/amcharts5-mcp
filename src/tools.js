@@ -405,7 +405,7 @@ export function registerTools(server, content) {
   function demoNamed(asked) {
     const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—/]+/g, " ");
     const words = norm(asked).replace(/ (charts?|diagrams?|graphs?|plots?)$/, "");
-    if (!words) return null;
+    if (!words || words.length > 120) return null; // longer than any title
     const forms = [...new Set([words, singularOf(words, " ")])];
     const found = [];
     for (const [key, ex] of examples) {
@@ -709,10 +709,10 @@ export function registerTools(server, content) {
         const demo = demoNamed(chartType);
         if (demo) {
           const esm = format === "esm" ? ` It loads amCharts with script tags: with ES modules, import the same packages instead (\`index.js\` is \`@amcharts/amcharts5\`, \`xy.js\` is \`@amcharts/amcharts5/xy\`, \`themes/Animated.js\` is \`@amcharts/amcharts5/themes/Animated\`).` : "";
-          return { content: [{ type: "text", text: demoQuickStart(demo, `\n\nThis is an amCharts demo.${esm} More like it: search_all(${JSON.stringify(chartType.trim())}); the chart types: list_chart_types.`) }] };
+          return { content: [{ type: "text", text: demoQuickStart(demo, `\n\nThis is an amCharts demo.${esm} More like it: search_all(${JSON.stringify(echo(chartType.trim()))}); the chart types: list_chart_types.`) }] };
         }
         return {
-          content: [{ type: "text", text: `No reference or demo found for "${echo(chartType)}". search_all(${JSON.stringify(String(chartType).trim())}) searches the docs and examples; list_chart_types lists the chart types.` }],
+          content: [{ type: "text", text: `No reference or demo found for "${echo(chartType)}". search_all(${JSON.stringify(echo(String(chartType).trim()))}) searches the docs and examples; list_chart_types lists the chart types.` }],
         };
       }
       if (key === "ui-elements") {
@@ -1040,7 +1040,7 @@ export function registerTools(server, content) {
         const words = String(exPath).trim().replace(/^examples\//, "").replace(/[/_-]+/g, " ");
         const text = named.length > 1
           ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`
-          : pointer || `Example "${echo(exPath)}" not found. search_all(${JSON.stringify(words)}) finds examples by what they show. Use list_examples to browse available examples.`;
+          : pointer || `Example "${echo(exPath)}" not found. search_all(${JSON.stringify(echo(words))}) finds examples by what they show. Use list_examples to browse available examples.`;
         return { content: [{ type: "text", text }] };
       }
       return { content: [{ type: "text", text: exampleText(key) }] };
