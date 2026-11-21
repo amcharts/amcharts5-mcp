@@ -74,9 +74,10 @@ Before writing amCharts 5 code, look it up here: the API differs from amCharts 4
 - A feature or setting: search_all, then get_section or get_api_reference.
 - A demo's full code: get_example.
 
-Two common mistakes:
+Three common mistakes:
 - A Label you create with {placeholders} in its text needs populateText: true.
-- The number format "#,###" doesn't round (6,708.044). Use "#,###." for whole numbers.`;
+- The number format "#,###" doesn't round (6,708.044). Use "#,###." for whole numbers.
+- Add template.events.on() before data.setAll(): pie slices, hierarchy nodes and map polygons don't get a listener added later.`;
 
 // An amcharts.com address in a text: a demo, a docs page, the docs' new host
 // (Markdown around it, a code span's backtick or bold's asterisks, ends it)
