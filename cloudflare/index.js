@@ -16,7 +16,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { JSONRPCMessageSchema } from "@modelcontextprotocol/sdk/types.js";
 import { McpAgent } from "agents/mcp";
 import { buildContent } from "../src/content.js";
-import { registerTools, serverInfo } from "../src/tools.js";
+import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "../src/tools.js";
 import { version, skillFiles, extendedFiles, geodata } from "./content.generated.js";
 // The server's icon (serverInfo, server.json), 256×256; a Data module (wrangler.jsonc rules)
 import ICON from "./icon.png";
@@ -30,7 +30,7 @@ const IDLE_TTL_SECONDS = 24 * 60 * 60;
 const IDLE_CLEANUP_KEY = "idleCleanupId";
 
 export class AmCharts5MCP extends McpAgent {
-  server = new McpServer(serverInfo(version));
+  server = new McpServer(serverInfo(version), { instructions: SERVER_INSTRUCTIONS });
 
   async init() {
     registerTools(this.server, content);

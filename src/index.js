@@ -6,7 +6,7 @@ import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { loadContentFromDisk } from "./content-fs.js";
-import { registerTools, serverInfo } from "./tools.js";
+import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "./tools.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -18,7 +18,7 @@ const VERSION = PKG.version;
 // Load and index all content from disk (submodule + extended/).
 const content = loadContentFromDisk();
 
-const server = new McpServer(serverInfo(VERSION));
+const server = new McpServer(serverInfo(VERSION), { instructions: SERVER_INSTRUCTIONS });
 
 registerTools(server, content);
 

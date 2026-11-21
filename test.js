@@ -36,10 +36,12 @@ const tests = [
     send: { jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: "2024-11-05", capabilities: {}, clientInfo: { name: "test", version: "1.0.0" } } },
     check: (r) => {
       const s = r.result?.serverInfo || {};
+      const told = r.result?.instructions || "";
       return s.name === "amcharts5" && s.title === "amCharts 5" && s.websiteUrl && s.description && s.icons?.[0]?.src === "https://mcp.amcharts.com/icon.png"
-        ? "PASS" : `FAIL (${JSON.stringify(s)})`;
+        && told.includes("get_quick_start") && told.includes("don't apply to other chart libraries") && told.length < 1000
+        ? "PASS" : `FAIL (${JSON.stringify(s)}; instructions: ${told.length} chars)`;
     },
-    label: "Initialize server (name, title, description, website, icon)",
+    label: "Initialize server (name, title, description, website, icon, short instructions)",
   },
   // Step 1: List tools
   {

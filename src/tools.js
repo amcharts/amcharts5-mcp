@@ -64,6 +64,20 @@ export function serverInfo(version) {
   };
 }
 
+// The MCP `instructions` a client gives the model with the server's tools,
+// also when it loads the tools themselves on demand. Short, and only for
+// tasks that use amCharts 5.
+export const SERVER_INSTRUCTIONS = `amCharts 5 docs, examples and API reference. These tools are for tasks that use amCharts 5; they don't apply to other chart libraries.
+
+Before writing amCharts 5 code, look it up here: the API differs from amCharts 4 and may be newer than what you remember.
+- A chart: get_quick_start with the chart type ("gauge", "stacked column", "map", or a framework such as "react") returns a complete working example.
+- A feature or setting: search_all, then get_section or get_api_reference.
+- A demo's full code: get_example.
+
+Two common mistakes:
+- A Label you create with {placeholders} in its text needs populateText: true.
+- The number format "#,###" doesn't round (6,708.044). Use "#,###." for whole numbers.`;
+
 // An amcharts.com address in a text: a demo, a docs page, the docs' new host
 // (Markdown around it, a code span's backtick or bold's asterisks, ends it)
 const AMCHARTS_LINK = /(?:https?:\/\/)?(?:[\w-]+\.)*amcharts\.com\/[^\s)"'<>\]`*]*/gi;
