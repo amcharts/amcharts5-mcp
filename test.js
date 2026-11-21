@@ -1300,6 +1300,31 @@ const tests = [
     },
     label: "get_example('maps') — a category: names list_examples",
   },
+  // A longer request: the example with the most of its words, not just its first words
+  ...[["map with markers", "# Quick Start: Map with point markers"], ["map with lines", "# Quick Start: US map with connection lines"], ["radar with columns", "# Quick Start: Radar column chart"], ["sankey with vertical orientation", "# Quick Start: Vertical Sankey"], ["pie chart with center label", "# Quick Start: Donut chart with center label"], ["line chart with stacked area", "# Quick Start: Stacked area chart"], ["chart showing treemap", "# Quick Start: Treemap"]].map(([asked, start], i) => ({
+    send: { jsonrpc: "2.0", id: 159 + i, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: asked } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith(start) ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: `get_quick_start('${asked}') — the example with the most of the words`,
+  })),
+  {
+    send: { jsonrpc: "2.0", id: 166, method: "tools/call", params: { name: "get_chart_reference", arguments: { chartType: "bubbles for map" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return /^# Map/i.test(text) ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_chart_reference('bubbles for map') — a family named after the preposition stays that family",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 167, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "heat map of usa" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return !text.startsWith("# Quick Start: Heat Map with Legend") && text.includes("(source: skill/map.md") ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: "get_quick_start('heat map of usa') — the map reference, not the XY heat map demo",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

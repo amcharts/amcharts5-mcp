@@ -121,12 +121,11 @@ function pickExample(doc, asked) {
   }).find(Boolean);
   const named = namedBy(asWords);
   if (named) return { example: named, named: true };
-  // "funnel chart with legend": the chart the request starts with
-  const head = asWords.split(REQUEST_DETAIL)[0].replace(/ (charts?|diagrams?|graphs?)$/, "");
-  const byHead = head && head !== asWords ? namedBy(head) : null;
-  if (byHead) return { example: byHead, named: false, closest: true, headNamed: true };
   // A longer request ("real-time line chart with a date axis"): the example
-  // whose title has the most of its words, a chart type's word counting most
+  // whose title has the most of its words, a chart type's word counting most.
+  // The chart the request starts with breaks a tie ("column with line")
+  const head = asWords.split(REQUEST_DETAIL)[0].replace(/(^| )(charts?|diagrams?|graphs?)$/, "").trim();
+  const headExample = head && head !== asWords ? namedBy(head) : null;
   const wordsOf = (s) => new Set(s.toLowerCase().replace(/[^a-z0-9%\s-]/g, " ").split(/[\s_-]+/).map(w => singularOf(w, " "))
     .filter(w => w.length > 2 && !FILLER_WORDS.has(w) && !/^(chart|diagram|graph|plot|example)$/.test(w)));
   const weight = (w) => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w) && w !== "stacked" ? 10 : 1;
@@ -134,10 +133,10 @@ function pickExample(doc, asked) {
   let closest = null, most = 0;
   for (const s of examples) {
     const title = wordsOf(s.heading.replace(/^Example\s*\d*:\s*/i, ""));
-    const score = [...wanted].reduce((n, w) => n + (title.has(w) ? weight(w) : 0), 0);
+    const score = [...wanted].reduce((n, w) => n + (title.has(w) ? weight(w) : 0), 0) + (s === headExample ? 0.5 : 0);
     if (score > most) { closest = s; most = score; }
   }
-  return { example: closest || examples[0], named: false, closest: !!closest };
+  return { example: closest || examples[0], named: false, closest: !!closest, headNamed: !!headExample };
 }
 
 // Where a request's details start: "funnel chart with legend"
@@ -440,7 +439,7 @@ export function registerTools(server, content) {
   // "network" for "Network Waterfall Chart"), two words must start it ("heat
   // map"), three or more may be anywhere in it ("drill down pie"). Not the docs
   // pages' demos or the JSON configs.
-  function demoNamed(asked, wholeRequestOnly = false) {
+  function demoNamed(asked, wholeRequestOnly = false, referenceKey = null) {
     const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—/]+/g, " ");
     const bare = (s) => { while (/ (charts?|diagrams?|graphs?|plots?)$/.test(s)) s = s.replace(/ \S+$/, ""); return s; };
     const match = (phrase) => {
@@ -464,7 +463,11 @@ export function registerTools(server, content) {
     // The whole request, or else the chart it starts with ("bubble chart with legend")
     const phrase = norm(asked);
     const head = phrase.split(REQUEST_DETAIL)[0];
-    return match(phrase) || (head !== phrase && !wholeRequestOnly ? match(head) : null);
+    const whole = match(phrase);
+    if (whole || head === phrase || wholeRequestOnly) return whole;
+    const byHead = match(head);
+    // "heat map of usa" asks for a map, though "heat map" names an XY demo
+    return byHead && referenceKey === "map" && !byHead.key.startsWith("examples/maps/") ? null : byHead;
   }
 
   // get_quick_start's answer from a demo: the demo, as get_example gives it
@@ -795,7 +798,7 @@ export function registerTools(server, content) {
         const longerNamed = !named && moreExampleNamed(extra, chartType);
         // else an amCharts demo named so ("stacked column" → "Stacked Column Chart"):
         // the demo itself, or under ES modules a pointer to it
-        const demo = !named && !family && !longerNamed ? demoNamed(chartType, headNamed) : null;
+        const demo = !named && !family && !longerNamed ? demoNamed(chartType, headNamed, key) : null;
         if (demo && format !== "esm") return { content: [{ type: "text", text: demoQuickStart(demo, more) }] };
         const unnamed = longerNamed
           ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's ${closest ? "closest" : "first"} example.\n\n`
