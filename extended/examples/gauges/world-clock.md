@@ -2,7 +2,7 @@
 title: "World Clock"
 source: "https://www.amcharts.com/demos/world-clock/"
 category: "gauges"
-scraped: "2026-11-20"
+scraped: "2026-11-21"
 ---
 
 Your time next to New York, London and Tokyo on four live analog clocks, with the time in digits, how far ahead or behind, and a dark face at night.
@@ -340,7 +340,7 @@ function makeClock(city, index) {
     // all hands sit on the 12-hour axis, so minutes and seconds are scaled to 0-12
     hourHand.dataItem.set("value", hours % 12 + minutes / 60 + seconds / 3600);
     minuteHand.dataItem.set("value", 12 * (minutes + seconds / 60) / 60);
-    if (secondHandMove === "tick") { // ("smooth" moves it on every frame: see the end of the code)
+    if (secondHandMove === "tick") { // ("smooth" moves it 30 times a second: see the end of the code)
       var from = secondHand.dataItem.get("value", 0);
       var to = 12 * seconds / 60;
       if (to == 0) {
@@ -472,9 +472,10 @@ setInterval(function() {
   });
 }, 1000);
 
-// "smooth": the second hands move on every frame the chart draws, to the millisecond. Moving them makes the chart draw
-// the next frame too, so they keep going until secondHandMove changes. The seconds are the same in every time zone
-root.events.on("frameended", function() {
+// "smooth": the second hands move 30 times a second, to the millisecond. Each move makes the chart draw a frame, so
+// this is as smooth to the eye as moving them on every frame the screen shows (60 or 120 a second), with half the
+// drawing or less, which matters on a TV left on all day. The seconds are the same in every time zone
+setInterval(function() {
   if (secondHandMove === "smooth") {
     var now = new Date();
     var value = 12 * (now.getSeconds() + now.getMilliseconds() / 1000) / 60; // on the 0-12 axis, from 0 up to just under 12
@@ -482,7 +483,7 @@ root.events.on("frameended", function() {
       clock.sweep(value);
     });
   }
-});
+}, 1000 / 30);
 
 // Set the hands straight away when the page is shown again: timers slow down in a background tab
 function onVisibilityChange() {

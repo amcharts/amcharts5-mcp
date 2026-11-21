@@ -2,7 +2,7 @@
 title: "Stock Chart with Bollinger Bands Indicator"
 source: "https://www.amcharts.com/demos/stock-chart-with-bollinger-bands-indicator/"
 category: "stock"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Bollinger Bands wrap the price in a channel: a 20-day moving average in the middle, with bands two standard deviations above and below it. The bands widen when prices swing hard and narrow when they calm down.
@@ -51,7 +51,7 @@ var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
 // Set global number format
 // -------------------------------------------------------------------------------
 // https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
-root.numberFormatter.set("numberFormat", "#,###.00"); // thousands separators and two decimals
+root.numberFormatter.set("numberFormat", "#,###.00##"); // prices: thousands separators, cents, and up to 4 decimals for small ones
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
@@ -71,8 +71,7 @@ var valueAxis = mainPanel.yAxes.push(am5xy.ValueAxis.new(root, {
   }),
   extraMin: 0.1, // adds some space for the main series
   tooltip: am5.Tooltip.new(root, {}), // shows the cursor's price on the axis
-  numberFormat: "#,###.00",           // two decimals
-  extraTooltipPrecision: 2            // the axis tooltip shows two more decimals than the labels
+  preferredDecimals: [0, 2] // the labels, and the axis tooltip, show whole prices or cents: 650 or 48.50, never 48.5
 }));
 
 // a gapless date axis leaves out weekends and holidays, the days without prices
@@ -533,6 +532,16 @@ sbSeries.data.setAll(data);
   height: auto;
   padding: 5px 5px 0 16px;
   max-width: 100%;
+}
+
+/* a chart 400px wide or narrower, as on a phone: ResponsiveMax gives it less padding, so the toolbar moves left with
+   it, to line up with the plot, and may use the full width. It is the chart's width that counts, so this is a
+   container query: the element around the toolbar and the chart needs container-type: inline-size */
+@container (max-width: 400px) {
+  #chartcontrols {
+    padding-left: 4px;
+    padding-right: 0;
+  }
 }
 
 #chartdiv {

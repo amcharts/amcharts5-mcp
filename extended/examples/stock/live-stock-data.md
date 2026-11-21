@@ -2,7 +2,7 @@
 title: "Live Stock Data"
 source: "https://www.amcharts.com/demos/live-stock-data/"
 category: "stock"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A candlestick chart fed by a simulated live feed: a new price every second, a new candle every minute. The label on the price axis follows the latest price, green while it is above the minute’s open and red below.
@@ -54,7 +54,7 @@ var stockChart = root.container.children.push(
 // Set global number format
 // -------------------------------------------------------------------------------
 // https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/
-root.numberFormatter.set("numberFormat", "#,###.00"); // thousands separators, always two decimals
+root.numberFormatter.set("numberFormat", "#,###.00##"); // prices: thousands separators, cents, and up to 4 decimals for small ones
 
 // Create a main stock panel (chart)
 // -------------------------------------------------------------------------------
@@ -77,8 +77,7 @@ var valueAxis = mainPanel.yAxes.push(
     }),
     extraMin: 0.1, // adds some space for the main series
     tooltip: am5.Tooltip.new(root, {}), // a price label follows the cursor along the axis
-    numberFormat: "#,###.00",           // two decimals on the labels...
-    extraTooltipPrecision: 2            // ...and two more in the axis tooltip
+    preferredDecimals: [0, 2] // the labels, and the axis tooltip, show whole prices or cents: 650 or 48.50, never 48.5
   })
 );
 
