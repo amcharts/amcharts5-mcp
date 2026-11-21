@@ -157,6 +157,16 @@ import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 
 With a commercial license, call `am5.addLicense()` once in `main.js`, before `createApp()`. Not in your chart function: a chart decides on the logo when its root is made.
 
+## Examples
+
+» [amCharts 5 with Vue and Vite](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/vue/examples/vite?file=src%2FApp.vue)
+
+Example apps for Vite and Nuxt are [on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations/vue/examples).
+
+## Without the package
+
+To manage the chart yourself, create the root when the component is mounted and dispose it before it is unmounted:
+
 ```html
 <script setup>
 import { onBeforeUnmount, onMounted, useTemplateRef } from "vue";
@@ -191,13 +201,3 @@ onBeforeUnmount(() => {
 ```
 
 Keep amCharts objects in plain variables, not in reactive state. If you need them in a ref, use `shallowRef()`.
-
-## Examples
-
-» [amCharts 5 with Vue and Vite](https://stackblitz.com/github/amcharts/amcharts5/tree/master/integrations/vue/examples/vite?file=src%2FApp.vue)
-
-Example apps for Vite and Nuxt are [on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations/vue/examples).
-
-## Without the package
-
-To manage the chart yourself, create the root when the component is mounted and dispose it before it is unmounted:

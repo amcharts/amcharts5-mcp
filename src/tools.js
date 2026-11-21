@@ -122,6 +122,18 @@ function pickExample(doc, asked) {
   return { example: named || examples[0], named: !!named };
 }
 
+// Frameworks asked for as a chart type, and their docs pages
+// (getting-started/integrations/<page>)
+const FRAMEWORK_PAGES = {
+  "react": "react", "reactjs": "react", "react js": "react",
+  "next": "next-js", "nextjs": "next-js", "next js": "next-js",
+  "vue": "vue", "vuejs": "vue", "vue js": "vue", "vue 3": "vue", "vue3": "vue",
+  "nuxt": "nuxt", "nuxtjs": "nuxt", "nuxt js": "nuxt",
+  "angular": "angular", "svelte": "sveltekit", "sveltekit": "sveltekit",
+  "react native": "react-native", "expo": "react-native",
+};
+const FRAMEWORK_NAMES = { "react": "React", "next-js": "Next.js", "vue": "Vue", "nuxt": "Nuxt", "angular": "Angular", "sveltekit": "Svelte", "react-native": "React Native" };
+
 // Keywords whose example has another word in its title
 const EXAMPLE_WORDS = { "speedometer": "gauge", "meter": "gauge", "point map": "point markers", "org chart": "tree" };
 
@@ -375,6 +387,43 @@ export function registerTools(server, content) {
     return text + `\n${withoutTitle(ex.content, ex.title)}`;
   }
 
+  // A framework asked for as a chart type ("react", "Next.js"): SKILL.md's
+  // Frameworks section, with the framework's docs page. Null for anything else.
+  function frameworkAnswer(asked) {
+    const w = String(asked ?? "").trim().toLowerCase().replace(/\./g, " ").replace(/[\s_-]+/g, " ").replace(/ (app|apps|component|chart|charts)$/, "").trim();
+    const page = Object.hasOwn(FRAMEWORK_PAGES, w) ? FRAMEWORK_PAGES[w] : null;
+    const section = page && docs.get("SKILL")?.sections.find(s => /^Frameworks\b/.test(s.heading));
+    if (!section) return null;
+    return `# amCharts 5 in ${FRAMEWORK_NAMES[page]}\n\n"${echo(String(asked).trim())}" is a framework, not a chart type: use amCharts' package for it, as below. ` +
+      `For the chart itself, call get_quick_start with the chart type and format "esm" (e.g. get_quick_start("column", "esm")), and put its code that follows \`am5.Root.new()\` in the setup function. ` +
+      `${FRAMEWORK_NAMES[page]}'s docs page: get_doc("getting-started/integrations/${page}").\n\n## ${section.heading}\n\n${section.body.trim()}`;
+  }
+
+  // The amcharts.com demo whose title has the whole phrase asked
+  // ("stacked column" → "Stacked Column Chart"): titles that start with it
+  // first, then the shortest. Not the docs pages' demos or the JSON configs.
+  function demoNamed(asked) {
+    const norm = (s) => String(s ?? "").trim().toLowerCase().replace(/[\s_\-–—/]+/g, " ");
+    const words = norm(asked).replace(/ (charts?|diagrams?|graphs?|plots?)$/, "");
+    if (!words) return null;
+    const forms = [...new Set([words, singularOf(words, " ")])];
+    const found = [];
+    for (const [key, ex] of examples) {
+      if (!/^examples\/[^/]+\/[^/]+$/.test(key) || key.startsWith(`examples/${DOCS_DEMOS}/`) || key.startsWith("examples/json-configs/")) continue;
+      const title = norm(ex.title);
+      const form = forms.find(f => new RegExp(`(^| )${f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}( |$)`).test(title));
+      if (form) found.push({ key, title: ex.title, starts: title.startsWith(form), length: title.length });
+    }
+    found.sort((a, b) => (b.starts - a.starts) || (a.length - b.length) || a.key.localeCompare(b.key));
+    return found[0] || null;
+  }
+
+  // get_quick_start's answer from a demo: the demo, as get_example gives it
+  function demoQuickStart(demo, more) {
+    const body = exampleText(demo.key).split("\n").slice(1).join("\n").trim();
+    return `# Quick Start: ${demo.title}\n*(source: the amCharts demo get_example(path: "${demo.key}"))*\n\n${body}${more}`;
+  }
+
   // A link someone pasted (Figma, for one, invites "a link from amCharts" as
   // context): the first amcharts.com address in a text that is a demo or a
   // docs page, and which call gets what it points to. Null when there is none
@@ -480,6 +529,9 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ chartType, full }) => {
+      // "react", "Next.js": the framework's package and pattern
+      const framework = frameworkAnswer(chartType);
+      if (framework) return { content: [{ type: "text", text: framework }] };
       const key = chartKeyOf(chartType);
       const doc = docs.get(key);
       if (!doc) {
@@ -588,12 +640,18 @@ export function registerTools(server, content) {
       title: "Get doc section",
       description: "Get the full text of one section of a doc by heading, for example a section that a search_docs or search_all result shows truncated. `file` accepts the source label exactly as search results print it ('skill/SKILL.md', 'skill/xy', 'extended/charts/xy-chart/cursor', 'reference/xycursor') as well as a bare skill file name ('SKILL', 'xy', 'map').",
       inputSchema: {
-        file: z.string().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
+        file: z.string().optional().describe("Doc identifier: a skill file ('SKILL', 'xy', 'pie', 'map') or a source label from search results ('skill/SKILL.md', 'extended/concepts/events', 'reference/xycursor'). '.md' and 'skill/' / 'extended/' prefixes are optional."),
+        chartType: z.string().optional().describe("The same as `file`, for a chart type's reference ('hierarchy', 'xy'), as get_chart_reference takes it."),
         heading: z.string().describe("Section heading to retrieve (case-insensitive substring), e.g. 'Core setup pattern', 'Axis types', 'Common pitfalls', 'Recent API changes'. A ### subsection heading returns just that subsection, and a bold lead (e.g. 'Plain HTML, no bundler') its paragraphs."),
       },
       annotations: READ_ONLY,
     },
-    async ({ file, heading }) => {
+    async ({ file: fileArg, chartType, heading }) => {
+      // `chartType` as get_chart_reference names it ("treemap" is in "hierarchy")
+      const file = fileArg ?? (chartType != null && !docs.has(String(chartType).trim()) ? chartKeyOf(chartType) : chartType);
+      if (file == null || !String(file).trim()) {
+        return { content: [{ type: "text", text: `Name the doc in \`file\` (a skill file such as "SKILL", "xy", "hierarchy", or a source label from search results), with the section's \`heading\`.` }], isError: true };
+      }
       const resolved = resolveDoc(file);
       if (!resolved) {
         const skillFiles = [...docs.keys()].map(k => `skill/${k}`).join(", ");
@@ -641,11 +699,20 @@ export function registerTools(server, content) {
       annotations: READ_ONLY,
     },
     async ({ chartType, format }) => {
+      // "react", "Next.js": the framework's package and pattern
+      const framework = frameworkAnswer(chartType);
+      if (framework) return { content: [{ type: "text", text: framework }] };
       const key = chartKeyOf(chartType);
       const doc = docs.get(key);
       if (!doc) {
+        // A demo named so ("dumbbell" → "Dumbbell Plot")
+        const demo = demoNamed(chartType);
+        if (demo) {
+          const esm = format === "esm" ? ` It loads amCharts with script tags: with ES modules, import the same packages instead (\`index.js\` is \`@amcharts/amcharts5\`, \`xy.js\` is \`@amcharts/amcharts5/xy\`, \`themes/Animated.js\` is \`@amcharts/amcharts5/themes/Animated\`).` : "";
+          return { content: [{ type: "text", text: demoQuickStart(demo, `\n\nThis is an amCharts demo.${esm} More like it: search_all(${JSON.stringify(chartType.trim())}); the chart types: list_chart_types.`) }] };
+        }
         return {
-          content: [{ type: "text", text: `No reference found for "${echo(chartType)}". Use list_chart_types to see available types.` }],
+          content: [{ type: "text", text: `No reference or demo found for "${echo(chartType)}". search_all(${JSON.stringify(String(chartType).trim())}) searches the docs and examples; list_chart_types lists the chart types.` }],
         };
       }
       if (key === "ui-elements") {
@@ -676,8 +743,14 @@ export function registerTools(server, content) {
         const plain = singularOf(asked.replace(/ (charts?|diagrams?|graphs?)$/, ""), " ");
         const family = [asked, plain].some(a => a === key || FAMILY_WORDS.has(a));
         const longerNamed = !named && moreExampleNamed(extra, chartType);
+        // else an amCharts demo named so ("stacked column" → "Stacked Column Chart"):
+        // the demo itself, or under ES modules a pointer to it
+        const demo = !named && !family && !longerNamed ? demoNamed(chartType) : null;
+        if (demo && format !== "esm") return { content: [{ type: "text", text: demoQuickStart(demo, more) }] };
         const unnamed = longerNamed
           ? `> The complete example for "${echo(chartType.trim())}" is "${longerNamed.title}": get_example(path: "${longerNamed.path}"). Below is this reference's first example.\n\n`
+          : demo
+          ? `> The complete example for "${echo(chartType.trim())}" is the amCharts demo "${demo.title}": get_example(path: "${demo.key}"). It loads amCharts with script tags; below is this reference's first example under ES module imports.\n\n`
           : !named && !family
             ? `> No example in this reference shows "${echo(chartType.trim())}"; this is its first. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
             : "";
@@ -944,11 +1017,16 @@ export function registerTools(server, content) {
       title: "Get example",
       description: "Get the full code for a specific amCharts 5 example/demo, by its path or its amcharts.com demo address. Paths are listed by list_examples and printed in search results.",
       inputSchema: {
-        path: z.string().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map', or a demo address such as 'https://www.amcharts.com/demos/sankey-diagram/'"),
+        path: z.string().optional().describe("Example path, e.g. 'examples/flow/sankey-diagram', 'examples/pie-donut/donut-chart', 'examples/maps/drill-down-map', or a demo address such as 'https://www.amcharts.com/demos/sankey-diagram/'"),
+        name: z.string().optional().describe("The same as `path`, or a demo's name, e.g. 'sankey-diagram', 'stacked column'."),
       },
       annotations: READ_ONLY,
     },
-    async ({ path: exPath }) => {
+    async ({ path: pathArg, name }) => {
+      const exPath = pathArg ?? name;
+      if (exPath == null || !String(exPath).trim()) {
+        return { content: [{ type: "text", text: `Name the example in \`path\`, e.g. "examples/flow/sankey-diagram". list_examples lists them; search_all finds them by what they show.` }], isError: true };
+      }
       const key = resolveExample(exPath);
       if (!key) {
         // An address is answered by where it points, not by its last part
@@ -956,9 +1034,13 @@ export function registerTools(server, content) {
         const isAddress = /:\/\/|amcharts\.com\//i.test(String(exPath ?? ""));
         const named = isAddress ? [] : examplesNamed(exPath);
         const pointer = linkPointer(exPath);
+        // A demo's name in words ("stacked column"): that demo
+        const demo = !isAddress && named.length <= 1 && !pointer ? demoNamed(String(exPath).replace(/^examples\//, "")) : null;
+        if (demo) return { content: [{ type: "text", text: exampleText(demo.key) }] };
+        const words = String(exPath).trim().replace(/^examples\//, "").replace(/[/_-]+/g, " ");
         const text = named.length > 1
           ? `"${echo(exPath)}" names ${named.length} examples: ${named.map((k) => `\`${k}\``).join(", ")}. Use the full path.`
-          : pointer || `Example "${echo(exPath)}" not found. Use list_examples to browse available examples.`;
+          : pointer || `Example "${echo(exPath)}" not found. search_all(${JSON.stringify(words)}) finds examples by what they show. Use list_examples to browse available examples.`;
         return { content: [{ type: "text", text }] };
       }
       return { content: [{ type: "text", text: exampleText(key) }] };

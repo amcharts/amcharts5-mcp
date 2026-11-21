@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Found by giving agents (Claude Sonnet, with only this server) realistic requests and running what they wrote in Chromium on the 5.23.0 CDN.
+
+### Fixed
+- **Gantt progress is `0` to `1`.** gantt.md said `progressField` holds 0–100, and its examples used `progress: 100` and `60`, so the progress circles read "10000" and "6000". The table, the examples and cursorrules use `0`–`1` now (`0.6` = 60%), as the library and its docs do. The `linkTo` row says which way a link runs.
+- **`get_quick_start` with a chart type its reference has no example of** ("stacked column", "candlestick", "waterfall", "bubble", "scatter", "clustered column", "heat map", "bar chart race", "drill down map", …) returned the reference's first example, a plain column chart or a world map. It returns the amCharts demo whose title has the whole phrase asked ("Stacked Column Chart"), titles that start with it first; with `format: "esm"` it names the demo above the reference's example. A type no reference has ("dumbbell", "lollipop", "box plot", "pareto", "spline") gets its demo too, instead of "No reference found".
+
+### Added
+- **Frameworks as a chart type:** `get_quick_start("react")` (also `get_chart_reference`, and Next.js, Vue, Nuxt, Angular, Svelte, React Native) returns SKILL.md's Frameworks section and the framework's docs page, instead of "No reference found".
+- **Only some export formats:** SKILL.md's Exporting section and cursorrules show the menu's `items` (`exporting.get("menu").set("items", [...])`), or `<format>Options: { disabled: true }`. An agent asked for "PNG, PDF and XLSX only" wrote an amCharts 4-like `menuItems` filter, whose error stopped the rest of the page. The locale comment says what follows `root.locale` (number separators, month names, the export menu's labels).
+- `get_section` takes `chartType` as well as `file` (`chartType: "treemap"` is the hierarchy reference). `get_example` takes `name` as well as `path`, and a demo's name in words ("stacked column"); for a name no demo has, it suggests the `search_all` call.
+- `list_geodata`: matches past the first 25 are listed a line each (up to 75 more), so "usa counties" lists every state. "counties" also finds Alaska's boroughs, Louisiana's parishes and the District of Columbia.
+- hierarchy.md: the `BreadcrumbBar` goes above the chart with `container.children.unshift()`; the one-level click's comment says that selecting the open node again opens its parent.
+- 10 tests (130): `get_quick_start` "stacked column" (html and esm), "candlestick", "dumbbell", "react"; `get_section(chartType: "treemap")`; `list_geodata("usa counties")`; `get_example(name:)` by words, with hyphens, and not found. Test 99 asks "column with line", which no example or demo is named for.
+- Docs copy, Vue page: the code for a chart without the package was under "License"; it is under "Without the package", which ended on a colon (the live page has the same slip; reported to the docs team).
+
 ### Changed
 - The stock price recipe drops `extraTooltipPrecision: 2` from the price axis (stock.md's core setup and Example 1, cursorrules). With it, the axis tooltip ran past the chart's right edge: 15 px at 400 and 360 px wide, 3 px at 1100 px. Without it, the tooltip shows the labels' decimals and fits. `preferredDecimals: [0, 2]` and the `"#,###.00##"` number format stay. SKILL.md's "Value axis decimals" says the tooltip shows the labels' decimals instead of naming `extraTooltipPrecision`. Checked in Chromium on the 5.23.0 CDN.
 - Example `examples/gauges/world-clock` re-imported: `secondHandMove` sets the second hands to tick (a step each second; after the page was in the background they go straight to the time), move smoothly (on every frame the chart draws) or hide.

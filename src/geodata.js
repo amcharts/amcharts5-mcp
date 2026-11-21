@@ -10,6 +10,8 @@
 // ---------------------------------------------------------------------------
 
 const MAX_LISTED = 25;
+// Matches past MAX_LISTED, listed a line each
+const MAX_BRIEF = 75;
 
 // User text echoed back in a reply, capped so a huge query can't balloon it
 const echo = (s) => { s = String(s ?? ""); return s.length > 200 ? s.slice(0, 200) + "…" : s; };
@@ -70,9 +72,13 @@ function matches(e, packNote, words) {
       entrySet = entrySet || entryWords(e, packNote);
       return entrySet.has(w);
     }
-    return hay.includes(w);
+    return hay.includes(w) || (COUNTY_WORDS[w] || []).some((a) => hay.includes(a));
   });
 }
+
+// "counties" also finds the states whose county-level areas have other names
+// (Alaska's boroughs, Louisiana's parishes, the District of Columbia)
+const COUNTY_WORDS = { counties: ["boroughs", "parishes", "federal districts"], county: ["borough", "parish", "federal district"] };
 
 function formatEntry(e) {
   const v = e.variants ? e.variants[0] : "";
@@ -181,8 +187,18 @@ export function listGeodata(index, filter) {
   }
 
   for (const e of found.slice(0, MAX_LISTED)) text += formatEntry(e);
-  if (found.length > MAX_LISTED) {
-    text += `\n…${found.length - MAX_LISTED} more, refine the filter (add a state or ISO code, a folder or pack name, or "whole country").\n`;
+  // The next ones a line each: their names follow the same pattern
+  // ("usa counties": every state's county map, not the first 25)
+  const brief = found.slice(MAX_LISTED, MAX_LISTED + MAX_BRIEF);
+  if (brief.length) {
+    text += `\n${brief.length} more, a line each. Their names follow the same pattern: CDN \`geodata/<path>Low.js\`, global \`am5geodata_<path with / as _>Low\`, ESM \`@amcharts/amcharts5-geodata/<path>Low\` (the suffix of the first level listed):\n`;
+    for (const e of brief) {
+      const facts = [e.codes ? `ISO ${e.codes.join(", ")}` : null, e.areas != null ? `${e.areas} area${e.areas === 1 ? "" : "s"}` : null, e.variants ? e.variants.join(" / ") : null].filter(Boolean).join(" · ");
+      text += `- ${e.path} — ${e.label}${facts ? ` (${facts})` : ""}\n`;
+    }
+  }
+  if (found.length > MAX_LISTED + MAX_BRIEF) {
+    text += `\n…${found.length - MAX_LISTED - MAX_BRIEF} more, refine the filter (add a state or ISO code, a folder or pack name, or "whole country").\n`;
   }
   return text.trimEnd();
 }

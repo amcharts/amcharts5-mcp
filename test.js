@@ -850,12 +850,12 @@ const tests = [
     label: "get_quick_start('stock', esm) — names every div the code looks up",
   },
   {
-    send: { jsonrpc: "2.0", id: 99, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "candlestick" } } },
+    send: { jsonrpc: "2.0", id: 99, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "column with line" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes('No example in this reference shows "candlestick"') ? "PASS" : "FAIL (an unrelated example, unannounced)";
+      return text.includes('No example in this reference shows "column with line"') ? "PASS" : "FAIL (an unrelated example, unannounced)";
     },
-    label: "get_quick_start('candlestick') — says the example is not a candlestick one",
+    label: "get_quick_start('column with line') — no example or demo is named so: says the example is not one",
   },
   {
     send: { jsonrpc: "2.0", id: 100, method: "tools/call", params: { name: "search_all", arguments: { query: "map polygon no data tooltip", maxResults: 3, scope: "skill" } } },
@@ -1062,6 +1062,95 @@ const tests = [
         ? "PASS" : `FAIL (${text.slice(0, 200)})`;
     },
     label: "get_quick_start('bubble maps') — the singular 'bubble map' (a map) wins over 'bubble' (an XY chart)",
+  },
+  // A demo named as asked, where the reference has no such example: the demo
+  {
+    send: { jsonrpc: "2.0", id: 121, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "stacked column" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Stacked Column Chart\n") && text.includes('get_example(path: "examples/column-bar/stacked-column-chart")') && /stacked: true/.test(text)
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('stacked column') — the Stacked Column Chart demo, not the plain column example",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 122, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "candlestick" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Candlestick Chart\n") && text.includes("CandlestickSeries") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('candlestick') — the Candlestick Chart demo",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 123, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "stacked column", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes('the amCharts demo "Stacked Column Chart": get_example(path: "examples/column-bar/stacked-column-chart")') && text.includes("## Imports (ES modules)")
+        ? "PASS" : `FAIL (${text.slice(0, 300)})`;
+    },
+    label: "get_quick_start('stacked column', esm) — names the demo, and gives the reference's example under ES module imports",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 124, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "dumbbell" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Quick Start: Dumbbell Plot\n") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('dumbbell') — no reference has it, a demo does",
+  },
+  // A framework asked for as a chart type: the Frameworks section
+  {
+    send: { jsonrpc: "2.0", id: 125, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "react", format: "esm" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# amCharts 5 in React") && text.includes("useAmChart") && text.includes('get_doc("getting-started/integrations/react")')
+        ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_quick_start('react') — the React package and pattern, not 'No reference found'",
+  },
+  // get_section takes a chart type as get_chart_reference does
+  {
+    send: { jsonrpc: "2.0", id: 126, method: "tools/call", params: { name: "get_section", arguments: { chartType: "treemap", heading: "Common configuration" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Common configuration") && text.includes("skill/hierarchy.md") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_section(chartType: 'treemap') — the hierarchy reference's section",
+  },
+  // Many geodata matches: the ones past the first 25 a line each
+  {
+    send: { jsonrpc: "2.0", id: 127, method: "tools/call", params: { name: "list_geodata", arguments: { filter: "usa counties" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      const missing = ["region/usa/al", "region/usa/dc", "region/usa/tx", "region/usa/wy"].filter(p => !text.includes(p));
+      return !missing.length && !/more, refine the filter/.test(text) ? "PASS" : `FAIL (missing ${missing.join(", ")})`;
+    },
+    label: "list_geodata('usa counties') — every state's county map",
+  },
+  // get_example by `name`, and by a demo's name in words
+  {
+    send: { jsonrpc: "2.0", id: 128, method: "tools/call", params: { name: "get_example", arguments: { name: "stacked column" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Stacked Column Chart\n") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_example(name: 'stacked column') — the demo of that name",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 129, method: "tools/call", params: { name: "get_example", arguments: { name: "flight-routes" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith("# Flight Routes Map\n") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_example(name: 'flight-routes') — hyphens for spaces, part of the demo's title",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 130, method: "tools/call", params: { name: "get_example", arguments: { name: "purple-unicorn" } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.includes("not found") && text.includes('search_all("purple unicorn")') ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+    },
+    label: "get_example(name: 'purple-unicorn') — no such demo: points to search_all with the words",
   },
 ];
 
