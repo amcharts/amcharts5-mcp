@@ -1335,6 +1335,21 @@ const tests = [
     },
     label: "get_quick_start('bubble map of earthquakes') — a bubble map before a bubble chart",
   },
+  ...[
+    [169, "tree map of sales", "Treemap", "a treemap, not the tree its first word is in"],
+    [170, "us map of sales", "World choropleth map", "a place doesn't pick the example with lines"],
+    [171, "world map of population", "World choropleth map", "not the clustered points demo"],
+    [172, "world map with markers", "Map with point markers (bubble map)", "what it shows decides, not the place"],
+    [173, "us map with lines", "US map with connection lines", "the lines example when lines are asked for"],
+    [174, "speedometer for a dashboard", "Gauge with colored bands", "the chart it starts with still breaks a tie"],
+  ].map(([id, chartType, title, why]) => ({
+    send: { jsonrpc: "2.0", id, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType } } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return text.startsWith(`# Quick Start: ${title}\n`) ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: `get_quick_start('${chartType}') — ${why}`,
+  })),
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if

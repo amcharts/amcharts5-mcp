@@ -138,17 +138,23 @@ function pickExample(doc, asked) {
   if (named) return { example: named, named: true };
   // A longer request ("real-time line chart with a date axis"): the example
   // whose title has the most of its words, a chart type's word counting most.
-  // The chart the request starts with breaks a tie ("column with line")
+  // A word in every title doesn't tell them apart, nor does a place ("us map of
+  // sales", "world map of population"): then the first answers. The chart the
+  // request starts with breaks a tie ("column with line")
   const head = asWords.split(REQUEST_DETAIL)[0].replace(/(^| )(charts?|diagrams?|graphs?)$/, "").trim();
   const headExample = head && head !== asWords ? namedBy(head) : null;
   const wordsOf = (s) => new Set(s.toLowerCase().replace(/[^a-z0-9%\s-]/g, " ").split(/[\s_-]+/).map(w => singularOf(w, " "))
     .filter(w => w.length > 2 && !FILLER_WORDS.has(w) && !/^(chart|diagram|graph|plot|example)$/.test(w)));
   const weight = (w) => Object.hasOwn(CHART_TYPE_MAP, w) && !FAMILY_WORDS.has(w) && w !== "stacked" ? 10 : 1;
-  const wanted = wordsOf(asWords);
+  // "tree map of sales" asks for the title's "Treemap"
+  const spelled = Object.entries(EXAMPLE_WORDS).reduce((s, [k, v]) => k.includes(" ") ? s.replace(new RegExp(`\\b${k}s?\\b`, "g"), v) : s, asWords);
+  const titles = new Map(examples.map(s => [s, wordsOf(s.heading.replace(/^Example\s*\d*:\s*/i, ""))]));
+  const tellsApart = (w) => examples.length === 1 || ![...titles.values()].every(t => t.has(w));
+  const wanted = [...wordsOf(spelled)].filter(w => w !== "world" && tellsApart(w));
+  const headCounts = !!headExample && [...wordsOf(head)].some(tellsApart);
   let closest = null, most = 0;
   for (const s of examples) {
-    const title = wordsOf(s.heading.replace(/^Example\s*\d*:\s*/i, ""));
-    const score = [...wanted].reduce((n, w) => n + (title.has(w) ? weight(w) : 0), 0) + (s === headExample ? 0.5 : 0);
+    const score = wanted.reduce((n, w) => n + (titles.get(s).has(w) ? weight(w) : 0), 0) + (headCounts && s === headExample ? 0.5 : 0);
     if (score > most) { closest = s; most = score; }
   }
   return { example: closest || examples[0], named: false, closest: !!closest, headNamed: !!headExample };
@@ -480,6 +486,8 @@ export function registerTools(server, content) {
     const head = phrase.split(REQUEST_DETAIL)[0];
     const whole = match(phrase);
     if (whole || head === phrase || wholeRequestOnly) return whole;
+    // "world map of population" asks for a map, not the demo "World Map with Clustered Points"
+    if (referenceKey === "map" && [bare(head), singularOf(bare(head), " ")].some(w => FAMILY_WORDS.has(w))) return null;
     const byHead = match(head);
     // "heat map of usa" asks for a map, though "heat map" names an XY demo
     return byHead && referenceKey === "map" && !byHead.key.startsWith("examples/maps/") ? null : byHead;
