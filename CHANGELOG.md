@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.0] - 2026-11-22
+
 Found by giving agents (Claude Sonnet, with only this server) realistic requests and running what they wrote in Chromium on the 5.23.0 CDN.
 
 ### Fixed
