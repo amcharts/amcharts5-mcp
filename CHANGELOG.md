@@ -10,7 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Privacy text (README and the plugin's README): error and warning messages can include a request's method, URL and request ID, but not its body or tool arguments. "Keeps no request logs" was too absolute: per-request logs are off, but a warning on a request records that request.
+- Privacy text (README and the plugin's README): error and warning messages can include a request's method, full URL and request ID, but not its body or tool arguments. "Keeps no request logs" was too absolute: per-request logs are off, but a warning on a request records that request.
+
+### Fixed
+- Hosted server: broken JSON sent to the legacy `/sse/message` endpoint gets a 400. It used to crash the request, and the logged error could quote part of the body. Test 176.
 
 ## [1.10.0] - 2026-11-22
 

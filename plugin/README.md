@@ -32,7 +32,7 @@ The skill is text: it runs nothing and sends nothing. The MCP server receives th
 
 - **Tool requests** are used only to build the answer, and are not logged or stored. A response is kept in the session's storage only until it has been delivered (so a dropped stream can resume), then deleted.
 - **Session storage:** the server keeps the AI app's MCP initialize message in the session's storage. That message holds what the app says about itself (its name and version, and whatever else it puts there), the protocol version and the app's MCP capabilities. All of the session's storage is deleted when the app ends the session, or 24 hours after its last request.
-- **Logs:** per-request logs are off, so the server doesn't log every request. It runs on Cloudflare Workers, and Cloudflare processes each request, including its IP address, to deliver it. Error and warning messages are logged and kept for up to 7 days. They can include a request's method, URL and request ID, but not its body or tool arguments.
+- **Logs:** per-request logs are off, so the server doesn't log every request. It runs on Cloudflare Workers, and Cloudflare processes each request, including its IP address, to deliver it. Error and warning messages are logged and kept for up to 7 days. They can include a request's method, full URL and request ID, but not its body or tool arguments.
 
 The details are in the [Privacy section of the server's README](https://github.com/amcharts/amcharts5-mcp#privacy) and in the [amCharts privacy policy](https://www.amcharts.com/privacy-policy/).
 

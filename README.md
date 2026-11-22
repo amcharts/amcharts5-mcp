@@ -268,7 +268,7 @@ Neither the hosted server nor the npm package needs an account or asks for perso
 - **Hosted server** (`https://mcp.amcharts.com/mcp`):
   - **What your AI app sends:** a search phrase, a chart type, a doc path. These are used only to build the answer, and are not logged or stored. A response is kept in the session's storage only until it has been delivered (so a dropped stream can resume), then deleted.
   - **Session record:** when an AI app connects, the server keeps its MCP initialize message in the session's storage. That message holds what the app says about itself (its name and version, and whatever else it puts there), the protocol version and the app's MCP capabilities. All of the session's storage is deleted when the app ends the session, or 24 hours after its last request.
-  - **Logs:** Workers invocation logs are off, so the server doesn't log every request. It runs on Cloudflare Workers, and Cloudflare processes each request, including its IP address, to deliver it. Error and warning messages are logged and kept for up to 7 days. They can include a request's method, URL and request ID, but not its body or tool arguments.
+  - **Logs:** Workers invocation logs are off, so the server doesn't log every request. It runs on Cloudflare Workers, and Cloudflare processes each request, including its IP address, to deliver it. Error and warning messages are logged and kept for up to 7 days. They can include a request's method, full URL and request ID, but not its body or tool arguments.
 - **npm package:** it runs on your computer over stdio and sends nothing to amCharts or anyone else.
 - **Policy and questions:** see the [amCharts privacy policy](https://www.amcharts.com/privacy-policy/), or write to contact@amcharts.com.
 

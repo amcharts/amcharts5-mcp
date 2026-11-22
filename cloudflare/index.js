@@ -18,6 +18,7 @@ import { McpAgent } from "agents/mcp";
 import { buildContent } from "../src/content.js";
 import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "../src/tools.js";
 import { version, skillFiles, extendedFiles, geodata } from "./content.generated.js";
+import { rejectBrokenJson } from "./sse-guard.js";
 // The server's icon (serverInfo, server.json), 256×256; a Data module (wrangler.jsonc rules)
 import ICON from "./icon.png";
 
@@ -107,7 +108,7 @@ export default {
       return AmCharts5MCP.serve("/mcp").fetch(request, env, ctx);
     }
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
-      return AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx);
+      return rejectBrokenJson(request, () => AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx));
     }
     if (url.pathname === "/" || url.pathname === "") {
       return new Response(

@@ -2,6 +2,7 @@ import { spawn } from "child_process";
 import { readFileSync, readdirSync } from "fs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { rejectBrokenJson } from "./cloudflare/sse-guard.js";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
@@ -28,6 +29,14 @@ server.stdout.on("data", (chunk) => {
 server.stderr.on("data", (chunk) => {
   process.stderr.write("[stderr] " + chunk.toString());
 });
+
+// The hosted server's answer to broken JSON on the legacy SSE endpoint
+const sseMessage = new Request("https://mcp.test/sse/message", { method: "POST", body: "SECRETWORD payroll" });
+const brokenJson = await rejectBrokenJson(sseMessage, () => sseMessage.json()).catch(e => new Response(e.message, { status: 500 }));
+const brokenJsonText = await brokenJson.text();
+const otherError = await rejectBrokenJson(sseMessage, () => { throw new Error("other"); }).catch(e => e.message);
+const otherRoute = await rejectBrokenJson(new Request("https://mcp.test/sse"), () => { throw new SyntaxError("other route"); }).catch(e => e.message);
+const guardInRoute = /rejectBrokenJson\(request, \(\) => AmCharts5MCP\.serveSSE\("\/sse"\)/.test(readFileSync(`${ROOT}/cloudflare/index.js`, "utf8"));
 
 let step = 0;
 const tests = [
@@ -1351,6 +1360,11 @@ const tests = [
     },
     label: `get_quick_start('${chartType}') — ${why}`,
   })),
+  {
+    send: { jsonrpc: "2.0", id: 176, method: "ping" },
+    check: () => brokenJson.status === 400 && !brokenJsonText.includes("SECRETWORD") && otherError === "other" && otherRoute === "other route" && guardInRoute ? "PASS" : `FAIL (${brokenJson.status} ${brokenJsonText.slice(0, 80)}, ${otherError}, ${otherRoute}, in route: ${guardInRoute})`,
+    label: "hosted server: broken JSON on /sse/message gets 400 without quoting the body; other errors and routes are untouched",
+  },
 ];
 
 // Rank of the first search_all result whose source matches `want`; PASS if
