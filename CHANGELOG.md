@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Privacy text (README and the plugin's README): error and warning messages can include a request's method, URL and request ID, but not its body or tool arguments. "Keeps no request logs" was too absolute: per-request logs are off, but a warning on a request records that request.
+
 ## [1.10.0] - 2026-11-22
 
 Found by giving agents (Claude Sonnet, with only this server) realistic requests and running what they wrote in Chromium on the 5.23.0 CDN.
