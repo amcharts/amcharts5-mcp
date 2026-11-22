@@ -68,6 +68,7 @@ These cover the skill (SKILL.md, the references, cursorrules), the tool descript
 - **Skill edits.** Commit them in the submodule, then run `npm run build:plugin` here: `npm test` fails while `plugin/` differs from the skill.
 - **Tests.** `npm test` must pass, and a fix to tool behaviour or search ranking gets a test.
 - **Review.** Have every change reviewed before release by someone, or an independent agent, other than its author. Give the reviewer the sources of truth: the typings, the library source at the release tag, a browser.
+- **Versions.** Suggest the next version when a change is worth one, without waiting to be asked: a patch for fixes and content updates, a minor when the server or skill gains something new (a tool, a tool argument, server instructions, a new kind of answer), a major for a change that breaks existing clients.
 - **Commits.** No AI attribution trailers. Stage only the files your change is about, not `git add -A`: local working files and notes don't belong in a commit.
 - **Privacy.** When the Worker changes, keep README's "Privacy" section true: idle sessions are deleted after 24 hours, and Workers invocation logs are off.
 
