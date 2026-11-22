@@ -2,7 +2,7 @@
 title: "Angular Gauge with Two Axes"
 source: "https://www.amcharts.com/demos/angular-gauge-with-two-axes/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 One dial, two scales: the inner one runs to 160 and the outer one to 240, each with its own needle and readout in matching colors.
@@ -252,6 +252,24 @@ setInterval(function () {
 
   label2.set("text", value2);
 }, 2000) // every 2 seconds
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the gauge has no parts to step through: its name gives both readings, and follows the readouts
+function gaugeName() {
+  return "Gauge with two scales and a needle on each: the inner scale, 0 to 160, now at " + label1.get("text") + ", and the outer scale, 0 to 240, now at " + label2.get("text") + ". Both move to random values every two seconds";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: gaugeName()
+});
+label1.on("text", function () {
+  chart.set("ariaLabel", gaugeName());
+});
+label2.on("text", function () {
+  chart.set("ariaLabel", gaugeName());
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

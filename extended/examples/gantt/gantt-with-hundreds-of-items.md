@@ -2,7 +2,7 @@
 title: "Gantt with Hundreds of Items"
 source: "https://www.amcharts.com/demos/gantt-with-hundreds-of-items/"
 category: "gantt"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 About 200 tasks in 40 groups, generated from today’s date, to show the Gantt chart keeps up with a big plan. Scroll through the list, fold groups away, or press the fit button to zoom the timeline to the tasks in view.
@@ -115,6 +115,16 @@ gantt.series.events.on("datavalidated", function () {
 
 gantt.yAxis.data.setAll(ganttData.categories);
 gantt.series.data.setAll(ganttData.series);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+gantt.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Gantt chart of about 200 generated tasks in 40 groups, starting today. Tab to the date range, the toolbar and the groups in the task list; Enter folds or opens a group"
+});
+// the Gantt brings its own keyboard support: the date range, the toolbar buttons and the task list's groups
+// are focusable by the library
 ```
 
 ## HTML

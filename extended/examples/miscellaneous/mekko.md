@@ -2,7 +2,7 @@
 title: "Mekko Chart"
 source: "https://www.amcharts.com/demos/mekko/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Mekko chart is a stacked column chart whose columns have different widths: the width shows how big each column is, the height how it splits up. Here, five columns of different sizes, each stacked from trucks, SUVs and cars.
@@ -128,7 +128,7 @@ function createSeries(name, data) {
   bulletSeries.data.setAll(bulletSeriesData);
 
   // a value label in the middle of each block
-  bulletSeries.bullets.push(function () {
+  bulletSeries.bullets.push(function (root, series, dataItem) {
     return am5.Bullet.new(root, {
       locationX: 0.5, // in the middle of the column...
       locationY: 0.5, // ...halfway up
@@ -137,6 +137,11 @@ function createSeries(name, data) {
         centerY: am5.p50, // ...centered on that point...
         centerX: am5.p50, // ...both ways...
         populateText: true, // ...filled in from the data item
+        // keyboard and screen readers (see Accessibility below): one Tab stop for each series' blocks (a focusable
+        // group), the arrow keys step through them
+        focusable: true,
+        focusableGroup: name,
+        ariaLabel: name + ", column " + (series.dataItems.indexOf(dataItem) + 1) + " of 5: {valueY}",
         background: am5.RoundedRectangle.new(root, { // on a box in the background color
           fill: root.interfaceColors.get("background")
         })
@@ -193,6 +198,20 @@ var series3 = createSeries(
     { "ax": 100, "ay": 30 }
   ]
 );
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Mekko chart of five columns of different widths, each stacked from trucks, SUVs and cars. Tab to the trucks', SUVs' or cars' blocks, then move between the columns with the arrow keys"
+});
+// the blocks' value labels: set up for the keyboard where they are made, in the bullet function above
+// the legend: one Tab stop too, after the blocks; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

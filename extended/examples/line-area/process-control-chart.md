@@ -2,7 +2,7 @@
 title: "Process Control Chart"
 source: "https://www.amcharts.com/demos/process-control-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A process control chart: 23 samples against an upper and a lower limit, with the zone between them shaded. Three fall outside, the signal to look for a cause.
@@ -120,12 +120,18 @@ var bulletTemplate = am5.Template.new({
 });
 
 // a dot on every point
-series.bullets.push(function () {
+series.bullets.push(function (root, series, dataItem) {
+  // keyboard and screen readers (see Accessibility below): one Tab stop for all the samples (a focusable group),
+  // the arrow keys step through them, and one outside the limits says so
+  var value = dataItem.get("valueY");
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
       fill: series.get("fill"), // the series color
       stroke: root.interfaceColors.get("background"), // a ring in the background color...
-      strokeWidth: 2 // ...2px wide, sets each dot off the line
+      strokeWidth: 2, // ...2px wide, sets each dot off the line
+      focusable: true,
+      focusableGroup: "samples",
+      ariaLabel: "Sample {valueX}: {valueY}" + (value < 10 || value > 20 ? ", outside the control limits" : "")
     }, bulletTemplate)
   });
 });
@@ -141,6 +147,15 @@ cursor.lineY.set("visible", false); // only the vertical cursor line, no horizon
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // a scrollbar along the top, to zoom in on part of the line
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Process control chart of 23 samples against a lower control limit of 10 and an upper one of 20, with the process average at 15; three samples fall outside the limits. Tab to the samples, then move between them with the arrow keys"
+});
+// the samples: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

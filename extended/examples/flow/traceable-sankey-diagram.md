@@ -2,7 +2,7 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Sankey diagram you can trace: point at a band and every step of its path lights up, from the first column to the last. Here, thirteen paths, four stages.
@@ -128,6 +128,44 @@ series.data.setAll([
 
   { from: "L", to: "W", value: 1, id: "D0-2" }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Sankey diagram of thirteen paths through four stages, between nodes named with letters. Tab to the nodes or the links, then move through them with the arrow keys; a focused link lights up its whole path, and Enter on a node hides or shows its links"
+});
+// the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
+// links, as a click does
+series.nodes.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "nodes",
+  ariaLabel: "{name}: {sum}"
+});
+// the links between them: one Tab stop too, after the nodes
+series.links.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "links",
+  tabindexOrder: 5,   // after the nodes
+  ariaLabel: "{sourceId} to {targetId}"
+});
+// a focused link lights up its whole path, as the pointer does
+series.links.template.events.on("focus", function (event) {
+  var id = event.target.dataItem.get("id").split("-")[0];
+  am5.array.each(series.dataItems, function (dataItem) {
+    if (dataItem.get("id").indexOf(id) != -1) {
+      dataItem.get("link").hover();
+    }
+  });
+});
+series.links.template.events.on("blur", function () {
+  am5.array.each(series.dataItems, function (dataItem) {
+    dataItem.get("link").unhover();
+  });
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

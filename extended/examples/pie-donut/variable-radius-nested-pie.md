@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Pie"
 source: "https://www.amcharts.com/demos/variable-radius-nested-pie/"
 category: "pie-donut"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 How the EU grew: the inner ring shows each enlargement from 1957 to 2007, the outer ring the countries that joined, sized by population today.
@@ -172,6 +172,27 @@ am5.object.each(data, function(year, countries) {
 // https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series0.data.setAll(innerData);
 series1.data.setAll(outerData);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Nested pie chart of how the EU grew: the inner ring shows the seven enlargements from 1957 to 2007, the outer ring the 27 countries that joined, sized by population today. Tab to a ring, then move between its slices with the arrow keys"
+});
+// each ring's slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series0.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "years",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "Joined in {category}: {value.formatNumber('#.0a')} people today"
+});
+series1.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true,
+  ariaLabel: "{category}: {value.formatNumber('#.0a')} people"
+});
 
 // Play initial series animation
 // https://docs.amcharts.com/v5/concepts/animations/#animation-of-series

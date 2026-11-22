@@ -2,7 +2,7 @@
 title: "Compass Chart"
 source: "https://www.amcharts.com/demos/compass-chart/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A compass made from a gauge: the dial with N, E, S and W turns, while the needle stays put and points at the heading. Every two seconds it swings to a new direction.
@@ -188,6 +188,24 @@ setInterval(function () {
     easing: am5.ease.out(am5.ease.cubic)
   });
 }, 2000);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the compass has no parts to step through: its name gives the heading, and follows the dial
+var directions = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"];
+function compassName(heading) {
+  heading = Math.round(heading) % 360; // whole degrees, 360 read as 0
+  return "Compass with a fixed needle and a dial that turns under it, now heading " + heading + " degrees, " +
+    directions[Math.round(heading / 45) % 8] + ". It turns to a random heading every two seconds";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: compassName(axisDataItemN.get("value")) // the heading is the dial's value under the needle's north end
+});
+axisDataItemN.on("value", function (heading) {
+  chart.set("ariaLabel", compassName(heading));
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

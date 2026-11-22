@@ -2,7 +2,7 @@
 title: "Pareto Diagram"
 source: "https://www.amcharts.com/demos/pareto-diagram/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Pareto chart sorts columns from largest to smallest, with a line that sums them up. Here, visits from 10 countries, two thirds of them from the first four.
@@ -196,13 +196,34 @@ paretoSeries.bullets.push(function () {
     sprite: am5.Circle.new(root, {
       radius: 5, // 5px radius
       fill: series.get("fill"), // filled in the column series' color...
-      stroke: root.interfaceColors.get("alternativeBackground") // ...and outlined in the contrast color
+      stroke: root.interfaceColors.get("alternativeBackground"), // ...and outlined in the contrast color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the dots (a focusable group), the
+      // arrow keys step through them
+      focusable: true,
+      focusableGroup: "running total",
+      ariaLabel: "Running total up to {categoryX}: {valueY.formatNumber('#.')}% of all visits"
     })
   })
 })
 
 series.data.setAll(data);
 paretoSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pareto chart of visits from 10 countries, sorted from most to fewest, with a line of their running total in percent. Tab to the columns or the line, then move between the countries with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "visits",
+  hoverOnFocus: true, // a focused column shows its tooltip
+  ariaLabel: "{categoryX}: {valueY} visits"
+});
+// the running total: its dots are set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Box Plot Chart"
 source: "https://www.amcharts.com/demos/box-plot-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A box plot sums up a spread of values in one mark: the box holds the middle half, the line across it is the median, and the whiskers reach the lowest and highest values. Here, nine days side by side.
@@ -41,7 +41,6 @@ root.setThemes([
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can take keyboard focus, for keyboard users
     panX: true,      // drag the plot sideways to pan...
     panY: true,      // ...or up and down
     wheelX: "panX",  // a horizontal wheel or trackpad swipe pans
@@ -212,6 +211,20 @@ series.data.processor = am5.DataProcessor.new(root, {
 
 series.data.setAll(data);
 medianSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Box plot of nine days, August 1 to 9, 2025: each box spans the middle half of the day's values, with the median across it and whiskers to the lowest and highest value. Tab to the boxes, then move between the days with the arrow keys"
+});
+// the boxes: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "boxes",
+  ariaLabel: "{valueX.formatDate('MMMM d')}: max {highValueY}, third quartile {valueY}, median {median}, first quartile {openValueY}, min {lowValueY}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

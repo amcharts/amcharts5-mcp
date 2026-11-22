@@ -2,7 +2,7 @@
 title: "Scatter Chart"
 source: "https://www.amcharts.com/demos/scatter-chart/"
 category: "xy-bubble"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A scatter chart places each point by two values, one per axis. Here, two sets of 12 points, as upward and downward triangles, each with its trend line.
@@ -87,7 +87,12 @@ series0.bullets.push(function() {
   var graphics = am5.Triangle.new(root, {
     fill: series0.get("fill"), // the series' color
     width: 15,                 // 15px wide...
-    height: 13                 // ...and 13px tall
+    height: 13,                // ...and 13px tall
+    // keyboard and screen readers (see Accessibility below): one Tab stop for these triangles (a focusable
+    // group), the arrow keys step through them
+    focusable: true,
+    focusableGroup: "up",
+    ariaLabel: "Upward triangle, x: {valueX}, y: {valueY}"
   });
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -119,7 +124,11 @@ series1.bullets.push(function() {
     width: 15,
     height: 13,
     // pointing down, so the second series differs in shape as well as color
-    rotation: 180
+    rotation: 180,
+    // keyboard and screen readers: one Tab stop for these triangles, as for the first series
+    focusable: true,
+    focusableGroup: "down",
+    ariaLabel: "Downward triangle, x: {valueX}, y: {valueY}"
   });
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -253,6 +262,15 @@ series1.data.setAll(data);
 
 trendSeries0.data.setAll(trendLine(data, "ax", "ay"));
 trendSeries1.data.setAll(trendLine(data, "bx", "by"));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Scatter chart of two sets of 12 points, x from 1 to 12, drawn as upward and downward triangles, each with a straight trend line; both rise. Tab to a set's triangles, then move between them with the arrow keys"
+});
+// the triangles: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

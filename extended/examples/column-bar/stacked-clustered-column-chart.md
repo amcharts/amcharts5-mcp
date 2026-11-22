@@ -2,7 +2,7 @@
 title: "Stacked and Clustered Column Chart"
 source: "https://www.amcharts.com/demos/stacked-clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 Stacks side by side: each year, North America stacks on Europe in one column, and Latin America, the Middle East and Africa on Asia in the next.
@@ -176,6 +176,28 @@ makeSeries("Asia", "asia", false);
 makeSeries("Latin America", "lamerica", true);
 makeSeries("Middle East", "meast", true);
 makeSeries("Africa", "africa", true);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stacked and clustered column chart of six regions over 2023, 2024 and 2025: North America stacked on Europe, and Latin America, the Middle East and Africa on Asia. Tab to a region's columns, then move between its years with the arrow keys"
+});
+// each region's columns: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused column shows its tooltip
+    ariaLabel: "{name}, {categoryX}: {valueY}"
+  });
+});
+// the legend: one Tab stop too, after the columns; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

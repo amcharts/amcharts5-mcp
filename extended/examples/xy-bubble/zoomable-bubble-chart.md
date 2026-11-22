@@ -2,7 +2,7 @@
 title: "Zoomable Bubble Chart"
 source: "https://www.amcharts.com/demos/zoomable-bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Each bubble is a country: wealth along the bottom, life expectancy up the side, population as size, continent as color. Zoom in where they crowd.
@@ -1482,7 +1482,12 @@ continents.forEach(function(continent) {
   series.bullets.push(function() {
     var bulletCircle = am5.Circle.new(root, {
       radius: 5,               // the starting size; the heat rule sets the real one
-      fill: series.get("fill") // the continent's color
+      fill: series.get("fill"), // the continent's color
+      // keyboard and screen readers (see Accessibility below): one Tab stop per continent (a focusable group),
+      // the arrow keys step through its countries
+      focusable: true,
+      focusableGroup: series.get("name"),
+      ariaLabel: "{title}: life expectancy {valueY.formatNumber('#.0')} years, GDP per capita ${valueX.formatNumber('#,###.')}, population {value.formatNumber('#,###.')}"
     }, circleTemplate);
     return am5.Bullet.new(root, {
       sprite: bulletCircle
@@ -1554,6 +1559,20 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 chart.set("scrollbarY", am5.Scrollbar.new(root, {
   orientation: "vertical"
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bubble chart of 168 countries: GDP per capita across, life expectancy up, population as bubble size, one color per continent. Tab to a continent's countries, then move between them with the arrow keys"
+});
+// the countries: set up for the keyboard where they are made, in the bullet function above
+// the legend: one Tab stop too, after the countries; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

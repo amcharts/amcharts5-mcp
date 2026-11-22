@@ -2,7 +2,7 @@
 title: "Stadium Track Chart"
 source: "https://www.amcharts.com/demos/stadium-track-chart/"
 category: "timeline"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Six values as a race: each runner has a lane on an oval track, and their bar runs from the start line around the oval as far as their value takes it. Photos in the middle name the runners.
@@ -161,7 +161,7 @@ series.bullets.push(function (root, series, dataItem) {
   })
 })
 
-var data = [{ name: "Chandler", file: "https://www.amcharts.com/wp-content/uploads/assets/timeline/chandler.jpg", track: 1, value: 450 }, { name: "Ross", file: "https://www.amcharts.com/wp-content/uploads/assets/timeline/ross.jpg", track: 2, value: 650 }, { name: "Joey", file: "https://www.amcharts.com/wp-content/uploads/assets/timeline/joey.jpg", track: 3, value: 578 }, { name: "Monica", file: "https://www.amcharts.com/wp-content/uploads/assets/timeline/monica.jpg", track: 4, value: 730 }, { name: "Phoebe", file: "https://www.amcharts.com/wp-content/uploads/assets/timeline/phoebe.jpg", track: 5, value: 490 }, { name: "Rachel", file: "https://www.amcharts.com/wp-content/uploads/assets/timeline/rachel.jpg", track: 6, value: 532 }];
+var data = [{ name: "Chandler", file: "https://www.amcharts.com/static/assets/timeline/chandler.jpg", track: 1, value: 450 }, { name: "Ross", file: "https://www.amcharts.com/static/assets/timeline/ross.jpg", track: 2, value: 650 }, { name: "Joey", file: "https://www.amcharts.com/static/assets/timeline/joey.jpg", track: 3, value: 578 }, { name: "Monica", file: "https://www.amcharts.com/static/assets/timeline/monica.jpg", track: 4, value: 730 }, { name: "Phoebe", file: "https://www.amcharts.com/static/assets/timeline/phoebe.jpg", track: 5, value: 490 }, { name: "Rachel", file: "https://www.amcharts.com/static/assets/timeline/rachel.jpg", track: 6, value: 532 }];
 yAxis.data.setAll(data);
 series.data.setAll(data);
 series.appear(3000, 100); // the bars grow over 3 seconds
@@ -229,6 +229,27 @@ legend.itemContainers.template.events.on("pointerout", function (e) {
 });
 
 legend.data.setAll(series.dataItems);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stadium track chart of six runners' values from 0 to 1,000, each a bar in its own lane running around an oval track: Monica 730, Ross 650, Joey 578, Rachel 532, Phoebe 490 and Chandler 450. Tab to the bars, then move between the runners with the arrow keys"
+});
+// the bars: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "runners",
+  // no hoverOnFocus: a focused bar's tooltip would show in the middle of the oval, away from the bar
+  ariaLabel: "{categoryY}: {valueX}"
+});
+// the legend: one Tab stop too, after the bars; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // the track's shape for the X axis to follow: two straights joined by half circles
 function getPoints() {

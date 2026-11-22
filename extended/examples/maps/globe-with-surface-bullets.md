@@ -2,7 +2,7 @@
 title: "Globe with Surface Bullets"
 source: "https://www.amcharts.com/demos/globe-with-surface-bullets/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Twelve city pins that lie on the surface of the globe, as if painted on it: they turn with the globe and flatten towards its edge.
@@ -120,7 +120,12 @@ pointSeries.bullets.push(function() {
       svgPath: "M0,0 C-5,-7 -9,-11 -9,-17 A9,9 0 1 1 9,-17 C9,-11 5,-7 0,0 Z M0,-20.5 A3.5,3.5 0 1 0 0,-13.5 A3.5,3.5 0 1 0 0,-20.5 Z",
       stroke: root.interfaceColors.get("background"), // an outline in the background color...
       strokeWidth: 1,        // ...1px wide
-      tooltipText: "{title}" // the city's name on hover
+      tooltipText: "{title}", // the city's name on hover
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the cities (a focusable group),
+      // the arrow keys step through them. No tooltip on focus: on a pin that lies on the globe it shows away from it
+      focusable: true,
+      focusableGroup: "cities",
+      ariaLabel: "{title}"
     }, pinTemplate)
   });
 });
@@ -172,6 +177,21 @@ satelliteSeries.on("visible", function(visible) {
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Globe with twelve city pins that lie flat on its surface. Tab to the countries or the cities, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the cities: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

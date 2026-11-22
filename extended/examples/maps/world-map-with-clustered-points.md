@@ -2,7 +2,7 @@
 title: "World Map with Clustered Points"
 source: "https://www.amcharts.com/demos/world-map-with-clustered-points/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The capitals of 165 countries on a world map. Where the dots crowd, they merge into groups with a count, and the groups break up into single cities as you zoom in.
@@ -131,7 +131,12 @@ var circleTemplate = am5.Template.new({
 // https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/#group-bullet
 pointSeries.set("clusteredBullet", function(root) {
   var container = am5.Container.new(root, {
-    cursorOverStyle: "pointer" // a hand cursor: a group can be clicked
+    cursorOverStyle: "pointer", // a hand cursor: a group can be clicked
+    // keyboard and screen readers (see Accessibility below): in one Tab stop with the single capitals, and Enter
+    // zooms in, as a click does
+    focusable: true,
+    focusableGroup: "capitals",
+    ariaLabel: "A group of {value} capitals"
   });
 
   // a solid dot inside two faint rings, with the group's number of cities on top
@@ -175,7 +180,13 @@ pointSeries.set("clusteredBullet", function(root) {
 pointSeries.bullets.push(function() {
   var circle = am5.Circle.new(root, {
     tooltipY: 0,           // the tooltip points at the top of the dot
-    tooltipText: "{title}" // the city's name
+    tooltipText: "{title}", // the city's name
+    // keyboard and screen readers: one Tab stop for all the capitals and groups (a focusable group), the arrow keys
+    // step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "capitals",
+    hoverOnFocus: true,
+    ariaLabel: "{title}"
   }, circleTemplate);
 
   return am5.Bullet.new(root, {
@@ -398,6 +409,21 @@ satelliteSeries.on("visible", function(visible) {
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of the capitals of 165 countries, where crowded ones merge into groups. Tab to the capitals, move between them with the arrow keys, and press Enter on a group to zoom in until it breaks up"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the capitals and the groups: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 chart.appear(1000, 100);

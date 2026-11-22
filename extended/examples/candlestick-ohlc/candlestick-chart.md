@@ -2,7 +2,7 @@
 title: "Candlestick Chart"
 source: "https://www.amcharts.com/demos/candlestick-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A candlestick chart packs a day of trading into one mark: the body spans the opening and closing price, the wick the day’s low and high. This one holds 2,000 days; zoom out and they merge into weekly, then monthly candles.
@@ -77,7 +77,6 @@ var data = generateChartData();
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can take keyboard focus, for keyboard users
     panX: true,      // drag the plot sideways to pan...
     panY: true,      // ...or up and down
     wheelX: "panX",  // a horizontal wheel or trackpad swipe pans
@@ -226,6 +225,20 @@ series.events.once("datavalidated", function () {
 // set data
 series.data.setAll(data);
 sbseries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Candlestick chart of 2,000 days of random prices up to today, showing the last three months; zoomed out, days group into weeks and months. The chart has too many candles to step through with the keyboard"
+});
+// no focusable points on the candles: zoomed out, hundreds of them would slow down loading, zooming and panning
+// the legend: after the candles
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Vertically Stacked Axes Chart"
 source: "https://www.amcharts.com/demos/vertically-stacked-axes-chart/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 One chart split into three panes stacked on top of each other, each with its own value axis, and one row of names along the bottom for all three. Here, a sales team’s quarter: deals closed, calls made and revenue per person.
@@ -190,13 +190,18 @@ function createSeries(field, name, margin, column) {
   }
 
   if (!column) {
-    series.bullets.push(function() {
+    series.bullets.push(function (root, series) {
       return am5.Bullet.new(root, {
         locationY: 1,   // at the value
         locationX: 0.5, // in the middle of the person's cell
         sprite: am5.Circle.new(root, {
-          radius: 4,               // a dot 8px across
-          fill: series.get("fill") // in the line's color
+          radius: 4,                // a dot 8px across
+          fill: series.get("fill"), // in the line's color
+          // keyboard and screen readers (see Accessibility below): one Tab stop for each line's dots (a focusable
+          // group), the arrow keys step through them
+          focusable: true,
+          focusableGroup: name,
+          ariaLabel: "{categoryX}, {name}: {valueY}"
         })
       });
     });
@@ -250,6 +255,25 @@ cursor.events.on("cursormoved", function() {
     tooltip.show(300);
   }
 })
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Chart in three stacked panes of a made-up sales team of 19 people: deals closed and calls made as lines, revenue in thousands of dollars as columns. Tab to a pane's points or columns, then move between people with the arrow keys"
+});
+// the dots of the two lines: set up for the keyboard where they are made, in the bullet function above
+// the revenue columns: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  if (series.columns) {
+    series.columns.template.setAll({
+      focusable: true,
+      focusableGroup: series.get("name"),
+      ariaLabel: "{categoryX}, {name}: {valueY}"
+    });
+  }
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

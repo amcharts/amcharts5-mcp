@@ -2,7 +2,7 @@
 title: "Simple Column Chart"
 source: "https://www.amcharts.com/demos/simple-column-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A column chart gives each period its own bar standing on the axis, so the highs and lows stand out. This one holds three weeks of daily values, with a scrollbar to zoom in on a few days.
@@ -136,6 +136,20 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 var data = generateDatas(21); // three weeks
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column chart of a daily value over three weeks. Tab to the columns, then move between the days with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "columns",
+  ariaLabel: "{valueX.formatDate('EEEE, MMMM d')}: {valueY}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Motion Chart"
 source: "https://www.amcharts.com/demos/motion-chart/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Gapminder-style motion chart of made-up data: each bubble is a country, colored by continent and sized by a third value. Press play for 1903 to 2025.
@@ -476,7 +476,13 @@ bubbleSeries.bullets.push(function() {
     templateField: "settings", // the continent color from settings in the data
     fillOpacity: 0.9,          // almost solid
     // the name in large bold type, then the metrics, formatted
-    tooltipText: "[fontSize:18px; bold]{name}[/]\nMetric X: {valueX.formatNumber('#,###.')}\nMetric Y: {valueY.formatNumber('#.0')}\nBubble size: {value.formatNumber('#,###.')}"
+    tooltipText: "[fontSize:18px; bold]{name}[/]\nMetric X: {valueX.formatNumber('#,###.')}\nMetric Y: {valueY.formatNumber('#.0')}\nBubble size: {value.formatNumber('#,###.')}",
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the bubbles (a focusable group),
+    // the arrow keys step through them, the focused one shows its tooltip, and Enter shows or hides its trail
+    focusable: true,
+    focusableGroup: "countries",
+    hoverOnFocus: true,
+    ariaLabel: "{name}: metric X {valueX.formatNumber('#,###.')}, metric Y {valueY.formatNumber('#.0')}, bubble size {value.formatNumber('#,###.')}"
   }, circleTemplate);
   return am5.Bullet.new(root, {
     sprite: bulletCircle
@@ -741,6 +747,30 @@ function updateSeriesData(year) {
 }
 
 bubbleSeries.data.setAll(yearData[currentYear]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Motion chart of made-up data: a bubble per country on two metrics, colored by continent and sized by a third value, for one year from 1903 to 2025. Tab to the bubbles and move between them with the arrow keys; Enter shows a country's trail. Then Tab to the continents on the small map, and to the play button and the year slider"
+});
+// the bubbles: set up for the keyboard where they are made, in the bullet function above
+// the continents on the small map: one Tab stop, after the bubbles; Enter shows only that continent's bubbles
+polygonTemplate.setAll({
+  focusable: true,
+  focusableGroup: "continents",
+  hoverOnFocus: true, // a focused continent shows its name
+  ariaLabel: "{name}",
+  tabindexOrder: 5
+});
+// the play button and the year slider come last
+playButton.setAll({
+  role: "button",
+  ariaLabel: "Play or pause",
+  tabindexOrder: 10
+});
+slider.startGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

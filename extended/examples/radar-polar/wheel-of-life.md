@@ -2,7 +2,7 @@
 title: "Interactive Wheel of Life"
 source: "https://www.amcharts.com/demos/wheel-of-life/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A wheel of life asks how satisfied you are with eight areas of life and draws the answers as a ring of slices. Pick a score for each area and watch the wheel fill in.
@@ -105,6 +105,22 @@ var data = areas.map(function(area) {
 
 series.data.setAll(data);
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Wheel of life: eight areas of life, each a slice scored from 0 to 10 with the buttons above the chart. Tab to the areas you have scored, then move between them with the arrow keys"
+});
+// the areas' slices: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+  focusable: true,
+  focusableGroup: "areas",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{categoryX}: {valueY} of 10"
+});
 
 // Animate chart
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

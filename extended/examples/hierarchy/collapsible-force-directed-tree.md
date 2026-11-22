@@ -2,7 +2,7 @@
 title: "Collapsible Force-Directed Tree"
 source: "https://www.amcharts.com/demos/collapsible-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A force-directed tree links bubbles with lines and lets them push and pull until they settle. This one maps the flavors of coffee, from families like Fruity down to single notes, and opens a branch when you click it.
@@ -554,6 +554,22 @@ series.nodes.template.set("tooltipText", "{category}");
 series.data.setAll([data]);
 
 series.set("selectedDataItem", series.dataItems[0]); // start at the top of the tree
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Force-directed tree of coffee flavors, from nine families like Fruity down to single notes. Tab to the flavors, move between them with the arrow keys, and press Enter to open or close one"
+});
+// the flavors: one Tab stop (a focusable group), the arrow keys step through them; Enter opens or closes one
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "flavors",
+  hoverOnFocus: true, // a focused flavor shows its tooltip
+  ariaLabel: "{category}"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

@@ -2,7 +2,7 @@
 title: "Live Data"
 source: "https://www.amcharts.com/demos/live-data/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart that never sits still: every second a new point slides in on the right and the oldest one drops off the left.
@@ -66,7 +66,6 @@ var data = generateChartData();
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  focusable: true, // the chart can be reached with the Tab key
   panX: true,      // drag the plot sideways to pan through the days
   panY: true,      // and up and down
   wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
@@ -133,7 +132,12 @@ series.bullets.push(function () {
     // no fixed location, so the bullet follows its point as it slides in
     locationX: undefined,
     sprite: am5.Circle.new(root, {
-      fill: series.get("fill") // in the line's color
+      fill: series.get("fill"), // in the line's color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: {valueY.formatNumber('#.00')}"
     }, bulletTemplate)
   })
 });
@@ -196,6 +200,15 @@ function addData() {
     }
   }
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Live line chart of a random daily value over 16 days; every second a new day is added on the right and the oldest dropped. Tab to the line, then move along it with the arrow keys"
+});
+// the dots: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

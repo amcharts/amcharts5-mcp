@@ -2,7 +2,7 @@
 title: "Sunburst Flavor Wheel"
 source: "https://www.amcharts.com/demos/sunburst-flavor-wheel/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A sunburst chart shows a hierarchy as rings: the inner ring holds the groups, the outer ring what each is made of. This one is a coffee aroma wheel, 75 aromas in 13 families, each with its own color.
@@ -308,6 +308,38 @@ var data = [{
 
 series.data.setAll(data);
 series.set("selectedDataItem", series.dataItems[0]); // start with the whole wheel showing
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Sunburst chart of a coffee aroma wheel, 75 aromas in 13 families. Tab to the aromas, move between them with the arrow keys, and press Enter on a family to open or close it"
+});
+// the families and aromas: one Tab stop (a focusable group), the arrow keys step through them; Enter opens a family
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "aromas",
+  ariaLabel: "{category}"
+});
+// the white gaps between the families have no name: leave them out
+am5.array.each(series.dataItems[0].get("children"), function (dataItem) {
+  if (!dataItem.dataContext.name) {
+    dataItem.get("node").set("focusable", false);
+  }
+});
+// the credit is a link: one Tab stop after the wheel, and Enter opens it
+credits.setAll({
+  focusable: true,
+  role: "link",
+  ariaLabel: "Inspired by CoffeeMind: open the original aroma wheel",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
+// the zoom buttons are focusable by the library: they come last
+[zoomTools.homeButton, zoomTools.plusButton, zoomTools.minusButton].forEach(function (button) {
+  button.set("tabindexOrder", 20);
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

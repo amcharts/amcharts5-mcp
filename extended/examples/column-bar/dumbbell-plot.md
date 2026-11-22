@@ -2,7 +2,7 @@
 title: "Dumbbell Plot"
 source: "https://www.amcharts.com/demos/dumbbell-plot/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The dumbbell plot standing up: for each of 29 people, two dots on a vertical line, the lower one a start value and the upper one an end value. The longer the line, the bigger the change.
@@ -181,6 +181,20 @@ for (var i = 0; i < names.length; i++) {
 
 xAxis.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Dumbbell plot of a made-up start and end value for each of 29 people. Tab to the dumbbells, then move between the people with the arrow keys"
+});
+// the dumbbells (their bars): one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "dumbbells",
+  ariaLabel: "{categoryX}: from {openValueY} to {valueY}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

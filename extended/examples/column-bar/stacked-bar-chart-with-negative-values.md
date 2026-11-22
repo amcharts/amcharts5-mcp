@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart with Negative Values"
 source: "https://www.amcharts.com/demos/stacked-bar-chart-with-negative-values/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A population pyramid: men to the left, women to the right, one pair of bars for each age group, from 0–4 at the bottom to 85+ at the top. The men’s values are negative in the data, and the labels show them without the minus sign.
@@ -258,6 +258,23 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 cursor.lineY.set("forceHidden", true); // no cursor lines...
 cursor.lineX.set("forceHidden", true); // ...only the tooltips
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Population pyramid of men and women in 18 age groups, from 0-4 to 85 and over, men to the left and women to the right. Tab to the men's or the women's bars, then move between the age groups with the arrow keys"
+});
+// each side's bars: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  var side = series.get("valueXField") == "male" ? "Men" : "Women";
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: side,
+    ariaLabel: side + ", {categoryY}: {valueX}"
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

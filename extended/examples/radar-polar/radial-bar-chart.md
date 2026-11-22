@@ -2,7 +2,7 @@
 title: "Radial Bar Chart"
 source: "https://www.amcharts.com/demos/radial-bar-chart/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A stacked bar chart bent into rings: each ring is an age group, and its bar runs around the circle, split by activity. Here, minutes a day spent on the phone.
@@ -158,6 +158,30 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 yAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radial stacked bar chart of the minutes a day six age groups spend on the phone, split into five activities. Tab to an activity, then move between the age groups with the arrow keys"
+});
+// each activity's bars: one Tab stop (a focusable group), the arrow keys step through the age groups
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusable: true,
+    role: "figure",
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused bar shows its tooltip
+    ariaLabel: "{categoryY}, {name}: {valueX} minutes"
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

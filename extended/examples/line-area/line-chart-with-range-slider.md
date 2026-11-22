@@ -2,7 +2,7 @@
 title: "Line Chart with Range Slider"
 source: "https://www.amcharts.com/demos/line-chart-with-range-slider/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart split in two by a handle you can drag. Everything past the handle changes color and turns striped: a way to mark a forecast, a target period or figures still to be confirmed.
@@ -174,7 +174,10 @@ var resizeButton = am5.Button.new(root, {
   themeTags: ["resize", "horizontal"],
   icon: am5.Graphics.new(root, {
     themeTags: ["icon"]
-  })
+  }),
+  // keyboard and screen readers (see Accessibility below): the handle is focusable by default, and the left and right
+  // arrow keys move it; this names it (the library's own text speaks of up and down arrows)
+  ariaLabel: "Start of the striped part. Move it with the left and right arrow keys"
 });
 
 // restrict from being dragged vertically
@@ -204,6 +207,16 @@ resizeButton.events.on("dragged", function () {
 range.set("bullet", am5xy.AxisBullet.new(root, {
   sprite: resizeButton
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 1,200 days, striped from a handle at the halfway point on. Tab to the handle and move it with the left and right arrow keys; the line has too many points to step through with the keyboard"
+});
+// no focusable points on the line: 1,200 of them would slow the chart down
+// the handle: named where it is made, above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

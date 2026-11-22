@@ -2,7 +2,7 @@
 title: "Violin Chart"
 source: "https://www.amcharts.com/demos/violin-chart/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A violin chart shows how values are spread: the shape is widest where most values fall and thin where few do, mirrored around its middle line. Here, about 200 values in each of four regions, one violin per row.
@@ -75,7 +75,7 @@ xRenderer.labels.template.setAll({
   location: 0.5, // in the middle of each range's cell
   multiLocation: 0.5,
   centerX: am5.p100, // the label ends at its range and runs down to the left
-  centerY: am5.p50,
+  centerY: am5.p50
 });
 
 xRenderer.grid.template.setAll({
@@ -198,6 +198,31 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal",
   forceHidden: true
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Violin chart of how about 200 values in each of four regions, the Americas, Europe, Asia and Africa, spread over ranges two wide. Tab to a region's violin, then move between its ranges with the arrow keys"
+});
+// the ranges: invisible points on each violin's top edge, one Tab stop per region (a focusable group), the arrow
+// keys step through them
+var regions = Object.keys(sourceData); // the series were made in this order
+chart.series.each(function (series, i) {
+  series.bullets.push(function (root, series) {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,          // not painted: the violins look as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: regions[i],
+        ariaLabel: regions[i] + ", {categoryX}: {count} values"
+      })
+    });
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

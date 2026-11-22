@@ -2,7 +2,7 @@
 title: "Maps and Charts Dashboard"
 source: "https://www.amcharts.com/demos/maps-and-charts-dashboard/"
 category: "dashboards"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Five charts in one dashboard: a world heat map of sample rates for 200 countries, a donut, a radar chart, a line and a column chart. The donut and the radar chart sum up the map; point at a country and its continent lights up.
@@ -487,6 +487,30 @@ function makeLineSeriesChart(parent) {
 
   chart.set("cursor", am5xy.XYCursor.new(root, {})); // the cursor shows the tooltips of both lines
 
+  // Keyboard and screen readers (see Accessibility at the end): the chart's name, then invisible points on each
+  // line, one Tab stop per line (a focusable group); the arrow keys step through its years
+  chart.setAll({
+    focusable: true,
+    role: "figure",
+    tabindexOrder: 2, // the second chart of the dashboard
+    ariaLabel: "Line chart of income and expenses by year, 2021 to 2026; 2026 is a projection. Tab to a line, then move through its years with the arrow keys"
+  });
+  [series1, series2].forEach(function (series) {
+    series.bullets.push(function (root, series) {
+      return am5.Bullet.new(root, {
+        sprite: am5.Circle.new(root, {
+          radius: 5,
+          fillOpacity: 0,      // not painted: the line looks as before
+          strokeOpacity: 0,
+          focusable: true,
+          focusableGroup: series.get("name"),
+          tabindexOrder: 2,
+          ariaLabel: "{name}, {categoryX}: {valueY} {info}"
+        })
+      });
+    });
+  });
+
   // Make stuff animate on load
   // https://docs.amcharts.com/v5/concepts/animations/
   chart.appear(1000, 100);
@@ -621,6 +645,30 @@ function makeRadarGauge(parent, averages) {
     highlightCountries();
   });
 
+  // Keyboard and screen readers (see Accessibility at the end): the chart's name, then its rings, one Tab stop (a
+  // focusable group); the arrow keys step through them, and a focused ring picks out its countries, as the pointer does
+  radarGauge.setAll({
+    focusable: true,
+    role: "figure",
+    tabindexOrder: 3, // the third chart of the dashboard
+    ariaLabel: "Radar chart of the average rate in each of six continents. Tab to the continents, then move between them with the arrow keys"
+  });
+  gaugeSeries.columns.template.setAll({
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusable: true,
+    role: "figure",
+    focusableGroup: "continents",
+    tabindexOrder: 3,
+    hoverOnFocus: true, // a focused ring shows its tooltip
+    ariaLabel: "{category}: {valueX.formatNumber('#.#')}% on average"
+  });
+  gaugeSeries.columns.template.events.on("focus", function (ev) {
+    highlightCountries(ev.target.dataItem.get("categoryY"));
+  });
+  gaugeSeries.columns.template.events.on("blur", function () {
+    highlightCountries();
+  });
+
   gaugeSeries.data.setAll(data);
 
   // Animate chart and series in
@@ -684,6 +732,15 @@ function makePieChart(parent, share) {
     centerX: am5.p50,    // ...in the middle of the donut...
     centerY: am5.p50     // ...both ways
   }));
+
+  // Keyboard and screen readers (see Accessibility at the end): the donut is one Tab stop, named with its share; its
+  // slices do nothing and take no focus
+  chart.setAll({
+    focusable: true,
+    role: "figure",
+    tabindexOrder: 1, // the first chart of the dashboard
+    ariaLabel: "Donut chart: " + Math.round(share * 100) + "% of countries have a rate above 10%"
+  });
 
   return { series: series, label: label };
 }
@@ -800,6 +857,25 @@ function makeColumnChart(parent) {
 
   // move the scrollbar below the date axis
   chart.bottomAxesContainer.children.push(scrollbar);
+
+  // Keyboard and screen readers (see Accessibility at the end): the chart's name, then its columns, one Tab stop (a
+  // focusable group); the arrow keys step through them. The scrollbar and the zoom-out button come after the
+  // columns
+  chart.setAll({
+    focusable: true,
+    role: "figure",
+    tabindexOrder: 5, // the last chart of the dashboard
+    ariaLabel: "Column chart of a daily value over 30 days. Tab to the columns, then move between the days with the arrow keys"
+  });
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: "days",
+    tabindexOrder: 5,
+    ariaLabel: "{valueX.formatDate('MMMM d')}: {valueY}"
+  });
+  scrollbar.startGrip.set("tabindexOrder", 6);
+  scrollbar.endGrip.set("tabindexOrder", 6);
+  chart.zoomOutButton.set("tabindexOrder", 6);
 
   var data = generateDatas(30);
   series.data.setAll(data);
@@ -939,6 +1015,33 @@ function makeMapChart(parent) {
     fillOpacity: 0.25
   });
 
+  // Keyboard and screen readers (see Accessibility at the end): the map's name, then its countries, one Tab stop (a
+  // focusable group); the arrow keys step through them, and a focused country picks out its continent, as the
+  // pointer does
+  chart.setAll({
+    focusable: true,
+    role: "figure",
+    tabindexOrder: 4, // the fourth chart of the dashboard
+    ariaLabel: "World heat map of a rate, in percent, for 200 countries. Tab to the countries, then move between them with the arrow keys"
+  });
+  polygonSeries.mapPolygons.template.setAll({
+    focusable: true,
+    focusableGroup: "countries",
+    tabindexOrder: 4,
+    hoverOnFocus: true, // a focused country shows its tooltip
+    ariaLabel: "{name}: {value}%"
+  });
+  // countries with no value say so, as their tooltip does
+  polygonSeries.mapPolygons.template.adapters.add("ariaLabel", function (text, target) {
+    return target.dataItem && target.dataItem.get("value") != null ? text : "{name}: no data";
+  });
+  polygonSeries.mapPolygons.template.events.on("focus", function (ev) {
+    highlightContinent(continentOf(ev.target.dataItem.get("id")));
+  });
+  polygonSeries.mapPolygons.template.events.on("blur", function () {
+    highlightContinent();
+  });
+
   polygonSeries.data.setAll(data);
 
   // The heat legend, under the map, so it never covers a country
@@ -973,6 +1076,16 @@ function makeMapChart(parent) {
 
   return polygonSeries;
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+root.container.setAll({
+  focusable: true, // Tab reaches the dashboard, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Dashboard of five charts: a donut, a line chart, a radar chart, a world heat map and a column chart. Tab from chart to chart; inside each, Tab to its data and move through it with the arrow keys"
+});
+// each chart: its name and its data are set up where it is made, in the functions above, and numbered
+// (tabindexOrder) so the keyboard goes through the charts in the order they are laid out
 ```
 
 ## HTML

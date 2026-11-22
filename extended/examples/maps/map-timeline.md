@@ -2,7 +2,7 @@
 title: "Map Timeline"
 source: "https://www.amcharts.com/demos/map-timeline/"
 category: "maps"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A map with a year slider: drag it, or press play, and countries light up as the slider passes the year they joined a treaty. The treaty is fictional.
@@ -326,7 +326,10 @@ polygonSeries.mapPolygons.template.states.create("active", {
 polygonSeries.data.setAll(data.map(function(row) {
   return {
     id: row.country, // the country's two-letter code
-    polygonSettings: { tooltipText: "{name}: joined in " + row.year }
+    polygonSettings: {
+      tooltipText: "{name}: joined in " + row.year,
+      ariaLabel: "{name}: joined in " + row.year // the same, for a screen reader (see Accessibility below)
+    }
   };
 }));
 
@@ -498,6 +501,29 @@ function updateCountries(year) {
     })
   })
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of the countries that joined a fictional treaty, from " + firstYear + " to " + lastYear + ", with a year slider and a play button. Tab to the countries, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
+});
+// (members say the year they joined, from the data's polygonSettings above)
+// the year slider: its grip is focusable already and the arrow keys move it; a screen reader says the year, not the
+// grip's percent
+slider.startGrip.adapters.add("ariaLabel", function() {
+  return "Year: " + (firstYear + Math.round(slider.get("start", 0) * (lastYear - firstYear)));
+});
+// the play button: Enter plays or pauses, as a click does
+playButton.set("role", "button");
 ```
 
 ## HTML

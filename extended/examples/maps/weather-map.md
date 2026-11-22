@@ -2,7 +2,7 @@
 title: "Weather Map"
 source: "https://www.amcharts.com/demos/weather-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A weather map of Europe: an animated icon and the temperature for seven capitals, picked from the data through template fields. The weather is made up.
@@ -157,7 +157,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/rainy-1.svg"
   },
   labelSettings: {
-    text: "Madrid: +22°C"
+    text: "Madrid: +22°C",
+    ariaLabel: "Madrid: +22°C, rain" // what a screen reader says (see Accessibility below)
   }
 },
 {
@@ -166,7 +167,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/thunder.svg"
   },
   labelSettings: {
-    text: "Paris: +18°C"
+    text: "Paris: +18°C",
+    ariaLabel: "Paris: +18°C, thunderstorms"
   }
 },
 {
@@ -175,7 +177,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/cloudy-day-1.svg"
   },
   labelSettings: {
-    text: "Berlin: +13°C"
+    text: "Berlin: +13°C",
+    ariaLabel: "Berlin: +13°C, cloudy"
   }
 },
 {
@@ -184,7 +187,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/day.svg"
   },
   labelSettings: {
-    text: "Warsaw: +22°C"
+    text: "Warsaw: +22°C",
+    ariaLabel: "Warsaw: +22°C, sunny"
   }
 },
 {
@@ -193,7 +197,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/day.svg"
   },
   labelSettings: {
-    text: "Rome: +29°C"
+    text: "Rome: +29°C",
+    ariaLabel: "Rome: +29°C, sunny"
   }
 },
 {
@@ -202,7 +207,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/rainy-7.svg"
   },
   labelSettings: {
-    text: "London: +10°C"
+    text: "London: +10°C",
+    ariaLabel: "London: +10°C, heavy rain"
   }
 },
 {
@@ -211,7 +217,8 @@ pointSeries.data.setAll([{
     src: "https://www.amcharts.com/static/img/weather-icons/animated/rainy-1.svg"
   },
   labelSettings: {
-    text: "Stockholm: +8°C"
+    text: "Stockholm: +8°C",
+    ariaLabel: "Stockholm: +8°C, rain"
   }
 }
 ])
@@ -248,6 +255,20 @@ satelliteSeries.on("visible", function(visible) {
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
   labelTemplate.set("fill", visible ? am5.color(0xffffff) : root.interfaceColors.get("text"));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Weather map of Europe with made-up weather and temperatures for seven capitals. Tab to the capitals, then move between them with the arrow keys"
+});
+// the capitals' names and temperatures: one Tab stop (a focusable group), the arrow keys step through them; each
+// says its weather too, from the ariaLabel in its labelSettings above
+labelTemplate.setAll({
+  focusable: true,
+  focusableGroup: "capitals"
 });
 
 // Make stuff animate on load

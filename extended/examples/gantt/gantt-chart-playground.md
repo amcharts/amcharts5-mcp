@@ -2,7 +2,7 @@
 title: "Gantt Chart Playground"
 source: "https://www.amcharts.com/demos/gantt-chart-playground/"
 category: "gantt"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Gantt chart to try things on. It starts with a small sample plan: add tasks with the + button and drag them around, or clear everything with the bin and start from nothing. Your plan is saved in this browser.
@@ -125,6 +125,15 @@ gantt.events.on("datemarked", (ev) => {
 gantt.events.on("dateunmarked", (ev) => {
   saveGanttMarkedDates();
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+gantt.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Gantt chart to try things on, starting with a four-task sample plan that is saved in this browser. Tab to the date range and the toolbar, where you can add tasks or clear the chart"
+});
+// the Gantt brings its own keyboard support: the date range and the toolbar buttons are focusable by the library
 
 gantt.appear();
 ```

@@ -2,7 +2,7 @@
 title: "Animated XY Bubble Timeline Chart"
 source: "https://www.amcharts.com/demos/animated-xy-bubble-timeline-chart/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Fifty bubbles with made-up values wander across four colored quadrants as the years run from 1953 to 2025. Press play to watch them move and grow, or drag the slider to any year.
@@ -194,7 +194,13 @@ series.bullets.push(function () {
     fill: root.interfaceColors.get("alternativeBackground"), // the theme's text color: dark on light, light on dark
     fillOpacity: 0.6, // see-through, so overlaps show
     // values are rounded: while the years play, they are in between two years' data
-    tooltipText: "x: {valueX.formatNumber('#.')}, y: {valueY.formatNumber('#.')}, value: {value.formatNumber('#,###.')}"
+    tooltipText: "x: {valueX.formatNumber('#.')}, y: {valueY.formatNumber('#.')}, value: {value.formatNumber('#,###.')}",
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the bubbles (a focusable group),
+    // the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "bubbles",
+    hoverOnFocus: true,
+    ariaLabel: "x {valueX.formatNumber('#.')}, y {valueY.formatNumber('#.')}, value {value.formatNumber('#,###.')}"
   }, circleTemplate);
   return am5.Bullet.new(root, {
     sprite: bulletCircle
@@ -308,6 +314,22 @@ function updateSeriesData(year) {
 }
 
 series.data.setAll(yearData[currentYear]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Animated bubble chart of 50 bubbles with made-up values over four quadrants, for one year from 1953 to 2025. Tab to the bubbles and move between them with the arrow keys, then Tab to the play button and the year slider"
+});
+// the bubbles: set up for the keyboard where they are made, in the bullet function above
+// the play button and the year slider come after the bubbles
+playButton.setAll({
+  role: "button",
+  ariaLabel: "Play or pause",
+  tabindexOrder: 10
+});
+slider.startGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

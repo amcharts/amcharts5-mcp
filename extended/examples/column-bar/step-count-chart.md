@@ -2,7 +2,7 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A fitness-app step counter: one column per day, gray below the 6,000-step goal and colored above. Drag it sideways to read the day under the cursor.
@@ -168,8 +168,7 @@ var data = [
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can be reached with the Tab key
-    panX: true,      // a drag scrolls through the days
+    panX: true,     // a drag scrolls through the days
     panY: false,
     wheelX: "panX",  // a horizontal wheel or trackpad swipe scrolls too...
     wheelY: "none",  // ...but the vertical wheel scrolls the page, not the chart
@@ -359,6 +358,21 @@ chart.plotContainer.events.on("globalpointerup", function () {
     firstTime + Math.round(days * xAxis.get("end")) * dayDuration; // ...and the end too
 
   xAxis.zoomToValues(roundedStart, roundedEnd);
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column chart of daily step counts from January 2 to February 1, 2026, against a goal of 6,000 steps a day. Tab to the columns, then move between the days with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them. No hoverOnFocus: the tooltip
+// stays in the middle of the plot, for the day under the cursor
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "days",
+  ariaLabel: "{valueX.formatDate('EEEE, MMMM d')}: {valueY} steps"
 });
 
 // Make stuff animate on load

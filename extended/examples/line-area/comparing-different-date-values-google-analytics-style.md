@@ -2,7 +2,7 @@
 title: "Comparing Different Date Values Google Analytics Style"
 source: "https://www.amcharts.com/demos/comparing-different-date-values-google-analytics-style/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 This week against last week, the way analytics dashboards show it: a solid line for the current days, a dotted line for the same weekdays a week earlier, and both dates in one tooltip.
@@ -84,9 +84,10 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
   yAxis: yAxis,
   valueYField: "value1",
   valueXField: "date",
-  // one tooltip for both weeks: last week's date and value come from the same data row
+  // one tooltip for both weeks: last week's date and value come from the same data row. It names the
+  // fields rather than {valueY}, as last week's triangles show it too
   tooltip: am5.Tooltip.new(root, {
-    labelText: "{valueX}: {valueY}\n{previousDate}: {value2}"
+    labelText: "{valueX}: {value1}\n{previousDate}: {value2}"
   })
 }));
 
@@ -123,7 +124,12 @@ series.bullets.push(function () {
       innerRadius: am5.percent(50), // ...with its dents at half of that
       fill: series.get("stroke"), // in the line's color
       stroke: root.interfaceColors.get("background"), // outlined in the background color...
-      strokeWidth: 1 // ...1px wide
+      strokeWidth: 1, // ...1px wide
+      // keyboard and screen readers (see Accessibility below): one Tab stop for this week's stars (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "This week",
+      ariaLabel: "This week, {valueX}: {valueY}. Last week, {previousDate}: {value2}"
     }, bulletTemplate)
   });
 });
@@ -137,7 +143,11 @@ series2.bullets.push(function () {
       centerY: am5.p50,
       fill: series2.get("stroke"), // in the line's color
       stroke: root.interfaceColors.get("background"), // outlined in the background color
-      strokeWidth: 1
+      strokeWidth: 1,
+      // keyboard and screen readers: last week's triangles, a Tab stop of their own
+      focusable: true,
+      focusableGroup: "Last week",
+      ariaLabel: "Last week, {previousDate}: {valueY}"
     }, bulletTemplate)
   });
 });
@@ -189,6 +199,15 @@ var data = [{
 
 series.data.setAll(data);
 series2.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart comparing seven days of this week with the same weekdays a week earlier. Tab to this week's points or last week's, then move between the days with the arrow keys"
+});
+// the stars and triangles: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

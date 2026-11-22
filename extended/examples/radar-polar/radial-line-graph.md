@@ -2,7 +2,7 @@
 title: "Radial Line Graph"
 source: "https://www.amcharts.com/demos/radial-line-graph/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart wrapped around a circle, January at the top and the months running clockwise. Heating and cooling at home peak in opposite seasons, so the two lines point opposite ways.
@@ -106,11 +106,16 @@ function createSeries(name, field) {
   });
 
   // a dot on each month
-  series.bullets.push(function () {
+  series.bullets.push(function (root, series) {
     return am5.Bullet.new(root, {
       sprite: am5.Circle.new(root, {
-        radius: 5,               // 5px dots
-        fill: series.get("fill") // the series color
+        radius: 5,                // 5px dots
+        fill: series.get("fill"), // the series color
+        // keyboard and screen readers (see Accessibility below): one Tab stop per line (a focusable group),
+        // the arrow keys step through its months
+        focusable: true,
+        focusableGroup: name,
+        ariaLabel: "{name}, {valueX.formatDate('MMMM')}: {valueY} kWh"
       })
     });
   });
@@ -146,6 +151,20 @@ for (var i = 0; i < 12; i++) {
 
 series1.data.setAll(data);
 series2.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radial line chart of the energy a house used for heating and for cooling each month of a year, in kWh. Tab to a line, then move through its months with the arrow keys"
+});
+// the lines' dots: set up for the keyboard where they are made, in createSeries above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

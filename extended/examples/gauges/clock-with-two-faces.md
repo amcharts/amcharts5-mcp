@@ -2,7 +2,7 @@
 title: "Clock with Two Faces"
 source: "https://www.amcharts.com/demos/clock-with-two-faces/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A clock with a dial inside a dial: hours and minutes on the outer face, seconds on a small inner face, and today’s date in the middle.
@@ -227,6 +227,21 @@ function updateHands(duration) {
 }
 
 updateHands(0); // set the hands at once on load
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the clock has no parts to step through: its name gives the time and date, and follows the hands
+function clockName() {
+  return "Analog clock with a small seconds dial inside, showing the time on your device: " + chart.getDateFormatter().format(new Date(), "h:mm a, MMMM d");
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: clockName()
+});
+minutesDataItem.on("value", function () {
+  chart.set("ariaLabel", clockName());
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

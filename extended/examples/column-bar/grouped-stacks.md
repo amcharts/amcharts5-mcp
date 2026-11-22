@@ -2,7 +2,7 @@
 title: "Grouped Stacks"
 source: "https://www.amcharts.com/demos/grouped-stacks/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Stacked columns in groups: sales in three regions over four years, each year split into store and online sales. Each region has its own pair of colors, its name under its years and a gap before the next.
@@ -209,6 +209,32 @@ makeSeries("Americas, online", "americasOnline", am5.Color.lighten(americasColor
 
 makeSeries("Asia, stores", "asiaStores", asiaColor);
 makeSeries("Asia, online", "asiaOnline", am5.Color.lighten(asiaColor, 0.5));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stacked column chart of store and online sales in Europe, the Americas and Asia, for each year from 2022 to 2025. Tab to a region's store or online sales, then move between the years with the arrow keys"
+});
+// each series' columns: one Tab stop (a focusable group), the arrow keys step through them. A series has an empty
+// column at the other regions' years: those aren't focused
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused column shows its tooltip
+    ariaLabel: "{name}, {year}: {valueY}"
+  });
+  series.columns.template.adapters.add("focusable", function (focusable, target) {
+    return focusable && target.dataItem && target.dataItem.get("valueY") != null;
+  });
+});
+// the legend: one Tab stop too, after the columns; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

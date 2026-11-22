@@ -2,7 +2,7 @@
 title: "100% Stacked Column Chart"
 source: "https://www.amcharts.com/demos/100-stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 In a 100% stacked column chart every column is a whole, split into shares. Here, six regions over three years: the chart works out the percentages from the raw numbers in the data.
@@ -175,6 +175,28 @@ makeSeries("Asia", "asia");
 makeSeries("Latin America", "lamerica");
 makeSeries("Middle East", "meast");
 makeSeries("Africa", "africa");
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "100% stacked column chart of six regions' shares of each year's total, over 2023, 2024 and 2025. Tab to a region's segments, then move between its years with the arrow keys"
+});
+// each region's segments: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused segment shows its tooltip
+    ariaLabel: "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#')}%"
+  });
+});
+// the legend: one Tab stop too, after the columns; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

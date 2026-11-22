@@ -2,7 +2,7 @@
 title: "Two Linked Pie Charts with a Legend"
 source: "https://www.amcharts.com/demos/two-pie-charts-with-single-legend/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Two donuts, one legend: the same four countries in two groups side by side, each with its total in the middle. Point at a slice and its twin lights up in the other donut.
@@ -272,6 +272,32 @@ legend.itemContainers.template.on("disabled", function(disabled, target) {
 
 // one legend for both charts: it lists the first chart's slices, the code above mirrors them
 legend.data.setAll(series.dataItems);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chartContainer.setAll({
+  focusable: true, // Tab reaches the charts, and a screen reader names them
+  role: "figure",
+  ariaLabel: "Two donut charts of the same four countries in two groups, First and Second, with one legend. Tab to each donut's slices, then move between them with the arrow keys; Enter pulls a country out in both"
+});
+// each donut's slices: one Tab stop (a focusable group), the arrow keys step through them
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "first",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "First, {category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+series2.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "second",
+  hoverOnFocus: true,
+  ariaLabel: "Second, {category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the legend: one Tab stop too, after the slices; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 series.appear(1000, 100);
 ```

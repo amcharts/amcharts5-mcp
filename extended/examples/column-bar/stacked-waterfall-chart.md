@@ -2,7 +2,7 @@
 title: "Stacked Waterfall Chart"
 source: "https://www.amcharts.com/demos/stacked-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A waterfall with two budgets in every column: the first column is the whole budget of 128, and each stage after it takes its share from both, stepping down to zero. The number above a column is what its stage cost.
@@ -218,6 +218,28 @@ function makeSeries(name, field, openField, amountField, total) {
 
 makeSeries("Budget #1", "close1", "open1", "amount1", false); // the lower parts, no totals
 makeSeries("Budget #2", "close2", "open2", "amount2", true);  // the upper parts, with the stage totals on top
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stacked waterfall chart of two budgets, 128 in all, spent over eight stages down to zero. Tab to a budget's parts, then move between the stages with the arrow keys"
+});
+// each budget's parts: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  var amountField = series.get("valueYField").replace("close", "amount"); // amount1 or amount2
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused part shows its tooltip
+    ariaLabel: "{name}, {categoryX}: {" + amountField + "}"
+  });
+  // a stage that takes nothing from this budget has an empty part: it isn't focused
+  series.columns.template.adapters.add("focusable", function (focusable, target) {
+    return focusable && target.dataItem && target.dataItem.dataContext[amountField] != null;
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

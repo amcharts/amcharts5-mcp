@@ -2,7 +2,7 @@
 title: "Polar Area Chart"
 source: "https://www.amcharts.com/demos/polar-area-chart/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A polar area chart, also called a rose or coxcomb chart, draws a stacked column for every direction around a circle. Here, a wind rose: where the wind comes from, and how strong.
@@ -145,6 +145,30 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Wind rose: for each of 16 directions, how much of the year the wind blew from it, in % of the time, split into five speed bands. Tab to a speed band's wedges, then move between the directions with the arrow keys"
+});
+// each speed band's wedges: one Tab stop (a focusable group), the arrow keys step through the directions
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    role: "figure",
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused wedge shows its tooltip
+    ariaLabel: "{categoryX}, {name}: {valueY}% of the time"
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

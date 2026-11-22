@@ -2,7 +2,7 @@
 title: "Polar Chart"
 source: "https://www.amcharts.com/demos/polar-chart/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A polar chart places values by direction: the farther a point from the middle, the higher the value. Here, the average wind speed at a beach from eight directions, with onshore winds shaded blue and offshore winds red.
@@ -96,12 +96,17 @@ var bulletTemplate = am5.Template.new({
 });
 
 // a dot at each direction's value
-series.bullets.push(function() {
+series.bullets.push(function (root, series) {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
       fill: series.get("fill"), // the series color
       strokeWidth: 2, // with a 2px ring in the background color...
-      stroke: root.interfaceColors.get("background") // ...that sets each dot off the line
+      stroke: root.interfaceColors.get("background"), // ...that sets each dot off the line
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "directions",
+      ariaLabel: "From {categoryX}: {valueY} knots"
     }, bulletTemplate)
   })
 })
@@ -153,6 +158,15 @@ function shadeSector(category, endCategory, color) {
 shadeSector("NW", "NW", chart.get("colors").getIndex(0));
 shadeSector("N", "N", chart.get("colors").getIndex(0));
 shadeSector("SE", "S", root.interfaceColors.get("negative"));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Polar chart of the average wind speed at a beach, in knots, from eight directions; winds from the north-west and north blow in from the sea, and winds from the south-east and south blow out to sea. Tab to the directions, then move between them with the arrow keys"
+});
+// the directions' dots: set up for the keyboard where they are made, in the bullet function above
 
 // Animate chart
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

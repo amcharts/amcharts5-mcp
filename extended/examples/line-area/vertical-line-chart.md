@@ -2,7 +2,7 @@
 title: "Vertical Line Chart"
 source: "https://www.amcharts.com/demos/vertical-line-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart turned on its side: dates run up the left edge and values across, so the line climbs the page. Two colored zones split the values below and above 70.
@@ -196,7 +196,6 @@ var data = [
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can be reached with the Tab key
     panX: true,      // drag the plot to pan it, in either direction
     panY: true,
     // the wheel pans and zooms the date axis, which runs up the chart here
@@ -261,11 +260,16 @@ series.data.processor = am5.DataProcessor.new(root, {
 series.strokes.template.setAll({ strokeDasharray: [2, 2], strokeWidth: 1 });
 series.data.setAll(data);
 
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   // in the line's color
   var circle = am5.Circle.new(root, {
     radius: 3, // a dot 6px across
-    fill: series.get("stroke")
+    fill: series.get("stroke"),
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable
+    // group), the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueY.formatDate('MMMM d, yyyy')}: {valueX}"
   });
 
   return am5.Bullet.new(root, {
@@ -317,6 +321,15 @@ cursor.lineX.set("visible", false); // no vertical cursor line: the horizontal o
 
 // add scrollbar
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Vertical line chart of a daily value from December 24, 2025 to January 30, 2026, dates running up the chart, with zones below and above 70. Tab to the line, then move along it with the arrow keys"
+});
+// the dots: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

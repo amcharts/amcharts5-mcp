@@ -2,7 +2,7 @@
 title: "Map with Sized Pin Bullets"
 source: "https://www.amcharts.com/demos/map-with-sized-pin-bullets/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Pins on a map, each sized by its value: a head with the number on it, on a pole that fades toward the ground. Here, made-up yearly sales growth in four markets.
@@ -92,7 +92,13 @@ var titleTemplate = am5.Template.new({
 pointSeries.bullets.push(function(root, series, dataItem) {
   var value = dataItem.dataContext.value; // the market's growth in percent
 
-  var container = am5.Container.new(root, {});
+  var container = am5.Container.new(root, {
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the pins (a focusable group), the
+    // arrow keys step through them
+    focusable: true,
+    focusableGroup: "markets",
+    ariaLabel: "{title}: {value}% sales growth"
+  });
   var color = colorSet.next(); // the next color of the set
   // the head's radius: 15px plus a pixel for each percent
   var radius = 15 + value;
@@ -173,6 +179,15 @@ for (var i = 0; i < data.length; i++) {
     value: d.value
   });
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+map.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map with pins sized by made-up yearly sales growth in four markets: the United States, the European Union, Asia and Africa. Tab to the pins, then move between them with the arrow keys"
+});
+// the pins: set up for the keyboard where they are made, in the bullet function above
 ```
 
 ## HTML

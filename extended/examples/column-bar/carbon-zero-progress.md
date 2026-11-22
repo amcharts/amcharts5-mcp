@@ -2,7 +2,7 @@
 title: "Carbon-Zero Progress"
 source: "https://www.amcharts.com/demos/carbon-zero-progress/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A progress bar toward net zero, built from a column chart: fifteen cells from red at 20+ through yellow to green, a pin on the current level, 10, and a GOAL ZERO badge at the end.
@@ -211,7 +211,13 @@ series.columns.template.setAll({
 // only two cells get a bullet: the pin over the current one, the goal badge on the last one
 series.bullets.push(function(root, target, dataItem) {
   if (dataItem.dataContext.currentBullet) {
-    var container = am5.Container.new(root, {});
+    var container = am5.Container.new(root, {
+      // keyboard and screen readers (see Accessibility below): the pin and the goal badge are one Tab stop (a
+      // focusable group), the arrow keys step between them
+      focusable: true,
+      focusableGroup: "levels",
+      ariaLabel: "Current level: " + dataItem.get("categoryX")
+    });
 
     var pin = container.children.push(am5.Graphics.new(root, {
       fill: dataItem.dataContext.columnSettings.fill, // the pin in its cell's color
@@ -249,7 +255,10 @@ series.bullets.push(function(root, target, dataItem) {
   }
   else if (dataItem.dataContext.targetBullet) {
     var container = am5.Container.new(root, {
-      dx: 15 // 15px right of the cell's middle
+      dx: 15, // 15px right of the cell's middle
+      focusable: true, // with the pin (see above)
+      focusableGroup: "levels",
+      ariaLabel: "Goal: zero"
     });
 
     var circle = container.children.push(am5.Circle.new(root, {
@@ -299,6 +308,15 @@ function addAxisLabel(category, text) {
 addAxisLabel("15", "20+"); // under the first cell, which stands for 20 and more
 addAxisLabel("10", "10");
 addAxisLabel("5", "5");
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Progress bar toward net zero: fifteen cells from 20 and over in red, through yellow, to green near zero, with a pin on the current level, 10. Tab to the current level, then press an arrow key for the goal"
+});
+// the pin and the goal badge: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Column and Line Mix"
 source: "https://www.amcharts.com/demos/column-and-line-mix/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Income as columns and expenses as a line on one chart, so the gap between them shows year by year. The last year is a projection, drawn faint and dashed.
@@ -176,7 +176,12 @@ series2.bullets.push(function () {
       strokeWidth: 3,                // a 3px outline...
       stroke: series2.get("stroke"), // ...in the line's color
       radius: 5,                     // 5px
-      fill: root.interfaceColors.get("background")
+      fill: root.interfaceColors.get("background"),
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the line's points (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "expenses",
+      ariaLabel: "{name} in {categoryX}: {valueY} {info}"
     })
   });
 });
@@ -194,6 +199,26 @@ var legend = chart.plotContainer.children.push(
   })
 );
 legend.data.setAll(chart.series.values);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column and line chart of income as columns and expenses as a line, from 2020 to 2025, with 2025 a projection. Tab to the income columns or the expenses line, then move between the years with the arrow keys"
+});
+// the income columns: one Tab stop (a focusable group), the arrow keys step through them
+series1.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "income",
+  ariaLabel: "{name} in {categoryX}: {valueY} {info}"
+});
+// the expenses line: its points are set up for the keyboard where they are made, in the bullet function above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

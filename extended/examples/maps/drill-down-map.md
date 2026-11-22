@@ -2,7 +2,7 @@
 title: "Drill-Down Map"
 source: "https://www.amcharts.com/demos/drill-down-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map of the continents that drills down to countries: click a continent to zoom in and see its countries, then click the house to go back.
@@ -149,6 +149,37 @@ homeButton.events.on("click", goBack);
 
 // the zoom control's home button goes back to the continents too
 zoomControl.homeButton.events.on("click", goBack);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of the continents that drills down to their countries. Tab to the continents, move between them with the arrow keys, and press Enter to zoom in to one's countries; the house button goes back"
+});
+// the continents: one Tab stop (a focusable group), the arrow keys step through them; Enter drills down
+continentSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "continents",
+  hoverOnFocus: true, // a focused continent shows its tooltip
+  ariaLabel: "{name}"
+});
+// the countries: one Tab stop too
+countrySeries.mapPolygons.template.setAll({
+  focusable: false, // while hidden (see below)
+  focusableGroup: "countries",
+  hoverOnFocus: true,
+  ariaLabel: "{name}"
+});
+// a hidden series' shapes would still be reached with Tab: only the series on show is focusable
+continentSeries.on("visible", function (visible) {
+  continentSeries.mapPolygons.template.set("focusable", visible);
+});
+countrySeries.on("visible", function (visible) {
+  countrySeries.mapPolygons.template.set("focusable", visible);
+});
+// the house button is focusable already, as a button; this names it for a screen reader
+homeButton.set("ariaLabel", "Back to the continents");
 ```
 
 ## HTML

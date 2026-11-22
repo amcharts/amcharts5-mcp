@@ -2,7 +2,7 @@
 title: "Pie Chart with Legend"
 source: "https://www.amcharts.com/demos/pie-chart-with-legend/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A pie chart with a legend under it. The legend names every slice and works as a switch: click an item and the pie redraws without it.
@@ -72,6 +72,26 @@ var legend = chart.children.push(am5.Legend.new(root, {
 }));
 
 legend.data.setAll(series.dataItems); // one legend item per slice
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pie chart of seven categories and their share. Tab to the slices, then move between them with the arrow keys"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the legend: one Tab stop too, after the slices; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Play initial series animation
 // https://docs.amcharts.com/v5/concepts/animations/#animation-of-series

@@ -2,7 +2,7 @@
 title: "Pyramid Chart"
 source: "https://www.amcharts.com/demos/pyramid-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A pyramid stacks the parts of a whole from the largest at the base to the smallest at the top. Each level’s area matches its share; switch to height to compare.
@@ -79,6 +79,26 @@ var legend = chart.children.push(am5.Legend.new(root, {
 
 // the legend reversed back, so it lists One first
 legend.data.setAll(am5.array.copy(series.dataItems).reverse());
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pyramid chart of seven values, from the largest at the base to the smallest at the tip. Tab to the levels, then move between them with the arrow keys"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them
+series.slices.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "slices",
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the legend: one Tab stop too, after the slices; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

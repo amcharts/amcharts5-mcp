@@ -2,7 +2,7 @@
 title: "Jupiter and Its Moons"
 source: "https://www.amcharts.com/demos/jupiter-and-its-moons/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Jupiter as a globe wearing Cassini's map of its clouds, spinning a Jupiter day in 30 seconds, with its four largest moons going round at their real relative speeds: Io in under two days, Callisto in over sixteen.
@@ -135,7 +135,13 @@ moonSeries.bullets.push(function() {
     // no radius or fill here: a setting made here would win over the size and color each moon's data gives
     tooltipText: "[bold]{name}[/]\n{across} km across\n{km} km from Jupiter's center\nOnce round in {days} days",
     tooltipY: 0, // the tooltip points at the top of the moon, not its middle
-    templateField: "circleSettings"
+    templateField: "circleSettings",
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the moons (a focusable group), the
+    // arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "moons",
+    hoverOnFocus: true,
+    ariaLabel: "{name}: {across} km across, {km} km from Jupiter's center, once round in {days} days"
   });
   // pointed at, the moon grows a little
   // https://docs.amcharts.com/v5/concepts/settings/states/
@@ -185,6 +191,15 @@ chart.children.push(am5.Label.new(root, {
   dx: -10,                   // 10px in from the edges
   dy: -10
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Jupiter as a spinning globe, with its four largest moons going round it at their real relative speeds. Tab to the moons, then move between them with the arrow keys"
+});
+// the moons: set up for the keyboard where they are made, in the bullet function above
 ```
 
 ## HTML

@@ -2,7 +2,7 @@
 title: "Changing Map Projection"
 source: "https://www.amcharts.com/demos/changing-map-projection/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 One world map, three projections: every 4 seconds it morphs from Equal Earth to Equirectangular to a globe and back, until you pick one with the Projection buttons. Drag the map to spin the world.
@@ -131,6 +131,20 @@ var cycle = setInterval(function() {
   }
   morphTo(order[(order.indexOf(current) + 1) % order.length]);
 }, 4000);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map that morphs every 4 seconds from the Equal Earth projection to Equirectangular to a globe and back. Tab to the countries, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
 ```
 
 ## HTML

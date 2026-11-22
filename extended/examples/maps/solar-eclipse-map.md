@@ -2,7 +2,7 @@
 title: "Solar Eclipse Map"
 source: "https://www.amcharts.com/demos/solar-eclipse-map/"
 category: "maps"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 The total solar eclipse of August 2, 2027, on a globe: a band up to 259 km wide from the Atlantic across North Africa and Arabia to the Indian Ocean.
@@ -371,6 +371,21 @@ satelliteSeries.on("visible", function(visible) {
     polygon.setAll(polygon.get("active") ? (visible ? outlineLook : activeLook) : look);
   });
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Globe with the path of the total solar eclipse of August 2, 2027, a band up to 259 km wide from the Atlantic across North Africa and Arabia to the Indian Ocean. Tab to the countries, move between them with the arrow keys, and press Enter to turn the globe to one"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
 });
 
 // Make stuff animate on load, then tilt the globe towards the path

@@ -2,7 +2,7 @@
 title: "Tag Cloud"
 source: "https://www.amcharts.com/demos/tag-cloud/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Tags sized and colored by weight, each one a link: the languages most used in the 2021 Stack Overflow survey. Click one to open its questions.
@@ -136,6 +136,21 @@ series.data.setAll([
   { tag: "Crystal", weight: 0.56, link: "crystal-lang" },
   { tag: "COBOL", weight: 0.53 },
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the cloud, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Tag cloud of the 38 programming languages most used in the 2021 Stack Overflow survey, each sized by the share of developers using it. Tab to the tags, move between them with the arrow keys, and press Enter to open a tag's questions on Stack Overflow"
+});
+// the tags: one Tab stop (a focusable group), the arrow keys step through them; Enter opens one, as a click does
+series.labels.template.setAll({
+  focusable: true,
+  role: "link",
+  focusableGroup: "tags",
+  ariaLabel: "{category}: {value}% of developers"
+});
 ```
 
 ## HTML

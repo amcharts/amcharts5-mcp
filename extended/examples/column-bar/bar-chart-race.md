@@ -2,7 +2,7 @@
 title: "Bar Chart Race"
 source: "https://www.amcharts.com/demos/bar-chart-race/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A bar chart that plays like a race. Bars grow, shrink and overtake each other as the years tick by: here, 19 social networks from 2002 to 2018.
@@ -611,6 +611,20 @@ setTimeout(function () {
   year++;
   updateData();
 }, 50);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bar chart race of the users of 19 social networks, year by year from 2002 to 2018, with the bars sorted from most to fewest users. Tab to the bars, then move between them with the arrow keys"
+});
+// the bars: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "bars",
+  ariaLabel: "{categoryY}: {valueX.formatNumber('#,###.')} users"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

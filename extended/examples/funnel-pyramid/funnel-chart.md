@@ -2,7 +2,7 @@
 title: "Funnel Chart"
 source: "https://www.amcharts.com/demos/funnel-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A funnel chart shows how a number shrinks as people move through the steps of a process. Here, a month in an online store, from 10,000 visits to 2,300 payments.
@@ -83,6 +83,26 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.valueLabels.template.set("forceHidden", true);
 
 legend.data.setAll(series.dataItems);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Funnel chart of a month in an online store, from 10,000 visits to 2,300 payments in five steps. Tab to the steps, then move between them with the arrow keys"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them
+series.slices.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "slices",
+  ariaLabel: "{category}: {value}"
+});
+// the legend: one Tab stop too, after the slices; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

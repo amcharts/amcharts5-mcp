@@ -603,7 +603,15 @@ function makeEvent(date, letter, color, description) {
     fill: root.interfaceColors.get("background"), // ...and filled with the background color
     tooltipText: description, // hover the circle for the event's description
     tooltip: tooltip,         // the shared tooltip from above
-    tooltipY: 0               // the tooltip points at the circle's top
+    tooltipY: 0,              // the tooltip points at the circle's top
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the events (a focusable group),
+    // the arrow keys step through them, and the focused one shows its tooltip; after the candles
+    focusable: true,
+    role: "figure",
+    focusableGroup: "events",
+    tabindexOrder: 5,
+    hoverOnFocus: true,
+    ariaLabel: description + ", " + root.dateFormatter.format(new Date(date), "MMMM d, yyyy")
   }));
 
   var label = bullet.children.push(am5.Label.new(root, {
@@ -628,6 +636,38 @@ makeEvent(1776340800000, "D", root.interfaceColors.get("positive"), "Dividends p
 valueSeries.data.setAll(data);
 volumeSeries.data.setAll(data);
 sbSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+stockChart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stock chart of a year of daily prices of a sample stock, AMCH, from October 2025 to September 2026, as candlesticks with volume, and marks for a stock split and two dividend dates. Tab to the candles, then move between the days with the arrow keys. The toolbar above the chart adds indicators and drawings"
+});
+// the candles: one Tab stop (a focusable group), the arrow keys step through them. turboMode draws the candles as
+// one shape, which can't take focus, so each gets an unpainted point at its close. A series picked in the toolbar's
+// series type menu replaces the main series and gets the points too
+function addFocusPoints(series) {
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,   // not painted: the candles look as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: "prices",
+        ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: open {openValueY}, high {highValueY}, low {lowValueY}, close {valueY}"
+      })
+    });
+  });
+}
+addFocusPoints(valueSeries);
+stockChart.on("stockSeries", addFocusPoints);
+// the split and dividend marks: set up for the keyboard where they are made, in makeEvent() above
+// the legend, with its settings and close buttons: after the candles
+valueLegend.itemContainers.template.set("tabindexOrder", 10); // the chart's parts are focused from low to high (0 if not set)
+valueLegend.settingsButtons.template.set("tabindexOrder", 10);
+valueLegend.closeButtons.template.set("tabindexOrder", 10);
 ```
 
 ## HTML

@@ -2,7 +2,7 @@
 title: "Zoomable Value Axis"
 source: "https://www.amcharts.com/demos/zoomable-value-axis/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart that zooms up and down as well as across. Pick a band of values to see the small moves inside it; the scrollbar on the right shows where you are.
@@ -120,6 +120,15 @@ var scrollbar = chart.set("scrollbarY", am5.Scrollbar.new(root, { // a vertical 
 
 var data = generateDatas(2000); // 2,000 days of data
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Area chart of a daily value over 2,000 days; the value axis zooms with the mouse wheel or the scrollbar on the right. The line has too many points to step through with the keyboard"
+});
+// no focusable points on the line: 2,000 of them would slow down zooming and panning
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Selecting and Marking Multiple Ranges"
 source: "https://www.amcharts.com/demos/selecting-and-marking-multiple-ranges/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Drag across this line chart to mark a stretch of dates, then mark another, and another. A new mark that runs into an old one stops at its edge, so marks never overlap.
@@ -207,6 +207,15 @@ series.data.setAll(data);
 
 // Mark one range to start with
 markRange(data[300].date, data[420].date);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 1,200 days, with one stretch of 120 days marked. Ranges are marked by dragging with a mouse or by touch; the line has too many points to step through with the keyboard"
+});
+// no focusable points on the line: 1,200 of them would slow the chart down
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

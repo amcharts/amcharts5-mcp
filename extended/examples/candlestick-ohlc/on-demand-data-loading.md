@@ -2,7 +2,7 @@
 title: "On-Demand Data Loading"
 source: "https://www.amcharts.com/demos/on-demand-data-loading/"
 category: "candlestick-ohlc"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A candlestick chart with volume that fetches its data from the server only as needed: it starts with 50 days and loads more as you drag back in time. The buttons under it switch to hourly or monthly candles.
@@ -454,6 +454,29 @@ chart.events.on("wheelended", function () {
 
 // load some initial data
 loadData("day", min, max, "none");
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Candlestick chart of a stock's daily prices over the last 50 days, with its trading volume below; more days load from the server as the chart is panned back in time, and the buttons under it switch to hourly or monthly candles. Tab to the candles, then to the volume, and move between them with the arrow keys"
+});
+// the candles and the volume columns: one Tab stop each (a focusable group), the arrow keys step through them.
+// Templates reach the candles of data loaded later too
+valueSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "candles",
+  ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: open {openValueY}, low {lowValueY}, high {highValueY}, close {valueY}"
+});
+volumeSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "volume",
+  ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: volume {valueY}"
+});
+// the legends: after the data
+valueLegend.itemContainers.template.setAll({ focusableGroup: "legend", tabindexOrder: 10 });
+volumeLegend.itemContainers.template.setAll({ focusableGroup: "legend", tabindexOrder: 10 });
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

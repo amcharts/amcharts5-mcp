@@ -2,7 +2,7 @@
 title: "Multiple Value Axes"
 source: "https://www.amcharts.com/demos/multiple-value-axes/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Three series with very different ranges, each with its own axis in its color and one shared set of grid lines, so every line gets the full height.
@@ -43,7 +43,6 @@ root.setThemes([
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can be reached with the Tab key
     panX: true,      // drag the plot sideways to pan through the days
     panY: true,      // and up and down
     wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
@@ -138,6 +137,15 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 createAxisAndSeries(100, false); // left axis, values from about 100
 createAxisAndSeries(1000, true); // right axis, about 1000
 createAxisAndSeries(8000, true); // another right axis, about 8000
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of three random daily values over the last 100 days, starting near 100, 1,000 and 8,000, each on its own value axis. The lines have too many points to step through with the keyboard"
+});
+// no focusable points on the lines: 300 of them would slow down loading, zooming and panning
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

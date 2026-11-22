@@ -2,7 +2,7 @@
 title: "Crypto Order Book Depth Chart"
 source: "https://www.amcharts.com/demos/live-order-book-depth-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A market depth chart built from the live ETH/BTC order book on Binance and reloaded every 30 seconds: buy orders in green, sell orders in red.
@@ -41,7 +41,6 @@ root.setThemes([
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can be reached with the Tab key
     panX: false,     // no dragging to pan, sideways...
     panY: false,     // ...or up and down...
     wheelX: "none",  // ...and the mouse wheel...
@@ -212,7 +211,7 @@ function processData(list, type, desc, res) {
   for(var i = 0; i < list.length; i++) {
     list[i] = {
       value: Number(list[i][0]),
-      volume: Number(list[i][1]),
+      volume: Number(list[i][1])
     }
   }
 
@@ -264,6 +263,36 @@ function processData(list, type, desc, res) {
   }
 
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Market depth chart of the ETH/BTC order book on Binance, reloaded every 30 seconds: the total volume of buy orders by price on the left, sell orders on the right. Tab to the bids or the asks, then move between the prices with the arrow keys"
+});
+// the steps: one Tab stop for the bids and one for the asks (focusable groups), the arrow keys step through the
+// prices; points are made for each new load, as the bullets are made from the data
+[[bidsTotalVolume, "Bids", "bidsvolume"], [asksTotalVolume, "Asks", "asksvolume"]].forEach(function (item) {
+  var series = item[0], name = item[1], volumeField = item[2];
+  // the theme hides bullets closer than 10px apart; these are unpainted, so all of them stay
+  series.set("minBulletDistance", 0);
+  series.bullets.push(function (root, series, dataItem) {
+    if (dataItem.get("valueY") == null) {
+      return; // the other side's prices: no point here
+    }
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,  // not painted: the steps look as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: name,
+        ariaLabel: (name === "Bids" ? "Bid " : "Ask ") + "{categoryX}: total volume {valueY}, volume {" + volumeField + "}"
+      })
+    });
+  });
+});
 ```
 
 ## HTML

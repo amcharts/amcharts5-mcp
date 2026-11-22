@@ -2,7 +2,7 @@
 title: "Drill-Down Congressional Map"
 source: "https://www.amcharts.com/demos/drill-down-congressional-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A map of the United States that drills down to congressional districts: click a state to zoom in and load the map of its districts.
@@ -175,6 +175,41 @@ var title = chart.children.push(am5.Label.new(root, {
   fontSize: 20,     // 20px text
   textAlign: "center"
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Map of the United States that drills down to congressional districts. Tab to the states, move between them with the arrow keys, and press Enter to zoom in to one's districts; Back goes back"
+});
+// the states: one Tab stop (a focusable group), the arrow keys step through them; Enter loads the districts
+usaSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "states",
+  hoverOnFocus: true, // a focused state shows its tooltip
+  ariaLabel: "{name}"
+});
+// the districts, once loaded: one Tab stop too
+stateSeries.mapPolygons.template.setAll({
+  focusable: false, // while hidden (see below)
+  focusableGroup: "districts",
+  hoverOnFocus: true,
+  ariaLabel: "{name}"
+});
+// a hidden series' shapes would still be reached with Tab: only the series on show is focusable
+usaSeries.on("visible", function (visible) {
+  usaSeries.mapPolygons.template.set("focusable", visible);
+});
+stateSeries.on("visible", function (visible) {
+  stateSeries.mapPolygons.template.set("focusable", visible);
+});
+// the back button: reached with Tab once shown, and Enter goes back
+backContainer.setAll({
+  focusable: true,
+  role: "button",
+  ariaLabel: "Back to the United States"
+});
 ```
 
 ## HTML

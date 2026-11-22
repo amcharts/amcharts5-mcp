@@ -2,7 +2,7 @@
 title: "XY Error Chart"
 source: "https://www.amcharts.com/demos/xy-error-chart/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Error bars show how sure a measurement is: the point is the value measured, the bars the range the true value may lie in. Here seven points, each with an error in both x and y.
@@ -180,7 +180,12 @@ series.bullets.push(function() {
     strokeWidth: 2, // a 2px ring...
     radius: 5,      // ...10px across...
     stroke: series.get("stroke"),
-    fill: root.interfaceColors.get("background") // ...filled with the background color, so it looks hollow
+    fill: root.interfaceColors.get("background"), // ...filled with the background color, so it looks hollow
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the points (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "x {valueX} plus or minus {errorX}, y {valueY} plus or minus {errorY}"
   });
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -207,6 +212,15 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, {
 
 errorSeries.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Scatter chart of seven measured points, each with an error bar in both x and y. Tab to the points, then move between them with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

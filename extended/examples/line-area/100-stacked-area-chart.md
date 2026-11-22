@@ -2,7 +2,7 @@
 title: "100% Stacked Area Chart"
 source: "https://www.amcharts.com/demos/100-stacked-area-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Every year adds up to 100%, so the chart shows shares instead of amounts: how a total splits between cars, motorcycles and bicycles from 2007 to 2025.
@@ -227,6 +227,34 @@ var legend = chart.children.push(am5.Legend.new(root, {
 }));
 
 legend.data.setAll(chart.series.values);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "100% stacked area chart of how a yearly total splits between cars, motorcycles and bicycles, 2007 to 2025. Tab to an area, then move along its years with the arrow keys"
+});
+// the points: one Tab stop per area (a focusable group), the arrow keys step along its years
+chart.series.each(function (series) {
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,          // not painted: the area looks as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: series.get("name"),
+        ariaLabel: "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.0')}%, {valueY}"
+      })
+    });
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

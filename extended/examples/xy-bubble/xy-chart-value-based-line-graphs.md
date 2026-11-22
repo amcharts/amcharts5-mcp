@@ -2,7 +2,7 @@
 title: "XY Chart with Value-Based Line Graphs"
 source: "https://www.amcharts.com/demos/xy-chart-value-based-line-graphs/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Two lines with numbers on both axes, not dates or categories; where a line has no value, it runs on to the next point. Circle and star sizes add a third value.
@@ -100,7 +100,12 @@ series0.bullets.push(function () {
   var graphics = am5.Circle.new(
     root,
     {
-      fill: series0.get("fill") // the series color
+      fill: series0.get("fill"), // the series color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the circles (a focusable group),
+      // the arrow keys step through them
+      focusable: true,
+      focusableGroup: "circles",
+      ariaLabel: "Circle at x {valueX}, y {valueY}: value {value}"
     },
     circleTemplate
   );
@@ -151,7 +156,11 @@ series1.bullets.push(function () {
   var graphics = am5.Star.new(root, {
     fill: series1.get("fill"),   // the series color
     spikes: 15,                  // a 15-pointed star...
-    innerRadius: am5.percent(90) // ...with shallow points: inner corners at 90% of the radius
+    innerRadius: am5.percent(90), // ...with shallow points: inner corners at 90% of the radius
+    // keyboard and screen readers: one Tab stop for the stars, as for the circles
+    focusable: true,
+    focusableGroup: "stars",
+    ariaLabel: "Star at x {valueX}, y {valueY}: value {value}"
   }, starTemplate);
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -283,6 +292,15 @@ var data = [
 
 series0.data.setAll(data);
 series1.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of two dashed lines on two value axes, one with circles and one with stars sized by a third value; a line with no value at a point runs on to the next. Tab to the circles or the stars, then move along the line with the arrow keys"
+});
+// the circles and stars: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

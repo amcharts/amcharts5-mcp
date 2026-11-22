@@ -2,7 +2,7 @@
 title: "Waterfall Chart"
 source: "https://www.amcharts.com/demos/waterfall-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A waterfall chart walks from one total to another a step at a time: here, from net revenue to operating income. Decreases hang down in red, increases climb in green, and dashed lines carry each level on.
@@ -194,6 +194,37 @@ lineSeries.strokes.template.setAll({
 });
 
 lineSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Waterfall chart from net revenue of $8,786 K to operating income of $5,226 K: three costs take it down and income from equity adds to it. Tab to the totals, the increases or the decreases, then move between them with the arrow keys"
+});
+// each series' columns (totals, increases, decreases): one Tab stop each (a focusable group), the arrow keys step
+// through them
+totalSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "totals",
+  ariaLabel: "{categoryX}: ${displayValue} K"
+});
+increaseSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "increases",
+  ariaLabel: "{categoryX}: up ${displayValue} K"
+});
+decreaseSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "decreases",
+  ariaLabel: "{categoryX}: down ${displayValue} K"
+});
+// each series has an empty column at the steps of the other kinds: those aren't focused
+[totalSeries, increaseSeries, decreaseSeries].forEach(function (series) {
+  series.columns.template.adapters.add("focusable", function (focusable, target) {
+    return focusable && target.dataItem && target.dataItem.get("valueY") != null;
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

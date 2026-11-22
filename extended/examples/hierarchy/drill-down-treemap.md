@@ -2,7 +2,7 @@
 title: "Drill-Down Treemap"
 source: "https://www.amcharts.com/demos/drill-down-treemap/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A treemap you explore one level at a time: the first view shows the 18 brands that sold over 200,000 vehicles in the US in 2017, and clicking a brand opens its models. The breadcrumb bar on top leads back.
@@ -88,11 +88,10 @@ series.nodes.template.setPrivate("trustBounds", true);
 series.get("colors").set("step", 1); // each brand takes the next palette color, none skipped
 
 // breadcrumbs above the treemap show where you are and lead back up
-chart.children.moveValue(
-  am5hierarchy.BreadcrumbBar.new(root, {
-    series: series
-  }), 0
-);
+var breadcrumbs = am5hierarchy.BreadcrumbBar.new(root, {
+  series: series
+});
+chart.children.moveValue(breadcrumbs, 0);
 
 // Generate and set data
 // https://docs.amcharts.com/v5/charts/hierarchy/#setting-data
@@ -479,7 +478,7 @@ series.bullets.push(function (root, series, dataItem) {
 
   if (depth == 1) {
     var picture = am5.Picture.new(root, {
-      src: "https://www.amcharts.com/wp-content/uploads/assets/logos/" + dataItem.dataContext.name.toLowerCase() + ".png",
+      src: "https://www.amcharts.com/static/assets/logos/" + dataItem.dataContext.name.toLowerCase() + ".png",
       centerX: am5.p50,       // the logo's middle on the rectangle's middle
       centerY: am5.p50,
       width: am5.percent(30), // 30% of the rectangle's width
@@ -490,6 +489,30 @@ series.bullets.push(function (root, series, dataItem) {
 
     return am5.Bullet.new(root, { sprite: picture });
   }
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Treemap of the 18 brands that sold over 200,000 vehicles in the US in 2017. Tab to the brands, move between them with the arrow keys, and press Enter to open a brand's models; the breadcrumbs above lead back"
+});
+// the brands, or a brand's models: one Tab stop (a focusable group), the arrow keys step through them; Enter opens a brand
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "boxes",
+  hoverOnFocus: true, // a focused box shows its tooltip
+  ariaLabel: "{category}: {sum} vehicles sold"
+});
+// the breadcrumbs: one Tab stop too, after the boxes; Enter goes back to that level
+breadcrumbs.labels.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "breadcrumbs",
+  tabindexOrder: 10, // the chart's parts are focused in this order, from low to high (0 if not set)
+  ariaLabel: "{category}"
 });
 ```
 

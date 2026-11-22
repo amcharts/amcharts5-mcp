@@ -2,7 +2,7 @@
 title: "Layered Column Chart"
 source: "https://www.amcharts.com/demos/layered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 Two years in one column: 2024 wide at the back, 2025 narrower and striped in front. Where the front column rises above the back one, the country grew.
@@ -174,6 +174,27 @@ var legend = chart.plotContainer.children.push(am5.Legend.new(root, {
   paddingLeft: 10 // ...and the left edge of the plot
 }));
 legend.data.setAll(chart.series.values);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Layered column chart of six countries' values in 2024 and 2025, the 2025 column in front of the 2024 one. Tab to a year's columns, then move between the countries with the arrow keys"
+});
+// each year's columns: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    ariaLabel: "{categoryX}, {name}: {valueY}"
+  });
+});
+// the legend: one Tab stop too, after the columns; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

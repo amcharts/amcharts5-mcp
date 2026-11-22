@@ -2,7 +2,7 @@
 title: "Chart with Gaps in Data"
 source: "https://www.amcharts.com/demos/chart-with-gaps-in-data/"
 category: "line-area"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A line that breaks where data is missing. Here, 1967 to 1970 and 1984 to 1988 have no values, and the years above zero take a second color.
@@ -192,7 +192,6 @@ var data = [{
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  focusable: true, // the chart can take keyboard focus, for keyboard users
   panX: true,      // drag the plot sideways to pan...
   panY: true,      // ...or up and down
   wheelX: "panX",  // a horizontal wheel or trackpad swipe pans
@@ -285,7 +284,12 @@ series.bullets.push(function() {
   var circle = am5.Circle.new(root, {
     fill: series.get("fill"), // the series color, for values below zero
     stroke: root.interfaceColors.get("background"), // an outline in the background color...
-    strokeWidth: 2 // ...2px wide
+    strokeWidth: 2, // ...2px wide
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable
+    // group), the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueX}: {valueY}" // valueX shows as a year (the date formatter above)
   }, bulletTemplate)
 
   // bullets at or above zero take the range's color too
@@ -312,6 +316,15 @@ cursor.lineY.set("visible", false); // no horizontal cursor line, only the verti
 // add scrollbar
 // drag its grips to zoom in on a range of years
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a yearly value from 1950 to 2005, between -0.35 and 0.55, with no data for 1967 to 1970 and 1984 to 1988. Tab to the line, then move along it with the arrow keys"
+});
+// the dots: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Flower Chart"
 source: "https://www.amcharts.com/demos/flower-chart/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A radar column chart where the columns fill only the middle of each slice, so they stand apart like petals. Here, two coffees scored on eight tasting notes.
@@ -165,6 +165,30 @@ var legend = chart.children.push(am5.Legend.new(root, {
   x: am5.p50        // ...at the middle of the chart
 }));
 legend.data.setAll(chart.series.values);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radar column chart of two coffees, a light and a dark roast, scored from 0 to 10 on eight tasting notes. Tab to a coffee's columns, then move between the notes with the arrow keys"
+});
+// each coffee's columns: one Tab stop (a focusable group), the arrow keys step through the notes
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusable: true,
+    role: "figure",
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused column shows its tooltip
+    ariaLabel: "{name}, {categoryX}: {valueY} of 10"
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

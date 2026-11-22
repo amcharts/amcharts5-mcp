@@ -2,7 +2,7 @@
 title: "Honeycomb Tile Map"
 source: "https://www.amcharts.com/demos/honeycomb-tile-map/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A tile map made of hexagons, which fit together like a honeycomb and give each state up to six neighbors, so the layout follows the real map more closely than squares or circles can.
@@ -109,7 +109,13 @@ series.bullets.push(function() {
   var graphics = am5.Line.new(root, {
     fill: series.get("fill"),       // replaced by the heat rule's color
     tooltipText: "{name}: {value}", // as "California: 39.3M"
-    tooltipY: 0 // the tooltip points at the top of the hexagon
+    tooltipY: 0, // the tooltip points at the top of the hexagon
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the states (a focusable
+    // group), the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "states",
+    hoverOnFocus: true,
+    ariaLabel: "{name}: {value}"
   }, template);
 
   // an adapter on x runs each time the bullet moves, so the hexagon is redrawn to the size of an axis cell
@@ -523,6 +529,15 @@ am5.array.each(data, function(di) {
 })
 
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Tile map of the 50 US states and D.C., a hexagon for each, fitted together like a honeycomb, roughly where the state lies and shaded by population. Tab to the states, then move between them with the arrow keys"
+});
+// the states: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

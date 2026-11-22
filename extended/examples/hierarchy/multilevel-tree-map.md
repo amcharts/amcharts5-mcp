@@ -2,7 +2,7 @@
 title: "Zoomable Multilevel Tree Map"
 source: "https://www.amcharts.com/demos/multilevel-tree-map/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A treemap splits one rectangle into boxes sized by value. This one has two levels, car brands and their models, from a year of US car sales, with each brand’s logo behind its models.
@@ -487,7 +487,7 @@ series.bullets.push(function (root, series, dataItem) {
 
   if (depth == 1) { // brands only, not models
     var picture = am5.Picture.new(root, {
-      src: "https://www.amcharts.com/wp-content/uploads/assets/logos/" + dataItem.dataContext.name.toLowerCase() + ".png",
+      src: "https://www.amcharts.com/static/assets/logos/" + dataItem.dataContext.name.toLowerCase() + ".png",
       centerX: am5.p50,       // centered in the box...
       centerY: am5.p50,       // ...both ways...
       width: am5.percent(30), // ...30% of its width
@@ -498,6 +498,26 @@ series.bullets.push(function (root, series, dataItem) {
 
     return am5.Bullet.new(root, { sprite: picture });
   }
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Treemap of a year of US car sales by brand and model, for brands that sold over 200,000 cars. Tab to the boxes, move between them with the arrow keys, and press Enter to zoom into a brand or back out"
+});
+// the brand and model boxes: one Tab stop (a focusable group), the arrow keys step through them; Enter zooms
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "boxes",
+  hoverOnFocus: true, // a focused box shows its tooltip
+  ariaLabel: "{category}: {sum} cars sold"
+});
+// the zoom buttons are focusable by the library: they come after the boxes
+[zoomTools.homeButton, zoomTools.plusButton, zoomTools.minusButton].forEach(function (button) {
+  button.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
 });
 ```
 

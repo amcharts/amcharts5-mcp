@@ -2,7 +2,7 @@
 title: "Simple Treemap"
 source: "https://www.amcharts.com/demos/simple-treemap/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A treemap shows a total as nested rectangles, each sized by its value and colored by its group. Here, a $4,000 monthly budget split into six groups and 20 items.
@@ -133,6 +133,22 @@ var data = {
 series.data.setAll([data]);
 // start at the top node, showing the whole budget
 series.set("selectedDataItem", series.dataItems[0]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Treemap of a $4,000 monthly budget in six groups and 20 items. Tab to the boxes, move between them with the arrow keys, and press Enter to zoom into a group or back out"
+});
+// the groups and items: one Tab stop (a focusable group), the arrow keys step through them; Enter zooms
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "boxes",
+  hoverOnFocus: true, // a focused box shows its tooltip
+  ariaLabel: "{category}: ${sum}"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

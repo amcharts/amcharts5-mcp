@@ -208,7 +208,12 @@ function makeClock(city, index) {
     paddingTop: 0,           // ...with no padding around it, so the text sits right under it
     paddingBottom: 0,
     paddingLeft: 0,
-    paddingRight: 0
+    paddingRight: 0,
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the four clocks (a focusable group), the
+    // arrow keys step through them; update names each with its city, time and offset
+    focusable: true,
+    focusableGroup: "clocks",
+    role: "figure"
   }));
 
   // the face: a circle behind the dial, dark at night (see paint)
@@ -384,6 +389,7 @@ function makeClock(city, index) {
       }
     }
     offsetLabel.set("text", text);
+    chart.set("ariaLabel", city.name + ": " + timeLabel.get("text") + ", " + text); // the clock's name, for screen readers
   }
 
   update(0); // the hands in place at once
@@ -484,6 +490,15 @@ setInterval(function() {
     });
   }
 }, 1000 / 30);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+clockGrid.setAll({
+  focusable: true, // Tab reaches the clocks, and a screen reader names them
+  role: "figure",
+  ariaLabel: "Four analog clocks, each with the time in a city, yours first. Tab to the clocks, then move between them with the arrow keys to hear each one's time"
+});
+// the clocks: set up for the keyboard where they are made, in makeClock above, and named in its update function
 
 // Set the hands straight away when the page is shown again: timers slow down in a background tab
 function onVisibilityChange() {

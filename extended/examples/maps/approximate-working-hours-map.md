@@ -2,7 +2,7 @@
 title: "Approximate Working Hours Map"
 source: "https://www.amcharts.com/demos/approximate-working-hours-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map of where it’s working hours right now: the band between the 9 AM and 5 PM lines stays clear, the rest is shaded, and the sun marks where it’s overhead. The Time slider goes up to a day back or forward.
@@ -182,6 +182,20 @@ fivePoint.dataContext = {
 // The time now, once the series are ready: values set on their data items before that do not take
 root.events.once("frameended", function () {
   updateDateNight(new Date().getTime());
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of where it is working hours right now: the band between the 9 AM and 5 PM lines stays clear, the rest is shaded, and the sun marks where it is overhead. Tab to the countries, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
 });
 
 chart.appear(1000, 100);

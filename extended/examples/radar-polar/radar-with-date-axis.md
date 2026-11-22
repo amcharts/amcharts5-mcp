@@ -2,7 +2,7 @@
 title: "Radar with Date Axis"
 source: "https://www.amcharts.com/demos/radar-with-date-axis/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A timeline wrapped into a ring: the year runs clockwise from the top, and each ring is one row of date ranges. Here, when five holiday homes were booked in 2025.
@@ -136,6 +136,25 @@ homes.forEach(function(home) {
     return booking.home === home;
   }));
   series.appear(2000, 100);
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radial timeline of when five holiday homes were booked in 2025, one ring per home. Tab to a home's bookings, then move between them with the arrow keys"
+});
+// each home's bookings: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusable: true,
+    role: "figure",
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused booking shows its tooltip
+    ariaLabel: "{categoryY}: {openValueX.formatDate('MMMM d')} to {valueX.formatDate('MMMM d')}"
+  });
 });
 
 yAxis.data.setAll(homes.map(function(home) {

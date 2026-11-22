@@ -2,7 +2,7 @@
 title: "Flame Chart"
 source: "https://www.amcharts.com/demos/flame-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A page's main thread for 1.6 seconds as it loads and starts up, the way the browser's performance tools draw it: each task on top, the calls it made stacked below it, colored by what they do. The part of a task past 50 ms is striped red.
@@ -302,6 +302,36 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal",
   opposite: true // under the plot (the time axis is on top)
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Flame chart of a page's main thread over its first 1.6 seconds: each task, with the calls it made stacked below it, colored by kind: loading, scripting, rendering and painting. Tab to a kind's bars, then move between them with the arrow keys"
+});
+// each kind's bars: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  var kind = series.get("name");
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: kind,
+    hoverOnFocus: true, // a focused bar shows its tooltip
+    ariaLabel: series === longSeries
+      ? "Long task: {over} ms over the {limit} ms budget"
+      : "{name}" + (series === taskSeries ? "" : ", " + kind) + ": {duration} ms, {self} ms self, from {start.formatNumber('#,###.')} ms"
+  });
+});
+// the legend, the scrollbar's grips and the zoom out button come after the bars; the legend is one Tab stop, the
+// arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
+var scrollbar = chart.get("scrollbarX");
+scrollbar.startGrip.set("tabindexOrder", 10);
+scrollbar.endGrip.set("tabindexOrder", 10);
+chart.zoomOutButton.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

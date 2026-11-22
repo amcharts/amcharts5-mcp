@@ -2,7 +2,7 @@
 title: "Divergent Lines"
 source: "https://www.amcharts.com/demos/divergent-lines/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 One solid line for what has happened, then three dashed lines for what might: a projection, and what easing or tightening the rules could do by December.
@@ -197,6 +197,37 @@ var legend = chart.children.unshift(
 );
 
 legend.data.setAll(chart.series.values);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a value observed monthly from January to July 2025, growing from 0 to 720,000, then three outlooks to December: a projection, easing rules and stricter rules. Tab to a line, then move along it with the arrow keys"
+});
+// the points: one Tab stop per line (a focusable group), the arrow keys step through its months
+chart.series.each(function (series) {
+  series.bullets.push(function (root, series, dataItem) {
+    if (dataItem.get("valueY") == null) {
+      return; // a month the line doesn't cover: no point
+    }
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,  // not painted: the lines look as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: series.get("name"),
+        ariaLabel: series.get("name") + ", {valueX}: {valueY}" // valueX shows as month and year (the date formatter above)
+      })
+    });
+  });
+});
+// the legend: one Tab stop too, after the lines; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

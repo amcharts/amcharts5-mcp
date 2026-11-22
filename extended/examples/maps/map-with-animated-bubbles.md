@@ -2,7 +2,7 @@
 title: "Map with Animated Bubbles"
 source: "https://www.amcharts.com/demos/map-with-animated-bubbles/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Bubbles on eight countries that grow and shrink as their values change every two seconds, with the value inside each bubble and the country's name beside it.
@@ -168,7 +168,14 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
     am5.Circle.new(root, {
       radius: 20,                 // a starting size; the heat rule sets the real one
       cursorOverStyle: "pointer", // a hand pointer over the bubble
-      tooltipText: `{name}: [bold]{value}[/]` // the country and its value on hover
+      tooltipText: `{name}: [bold]{value}[/]`, // the country and its value on hover
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the bubbles (a focusable group),
+      // the arrow keys step through them, and the focused one shows its tooltip
+      focusable: true,
+      role: "figure",
+      focusableGroup: "bubbles",
+      hoverOnFocus: true,
+      ariaLabel: "{name}: {value.formatNumber('#.')}" // a whole number, as in the bubble
     }, circleTemplate)
   );
 
@@ -274,6 +281,21 @@ satelliteSeries.on("visible", function(visible) {
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
   labelTemplate.set("fill", visible ? am5.color(0xffffff) : root.interfaceColors.get("text")); // names readable on the picture
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map with bubbles on eight countries that grow and shrink as their random values change every two seconds. Tab to the countries or the bubbles, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the bubbles: set up for the keyboard where they are made, in the bullet function above
 ```
 
 ## HTML

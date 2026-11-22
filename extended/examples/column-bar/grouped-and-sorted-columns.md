@@ -2,7 +2,7 @@
 title: "Grouped and Sorted Columns"
 source: "https://www.amcharts.com/demos/grouped-and-sorted-columns/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Columns grouped by provider and sorted from smallest to largest within each group, with the provider names on a second row of labels. A line marks each provider’s quantity, centered over its group.
@@ -140,7 +140,12 @@ lineSeries.bullets.push(function () {
     locationX: undefined, // no fixed spot: each point's own locationX, set below
     sprite: am5.Circle.new(root, {
       radius: 5,                   // 5px radius
-      fill: lineSeries.get("fill") // in the line's color
+      fill: lineSeries.get("fill"), // in the line's color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the dots (a focusable group), the
+      // arrow keys step through them
+      focusable: true,
+      focusableGroup: "quantities",
+      ariaLabel: "{provider} quantity: {valueY}"
     })
   });
 });
@@ -269,6 +274,21 @@ grid.setAll({ strokeOpacity: 1, location: 1 }); // ...with a solid grid line
 xAxis.data.setAll(chartData);
 series.data.setAll(chartData);
 lineSeries.data.setAll(chartData);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column chart of items from four providers, grouped by provider and sorted from smallest to largest, with a line through each provider's quantity. Tab to the columns or the quantities, then move between them with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "items",
+  ariaLabel: "{provider}, {realName}: {valueY}"
+});
+// the quantities: their dots are set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

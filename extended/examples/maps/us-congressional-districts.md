@@ -2,7 +2,7 @@
 title: "U.S. Congressional Districts"
 source: "https://www.amcharts.com/demos/us-congressional-districts/"
 category: "maps"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 The 435 U.S. congressional districts colored by party, blue for Democrats and red for Republicans, with example data from an earlier Congress.
@@ -558,6 +558,28 @@ legend.data.setAll([{
   name: "No data",
   color: colors.N
 }]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Map of the 435 U.S. congressional districts colored by party, Democrat or Republican, with example data from an earlier Congress. Tab to the districts, then move between them with the arrow keys"
+});
+// the districts: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "districts",
+  hoverOnFocus: true, // a focused district shows its tooltip
+  ariaLabel: "{STATENAME}, {name}: {partyName}"
+});
+// the legend: one Tab stop too, after the districts; the arrow keys step through its items. Its items stand for
+// parties, not series, so a click does nothing: clickTarget "none" keeps a screen reader from offering a toggle
+legend.set("clickTarget", "none");
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 ```
 
 ## HTML

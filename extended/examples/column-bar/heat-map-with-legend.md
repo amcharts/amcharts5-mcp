@@ -2,7 +2,7 @@
 title: "Heat Map with Legend"
 source: "https://www.amcharts.com/demos/heat-map-with-legend/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A week, hour by hour: each cell is colored by its value, and the legend below gives the scale. Weekday working hours stand out, while the weekend stays quiet.
@@ -838,6 +838,28 @@ yAxis.data.setAll(weekdays.map(function(item) {
 xAxis.data.setAll(hours.map(function(item) {
   return { hour: item }
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Heat map of a value for every hour of the week, from Sunday to Saturday, highest in weekday working hours. Tab to the cells, then move between them with the arrow keys"
+});
+// the cells: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "cells",
+  hoverOnFocus: true, // a focused cell shows its tooltip
+  ariaLabel: "{categoryY}, {categoryX}: {value}"
+});
+// a focused cell marks its value on the heat legend, as a hovered one does
+series.columns.template.events.on("focus", function(event) {
+  var di = event.target.dataItem;
+  if (di) {
+    heatLegend.showValue(di.get("value", 0));
+  }
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

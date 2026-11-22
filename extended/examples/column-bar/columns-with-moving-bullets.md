@@ -2,7 +2,7 @@
 title: "Columns with Moving Bullets"
 source: "https://www.amcharts.com/demos/columns-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The column version of moving photos: each column has a photo at its foot, and when you point at a column, the photo climbs to its top. Step counts for six friends, darker the higher.
@@ -41,37 +41,37 @@ var data = [{
   name: "Monica",
   steps: 45688,
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/monica.jpg"
+    src: "https://www.amcharts.com/static/assets/timeline/monica.jpg"
   }
 }, {
   name: "Joey",
   steps: 35781,
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/joey.jpg"
+    src: "https://www.amcharts.com/static/assets/timeline/joey.jpg"
   }
 }, {
   name: "Ross",
   steps: 25464,
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/ross.jpg"
+    src: "https://www.amcharts.com/static/assets/timeline/ross.jpg"
   }
 }, {
   name: "Phoebe",
   steps: 18788,
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/phoebe.jpg"
+    src: "https://www.amcharts.com/static/assets/timeline/phoebe.jpg"
   }
 }, {
   name: "Rachel",
   steps: 15465,
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/rachel.jpg"
+    src: "https://www.amcharts.com/static/assets/timeline/rachel.jpg"
   }
 }, {
   name: "Chandler",
   steps: 11561,
   pictureSettings: {
-    src: "https://www.amcharts.com/wp-content/uploads/assets/timeline/chandler.jpg"
+    src: "https://www.amcharts.com/static/assets/timeline/chandler.jpg"
   }
 }];
 
@@ -264,6 +264,20 @@ cursor.events.on("cursormoved", function () {
   } else {
     handleOut();
   }
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column chart of step counts for six friends, from Monica at 45,688 down to Chandler at 11,561. Tab to the columns, then move between them with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "columns",
+  ariaLabel: "{categoryX}: {valueY} steps"
 });
 
 // Make stuff animate on load

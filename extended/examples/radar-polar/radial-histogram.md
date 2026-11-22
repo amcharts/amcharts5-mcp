@@ -2,7 +2,7 @@
 title: "Radial Histogram"
 source: "https://www.amcharts.com/demos/radial-histogram/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A column chart bent into a ring: twenty bars stand around an open middle, each in its own color, with a gap at the top for the scale.
@@ -119,6 +119,23 @@ for (var i = 1; i < 21; i++) {
 
 xAxis.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radial column chart of 20 numbered columns with random values from 0 to 100, set around a ring. Tab to the columns, then move between them with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  role: "figure",
+  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+  focusableGroup: "columns",
+  hoverOnFocus: true, // a focused column shows its tooltip
+  ariaLabel: "Column {categoryX}: {valueY}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

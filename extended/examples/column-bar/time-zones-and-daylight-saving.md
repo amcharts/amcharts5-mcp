@@ -2,7 +2,7 @@
 title: "Time Zones and Daylight Saving"
 source: "https://www.amcharts.com/demos/time-zones-and-daylight-saving/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 Two offices open 9 to 5 local time, shown in Berlin time or any zone you pick: days start at its midnight, and where its clocks change, a day has 25 hours.
@@ -211,6 +211,26 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 // No zoom-out button over the first row's bars: the scrollbar and the wheel zoom out
 chart.zoomOutButton.set("forceHidden", true);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Timeline of the opening hours of a Berlin and a New York office, 9 to 5 on their own clocks, and the hours both are open, from October 19 to November 7, 2026, in Berlin time. Tab to a row's bars, then move between the days with the arrow keys"
+});
+// each row's bars: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    ariaLabel: "{categoryY}: {openValueX.formatDate('EEEE, MMMM d, HH:mm')} to {valueX.formatDate('HH:mm')}"
+  });
+});
+// the scrollbar's grips come after the bars
+var scrollbar = chart.get("scrollbarX");
+scrollbar.startGrip.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
+scrollbar.endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load, then zoom in on the days around Europe's clock change, Friday to Tuesday. The bars lie
 // along the date axis, so the axis fits itself to them while the chart appears: the zoom comes after

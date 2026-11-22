@@ -2,7 +2,7 @@
 title: "Network Waterfall Chart"
 source: "https://www.amcharts.com/demos/network-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The requests a shop's home page makes as it loads, the way the browser's network panel draws them: each request a row, split into its phases, with its DOMContentLoaded and Load moments marked. Throttle the network with Chrome's presets to see what a slow connection does.
@@ -292,6 +292,29 @@ function showRequests(name) {
 }
 
 showRequests("none");
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Network waterfall of the 17 requests a shop's home page makes as it loads, each split into its phases: queueing, DNS lookup, connecting, waiting for the server and content download. Tab to a phase's bars, then move between the requests with the arrow keys"
+});
+// each phase's bars: one Tab stop (a focusable group), the arrow keys step through them
+series.forEach(function (s) {
+  var phase = s.get("name");
+  s.columns.template.setAll({
+    focusable: true,
+    focusableGroup: phase,
+    hoverOnFocus: true, // a focused bar shows its tooltip
+    ariaLabel: "{url}, " + phase + ": {duration} ms, from {start.formatNumber('#,###.')} ms. {type}, {size} KB from {host}"
+  });
+});
+// the legend: one Tab stop too, after the bars; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

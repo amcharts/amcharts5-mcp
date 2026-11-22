@@ -2,7 +2,7 @@
 title: "Clock"
 source: "https://www.amcharts.com/demos/clock/"
 category: "gauges"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 An analog clock made from a gauge: the dial is a circular axis from 0 to 12, and three clock hands show the time on your device, live.
@@ -177,6 +177,21 @@ function updateHands(duration) {
 }
 
 updateHands(0); // set the hands at once on load
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the clock has no parts to step through: its name gives the time, and follows the hands
+function clockName() {
+  return "Analog clock showing the time on your device: " + chart.getDateFormatter().format(new Date(), "h:mm a");
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: clockName()
+});
+minutesDataItem.on("value", function () {
+  chart.set("ariaLabel", clockName());
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

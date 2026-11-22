@@ -2,7 +2,7 @@
 title: "Spline Graph"
 source: "https://www.amcharts.com/demos/spline-graph/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A spline graph draws a smooth curve through every point instead of straight segments. The Smoothing slider sets how much the curve may bend, from straight lines to a loose wave.
@@ -120,7 +120,7 @@ var series = chart.series.push(am5xy.SmoothedXLineSeries.new(root, {
 }));
 
 series.strokes.template.setAll({
-  strokeWidth: 2, // a 2px line
+  strokeWidth: 2 // a 2px line
 });
 
 // All bullets share one template, so setting its radius resizes them at once
@@ -129,7 +129,7 @@ var bulletTemplate = am5.Template.new({
 });
 
 // a star on every data point
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   return am5.Bullet.new(root, {
     locationY: 0,
     sprite: am5.Star.new(root, {
@@ -137,7 +137,12 @@ series.bullets.push(function () {
       innerRadius: am5.percent(50), // ...with the inner corners at half the radius
       stroke: root.interfaceColors.get("background"), // an outline in the background color...
       strokeWidth: 2,               // ...2px wide...
-      fill: series.get("fill")      // ...around the line's color
+      fill: series.get("fill"),     // ...around the line's color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the stars (a focusable group),
+      // the arrow keys step through them
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{valueX.formatDate('MMMM d')}: {valueY}"
     }, bulletTemplate) // the shared template from above
   });
 });
@@ -150,6 +155,15 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 var data = generateDatas(15); // 15 days
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Smoothed line chart of a daily value over 15 days, with a star on each day. Tab to the stars, then move between the days with the arrow keys"
+});
+// the stars: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

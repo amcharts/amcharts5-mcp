@@ -2,7 +2,7 @@
 title: "Donut with Radial Gradient"
 source: "https://www.amcharts.com/demos/donut-with-radial-gradient/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A donut where every slice is softly shaded, darker at its edges than in the middle of the ring. The shade is made from the slice colors, so it follows any theme.
@@ -106,6 +106,21 @@ series.slices.template.set("fillGradient", am5.RadialGradient.new(root, {
     brighten: -0.25
   }]
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Donut chart of sales in nine countries and their share. Tab to the slices, then move between them with the arrow keys"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
 
 // Play initial series animation
 // https://docs.amcharts.com/v5/concepts/animations/#animation-of-series

@@ -2,7 +2,7 @@
 title: "Rotating Globe with Circles"
 source: "https://www.amcharts.com/demos/rotating-globe-with-circles/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A spinning globe with circles on 169 countries, each sized by the country's population and colored by its continent.
@@ -386,6 +386,32 @@ satelliteSeries.on("visible", function(visible) {
   chart.get("background").set("fillOpacity", visible ? 1 : 0);
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Spinning globe with circles on 169 countries, sized by population and colored by continent. Tab to the countries or the circles, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the circles: one Tab stop too
+circleSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "circles",
+  hoverOnFocus: true, // a focused circle shows its tooltip
+  ariaLabel: "{name}: population {value}"
+});
+// the globe stops turning while a country or a circle has the keyboard focus, so it stays in view
+[polygonSeries, circleSeries].forEach(function (series) {
+  series.mapPolygons.template.events.on("focus", function () { spin.pause(); });
+  series.mapPolygons.template.events.on("blur", function () { spin.play(); });
 });
 
 // Make stuff animate on load

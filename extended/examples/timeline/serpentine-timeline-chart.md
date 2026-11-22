@@ -2,7 +2,7 @@
 title: "Serpentine Timeline Chart"
 source: "https://www.amcharts.com/demos/serpentine-timeline-chart/"
 category: "timeline"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A project plan on a winding road, so four months fit on one screen. Each module has its own lane and color, and lettered badges mark the milestones.
@@ -255,6 +255,11 @@ lineSeries.bullets.push(function(root, series, dataItem) {
       centerY: am5.p50,   // ...and in the middle of its lane
       paddingTop: 2, paddingBottom: 2, paddingLeft: 5, paddingRight: 5, // space around the letter
       layer: 30,          // on layer 30 with the bars, above the axes
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the milestones (a focusable
+      // group), after the tasks; the arrow keys step through them
+      focusable: true,
+      focusableGroup: "milestones",
+      ariaLabel: "Milestone {letter}: {valueX.formatDate('MMMM d')}",
       background: am5.Rectangle.new(root, {
         fill: root.interfaceColors.get("background"),             // a badge in the background color...
         stroke: root.interfaceColors.get("alternativeBackground") // ...with an outline in the text color
@@ -290,6 +295,23 @@ yAxis.data.setAll([
   { category: "Module #3" },
   { category: "Module #4" }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Serpentine timeline of a project plan of 13 tasks in four modules, from January 15 to May 4, 2026, with seven milestones lettered A to G, on a road that winds across the chart, one lane per module. Tab to the tasks, then to the milestones, and move between them with the arrow keys"
+});
+// the tasks' bars: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "tasks",
+  // no hoverOnFocus: the tooltip of a bar that bends round a turn would show in the middle of the turn, off the bar
+  ariaLabel: "{category}: {task}, {openValueX.formatDate('MMMM d')} to {valueX.formatDate('MMMM d')}"
+});
+// the milestones: set up for the keyboard where they are made, in the badge bullet function above
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

@@ -2,7 +2,7 @@
 title: "Population Pyramid"
 source: "https://www.amcharts.com/demos/population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A population pyramid puts men and women back to back, one bar per age group, the youngest at the bottom: its shape shows how old a population is. Here, the United States; click a state on the map for its own pyramid.
@@ -4351,6 +4351,35 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
   // map ids look like US-CA: the state data uses only the part after the dash
   var state = ev.target.dataItem.dataContext.id.split("-").pop();
   showData(stateData[state], ev.target.dataItem.dataContext.name);
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+container.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Population pyramid of the United States, males and females back to back in 19 age groups, as a share of the population, next to a map of the states. Tab to the males' or the females' bars and move between age groups with the arrow keys, or Tab to the states and press Enter to show a state's own pyramid"
+});
+// each side's bars: one Tab stop (a focusable group), the arrow keys step through the age groups
+maleSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "Males",
+  hoverOnFocus: true, // a focused bar shows its tooltip
+  ariaLabel: "Males, age {categoryY}: {male} ({malePercent.formatNumber('#.0s')}%)"
+});
+femaleSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "Females",
+  hoverOnFocus: true,
+  ariaLabel: "Females, age {categoryY}: {female} ({femalePercent.formatNumber('#.0s')}%)"
+});
+// the states: one Tab stop, after the bars; Enter shows the focused state's pyramid, again goes back to the whole country
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "states",
+  tabindexOrder: 10, // the chart's parts are focused in this order, from low to high (0 if not set)
+  hoverOnFocus: true, // a focused state shows its name
+  ariaLabel: "{name}"
 });
 
 // Make stuff animate on load

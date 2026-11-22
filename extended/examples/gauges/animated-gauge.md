@@ -2,7 +2,7 @@
 title: "Animated Gauge"
 source: "https://www.amcharts.com/demos/animated-gauge/"
 category: "gauges"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A percentage gauge whose arc fills up to the needle, one color below the value and another above. Every two seconds all of it moves to a new value.
@@ -187,6 +187,21 @@ axisRange1.get("axisFill").setAll({
 
 axisRange1.get("label").setAll({
   forceHidden: true // no extra label at the range's start
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the gauge has no parts to step through: its name gives the reading, and follows the needle
+function gaugeName(value) {
+  return "Gauge of a percentage, filled up to the needle, now at " + Math.round(value) + "%. It moves to a random value every two seconds";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: gaugeName(axisDataItem.get("value"))
+});
+axisDataItem.on("value", function (value) {
+  chart.set("ariaLabel", gaugeName(value));
 });
 
 // Make stuff animate on load

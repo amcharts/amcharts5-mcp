@@ -2,7 +2,7 @@
 title: "Smoothed Line Chart"
 source: "https://www.amcharts.com/demos/smoothed-line-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart with the corners rounded off. The curve makes a trend easier to follow, and a soft fill under it gives the shape some weight.
@@ -124,14 +124,19 @@ series.fills.template.setAll({
 });
 
 // a dot on every data point
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   return am5.Bullet.new(root, {
     locationY: 0,
     sprite: am5.Circle.new(root, {
       radius: 4,               // a 4px dot...
       stroke: root.interfaceColors.get("background"), // ...with a ring in the background color...
       strokeWidth: 2,          // ...2px wide...
-      fill: series.get("fill") // ...filled with the line's color
+      fill: series.get("fill"), // ...filled with the line's color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the line (a focusable group),
+      // the arrow keys step through it
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: {valueY}"
     })
   });
 });
@@ -144,6 +149,15 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 var data = generateDatas(50); // 50 days
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Smoothed line chart of a daily value over 50 days. Tab to the points, then move between them with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

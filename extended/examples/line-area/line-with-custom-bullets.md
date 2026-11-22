@@ -2,7 +2,7 @@
 title: "Line with Custom Bullets"
 source: "https://www.amcharts.com/demos/line-with-custom-bullets/"
 category: "line-area"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A line chart where each point carries its own icon. Here, New Year’s Eve hour by hour: water and coffee early on, then beer, cocktails and the midnight toast.
@@ -66,47 +66,47 @@ var data = [
   {
     date: "2025-12-31 18:00",
     value: 0,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline0.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline0.svg" }
   },
   {
     date: "2025-12-31 19:00",
     value: 0,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline1.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline1.svg" }
   },
   {
     date: "2025-12-31 20:00",
     value: 0,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline2.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline2.svg" }
   },
   {
     date: "2025-12-31 21:00",
     value: 0.3,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline3.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline3.svg" }
   },
   {
     date: "2025-12-31 22:00",
     value: 0.8,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline4.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline4.svg" }
   },
   {
     date: "2025-12-31 23:00",
     value: 1.2,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline5.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline5.svg" }
   },
   {
     date: "2026-01-01 00:00",
     value: 2.2,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline6.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline6.svg" }
   },
   {
     date: "2026-01-01 01:00",
     value: 2.5,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline7.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline7.svg" }
   },
   {
     date: "2026-01-01 02:00",
     value: 2.2,
-    iconSettings: { src: "https://amcharts.com/wp-content/uploads/assets/timeline/timeline0.svg" }
+    iconSettings: { src: "https://amcharts.com/static/assets/timeline/timeline0.svg" }
   }
 ];
 
@@ -180,14 +180,23 @@ var bulletTemplate = am5.Template.new({
 });
 
 // each bullet is an icon on a circle in the line's color
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   var container = am5.Container.new(root, {
     centerX: am5.p50, // the container is centered on the point...
     centerY: am5.p50  // ...horizontally and vertically
   }, bulletTemplate);
 
   container.children.push(
-    am5.Circle.new(root, { radius: 20, fill: series.get("fill") }) // a 20px-radius circle in the line's color
+    am5.Circle.new(root, {
+      radius: 20,               // a 20px-radius circle...
+      fill: series.get("fill"), // ...in the line's color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the icons (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      role: "figure",
+      focusableGroup: "points",
+      ariaLabel: "{valueX.formatDate('MMMM d, HH:mm')}: {valueY}"
+    })
   );
 
   container.children.push(
@@ -207,6 +216,15 @@ series.bullets.push(function () {
 
 series.data.setAll(data);
 series.appear(1000);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of New Year's Eve hour by hour, from 6 pm to 2 am, with an icon on each hour. Tab to the icons, then move between the hours with the arrow keys"
+});
+// the icons: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Partitioned Bar Chart"
 source: "https://www.amcharts.com/demos/partitioned-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A bar chart split into groups along its axis: sales in the 48 mainland states and DC, grouped into four regions. Each region has its own color and its name on a line across the axis.
@@ -366,6 +366,26 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis,
   yAxis: yAxis // the cursor snaps to the states
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bar chart of sales in the 48 mainland states and DC, grouped into four regions: Central, East, South and West. Tab to the bars, then move between the states with the arrow keys"
+});
+// the bars: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "states",
+  hoverOnFocus: true, // a focused bar shows its tooltip
+  ariaLabel: "{categoryY}, {region}: {valueX}"
+});
+// the legend: one Tab stop too, after the bars; the arrow keys step through its items
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

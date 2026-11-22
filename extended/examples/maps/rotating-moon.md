@@ -2,7 +2,7 @@
 title: "Rotating Moon"
 source: "https://www.amcharts.com/demos/rotating-moon/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The Moon as a slowly turning globe, covered with NASA's map of its surface, and the six places where Apollo astronauts landed, all on the side that faces the Earth.
@@ -100,7 +100,14 @@ pointSeries.bullets.push(function() {
     strokeWidth: 2,
     tooltipText: "[bold]{mission}[/]\n{site}\n{date}",
     tooltipY: 0,                 // the tooltip points at the top of the circle, not its middle
-    cursorOverStyle: "pointer"   // a hand over the marker: there is more to see
+    cursorOverStyle: "pointer",  // a hand over the marker: there is more to see
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the landing sites (a focusable
+    // group), the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    role: "figure",
+    focusableGroup: "landing sites",
+    hoverOnFocus: true,
+    ariaLabel: "{mission}: {site}, {date}"
   }));
 
   // pointed at, the circle grows a little, and the Moon stops turning so it stays under the pointer
@@ -108,6 +115,8 @@ pointSeries.bullets.push(function() {
   circle.states.create("hover", { scale: 1.3 });
   circle.events.on("pointerover", function() { spin.pause(); });
   circle.events.on("pointerout", function() { spin.play(); });
+  circle.events.on("focus", function() { spin.pause(); }); // the same for a marker focused with the keyboard
+  circle.events.on("blur", function() { spin.play(); });
 
   container.children.push(am5.Label.new(root, {
     text: "{number}",
@@ -154,6 +163,15 @@ var credit = chart.children.push(am5.Label.new(root, {
   dx: -10,                   // 10px in from the edge
   y: 10                      // 10px from the top
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the Moon, and a screen reader names it
+  role: "figure",
+  ariaLabel: "The Moon as a slowly turning globe, with the six Apollo landing sites. Tab to the landing sites, then move between them with the arrow keys"
+});
+// the landing sites: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

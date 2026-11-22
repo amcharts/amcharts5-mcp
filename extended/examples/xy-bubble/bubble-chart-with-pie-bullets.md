@@ -2,7 +2,7 @@
 title: "Bubble Chart with Pie Bullets"
 source: "https://www.amcharts.com/demos/bubble-chart-with-pie-bullets/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A bubble chart where every bubble is a small pie chart: its place and size show three values, and its slices show what it is made of.
@@ -92,7 +92,14 @@ series0.bullets.push(function(root, series, dataItem) {
       height: 100,
       radius: am5.p100, // the pie fills its box
       centerX: am5.p50, // centered on the point
-      centerY: am5.p50
+      centerY: am5.p50,
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the pies (a focusable group),
+      // the arrow keys step through them; its name lists the slices
+      focusable: true,
+      focusableGroup: "pies",
+      ariaLabel: "x {valueX}, y {valueY}, value {value}. " + dataItem.dataContext.pieData.map(function(slice) {
+        return slice.category + ": " + slice.value;
+      }).join(", ")
     }, pieChartTemplate));
 
     var series = pieChart.series.push(am5percent.PieSeries.new(root, {
@@ -197,6 +204,15 @@ var data = [{
 }]
 
 series0.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bubble chart of four points, each a small pie chart of three or four categories, sized by a third value. Tab to the pies, then move between them with the arrow keys"
+});
+// the pies: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Simple Pie Chart"
 source: "https://www.amcharts.com/demos/simple-pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A pie chart with nothing extra: seven values, seven slices, and no legend or settings in the way. A clean starting point for your own.
@@ -61,6 +61,21 @@ series.data.setAll([
   { value: 3, category: "Six" },
   { value: 1, category: "Seven" },
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pie chart of seven values and their share. Tab to the slices, then move between them with the arrow keys"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
 
 // Play initial series animation
 // https://docs.amcharts.com/v5/concepts/animations/#animation-of-series

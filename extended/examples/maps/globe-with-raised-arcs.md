@@ -2,7 +2,7 @@
 title: "Globe with Raised Arcs"
 source: "https://www.amcharts.com/demos/globe-with-raised-arcs/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Two routes around the world on a globe, one through the north and one through the south, drawn as arcs that rise above the surface like flight paths. Where a route runs over the edge of the globe, its arc stays in view.
@@ -121,7 +121,13 @@ pointSeries.bullets.push(function() {
       strokeWidth: 2,         // ...2px wide
       tooltipText: "{title}", // the city's name on hover
       // each city takes the color of its route
-      templateField: "settings"
+      templateField: "settings",
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the cities (a focusable group),
+      // the arrow keys step through them, and the focused one shows its tooltip
+      focusable: true,
+      focusableGroup: "cities",
+      hoverOnFocus: true,
+      ariaLabel: "{title}"
     })
   });
 });
@@ -197,6 +203,21 @@ satelliteSeries.on("visible", function(visible) {
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Globe with two routes around the world drawn as raised arcs: a northern one through London, New York, San Francisco, Tokyo, Delhi and Dubai, and a southern one through Sao Paulo, Johannesburg, Singapore, Sydney and Santiago. Tab to the countries or the cities, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the cities: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

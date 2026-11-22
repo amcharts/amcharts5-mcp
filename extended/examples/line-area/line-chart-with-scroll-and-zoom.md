@@ -2,7 +2,7 @@
 title: "Line Chart with Scroll and Zoom"
 source: "https://www.amcharts.com/demos/line-chart-with-scroll-and-zoom/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Five and a half years of daily values. The scrollbar on top holds a small copy of the whole line, so you can see where you are while you zoom into a few weeks.
@@ -139,6 +139,15 @@ var sbSeries = scrollbar.chart.series.push(am5xy.LineSeries.new(root, {
 var data = generateDatas(2000);
 series.data.setAll(data);
 sbSeries.data.setAll(data); // the preview gets the same data
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 2,000 days. Zoom with the scrollbar or the mouse wheel. The line has too many points to step through with the keyboard"
+});
+// no focusable points on the line: 2,000 of them would slow down loading, zooming and panning
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

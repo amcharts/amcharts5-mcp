@@ -2,7 +2,7 @@
 title: "No-Gap Date Axis"
 source: "https://www.amcharts.com/demos/no-gap-date-axis/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Stock markets close at weekends, leaving holes on a calendar axis. This axis skips days with no data: 200 trading days of price and volume, one after another.
@@ -170,6 +170,21 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 var data = generateDatas(200);
 series.data.setAll(data);
 volumeSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a price over 200 trading days, weekends left out, with the daily volume as columns under it. Tab to the volume columns, then move between the days with the arrow keys. The price line has too many points to step through with the keyboard"
+});
+// no focusable points on the price line: with the volume columns, 400 focusable items would slow down loading, zooming and panning
+// the volume columns: one Tab stop too, the arrow keys step through them
+volumeSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "volume",
+  ariaLabel: "{valueX.formatDate('EEEE, MMMM d, yyyy')}: volume {valueY}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

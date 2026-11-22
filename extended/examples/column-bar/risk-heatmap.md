@@ -2,7 +2,7 @@
 title: "Risk Heatmap"
 source: "https://www.amcharts.com/demos/risk-heatmap/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A risk matrix on two category axes: each of the 25 cells is colored from dark green to red by its rating, with a circle sized by its value and the value written inside.
@@ -399,6 +399,21 @@ xAxis.data.setAll([
   { category: "Good" },
   { category: "Very good" }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Risk matrix of 25 cells, five ratings from critical to very good on each side, each cell with a value. Tab to the cells, then move between them with the arrow keys"
+});
+// the cells: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "cells",
+  hoverOnFocus: true, // a focused cell shows its tooltip
+  ariaLabel: "{categoryY}, {categoryX}: {value}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

@@ -2,7 +2,7 @@
 title: "Waffle Chart"
 source: "https://www.amcharts.com/demos/waffle-chart/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A waffle chart shows parts of a whole as 100 squares, one per percent. Here, how visitors reached a website: 52 search, 28 direct, 12 social and 8 email.
@@ -160,6 +160,28 @@ makeSeries("Search", 52);
 makeSeries("Direct", 28);
 makeSeries("Social", 12);
 makeSeries("Email", 8);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Waffle chart of how visitors reached a website, in 100 squares: 52 search, 28 direct, 12 social and 8 email. Tab to a source's squares, then move between them with the arrow keys"
+});
+// each source's squares: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused square shows its tooltip
+    ariaLabel: "{name}"
+  });
+});
+// the legend: one Tab stop too, after the squares; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

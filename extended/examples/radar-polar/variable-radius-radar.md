@@ -2,7 +2,7 @@
 title: "Variable-Radius Radar"
 source: "https://www.amcharts.com/demos/variable-radius-radar/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 One chart, three shapes: the Arc slider bends stacked columns from a flat bar chart into a half circle or a full ring. Here, a shop’s sales of six products, by quarter.
@@ -127,6 +127,30 @@ var legend = chart.children.push(am5.Legend.new(root, {
 legend.data.setAll(chart.series.values);
 
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radial stacked column chart of a shop's sales of six products, in thousands of units, by quarter. Tab to a quarter's columns, then move between the products with the arrow keys"
+});
+// each quarter's columns: one Tab stop (a focusable group), the arrow keys step through the products
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusable: true,
+    role: "figure",
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused column shows its tooltip
+    ariaLabel: "{categoryX}, {name}: {valueY} thousand sold"
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

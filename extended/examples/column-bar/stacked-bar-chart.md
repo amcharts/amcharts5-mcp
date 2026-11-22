@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart"
 source: "https://www.amcharts.com/demos/stacked-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A stacked chart on its side: each bar is a year’s total, split into six regions and labeled segment by segment. Bars leave room for long names and long lists.
@@ -162,6 +162,28 @@ makeSeries("Asia", "asia");
 makeSeries("Latin America", "lamerica");
 makeSeries("Middle East", "meast");
 makeSeries("Africa", "africa");
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stacked bar chart of six regions over 2023, 2024 and 2025, each year's bar split by region. Tab to a region's segments, then move between its years with the arrow keys"
+});
+// each region's segments: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused segment shows its tooltip
+    ariaLabel: "{name}, {categoryY}: {valueX}"
+  });
+});
+// the legend: one Tab stop too, after the bars; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

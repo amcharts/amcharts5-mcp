@@ -2,7 +2,7 @@
 title: "US Heat (Choropleth) Map"
 source: "https://www.amcharts.com/demos/us-heat-map/"
 category: "maps"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A heat map of the United States, also called a choropleth: each state is colored by its population in the 2000 census, from a light shade for the fewest people to a dark one for the most.
@@ -171,6 +171,21 @@ heatLegend.endLabel.setAll({
 polygonSeries.events.on("datavalidated", function () {
   heatLegend.set("startValue", polygonSeries.getPrivate("valueLow"));
   heatLegend.set("endValue", polygonSeries.getPrivate("valueHigh"));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Heat map of the United States, each state colored by its population in the 2000 census: the darker, the more people. Tab to the states, then move between them with the arrow keys"
+});
+// the states: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "states",
+  hoverOnFocus: true, // a focused state shows its tooltip
+  ariaLabel: "{name}: {value.formatNumber('#,###')} people"
 });
 ```
 

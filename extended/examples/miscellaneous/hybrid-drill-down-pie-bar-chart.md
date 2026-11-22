@@ -2,7 +2,7 @@
 title: "Hybrid Drill-Down Pie/Bar Chart"
 source: "https://www.amcharts.com/demos/hybrid-drill-down-pie-bar-chart/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A donut that drives a bar chart: click a slice and the bars show what it’s made of. Here, 280 support tickets rated Critical, Acceptable or Good, split by type.
@@ -253,6 +253,29 @@ var label2 = pieChart.seriesContainer.children.push(am5.Label.new(root, {
   // the category name, under the percentage in the donut's hole
   dy: 30
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+container.setAll({
+  focusable: true, // Tab reaches the charts, and a screen reader names them
+  role: "figure",
+  ariaLabel: "Donut chart of 280 support tickets rated Critical, Acceptable or Good, next to a bar chart of the selected rating's tickets by type. Tab to the slices, move between them with the arrow keys and press Enter to show a slice's breakdown; Tab on to the bars"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter selects one, as a click does
+pieSeries.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value} tickets, {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the bars: one Tab stop too, after the slices; the template reaches the bars made for each new breakdown
+columnSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "bars",
+  tabindexOrder: 10, // the chart's parts are focused in this order, from low to high (0 if not set)
+  hoverOnFocus: true, // a focused bar shows its tooltip
+  ariaLabel: "{categoryY}: {valueX} tickets"
+});
 
 // Pre-select first slice
 pieSeries.events.on("datavalidated", function() {

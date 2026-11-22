@@ -2,7 +2,7 @@
 title: "Grainy Gradient Pie"
 source: "https://www.amcharts.com/demos/grained-gradient-pie/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A donut with a fine grain over soft gradients, rounded slices and shadows that deepen on hover. A printed, tactile look instead of flat color.
@@ -125,6 +125,26 @@ legend.markerRectangles.template.adapters.add("fillGradient", function() {
   return undefined;
 })
 legend.data.setAll(series.dataItems);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Donut chart of four countries and their share. Tab to the slices, then move between them with the arrow keys"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the legend: one Tab stop too, after the slices; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 series.appear(1000, 100);
 ```

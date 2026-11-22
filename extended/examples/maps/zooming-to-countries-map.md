@@ -2,7 +2,7 @@
 title: "Zooming to Countries Map"
 source: "https://www.amcharts.com/demos/zooming-to-countries-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map that zooms to any country you click. Click the country again, or the sea, to zoom back out.
@@ -198,6 +198,21 @@ satelliteSeries.on("visible", function(visible) {
     polygon.setAll(polygon.get("active") ? (visible ? outlineLook : activeLook) : look);
   });
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of countries that zooms to the one you pick. Tab to the countries, move between them with the arrow keys, and press Enter to zoom to one or back out"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
 });
 
 // Make stuff animate on load

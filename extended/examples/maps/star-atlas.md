@@ -2,7 +2,7 @@
 title: "Star Atlas"
 source: "https://www.amcharts.com/demos/star-atlas/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A star atlas: the night sky drawn on a map chart, with the brightest stars, about 25 constellations and the path of the sun. It can be shown flat or as a globe.
@@ -453,6 +453,15 @@ starSeries.bullets.push(function (_root, _series, dataItem) {
 	// named stars get a tooltip with their name and magnitude
 	if (sName) {
 		circle.set("tooltipText", sName + " (mag " + mag.toFixed(1) + ")");
+		// keyboard and screen readers (see Accessibility below): one Tab stop for all the named stars (a focusable
+		// group), the arrow keys step through them, and the focused one shows its tooltip
+		circle.setAll({
+			focusable: true,
+			role: "figure",
+			focusableGroup: "stars",
+			hoverOnFocus: true,
+			ariaLabel: sName + ", magnitude " + mag.toFixed(1)
+		});
 	}
 
 	// only the brightest named stars, under magnitude 1, get a label
@@ -519,6 +528,27 @@ chart.chartContainer.events.on("pointerdown", stopRotation); // the first press 
 // https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/#zoom-control
 var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 zoomControl.homeButton.set("visible", true); // the home button is hidden by default
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+	focusable: true, // Tab reaches the map, and a screen reader names it
+	role: "figure",
+	ariaLabel: "Star atlas: a slowly turning map of the night sky with 103 named bright stars, 400 faint ones, 26 constellation figures, the celestial equator and the ecliptic. Tab to the constellations or the named stars, then move between them with the arrow keys"
+});
+// the named stars: set up for the keyboard where they are made, in the bullet function above
+// the constellation figures: one Tab stop (a focusable group), the arrow keys step through them
+constellationSeries.mapLines.template.setAll({
+	focusable: true,
+	role: "figure",
+	focusableGroup: "constellations",
+	hoverOnFocus: true, // a focused figure shows its name
+	ariaLabel: "{name}"
+});
+// the zoom buttons: after the stars
+[zoomControl.homeButton, zoomControl.plusButton, zoomControl.minusButton].forEach(function (button) {
+	button.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

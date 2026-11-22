@@ -2,7 +2,7 @@
 title: "Evenly Spaced Date Axis"
 source: "https://www.amcharts.com/demos/evenly-spaced-date-axis/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart of weekdays only: Saturdays and Sundays have no values, so the axis leaves them out and Friday sits right next to Monday, with no empty gap.
@@ -134,6 +134,27 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 var data = generateDatas(200);
 series.data.setAll(data);
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 200 weekdays, the weekends left out of the axis. Tab to the line, then move along it with the arrow keys"
+});
+// the points: one Tab stop for the whole line (a focusable group), the arrow keys step through it
+series.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fillOpacity: 0,          // not painted: the line looks as before
+      strokeOpacity: 0,
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{categoryX.formatDate('EEEE, MMMM d, yyyy')}: {valueY}"
+    })
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

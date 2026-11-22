@@ -2,7 +2,7 @@
 title: "Pacific-Centered Map"
 source: "https://www.amcharts.com/demos/pacific-centered-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map turned to put the Pacific Ocean in the middle, so Asia, Australia and the Americas sit side by side. Each country takes the next color of the palette.
@@ -180,6 +180,21 @@ satelliteSeries.on("visible", function(visible) {
     polygon.setAll(look);
   });
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map centered on the Pacific Ocean, each country in its own color. Tab to the countries, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
 });
 
 // Make stuff animate on load

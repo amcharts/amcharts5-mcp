@@ -2,7 +2,7 @@
 title: "Complex Venn Diagram"
 source: "https://www.amcharts.com/demos/complex-venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Venn diagram with four circles for coffee’s ingredients, and the drinks where they overlap: espresso and milk make a flat white, espresso and water an Americano, espresso, milk and foam a cappuccino or a latte.
@@ -86,13 +86,30 @@ series.data.setAll([
   { name: "Milk foam", value: 10, sliceSettings: { fill: am5.color(0xd1d0ce) }  },
   { name: "Espresso", value: 20, sliceSettings: { fill: am5.color(0x441702) }, labelSettings: { fill: am5.color(0xffffff) } },
   { name: "Water", value: 8, sliceSettings: { fill: am5.color(0xbbcdd7) }  },
-  // milk and foam alone make no drink: no label and no tooltip for their overlap
-  { name: "", value: 2, sets: ["Milk", "Milk foam"], sliceSettings: { fill: am5.color(0xd2d2d2), tooltipText: "" }  },
+  // milk and foam alone make no drink: no label, no tooltip and no keyboard stop for their overlap
+  { name: "", value: 2, sets: ["Milk", "Milk foam"], sliceSettings: { fill: am5.color(0xd2d2d2), tooltipText: "", focusable: false }  },
   { name: "Flat white", value: 4, sets: ["Milk", "Espresso"], sliceSettings: { fill: am5.color(0xa18b80) }  },
   { name: "Macchiato", value: 4, sets: ["Milk foam", "Espresso"], sliceSettings: { fill: am5.color(0xaba09c) }  },
   { name: "Cappuccino\nLatte", value: 2, sets: ["Milk", "Milk foam", "Espresso"], sliceSettings: { fill: am5.color(0xd1d0ce) }  },
   { name: "Americano", value: 4, sets: ["Water", "Espresso"], sliceSettings: { fill: am5.color(0xa2a19f) }  }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the diagram, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Venn diagram of four coffee ingredients, milk, milk foam, espresso and water, with the drinks where they overlap: flat white, macchiato, cappuccino or latte, and Americano. Tab to the areas, then move between them with the arrow keys"
+});
+// the ingredients and drinks: one Tab stop (a focusable group), the arrow keys step through them
+// (the unnamed milk and foam overlap is left out, in its row of the data)
+series.slices.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "areas",
+  hoverOnFocus: true, // a focused area shows its tooltip
+  ariaLabel: "{category}"
+});
 ```
 
 ## HTML

@@ -2,7 +2,7 @@
 title: "Zoomable Radar"
 source: "https://www.amcharts.com/demos/zoomable-radar/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A radar chart of stacked columns that zooms every way: drag around the ring, scroll, or use the two scrollbars. Here, a year of website visits by where they came from.
@@ -122,6 +122,25 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radar chart of stacked columns: a year of website visits per month, in thousands, from search, direct, social and email. Tab to a source's columns, then move between the months with the arrow keys"
+});
+// each source's columns: one Tab stop (a focusable group), the arrow keys step through the months
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    role: "figure",
+    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused column shows its tooltip
+    ariaLabel: "{name}, {categoryX}: {valueY} thousand visits"
+  });
+});
 
 // Animate chart
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

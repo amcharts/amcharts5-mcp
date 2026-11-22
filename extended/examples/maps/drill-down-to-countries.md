@@ -2,7 +2,7 @@
 title: "Drill-Down to Countries"
 source: "https://www.amcharts.com/demos/drill-down-to-countries/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map colored by continent that loads a country's regions when you click it. The detailed map is fetched only then, so the page stays light.
@@ -218,6 +218,41 @@ backContainer.events.on("click", goBack);
 
 // the zoom control's home button goes back to the world map too
 zoomControl.homeButton.events.on("click", goBack);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of countries colored by continent. Tab to the countries, move between them with the arrow keys, and press Enter to zoom in to one's regions; Back to world map goes back"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them; Enter loads the regions
+worldSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
+});
+// the regions, once loaded: one Tab stop too
+countrySeries.mapPolygons.template.setAll({
+  focusable: false, // while hidden (see below)
+  focusableGroup: "regions",
+  hoverOnFocus: true,
+  ariaLabel: "{name}"
+});
+// a hidden series' shapes would still be reached with Tab: only the series on show is focusable
+worldSeries.on("visible", function (visible) {
+  worldSeries.mapPolygons.template.set("focusable", visible);
+});
+countrySeries.on("visible", function (visible) {
+  countrySeries.mapPolygons.template.set("focusable", visible);
+});
+// the back button: reached with Tab once shown, and Enter goes back
+backContainer.setAll({
+  focusable: true,
+  role: "button",
+  ariaLabel: "Back to world map"
+});
 ```
 
 ## HTML

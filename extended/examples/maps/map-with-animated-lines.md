@@ -2,7 +2,7 @@
 title: "Map with Animated Lines"
 source: "https://www.amcharts.com/demos/map-with-animated-lines/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Lines from London that draw themselves to ten cities, over and over, all at the same speed, so the long route to New York takes longest.
@@ -141,6 +141,12 @@ citySeries.bullets.push(function() {
     radius: 5,                 // 5px radius
     tooltipText: "{title}",    // the city's name on hover
     tooltipY: 0,               // the tooltip points at the top of the dot
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the cities (a focusable group),
+    // the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "cities",
+    hoverOnFocus: true,
+    ariaLabel: "{title}",
     fill: colors.getIndex(10), // a theme color
     stroke: root.interfaceColors.get("background"), // a ring in the background color...
     strokeWidth: 2, // ...2px wide
@@ -359,6 +365,21 @@ satelliteSeries.on("visible", function(visible) {
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
   animatedLineSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Map of lines from London that draw themselves, over and over, to Reykjavik, Lisbon, Moscow, Belgrade, Ljubljana, Madrid, Stockholm, Bern, Kyiv and New York. Tab to the countries or the cities, then move between them with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the cities: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 chart.appear(1000, 100);

@@ -2,7 +2,7 @@
 title: "Horizontal Dumbbell Plot"
 source: "https://www.amcharts.com/demos/horizontal-dumbbell-plot/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A dumbbell plot puts two values on one row, a dot for each joined by a bar, so the gap between them is what you see first. Here, a made-up start and end value for each of 18 people.
@@ -172,6 +172,20 @@ for (var i = 0; i < names.length; i++) {
 
 yAxis.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Dumbbell plot of a made-up start and end value for each of 18 people. Tab to the dumbbells, then move between the people with the arrow keys"
+});
+// the dumbbells (their bars): one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "dumbbells",
+  ariaLabel: "{categoryY}: from {openValueX} to {valueX}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

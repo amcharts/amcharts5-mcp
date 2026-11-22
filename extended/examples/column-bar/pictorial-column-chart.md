@@ -2,7 +2,7 @@
 title: "Pictorial Column Chart"
 source: "https://www.amcharts.com/demos/pictorial-column-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A column chart where each column is a picture of what it measures: five famous skyscrapers, each drawn to its height against a sunset sky.
@@ -219,6 +219,21 @@ series.bullets.push(function() {
 })
 
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pictorial column chart of the heights of five skyscrapers, from the Burj Khalifa at 828 meters down to the Empire State Building at 449. Tab to the towers, then move between them with the arrow keys"
+});
+// the towers (their clear columns): one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "towers",
+  hoverOnFocus: true, // a focused tower shows its tooltip
+  ariaLabel: "{categoryX}: {valueY} meters"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

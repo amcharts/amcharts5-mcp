@@ -2,7 +2,7 @@
 title: "Divergent Stacked Bars"
 source: "https://www.amcharts.com/demos/divergent-stacked-bars/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A diverging stacked bar chart, the usual way to show answers on a scale: negative answers stack to the left of zero, positive ones to the right. Here, how often people turn to eleven sources of information.
@@ -234,6 +234,28 @@ legend.valueLabels.template.set("forceHidden", true);
 
 // The legend lists the answers in the order the bars show them, from left to right
 legend.data.setAll([never, unlikely, sometimes, veryOften]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Diverging stacked bar chart of how often people turn to eleven sources of information: never and unlikely to the left of zero, sometimes and very often to the right. Tab to an answer's bars, then move between the sources with the arrow keys"
+});
+// each answer's bars: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused bar shows its tooltip
+    ariaLabel: "{categoryY}, {name}: {valueX}"
+  });
+});
+// the legend: one Tab stop too, after the bars; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

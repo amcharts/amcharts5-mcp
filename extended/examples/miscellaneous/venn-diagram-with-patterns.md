@@ -2,7 +2,7 @@
 title: "Venn Diagram with Patterns"
 source: "https://www.amcharts.com/demos/venn-diagram-with-patterns/"
 category: "miscellaneous"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Venn diagram draws each group as a circle, the overlap holding what belongs to both. Here, a polar bear and a black bear overlap in a dotted panda.
@@ -110,6 +110,21 @@ series.hoverGraphics.setAll({
   strokeDasharray: [3, 3], // 3px dashes with 3px gaps
   stroke: am5.color(0xe8743b),
   strokeWidth: 3 // 3px wide
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the diagram, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Venn diagram of two circles, a white polar bear and a black bear, overlapping in a dotted panda. Tab to the areas, then move between them with the arrow keys"
+});
+// the circles and the overlap: one Tab stop (a focusable group), the arrow keys step through them
+series.slices.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "areas",
+  ariaLabel: "{category}"
 });
 ```
 

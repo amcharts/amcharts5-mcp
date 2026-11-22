@@ -2,7 +2,7 @@
 title: "Micro Charts & Sparklines"
 source: "https://www.amcharts.com/demos/micro-charts-sparklines/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Micro charts are tiny charts with no axes, grid or labels, small enough for a table row. Here, 40 made-up stock tickers, each with a price line and volume columns.
@@ -68,7 +68,7 @@ for (var i = 0; i < tickers.length; i++) {
   var col3 = document.createElement("div");
   col3.style.height = "35px";                     // the micro chart is 35px tall
   row.appendChild(col3);
-  var root = createValueChart(col3, data, rising); // a price line, green when rising, red when falling
+  var root = createValueChart(col3, data, rising, ticker); // a price line, green when rising, red when falling
 
   var col4 = document.createElement("div");
   col4.style.height = "35px";    // 35px tall too
@@ -109,7 +109,7 @@ function generateData(count) {
 }
 
 // a tiny line chart of the price in the given div
-function createValueChart(div, data, rising) {
+function createValueChart(div, data, rising, ticker) {
   var root = am5.Root.new(div); // each micro chart is a root of its own, in its own div
 
   // the Micro theme drops axis labels, grid and padding, to suit a tiny chart
@@ -124,6 +124,17 @@ function createValueChart(div, data, rising) {
     wheelX: "none", // ...and no wheel zooming...
     wheelY: "none"  // ...at all
   }));
+
+  // keyboard and screen readers (see Accessibility below): each row's price chart is one Tab stop, named with
+  // the row's prices and volumes, as stepping through the tiny charts' points would tell no more
+  var first = data[0];
+  var last = data[data.length - 1];
+  chart.setAll({
+    focusable: true,
+    role: "figure",
+    ariaLabel: ticker + " over 20 days: price from " + first.value + " to " + last.value +
+      ", volume from " + root.numberFormatter.format(first.volume) + " to " + root.numberFormatter.format(last.volume)
+  });
 
   // the mouse wheel scrolls the rows instead of being caught by the chart
   chart.plotContainer.set("wheelable", false);
@@ -206,6 +217,14 @@ function createVolumeChart(div, data) {
 
   series.data.setAll(data);
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// The rows are HTML, so the div that holds them gets the name; each row's price chart is a Tab stop of its own,
+// set up where it is made, in createValueChart above
+div.setAttribute("role", "figure");
+div.setAttribute("aria-label", "Sparklines of 40 made-up stock tickers over 20 days of random data, a row each with the change in percent, a price line and volume columns. Tab to a row's price chart for its prices and volumes");
+div.tabIndex = 0; // Tab reaches the list, and a screen reader names it
 ```
 
 ## HTML

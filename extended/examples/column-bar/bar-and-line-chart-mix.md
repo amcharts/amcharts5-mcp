@@ -2,7 +2,7 @@
 title: "Bar and Line Chart Mix"
 source: "https://www.amcharts.com/demos/bar-and-line-chart-mix/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Bars and a line on one chart, turned on its side: income as horizontal bars, expenses as a line that climbs through the years. In 2025, expenses overtook income.
@@ -136,7 +136,7 @@ var series2 = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 series2.strokes.template.setAll({
-  strokeWidth: 2, // a 2px line
+  strokeWidth: 2 // a 2px line
 });
 
 // a circle on each point of the line
@@ -147,7 +147,12 @@ series2.bullets.push(function () {
       radius: 5, // 5px
       stroke: series2.get("stroke"), // outlined in the line's color...
       strokeWidth: 2, // ...2px wide
-      fill: root.interfaceColors.get("background") // filled with the background color, so it looks hollow
+      fill: root.interfaceColors.get("background"), // filled with the background color, so it looks hollow
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the line's points (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "expenses",
+      ariaLabel: "{name}, {categoryY}: {valueX}"
     })
   });
 });
@@ -176,6 +181,26 @@ cursor.lineX.set("visible", false); // no vertical cursor line, only the horizon
 
 series1.data.setAll(data);
 series2.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bar and line chart of income as bars and expenses as a line, from 2021 to 2025. Tab to the income bars or the expenses line, then move between the years with the arrow keys"
+});
+// the income bars: one Tab stop (a focusable group), the arrow keys step through them
+series1.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "income",
+  ariaLabel: "{name}, {categoryY}: {valueX}"
+});
+// the expenses line: its points are set up for the keyboard where they are made, in the bullet function above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

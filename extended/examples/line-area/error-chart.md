@@ -2,7 +2,7 @@
 title: "Error Chart"
 source: "https://www.amcharts.com/demos/error-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart with error bars: each country’s value comes with a bar showing how far off it could be. Where two bars overlap, the two values could be the same.
@@ -182,7 +182,12 @@ series.bullets.push(function() {
     strokeWidth: 2,               // a 2px outline
     radius: 5,                    // 5px radius
     stroke: series.get("stroke"), // in the line's color
-    fill: root.interfaceColors.get("background") // filled with the background color
+    fill: root.interfaceColors.get("background"), // filled with the background color
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the points (a focusable
+    // group), the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{categoryX}: {valueY}, plus or minus {error}"
   });
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -199,6 +204,15 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 
 series.data.setAll(data);
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart with error bars of visits in seven countries, from USA with 3,025 to India with 984, each with its margin of error. Tab to the points, then move between the countries with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the second bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

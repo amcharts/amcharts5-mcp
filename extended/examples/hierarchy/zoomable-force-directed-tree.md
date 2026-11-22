@@ -2,7 +2,7 @@
 title: "Zoomable Force Directed Tree"
 source: "https://www.amcharts.com/demos/zoomable-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A force-directed tree lays out a hierarchy as linked bubbles that push apart until they settle: here the coffee flavor wheel, 85 flavors in nine families.
@@ -564,6 +564,26 @@ series.nodes.template.set("tooltipText", "{category}");
 series.data.setAll([data]);
 
 series.set("selectedDataItem", series.dataItems[0]); // start at the top node, so the whole tree shows
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Force-directed tree of the coffee flavor wheel, 85 flavors in nine families. Tab to the flavors, move between them with the arrow keys, and press Enter to fold or open one"
+});
+// the flavors: one Tab stop (a focusable group), the arrow keys step through them; Enter folds or opens one
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "flavors",
+  hoverOnFocus: true, // a focused flavor shows its tooltip
+  ariaLabel: "{category}"
+});
+// the zoom buttons are focusable by the library: they come after the flavors
+[zoomTools.homeButton, zoomTools.plusButton, zoomTools.minusButton].forEach(function (button) {
+  button.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

@@ -2,7 +2,7 @@
 title: "Angled Word Cloud"
 source: "https://www.amcharts.com/demos/angled-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A word cloud made from the plain text of a speech, with every word tilted to one side or the other, packed into a curved shape. Here, the king’s first speech in Shakespeare’s Hamlet: the more often a word appears, the bigger it is.
@@ -86,6 +86,26 @@ series.labels.template.setAll({
   paddingRight: 5,
   fontFamily: "Courier New",         // a monospaced font for every word
   tooltipText: "{category}: {value}" // the word and how many times it appears
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the cloud, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Word cloud of the 100 most frequent words in the king's first speech in Shakespeare's Hamlet, each sized by how often it appears and tilted to one side or the other. Tab to the words, then move between them with the arrow keys"
+});
+// the words: one Tab stop (a focusable group), the arrow keys step through them
+series.labels.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "words",
+  hoverOnFocus: true, // a focused word shows its tooltip
+  ariaLabel: "{category}: {value} times"
+});
+// the zoom buttons: after the words
+[zoomTools.homeButton, zoomTools.plusButton, zoomTools.minusButton].forEach(function (button) {
+  button.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
 });
 ```
 

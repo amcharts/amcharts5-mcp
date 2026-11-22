@@ -2,7 +2,7 @@
 title: "Horizontally Stacked Axes"
 source: "https://www.amcharts.com/demos/horizontally-stacked-axes/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Stacked axes turned on their side: three panes next to each other, each with its own value axis, and one list of names down the left for all three. Here, a sales team’s deals, calls and revenue per person.
@@ -203,8 +203,13 @@ function createSeries(field, name, margin, column) {
         locationX: 1,
         locationY: 0.5, // the dot in the middle of its row
         sprite: am5.Circle.new(root, {
-          radius: 4,               // 4px radius
-          fill: series.get("fill") // in the line's color
+          radius: 4,                // 4px radius
+          fill: series.get("fill"), // in the line's color
+          // keyboard and screen readers (see Accessibility below): one Tab stop for each line's dots (a focusable
+          // group), the arrow keys step through them
+          focusable: true,
+          focusableGroup: name,
+          ariaLabel: "{categoryY}, {name}: {valueX}"
         })
       });
     });
@@ -226,6 +231,25 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "none", // a drag over the plot pans instead of zooming
   yAxis: yAxis
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Chart in three panes side by side of a made-up sales team of 19 people: deals closed as bars, calls made and revenue in thousands of dollars as lines. Tab to a pane's bars or points, then move between people with the arrow keys"
+});
+// the deals bars: one Tab stop (a focusable group), the arrow keys step through them
+// the dots of the two lines: set up for the keyboard where they are made, in the bullet function above
+chart.series.each(function (series) {
+  if (series.columns) {
+    series.columns.template.setAll({
+      focusable: true,
+      focusableGroup: series.get("name"),
+      ariaLabel: "{categoryY}, {name}: {valueX}"
+    });
+  }
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

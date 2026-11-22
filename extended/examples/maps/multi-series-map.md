@@ -2,7 +2,7 @@
 title: "Multi-Series Map"
 source: "https://www.amcharts.com/demos/multi-series-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 One map, two layers: a polygon series of world countries, and a second one of US states drawn on top in a color of its own.
@@ -133,6 +133,29 @@ zoomControl.homeButton.set("visible", true); // and a home button, hidden by def
 chart.chartContainer.get("background").events.on("click", function () {
   chart.goHome();
 })
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map in two layers: the countries, and the US states on top. Tab to the countries or the states, move between them with the arrow keys, and press Enter to highlight one"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them; a screen reader says whether
+// each is highlighted
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
+});
+// the US states: one Tab stop too
+polygonSeriesUS.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "states",
+  hoverOnFocus: true,
+  ariaLabel: "{name}"
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

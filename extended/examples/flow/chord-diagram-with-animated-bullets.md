@@ -2,7 +2,7 @@
 title: "Chord Diagram with Animated Bullets"
 source: "https://www.amcharts.com/demos/chord-diagram-with-animated-bullets/"
 category: "flow"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A directed chord diagram with dots that keep running along the ribbons, so the direction of every flow is plain to see. Here, six nodes and nine flows.
@@ -114,6 +114,31 @@ series.data.setAll([
   { from: "F", to: "A", value: 7 },
   { from: "D", to: "B", value: 2 }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Directed chord diagram of six nodes, A to F, and nine flows between them, with dots running from each flow's source to its target. Tab to the nodes or the flows, then move through them with the arrow keys; Enter on a node hides or shows its flows"
+});
+// the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
+// links, as a click does
+series.nodes.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "nodes",
+  ariaLabel: "{name}: {sum} in all"
+});
+// the links between them: one Tab stop too, after the nodes
+series.links.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "links",
+  tabindexOrder: 5,   // after the nodes
+  hoverOnFocus: true, // a focused link shows its tooltip
+  ariaLabel: "{sourceId} to {targetId}: {value}"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

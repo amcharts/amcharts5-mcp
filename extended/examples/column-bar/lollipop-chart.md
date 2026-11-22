@@ -2,7 +2,7 @@
 title: "Lollipop Chart"
 source: "https://www.amcharts.com/demos/lollipop-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A lollipop chart is a column chart drawn with thin stems and a dot on top, lighter on the eye when there are many categories. Here, made-up values for 28 people, with a scrollbar to zoom in on a few names.
@@ -163,6 +163,25 @@ for (var i = 0; i < names.length; i++) {
 
 xAxis.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Lollipop chart of a made-up value for each of 28 people. Tab to the lollipops, then move between the people with the arrow keys"
+});
+// the lollipops (their stems): one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "lollipops",
+  ariaLabel: "{categoryX}: {valueY}"
+});
+// the scrollbar's grips and the zoom out button come after the lollipops
+var scrollbar = chart.get("scrollbarX");
+scrollbar.startGrip.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
+scrollbar.endGrip.set("tabindexOrder", 10);
+chart.zoomOutButton.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

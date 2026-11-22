@@ -2,7 +2,7 @@
 title: "Line with Data Labels"
 source: "https://www.amcharts.com/demos/line-with-data-labels/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart that writes the value above every point, so the numbers are there without hovering. Here, sixteen readings half an hour apart through one night.
@@ -110,8 +110,14 @@ var circleTemplate = am5.Template.new({
 });
 
 // a dot on each point
-series.bullets.push(function () {
-  var circle = am5.Circle.new(root, {}, circleTemplate);
+series.bullets.push(function (root, series) {
+  var circle = am5.Circle.new(root, {
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueX.formatDate('h:mm a')}: {valueY}"
+  }, circleTemplate);
 
   return am5.Bullet.new(root, {
     sprite: circle,
@@ -133,7 +139,7 @@ series.bullets.push(function () {
     paddingTop: 4,
     paddingLeft: 6,
     paddingRight: 6,
-    fill: am5.Color.brighten(series.get("fill"), -0.1), // a little darker than the line
+    fill: am5.Color.brighten(series.get("fill"), -0.1) // a little darker than the line
   });
 
   // The box takes the chart's background color, so it works in light and dark mode
@@ -144,7 +150,7 @@ series.bullets.push(function () {
     cornerRadiusBR: 3,
     cornerRadiusTL: 3,
     cornerRadiusTR: 3,
-    stroke: series.get("fill"), // outlined in the line's color
+    stroke: series.get("fill") // outlined in the line's color
   }));
 
   return am5.Bullet.new(root, {
@@ -204,6 +210,16 @@ var data = [{
 }];
 
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of sixteen readings half an hour apart, from 10:30 PM to 6 AM, between about 99 and 102, each value written above its point. Tab to the points, then move between them with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the first bullet function above (the value labels
+// stay as they are, as the points read out the same values)
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

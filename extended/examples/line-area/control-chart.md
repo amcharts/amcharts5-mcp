@@ -2,7 +2,7 @@
 title: "Control Chart"
 source: "https://www.amcharts.com/demos/control-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A control chart tracks readings against a center line and two control limits. Readings beyond a limit turn red; a long run above the center line gets red rings, an early warning that the process is drifting.
@@ -109,8 +109,16 @@ var circleTemplate = am5.Template.new({
   stroke: root.interfaceColors.get("background") // ...in the background color
 });
 
-series.bullets.push(function () {
-  var circle = am5.Circle.new(root, {}, circleTemplate);
+series.bullets.push(function (root, series, dataItem) {
+  // keyboard and screen readers (see Accessibility below): one Tab stop for all the readings (a focusable
+  // group), the arrow keys step through them, and a flagged one says so
+  var flag = dataItem.dataContext.bulletSettings;
+  var circle = am5.Circle.new(root, {
+    focusable: true,
+    focusableGroup: "readings",
+    ariaLabel: "{valueX.formatDate('MMMM d, HH:mm')}: {valueY}" +
+      (flag === alarm ? ", outside the control limits" : flag === warning ? ", in a long run above the center line" : "")
+  }, circleTemplate);
 
   return am5.Bullet.new(root, {
     sprite: circle,
@@ -211,6 +219,15 @@ var data = [{
 }];
 
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Control chart of 16 readings, one every 30 minutes from 10:30 pm on January 1, 2026 to 6 am the next day, against a center line of 100 and control limits of 98.35 and 101.65. Tab to the readings, then move between them with the arrow keys"
+});
+// the readings: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

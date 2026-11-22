@@ -2,7 +2,7 @@
 title: "Globe with Raised Parallels"
 source: "https://www.amcharts.com/demos/globe-with-raised-parallels/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The Earth drawn with nothing but its parallels, one every 1.5 degrees. Over the sea they lie flat on the globe; over land they rise by the real height of the ground, 200 times exaggerated, so mountains and ice sheets stand out.
@@ -252,6 +252,15 @@ root.container.children.push(am5.Label.new(root, {
   x: am5.p50,       // the label's middle...
   centerX: am5.p50  // ...at the middle of the chart
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Globe of the Earth drawn only with its parallels, turning slowly: over land they rise by the height of the ground, 200 times exaggerated, colored up to 500 m, 500 to 2,000 m and over 2,000 m, so mountains and ice sheets stand out"
+});
+// the lines are thousands of short pieces with no tooltip, so they are not made focusable
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

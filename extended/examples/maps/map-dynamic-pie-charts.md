@@ -2,7 +2,7 @@
 title: "Map with Dynamic Pie Charts"
 source: "https://www.amcharts.com/demos/map-dynamic-pie-charts/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Pie charts on a map: each of four regions gets its own pie of made-up sales by product line, sized by the region’s total sales.
@@ -129,6 +129,14 @@ pointSeries.bullets.push(function(root, series, dataItem) {
   pieSeries.get("colors").set("step", 3);
   pieSeries.labels.template.set("forceHidden", true); // no slice labels...
   pieSeries.ticks.template.set("forceHidden", true);  // ...and no ticks: the pies are too small for them
+  // keyboard and screen readers (see Accessibility below): one Tab stop per pie (a focusable group), the arrow keys
+  // step through its slices, and the focused one shows its tooltip
+  pieSeries.slices.template.setAll({
+    focusable: true,
+    focusableGroup: region.title,
+    hoverOnFocus: true,
+    ariaLabel: region.title + ", {category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+  });
   pieSeries.data.setAll(region.pieData);
 
   // the first pie's slices fill the legend
@@ -216,6 +224,20 @@ for (var i = 0; i < regions.length; i++) {
     pieData: region.pieData
   });
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+map.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map with a pie chart on each of four regions, North America, Europe, Asia and Africa, of made-up sales by product line, sized by the region's total. Tab to a region's pie, then move between its slices with the arrow keys"
+});
+// the pies' slices: set up for the keyboard where they are made, in the bullet function above
+// the legend: one Tab stop too, after the pies; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 ```
 
 ## HTML

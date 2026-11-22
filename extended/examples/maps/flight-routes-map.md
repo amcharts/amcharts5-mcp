@@ -2,7 +2,7 @@
 title: "Flight Routes Map"
 source: "https://www.amcharts.com/demos/flight-routes-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Flight routes drawn as lines from London to eleven cities, with the destinations as dots. Origin switches to the routes from Vilnius.
@@ -136,7 +136,13 @@ originSeries.bullets.push(function () {
     tooltipY: 0,                // the tooltip points at the top of the dot
     fill: colors.getIndex(10),  // a palette color...
     stroke: root.interfaceColors.get("background"), // ...with an outline in the background color...
-    strokeWidth: 2              // ...2px wide
+    strokeWidth: 2,             // ...2px wide
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the two origins (a focusable group),
+    // the arrow keys step between them, the focused one shows its tooltip, and Enter shows its routes
+    focusable: true,
+    focusableGroup: "origins",
+    hoverOnFocus: true,
+    ariaLabel: "{title}, an origin"
   });
 
   circle.events.on("click", function (e) { // a click shows this city's routes
@@ -157,7 +163,12 @@ destinationSeries.bullets.push(function () {
     tooltipY: 0,
     fill: colors.getIndex(10),
     stroke: root.interfaceColors.get("background"),
-    strokeWidth: 2
+    strokeWidth: 2,
+    // keyboard and screen readers: one Tab stop for the destinations, as for the origins above
+    focusable: true,
+    focusableGroup: "destinations",
+    hoverOnFocus: true,
+    ariaLabel: "{title}"
   });
 
   return am5.Bullet.new(root, {
@@ -383,6 +394,21 @@ satelliteSeries.on("visible", function(visible) {
   // white routes show over the dark picture
   lineSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Map of flight routes from London to eleven cities: ten in Europe, and New York. Tab to the countries, the origins or the destinations, then move between them with the arrow keys; Enter on Vilnius or London shows the routes from there"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the origins and the destinations: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 chart.appear(1000, 100);

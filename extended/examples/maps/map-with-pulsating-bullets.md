@@ -2,7 +2,7 @@
 title: "Map with Pulsating Bullets"
 source: "https://www.amcharts.com/demos/map-with-pulsating-bullets/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Eighteen capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again at random moments, to draw the eye.
@@ -124,7 +124,13 @@ var dotTemplate = am5.Template.new({
 pointSeries.bullets.push(function() {
   var container = am5.Container.new(root, {
     tooltipText: "{title}",    // the city's name on hover
-    cursorOverStyle: "pointer" // a hand pointer: the cities can be clicked
+    cursorOverStyle: "pointer", // a hand pointer: the cities can be clicked
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the cities (a focusable group),
+    // the arrow keys step through them, the focused one shows its tooltip, and Enter opens its Wikipedia page
+    focusable: true,
+    focusableGroup: "cities",
+    hoverOnFocus: true,
+    ariaLabel: "{title}"
   });
 
   // Click a city to read about it, in a new tab
@@ -328,6 +334,21 @@ satelliteSeries.on("visible", function(visible) {
   landTemplate.setAll(visible ? { fillOpacity: 0, stroke: am5.color(0xffffff), strokeOpacity: 0.6 } : landLook);
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of eighteen capital cities marked with pulsing dots. Tab to the countries or the cities, move between them with the arrow keys, and press Enter on a city to open its Wikipedia page"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
+// the cities: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 chart.appear(1000, 100);

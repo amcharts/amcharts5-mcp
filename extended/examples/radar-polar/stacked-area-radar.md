@@ -2,7 +2,7 @@
 title: "Stacked Area Radar"
 source: "https://www.amcharts.com/demos/stacked-area-radar/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A radar chart with stacked areas: the inner area is one part, and the outer edge is the total. Here, the cash 24 companies hold abroad and in the US.
@@ -300,6 +300,33 @@ var data = [
 series1.data.setAll(data);
 series2.data.setAll(data);
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radar chart with stacked areas of the cash 24 companies hold abroad and in the US, in billions of dollars. Tab to the companies, then move between them with the arrow keys"
+});
+// the companies: invisible points on the outer area, one Tab stop for all of them (a focusable group), the
+// arrow keys step through them
+series2.bullets.push(function (root, series) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fillOpacity: 0,          // not painted: the chart looks as before
+      strokeOpacity: 0,
+      focusable: true,
+      focusableGroup: "companies",
+      ariaLabel: "{categoryX}: ${value1} billion abroad, ${value2} billion in the US"
+    })
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

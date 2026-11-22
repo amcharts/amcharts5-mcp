@@ -2,7 +2,7 @@
 title: "Drag-Ordering of Bars"
 source: "https://www.amcharts.com/demos/drag-ordering-of-bars/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A bar chart you put in order by hand: grab a bar, drag it above or below the others and let go, and the bars settle into their new order.
@@ -207,6 +207,21 @@ var data = [{
 
 yAxis.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bar chart of a value for five countries, which you put in order by dragging the bars. Tab to the bars and move between them with the arrow keys; hold Shift and the up or down arrow to drag the focused bar, and let go to drop it"
+});
+// the bars: one Tab stop (a focusable group), the arrow keys step through them; Shift and an arrow key held down
+// drag the focused bar, and letting go drops it, as with the mouse
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "bars",
+  ariaLabel: "{categoryY}: {valueX}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

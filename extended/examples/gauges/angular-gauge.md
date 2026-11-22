@@ -2,7 +2,7 @@
 title: "Angular Gauge"
 source: "https://www.amcharts.com/demos/angular-gauge/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The classic gauge: a needle on a half-circle dial from 0 to 100, like a speedometer. It shows one value and how far along its range it is.
@@ -88,6 +88,21 @@ setInterval(function () {
     easing: am5.ease.out(am5.ease.cubic) // slowing down as it arrives
   });
 }, 2000);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the gauge has no parts to step through: its name gives the reading, and follows the needle
+function gaugeName(value) {
+  return "Gauge with a needle on a dial from 0 to 100, now at " + Math.round(value) + ". The needle moves to a random value every two seconds";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: gaugeName(axisDataItem.get("value"))
+});
+axisDataItem.on("value", function (value) {
+  chart.set("ariaLabel", gaugeName(value));
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

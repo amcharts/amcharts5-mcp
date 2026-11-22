@@ -2,7 +2,7 @@
 title: "Step Line Chart"
 source: "https://www.amcharts.com/demos/step-line-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line that moves in steps: each value stays flat until the next one, then jumps straight up or down. Here, yearly temperature anomalies from 1950 to 2005.
@@ -170,6 +170,27 @@ series.data.setAll(data);
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // above the plot; zooms the years
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Step line chart of yearly temperature anomalies from 1950 to 2005. Tab to the line, then move along the years with the arrow keys"
+});
+// the points: one Tab stop for the whole line (a focusable group), the arrow keys step through it
+series.bullets.push(function (root, series) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fillOpacity: 0,          // not painted: the line looks as before
+      strokeOpacity: 0,
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{valueX}: {valueY}"
+    })
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

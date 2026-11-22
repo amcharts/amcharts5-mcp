@@ -2,7 +2,7 @@
 title: "Single-Level Packed Circles"
 source: "https://www.amcharts.com/demos/single-level-packed-circles/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Five hundred circles, each sized by its value, packed as tight as they fit. One level and no groups: a quick way to spot the few big items among hundreds of small ones.
@@ -577,6 +577,28 @@ var data = {
 };
 
 series.data.setAll([data]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Packed circle chart of 500 numbered items, each sized by its value. Tab to the circles, then move between them with the arrow keys"
+});
+// the circles: one Tab stop (a focusable group), the arrow keys step through them
+series.nodes.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "circles",
+  hoverOnFocus: true, // a focused circle shows its tooltip
+  ariaLabel: "Item {category}: {sum}"
+});
+// the root around everything isn't drawn, so it isn't focused either
+series.dataItems[0].get("node").set("focusable", false);
+// the zoom buttons are focusable by the library: they come after the circles
+[zoomTools.homeButton, zoomTools.plusButton, zoomTools.minusButton].forEach(function (button) {
+  button.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

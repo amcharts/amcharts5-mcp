@@ -2,7 +2,7 @@
 title: "Changing Data of Word Cloud"
 source: "https://www.amcharts.com/demos/changing-data-word-cloud/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A word cloud with live data: every five seconds each language gets a new weight, and the words grow, shrink and move to new places. It starts from the share of developers using each language in the 2021 Stack Overflow survey.
@@ -114,6 +114,25 @@ series.data.setAll([
   { tag: "Crystal", weight: 0.56 },
   { tag: "COBOL", weight: 0.53 },
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the cloud, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Word cloud of 38 programming languages, each sized by a weight that changes at random every five seconds. Tab to the words, then move between them with the arrow keys"
+});
+// the words: one Tab stop (a focusable group), the arrow keys step through them
+series.labels.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "words",
+  ariaLabel: "{category}: weight {value.formatNumber('#.0')}"
+});
+// the zoom buttons: after the words
+[zoomTools.homeButton, zoomTools.plusButton, zoomTools.minusButton].forEach(function (button) {
+  button.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 ```
 
 ## HTML

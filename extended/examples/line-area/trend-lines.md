@@ -2,7 +2,7 @@
 title: "Trend Lines"
 source: "https://www.amcharts.com/demos/trend-lines/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart with two trend lines drawn over it: green along a rise, red along a fall. Each trend line is simply its own line series with two points.
@@ -136,7 +136,6 @@ var data = [
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true,  // the chart can be reached with the Tab key
     panX: true,       // drag the plot to pan sideways...
     panY: true,       // ...and up and down
     wheelX: "panX",   // a horizontal wheel or trackpad swipe pans
@@ -205,11 +204,16 @@ var bulletTemplate = am5.Template.new({
   radius: 4
 });
 
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   var circle = am5.Circle.new(root, {
     fill: series.get("fill"),                       // the line's color
     stroke: root.interfaceColors.get("background"), // a ring in the background color sets the dot off the line
-    strokeWidth: 2
+    strokeWidth: 2,
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the line (a focusable group),
+    // the arrow keys step through it
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueX.formatDate('MMMM d')}: {valueY}"
   }, bulletTemplate);
 
   return am5.Bullet.new(root, {
@@ -267,6 +271,15 @@ cursor.lineY.set("visible", false); // no horizontal cursor line
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal"
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value from January 1 to 23, 2026, with a rising trend line from January 2 to 11 and a falling one from January 17 to 22. Tab to the points, then move between them with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Rotating Globe"
 source: "https://www.amcharts.com/demos/rotating-globe/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The Earth from space, as a 3D globe that turns on its own. Turn on Country names to label the countries; more names appear as you zoom in.
@@ -306,6 +306,36 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
     activePolygon = polygon;
     showCountry(polygon.dataItem);
   }
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Globe of the Earth's countries, turning on its own. Tab to the countries, move between them with the arrow keys, and press Enter to turn the globe to one and zoom in"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
+});
+// the globe stops turning while a country has the keyboard focus, so it stays in view (and stays stopped if the
+// country was picked)
+var pausedForFocus = false;
+polygonSeries.mapPolygons.template.events.on("focus", function () {
+  if (!spin.stopped) {
+    spin.pause();
+    pausedForFocus = true;
+  }
+});
+polygonSeries.mapPolygons.template.events.on("blur", function () {
+  if (pausedForFocus && !spin.stopped) {
+    spin.play();
+  }
+  pausedForFocus = false;
 });
 
 // Make stuff animate on load

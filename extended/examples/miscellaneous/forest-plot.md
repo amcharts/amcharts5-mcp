@@ -2,7 +2,7 @@
 title: "Forest Plot"
 source: "https://www.amcharts.com/demos/forest-plot/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A forest plot sums up the studies on one question: each row shows a study’s result as a square, sized by how much it counts, with a line for its range of uncertainty. The diamond at the bottom is all the studies combined.
@@ -184,7 +184,13 @@ var rectangleTemplate = am5.Template.new({
 
 series2.bullets.push(function() {
   return am5.Bullet.new(root, {
-    sprite: am5.Rectangle.new(root, {}, rectangleTemplate)
+    sprite: am5.Rectangle.new(root, {
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the studies (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "studies",
+      ariaLabel: "{categoryY}: {valueX}, interval {low} to {high}"
+    }, rectangleTemplate)
   });
 });
 
@@ -239,6 +245,15 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 cursor.lineY.set("visible", false); // no horizontal cursor line...
 cursor.lineX.set("visible", false); // ...and no vertical one: the cursor just shows the tooltip
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Forest plot of five studies from 1991 to 2009, each with its measure, sized by its weight, and its interval, and their summary measure of 2.2. Tab to the studies, then move between them with the arrow keys"
+});
+// the studies' squares and the summary's diamond: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

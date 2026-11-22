@@ -2,7 +2,7 @@
 title: "Radar Chart"
 source: "https://www.amcharts.com/demos/radar-chart/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A radar chart, also called a spider or web chart, puts each category on its own spoke and joins the values into one shape. Here, nine countries, one value each.
@@ -100,11 +100,16 @@ series.fills.template.setAll({
 });
 
 // a dot on each country's value
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
       radius: 5,               // 5px dots
-      fill: series.get("fill") // the series color
+      fill: series.get("fill"), // the series color
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "countries",
+      ariaLabel: "{categoryX}: {valueY} litres"
     })
   });
 });
@@ -141,6 +146,15 @@ var data = [{
 }];
 series.data.setAll(data);
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radar chart of one value, in litres, for nine countries, each on its own spoke. Tab to the countries, then move between them with the arrow keys"
+});
+// the countries' dots: set up for the keyboard where they are made, in the bullet function above
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

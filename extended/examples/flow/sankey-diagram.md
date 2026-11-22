@@ -2,7 +2,7 @@
 title: "Sankey Diagram"
 source: "https://www.amcharts.com/demos/sankey-diagram/"
 category: "flow"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Sankey diagram shows a quantity flowing from stage to stage, each band as wide as its share. Here, an energy budget: 40 of every 100 units do useful work.
@@ -83,6 +83,31 @@ series.data.setAll([
   // power plants lose a third of their energy as heat
   { from: "Electricity", to: "Lost as heat", value: 12 }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Sankey diagram of an energy budget: how 100 units of energy flow from their sources to useful work and waste. Tab to the nodes or the flows, then move through them with the arrow keys; Enter on a node hides or shows its flows"
+});
+// the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
+// links, as a click does
+series.nodes.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "nodes",
+  ariaLabel: "{name}: {sum}%"
+});
+// the flows between them: one Tab stop too, after the nodes
+series.links.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "links",
+  tabindexOrder: 5,   // after the nodes
+  hoverOnFocus: true, // a focused flow shows its tooltip
+  ariaLabel: "{sourceId} to {targetId}: {value}%"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

@@ -708,6 +708,19 @@ var data = [
 valueSeries.data.setAll(data);
 volumeSeries.data.setAll(data);
 sbSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+stockChart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stock chart of one trading day of a sample stock, AMCH, in 390 one-minute candles from 9:30 to 16:00 New York time, with each minute's volume. The chart has too many candles to step through with the keyboard. The toolbar above the chart adds indicators and drawings"
+});
+// no focusable points on the candles: 390 of them would slow down loading, zooming and panning
+// the legend, with its settings and close buttons: after the candles
+valueLegend.itemContainers.template.set("tabindexOrder", 10); // the chart's parts are focused from low to high (0 if not set)
+valueLegend.settingsButtons.template.set("tabindexOrder", 10);
+valueLegend.closeButtons.template.set("tabindexOrder", 10);
 ```
 
 ## HTML

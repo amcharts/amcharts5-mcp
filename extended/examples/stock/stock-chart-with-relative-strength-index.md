@@ -513,6 +513,35 @@ var data = [
 valueSeries.data.setAll(data);
 volumeSeries.data.setAll(data);
 sbSeries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+stockChart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stock chart of a year of daily prices of a sample stock, AMCH, from October 2025 to September 2026, as candlesticks with volume, and a panel below with the 14-day Relative Strength Index, from 0 to 100, with lines at 80 for overbought and 20 for oversold. Tab to the candles, then move between the days with the arrow keys. The toolbar above the chart adds indicators and drawings"
+});
+// the candles: one Tab stop (a focusable group), the arrow keys step through them. turboMode draws the candles as
+// one shape, which can't take focus, so each gets an unpainted point at its close
+function addFocusPoints(series) {
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,   // not painted: the chart looks as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: "prices",
+        ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}" + ": open {openValueY}, high {highValueY}, low {lowValueY}, close {valueY}"
+      })
+    });
+  });
+}
+addFocusPoints(valueSeries);
+// the legend, with its settings and close buttons: after the candles
+valueLegend.itemContainers.template.set("tabindexOrder", 10); // the chart's parts are focused from low to high (0 if not set)
+valueLegend.settingsButtons.template.set("tabindexOrder", 10);
+valueLegend.closeButtons.template.set("tabindexOrder", 10);
 ```
 
 ## HTML

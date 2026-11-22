@@ -2,7 +2,7 @@
 title: "Saturn and Its Rings"
 source: "https://www.amcharts.com/demos/saturn-and-its-rings/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Saturn drawn with a map chart: the planet is a globe of colored bands spinning under its storms, the rings are map lines raised above it at their real distances, as strong as the rings are dense, and the six largest moons go round at their real relative speeds.
@@ -190,7 +190,10 @@ RINGS.forEach(function(ring) {
       geometry: circle(ring.from + (ring.to - ring.from) * (i + 0.5) / lines),
       ring: ring.name,
       span: Math.round(ring.from / 1000) + ",000 to " + Math.round(ring.to / 1000) + ",000 km from Saturn's center",
-      lineSettings: { strokeOpacity: 0.15 + 0.75 * ring.density }
+      lineSettings: {
+        strokeOpacity: 0.15 + 0.75 * ring.density,
+        focusable: i == Math.floor(lines / 2) // one line per ring for the keyboard: the middle one (see Accessibility below)
+      }
     });
   }
 });
@@ -240,7 +243,13 @@ moonSeries.bullets.push(function() {
     fill: am5.color(0xf4f0e8),
     tooltipText: "[bold]{name}[/]\n{across} km across\n{km} km from Saturn's center",
     tooltipY: 0, // the tooltip points at the top of the moon, not its middle
-    templateField: "circleSettings" // each moon's size comes from its data
+    templateField: "circleSettings", // each moon's size comes from its data
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the moons (a focusable group), the
+    // arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "moons",
+    hoverOnFocus: true,
+    ariaLabel: "{name}: {across} km across, {km} km from Saturn's center"
   });
   // pointed at, the moon grows a little
   // https://docs.amcharts.com/v5/concepts/settings/states/
@@ -262,6 +271,22 @@ moonSeries.data.setAll(MOONS.map(function(moon, i) {
     }
   };
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Saturn, 120,536 km across at the equator, as a spinning globe with its main rings and its six largest moons going round it. Tab to the rings or the moons, then move between them with the arrow keys"
+});
+// the rings: one Tab stop (a focusable group), the arrow keys step through them; each ring is several lines, and
+// only its middle one is focusable, from the ring data above
+ringSeries.mapLines.template.setAll({
+  focusableGroup: "rings",
+  hoverOnFocus: true, // a focused ring shows its tooltip
+  ariaLabel: "{ring}: {span}"
+});
+// the moons: set up for the keyboard where they are made, in the bullet function above
 ```
 
 ## HTML

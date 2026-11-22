@@ -2,7 +2,7 @@
 title: "Chord Diagram"
 source: "https://www.amcharts.com/demos/chord-diagram/"
 category: "flow"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A chord diagram puts the items around a circle and joins them with ribbons, each as wide as the flow between them. Here, five European cities and the flows between every pair, which are rarely the same both ways.
@@ -77,6 +77,31 @@ series.data.setAll([
   { source: "Madrid", target: "Paris", value: 19 },
   { source: "Madrid", target: "Berlin", value: 7 }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Chord diagram of the flows between five European cities, both ways. Tab to the cities or the flows, then move through them with the arrow keys; Enter on a city hides or shows its flows"
+});
+// the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
+// links, as a click does
+series.nodes.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "nodes",
+  ariaLabel: "{name}: {sum} in all"
+});
+// the links between them: one Tab stop too, after the nodes
+series.links.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "links",
+  tabindexOrder: 5,   // after the nodes
+  hoverOnFocus: true, // a focused link shows its tooltip
+  ariaLabel: "{sourceId} to {targetId}: {value}"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

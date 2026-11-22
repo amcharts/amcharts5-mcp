@@ -2,7 +2,7 @@
 title: "Day and Night World Map"
 source: "https://www.amcharts.com/demos/day-and-night-world-map/"
 category: "maps"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A live map of where it is day and where it is night right now, with the city lights on the night side, the twilight in between, and the sun and moon where they stand overhead. Click a country to see whether it is day or night there.
@@ -169,7 +169,12 @@ moonSeries.bullets.push(function() {
     fill: am5.color(0x3a3e48),   // dark gray...
     stroke: am5.color(0xb8bcc6), // ...with a light rim
     strokeWidth: 1,
-    tooltipY: -moonRadius        // the tooltip points at the moon's top edge
+    tooltipY: -moonRadius,       // the tooltip points at the moon's top edge
+    // keyboard and screen readers (see Accessibility below): a Tab stop of its own, and the focused moon shows its
+    // tooltip (its ariaLabel is set with the tooltip, in updateMoon)
+    focusable: true,
+    role: "figure",
+    hoverOnFocus: true
   }, moonTemplate));
 
   // The lit side, drawn for the phase
@@ -248,6 +253,8 @@ function updateMoon(date) {
   });
   // the phase name in bold, then how much of the moon is lit
   moonTemplate.set("tooltipText", "[bold]" + moonPhases[Math.round(phase * 8) % 8] + "[/]\n" + Math.round((1 - cos) / 2 * 100) + "% lit");
+  // the same for a screen reader, without the markup
+  moonTemplate.set("ariaLabel", "The moon: " + moonPhases[Math.round(phase * 8) % 8] + ", " + Math.round((1 - cos) / 2 * 100) + "% lit");
 }
 
 // Country names: a label in the middle of each country, on top of everything. Hidden at first (visible: false):
@@ -371,6 +378,28 @@ setInterval(function() {
     updateDayNight();
   }
 }, 60000);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of where it is day and where it is night right now, with the sun and the moon where they stand overhead. Tab to the sun, the countries and the moon, and move between the countries with the arrow keys"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
+});
+// the sun: a Tab stop of its own (the moon is set up where it is made, in its bullet function above)
+nightSeries.get("sun").setAll({
+  focusable: true,
+  role: "figure",
+  hoverOnFocus: true,
+  ariaLabel: "The sun: directly overhead here"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Live Sorting of Radar Columns"
 source: "https://www.amcharts.com/demos/live-sorting-of-radar-columns/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A column chart bent into a ring that keeps itself sorted. Every 1.5 seconds, eleven countries get new values, and the columns slide into their new places, biggest first.
@@ -208,6 +208,23 @@ function sortCategoryAxis() {
     return x.get("index") - y.get("index");
   });
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radial column chart of eleven countries with values that change at random every 1.5 seconds, sorted from the biggest. Tab to the columns, then move between them with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+  focusable: true,
+  role: "figure",
+  focusableGroup: "columns",
+  hoverOnFocus: true, // a focused column shows its tooltip
+  ariaLabel: "{categoryX}: {valueY}"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

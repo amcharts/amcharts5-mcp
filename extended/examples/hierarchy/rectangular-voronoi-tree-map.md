@@ -2,7 +2,7 @@
 title: "Rectangular Drill-Down Voronoi Tree Map"
 source: "https://www.amcharts.com/demos/rectangular-voronoi-tree-map/"
 category: "hierarchy"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Voronoi treemap splits a rectangle into irregular cells sized by value. Here, the world’s people by country and continent, small countries in Others.
@@ -1305,6 +1305,24 @@ series.data.setAll([data]);
 // Select root node
 // https://docs.amcharts.com/v5/charts/hierarchy/#pre-selected-branch
 series.set("selectedDataItem", series.dataItems[0]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Voronoi treemap of the world's people by continent and country, countries under 5 million in Others. Tab to the cells, move between them with the arrow keys, and press Enter to zoom into a continent or back out"
+});
+// the continents and countries: one Tab stop (a focusable group), the arrow keys step through them; Enter zooms
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "cells",
+  hoverOnFocus: true, // a focused cell shows its tooltip
+  ariaLabel: "{category}: {sum} people"
+});
+// the root around everything isn't drawn, so it isn't focused either
+series.dataItems[0].get("node").set("focusable", false);
 
 // Make stuff animate on load
 series.appear(1000, 100);

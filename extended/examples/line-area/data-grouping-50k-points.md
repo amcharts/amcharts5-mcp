@@ -2,7 +2,7 @@
 title: "Data Grouping 50K Points"
 source: "https://www.amcharts.com/demos/data-grouping-50k-points/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 50,000 daily values, about 137 years, in one line chart. Zoomed out, it shows one point per year; zoom in and it switches to months, weeks and finally days.
@@ -161,6 +161,15 @@ var sbseries = scrollbar.chart.series.push(
 var data = generateDatas(50000); // 50,000 days of data
 series.data.setAll(data);
 sbseries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 50,000 days, about 137 years, grouped into years, months or weeks as you zoom. The line has too many points to step through with the keyboard; Tab to the scrollbar's grips and move them with the arrow keys to zoom"
+});
+// no focusable points on the line: tens of thousands of them would slow the chart down
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

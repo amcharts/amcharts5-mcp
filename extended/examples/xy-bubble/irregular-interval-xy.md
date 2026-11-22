@@ -2,7 +2,7 @@
 title: "Irregular Interval XY"
 source: "https://www.amcharts.com/demos/irregular-interval-xy/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A column chart where each column is as wide as the stretch it covers: the elevation profile of a 50 km route, in six stretches of different lengths.
@@ -162,6 +162,21 @@ marks.forEach(function(value, index) {
     forceHidden: false, // shown too...
     strokeOpacity: 0.2  // ...but faint
   });
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Elevation profile of a 50 km route in six stretches of different lengths, rising from 400 m to 1,020 m. Tab to the stretches, then move between them with the arrow keys"
+});
+// the stretches: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "stretches",
+  hoverOnFocus: true, // a focused stretch shows its tooltip
+  ariaLabel: "{from} to {to} km: {altitude} m"
 });
 
 // Add cursor

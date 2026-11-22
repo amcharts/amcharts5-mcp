@@ -2,7 +2,7 @@
 title: "Drawing Chart Series with Mouse or Touch"
 source: "https://www.amcharts.com/demos/drawing-chart-series-with-mouse-or-touch/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart you can draw on: click anywhere to place a point, and your points join into a second line, drawn over three years of data.
@@ -150,8 +150,13 @@ drawingSeries.bullets.push(function () {
 // Actual bullet
 drawingSeries.bullets.push(function () {
   var bulletCircle = am5.Circle.new(root, {
-    radius: 5,                      // the visible dot...
-    fill: drawingSeries.get("fill") // ...in the series' color
+    radius: 5,                       // the visible dot...
+    fill: drawingSeries.get("fill"), // ...in the series' color
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the drawn points (a focusable
+    // group), the arrow keys step through them
+    focusable: true,
+    focusableGroup: "drawn",
+    ariaLabel: "Drawn point, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
   });
   return am5.Bullet.new(root, {
     sprite: bulletCircle
@@ -181,6 +186,16 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 // Set data
 var data = generateDatas(1200);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 1,200 days, with a second line drawn by clicking the plot. Tab to the drawn points, then move between them with the arrow keys"
+});
+// no focusable points on the data line: 1,200 of them would slow down zooming and panning
+// the drawn points: set up for the keyboard where they are made, in the second bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

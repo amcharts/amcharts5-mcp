@@ -2,7 +2,7 @@
 title: "Combined Bullet/Column and Line Graphs with Multiple Value Axes"
 source: "https://www.amcharts.com/demos/combined-bullet-column-line-chart/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Columns and lines on two value axes: daily sales on the left, a narrow actual over a wide, pale target like a bullet graph, and two market lines on the right.
@@ -283,7 +283,12 @@ series0.bullets.push(function () {
       stroke: series0.get("fill"), // an outline in the line's color...
       strokeWidth: 2, // ...2px wide
       fill: root.interfaceColors.get("background"), // filled with the background color, so it looks hollow
-      radius: 5 // 5px
+      radius: 5, // 5px
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the line's points (a focusable
+      // group), the arrow keys step through them
+      focusable: true,
+      focusableGroup: "Market days",
+      ariaLabel: "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
     })
   });
 });
@@ -318,7 +323,11 @@ series1.bullets.push(function () {
       stroke: series1.get("fill"),
       strokeWidth: 2,
       fill: root.interfaceColors.get("background"),
-      radius: 5
+      radius: 5,
+      // keyboard and screen readers, as for the line above
+      focusable: true,
+      focusableGroup: "Market days all",
+      ariaLabel: "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
     })
   });
 });
@@ -389,6 +398,28 @@ series1.data.setAll(data);
 
 sbSeries0.data.setAll(data);
 sbSeries1.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column and line chart of 15 days in January 2026: target and actual sales as columns on the left axis, market days and all market days as lines on the right. Tab to a series, then move between days with the arrow keys"
+});
+// each series' columns: one Tab stop per series (a focusable group), the arrow keys step through the days
+[columnSeries1, columnSeries0].forEach(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    ariaLabel: "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+  });
+});
+// the points of the two lines: set up for the keyboard where they are made, in the bullet functions above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

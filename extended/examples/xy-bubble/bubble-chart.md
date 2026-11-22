@@ -2,7 +2,7 @@
 title: "Bubble Chart"
 source: "https://www.amcharts.com/demos/bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A bubble chart places each item on two axes and sizes it by a third value. Here two series share the plot: one drawn as circles, the other as eight-pointed stars.
@@ -89,6 +89,11 @@ var circleTemplate = am5.Template.new({
 series0.bullets.push(function() {
   var graphics = am5.Circle.new(root, {
     fill: series0.get("fill"), // the series color
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the circles (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "circles",
+    ariaLabel: "Circle at x {valueX}, y {valueY}: value {value}"
   }, circleTemplate);
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -133,7 +138,11 @@ var starTemplate = am5.Template.new({
 });
 series1.bullets.push(function() {
   var graphics = am5.Star.new(root, {
-    fill: series1.get("fill") // the series color
+    fill: series1.get("fill"), // the series color
+    // keyboard and screen readers: one Tab stop for the stars, as for the circles
+    focusable: true,
+    focusableGroup: "stars",
+    ariaLabel: "Star at x {valueX}, y {valueY}: value {value}"
   }, starTemplate);
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -226,6 +235,15 @@ var data = [{
 
 series0.data.setAll(data);
 series1.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bubble chart of two series of seven points on two value axes, one drawn as circles and one as stars, each sized by a third value. Tab to the circles or the stars, then move between them with the arrow keys"
+});
+// the circles and stars: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

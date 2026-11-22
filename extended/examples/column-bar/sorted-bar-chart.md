@@ -2,7 +2,7 @@
 title: "Sorted Bar Chart"
 source: "https://www.amcharts.com/demos/sorted-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A bar chart that keeps its ranking up to date: every second and a half, twelve social networks get new user counts and the bars slide into order.
@@ -251,6 +251,20 @@ function updateData() {
 
   sortCategoryAxis();
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bar chart of the users of twelve social networks, which change every second and a half, with the bars sorted from most to fewest users. Tab to the bars, then move between them with the arrow keys"
+});
+// the bars: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "bars",
+  ariaLabel: "{categoryY}: {valueX} users"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

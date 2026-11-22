@@ -2,7 +2,7 @@
 title: "Drill-Down Sunburst Chart"
 source: "https://www.amcharts.com/demos/drill-down-sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A sunburst you explore one branch at a time: click a category and it becomes the inner ring, with its own breakdown around it. Here, a year of an online store’s sales.
@@ -64,7 +64,7 @@ series.nodes.template.set("tooltipText", "{category}: [bold]${sum}k[/]");
 
 // Breadcrumbs above the chart show where you are and lead back up
 // https://docs.amcharts.com/v5/charts/hierarchy/breadcrumbs/
-chart.children.unshift(am5hierarchy.BreadcrumbBar.new(root, {
+var breadcrumbs = chart.children.unshift(am5hierarchy.BreadcrumbBar.new(root, {
   series: series
 }));
 
@@ -129,6 +129,30 @@ series.data.setAll([{
 }]);
 
 series.selectDataItem(series.dataItems[0]); // select the root, so the breadcrumbs show "All sales"
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Sunburst chart of a year of an online store's sales in five categories, in thousands of dollars. Tab to the categories, move between them with the arrow keys, and press Enter to open one; the breadcrumbs above lead back up"
+});
+// the categories: one Tab stop (a focusable group), the arrow keys step through them; Enter opens one
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "categories",
+  hoverOnFocus: true, // a focused category shows its tooltip
+  ariaLabel: "{category}: ${sum}k"
+});
+// the breadcrumbs: one Tab stop too, after the categories; Enter goes back to that level
+breadcrumbs.labels.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "breadcrumbs",
+  tabindexOrder: 10, // the chart's parts are focused in this order, from low to high (0 if not set)
+  ariaLabel: "{category}"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

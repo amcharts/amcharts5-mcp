@@ -2,7 +2,7 @@
 title: "Multi-Part Gauge"
 source: "https://www.amcharts.com/demos/multi-part-gauge/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Four small gauges in one circle: each quarter is its own arc with its own scale, color and needle, so one chart shows four readings side by side.
@@ -171,6 +171,28 @@ setInterval(function() {
     easing: am5.ease.out(am5.ease.cubic)
   });
 }, 2000);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the gauge has no parts to step through: its name gives the four readings, and follows the needles
+function gaugeName() {
+  function reading(hand) {
+    return Math.round(hand.get("sprite").dataItem.get("value"));
+  }
+  return "Gauge in four parts, each with its own scale and needle: top right, 0 to 100, now at " + reading(hand1) +
+    "; bottom right, 0 to 200, now at " + reading(hand2) + "; bottom left, 0 to 20, now at " + reading(hand3) +
+    "; top left, 0 to 100, now at " + reading(hand4) + ". The needles move to random values every two seconds";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: gaugeName()
+});
+am5.array.each([hand1, hand2, hand3, hand4], function (hand) {
+  hand.get("sprite").dataItem.on("value", function () {
+    chart.set("ariaLabel", gaugeName());
+  });
+});
 ```
 
 ## HTML

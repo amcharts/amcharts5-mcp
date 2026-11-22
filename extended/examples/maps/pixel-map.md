@@ -2,7 +2,7 @@
 title: "Pixel Map"
 source: "https://www.amcharts.com/demos/pixel-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map drawn as a grid of dots, each colored by its country's approximate median age: the older the population, the darker.
@@ -181,6 +181,15 @@ pixelSeries.data.setAll([
   { id: "MG", value: 20 },
   { id: "ZA", value: 28 }
 ]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map drawn as a grid of dots, each country colored by its approximate median age, from 15 years in Niger to 48 in Japan: the older, the darker"
+});
+// the countries can't be focused: a pixel map draws them as dots and hides their shapes, which the keyboard needs
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

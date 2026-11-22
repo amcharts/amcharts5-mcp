@@ -2,7 +2,7 @@
 title: "Stock Chart Candlesticks"
 source: "https://www.amcharts.com/demos/stock-chart-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Fifteen years of daily Microsoft prices as candlesticks over volume. It is a plain XY chart: two value axes stacked over one date axis that skips the weekends.
@@ -251,7 +251,7 @@ sbSeries.fills.template.setAll({
 
 // Load external data
 // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
-am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/stock/MSFT.csv").then(function (result) {
+am5.net.load("https://www.amcharts.com/static/assets/stock/MSFT.csv").then(function (result) {
 
   // Parse loaded data
   var data = am5.CSVParser.parse(result.response, {
@@ -280,6 +280,19 @@ am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/stock/MSFT.csv"
   volumeSeries.data.setAll(data);
   sbSeries.data.setAll(data);
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Candlestick chart of fifteen years of daily Microsoft (MSFT) prices, with the trading volume below, showing the last three months; zoomed out, days merge into weeks and months. The candles are not reachable one by one; the scrollbar's grips zoom the dates"
+});
+// the candles: not focusable. This axis makes a candle for each of the 3,700 days, and that many focusable
+// elements freeze the page
+// the legends: one Tab stop, after the scrollbar; Enter hides or shows a series
+valueLegend.itemContainers.template.setAll({ focusableGroup: "legend", tabindexOrder: 10 });
+volumeLegend.itemContainers.template.setAll({ focusableGroup: "legend", tabindexOrder: 10 });
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

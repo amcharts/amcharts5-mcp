@@ -2,7 +2,7 @@
 title: "Map Image Drill-Down"
 source: "https://www.amcharts.com/demos/map-image-drill-down/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A store locator that drills down: bubbles count the stores of a U.S. retail chain in each state. Click a state’s bubble to see its cities, then a city’s to see each store.
@@ -113,7 +113,7 @@ zoomOut.hide(); // hidden until a bubble is clicked
 // =================================
 
 // Load store data: the stores of a U.S. retail chain, each with its city, state, coordinates and a count
-am5.net.load("https://www.amcharts.com/wp-content/uploads/assets/maps/TargetStores.json").then(function(result) {
+am5.net.load("https://www.amcharts.com/static/assets/maps/TargetStores.json").then(function(result) {
   var stores = am5.JSONParser.parse(result.response);
   setupStores(stores);
 });
@@ -256,7 +256,19 @@ function createSeries(heatfield) {
     fill: root.interfaceColors.get("alternativeBackground"), // bubbles in the contrast color...
     fillOpacity: 0.7,           // ...slightly see-through
     cursorOverStyle: "pointer", // a hand pointer: the bubbles can be clicked
-    tooltipText: "{name}:\n[bold]{stores} stores[/]" // the place's name and its number of stores
+    tooltipText: "{name}:\n[bold]{stores} stores[/]", // the place's name and its number of stores
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the bubbles on show (a focusable
+    // group), the arrow keys step through them, the focused one shows its tooltip, and Enter drills down
+    focusable: true,
+    role: "button",
+    focusableGroup: "bubbles",
+    hoverOnFocus: true,
+    ariaLabel: "{name}: {stores} stores"
+  });
+
+  // a hidden level's bubbles would still be reached with Tab: only the level on show is focusable
+  pointSeries.on("visible", function(visible) {
+    circleTemplate.set("focusable", visible);
   });
 
   // Add store bullet: a bubble with the number of stores on it
@@ -330,6 +342,24 @@ function createSeries(heatfield) {
 
   return pointSeries;
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Map of a U.S. retail chain's stores, with a bubble counting them in each state. Tab to the states or the bubbles, move between them with the arrow keys, and press Enter on a bubble to see its cities, then each store; the minus button goes back"
+});
+// the states: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "states",
+  hoverOnFocus: true, // a focused state shows its tooltip
+  ariaLabel: "{name}"
+});
+// the bubbles: set up for the keyboard where they are made, in createSeries above
+// the minus button is focusable already, as a button; this names it for a screen reader
+zoomOut.set("ariaLabel", "Zoom out to all states");
 ```
 
 ## HTML

@@ -2,7 +2,7 @@
 title: "Infographic"
 source: "https://www.amcharts.com/demos/infographic/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 An infographic-style bar chart drawn with person icons instead of solid bars. It compares the share of men and women in six departments: men to the left of the middle, women to the right, and the empty places in gray.
@@ -231,6 +231,29 @@ createSeries("maleMax", "Male", placeholderColor, maleIcon, false, 0.12);
 createSeries("male", "Male", maleColor, maleIcon, true, 1);
 createSeries("femaleMax", "Female", placeholderColor, femaleIcon, false, 0.12);
 createSeries("female", "Female", femaleColor, femaleIcon, true, 1);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Infographic bar chart of the share of men and women in six departments, drawn with person icons: men to the left, women to the right. Tab to the men's or the women's rows, then move between departments with the arrow keys"
+});
+// the colored rows of each side: one Tab stop per side (a focusable group), the arrow keys step through the
+// departments; the gray rows behind them are left out, as they are always 100%
+legend.data.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    hoverOnFocus: true, // a focused row shows its tooltip
+    ariaLabel: "{categoryY}: {valueX} {name}"
+  });
+});
+// the legend: one Tab stop too, after the rows; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

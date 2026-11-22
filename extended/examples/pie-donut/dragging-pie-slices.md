@@ -2,7 +2,7 @@
 title: "Dragging Pie Slices"
 source: "https://www.amcharts.com/demos/dragging-pie-slices/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Two donuts with a line between them. Drag a slice across the line and it moves to the other donut; let go too early and it snaps back.
@@ -208,7 +208,8 @@ var data = [
       fillOpacity: 0.3,
       strokeDasharray: [4, 4],
       tooltipText: null, // no tooltip
-      draggable: false   // can't be dragged
+      draggable: false,  // can't be dragged
+      focusable: false   // and not a keyboard stop (see Accessibility below)
     },
     dummyLabelSettings: {
       forceHidden: true // no label
@@ -272,6 +273,28 @@ am5.array.each(series1.dataItems, function (dataItem) {
   if (startRight.indexOf(dataItem.get("category")) == -1) {
     dataItem.hide(0);
   }
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+container.setAll({
+  focusable: true, // Tab reaches the charts, and a screen reader names them
+  role: "figure",
+  ariaLabel: "Two donut charts that share six countries: three in each to start, moved between them by dragging a slice across. Tab to each donut's slices, then move between them with the arrow keys"
+});
+// each donut's slices: one Tab stop (a focusable group), the arrow keys step through them (the gray placeholder is
+// left out in its settings in the data)
+sliceTemplate0.setAll({
+  focusable: true,
+  focusableGroup: "left",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "Left donut, {category}: {value}"
+});
+sliceTemplate1.setAll({
+  focusable: true,
+  focusableGroup: "right",
+  hoverOnFocus: true,
+  ariaLabel: "Right donut, {category}: {value}"
 });
 
 // reveal container

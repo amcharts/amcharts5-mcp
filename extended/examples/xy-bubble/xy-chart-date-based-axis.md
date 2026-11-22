@@ -2,7 +2,7 @@
 title: "XY Chart with Date-Based Axis"
 source: "https://www.amcharts.com/demos/xy-chart-date-based-axis/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A bubble chart over time: the horizontal axis holds dates, here 12 days in January 2026, and each point is sized by a third value. Circles and diamonds mark two series.
@@ -100,6 +100,11 @@ var circleTemplate = am5.Template.new({
 series0.bullets.push(function() {
   var graphics = am5.Circle.new(root, {
     fill: series0.get("fill"), // the series color
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the circles (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "circles",
+    ariaLabel: "Circle, {valueX.formatDate('MMMM d')}: y {valueY}, value {value}"
   }, circleTemplate);
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -144,6 +149,10 @@ series1.bullets.push(function() {
     fill: series1.get("fill"),    // the series color
     spikes: 4,                    // a four-pointed star...
     innerRadius: am5.percent(70), // ...with its inner corners at 70% of the radius: a diamond
+    // keyboard and screen readers: one Tab stop for the diamonds, as for the circles
+    focusable: true,
+    focusableGroup: "diamonds",
+    ariaLabel: "Diamond, {valueX.formatDate('MMMM d')}: y {valueY}, value {value}"
   }, starTemplate);
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -264,6 +273,15 @@ var data = [{
 
 series0.data.setAll(data);
 series1.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Bubble chart of two series over 12 days in January 2026, one drawn as circles and one as diamonds, each sized by a third value. Tab to the circles or the diamonds, then move between them with the arrow keys"
+});
+// the circles and diamonds: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

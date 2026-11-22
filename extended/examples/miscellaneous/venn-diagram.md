@@ -2,7 +2,7 @@
 title: "Venn Diagram"
 source: "https://www.amcharts.com/demos/venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Venn diagram draws each group as a circle and puts what groups share where the circles overlap. Here, three sets, A, B and C, with areas sized by how many items each part holds.
@@ -83,6 +83,27 @@ var legend = chart.children.push(
   })
 );
 legend.data.setAll(series.dataItems);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the diagram, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Venn diagram of three sets, A, B and C, and their overlaps X, Y, Z and Q, each area sized by how many items it holds. Tab to the areas, then move between them with the arrow keys"
+});
+// the circles and overlaps: one Tab stop (a focusable group), the arrow keys step through them
+series.slices.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "areas",
+  hoverOnFocus: true, // a focused area shows its tooltip
+  ariaLabel: "{category}: {value}"
+});
+// the legend: one Tab stop too, after the areas; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 ```
 
 ## HTML

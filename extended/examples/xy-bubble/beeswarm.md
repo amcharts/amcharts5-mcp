@@ -2,7 +2,7 @@
 title: "Beeswarm"
 source: "https://www.amcharts.com/demos/beeswarm/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A beeswarm chart shows every value as a dot along one axis, nudging dots up and down so none overlap. The shape of the swarm shows where values bunch up: here, 500 random values, most of them near zero.
@@ -166,7 +166,13 @@ series.bullets.push(function() {
     radius: 5,                 // the heat rule replaces this
     fill: series.get("fill"),  // the series color
     tooltipText: "Value: {x}", // the dot's value
-    tooltipY: 0                // the tooltip points at the dot's center
+    tooltipY: 0,               // the tooltip points at the dot's center
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable group),
+    // the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "dots",
+    hoverOnFocus: true,
+    ariaLabel: "Value: {x}"
   }, circleTemplate);
 
   bulletCircle.states.create("hover", { // a hovered dot takes another theme color
@@ -229,6 +235,15 @@ function repack() {
 }
 xAxis.on("start", repack);
 xAxis.on("end", repack);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Beeswarm chart of 500 random values from -50 to 50, most of them near zero. Tab to the dots, then move between them with the arrow keys, in the order the values were made"
+});
+// the dots: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

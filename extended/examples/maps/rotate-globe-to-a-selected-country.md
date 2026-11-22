@@ -2,7 +2,7 @@
 title: "Interactive World Globe"
 source: "https://www.amcharts.com/demos/rotate-globe-to-a-selected-country/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A 3D world globe, seen from space. Click a country or find it by name: the globe turns to it, shows its flag and name, and a plane flies there from the country before.
@@ -427,6 +427,21 @@ root.events.on("frameended", function () {
       label.set("forceHidden", !nameFits(dataItem.dataContext.name, area, radius));
     }
   });
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the globe, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Globe of the world's countries. Tab to the countries, move between them with the arrow keys, and press Enter to turn the globe to one and fly a plane there"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused country shows its tooltip
+  ariaLabel: "{name}"
 });
 
 // Make stuff animate on load

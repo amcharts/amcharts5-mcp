@@ -2,7 +2,7 @@
 title: "Progress Chart"
 source: "https://www.amcharts.com/demos/progress-chart/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A progress chart shows how far something has come on one bar from 0 to 100%, here in five stages of different lengths, each with its own color and start mark.
@@ -191,6 +191,26 @@ legend.markerRectangles.template.setAll({
 });
 
 legend.data.setAll(series.dataItems);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Progress bar from 0 to 100% in five stages of different lengths: stage 1 to 15%, stage 2 to 75%, stage 3 to 90%, stage 4 to 95% and stage 5 to 100%. Tab to the stages, then move between them with the arrow keys"
+});
+// the stages: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "stages",
+  hoverOnFocus: true, // a focused stage shows its tooltip
+  ariaLabel: "{categoryX}: {openValueX}% to {valueX}%"
+});
+// the legend: one Tab stop too, after the stages; the arrow keys step through its items (it only names the colors)
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

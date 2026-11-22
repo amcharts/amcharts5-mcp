@@ -2,7 +2,7 @@
 title: "Line Chart Adding Data Every Second"
 source: "https://www.amcharts.com/demos/line-chart-adding-data-every-second/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart fed live: every second a new point slides in on the right, the oldest drops off the left, and a pulsing dot marks the latest value.
@@ -65,7 +65,6 @@ var data = generateChartData();
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  focusable: true, // the chart can take keyboard focus
   panX: true,      // drag the plot to pan...
   panY: true,      // ...in any direction
   wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
@@ -134,7 +133,12 @@ series.data.setAll(data);
 series.bullets.push(function(root, series, dataItem) {
   // only create sprite if bullet == true in data context
   if (dataItem.dataContext.bullet) {
-    var container = am5.Container.new(root, {});
+    var container = am5.Container.new(root, {
+      // keyboard and screen readers (see Accessibility below): Tab reaches the dot, which reads out the latest value
+      focusable: true,
+      focusableGroup: "latest",
+      ariaLabel: "Latest value: {valueY.formatNumber('#.00')}"
+    });
     var circle0 = container.children.push(am5.Circle.new(root, {
       radius: 5, // a dot in the line's color...
       fill: series.get("stroke")
@@ -232,6 +236,15 @@ function addData() {
     }
   }
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Live line chart of a random value, one point a second over the last 50 seconds. Tab to the pulsing dot for the latest value"
+});
+// the pulsing dot: set up for the keyboard where it is made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

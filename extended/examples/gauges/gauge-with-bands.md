@@ -2,7 +2,7 @@
 title: "Gauge with Bands"
 source: "https://www.amcharts.com/demos/gauge-with-bands/"
 category: "gauges"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A gauge split into seven colored bands, from Unsustainable to High Performing. The needle takes the color of the band it points at, and the score sits in its pin.
@@ -190,6 +190,27 @@ am5.array.each(bandsData, function (data, i) {
     fontSize: "0.9em",                     // a little smaller
     fill: textColor(color)                 // white or black, whichever reads better on the band
   });
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the gauge has no parts to step through: its name gives the reading and its band, and follows the needle
+function gaugeName(value) {
+  var band = "";
+  am5.array.each(bandsData, function (data) {
+    if (value >= data.lowScore && value <= data.highScore) {
+      band = data.title;
+    }
+  });
+  return "Gauge of a score from -40 to 100 in seven bands, from Unsustainable to High Performing, now at " + Math.round(value) + ", " + band + ". The needle moves to a random score every two seconds";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: gaugeName(axisDataItem.get("value"))
+});
+axisDataItem.on("value", function (value) {
+  chart.set("ariaLabel", gaugeName(value));
 });
 
 // Make stuff animate on load

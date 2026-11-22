@@ -2,7 +2,7 @@
 title: "Stacked Area"
 source: "https://www.amcharts.com/demos/stacked-area/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Cars, motorcycles and bicycles from 2007 to 2025 as three stacked areas, so the top edge is the total. Shaded bands mark two events at the biggest drops.
@@ -289,6 +289,34 @@ rangeDataItem2.get("label").setAll({
   location: 0,
   paddingBottom: 10,
   paddingRight: 15
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stacked area chart of cars, motorcycles and bicycles each year from 2007 to 2025, with notes on 2014 to 2016 (fines for speeding increased) and 2020 (motorcycle fee introduced). Tab to an area, then move along its years with the arrow keys"
+});
+// the points: one Tab stop per area (a focusable group), the arrow keys step along its years
+chart.series.each(function (series) {
+  series.bullets.push(function (root, series) {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,          // not painted: the area looks as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: series.get("name"),
+        ariaLabel: "{name}, {categoryX}: {valueY}"
+      })
+    });
+  });
+});
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
 });
 
 // Make stuff animate on load

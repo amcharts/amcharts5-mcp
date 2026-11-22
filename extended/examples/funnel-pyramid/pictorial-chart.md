@@ -2,7 +2,7 @@
 title: "Pictorial Chart"
 source: "https://www.amcharts.com/demos/pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A pictorial chart that fills only the bowl of a wine glass, with two wines in their own colors. The slider under it drinks the glass down, and the shares follow.
@@ -126,6 +126,24 @@ series.data.setAll([{
     stroke: am5.color(0x7b131c)
   }
 }]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pictorial chart of a wine glass holding two wines, Pinot Noir and Primitivo, with a slider under it that drinks the glass down. Tab to the wines and move between them with the arrow keys, then Tab to the slider"
+});
+// the wines: one Tab stop (a focusable group), the arrow keys step through them
+series.slices.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "wines",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the slider's grip: focused after the wines; the arrow keys move it
+slider.startGrip.set("tabindexOrder", 10); // the chart's parts are focused in this order, from low to high (0 if not set)
 
 // Play initial series animation
 // https://docs.amcharts.com/v5/concepts/animations/#animation-of-series

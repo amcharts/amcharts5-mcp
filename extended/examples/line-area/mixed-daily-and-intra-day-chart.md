@@ -2,7 +2,7 @@
 title: "Mixed Daily and Intra-Day Chart"
 source: "https://www.amcharts.com/demos/mixed-daily-and-intra-day-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Hourly readings and daily averages on one chart: the line has a point for every hour, each column the average of that day. Two date axes keep them in step.
@@ -41,7 +41,6 @@ root.setThemes([
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can be reached with the Tab key
     panX: true,      // drag the plot sideways to pan through the days
     panY: true,      // and up and down
     wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
@@ -166,6 +165,33 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
   xAxis: xAxis1
 }));
 cursor.lineY.set("visible", false); // only the vertical cursor line, no horizontal one
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Hourly readings over the last ten days as a line, with each day's average as a column behind it. Tab to the hourly line or the daily columns, then move through them with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), after the line's; the arrow keys step through the days
+series2.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "daily",
+  ariaLabel: "{valueX.formatDate('MMMM d')}: daily average {valueY}"
+});
+// the line's points: one Tab stop too, the arrow keys step through the hours
+series1.bullets.push(function (root, series) {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fillOpacity: 0,                  // not painted: the line looks as before
+      strokeOpacity: 0,
+      focusable: true,
+      focusableGroup: "hourly",
+      ariaLabel: "{valueX.formatDate('MMMM d, HH:00')}: {valueY}"
+    })
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

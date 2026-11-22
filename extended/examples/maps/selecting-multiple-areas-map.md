@@ -2,7 +2,7 @@
 title: "Selecting Multiple Areas Map"
 source: "https://www.amcharts.com/demos/selecting-multiple-areas-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map where you pick countries: click a country to select it, click it again to clear it, and select as many as you like.
@@ -121,6 +121,21 @@ var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
 
 // the home button is hidden by default
 zoomControl.homeButton.set("visible", true);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map where you select countries. Tab to the countries, move between them with the arrow keys, and press Enter to select or clear one"
+});
+// the countries: one Tab stop (a focusable group), the arrow keys step through them; a screen reader says whether
+// each is selected
+polygonSeries.mapPolygons.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  ariaLabel: "{name}"
+});
 
 // Make stuff animate on load
 chart.appear(1000, 100);

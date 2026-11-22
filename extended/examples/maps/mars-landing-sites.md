@@ -2,7 +2,7 @@
 title: "Mars Landing Sites"
 source: "https://www.amcharts.com/demos/mars-landing-sites/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Mars as a slowly turning globe, covered with the Viking orbiters' color map of its surface, and the ten landers and rovers that worked there, from Viking 1 in 1976 to Perseverance and Zhurong in 2021. In teal, two places that are fiction: the Ares 3 and Ares 4 sites from the novel The Martian.
@@ -69,6 +69,8 @@ function hoverable(circle) {
   circle.states.create("hover", { scale: 1.4 });
   circle.events.on("pointerover", function() { spin.pause(); });
   circle.events.on("pointerout", function() { spin.play(); });
+  circle.events.on("focus", function() { spin.pause(); }); // the same for a marker focused with the keyboard
+  circle.events.on("blur", function() { spin.play(); });
   return circle;
 }
 
@@ -121,7 +123,13 @@ siteSeries.bullets.push(function() {
       strokeWidth: 2,
       tooltipText: "[bold]{name}[/] ({type})\n{place}\nLanded {date}",
       tooltipY: 0,                 // the tooltip points at the top of the circle, not its middle
-      cursorOverStyle: "pointer"   // a hand over the marker: there is more to see
+      cursorOverStyle: "pointer",  // a hand over the marker: there is more to see
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the landing sites (a focusable
+      // group), the arrow keys step through them, and the focused one shows its tooltip
+      focusable: true,
+      focusableGroup: "landing sites",
+      hoverOnFocus: true,
+      ariaLabel: "{name} ({type}): {place}, landed {date}"
     }))
   });
 });
@@ -172,7 +180,13 @@ fictionSeries.bullets.push(function() {
     strokeDasharray: [2, 2],     // a broken ring, as a second hint
     tooltipText: "[bold]{name}[/] (fictional)\n{story}\nFrom the novel The Martian (Andy Weir, 2011)",
     tooltipY: 0,
-    cursorOverStyle: "pointer"
+    cursorOverStyle: "pointer",
+    // keyboard and screen readers: one Tab stop for the two fictional sites, after the real ones
+    focusable: true,
+    role: "figure",
+    focusableGroup: "fictional sites",
+    hoverOnFocus: true,
+    ariaLabel: "{name}, fictional: {story}, from the novel The Martian"
   })));
   container.children.push(am5.Label.new(root, {
     text: "{name} (fictional)",
@@ -220,6 +234,15 @@ var credit = chart.children.push(am5.Label.new(root, {
   dx: -10,                   // 10px in from the edges
   dy: -10
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the planet, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Mars as a slowly turning globe, with the ten landers and rovers that worked there and two fictional sites from the novel The Martian. Tab to the landing sites, then move between them with the arrow keys"
+});
+// the landing sites, real and fictional: set up for the keyboard where they are made, in the bullet functions above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

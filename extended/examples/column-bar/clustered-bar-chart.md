@@ -2,7 +2,7 @@
 title: "Clustered Bar Chart"
 source: "https://www.amcharts.com/demos/clustered-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A clustered bar chart lays the series side by side for each category. Here, income and expenses for five years: each bar carries its name inside its end and its value just past it.
@@ -172,6 +172,27 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 cursor.lineY.set("forceHidden", true); // no cursor lines
 cursor.lineX.set("forceHidden", true);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Clustered bar chart of income and expenses for each year from 2021 to 2025. Tab to the income or the expenses bars, then move between the years with the arrow keys"
+});
+// each series' bars: one Tab stop (a focusable group), the arrow keys step through them
+chart.series.each(function (series) {
+  series.columns.template.setAll({
+    focusable: true,
+    focusableGroup: series.get("name"),
+    ariaLabel: "{name}, {categoryY}: {valueX}"
+  });
+});
+// the legend: one Tab stop too, after the bars; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

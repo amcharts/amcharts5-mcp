@@ -2,7 +2,7 @@
 title: "Polar Scatter"
 source: "https://www.amcharts.com/demos/polar-scatter/"
 category: "radar-polar"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A scatter plot on a 24-hour clock, each dot a commuter trip placed by its start and duration. Car trips stretch out at rush hour; train trips hardly change.
@@ -120,7 +120,13 @@ function createSeries(name, data) {
       sprite: am5.Circle.new(root, {
         radius: 5, // 5px dots
         fill: series.get("fill"), // the series color
-        tooltipText: "{name}, left at {time}: {valueY} min" // {time} from the data, {valueY} the trip time
+        tooltipText: "{name}, left at {time}: {valueY} min", // {time} from the data, {valueY} the trip time
+        // keyboard and screen readers (see Accessibility below): one Tab stop per way of travel (a focusable
+        // group), the arrow keys step through its trips, and the focused one shows its tooltip
+        focusable: true,
+        focusableGroup: name,
+        hoverOnFocus: true,
+        ariaLabel: "{name}, left at {time}: {valueY} minutes"
       })
     });
   });
@@ -237,6 +243,20 @@ var legend = chart.children.push(am5.Legend.new(root, {
   centerX: am5.p50 // ...at the middle of the chart
 }));
 legend.data.setAll(chart.series.values);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Polar scatter chart of commuter trips by car, bike and train on a 24-hour clock: each dot is placed by when the trip started and how long it took. Tab to a way of travel, then move through its trips with the arrow keys"
+});
+// the trips' dots: set up for the keyboard where they are made, in createSeries above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

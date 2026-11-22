@@ -2,7 +2,7 @@
 title: "Reversed Value Axis"
 source: "https://www.amcharts.com/demos/reversed-value-axis/"
 category: "line-area"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A ranking chart with the value axis flipped, so first place sits at the top. Here, where three teams finished in a league each year (sample data).
@@ -193,10 +193,15 @@ function createSeries(name, field, Shape, shapeSettings) {
   );
 
   // a bullet on every point, in the shape passed in
-  series.bullets.push(function () {
+  series.bullets.push(function (root, series) {
     return am5.Bullet.new(root, {
       sprite: Shape.new(root, Object.assign({
-        fill: series.get("fill") // the series color
+        fill: series.get("fill"), // the series color
+        // keyboard and screen readers (see Accessibility below): one Tab stop per team (a focusable group),
+        // the arrow keys step through its years
+        focusable: true,
+        focusableGroup: name,
+        ariaLabel: name + ", {categoryX}: place {valueY}"
       }, shapeSettings))
     });
   });
@@ -250,6 +255,20 @@ chart.plotContainer.events.on("pointerout", function(){
 chart.plotContainer.events.on("pointerover", function(){
   cursor.set("positionX", undefined)
 })
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Ranking chart of where three teams placed in a league each year from 2015 to 2025, first place at the top. Tab to a team's points, then move between its years with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the bullet function above
+// the legend: one Tab stop too, after the points; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

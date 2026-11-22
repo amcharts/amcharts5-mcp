@@ -2,7 +2,7 @@
 title: "Animated Bullet at the End of the Series"
 source: "https://www.amcharts.com/demos/animated-bullet-at-the-end-of-the-series/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart that draws the eye to its latest value: the last point pulses like a live signal, while the dashed line keeps the history in the background.
@@ -159,6 +159,28 @@ var data = [{
 }]
 
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over seven days in June 2025, the last day marked by a pulsing dot. Tab to the line, then move along it with the arrow keys"
+});
+// the points: one Tab stop for the whole line (a focusable group), the arrow keys step through it;
+// the pulsing dot is only decoration
+series.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fillOpacity: 0,          // not painted: the line looks as before
+      strokeOpacity: 0,
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+    })
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

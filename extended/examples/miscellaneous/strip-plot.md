@@ -2,7 +2,7 @@
 title: "Strip Plot"
 source: "https://www.amcharts.com/demos/strip-plot/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A strip plot puts every value of a group on one line, so you see how they spread instead of a single average. Here, made-up posts on twelve social networks: when each went out and, by its size, how many likes it got.
@@ -185,7 +185,13 @@ var bullet = series.bullets.push(function () {
       stroke: root.interfaceColors.get("background"), // a background-colored ring keeps overlapping dots apart
       strokeWidth: 1,
       fillOpacity: 0.8,               // slightly see-through, so dots behind still show
-      templateField: "bulletSettings" // each dot takes its fill from its post's bulletSettings
+      templateField: "bulletSettings", // each dot takes its fill from its post's bulletSettings
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the posts (a focusable group),
+      // the arrow keys step through them, network by network, and the focused one shows its tooltip
+      focusable: true,
+      focusableGroup: "posts",
+      hoverOnFocus: true,
+      ariaLabel: "{categoryY} at {valueX.formatDate('HH:mm')}: {value} likes"
     }, circleTemplate)
   });
 });
@@ -201,6 +207,15 @@ series.set("heatRules", [{
 
 // Add scrollbar
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Strip plot of made-up posts on twelve social networks over one day: when each post went out and how many likes it got. Tab to the posts, then move between them with the arrow keys"
+});
+// the posts: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

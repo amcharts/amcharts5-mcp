@@ -2,7 +2,7 @@
 title: "Pie of a Pie (Exploding Pie Chart)"
 source: "https://www.amcharts.com/demos/pie-of-a-pie/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Two pies joined by lines: click a slice of the big pie and it turns to face the small one, which shows what that slice is made of.
@@ -263,6 +263,29 @@ function selectSlice(slice) {
     easing: am5.ease.out(am5.ease.cubic)
   });
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+container.setAll({
+  focusable: true, // Tab reaches the charts, and a screen reader names them
+  role: "figure",
+  ariaLabel: "Pie of a pie: a big pie of six countries, and a small pie of the parts of the one picked. Tab to the big pie's slices, move between them with the arrow keys and press Enter to pick one; then Tab to its parts"
+});
+// the big pie's slices: one Tab stop (a focusable group), the arrow keys step through them; Enter picks one, as a click
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "countries",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+// the small pie's slices: one Tab stop too, after the big pie's
+subSeries.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "parts",
+  tabindexOrder: 1, // the chart's parts are focused in this order, from low to high (0 if not set)
+  hoverOnFocus: true,
+  ariaLabel: "Part {category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
 
 container.appear(1000, 10);
 

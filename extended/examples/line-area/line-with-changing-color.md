@@ -2,7 +2,7 @@
 title: "Line with Changing Color"
 source: "https://www.amcharts.com/demos/line-with-changing-color/"
 category: "line-area"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 One line in three colors: each stretch of years colors its line, area and points, and the colors are set in the data, so you choose where each begins.
@@ -67,7 +67,7 @@ var data = [
       stroke: colorSet.getIndex(0)
     },
     fillSettings: {
-      fill: colorSet.getIndex(0),
+      fill: colorSet.getIndex(0)
     },
     bulletSettings: {
       fill: colorSet.getIndex(0)
@@ -101,7 +101,7 @@ var data = [
       stroke: colorSet.getIndex(3)
     },
     fillSettings: {
-      fill: colorSet.getIndex(3),
+      fill: colorSet.getIndex(3)
     },
     bulletSettings: {
       fill: colorSet.getIndex(3)
@@ -128,7 +128,7 @@ var data = [
       stroke: colorSet.getIndex(6)
     },
     fillSettings: {
-      fill: colorSet.getIndex(6),
+      fill: colorSet.getIndex(6)
     },
     bulletSettings: {
       fill: colorSet.getIndex(6)
@@ -211,11 +211,16 @@ series.fills.template.setAll({
 });
 
 // a dot on every point, colored from the data item's bulletSettings
-series.bullets.push(function () {
+series.bullets.push(function (root, series) {
   return am5.Bullet.new(root, {
     sprite: am5.Circle.new(root, {
       templateField: "bulletSettings",
-      radius: 5 // 5px radius
+      radius: 5, // 5px radius
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the line (a focusable group),
+      // the arrow keys step through it
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{categoryX}: {valueY}"
     })
   });
 });
@@ -223,6 +228,15 @@ series.bullets.push(function () {
 series.data.setAll(data);
 series.appear(1000);
 
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a yearly value from 2015 to 2025 in three colored stretches: 2015 to 2018, 2019 to 2021 and 2022 to 2025. Tab to the points, then move between the years with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

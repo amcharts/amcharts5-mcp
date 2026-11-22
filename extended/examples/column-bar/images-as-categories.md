@@ -2,7 +2,7 @@
 title: "Images as Categories"
 source: "https://www.amcharts.com/demos/images-as-categories/"
 category: "column-bar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A column chart with a flag above each country name on the axis. Any picture can go there, like logos, product shots or faces: here, visits from eleven countries.
@@ -59,47 +59,47 @@ cursor.lineY.set("visible", false); // no horizontal cursor line
 var data = [{
   country: "US",
   visits: 725,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/us.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/us.svg" }
 }, {
   country: "UK",
   visits: 625,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/gb.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/gb.svg" }
 }, {
   country: "China",
   visits: 602,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/cn.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/cn.svg" }
 }, {
   country: "Japan",
   visits: 509,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/jp.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/jp.svg" }
 }, {
   country: "Germany",
   visits: 322,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/de.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/de.svg" }
 }, {
   country: "France",
   visits: 214,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/fr.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/fr.svg" }
 }, {
   country: "India",
   visits: 204,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/in.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/in.svg" }
 }, {
   country: "Spain",
   visits: 198,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/es.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/es.svg" }
 }, {
   country: "Netherlands",
   visits: 165,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/nl.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/nl.svg" }
 }, {
   country: "South Korea",
   visits: 93,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/kr.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/kr.svg" }
 }, {
   country: "Canada",
   visits: 41,
-  iconSettings: { src: "https://www.amcharts.com/wp-content/uploads/assets/flags/ca.svg" }
+  iconSettings: { src: "https://www.amcharts.com/static/assets/flags/ca.svg" }
 }];
 
 // Create axes
@@ -197,6 +197,21 @@ series.bullets.push(function () {
 });
 
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Column chart of visits from eleven countries, from the US at 725 down to Canada at 41, with each country's flag under its column. Tab to the columns, then move between them with the arrow keys"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "columns",
+  hoverOnFocus: true, // a focused column shows its tooltip
+  ariaLabel: "{categoryX}: {valueY} visits"
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

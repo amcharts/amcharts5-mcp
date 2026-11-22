@@ -2,7 +2,7 @@
 title: "OHLC Chart"
 source: "https://www.amcharts.com/demos/ohlc-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 An OHLC chart shows the same four prices as a candlestick, drawn as a bar: a line from low to high, a tick to the left for the open and one to the right for the close. Zoom out and 2,000 days group into weeks and months.
@@ -74,7 +74,6 @@ var data = generateChartData();
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  focusable: true, // the chart can be reached with the Tab key
   panX: true,      // drag the plot sideways to pan through the days
   panY: true,      // and up and down
   wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
@@ -200,6 +199,20 @@ series.events.once("datavalidated", function () {
 
 series.data.setAll(data);
 sbseries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "OHLC chart of 2,000 days of random prices up to today, showing the last three months; zoomed out, days group into weeks and months. The chart has too many bars to step through with the keyboard"
+});
+// no focusable points on the bars: zoomed out, hundreds of them would slow down loading, zooming and panning
+// the legend: after the bars
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

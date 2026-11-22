@@ -394,6 +394,19 @@ var toolbar = am5stock.StockToolbar.new(root, {
     })
   ]
 })
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+stockChart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Stock chart of Microsoft (MSFT) prices as candlesticks with volume: a year of daily candles, which the toolbar's interval menu switches to weekly or monthly candles, or one day of one-minute candles. The chart has too many candles to step through with the keyboard. The toolbar above the chart adds indicators and drawings"
+});
+// no focusable points on the candles: hundreds of them would slow down loading, zooming and panning
+// the legend, with its settings and close buttons: after the candles
+valueLegend.itemContainers.template.set("tabindexOrder", 10); // the chart's parts are focused from low to high (0 if not set)
+valueLegend.settingsButtons.template.set("tabindexOrder", 10);
+valueLegend.closeButtons.template.set("tabindexOrder", 10);
 ```
 
 ## HTML

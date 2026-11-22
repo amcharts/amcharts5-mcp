@@ -2,7 +2,7 @@
 title: "Capitals Map"
 source: "https://www.amcharts.com/demos/capitals-map/"
 category: "maps"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A world map with the capital of every country, 196 in all, each marked with a star as in a printed atlas. Zoom in and the names appear.
@@ -141,7 +141,13 @@ var labelTemplate = am5.Template.new({});
 pointSeries.bullets.push(function () {
   var container = am5.Container.new(root, {
     tooltipText: "[bold]{title}[/]\n{country}", // the capital in bold, its country under it
-    tooltipY: 0 // the tooltip points at the star
+    tooltipY: 0, // the tooltip points at the star
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the capitals (a focusable
+    // group), the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "capitals",
+    hoverOnFocus: true,
+    ariaLabel: "{title}, {country}"
   });
 
   container.children.push(am5.Star.new(root, {}, starTemplate));
@@ -429,6 +435,15 @@ satelliteSeries.on("visible", function(visible) {
   });
   graticuleSeries.mapLines.template.set("stroke", visible ? am5.color(0xffffff) : root.interfaceColors.get("alternativeBackground"));
 });
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the map, and a screen reader names it
+  role: "figure",
+  ariaLabel: "World map of 196 capitals. Tab to the capitals, then move between them with the arrow keys"
+});
+// the capitals: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 chart.appear(1000, 100);

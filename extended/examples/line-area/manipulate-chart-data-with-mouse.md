@@ -2,7 +2,7 @@
 title: "Manipulate Chart Data with Mouse"
 source: "https://www.amcharts.com/demos/manipulate-chart-data-with-mouse/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart you can edit by hand: press anywhere on the plot and drag up or down, and the nearest point follows. Handy for what-if plans and rough forecasts.
@@ -119,14 +119,19 @@ var series = chart.series.push(am5xy.LineSeries.new(root, {
 }));
 
 // a hollow dot on each point, with an up-down pointer to hint it can be dragged
-series.bullets.push(function() {
+series.bullets.push(function (root, series) {
   var graphics = am5.Circle.new(root, {
     radius: 4,                    // 4px radius
     interactive: true,            // reacts to the pointer, so the pointer style shows
     cursorOverStyle: "ns-resize", // an up-down arrow pointer over the dot
     stroke: series.get("stroke"), // outlined in the line's color
     // filled with the chart's background color, so the points look hollow in light and dark mode
-    fill: root.interfaceColors.get("background")
+    fill: root.interfaceColors.get("background"),
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the points (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: {valueY.formatNumber('#.#')}"
   });
 
   return am5.Bullet.new(root, {
@@ -176,6 +181,15 @@ chart.plotContainer.events.on("globalpointermove", function(e) {
 // Set data
 var data = generateDatas(40);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 40 days, whose points can be dragged up or down with a mouse or by touch. Tab to the points, then move between them with the arrow keys"
+});
+// the points: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

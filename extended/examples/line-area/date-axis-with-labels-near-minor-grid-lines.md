@@ -2,7 +2,7 @@
 title: "Date Axis with Labels Near Minor Grid Lines"
 source: "https://www.amcharts.com/demos/date-axis-with-labels-near-minor-grid-lines/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart where every day gets a number on the axis: small day numbers along the bottom, week labels under them, so each point’s date is easy to read.
@@ -149,7 +149,12 @@ var bulletTemplate = am5.Template.new({
 
 series.bullets.push(function () {
   var bulletCircle = am5.Circle.new(root, {
-    fill: series.get("fill") // in the series color
+    fill: series.get("fill"), // in the series color
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueX.formatDate('EEEE, MMMM d')}: {valueY}"
   }, bulletTemplate);
   return am5.Bullet.new(root, {
     sprite: bulletCircle
@@ -164,6 +169,15 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 
 var data = generateDatas(30); // 30 days of data
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 30 days, with a dot on each day. Tab to the dots, then move between the days with the arrow keys"
+});
+// the dots: set up for the keyboard where they are made, in the bullet function above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

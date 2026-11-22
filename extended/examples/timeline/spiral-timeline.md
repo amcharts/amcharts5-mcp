@@ -2,7 +2,7 @@
 title: "Spiral Timeline"
 source: "https://www.amcharts.com/demos/spiral-timeline/"
 category: "timeline"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 The same project plan wound into a spiral: time starts in the middle and turns outward, two laps from January to early May. Each module keeps its lane and color all the way round.
@@ -252,6 +252,11 @@ lineSeries.bullets.push(function(root, series, dataItem) {
       centerY: am5.p50,   // ...and in the middle of its lane
       paddingTop: 1, paddingBottom: 1, paddingLeft: 4, paddingRight: 4, // space around the letter
       layer: 30,          // on layer 30 with the bars, above the axes
+      // keyboard and screen readers (see Accessibility below): one Tab stop for the milestones (a focusable
+      // group), after the tasks; the arrow keys step through them
+      focusable: true,
+      focusableGroup: "milestones",
+      ariaLabel: "Milestone {letter}: {valueX.formatDate('MMMM d')}",
       background: am5.Rectangle.new(root, {
         fill: root.interfaceColors.get("background"),             // a badge in the background color...
         stroke: root.interfaceColors.get("alternativeBackground") // ...with an outline in the text color
@@ -334,6 +339,28 @@ responsive.addRule({
     });
     legend.valueLabels.template.set("forceHidden", false);
   }
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Spiral timeline of a project plan of 13 tasks in four modules, from January 15 to May 4, 2026, with seven milestones lettered A to G, turning outward from the middle in two laps, one lane per module; the legend names the modules' colors. Tab to the tasks, then to the milestones, and move between them with the arrow keys"
+});
+// the tasks' bars: one Tab stop (a focusable group), the arrow keys step through them
+series.columns.template.setAll({
+  focusable: true,
+  role: "figure",
+  focusableGroup: "tasks",
+  // no hoverOnFocus: the tooltip of a bar that bends round a turn would show in the middle of the turn, off the bar
+  ariaLabel: "{category}: {task}, {openValueX.formatDate('MMMM d')} to {valueX.formatDate('MMMM d')}"
+});
+// the milestones: set up for the keyboard where they are made, in the badge bullet function above
+// the legend: after the milestones; it only names the colors
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
 });
 
 // Animate chart and series in

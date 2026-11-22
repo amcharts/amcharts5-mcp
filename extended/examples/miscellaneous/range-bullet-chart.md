@@ -2,7 +2,7 @@
 title: "Range Bullet Chart"
 source: "https://www.amcharts.com/demos/range-bullet-chart/"
 category: "miscellaneous"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A range bullet chart shows the spread of a score as a bar from its lowest to its highest value, with a marker for the average. Here, the scores two options got: a circle at each end and a triangle at the average.
@@ -187,6 +187,26 @@ var legend = chart.children.unshift(am5.Legend.new(root, {
 legend.valueLabels.template.set("forceHidden", true);
 
 legend.data.setAll([series3, series2]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Range bullet chart of the scores two options got, Reduce Expenses and Increase Expenses: the range from the lowest to the highest score, and the average. Tab to the options, then move between them with the arrow keys"
+});
+// the options: each bar is one item with all three scores, one Tab stop for both (a focusable group), the arrow keys
+// step between them
+series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "options",
+  ariaLabel: "{categoryY}: minimum {openValueX}, average {average}, maximum {valueX}"
+});
+// the legend: one Tab stop too, after the options; the arrow keys step through its items (it only names the markers)
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

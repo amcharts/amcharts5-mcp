@@ -2,7 +2,7 @@
 title: "Duration on Value Axis"
 source: "https://www.amcharts.com/demos/duration-on-value-axis/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A two-week road trip in one chart: miles driven each day, hours behind the wheel and how far north each stop is. The right-hand axis is a duration axis: the data is in minutes, the labels read as hours and minutes.
@@ -229,6 +229,11 @@ latitudeSeries.bullets.push(function() {
     radius: 5,      // replaced by the town size (see the adapter below)
     stroke: latitudeSeries.get("stroke"), // in the line's color
     fill: root.interfaceColors.get("background"), // filled with the background color
+    // keyboard and screen readers (see Accessibility below): one Tab stop for the line (a focusable group),
+    // the arrow keys step through it
+    focusable: true,
+    focusableGroup: "Latitude",
+    ariaLabel: "{valueX.formatDate('MMMM d')}, {townName}: latitude {valueY}"
   });
 
   // each dot's size comes from the town's townSize in the data
@@ -262,7 +267,11 @@ durationSeries.bullets.push(function() {
     height:10,
     centerX:am5.p50,                   // ...centered on the data point...
     centerY:am5.p50,
-    fill: durationSeries.get("stroke") // ...in the line's color
+    fill: durationSeries.get("stroke"), // ...in the line's color
+    // keyboard and screen readers (see Accessibility below), as the latitude points
+    focusable: true,
+    focusableGroup: "Duration",
+    ariaLabel: "{valueX.formatDate('MMMM d')}, {townName}: {valueY.formatDuration()} hours of driving"
   });
 
   return am5.Bullet.new(root, {
@@ -295,6 +304,26 @@ distanceSeries.data.setAll(data);
 latitudeSeries.data.setAll(data);
 durationSeries.data.setAll(data);
 xAxis.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Chart of a 14-day road trip in January 2026, from New York to Las Vegas: miles driven each day as columns, with lines for the hours driven and each stop's latitude. Tab to the columns, then move between the days with the arrow keys; Tab again for each line"
+});
+// the columns: one Tab stop (a focusable group), the arrow keys step through them
+distanceSeries.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "Distance",
+  ariaLabel: "{valueX.formatDate('MMMM d')}, {townName}: {valueY} miles"
+});
+// the latitude and duration points: set up for the keyboard where they are made, in the bullet functions above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

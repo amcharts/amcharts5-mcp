@@ -2,7 +2,7 @@
 title: "Radar Chart Visualizing Yearly Activities"
 source: "https://www.amcharts.com/demos/radar-chart-visualizing-yearly-activities/"
 category: "radar-polar"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A year of bike rides in one circle: weekly distances as columns, every ride as a bubble sized by its length, and the year’s total in the middle.
@@ -914,8 +914,14 @@ var circleTemplate = am5.Template.new({});
 bubbleSeries.bullets.push(function () {
   var graphics = am5.Circle.new(root, {
     themeTags: ["ride"],               // for the responsive rule at the top
-    fill: distanceSeries.get("fill"),  // the series color of the weekly columns
-    tooltipText: "{title}: {value} km" // the ride's name and distance
+    fill: distanceSeries.get("fill"),   // the series color of the weekly columns
+    tooltipText: "{title}: {value} km", // the ride's name and distance
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the rides (a focusable
+    // group), the arrow keys step through them, and the focused one shows its tooltip
+    focusable: true,
+    focusableGroup: "rides",
+    hoverOnFocus: true,
+    ariaLabel: "{date.formatDate('EEEE, MMMM d')}: {title}, {value} km"
   }, circleTemplate);
   return am5.Bullet.new(root, {
     sprite: graphics
@@ -938,6 +944,24 @@ bubbleSeries.set("heatRules", [{
 distanceSeries.data.setAll(weeklyData);
 weekAxis.data.setAll(weekAxisData);
 bubbleSeries.data.setAll(dailyData);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Radar chart of a year of bike rides: the distance of each week as a column, and every ride as a bubble sized by its length. Tab to the weeks, the rides or the months, then move through them with the arrow keys; Enter on a month zooms in on it"
+});
+// the weeks' columns: one Tab stop (a focusable group), the arrow keys step through them
+distanceSeries.columns.template.setAll({
+  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
+  focusable: true,
+  role: "figure",
+  focusableGroup: "weeks",
+  ariaLabel: "Week {valueX}: {valueY} km"
+});
+// the rides: set up for the keyboard where they are made, in the bullet function above
+// the month bands: set up where they are made, in createRange below
 
 bubbleSeries.appear(1000);
 distanceSeries.appear(1000);
@@ -983,7 +1007,15 @@ function createRange(name, index) {
     fill: colorSet.getIndex(index * 2),
     visible: true,              // an axis range's fill is hidden until set visible
     dRadius: 25,                // the band reaches 25px past the ring's edge...
-    innerRadius: -25            // ...and is 25px thick, so it sits just outside the ring
+    innerRadius: -25,           // ...and is 25px thick, so it sits just outside the ring
+    // keyboard and screen readers (see Accessibility above): one Tab stop for the 12 months (a focusable
+    // group), the arrow keys step through them, and Enter zooms in on one, as a click does
+    isMeasured: false, // without this, a band can't take focus
+    focusable: true,
+    role: "button",
+    focusableGroup: "months",
+    tabindexOrder: 5, // after the weeks and the rides
+    ariaLabel: months[index]
   });
   axisRange.get("grid").set("visible", false); // no grid line at the start of the month
 

@@ -2,7 +2,7 @@
 title: "Professional Candlesticks"
 source: "https://www.amcharts.com/demos/professional-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Candlesticks in the hollow style traders call professional. Each candle says two things: hollow if the day closed above its open, filled if below, and green or red for a close above or below the day before.
@@ -75,7 +75,6 @@ var data = generateChartData();
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(
   am5xy.XYChart.new(root, {
-    focusable: true, // the chart can be reached with the Tab key
     panX: true,      // drag the plot to pan through the days...
     panY: true,      // ...and the prices
     wheelX: "panX",  // a horizontal wheel or trackpad swipe pans...
@@ -216,6 +215,20 @@ series.events.once("datavalidated", function () {
 // set data
 sbseries.data.setAll(data);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Candlestick chart of 1,000 days of random prices up to today, showing the last three months: a hollow candle closed above its open, a filled one below, and green or red means a close above or below the day before. The chart has too many candles to step through with the keyboard"
+});
+// no focusable points on the candles: zoomed out, hundreds of them would slow down loading, zooming and panning
+// the legend: after the candles
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

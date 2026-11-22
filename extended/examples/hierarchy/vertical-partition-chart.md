@@ -2,7 +2,7 @@
 title: "Vertical Partition Chart"
 source: "https://www.amcharts.com/demos/vertical-partition-chart/"
 category: "hierarchy"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A partition (icicle) chart stacks a hierarchy in rows, the whole on top and each box as wide as its share. Here, the 168 hours of one person’s week.
@@ -111,6 +111,22 @@ series.data.setAll([{
 
 // start at the top node, so the whole week shows
 series.set("selectedDataItem", series.dataItems[0]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Partition chart of the 168 hours of one person's week. Tab to the boxes, move between them with the arrow keys, and press Enter to zoom into one or back out"
+});
+// the boxes: one Tab stop (a focusable group), the arrow keys step through them; Enter zooms
+series.nodes.template.setAll({
+  focusable: true,
+  role: "button",
+  focusableGroup: "boxes",
+  hoverOnFocus: true, // a focused box shows its tooltip
+  ariaLabel: "{category}: {sum} hours"
+});
 
 // Make stuff animate on load
 series.appear(1000, 100);

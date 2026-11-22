@@ -2,7 +2,7 @@
 title: "Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart/"
 category: "gantt"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Gantt chart lays a project out on a calendar: one bar per task, grouped into phases, with arrows for the order the work must follow. Diamonds mark milestones, and the striped part of a bar is the work still to do.
@@ -214,6 +214,16 @@ if (narrow) {
     }, 500);
   });
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+gantt.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Gantt chart of a software project: design, programming and testing phases with their tasks, milestones, and links that set the order of the work. Tab to the date range, the toolbar and the phases in the task list; Enter folds or opens a phase"
+});
+// the Gantt brings its own keyboard support: the date range, the toolbar buttons and the task list's groups
+// are focusable by the library
 
 gantt.appear();
 ```

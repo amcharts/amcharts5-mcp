@@ -2,7 +2,7 @@
 title: "Pie Chart with Broken Down Slices"
 source: "https://www.amcharts.com/demos/pie-chart-broken-slices/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A pie that opens up when clicked: click a slice and it breaks into the parts it is made of, while the other slices stay put. Here, fossil and green energy.
@@ -124,6 +124,22 @@ function generateChartData() {
   }
   return chartData;
 }
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Pie chart of energy sources: fossil 70% and green 30%. Tab to the slices and move between them with the arrow keys; Enter breaks a group into its parts, or puts them back together"
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; the template also reaches the
+// slices made again after each click
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}%"
+});
 ```
 
 ## HTML

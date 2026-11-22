@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Donut Chart"
 source: "https://www.amcharts.com/demos/variable-radius-nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A thin ring inside a wide one, drawn as an open arc, with the total in the gap: litres on the inner ring, bottles on the outer, for nine countries.
@@ -151,6 +151,27 @@ var data = [
 // https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/#setting-data
 series0.data.setAll(data);
 series1.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Nested donut chart of nine countries: litres on the inner ring, bottles on the outer ring. Tab to a ring's slices, then move between them with the arrow keys"
+});
+// each ring's slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series0.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "litres",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value} litres, {valuePercentTotal.formatNumber('0.0')}%"
+});
+series1.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "bottles",
+  hoverOnFocus: true,
+  ariaLabel: "{category}: {value} bottles, {valuePercentTotal.formatNumber('0.0')}%"
+});
 ```
 
 ## HTML

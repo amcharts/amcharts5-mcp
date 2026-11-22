@@ -32,6 +32,7 @@ Found by giving agents (Claude Sonnet, with only this server) realistic requests
 - The stock price recipe drops `extraTooltipPrecision: 2` from the price axis (stock.md's core setup and Example 1, cursorrules). With it, the axis tooltip ran past the chart's right edge: 15 px at 400 and 360 px wide, 3 px at 1100 px. Without it, the tooltip shows the labels' decimals and fits. `preferredDecimals: [0, 2]` and the `"#,###.00##"` number format stay. SKILL.md's "Value axis decimals" says the tooltip shows the labels' decimals instead of naming `extraTooltipPrecision`. Checked in Chromium on the 5.23.0 CDN.
 - Example `examples/gauges/world-clock` re-imported: `secondHandMove` sets the second hands to tick (a step each second; after the page was in the background they go straight to the time), move smoothly (30 times a second) or hide.
 - The 10 stock demos re-imported: the root `numberFormat` is `"#,###.00##"`, the price axis has `preferredDecimals: [0, 2]` with no `numberFormat` or `extraTooltipPrecision`, and the nine with a toolbar have a rule for containers up to 400 px wide.
+- All 304 amcharts.com demos re-imported: each has keyboard and screen reader support (a label for the chart, and in 266 of them groups of elements stepped through with the arrow keys). The examples are about 9% larger.
 
 ## [1.9.8] - 2026-11-19
 

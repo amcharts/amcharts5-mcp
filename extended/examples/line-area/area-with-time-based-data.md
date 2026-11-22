@@ -2,7 +2,7 @@
 title: "Area with Time Based Data"
 source: "https://www.amcharts.com/demos/area-with-time-based-data/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 An area chart of minute-by-minute visits over the last eight hours, opening on the latest hour. The small chart above it shows the whole range: drag it to move along.
@@ -159,6 +159,15 @@ var sbseries = scrollbarX.chart.series.push(am5xy.LineSeries.new(root, {
   valueXField: "date"
 }));
 sbseries.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Area chart of visits per minute over about eight hours, opening on the latest hour. The area has too many points to step through with the keyboard"
+});
+// no focusable points on the area: 500 of them would slow down zooming and panning
 ```
 
 ## HTML

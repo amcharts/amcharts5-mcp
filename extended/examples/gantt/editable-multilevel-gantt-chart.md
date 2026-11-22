@@ -2,7 +2,7 @@
 title: "Editable Multilevel Gantt Chart"
 source: "https://www.amcharts.com/demos/editable-multilevel-gantt-chart/"
 category: "gantt"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A Gantt chart with tasks grouped under their stage. Each stage’s bar covers its tasks, its progress comes from theirs, and a click folds it away.
@@ -130,6 +130,16 @@ gantt.series.data.setAll([{
   progress: 0,
   id: "gantt_8"
 }]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+gantt.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Gantt chart of a project in stages, preparation and implementation, with their tasks; each stage's bar covers its tasks. Tab to the date range, the toolbar and the stages in the task list; Enter folds or opens a stage"
+});
+// the Gantt brings its own keyboard support: the date range, the toolbar buttons and the task list's groups
+// are focusable by the library
 
 gantt.appear();
 ```

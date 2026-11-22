@@ -2,7 +2,7 @@
 title: "Line with Different Negative Color"
 source: "https://www.amcharts.com/demos/date-based-line-chart/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A line chart that turns red where it drops below zero, line and fill alike. The same trick works for any threshold, not just zero.
@@ -155,6 +155,27 @@ yAxis.set( // ...and the value on this one
 // Add scrollbar, hidden at first
 // https://docs.amcharts.com/v5/charts/xy-chart/scrollbars/
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", forceHidden: true }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a random daily value over the last 150 days, rising above and dipping below zero; the part below zero is red. Tab to the line, then move along it with the arrow keys"
+});
+// the points: one Tab stop for the whole line (a focusable group), the arrow keys step through it
+series.bullets.push(function () {
+  return am5.Bullet.new(root, {
+    sprite: am5.Circle.new(root, {
+      radius: 5,
+      fillOpacity: 0,          // not painted: the line looks as before
+      strokeOpacity: 0,
+      focusable: true,
+      focusableGroup: "points",
+      ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+    })
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

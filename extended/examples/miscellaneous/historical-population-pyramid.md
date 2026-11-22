@@ -2,7 +2,7 @@
 title: "Historical Population Pyramid"
 source: "https://www.amcharts.com/demos/historical-population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A population pyramid tied to a timeline: hover a year in the U.S. population chart and the pyramid redraws for it, from 1950 to the UN projection for 2100.
@@ -488,6 +488,43 @@ popCursor.lineY.set("visible", false); // no horizontal cursor line
 popCursor.events.on("cursormoved", function(ev) {
   var x = ev.target.getPrivate("positionX");
   showYear(Math.round(popXAxis.positionToValue(x)));
+});
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+container.setAll({
+  focusable: true, // Tab reaches the charts, and a screen reader names them
+  role: "figure",
+  ariaLabel: "U.S. population pyramid by sex and five-year age group, next to a chart of the total population from 1950 to the UN projection for 2100. Tab to the males' or the females' bars and move between age groups with the arrow keys; Tab on to the years and move between them with the arrow keys: the pyramid shows the focused year"
+});
+// each side's bars: one Tab stop (a focusable group), the arrow keys step through the age groups
+pyramidSeriesMale.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "Males",
+  ariaLabel: "Males, {categoryY}: {valueX}"
+});
+pyramidSeriesFemale.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "Females",
+  ariaLabel: "Females, {categoryY}: {valueX}"
+});
+// the years: invisible points on the top line, one Tab stop for all of them; a focused year shows in the pyramid,
+// as the cursor does
+popSeriesFemale.bullets.push(function () {
+  var point = am5.Circle.new(root, {
+    radius: 5,
+    fillOpacity: 0,          // not painted: the chart looks as before
+    strokeOpacity: 0,
+    focusable: true,
+    focusableGroup: "years",
+    ariaLabel: "U.S. population in {valueX.formatNumber('#')}: males {male}, females {female}"
+  });
+  point.events.on("focus", function (ev) {
+    showYear(ev.target.dataItem.get("valueX"));
+  });
+  return am5.Bullet.new(root, {
+    sprite: point
+  });
 });
 
 // Make stuff animate on load

@@ -2,7 +2,7 @@
 title: "Editable Gantt Chart"
 source: "https://www.amcharts.com/demos/gantt-chart-dates/"
 category: "gantt"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Gantt chart of seven phases to edit in place: drag and resize bars, drag a bar’s triangle to set its progress, and draw links from the dot at its end.
@@ -113,6 +113,15 @@ gantt.series.data.setAll([{
   progress: 0,
   id: "gantt_6"
 }]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+gantt.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Gantt chart of a seven-phase project, from idea to release, to edit in place. Tab to the date range and the toolbar"
+});
+// the Gantt brings its own keyboard support: the date range and the toolbar buttons are focusable by the library
 
 gantt.appear();
 ```

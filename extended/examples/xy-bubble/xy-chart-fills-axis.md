@@ -2,7 +2,7 @@
 title: "XY Chart with Fills to the Axis"
 source: "https://www.amcharts.com/demos/xy-chart-fills-axis/"
 category: "xy-bubble"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 An area chart on two number axes, where the shading can face either way: the lower line fills down to the X axis, the upper one across to the Y axis.
@@ -211,6 +211,30 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, {
 
 series0.data.setAll(data);
 series1.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Area chart of two lines of 12 points on two value axes, x from 1 to 12; the lower line is filled down to the X axis, the upper one across to the Y axis. Tab to a line, then move along it with the arrow keys"
+});
+// the points: one Tab stop per line (a focusable group), the arrow keys step through it
+[series0, series1].forEach(function (series, index) {
+  var name = index ? "Upper line" : "Lower line";
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      sprite: am5.Circle.new(root, {
+        radius: 5,
+        fillOpacity: 0,          // not painted: the line looks as before
+        strokeOpacity: 0,
+        focusable: true,
+        focusableGroup: name,
+        ariaLabel: name + ", x: {valueX}, y: {valueY}"
+      })
+    });
+  });
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

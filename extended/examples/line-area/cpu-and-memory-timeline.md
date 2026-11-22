@@ -2,7 +2,7 @@
 title: "CPU and Memory Timeline"
 source: "https://www.amcharts.com/demos/cpu-and-memory-timeline/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A 10-second recording of a web page, like the overview strip of the browser's performance tools: how busy the processor was and with what, and below it the memory the page's JavaScript held, sawing down at each garbage collection. Long tasks are marked in red.
@@ -249,7 +249,13 @@ gcSeries.bullets.push(function(root, series) {
       stroke: root.interfaceColors.get("background"),
       strokeWidth: 1.5,
       tooltipText: "[bold]{gc}[/]\n{valueX.formatNumber('#.00')} s",
-      templateField: "dotSettings" // its size (no radius here: a setting made here would win over the data's)
+      templateField: "dotSettings", // its size (no radius here: a setting made here would win over the data's)
+      // keyboard and screen readers (see Accessibility below): one Tab stop for all the collections (a focusable
+      // group), the arrow keys step through them, and the focused one shows its tooltip
+      focusable: true,
+      focusableGroup: "gc",
+      hoverOnFocus: true,
+      ariaLabel: "{gc} at {valueX.formatNumber('#.00')} s"
     })
   });
 });
@@ -323,6 +329,21 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal",
   opposite: true
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Timeline of a 10-second recording of a web page: above, how busy the processor was, stacked by loading, scripting, rendering, painting and system work, with long tasks marked; below, the JavaScript memory in MB and each garbage collection. Tab to the garbage collections, then move through them with the arrow keys. The CPU and memory lines have too many points to step through with the keyboard"
+});
+// no focusable points on the CPU and memory lines: about 1,000 of them would slow down loading, zooming and panning
+// the garbage collections: set up for the keyboard where they are made, in their bullet function above
+// the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one
+legend.itemContainers.template.setAll({
+  focusableGroup: "legend",
+  tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
+});
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Animated Time-Line Pie Chart"
 source: "https://www.amcharts.com/demos/animated-time-line-pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A donut that plays through 1995 to 2014: every four seconds it moves on a year, and each slice grows or shrinks with its sector’s share of the economy.
@@ -288,6 +288,28 @@ function loop() {
 }
 
 loop();
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+// the chart's name carries the year shown, and follows it
+function chartName(year) {
+  return "Donut chart of eight sectors' shares of the economy in " + year + "; it moves on a year every four seconds, from 1995 to 2014. Tab to the slices, then move between them with the arrow keys";
+}
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: chartName(label.get("text"))
+});
+label.on("text", function (year) {
+  chart.set("ariaLabel", chartName(year));
+});
+// the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
+series.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "slices",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {valuePercentTotal.formatNumber('0.0')}%"
+});
 ```
 
 ## HTML

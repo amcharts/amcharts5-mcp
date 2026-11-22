@@ -2,7 +2,7 @@
 title: "Draggable Range with a Close Button"
 source: "https://www.amcharts.com/demos/draggable-range-with-close-button/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A stop-loss line you can move: drag the box up or down and the value in it follows. Click the X and the line is gone.
@@ -136,7 +136,10 @@ var container = am5.Container.new(root, {
   // the box is centered vertically on the range line
   centerY: am5.p50,
   draggable: true,              // the box can be dragged (up and down only, see the adapters below)
-  layout: root.horizontalLayout // the label and the X button side by side
+  layout: root.horizontalLayout, // the label and the X button side by side
+  // keyboard and screen readers (see Accessibility below): Tab reaches the box, and the up and down arrow keys
+  // move it as a drag does; updateLabel below names it with its value
+  focusable: true
 })
 
 // restrict from being dragged horizontally: the box stays at the value axis's side of the plot
@@ -212,7 +215,10 @@ var xButton = container.children.push(am5.Button.new(root, {
   paddingTop: 5,              // the same height as the label...
   paddingBottom: 5,
   paddingLeft: 2,             // ...close to it on the left, with some room on the right
-  paddingRight: 8
+  paddingRight: 8,
+  role: "button",
+  // a button is focusable already, and Enter clicks it; this names it for screen readers
+  ariaLabel: "Remove the stop loss line"
 }))
 
 // add label to the button (you can add icon instead of a label)
@@ -246,6 +252,7 @@ function updateLabel(value) {
   }
 
   label.set("text", "Stop loss: " + root.numberFormatter.format(value, "#.00")); // always two decimals
+  container.set("ariaLabel", label.get("text")); // a screen reader reads the box's value too
 
   rangeDataItem.set("value", value);
 }
@@ -263,6 +270,16 @@ series.events.on("datavalidated", () => {
 // Set data
 var data = generateDatas(300);
 series.data.setAll(data);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value over 300 days, with a stop loss line across it. Tab to the stop loss box and move it with the up and down arrow keys; the X after it removes the line with Enter. The line has too many points to step through with the keyboard"
+});
+// no focusable points on the line: 300 of them would slow down loading, zooming and panning
+// the stop loss box and its X: set up where they are made, above
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

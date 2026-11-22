@@ -2,7 +2,7 @@
 title: "Gantt Chart in Read-Only Mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-11-19"
+scraped: "2026-11-21"
 ---
 
 A Gantt chart locked for viewing: no dragging or editing, just the plan to read, scroll and point at, until the toolbar’s pencil button unlocks it.
@@ -114,6 +114,15 @@ gantt.series.data.setAll([{
   progress: 0,
   id: "gantt_6"
 }]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+gantt.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Read-only Gantt chart of a seven-phase project, from idea to release. Tab to the date range and the toolbar; its Edit mode button unlocks editing"
+});
+// the Gantt brings its own keyboard support: the date range and the toolbar buttons are focusable by the library
 
 gantt.appear();
 ```

@@ -2,7 +2,7 @@
 title: "Date Based Data"
 source: "https://www.amcharts.com/demos/date-based-data/"
 category: "line-area"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 Half a year of daily values, July 2025 to January 2026. The dates come in as plain text, like 2025-07-27, and the chart turns them into a real timeline.
@@ -606,7 +606,6 @@ var data = [{
 // Create chart
 // https://docs.amcharts.com/v5/charts/xy-chart/
 var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  focusable: true, // the chart can take keyboard focus, for keyboard users
   panX: true,      // drag the plot sideways to pan...
   panY: true,      // ...or up and down
   wheelX: "panX",  // a horizontal wheel or trackpad swipe pans
@@ -674,7 +673,12 @@ series.bullets.push(function() {
     radius: 4, // 4px dots...
     fill: root.interfaceColors.get("background"), // ...filled with the background color...
     stroke: series.get("fill"), // ...and outlined in the series color...
-    strokeWidth: 2 // ...2px wide
+    strokeWidth: 2, // ...2px wide
+    // keyboard and screen readers (see Accessibility below): one Tab stop for all the dots (a focusable group),
+    // the arrow keys step through them
+    focusable: true,
+    focusableGroup: "points",
+    ariaLabel: "{valueX.formatDate('MMMM d, yyyy')}: {valueY}"
   })
 
   return am5.Bullet.new(root, {
@@ -695,6 +699,16 @@ cursor.lineY.set("visible", false); // no horizontal cursor line, only the verti
 chart.set("scrollbarX", am5.Scrollbar.new(root, {
   orientation: "horizontal" // drag its grips to zoom in on a range of dates
 }));
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Line chart of a daily value from July 27, 2025 to January 30, 2026, rising from 5 to around 80. Its dots show once you zoom in (Tab to the scrollbar's grips and move them with the arrow keys); then Tab to the dots and move between the days with the arrow keys"
+});
+// the dots: set up for the keyboard where they are made, in the bullet function above; minBulletDistance hides them,
+// and takes them out of the Tab order, until the chart is zoomed in
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

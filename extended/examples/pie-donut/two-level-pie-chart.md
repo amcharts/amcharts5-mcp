@@ -2,7 +2,7 @@
 title: "Two-Level Pie Chart"
 source: "https://www.amcharts.com/demos/two-level-pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-17"
+scraped: "2026-11-21"
 ---
 
 A thin ring of parts inside a wider, see-through band that groups some of them together. Here the band shows that First and Second belong together.
@@ -159,6 +159,27 @@ series1.data.setAll([{
   // dark in dark mode, so the name on it stays readable
   sliceSettings: { fill: am5.Color.interpolate(0.15, root.interfaceColors.get("background"), root.interfaceColors.get("alternativeBackground")) }
 }]);
+
+// Accessibility: keyboard and screen reader support
+// https://docs.amcharts.com/v5/concepts/accessibility/
+chart.setAll({
+  focusable: true, // Tab reaches the chart, and a screen reader names it
+  role: "figure",
+  ariaLabel: "Two-level donut chart: an inner ring of three parts, First, Second and Remaining, and an outer band that groups First and Second. Tab to a ring, then move between its slices with the arrow keys"
+});
+// each ring's slices: one Tab stop (a focusable group), the arrow keys step through them
+series0.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "groups",
+  hoverOnFocus: true, // a focused slice shows its tooltip
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
+series1.slices.template.setAll({
+  focusable: true,
+  focusableGroup: "parts",
+  hoverOnFocus: true,
+  ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+});
 ```
 
 ## HTML
