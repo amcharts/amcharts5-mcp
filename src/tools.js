@@ -130,7 +130,7 @@ function pickExample(doc, asked) {
   const asWords = String(asked ?? "").trim().toLowerCase().replace(/[\s_-]+/g, " ").replace(/^(a|an|the) /, "").replace(/ (charts?|diagrams?|graphs?)$/, "");
   if (!asWords) return { example: examples[0], named: false };
   // the words as asked, then singular ("funnels")
-  const namedBy = (phrase) => [phrase, singularOf(phrase, " ")].map(w => EXAMPLE_WORDS[w] || w).map(w => {
+  const namedBy = (phrase) => [phrase, singularOf(phrase, " ")].map(w => Object.hasOwn(EXAMPLE_WORDS, w) ? EXAMPLE_WORDS[w] : w).map(w => {
     const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`);
     return examples.find(s => re.test(s.heading.toLowerCase().replace(/[\s_-]+/g, " ")));
   }).find(Boolean);
@@ -828,7 +828,7 @@ export function registerTools(server, content) {
           : demo
           ? `> The complete example for "${echo(chartType.trim())}" is the amCharts demo "${demo.title}": get_example(path: "${demo.key}"). It loads amCharts with script tags; below is this reference's ${closest ? "closest" : "first"} example under ES module imports.\n\n`
           : !named && !family
-            ? `> No example in this reference shows "${echo(chartType.trim())}"; this is ${closest ? "the closest" : "its first"}. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
+            ? `> No example in this reference is named "${echo(chartType.trim())}"; this is ${closest ? "the closest" : "its first"}. How to make one: get_chart_reference("${key}") or search_all("${echo(chartType.trim())}").\n\n`
             : "";
         const title = `# Quick Start: ${example.heading.replace(/^Example\s*\d*:\s*/i, "")}\n*(source: skill/${key}.md, ${doc.title}: "${example.heading}")*\n\n${unnamed}`;
         if (format === "esm") {

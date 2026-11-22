@@ -855,7 +855,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 99, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "column with line" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes('No example in this reference shows "column with line"') ? "PASS" : "FAIL (an unrelated example, unannounced)";
+      return text.includes('No example in this reference is named "column with line"') ? "PASS" : "FAIL (an unrelated example, unannounced)";
     },
     label: "get_quick_start('column with line') — no example or demo is named so: says the example is not one",
   },
@@ -1000,7 +1000,7 @@ const tests = [
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
       return /^> The complete example for "bollinger band" is [^\n]*get_example\(path: "examples\/stock\/stock-chart-with-volume-and-bollinger-bands"\)/m.test(text)
-        && !text.includes("No example in this reference shows")
+        && !text.includes("No example in this reference is named")
         ? "PASS" : `FAIL (${text.slice(0, 200)})`;
     },
     label: "get_quick_start('bollinger band') — a chart-type word of the phrase names the moved example",
@@ -1009,7 +1009,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 114, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "world map" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes("<title>World Choropleth Map</title>") && !text.includes("No example in this reference shows")
+      return text.includes("<title>World Choropleth Map</title>") && !text.includes("No example in this reference is named")
         ? "PASS" : `FAIL (${text.slice(0, 200)})`;
     },
     label: "get_quick_start('world map') — the map reference's first example, without a 'No example' note",
@@ -1018,7 +1018,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 115, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "World Map charts" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.includes("<title>World Choropleth Map</title>") && !text.includes("No example in this reference shows")
+      return text.includes("<title>World Choropleth Map</title>") && !text.includes("No example in this reference is named")
         ? "PASS" : `FAIL (${text.slice(0, 200)})`;
     },
     label: "get_quick_start('World Map charts') — the family words with a trailing 'charts', without a 'No example' note",
@@ -1043,7 +1043,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 118, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "funnels" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.startsWith("# Quick Start: Funnel") && !text.includes("No example in this reference shows") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
+      return text.startsWith("# Quick Start: Funnel") && !text.includes("No example in this reference is named") ? "PASS" : `FAIL (${text.slice(0, 200)})`;
     },
     label: "get_quick_start('funnels') — the example named by the singular",
   },
@@ -1060,7 +1060,7 @@ const tests = [
     send: { jsonrpc: "2.0", id: 120, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "bubble maps" } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
-      return text.startsWith("# Quick Start: Map with point markers (bubble map)") && !text.includes("No example in this reference shows")
+      return text.startsWith("# Quick Start: Map with point markers (bubble map)") && !text.includes("No example in this reference is named")
         ? "PASS" : `FAIL (${text.slice(0, 200)})`;
     },
     label: "get_quick_start('bubble maps') — the singular 'bubble map' (a map) wins over 'bubble' (an XY chart)",
@@ -1342,6 +1342,7 @@ const tests = [
     [172, "world map with markers", "Map with point markers (bubble map)", "what it shows decides, not the place"],
     [173, "us map with lines", "US map with connection lines", "the lines example when lines are asked for"],
     [174, "speedometer for a dashboard", "Gauge with colored bands", "the chart it starts with still breaks a tie"],
+    [175, "constructor of pie", "Basic pie chart with legend", "a name every JavaScript object has is only a word"],
   ].map(([id, chartType, title, why]) => ({
     send: { jsonrpc: "2.0", id, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType } } },
     check: (r) => {
