@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Hosted server: broken JSON sent to the legacy `/sse/message` endpoint gets a 400. It used to crash the request, and the logged error could quote part of the body. Test 176.
+- A tool's text argument over 2,000 characters gets a short error. One very long word kept the server busy for seconds and held up other requests. Tests 177-180.
 
 ## [1.10.0] - 2026-11-22
 

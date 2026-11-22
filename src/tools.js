@@ -361,13 +361,21 @@ const GEODATA_QUERY_RE = /geo ?data|congressional|am5geodata|\b(?:low|high)\.js\
 const GEODATA_HINT = "\n\n> Looking for a map file? list_geodata(filter) lists every geodata file (world, countries, regions, US congressional packs per Congress) with its CDN path, global name and ES import.";
 const geodataHint = (query) => (GEODATA_QUERY_RE.test(query) ? GEODATA_HINT : "");
 
+// A tool's text argument is a few words, a name or a link. Ranking text costs
+// more the longer it gets, so anything far longer gets a short error.
+const MAX_ARGUMENT_LENGTH = 2000;
+function tooLongArgument(args) {
+  const [name] = Object.entries(args || {}).find(([, value]) => typeof value === "string" && value.length > MAX_ARGUMENT_LENGTH) || [];
+  return name && { content: [{ type: "text", text: `\`${name}\` is too long (at most ${MAX_ARGUMENT_LENGTH} characters). Send a few key words or a name.` }], isError: true };
+}
+
 export function registerTools(server, content) {
   const { docs, extendedDocs, examples } = content;
 
   // Directories read a tool's display name from the top-level `title` or from
   // `annotations.title` (Claude's directory portal): give both, from one title.
   const registerTool = (name, config, handler) =>
-    server.registerTool(name, { ...config, annotations: { title: config.title, ...config.annotations } }, handler);
+    server.registerTool(name, { ...config, annotations: { title: config.title, ...config.annotations } }, (...call) => tooLongArgument(call[0]) || handler(...call));
 
   // Resolve any identifier a search result prints — "skill/SKILL.md",
   // "skill/xy", "SKILL", "xy.md", "extended/charts/xy-chart/cursor",

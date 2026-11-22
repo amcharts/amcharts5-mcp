@@ -1164,12 +1164,12 @@ const tests = [
     label: "get_example(name: 'purple-unicorn') — no such demo: points to search_all with the words",
   },
   {
-    send: { jsonrpc: "2.0", id: 131, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "q".repeat(5000) } } },
+    send: { jsonrpc: "2.0", id: 131, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "q".repeat(2000) } } },
     check: (r) => {
       const text = r.result?.content?.[0]?.text || "";
       return text.startsWith("No reference or demo found") && text.length < 700 ? "PASS" : `FAIL (${text.length} chars)`;
     },
-    label: "get_quick_start(5,000 characters) — the answer doesn't repeat them",
+    label: "get_quick_start(2,000 characters) — the answer doesn't repeat them",
   },
   // list_examples by a word of the category, and by `type`
   {
@@ -1364,6 +1364,23 @@ const tests = [
     send: { jsonrpc: "2.0", id: 176, method: "ping" },
     check: () => brokenJson.status === 400 && !brokenJsonText.includes("SECRETWORD") && otherError === "other" && otherRoute === "other route" && guardInRoute ? "PASS" : `FAIL (${brokenJson.status} ${brokenJsonText.slice(0, 80)}, ${otherError}, ${otherRoute}, in route: ${guardInRoute})`,
     label: "hosted server: broken JSON on /sse/message gets 400 without quoting the body; other errors and routes are untouched",
+  },
+  ...[
+    [177, "search_all", { query: "a".repeat(2001) }, "query"],
+    [178, "get_section", { file: "SKILL", heading: "a".repeat(2001) }, "heading"],
+    [179, "list_geodata", { filter: "a".repeat(2001) }, "filter"],
+  ].map(([id, name, args, arg]) => ({
+    send: { jsonrpc: "2.0", id, method: "tools/call", params: { name, arguments: args } },
+    check: (r) => {
+      const text = r.result?.content?.[0]?.text || "";
+      return r.result?.isError && text.startsWith(`\`${arg}\` is too long`) && text.length < 120 ? "PASS" : `FAIL (${text.slice(0, 120)})`;
+    },
+    label: `${name}: a ${arg} over 2,000 characters gets a short error`,
+  })),
+  {
+    send: { jsonrpc: "2.0", id: 180, method: "tools/call", params: { name: "search_all", arguments: { query: "a".repeat(2000) } } },
+    check: (r) => r.result && !r.result.isError ? "PASS" : `FAIL (${(r.result?.content?.[0]?.text || "").slice(0, 120)})`,
+    label: "search_all: a query of exactly 2,000 characters is still answered",
   },
 ];
 
