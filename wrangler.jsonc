@@ -38,9 +38,8 @@
       }
     ]
   },
-  // Error and warning messages are kept; per-request invocation logs are off,
-  // so the logs don't hold request headers or IP addresses. See "Privacy" in
-  // README.md.
+  // Error and warning messages are kept; per-request invocation logs are off.
+  // See "Privacy" in README.md.
   "observability": {
     "enabled": true,
     "logs": {

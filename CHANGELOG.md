@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Hosted server: broken JSON sent to the legacy `/sse/message` endpoint gets a 400. It used to crash the request, and the logged error could quote part of the body. Test 176.
 - A tool's text argument over 2,000 characters gets a short error. One very long word kept the server busy for seconds and held up other requests. Tests 177-180.
-- Hosted server: a request naming an unknown or ended session no longer leaves an empty Durable Object in storage for good. A session ID the server never issued gets 404 without waking an object, and every object that wakes has a cleanup. `npm run check:storage` checks that `/mcp` creates no objects and that SSE sessions leave nothing behind. Tests 181-182.
+- Hosted server: a request naming an unknown or ended session no longer leaves an empty Durable Object in storage for good. On the legacy SSE routes, a session ID the server never issued gets 404 without waking an object, and every object that wakes has a cleanup. `npm run check:storage` checks that `/mcp` creates no objects and that SSE sessions leave nothing behind. Tests 181-182.
 
 ## [1.10.0] - 2026-11-22
 

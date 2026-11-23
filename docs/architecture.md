@@ -2,7 +2,7 @@
 
 ## Summary
 
-- The server answers AI assistants' questions about amCharts 5 from content in this repo: the skill, the docs pages, the API reference, examples and a geodata index. It answers from that content only and calls no other service. The hosted server also keeps each session's MCP initialize message for up to 24 hours (see "Hosted server").
+- The server answers AI assistants' questions about amCharts 5 from content in this repo: the skill, the docs pages, the API reference, examples and a geodata index. It answers from that content only and calls no other service. The hosted `/mcp` stores nothing between requests (see "Hosted server").
 - One codebase runs two ways:
   - **npm package**, stdio: `src/index.js`, run with `npx @amcharts/amcharts5-mcp`;
   - **hosted Cloudflare Worker**, Streamable HTTP and SSE: `cloudflare/index.js`, at https://mcp.amcharts.com/mcp.
@@ -68,7 +68,7 @@ The npm package ships `src/`, `extended/` and the skill files (copied into `cont
   - The legacy `/sse` needs a connection that spans requests, so it uses an `McpAgent` (Cloudflare's `agents` package), one Durable Object per session.
 - **Privacy:**
   - SSE sessions are deleted 24 hours after their last request.
-  - Workers invocation logs are off, so the logs don't hold request headers.
+  - Workers invocation logs are off, so only error and warning messages are logged.
   - README's "Privacy" section describes this and must stay true.
 - **Deploying:** a push to `main` runs the tests and deploys (`.github/workflows/deploy.yml`, wrangler).
 

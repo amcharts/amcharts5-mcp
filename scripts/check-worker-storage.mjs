@@ -94,12 +94,16 @@ async function useSse() {
   // A stream still open when the idle cleanup runs
   const held = await openSse();
 
+  // A session that will get broken JSON after it has been cleaned up
+  const expired = await openSse();
+  expired.close();
+
   // IDs this server never issued
   await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", SSE_HEADERS, TOOL_CALL);
   await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", SSE_HEADERS, "not json");
   await send(`/sse?sessionId=${MADE_UP_ID}`, "GET", { accept: "text/event-stream" });
 
-  return () => held.close();
+  return { closeHeldStream: () => held.close(), expiredEndpoint: expired.endpoint };
 }
 
 function objectFiles(state) {
@@ -157,10 +161,13 @@ try {
   await wait(1000);
   const fromMcp = objectFiles(state).length;
   if (fromMcp > 0) throw new Error(`/mcp created ${fromMcp} Durable Objects`);
-  const closeHeldStream = await useSse();
+  const { closeHeldStream, expiredEndpoint } = await useSse();
   await wait((IDLE_SECONDS + 12) * 1000);
   closeHeldStream();
-  await wait(2000);
+  // The library wakes the object before it parses the body, so only the
+  // cleanup armed at startup can remove this one.
+  await send(expiredEndpoint, "POST", SSE_HEADERS, "not json");
+  await wait((IDLE_SECONDS + 8) * 1000);
   stop();
   await wait(2500);
   const { total, kept } = objectsWithStorage(state);
