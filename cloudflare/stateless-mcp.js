@@ -1,6 +1,6 @@
-// /mcp without sessions. The tools are read-only and keep nothing between
-// requests, so each request gets its own server and nothing is stored. A client
-// that still sends a session ID is answered as usual.
+// /mcp without sessions. The tools are read-only and need nothing from earlier
+// requests, so each request gets its own server, and no session or request
+// content is kept. A client that still sends a session ID is answered as usual.
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { usageOf, writeUsage } from "./usage.js";
 
@@ -48,6 +48,10 @@ export async function serveStatelessMcp(request, createServer, usageDataset) {
     server = createServer();
     const transport = new WebStandardStreamableHTTPServerTransport({ sessionIdGenerator: undefined, enableJsonResponse: true });
     await server.connect(transport);
+    // Each request is answered at once, so there is nothing to cancel. Cancelling
+    // a call inside a batch would leave its answer, and the response, pending.
+    const receive = transport.onmessage;
+    transport.onmessage = (message, extra) => (message.method === "notifications/cancelled" ? undefined : receive?.(message, extra));
     if (usageDataset) countUsage(transport, usageDataset, request.headers.get("user-agent"));
     const response = await transport.handleRequest(request);
     const headers = new Headers(response.headers);

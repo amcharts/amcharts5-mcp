@@ -31,8 +31,8 @@ The assistant writes amCharts 5 code for your page or app, and looks up the docu
 The skill is text: it runs nothing and sends nothing. The MCP server receives the assistant's tool requests, such as a search phrase, a chart type or a doc path. Neither part needs an account or asks for personal data.
 
 - **What a tool request contains** is used only to build the answer, and is not logged or stored.
-- **Sessions:** the plugin connects to `/mcp`, which has no sessions and stores nothing between requests.
-- **Usage counts:** the server counts connections and tool calls by kind of app (Claude, ChatGPT, Cursor, VS Code or other), tool name and success or error. The counts are kept for three months. They hold no IP address, session ID, search phrase, chart type or tool argument.
+- **Sessions:** the plugin connects to `/mcp`, which has no sessions and keeps no request content.
+- **Usage counts:** the server counts connections and tool calls by kind of app (Claude, ChatGPT, Cursor, VS Code or other), tool name and, where known, success or error. The counts are kept for three months. They hold no IP address, session ID, search phrase, chart type or tool argument.
 - **Logs:** per-request logs are off, so the server doesn't log every request. It runs on Cloudflare Workers, and Cloudflare processes each request, including its IP address, to deliver it. Error and warning messages are logged and kept for up to 7 days. They can include a request's method, full URL and request ID, but not its body or tool arguments.
 
 The details are in the [Privacy section of the server's README](https://github.com/amcharts/amcharts5-mcp#privacy) and in the [amCharts privacy policy](https://www.amcharts.com/privacy-policy/).

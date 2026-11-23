@@ -13,10 +13,10 @@ export function appOf(...names) {
     if (typeof name !== "string") continue;
     const text = name.toLowerCase();
     // Cursor reports itself as "cursor-vscode", so it comes before VS Code
-    if (text.includes("cursor")) return "cursor";
+    if (/(?:^|[^a-z])cursor/.test(text)) return "cursor";
     if (/claude|anthropic/.test(text)) return "claude";
     if (/chatgpt|openai/.test(text)) return "chatgpt";
-    if (/visual studio code|vscode|vs code|copilot/.test(text)) return "vscode";
+    if (/visual studio code|vscode|vs code/.test(text)) return "vscode";
   }
   return "other";
 }

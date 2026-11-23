@@ -4,7 +4,7 @@
 // Usage: npm run usage -- [--days 30] [--dataset amcharts5_mcp_usage]
 const option = (name, fallback) => {
   const at = process.argv.indexOf(`--${name}`);
-  return at > 0 ? process.argv[at + 1] : fallback;
+  return at > 0 ? process.argv[at + 1] ?? fallback : fallback;
 };
 const days = Number(option("days", 30));
 const dataset = option("dataset", "amcharts5_mcp_usage");
@@ -37,7 +37,15 @@ if (!response.ok) {
   console.error(`Cloudflare answered ${response.status}: ${text.slice(0, 300)}`);
   process.exit(1);
 }
-const rows = JSON.parse(text).data.map((row) => ({ ...row, day: String(row.day).slice(0, 10), n: Number(row.n) }));
+let data;
+try {
+  data = JSON.parse(text).data;
+} catch {}
+if (!Array.isArray(data)) {
+  console.error(`Cloudflare's answer wasn't a result table: ${text.slice(0, 300)}`);
+  process.exit(1);
+}
+const rows = data.map((row) => ({ ...row, day: String(row.day).slice(0, 10), n: Number(row.n) }));
 if (!rows.length) {
   console.log(`No usage counted in the last ${days} days.`);
   process.exit(0);
@@ -63,8 +71,10 @@ for (const day of [...new Set(rows.map((row) => row.day))]) {
 }
 if (connections.length) table("Connections by app", "app", connections);
 if (toolCalls.length) {
-  table("Tool calls by app", "app", toolCalls);
+  // A tool call has only the HTTP user agent to go by, and many clients don't name themselves there
+  table("Tool calls by app (from the user agent, so often \"other\")", "app", toolCalls);
   table("Tool calls by tool", "tool", toolCalls);
-  table("Tool call results", "result", toolCalls);
+  const answered = toolCalls.filter((row) => row.route === "mcp");
+  if (answered.length) table("Tool call results on /mcp", "result", answered);
 }
 table("Requests by route", "route", rows);

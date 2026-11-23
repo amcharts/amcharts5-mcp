@@ -5,7 +5,7 @@
 // public HTTPS URL, so users can connect by pasting a URL into their AI client
 // instead of installing the npm package.
 //
-//   Streamable HTTP transport:  https://<host>/mcp   no sessions, stores nothing
+//   Streamable HTTP transport:  https://<host>/mcp   no sessions, no request content kept
 //   SSE transport (legacy):     https://<host>/sse   one Durable Object per session
 //
 // Content is bundled at build time (cloudflare/content.generated.js) and parsed by
@@ -74,8 +74,11 @@ export class AmCharts5MCP extends McpAgent {
     if (!JSONRPCMessageSchema.safeParse(messageBody).success) {
       return new Error("Invalid JSON-RPC message");
     }
-    // The answer goes out later on the stream, so the count is "accepted"
-    writeUsage(this.env?.USAGE, "sse", usageOf(messageBody, extraInfo?.requestInfo?.headers?.["user-agent"]), "accepted");
+    // The answer goes out later on the stream, so the count is "accepted".
+    // A notification or a message with no open stream gets no answer: not counted.
+    if (messageBody.id !== undefined && Array.from(this.getConnections()).length > 0) {
+      writeUsage(this.env?.USAGE, "sse", usageOf(messageBody, extraInfo?.requestInfo?.headers?.["user-agent"]), "accepted");
+    }
     return super.onSSEMcpMessage(sessionId, messageBody, extraInfo);
   }
 
