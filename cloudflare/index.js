@@ -36,9 +36,9 @@ function createServer() {
 // A session's storage is deleted this long after its last request (seconds).
 // The IDLE_TTL_SECONDS var overrides it, e.g. `wrangler dev --var IDLE_TTL_SECONDS:15`.
 const IDLE_TTL_SECONDS = 24 * 60 * 60;
-// An object woken for a session that no longer exists (a late request after
-// the session ended) is deleted after this long. Long enough that a client
-// retrying the old ID reuses one object instead of recreating it each time.
+// An object woken without a connection (a late request after the session
+// ended) is deleted after this long. Long enough that a client retrying the
+// old ID reuses one object instead of recreating it each time.
 const UNKNOWN_SESSION_TTL_SECONDS = 60 * 60;
 const IDLE_CLEANUP_KEY = "idleCleanupId";
 
@@ -49,14 +49,14 @@ export class AmCharts5MCP extends McpAgent {
     registerTools(this.server, content);
   }
 
-  // Waking an object creates its tables, even for a request that then gets
-  // 404. So every object that wakes has a cleanup: nothing stays for good.
+  // Waking an object creates its tables, even for a request that never
+  // connects. So every object that wakes has a cleanup, and a connection
+  // moves it to the full idle time.
   async onStart(props) {
     await super.onStart(props);
     const armed = await this.ctx.storage.get(IDLE_CLEANUP_KEY);
     if (armed && await this.getScheduleById(armed)) return;
-    const known = await this.getInitializeRequest();
-    await this.rearmIdleCleanup(known ? this.idleTtl() : Math.min(this.idleTtl(), UNKNOWN_SESSION_TTL_SECONDS));
+    await this.rearmIdleCleanup(Math.min(this.idleTtl(), UNKNOWN_SESSION_TTL_SECONDS));
   }
 
   // A legacy SSE stream connects here and every SSE message arrives below:
@@ -95,10 +95,8 @@ export class AmCharts5MCP extends McpAgent {
     }
   }
 
-  // No request for IDLE_TTL_SECONDS: end the session as if the client had
-  // sent DELETE. That removes the initialize message at once, so requests
-  // with this session ID get 404 from now on, and deletes all of the
-  // session's storage in a fresh alarm (destroy() → storage.deleteAll()).
+  // No request for IDLE_TTL_SECONDS: end the session. All of its storage is
+  // deleted in a fresh alarm (destroy() → storage.deleteAll()).
   async idleCleanup() {
     if (typeof this._cf_terminateSession === "function") {
       await this._cf_terminateSession();
