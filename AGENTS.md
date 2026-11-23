@@ -31,7 +31,7 @@ These cover the skill (SKILL.md, the references, cursorrules), the tool descript
   - When a release fixes a bug, its pitfall and any workaround are removed, not annotated.
   - SKILL.md keeps one "New in <latest>" list, because models are trained before new settings exist. Each release replaces the list instead of adding to it.
   - Version numbers stay only where they decide what code to write: a package's minimum version (e.g. a framework package's peer range), and the CDN path or version pin a page should load.
-  - Version pins in what the server serves match the pinned `@amcharts/amcharts5` devDependency (`npm test` checks this). The server instructions name no version and tell assistants to read the latest from npm, so a library release doesn't by itself need an MCP release.
+  - Version pins in what the server serves match the pinned `@amcharts/amcharts5` devDependency (`npm test` checks this). The server instructions name no version and tell assistants where to read the newest. A library release doesn't break the server, because the served pins stay valid, but those pins and the skill's "New in" list lag until the next MCP release.
   - Version history goes in `CHANGELOG.md`. The API reference has its `@since` tags.
 - **No workarounds for library bugs.** When a check finds a library bug, report it to the amCharts library team and keep it out of the skill and the docs copy. That covers workarounds and "still broken in x.y" notes alike. Documented behaviour, and recipes built from the public API for things the library has no setting for, belong in the skill.
 - **Verify every claim against the released library before writing it.**

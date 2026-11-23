@@ -73,7 +73,8 @@ Before writing amCharts 5 code, look it up here: the API differs from amCharts 4
 - A chart: get_quick_start with the chart type ("gauge", "stacked column", "map") returns a working example. With a framework ("react", "vue") it returns how to use amCharts there.
 - A feature or setting: search_all, then get_section or get_api_reference.
 - A demo's full code: get_example.
-- The exact version for a CDN URL: https://registry.npmjs.org/@amcharts/amcharts5/latest (not memory).
+
+CDN URLs: use one exact version for every file. A version the project or app sets comes first. Otherwise use the newest (https://registry.npmjs.org/@amcharts/amcharts5/latest) if you can fetch it, or the one in the pages here.
 
 Three common mistakes:
 - A Label you create with {placeholders} in its text needs populateText: true.

@@ -90,10 +90,14 @@ console.error = consoleError;
 // Version pins in everything the server serves match the library this repo is pinned to
 const libraryVersion = JSON.parse(readFileSync(`${ROOT}/node_modules/@amcharts/amcharts5/package.json`, "utf8")).version;
 const servedFiles = ["extended", "amcharts5-skill/amcharts5-skill"].flatMap(dir =>
-  readdirSync(`${ROOT}/${dir}`, { recursive: true }).filter(f => String(f).endsWith(".md")).map(f => `${ROOT}/${dir}/${f}`));
-const stalePins = [...servedFiles, `${ROOT}/amcharts5-skill/cursorrules`].flatMap(file =>
-  [...readFileSync(file, "utf8").matchAll(/(?:@amcharts\/amcharts5@|ajax\/libs\/amcharts5\/|cdn\.amcharts\.com\/lib\/version\/)(\d+\.\d+\.\d+)/g)]
-    .filter(m => m[1] !== libraryVersion).map(m => `${file.slice(ROOT.length + 1)}: ${m[1]}`));
+  readdirSync(`${ROOT}/${dir}`, { recursive: true }).filter(f => /\.(md|json)$/.test(String(f))).map(f => `${ROOT}/${dir}/${f}`));
+const servedTexts = [...servedFiles, `${ROOT}/amcharts5-skill/cursorrules`].map(file => ({ file: file.slice(ROOT.length + 1), text: readFileSync(file, "utf8") }));
+const stalePins = servedTexts.flatMap(({ file, text }) => [
+  ...text.matchAll(/(?:@amcharts\/amcharts5@|ajax\/libs\/amcharts5\/|cdn\.amcharts\.com\/lib\/version\/)(\d+\.\d+\.\d+)/g),
+  ...(/SKILL\.md$|cursorrules$/.test(file) ? text.matchAll(/(?:Latest release covered here: \*\*|New in )(\d+\.\d+\.\d+)/g) : []),
+].filter(m => m[1] !== libraryVersion).map(m => `${file}: ${m[1]}`));
+const geodataPins = new Set(servedTexts.flatMap(({ text }) => [...text.matchAll(/@amcharts\/amcharts5-geodata@(\d+\.\d+\.\d+)/g)].map(m => m[1])));
+const toolsSource = readFileSync(`${ROOT}/src/tools.js`, "utf8");
 
 let step = 0;
 const tests = [
@@ -104,7 +108,7 @@ const tests = [
       const s = r.result?.serverInfo || {};
       const told = r.result?.instructions || "";
       return s.name === "amcharts5" && s.title === "amCharts 5" && s.websiteUrl && s.description && s.icons?.[0]?.src === "https://mcp.amcharts.com/icon.png"
-        && told.includes("get_quick_start") && told.includes("don't apply to other chart libraries") && told.length < 1000
+        && told.includes("get_quick_start") && told.includes("don't apply to other chart libraries") && told.length < 1200
         ? "PASS" : `FAIL (${JSON.stringify(s)}; instructions: ${told.length} chars)`;
     },
     label: "Initialize server (name, title, description, website, icon, short instructions)",
@@ -1471,13 +1475,13 @@ const tests = [
   },
   {
     send: { jsonrpc: "2.0", id: 187, method: "ping" },
-    check: () => SERVER_INSTRUCTIONS.includes("https://registry.npmjs.org/@amcharts/amcharts5/latest") && !/\d+\.\d+\.\d+/.test(SERVER_INSTRUCTIONS) ? "PASS" : "FAIL (no lookup address, or a version number in the instructions)",
-    label: "server instructions: say where to read the latest version and name none, so a library release needs no server release",
+    check: () => SERVER_INSTRUCTIONS.includes("https://registry.npmjs.org/@amcharts/amcharts5/latest") && SERVER_INSTRUCTIONS.includes("one exact version for every file") && !/\b5\.\d+\.\d+\b/.test(toolsSource) ? "PASS" : "FAIL (no lookup address, or a library version in the instructions or tool descriptions)",
+    label: "server instructions: say where to read the newest version, and neither they nor the tool descriptions name one",
   },
   {
     send: { jsonrpc: "2.0", id: 188, method: "ping" },
-    check: () => stalePins.length === 0 ? "PASS" : `FAIL (${stalePins.length} pins differ from ${libraryVersion}: ${stalePins.slice(0, 3).join("; ")})`,
-    label: "served content: every version pin matches the amCharts version this repo is pinned to",
+    check: () => stalePins.length === 0 && geodataPins.size === 1 ? "PASS" : `FAIL (${stalePins.length} pins differ from ${libraryVersion}: ${stalePins.slice(0, 3).join("; ")}; geodata versions: ${[...geodataPins]})`,
+    label: "served content: every version pin matches the amCharts version this repo is pinned to, and geodata uses one version",
   },
 ];
 
