@@ -21,6 +21,7 @@ import { version, skillFiles, extendedFiles, geodata } from "./content.generated
 import { rejectBrokenJson } from "./sse-guard.js";
 import { rejectUnknownSession } from "./session-guard.js";
 import { serveStatelessMcp } from "./stateless-mcp.js";
+import { usageOf, writeUsage } from "./usage.js";
 // The server's icon (serverInfo, server.json), 256×256; a Data module (wrangler.jsonc rules)
 import ICON from "./icon.png";
 
@@ -73,6 +74,8 @@ export class AmCharts5MCP extends McpAgent {
     if (!JSONRPCMessageSchema.safeParse(messageBody).success) {
       return new Error("Invalid JSON-RPC message");
     }
+    // The answer goes out later on the stream, so the count is "accepted"
+    writeUsage(this.env?.USAGE, "sse", usageOf(messageBody, extraInfo?.requestInfo?.headers?.["user-agent"]), "accepted");
     return super.onSSEMcpMessage(sessionId, messageBody, extraInfo);
   }
 
@@ -128,7 +131,7 @@ export default {
     }
 
     if (url.pathname === "/mcp") {
-      return serveStatelessMcp(request, createServer);
+      return serveStatelessMcp(request, createServer, env.USAGE);
     }
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
       return rejectUnknownSession(request, url, env.MCP_OBJECT) || rejectBrokenJson(request, () => AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx));

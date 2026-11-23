@@ -68,7 +68,8 @@ The npm package ships `src/`, `extended/` and the skill files (copied into `cont
   - The legacy `/sse` needs a connection that spans requests, so it uses an `McpAgent` (Cloudflare's `agents` package), one Durable Object per session.
 - **Privacy:**
   - SSE sessions are deleted 24 hours after their last request.
-  - Workers invocation logs are off, so only error and warning messages are logged.
+  - Workers invocation logs and traces are off, so only error and warning messages are logged.
+  - Usage counts (`cloudflare/usage.js`, Workers Analytics Engine) hold fixed labels only: kind of app, connection or tool call, tool name, result. `npm run usage` prints them.
   - README's "Privacy" section describes this and must stay true.
 - **Deploying:** a push to `main` runs the tests and deploys (`.github/workflows/deploy.yml`, wrangler).
 

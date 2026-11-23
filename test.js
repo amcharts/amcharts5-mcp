@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { rejectBrokenJson } from "./cloudflare/sse-guard.js";
 import { rejectUnknownSession } from "./cloudflare/session-guard.js";
 import { serveStatelessMcp } from "./cloudflare/stateless-mcp.js";
+import { TOOL_NAMES } from "./cloudflare/usage.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { loadContentFromDisk } from "./src/content-fs.js";
 import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "./src/tools.js";
@@ -98,6 +99,26 @@ const stalePins = servedTexts.flatMap(({ file, text }) => [
 ].filter(m => m[1] !== libraryVersion).map(m => `${file}: ${m[1]}`));
 const geodataPins = new Set(servedTexts.flatMap(({ text }) => [...text.matchAll(/@amcharts\/amcharts5-geodata@(\d+\.\d+\.\d+)/g)].map(m => m[1])));
 const toolsSource = readFileSync(`${ROOT}/src/tools.js`, "utf8");
+
+// The hosted server's usage counts: fixed labels only
+const usageRows = [];
+const counted = async (body, userAgent, dataset = { writeDataPoint: (row) => usageRows.push(row) }) => {
+  const response = await serveStatelessMcp(new Request("https://mcp.test/mcp", {
+    method: "POST",
+    headers: { "content-type": "application/json", accept: "application/json, text/event-stream", "mcp-protocol-version": "2025-06-18", "user-agent": userAgent },
+    body: JSON.stringify(body),
+  }), hostedServer, dataset);
+  await response.text();
+  return response.status;
+};
+const initializeAs = (name) => ({ jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name, version: "1" } } });
+await counted(initializeAs("claude-code SECRETWORD"), "SECRETWORD");
+await counted({ jsonrpc: "2.0", id: 2, method: "tools/call", params: { name: "search_all", arguments: { query: "SECRETWORD" } } }, "ChatGPT SECRETWORD");
+await counted({ jsonrpc: "2.0", id: 3, method: "tools/call", params: { name: "SECRETWORD", arguments: {} } }, "cursor-vscode/1.0");
+await counted({ jsonrpc: "2.0", id: 4, method: "tools/list" }, "claude-code");
+const oddClientName = await counted(initializeAs({ toString: 1 }), "x");
+const usageDown = await counted(hostedCall, "claude-code", { writeDataPoint() { throw new Error("down"); } });
+const registeredTools = [...toolsSource.matchAll(/registerTool\(\s*"([a-z_]+)"/g)].map(m => m[1]);
 
 let step = 0;
 const tests = [
@@ -1455,7 +1476,7 @@ const tests = [
   },
   {
     send: { jsonrpc: "2.0", id: 183, method: "ping" },
-    check: () => hostedInit.status === 200 && hostedInit.json?.result?.instructions === SERVER_INSTRUCTIONS && !hostedInit.headers.has("mcp-session-id") && /serveStatelessMcp\(request, createServer\)/.test(workerSource) && !/AmCharts5MCP\.serve\("\/mcp"\)/.test(workerSource) ? "PASS" : `FAIL (${hostedInit.status} ${hostedInit.text.slice(0, 100)})`,
+    check: () => hostedInit.status === 200 && hostedInit.json?.result?.instructions === SERVER_INSTRUCTIONS && !hostedInit.headers.has("mcp-session-id") && /serveStatelessMcp\(request, createServer, env\.USAGE\)/.test(workerSource) && !/AmCharts5MCP\.serve\("\/mcp"\)/.test(workerSource) ? "PASS" : `FAIL (${hostedInit.status} ${hostedInit.text.slice(0, 100)})`,
     label: "hosted /mcp: initialize answers with the instructions and no session ID",
   },
   {
@@ -1482,6 +1503,24 @@ const tests = [
     send: { jsonrpc: "2.0", id: 188, method: "ping" },
     check: () => stalePins.length === 0 && geodataPins.size === 1 ? "PASS" : `FAIL (${stalePins.length} pins differ from ${libraryVersion}: ${stalePins.slice(0, 3).join("; ")}; geodata versions: ${[...geodataPins]})`,
     label: "served content: every version pin matches the amCharts version this repo is pinned to, and geodata uses one version",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 189, method: "ping" },
+    check: () => {
+      const got = usageRows.slice(0, 3).map(r => [r.indexes[0], ...r.blobs].join("|")).join(" ");
+      return got === "claude|mcp|connection||ok chatgpt|mcp|tool|search_all|ok cursor|mcp|tool|unknown|error" ? "PASS" : `FAIL (${got})`;
+    },
+    label: "usage counts: a connection and tool calls are counted by app, tool and result; tools/list is not",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 190, method: "ping" },
+    check: () => usageRows.length >= 3 && !JSON.stringify(usageRows).includes("SECRETWORD") ? "PASS" : `FAIL (${JSON.stringify(usageRows).slice(0, 120)})`,
+    label: "usage counts: nothing a client wrote is stored (app name, user agent, tool name, arguments)",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 191, method: "ping" },
+    check: () => usageDown === 200 && oddClientName !== 500 && registeredTools.length === TOOL_NAMES.size && registeredTools.every(t => TOOL_NAMES.has(t)) && /writeUsage\(this\.env\?\.USAGE, "sse"/.test(workerSource) ? "PASS" : `FAIL (down ${usageDown}, odd name ${oddClientName}, tools ${registeredTools.length}/${TOOL_NAMES.size})`,
+    label: "usage counts: a failed write or an odd client name can't fail a request, every tool is on the list, SSE is counted",
   },
 ];
 

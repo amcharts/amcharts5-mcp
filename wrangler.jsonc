@@ -38,12 +38,23 @@
       }
     ]
   },
-  // Error and warning messages are kept; per-request invocation logs are off.
-  // See "Privacy" in README.md.
+  // Anonymous counts of connections and tool calls (cloudflare/usage.js): fixed
+  // labels only. Read them with `npm run usage`.
+  "analytics_engine_datasets": [
+    {
+      "binding": "USAGE",
+      "dataset": "amcharts5_mcp_usage"
+    }
+  ],
+  // Error and warning messages are kept; per-request invocation logs and traces
+  // are off. See "Privacy" in README.md.
   "observability": {
     "enabled": true,
     "logs": {
       "invocation_logs": false
+    },
+    "traces": {
+      "enabled": false
     }
   },
   // OpenAI's plugin directory checks the domain by fetching this token from

@@ -74,7 +74,7 @@ Before writing amCharts 5 code, look it up here: the API differs from amCharts 4
 - A feature or setting: search_all, then get_section or get_api_reference.
 - A demo's full code: get_example.
 
-CDN URLs: use one exact version for every file. A version the project or app sets comes first. Otherwise use the newest (https://registry.npmjs.org/@amcharts/amcharts5/latest) if you can fetch it, or the one in the pages here.
+CDN URLs with a version in them (npm CDNs, cdnjs): use one exact version for every file. A version the project or app sets comes first. Otherwise use the newest (https://registry.npmjs.org/@amcharts/amcharts5/latest) if you can fetch it, or the one in the pages here.
 
 Three common mistakes:
 - A Label you create with {placeholders} in its text needs populateText: true.

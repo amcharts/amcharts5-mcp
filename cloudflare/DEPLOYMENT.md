@@ -121,8 +121,13 @@ login or account needed to test.
 
 - **`/mcp` has no sessions and uses no Durable Object.** The legacy `/sse` endpoint
   uses `McpAgent` with a SQLite-backed Durable Object (`AmCharts5MCP`, bound as
-  `MCP_OBJECT` in `wrangler.jsonc`) for its sessions. Available on both free and paid
-  plans.
+  `MCP_OBJECT` in `wrangler.jsonc`) for its sessions.
+- **CPU:** each `/mcp` request builds its own server, about 10 ms of CPU. That can exceed
+  the free plan's limit, so use Workers Paid.
+- **Usage counts:** the `USAGE` binding writes anonymous counts to Workers Analytics
+  Engine. Remove `analytics_engine_datasets` from `wrangler.jsonc` to turn them off. To
+  read them, set `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` (permission: Account
+  Analytics Read) and run `npm run usage`.
 - **Authless:** the server exposes no OAuth — anyone with the URL can use it, which is
   appropriate for public docs. (Note: Claude's *org-managed* custom-connector flow
   currently assumes OAuth; individual users adding the URL work fine.)

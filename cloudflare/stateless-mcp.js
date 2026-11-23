@@ -2,6 +2,7 @@
 // requests, so each request gets its own server and nothing is stored. A client
 // that still sends a session ID is answered as usual.
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
+import { usageOf, writeUsage } from "./usage.js";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Headers": "Content-Type, Accept, Authorization, mcp-session-id, mcp-protocol-version",
@@ -17,7 +18,26 @@ const errorResponse = (status, code, message, headers = {}) =>
     headers: { "content-type": "application/json", ...CORS_HEADERS, ...headers },
   });
 
-export async function serveStatelessMcp(request, createServer) {
+// Counts each connection and tool call when its answer goes out
+function countUsage(transport, dataset, userAgent) {
+  const pending = new Map();
+  const receive = transport.onmessage;
+  transport.onmessage = (message, extra) => {
+    const usage = usageOf(message, userAgent);
+    if (usage && message.id !== undefined) pending.set(message.id, usage);
+    return receive?.(message, extra);
+  };
+  const send = transport.send.bind(transport);
+  transport.send = (message, options) => {
+    if (pending.has(message.id)) {
+      writeUsage(dataset, "mcp", pending.get(message.id), message.error || message.result?.isError ? "error" : "ok");
+      pending.delete(message.id);
+    }
+    return send(message, options);
+  };
+}
+
+export async function serveStatelessMcp(request, createServer, usageDataset) {
   if (request.method === "OPTIONS") return new Response(null, { headers: CORS_HEADERS });
   // The server never sends anything on its own, so there is no stream to open
   // and no session to end. The MCP spec allows 405 for both.
@@ -28,6 +48,7 @@ export async function serveStatelessMcp(request, createServer) {
     server = createServer();
     const transport = new WebStandardStreamableHTTPServerTransport({ sessionIdGenerator: undefined, enableJsonResponse: true });
     await server.connect(transport);
+    if (usageDataset) countUsage(transport, usageDataset, request.headers.get("user-agent"));
     const response = await transport.handleRequest(request);
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(CORS_HEADERS)) headers.set(name, value);
