@@ -1,7 +1,7 @@
 ---
 title: "Map with Bubbles (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.22.0: examples/map-with-bubbles/config.json"
+source: "@amcharts/amcharts5@5.23.0: examples/map-with-bubbles/config.json"
 ---
 
 # Map with Bubbles (JSON config)
@@ -10,7 +10,7 @@ Bubbles placed on countries by their id, with heat rules setting each bubble's s
 
 Chart family: map · Tags: bubbles, point series, heat rules, polygon id
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-with-bubbles/config.json, version 5.22.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-with-bubbles/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 

@@ -121,7 +121,7 @@ amCharts 5 is available on [cdnjs](https://cdnjs.com/libraries/amcharts5), which
 
 ```sh title="Prompt"
 Load amCharts 5 from cdnjs, not cdn.amcharts.com:
-https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.22.0/index.js
+https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.23.0/index.js
 File paths are the same as on cdn.amcharts.com/lib/5/ (xy.js, themes/Animated.js, geodata/worldLow.js, etc.).
 ```
 
@@ -129,7 +129,7 @@ cdnjs URLs always need a version number. Any 5.x version works; the latest one i
 
 Since version 5.22.0, the npm packages work too, with maps of every detail:
 
-* The library on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.22.0/dist/index.js`. See "[npm package](https://docs.amcharts.com/v5/getting-started/#npm-package)".
+* The library on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/index.js`. See "[npm package](https://docs.amcharts.com/v5/getting-started/#npm-package)".
 * Maps on jsDelivr or unpkg: `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5-geodata@5.2.0/dist/worldHigh.js`. `worldLow.js` and `usaLow.js` are also in the library's `dist/geodata/`.
 
 ### Web search availability by platform

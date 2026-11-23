@@ -87,6 +87,14 @@ console.error = (...args) => hostedLogged.push(args.join(" "));
 const hostedFailure = await hosted("POST", hostedCall, {}, () => { throw new Error("SECRETWORD"); });
 console.error = consoleError;
 
+// Version pins in everything the server serves match the library this repo is pinned to
+const libraryVersion = JSON.parse(readFileSync(`${ROOT}/node_modules/@amcharts/amcharts5/package.json`, "utf8")).version;
+const servedFiles = ["extended", "amcharts5-skill/amcharts5-skill"].flatMap(dir =>
+  readdirSync(`${ROOT}/${dir}`, { recursive: true }).filter(f => String(f).endsWith(".md")).map(f => `${ROOT}/${dir}/${f}`));
+const stalePins = [...servedFiles, `${ROOT}/amcharts5-skill/cursorrules`].flatMap(file =>
+  [...readFileSync(file, "utf8").matchAll(/(?:@amcharts\/amcharts5@|ajax\/libs\/amcharts5\/|cdn\.amcharts\.com\/lib\/version\/)(\d+\.\d+\.\d+)/g)]
+    .filter(m => m[1] !== libraryVersion).map(m => `${file.slice(ROOT.length + 1)}: ${m[1]}`));
+
 let step = 0;
 const tests = [
   // Step 0: Initialize
@@ -1460,6 +1468,16 @@ const tests = [
     send: { jsonrpc: "2.0", id: 186, method: "ping" },
     check: () => hostedBroken.status === 400 && !hostedBroken.text.includes("SECRETWORD") && hostedFailure.status === 500 && hostedFailure.json?.error?.code === -32603 && !hostedFailure.text.includes("SECRETWORD") && !hostedLogged.join(" ").includes("SECRETWORD") ? "PASS" : `FAIL (${hostedBroken.status} ${hostedFailure.status} ${hostedLogged.join(" ").slice(0, 80)})`,
     label: "hosted /mcp: broken JSON and a server failure get a JSON error, and neither answer nor log quotes the text",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 187, method: "ping" },
+    check: () => SERVER_INSTRUCTIONS.includes("https://registry.npmjs.org/@amcharts/amcharts5/latest") && !/\d+\.\d+\.\d+/.test(SERVER_INSTRUCTIONS) ? "PASS" : "FAIL (no lookup address, or a version number in the instructions)",
+    label: "server instructions: say where to read the latest version and name none, so a library release needs no server release",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 188, method: "ping" },
+    check: () => stalePins.length === 0 ? "PASS" : `FAIL (${stalePins.length} pins differ from ${libraryVersion}: ${stalePins.slice(0, 3).join("; ")})`,
+    label: "served content: every version pin matches the amCharts version this repo is pinned to",
   },
 ];
 
