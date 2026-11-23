@@ -19,6 +19,7 @@ import { buildContent } from "../src/content.js";
 import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "../src/tools.js";
 import { version, skillFiles, extendedFiles, geodata } from "./content.generated.js";
 import { rejectBrokenJson } from "./sse-guard.js";
+import { rejectUnknownSession } from "./session-guard.js";
 // The server's icon (serverInfo, server.json), 256×256; a Data module (wrangler.jsonc rules)
 import ICON from "./icon.png";
 
@@ -28,6 +29,10 @@ const content = buildContent({ skillFiles, extendedFiles, geodata });
 // A session's storage is deleted this long after its last request (seconds).
 // The IDLE_TTL_SECONDS var overrides it, e.g. `wrangler dev --var IDLE_TTL_SECONDS:15`.
 const IDLE_TTL_SECONDS = 24 * 60 * 60;
+// An object woken for a session that no longer exists (a late request after
+// the session ended) is deleted after this long. Long enough that a client
+// retrying the old ID reuses one object instead of recreating it each time.
+const UNKNOWN_SESSION_TTL_SECONDS = 60 * 60;
 const IDLE_CLEANUP_KEY = "idleCleanupId";
 
 export class AmCharts5MCP extends McpAgent {
@@ -35,6 +40,15 @@ export class AmCharts5MCP extends McpAgent {
 
   async init() {
     registerTools(this.server, content);
+  }
+
+  // Waking an object creates its tables, even for a request that then gets
+  // 404. So every object that wakes has a cleanup: nothing stays for good.
+  async onStart(props) {
+    await super.onStart(props);
+    if (await this.ctx.storage.get(IDLE_CLEANUP_KEY)) return;
+    const known = await this.getInitializeRequest();
+    await this.rearmIdleCleanup(known ? this.idleTtl() : Math.min(this.idleTtl(), UNKNOWN_SESSION_TTL_SECONDS));
   }
 
   // Every Streamable HTTP request opens a connection to the session's
@@ -55,14 +69,17 @@ export class AmCharts5MCP extends McpAgent {
     return super.onSSEMcpMessage(sessionId, messageBody, extraInfo);
   }
 
-  // Moves the session's one idle cleanup to IDLE_TTL_SECONDS from now.
+  idleTtl() {
+    const configured = Number(this.env?.IDLE_TTL_SECONDS);
+    return configured > 0 ? configured : IDLE_TTL_SECONDS;
+  }
+
+  // Moves the session's one idle cleanup to `ttl` seconds from now.
   // Bookkeeping only: a failure here is logged, never fails the request.
-  async rearmIdleCleanup() {
+  async rearmIdleCleanup(ttl = this.idleTtl()) {
     try {
       const previous = await this.ctx.storage.get(IDLE_CLEANUP_KEY);
       if (previous) await this.cancelSchedule(previous);
-      const configured = Number(this.env?.IDLE_TTL_SECONDS);
-      const ttl = configured > 0 ? configured : IDLE_TTL_SECONDS;
       const task = await this.schedule(ttl, "idleCleanup");
       await this.ctx.storage.put(IDLE_CLEANUP_KEY, task.id);
     } catch (error) {
@@ -105,10 +122,10 @@ export default {
     }
 
     if (url.pathname === "/mcp") {
-      return AmCharts5MCP.serve("/mcp").fetch(request, env, ctx);
+      return rejectUnknownSession(request, url, env.MCP_OBJECT) || AmCharts5MCP.serve("/mcp").fetch(request, env, ctx);
     }
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
-      return rejectBrokenJson(request, () => AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx));
+      return rejectUnknownSession(request, url, env.MCP_OBJECT) || rejectBrokenJson(request, () => AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx));
     }
     if (url.pathname === "/" || url.pathname === "") {
       return new Response(

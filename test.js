@@ -3,6 +3,7 @@ import { readFileSync, readdirSync } from "fs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { rejectBrokenJson } from "./cloudflare/sse-guard.js";
+import { rejectUnknownSession } from "./cloudflare/session-guard.js";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
@@ -37,6 +38,21 @@ const brokenJsonText = await brokenJson.text();
 const otherError = await rejectBrokenJson(sseMessage, () => { throw new Error("other"); }).catch(e => e.message);
 const otherRoute = await rejectBrokenJson(new Request("https://mcp.test/sse"), () => { throw new SyntaxError("other route"); }).catch(e => e.message);
 const guardInRoute = /rejectBrokenJson\(request, \(\) => AmCharts5MCP\.serveSSE\("\/sse"\)/.test(readFileSync(`${ROOT}/cloudflare/index.js`, "utf8"));
+
+// The hosted server's answer to a session ID it never issued
+const sessionGuard = (path, method, headers = {}) => {
+  const url = new URL(`https://mcp.test${path}`);
+  return rejectUnknownSession(new Request(url, { method, headers }), url, { idFromString: (id) => { if (id !== "issued") throw new TypeError("invalid"); } });
+};
+const madeUpIds = [
+  sessionGuard("/mcp", "POST", { "mcp-session-id": "made-up" }), sessionGuard("/mcp", "GET", { "mcp-session-id": "made-up" }), sessionGuard("/mcp", "DELETE", { "mcp-session-id": "made-up" }),
+  sessionGuard("/sse/message?sessionId=made-up", "POST"), sessionGuard("/sse?sessionId=made-up", "GET"),
+];
+const otherSessionRequests = [
+  sessionGuard("/mcp", "POST", { "mcp-session-id": "issued" }), sessionGuard("/mcp", "POST"), sessionGuard("/sse", "GET"),
+  sessionGuard("/sse/message?sessionId=issued", "POST"), sessionGuard("/mcp", "OPTIONS", { "mcp-session-id": "made-up" }),
+];
+const sessionGuardRoutes = readFileSync(`${ROOT}/cloudflare/index.js`, "utf8").match(/return rejectUnknownSession\(request, url, env\.MCP_OBJECT\) \|\| /g)?.length;
 
 let step = 0;
 const tests = [
@@ -1381,6 +1397,16 @@ const tests = [
     send: { jsonrpc: "2.0", id: 180, method: "tools/call", params: { name: "search_all", arguments: { query: "a".repeat(2000) } } },
     check: (r) => r.result && !r.result.isError ? "PASS" : `FAIL (${(r.result?.content?.[0]?.text || "").slice(0, 120)})`,
     label: "search_all: a query of exactly 2,000 characters is still answered",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 181, method: "ping" },
+    check: () => madeUpIds.every(r => r?.status === 404) && sessionGuardRoutes === 2 ? "PASS" : `FAIL (${madeUpIds.map(r => r?.status)}, routes: ${sessionGuardRoutes})`,
+    label: "hosted server: a session ID it never issued gets 404 on /mcp and the SSE routes, before any Durable Object",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 182, method: "ping" },
+    check: () => otherSessionRequests.every(r => r === null) ? "PASS" : `FAIL (${otherSessionRequests.map(r => r?.status)})`,
+    label: "hosted server: issued session IDs, requests without one and CORS preflights pass through",
   },
 ];
 

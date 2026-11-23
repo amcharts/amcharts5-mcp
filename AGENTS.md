@@ -71,6 +71,9 @@ These cover the skill (SKILL.md, the references, cursorrules), the tool descript
 - **Versions.** Suggest the next version when a change is worth one, without waiting to be asked: a patch for fixes and content updates, a minor when the server or skill gains something new (a tool, a tool argument, server instructions, a new kind of answer), a major for a change that breaks existing clients.
 - **Commits.** No AI attribution trailers. Stage only the files your change is about, not `git add -A`: local working files and notes don't belong in a commit.
 - **Privacy.** When the Worker changes, keep README's "Privacy" section true: idle sessions are deleted after 24 hours, and Workers invocation logs are off.
+- **Hosted costs.** Before each release and at least once a month, check the Worker's usage in Cloudflare: Durable Objects stored data, requests and rows written, log volume, and the invoice.
+  - Stored data should stay level. If it keeps growing, objects aren't being deleted.
+  - When the Worker or the `agents` package changes, run `npm run check:storage`. It runs the Worker locally and fails if any way a session can end leaves storage behind.
 
 ## Gotchas
 
