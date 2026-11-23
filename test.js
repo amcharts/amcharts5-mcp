@@ -4,6 +4,10 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { rejectBrokenJson } from "./cloudflare/sse-guard.js";
 import { rejectUnknownSession } from "./cloudflare/session-guard.js";
+import { serveStatelessMcp } from "./cloudflare/stateless-mcp.js";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { loadContentFromDisk } from "./src/content-fs.js";
+import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "./src/tools.js";
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 
@@ -44,15 +48,44 @@ const sessionGuard = (path, method, headers = {}) => {
   const url = new URL(`https://mcp.test${path}`);
   return rejectUnknownSession(new Request(url, { method, headers }), url, { idFromString: (id) => { if (id !== "issued") throw new TypeError("invalid"); } });
 };
-const madeUpIds = [
-  sessionGuard("/mcp", "POST", { "mcp-session-id": "made-up" }), sessionGuard("/mcp", "GET", { "mcp-session-id": "made-up" }), sessionGuard("/mcp", "DELETE", { "mcp-session-id": "made-up" }),
-  sessionGuard("/sse/message?sessionId=made-up", "POST"), sessionGuard("/sse?sessionId=made-up", "GET"),
-];
+const madeUpIds = [sessionGuard("/sse/message?sessionId=made-up", "POST"), sessionGuard("/sse?sessionId=made-up", "GET")];
 const otherSessionRequests = [
-  sessionGuard("/mcp", "POST", { "mcp-session-id": "issued" }), sessionGuard("/mcp", "POST"), sessionGuard("/sse", "GET"),
-  sessionGuard("/sse/message?sessionId=issued", "POST"), sessionGuard("/mcp", "OPTIONS", { "mcp-session-id": "made-up" }),
+  sessionGuard("/sse", "GET"), sessionGuard("/sse/message?sessionId=issued", "POST"), sessionGuard("/sse/message?sessionId=made-up", "OPTIONS"),
 ];
-const sessionGuardRoutes = readFileSync(`${ROOT}/cloudflare/index.js`, "utf8").match(/return rejectUnknownSession\(request, url, env\.MCP_OBJECT\) \|\| /g)?.length;
+const workerSource = readFileSync(`${ROOT}/cloudflare/index.js`, "utf8");
+const sessionGuardRoutes = workerSource.match(/return rejectUnknownSession\(request, url, env\.MCP_OBJECT\) \|\| /g)?.length;
+
+// The hosted /mcp: no sessions, a server per request
+const hostedContent = loadContentFromDisk();
+const hostedServer = () => {
+  const server = new McpServer(serverInfo("0"), { instructions: SERVER_INSTRUCTIONS });
+  registerTools(server, hostedContent);
+  return server;
+};
+const hosted = async (method, body, headers = {}, createServer = hostedServer) => {
+  const response = await serveStatelessMcp(new Request("https://mcp.test/mcp", {
+    method,
+    headers: { "content-type": "application/json", accept: "application/json, text/event-stream", ...headers },
+    body: body === undefined ? undefined : typeof body === "string" ? body : JSON.stringify(body),
+  }), createServer);
+  const text = await response.text();
+  let json = null;
+  try { json = JSON.parse(text); } catch {}
+  return { status: response.status, headers: response.headers, text, json };
+};
+const hostedCall = { jsonrpc: "2.0", id: 2, method: "tools/call", params: { name: "get_quick_start", arguments: { chartType: "pie" } } };
+const hostedInit = await hosted("POST", { jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: "2025-06-18", capabilities: {}, clientInfo: { name: "test", version: "1" } } });
+const hostedNoInit = await hosted("POST", hostedCall, { "mcp-protocol-version": "2025-06-18" });
+const hostedOldId = await hosted("POST", hostedCall, { "mcp-protocol-version": "2025-06-18", "mcp-session-id": "f".repeat(64) });
+const hostedGet = await hosted("GET", undefined, { "mcp-session-id": "f".repeat(64) });
+const hostedDelete = await hosted("DELETE", undefined, { "mcp-session-id": "f".repeat(64) });
+const hostedPreflight = await hosted("OPTIONS");
+const hostedBroken = await hosted("POST", "SECRETWORD payroll");
+const hostedLogged = [];
+const consoleError = console.error;
+console.error = (...args) => hostedLogged.push(args.join(" "));
+const hostedFailure = await hosted("POST", hostedCall, {}, () => { throw new Error("SECRETWORD"); });
+console.error = consoleError;
 
 let step = 0;
 const tests = [
@@ -1400,13 +1433,33 @@ const tests = [
   },
   {
     send: { jsonrpc: "2.0", id: 181, method: "ping" },
-    check: () => madeUpIds.every(r => r?.status === 404) && sessionGuardRoutes === 2 ? "PASS" : `FAIL (${madeUpIds.map(r => r?.status)}, routes: ${sessionGuardRoutes})`,
-    label: "hosted server: a session ID it never issued gets 404 on /mcp and the SSE routes, before any Durable Object",
+    check: () => madeUpIds.every(r => r?.status === 404) && sessionGuardRoutes === 1 ? "PASS" : `FAIL (${madeUpIds.map(r => r?.status)}, routes: ${sessionGuardRoutes})`,
+    label: "hosted server: a session ID it never issued gets 404 on the SSE routes, before any Durable Object",
   },
   {
     send: { jsonrpc: "2.0", id: 182, method: "ping" },
     check: () => otherSessionRequests.every(r => r === null) ? "PASS" : `FAIL (${otherSessionRequests.map(r => r?.status)})`,
     label: "hosted server: issued session IDs, requests without one and CORS preflights pass through",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 183, method: "ping" },
+    check: () => hostedInit.status === 200 && hostedInit.json?.result?.instructions === SERVER_INSTRUCTIONS && !hostedInit.headers.has("mcp-session-id") && /serveStatelessMcp\(request, createServer\)/.test(workerSource) && !/AmCharts5MCP\.serve\("\/mcp"\)/.test(workerSource) ? "PASS" : `FAIL (${hostedInit.status} ${hostedInit.text.slice(0, 100)})`,
+    label: "hosted /mcp: initialize answers with the instructions and no session ID",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 184, method: "ping" },
+    check: () => [hostedNoInit, hostedOldId].every(r => r.status === 200 && r.json?.result?.content?.[0]?.text?.startsWith("# Quick Start")) ? "PASS" : `FAIL (${hostedNoInit.status} ${hostedOldId.status} ${hostedOldId.text.slice(0, 100)})`,
+    label: "hosted /mcp: a tool call needs no session, and a client still sending an old session ID is answered",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 185, method: "ping" },
+    check: () => [hostedGet, hostedDelete].every(r => r.status === 405 && r.headers.get("allow") === "POST") && hostedPreflight.status === 200 && hostedPreflight.headers.get("access-control-allow-methods") === "GET, POST, DELETE, OPTIONS" && hostedPreflight.headers.get("access-control-max-age") === "86400" && hostedNoInit.headers.get("access-control-allow-origin") === "*" ? "PASS" : `FAIL (${hostedGet.status} ${hostedDelete.status} ${hostedPreflight.status})`,
+    label: "hosted /mcp: GET and DELETE get 405, CORS is what browsers had before",
+  },
+  {
+    send: { jsonrpc: "2.0", id: 186, method: "ping" },
+    check: () => hostedBroken.status === 400 && !hostedBroken.text.includes("SECRETWORD") && hostedFailure.status === 500 && hostedFailure.json?.error?.code === -32603 && !hostedFailure.text.includes("SECRETWORD") && !hostedLogged.join(" ").includes("SECRETWORD") ? "PASS" : `FAIL (${hostedBroken.status} ${hostedFailure.status} ${hostedLogged.join(" ").slice(0, 80)})`,
+    label: "hosted /mcp: broken JSON and a server failure get a JSON error, and neither answer nor log quotes the text",
   },
 ];
 

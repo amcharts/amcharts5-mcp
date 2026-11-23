@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Runs the hosted Worker locally (never deployed), ends sessions the ways clients
-// do, and fails if any Durable Object keeps storage afterwards. Stored data is
-// billed, so an object that is never deleted costs money for good.
+// Runs the hosted Worker locally (never deployed) and checks what it stores.
+// /mcp must create no Durable Object. A legacy SSE session must leave nothing
+// once it has gone idle, however it ended. Stored data is billed, so an object
+// that is never deleted costs money for good.
 import { execFileSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
@@ -22,6 +23,7 @@ const PORT = await new Promise((resolve, reject) => {
 const BASE = `http://127.0.0.1:${PORT}`;
 const IDLE_SECONDS = 8;
 const JSON_HEADERS = { "content-type": "application/json", accept: "application/json, text/event-stream" };
+const SSE_HEADERS = { "content-type": "application/json" };
 const INITIALIZE = { jsonrpc: "2.0", id: 1, method: "initialize", params: { protocolVersion: "2025-03-26", capabilities: {}, clientInfo: { name: "storage-check", version: "1" } } };
 const INITIALIZED = { jsonrpc: "2.0", method: "notifications/initialized" };
 const TOOL_CALL = { jsonrpc: "2.0", id: 2, method: "tools/call", params: { name: "search_all", arguments: { query: "pie chart" } } };
@@ -38,56 +40,24 @@ const send = async (path, method, headers = {}, body) => {
   await response.text();
   return response;
 };
-const post = (sessionId, body) => send("/mcp", "POST", { ...JSON_HEADERS, ...(sessionId ? { "mcp-session-id": sessionId } : {}) }, body);
-const end = (sessionId) => send("/mcp", "DELETE", { "mcp-session-id": sessionId });
-const open = async () => {
-  const sessionId = (await post(null, INITIALIZE)).headers.get("mcp-session-id");
-  await post(sessionId, INITIALIZED);
-  await post(sessionId, TOOL_CALL);
-  return sessionId;
-};
 
-async function runSessions() {
-  // Ended by the client
-  await end(await open());
+// Every way /mcp is used, including clients that still send a session ID
+async function useMcp() {
+  const withId = { ...JSON_HEADERS, "mcp-session-id": MADE_UP_ID };
+  await send("/mcp", "POST", JSON_HEADERS, INITIALIZE);
+  await send("/mcp", "POST", JSON_HEADERS, INITIALIZED);
+  await send("/mcp", "POST", JSON_HEADERS, TOOL_CALL);
+  await send("/mcp", "POST", withId, TOOL_CALL);
+  await send("/mcp", "POST", JSON_HEADERS, "not json");
+  await send("/mcp", "GET", { accept: "text/event-stream", "mcp-session-id": MADE_UP_ID });
+  await send("/mcp", "DELETE", { "mcp-session-id": MADE_UP_ID });
+}
 
-  // Left idle
-  await open();
-
-  // A server-to-client stream open while the session ends
-  const withStream = await open();
-  const stream = new AbortController();
-  await fetch(`${BASE}/mcp`, { headers: { accept: "text/event-stream", "mcp-session-id": withStream }, signal: stream.signal });
-  await wait(300);
-  await end(withStream);
-  await wait(2500);
-  stream.abort();
-
-  // Late requests for a session that has ended
-  const ended = await open();
-  await end(ended);
-  await wait(2500);
-  await post(ended, TOOL_CALL);
-  await send("/mcp", "GET", { accept: "text/event-stream", "mcp-session-id": ended });
-  await end(ended);
-
-  // A tool call the client abandons
-  const abandoned = await open();
-  const cancel = new AbortController();
-  const call = fetch(`${BASE}/mcp`, { method: "POST", headers: { ...JSON_HEADERS, "mcp-session-id": abandoned }, body: JSON.stringify(TOOL_CALL), signal: cancel.signal }).catch(() => {});
-  cancel.abort();
-  await call;
-
-  // Legacy SSE, opened and closed
-  const sse = new AbortController();
-  const legacy = await fetch(`${BASE}/sse`, { headers: { accept: "text/event-stream" }, signal: sse.signal });
-  await legacy.body.getReader().read();
-  sse.abort();
-
-  // Legacy SSE with messages, then closed
-  const used = new AbortController();
-  const usedStream = await fetch(`${BASE}/sse`, { headers: { accept: "text/event-stream" }, signal: used.signal });
-  const reader = usedStream.body.getReader();
+// Opens a legacy SSE stream; returns its message address and a way to read and close it
+async function openSse() {
+  const control = new AbortController();
+  const stream = await fetch(`${BASE}/sse`, { headers: { accept: "text/event-stream" }, signal: control.signal });
+  const reader = stream.body.getReader();
   const decoder = new TextDecoder();
   let seen = "";
   const until = async (pattern) => {
@@ -98,33 +68,44 @@ async function runSessions() {
     }
   };
   await until(/data: \S*sessionId=\S+\r?\n/);
-  const endpoint = /data: (\S*sessionId=\S+)/.exec(seen)[1];
-  const message = (body) => send(endpoint, "POST", { "content-type": "application/json" }, body);
-  await message(INITIALIZE);
-  await until(/"id":1\b/);
-  await message(INITIALIZED);
-  await message(TOOL_CALL);
-  await until(/"id":2\b/);
-  used.abort();
-
-  // A stream still open when the idle cleanup runs
-  const idleWithStream = await open();
-  const heldStream = new AbortController();
-  await fetch(`${BASE}/mcp`, { headers: { accept: "text/event-stream", "mcp-session-id": idleWithStream }, signal: heldStream.signal });
-
-  // IDs this server never issued
-  await post(MADE_UP_ID, TOOL_CALL);
-  await send("/mcp", "GET", { accept: "text/event-stream", "mcp-session-id": MADE_UP_ID });
-  await end(MADE_UP_ID);
-  await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", { "content-type": "application/json" }, TOOL_CALL);
-  await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", { "content-type": "application/json" }, "not json");
-
-  return () => heldStream.abort();
+  return { endpoint: /data: (\S*sessionId=\S+)/.exec(seen)[1], until, close: () => control.abort() };
 }
 
-function objectsWithStorage(state) {
+async function useSse() {
+  // Opened and closed
+  (await openSse()).close();
+
+  // Used, then closed
+  const used = await openSse();
+  await send(used.endpoint, "POST", SSE_HEADERS, INITIALIZE);
+  await used.until(/"id":1\b/);
+  await send(used.endpoint, "POST", SSE_HEADERS, INITIALIZED);
+  await send(used.endpoint, "POST", SSE_HEADERS, TOOL_CALL);
+  await used.until(/"id":2\b/);
+  used.close();
+
+  // A late message after the session's stream has gone, and broken JSON
+  const late = await openSse();
+  late.close();
+  await wait(500);
+  await send(late.endpoint, "POST", SSE_HEADERS, TOOL_CALL);
+  await send(late.endpoint, "POST", SSE_HEADERS, "not json");
+
+  // A stream still open when the idle cleanup runs
+  const held = await openSse();
+
+  // IDs this server never issued
+  await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", SSE_HEADERS, TOOL_CALL);
+  await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", SSE_HEADERS, "not json");
+  await send(`/sse?sessionId=${MADE_UP_ID}`, "GET", { accept: "text/event-stream" });
+
+  return () => held.close();
+}
+
+function objectFiles(state) {
   const files = [];
   const walk = (dir) => {
+    if (!existsSync(dir)) return;
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
       const path = join(dir, entry.name);
       if (entry.isDirectory()) walk(path);
@@ -132,6 +113,11 @@ function objectsWithStorage(state) {
     }
   };
   walk(join(state, "v3", "do"));
+  return files;
+}
+
+function objectsWithStorage(state) {
+  const files = objectFiles(state);
   const kept = files.filter((file) => {
     const db = new DatabaseSync(file, { readOnly: true });
     const { n } = db.prepare("SELECT COUNT(*) n FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").get();
@@ -167,16 +153,20 @@ try {
     if (!ready) await wait(2000);
   }
   if (!ready) throw new Error("the local Worker didn't start");
-  const closeHeldStream = await runSessions();
+  await useMcp();
+  await wait(1000);
+  const fromMcp = objectFiles(state).length;
+  if (fromMcp > 0) throw new Error(`/mcp created ${fromMcp} Durable Objects`);
+  const closeHeldStream = await useSse();
   await wait((IDLE_SECONDS + 12) * 1000);
   closeHeldStream();
   await wait(2000);
   stop();
   await wait(2500);
   const { total, kept } = objectsWithStorage(state);
-  if (total === 0) throw new Error("no Durable Objects were created, so nothing was checked");
+  if (total === 0) throw new Error("no SSE session created a Durable Object, so nothing was checked");
   if (kept > 0) throw new Error(`${kept} of ${total} Durable Objects still hold storage`);
-  console.log(`All ${total} Durable Objects were deleted.`);
+  console.log(`/mcp created no Durable Objects, and all ${total} SSE sessions were deleted.`);
   exitCode = 0;
 } catch (error) {
   console.error(`Storage check failed: ${error.message}`);

@@ -63,10 +63,12 @@ The npm package ships `src/`, `extended/` and the skill files (copied into `cont
 
 ## Hosted server
 
-- **What runs it:** `cloudflare/index.js` wraps the same tools in an `McpAgent` (Cloudflare's `agents` package), one Durable Object per session.
+- **What runs it:** `cloudflare/index.js` serves the same tools on two routes.
+  - `/mcp` builds a server for each request (`cloudflare/stateless-mcp.js`): no sessions, nothing stored.
+  - The legacy `/sse` needs a connection that spans requests, so it uses an `McpAgent` (Cloudflare's `agents` package), one Durable Object per session.
 - **Privacy:**
-  - Idle sessions are deleted after 24 hours.
-  - Workers invocation logs are off. `agents` forwards request bodies in a header, so the logs would otherwise hold them.
+  - SSE sessions are deleted 24 hours after their last request.
+  - Workers invocation logs are off, so the logs don't hold request headers.
   - README's "Privacy" section describes this and must stay true.
 - **Deploying:** a push to `main` runs the tests and deploys (`.github/workflows/deploy.yml`, wrangler).
 

@@ -11,11 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Privacy text (README and the plugin's README): error and warning messages can include a request's method, full URL and request ID, but not its body or tool arguments. "Keeps no request logs" was too absolute: per-request logs are off, but a warning on a request records that request.
+- Hosted `/mcp` has no sessions: each request is answered on its own and nothing is stored, so normal use creates no Durable Objects. `GET` and `DELETE` on `/mcp` get 405, and a client still sending an old session ID is answered. The legacy `/sse` endpoint keeps its Durable Object. Tests 183-186.
 
 ### Fixed
 - Hosted server: broken JSON sent to the legacy `/sse/message` endpoint gets a 400. It used to crash the request, and the logged error could quote part of the body. Test 176.
 - A tool's text argument over 2,000 characters gets a short error. One very long word kept the server busy for seconds and held up other requests. Tests 177-180.
-- Hosted server: a request naming an unknown or ended session no longer leaves an empty Durable Object in storage for good. A session ID the server never issued gets 404 without waking an object, and every object that wakes has a cleanup. `npm run check:storage` checks this for sessions that end, go idle or get a late request. Tests 181-182.
+- Hosted server: a request naming an unknown or ended session no longer leaves an empty Durable Object in storage for good. A session ID the server never issued gets 404 without waking an object, and every object that wakes has a cleanup. `npm run check:storage` checks that `/mcp` creates no objects and that SSE sessions leave nothing behind. Tests 181-182.
 
 ## [1.10.0] - 2026-11-22
 

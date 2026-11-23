@@ -5,8 +5,8 @@
 // public HTTPS URL, so users can connect by pasting a URL into their AI client
 // instead of installing the npm package.
 //
-//   Streamable HTTP transport:  https://<host>/mcp
-//   SSE transport (legacy):     https://<host>/sse
+//   Streamable HTTP transport:  https://<host>/mcp   no sessions, stores nothing
+//   SSE transport (legacy):     https://<host>/sse   one Durable Object per session
 //
 // Content is bundled at build time (cloudflare/content.generated.js) and parsed by
 // the same buildContent() the stdio server uses — single source of truth.
@@ -20,11 +20,18 @@ import { registerTools, serverInfo, SERVER_INSTRUCTIONS } from "../src/tools.js"
 import { version, skillFiles, extendedFiles, geodata } from "./content.generated.js";
 import { rejectBrokenJson } from "./sse-guard.js";
 import { rejectUnknownSession } from "./session-guard.js";
+import { serveStatelessMcp } from "./stateless-mcp.js";
 // The server's icon (serverInfo, server.json), 256×256; a Data module (wrangler.jsonc rules)
 import ICON from "./icon.png";
 
 // Parse once per isolate (module scope), not per request.
 const content = buildContent({ skillFiles, extendedFiles, geodata });
+
+function createServer() {
+  const server = new McpServer(serverInfo(version), { instructions: SERVER_INSTRUCTIONS });
+  registerTools(server, content);
+  return server;
+}
 
 // A session's storage is deleted this long after its last request (seconds).
 // The IDLE_TTL_SECONDS var overrides it, e.g. `wrangler dev --var IDLE_TTL_SECONDS:15`.
@@ -52,9 +59,8 @@ export class AmCharts5MCP extends McpAgent {
     await this.rearmIdleCleanup(known ? this.idleTtl() : Math.min(this.idleTtl(), UNKNOWN_SESSION_TTL_SECONDS));
   }
 
-  // Every Streamable HTTP request opens a connection to the session's
-  // Durable Object, and every legacy SSE message arrives here: both count
-  // as activity.
+  // A legacy SSE stream connects here and every SSE message arrives below:
+  // both count as activity.
   async onConnect(conn, ctx) {
     await this.rearmIdleCleanup();
     return super.onConnect(conn, ctx);
@@ -124,7 +130,7 @@ export default {
     }
 
     if (url.pathname === "/mcp") {
-      return rejectUnknownSession(request, url, env.MCP_OBJECT) || AmCharts5MCP.serve("/mcp").fetch(request, env, ctx);
+      return serveStatelessMcp(request, createServer);
     }
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
       return rejectUnknownSession(request, url, env.MCP_OBJECT) || rejectBrokenJson(request, () => AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx));

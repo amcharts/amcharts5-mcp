@@ -119,9 +119,10 @@ login or account needed to test.
 
 ## Notes
 
-- **`McpAgent` uses a SQLite-backed Durable Object** (`AmCharts5MCP`, bound as
-  `MCP_OBJECT` in `wrangler.jsonc`) to hold per-session state. Available on both free
-  and paid plans.
+- **`/mcp` has no sessions and uses no Durable Object.** The legacy `/sse` endpoint
+  uses `McpAgent` with a SQLite-backed Durable Object (`AmCharts5MCP`, bound as
+  `MCP_OBJECT` in `wrangler.jsonc`) for its sessions. Available on both free and paid
+  plans.
 - **Authless:** the server exposes no OAuth — anyone with the URL can use it, which is
   appropriate for public docs. (Note: Claude's *org-managed* custom-connector flow
   currently assumes OAuth; individual users adding the URL work fine.)

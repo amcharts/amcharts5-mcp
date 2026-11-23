@@ -22,7 +22,8 @@
       "custom_domain": true
     }
   ],
-  // McpAgent persists session state in a SQLite-backed Durable Object.
+  // The legacy /sse endpoint keeps its sessions in a SQLite-backed Durable
+  // Object. /mcp has no sessions and doesn't use it.
   "migrations": [
     {
       "tag": "v1",
@@ -37,10 +38,8 @@
       }
     ]
   },
-  // Console output (the library's error messages) is kept; per-request
-  // invocation logs are off. Their request metadata could include the
-  // cf-mcp-message header, in which the agents library forwards each MCP
-  // request body (tool arguments) to the Durable Object. See "Privacy" in
+  // Error and warning messages are kept; per-request invocation logs are off,
+  // so the logs don't hold request headers or IP addresses. See "Privacy" in
   // README.md.
   "observability": {
     "enabled": true,
