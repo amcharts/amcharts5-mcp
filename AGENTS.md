@@ -73,7 +73,7 @@ These cover the skill (SKILL.md, the references, cursorrules), the tool descript
 - **Privacy.** When the Worker changes, keep README's "Privacy" section true: idle sessions are deleted after 24 hours, and Workers invocation logs are off.
 - **Hosted costs.** Before each release and at least once a month, check the Worker's usage in Cloudflare: Durable Objects stored data, requests and rows written, log volume, and the invoice.
   - Stored data should stay level. If it keeps growing, objects aren't being deleted.
-  - When the Worker or the `agents` package changes, run `npm run check:storage`. It runs the Worker locally and fails if any way a session can end leaves storage behind.
+  - When the Worker or the `agents` package changes, run `npm run check:storage`. It runs the Worker locally and fails if a session that ends, goes idle or gets a late request leaves storage behind.
 
 ## Gotchas
 

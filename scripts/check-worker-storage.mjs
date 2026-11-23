@@ -1,16 +1,24 @@
 #!/usr/bin/env node
-// Runs the hosted Worker locally (never deployed), ends sessions in every way a
-// client can, and fails if any Durable Object keeps storage afterwards. Stored
-// data is billed, so an object that is never deleted costs money for good.
+// Runs the hosted Worker locally (never deployed), ends sessions the ways clients
+// do, and fails if any Durable Object keeps storage afterwards. Stored data is
+// billed, so an object that is never deleted costs money for good.
 import { execFileSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { createServer } from "node:net";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const PORT = 8796;
+const PORT = await new Promise((resolve, reject) => {
+  const probe = createServer();
+  probe.once("error", reject);
+  probe.listen(0, "127.0.0.1", () => {
+    const { port } = probe.address();
+    probe.close(() => resolve(port));
+  });
+});
 const BASE = `http://127.0.0.1:${PORT}`;
 const IDLE_SECONDS = 8;
 const JSON_HEADERS = { "content-type": "application/json", accept: "application/json, text/event-stream" };
@@ -63,11 +71,46 @@ async function runSessions() {
   await send("/mcp", "GET", { accept: "text/event-stream", "mcp-session-id": ended });
   await end(ended);
 
+  // A tool call the client abandons
+  const abandoned = await open();
+  const cancel = new AbortController();
+  const call = fetch(`${BASE}/mcp`, { method: "POST", headers: { ...JSON_HEADERS, "mcp-session-id": abandoned }, body: JSON.stringify(TOOL_CALL), signal: cancel.signal }).catch(() => {});
+  cancel.abort();
+  await call;
+
   // Legacy SSE, opened and closed
   const sse = new AbortController();
   const legacy = await fetch(`${BASE}/sse`, { headers: { accept: "text/event-stream" }, signal: sse.signal });
   await legacy.body.getReader().read();
   sse.abort();
+
+  // Legacy SSE with messages, then closed
+  const used = new AbortController();
+  const usedStream = await fetch(`${BASE}/sse`, { headers: { accept: "text/event-stream" }, signal: used.signal });
+  const reader = usedStream.body.getReader();
+  const decoder = new TextDecoder();
+  let seen = "";
+  const until = async (pattern) => {
+    while (!pattern.test(seen)) {
+      const { done, value } = await reader.read();
+      if (done) throw new Error("the SSE stream ended early");
+      seen += decoder.decode(value, { stream: true });
+    }
+  };
+  await until(/data: \S*sessionId=\S+\r?\n/);
+  const endpoint = /data: (\S*sessionId=\S+)/.exec(seen)[1];
+  const message = (body) => send(endpoint, "POST", { "content-type": "application/json" }, body);
+  await message(INITIALIZE);
+  await until(/"id":1\b/);
+  await message(INITIALIZED);
+  await message(TOOL_CALL);
+  await until(/"id":2\b/);
+  used.abort();
+
+  // A stream still open when the idle cleanup runs
+  const idleWithStream = await open();
+  const heldStream = new AbortController();
+  await fetch(`${BASE}/mcp`, { headers: { accept: "text/event-stream", "mcp-session-id": idleWithStream }, signal: heldStream.signal });
 
   // IDs this server never issued
   await post(MADE_UP_ID, TOOL_CALL);
@@ -75,6 +118,8 @@ async function runSessions() {
   await end(MADE_UP_ID);
   await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", { "content-type": "application/json" }, TOOL_CALL);
   await send(`/sse/message?sessionId=${MADE_UP_ID}`, "POST", { "content-type": "application/json" }, "not json");
+
+  return () => heldStream.abort();
 }
 
 function objectsWithStorage(state) {
@@ -118,12 +163,14 @@ let exitCode = 1;
 try {
   let ready = false;
   for (let i = 0; i < 90 && !ready; i++) {
-    try { ready = (await fetch(`${BASE}/`)).ok; } catch {}
+    try { ready = (await (await fetch(`${BASE}/`)).text()).startsWith("amCharts 5 MCP server"); } catch {}
     if (!ready) await wait(2000);
   }
   if (!ready) throw new Error("the local Worker didn't start");
-  await runSessions();
+  const closeHeldStream = await runSessions();
   await wait((IDLE_SECONDS + 12) * 1000);
+  closeHeldStream();
+  await wait(2000);
   stop();
   await wait(2500);
   const { total, kept } = objectsWithStorage(state);

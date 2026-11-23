@@ -46,7 +46,8 @@ export class AmCharts5MCP extends McpAgent {
   // 404. So every object that wakes has a cleanup: nothing stays for good.
   async onStart(props) {
     await super.onStart(props);
-    if (await this.ctx.storage.get(IDLE_CLEANUP_KEY)) return;
+    const armed = await this.ctx.storage.get(IDLE_CLEANUP_KEY);
+    if (armed && await this.getScheduleById(armed)) return;
     const known = await this.getInitializeRequest();
     await this.rearmIdleCleanup(known ? this.idleTtl() : Math.min(this.idleTtl(), UNKNOWN_SESSION_TTL_SECONDS));
   }
@@ -80,7 +81,8 @@ export class AmCharts5MCP extends McpAgent {
     try {
       const previous = await this.ctx.storage.get(IDLE_CLEANUP_KEY);
       if (previous) await this.cancelSchedule(previous);
-      const task = await this.schedule(ttl, "idleCleanup");
+      // Not idempotent: the previous cleanup was just cancelled, so this is the only one.
+      const task = await this.schedule(ttl, "idleCleanup", undefined, { idempotent: false });
       await this.ctx.storage.put(IDLE_CLEANUP_KEY, task.id);
     } catch (error) {
       console.error("Idle cleanup could not be scheduled:", error?.message);
