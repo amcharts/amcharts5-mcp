@@ -75,8 +75,8 @@ export class AmCharts5MCP extends McpAgent {
       return new Error("Invalid JSON-RPC message");
     }
     // The answer goes out later on the stream, so the count is "accepted".
-    // A notification or a message with no open stream gets no answer: not counted.
-    if (messageBody.id !== undefined && Array.from(this.getConnections()).length > 0) {
+    // A notification gets no answer: not counted.
+    if (messageBody.id !== undefined) {
       writeUsage(this.env?.USAGE, "sse", usageOf(messageBody, extraInfo?.requestInfo?.headers?.["user-agent"]), "accepted");
     }
     return super.onSSEMcpMessage(sessionId, messageBody, extraInfo);

@@ -120,6 +120,7 @@ const oddClientName = await counted(initializeAs({ toString: 1 }), "x");
 const usageDown = await counted(hostedCall, "claude-code", { writeDataPoint() { throw new Error("down"); } });
 const registeredTools = [...toolsSource.matchAll(/registerTool\(\s*"([a-z_]+)"/g)].map(m => m[1]);
 const cancelledBatch = await hosted("POST", [hostedCall, { jsonrpc: "2.0", method: "notifications/cancelled", params: { requestId: 2 } }], { "mcp-protocol-version": "2025-03-26" });
+const cancelWithId = await hosted("POST", { jsonrpc: "2.0", id: 7, method: "notifications/cancelled", params: { requestId: 1 } }, { "mcp-protocol-version": "2025-03-26" });
 
 let step = 0;
 const tests = [
@@ -1526,7 +1527,7 @@ const tests = [
   },
   {
     send: { jsonrpc: "2.0", id: 192, method: "ping" },
-    check: () => cancelledBatch.status === 200 && cancelledBatch.text.includes("Quick Start") && appOf("cursor-vscode") === "cursor" && appOf("precursor-app") === "other" ? "PASS" : `FAIL (${cancelledBatch.status} ${cancelledBatch.text.slice(0, 80)})`,
+    check: () => cancelledBatch.status === 200 && cancelledBatch.text.includes("Quick Start") && cancelWithId.json?.id === 7 && cancelWithId.json?.error?.code === -32601 && appOf("cursor-vscode") === "cursor" && appOf("precursor-app") === "other" ? "PASS" : `FAIL (${cancelledBatch.status} ${cancelledBatch.text.slice(0, 80)})`,
     label: "hosted /mcp: a batch that cancels its own call still gets an answer; only a real Cursor name counts as Cursor",
   },
 ];

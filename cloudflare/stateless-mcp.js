@@ -51,7 +51,7 @@ export async function serveStatelessMcp(request, createServer, usageDataset) {
     // Each request is answered at once, so there is nothing to cancel. Cancelling
     // a call inside a batch would leave its answer, and the response, pending.
     const receive = transport.onmessage;
-    transport.onmessage = (message, extra) => (message.method === "notifications/cancelled" ? undefined : receive?.(message, extra));
+    transport.onmessage = (message, extra) => (message.method === "notifications/cancelled" && message.id === undefined ? undefined : receive?.(message, extra));
     if (usageDataset) countUsage(transport, usageDataset, request.headers.get("user-agent"));
     const response = await transport.handleRequest(request);
     const headers = new Headers(response.headers);
