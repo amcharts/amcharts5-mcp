@@ -19,8 +19,8 @@ if (!Number.isInteger(days) || days < 1 || days > 92 || !/^[a-z0-9_]+$/.test(dat
   process.exit(1);
 }
 
-// Analytics Engine can sample, so a count is the sum of the sample intervals
-const query = `SELECT toStartOfInterval(timestamp, INTERVAL '1' DAY) AS day, index1 AS app, blob1 AS route, blob2 AS kind, blob3 AS tool, blob4 AS result, SUM(_sample_interval) AS n
+// Analytics Engine can sample, so a count is the sum of the sample intervals: an estimate when traffic is high
+const query = `SELECT toStartOfInterval(timestamp, INTERVAL '1' DAY) AS day, blob5 AS app, blob1 AS route, blob2 AS kind, blob3 AS tool, blob4 AS result, SUM(_sample_interval) AS n
 FROM ${dataset}
 WHERE timestamp > NOW() - INTERVAL '${days}' DAY
 GROUP BY day, app, route, kind, tool, result

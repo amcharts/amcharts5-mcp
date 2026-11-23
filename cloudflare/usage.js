@@ -37,6 +37,9 @@ export function usageOf(message, userAgent) {
 export function writeUsage(dataset, route, usage, result) {
   if (!dataset || !usage) return;
   try {
-    dataset.writeDataPoint({ indexes: [usage.app], blobs: [route, usage.kind, usage.tool, result], doubles: [1] });
+    // Analytics Engine samples per index and lets a kept row stand for dropped
+    // ones. One index per combination keeps a row from standing for another kind.
+    const index = [usage.app, route, usage.kind, usage.tool, result].join(":");
+    dataset.writeDataPoint({ indexes: [index], blobs: [route, usage.kind, usage.tool, result, usage.app], doubles: [1] });
   } catch {}
 }

@@ -1508,8 +1508,9 @@ const tests = [
   {
     send: { jsonrpc: "2.0", id: 189, method: "ping" },
     check: () => {
-      const got = usageRows.slice(0, 3).map(r => [r.indexes[0], ...r.blobs].join("|")).join(" ");
-      return got === "claude|mcp|connection||ok chatgpt|mcp|tool|search_all|ok cursor|mcp|tool|unknown|error" ? "PASS" : `FAIL (${got})`;
+      const got = usageRows.slice(0, 3).map(r => r.indexes[0]).join(" ");
+      const ownIndex = usageRows.every(r => { const [route, kind, tool, result, app] = r.blobs; return r.indexes[0] === [app, route, kind, tool, result].join(":") && r.indexes[0].length <= 96; });
+      return got === "claude:mcp:connection::ok chatgpt:mcp:tool:search_all:ok cursor:mcp:tool:unknown:error" && ownIndex ? "PASS" : `FAIL (${got})`;
     },
     label: "usage counts: a connection and tool calls are counted by app, tool and result; tools/list is not",
   },
