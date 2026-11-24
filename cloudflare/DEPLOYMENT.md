@@ -120,7 +120,7 @@ login or account needed to test.
 ## Notes
 
 - **`/mcp` has no sessions and uses no Durable Object.** The legacy `/sse` endpoint
-  uses `McpAgent` with a SQLite-backed Durable Object (`AmCharts5MCP`, bound as
+  uses `McpAgent` with a SQLite-backed Durable Object (`AmCharts5MCPSession`, bound as
   `MCP_OBJECT` in `wrangler.jsonc`) for its sessions.
 - **CPU:** each `/mcp` request builds its own server, about 10 ms of CPU. That can exceed
   the free plan's limit, so use Workers Paid.

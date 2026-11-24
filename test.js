@@ -42,7 +42,7 @@ const brokenJson = await rejectBrokenJson(sseMessage, () => sseMessage.json()).c
 const brokenJsonText = await brokenJson.text();
 const otherError = await rejectBrokenJson(sseMessage, () => { throw new Error("other"); }).catch(e => e.message);
 const otherRoute = await rejectBrokenJson(new Request("https://mcp.test/sse"), () => { throw new SyntaxError("other route"); }).catch(e => e.message);
-const guardInRoute = /rejectBrokenJson\(request, \(\) => AmCharts5MCP\.serveSSE\("\/sse"\)/.test(readFileSync(`${ROOT}/cloudflare/index.js`, "utf8"));
+const guardInRoute = /rejectBrokenJson\(request, \(\) => AmCharts5MCPSession\.serveSSE\("\/sse"\)/.test(readFileSync(`${ROOT}/cloudflare/index.js`, "utf8"));
 
 // The hosted server's answer to a session ID it never issued
 const sessionGuard = (path, method, headers = {}) => {
@@ -1478,7 +1478,7 @@ const tests = [
   },
   {
     send: { jsonrpc: "2.0", id: 183, method: "ping" },
-    check: () => hostedInit.status === 200 && hostedInit.json?.result?.instructions === SERVER_INSTRUCTIONS && !hostedInit.headers.has("mcp-session-id") && /serveStatelessMcp\(request, createServer, env\.USAGE\)/.test(workerSource) && !/AmCharts5MCP\.serve\("\/mcp"\)/.test(workerSource) ? "PASS" : `FAIL (${hostedInit.status} ${hostedInit.text.slice(0, 100)})`,
+    check: () => hostedInit.status === 200 && hostedInit.json?.result?.instructions === SERVER_INSTRUCTIONS && !hostedInit.headers.has("mcp-session-id") && /serveStatelessMcp\(request, createServer, env\.USAGE\)/.test(workerSource) && !/AmCharts5MCPSession\.serve\("\/mcp"\)/.test(workerSource) ? "PASS" : `FAIL (${hostedInit.status} ${hostedInit.text.slice(0, 100)})`,
     label: "hosted /mcp: initialize answers with the instructions and no session ID",
   },
   {

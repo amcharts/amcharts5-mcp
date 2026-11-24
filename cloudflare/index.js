@@ -43,7 +43,7 @@ const IDLE_TTL_SECONDS = 24 * 60 * 60;
 const UNKNOWN_SESSION_TTL_SECONDS = 60 * 60;
 const IDLE_CLEANUP_KEY = "idleCleanupId";
 
-export class AmCharts5MCP extends McpAgent {
+export class AmCharts5MCPSession extends McpAgent {
   server = new McpServer(serverInfo(version), { instructions: SERVER_INSTRUCTIONS });
 
   async init() {
@@ -115,6 +115,10 @@ export class AmCharts5MCP extends McpAgent {
   }
 }
 
+// Kept only until migration v3 deletes this class: its objects' pending
+// cleanups still run while it exists.
+export class AmCharts5MCP extends AmCharts5MCPSession {}
+
 export default {
   fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -137,7 +141,7 @@ export default {
       return serveStatelessMcp(request, createServer, env.USAGE);
     }
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
-      return rejectUnknownSession(request, url, env.MCP_OBJECT) || rejectBrokenJson(request, () => AmCharts5MCP.serveSSE("/sse").fetch(request, env, ctx));
+      return rejectUnknownSession(request, url, env.MCP_OBJECT) || rejectBrokenJson(request, () => AmCharts5MCPSession.serveSSE("/sse").fetch(request, env, ctx));
     }
     if (url.pathname === "/" || url.pathname === "") {
       return new Response(

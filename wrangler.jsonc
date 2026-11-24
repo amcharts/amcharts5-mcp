@@ -28,12 +28,19 @@
     {
       "tag": "v1",
       "new_sqlite_classes": ["AmCharts5MCP"]
+    },
+    // Replacing the class takes two deploys: Cloudflare refuses to delete a
+    // class in the same deploy that moves its binding. Neither can be rolled
+    // back, and the deletion can't be undone.
+    {
+      "tag": "v2",
+      "new_sqlite_classes": ["AmCharts5MCPSession"]
     }
   ],
   "durable_objects": {
     "bindings": [
       {
-        "class_name": "AmCharts5MCP",
+        "class_name": "AmCharts5MCPSession",
         "name": "MCP_OBJECT"
       }
     ]
