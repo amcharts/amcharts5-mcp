@@ -69,7 +69,7 @@ The npm package ships `src/`, `extended/` and the skill files (copied into `cont
 - **Privacy:**
   - SSE sessions are deleted 24 hours after their last request.
   - Workers invocation logs and traces are off, so only error and warning messages are logged.
-  - Usage counts (`cloudflare/usage.js`, Workers Analytics Engine) hold fixed labels only: endpoint, kind of app, connection or tool call, tool name, result. `npm run usage` prints them.
+  - Usage counts (`cloudflare/usage.js`, Workers Analytics Engine) are off; a `USAGE` binding in `wrangler.jsonc` turns them on. They hold fixed labels only: endpoint, kind of app, connection or tool call, tool name, result. `npm run usage` prints them.
   - README's "Privacy" section describes this and must stay true.
 - **Deploying:** a push to `main` runs the tests and deploys (`.github/workflows/deploy.yml`, wrangler).
 

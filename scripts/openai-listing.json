@@ -73,6 +73,6 @@
     "demo_recording_url": "https://drive.google.com/file/d/1cNVv96IurF51xnC3CxDe0wbnxKTiHfbj/view?usp=sharing"
   },
   "publication": {
-    "release_notes": "1.11.0: The hosted server answers each request on its own, with no sessions, and keeps no request content. It counts connections and tool calls by app and tool, with no IP address, search phrase or tool argument. Assistants load one exact amCharts version for every file: the project's, else the newest. A very long tool argument gets a short error. 1.10.0: The server tells the assistant where to start and which three mistakes to avoid. get_quick_start finds the demo for a chart type (stacked column, candlestick, heat map) and answers for frameworks (React, Vue, Angular, Svelte). All 304 amcharts.com demos have keyboard and screen reader support. Gantt progress is corrected to 0 to 1."
+    "release_notes": "1.11.0: The hosted server answers each request on its own, with no sessions, and keeps no request content. Assistants load one exact amCharts version for every file: the project's, else the newest. A very long tool argument gets a short error. 1.10.0: The server tells the assistant where to start and which three mistakes to avoid. get_quick_start finds the demo for a chart type (stacked column, candlestick, heat map) and answers for frameworks (React, Vue, Angular, Svelte). All 304 amcharts.com demos have keyboard and screen reader support. Gantt progress is corrected to 0 to 1."
   }
 }

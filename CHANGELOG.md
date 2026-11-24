@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.11.0] - 2026-11-24
 
 ### Added
-- Hosted server: anonymous usage counts in Workers Analytics Engine: connections and tool calls by kind of app, tool name and result, kept for three months. They hold no IP address, session ID, search phrase, chart type or tool argument. `npm run usage` prints them. Tests 189-191.
+- Hosted server: anonymous usage counts in Workers Analytics Engine, off for now (no `USAGE` binding in `wrangler.jsonc`). When on, they count connections and tool calls by kind of app, tool name and result, kept for three months, with no IP address, session ID, search phrase, chart type or tool argument. `npm run usage` prints them. Tests 189-191.
 
 ### Changed
 - Privacy text (README and the plugin's README): error and warning messages can include a request's method, full URL and request ID, but not its body or tool arguments. "Keeps no request logs" was too absolute: per-request logs are off, but a warning on a request records that request.

@@ -129,10 +129,12 @@ login or account needed to test.
   migrations in its first deploy.
 - **CPU:** each `/mcp` request builds its own server, about 10 ms of CPU. That can exceed
   the free plan's limit, so use Workers Paid.
-- **Usage counts:** the `USAGE` binding writes anonymous counts to Workers Analytics
-  Engine. Remove `analytics_engine_datasets` from `wrangler.jsonc` to turn them off. To
-  read them, set `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` (permission: Account
-  Analytics Read) and run `npm run usage`.
+- **Usage counts** are off. To turn them on, add a `USAGE` binding to `wrangler.jsonc`:
+  `"analytics_engine_datasets": [{ "binding": "USAGE", "dataset": "amcharts5_mcp_usage" }]`.
+  The Worker then writes anonymous counts of connections and tool calls to Workers
+  Analytics Engine (`cloudflare/usage.js`: fixed labels only). To read them, set
+  `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` (permission: Account Analytics
+  Read) and run `npm run usage`.
 - **Authless:** the server exposes no OAuth — anyone with the URL can use it, which is
   appropriate for public docs. (Note: Claude's *org-managed* custom-connector flow
   currently assumes OAuth; individual users adding the URL work fine.)

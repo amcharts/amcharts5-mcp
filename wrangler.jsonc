@@ -49,14 +49,9 @@
       }
     ]
   },
-  // Anonymous counts of connections and tool calls (cloudflare/usage.js): fixed
-  // labels only. Read them with `npm run usage`.
-  "analytics_engine_datasets": [
-    {
-      "binding": "USAGE",
-      "dataset": "amcharts5_mcp_usage"
-    }
-  ],
+  // Anonymous usage counts (cloudflare/usage.js) are off. To turn them on, add
+  // "analytics_engine_datasets": [{ "binding": "USAGE", "dataset": "amcharts5_mcp_usage" }]
+  // and README's "Privacy" section must say so. See cloudflare/DEPLOYMENT.md.
   // Error and warning messages are kept; per-request invocation logs and traces
   // are off. See "Privacy" in README.md.
   "observability": {
