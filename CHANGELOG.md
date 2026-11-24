@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
-## [Unreleased]
+## [1.11.0] - 2026-11-24
 
 ### Added
 - Hosted server: anonymous usage counts in Workers Analytics Engine: connections and tool calls by kind of app, tool name and result, kept for three months. They hold no IP address, session ID, search phrase, chart type or tool argument. `npm run usage` prints them. Tests 189-191.
@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Privacy text (README and the plugin's README): error and warning messages can include a request's method, full URL and request ID, but not its body or tool arguments. "Keeps no request logs" was too absolute: per-request logs are off, but a warning on a request records that request.
 - Hosted `/mcp` has no sessions: each request is answered on its own and no session or request content is kept, so normal use creates no Durable Objects. `GET` and `DELETE` on `/mcp` get 405, and a client still sending an old session ID is answered. The legacy `/sse` endpoint keeps its Durable Object. Tests 183-186 and 192.
 - Hosted server: Workers traces are off explicitly, like the invocation logs.
+- Hosted server: the legacy `/sse` endpoint's Durable Object class is `AmCharts5MCPSession` (migrations v2 and v3 in `wrangler.jsonc`). The old class `AmCharts5MCP` is deleted with every session it stored, including sessions from before idle cleanup that were never deleted. A new Worker takes all three migrations in its first deploy. A self-hosted Worker deployed from an earlier version needs two deploys: commit 07c1a90 first, then this version, because Cloudflare refuses to move the binding and delete the old class in one deploy. The second deploy deletes the old class's stored sessions.
 - Server instructions: CDN URLs with a version in them use one exact version for every file: the one the project or app sets, else the newest from npm, else the one in the served pages. The instructions name no version, so a new library release doesn't make them wrong. Test 187.
 
 ### Fixed

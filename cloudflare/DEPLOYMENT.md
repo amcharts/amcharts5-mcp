@@ -122,6 +122,11 @@ login or account needed to test.
 - **`/mcp` has no sessions and uses no Durable Object.** The legacy `/sse` endpoint
   uses `McpAgent` with a SQLite-backed Durable Object (`AmCharts5MCPSession`, bound as
   `MCP_OBJECT` in `wrangler.jsonc`) for its sessions.
+- **Upgrading a Worker deployed before 1.11.0:** deploy commit `07c1a90` first, then
+  the current version. Cloudflare refuses to move the binding to `AmCharts5MCPSession`
+  and delete the old `AmCharts5MCP` class in one deploy. The second deploy deletes the
+  old class and its stored sessions, and can't be undone. A new Worker takes all the
+  migrations in its first deploy.
 - **CPU:** each `/mcp` request builds its own server, about 10 ms of CPU. That can exceed
   the free plan's limit, so use Workers Paid.
 - **Usage counts:** the `USAGE` binding writes anonymous counts to Workers Analytics
