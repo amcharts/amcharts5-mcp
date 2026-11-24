@@ -115,10 +115,6 @@ export class AmCharts5MCPSession extends McpAgent {
   }
 }
 
-// Kept only until migration v3 deletes this class: its objects' pending
-// cleanups still run while it exists.
-export class AmCharts5MCP extends AmCharts5MCPSession {}
-
 export default {
   fetch(request, env, ctx) {
     const url = new URL(request.url);

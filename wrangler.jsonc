@@ -35,6 +35,10 @@
     {
       "tag": "v2",
       "new_sqlite_classes": ["AmCharts5MCPSession"]
+    },
+    {
+      "tag": "v3",
+      "deleted_classes": ["AmCharts5MCP"]
     }
   ],
   "durable_objects": {
