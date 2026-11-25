@@ -2,7 +2,7 @@
 title: "Chart with Gaps in Data"
 source: "https://www.amcharts.com/demos/chart-with-gaps-in-data/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line that breaks where data is missing. Here, 1967 to 1970 and 1984 to 1988 have no values, and the years above zero take a second color.
@@ -321,10 +321,12 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a yearly value from 1950 to 2005, between -0.35 and 0.55, with no data for 1967 to 1970 and 1984 to 1988. Tab to the line, then move along it with the arrow keys"
+  ariaLabel: "Line chart of a yearly value from 1950 to 2005, between -0.35 and 0.55, with no data for 1967 to 1970 and 1984 to 1988. Tab to the line, then move along it with the up and down arrow keys"
 });
 // the dots: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

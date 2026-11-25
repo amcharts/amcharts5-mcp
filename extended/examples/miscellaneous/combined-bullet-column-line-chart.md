@@ -2,7 +2,7 @@
 title: "Combined Bullet/Column and Line Graphs with Multiple Value Axes"
 source: "https://www.amcharts.com/demos/combined-bullet-column-line-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Columns and lines on two value axes: daily sales on the left, a narrow actual over a wide, pale target like a bullet graph, and two market lines on the right.
@@ -403,8 +403,7 @@ sbSeries1.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column and line chart of 15 days in January 2026: target and actual sales as columns on the left axis, market days and all market days as lines on the right. Tab to a series, then move between days with the arrow keys"
+  ariaLabel: "Column and line chart of 15 days in January 2026: target and actual sales as columns on the left axis, market days and all market days as lines on the right. Tab to a series, then move between days with the up and down arrow keys"
 });
 // each series' columns: one Tab stop per series (a focusable group), the arrow keys step through the days
 [columnSeries1, columnSeries0].forEach(function (series) {

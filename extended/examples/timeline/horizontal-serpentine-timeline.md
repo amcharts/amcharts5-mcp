@@ -2,7 +2,7 @@
 title: "Horizontal Serpentine Timeline"
 source: "https://www.amcharts.com/demos/horizontal-serpentine-timeline/"
 category: "timeline"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A timeline that winds up and down in six columns across the page, for a wide, short space. Four project modules keep their lanes and colors at every turn.
@@ -305,18 +305,19 @@ yAxis.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Serpentine timeline of a project plan of 13 tasks in four modules, from January 15 to May 4, 2026, with seven milestones lettered A to G, winding up and down in six columns, one lane per module. Tab to the tasks, then to the milestones, and move between them with the arrow keys"
+  ariaLabel: "Serpentine timeline of a project plan of 13 tasks in four modules, from January 15 to May 4, 2026, with seven milestones lettered A to G, winding up and down in six columns, one lane per module. Tab to the tasks, then to the milestones, and move between them with the up and down arrow keys"
 });
 // the tasks' bars: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "tasks",
   // no hoverOnFocus: the tooltip of a bar that bends round a turn would show in the middle of the turn, off the bar
   ariaLabel: "{category}: {task}, {openValueX.formatDate('MMMM d')} to {valueX.formatDate('MMMM d')}"
 });
 // the milestones: set up for the keyboard where they are made, in the badge bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

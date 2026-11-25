@@ -2,7 +2,7 @@
 title: "Curved Columns"
 source: "https://www.amcharts.com/demos/curved-columns/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Columns with a shape of their own: each is drawn as two curves meeting at a peak, wider than its slot, so neighbors overlap like a row of hills. Nine countries, each in its own color.
@@ -168,8 +168,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of a value for nine countries, drawn as overlapping curves, from the USA at 2,025 down to South Korea at 443. Tab to the curves, then move between them with the arrow keys"
+  ariaLabel: "Column chart of a value for nine countries, drawn as overlapping curves, from the USA at 2,025 down to South Korea at 443. Tab to the curves, then move between them with the up and down arrow keys"
 });
 // the curves: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

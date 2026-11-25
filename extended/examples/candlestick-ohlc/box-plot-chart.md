@@ -2,7 +2,7 @@
 title: "Box Plot Chart"
 source: "https://www.amcharts.com/demos/box-plot-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A box plot sums up a spread of values in one mark: the box holds the middle half, the line across it is the median, and the whiskers reach the lowest and highest values. Here, nine days side by side.
@@ -216,8 +216,7 @@ medianSeries.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Box plot of nine days, August 1 to 9, 2025: each box spans the middle half of the day's values, with the median across it and whiskers to the lowest and highest value. Tab to the boxes, then move between the days with the arrow keys"
+  ariaLabel: "Box plot of nine days, August 1 to 9, 2025: each box spans the middle half of the day's values, with the median across it and whiskers to the lowest and highest value. Tab to the boxes, then move between the days with the up and down arrow keys"
 });
 // the boxes: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
@@ -225,6 +224,9 @@ series.columns.template.setAll({
   focusableGroup: "boxes",
   ariaLabel: "{valueX.formatDate('MMMM d')}: max {highValueY}, third quartile {valueY}, median {median}, first quartile {openValueY}, min {lowValueY}"
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

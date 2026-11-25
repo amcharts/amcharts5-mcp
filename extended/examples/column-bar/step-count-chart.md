@@ -2,7 +2,7 @@
 title: "Step Count Chart"
 source: "https://www.amcharts.com/demos/step-count-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A fitness-app step counter: one column per day, gray below the 6,000-step goal and colored above. Drag it sideways to read the day under the cursor.
@@ -364,8 +364,7 @@ chart.plotContainer.events.on("globalpointerup", function () {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of daily step counts from January 2 to February 1, 2026, against a goal of 6,000 steps a day. Tab to the columns, then move between the days with the arrow keys"
+  ariaLabel: "Column chart of daily step counts from January 2 to February 1, 2026, against a goal of 6,000 steps a day. Tab to the columns, then move between the days with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them. No hoverOnFocus: the tooltip
 // stays in the middle of the plot, for the day under the cursor

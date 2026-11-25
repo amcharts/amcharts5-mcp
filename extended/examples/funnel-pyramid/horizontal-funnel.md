@@ -2,7 +2,7 @@
 title: "Horizontal Funnel"
 source: "https://www.amcharts.com/demos/horizontal-funnel/"
 category: "funnel-pyramid"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A funnel turned on its side, so the stages read left to right like a timeline. The slices slope into each other and carry their own labels.
@@ -89,13 +89,11 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Horizontal funnel chart of seven values, from the largest at the left to the smallest at the right. Tab to the slices, then move between them with the arrow keys"
+  ariaLabel: "Horizontal funnel chart of seven values, from the largest at the left to the smallest at the right. Tab to the slices, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "slices",
   ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
 });

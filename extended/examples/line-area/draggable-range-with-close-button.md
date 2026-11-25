@@ -2,7 +2,7 @@
 title: "Draggable Range with a Close Button"
 source: "https://www.amcharts.com/demos/draggable-range-with-close-button/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A stop-loss line you can move: drag the box up or down and the value in it follows. Click the X and the line is gone.
@@ -275,7 +275,6 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of a daily value over 300 days, with a stop loss line across it. Tab to the stop loss box and move it with the up and down arrow keys; the X after it removes the line with Enter. The line has too many points to step through with the keyboard"
 });
 // no focusable points on the line: 300 of them would slow down loading, zooming and panning

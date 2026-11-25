@@ -2,7 +2,7 @@
 title: "Flight Routes Map"
 source: "https://www.amcharts.com/demos/flight-routes-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Flight routes drawn as lines from London to eleven cities, with the destinations as dots. Origin switches to the routes from Vilnius.
@@ -399,8 +399,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of flight routes from London to eleven cities: ten in Europe, and New York. Tab to the countries, the origins or the destinations, then move between them with the arrow keys; Enter on Vilnius or London shows the routes from there"
+  ariaLabel: "Map of flight routes from London to eleven cities: ten in Europe, and New York. Tab to the countries, the origins or the destinations, then move between them with the up and down arrow keys; Enter on Vilnius or London shows the routes from there"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

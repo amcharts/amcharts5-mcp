@@ -2,7 +2,7 @@
 title: "Maps and Charts Dashboard"
 source: "https://www.amcharts.com/demos/maps-and-charts-dashboard/"
 category: "dashboards"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Five charts in one dashboard: a world heat map of sample rates for 200 countries, a donut, a radar chart, a line and a column chart. The donut and the radar chart sum up the map; point at a country and its continent lights up.
@@ -491,9 +491,8 @@ function makeLineSeriesChart(parent) {
   // line, one Tab stop per line (a focusable group); the arrow keys step through its years
   chart.setAll({
     focusable: true,
-    role: "figure",
     tabindexOrder: 2, // the second chart of the dashboard
-    ariaLabel: "Line chart of income and expenses by year, 2021 to 2026; 2026 is a projection. Tab to a line, then move through its years with the arrow keys"
+    ariaLabel: "Line chart of income and expenses by year, 2021 to 2026; 2026 is a projection. Tab to a line, then move through its years with the up and down arrow keys"
   });
   [series1, series2].forEach(function (series) {
     series.bullets.push(function (root, series) {
@@ -649,14 +648,11 @@ function makeRadarGauge(parent, averages) {
   // focusable group); the arrow keys step through them, and a focused ring picks out its countries, as the pointer does
   radarGauge.setAll({
     focusable: true,
-    role: "figure",
     tabindexOrder: 3, // the third chart of the dashboard
-    ariaLabel: "Radar chart of the average rate in each of six continents. Tab to the continents, then move between them with the arrow keys"
+    ariaLabel: "Radar chart of the average rate in each of six continents. Tab to the continents, then move between them with the up and down arrow keys"
   });
   gaugeSeries.columns.template.setAll({
-    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
     focusable: true,
-    role: "figure",
     focusableGroup: "continents",
     tabindexOrder: 3,
     hoverOnFocus: true, // a focused ring shows its tooltip
@@ -737,7 +733,6 @@ function makePieChart(parent, share) {
   // slices do nothing and take no focus
   chart.setAll({
     focusable: true,
-    role: "figure",
     tabindexOrder: 1, // the first chart of the dashboard
     ariaLabel: "Donut chart: " + Math.round(share * 100) + "% of countries have a rate above 10%"
   });
@@ -863,9 +858,8 @@ function makeColumnChart(parent) {
   // columns
   chart.setAll({
     focusable: true,
-    role: "figure",
     tabindexOrder: 5, // the last chart of the dashboard
-    ariaLabel: "Column chart of a daily value over 30 days. Tab to the columns, then move between the days with the arrow keys"
+    ariaLabel: "Column chart of a daily value over 30 days. Tab to the columns, then move between the days with the up and down arrow keys"
   });
   series.columns.template.setAll({
     focusable: true,
@@ -1020,9 +1014,8 @@ function makeMapChart(parent) {
   // pointer does
   chart.setAll({
     focusable: true,
-    role: "figure",
     tabindexOrder: 4, // the fourth chart of the dashboard
-    ariaLabel: "World heat map of a rate, in percent, for 200 countries. Tab to the countries, then move between them with the arrow keys"
+    ariaLabel: "World heat map of a rate, in percent, for 200 countries. Tab to the countries, then move between them with the up and down arrow keys"
   });
   polygonSeries.mapPolygons.template.setAll({
     focusable: true,
@@ -1081,8 +1074,7 @@ function makeMapChart(parent) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 root.container.setAll({
   focusable: true, // Tab reaches the dashboard, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Dashboard of five charts: a donut, a line chart, a radar chart, a world heat map and a column chart. Tab from chart to chart; inside each, Tab to its data and move through it with the arrow keys"
+  ariaLabel: "Dashboard of five charts: a donut, a line chart, a radar chart, a world heat map and a column chart. Tab from chart to chart; inside each, Tab to its data and move through it with the up and down arrow keys"
 });
 // each chart: its name and its data are set up where it is made, in the functions above, and numbered
 // (tabindexOrder) so the keyboard goes through the charts in the order they are laid out

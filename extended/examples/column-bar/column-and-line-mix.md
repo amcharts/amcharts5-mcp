@@ -2,7 +2,7 @@
 title: "Column and Line Mix"
 source: "https://www.amcharts.com/demos/column-and-line-mix/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Income as columns and expenses as a line on one chart, so the gap between them shows year by year. The last year is a projection, drawn faint and dashed.
@@ -204,8 +204,7 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column and line chart of income as columns and expenses as a line, from 2020 to 2025, with 2025 a projection. Tab to the income columns or the expenses line, then move between the years with the arrow keys"
+  ariaLabel: "Column and line chart of income as columns and expenses as a line, from 2020 to 2025, with 2025 a projection. Tab to the income columns or the expenses line, then move between the years with the up and down arrow keys"
 });
 // the income columns: one Tab stop (a focusable group), the arrow keys step through them
 series1.columns.template.setAll({

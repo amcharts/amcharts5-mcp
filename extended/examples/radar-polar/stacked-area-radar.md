@@ -2,7 +2,7 @@
 title: "Stacked Area Radar"
 source: "https://www.amcharts.com/demos/stacked-area-radar/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A radar chart with stacked areas: the inner area is one part, and the outer edge is the total. Here, the cash 24 companies hold abroad and in the US.
@@ -305,8 +305,7 @@ xAxis.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radar chart with stacked areas of the cash 24 companies hold abroad and in the US, in billions of dollars. Tab to the companies, then move between them with the arrow keys"
+  ariaLabel: "Radar chart with stacked areas of the cash 24 companies hold abroad and in the US, in billions of dollars. Tab to the companies, then move between them with the up and down arrow keys"
 });
 // the companies: invisible points on the outer area, one Tab stop for all of them (a focusable group), the
 // arrow keys step through them

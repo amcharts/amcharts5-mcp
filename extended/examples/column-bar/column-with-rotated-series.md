@@ -2,7 +2,7 @@
 title: "Column with Rotated Labels"
 source: "https://www.amcharts.com/demos/column-with-rotated-series/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart with its axis labels turned on their side, so eleven country names fit under narrow columns without overlapping. Each column has its own color.
@@ -154,8 +154,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of a value for eleven countries, from the USA at 2,025 down to Canada at 441. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Column chart of a value for eleven countries, from the USA at 2,025 down to Canada at 441. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

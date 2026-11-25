@@ -2,7 +2,7 @@
 title: "Drill-Down to Countries"
 source: "https://www.amcharts.com/demos/drill-down-to-countries/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A world map colored by continent that loads a country's regions when you click it. The detailed map is fetched only then, so the page stays light.
@@ -223,8 +223,7 @@ zoomControl.homeButton.events.on("click", goBack);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of countries colored by continent. Tab to the countries, move between them with the arrow keys, and press Enter to zoom in to one's regions; Back to world map goes back"
+  ariaLabel: "World map of countries colored by continent. Tab to the countries, move between them with the up and down arrow keys, and press Enter to zoom in to one's regions; Back to world map goes back"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them; Enter loads the regions
 worldSeries.mapPolygons.template.setAll({

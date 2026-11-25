@@ -2,7 +2,7 @@
 title: "Heat Map with Legend"
 source: "https://www.amcharts.com/demos/heat-map-with-legend/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A week, hour by hour: each cell is colored by its value, and the legend below gives the scale. Weekday working hours stand out, while the weekend stays quiet.
@@ -843,8 +843,7 @@ xAxis.data.setAll(hours.map(function(item) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Heat map of a value for every hour of the week, from Sunday to Saturday, highest in weekday working hours. Tab to the cells, then move between them with the arrow keys"
+  ariaLabel: "Heat map of a value for every hour of the week, from Sunday to Saturday, highest in weekday working hours. Tab to the cells, then move between them with the up and down arrow keys"
 });
 // the cells: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

@@ -2,7 +2,7 @@
 title: "Road Trip Dashboard with Map"
 source: "https://www.amcharts.com/demos/road-trip-dashboard-with-map/"
 category: "dashboards"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A road trip from Vilnius to Palermo told twice: on a timeline that winds like a road, measured in kilometers driven, and on a map of Europe. Circles are sized by population, and pointing at a city in either chart highlights it in the other.
@@ -330,7 +330,6 @@ function makeSerpentineChart() {
       // keyboard and screen readers (see Accessibility at the end): one Tab stop for the road's cities (a
       // focusable group), the arrow keys step through them, and the focused one shows its tooltip
       focusable: true,
-      role: "figure",
       focusableGroup: "road",
       tabindexOrder: 1, // the timeline first, then the map
       hoverOnFocus: true,
@@ -532,7 +531,6 @@ function makeMapChart() {
       // keyboard and screen readers (see Accessibility at the end): one Tab stop for the map's cities (a
       // focusable group), the arrow keys step through them
       focusable: true,
-      role: "figure",
       focusableGroup: "map",
       tabindexOrder: 2, // after the timeline
       ariaLabel: "{name}: {distance} km driven"
@@ -617,19 +615,16 @@ function makeMapChart() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 root.container.setAll({
   focusable: true, // Tab reaches the dashboard, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Dashboard of a road trip from Vilnius to Palermo: 13 cities and 5,957 km, on a timeline and on a map of Europe. Tab to each chart and its cities, then move between the cities with the arrow keys"
+  ariaLabel: "Dashboard of a road trip from Vilnius to Palermo: 13 cities and 5,957 km, on a timeline and on a map of Europe. Tab to each chart and its cities, then move between the cities with the up and down arrow keys"
 });
 // each chart's name; the cities are set up where they are made, in the bullet functions above
 timeline.setAll({
   focusable: true,
-  role: "figure",
   tabindexOrder: 1, // the timeline first...
   ariaLabel: "Timeline of the trip as a winding road, measured in kilometers driven, with a circle for each city sized by its population"
 });
 map.setAll({
   focusable: true,
-  role: "figure",
   tabindexOrder: 2, // ...then the map...
   ariaLabel: "Map of Europe with the route through the 13 cities"
 });

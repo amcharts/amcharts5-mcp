@@ -2,7 +2,7 @@
 title: "Horizontal Arc Diagram"
 source: "https://www.amcharts.com/demos/horizontal-arc-diagram/"
 category: "flow"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 An arc diagram lines the nodes up in a row and joins them with arcs, each as thick as the link. Here, the six friends of the TV show Friends in the middle, with the people linked to each of them close by.
@@ -153,8 +153,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Arc diagram of the six Friends characters and the people linked to them: the people in a row, joined by arcs as thick as their links. Tab to the people or the links, then move through them with the arrow keys; Enter on a person hides or shows their links"
+  ariaLabel: "Arc diagram of the six Friends characters and the people linked to them: the people in a row, joined by arcs as thick as their links. Tab to the people or the links, then move through them with the up and down arrow keys; Enter on a person hides or shows their links"
 });
 // the people: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a person's
 // links, as a click does
@@ -179,7 +178,6 @@ series.events.once("datavalidated", function () {
 // the links between them: one Tab stop too, after the nodes
 series.links.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "links",
   tabindexOrder: 5,   // after the nodes
   ariaLabel: "{sourceId} to {targetId}: {value}"

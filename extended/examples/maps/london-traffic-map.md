@@ -2,7 +2,7 @@
 title: "London's Busiest Roads"
 source: "https://www.amcharts.com/demos/london-traffic-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Every motorway and A road in Greater London, drawn wider and redder the more vehicles use it: the average day in 2025, from the Department for Transport's road traffic counts. The M25 and the M4 near Heathrow and the North Circular carry the most, up to 212,000 vehicles a day.
@@ -207,7 +207,6 @@ responsive.addRule({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
   ariaLabel: "Map of London's motorways and A roads, drawn wider and redder the more vehicles use them, average vehicles a day in 2025. The busiest are the M25, the M4 near Heathrow and the North Circular, up to 212,000 vehicles a day"
 });
 // the 1,824 roads are not made focusable: that many focusable lines slow the map down (about 20 seconds more to load)

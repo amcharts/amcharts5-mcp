@@ -2,7 +2,7 @@
 title: "Non-Ribbon Chord Diagram"
 source: "https://www.amcharts.com/demos/non-ribbon-chord-diagram/"
 category: "flow"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A chord diagram with thin lines instead of wide ribbons: it shows which nodes are connected rather than how much flows between them. Dots travel back and forth along each line.
@@ -111,8 +111,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Chord diagram of seven nodes, A to G, joined by thin lines that show which are connected. Tab to the nodes or the links, then move through them with the arrow keys; Enter on a node hides or shows its links"
+  ariaLabel: "Chord diagram of seven nodes, A to G, joined by thin lines that show which are connected. Tab to the nodes or the links, then move through them with the up and down arrow keys; Enter on a node hides or shows its links"
 });
 // the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
 // links, as a click does
@@ -125,7 +124,6 @@ series.nodes.nodes.template.setAll({
 // the links between them: one Tab stop too, after the nodes
 series.links.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "links",
   tabindexOrder: 5,   // after the nodes
   hoverOnFocus: true, // a focused link shows its tooltip

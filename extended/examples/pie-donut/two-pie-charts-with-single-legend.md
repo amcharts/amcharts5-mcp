@@ -2,7 +2,7 @@
 title: "Two Linked Pie Charts with a Legend"
 source: "https://www.amcharts.com/demos/two-pie-charts-with-single-legend/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two donuts, one legend: the same four countries in two groups side by side, each with its total in the middle. Point at a slice and its twin lights up in the other donut.
@@ -277,8 +277,7 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chartContainer.setAll({
   focusable: true, // Tab reaches the charts, and a screen reader names them
-  role: "figure",
-  ariaLabel: "Two donut charts of the same four countries in two groups, First and Second, with one legend. Tab to each donut's slices, then move between them with the arrow keys; Enter pulls a country out in both"
+  ariaLabel: "Two donut charts of the same four countries in two groups, First and Second, with one legend. Tab to each donut's slices, then move between them with the up and down arrow keys; Enter pulls a country out in both"
 });
 // each donut's slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({

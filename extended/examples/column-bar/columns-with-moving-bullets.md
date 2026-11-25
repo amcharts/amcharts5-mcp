@@ -2,7 +2,7 @@
 title: "Columns with Moving Bullets"
 source: "https://www.amcharts.com/demos/columns-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The column version of moving photos: each column has a photo at its foot, and when you point at a column, the photo climbs to its top. Step counts for six friends, darker the higher.
@@ -270,8 +270,7 @@ cursor.events.on("cursormoved", function () {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of step counts for six friends, from Monica at 45,688 down to Chandler at 11,561. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Column chart of step counts for six friends, from Monica at 45,688 down to Chandler at 11,561. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

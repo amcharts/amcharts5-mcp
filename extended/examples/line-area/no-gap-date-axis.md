@@ -2,7 +2,7 @@
 title: "No-Gap Date Axis"
 source: "https://www.amcharts.com/demos/no-gap-date-axis/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Stock markets close at weekends, leaving holes on a calendar axis. This axis skips days with no data: 200 trading days of price and volume, one after another.
@@ -175,8 +175,7 @@ volumeSeries.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a price over 200 trading days, weekends left out, with the daily volume as columns under it. Tab to the volume columns, then move between the days with the arrow keys. The price line has too many points to step through with the keyboard"
+  ariaLabel: "Line chart of a price over 200 trading days, weekends left out, with the daily volume as columns under it. Tab to the volume columns, then move between the days with the up and down arrow keys. The price line has too many points to step through with the keyboard"
 });
 // no focusable points on the price line: with the volume columns, 400 focusable items would slow down loading, zooming and panning
 // the volume columns: one Tab stop too, the arrow keys step through them
@@ -185,6 +184,9 @@ volumeSeries.columns.template.setAll({
   focusableGroup: "volume",
   ariaLabel: "{valueX.formatDate('EEEE, MMMM d, yyyy')}: volume {valueY}"
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

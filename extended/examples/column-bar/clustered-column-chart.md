@@ -2,7 +2,7 @@
 title: "Clustered Column Chart"
 source: "https://www.amcharts.com/demos/clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A clustered column chart puts the series side by side in each category, so you compare them group by group. Here, six regions over three years, each column labeled with its value.
@@ -173,8 +173,7 @@ makeSeries("Africa", "africa");
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Clustered column chart of six regions over 2023, 2024 and 2025. Tab to a region's columns, then move between its years with the arrow keys"
+  ariaLabel: "Clustered column chart of six regions over 2023, 2024 and 2025. Tab to a region's columns, then move between its years with the up and down arrow keys"
 });
 // each region's columns: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

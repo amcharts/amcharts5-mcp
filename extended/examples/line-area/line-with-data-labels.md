@@ -2,7 +2,7 @@
 title: "Line with Data Labels"
 source: "https://www.amcharts.com/demos/line-with-data-labels/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart that writes the value above every point, so the numbers are there without hovering. Here, sixteen readings half an hour apart through one night.
@@ -215,11 +215,13 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of sixteen readings half an hour apart, from 10:30 PM to 6 AM, between about 99 and 102, each value written above its point. Tab to the points, then move between them with the arrow keys"
+  ariaLabel: "Line chart of sixteen readings half an hour apart, from 10:30 PM to 6 AM, between about 99 and 102, each value written above its point. Tab to the points, then move between them with the up and down arrow keys"
 });
 // the points: set up for the keyboard where they are made, in the first bullet function above (the value labels
 // stay as they are, as the points read out the same values)
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

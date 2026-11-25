@@ -2,7 +2,7 @@
 title: "Stock Data Grouping"
 source: "https://www.amcharts.com/demos/stock-data-grouping/"
 category: "stock"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 More than six years of daily Microsoft prices, about 1,600 trading days, in one chart. Zoomed out, the days merge into monthly candles so that no more than 150 are on screen; zoom in and they split into weeks, then single days.
@@ -331,8 +331,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 stockChart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stock chart of more than six years of daily Microsoft (MSFT) prices, about 1,600 trading days, as candlesticks, with the volume in its own panel; zoomed out, the days merge into monthly or weekly candles. Tab to the candles, then move between them with the arrow keys. The toolbar above the chart adds indicators and drawings"
+  ariaLabel: "Stock chart of more than six years of daily Microsoft (MSFT) prices, about 1,600 trading days, as candlesticks, with the volume in its own panel; zoomed out, the days merge into monthly or weekly candles. Tab to the candles, then move between them with the up and down arrow keys. The toolbar above the chart adds indicators and drawings"
 });
 // the candles: one Tab stop (a focusable group), the arrow keys step through them. turboMode draws the candles as
 // one shape, which can't take focus, so each gets an unpainted point at its close
@@ -358,6 +357,10 @@ valueLegend.closeButtons.template.set("tabindexOrder", 10);
 volumeLegend.itemContainers.template.set("tabindexOrder", 10);
 volumeLegend.settingsButtons.template.set("tabindexOrder", 10);
 volumeLegend.closeButtons.template.set("tabindexOrder", 10);
+
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+mainPanel.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+mainPanel.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 ```
 
 ## HTML

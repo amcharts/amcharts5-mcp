@@ -2,7 +2,7 @@
 title: "Grouped and Sorted Columns"
 source: "https://www.amcharts.com/demos/grouped-and-sorted-columns/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Columns grouped by provider and sorted from smallest to largest within each group, with the provider names on a second row of labels. A line marks each provider’s quantity, centered over its group.
@@ -279,8 +279,7 @@ lineSeries.data.setAll(chartData);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of items from four providers, grouped by provider and sorted from smallest to largest, with a line through each provider's quantity. Tab to the columns or the quantities, then move between them with the arrow keys"
+  ariaLabel: "Column chart of items from four providers, grouped by provider and sorted from smallest to largest, with a line through each provider's quantity. Tab to the columns or the quantities, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

@@ -2,7 +2,7 @@
 title: "Bubble Chart with Pie Bullets"
 source: "https://www.amcharts.com/demos/bubble-chart-with-pie-bullets/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A bubble chart where every bubble is a small pie chart: its place and size show three values, and its slices show what it is made of.
@@ -209,10 +209,14 @@ series0.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bubble chart of four points, each a small pie chart of three or four categories, sized by a third value. Tab to the pies, then move between them with the arrow keys"
+  ariaLabel: "Bubble chart of four points, each a small pie chart of three or four categories, sized by a third value. Tab to the pies, then move between them with the up and down arrow keys"
 });
 // the pies: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

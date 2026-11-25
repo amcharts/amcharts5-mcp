@@ -2,7 +2,7 @@
 title: "Word Cloud"
 source: "https://www.amcharts.com/demos/word-cloud/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A word cloud sizes each word by how often it appears in a text, so the words used most stand out at once. Here, the king’s first speech in Shakespeare’s Hamlet.
@@ -75,13 +75,11 @@ series.labels.template.setAll({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the cloud, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Word cloud of the 100 most frequent words in the king's first speech in Shakespeare's Hamlet, each sized by how often it appears. Tab to the words, then move between them with the arrow keys"
+  ariaLabel: "Word cloud of the 100 most frequent words in the king's first speech in Shakespeare's Hamlet, each sized by how often it appears. Tab to the words, then move between them with the up and down arrow keys"
 });
 // the words: one Tab stop (a focusable group), the arrow keys step through them
 series.labels.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "words",
   ariaLabel: "{category}: {value} times"
 });

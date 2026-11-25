@@ -2,7 +2,7 @@
 title: "Strip Plot"
 source: "https://www.amcharts.com/demos/strip-plot/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A strip plot puts every value of a group on one line, so you see how they spread instead of a single average. Here, made-up posts on twelve social networks: when each went out and, by its size, how many likes it got.
@@ -212,10 +212,12 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Strip plot of made-up posts on twelve social networks over one day: when each post went out and how many likes it got. Tab to the posts, then move between them with the arrow keys"
+  ariaLabel: "Strip plot of made-up posts on twelve social networks over one day: when each post went out and how many likes it got. Tab to the posts, then move between them with the up and down arrow keys"
 });
 // the posts: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

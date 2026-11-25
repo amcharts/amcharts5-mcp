@@ -2,7 +2,7 @@
 title: "Images as Categories"
 source: "https://www.amcharts.com/demos/images-as-categories/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart with a flag above each country name on the axis. Any picture can go there, like logos, product shots or faces: here, visits from eleven countries.
@@ -202,8 +202,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of visits from eleven countries, from the US at 725 down to Canada at 41, with each country's flag under its column. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Column chart of visits from eleven countries, from the US at 725 down to Canada at 41, with each country's flag under its column. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

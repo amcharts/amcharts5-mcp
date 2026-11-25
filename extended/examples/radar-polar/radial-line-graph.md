@@ -2,7 +2,7 @@
 title: "Radial Line Graph"
 source: "https://www.amcharts.com/demos/radial-line-graph/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart wrapped around a circle, January at the top and the months running clockwise. Heating and cooling at home peak in opposite seasons, so the two lines point opposite ways.
@@ -156,8 +156,7 @@ series2.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radial line chart of the energy a house used for heating and for cooling each month of a year, in kWh. Tab to a line, then move through its months with the arrow keys"
+  ariaLabel: "Radial line chart of the energy a house used for heating and for cooling each month of a year, in kWh. Tab to a line, then move through its months with the up and down arrow keys"
 });
 // the lines' dots: set up for the keyboard where they are made, in createSeries above
 // the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one

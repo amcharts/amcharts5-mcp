@@ -2,7 +2,7 @@
 title: "Mekko Chart"
 source: "https://www.amcharts.com/demos/mekko/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Mekko chart is a stacked column chart whose columns have different widths: the width shows how big each column is, the height how it splits up. Here, five columns of different sizes, each stacked from trucks, SUVs and cars.
@@ -203,8 +203,7 @@ var series3 = createSeries(
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Mekko chart of five columns of different widths, each stacked from trucks, SUVs and cars. Tab to the trucks', SUVs' or cars' blocks, then move between the columns with the arrow keys"
+  ariaLabel: "Mekko chart of five columns of different widths, each stacked from trucks, SUVs and cars. Tab to the trucks', SUVs' or cars' blocks, then move between the columns with the up and down arrow keys"
 });
 // the blocks' value labels: set up for the keyboard where they are made, in the bullet function above
 // the legend: one Tab stop too, after the blocks; the arrow keys step through its items, and Enter hides or shows one

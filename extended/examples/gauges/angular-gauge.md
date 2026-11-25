@@ -2,7 +2,7 @@
 title: "Angular Gauge"
 source: "https://www.amcharts.com/demos/angular-gauge/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The classic gauge: a needle on a half-circle dial from 0 to 100, like a speedometer. It shows one value and how far along its range it is.
@@ -97,7 +97,6 @@ function gaugeName(value) {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName(axisDataItem.get("value"))
 });
 axisDataItem.on("value", function (value) {

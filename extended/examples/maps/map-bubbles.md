@@ -2,7 +2,7 @@
 title: "Map with Bubbles"
 source: "https://www.amcharts.com/demos/map-bubbles/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A bubble map of world population in 2011: each country gets a bubble at its center, sized by its population and colored by continent.
@@ -1211,8 +1211,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bubble map of world population in 2011: a bubble on each country, sized by its population and colored by continent. Tab to the countries or the bubbles, then move between them with the arrow keys"
+  ariaLabel: "Bubble map of world population in 2011: a bubble on each country, sized by its population and colored by continent. Tab to the countries or the bubbles, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

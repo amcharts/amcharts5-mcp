@@ -2,7 +2,7 @@
 title: "Highlighting Line Chart Series on Legend Hover"
 source: "https://www.amcharts.com/demos/highlighting-line-chart-series-on-legend-hover/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Ten lines on one chart get tangled. Point at a name in the legend and that line thickens while the others fade, so you can follow it from start to end.
@@ -204,8 +204,7 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of ten random series over 100 days. Tab to the legend, then move between the series with the arrow keys; Enter hides or shows one"
+  ariaLabel: "Line chart of ten random series over 100 days. Tab to the legend, then move between the series with the up and down arrow keys; Enter hides or shows one"
 });
 // no focusable points on the lines: a thousand of them would slow the chart down
 // the legend: one Tab stop, after the chart's other parts; the arrow keys step through its items, and Enter hides or shows one

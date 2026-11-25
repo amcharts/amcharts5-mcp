@@ -2,7 +2,7 @@
 title: "Star Atlas"
 source: "https://www.amcharts.com/demos/star-atlas/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A star atlas: the night sky drawn on a map chart, with the brightest stars, about 25 constellations and the path of the sun. It can be shown flat or as a globe.
@@ -457,7 +457,6 @@ starSeries.bullets.push(function (_root, _series, dataItem) {
 		// group), the arrow keys step through them, and the focused one shows its tooltip
 		circle.setAll({
 			focusable: true,
-			role: "figure",
 			focusableGroup: "stars",
 			hoverOnFocus: true,
 			ariaLabel: sName + ", magnitude " + mag.toFixed(1)
@@ -533,14 +532,12 @@ zoomControl.homeButton.set("visible", true); // the home button is hidden by def
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
 	focusable: true, // Tab reaches the map, and a screen reader names it
-	role: "figure",
-	ariaLabel: "Star atlas: a slowly turning map of the night sky with 103 named bright stars, 400 faint ones, 26 constellation figures, the celestial equator and the ecliptic. Tab to the constellations or the named stars, then move between them with the arrow keys"
+	ariaLabel: "Star atlas: a slowly turning map of the night sky with 103 named bright stars, 400 faint ones, 26 constellation figures, the celestial equator and the ecliptic. Tab to the constellations or the named stars, then move between them with the up and down arrow keys"
 });
 // the named stars: set up for the keyboard where they are made, in the bullet function above
 // the constellation figures: one Tab stop (a focusable group), the arrow keys step through them
 constellationSeries.mapLines.template.setAll({
 	focusable: true,
-	role: "figure",
 	focusableGroup: "constellations",
 	hoverOnFocus: true, // a focused figure shows its name
 	ariaLabel: "{name}"

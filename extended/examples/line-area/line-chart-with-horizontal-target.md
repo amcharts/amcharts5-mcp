@@ -2,7 +2,7 @@
 title: "Line Chart with Horizontal Target"
 source: "https://www.amcharts.com/demos/line-chart-with-horizontal-target/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart with a dotted target line at 40. Whatever falls below the target changes color, so the days that missed it stand out at once.
@@ -176,7 +176,6 @@ seriesRangeDataItem.get("label").setAll({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of a daily value over 300 days, with a target line at 40; the part below the target is drawn in another color. The line has too many points to step through with the keyboard"
 });
 // no focusable points on the line: 300 of them would slow down loading, zooming and panning

@@ -2,7 +2,7 @@
 title: "Progress Chart"
 source: "https://www.amcharts.com/demos/progress-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A progress chart shows how far something has come on one bar from 0 to 100%, here in five stages of different lengths, each with its own color and start mark.
@@ -196,8 +196,7 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Progress bar from 0 to 100% in five stages of different lengths: stage 1 to 15%, stage 2 to 75%, stage 3 to 90%, stage 4 to 95% and stage 5 to 100%. Tab to the stages, then move between them with the arrow keys"
+  ariaLabel: "Progress bar from 0 to 100% in five stages of different lengths: stage 1 to 15%, stage 2 to 75%, stage 3 to 90%, stage 4 to 95% and stage 5 to 100%. Tab to the stages, then move between them with the up and down arrow keys"
 });
 // the stages: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

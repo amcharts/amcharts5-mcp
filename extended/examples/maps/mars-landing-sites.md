@@ -2,7 +2,7 @@
 title: "Mars Landing Sites"
 source: "https://www.amcharts.com/demos/mars-landing-sites/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Mars as a slowly turning globe, covered with the Viking orbiters' color map of its surface, and the ten landers and rovers that worked there, from Viking 1 in 1976 to Perseverance and Zhurong in 2021. In teal, two places that are fiction: the Ares 3 and Ares 4 sites from the novel The Martian.
@@ -183,7 +183,6 @@ fictionSeries.bullets.push(function() {
     cursorOverStyle: "pointer",
     // keyboard and screen readers: one Tab stop for the two fictional sites, after the real ones
     focusable: true,
-    role: "figure",
     focusableGroup: "fictional sites",
     hoverOnFocus: true,
     ariaLabel: "{name}, fictional: {story}, from the novel The Martian"
@@ -239,8 +238,7 @@ var credit = chart.children.push(am5.Label.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the planet, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Mars as a slowly turning globe, with the ten landers and rovers that worked there and two fictional sites from the novel The Martian. Tab to the landing sites, then move between them with the arrow keys"
+  ariaLabel: "Mars as a slowly turning globe, with the ten landers and rovers that worked there and two fictional sites from the novel The Martian. Tab to the landing sites, then move between them with the up and down arrow keys"
 });
 // the landing sites, real and fictional: set up for the keyboard where they are made, in the bullet functions above
 

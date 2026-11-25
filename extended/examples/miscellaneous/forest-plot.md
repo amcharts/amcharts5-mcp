@@ -2,7 +2,7 @@
 title: "Forest Plot"
 source: "https://www.amcharts.com/demos/forest-plot/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A forest plot sums up the studies on one question: each row shows a study’s result as a square, sized by how much it counts, with a line for its range of uncertainty. The diamond at the bottom is all the studies combined.
@@ -250,8 +250,7 @@ cursor.lineX.set("visible", false); // ...and no vertical one: the cursor just s
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Forest plot of five studies from 1991 to 2009, each with its measure, sized by its weight, and its interval, and their summary measure of 2.2. Tab to the studies, then move between them with the arrow keys"
+  ariaLabel: "Forest plot of five studies from 1991 to 2009, each with its measure, sized by its weight, and its interval, and their summary measure of 2.2. Tab to the studies, then move between them with the up and down arrow keys"
 });
 // the studies' squares and the summary's diamond: set up for the keyboard where they are made, in the bullet function above
 

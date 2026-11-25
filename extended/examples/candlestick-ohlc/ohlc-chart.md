@@ -2,7 +2,7 @@
 title: "OHLC Chart"
 source: "https://www.amcharts.com/demos/ohlc-chart/"
 category: "candlestick-ohlc"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 An OHLC chart shows the same four prices as a candlestick, drawn as a bar: a line from low to high, a tick to the left for the open and one to the right for the close. Zoom out and 2,000 days group into weeks and months.
@@ -204,7 +204,6 @@ sbseries.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "OHLC chart of 2,000 days of random prices up to today, showing the last three months; zoomed out, days group into weeks and months. The chart has too many bars to step through with the keyboard"
 });
 // no focusable points on the bars: zoomed out, hundreds of them would slow down loading, zooming and panning

@@ -2,7 +2,7 @@
 title: "Weather Map"
 source: "https://www.amcharts.com/demos/weather-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A weather map of Europe: an animated icon and the temperature for seven capitals, picked from the data through template fields. The weather is made up.
@@ -261,8 +261,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Weather map of Europe with made-up weather and temperatures for seven capitals. Tab to the capitals, then move between them with the arrow keys"
+  ariaLabel: "Weather map of Europe with made-up weather and temperatures for seven capitals. Tab to the capitals, then move between them with the up and down arrow keys"
 });
 // the capitals' names and temperatures: one Tab stop (a focusable group), the arrow keys step through them; each
 // says its weather too, from the ariaLabel in its labelSettings above

@@ -2,7 +2,7 @@
 title: "Carbon-Zero Progress"
 source: "https://www.amcharts.com/demos/carbon-zero-progress/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A progress bar toward net zero, built from a column chart: fifteen cells from red at 20+ through yellow to green, a pin on the current level, 10, and a GOAL ZERO badge at the end.
@@ -313,7 +313,6 @@ addAxisLabel("5", "5");
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Progress bar toward net zero: fifteen cells from 20 and over in red, through yellow, to green near zero, with a pin on the current level, 10. Tab to the current level, then press an arrow key for the goal"
 });
 // the pin and the goal badge: set up for the keyboard where they are made, in the bullet function above

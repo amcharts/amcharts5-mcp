@@ -2,7 +2,7 @@
 title: "Map with Animated Lines"
 source: "https://www.amcharts.com/demos/map-with-animated-lines/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Lines from London that draw themselves to ten cities, over and over, all at the same speed, so the long route to New York takes longest.
@@ -370,8 +370,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of lines from London that draw themselves, over and over, to Reykjavik, Lisbon, Moscow, Belgrade, Ljubljana, Madrid, Stockholm, Bern, Kyiv and New York. Tab to the countries or the cities, then move between them with the arrow keys"
+  ariaLabel: "Map of lines from London that draw themselves, over and over, to Reykjavik, Lisbon, Moscow, Belgrade, Ljubljana, Madrid, Stockholm, Bern, Kyiv and New York. Tab to the countries or the cities, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

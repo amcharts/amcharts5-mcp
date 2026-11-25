@@ -2,7 +2,7 @@
 title: "Drag and Change Column Value"
 source: "https://www.amcharts.com/demos/drag-and-change-column-value/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart you can edit by hand: press anywhere on the plot and drag up or down, and the column under the pointer follows. The chart becomes an input.
@@ -177,8 +177,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of a daily value over 20 days, which you change by dragging a column up or down with a mouse or a finger. Tab to the columns, then move between the days with the arrow keys"
+  ariaLabel: "Column chart of a daily value over 20 days, which you change by dragging a column up or down with a mouse or a finger. Tab to the columns, then move between the days with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

@@ -2,7 +2,7 @@
 title: "Line Graph"
 source: "https://www.amcharts.com/demos/line-graph/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart joins values in time order, so the trend shows at a glance. This one holds 1,200 days of values, and you can zoom into any stretch of them.
@@ -138,7 +138,6 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of a daily value over 1,200 days. Zoom with the scrollbar or the mouse wheel. The line has too many points to step through with the keyboard"
 });
 // no focusable points on the line: 1,200 of them would slow down loading, zooming and panning

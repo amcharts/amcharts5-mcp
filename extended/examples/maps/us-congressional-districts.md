@@ -2,7 +2,7 @@
 title: "U.S. Congressional Districts"
 source: "https://www.amcharts.com/demos/us-congressional-districts/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The 435 U.S. congressional districts colored by party, blue for Democrats and red for Republicans, with example data from an earlier Congress.
@@ -563,8 +563,7 @@ legend.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of the 435 U.S. congressional districts colored by party, Democrat or Republican, with example data from an earlier Congress. Tab to the districts, then move between them with the arrow keys"
+  ariaLabel: "Map of the 435 U.S. congressional districts colored by party, Democrat or Republican, with example data from an earlier Congress. Tab to the districts, then move between them with the up and down arrow keys"
 });
 // the districts: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

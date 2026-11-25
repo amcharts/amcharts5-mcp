@@ -2,7 +2,7 @@
 title: "Divergent Stacked Bars"
 source: "https://www.amcharts.com/demos/divergent-stacked-bars/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A diverging stacked bar chart, the usual way to show answers on a scale: negative answers stack to the left of zero, positive ones to the right. Here, how often people turn to eleven sources of information.
@@ -239,8 +239,7 @@ legend.data.setAll([never, unlikely, sometimes, veryOften]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Diverging stacked bar chart of how often people turn to eleven sources of information: never and unlikely to the left of zero, sometimes and very often to the right. Tab to an answer's bars, then move between the sources with the arrow keys"
+  ariaLabel: "Diverging stacked bar chart of how often people turn to eleven sources of information: never and unlikely to the left of zero, sometimes and very often to the right. Tab to an answer's bars, then move between the sources with the up and down arrow keys"
 });
 // each answer's bars: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

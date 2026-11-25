@@ -2,7 +2,7 @@
 title: "Map Timeline"
 source: "https://www.amcharts.com/demos/map-timeline/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A map with a year slider: drag it, or press play, and countries light up as the slider passes the year they joined a treaty. The treaty is fictional.
@@ -506,8 +506,7 @@ function updateCountries(year) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of the countries that joined a fictional treaty, from " + firstYear + " to " + lastYear + ", with a year slider and a play button. Tab to the countries, then move between them with the arrow keys"
+  ariaLabel: "World map of the countries that joined a fictional treaty, from " + firstYear + " to " + lastYear + ", with a year slider and a play button. Tab to the countries, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

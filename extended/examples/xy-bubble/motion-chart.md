@@ -2,7 +2,7 @@
 title: "Motion Chart"
 source: "https://www.amcharts.com/demos/motion-chart/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Gapminder-style motion chart of made-up data: each bubble is a country, colored by continent and sized by a third value. Press play for 1903 to 2025.
@@ -752,8 +752,7 @@ bubbleSeries.data.setAll(yearData[currentYear]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Motion chart of made-up data: a bubble per country on two metrics, colored by continent and sized by a third value, for one year from 1903 to 2025. Tab to the bubbles and move between them with the arrow keys; Enter shows a country's trail. Then Tab to the continents on the small map, and to the play button and the year slider"
+  ariaLabel: "Motion chart of made-up data: a bubble per country on two metrics, colored by continent and sized by a third value, for one year from 1903 to 2025. Tab to the bubbles and move between them with the up and down arrow keys; Enter shows a country's trail. Then Tab to the continents on the small map, and to the play button and the year slider"
 });
 // the bubbles: set up for the keyboard where they are made, in the bullet function above
 // the continents on the small map: one Tab stop, after the bubbles; Enter shows only that continent's bubbles

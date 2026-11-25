@@ -2,7 +2,7 @@
 title: "Drill-Down Congressional Map"
 source: "https://www.amcharts.com/demos/drill-down-congressional-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A map of the United States that drills down to congressional districts: click a state to zoom in and load the map of its districts.
@@ -180,8 +180,7 @@ var title = chart.children.push(am5.Label.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of the United States that drills down to congressional districts. Tab to the states, move between them with the arrow keys, and press Enter to zoom in to one's districts; Back goes back"
+  ariaLabel: "Map of the United States that drills down to congressional districts. Tab to the states, move between them with the up and down arrow keys, and press Enter to zoom in to one's districts; Back goes back"
 });
 // the states: one Tab stop (a focusable group), the arrow keys step through them; Enter loads the districts
 usaSeries.mapPolygons.template.setAll({

@@ -2,7 +2,7 @@
 title: "Stock Chart Comparing Prices"
 source: "https://www.amcharts.com/demos/stock-chart-comparing-prices/"
 category: "stock"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A year of Microsoft prices as candles, with Apple added as a line for comparison. With two stocks on the chart, the axis switches from dollars to percent change, so both start from the same zero line.
@@ -472,8 +472,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 stockChart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stock chart of a year of daily Microsoft (MSFT) prices as candlesticks with volume, compared with Apple (AAPL) as a line; with two stocks on the chart, the price axis shows the percent change from the first day. Tab to the MSFT candles, then move between the days with the arrow keys. The toolbar above the chart picks the main stock, adds stocks to compare, indicators and drawings"
+  ariaLabel: "Stock chart of a year of daily Microsoft (MSFT) prices as candlesticks with volume, compared with Apple (AAPL) as a line; with two stocks on the chart, the price axis shows the percent change from the first day. Tab to the MSFT candles, then move between the days with the up and down arrow keys. The toolbar above the chart picks the main stock, adds stocks to compare, indicators and drawings"
 });
 // the candles: one Tab stop (a focusable group), the arrow keys step through them. turboMode draws the candles as
 // one shape, which can't take focus, so each gets an unpainted point at its close. A series picked in the
@@ -498,6 +497,10 @@ stockChart.on("stockSeries", addFocusPoints);
 valueLegend.itemContainers.template.set("tabindexOrder", 10); // the chart's parts are focused from low to high (0 if not set)
 valueLegend.settingsButtons.template.set("tabindexOrder", 10);
 valueLegend.closeButtons.template.set("tabindexOrder", 10);
+
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+mainPanel.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+mainPanel.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 ```
 
 ## HTML

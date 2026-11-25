@@ -2,7 +2,7 @@
 title: "Compass Chart"
 source: "https://www.amcharts.com/demos/compass-chart/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A compass made from a gauge: the dial with N, E, S and W turns, while the needle stays put and points at the heading. Every two seconds it swings to a new direction.
@@ -200,7 +200,6 @@ function compassName(heading) {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: compassName(axisDataItemN.get("value")) // the heading is the dial's value under the needle's north end
 });
 axisDataItemN.on("value", function (heading) {

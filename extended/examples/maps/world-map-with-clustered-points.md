@@ -2,7 +2,7 @@
 title: "World Map with Clustered Points"
 source: "https://www.amcharts.com/demos/world-map-with-clustered-points/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The capitals of 165 countries on a world map. Where the dots crowd, they merge into groups with a count, and the groups break up into single cities as you zoom in.
@@ -414,8 +414,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of the capitals of 165 countries, where crowded ones merge into groups. Tab to the capitals, move between them with the arrow keys, and press Enter on a group to zoom in until it breaks up"
+  ariaLabel: "World map of the capitals of 165 countries, where crowded ones merge into groups. Tab to the capitals, move between them with the up and down arrow keys, and press Enter on a group to zoom in until it breaks up"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

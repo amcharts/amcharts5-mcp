@@ -2,7 +2,7 @@
 title: "Rotating Moon"
 source: "https://www.amcharts.com/demos/rotating-moon/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The Moon as a slowly turning globe, covered with NASA's map of its surface, and the six places where Apollo astronauts landed, all on the side that faces the Earth.
@@ -104,7 +104,6 @@ pointSeries.bullets.push(function() {
     // keyboard and screen readers (see Accessibility below): one Tab stop for all the landing sites (a focusable
     // group), the arrow keys step through them, and the focused one shows its tooltip
     focusable: true,
-    role: "figure",
     focusableGroup: "landing sites",
     hoverOnFocus: true,
     ariaLabel: "{mission}: {site}, {date}"
@@ -168,8 +167,7 @@ var credit = chart.children.push(am5.Label.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the Moon, and a screen reader names it
-  role: "figure",
-  ariaLabel: "The Moon as a slowly turning globe, with the six Apollo landing sites. Tab to the landing sites, then move between them with the arrow keys"
+  ariaLabel: "The Moon as a slowly turning globe, with the six Apollo landing sites. Tab to the landing sites, then move between them with the up and down arrow keys"
 });
 // the landing sites: set up for the keyboard where they are made, in the bullet function above
 

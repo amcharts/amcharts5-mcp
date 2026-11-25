@@ -2,7 +2,7 @@
 title: "Bullet Chart"
 source: "https://www.amcharts.com/demos/bullet-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A bullet chart says what a gauge says in a strip: the bar is the actual value, the short line is the target, and the colors behind say how good each level is. Two styles: a smooth gradient and five bands.
@@ -201,7 +201,6 @@ createBulletChart(false); // ...and the bottom one, with solid bands
 // the two charts are in one container, which gets the name
 root.container.setAll({
   focusable: true, // Tab reaches the charts, and a screen reader names them
-  role: "figure",
   ariaLabel: "Two bullet charts of the same evaluation: an actual value of 65% against a target of 83%, on a scale from poor to good, drawn as a gradient in the first chart and as five bands in the second. Tab to a chart's bar, then press an arrow key for its target"
 });
 // in each chart, the bar and the target: one Tab stop (a focusable group), the arrow keys step between them

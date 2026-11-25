@@ -2,7 +2,7 @@
 title: "Animations Along Lines"
 source: "https://www.amcharts.com/demos/animations-along-lines/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A plane flies back and forth along a route from Paris to Toronto, Los Angeles and Havana. Drag a city and the route and the plane follow it.
@@ -281,8 +281,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of a plane flying back and forth along a route from Paris to Toronto, Los Angeles and Havana. Tab to the countries or the cities, then move between them with the arrow keys; Shift and the arrow keys move a city, and the route follows"
+  ariaLabel: "Map of a plane flying back and forth along a route from Paris to Toronto, Los Angeles and Havana. Tab to the countries or the cities, then move between them with the up and down arrow keys; Shift and the up and down arrow keys move a city, and the route follows"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

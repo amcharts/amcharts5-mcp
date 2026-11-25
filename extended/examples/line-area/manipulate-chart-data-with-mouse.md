@@ -2,7 +2,7 @@
 title: "Manipulate Chart Data with Mouse"
 source: "https://www.amcharts.com/demos/manipulate-chart-data-with-mouse/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart you can edit by hand: press anywhere on the plot and drag up or down, and the nearest point follows. Handy for what-if plans and rough forecasts.
@@ -186,10 +186,12 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a daily value over 40 days, whose points can be dragged up or down with a mouse or by touch. Tab to the points, then move between them with the arrow keys"
+  ariaLabel: "Line chart of a daily value over 40 days, whose points can be dragged up or down with a mouse or by touch. Tab to the points, then move between them with the up and down arrow keys"
 });
 // the points: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

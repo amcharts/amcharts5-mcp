@@ -2,7 +2,7 @@
 title: "Beeswarm"
 source: "https://www.amcharts.com/demos/beeswarm/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A beeswarm chart shows every value as a dot along one axis, nudging dots up and down so none overlap. The shape of the swarm shows where values bunch up: here, 500 random values, most of them near zero.
@@ -240,10 +240,12 @@ xAxis.on("end", repack);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Beeswarm chart of 500 random values from -50 to 50, most of them near zero. Tab to the dots, then move between them with the arrow keys, in the order the values were made"
+  ariaLabel: "Beeswarm chart of 500 random values from -50 to 50, most of them near zero. Tab to the dots, then move between them with the up and down arrow keys, in the order the values were made"
 });
 // the dots: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

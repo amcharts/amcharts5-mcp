@@ -2,7 +2,7 @@
 title: "Range Bullet Chart"
 source: "https://www.amcharts.com/demos/range-bullet-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A range bullet chart shows the spread of a score as a bar from its lowest to its highest value, with a marker for the average. Here, the scores two options got: a circle at each end and a triangle at the average.
@@ -192,8 +192,7 @@ legend.data.setAll([series3, series2]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Range bullet chart of the scores two options got, Reduce Expenses and Increase Expenses: the range from the lowest to the highest score, and the average. Tab to the options, then move between them with the arrow keys"
+  ariaLabel: "Range bullet chart of the scores two options got, Reduce Expenses and Increase Expenses: the range from the lowest to the highest score, and the average. Tab to the options, then move between them with the up and down arrow keys"
 });
 // the options: each bar is one item with all three scores, one Tab stop for both (a focusable group), the arrow keys
 // step between them

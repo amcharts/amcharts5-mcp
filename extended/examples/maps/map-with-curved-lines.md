@@ -2,7 +2,7 @@
 title: "Map with Curved Lines"
 source: "https://www.amcharts.com/demos/map-with-curved-lines/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Lines from London to ten cities in Europe and North America, with an arrow pointing to each destination. They take the shortest way over the globe, which bends them on a flat map.
@@ -307,8 +307,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of lines from London to Reykjavik, Lisbon, Moscow, Belgrade, Ljubljana, Madrid, Stockholm, Bern, Kyiv and New York, each taking the shortest way over the globe. Tab to the countries or the cities, then move between them with the arrow keys"
+  ariaLabel: "Map of lines from London to Reykjavik, Lisbon, Moscow, Belgrade, Ljubljana, Madrid, Stockholm, Bern, Kyiv and New York, each taking the shortest way over the globe. Tab to the countries or the cities, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

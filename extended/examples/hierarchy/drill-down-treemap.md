@@ -2,7 +2,7 @@
 title: "Drill-Down Treemap"
 source: "https://www.amcharts.com/demos/drill-down-treemap/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A treemap you explore one level at a time: the first view shows the 18 brands that sold over 200,000 vehicles in the US in 2017, and clicking a brand opens its models. The breadcrumb bar on top leads back.
@@ -495,8 +495,7 @@ series.bullets.push(function (root, series, dataItem) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Treemap of the 18 brands that sold over 200,000 vehicles in the US in 2017. Tab to the brands, move between them with the arrow keys, and press Enter to open a brand's models; the breadcrumbs above lead back"
+  ariaLabel: "Treemap of the 18 brands that sold over 200,000 vehicles in the US in 2017. Tab to the brands, move between them with the up and down arrow keys, and press Enter to open a brand's models; the breadcrumbs above lead back"
 });
 // the brands, or a brand's models: one Tab stop (a focusable group), the arrow keys step through them; Enter opens a brand
 series.nodes.template.setAll({

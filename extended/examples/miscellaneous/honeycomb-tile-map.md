@@ -2,7 +2,7 @@
 title: "Honeycomb Tile Map"
 source: "https://www.amcharts.com/demos/honeycomb-tile-map/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A tile map made of hexagons, which fit together like a honeycomb and give each state up to six neighbors, so the layout follows the real map more closely than squares or circles can.
@@ -534,8 +534,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Tile map of the 50 US states and D.C., a hexagon for each, fitted together like a honeycomb, roughly where the state lies and shaded by population. Tab to the states, then move between them with the arrow keys"
+  ariaLabel: "Tile map of the 50 US states and D.C., a hexagon for each, fitted together like a honeycomb, roughly where the state lies and shaded by population. Tab to the states, then move between them with the up and down arrow keys"
 });
 // the states: set up for the keyboard where they are made, in the bullet function above
 

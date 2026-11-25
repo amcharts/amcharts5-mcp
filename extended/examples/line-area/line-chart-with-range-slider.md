@@ -2,7 +2,7 @@
 title: "Line Chart with Range Slider"
 source: "https://www.amcharts.com/demos/line-chart-with-range-slider/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart split in two by a handle you can drag. Everything past the handle changes color and turns striped: a way to mark a forecast, a target period or figures still to be confirmed.
@@ -212,7 +212,6 @@ range.set("bullet", am5xy.AxisBullet.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of a daily value over 1,200 days, striped from a handle at the halfway point on. Tab to the handle and move it with the left and right arrow keys; the line has too many points to step through with the keyboard"
 });
 // no focusable points on the line: 1,200 of them would slow the chart down

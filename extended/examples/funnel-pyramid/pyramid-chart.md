@@ -2,7 +2,7 @@
 title: "Pyramid Chart"
 source: "https://www.amcharts.com/demos/pyramid-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A pyramid stacks the parts of a whole from the largest at the base to the smallest at the top. Each level’s area matches its share; switch to height to compare.
@@ -84,13 +84,11 @@ legend.data.setAll(am5.array.copy(series.dataItems).reverse());
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Pyramid chart of seven values, from the largest at the base to the smallest at the tip. Tab to the levels, then move between them with the arrow keys"
+  ariaLabel: "Pyramid chart of seven values, from the largest at the base to the smallest at the tip. Tab to the levels, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "slices",
   ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
 });

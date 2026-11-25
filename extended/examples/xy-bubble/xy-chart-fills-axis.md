@@ -2,7 +2,7 @@
 title: "XY Chart with Fills to the Axis"
 source: "https://www.amcharts.com/demos/xy-chart-fills-axis/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 An area chart on two number axes, where the shading can face either way: the lower line fills down to the X axis, the upper one across to the Y axis.
@@ -216,8 +216,7 @@ series1.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Area chart of two lines of 12 points on two value axes, x from 1 to 12; the lower line is filled down to the X axis, the upper one across to the Y axis. Tab to a line, then move along it with the arrow keys"
+  ariaLabel: "Area chart of two lines of 12 points on two value axes, x from 1 to 12; the lower line is filled down to the X axis, the upper one across to the Y axis. Tab to a line, then move along it with the up and down arrow keys"
 });
 // the points: one Tab stop per line (a focusable group), the arrow keys step through it
 [series0, series1].forEach(function (series, index) {

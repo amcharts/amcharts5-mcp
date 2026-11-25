@@ -2,7 +2,7 @@
 title: "Trump’s Reciprocal Tariffs Map"
 source: "https://www.amcharts.com/demos/trumps-reciprocal-tariffs-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A world heat map of US reciprocal tariff rates by country from April 2025, as first announced and as updated: the darker the color, the higher the rate.
@@ -1175,8 +1175,7 @@ zoomControl.homeButton.set("visible", true); // a button that goes back to the h
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World heat map of the US reciprocal tariff rates by country, as announced in April 2025: the darker, the higher, from 10% to 50%. Tab to the countries, then move between them with the arrow keys"
+  ariaLabel: "World heat map of the US reciprocal tariff rates by country, as announced in April 2025: the darker, the higher, from 10% to 50%. Tab to the countries, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

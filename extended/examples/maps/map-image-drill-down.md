@@ -2,7 +2,7 @@
 title: "Map Image Drill-Down"
 source: "https://www.amcharts.com/demos/map-image-drill-down/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A store locator that drills down: bubbles count the stores of a U.S. retail chain in each state. Click a state’s bubble to see its cities, then a city’s to see each store.
@@ -347,8 +347,7 @@ function createSeries(heatfield) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of a U.S. retail chain's stores, with a bubble counting them in each state. Tab to the states or the bubbles, move between them with the arrow keys, and press Enter on a bubble to see its cities, then each store; the minus button goes back"
+  ariaLabel: "Map of a U.S. retail chain's stores, with a bubble counting them in each state. Tab to the states or the bubbles, move between them with the up and down arrow keys, and press Enter on a bubble to see its cities, then each store; the minus button goes back"
 });
 // the states: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

@@ -2,7 +2,7 @@
 title: "100% Stacked Area Chart"
 source: "https://www.amcharts.com/demos/100-stacked-area-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Every year adds up to 100%, so the chart shows shares instead of amounts: how a total splits between cars, motorcycles and bicycles from 2007 to 2025.
@@ -232,8 +232,7 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "100% stacked area chart of how a yearly total splits between cars, motorcycles and bicycles, 2007 to 2025. Tab to an area, then move along its years with the arrow keys"
+  ariaLabel: "100% stacked area chart of how a yearly total splits between cars, motorcycles and bicycles, 2007 to 2025. Tab to an area, then move along its years with the up and down arrow keys"
 });
 // the points: one Tab stop per area (a focusable group), the arrow keys step along its years
 chart.series.each(function (series) {

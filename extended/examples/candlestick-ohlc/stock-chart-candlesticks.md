@@ -2,7 +2,7 @@
 title: "Stock Chart Candlesticks"
 source: "https://www.amcharts.com/demos/stock-chart-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Fifteen years of daily Microsoft prices as candlesticks over volume. It is a plain XY chart: two value axes stacked over one date axis that skips the weekends.
@@ -285,7 +285,6 @@ am5.net.load("https://www.amcharts.com/static/assets/stock/MSFT.csv").then(funct
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Candlestick chart of fifteen years of daily Microsoft (MSFT) prices, with the trading volume below, showing the last three months; zoomed out, days merge into weeks and months. The candles are not reachable one by one; the scrollbar's grips zoom the dates"
 });
 // the candles: not focusable. This axis makes a candle for each of the 3,700 days, and that many focusable

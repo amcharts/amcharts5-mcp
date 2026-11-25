@@ -2,7 +2,7 @@
 title: "Traceable Sankey Diagram"
 source: "https://www.amcharts.com/demos/traceable-sankey-diagram/"
 category: "flow"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Sankey diagram you can trace: point at a band and every step of its path lights up, from the first column to the last. Here, thirteen paths, four stages.
@@ -133,8 +133,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Sankey diagram of thirteen paths through four stages, between nodes named with letters. Tab to the nodes or the links, then move through them with the arrow keys; a focused link lights up its whole path, and Enter on a node hides or shows its links"
+  ariaLabel: "Sankey diagram of thirteen paths through four stages, between nodes named with letters. Tab to the nodes or the links, then move through them with the up and down arrow keys; a focused link lights up its whole path, and Enter on a node hides or shows its links"
 });
 // the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
 // links, as a click does
@@ -147,7 +146,6 @@ series.nodes.nodes.template.setAll({
 // the links between them: one Tab stop too, after the nodes
 series.links.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "links",
   tabindexOrder: 5,   // after the nodes
   ariaLabel: "{sourceId} to {targetId}"

@@ -2,7 +2,7 @@
 title: "Sankey Map with Waypoints"
 source: "https://www.amcharts.com/demos/sankey-map-with-waypoints/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Oil exports from six terminals in the Gulf states to ports in Asia and Europe, drawn as Sankey bands on a globe: the wider the band, the more oil. The bands follow sea lanes through waypoints, with drops of oil traveling along them.
@@ -366,8 +366,7 @@ zoomControl.homeButton.set("visible", true); // the home button is hidden by def
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the globe, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Globe of oil exports from six terminals in the Gulf states to ports in Asia and Europe, in thousands of barrels a day, drawn as bands along sea lanes. Tab to the routes or the countries, then move between them with the arrow keys"
+  ariaLabel: "Globe of oil exports from six terminals in the Gulf states to ports in Asia and Europe, in thousands of barrels a day, drawn as bands along sea lanes. Tab to the routes or the countries, then move between them with the up and down arrow keys"
 });
 // the routes: one Tab stop (a focusable group), the arrow keys step through them
 sankeySeries.mapPolygons.template.setAll({

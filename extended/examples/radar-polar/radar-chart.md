@@ -2,7 +2,7 @@
 title: "Radar Chart"
 source: "https://www.amcharts.com/demos/radar-chart/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A radar chart, also called a spider or web chart, puts each category on its own spoke and joins the values into one shape. Here, nine countries, one value each.
@@ -151,8 +151,7 @@ xAxis.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radar chart of one value, in litres, for nine countries, each on its own spoke. Tab to the countries, then move between them with the arrow keys"
+  ariaLabel: "Radar chart of one value, in litres, for nine countries, each on its own spoke. Tab to the countries, then move between them with the up and down arrow keys"
 });
 // the countries' dots: set up for the keyboard where they are made, in the bullet function above
 

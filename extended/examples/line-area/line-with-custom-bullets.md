@@ -2,7 +2,7 @@
 title: "Line with Custom Bullets"
 source: "https://www.amcharts.com/demos/line-with-custom-bullets/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart where each point carries its own icon. Here, New Year’s Eve hour by hour: water and coffee early on, then beer, cocktails and the midnight toast.
@@ -193,7 +193,6 @@ series.bullets.push(function (root, series) {
       // keyboard and screen readers (see Accessibility below): one Tab stop for all the icons (a focusable
       // group), the arrow keys step through them
       focusable: true,
-      role: "figure",
       focusableGroup: "points",
       ariaLabel: "{valueX.formatDate('MMMM d, HH:mm')}: {valueY}"
     })
@@ -221,10 +220,12 @@ series.appear(1000);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of New Year's Eve hour by hour, from 6 pm to 2 am, with an icon on each hour. Tab to the icons, then move between the hours with the arrow keys"
+  ariaLabel: "Line chart of New Year's Eve hour by hour, from 6 pm to 2 am, with an icon on each hour. Tab to the icons, then move between the hours with the up and down arrow keys"
 });
 // the icons: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

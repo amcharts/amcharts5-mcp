@@ -2,7 +2,7 @@
 title: "Map with Dynamic Pie Charts"
 source: "https://www.amcharts.com/demos/map-dynamic-pie-charts/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Pie charts on a map: each of four regions gets its own pie of made-up sales by product line, sized by the region’s total sales.
@@ -229,8 +229,7 @@ for (var i = 0; i < regions.length; i++) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 map.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map with a pie chart on each of four regions, North America, Europe, Asia and Africa, of made-up sales by product line, sized by the region's total. Tab to a region's pie, then move between its slices with the arrow keys"
+  ariaLabel: "World map with a pie chart on each of four regions, North America, Europe, Asia and Africa, of made-up sales by product line, sized by the region's total. Tab to a region's pie, then move between its slices with the up and down arrow keys"
 });
 // the pies' slices: set up for the keyboard where they are made, in the bullet function above
 // the legend: one Tab stop too, after the pies; the arrow keys step through its items, and Enter hides or shows one

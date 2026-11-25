@@ -2,7 +2,7 @@
 title: "Stock Chart"
 source: "https://www.amcharts.com/demos/stock-chart/"
 category: "stock"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 amCharts Stock Chart is a complete trading chart: candlesticks with volume, a scrollbar, and a toolbar with 34 indicators, 22 drawing tools and period buttons. Circled letters on the date axis mark a stock split and two dividend dates.
@@ -607,7 +607,6 @@ function makeEvent(date, letter, color, description) {
     // keyboard and screen readers (see Accessibility below): one Tab stop for the events (a focusable group),
     // the arrow keys step through them, and the focused one shows its tooltip; after the candles
     focusable: true,
-    role: "figure",
     focusableGroup: "events",
     tabindexOrder: 5,
     hoverOnFocus: true,
@@ -641,8 +640,7 @@ sbSeries.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 stockChart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stock chart of a year of daily prices of a sample stock, AMCH, from October 2025 to September 2026, as candlesticks with volume, and marks for a stock split and two dividend dates. Tab to the candles, then move between the days with the arrow keys. The toolbar above the chart adds indicators and drawings"
+  ariaLabel: "Stock chart of a year of daily prices of a sample stock, AMCH, from October 2025 to September 2026, as candlesticks with volume, and marks for a stock split and two dividend dates. Tab to the candles, then move between the days with the up and down arrow keys. The toolbar above the chart adds indicators and drawings"
 });
 // the candles: one Tab stop (a focusable group), the arrow keys step through them. turboMode draws the candles as
 // one shape, which can't take focus, so each gets an unpainted point at its close. A series picked in the toolbar's
@@ -668,6 +666,10 @@ stockChart.on("stockSeries", addFocusPoints);
 valueLegend.itemContainers.template.set("tabindexOrder", 10); // the chart's parts are focused from low to high (0 if not set)
 valueLegend.settingsButtons.template.set("tabindexOrder", 10);
 valueLegend.closeButtons.template.set("tabindexOrder", 10);
+
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+mainPanel.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+mainPanel.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 ```
 
 ## HTML

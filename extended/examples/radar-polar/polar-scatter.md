@@ -2,7 +2,7 @@
 title: "Polar Scatter"
 source: "https://www.amcharts.com/demos/polar-scatter/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A scatter plot on a 24-hour clock, each dot a commuter trip placed by its start and duration. Car trips stretch out at rush hour; train trips hardly change.
@@ -248,8 +248,7 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Polar scatter chart of commuter trips by car, bike and train on a 24-hour clock: each dot is placed by when the trip started and how long it took. Tab to a way of travel, then move through its trips with the arrow keys"
+  ariaLabel: "Polar scatter chart of commuter trips by car, bike and train on a 24-hour clock: each dot is placed by when the trip started and how long it took. Tab to a way of travel, then move through its trips with the up and down arrow keys"
 });
 // the trips' dots: set up for the keyboard where they are made, in createSeries above
 // the legend: one Tab stop too, after the data; the arrow keys step through its items, and Enter hides or shows one

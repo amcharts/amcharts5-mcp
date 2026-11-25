@@ -2,7 +2,7 @@
 title: "Multiple Date Axes"
 source: "https://www.amcharts.com/demos/multiple-date-axes/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two years on one chart: 2023 and 2025 each get their own date axis, so both start at the left edge and line up day by day. Each axis is labeled in the color of its line.
@@ -182,7 +182,6 @@ sbSeries.data.setAll(data0);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of random daily prices in 2023 and 2025, each year on its own date axis so the two line up day by day. The lines have too many points to step through with the keyboard"
 });
 // no focusable points on the lines: 730 of them would slow down loading, zooming and panning

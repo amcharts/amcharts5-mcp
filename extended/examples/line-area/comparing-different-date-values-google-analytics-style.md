@@ -2,7 +2,7 @@
 title: "Comparing Different Date Values Google Analytics Style"
 source: "https://www.amcharts.com/demos/comparing-different-date-values-google-analytics-style/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 This week against last week, the way analytics dashboards show it: a solid line for the current days, a dotted line for the same weekdays a week earlier, and both dates in one tooltip.
@@ -204,8 +204,7 @@ series2.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart comparing seven days of this week with the same weekdays a week earlier. Tab to this week's points or last week's, then move between the days with the arrow keys"
+  ariaLabel: "Line chart comparing seven days of this week with the same weekdays a week earlier. Tab to this week's points or last week's, then move between the days with the up and down arrow keys"
 });
 // the stars and triangles: set up for the keyboard where they are made, in the bullet functions above
 

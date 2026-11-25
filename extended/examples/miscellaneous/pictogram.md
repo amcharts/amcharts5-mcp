@@ -2,7 +2,7 @@
 title: "Pictogram"
 source: "https://www.amcharts.com/demos/pictogram/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A pictogram shows a share as a grid of small figures, one for each person in a hundred, so a number becomes something you can see. Here, 58 of 100 men and 67 of 100 women, the counted figures in color over gray ones.
@@ -210,7 +210,6 @@ yAxis1.events.on("boundschanged", function() {
 // would tell no more
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Pictogram of two groups of 100 people: 58 of 100 men and 67 of 100 women, the counted figures in color over gray ones"
 });
 

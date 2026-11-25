@@ -2,7 +2,7 @@
 title: "Variable-Radius Nested Pie"
 source: "https://www.amcharts.com/demos/variable-radius-nested-pie/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 How the EU grew: the inner ring shows each enlargement from 1957 to 2007, the outer ring the countries that joined, sized by population today.
@@ -177,8 +177,7 @@ series1.data.setAll(outerData);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Nested pie chart of how the EU grew: the inner ring shows the seven enlargements from 1957 to 2007, the outer ring the 27 countries that joined, sized by population today. Tab to a ring, then move between its slices with the arrow keys"
+  ariaLabel: "Nested pie chart of how the EU grew: the inner ring shows the seven enlargements from 1957 to 2007, the outer ring the 27 countries that joined, sized by population today. Tab to a ring, then move between its slices with the up and down arrow keys"
 });
 // each ring's slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series0.slices.template.setAll({

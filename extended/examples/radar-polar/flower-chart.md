@@ -2,7 +2,7 @@
 title: "Flower Chart"
 source: "https://www.amcharts.com/demos/flower-chart/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A radar column chart where the columns fill only the middle of each slice, so they stand apart like petals. Here, two coffees scored on eight tasting notes.
@@ -170,15 +170,12 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radar column chart of two coffees, a light and a dark roast, scored from 0 to 10 on eight tasting notes. Tab to a coffee's columns, then move between the notes with the arrow keys"
+  ariaLabel: "Radar column chart of two coffees, a light and a dark roast, scored from 0 to 10 on eight tasting notes. Tab to a coffee's columns, then move between the notes with the up and down arrow keys"
 });
 // each coffee's columns: one Tab stop (a focusable group), the arrow keys step through the notes
 chart.series.each(function (series) {
   series.columns.template.setAll({
-    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
     focusable: true,
-    role: "figure",
     focusableGroup: series.get("name"),
     hoverOnFocus: true, // a focused column shows its tooltip
     ariaLabel: "{name}, {categoryX}: {valueY} of 10"

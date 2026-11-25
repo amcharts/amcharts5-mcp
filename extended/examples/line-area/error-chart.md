@@ -2,7 +2,7 @@
 title: "Error Chart"
 source: "https://www.amcharts.com/demos/error-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart with error bars: each country’s value comes with a bar showing how far off it could be. Where two bars overlap, the two values could be the same.
@@ -209,10 +209,12 @@ xAxis.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart with error bars of visits in seven countries, from USA with 3,025 to India with 984, each with its margin of error. Tab to the points, then move between the countries with the arrow keys"
+  ariaLabel: "Line chart with error bars of visits in seven countries, from USA with 3,025 to India with 984, each with its margin of error. Tab to the points, then move between the countries with the up and down arrow keys"
 });
 // the points: set up for the keyboard where they are made, in the second bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

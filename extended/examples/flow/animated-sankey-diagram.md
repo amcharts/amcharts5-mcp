@@ -2,7 +2,7 @@
 title: "Animated Sankey Diagram"
 source: "https://www.amcharts.com/demos/animated-sankey-diagram/"
 category: "flow"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Sankey diagram with amounts floating along its bands. Here, an example of $1.77 trillion in company cash, split by industry and by where it is held.
@@ -296,14 +296,12 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 serialChartContainer.setAll({
 	focusable: true, // Tab reaches the chart, and a screen reader names it
-	role: "figure",
-	ariaLabel: "Sankey diagram of how $1.77 trillion of company cash splits by industry, down to five tech companies, and how much of it is held in the U.S. and overseas. Tab to the bands, then move through them with the arrow keys"
+	ariaLabel: "Sankey diagram of how $1.77 trillion of company cash splits by industry, down to five tech companies, and how much of it is held in the U.S. and overseas. Tab to the bands, then move through them with the up and down arrow keys"
 });
 // the bands: one Tab stop (a focusable group), the arrow keys step through them. The nodes are hidden and do
 // nothing, so they take no focus
 series.links.template.setAll({
 	focusable: true,
-	role: "figure",
 	focusableGroup: "links",
 	hoverOnFocus: true, // a focused link shows its tooltip
 	ariaLabel: "{sourceId} to {targetId}: ${value} billion"

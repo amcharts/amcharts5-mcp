@@ -2,7 +2,7 @@
 title: "Force-Directed Tree"
 source: "https://www.amcharts.com/demos/force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A force-directed tree draws a hierarchy as bubbles linked to their parents, placed by a physics simulation. Here, a company of 118 people: departments around it, teams around them, sized by headcount.
@@ -132,8 +132,7 @@ series.set("selectedDataItem", series.dataItems[0]); // start with the root sele
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Force-directed tree of a 118-person company: six departments and their teams, sized by headcount. Tab to the bubbles, move between them with the arrow keys, and press Enter to fold or open a department's teams"
+  ariaLabel: "Force-directed tree of a 118-person company: six departments and their teams, sized by headcount. Tab to the bubbles, move between them with the up and down arrow keys, and press Enter to fold or open a department's teams"
 });
 // the company, departments and teams: one Tab stop (a focusable group), the arrow keys step through them; Enter folds one
 series.nodes.template.setAll({

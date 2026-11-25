@@ -2,7 +2,7 @@
 title: "Animated XY Bubble Timeline Chart"
 source: "https://www.amcharts.com/demos/animated-xy-bubble-timeline-chart/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Fifty bubbles with made-up values wander across four colored quadrants as the years run from 1953 to 2025. Press play to watch them move and grow, or drag the slider to any year.
@@ -319,8 +319,7 @@ series.data.setAll(yearData[currentYear]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Animated bubble chart of 50 bubbles with made-up values over four quadrants, for one year from 1953 to 2025. Tab to the bubbles and move between them with the arrow keys, then Tab to the play button and the year slider"
+  ariaLabel: "Animated bubble chart of 50 bubbles with made-up values over four quadrants, for one year from 1953 to 2025. Tab to the bubbles and move between them with the up and down arrow keys, then Tab to the play button and the year slider"
 });
 // the bubbles: set up for the keyboard where they are made, in the bullet function above
 // the play button and the year slider come after the bubbles

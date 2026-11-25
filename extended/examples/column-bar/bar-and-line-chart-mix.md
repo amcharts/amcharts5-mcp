@@ -2,7 +2,7 @@
 title: "Bar and Line Chart Mix"
 source: "https://www.amcharts.com/demos/bar-and-line-chart-mix/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Bars and a line on one chart, turned on its side: income as horizontal bars, expenses as a line that climbs through the years. In 2025, expenses overtook income.
@@ -186,8 +186,7 @@ series2.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bar and line chart of income as bars and expenses as a line, from 2021 to 2025. Tab to the income bars or the expenses line, then move between the years with the arrow keys"
+  ariaLabel: "Bar and line chart of income as bars and expenses as a line, from 2021 to 2025. Tab to the income bars or the expenses line, then move between the years with the up and down arrow keys"
 });
 // the income bars: one Tab stop (a focusable group), the arrow keys step through them
 series1.columns.template.setAll({

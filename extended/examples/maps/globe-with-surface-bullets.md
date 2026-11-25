@@ -2,7 +2,7 @@
 title: "Globe with Surface Bullets"
 source: "https://www.amcharts.com/demos/globe-with-surface-bullets/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Twelve city pins that lie on the surface of the globe, as if painted on it: they turn with the globe and flatten towards its edge.
@@ -182,8 +182,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the globe, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Globe with twelve city pins that lie flat on its surface. Tab to the countries or the cities, then move between them with the arrow keys"
+  ariaLabel: "Globe with twelve city pins that lie flat on its surface. Tab to the countries or the cities, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

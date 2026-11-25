@@ -2,7 +2,7 @@
 title: "Time Zones and Daylight Saving"
 source: "https://www.amcharts.com/demos/time-zones-and-daylight-saving/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two offices open 9 to 5 local time, shown in Berlin time or any zone you pick: days start at its midnight, and where its clocks change, a day has 25 hours.
@@ -216,8 +216,7 @@ chart.zoomOutButton.set("forceHidden", true);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Timeline of the opening hours of a Berlin and a New York office, 9 to 5 on their own clocks, and the hours both are open, from October 19 to November 7, 2026, in Berlin time. Tab to a row's bars, then move between the days with the arrow keys"
+  ariaLabel: "Timeline of the opening hours of a Berlin and a New York office, 9 to 5 on their own clocks, and the hours both are open, from October 19 to November 7, 2026, in Berlin time. Tab to a row's bars, then move between the days with the up and down arrow keys"
 });
 // each row's bars: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

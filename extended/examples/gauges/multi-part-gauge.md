@@ -2,7 +2,7 @@
 title: "Multi-Part Gauge"
 source: "https://www.amcharts.com/demos/multi-part-gauge/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Four small gauges in one circle: each quarter is its own arc with its own scale, color and needle, so one chart shows four readings side by side.
@@ -185,7 +185,6 @@ function gaugeName() {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName()
 });
 am5.array.each([hand1, hand2, hand3, hand4], function (hand) {

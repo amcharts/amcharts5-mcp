@@ -2,7 +2,7 @@
 title: "Pie of a Pie (Exploding Pie Chart)"
 source: "https://www.amcharts.com/demos/pie-of-a-pie/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two pies joined by lines: click a slice of the big pie and it turns to face the small one, which shows what that slice is made of.
@@ -268,8 +268,7 @@ function selectSlice(slice) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 container.setAll({
   focusable: true, // Tab reaches the charts, and a screen reader names them
-  role: "figure",
-  ariaLabel: "Pie of a pie: a big pie of six countries, and a small pie of the parts of the one picked. Tab to the big pie's slices, move between them with the arrow keys and press Enter to pick one; then Tab to its parts"
+  ariaLabel: "Pie of a pie: a big pie of six countries, and a small pie of the parts of the one picked. Tab to the big pie's slices, move between them with the up and down arrow keys and press Enter to pick one; then Tab to its parts"
 });
 // the big pie's slices: one Tab stop (a focusable group), the arrow keys step through them; Enter picks one, as a click
 series.slices.template.setAll({

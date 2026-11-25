@@ -2,7 +2,7 @@
 title: "Radar Timeline"
 source: "https://www.amcharts.com/demos/radar-timeline/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Temperature anomalies for 104 countries around a circle, grouped by continent, and a play button that runs through the years from 1973 to 2016.
@@ -272,14 +272,11 @@ categoryAxis.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radial column chart of the temperature anomaly of 104 countries in one year, grouped by continent; the year is shown in the middle. Tab to the countries or the continents, then move through them with the arrow keys; Enter on a continent zooms in on it"
+  ariaLabel: "Radial column chart of the temperature anomaly of 104 countries in one year, grouped by continent; the year is shown in the middle. Tab to the countries or the continents, then move through them with the up and down arrow keys; Enter on a continent zooms in on it"
 });
 // the countries' columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
-  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
   focusable: true,
-  role: "figure",
   focusableGroup: "countries",
   ariaLabel: "{categoryX}: {valueY}"
 });
@@ -333,7 +330,6 @@ function createRange(name, continentData, index) {
     innerRadius: -25,           // a 25px band along the inside of the ring's outer edge
     // keyboard and screen readers (see Accessibility above): one Tab stop for the continents (a focusable
     // group), the arrow keys step through them, and Enter zooms in on one, as a click does
-    isMeasured: false, // without this, a band can't take focus
     focusable: true,
     role: "button",
     focusableGroup: "continents",

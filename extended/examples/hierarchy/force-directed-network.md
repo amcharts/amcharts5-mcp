@@ -2,7 +2,7 @@
 title: "Force-Directed Network"
 source: "https://www.amcharts.com/demos/force-directed-network/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A network graph laid out by forces that push nodes apart and pull linked ones together. Here, three trees held together by two cross-links.
@@ -177,8 +177,7 @@ series.set("selectedDataItem", series.dataItems[0]); // start with the root sele
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Network graph of three trees, 1, 2 and 3, held together by two cross-links. Tab to the nodes, move between them with the arrow keys, and press Enter to open or close one"
+  ariaLabel: "Network graph of three trees, 1, 2 and 3, held together by two cross-links. Tab to the nodes, move between them with the up and down arrow keys, and press Enter to open or close one"
 });
 // the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter opens or closes one
 series.nodes.template.setAll({

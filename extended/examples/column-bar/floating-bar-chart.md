@@ -2,7 +2,7 @@
 title: "Floating Bar Chart"
 source: "https://www.amcharts.com/demos/floating-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Floating bars start and end wherever the data says, not at zero: here, four people’s working hours on one day, from John’s 8:00 start to Eaton’s 19:00 finish.
@@ -131,8 +131,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Floating bar chart of four people's working hours on one day, from John's 8:00 start to Eaton's 19:00 finish. Tab to the bars, then move between the people with the arrow keys"
+  ariaLabel: "Floating bar chart of four people's working hours on one day, from John's 8:00 start to Eaton's 19:00 finish. Tab to the bars, then move between the people with the up and down arrow keys"
 });
 // the bars: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

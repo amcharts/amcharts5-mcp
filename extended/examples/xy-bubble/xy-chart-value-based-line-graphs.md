@@ -2,7 +2,7 @@
 title: "XY Chart with Value-Based Line Graphs"
 source: "https://www.amcharts.com/demos/xy-chart-value-based-line-graphs/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two lines with numbers on both axes, not dates or categories; where a line has no value, it runs on to the next point. Circle and star sizes add a third value.
@@ -297,10 +297,14 @@ series1.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of two dashed lines on two value axes, one with circles and one with stars sized by a third value; a line with no value at a point runs on to the next. Tab to the circles or the stars, then move along the line with the arrow keys"
+  ariaLabel: "Line chart of two dashed lines on two value axes, one with circles and one with stars sized by a third value; a line with no value at a point runs on to the next. Tab to the circles or the stars, then move along the line with the up and down arrow keys"
 });
 // the circles and stars: set up for the keyboard where they are made, in the bullet functions above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

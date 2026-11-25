@@ -2,7 +2,7 @@
 title: "Radar Heat Map"
 source: "https://www.amcharts.com/demos/radar-heat-map/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A heat map bent into a ring: the 24 hours run around the circle, the seven days of the week from the outside in, and color shows how busy each hour was.
@@ -875,14 +875,11 @@ xAxis.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radial heat map of how busy each hour of the week was: the 24 hours run around the ring, the seven days from the outside in. Tab to the cells, then move through them with the arrow keys, hour by hour from Sunday to Saturday"
+  ariaLabel: "Radial heat map of how busy each hour of the week was: the 24 hours run around the ring, the seven days from the outside in. Tab to the cells, then move through them with the up and down arrow keys, hour by hour from Sunday to Saturday"
 });
 // the cells: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
-  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
   focusable: true,
-  role: "figure",
   focusableGroup: "cells",
   hoverOnFocus: true, // a focused cell shows its tooltip
   ariaLabel: "{categoryY}, {categoryX}: {value}"

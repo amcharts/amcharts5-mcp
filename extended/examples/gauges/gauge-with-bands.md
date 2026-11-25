@@ -2,7 +2,7 @@
 title: "Gauge with Bands"
 source: "https://www.amcharts.com/demos/gauge-with-bands/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A gauge split into seven colored bands, from Unsustainable to High Performing. The needle takes the color of the band it points at, and the score sits in its pin.
@@ -206,7 +206,6 @@ function gaugeName(value) {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName(axisDataItem.get("value"))
 });
 axisDataItem.on("value", function (value) {

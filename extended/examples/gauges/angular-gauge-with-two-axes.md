@@ -2,7 +2,7 @@
 title: "Angular Gauge with Two Axes"
 source: "https://www.amcharts.com/demos/angular-gauge-with-two-axes/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 One dial, two scales: the inner one runs to 160 and the outer one to 240, each with its own needle and readout in matching colors.
@@ -261,7 +261,6 @@ function gaugeName() {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName()
 });
 label1.on("text", function () {

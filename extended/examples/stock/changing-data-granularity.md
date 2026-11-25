@@ -2,7 +2,7 @@
 title: "Changing Data Granularity"
 source: "https://www.amcharts.com/demos/changing-data-granularity/"
 category: "stock"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A stock chart that loads new data when you change the interval: a year of Microsoft prices as daily, weekly or monthly candles, or a single day in one-minute candles. Each interval is its own file, fetched when you pick it.
@@ -399,7 +399,6 @@ var toolbar = am5stock.StockToolbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 stockChart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Stock chart of Microsoft (MSFT) prices as candlesticks with volume: a year of daily candles, which the toolbar's interval menu switches to weekly or monthly candles, or one day of one-minute candles. The chart has too many candles to step through with the keyboard. The toolbar above the chart adds indicators and drawings"
 });
 // no focusable points on the candles: hundreds of them would slow down loading, zooming and panning

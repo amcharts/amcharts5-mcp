@@ -2,7 +2,7 @@
 title: "Stacked Column Chart"
 source: "https://www.amcharts.com/demos/stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A stacked column chart piles the series on top of each other, so each column shows a total and what it is made of. Here, six regions over three years, with each value written on its segment where it fits.
@@ -168,8 +168,7 @@ makeSeries("Africa", "africa");
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stacked column chart of six regions over 2023, 2024 and 2025, each year's column split by region. Tab to a region's segments, then move between its years with the arrow keys"
+  ariaLabel: "Stacked column chart of six regions over 2023, 2024 and 2025, each year's column split by region. Tab to a region's segments, then move between its years with the up and down arrow keys"
 });
 // each region's segments: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

@@ -2,7 +2,7 @@
 title: "Drill-Down, Zoomable Voronoi Treemap"
 source: "https://www.amcharts.com/demos/voronoi-treemap/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Voronoi treemap in a circle: every country is a cell sized by its population, grouped by continent. Zoom in to read the small ones.
@@ -1326,8 +1326,7 @@ series.set("selectedDataItem", series.dataItems[0]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Voronoi treemap in a circle of the world's people by continent and country, countries under 5 million in Others. Tab to the cells, move between them with the arrow keys, and press Enter to zoom into a continent or back out"
+  ariaLabel: "Voronoi treemap in a circle of the world's people by continent and country, countries under 5 million in Others. Tab to the cells, move between them with the up and down arrow keys, and press Enter to zoom into a continent or back out"
 });
 // the continents and countries: one Tab stop (a focusable group), the arrow keys step through them; Enter zooms
 series.nodes.template.setAll({

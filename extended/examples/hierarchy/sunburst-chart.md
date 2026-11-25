@@ -2,7 +2,7 @@
 title: "Sunburst Chart"
 source: "https://www.amcharts.com/demos/sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A sunburst chart draws a hierarchy as rings: the whole in the middle, each ring one level deeper. Here, what fills a laptop’s drive, folder by folder.
@@ -118,8 +118,7 @@ series.set("selectedDataItem", series.dataItems[0]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Sunburst chart of what fills a laptop's drive, folder by folder, in gigabytes. Tab to the folders, move between them with the arrow keys, and press Enter to open one; Enter on the middle goes back"
+  ariaLabel: "Sunburst chart of what fills a laptop's drive, folder by folder, in gigabytes. Tab to the folders, move between them with the up and down arrow keys, and press Enter to open one; Enter on the middle goes back"
 });
 // the folders: one Tab stop (a focusable group), the arrow keys step through them; Enter opens one
 series.nodes.template.setAll({

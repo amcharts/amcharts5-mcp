@@ -2,7 +2,7 @@
 title: "Divergent Lines"
 source: "https://www.amcharts.com/demos/divergent-lines/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 One solid line for what has happened, then three dashed lines for what might: a projection, and what easing or tightening the rules could do by December.
@@ -202,8 +202,7 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a value observed monthly from January to July 2025, growing from 0 to 720,000, then three outlooks to December: a projection, easing rules and stricter rules. Tab to a line, then move along it with the arrow keys"
+  ariaLabel: "Line chart of a value observed monthly from January to July 2025, growing from 0 to 720,000, then three outlooks to December: a projection, easing rules and stricter rules. Tab to a line, then move along it with the up and down arrow keys"
 });
 // the points: one Tab stop per line (a focusable group), the arrow keys step through its months
 chart.series.each(function (series) {

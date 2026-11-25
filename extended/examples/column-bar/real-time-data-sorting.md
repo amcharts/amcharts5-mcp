@@ -2,7 +2,7 @@
 title: "Real-Time Data Sorting"
 source: "https://www.amcharts.com/demos/real-time-data-sorting/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart that keeps itself sorted: every second and a half, eleven countries get new values and the columns slide into order as their numbers count.
@@ -235,8 +235,7 @@ function sortCategoryAxis() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of eleven countries' values, which change every second and a half, with the columns sorted from highest to lowest. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Column chart of eleven countries' values, which change every second and a half, with the columns sorted from highest to lowest. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

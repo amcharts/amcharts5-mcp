@@ -2,7 +2,7 @@
 title: "Gantt Chart Playground"
 source: "https://www.amcharts.com/demos/gantt-chart-playground/"
 category: "gantt"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Gantt chart to try things on. It starts with a small sample plan: add tasks with the + button and drag them around, or clear everything with the bin and start from nothing. Your plan is saved in this browser.
@@ -130,10 +130,24 @@ gantt.events.on("dateunmarked", (ev) => {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 gantt.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Gantt chart to try things on, starting with a four-task sample plan that is saved in this browser. Tab to the date range and the toolbar, where you can add tasks or clear the chart"
+  ariaLabel: "Gantt chart to try things on, starting with a four-task sample plan that is saved in this browser. Tab to the date range and the toolbar, where you can add tasks or clear the chart. Then Tab to the tasks: the up and down arrow keys move between them, the left and right arrow keys move a task, and Tab goes on to its start, progress and end"
 });
 // the Gantt brings its own keyboard support: the date range and the toolbar buttons are focusable by the library
+// the tasks: one Tab stop for the bars and milestones (a focusable group). The up and down arrow keys move between
+// them, the left and right arrow keys move the focused one, Tab goes on to its grips, and it shows its tooltip.
+// An editable task is a slider that reads its dates itself, so its name leaves them out
+gantt.series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks",
+  hoverOnFocus: true,
+  ariaLabel: "{name}, {progress.formatNumber('#.%')} done"
+});
+gantt.series.zeroRectangles.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks", // the same group as the bars: one Tab stop for both
+  hoverOnFocus: true,
+  ariaLabel: "{name}, milestone"
+});
 
 gantt.appear();
 ```

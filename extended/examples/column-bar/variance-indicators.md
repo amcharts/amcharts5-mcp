@@ -2,7 +2,7 @@
 title: "Variance Indicators"
 source: "https://www.amcharts.com/demos/variance-indicators/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart that shows the change from each year to the next: an arrow runs from one column’s height to the next one’s, with the change in percent, green for a rise and red for a fall.
@@ -191,8 +191,7 @@ series2.bullets.push(function () {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of a value for each year from 2019 to 2025, with the change in percent from each year to the next. Tab to the columns or the changes, then move between the years with the arrow keys"
+  ariaLabel: "Column chart of a value for each year from 2019 to 2025, with the change in percent from each year to the next. Tab to the columns or the changes, then move between the years with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

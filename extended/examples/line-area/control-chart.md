@@ -2,7 +2,7 @@
 title: "Control Chart"
 source: "https://www.amcharts.com/demos/control-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A control chart tracks readings against a center line and two control limits. Readings beyond a limit turn red; a long run above the center line gets red rings, an early warning that the process is drifting.
@@ -224,10 +224,12 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Control chart of 16 readings, one every 30 minutes from 10:30 pm on January 1, 2026 to 6 am the next day, against a center line of 100 and control limits of 98.35 and 101.65. Tab to the readings, then move between them with the arrow keys"
+  ariaLabel: "Control chart of 16 readings, one every 30 minutes from 10:30 pm on January 1, 2026 to 6 am the next day, against a center line of 100 and control limits of 98.35 and 101.65. Tab to the readings, then move between them with the up and down arrow keys"
 });
 // the readings: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

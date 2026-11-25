@@ -2,7 +2,7 @@
 title: "Professional Candlesticks"
 source: "https://www.amcharts.com/demos/professional-candlesticks/"
 category: "candlestick-ohlc"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Candlesticks in the hollow style traders call professional. Each candle says two things: hollow if the day closed above its open, filled if below, and green or red for a close above or below the day before.
@@ -220,7 +220,6 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Candlestick chart of 1,000 days of random prices up to today, showing the last three months: a hollow candle closed above its open, a filled one below, and green or red means a close above or below the day before. The chart has too many candles to step through with the keyboard"
 });
 // no focusable points on the candles: zoomed out, hundreds of them would slow down loading, zooming and panning

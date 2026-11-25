@@ -2,7 +2,7 @@
 title: "Column Chart with Images on Top"
 source: "https://www.amcharts.com/demos/column-chart-images-top/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart with a face on top of each column, so the chart reads as people, not just numbers. Each picture’s address comes from the data, next to its value.
@@ -155,8 +155,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of a value for four people, with each one's photo on top of the column: Damon has the most at 65,456, Mark the fewest at 13,654. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Column chart of a value for four people, with each one's photo on top of the column: Damon has the most at 65,456, Mark the fewest at 13,654. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

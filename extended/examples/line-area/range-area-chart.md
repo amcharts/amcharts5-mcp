@@ -2,7 +2,7 @@
 title: "Range Area Chart"
 source: "https://www.amcharts.com/demos/range-area-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A band instead of a line: the shaded area runs between a low and a high value for each day, so you see the spread as well as the trend.
@@ -168,7 +168,6 @@ series1.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Range area chart of a daily low and high value over 200 days, the band between them shaded. The lines have too many points to step through with the keyboard"
 });
 // no focusable points on the lines: 400 of them would slow down loading, zooming and panning

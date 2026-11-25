@@ -2,7 +2,7 @@
 title: "Dragging Pie Slices"
 source: "https://www.amcharts.com/demos/dragging-pie-slices/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two donuts with a line between them. Drag a slice across the line and it moves to the other donut; let go too early and it snaps back.
@@ -279,8 +279,7 @@ am5.array.each(series1.dataItems, function (dataItem) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 container.setAll({
   focusable: true, // Tab reaches the charts, and a screen reader names them
-  role: "figure",
-  ariaLabel: "Two donut charts that share six countries: three in each to start, moved between them by dragging a slice across. Tab to each donut's slices, then move between them with the arrow keys"
+  ariaLabel: "Two donut charts that share six countries: three in each to start, moved between them by dragging a slice across. Tab to each donut's slices, then move between them with the up and down arrow keys"
 });
 // each donut's slices: one Tab stop (a focusable group), the arrow keys step through them (the gray placeholder is
 // left out in its settings in the data)

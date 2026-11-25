@@ -2,7 +2,7 @@
 title: "Pie Chart"
 source: "https://www.amcharts.com/demos/pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The classic way to show parts of a whole: one circle, cut into slices sized by their share. Here, seven countries.
@@ -89,8 +89,7 @@ series.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Pie chart of seven countries and their share. Tab to the slices, then move between them with the arrow keys"
+  ariaLabel: "Pie chart of seven countries and their share. Tab to the slices, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series.slices.template.setAll({

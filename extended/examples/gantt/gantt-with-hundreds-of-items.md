@@ -2,7 +2,7 @@
 title: "Gantt with Hundreds of Items"
 source: "https://www.amcharts.com/demos/gantt-with-hundreds-of-items/"
 category: "gantt"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 About 200 tasks in 40 groups, generated from today’s date, to show the Gantt chart keeps up with a big plan. Scroll through the list, fold groups away, or press the fit button to zoom the timeline to the tasks in view.
@@ -120,11 +120,25 @@ gantt.series.data.setAll(ganttData.series);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 gantt.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Gantt chart of about 200 generated tasks in 40 groups, starting today. Tab to the date range, the toolbar and the groups in the task list; Enter folds or opens a group"
+  ariaLabel: "Gantt chart of about 200 generated tasks in 40 groups, starting today. Tab to the date range, the toolbar and the groups in the task list; Enter folds or opens a group. Then Tab to the tasks: the up and down arrow keys move between them, the left and right arrow keys move a task, and Tab goes on to its start, progress and end"
 });
 // the Gantt brings its own keyboard support: the date range, the toolbar buttons and the task list's groups
 // are focusable by the library
+// the tasks: one Tab stop for the bars and milestones (a focusable group). The up and down arrow keys move between
+// them, the left and right arrow keys move the focused one, Tab goes on to its grips, and it shows its tooltip.
+// An editable task is a slider that reads its dates itself, so its name leaves them out
+gantt.series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks",
+  hoverOnFocus: true,
+  ariaLabel: "{name}, {progress.formatNumber('#.%')} done"
+});
+gantt.series.zeroRectangles.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks", // the same group as the bars: one Tab stop for both
+  hoverOnFocus: true,
+  ariaLabel: "{name}, milestone"
+});
 ```
 
 ## HTML

@@ -2,7 +2,7 @@
 title: "Polar Chart"
 source: "https://www.amcharts.com/demos/polar-chart/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A polar chart places values by direction: the farther a point from the middle, the higher the value. Here, the average wind speed at a beach from eight directions, with onshore winds shaded blue and offshore winds red.
@@ -163,8 +163,7 @@ shadeSector("SE", "S", root.interfaceColors.get("negative"));
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Polar chart of the average wind speed at a beach, in knots, from eight directions; winds from the north-west and north blow in from the sea, and winds from the south-east and south blow out to sea. Tab to the directions, then move between them with the arrow keys"
+  ariaLabel: "Polar chart of the average wind speed at a beach, in knots, from eight directions; winds from the north-west and north blow in from the sea, and winds from the south-east and south blow out to sea. Tab to the directions, then move between them with the up and down arrow keys"
 });
 // the directions' dots: set up for the keyboard where they are made, in the bullet function above
 

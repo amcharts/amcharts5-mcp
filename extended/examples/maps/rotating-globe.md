@@ -2,7 +2,7 @@
 title: "Rotating Globe"
 source: "https://www.amcharts.com/demos/rotating-globe/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The Earth from space, as a 3D globe that turns on its own. Turn on Country names to label the countries; more names appear as you zoom in.
@@ -312,8 +312,7 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the globe, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Globe of the Earth's countries, turning on its own. Tab to the countries, move between them with the arrow keys, and press Enter to turn the globe to one and zoom in"
+  ariaLabel: "Globe of the Earth's countries, turning on its own. Tab to the countries, move between them with the up and down arrow keys, and press Enter to turn the globe to one and zoom in"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

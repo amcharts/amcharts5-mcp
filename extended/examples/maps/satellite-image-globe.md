@@ -2,7 +2,7 @@
 title: "Satellite Image Globe"
 source: "https://www.amcharts.com/demos/satellite-image-globe/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A 3D globe covered with a satellite image of the whole Earth, turning slowly on its own. The image is redrawn to fit the globe at every turn and zoom, with the country borders on top.
@@ -151,8 +151,7 @@ responsive.addRule({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the globe, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Globe covered with a satellite image of the Earth, turning slowly, with the country borders on top. Tab to the countries, then move between them with the arrow keys"
+  ariaLabel: "Globe covered with a satellite image of the Earth, turning slowly, with the country borders on top. Tab to the countries, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

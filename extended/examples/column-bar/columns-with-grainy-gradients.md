@@ -2,7 +2,7 @@
 title: "Columns with Grainy Gradients"
 source: "https://www.amcharts.com/demos/columns-with-grainy-gradients/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Columns styled like a poster: each fades from its color to a darker shade, with film grain, a rounded top and a soft shadow that grows on hover.
@@ -154,8 +154,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of a value for six countries, from the USA at 2,025 down to Italy at 452. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Column chart of a value for six countries, from the USA at 2,025 down to Italy at 452. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

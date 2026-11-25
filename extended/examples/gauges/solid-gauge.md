@@ -2,7 +2,7 @@
 title: "Solid Gauge"
 source: "https://www.amcharts.com/demos/solid-gauge/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Four progress bars bent into rings, one inside the other, each filling its track up to a percentage. Here, four departments from 35% to 92%.
@@ -177,15 +177,12 @@ series2.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Solid gauge of four departments' progress, from 35% to 92%, as bars bent into rings. Tab to the bars, then move between them with the arrow keys"
+  ariaLabel: "Solid gauge of four departments' progress, from 35% to 92%, as bars bent into rings. Tab to the bars, then move between them with the up and down arrow keys"
 });
 // the colored bars: one Tab stop (a focusable group), the arrow keys step through them; the faint tracks behind them
 // are left out
 series2.columns.template.setAll({
   focusable: true,
-  role: "figure",
-  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
   focusableGroup: "departments",
   hoverOnFocus: true, // a focused bar shows its tooltip
   ariaLabel: "{category}: {valueX}%"

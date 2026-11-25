@@ -2,7 +2,7 @@
 title: "Drill-Down Sunburst Chart"
 source: "https://www.amcharts.com/demos/drill-down-sunburst-chart/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A sunburst you explore one branch at a time: click a category and it becomes the inner ring, with its own breakdown around it. Here, a year of an online store’s sales.
@@ -134,8 +134,7 @@ series.selectDataItem(series.dataItems[0]); // select the root, so the breadcrum
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Sunburst chart of a year of an online store's sales in five categories, in thousands of dollars. Tab to the categories, move between them with the arrow keys, and press Enter to open one; the breadcrumbs above lead back up"
+  ariaLabel: "Sunburst chart of a year of an online store's sales in five categories, in thousands of dollars. Tab to the categories, move between them with the up and down arrow keys, and press Enter to open one; the breadcrumbs above lead back up"
 });
 // the categories: one Tab stop (a focusable group), the arrow keys step through them; Enter opens one
 series.nodes.template.setAll({

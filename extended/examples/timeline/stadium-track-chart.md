@@ -2,7 +2,7 @@
 title: "Stadium Track Chart"
 source: "https://www.amcharts.com/demos/stadium-track-chart/"
 category: "timeline"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Six values as a race: each runner has a lane on an oval track, and their bar runs from the start line around the oval as far as their value takes it. Photos in the middle name the runners.
@@ -234,13 +234,11 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stadium track chart of six runners' values from 0 to 1,000, each a bar in its own lane running around an oval track: Monica 730, Ross 650, Joey 578, Rachel 532, Phoebe 490 and Chandler 450. Tab to the bars, then move between the runners with the arrow keys"
+  ariaLabel: "Stadium track chart of six runners' values from 0 to 1,000, each a bar in its own lane running around an oval track: Monica 730, Ross 650, Joey 578, Rachel 532, Phoebe 490 and Chandler 450. Tab to the bars, then move between the runners with the up and down arrow keys"
 });
 // the bars: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "runners",
   // no hoverOnFocus: a focused bar's tooltip would show in the middle of the oval, away from the bar
   ariaLabel: "{categoryY}: {valueX}"

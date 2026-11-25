@@ -2,7 +2,7 @@
 title: "Irregular Interval XY"
 source: "https://www.amcharts.com/demos/irregular-interval-xy/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart where each column is as wide as the stretch it covers: the elevation profile of a 50 km route, in six stretches of different lengths.
@@ -168,8 +168,7 @@ marks.forEach(function(value, index) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Elevation profile of a 50 km route in six stretches of different lengths, rising from 400 m to 1,020 m. Tab to the stretches, then move between them with the arrow keys"
+  ariaLabel: "Elevation profile of a 50 km route in six stretches of different lengths, rising from 400 m to 1,020 m. Tab to the stretches, then move between them with the up and down arrow keys"
 });
 // the stretches: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
@@ -178,6 +177,11 @@ series.columns.template.setAll({
   hoverOnFocus: true, // a focused stretch shows its tooltip
   ariaLabel: "{from} to {to} km: {altitude} m"
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").endGrip.set("tabindexOrder", 10);
 
 // Add cursor
 // https://docs.amcharts.com/v5/charts/xy-chart/cursor/

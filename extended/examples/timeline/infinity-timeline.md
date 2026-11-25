@@ -2,7 +2,7 @@
 title: "Infinity Timeline"
 source: "https://www.amcharts.com/demos/infinity-timeline/"
 category: "timeline"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Apollo 11, July 15 to 24, 1969, as a figure eight from Earth to the Moon and back. Each of its 229 dots is a logged event, from countdown to quarantine.
@@ -353,8 +353,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Timeline of the Apollo 11 mission, July 15 to 24, 1969, drawn as a figure eight from the Earth to the Moon and back, with a dot for each of 229 logged events, from the countdown to quarantine. Tab to the events, then move between them with the arrow keys"
+  ariaLabel: "Timeline of the Apollo 11 mission, July 15 to 24, 1969, drawn as a figure eight from the Earth to the Moon and back, with a dot for each of 229 logged events, from the countdown to quarantine. Tab to the events, then move between them with the up and down arrow keys"
 });
 // the events: set up for the keyboard where they are made, in the bullet function above
 

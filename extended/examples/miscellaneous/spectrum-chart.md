@@ -2,7 +2,7 @@
 title: "Spectrum Chart"
 source: "https://www.amcharts.com/demos/spectrum-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A spectrum chart is a single bar split into periods and colored by status, like a strip of colored tape along a time line. Here, a machine’s afternoon from 11:00 to 17:30: normal running, alarms, anomalies and one critical error.
@@ -176,8 +176,7 @@ legend.data.setAll(Object.keys(colors).map(function(status) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Spectrum chart of a machine's status from 11:00 to 17:30 in ten periods: normal operation, minor alarms, anomalies and one critical error. Tab to the periods, then move between them with the arrow keys"
+  ariaLabel: "Spectrum chart of a machine's status from 11:00 to 17:30 in ten periods: normal operation, minor alarms, anomalies and one critical error. Tab to the periods, then move between them with the up and down arrow keys"
 });
 // the periods: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

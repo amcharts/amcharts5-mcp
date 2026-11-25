@@ -2,7 +2,7 @@
 title: "Gantt Chart in Read-Only Mode"
 source: "https://www.amcharts.com/demos/gantt-chart-in-read-only-mode/"
 category: "gantt"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Gantt chart locked for viewing: no dragging or editing, just the plan to read, scroll and point at, until the toolbar’s pencil button unlocks it.
@@ -119,10 +119,24 @@ gantt.series.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 gantt.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Read-only Gantt chart of a seven-phase project, from idea to release. Tab to the date range and the toolbar; its Edit mode button unlocks editing"
+  ariaLabel: "Read-only Gantt chart of a seven-phase project, from idea to release. Tab to the date range, the toolbar and the tasks, and move between the tasks with the up and down arrow keys; the toolbar's Edit mode button unlocks editing"
 });
 // the Gantt brings its own keyboard support: the date range and the toolbar buttons are focusable by the library
+// the tasks: one Tab stop for the bars and milestones (a focusable group); the up and down arrow keys move between
+// them, and a focused task shows its tooltip. Read-only, a task reads its name and dates; with editing on, it is a
+// slider that reads its dates itself
+gantt.series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks",
+  hoverOnFocus: true,
+  ariaLabel: "{name}, {openValueX.formatDate('MMM d')} to {valueX.formatDate('MMM d')}, {progress.formatNumber('#.%')} done"
+});
+gantt.series.zeroRectangles.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks", // the same group as the bars: one Tab stop for both
+  hoverOnFocus: true,
+  ariaLabel: "{name}, milestone, {openValueX.formatDate('MMM d')}"
+});
 
 gantt.appear();
 ```

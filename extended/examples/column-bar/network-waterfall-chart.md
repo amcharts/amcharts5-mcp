@@ -2,7 +2,7 @@
 title: "Network Waterfall Chart"
 source: "https://www.amcharts.com/demos/network-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The requests a shop's home page makes as it loads, the way the browser's network panel draws them: each request a row, split into its phases, with its DOMContentLoaded and Load moments marked. Throttle the network with Chrome's presets to see what a slow connection does.
@@ -297,8 +297,7 @@ showRequests("none");
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Network waterfall of the 17 requests a shop's home page makes as it loads, each split into its phases: queueing, DNS lookup, connecting, waiting for the server and content download. Tab to a phase's bars, then move between the requests with the arrow keys"
+  ariaLabel: "Network waterfall of the 17 requests a shop's home page makes as it loads, each split into its phases: queueing, DNS lookup, connecting, waiting for the server and content download. Tab to a phase's bars, then move between the requests with the up and down arrow keys"
 });
 // each phase's bars: one Tab stop (a focusable group), the arrow keys step through them
 series.forEach(function (s) {

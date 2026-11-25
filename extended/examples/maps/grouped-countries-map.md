@@ -2,7 +2,7 @@
 title: "Grouped Countries Map"
 source: "https://www.amcharts.com/demos/grouped-countries-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A map of the 27 countries of the European Union, grouped by when they joined. Hover a country and its whole group lights up; the legend switches groups off and on.
@@ -203,8 +203,7 @@ am5.array.each(groupData, function(group) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Map of the 27 countries of the European Union in four groups, by when they joined: before 2004, in 2004, in 2007 and in 2013. Tab to each group's countries, then move between them with the arrow keys"
+  ariaLabel: "Map of the 27 countries of the European Union in four groups, by when they joined: before 2004, in 2004, in 2007 and in 2013. Tab to each group's countries, then move between them with the up and down arrow keys"
 });
 // each group's countries: one Tab stop (a focusable group), the arrow keys step through them
 legend.data.each(function (series) {

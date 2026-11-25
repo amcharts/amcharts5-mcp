@@ -2,7 +2,7 @@
 title: "Vertical Line Chart"
 source: "https://www.amcharts.com/demos/vertical-line-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart turned on its side: dates run up the left edge and values across, so the line climbs the page. Two colored zones split the values below and above 70.
@@ -326,10 +326,12 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Vertical line chart of a daily value from December 24, 2025 to January 30, 2026, dates running up the chart, with zones below and above 70. Tab to the line, then move along it with the arrow keys"
+  ariaLabel: "Vertical line chart of a daily value from December 24, 2025 to January 30, 2026, dates running up the chart, with zones below and above 70. Tab to the line, then move along it with the up and down arrow keys"
 });
 // the dots: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarY").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

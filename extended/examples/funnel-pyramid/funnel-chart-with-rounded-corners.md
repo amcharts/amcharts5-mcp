@@ -2,7 +2,7 @@
 title: "Funnel Chart with Rounded Corners"
 source: "https://www.amcharts.com/demos/funnel-chart-with-rounded-corners/"
 category: "funnel-pyramid"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A funnel of four rounded, evenly spaced slices, with the labels lined up at the side. Each slice slopes to the width of the next, so the outline stays smooth.
@@ -94,13 +94,11 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Funnel chart of four values, from the largest at the top to the smallest at the bottom. Tab to the slices, then move between them with the arrow keys"
+  ariaLabel: "Funnel chart of four values, from the largest at the top to the smallest at the bottom. Tab to the slices, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "slices",
   ariaLabel: "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
 });

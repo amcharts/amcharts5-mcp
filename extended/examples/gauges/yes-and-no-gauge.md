@@ -2,7 +2,7 @@
 title: "Yes and No Gauge"
 source: "https://www.amcharts.com/demos/yes-and-no-gauge/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A gauge with only two answers: a green YES half and a red NO half. The needle swings from one to the other every two seconds.
@@ -124,7 +124,6 @@ function gaugeName(value) {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName(axisDataItem.get("value"))
 });
 axisDataItem.on("value", function (value) {

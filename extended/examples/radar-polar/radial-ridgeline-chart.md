@@ -2,7 +2,7 @@
 title: "Radial Ridgeline Chart"
 source: "https://www.amcharts.com/demos/radial-ridgeline-chart/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A year of a solar array's output as twelve rings, each a month's average day: midnight at the bottom, noon at the top. The latest month is in color and the eleven before it in gray, so it shows at a glance how this month compares with the rest of the year.
@@ -304,7 +304,6 @@ drawLines();
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Radial ridgeline chart of a solar array's average output over a day, one ring for each of the twelve months to October 2026, in kW. The lines have too many points to step through with the keyboard"
 });
 // no focusable points on the lines: one an hour for twelve months, 288 of them would slow down loading and the animations

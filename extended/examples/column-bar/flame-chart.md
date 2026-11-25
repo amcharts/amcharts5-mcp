@@ -2,7 +2,7 @@
 title: "Flame Chart"
 source: "https://www.amcharts.com/demos/flame-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A page's main thread for 1.6 seconds as it loads and starts up, the way the browser's performance tools draw it: each task on top, the calls it made stacked below it, colored by what they do. The part of a task past 50 ms is striped red.
@@ -307,8 +307,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Flame chart of a page's main thread over its first 1.6 seconds: each task, with the calls it made stacked below it, colored by kind: loading, scripting, rendering and painting. Tab to a kind's bars, then move between them with the arrow keys"
+  ariaLabel: "Flame chart of a page's main thread over its first 1.6 seconds: each task, with the calls it made stacked below it, colored by kind: loading, scripting, rendering and painting. Tab to a kind's bars, then move between them with the up and down arrow keys"
 });
 // each kind's bars: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

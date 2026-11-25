@@ -2,7 +2,7 @@
 title: "Horizontally Stacked Axes"
 source: "https://www.amcharts.com/demos/horizontally-stacked-axes/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Stacked axes turned on their side: three panes next to each other, each with its own value axis, and one list of names down the left for all three. Here, a sales team’s deals, calls and revenue per person.
@@ -236,8 +236,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Chart in three panes side by side of a made-up sales team of 19 people: deals closed as bars, calls made and revenue in thousands of dollars as lines. Tab to a pane's bars or points, then move between people with the arrow keys"
+  ariaLabel: "Chart in three panes side by side of a made-up sales team of 19 people: deals closed as bars, calls made and revenue in thousands of dollars as lines. Tab to a pane's bars or points, then move between people with the up and down arrow keys"
 });
 // the deals bars: one Tab stop (a focusable group), the arrow keys step through them
 // the dots of the two lines: set up for the keyboard where they are made, in the bullet function above

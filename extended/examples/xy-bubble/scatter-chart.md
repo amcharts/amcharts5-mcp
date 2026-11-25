@@ -2,7 +2,7 @@
 title: "Scatter Chart"
 source: "https://www.amcharts.com/demos/scatter-chart/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A scatter chart places each point by two values, one per axis. Here, two sets of 12 points, as upward and downward triangles, each with its trend line.
@@ -267,10 +267,14 @@ trendSeries1.data.setAll(trendLine(data, "bx", "by"));
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Scatter chart of two sets of 12 points, x from 1 to 12, drawn as upward and downward triangles, each with a straight trend line; both rise. Tab to a set's triangles, then move between them with the arrow keys"
+  ariaLabel: "Scatter chart of two sets of 12 points, x from 1 to 12, drawn as upward and downward triangles, each with a straight trend line; both rise. Tab to a set's triangles, then move between them with the up and down arrow keys"
 });
 // the triangles: set up for the keyboard where they are made, in the bullet functions above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Historical Population Pyramid"
 source: "https://www.amcharts.com/demos/historical-population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A population pyramid tied to a timeline: hover a year in the U.S. population chart and the pyramid redraws for it, from 1950 to the UN projection for 2100.
@@ -494,8 +494,7 @@ popCursor.events.on("cursormoved", function(ev) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 container.setAll({
   focusable: true, // Tab reaches the charts, and a screen reader names them
-  role: "figure",
-  ariaLabel: "U.S. population pyramid by sex and five-year age group, next to a chart of the total population from 1950 to the UN projection for 2100. Tab to the males' or the females' bars and move between age groups with the arrow keys; Tab on to the years and move between them with the arrow keys: the pyramid shows the focused year"
+  ariaLabel: "U.S. population pyramid by sex and five-year age group, next to a chart of the total population from 1950 to the UN projection for 2100. Tab to the males' or the females' bars and move between age groups with the up and down arrow keys; Tab on to the years and move between them with the up and down arrow keys: the pyramid shows the focused year"
 });
 // each side's bars: one Tab stop (a focusable group), the arrow keys step through the age groups
 pyramidSeriesMale.columns.template.setAll({

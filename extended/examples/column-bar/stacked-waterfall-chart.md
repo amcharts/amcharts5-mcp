@@ -2,7 +2,7 @@
 title: "Stacked Waterfall Chart"
 source: "https://www.amcharts.com/demos/stacked-waterfall-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A waterfall with two budgets in every column: the first column is the whole budget of 128, and each stage after it takes its share from both, stepping down to zero. The number above a column is what its stage cost.
@@ -223,8 +223,7 @@ makeSeries("Budget #2", "close2", "open2", "amount2", true);  // the upper parts
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stacked waterfall chart of two budgets, 128 in all, spent over eight stages down to zero. Tab to a budget's parts, then move between the stages with the arrow keys"
+  ariaLabel: "Stacked waterfall chart of two budgets, 128 in all, spent over eight stages down to zero. Tab to a budget's parts, then move between the stages with the up and down arrow keys"
 });
 // each budget's parts: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

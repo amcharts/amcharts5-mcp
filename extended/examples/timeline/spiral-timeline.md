@@ -2,7 +2,7 @@
 title: "Spiral Timeline"
 source: "https://www.amcharts.com/demos/spiral-timeline/"
 category: "timeline"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The same project plan wound into a spiral: time starts in the middle and turns outward, two laps from January to early May. Each module keeps its lane and color all the way round.
@@ -345,13 +345,11 @@ responsive.addRule({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Spiral timeline of a project plan of 13 tasks in four modules, from January 15 to May 4, 2026, with seven milestones lettered A to G, turning outward from the middle in two laps, one lane per module; the legend names the modules' colors. Tab to the tasks, then to the milestones, and move between them with the arrow keys"
+  ariaLabel: "Spiral timeline of a project plan of 13 tasks in four modules, from January 15 to May 4, 2026, with seven milestones lettered A to G, turning outward from the middle in two laps, one lane per module; the legend names the modules' colors. Tab to the tasks, then to the milestones, and move between them with the up and down arrow keys"
 });
 // the tasks' bars: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "tasks",
   // no hoverOnFocus: the tooltip of a bar that bends round a turn would show in the middle of the turn, off the bar
   ariaLabel: "{category}: {task}, {openValueX.formatDate('MMMM d')} to {valueX.formatDate('MMMM d')}"
@@ -362,6 +360,9 @@ legend.itemContainers.template.setAll({
   focusableGroup: "legend",
   tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

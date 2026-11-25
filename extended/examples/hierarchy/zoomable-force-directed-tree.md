@@ -2,7 +2,7 @@
 title: "Zoomable Force Directed Tree"
 source: "https://www.amcharts.com/demos/zoomable-force-directed-tree/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A force-directed tree lays out a hierarchy as linked bubbles that push apart until they settle: here the coffee flavor wheel, 85 flavors in nine families.
@@ -569,8 +569,7 @@ series.set("selectedDataItem", series.dataItems[0]); // start at the top node, s
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Force-directed tree of the coffee flavor wheel, 85 flavors in nine families. Tab to the flavors, move between them with the arrow keys, and press Enter to fold or open one"
+  ariaLabel: "Force-directed tree of the coffee flavor wheel, 85 flavors in nine families. Tab to the flavors, move between them with the up and down arrow keys, and press Enter to fold or open one"
 });
 // the flavors: one Tab stop (a focusable group), the arrow keys step through them; Enter folds or opens one
 series.nodes.template.setAll({

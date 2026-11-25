@@ -2,7 +2,7 @@
 title: "Location-Sensitive Map"
 source: "https://www.amcharts.com/demos/location-sensitive-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A map that loads the visitor’s own country: it looks up your country from your IP address, then loads that country’s map with a random value for each region. Where the lookup can’t answer, it goes by your browser’s language setting.
@@ -186,8 +186,7 @@ polygonSeries.events.on("datavalidated", function () {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Heat map of your own country's regions, found from your IP address, each with a random value up to 10,000: the darker, the higher. Tab to the regions, then move between them with the arrow keys"
+  ariaLabel: "Heat map of your own country's regions, found from your IP address, each with a random value up to 10,000: the darker, the higher. Tab to the regions, then move between them with the up and down arrow keys"
 });
 // the regions: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

@@ -2,7 +2,7 @@
 title: "Complex Venn Diagram"
 source: "https://www.amcharts.com/demos/complex-venn-diagram/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Venn diagram with four circles for coffee’s ingredients, and the drinks where they overlap: espresso and milk make a flat white, espresso and water an Americano, espresso, milk and foam a cappuccino or a latte.
@@ -98,14 +98,12 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the diagram, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Venn diagram of four coffee ingredients, milk, milk foam, espresso and water, with the drinks where they overlap: flat white, macchiato, cappuccino or latte, and Americano. Tab to the areas, then move between them with the arrow keys"
+  ariaLabel: "Venn diagram of four coffee ingredients, milk, milk foam, espresso and water, with the drinks where they overlap: flat white, macchiato, cappuccino or latte, and Americano. Tab to the areas, then move between them with the up and down arrow keys"
 });
 // the ingredients and drinks: one Tab stop (a focusable group), the arrow keys step through them
 // (the unnamed milk and foam overlap is left out, in its row of the data)
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "areas",
   hoverOnFocus: true, // a focused area shows its tooltip
   ariaLabel: "{category}"

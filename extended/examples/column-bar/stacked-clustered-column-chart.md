@@ -2,7 +2,7 @@
 title: "Stacked and Clustered Column Chart"
 source: "https://www.amcharts.com/demos/stacked-clustered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Stacks side by side: each year, North America stacks on Europe in one column, and Latin America, the Middle East and Africa on Asia in the next.
@@ -181,8 +181,7 @@ makeSeries("Africa", "africa", true);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stacked and clustered column chart of six regions over 2023, 2024 and 2025: North America stacked on Europe, and Latin America, the Middle East and Africa on Asia. Tab to a region's columns, then move between its years with the arrow keys"
+  ariaLabel: "Stacked and clustered column chart of six regions over 2023, 2024 and 2025: North America stacked on Europe, and Latin America, the Middle East and Africa on Asia. Tab to a region's columns, then move between its years with the up and down arrow keys"
 });
 // each region's columns: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

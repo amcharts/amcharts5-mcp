@@ -2,7 +2,7 @@
 title: "Jupiter and Its Moons"
 source: "https://www.amcharts.com/demos/jupiter-and-its-moons/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Jupiter as a globe wearing Cassini's map of its clouds, spinning a Jupiter day in 30 seconds, with its four largest moons going round at their real relative speeds: Io in under two days, Callisto in over sixteen.
@@ -196,8 +196,7 @@ chart.children.push(am5.Label.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Jupiter as a spinning globe, with its four largest moons going round it at their real relative speeds. Tab to the moons, then move between them with the arrow keys"
+  ariaLabel: "Jupiter as a spinning globe, with its four largest moons going round it at their real relative speeds. Tab to the moons, then move between them with the up and down arrow keys"
 });
 // the moons: set up for the keyboard where they are made, in the bullet function above
 ```

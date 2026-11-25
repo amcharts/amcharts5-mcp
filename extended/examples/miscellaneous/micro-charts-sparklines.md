@@ -2,7 +2,7 @@
 title: "Micro Charts & Sparklines"
 source: "https://www.amcharts.com/demos/micro-charts-sparklines/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Micro charts are tiny charts with no axes, grid or labels, small enough for a table row. Here, 40 made-up stock tickers, each with a price line and volume columns.
@@ -131,7 +131,6 @@ function createValueChart(div, data, rising, ticker) {
   var last = data[data.length - 1];
   chart.setAll({
     focusable: true,
-    role: "figure",
     ariaLabel: ticker + " over 20 days: price from " + first.value + " to " + last.value +
       ", volume from " + root.numberFormatter.format(first.volume) + " to " + root.numberFormatter.format(last.volume)
   });
@@ -220,11 +219,11 @@ function createVolumeChart(div, data) {
 
 // Accessibility: keyboard and screen reader support
 // https://docs.amcharts.com/v5/concepts/accessibility/
-// The rows are HTML, so the div that holds them gets the name; each row's price chart is a Tab stop of its own,
-// set up where it is made, in createValueChart above
-div.setAttribute("role", "figure");
+// The rows are HTML, so the div that holds them gets the name: a group, which screen readers name as Tab enters
+// it (not a Tab stop itself, as JAWS reads nothing for a focused group). Each row's price chart is a Tab stop of its
+// own, set up where it is made, in createValueChart above
+div.setAttribute("role", "group");
 div.setAttribute("aria-label", "Sparklines of 40 made-up stock tickers over 20 days of random data, a row each with the change in percent, a price line and volume columns. Tab to a row's price chart for its prices and volumes");
-div.tabIndex = 0; // Tab reaches the list, and a screen reader names it
 ```
 
 ## HTML

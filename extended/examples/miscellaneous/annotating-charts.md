@@ -2,7 +2,7 @@
 title: "Annotating Charts"
 source: "https://www.amcharts.com/demos/annotating-charts/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A pie chart with a callout and arrows drawn on it, made with the exporting menu’s Annotate tool, which lets anyone draw on a chart and save it.
@@ -92,8 +92,7 @@ series.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Pie chart of seven countries and their share, from Lithuania, the largest, to the UK, with two notes drawn over it, \"Needs improvement\" and \"OK\". Tab to the slices, then move between them with the arrow keys. The export menu has an Annotate item for drawing on the chart"
+  ariaLabel: "Pie chart of seven countries and their share, from Lithuania, the largest, to the UK, with two notes drawn over it, \"Needs improvement\" and \"OK\". Tab to the slices, then move between them with the up and down arrow keys. The export menu has an Annotate item for drawing on the chart"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series.slices.template.setAll({

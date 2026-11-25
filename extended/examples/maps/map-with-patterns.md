@@ -2,7 +2,7 @@
 title: "Map with Patterns"
 source: "https://www.amcharts.com/demos/map-with-patterns/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A world map of the continents, each filled with a pattern of its own over a color: stripes, checks, dots, triangles or stars.
@@ -179,8 +179,7 @@ polygonSeries.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of the continents, each filled with a pattern of its own: stripes, checks, dots, triangles or stars. Tab to the continents, then move between them with the arrow keys"
+  ariaLabel: "World map of the continents, each filled with a pattern of its own: stripes, checks, dots, triangles or stars. Tab to the continents, then move between them with the up and down arrow keys"
 });
 // the continents: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

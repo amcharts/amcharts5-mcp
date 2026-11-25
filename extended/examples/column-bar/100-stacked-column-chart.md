@@ -2,7 +2,7 @@
 title: "100% Stacked Column Chart"
 source: "https://www.amcharts.com/demos/100-stacked-column-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 In a 100% stacked column chart every column is a whole, split into shares. Here, six regions over three years: the chart works out the percentages from the raw numbers in the data.
@@ -180,8 +180,7 @@ makeSeries("Africa", "africa");
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "100% stacked column chart of six regions' shares of each year's total, over 2023, 2024 and 2025. Tab to a region's segments, then move between its years with the arrow keys"
+  ariaLabel: "100% stacked column chart of six regions' shares of each year's total, over 2023, 2024 and 2025. Tab to a region's segments, then move between its years with the up and down arrow keys"
 });
 // each region's segments: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

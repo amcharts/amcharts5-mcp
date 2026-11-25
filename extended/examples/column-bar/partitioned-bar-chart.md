@@ -2,7 +2,7 @@
 title: "Partitioned Bar Chart"
 source: "https://www.amcharts.com/demos/partitioned-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A bar chart split into groups along its axis: sales in the 48 mainland states and DC, grouped into four regions. Each region has its own color and its name on a line across the axis.
@@ -371,8 +371,7 @@ var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bar chart of sales in the 48 mainland states and DC, grouped into four regions: Central, East, South and West. Tab to the bars, then move between the states with the arrow keys"
+  ariaLabel: "Bar chart of sales in the 48 mainland states and DC, grouped into four regions: Central, East, South and West. Tab to the bars, then move between the states with the up and down arrow keys"
 });
 // the bars: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

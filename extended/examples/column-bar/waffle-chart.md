@@ -2,7 +2,7 @@
 title: "Waffle Chart"
 source: "https://www.amcharts.com/demos/waffle-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A waffle chart shows parts of a whole as 100 squares, one per percent. Here, how visitors reached a website: 52 search, 28 direct, 12 social and 8 email.
@@ -165,8 +165,7 @@ makeSeries("Email", 8);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Waffle chart of how visitors reached a website, in 100 squares: 52 search, 28 direct, 12 social and 8 email. Tab to a source's squares, then move between them with the arrow keys"
+  ariaLabel: "Waffle chart of how visitors reached a website, in 100 squares: 52 search, 28 direct, 12 social and 8 email. Tab to a source's squares, then move between them with the up and down arrow keys"
 });
 // each source's squares: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

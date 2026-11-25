@@ -2,7 +2,7 @@
 title: "Sunburst Flavor Wheel"
 source: "https://www.amcharts.com/demos/sunburst-flavor-wheel/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A sunburst chart shows a hierarchy as rings: the inner ring holds the groups, the outer ring what each is made of. This one is a coffee aroma wheel, 75 aromas in 13 families, each with its own color.
@@ -313,8 +313,7 @@ series.set("selectedDataItem", series.dataItems[0]); // start with the whole whe
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Sunburst chart of a coffee aroma wheel, 75 aromas in 13 families. Tab to the aromas, move between them with the arrow keys, and press Enter on a family to open or close it"
+  ariaLabel: "Sunburst chart of a coffee aroma wheel, 75 aromas in 13 families. Tab to the aromas, move between them with the up and down arrow keys, and press Enter on a family to open or close it"
 });
 // the families and aromas: one Tab stop (a focusable group), the arrow keys step through them; Enter opens a family
 series.nodes.template.setAll({

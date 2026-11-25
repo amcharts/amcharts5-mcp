@@ -2,7 +2,7 @@
 title: "Donut Chart"
 source: "https://www.amcharts.com/demos/donut-chart/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A pie chart with the middle cut out. It shows how a whole splits into parts, and the hole holds the total: here, a $3,000 monthly budget.
@@ -102,8 +102,7 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Donut chart of a $3,000 monthly budget in six categories. Tab to the slices, then move between them with the arrow keys"
+  ariaLabel: "Donut chart of a $3,000 monthly budget in six categories. Tab to the slices, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series.slices.template.setAll({

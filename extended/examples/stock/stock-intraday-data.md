@@ -2,7 +2,7 @@
 title: "Stock Intraday Data"
 source: "https://www.amcharts.com/demos/stock-intraday-data/"
 category: "stock"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 One trading day in 390 one-minute candles, 9:30 to 16:00, with each minute’s volume below. The axis shows New York time, wherever you are.
@@ -713,7 +713,6 @@ sbSeries.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 stockChart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Stock chart of one trading day of a sample stock, AMCH, in 390 one-minute candles from 9:30 to 16:00 New York time, with each minute's volume. The chart has too many candles to step through with the keyboard. The toolbar above the chart adds indicators and drawings"
 });
 // no focusable points on the candles: 390 of them would slow down loading, zooming and panning

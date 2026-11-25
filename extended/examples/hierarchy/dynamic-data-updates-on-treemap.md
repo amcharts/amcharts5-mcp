@@ -2,7 +2,7 @@
 title: "Dynamic Data Updates on Treemap"
 source: "https://www.amcharts.com/demos/dynamic-data-updates-on-treemap/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A treemap that keeps changing: every two seconds the values move and the boxes slide to new sizes. Here, made-up visits to an online store’s pages.
@@ -155,13 +155,11 @@ setInterval(function() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Treemap of made-up visits to an online store's pages in five sections, updated every two seconds. Tab to the pages, then move between them with the arrow keys"
+  ariaLabel: "Treemap of made-up visits to an online store's pages in five sections, updated every two seconds. Tab to the pages, then move between them with the up and down arrow keys"
 });
 // the pages: one Tab stop (a focusable group), the arrow keys step through them
 series.nodes.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "pages",
   hoverOnFocus: true, // a focused page shows its tooltip
   ariaLabel: "{category}: {sum} visitors"

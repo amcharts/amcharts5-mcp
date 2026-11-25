@@ -2,7 +2,7 @@
 title: "Pictorial Fraction Chart"
 source: "https://www.amcharts.com/demos/pictorial-fraction-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A fraction shown as a picture: the cup is the whole, filled 60% coffee and 40% milk. The shape says what the numbers are about before anyone reads a label.
@@ -92,13 +92,11 @@ legend.data.setAll(series.dataItems); // one legend item per slice
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Pictorial chart of a cup of coffee with milk: 60% coffee and 40% milk. Tab to the two parts, then move between them with the arrow keys"
+  ariaLabel: "Pictorial chart of a cup of coffee with milk: 60% coffee and 40% milk. Tab to the two parts, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "slices",
   hoverOnFocus: true, // a focused slice shows its tooltip
   ariaLabel: "{category}: {valuePercentTotal.formatNumber('0')}%"

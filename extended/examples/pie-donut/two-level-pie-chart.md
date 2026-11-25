@@ -2,7 +2,7 @@
 title: "Two-Level Pie Chart"
 source: "https://www.amcharts.com/demos/two-level-pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A thin ring of parts inside a wider, see-through band that groups some of them together. Here the band shows that First and Second belong together.
@@ -164,8 +164,7 @@ series1.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Two-level donut chart: an inner ring of three parts, First, Second and Remaining, and an outer band that groups First and Second. Tab to a ring, then move between its slices with the arrow keys"
+  ariaLabel: "Two-level donut chart: an inner ring of three parts, First, Second and Remaining, and an outer band that groups First and Second. Tab to a ring, then move between its slices with the up and down arrow keys"
 });
 // each ring's slices: one Tab stop (a focusable group), the arrow keys step through them
 series0.slices.template.setAll({

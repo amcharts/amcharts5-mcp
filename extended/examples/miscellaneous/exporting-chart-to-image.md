@@ -2,7 +2,7 @@
 title: "Exporting Chart to Image"
 source: "https://www.amcharts.com/demos/exporting-chart-to-image/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart with an export menu: the icon at the top right saves the chart as an image or a PDF, saves its data as a spreadsheet, or prints it. Change the chart with the controls first, and the export shows it as changed.
@@ -220,8 +220,7 @@ var exporting = am5plugins_exporting.Exporting.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Column chart of visits from 16 countries, from the USA, the most, to Poland. Tab to the columns, then move between them with the arrow keys. The export menu, after the chart, saves it as an image, a PDF or a spreadsheet, or prints it"
+  ariaLabel: "Column chart of visits from 16 countries, from the USA, the most, to Poland. Tab to the columns, then move between them with the up and down arrow keys. The export menu, after the chart, saves it as an image, a PDF or a spreadsheet, or prints it"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

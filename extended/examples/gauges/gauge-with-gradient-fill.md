@@ -2,7 +2,7 @@
 title: "Gauge with Gradient Fill"
 source: "https://www.amcharts.com/demos/gauge-with-gradient-fill/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A gauge shows one value as a needle on a dial. Here the dial is one arc fading from green to red, so you see at once how close the value is to its maximum.
@@ -121,7 +121,6 @@ function gaugeName(value) {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName(axisDataItem.get("value"))
 });
 axisDataItem.on("value", function (value) {

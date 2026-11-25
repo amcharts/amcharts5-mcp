@@ -2,7 +2,7 @@
 title: "Globe with Projected Circles"
 source: "https://www.amcharts.com/demos/globe-with-projected-circles/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Circles sized by the population of 40 countries in 2011, lying on the surface of the globe: they flatten into ovals as they near its edge, like the land under them.
@@ -233,8 +233,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the globe, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Globe with circles on 40 countries, sized by their population in 2011, lying flat on its surface. Tab to the countries or the circles, then move between them with the arrow keys"
+  ariaLabel: "Globe with circles on 40 countries, sized by their population in 2011, lying flat on its surface. Tab to the countries or the circles, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

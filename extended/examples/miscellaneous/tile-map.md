@@ -2,7 +2,7 @@
 title: "Tile Map"
 source: "https://www.amcharts.com/demos/tile-map/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Every state gets one same-size tile, roughly where it lies, so small states count as much as big ones. Here, the 50 states and D.C., by population.
@@ -503,8 +503,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Tile map of the 50 US states and D.C., a same-size circle for each, roughly where the state lies and shaded by population. Tab to the states, then move between them with the arrow keys"
+  ariaLabel: "Tile map of the 50 US states and D.C., a same-size circle for each, roughly where the state lies and shaded by population. Tab to the states, then move between them with the up and down arrow keys"
 });
 // the states: set up for the keyboard where they are made, in the bullet function above
 

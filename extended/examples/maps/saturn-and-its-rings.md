@@ -2,7 +2,7 @@
 title: "Saturn and Its Rings"
 source: "https://www.amcharts.com/demos/saturn-and-its-rings/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Saturn drawn with a map chart: the planet is a globe of colored bands spinning under its storms, the rings are map lines raised above it at their real distances, as strong as the rings are dense, and the six largest moons go round at their real relative speeds.
@@ -276,8 +276,7 @@ moonSeries.data.setAll(MOONS.map(function(moon, i) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Saturn, 120,536 km across at the equator, as a spinning globe with its main rings and its six largest moons going round it. Tab to the rings or the moons, then move between them with the arrow keys"
+  ariaLabel: "Saturn, 120,536 km across at the equator, as a spinning globe with its main rings and its six largest moons going round it. Tab to the rings or the moons, then move between them with the up and down arrow keys"
 });
 // the rings: one Tab stop (a focusable group), the arrow keys step through them; each ring is several lines, and
 // only its middle one is focusable, from the ring data above

@@ -2,7 +2,7 @@
 title: "Process Control Chart"
 source: "https://www.amcharts.com/demos/process-control-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A process control chart: 23 samples against an upper and a lower limit, with the zone between them shaded. Three fall outside, the signal to look for a cause.
@@ -152,10 +152,12 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Process control chart of 23 samples against a lower control limit of 10 and an upper one of 20, with the process average at 15; three samples fall outside the limits. Tab to the samples, then move between them with the arrow keys"
+  ariaLabel: "Process control chart of 23 samples against a lower control limit of 10 and an upper one of 20, with the process average at 15; three samples fall outside the limits. Tab to the samples, then move between them with the up and down arrow keys"
 });
 // the samples: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

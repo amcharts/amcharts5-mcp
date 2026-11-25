@@ -2,7 +2,7 @@
 title: "Globe with Raised Arcs"
 source: "https://www.amcharts.com/demos/globe-with-raised-arcs/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two routes around the world on a globe, one through the north and one through the south, drawn as arcs that rise above the surface like flight paths. Where a route runs over the edge of the globe, its arc stays in view.
@@ -208,8 +208,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the globe, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Globe with two routes around the world drawn as raised arcs: a northern one through London, New York, San Francisco, Tokyo, Delhi and Dubai, and a southern one through Sao Paulo, Johannesburg, Singapore, Sydney and Santiago. Tab to the countries or the cities, then move between them with the arrow keys"
+  ariaLabel: "Globe with two routes around the world drawn as raised arcs: a northern one through London, New York, San Francisco, Tokyo, Delhi and Dubai, and a southern one through Sao Paulo, Johannesburg, Singapore, Sydney and Santiago. Tab to the countries or the cities, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

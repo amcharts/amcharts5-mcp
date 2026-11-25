@@ -2,7 +2,7 @@
 title: "Show Percentage Change"
 source: "https://www.amcharts.com/demos/show-percentage-change/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two prices drawn as percent change, so both start from the same zero and you see which grew faster. Change since sets where the change is counted from: the first day in view, or the first day of the data.
@@ -194,7 +194,6 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of two prices over 800 days from January 2023, shown as percent change. The lines have too many points to step through with the keyboard; Tab to the legend to hide or show one"
 });
 // no focusable points on the lines: 1,600 of them would slow down zooming and panning

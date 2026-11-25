@@ -2,7 +2,7 @@
 title: "Linear Process Diagram"
 source: "https://www.amcharts.com/demos/linear-process-diagram/"
 category: "timeline"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A day from 6 a.m. to 2 a.m. as a winding road with an icon card for each activity, and side activities like coffee and reading on a second track.
@@ -174,7 +174,6 @@ series.bullets.push(function (root, series, dataItem) {
     // keyboard and screen readers (see Accessibility below): one Tab stop for all the cards (a focusable group),
     // the arrow keys step through them, and the focused one shows its tooltip
     focusable: true,
-    role: "figure",
     focusableGroup: "events",
     hoverOnFocus: true,
     ariaLabel: dataItem.dataContext.text + ", " +
@@ -351,10 +350,12 @@ yAxis.data.setAll([{ category: "a" }, { category: "b" }]); // a: the day's main 
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Timeline of a made-up day from 6 a.m. to 2 a.m. on a winding road, with a card for each activity and short side activities, like coffee and reading, on a second track. Tab to the activities, then move between them with the arrow keys: first the main track, then the side track"
+  ariaLabel: "Timeline of a made-up day from 6 a.m. to 2 a.m. on a winding road, with a card for each activity and short side activities, like coffee and reading, on a second track. Tab to the activities, then move between them with the up and down arrow keys: first the main track, then the side track"
 });
 // the activity cards: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Animate chart and series in
 // https://docs.amcharts.com/v5/concepts/animations/#initial-animation

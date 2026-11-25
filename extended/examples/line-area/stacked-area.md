@@ -2,7 +2,7 @@
 title: "Stacked Area"
 source: "https://www.amcharts.com/demos/stacked-area/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Cars, motorcycles and bicycles from 2007 to 2025 as three stacked areas, so the top edge is the total. Shaded bands mark two events at the biggest drops.
@@ -295,8 +295,7 @@ rangeDataItem2.get("label").setAll({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stacked area chart of cars, motorcycles and bicycles each year from 2007 to 2025, with notes on 2014 to 2016 (fines for speeding increased) and 2020 (motorcycle fee introduced). Tab to an area, then move along its years with the arrow keys"
+  ariaLabel: "Stacked area chart of cars, motorcycles and bicycles each year from 2007 to 2025, with notes on 2014 to 2016 (fines for speeding increased) and 2020 (motorcycle fee introduced). Tab to an area, then move along its years with the up and down arrow keys"
 });
 // the points: one Tab stop per area (a focusable group), the arrow keys step along its years
 chart.series.each(function (series) {

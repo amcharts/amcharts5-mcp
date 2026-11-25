@@ -2,7 +2,7 @@
 title: "Day and Night World Map"
 source: "https://www.amcharts.com/demos/day-and-night-world-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A live map of where it is day and where it is night right now, with the city lights on the night side, the twilight in between, and the sun and moon where they stand overhead. Click a country to see whether it is day or night there.
@@ -173,7 +173,6 @@ moonSeries.bullets.push(function() {
     // keyboard and screen readers (see Accessibility below): a Tab stop of its own, and the focused moon shows its
     // tooltip (its ariaLabel is set with the tooltip, in updateMoon)
     focusable: true,
-    role: "figure",
     hoverOnFocus: true
   }, moonTemplate));
 
@@ -383,8 +382,7 @@ setInterval(function() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of where it is day and where it is night right now, with the sun and the moon where they stand overhead. Tab to the sun, the countries and the moon, and move between the countries with the arrow keys"
+  ariaLabel: "World map of where it is day and where it is night right now, with the sun and the moon where they stand overhead. Tab to the sun, the countries and the moon, and move between the countries with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({
@@ -396,7 +394,6 @@ polygonSeries.mapPolygons.template.setAll({
 // the sun: a Tab stop of its own (the moon is set up where it is made, in its bullet function above)
 nightSeries.get("sun").setAll({
   focusable: true,
-  role: "figure",
   hoverOnFocus: true,
   ariaLabel: "The sun: directly overhead here"
 });

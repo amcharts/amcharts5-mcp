@@ -2,7 +2,7 @@
 title: "Funnel Chart"
 source: "https://www.amcharts.com/demos/funnel-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A funnel chart shows how a number shrinks as people move through the steps of a process. Here, a month in an online store, from 10,000 visits to 2,300 payments.
@@ -88,13 +88,11 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Funnel chart of a month in an online store, from 10,000 visits to 2,300 payments in five steps. Tab to the steps, then move between them with the arrow keys"
+  ariaLabel: "Funnel chart of a month in an online store, from 10,000 visits to 2,300 payments in five steps. Tab to the steps, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "slices",
   ariaLabel: "{category}: {value}"
 });

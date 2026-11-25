@@ -2,7 +2,7 @@
 title: "Bubble-Based Heat Map"
 source: "https://www.amcharts.com/demos/bubble-based-heat-map/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A heat map drawn with bubbles instead of colored cells: a week of hourly values, one row per day, each bubble sized by its value, changing every second.
@@ -869,8 +869,7 @@ xAxis.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Heat map of a week of hourly values, one row per day from Sunday to Saturday and one column per hour, each drawn as a bubble sized by its value; the values change every second. Tab to the bubbles, then move between them with the arrow keys"
+  ariaLabel: "Heat map of a week of hourly values, one row per day from Sunday to Saturday and one column per hour, each drawn as a bubble sized by its value; the values change every second. Tab to the bubbles, then move between them with the up and down arrow keys"
 });
 // the bubbles: set up for the keyboard where they are made, in the bullet function above
 

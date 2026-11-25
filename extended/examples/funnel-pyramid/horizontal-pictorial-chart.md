@@ -2,7 +2,7 @@
 title: "Horizontal Pictorial Chart"
 source: "https://www.amcharts.com/demos/horizontal-pictorial-chart/"
 category: "funnel-pyramid"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Seven values fill a sausage-shaped outline from left to right, each slice as wide as its share. Any SVG path can be the outline.
@@ -84,13 +84,11 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Pictorial chart of seven values filling an outline from left to right. Tab to the parts, then move between them with the arrow keys"
+  ariaLabel: "Pictorial chart of seven values filling an outline from left to right. Tab to the parts, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them
 series.slices.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "slices",
   hoverOnFocus: true, // a focused slice shows its tooltip
   ariaLabel: "{category}: {valuePercentTotal.formatNumber('0.0')}%"

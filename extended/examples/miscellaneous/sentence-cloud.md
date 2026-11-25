@@ -2,7 +2,7 @@
 title: "Sentence Cloud"
 source: "https://www.amcharts.com/demos/sentence-cloud/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A word cloud of whole phrases, each in its own colored box and sized by how often it comes up. Here, what a café’s customers say most in their reviews.
@@ -83,13 +83,11 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the cloud, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Sentence cloud of eight things a café's customers say in their reviews, each sized by how many reviews say it. Tab to the sentences, then move between them with the arrow keys"
+  ariaLabel: "Sentence cloud of eight things a café's customers say in their reviews, each sized by how many reviews say it. Tab to the sentences, then move between them with the up and down arrow keys"
 });
 // the sentences: one Tab stop (a focusable group), the arrow keys step through them
 series.labels.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "sentences",
   hoverOnFocus: true, // a focused sentence shows its tooltip
   ariaLabel: "{category}: said in {value} reviews"

@@ -2,7 +2,7 @@
 title: "Violin Chart"
 source: "https://www.amcharts.com/demos/violin-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A violin chart shows how values are spread: the shape is widest where most values fall and thin where few do, mirrored around its middle line. Here, about 200 values in each of four regions, one violin per row.
@@ -203,8 +203,7 @@ chart.set("scrollbarX", am5.Scrollbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Violin chart of how about 200 values in each of four regions, the Americas, Europe, Asia and Africa, spread over ranges two wide. Tab to a region's violin, then move between its ranges with the arrow keys"
+  ariaLabel: "Violin chart of how about 200 values in each of four regions, the Americas, Europe, Asia and Africa, spread over ranges two wide. Tab to a region's violin, then move between its ranges with the up and down arrow keys"
 });
 // the ranges: invisible points on each violin's top edge, one Tab stop per region (a focusable group), the arrow
 // keys step through them

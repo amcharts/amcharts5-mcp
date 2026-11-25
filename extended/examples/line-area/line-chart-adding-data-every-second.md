@@ -2,7 +2,7 @@
 title: "Line Chart Adding Data Every Second"
 source: "https://www.amcharts.com/demos/line-chart-adding-data-every-second/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart fed live: every second a new point slides in on the right, the oldest drops off the left, and a pulsing dot marks the latest value.
@@ -241,10 +241,12 @@ function addData() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Live line chart of a random value, one point a second over the last 50 seconds. Tab to the pulsing dot for the latest value"
 });
 // the pulsing dot: set up for the keyboard where it is made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

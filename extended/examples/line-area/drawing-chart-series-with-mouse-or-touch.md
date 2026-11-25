@@ -2,7 +2,7 @@
 title: "Drawing Chart Series with Mouse or Touch"
 source: "https://www.amcharts.com/demos/drawing-chart-series-with-mouse-or-touch/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart you can draw on: click anywhere to place a point, and your points join into a second line, drawn over three years of data.
@@ -191,11 +191,13 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a daily value over 1,200 days, with a second line drawn by clicking the plot. Tab to the drawn points, then move between them with the arrow keys"
+  ariaLabel: "Line chart of a daily value over 1,200 days, with a second line drawn by clicking the plot. Tab to the drawn points, then move between them with the up and down arrow keys"
 });
 // no focusable points on the data line: 1,200 of them would slow down zooming and panning
 // the drawn points: set up for the keyboard where they are made, in the second bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

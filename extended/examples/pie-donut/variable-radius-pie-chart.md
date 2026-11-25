@@ -2,7 +2,7 @@
 title: "Variable Radius Pie Chart"
 source: "https://www.amcharts.com/demos/variable-radius-pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A pie where slices differ in length as well as width: the bigger the value, the further a slice reaches from the middle. The largest parts stand out at once.
@@ -112,8 +112,7 @@ legend.data.setAll(series.dataItems);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Variable-radius pie chart of six values: the bigger the value, the further its slice reaches out. Tab to the slices, then move between them with the arrow keys"
+  ariaLabel: "Variable-radius pie chart of six values: the bigger the value, the further its slice reaches out. Tab to the slices, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series.slices.template.setAll({

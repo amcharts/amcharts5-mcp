@@ -2,7 +2,7 @@
 title: "Mixed Daily and Intra-Day Chart"
 source: "https://www.amcharts.com/demos/mixed-daily-and-intra-day-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Hourly readings and daily averages on one chart: the line has a point for every hour, each column the average of that day. Two date axes keep them in step.
@@ -170,8 +170,7 @@ cursor.lineY.set("visible", false); // only the vertical cursor line, no horizon
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Hourly readings over the last ten days as a line, with each day's average as a column behind it. Tab to the hourly line or the daily columns, then move through them with the arrow keys"
+  ariaLabel: "Hourly readings over the last ten days as a line, with each day's average as a column behind it. Tab to the hourly line or the daily columns, then move through them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), after the line's; the arrow keys step through the days
 series2.columns.template.setAll({
@@ -192,6 +191,9 @@ series1.bullets.push(function (root, series) {
     })
   });
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

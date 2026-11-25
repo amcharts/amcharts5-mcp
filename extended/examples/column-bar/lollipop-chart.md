@@ -2,7 +2,7 @@
 title: "Lollipop Chart"
 source: "https://www.amcharts.com/demos/lollipop-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A lollipop chart is a column chart drawn with thin stems and a dot on top, lighter on the eye when there are many categories. Here, made-up values for 28 people, with a scrollbar to zoom in on a few names.
@@ -168,8 +168,7 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Lollipop chart of a made-up value for each of 28 people. Tab to the lollipops, then move between the people with the arrow keys"
+  ariaLabel: "Lollipop chart of a made-up value for each of 28 people. Tab to the lollipops, then move between the people with the up and down arrow keys"
 });
 // the lollipops (their stems): one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

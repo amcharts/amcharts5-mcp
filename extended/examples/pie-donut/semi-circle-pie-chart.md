@@ -2,7 +2,7 @@
 title: "Semi-Circle Pie Chart"
 source: "https://www.amcharts.com/demos/semi-circle-pie-chart/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Half a donut: the same shares as a pie, in half the height. It fits in a dashboard row or across the top of a report.
@@ -90,8 +90,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Semi-circle donut chart of seven values and their share. Tab to the slices, then move between them with the arrow keys"
+  ariaLabel: "Semi-circle donut chart of seven values and their share. Tab to the slices, then move between them with the up and down arrow keys"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series.slices.template.setAll({

@@ -2,7 +2,7 @@
 title: "Zoomable Multilevel Tree Map"
 source: "https://www.amcharts.com/demos/multilevel-tree-map/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A treemap splits one rectangle into boxes sized by value. This one has two levels, car brands and their models, from a year of US car sales, with each brand’s logo behind its models.
@@ -504,8 +504,7 @@ series.bullets.push(function (root, series, dataItem) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Treemap of a year of US car sales by brand and model, for brands that sold over 200,000 cars. Tab to the boxes, move between them with the arrow keys, and press Enter to zoom into a brand or back out"
+  ariaLabel: "Treemap of a year of US car sales by brand and model, for brands that sold over 200,000 cars. Tab to the boxes, move between them with the up and down arrow keys, and press Enter to zoom into a brand or back out"
 });
 // the brand and model boxes: one Tab stop (a focusable group), the arrow keys step through them; Enter zooms
 series.nodes.template.setAll({

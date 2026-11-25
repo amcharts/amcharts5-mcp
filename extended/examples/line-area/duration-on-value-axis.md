@@ -2,7 +2,7 @@
 title: "Duration on Value Axis"
 source: "https://www.amcharts.com/demos/duration-on-value-axis/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A two-week road trip in one chart: miles driven each day, hours behind the wheel and how far north each stop is. The right-hand axis is a duration axis: the data is in minutes, the labels read as hours and minutes.
@@ -309,8 +309,7 @@ xAxis.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Chart of a 14-day road trip in January 2026, from New York to Las Vegas: miles driven each day as columns, with lines for the hours driven and each stop's latitude. Tab to the columns, then move between the days with the arrow keys; Tab again for each line"
+  ariaLabel: "Chart of a 14-day road trip in January 2026, from New York to Las Vegas: miles driven each day as columns, with lines for the hours driven and each stop's latitude. Tab to the columns, then move between the days with the up and down arrow keys; Tab again for each line"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 distanceSeries.columns.template.setAll({
@@ -324,6 +323,9 @@ legend.itemContainers.template.setAll({
   focusableGroup: "legend",
   tabindexOrder: 10 // the chart's parts are focused in this order, from low to high (0 if not set)
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

@@ -2,7 +2,7 @@
 title: "Bars with Moving Bullets"
 source: "https://www.amcharts.com/demos/bars-with-moving-bullets/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A bar chart with a photo on each bar. Point at a bar and the photo slides along it to the end. Here, step counts for six friends, the bars darker the more they walked.
@@ -277,8 +277,7 @@ cursor.events.on("cursormoved", function() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bar chart of step counts for six friends, from Monica at 45,688 down to Chandler at 11,561. Tab to the bars, then move between them with the arrow keys"
+  ariaLabel: "Bar chart of step counts for six friends, from Monica at 45,688 down to Chandler at 11,561. Tab to the bars, then move between them with the up and down arrow keys"
 });
 // the bars: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({

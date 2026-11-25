@@ -2,7 +2,7 @@
 title: "Radar Chart Visualizing Yearly Activities"
 source: "https://www.amcharts.com/demos/radar-chart-visualizing-yearly-activities/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A year of bike rides in one circle: weekly distances as columns, every ride as a bubble sized by its length, and the year’s total in the middle.
@@ -949,14 +949,11 @@ bubbleSeries.data.setAll(dailyData);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radar chart of a year of bike rides: the distance of each week as a column, and every ride as a bubble sized by its length. Tab to the weeks, the rides or the months, then move through them with the arrow keys; Enter on a month zooms in on it"
+  ariaLabel: "Radar chart of a year of bike rides: the distance of each week as a column, and every ride as a bubble sized by its length. Tab to the weeks, the rides or the months, then move through them with the up and down arrow keys; Enter on a month zooms in on it"
 });
 // the weeks' columns: one Tab stop (a focusable group), the arrow keys step through them
 distanceSeries.columns.template.setAll({
-  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
   focusable: true,
-  role: "figure",
   focusableGroup: "weeks",
   ariaLabel: "Week {valueX}: {valueY} km"
 });
@@ -1010,7 +1007,6 @@ function createRange(name, index) {
     innerRadius: -25,           // ...and is 25px thick, so it sits just outside the ring
     // keyboard and screen readers (see Accessibility above): one Tab stop for the 12 months (a focusable
     // group), the arrow keys step through them, and Enter zooms in on one, as a click does
-    isMeasured: false, // without this, a band can't take focus
     focusable: true,
     role: "button",
     focusableGroup: "months",

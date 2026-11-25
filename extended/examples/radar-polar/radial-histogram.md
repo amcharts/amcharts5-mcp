@@ -2,7 +2,7 @@
 title: "Radial Histogram"
 source: "https://www.amcharts.com/demos/radial-histogram/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A column chart bent into a ring: twenty bars stand around an open middle, each in its own color, with a gap at the top for the scale.
@@ -124,18 +124,18 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radial column chart of 20 numbered columns with random values from 0 to 100, set around a ring. Tab to the columns, then move between them with the arrow keys"
+  ariaLabel: "Radial column chart of 20 numbered columns with random values from 0 to 100, set around a ring. Tab to the columns, then move between them with the up and down arrow keys"
 });
 // the columns: one Tab stop (a focusable group), the arrow keys step through them
 series.columns.template.setAll({
   focusable: true,
-  role: "figure",
-  isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
   focusableGroup: "columns",
   hoverOnFocus: true, // a focused column shows its tooltip
   ariaLabel: "Column {categoryX}: {valueY}"
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

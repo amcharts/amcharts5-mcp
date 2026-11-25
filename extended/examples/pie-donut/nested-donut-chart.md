@@ -2,7 +2,7 @@
 title: "Nested Donut Chart"
 source: "https://www.amcharts.com/demos/nested-donut-chart/"
 category: "pie-donut"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two rings, one inside the other, for two measures of the same countries: bottles sold inside, litres outside. Where the rings don’t line up, the measures disagree.
@@ -127,8 +127,7 @@ series1.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Nested donut chart of nine countries: bottles sold on the inner ring, litres on the outer ring. Tab to a ring's slices, then move between them with the arrow keys"
+  ariaLabel: "Nested donut chart of nine countries: bottles sold on the inner ring, litres on the outer ring. Tab to a ring's slices, then move between them with the up and down arrow keys"
 });
 // each ring's slices: one Tab stop (a focusable group), the arrow keys step through them; Enter pulls one out
 series0.slices.template.setAll({

@@ -2,7 +2,7 @@
 title: "Line with Different Colors for Ups and Downs"
 source: "https://www.amcharts.com/demos/line-different-colors-ups-downs/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line that turns green where the value rises and red where it falls, so every move up or down stands out. The tooltip takes the color of the move too.
@@ -203,8 +203,7 @@ sbSeries.data.setAll(data); // the preview gets the same data
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a daily value over 100 days, green where it rises and red where it falls. Tab to the line, then move along it with the arrow keys"
+  ariaLabel: "Line chart of a daily value over 100 days, green where it rises and red where it falls. Tab to the line, then move along it with the up and down arrow keys"
 });
 // the points: one Tab stop for the whole line (a focusable group), the arrow keys step through it
 series.bullets.push(function () {
@@ -219,6 +218,9 @@ series.bullets.push(function () {
     })
   });
 });
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

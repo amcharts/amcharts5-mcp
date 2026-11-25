@@ -2,7 +2,7 @@
 title: "Zoomable Bubble Chart"
 source: "https://www.amcharts.com/demos/zoomable-bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Each bubble is a country: wealth along the bottom, life expectancy up the side, population as size, continent as color. Zoom in where they crowd.
@@ -1564,8 +1564,7 @@ chart.set("scrollbarY", am5.Scrollbar.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bubble chart of 168 countries: GDP per capita across, life expectancy up, population as bubble size, one color per continent. Tab to a continent's countries, then move between them with the arrow keys"
+  ariaLabel: "Bubble chart of 168 countries: GDP per capita across, life expectancy up, population as bubble size, one color per continent. Tab to a continent's countries, then move between them with the up and down arrow keys"
 });
 // the countries: set up for the keyboard where they are made, in the bullet function above
 // the legend: one Tab stop too, after the countries; the arrow keys step through its items, and Enter hides or shows one

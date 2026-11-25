@@ -2,7 +2,7 @@
 title: "Animated Gauge"
 source: "https://www.amcharts.com/demos/animated-gauge/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A percentage gauge whose arc fills up to the needle, one color below the value and another above. Every two seconds all of it moves to a new value.
@@ -197,7 +197,6 @@ function gaugeName(value) {
 }
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: gaugeName(axisDataItem.get("value"))
 });
 axisDataItem.on("value", function (value) {

@@ -2,7 +2,7 @@
 title: "Stream / ThemeRiver Chart"
 source: "https://www.amcharts.com/demos/stream-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A streamgraph: layers that flow around a center line instead of stacking up from zero. Here, Olympic medal counts for five countries from 1896 to 2008.
@@ -194,8 +194,7 @@ chart.series.each(function(series) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Streamgraph of Olympic medal counts of five countries from 1896 to 2008: the United Kingdom, the Soviet Union, Russia, the United States and China. Tab to a country's layer, then move between its years with the arrow keys"
+  ariaLabel: "Streamgraph of Olympic medal counts of five countries from 1896 to 2008: the United Kingdom, the Soviet Union, Russia, the United States and China. Tab to a country's layer, then move between its years with the up and down arrow keys"
 });
 // the layers: a point on the top edge of each year's layer, one Tab stop per country (a focusable group), the arrow
 // keys step through its years; years with no medals get no point

@@ -2,7 +2,7 @@
 title: "Tree Chart"
 source: "https://www.amcharts.com/demos/tree-chart/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A tree chart draws a hierarchy as nodes and lines, each parent above its children. Here, a family tree from a grandmother to her great-grandchildren.
@@ -133,8 +133,7 @@ series.set("selectedDataItem", series.dataItems[0]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Tree chart of a family, from a grandmother, Rose, to her great-grandchildren. Tab to the people, move between them with the arrow keys, and press Enter to fold or open a parent's branch"
+  ariaLabel: "Tree chart of a family, from a grandmother, Rose, to her great-grandchildren. Tab to the people, move between them with the up and down arrow keys, and press Enter to fold or open a parent's branch"
 });
 // the people: one Tab stop (a focusable group), the arrow keys step through them; Enter folds a branch
 series.nodes.template.setAll({

@@ -2,7 +2,7 @@
 title: "Map with Pulsating Bullets"
 source: "https://www.amcharts.com/demos/map-with-pulsating-bullets/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Eighteen capital cities marked with pulsing dots: a ring grows out of each dot and fades, again and again at random moments, to draw the eye.
@@ -339,8 +339,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of eighteen capital cities marked with pulsing dots. Tab to the countries or the cities, move between them with the arrow keys, and press Enter on a city to open its Wikipedia page"
+  ariaLabel: "World map of eighteen capital cities marked with pulsing dots. Tab to the countries or the cities, move between them with the up and down arrow keys, and press Enter on a city to open its Wikipedia page"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

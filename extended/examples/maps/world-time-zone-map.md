@@ -2,7 +2,7 @@
 title: "World Time Zone Map"
 source: "https://www.amcharts.com/demos/world-time-zone-map/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 The world's time zones in two layers: colored areas for the zone each land keeps, and faint pole-to-pole bands with their UTC offsets along the bottom.
@@ -179,8 +179,7 @@ responsive.addRule({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map of time zones: the land colored by the UTC offset it keeps, from UTC-12:00 to UTC+14:00. Tab to the time zones, then move between them with the arrow keys"
+  ariaLabel: "World map of time zones: the land colored by the UTC offset it keeps, from UTC-12:00 to UTC+14:00. Tab to the time zones, then move between them with the up and down arrow keys"
 });
 // the time zones' areas: one Tab stop (a focusable group), the arrow keys step through them in order of offset.
 // The bands behind them repeat the same zones, so they are left out

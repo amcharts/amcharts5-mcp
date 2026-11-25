@@ -2,7 +2,7 @@
 title: "Crypto Order Book Depth Chart"
 source: "https://www.amcharts.com/demos/live-order-book-depth-chart/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A market depth chart built from the live ETH/BTC order book on Binance and reloaded every 30 seconds: buy orders in green, sell orders in red.
@@ -268,8 +268,7 @@ function processData(list, type, desc, res) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Market depth chart of the ETH/BTC order book on Binance, reloaded every 30 seconds: the total volume of buy orders by price on the left, sell orders on the right. Tab to the bids or the asks, then move between the prices with the arrow keys"
+  ariaLabel: "Market depth chart of the ETH/BTC order book on Binance, reloaded every 30 seconds: the total volume of buy orders by price on the left, sell orders on the right. Tab to the bids or the asks, then move between the prices with the up and down arrow keys"
 });
 // the steps: one Tab stop for the bids and one for the asks (focusable groups), the arrow keys step through the
 // prices; points are made for each new load, as the bullets are made from the data

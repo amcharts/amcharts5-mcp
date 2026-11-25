@@ -2,7 +2,7 @@
 title: "Stacked Bar Chart"
 source: "https://www.amcharts.com/demos/stacked-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A stacked chart on its side: each bar is a year’s total, split into six regions and labeled segment by segment. Bars leave room for long names and long lists.
@@ -167,8 +167,7 @@ makeSeries("Africa", "africa");
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stacked bar chart of six regions over 2023, 2024 and 2025, each year's bar split by region. Tab to a region's segments, then move between its years with the arrow keys"
+  ariaLabel: "Stacked bar chart of six regions over 2023, 2024 and 2025, each year's bar split by region. Tab to a region's segments, then move between its years with the up and down arrow keys"
 });
 // each region's segments: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

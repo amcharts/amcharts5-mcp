@@ -2,7 +2,7 @@
 title: "Variable-Radius Radar"
 source: "https://www.amcharts.com/demos/variable-radius-radar/"
 category: "radar-polar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 One chart, three shapes: the Arc slider bends stacked columns from a flat bar chart into a half circle or a full ring. Here, a shop’s sales of six products, by quarter.
@@ -132,15 +132,12 @@ xAxis.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Radial stacked column chart of a shop's sales of six products, in thousands of units, by quarter. Tab to a quarter's columns, then move between the products with the arrow keys"
+  ariaLabel: "Radial stacked column chart of a shop's sales of six products, in thousands of units, by quarter. Tab to a quarter's columns, then move between the products with the up and down arrow keys"
 });
 // each quarter's columns: one Tab stop (a focusable group), the arrow keys step through the products
 chart.series.each(function (series) {
   series.columns.template.setAll({
-    isMeasured: false, // radar columns have no width or height of their own: without this, they can't take focus
     focusable: true,
-    role: "figure",
     focusableGroup: series.get("name"),
     hoverOnFocus: true, // a focused column shows its tooltip
     ariaLabel: "{categoryX}, {name}: {valueY} thousand sold"

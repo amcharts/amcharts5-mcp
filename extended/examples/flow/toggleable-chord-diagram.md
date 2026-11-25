@@ -2,7 +2,7 @@
 title: "Directed Chord Diagram"
 source: "https://www.amcharts.com/demos/toggleable-chord-diagram/"
 category: "flow"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A directed chord diagram: every ribbon runs from one person to another and takes the color of the one it starts from. Here, the six Friends characters and everyone linked to them.
@@ -185,8 +185,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Directed chord diagram of the six Friends characters and the people linked to them, each ribbon running from one person to another. Tab to the people or the links, then move through them with the arrow keys; Enter on a person switches their links off or on"
+  ariaLabel: "Directed chord diagram of the six Friends characters and the people linked to them, each ribbon running from one person to another. Tab to the people or the links, then move through them with the up and down arrow keys; Enter on a person switches their links off or on"
 });
 // the nodes: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a node's
 // links, as a click does
@@ -199,7 +198,6 @@ series.nodes.nodes.template.setAll({
 // the links between them: one Tab stop too, after the nodes
 series.links.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "links",
   tabindexOrder: 5,   // after the nodes
   hoverOnFocus: true, // a focused link shows its tooltip

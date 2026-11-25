@@ -2,7 +2,7 @@
 title: "Hybrid Drill-Down Pie/Bar Chart"
 source: "https://www.amcharts.com/demos/hybrid-drill-down-pie-bar-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A donut that drives a bar chart: click a slice and the bars show what it’s made of. Here, 280 support tickets rated Critical, Acceptable or Good, split by type.
@@ -258,8 +258,7 @@ var label2 = pieChart.seriesContainer.children.push(am5.Label.new(root, {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 container.setAll({
   focusable: true, // Tab reaches the charts, and a screen reader names them
-  role: "figure",
-  ariaLabel: "Donut chart of 280 support tickets rated Critical, Acceptable or Good, next to a bar chart of the selected rating's tickets by type. Tab to the slices, move between them with the arrow keys and press Enter to show a slice's breakdown; Tab on to the bars"
+  ariaLabel: "Donut chart of 280 support tickets rated Critical, Acceptable or Good, next to a bar chart of the selected rating's tickets by type. Tab to the slices, move between them with the up and down arrow keys and press Enter to show a slice's breakdown; Tab on to the bars"
 });
 // the slices: one Tab stop (a focusable group), the arrow keys step through them; Enter selects one, as a click does
 pieSeries.slices.template.setAll({

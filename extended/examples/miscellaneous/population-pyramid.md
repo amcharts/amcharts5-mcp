@@ -2,7 +2,7 @@
 title: "Population Pyramid"
 source: "https://www.amcharts.com/demos/population-pyramid/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A population pyramid puts men and women back to back, one bar per age group, the youngest at the bottom: its shape shows how old a population is. Here, the United States; click a state on the map for its own pyramid.
@@ -4357,8 +4357,7 @@ polygonSeries.mapPolygons.template.events.on("click", function (ev) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 container.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Population pyramid of the United States, males and females back to back in 19 age groups, as a share of the population, next to a map of the states. Tab to the males' or the females' bars and move between age groups with the arrow keys, or Tab to the states and press Enter to show a state's own pyramid"
+  ariaLabel: "Population pyramid of the United States, males and females back to back in 19 age groups, as a share of the population, next to a map of the states. Tab to the males' or the females' bars and move between age groups with the up and down arrow keys, or Tab to the states and press Enter to show a state's own pyramid"
 });
 // each side's bars: one Tab stop (a focusable group), the arrow keys step through the age groups
 maleSeries.columns.template.setAll({

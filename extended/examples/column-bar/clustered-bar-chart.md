@@ -2,7 +2,7 @@
 title: "Clustered Bar Chart"
 source: "https://www.amcharts.com/demos/clustered-bar-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A clustered bar chart lays the series side by side for each category. Here, income and expenses for five years: each bar carries its name inside its end and its value just past it.
@@ -177,8 +177,7 @@ cursor.lineX.set("forceHidden", true);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Clustered bar chart of income and expenses for each year from 2021 to 2025. Tab to the income or the expenses bars, then move between the years with the arrow keys"
+  ariaLabel: "Clustered bar chart of income and expenses for each year from 2021 to 2025. Tab to the income or the expenses bars, then move between the years with the up and down arrow keys"
 });
 // each series' bars: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

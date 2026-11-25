@@ -2,7 +2,7 @@
 title: "Bubble Chart"
 source: "https://www.amcharts.com/demos/bubble-chart/"
 category: "xy-bubble"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A bubble chart places each item on two axes and sizes it by a third value. Here two series share the plot: one drawn as circles, the other as eight-pointed stars.
@@ -240,10 +240,14 @@ series1.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Bubble chart of two series of seven points on two value axes, one drawn as circles and one as stars, each sized by a third value. Tab to the circles or the stars, then move between them with the arrow keys"
+  ariaLabel: "Bubble chart of two series of seven points on two value axes, one drawn as circles and one as stars, each sized by a third value. Tab to the circles or the stars, then move between them with the up and down arrow keys"
 });
 // the circles and stars: set up for the keyboard where they are made, in the bullet functions above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarY").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

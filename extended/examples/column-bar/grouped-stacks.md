@@ -2,7 +2,7 @@
 title: "Grouped Stacks"
 source: "https://www.amcharts.com/demos/grouped-stacks/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Stacked columns in groups: sales in three regions over four years, each year split into store and online sales. Each region has its own pair of colors, its name under its years and a gap before the next.
@@ -214,8 +214,7 @@ makeSeries("Asia, online", "asiaOnline", am5.Color.lighten(asiaColor, 0.5));
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Stacked column chart of store and online sales in Europe, the Americas and Asia, for each year from 2022 to 2025. Tab to a region's store or online sales, then move between the years with the arrow keys"
+  ariaLabel: "Stacked column chart of store and online sales in Europe, the Americas and Asia, for each year from 2022 to 2025. Tab to a region's store or online sales, then move between the years with the up and down arrow keys"
 });
 // each series' columns: one Tab stop (a focusable group), the arrow keys step through them. A series has an empty
 // column at the other regions' years: those aren't focused

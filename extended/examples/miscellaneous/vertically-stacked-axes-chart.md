@@ -2,7 +2,7 @@
 title: "Vertically Stacked Axes Chart"
 source: "https://www.amcharts.com/demos/vertically-stacked-axes-chart/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 One chart split into three panes stacked on top of each other, each with its own value axis, and one row of names along the bottom for all three. Here, a sales team’s quarter: deals closed, calls made and revenue per person.
@@ -260,8 +260,7 @@ cursor.events.on("cursormoved", function() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Chart in three stacked panes of a made-up sales team of 19 people: deals closed and calls made as lines, revenue in thousands of dollars as columns. Tab to a pane's points or columns, then move between people with the arrow keys"
+  ariaLabel: "Chart in three stacked panes of a made-up sales team of 19 people: deals closed and calls made as lines, revenue in thousands of dollars as columns. Tab to a pane's points or columns, then move between people with the up and down arrow keys"
 });
 // the dots of the two lines: set up for the keyboard where they are made, in the bullet function above
 // the revenue columns: one Tab stop (a focusable group), the arrow keys step through them

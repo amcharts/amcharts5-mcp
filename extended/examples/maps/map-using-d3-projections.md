@@ -2,7 +2,7 @@
 title: "Map Using D3 Projections"
 source: "https://www.amcharts.com/demos/map-using-d3-projections/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 One world map, 102 projections. The Projection list holds the projections of the d3-geo-projection library: pick one, or step through them with the arrows.
@@ -100,8 +100,7 @@ polygonSeries.mapPolygons.template.setAll({
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map drawn in a projection from the d3-geo-projection library. Tab to the countries, then move between them with the arrow keys"
+  ariaLabel: "World map drawn in a projection from the d3-geo-projection library. Tab to the countries, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

@@ -2,7 +2,7 @@
 title: "Range Chart with Different Fill Colors"
 source: "https://www.amcharts.com/demos/range-chart-with-different-fill-colors/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two lines with the gap between them filled: in one color while Open is above Close, in another while Close is on top. The color changes exactly where the lines cross.
@@ -227,7 +227,6 @@ am5.array.each(series1.dataItems, function (s1DataItem) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Range chart of two daily values, Open and Close, from October 2024 to March 2026, between about 710 and 820, with the gap between them in one color while Open is higher and in another while Close is. The lines have too many points to step through with the keyboard"
 });
 // no focusable points on the lines: a thousand of them would slow the chart down

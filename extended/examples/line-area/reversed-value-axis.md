@@ -2,7 +2,7 @@
 title: "Reversed Value Axis"
 source: "https://www.amcharts.com/demos/reversed-value-axis/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A ranking chart with the value axis flipped, so first place sits at the top. Here, where three teams finished in a league each year (sample data).
@@ -260,8 +260,7 @@ chart.plotContainer.events.on("pointerover", function(){
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Ranking chart of where three teams placed in a league each year from 2015 to 2025, first place at the top. Tab to a team's points, then move between its years with the arrow keys"
+  ariaLabel: "Ranking chart of where three teams placed in a league each year from 2015 to 2025, first place at the top. Tab to a team's points, then move between its years with the up and down arrow keys"
 });
 // the points: set up for the keyboard where they are made, in the bullet function above
 // the legend: one Tab stop too, after the points; the arrow keys step through its items, and Enter hides or shows one

@@ -2,7 +2,7 @@
 title: "Force-Directed Tree with Animated Bullets"
 source: "https://www.amcharts.com/demos/force-directed-tree-with-animated-bullets/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A force-directed tree with arrows running along every link, from parent to child, to show that something flows. Here, power flows from a plant through four substations to the city’s districts, sized by their demand.
@@ -162,8 +162,7 @@ series.set("selectedDataItem", series.dataItems[0]); // start with the root sele
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Force-directed tree of power flowing from a plant through four substations to twelve city districts, sized by demand in megawatts. Tab to the bubbles, move between them with the arrow keys, and press Enter on a substation to fold or open it"
+  ariaLabel: "Force-directed tree of power flowing from a plant through four substations to twelve city districts, sized by demand in megawatts. Tab to the bubbles, move between them with the up and down arrow keys, and press Enter on a substation to fold or open it"
 });
 // the plant, substations and districts: one Tab stop (a focusable group), the arrow keys step through them; Enter folds one
 series.nodes.template.setAll({

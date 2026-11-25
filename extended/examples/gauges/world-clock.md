@@ -2,7 +2,7 @@
 title: "World Clock"
 source: "https://www.amcharts.com/demos/world-clock/"
 category: "gauges"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Your time next to New York, London and Tokyo on four live analog clocks, with the time in digits, how far ahead or behind, and a dark face at night.
@@ -212,8 +212,7 @@ function makeClock(city, index) {
     // keyboard and screen readers (see Accessibility below): one Tab stop for the four clocks (a focusable group), the
     // arrow keys step through them; update names each with its city, time and offset
     focusable: true,
-    focusableGroup: "clocks",
-    role: "figure"
+    focusableGroup: "clocks"
   }));
 
   // the face: a circle behind the dial, dark at night (see paint)
@@ -495,8 +494,7 @@ setInterval(function() {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 clockGrid.setAll({
   focusable: true, // Tab reaches the clocks, and a screen reader names them
-  role: "figure",
-  ariaLabel: "Four analog clocks, each with the time in a city, yours first. Tab to the clocks, then move between them with the arrow keys to hear each one's time"
+  ariaLabel: "Four analog clocks, each with the time in a city, yours first. Tab to the clocks, then move between them with the up and down arrow keys to hear each one's time"
 });
 // the clocks: set up for the keyboard where they are made, in makeClock above, and named in its update function
 

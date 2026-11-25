@@ -2,7 +2,7 @@
 title: "Map with Animated Bubbles"
 source: "https://www.amcharts.com/demos/map-with-animated-bubbles/"
 category: "maps"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Bubbles on eight countries that grow and shrink as their values change every two seconds, with the value inside each bubble and the country's name beside it.
@@ -172,7 +172,6 @@ bubbleSeries.bullets.push(function(root, series, dataItem) {
       // keyboard and screen readers (see Accessibility below): one Tab stop for all the bubbles (a focusable group),
       // the arrow keys step through them, and the focused one shows its tooltip
       focusable: true,
-      role: "figure",
       focusableGroup: "bubbles",
       hoverOnFocus: true,
       ariaLabel: "{name}: {value.formatNumber('#.')}" // a whole number, as in the bubble
@@ -286,8 +285,7 @@ satelliteSeries.on("visible", function(visible) {
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the map, and a screen reader names it
-  role: "figure",
-  ariaLabel: "World map with bubbles on eight countries that grow and shrink as their random values change every two seconds. Tab to the countries or the bubbles, then move between them with the arrow keys"
+  ariaLabel: "World map with bubbles on eight countries that grow and shrink as their random values change every two seconds. Tab to the countries or the bubbles, then move between them with the up and down arrow keys"
 });
 // the countries: one Tab stop (a focusable group), the arrow keys step through them
 polygonSeries.mapPolygons.template.setAll({

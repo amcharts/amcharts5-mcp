@@ -2,7 +2,7 @@
 title: "Multiple Value Axes"
 source: "https://www.amcharts.com/demos/multiple-value-axes/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Three series with very different ranges, each with its own axis in its color and one shared set of grid lines, so every line gets the full height.
@@ -142,7 +142,6 @@ createAxisAndSeries(8000, true); // another right axis, about 8000
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
   ariaLabel: "Line chart of three random daily values over the last 100 days, starting near 100, 1,000 and 8,000, each on its own value axis. The lines have too many points to step through with the keyboard"
 });
 // no focusable points on the lines: 300 of them would slow down loading, zooming and panning

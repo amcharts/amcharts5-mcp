@@ -2,7 +2,7 @@
 title: "Vertical Arc Diagram"
 source: "https://www.amcharts.com/demos/vertical-arc-diagram/"
 category: "flow"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 An arc diagram standing up: the nodes in a column with their names beside them, the arcs bulging out to the right. Here, 23 links between the friends of the TV show Friends and people around them, with dots running along each arc.
@@ -123,8 +123,7 @@ series.data.setAll([
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Vertical arc diagram of 23 links between the Friends characters and people around them, with dots running along each arc. Tab to the people or the links, then move through them with the arrow keys; Enter on a person hides or shows their links"
+  ariaLabel: "Vertical arc diagram of 23 links between the Friends characters and people around them, with dots running along each arc. Tab to the people or the links, then move through them with the up and down arrow keys; Enter on a person hides or shows their links"
 });
 // the people: one Tab stop (a focusable group), the arrow keys step through them; Enter hides or shows a person's
 // links, as a click does
@@ -149,7 +148,6 @@ series.events.once("datavalidated", function () {
 // the links between them: one Tab stop too, after the nodes
 series.links.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "links",
   tabindexOrder: 5,   // after the nodes
   ariaLabel: "{sourceId} to {targetId}: {value}"

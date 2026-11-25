@@ -2,7 +2,7 @@
 title: "Single-Level Packed Circles"
 source: "https://www.amcharts.com/demos/single-level-packed-circles/"
 category: "hierarchy"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Five hundred circles, each sized by its value, packed as tight as they fit. One level and no groups: a quick way to spot the few big items among hundreds of small ones.
@@ -582,13 +582,11 @@ series.data.setAll([data]);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Packed circle chart of 500 numbered items, each sized by its value. Tab to the circles, then move between them with the arrow keys"
+  ariaLabel: "Packed circle chart of 500 numbered items, each sized by its value. Tab to the circles, then move between them with the up and down arrow keys"
 });
 // the circles: one Tab stop (a focusable group), the arrow keys step through them
 series.nodes.template.setAll({
   focusable: true,
-  role: "figure",
   focusableGroup: "circles",
   hoverOnFocus: true, // a focused circle shows its tooltip
   ariaLabel: "Item {category}: {sum}"

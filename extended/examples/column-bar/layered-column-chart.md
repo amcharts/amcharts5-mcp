@@ -2,7 +2,7 @@
 title: "Layered Column Chart"
 source: "https://www.amcharts.com/demos/layered-column-chart/"
 category: "column-bar"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 Two years in one column: 2024 wide at the back, 2025 narrower and striped in front. Where the front column rises above the back one, the country grew.
@@ -179,8 +179,7 @@ legend.data.setAll(chart.series.values);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Layered column chart of six countries' values in 2024 and 2025, the 2025 column in front of the 2024 one. Tab to a year's columns, then move between the countries with the arrow keys"
+  ariaLabel: "Layered column chart of six countries' values in 2024 and 2025, the 2025 column in front of the 2024 one. Tab to a year's columns, then move between the countries with the up and down arrow keys"
 });
 // each year's columns: one Tab stop (a focusable group), the arrow keys step through them
 chart.series.each(function (series) {

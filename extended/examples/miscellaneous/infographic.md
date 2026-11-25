@@ -2,7 +2,7 @@
 title: "Infographic"
 source: "https://www.amcharts.com/demos/infographic/"
 category: "miscellaneous"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 An infographic-style bar chart drawn with person icons instead of solid bars. It compares the share of men and women in six departments: men to the left of the middle, women to the right, and the empty places in gray.
@@ -236,8 +236,7 @@ createSeries("female", "Female", femaleColor, femaleIcon, true, 1);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Infographic bar chart of the share of men and women in six departments, drawn with person icons: men to the left, women to the right. Tab to the men's or the women's rows, then move between departments with the arrow keys"
+  ariaLabel: "Infographic bar chart of the share of men and women in six departments, drawn with person icons: men to the left, women to the right. Tab to the men's or the women's rows, then move between departments with the up and down arrow keys"
 });
 // the colored rows of each side: one Tab stop per side (a focusable group), the arrow keys step through the
 // departments; the gray rows behind them are left out, as they are always 100%

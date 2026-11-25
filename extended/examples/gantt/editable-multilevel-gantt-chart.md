@@ -2,7 +2,7 @@
 title: "Editable Multilevel Gantt Chart"
 source: "https://www.amcharts.com/demos/editable-multilevel-gantt-chart/"
 category: "gantt"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A Gantt chart with tasks grouped under their stage. Each stage’s bar covers its tasks, its progress comes from theirs, and a click folds it away.
@@ -135,11 +135,25 @@ gantt.series.data.setAll([{
 // https://docs.amcharts.com/v5/concepts/accessibility/
 gantt.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Gantt chart of a project in stages, preparation and implementation, with their tasks; each stage's bar covers its tasks. Tab to the date range, the toolbar and the stages in the task list; Enter folds or opens a stage"
+  ariaLabel: "Gantt chart of a project in stages, preparation and implementation, with their tasks; each stage's bar covers its tasks. Tab to the date range, the toolbar and the stages in the task list; Enter folds or opens a stage. Then Tab to the tasks: the up and down arrow keys move between them, the left and right arrow keys move a task, and Tab goes on to its start, progress and end"
 });
 // the Gantt brings its own keyboard support: the date range, the toolbar buttons and the task list's groups
 // are focusable by the library
+// the tasks: one Tab stop for the bars and milestones (a focusable group). The up and down arrow keys move between
+// them, the left and right arrow keys move the focused one, Tab goes on to its grips, and it shows its tooltip.
+// An editable task is a slider that reads its dates itself, so its name leaves them out
+gantt.series.columns.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks",
+  hoverOnFocus: true,
+  ariaLabel: "{name}, {progress.formatNumber('#.%')} done"
+});
+gantt.series.zeroRectangles.template.setAll({
+  focusable: true,
+  focusableGroup: "tasks", // the same group as the bars: one Tab stop for both
+  hoverOnFocus: true,
+  ariaLabel: "{name}, milestone"
+});
 
 gantt.appear();
 ```

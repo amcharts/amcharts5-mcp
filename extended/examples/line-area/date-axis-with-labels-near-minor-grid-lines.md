@@ -2,7 +2,7 @@
 title: "Date Axis with Labels Near Minor Grid Lines"
 source: "https://www.amcharts.com/demos/date-axis-with-labels-near-minor-grid-lines/"
 category: "line-area"
-scraped: "2026-11-21"
+scraped: "2026-11-25"
 ---
 
 A line chart where every day gets a number on the axis: small day numbers along the bottom, week labels under them, so each point’s date is easy to read.
@@ -174,10 +174,12 @@ series.data.setAll(data);
 // https://docs.amcharts.com/v5/concepts/accessibility/
 chart.setAll({
   focusable: true, // Tab reaches the chart, and a screen reader names it
-  role: "figure",
-  ariaLabel: "Line chart of a daily value over 30 days, with a dot on each day. Tab to the dots, then move between the days with the arrow keys"
+  ariaLabel: "Line chart of a daily value over 30 days, with a dot on each day. Tab to the dots, then move between the days with the up and down arrow keys"
 });
 // the dots: set up for the keyboard where they are made, in the bullet function above
+// the scrollbar: after the data (the chart's parts are focused from low to high, 0 if not set)
+chart.get("scrollbarX").startGrip.set("tabindexOrder", 10);
+chart.get("scrollbarX").endGrip.set("tabindexOrder", 10);
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/
