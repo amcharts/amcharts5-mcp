@@ -1,7 +1,7 @@
 ---
 title: "Pie chart"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will walk through most common aspects of creating pie and donut charts.
@@ -365,9 +365,9 @@ var series = chart.series.push(
 
 The above will result in a horizontal semi-circle:
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_default_full_circle.png "Default behavior")
+![Full-circle pie chart with three slices](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_default_full_circle.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_custom_angle.png "`\{ startAngle: -180, endAngle: 0 }`")
+![Half-circle pie chart spanning the top half](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_custom_angle.png "`\{ startAngle: -180, endAngle: 0 }`")
 
 Example: [Start and end angles of a pie chart](https://docs.amcharts.com/embeds/v5/start-and-end-angles-of-a-pie-chart/). Its code: get_example(path: "examples/docs-demos/start-and-end-angles-of-a-pie-chart").
 
@@ -403,11 +403,11 @@ var chart = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_default_full_circle-1.png "`radius: am5.percent(80)` (default)")
+![Pie chart at its default size, with some space around it](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/pie_default_full_circle-1.png "`radius: am5.percent(80)` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_95.png "`radius: am5.percent(95)`")
+![Pie chart enlarged to nearly fill the chart height](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_95.png "`radius: am5.percent(95)`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_50px.png "`radius: 50`")
+![Small pie chart surrounded by empty space](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_50px.png "`radius: 50`")
 
 ### Inner radius
 
@@ -441,9 +441,9 @@ var chart = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_95.png "`innerRadius: 0` (default)")
+![Solid pie chart with no hole](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/radius_95.png "`innerRadius: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/donut.png "`innerRadius: am5.percent(50)`")
+![Donut chart with a hole half the radius](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/donut.png "`innerRadius: am5.percent(50)`")
 
 Example: [Pie chart with inner radius (donut)](https://docs.amcharts.com/embeds/v5/pie-chart-with-inner-radius-donut/). Its code: get_example(path: "examples/docs-demos/pie-chart-with-inner-radius-donut").
 
@@ -453,9 +453,9 @@ Pie chart supports multiple series.
 
 If we add several series to the chart, it will automatically divvy up available the radius (as set by its `radius` and `innerRadius` settings) between all series, giving them equal space.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/nested_pie_series.png "Nested series")
+![Two pie series nested, the inner pie inside the outer ring](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/nested_pie_series.png "Nested series")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/nested_pie_series_inner_radius.png "Nested series with `innerRadius`")
+![Two nested donut rings with a hole in the middle](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/index/nested_pie_series_inner_radius.png "Nested series with `innerRadius`")
 
 Example: [Multiple pie series](https://docs.amcharts.com/embeds/v5/multiple-pie-series/). Its code: get_example(path: "examples/docs-demos/multiple-pie-series").
 

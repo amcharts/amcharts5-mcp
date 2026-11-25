@@ -1,7 +1,7 @@
 ---
 title: "Containers"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/containers/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 A container is an element that can have child elements as well as a background. Most of the elements on a chart are containers. The chart itself is also a container.
@@ -87,13 +87,13 @@ var chart = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/chrome_2021-07-29_17-02-22.png "`layout: root.horizontalLayout`")
+![Circles in a single row across the container, the last one cut off](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/chrome_2021-07-29_17-02-22.png "`layout: root.horizontalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-29_17-02-37.png "`layout: root.verticalLayout`")
+![Circles in a single column down the container, the last one cut off](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-29_17-02-37.png "`layout: root.verticalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-29_17-02-48.png "`layout: root.gridLayout`")
+![Circles in a grid, three in the first row and one wrapped to the second](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-29_17-02-48.png "`layout: root.gridLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-29_17-02-58.png "`layout` not set (default)")
+![Circles stacked on top of each other in the container's top-left corner](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-29_17-02-58.png "`layout` not set (default)")
 
 Example: [Basic containers](https://docs.amcharts.com/embeds/v5/basic-containers/). Its code: get_example(path: "examples/docs-demos/basic-containers").
 
@@ -134,13 +134,13 @@ var legend = chart.children.push(am5.Legend.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-09-47.png "(Default) | `maxColumns: undefined` | `fixedWidthGrid: false`")
+![Squares of different sizes in a grid of five best-fit columns](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-09-47.png "(Default) | `maxColumns: undefined` | `fixedWidthGrid: false`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-10-06.png "`maxColumns: 3` | `fixedWidthGrid: false`")
+![Squares of different sizes in a grid of three best-fit columns](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-10-06.png "`maxColumns: 3` | `fixedWidthGrid: false`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-10-16.png "`maxColumns: 3` | `fixedWidthGrid: true`")
+![Squares of different sizes in a grid of three equal-width columns](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-10-16.png "`maxColumns: 3` | `fixedWidthGrid: true`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-12-58.png "`maxColumns: 2` | `fixedWidthGrid: true`")
+![Squares of different sizes in a grid of two equal-width columns](https://docs.amcharts.com/v5/images/concepts/common-elements/containers/2021-07-30_09-12-58.png "`maxColumns: 2` | `fixedWidthGrid: true`")
 
 Example: [Grid layout of the container](https://docs.amcharts.com/embeds/v5/grid-layout-of-the-container/). Its code: get_example(path: "examples/docs-demos/grid-layout-of-the-container").
 

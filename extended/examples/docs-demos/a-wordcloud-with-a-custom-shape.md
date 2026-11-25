@@ -2,7 +2,7 @@
 title: "A wordcloud with a custom shape"
 source: "https://docs.amcharts.com/embeds/v5/a-wordcloud-with-a-custom-shape/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/word-cloud"]
 ---
 

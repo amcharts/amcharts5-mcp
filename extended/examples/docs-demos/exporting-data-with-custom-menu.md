@@ -2,7 +2,7 @@
 title: "Exporting data with custom menu"
 source: "https://docs.amcharts.com/embeds/v5/exporting-data-with-custom-menu/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/exporting/export-menu","concepts/exporting/exporting-data"]
 ---
 

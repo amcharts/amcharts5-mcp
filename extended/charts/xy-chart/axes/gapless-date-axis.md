@@ -1,16 +1,16 @@
 ---
 title: "Gapless date axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > In a nutshell, a gapless date axis is the same as regular date axis (with some limitations), with data-less intervals removed from its scale.
 
 In a nutshell, a gapless [date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/) is the same as regular date axis (with some [limitations](#limitations)), with data-less intervals removed from its scale.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/gapless-date-axis/dateaxis.png "Regular date axis with irregular data")
+![Line chart whose date axis shows every day, leaving wide gaps where data is missing](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/gapless-date-axis/dateaxis.png "Regular date axis with irregular data")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/gapless-date-axis/categorydateaxis.png "Gapless date axis with irregular data")
+![Line chart with evenly spaced points, the axis showing only dates that have data](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/gapless-date-axis/categorydateaxis.png "Gapless date axis with irregular data")
 
 ## Creating and configuring
 

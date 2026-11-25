@@ -2,7 +2,7 @@
 title: "Open an URL on force-directed node click"
 source: "https://docs.amcharts.com/embeds/v5/open-an-url-on-force-directed-node-click/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/hierarchy-drill-down"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Right-to-left support"
 source: "https://docs.amcharts.com/v5/concepts/locales/right-to-left-support/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > How to lay out labels, legends and other containers for right-to-left languages in amCharts 5.
@@ -63,7 +63,7 @@ pieSeries.labels.template.setAll({
 
 When the browser's rendering engine encounters RTL text within regular text, its own ordering rules kick in, and the label comes out in the wrong order:
 
-![](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-14.png "Incorrect result (`direction = 'ltr'` - default)")
+![Pie chart with Arabic labels, the percent sign misplaced before the category name](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-14.png "Incorrect result (`direction = 'ltr'` - default)")
 
 Enabling RTL fixes it by properly laying out the labels:
 
@@ -85,7 +85,7 @@ pieSeries.labels.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-15.png "Correct result (`direction = 'rtl'`)")
+![Pie chart with Arabic labels laid out right to left in the correct order](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-15.png "Correct result (`direction = 'rtl'`)")
 
 ### Text alignment
 
@@ -109,7 +109,7 @@ This is true for the mixed-language content only.
 
 If our labels would contain only Latin (left-to-right) text or numbers/symbols, it would remain as is: `rtl` setting would have no effect over it.
 
-![](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-16.png "For labels with just numbers and symbols `direction` setting is ignored")
+![Pie chart with percentage-only labels, the percent sign after the number](https://docs.amcharts.com/v5/images/concepts/locales/right-to-left-support/image-16.png "For labels with just numbers and symbols `direction` setting is ignored")
 
 #### Formatting blocks
 

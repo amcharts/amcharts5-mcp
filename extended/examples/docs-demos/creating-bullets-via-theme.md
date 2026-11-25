@@ -2,7 +2,7 @@
 title: "Creating bullets via theme"
 source: "https://docs.amcharts.com/embeds/v5/creating-bullets-via-theme/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/themes/creating-themes"]
 ---
 

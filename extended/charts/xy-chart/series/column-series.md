@@ -1,7 +1,7 @@
 ---
 title: "Column series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at various aspects of creating column series.
@@ -116,13 +116,13 @@ Normally, multiple column series will "cluster", i.e. will show their columns re
 
 We can use setting `clustered` to disable clustering for particular series. It can be useful in a number of situations, most commonly when creating Gantt or similar charts using [floating columns](#floating-columns).
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_clustered.png "Regular clustered columns")
+![Column chart with two series side by side in each category](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_clustered.png "Regular clustered columns")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_unclustered.png "Clustering disabled")
+![Column chart with two series overlapping in each category](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_unclustered.png "Clustering disabled")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/floating_clustered.png "Floating clustered columns")
+![Floating columns of two series side by side in each category](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/floating_clustered.png "Floating clustered columns")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/floating_non_clustered.png "Floating columns with clustering disabled")
+![Floating columns of two series sharing one full-width slot per category](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/floating_non_clustered.png "Floating columns with clustering disabled")
 
 ## Stacking
 
@@ -204,13 +204,13 @@ series.columns.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_relative_80.png "`width: am5.percent(80)` (default)")
+![Clustered column chart with small gaps between columns](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_relative_80.png "`width: am5.percent(80)` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_relative_100.png "`width: am5.percent(100)`")
+![Clustered column chart with columns touching, no gaps](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_relative_100.png "`width: am5.percent(100)`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_fixed_width_20.png "`width: 20`")
+![Clustered column chart with narrow fixed-width columns](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_fixed_width_20.png "`width: 20`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_fixed_width_5.png "`width: 5`")
+![Clustered column chart with very thin fixed-width columns](https://docs.amcharts.com/v5/images/charts/xy-chart/series/column-series/column_fixed_width_5.png "`width: 5`")
 
 ## Floating columns
 

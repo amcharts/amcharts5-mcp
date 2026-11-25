@@ -2,7 +2,7 @@
 title: "Axis icons via ranges"
 source: "https://docs.amcharts.com/embeds/v5/axis-icons-via-ranges-2/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/axes/axis-ranges"]
 ---
 

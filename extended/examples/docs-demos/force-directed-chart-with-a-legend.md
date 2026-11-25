@@ -2,7 +2,7 @@
 title: "Force-directed chart with a legend"
 source: "https://docs.amcharts.com/embeds/v5/force-directed-chart-with-a-legend/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy"]
 ---
 

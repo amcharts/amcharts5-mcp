@@ -1,7 +1,7 @@
 ---
 title: "Flow chart bullets"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/flow-chart-bullets/"
-scraped: "2026-11-18"
+scraped: "2026-11-25"
 ---
 
 This tutorial will look at how we can use bullets on flow charts.
@@ -160,9 +160,9 @@ series.bullets.push(function(root, series, dataItem) {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/flow-chart-bullets/sankey_bullet-1024x878.png "`autoRotate: false` (default)")
+![Sankey diagram with horizontal link labels](https://docs.amcharts.com/v5/images/charts/flow-charts/flow-chart-bullets/sankey_bullet-1024x878.png "`autoRotate: false` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/flow-chart-bullets/sankey_bullet_autorotate-1024x878.png "`autoRotate: true`")
+![Sankey diagram with link labels rotated to follow each link](https://docs.amcharts.com/v5/images/charts/flow-charts/flow-chart-bullets/sankey_bullet_autorotate-1024x878.png "`autoRotate: true`")
 
 Example: [Sankey diagram with bullets](https://docs.amcharts.com/embeds/v5/sankey-diagram-with-bullets/). Its code: get_example(path: "examples/docs-demos/sankey-diagram-with-bullets").
 

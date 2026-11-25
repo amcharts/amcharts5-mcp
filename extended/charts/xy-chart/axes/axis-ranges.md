@@ -1,7 +1,7 @@
 ---
 title: "Axis ranges"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/axis-ranges/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Axis ranges can be used to put lines or bands across plot area, or apply different settings to segments of series.
@@ -144,11 +144,11 @@ rangeDataItem.get("grid").setAll({
 
 The above will place grid line exactly in the middle of the range.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_grid_location_0.png "`location: 0` (default)")
+![Column chart with a 175-275 range fill, its grid line at the bottom edge](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_grid_location_0.png "`location: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_grid_location_1.png "`location: 1`")
+![Column chart with a 175-275 range fill, its grid line at the top edge](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_grid_location_1.png "`location: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_grid_location_05.png "`location: 0.5`")
+![Column chart with a 175-275 range fill, its grid line through the middle](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_grid_location_05.png "`location: 0.5`")
 
 If we don't need axis range to show any grid line, we can simply disable it via `visible` setting:
 
@@ -250,11 +250,11 @@ rangeDataItem.get("label").setAll({
 
 `0` (zero) means label will be placed on the start value, `1` (one) - end value, while intermediate value will place the label relative to the actual range.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_label_location_0.png "`location: 0` (default)")
+![Column chart with a 175-275 range fill, its label at the bottom edge](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_label_location_0.png "`location: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_label_location_05.png "`location: 0.5`")
+![Column chart with a 175-275 range fill, its label in the middle](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_label_location_05.png "`location: 0.5`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_label_location_1.png "`location: 1`")
+![Column chart with a 175-275 range fill, its label at the top edge](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axis_range_label_location_1.png "`location: 1`")
 
 Example: [Axis ranges](https://docs.amcharts.com/embeds/v5/axis-ranges/). Its code: get_example(path: "examples/docs-demos/axis-ranges").
 
@@ -374,9 +374,9 @@ var range = yAxis.createAxisRange(rangeDataItem);
 
 > **Note:** The setting `above` is not dynamic. It needs to be set before actual axis range is created. Subsequent changes to this setting will have no effect.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axisrange_behind_series.png "Default behavior")
+![Column chart with an orange range fill drawn behind the columns](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axisrange_behind_series.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axisrange_in_front_series.png "`above: true`")
+![Column chart with a semi-transparent range fill drawn over the columns](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/axis-ranges/axisrange_in_front_series.png "`above: true`")
 
 ### Including in min/max
 

@@ -2,7 +2,7 @@
 title: "Flight routes arcing above a globe"
 source: "https://docs.amcharts.com/embeds/v5/flight-routes-arcing-above-a-globe/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/map-chart/map-line-series"]
 ---
 

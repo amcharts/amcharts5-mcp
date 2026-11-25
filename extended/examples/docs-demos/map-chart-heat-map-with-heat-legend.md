@@ -2,7 +2,7 @@
 title: "Map chart heat map with heat legend"
 source: "https://docs.amcharts.com/embeds/v5/map-chart-heat-map-with-heat-legend/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["concepts/legend/heat-legend"]
 ---
 

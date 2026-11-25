@@ -2,7 +2,7 @@
 title: "Synced value axes"
 source: "https://docs.amcharts.com/embeds/v5/synced-value-axes/"
 category: "docs-demos"
-scraped: "2026-11-18"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/axes/value-axis"]
 ---
 

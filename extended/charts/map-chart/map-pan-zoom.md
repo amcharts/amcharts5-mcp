@@ -1,7 +1,7 @@
 ---
 title: "Panning and zooming the map"
 source: "https://docs.amcharts.com/v5/charts/map-chart/map-pan-zoom/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at all the ways we can configure map panning and zooming.
@@ -561,11 +561,11 @@ var chart = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-pan-zoom/maxpanout_04-1024x882.png "`maxPanout: 0.4` (default)")
+![World map dragged partly out of view, most of it still visible](https://docs.amcharts.com/v5/images/charts/map-chart/map-pan-zoom/maxpanout_04-1024x882.png "`maxPanout: 0.4` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-pan-zoom/maxpanout_1-1024x882.png "`maxPanout: 1`")
+![World map dragged far, with about half of it out of view](https://docs.amcharts.com/v5/images/charts/map-chart/map-pan-zoom/maxpanout_1-1024x882.png "`maxPanout: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-pan-zoom/maxpanout_0-1024x882.png "`maxPanout: 0`")
+![World map that cannot be dragged off its center](https://docs.amcharts.com/v5/images/charts/map-chart/map-pan-zoom/maxpanout_0-1024x882.png "`maxPanout: 0`")
 
 > **Note:** `maxPanOut` is not relevant if pan settings are set to rotate the map, rather than move it.
 

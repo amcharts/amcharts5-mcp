@@ -1,7 +1,7 @@
 ---
 title: "Map Sankey series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/map-sankey-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Map Sankey series is used to plot Sankey-style flow bands on a map chart. It draws variable-width curved bands between geographic points (countries, cities, etc.), where the thickness of each band represents a numeric value. It supports multi-level flows, animated bullets, endpoint node shapes, and works with all map projections.
@@ -11,24 +11,6 @@ It extends `MapPolygonSeries` and generates actual GeoJSON polygon geometries fo
 ## Adding series
 
 Map Sankey series requires a reference `MapPolygonSeries` to resolve country IDs to geographic centroids. Create both series and pass the polygon series via the `polygonSeries` setting:
-
-JavaScript:
-
-```js
-// Create polygon series for countries
-var polygonSeries = chart.series.push(
-  am5map.MapPolygonSeries.new(root, {
-    geoJSON: am5geodata_worldLow
-  })
-);
-
-// Create Sankey flow series
-var sankeySeries = chart.series.push(
-  am5map.MapSankeySeries.new(root, {
-    polygonSeries: polygonSeries
-  })
-);
-```
 
 TypeScript:
 
@@ -48,15 +30,33 @@ let sankeySeries = chart.series.push(
 );
 ```
 
+JavaScript:
+
+```js
+// Create polygon series for countries
+var polygonSeries = chart.series.push(
+  am5map.MapPolygonSeries.new(root, {
+    geoJSON: am5geodata_worldLow
+  })
+);
+
+// Create Sankey flow series
+var sankeySeries = chart.series.push(
+  am5map.MapSankeySeries.new(root, {
+    polygonSeries: polygonSeries
+  })
+);
+```
+
 **Important:** The polygon series provides the geoJSON-derived data that `MapSankeySeries` depends on for resolving `sourceId`/`targetId` to geographic centroids. Do not call `polygonSeries.data.setAll()` with your own objects — this replaces the geoJSON-derived data items and breaks centroid resolution. To customize polygon appearance (e.g. highlight specific countries), use an adapter on `polygonSeries.mapPolygons.template` or iterate over existing data items in a `datavalidated` event.
 
 ## Data
 
 Each data item represents one flow between two geographic points. At minimum, it needs `sourceId`, `targetId`, and `value`:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.data.setAll([
   { sourceId: "BR", targetId: "DE", value: 350 },
   { sourceId: "BR", targetId: "US", value: 450 },
@@ -65,9 +65,9 @@ sankeySeries.data.setAll([
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.data.setAll([
   { sourceId: "BR", targetId: "DE", value: 350 },
   { sourceId: "BR", targetId: "US", value: 450 },
@@ -84,9 +84,9 @@ You can call `sankeySeries.data.setAll()` at any time. When using `sourceId`/`ta
 
 Instead of polygon IDs, you can specify exact latitude/longitude for either endpoint:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.data.setAll([
   {
     sourceLongitude: 2.35, sourceLatitude: 48.86,  // Paris
@@ -96,9 +96,9 @@ sankeySeries.data.setAll([
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.data.setAll([
   {
     sourceLongitude: 2.35, sourceLatitude: 48.86,  // Paris
@@ -114,9 +114,9 @@ You can also mix: use `sourceId` for one end and explicit coordinates for the ot
 
 To route a flow through intermediate geographic points (e.g., around land masses or through shipping lanes), use the `waypoints` array:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.data.setAll([
   {
     sourceId: "GB",
@@ -130,9 +130,9 @@ sankeySeries.data.setAll([
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.data.setAll([
   {
     sourceId: "GB",
@@ -154,9 +154,9 @@ The flow will pass smoothly through each waypoint using cubic bezier curves with
 
 Flow bands are `MapPolygon` elements, configured via `mapPolygons.template`:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.mapPolygons.template.setAll({
   fill: am5.color(0xff6b35),
   fillOpacity: 0.6,
@@ -165,9 +165,9 @@ sankeySeries.mapPolygons.template.setAll({
 });
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.mapPolygons.template.setAll({
   fill: am5.color(0xff6b35),
   fillOpacity: 0.6,
@@ -180,10 +180,10 @@ sankeySeries.mapPolygons.template.setAll({
 
 The `maxWidth` setting controls the maximum band width in geographic degrees. The thickest band (highest value) will be this wide; others are proportional.
 
-JavaScript:
+TypeScript:
 
-```js
-var sankeySeries = chart.series.push(
+```ts
+let sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     maxWidth: 3
@@ -191,10 +191,10 @@ var sankeySeries = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let sankeySeries = chart.series.push(
+```js
+var sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     maxWidth: 3
@@ -206,10 +206,10 @@ let sankeySeries = chart.series.push(
 
 The `controlPointDistance` setting (0 to 0.5) controls how pronounced the S-curve is. Higher values create longer straight sections before the curve transitions. Default is `0.5`.
 
-JavaScript:
+TypeScript:
 
-```js
-var sankeySeries = chart.series.push(
+```ts
+let sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     controlPointDistance: 0.3    // less S-curve
@@ -217,10 +217,10 @@ var sankeySeries = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let sankeySeries = chart.series.push(
+```js
+var sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     controlPointDistance: 0.3    // less S-curve
@@ -230,10 +230,10 @@ let sankeySeries = chart.series.push(
 
 You can also set separate values for the source and target ends:
 
-JavaScript:
+TypeScript:
 
-```js
-var sankeySeries = chart.series.push(
+```ts
+let sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     controlPointDistanceSource: 0.5,  // long straight departure
@@ -242,10 +242,10 @@ var sankeySeries = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let sankeySeries = chart.series.push(
+```js
+var sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     controlPointDistanceSource: 0.5,  // long straight departure
@@ -256,18 +256,18 @@ let sankeySeries = chart.series.push(
 
 These can also be overridden per individual link in the data:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.data.setAll([
   { sourceId: "CN", targetId: "US", value: 300, controlPointDistance: 0.2 },
   { sourceId: "CN", targetId: "DE", value: 200, controlPointDistanceSource: 0.4 }
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.data.setAll([
   { sourceId: "CN", targetId: "US", value: 300, controlPointDistance: 0.2 },
   { sourceId: "CN", targetId: "DE", value: 200, controlPointDistanceSource: 0.4 }
@@ -287,10 +287,10 @@ By default, bands use horizontal S-curves (departing and arriving east/west). Th
 
 When multiple bands share an endpoint, they are stacked vertically. The `autoSort` setting (default `true`) sorts them by the latitude of their target, so bands heading north appear on top and bands heading south appear on the bottom. This prevents overlapping.
 
-JavaScript:
+TypeScript:
 
-```js
-var sankeySeries = chart.series.push(
+```ts
+let sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     autoSort: true   // default
@@ -298,10 +298,10 @@ var sankeySeries = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let sankeySeries = chart.series.push(
+```js
+var sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     autoSort: true   // default
@@ -313,10 +313,10 @@ let sankeySeries = chart.series.push(
 
 By default, bands take the shortest path, crossing the ±180° longitude line if needed (e.g., China to US goes east across the Pacific). Set `antimeridian` to `"long"` to force bands to always go the long way around:
 
-JavaScript:
+TypeScript:
 
-```js
-var sankeySeries = chart.series.push(
+```ts
+let sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     antimeridian: "long"   // never cross ±180°
@@ -324,10 +324,10 @@ var sankeySeries = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let sankeySeries = chart.series.push(
+```js
+var sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     antimeridian: "long"   // never cross ±180°
@@ -341,9 +341,9 @@ This only applies to links without explicit waypoints.
 
 MapSankeySeries supports multi-level Sankey flows, where the same country can be both a target and a source (an intermediate node). At intermediate nodes, incoming and outgoing bands share a unified stacking range so they align properly:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.data.setAll([
   // Level 1: Producers > Hubs
   { sourceId: "BR", targetId: "DE", value: 350 },
@@ -355,9 +355,9 @@ sankeySeries.data.setAll([
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.data.setAll([
   // Level 1: Producers > Hubs
   { sourceId: "BR", targetId: "DE", value: 350 },
@@ -375,9 +375,9 @@ Loops are also supported - a flow can go from a downstream node back to an upstr
 
 Each unique endpoint (from or to) gets a node shape drawn on top of the bands. Nodes are configured via `nodes.mapPolygons.template`:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.nodes.mapPolygons.template.setAll({
   fill: am5.color(0x8b5e3c),
   fillOpacity: 0.9,
@@ -386,9 +386,9 @@ sankeySeries.nodes.mapPolygons.template.setAll({
 });
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.nodes.mapPolygons.template.setAll({
   fill: am5.color(0x8b5e3c),
   fillOpacity: 0.9,
@@ -406,10 +406,10 @@ The `nodeType` setting controls the shape:
 | `"circle"` | A circle covering all flows at the endpoint (default)                                                           |
 | `"bar"`    | A rectangular bar like in a traditional Sankey diagram. Bar orientation is perpendicular to the flow direction. |
 
-JavaScript:
+TypeScript:
 
-```js
-var sankeySeries = chart.series.push(
+```ts
+let sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     nodeType: "bar",
@@ -418,10 +418,10 @@ var sankeySeries = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let sankeySeries = chart.series.push(
+```js
+var sankeySeries = chart.series.push(
   am5map.MapSankeySeries.new(root, {
     polygonSeries: polygonSeries,
     nodeType: "bar",
@@ -434,17 +434,6 @@ let sankeySeries = chart.series.push(
 
 The `nodePadding` setting adds extra degrees to node size, helping avoid subpixel gaps between bands and the node shape:
 
-JavaScript:
-
-```js
-var sankeySeries = chart.series.push(
-  am5map.MapSankeySeries.new(root, {
-    polygonSeries: polygonSeries,
-    nodePadding: 0.3   // default
-  })
-);
-```
-
 TypeScript:
 
 ```ts
@@ -456,13 +445,24 @@ let sankeySeries = chart.series.push(
 );
 ```
 
+JavaScript:
+
+```js
+var sankeySeries = chart.series.push(
+  am5map.MapSankeySeries.new(root, {
+    polygonSeries: polygonSeries,
+    nodePadding: 0.3   // default
+  })
+);
+```
+
 ## Bullets
 
 You can add animated bullets that travel along the flow paths, similar to regular Sankey charts. Bullets are positioned using `locationX` (0 = source, 1 = target):
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.bullets.push(function() {
   return am5.Bullet.new(root, {
     locationX: 0,
@@ -475,9 +475,9 @@ sankeySeries.bullets.push(function() {
 });
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.bullets.push(function() {
   return am5.Bullet.new(root, {
     locationX: 0,
@@ -493,28 +493,6 @@ sankeySeries.bullets.push(function() {
 ### Animating bullets
 
 To animate bullets along the flow paths, animate the `locationX` property on each bullet. Use a `sankeySeries.events.on("datavalidated", ...)` handler to ensure bullets exist before animating them:
-
-JavaScript:
-
-```js
-sankeySeries.events.on("datavalidated", function() {
-  am5.array.each(sankeySeries.dataItems, function(dataItem) {
-    var bullets = dataItem.bullets;
-    if (bullets) {
-      am5.array.each(bullets, function(bullet) {
-        bullet.animate({
-          key: "locationX",
-          from: 0,
-          to: 1,
-          duration: 3000,
-          easing: am5.ease.linear,
-          loops: Infinity
-        });
-      });
-    }
-  });
-});
-```
 
 TypeScript:
 
@@ -538,15 +516,37 @@ sankeySeries.events.on("datavalidated", function() {
 });
 ```
 
+JavaScript:
+
+```js
+sankeySeries.events.on("datavalidated", function() {
+  am5.array.each(sankeySeries.dataItems, function(dataItem) {
+    var bullets = dataItem.bullets;
+    if (bullets) {
+      am5.array.each(bullets, function(bullet) {
+        bullet.animate({
+          key: "locationX",
+          from: 0,
+          to: 1,
+          duration: 3000,
+          easing: am5.ease.linear,
+          loops: Infinity
+        });
+      });
+    }
+  });
+});
+```
+
 Bullets are automatically hidden when they are on the back side of the globe (orthographic projection), using the same visibility check as `MapPointSeries`.
 
 ### Custom bullet shapes
 
 You can use any sprite as a bullet, including SVG paths:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 sankeySeries.bullets.push(function() {
   return am5.Bullet.new(root, {
     locationX: 0,
@@ -562,9 +562,9 @@ sankeySeries.bullets.push(function() {
 });
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 sankeySeries.bullets.push(function() {
   return am5.Bullet.new(root, {
     locationX: 0,

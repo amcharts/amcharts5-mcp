@@ -1,7 +1,7 @@
 ---
 title: "Value axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/value-axis/"
-scraped: "2026-11-18"
+scraped: "2026-11-25"
 ---
 
 Value axis is used for plotting numeric values.
@@ -220,9 +220,9 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/regular_scale.png "Regular scale (default)")
+![Column chart on a linear scale where small values are barely visible next to one tall column](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/regular_scale.png "Regular scale (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/logarithmic_scale.png "Logarithmic scale")
+![Column chart on a logarithmic scale of 100, 1,000 and 10,000, all columns clearly visible](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/logarithmic_scale.png "Logarithmic scale")
 
 ### Avoiding zero values
 
@@ -290,9 +290,9 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/basevalue_0.png "`baseValue: 0` (default)")
+![Column chart with all columns rising from zero](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/basevalue_0.png "`baseValue: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/basevalue_2.png "`baseValue: 2`")
+![Column chart with columns extending up or down from the value 2](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/basevalue_2.png "`baseValue: 2`")
 
 ## Calculated values
 
@@ -340,9 +340,39 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/max_precision_not_set.png "Default behavior")
+![Column chart with value axis labels in steps of 0.5](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/max_precision_not_set.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/all_integer_scale.png "`maxPrecision: 0`")
+![Column chart with whole-number value axis labels 0, 1 and 2 only](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/all_integer_scale.png "`maxPrecision: 0`")
+
+### Preferred decimals
+
+`preferredDecimals` lists the decimal counts labels may show. Each label gets the fewest in the list that the grid step needs. With `[0, 2]`, as for prices, labels read 80 and 100, or 48.50 and 49.00 instead of 48.5 and 49.0.
+
+TypeScript:
+
+```ts
+let yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    preferredDecimals: [0, 2],
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+```
+
+JavaScript:
+
+```js
+var yAxis = chart.yAxes.push(
+  am5xy.ValueAxis.new(root, {
+    preferredDecimals: [0, 2],
+    renderer: am5xy.AxisRendererY.new(root, {})
+  })
+);
+```
+
+A step finer than the last count keeps its own decimals, such as 0.0012. The axis tooltip is rounded up to a count in the list too.
+
+> **Note:** Available since version 5.23.0. It applies only when the axis has no `numberFormat`, and logarithmic axes ignore it.
 
 ### Fixed number format
 
@@ -372,9 +402,9 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/max_precision_not_set.png "Default behavior")
+![Column chart with value axis labels as plain numbers, 0.5 to 2.0](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/max_precision_not_set.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/axis_custom_numberformat.png "`numberFormat: '#.000'%''`")
+![Column chart with value axis labels as percentages, 0.50% to 2.00%](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/axis_custom_numberformat.png "`numberFormat: '#.000'%''`")
 
 ## Tooltip number format
 
@@ -414,9 +444,9 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/default_tooltip_precision.png "Default behavior (uses label format)")
+![Cursor at 2.5 on the value axis with its tooltip rounded to 3](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/default_tooltip_precision.png "Default behavior (uses label format)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/extra_tooltip_precision.png "`extraTooltipPrecision: 1`")
+![Cursor at 2.5 on the value axis with its tooltip showing 2.5](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/extra_tooltip_precision.png "`extraTooltipPrecision: 1`")
 
 ### Overriding format
 
@@ -524,9 +554,9 @@ var yAxis2 = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/unsynced_value_axes.png "Default behavior")
+![Column chart with three value axes whose grid lines fall at different heights](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/unsynced_value_axes.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/synced_value_axes.png "Synced value axes")
+![Column chart with three value axes sharing the same grid lines](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/value-axis/synced_value_axes.png "Synced value axes")
 
 > **Note:** `syncWithAxis` setting is experimental and is not guaranteed to work perfectly in 100% of scenarios.
 

@@ -1,7 +1,7 @@
 ---
 title: "Colors, gradients, and patterns"
 source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 ## Colors
@@ -284,11 +284,11 @@ series.strokes.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/index/strokedasharray_2.png "`strokeDasharray: [10]`")
+![Three lines dashed with equal dashes and gaps](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/index/strokedasharray_2.png "`strokeDasharray: [10]`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/index/strokedasharray_1.png "`strokeDasharray: [10, 5]`")
+![Three lines dashed with long dashes and short gaps](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/index/strokedasharray_1.png "`strokeDasharray: [10, 5]`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/index/strokedasharray_3.png "`strokeDasharray: [10, 5, 2, 5]`")
+![Three lines with a dash-dot pattern](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/index/strokedasharray_3.png "`strokeDasharray: [10, 5, 2, 5]`")
 
 ## Gradients
 

@@ -2,7 +2,7 @@
 title: "Sticky tooltips on columns"
 source: "https://docs.amcharts.com/embeds/v5/sticky-tooltips-on-columns/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/common-elements/tooltips"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Exporting PDF"
 source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-pdf/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > This tutorial looks at configuration options for export of charts to PDF documents with Exporting plugin.
@@ -243,9 +243,9 @@ var exporting = am5plugins_exporting.Exporting.new(root, {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-pdf/no_pdf_fonts.png "`font` not set (default)")
+![Exported PDF with Korean title and table text shown as empty boxes](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-pdf/no_pdf_fonts.png "`font` not set (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-pdf/pdf_fonts.png "`font: am5fonts_notosans_kr`")
+![Exported PDF with Korean title and table text displayed correctly](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-pdf/pdf_fonts.png "`font: am5fonts_notosans_kr`")
 
 Example: [PDF export with Korean characters in data](https://docs.amcharts.com/embeds/v5/pdf-export-with-korean-characters-in-data/). Its code: get_example(path: "examples/docs-demos/pdf-export-with-korean-characters-in-data").
 

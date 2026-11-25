@@ -1,7 +1,7 @@
 ---
 title: "Map line series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/map-line-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Map line series are used to plot projected lines on the map.
@@ -109,9 +109,9 @@ var lineSeries = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-line-series/chrome_2022-09-27_12-29-01-1024x637.png "`lineType: 'curved'` (default)")
+![World map with a line curving the short way across the Pacific](https://docs.amcharts.com/v5/images/charts/map-chart/map-line-series/chrome_2022-09-27_12-29-01-1024x637.png "`lineType: 'curved'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-line-series/2022-09-27_12-29-14-1024x637.png "`lineType: 'straight'`")
+![World map with a straight line drawn across Africa](https://docs.amcharts.com/v5/images/charts/map-chart/map-line-series/2022-09-27_12-29-14-1024x637.png "`lineType: 'straight'`")
 
 ### Altitude
 
@@ -202,6 +202,36 @@ lineSeries.data.setAll([{
 > **Note:** `altitude` is available since version 5.21.0. It has no effect on lines with `lineType: "straight"`.
 
 Example: [Flight routes arcing above a globe](https://docs.amcharts.com/embeds/v5/flight-routes-arcing-above-a-globe/). Its code: get_example(path: "examples/docs-demos/flight-routes-arcing-above-a-globe").
+
+### Filling to the surface
+
+On flat maps, `fillToSurface: true` fills the area between a raised line and the ground below it with the line's `fill`, and strokes only the raised line. It needs `altitude` to be set. With `0`, as below, the line follows only the heights in its coordinates.
+
+TypeScript:
+
+```ts
+lineSeries.mapLines.template.setAll({
+  altitude: 0,
+  fillToSurface: true,
+  fill: am5.color(0x6794dc),
+  fillOpacity: 0.8
+});
+```
+
+JavaScript:
+
+```js
+lineSeries.mapLines.template.setAll({
+  altitude: 0,
+  fillToSurface: true,
+  fill: am5.color(0x6794dc),
+  fillOpacity: 0.8
+});
+```
+
+Lines added later cover those added before. Add them from back to front, and each line hides what is behind it, like a ridgeline chart.
+
+> **Note:** `fillToSurface` is available since version 5.24.0. It has no effect on a globe.
 
 ## Data
 

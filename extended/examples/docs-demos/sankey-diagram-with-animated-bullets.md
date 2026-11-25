@@ -2,7 +2,7 @@
 title: "Sankey diagram with animated bullets"
 source: "https://docs.amcharts.com/embeds/v5/sankey-diagram-with-animated-bullets/"
 category: "docs-demos"
-scraped: "2026-11-18"
+scraped: "2026-11-25"
 docsPages: ["charts/flow-charts/flow-chart-bullets"]
 ---
 

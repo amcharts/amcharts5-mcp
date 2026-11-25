@@ -2,7 +2,7 @@
 title: "Legend with custom data"
 source: "https://docs.amcharts.com/embeds/v5/legend-with-custom-data/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/legend"]
 ---
 

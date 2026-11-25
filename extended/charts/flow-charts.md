@@ -1,7 +1,7 @@
 ---
 title: "Flow charts"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Flow charts depict natural progression of a value/item through nodes. The most notable flow chart types are Chord and Sankey diagrams, both supported by amCharts 5.
@@ -203,9 +203,9 @@ var series = root.container.children.push(am5flow.Sankey.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/index/minSize_not_set.png "Default behavior")
+![Sankey diagram where the small node C is a barely visible sliver](https://docs.amcharts.com/v5/images/charts/flow-charts/index/minSize_not_set.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/index/minSize.png "`minSize: 0.05`")
+![Sankey diagram where the small node C is enlarged to a visible size](https://docs.amcharts.com/v5/images/charts/flow-charts/index/minSize.png "`minSize: 0.05`")
 
 ### Node toggling
 

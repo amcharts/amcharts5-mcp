@@ -2,7 +2,7 @@
 title: "Timeline chart: Spiral"
 source: "https://docs.amcharts.com/embeds/v5/timeline-chart-spiral/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/timeline"]
 ---
 
@@ -173,7 +173,7 @@ var data = [
     color: colorSet.getIndex(9),
     task: "Testing and QA",
     disabled2: false,
-    image2: "/wp-content/uploads/assets/timeline/rachel.jpg",
+    image2: "https://www.amcharts.com/static/assets/timeline/rachel.jpg",
     location: 0
   },
   {
@@ -183,7 +183,7 @@ var data = [
     color: colorSet.getIndex(15),
     task: "Gathering requirements",
     disabled1: false,
-    image1: "/wp-content/uploads/assets/timeline/monica.jpg"
+    image1: "https://www.amcharts.com/static/assets/timeline/monica.jpg"
   },
   {
     category: "Module #4",

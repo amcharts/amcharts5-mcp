@@ -2,7 +2,7 @@
 title: "Map with line series via data"
 source: "https://docs.amcharts.com/embeds/v5/map-with-line-series-via-data/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/map-chart/map-line-series"]
 ---
 

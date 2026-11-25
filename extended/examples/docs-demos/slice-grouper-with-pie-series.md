@@ -2,7 +2,7 @@
 title: "Slice grouper with pie series"
 source: "https://docs.amcharts.com/embeds/v5/slice-grouper-with-pie-series/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/percent-charts/grouping-slices"]
 ---
 

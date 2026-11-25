@@ -2,7 +2,7 @@
 title: "Treemap chart"
 source: "https://docs.amcharts.com/embeds/v5/treemap-chart-2/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/treemap"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Radar series"
 source: "https://docs.amcharts.com/v5/charts/radar-chart/radar-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 While radar series resemble their equivalents in XY chart in how they are configured, there are some differences. This tutorial will address those.
@@ -40,8 +40,8 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-series/connectends_true.png "`connectEnds: true` (default)")
+![Radar line chart with the line closed into a loop](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-series/connectends_true.png "`connectEnds: true` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-series/connectends_false.png "`connectEnds: false`")
+![Radar line chart with a gap between the last and first points](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-series/connectends_false.png "`connectEnds: false`")
 
 Example: [Disabling radar line series end connection](https://docs.amcharts.com/embeds/v5/disabling-radar-line-series-end-connection/). Its code: get_example(path: "examples/docs-demos/disabling-radar-line-series-end-connection").

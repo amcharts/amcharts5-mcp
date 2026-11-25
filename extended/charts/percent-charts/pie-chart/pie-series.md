@@ -1,7 +1,7 @@
 ---
 title: "Pie series"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/pie-chart/pie-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial is about configuring various aspects of a pie series appearance.
@@ -250,9 +250,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/aligned_labels.png "`alignLabels: true` (default)")
+![Pie chart with labels lined up in columns on both sides](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/aligned_labels.png "`alignLabels: true` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/unaligned_labels.png "`alignLabels: false`")
+![Pie chart with labels placed next to their slices, no ticks](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/unaligned_labels.png "`alignLabels: false`")
 
 Example: [Turning off label alignment](https://docs.amcharts.com/embeds/v5/turning-off-label-alignment/). Its code: get_example(path: "examples/docs-demos/turning-off-label-alignment").
 
@@ -352,9 +352,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/circular_labels_outside.png "`\{ textType: 'circular', inside: false }`")
+![Pie chart with labels curving along the outside edge](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/circular_labels_outside.png "`\{ textType: 'circular', inside: false }`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/circular_labels_inside.png "`\{ textType: 'circular', inside: true }`")
+![Pie chart with labels curving along the edge inside the slices](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/circular_labels_inside.png "`\{ textType: 'circular', inside: true }`")
 
 Example: [Circular labels](https://docs.amcharts.com/embeds/v5/circular-labels/). Its code: get_example(path: "examples/docs-demos/circular-labels").
 
@@ -412,9 +412,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/radial_labels_outside.png "`\{ textType: 'radial', centerX: am5.percent(0) }`")
+![Pie chart with labels radiating outward from the edge](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/radial_labels_outside.png "`\{ textType: 'radial', centerX: am5.percent(0) }`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/radial_labels_inside.png "`\{ textType: 'radial', centerX: am5.percent(100) }`")
+![Pie chart with labels radiating inside the slices](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/radial_labels_inside.png "`\{ textType: 'radial', centerX: am5.percent(100) }`")
 
 Example: [Radial labels](https://docs.amcharts.com/embeds/v5/radial-labels/). Its code: get_example(path: "examples/docs-demos/radial-labels").
 
@@ -521,11 +521,11 @@ series.ticks.template.setAll({
 
 The above will make tick point to the middle of the slice.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_1.png "`location: 1` (default)")
+![Pie chart with ticks starting at the slice edges](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_1.png "`location: 1` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_08.png "`location: 0.8`")
+![Pie chart with ticks starting a little inside the slices](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_08.png "`location: 0.8`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_05.png "`location: 0.5`")
+![Pie chart with ticks starting halfway into the slices](https://docs.amcharts.com/v5/images/charts/percent-charts/pie-chart/pie-series/pie_tick_location_05.png "`location: 0.5`")
 
 ## Tooltips
 

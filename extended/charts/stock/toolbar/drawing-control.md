@@ -1,7 +1,7 @@
 ---
 title: "Drawing control"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/drawing-control/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Drawing control allows using a number of tools to dynamically add annotations to the chart. They can be as simple as a rectangle or a free-draw doodle, or as complex as a Fibonacci indicator.
@@ -168,7 +168,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 Color pickers used by drawing control use a pre-defined default list of colors:
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/drawing-control/color_picker.png)
+![Drawing control color picker with a grid of grays and four shades of eight hues](https://docs.amcharts.com/v5/images/charts/stock/toolbar/drawing-control/color_picker.png)
 
 We can override the list using drawing control's `colors` setting, which accepts an `Color`Set object.
 

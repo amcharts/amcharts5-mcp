@@ -1,7 +1,7 @@
 ---
 title: "Word cloud"
 source: "https://docs.amcharts.com/v5/charts/word-cloud/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Word clouds (or tag clouds) help visualize weight or importance of individual words from a keyword list or a free-form text.
@@ -221,11 +221,11 @@ There is a number of settings that affect how words in the word cloud series are
 
 Below figures show how `randomness` affects the layout of the cloud:
 
-![](https://docs.amcharts.com/v5/images/charts/word-cloud/chrome_2019-02-24_17-19-09-1024x544.png "`randomness = 0`")
+![Word cloud with the biggest words packed in the center and smallest at the edges](https://docs.amcharts.com/v5/images/charts/word-cloud/chrome_2019-02-24_17-19-09-1024x544.png "`randomness = 0`")
 
-![](https://docs.amcharts.com/v5/images/charts/word-cloud/2019-02-24_17-19-58-1024x544.png "`randomness = 0.9`")
+![Word cloud with words of all sizes scattered randomly across a rectangle](https://docs.amcharts.com/v5/images/charts/word-cloud/2019-02-24_17-19-58-1024x544.png "`randomness = 0.9`")
 
-![](https://docs.amcharts.com/v5/images/charts/word-cloud/2019-02-24_17-19-24-1024x544.png "`randomness = 0.5`")
+![Word cloud with big words partly spread out from the center](https://docs.amcharts.com/v5/images/charts/word-cloud/2019-02-24_17-19-24-1024x544.png "`randomness = 0.5`")
 
 ### Rotation
 

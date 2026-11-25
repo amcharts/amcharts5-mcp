@@ -2,7 +2,7 @@
 title: "Map chart with orthographic projection (globe)"
 source: "https://docs.amcharts.com/embeds/v5/map-chart-with-orthographic-projection-globe/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/map-chart/map-polygon-series"]
 ---
 

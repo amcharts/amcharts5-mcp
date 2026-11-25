@@ -2,7 +2,7 @@
 title: "Map line pushing data items"
 source: "https://docs.amcharts.com/embeds/v5/map-line-pushing-data-items/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/map-chart/map-line-series"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Gradients"
 source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/gradients/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at how we can create gradients to use for element fills ant outlines.
@@ -41,10 +41,10 @@ var gradient = am5.LinearGradient.new(root, {
 
 ## Available gradient types
 
-| Pattern class    | Example                                                                              |
-| ---------------- | ------------------------------------------------------------------------------------ |
-| `LinearGradient` | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/linear_gradient.png) |
-| `RadialGradient` | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/radial_gradient.png) |
+| Pattern class    | Example                                                                                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LinearGradient` | ![Linear gradient from orange at the top to brown at the bottom](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/linear_gradient.png)   |
+| `RadialGradient` | ![Radial gradient from orange in the center to brown at the edges](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/radial_gradient.png) |
 
 ## Setting gradient
 
@@ -120,11 +120,11 @@ The whole area of the target element that needs to be filled will be divided bet
 
 Gradient will start at the color of the first stop, then progress to the intermediate stop colors, and end with the color of the last stop.
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_2colors.png "2 stop gradient")
+![Gradient from red to blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_2colors.png "2 stop gradient")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_3colors.png "3 stop gradient")
+![Gradient from red through green to blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_3colors.png "3 stop gradient")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_4colors.png "4 stop gradient")
+![Gradient from red through green and red to purple](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_4colors.png "4 stop gradient")
 
 Example: [Gradients](https://docs.amcharts.com/embeds/v5/gradients/). Its code: get_example(path: "examples/docs-demos/gradients").
 
@@ -207,9 +207,9 @@ TypeScript:
 ```ts
 lineSeries.fills.template.set("fillGradient", am5.LinearGradient.new(root, {
   stops: [{
-    opacity: 1
+    brighten: 1
   }, {
-    opacity: 0.5
+    brighten: -0.5
   }]
 }));
 ```
@@ -228,11 +228,11 @@ lineSeries.fills.template.set("fillGradient", am5.LinearGradient.new(root, {
 
 The below two fills use the same color as a base
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/solid_color.png "Base color without gradient")
+![Solid light blue fill](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/solid_color.png "Base color without gradient")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/brighten.png "`brighten: 1`, `brighten: -0.2`")
+![Blue gradient from vivid bright blue to darker blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/brighten.png "`brighten: 1`, `brighten: -0.5`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/lighten.png "`lighten: 1`, `lighten: -0.2`")
+![Blue gradient from near white to darker blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/lighten.png "`lighten: 1`, `lighten: -0.5`")
 
 Example: [Gradients](https://docs.amcharts.com/embeds/v5/gradients-2/). Its code: get_example(path: "examples/docs-demos/gradients-2").
 
@@ -276,9 +276,9 @@ columnSeries.columns.template.set("fillGradient", am5.LinearGradient.new(root, {
 
 The above will make the first color to start at 70%, leaving only 30% for the actual gradient to second stop's color.
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_offset_0.png "`offset: 0` (default)")
+![Teal to brown gradient blending evenly from top to bottom](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_offset_0.png "`offset: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_offset_07.png "`offset: 0.7`")
+![Solid teal for the top 70 percent, then blending to brown](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_offset_07.png "`offset: 0.7`")
 
 ## Sizing
 
@@ -290,11 +290,11 @@ For example, we if we set gradient fill on a `LineSeries` it will be start at th
 
 Similarly, on a `ColumnSeries` each individual column will have differently sized gradient because of their varying height.
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_1.png "Default bheavior")
+![Area chart with a green to red gradient reaching full red at its peak](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_1.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_2.png "Default bheavior")
+![Taller area chart with the same green to red gradient stretched to its peak](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_2.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_6.png "Default bheavior")
+![Column chart where every column goes from green to full red at its top](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_6.png "Default behavior")
 
 But we might want to apply gradient based on axis scale. That's where gradient's `target` setting comes in.
 
@@ -331,11 +331,11 @@ columnSeries.columns.template.set("fillGradient", am5.LinearGradient.new(root, {
 
 Now the gradient will be applied using sizing of the chart's plot container, rather than individual sizing of each series element.
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_4.png "`target: chart.plotContainer`")
+![Area chart with a gradient tied to the plot height, reaching only orange at its peak](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_4.png "`target: chart.plotContainer`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_3.png "`target: chart.plotContainer`")
+![Taller area chart with a gradient tied to the plot height, red only near the top](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_3.png "`target: chart.plotContainer`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_5.png "`target: chart.plotContainer`")
+![Column chart where only the tallest column reaches red, short ones stay green](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/gradient_target_5.png "`target: chart.plotContainer`")
 
 Example: [Sizing gradient based on chart's plot area](https://docs.amcharts.com/embeds/v5/sizing-gradient-based-on-charts-plot-area/). Its code: get_example(path: "examples/docs-demos/sizing-gradient-based-on-charts-plot-area").
 
@@ -374,9 +374,9 @@ columnSeries.columns.template.set("fillGradient", am5.LinearGradient.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/horizontal_gradient.png "`rotation: 0`")
+![Orange gradient fading to white from left to right](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/horizontal_gradient.png "`rotation: 0`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/vertical_gradient.png "`rotation: 90`")
+![Orange gradient fading to white from top to bottom](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/gradients/vertical_gradient.png "`rotation: 90`")
 
 ## Examples
 

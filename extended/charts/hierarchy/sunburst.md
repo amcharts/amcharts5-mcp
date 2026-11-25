@@ -1,7 +1,7 @@
 ---
 title: "Sunburst"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/sunburst/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will walk through available options of configuring a sunburst series.
@@ -72,11 +72,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_100p.png "`radius: am5.percent(100)` (default)")
+![Sunburst chart filling the full chart height](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_100p.png "`radius: am5.percent(100)` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_80p.png "`radius: am5.percent(80)`")
+![Sunburst chart slightly smaller, with space around it](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_80p.png "`radius: am5.percent(80)`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_100.png "`radius: 100`")
+![Small fixed-size sunburst chart in the middle of the chart area](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_100.png "`radius: 100`")
 
 ### Inner radius
 
@@ -116,9 +116,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_100p.png "`innerRadius: 0` (default)")
+![Sunburst chart with a solid center](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_radius_100p.png "`innerRadius: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_innerradius_p30.png "`innerRadius: am5.percent(30)`")
+![Sunburst chart with a hole in the center](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_innerradius_p30.png "`innerRadius: am5.percent(30)`")
 
 Example: [Sunburst chart with inner radius](https://docs.amcharts.com/embeds/v5/sunburst-chart-with-inner-radius/). Its code: get_example(path: "examples/docs-demos/sunburst-chart-with-inner-radius").
 
@@ -166,9 +166,9 @@ var series = chart.series.push(
 
 The above will result in a horizontal semi-circle:
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_innerradius_p30.png "Full circle (default)")
+![Sunburst chart drawn as a full circle](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_innerradius_p30.png "Full circle (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_custom_angles.png "`\{ startAngle: -180, endAngle: 0 }`")
+![Sunburst chart drawn as the top half of a circle](https://docs.amcharts.com/v5/images/charts/hierarchy/sunburst/sunburst_custom_angles.png "`\{ startAngle: -180, endAngle: 0 }`")
 
 Example: [Sunburst chart with custom start/end angles](https://docs.amcharts.com/embeds/v5/sunburst-chart-with-custom-startend-angles/). Its code: get_example(path: "examples/docs-demos/sunburst-chart-with-custom-startend-angles").
 

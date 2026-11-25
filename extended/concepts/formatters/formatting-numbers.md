@@ -1,7 +1,7 @@
 ---
 title: "Formatting numbers"
 source: "https://docs.amcharts.com/v5/concepts/formatters/formatting-numbers/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 This tutorial takes a look at number formatter - helper object used to format numbers throughout the chart.
@@ -76,15 +76,15 @@ Numeric fields in placeholders are formatted with the global format, so a year s
 
 To show it as is, format it with `#`, or store the year as a string (`"2024"`), which isn't formatted:
 
-JavaScript:
-
-```js
-polygonSeries.mapPolygons.template.set("tooltipText", "{name}: {value} ({year.formatNumber('#')})");
-```
-
 TypeScript:
 
 ```ts
+polygonSeries.mapPolygons.template.set("tooltipText", "{name}: {value} ({year.formatNumber('#')})");
+```
+
+JavaScript:
+
+```js
 polygonSeries.mapPolygons.template.set("tooltipText", "{name}: {value} ({year.formatNumber('#')})");
 ```
 
@@ -130,15 +130,15 @@ End the format with a dot to round to whole numbers:
 | `#,###.` | 6708.044000000005 | 6,708              |
 | `#,###.` | 6708.5            | 6,709              |
 
-JavaScript:
-
-```js
-label.set("text", "{valueX.formatNumber('#,###.')}");
-```
-
 TypeScript:
 
 ```ts
+label.set("text", "{valueX.formatNumber('#,###.')}");
+```
+
+JavaScript:
+
+```js
 label.set("text", "{valueX.formatNumber('#,###.')}");
 ```
 
@@ -298,12 +298,12 @@ JavaScript:
 root.numberFormatter.set("numberFormat", "[bold]#,###.00");
 ```
 
-| Format                                  | Input value | Output |
-| --------------------------------------- | ----------- | ------ |
-| `[#0f0]#,###`                           | 1000        | 1,000  |
-| `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | 1000        | 1,000  |
+| Format                                  | Input value | Output   |
+| --------------------------------------- | ----------- | -------- |
+| `[#0f0]#,###`                           | 1000        | 1,000    |
+| `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | 1000        | 1,000    |
 | `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | -1000       | (-1,000) |
-| `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | 0           | -      |
+| `[#0f0]#,###\|[#f00](#,###)\|[#ccc]'-'` | 0           | -        |
 
 Please refer to the "[Text styling](https://docs.amcharts.com/v5/concepts/formatters/text-styling/)" and "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorials for more info.
 

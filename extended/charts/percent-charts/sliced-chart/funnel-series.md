@@ -1,7 +1,7 @@
 ---
 title: "Funnel series"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/funnel-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial is about configuring various aspects of a funnel series appearance.
@@ -124,11 +124,11 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_0.png "`bottomRatio: 0` (default)")
+![Funnel chart with rectangular slices joined by tapered links](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_0.png "`bottomRatio: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_05.png "`bottomRatio: 0.5`")
+![Funnel chart with slices tapering halfway toward the next slice](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_05.png "`bottomRatio: 0.5`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_1.png "`bottomRatio: 1`")
+![Funnel chart with slices tapering fully to the next slice width](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_1.png "`bottomRatio: 1`")
 
 ## Slice links
 
@@ -178,11 +178,11 @@ series.links.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/link_default.png "Default")
+![Funnel chart with thin links between slices](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/link_default.png "Default")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/link_30.png "`height: 30`")
+![Funnel chart with tall links between slices](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/link_30.png "`height: 30`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/link_0.png "`height: 0`")
+![Funnel chart with no links, slices touching](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/link_0.png "`height: 0`")
 
 ## Labels
 
@@ -278,9 +278,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_alignlabels.png "`alignLabels: true` (default)")
+![Funnel chart with labels lined up in a column on the right](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_alignlabels.png "`alignLabels: true` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_centerlabels.png "`alignLabels: false`")
+![Funnel chart with labels centered on the slices](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_centerlabels.png "`alignLabels: false`")
 
 > **Note:** Disabling `alignLabels` will also hide slice ticks automatically.
 
@@ -352,11 +352,11 @@ series.ticks.template.setAll({
 
 The above will make tick point to the middle of the slice.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_alignlabels.png "`location: 1` (default)")
+![Funnel chart with label ticks starting at the slice edges](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_alignlabels.png "`location: 1` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/tunnel_tick_location_05.png "`location: 0.5`")
+![Funnel chart with label ticks starting at the slice centers](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/tunnel_tick_location_05.png "`location: 0.5`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/tunnel_tick_location_08.png "`location: 0.8`")
+![Funnel chart with label ticks starting near the slice edges](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/tunnel_tick_location_08.png "`location: 0.8`")
 
 ## Tooltips
 
@@ -410,9 +410,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_1-1.png "`orientation: 'vertical'`")
+![Funnel chart narrowing from top to bottom](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/bottomratio_1-1.png "`orientation: 'vertical'`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_horizontal.png "`orientation: 'horizontal'`")
+![Funnel chart narrowing from left to right](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/funnel_horizontal.png "`orientation: 'horizontal'`")
 
 ### Pading
 
@@ -494,11 +494,11 @@ var series = chart.series.push(
 
 The above will start and end series 20% of the whole width/height from the edges of the series area.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/2021-07-23_15-43-39.png "(default) | `startLocation: 0` | `endLocation: 1`")
+![Funnel chart filling the full chart height](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/2021-07-23_15-43-39.png "(default) | `startLocation: 0` | `endLocation: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/startlocation_02.png "`startLocation: 0.2` | `endLocation: 0.8`")
+![Funnel chart squeezed into the middle of the chart height](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/startlocation_02.png "`startLocation: 0.2` | `endLocation: 0.8`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/endlocation_05.png "`startLocation: 0` | `endLocation: 0.5`")
+![Funnel chart filling only the top half of the chart](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/funnel-series/endlocation_05.png "`startLocation: 0` | `endLocation: 0.5`")
 
 ## Example
 

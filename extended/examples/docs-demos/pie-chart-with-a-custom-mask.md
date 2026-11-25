@@ -2,7 +2,7 @@
 title: "Pie chart with a custom mask"
 source: "https://docs.amcharts.com/embeds/v5/pie-chart-with-a-custom-mask/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/common-elements/containers"]
 ---
 

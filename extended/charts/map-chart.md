@@ -1,7 +1,7 @@
 ---
 title: "Map chart"
 source: "https://docs.amcharts.com/v5/charts/map-chart/"
-scraped: "2026-11-17"
+scraped: "2026-11-25"
 ---
 
 Map chart is a chart type used to display geographical maps. This tutorial walks through the basics of creating such charts.
@@ -86,8 +86,6 @@ JavaScript:
 <!-- Will load as a global am5geodata_region_usa_congressional2022_flLow variable -->
 <script src="https://cdn.amcharts.com/lib/5/geodata/region/usa/congressional2022/flLow.js"></script>
 ```
-
-NOTE The global name is `am5geodata_` plus the path below `geodata/` with `/` turned into `_`. The US congressional maps come in versioned packs: `congressional` (117th Congress, the original set), `congressional2022` (118th), `congressional2025` (119th) and `congressional120` (120th, the newest). Each pack has `usaCongressionalLow`/`High` and one map per state (`flLow`, `caLow`, …). The MCP server's `list_geodata` tool lists every map with its path, global name and import.
 
 > **More info:** For more information on how to use regional maps, visit "[Using regional maps](https://docs.amcharts.com/v5/tutorials/using-regional-maps/)" tutorial.
 
@@ -195,14 +193,14 @@ var chart = root.container.children.push(
 
 Map chart supports a number of built-in projections:
 
-| Projection                               | Function name                 | Sample                                                         |
-| ---------------------------------------- | ----------------------------- | -------------------------------------------------------------- |
-| Albers USA (only suitable for U.S. maps) | `am5map.geoAlbersUsa()`       | ![](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_usaalbers.png)       |
-| Equal Earth                              | `am5map.geoEqualEarth()`      | ![](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_qualearth.png)       |
-| Equirectangular                          | `am5map.geoEquirectangular()` | ![](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_equirectangular.png) |
-| Mercator (default)                       | `am5map.geoMercator()`        | ![](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_mercator.png)        |
-| Natural Earth 1                          | `am5map.geoNaturalEarth1()`   | ![](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_naturalearth1.png)   |
-| Orthographic (globe)                     | `am5map.geoOrthographic()`    | ![](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_orthographic.png)    |
+| Projection                               | Function name                 | Sample                                                                                                                 |
+| ---------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Albers USA (only suitable for U.S. maps) | `am5map.geoAlbersUsa()`       | ![U.S. map with Alaska and Hawaii moved below the mainland](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_usaalbers.png)       |
+| Equal Earth                              | `am5map.geoEqualEarth()`      | ![World map in Equal Earth projection with curved sides](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_qualearth.png)          |
+| Equirectangular                          | `am5map.geoEquirectangular()` | ![World map in Equirectangular projection, flat and wide](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_equirectangular.png)   |
+| Mercator (default)                       | `am5map.geoMercator()`        | ![World map in Mercator projection with enlarged polar regions](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_mercator.png)    |
+| Natural Earth 1                          | `am5map.geoNaturalEarth1()`   | ![World map in Natural Earth projection with rounded corners](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_naturalearth1.png) |
+| Orthographic (globe)                     | `am5map.geoOrthographic()`    | ![Map shown as a globe centered on Africa](https://docs.amcharts.com/v5/images/charts/map-chart/index/map_orthographic.png)                     |
 
 ### Using D3 projections
 
@@ -292,11 +290,11 @@ The map will center itself in the coordinate between its boundaries. On a world 
 
 We can re-center the map using its `rotationX` (longitude), `rotationY` (latitude), and/or `rotationZ` (Z axis).
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/index/rotationX.png "`rotationX`")
+![Sphere with a vertical rotation axis](https://docs.amcharts.com/v5/images/charts/map-chart/index/rotationX.png "`rotationX`")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/index/rotationY.png "`rotationY`")
+![Sphere with a horizontal rotation axis](https://docs.amcharts.com/v5/images/charts/map-chart/index/rotationY.png "`rotationY`")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/index/rotationZ.png "`rotationZ`")
+![Sphere with a rotation axis pointing toward the viewer](https://docs.amcharts.com/v5/images/charts/map-chart/index/rotationZ.png "`rotationZ`")
 
 They are numeric settings to shift map center by certain amount of degrees.
 

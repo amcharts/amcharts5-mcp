@@ -1,7 +1,7 @@
 ---
 title: "Layers"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/layers/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will explain how layering functionality works in amCharts 5.
@@ -107,9 +107,9 @@ axisRenderer.labels.template.setAll({
 
 The above code will add extra 50 pixels to left and right sides of the layer `20`, so any elements contained in it - in this case axis labels - will have a bit of an extra space.
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/layers/8wyHZYXWzx.png "Default behavior")
+![Gauge axis with its end labels cut off at the chart edges](https://docs.amcharts.com/v5/images/concepts/common-elements/layers/8wyHZYXWzx.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/layers/chrome_ymWBa3qSVW.png "With `layerMargin`")
+![Gauge axis with its end labels shown in full outside the chart edges](https://docs.amcharts.com/v5/images/concepts/common-elements/layers/chrome_ymWBa3qSVW.png "With `layerMargin`")
 
 ## Precautions
 

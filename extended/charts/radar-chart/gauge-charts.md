@@ -1,7 +1,7 @@
 ---
 title: "Gauge charts"
 source: "https://docs.amcharts.com/v5/charts/radar-chart/gauge-charts/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will address how to build gauges using radar chart components.
@@ -196,9 +196,9 @@ var chart = root.container.children.push(
 
 The above will result in a horizontal semi-circle:
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_full_circle.png "Default behavior")
+![Gauge chart with its axis forming a full circle](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_full_circle.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_half_circle.png "`\{ startAngle: -180, endAngle: 0 }`")
+![Gauge chart with its axis forming a half circle](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_half_circle.png "`\{ startAngle: -180, endAngle: 0 }`")
 
 Example: [Gauge chart](https://docs.amcharts.com/embeds/v5/gauge-chart/). Its code: get_example(path: "examples/docs-demos/gauge-chart").
 
@@ -331,11 +331,11 @@ var chart = root.container.children.push(
 
 The above will make bands 2% the radius of the chart itself.
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_0.png "`innerRadius: 0` (default)")
+![Half-circle gauge with color bands filling it down to the center](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_0.png "`innerRadius: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_90.png "`innerRadius: -30`")
+![Half-circle gauge with thick color bands along the edge](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_90.png "`innerRadius: -30`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_98.png "`innerRadius: am5.percent(98)`")
+![Half-circle gauge with thin color bands along the edge](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/gauge_innerradius_98.png "`innerRadius: am5.percent(98)`")
 
 ### Variable-width bands
 
@@ -539,11 +539,11 @@ var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius1.png "(Default) | `radius: am5.percent(90)` | `innerRadius: 0`")
+![Gauge with a tapered hand reaching from the center almost to the axis](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius1.png "(Default) | `radius: am5.percent(90)` | `innerRadius: 0`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius2.png "`radius: am5.percent(98)` | `innerRadius: 15`")
+![Gauge with a hand starting a little away from the center and reaching the axis](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius2.png "`radius: am5.percent(98)` | `innerRadius: 15`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius3.png "`radius: -3` | `innerRadius: -15`")
+![Gauge with a small triangle pointer just inside the axis](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_radius3.png "`radius: -3` | `innerRadius: -15`")
 
 ### Configuring hand elements
 
@@ -627,11 +627,11 @@ var hand = handDataItem.set("bullet", am5xy.AxisBullet.new(root, {
 
 The above will create a straight hand line, 5 pixel wide.
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths1.png "`topWidth: 5` | `bottomWidth: 5`")
+![Gauge with a straight hand of even width](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths1.png "`topWidth: 5` | `bottomWidth: 5`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths2.png "`topWidth: 5` | `bottomWidth: 20`")
+![Gauge with a hand wide at the center, narrowing toward the axis](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths2.png "`topWidth: 5` | `bottomWidth: 20`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths3.png "`topWidth: 20` | `bottomWidth: 1` | `radius: am5.percent(110)` | `innerRadius: am5percent(102)`")
+![Gauge with a triangle pointer just outside the axis](https://docs.amcharts.com/v5/images/charts/radar-chart/gauge-charts/clockhand_hadnwidths3.png "`topWidth: 20` | `bottomWidth: 1` | `radius: am5.percent(110)` | `innerRadius: am5percent(102)`")
 
 ### Disabling ticks and grid
 

@@ -1,7 +1,7 @@
 ---
 title: "Arc Diagram"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/arc-diagram/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial contains information for creating Arc diagram.
@@ -42,9 +42,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_diagram_horizontal-1024x816.png "`orientation: 'horizontal'` (default)")
+![Arc diagram with nodes in a row along the bottom, links arching above](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_diagram_horizontal-1024x816.png "`orientation: 'horizontal'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_diagram_vertical-1024x816.png "`orientation: 'vertical'`")
+![Arc diagram with nodes in a column on the left, links arching to the right](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_diagram_vertical-1024x816.png "`orientation: 'vertical'`")
 
 ## Nodes (circles)
 
@@ -337,12 +337,12 @@ series.links.template.setAll({
 
 These values are available for `fillStyle`:
 
-| `fillStyle`         | Comment                                               | Example                                                              |
-| ------------------- | ----------------------------------------------------- | -------------------------------------------------------------------- |
-| `"solid"` (default) | Solid color.                                          | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_solid.png)    |
-| `"gradient"`        | Gradient from source node color to target node color. | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_gradient.png) |
-| `"source"`          | Source node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_source.png)   |
-| `"target"`          | Target node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_target.png)   |
+| `fillStyle`         | Comment                                               | Example                                                                                                                                       |
+| ------------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"solid"` (default) | Solid color.                                          | ![Arc diagram with all links in solid black](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_solid.png)                                    |
+| `"gradient"`        | Gradient from source node color to target node color. | ![Arc diagram with links fading from source node color to target node color](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_gradient.png) |
+| `"source"`          | Source node color.                                    | ![Arc diagram with each link in its source node color](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_source.png)                         |
+| `"target"`          | Target node color.                                    | ![Arc diagram with each link in its target node color](https://docs.amcharts.com/v5/images/charts/flow-charts/arc-diagram/arc_link_target.png)                         |
 
 ## Labels
 

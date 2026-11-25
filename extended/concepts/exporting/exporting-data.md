@@ -1,7 +1,7 @@
 ---
 title: "Exporting data"
 source: "https://docs.amcharts.com/v5/concepts/exporting/exporting-data/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > This tutorial looks at configuration options for data export with Exporting plugin.
@@ -34,9 +34,9 @@ var exporting = am5plugins_exporting.Exporting.new(root, {
 
 If `dataSource` is set, export menu will automatically include data-related exports, like CSV and XLSX.
 
-![](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-data/export_no_data.png "`dataSource` not set")
+![Export menu with only image formats and Print](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-data/export_no_data.png "`dataSource` not set")
 
-![](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-data/export_data.png "`dataSource` is set")
+![Export menu with image formats plus JSON, CSV, XLSX, PDF and HTML data options](https://docs.amcharts.com/v5/images/concepts/exporting/exporting-data/export_data.png "`dataSource` is set")
 
 ## Numeric values
 

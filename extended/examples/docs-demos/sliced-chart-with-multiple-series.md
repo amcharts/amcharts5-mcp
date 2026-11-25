@@ -2,7 +2,7 @@
 title: "Sliced chart with multiple series"
 source: "https://docs.amcharts.com/embeds/v5/sliced-chart-with-multiple-series/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/percent-charts/sliced-chart"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Chart title"
 source: "https://docs.amcharts.com/embeds/v5/chart-title/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/xy-chart-containers"]
 ---
 

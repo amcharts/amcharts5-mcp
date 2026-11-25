@@ -2,7 +2,7 @@
 title: "Column series with bullet masking disabled"
 source: "https://docs.amcharts.com/embeds/v5/column-series-with-bullet-masking-disabled/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/common-elements/bullets"]
 ---
 

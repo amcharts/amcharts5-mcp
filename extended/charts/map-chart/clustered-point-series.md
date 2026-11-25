@@ -1,7 +1,7 @@
 ---
 title: "Clustered point series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/clustered-point-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Clustered point series (ClusteredPointSeries) is basically a regular map point series (MapPointSeries) except with an added capability of automatically closely located bullets into groups, so they do not overlap.
@@ -174,7 +174,7 @@ pointSeries.set("clusteredBullet", function(root) {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/clustered-point-series/image-1024x717.png)
+![World map with grouped points shown as larger orange circles](https://docs.amcharts.com/v5/images/charts/map-chart/clustered-point-series/image-1024x717.png)
 
 ### Multi-element bullet
 
@@ -247,7 +247,7 @@ pointSeries.set("clusteredBullet", function(root) {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/clustered-point-series/image-1-1024x717.png)
+![World map with grouped points shown as concentric orange circles](https://docs.amcharts.com/v5/images/charts/map-chart/clustered-point-series/image-1-1024x717.png)
 
 ### Bullet with count
 
@@ -337,7 +337,7 @@ pointSeries.set("clusteredBullet", function(root) {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/clustered-point-series/image-2-1024x717.png)
+![World map with group circles labeled with the number of points in each](https://docs.amcharts.com/v5/images/charts/map-chart/clustered-point-series/image-2-1024x717.png)
 
 ## Drill-down
 

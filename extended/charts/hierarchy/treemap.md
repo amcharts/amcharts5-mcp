@@ -1,7 +1,7 @@
 ---
 title: "Treemap"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/treemap/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 This tutorial will look at how to configure treemap series.
@@ -42,13 +42,13 @@ var series = root.container.children.push(
 
 Available settings are as follows:
 
-| Setting value | Example                                                        |
-| ------------- | -------------------------------------------------------------- |
-| `"binary"`    | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_binary.png)    |
-| `"squarify"`  | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_squarify.png)  |
-| `"slice"`     | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_slice.png)     |
-| `"dice"`      | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_dice.png)      |
-| `"sliceDice"` | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_slicedice.png) |
+| Setting value | Example                                                                                                                            |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `"binary"`    | ![Treemap with groups split into balanced blocks of mixed shapes](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_binary.png)          |
+| `"squarify"`  | ![Treemap with tiles kept as close to square as possible](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_squarify.png)                |
+| `"slice"`     | ![Treemap with every tile a full-width horizontal strip](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_slice.png)                    |
+| `"dice"`      | ![Treemap with every tile a full-height vertical strip](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_dice.png)                      |
+| `"sliceDice"` | ![Treemap with groups as vertical columns, split into horizontal tiles](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_slicedice.png) |
 
 ### Margins
 
@@ -93,11 +93,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_no_padding.png "Default behavior")
+![Treemap with tiles touching, no gaps](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_no_padding.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_padding.png "`nodePaddingOuter: 20` | `nodePaddingInner: 10`")
+![Treemap with an even border around the tiles and gaps between them](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_padding.png "`nodePaddingOuter: 20` | `nodePaddingInner: 10`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_top_padding.png "`nodePaddingInner: 10` | `nodePaddingTop: 100` | `nodePaddingBottom: 20` | `nodePaddingLeft: 20` | `nodePaddingRight: 20`")
+![Treemap with a wide empty band above the tiles](https://docs.amcharts.com/v5/images/charts/hierarchy/treemap/treemap_top_padding.png "`nodePaddingInner: 10` | `nodePaddingTop: 100` | `nodePaddingBottom: 20` | `nodePaddingLeft: 20` | `nodePaddingRight: 20`")
 
 ### Node appearance
 
@@ -212,34 +212,6 @@ Every label is centered on its tile, so when child tiles are shown, they cover t
 * `nodePaddingTop` reserves a band at the top of every parent tile.
 * Adapters move the label of each tile whose children are shown into that band. Other labels stay centered.
 
-JavaScript:
-
-```js
-var series = root.container.children.push(
-  am5hierarchy.Treemap.new(root, {
-    valueField: "value",
-    categoryField: "name",
-    childDataField: "children",
-    topDepth: 1,
-    initialDepth: 1,
-    nodePaddingTop: 24
-  })
-);
-
-function showsChildren(label) {
-  var dataItem = label.dataItem;
-  return dataItem && dataItem.get("children") && !dataItem.get("disabled");
-}
-
-series.labels.template.adapters.add("y", function(y, target) {
-  return showsChildren(target) ? 0 : y;
-});
-
-series.labels.template.adapters.add("centerY", function(centerY, target) {
-  return showsChildren(target) ? 0 : centerY;
-});
-```
-
 TypeScript:
 
 ```ts
@@ -264,6 +236,34 @@ series.labels.template.adapters.add("y", (y, target) => {
 });
 
 series.labels.template.adapters.add("centerY", (centerY, target) => {
+  return showsChildren(target) ? 0 : centerY;
+});
+```
+
+JavaScript:
+
+```js
+var series = root.container.children.push(
+  am5hierarchy.Treemap.new(root, {
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children",
+    topDepth: 1,
+    initialDepth: 1,
+    nodePaddingTop: 24
+  })
+);
+
+function showsChildren(label) {
+  var dataItem = label.dataItem;
+  return dataItem && dataItem.get("children") && !dataItem.get("disabled");
+}
+
+series.labels.template.adapters.add("y", function(y, target) {
+  return showsChildren(target) ? 0 : y;
+});
+
+series.labels.template.adapters.add("centerY", function(centerY, target) {
   return showsChildren(target) ? 0 : centerY;
 });
 ```

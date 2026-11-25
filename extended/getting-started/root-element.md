@@ -1,7 +1,7 @@
 ---
 title: "Root element"
 source: "https://docs.amcharts.com/v5/getting-started/root-element/"
-scraped: "2026-11-19"
+scraped: "2026-11-25"
 ---
 
 All charts and their controls are created in a root element. This tutorial examines some of its functionality and configuration options.

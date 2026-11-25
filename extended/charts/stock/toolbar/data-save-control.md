@@ -1,7 +1,7 @@
 ---
 title: "Data save control"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/data-save-control/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Data save control when added to stock toolbar will provide users a way to save current indicators and drawings to browser's local storage so that they can be restored afterwards.
@@ -27,13 +27,13 @@ To restore the annotations, users can select "Restore saved data".
 
 The data can be cleared by selecting "Clear" option.
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-1.png)
+![Data save control menu with save, restore and clear options, auto-save unchecked](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-1.png)
 
 ### Automatic mode
 
 Automatic mode can be enabled by selecting "Auto-save drawings and indicators".
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-2.png)
+![Data save control menu with auto-save checked and the manual options greyed out](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-2.png)
 
 When enabled, the chart will automatically save all changes to drawings and indicators (including deletion) to browser's memory.
 
@@ -194,7 +194,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 Auto-saving can be enabled via [Settings control](https://docs.amcharts.com/v5/charts/stock/toolbar/settings-control/), too.
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-3.png)
+![Settings control menu with an Auto-save checkbox under Drawings and Indicators](https://docs.amcharts.com/v5/images/charts/stock/toolbar/data-save-control/image-3.png)
 
 If you already have Data save control added to the Stock toolbar, the auto-save functionality in Settings control will use the same configuration options.
 

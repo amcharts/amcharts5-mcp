@@ -2,7 +2,7 @@
 title: "Modifying active state on pie slices"
 source: "https://docs.amcharts.com/embeds/v5/modifying-active-state-on-pie-slices/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/percent-charts/pie-chart/pie-series"]
 ---
 

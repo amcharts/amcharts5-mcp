@@ -2,7 +2,7 @@
 title: "Force-directed chart with strength configuration"
 source: "https://docs.amcharts.com/embeds/v5/force-directed-chart-with-strength-configuration/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/force-directed"]
 ---
 

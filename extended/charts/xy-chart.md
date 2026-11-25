@@ -1,7 +1,7 @@
 ---
 title: "XY chart"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 XY chart is basically used to represent any linear or scatter data in two dimensions. This tutorial will get you started in creating these charts.
@@ -106,7 +106,7 @@ We used `AxisRendererY` for our previous example, because we were creating an Y 
 
 XY chart supports 4 axis types:
 
-| Class              | Comment                                                                                                                        |                                                           |
+| Class              | Comment                                                                                                                        | Article                                                   |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------- |
 | `CategoryAxis`     | For plotting data with string identifiers - categories.                                                                        | [More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-axis/)      |
 | `CategoryDateAxis` | For plotting time-based data without maintaining actual time scale. Grid/labels are displayed only where there is actual data. | [More info](https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/) |
@@ -255,7 +255,7 @@ Depending on series type, it may need additional fields. For example `Candlestic
 
 XY chart currently supports these types of series:
 
-| Class                  | Comment                                                                            |                                                             |
+| Class                  | Comment                                                                            | Article                                                     |
 | ---------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | `CandlestickSeries`    | Series that displays candles with open, high, low, and close values.               | [More info](https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/) |
 | `ColumnSeries`         | Displays columns or bars.                                                          | [More info](https://docs.amcharts.com/v5/charts/xy-chart/series/column-series/)      |

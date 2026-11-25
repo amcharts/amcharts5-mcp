@@ -1,7 +1,7 @@
 ---
 title: "Tooltips"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/tooltips/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will look at various ways how we can enable, configure, and trigger tooltips in amCharts 5.
@@ -492,14 +492,14 @@ var series = chart.series.push(
 );
 ```
 
-| Orientation    | Example #1                                                                   | Example #2                                                                   |
-| -------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `"horizontal"` | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right2.png) |
-| `"left"`       | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left2.png)  |
-| `"right"`      | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right1.png) | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right2.png) |
-| `"vertical"`   | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down2.png)  |
-| `"down"`       | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down1.png)  | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down2.png)  |
-| `"up"`         | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_up1.png)    | ![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_up2.png)    |
+| Orientation    | Example #1                                                                                                                                                     | Example #2                                                                                                                                                    |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"horizontal"` | ![Line chart with a tooltip to the right of the first data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left1.png)                      | ![Line chart with a tooltip to the left of the last data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right2.png)                      |
+| `"left"`       | ![Line chart with a tooltip to the right of the first data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left1.png)                      | ![Line chart with a tooltip to the right of the last data point, past the chart edge](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_left2.png) |
+| `"right"`      | ![Line chart with a tooltip to the left of the first data point, past the chart edge](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right1.png) | ![Line chart with a tooltip to the left of the last data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_right2.png)                      |
+| `"vertical"`   | ![Line chart with a tooltip above the first data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down1.png)                                | ![Line chart with a tooltip above the last data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down2.png)                                |
+| `"down"`       | ![Line chart with a tooltip above the first data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down1.png)                                | ![Line chart with a tooltip above the last data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_down2.png)                                |
+| `"up"`         | ![Line chart with a tooltip below the first data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_up1.png)                                  | ![Line chart with a tooltip below the last data point](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/pointerposition_up2.png)                                  |
 
 Example: [Tooltip orientation](https://docs.amcharts.com/embeds/v5/tooltip-orientation/). Its code: get_example(path: "examples/docs-demos/tooltip-orientation").
 
@@ -752,9 +752,9 @@ var root = am5.Root.new("chartdiv", {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/2022-09-27_13-32-50-1024x547.png "Default behavior")
+![Row of small pie charts, one tooltip squeezed and cut off inside its chart](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/2022-09-27_13-32-50-1024x547.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/chrome_2022-09-27_13-32-25-1024x547.png "Using `tooltipContainerBounds`")
+![Row of small pie charts, one tooltip shown in full, extending over its neighbors](https://docs.amcharts.com/v5/images/concepts/common-elements/tooltips/chrome_2022-09-27_13-32-25-1024x547.png "Using `tooltipContainerBounds`")
 
 Example: [Expanded tooltip area](https://docs.amcharts.com/embeds/v5/expanded-tooltip-area/). Its code: get_example(path: "examples/docs-demos/expanded-tooltip-area").
 

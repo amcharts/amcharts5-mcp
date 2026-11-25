@@ -2,7 +2,7 @@
 title: "Funnel chart"
 source: "https://docs.amcharts.com/embeds/v5/funnel-chart-2/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/percent-charts/sliced-chart"]
 ---
 

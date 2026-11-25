@@ -2,7 +2,7 @@
 title: "Custom responsive functions"
 source: "https://docs.amcharts.com/embeds/v5/custom-responsive-functions/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/responsive"]
 ---
 

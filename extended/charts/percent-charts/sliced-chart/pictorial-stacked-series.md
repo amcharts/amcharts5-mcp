@@ -1,7 +1,7 @@
 ---
 title: "Pictorial stacked series"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pictorial-stacked-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial is about configuring various aspects of a pictorial stacked series appearance.
@@ -226,9 +226,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/pictorial_aligned_labels.png "`alignLabels: true` (default)")
+![Person-shaped pictorial chart with labels in a column on the right](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/pictorial_aligned_labels.png "`alignLabels: true` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/pictorial_centered_labels.png.png "`alignLabels: false`")
+![Person-shaped pictorial chart with labels centered on the figure](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/pictorial_centered_labels.png.png "`alignLabels: false`")
 
 > **Note:** Disabling `alignLabels` will also hide slice ticks automatically.
 
@@ -353,9 +353,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/vertical_pictorial.png "`orientation: 'vertical'` | `svgPath: verticalPaht`")
+![Person-shaped pictorial chart filled in slices from top to bottom](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/vertical_pictorial.png "`orientation: 'vertical'` | `svgPath: verticalPaht`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/horizontal_pictorial.png "`orientation: 'horizontal'` | `svgPath: horizontalPath`")
+![Curved candy-shaped pictorial chart filled in slices from left to right](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pictorial-stacked-series/horizontal_pictorial.png "`orientation: 'horizontal'` | `svgPath: horizontalPath`")
 
 > **Note:** The mask will be automatically fit height of the available area if the series uses vertical orientation, and width if it's a horizontally-oriented series.
 

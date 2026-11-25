@@ -2,7 +2,7 @@
 title: "Stock chart controls"
 source: "https://docs.amcharts.com/embeds/v5/stock-chart-controls/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/stock/stock-annotations","charts/stock/toolbar","charts/stock/toolbar/drawing-control","charts/stock/toolbar/reset-control","charts/stock/toolbar/settings-control"]
 ---
 
@@ -172,7 +172,7 @@ function loadData(ticker, series) {
   // Load external data
   // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   am5.net
-    .load("https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" + ticker + ".csv")
+    .load("https://www.amcharts.com/static/assets/stock/" + ticker + ".csv")
     .then(function (result) {
       // Parse loaded data
       var data = am5.CSVParser.parse(result.response, {

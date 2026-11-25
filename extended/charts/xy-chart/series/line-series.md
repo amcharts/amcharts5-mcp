@@ -1,7 +1,7 @@
 ---
 title: "Line series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/line-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Line series is the most basic of all XY series. It is used to draw line and/or area plots.
@@ -152,9 +152,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/mindistance_0.png "`minDistance: 0` (default)")
+![Line chart of dense data drawn as a jagged, detailed line](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/mindistance_0.png "`minDistance: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/mindistance_20.png "`minDistance: 20`")
+![Same line chart simplified to fewer points, with straight segments](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/mindistance_20.png "`minDistance: 20`")
 
 ## Gaps
 
@@ -322,9 +322,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/regular_line_series.png "Regular line series")
+![Line chart with the area filled down to the axis](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/regular_line_series.png "Regular line series")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/line_series_open_field.png "Line series with `openValueYField` set")
+![Line chart with the fill between the line and a second set of open values](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/line_series_open_field.png "Line series with `openValueYField` set")
 
 Example: [LineSeries with open data fields](https://docs.amcharts.com/embeds/v5/lineseries-with-open-data-fields/). Its code: get_example(path: "examples/docs-demos/lineseries-with-open-data-fields").
 
@@ -366,11 +366,11 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/location_default.png "`locationX: 0.5` (default)")
+![Area line chart with points in the middle of each date cell](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/location_default.png "`locationX: 0.5` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/location_0.png "`locationX: 0`")
+![Area line chart with points at the start of each date cell](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/location_0.png "`locationX: 0`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/location_08.png "`locationX: 0.8`")
+![Area line chart with points near the end of each date cell](https://docs.amcharts.com/v5/images/charts/xy-chart/series/line-series/location_08.png "`locationX: 0.8`")
 
 ## Using template fields
 

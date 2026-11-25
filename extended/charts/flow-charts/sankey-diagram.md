@@ -1,7 +1,7 @@
 ---
 title: "Sankey diagram"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/sankey-diagram/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 ## Flow chart
@@ -40,9 +40,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/horizontal_sankey.png "`orientation: 'horizontal'` (default)")
+![Sankey diagram flowing left to right, nodes A to J as vertical bars](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/horizontal_sankey.png "`orientation: 'horizontal'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/vertical_sankey.png "`orientation: 'vertical'`")
+![Sankey diagram flowing top to bottom, nodes A to J as horizontal bars](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/vertical_sankey.png "`orientation: 'vertical'`")
 
 ## Nodes
 
@@ -78,11 +78,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`nodeWidth: 10` (default)")
+![Sankey diagram with thin node bars](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`nodeWidth: 10` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_5.png "`nodeWidth: 5`")
+![Sankey diagram with very thin node bars](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_5.png "`nodeWidth: 5`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_30.png "`nodeWidth: 30`")
+![Sankey diagram with wide node bars, labels inside them](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_30.png "`nodeWidth: 30`")
 
 ### Configuring nodes
 
@@ -290,11 +290,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`nodePadding: 10` (default)")
+![Sankey diagram with small gaps between nodes in each column](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`nodePadding: 10` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodepadding_0.png "`nodePadding: 0`")
+![Sankey diagram with nodes in each column touching, no gaps](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodepadding_0.png "`nodePadding: 0`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodepadding_100.png "`nodePadding: 100`")
+![Sankey diagram with nodes spread far apart in each column](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodepadding_100.png "`nodePadding: 100`")
 
 ### Alignment
 
@@ -330,13 +330,13 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_left-1024x771.png "`nodeAlign = 'left'` (default)")
+![Sankey diagram with all source nodes lined up in the leftmost column](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_left-1024x771.png "`nodeAlign = 'left'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_right-1024x771.png "`nodeAlign = 'right'`")
+![Sankey diagram with all end nodes lined up in the rightmost column](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_right-1024x771.png "`nodeAlign = 'right'`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_justify-1024x771.png "`nodeAlign = 'justify'`")
+![Sankey diagram with source nodes at the far left and end nodes at the far right](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_justify-1024x771.png "`nodeAlign = 'justify'`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_center-1024x771.png "`nodeAlign: 'center'`")
+![Sankey diagram with nodes placed in middle columns, near their links](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodealign_center-1024x771.png "`nodeAlign: 'center'`")
 
 Example: [Alignment of nodes on Sankey diagram](https://docs.amcharts.com/embeds/v5/alignment-of-nodes-on-sankey-diagram/). Its code: get_example(path: "examples/docs-demos/alignment-of-nodes-on-sankey-diagram").
 
@@ -402,11 +402,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`linkTension: 0.5` (default)")
+![Sankey diagram with smoothly curved links](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png "`linkTension: 0.5` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_linktension_0.png "`linkTension: 0`")
+![Sankey diagram with links bending sharply near the nodes](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_linktension_0.png "`linkTension: 0`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_linktension_1.png "`linkTension: 1`")
+![Sankey diagram with straight, angled links](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_linktension_1.png "`linkTension: 1`")
 
 ### Configuring links
 
@@ -450,12 +450,12 @@ series.links.template.setAll({
 
 These values are available for `fillStyle`:
 
-| `fillStyle`            | Comment                                               | Example                                                                       |
-| ---------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `"solid"`              | Solid color.                                          | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_solid.png)  |
-| `"gradient"` (default) | Gradient from source node color to target node color. | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png)     |
-| `"source"`             | Source node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_source.png) |
-| `"target"`             | Target node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_target.png) |
+| `fillStyle`            | Comment                                               | Example                                                                                                                                    |
+| ---------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `"solid"`              | Solid color.                                          | ![Sankey diagram with all links in solid gray](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_solid.png)                    |
+| `"gradient"` (default) | Gradient from source node color to target node color. | ![Sankey diagram with links fading from source to target node color](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_nodewidth_10.png) |
+| `"source"`             | Source node color.                                    | ![Sankey diagram with each link in its source node color](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_source.png)        |
+| `"target"`             | Target node color.                                    | ![Sankey diagram with each link in its target node color](https://docs.amcharts.com/v5/images/charts/flow-charts/sankey-diagram/sankey_fillstyle_target.png)        |
 
 ### Bend point
 

@@ -2,7 +2,7 @@
 title: "Right-to-left chart"
 source: "https://docs.amcharts.com/embeds/v5/right-to-left-chart/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/locales/right-to-left-support"]
 ---
 

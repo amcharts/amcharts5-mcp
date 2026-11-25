@@ -1,7 +1,7 @@
 ---
 title: "Containers of an XY chart"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/xy-chart-containers/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at the container elements comprising internal structure of an XY chart, and how we can configure them.
@@ -22,7 +22,7 @@ An XY chart comes with a predefined list of container hierarchy, accessible via 
 
 ## Container structure
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/xy-chart-containers/V5_-Containter-structure.png)
+![XY chart containers: top axes, then left axes, plot and right axes in a row, then bottom axes](https://docs.amcharts.com/v5/images/charts/xy-chart/xy-chart-containers/V5_-Containter-structure.png)
 
 ## Configuring containers
 

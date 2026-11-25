@@ -1,7 +1,7 @@
 ---
 title: "Tree"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/tree/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial focuses on the configuration of a tree diagram.
@@ -38,9 +38,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_vertical.png "`orientation: 'vertical'` (default)")
+![Tree chart with the root at the top, branching downward](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_vertical.png "`orientation: 'vertical'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_horizontal.png "`orientation: 'horizontal'`")
+![Tree chart with the root on the left, branching to the right](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_horizontal.png "`orientation: 'horizontal'`")
 
 Example: [Horizontal tree chart](https://docs.amcharts.com/embeds/v5/horizontal-tree-chart/). Its code: get_example(path: "examples/docs-demos/horizontal-tree-chart").
 
@@ -102,12 +102,12 @@ Those looks are controlled via application of certain [states](https://docs.amch
 
 An outer circle can have four built-in states:
 
-| State             | Example                                                            | Comment                                     |
-| ----------------- | ------------------------------------------------------------------ | ------------------------------------------- |
-| `"disabled"`      | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_disabled.png)       | Applied when node is collapsed.             |
-| `"hover"`         | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_hovered.png)        | Applied when node is hovered.               |
-| `"hoverDisabled"` | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_hover_disabled.png) | Applied when collapsed node is hovered.     |
-| `"hidden"`        | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_hidden.png)         | Applied to nodes that do not have children. |
+| State             | Example                                                                                                                | Comment                                     |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `"disabled"`      | ![Tree node with a dashed outer ring](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_disabled.png)                         | Applied when node is collapsed.             |
+| `"hover"`         | ![Tree node with a solid outer ring and links to its children](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_hovered.png) | Applied when node is hovered.               |
+| `"hoverDisabled"` | ![Tree node with a dashed outer ring set further out](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_hover_disabled.png)   | Applied when collapsed node is hovered.     |
+| `"hidden"`        | ![Tree node with no outer ring](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_node_hidden.png)                                 | Applied to nodes that do not have children. |
 
 The following code modifies how outer circle looks like:
 
@@ -179,9 +179,9 @@ series.outerCircles.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_radius_15.png "`radius: 15` (default)")
+![Tree chart with small node circles](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_radius_15.png "`radius: 15` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_radius_20.png "`radius: 20`")
+![Tree chart with larger node circles that touch their neighbors](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_radius_20.png "`radius: 20`")
 
 Example: [Tree chart: configuring node radii](https://docs.amcharts.com/embeds/v5/tree-chart-configuring-node-radii/). Its code: get_example(path: "examples/docs-demos/tree-chart-configuring-node-radii").
 
@@ -213,11 +213,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_expanded-1024x662.png "Fully expanded")
+![Tree chart with all three branches fully expanded](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_expanded-1024x662.png "Fully expanded")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_fitNodes_false-1024x662.png "`fitNodes: false` (default)")
+![Tree chart with two branches collapsed, the expanded one still squeezed to the left](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_fitNodes_false-1024x662.png "`fitNodes: false` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_fitNodes_true-1024x662.png "`fitNodes: true`")
+![Tree chart with two branches collapsed, the expanded one spread across the full width](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_fitNodes_true-1024x662.png "`fitNodes: true`")
 
 ### Disabling dragging
 
@@ -450,9 +450,9 @@ let series = zoomableContainer.contents.children.push(am5hierarchy.Tree.new(root
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_regular.png "`clustered: false` (default)")
+![Tree chart with each level of nodes in its own row](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_regular.png "`clustered: false` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_clustered.png "`clustered: true`")
+![Tree chart with all leaf nodes lined up in the bottom row](https://docs.amcharts.com/v5/images/charts/hierarchy/tree/tree_clustered.png "`clustered: true`")
 
 Example: [Tree Chart](https://docs.amcharts.com/embeds/v5/tree-chart/). Its code: get_example(path: "examples/docs-demos/tree-chart").
 

@@ -1,7 +1,7 @@
 ---
 title: "Chord diagram"
 source: "https://docs.amcharts.com/v5/charts/flow-charts/chord-diagram/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 ## Flow chart
@@ -14,11 +14,11 @@ There are three main types of chord series: regular, directed, and non-ribbon.
 
 The type of the series not only affects how links look, but also how value of the node is calculated, which in turn affects its width.
 
-| Regular series                                                    | Directed series                                                     | Non-ribbon series                                                     |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| **`Chord`**                                                       | **`ChordDirected`**                                                 | **`ChordNonRibbon`**                                                  |
-| Node size depends on a sum of all outgoing links.                 | Node size depends on a sum of all incoming and outgoing links.      | Node size is fixed regardless of actual values.                       |
-| ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/cord_regular.png) | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_directed.png) | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/courd_non_ribbon.png) |
+| Regular series                                                                                                                    | Directed series                                                                                                                   | Non-ribbon series                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **`Chord`**                                                                                                                       | **`ChordDirected`**                                                                                                               | **`ChordNonRibbon`**                                                                                                           |
+| Node size depends on a sum of all outgoing links.                                                                                 | Node size depends on a sum of all incoming and outgoing links.                                                                    | Node size is fixed regardless of actual values.                                                                                |
+| ![Chord diagram with ribbons of varying width between nodes A to J](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/cord_regular.png) | ![Directed chord diagram with arrow-tipped ribbons between nodes](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_directed.png) | ![Chord diagram with equal-sized nodes joined by thin lines](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/courd_non_ribbon.png) |
 
 ## Regular series
 
@@ -90,11 +90,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`linkHeadRadius: 10` (default)")
+![Directed chord diagram with small arrowheads at link ends](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`linkHeadRadius: 10` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_20.png "`linkHeadRadius: 20`")
+![Directed chord diagram with longer, more pronounced arrowheads](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_20.png "`linkHeadRadius: 20`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_null.png "`linkHeadRadius: null`")
+![Directed chord diagram with flat link ends, no arrowheads](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_null.png "`linkHeadRadius: null`")
 
 Example: [Chord directed diagram](https://docs.amcharts.com/embeds/v5/chord-directed-diagram/). Its code: get_example(path: "examples/docs-demos/chord-directed-diagram").
 
@@ -132,9 +132,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linktype_curve.png "`linkType: 'curve'` (default)")
+![Non-ribbon chord diagram with curved links](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linktype_curve.png "`linkType: 'curve'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linktype_line.png "`linkType: 'line'`")
+![Non-ribbon chord diagram with straight links](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linktype_line.png "`linkType: 'line'`")
 
 Example: [Chord non-ribbon  diagram](https://docs.amcharts.com/embeds/v5/chord-non-ribbon-diagram/). Its code: get_example(path: "examples/docs-demos/chord-non-ribbon-diagram").
 
@@ -172,11 +172,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`nodeWidth: 10` (default)")
+![Chord diagram with thin node bars around the circle](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`nodeWidth: 10` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/nodewidth_30.png "`nodeWidth: 30`")
+![Chord diagram with thick node bars around the circle](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/nodewidth_30.png "`nodeWidth: 30`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/nodewidth_5.png "`nodeWidth: 5`")
+![Chord diagram with very thin node bars around the circle](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/nodewidth_5.png "`nodeWidth: 5`")
 
 ### Configuring nodes
 
@@ -374,11 +374,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`padAngle: 1` (default)")
+![Chord diagram with narrow gaps between nodes](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`padAngle: 1` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/padangle_10.png "`padAngle: 10`")
+![Chord diagram with wide gaps between nodes](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/padangle_10.png "`padAngle: 10`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/padangle_0.png "`padAngle: 0`")
+![Chord diagram with nodes touching, no gaps between them](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/padangle_0.png "`padAngle: 0`")
 
 ### Ordering nodes
 
@@ -448,11 +448,11 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`radius: am5.percent(90)` (default)")
+![Chord diagram filling most of the chart area](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`radius: am5.percent(90)` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_radius_95.png "`radius: am5.percent(95)`")
+![Chord diagram slightly larger, nearly filling the chart area](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_radius_95.png "`radius: am5.percent(95)`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_radius_50.png "`radius: 100`")
+![Small fixed-size chord diagram with empty space around it](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_radius_50.png "`radius: 100`")
 
 ## Start angle
 
@@ -488,9 +488,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`startAngle: 0` (default)")
+![Chord diagram with the first node, A, at the top](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/linkheadradius_default.png "`startAngle: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chort_startangle_90.png "`startAngle: -90`")
+![Chord diagram rotated, with node A on the left](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chort_startangle_90.png "`startAngle: -90`")
 
 ## Links
 
@@ -536,12 +536,12 @@ series.links.template.setAll({
 
 These values are available for `fillStyle`:
 
-| `fillStyle`         | Comment                                               | Example                                                                       |
-| ------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `"solid"` (default) | Solid color.                                          | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_solid.png)    |
-| `"gradient"`        | Gradient from source node color to target node color. | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_gradient.png) |
-| `"source"`          | Source node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_source.png)   |
-| `"target"`          | Target node color.                                    | ![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_target.png)   |
+| `fillStyle`         | Comment                                               | Example                                                                                                                                       |
+| ------------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"solid"` (default) | Solid color.                                          | ![Chord diagram with all links in solid gray](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_solid.png)                          |
+| `"gradient"`        | Gradient from source node color to target node color. | ![Chord diagram with links fading from source to target node color](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_gradient.png) |
+| `"source"`          | Source node color.                                    | ![Chord diagram with each link in its source node color](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_source.png)              |
+| `"target"`          | Target node color.                                    | ![Chord diagram with each link in its target node color](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_fillstyle_target.png)              |
 
 ## Labels
 
@@ -623,11 +623,11 @@ series.nodes.labels.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_labels_circular.png "`textType: 'circular'` (default)")
+![Chord diagram with labels curved along the circle](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_labels_circular.png "`textType: 'circular'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_labels_radial.png "`textType: 'radial'`")
+![Chord diagram with labels pointing outward from the center](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_labels_radial.png "`textType: 'radial'`")
 
-![](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_labels_adjusted-1.png "`textType: 'adjusted'`")
+![Chord diagram with horizontal labels placed around the circle](https://docs.amcharts.com/v5/images/charts/flow-charts/chord-diagram/chord_labels_adjusted-1.png "`textType: 'adjusted'`")
 
 Example: [Chord directed diagram](https://docs.amcharts.com/embeds/v5/chord-directed-diagram/). Its code: get_example(path: "examples/docs-demos/chord-directed-diagram").
 

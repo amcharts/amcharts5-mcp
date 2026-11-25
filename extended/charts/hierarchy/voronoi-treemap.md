@@ -1,7 +1,7 @@
 ---
 title: "Voronoi Treemap"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/voronoi-treemap/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial provides information on how to create Weighted Voronoi Treemaps.
@@ -42,10 +42,10 @@ var series = root.container.children.push(
 );
 ```
 
-| Setting value | Example                                                                |
-| ------------- | ---------------------------------------------------------------------- |
-| `"rectangle"` | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_rectangle.png) |
-| `"polygon"`   | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_circle.png)    |
+| Setting value | Example                                                                                                   |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
+| `"rectangle"` | ![Voronoi treemap filling a rectangle](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_rectangle.png) |
+| `"polygon"`   | ![Voronoi treemap filling a circle](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_circle.png)       |
 
 ### Corner count
 
@@ -53,11 +53,11 @@ For the `"polygon"` shape type, we can also control the shape by setting `corner
 
 The bigger the value, the more corners, the rounder the shape, with `120` (default) resulting in a perfect circle.
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_circle-1024x816.png "`cornerCount: 120 (default)`")
+![Voronoi treemap with a smooth circular outline](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_circle-1024x816.png "`cornerCount: 120 (default)`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_polygon-1024x816.png "`cornerCount: 10`")
+![Voronoi treemap shaped as a ten-sided polygon](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_polygon-1024x816.png "`cornerCount: 10`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_triangle-1024x816.png "`cornerCount: 3`")
+![Voronoi treemap shaped as a triangle](https://docs.amcharts.com/v5/images/charts/hierarchy/voronoi-treemap/voronoi_triangle-1024x816.png "`cornerCount: 3`")
 
 ## Nodes
 

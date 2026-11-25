@@ -1,7 +1,7 @@
 ---
 title: "Hierarchy drill-down"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/hierarchy-drill-down/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 Hierarchy nodes that have children are clickable. When that happens a node will drill down or up, depending on hierarchy type and its settings.
@@ -65,8 +65,6 @@ When "active" node is clicked, the whole branch of its children is collapsed.
 Normally, a user can open and close any number of branches at will.
 
 We can limit number of branches open at any given time to one by setting series' `singleBranchOnly` to `true`.
-
-> **Note:** The default depends on the series: `true` for `Treemap`, `Pack`, `Partition`, `VoronoiTreemap` and `Sunburst`, `false` for `ForceDirected` and `Tree`. `Sunburst` ignores the setting and always works as if it is `true`, because other open branches would overlap the zoomed-in one.
 
 TypeScript:
 
@@ -160,31 +158,6 @@ To drill one level at a time, either:
 * Show one level at a time: `initialDepth: 0` (with `topDepth: 1`, only the regions are shown). Each click then opens the next level.
 * Or keep the nested view and replace the click handler with one that selects the node one level below the current one:
 
-JavaScript:
-
-```js
-series.nodes.template.set("toggleKey", "none");
-
-series.nodes.template.events.on("click", function(ev) {
-  var dataItem = ev.target.dataItem;
-  var selectedItem = series.get("selectedDataItem");
-
-  // Walk up to the node one level below the current one
-  var item = dataItem;
-  while (item && item.get("parent") !== selectedItem) {
-    item = item.get("parent");
-  }
-
-  if (!item) {
-    // The current node itself was clicked: go up a level
-    series.selectDataItem(dataItem);
-  }
-  else if (item.get("children")) {
-    series.selectDataItem(item);
-  }
-});
-```
-
 TypeScript:
 
 ```ts
@@ -201,6 +174,31 @@ series.nodes.template.events.on("click", (ev) => {
   let item: TreemapItem | undefined = dataItem;
   while (item && item.get("parent") !== selectedItem) {
     item = item.get("parent") as TreemapItem | undefined;
+  }
+
+  if (!item) {
+    // The current node itself was clicked: go up a level
+    series.selectDataItem(dataItem);
+  }
+  else if (item.get("children")) {
+    series.selectDataItem(item);
+  }
+});
+```
+
+JavaScript:
+
+```js
+series.nodes.template.set("toggleKey", "none");
+
+series.nodes.template.events.on("click", function(ev) {
+  var dataItem = ev.target.dataItem;
+  var selectedItem = series.get("selectedDataItem");
+
+  // Walk up to the node one level below the current one
+  var item = dataItem;
+  while (item && item.get("parent") !== selectedItem) {
+    item = item.get("parent");
   }
 
   if (!item) {

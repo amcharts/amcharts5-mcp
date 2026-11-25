@@ -2,7 +2,7 @@
 title: "Images as legend markers"
 source: "https://docs.amcharts.com/embeds/v5/images-as-legend-markers-2/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/legend"]
 ---
 
@@ -114,7 +114,7 @@ legend.markers.template.setup = function (marker) {
         width: 20,
         height: 20,
         src:
-          "https://www.amcharts.com/wp-content/uploads/flags/" +
+          "https://www.amcharts.com/static/flags/" +
           series.get("name").toLowerCase() +
           ".svg"
       })
@@ -179,9 +179,9 @@ function makeSeries(name, fieldName, icon) {
   tooltip.label.set("paddingTop", 2);
 }
 
-makeSeries("Canada", "canada", "https://www.amcharts.com/wp-content/uploads/flags/canada.svg");
-makeSeries("Germany", "germany", "https://www.amcharts.com/wp-content/uploads/flags/germany.svg");
-makeSeries("India", "india", "https://www.amcharts.com/wp-content/uploads/flags/india.svg");
+makeSeries("Canada", "canada", "https://www.amcharts.com/static/flags/canada.svg");
+makeSeries("Germany", "germany", "https://www.amcharts.com/static/flags/germany.svg");
+makeSeries("India", "india", "https://www.amcharts.com/static/flags/india.svg");
 
 // Make stuff animate on load
 // https://docs.amcharts.com/v5/concepts/animations/

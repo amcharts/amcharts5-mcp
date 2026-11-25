@@ -2,7 +2,7 @@
 title: "Drill-Down Sunburst Chart via API"
 source: "https://docs.amcharts.com/embeds/v5/drill-down-sunburst-chart-via-api/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/hierarchy-drill-down"]
 ---
 

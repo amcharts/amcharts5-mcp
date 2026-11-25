@@ -2,7 +2,7 @@
 title: "Customizing colors of a StockToolbar"
 source: "https://docs.amcharts.com/embeds/v5/customizing-colors-of-a-stocktoolbar/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/stock/toolbar"]
 ---
 

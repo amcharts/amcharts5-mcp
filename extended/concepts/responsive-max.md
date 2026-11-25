@@ -1,7 +1,7 @@
 ---
 title: "ResponsiveMax theme"
 source: "https://docs.amcharts.com/v5/concepts/responsive-max/"
-scraped: "2026-11-19"
+scraped: "2026-11-25"
 ---
 
 > ResponsiveMax fits charts into small spaces: axis labels, pie labels, legends and scrollbars adapt to the room they have.

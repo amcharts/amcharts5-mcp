@@ -1,7 +1,7 @@
 ---
 title: "Patterns"
 source: "https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at how we can create patterns to use for element fills ant outlines.
@@ -35,15 +35,15 @@ am5.LinePattern.new(root, {
 
 ## Basic pattern types
 
-| Pattern class      | Example                                                                                                                                                                                                                                                                                                                                            |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `LinePattern`      | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern-1.png)                                                                                                                                                                                 |
-| `RectanglePattern` | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern-1.png)                                                                                                                                                                       |
-| `CirclePattern`    | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/circle_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/circle_pattern-1.png)                                                                                                                                                                             |
-| `StarPattern`      | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/star_pattern-1.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/star_pattern.png)                                                                                                                                                                                 |
-| `TrianglePattern`  | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/triangle_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/triangle_pattern-1.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/triangle_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/triangle_pattern.png) |
-| `PathPattern`      | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/path_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/path_pattern-1.png)                                                                                                                                                                                 |
-| `GrainPattern`     | ![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/grain_pattern.png)![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/grain_pattern-1.png)                                                                                                                                                                               |
+| Pattern class      | Example                                                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LinePattern`      | ![Line pattern, diagonal white stripes on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern.png)                |
+| `RectanglePattern` | ![Rectangle pattern, grid of small white squares on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern.png) |
+| `CirclePattern`    | ![Circle pattern, grid of white dots on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/circle_pattern.png)                |
+| `StarPattern`      | ![Star pattern, rows of white stars on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/star_pattern-1.png)                 |
+| `TrianglePattern`  | ![Triangle pattern, rows of white triangles on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/triangle_pattern.png)       |
+| `PathPattern`      | ![Path pattern, white person icons repeated on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/path_pattern.png)           |
+| `GrainPattern`     | ![Grain pattern, fine white noise speckles on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/grain_pattern.png)           |
 
 Patterns can be customized by applying rotation, gap, stroke, and other settings, which we'll explore in a bit.
 
@@ -97,11 +97,11 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_2.png "`color: am5.color(0xffffff)` | `colorOpacity: 1`")
+![Rectangle pattern, solid white squares on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_2.png "`color: am5.color(0xffffff)` | `colorOpacity: 1`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_1.png "`color: am5.color(0xffffff)` | `colorOpacity: 0.5`")
+![Rectangle pattern, semi-transparent white squares on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_1.png "`color: am5.color(0xffffff)` | `colorOpacity: 0.5`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_3.png "`color: am5.color(0x85ffc7)` | `colorOpacity: 1`")
+![Rectangle pattern, mint green squares on blue](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_3.png "`color: am5.color(0x85ffc7)` | `colorOpacity: 1`")
 
 ### Fill color
 
@@ -129,11 +129,11 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_2.png "`color: am5.color(0xffffff)` | `fill` not set")
+![Rectangle pattern, white squares with the element's blue showing between them](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_2.png "`color: am5.color(0xffffff)` | `fill` not set")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_fill.png "`color` not set | `fill: am5.color(0xffffff)`")
+![Inverted rectangle pattern, blue squares on a white background](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_fill.png "`color` not set | `fill: am5.color(0xffffff)`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_fill_2.png "`color: am5.color(0x297373)` | `fill: am5.color(0xffffff)`")
+![Rectangle pattern, dark teal squares on a white background](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_fill_2.png "`color: am5.color(0x297373)` | `fill: am5.color(0xffffff)`")
 
 ### Color inheritance
 
@@ -171,9 +171,9 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_50.png "`width: 50, height: 50` (default)")
+![Rotated line pattern in small tiles, lines broken at tile edges](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_50.png "`width: 50, height: 50` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_400.png "`width: 400, height: 400`")
+![Rotated line pattern in one large tile, continuous diagonal lines](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_400.png "`width: 400, height: 400`")
 
 ## Rotation
 
@@ -199,17 +199,17 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_rotation_0.png "`rotation: 0` (default)")
+![Line pattern with horizontal teal lines](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_rotation_0.png "`rotation: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_400.png "`rotation: 45`")
+![Line pattern with diagonal lines sloping down to the right](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_400.png "`rotation: 45`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_rotation_90.png "`rotation: 90`")
+![Line pattern with vertical teal lines](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_rotation_90.png "`rotation: 90`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_patternr_rotation_-45.png "`rotation: -45`")
+![Line pattern with diagonal lines sloping up to the right](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_patternr_rotation_-45.png "`rotation: -45`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_rotation_0.png "`rotation: 0` (default)")
+![Rectangle pattern with teal squares in straight rows](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_rotation_0.png "`rotation: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_rotation_45.png "`rotation: 45`")
+![Rectangle pattern rotated into teal diamonds in diagonal rows](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_rotation_45.png "`rotation: 45`")
 
 > **Note:** Some rotated patterns won't tile well without tweaking `gap`, `width`, `height` or other settings. For line patterns, use `angle` instead: see [Rotating line pattern](https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#rotating-line-pattern).
 
@@ -299,11 +299,11 @@ columnSeries.columns.template.set("fillPattern", am5.LinePattern.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_400.png "`gap: 6` (default)")
+![Diagonal line pattern with medium spacing](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/line_pattern_400.png "`gap: 6` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_gap_3.png "`gap: 3`")
+![Diagonal line pattern with lines tightly packed](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_gap_3.png "`gap: 3`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_gap_20.png "`gap: 20`")
+![Diagonal line pattern with wide spacing between lines](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/pattern_gap_20.png "`gap: 20`")
 
 There are also type specific settings, e.g. `checkered` (default: `false`) for rectangle and circle patterns:
 
@@ -325,9 +325,9 @@ columnSeries.columns.template.set("fillPattern", am5.RectanglePattern.new(root, 
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_rotation_0.png "`checkered: false`")
+![Rectangle pattern with squares in a regular grid](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_rotation_0.png "`checkered: false`")
 
-![](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_checkered.png "`checkered: true`")
+![Rectangle pattern with squares in a staggered checkerboard layout](https://docs.amcharts.com/v5/images/concepts/colors-gradients-and-patterns/patterns/rectangle_pattern_checkered.png "`checkered: true`")
 
 For more configuration options, visit following class references:
 

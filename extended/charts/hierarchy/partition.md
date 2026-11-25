@@ -1,7 +1,7 @@
 ---
 title: "Partition"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/partition/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will look at how to configure partition series.
@@ -38,9 +38,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/vertical_partition.png "`orientation: 'vertical'` (default)")
+![Partition chart with the root on top and levels stacked downward](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/vertical_partition.png "`orientation: 'vertical'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/horizontal_partition.png "`orientation: 'horizontal'`")
+![Partition chart with the root on the left and levels going right](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/horizontal_partition.png "`orientation: 'horizontal'`")
 
 Example: [Horizontal partition chart](https://docs.amcharts.com/embeds/v5/horizontal-partition-chart/). Its code: get_example(path: "examples/docs-demos/horizontal-partition-chart").
 
@@ -78,9 +78,9 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/partition_padding_0.png "`nodePadding: 0` (default)")
+![Partition chart with nodes touching, no gaps](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/partition_padding_0.png "`nodePadding: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/partition_padding_5.png "`nodePadding: 5`")
+![Partition chart with visible gaps between nodes](https://docs.amcharts.com/v5/images/charts/hierarchy/partition/partition_padding_5.png "`nodePadding: 5`")
 
 ### Node appearance
 

@@ -1,7 +1,7 @@
 ---
 title: "Gantt Chart"
 source: "https://docs.amcharts.com/v5/charts/gantt/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > A Gantt chart is a project management tool that visually represents a project's schedule. It uses horizontal bars to show the timeline, dependencies, and progress of tasks, making it easy to track and manage projects from start to finish.
@@ -294,9 +294,9 @@ Here's a more complex sample data, that shows how ids are used to create a multi
 
 Besides `id` and `name` fields, it introduces a third one: `parentId`. When, set it will treat the category as a child for another category with that specific id.
 
-![](https://docs.amcharts.com/v5/images/charts/gantt/index/gantt_category_axis_flat.png "Single-level category axis")
+![Gantt task list with all tasks at one level](https://docs.amcharts.com/v5/images/charts/gantt/index/gantt_category_axis_flat.png "Single-level category axis")
 
-![](https://docs.amcharts.com/v5/images/charts/gantt/index/gantt_category_axis_multilevel.png "Nested category axis")
+![Gantt task list with tasks nested under collapsible groups](https://docs.amcharts.com/v5/images/charts/gantt/index/gantt_category_axis_multilevel.png "Nested category axis")
 
 In addition to `id`, `name`, and `parentId`, the data can contain additional information. Here's the full list:
 
@@ -918,6 +918,24 @@ JavaScript:
 chart.zoomOutButton.hide(0);
 chart.fitButton.hide(0);
 ```
+
+## Accessibility
+
+A Gantt chart works with a keyboard and screen readers out of the box. TAB goes through the toolbar buttons first.
+
+The expand and collapse buttons of the task list are one TAB stop. Arrow keys move between them. Each one is named after its task.
+
+While the chart is [editable](#edit-mode):
+
+* Task names are one TAB stop. ENTER renames the focused task.
+* Task bars, milestones and the start, end and progress grips of a task are sliders that read their dates or progress. TAB goes through the focused task's bar and its grips. Up and down arrow keys move to the next or previous task.
+* Left and right arrow keys move the focused task, milestone or grip by one [snap step](#snapping-behavior) (a day by default), skipping weekends and holidays. On the progress grip, they change the progress by 5%.
+
+Read-only, task bars and milestones have the `"img"` role. A role set on their template is kept in both modes.
+
+"Expand all" and "Collapse all" are disabled while no task has subtasks.
+
+> **Note:** Available since version 5.24.0. For the basics, see [Accessibility](https://docs.amcharts.com/v5/concepts/accessibility/).
 
 ## Events and data serialization
 

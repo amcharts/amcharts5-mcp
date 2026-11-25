@@ -1,7 +1,7 @@
 ---
 title: "Legend and XY series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/legend-xy-series/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 This tutorial will walk through configuration options for legend content on an XY chart.
@@ -283,10 +283,10 @@ Example: [Cursor and legend labels](https://docs.amcharts.com/embeds/v5/cursor-a
 
 Aggregates are calculated only when the series has `calculateAggregates: true`. Without it, placeholders such as `{valueYClose}` are empty, and there's no warning.
 
-JavaScript:
+TypeScript:
 
-```js
-var series = chart.series.push(
+```ts
+let series = chart.series.push(
   am5xy.LineSeries.new(root, {
     name: "Sales",
     xAxis: xAxis,
@@ -300,10 +300,10 @@ var series = chart.series.push(
 );
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
-let series = chart.series.push(
+```js
+var series = chart.series.push(
   am5xy.LineSeries.new(root, {
     name: "Sales",
     xAxis: xAxis,

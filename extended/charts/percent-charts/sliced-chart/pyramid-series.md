@@ -1,7 +1,7 @@
 ---
 title: "Pyramid series"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/pyramid-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial is about configuring various aspects of a pyramid series appearance.
@@ -112,9 +112,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "`valueIs = 'area'` (default)")
+![Pyramid chart with slice areas proportional to values, top slice very tall](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "`valueIs = 'area'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/valueis_height.png "`valueIs = 'height'`")
+![Pyramid chart with slice heights proportional to values](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/valueis_height.png "`valueIs = 'height'`")
 
 Unless absolutely necessary, using "area" calculation mechanism is recommended. It produces diagram which makes relative area proportions more prominent.
 
@@ -214,9 +214,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_alignlabels.png "`alignLabels: true` (default)")
+![Pyramid chart with labels lined up in a column on the right](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_alignlabels.png "`alignLabels: true` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_centerlabels.png "`alignLabels: false`")
+![Pyramid chart with labels centered on the slices, crowding at the bottom](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_centerlabels.png "`alignLabels: false`")
 
 > **Note:** Disabling `alignLabels` will also hide slice ticks automatically.
 
@@ -288,11 +288,11 @@ series.ticks.template.setAll({
 
 The above will make tick point to the middle of the slice.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_alignlabels.png "`location: 1` (default)")
+![Pyramid chart with label ticks starting at the slice edges](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_alignlabels.png "`location: 1` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_ticklocation_05.png "`location: 0.5`")
+![Pyramid chart with label ticks starting at the slice centers](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_ticklocation_05.png "`location: 0.5`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_ticklocation_08.png "`location: 0.8`")
+![Pyramid chart with label ticks starting near the slice edges](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_ticklocation_08.png "`location: 0.8`")
 
 ## Tooltips
 
@@ -346,9 +346,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "`orientation: 'vertical'`")
+![Pyramid chart pointing up, slices stacked top to bottom](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "`orientation: 'vertical'`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_horizontal.png "`orientation: 'horizontal'`")
+![Pyramid chart pointing left, slices arranged left to right](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_horizontal.png "`orientation: 'horizontal'`")
 
 ### Tip and base
 
@@ -390,11 +390,11 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "(default) | `topWidth: 0` | `bottomWidth: am5.percent(100)`")
+![Pyramid chart with a pointed top and full-width base](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "(default) | `topWidth: 0` | `bottomWidth: am5.percent(100)`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/topwidth_30.png "`topWidth: am5.percent(30)` | `bottomWidth: am5.percent(100)`")
+![Pyramid chart with a flat, narrow top](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/topwidth_30.png "`topWidth: am5.percent(30)` | `bottomWidth: am5.percent(100)`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/bottomwidth_0.png "`topWidth: am5.percent(100)` | `bottomWidth: 0`")
+![Upside-down pyramid with a full-width top and pointed bottom](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/bottomwidth_0.png "`topWidth: am5.percent(100)` | `bottomWidth: 0`")
 
 > **Note:** Manipulating shape of the pyramid will also affect height of the slices to reflect the value using slice area.
 
@@ -478,11 +478,11 @@ var series = chart.series.push(
 
 The above will start and end series 20% of the whole width/height from the edges of the series area.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "(default) | `startLocation: 0` | `endLocation: 1`")
+![Pyramid chart filling the full chart height](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_default.png "(default) | `startLocation: 0` | `endLocation: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_startlocation_02.png "`startLocation: 0.2` | `endLocation: 0.8`")
+![Pyramid chart squeezed into the middle of the chart height](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_startlocation_02.png "`startLocation: 0.2` | `endLocation: 0.8`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_endlocation_05.png "`startLocation: 0` | `endLocation: 0.5`")
+![Pyramid chart filling only the top half of the chart](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/pyramid-series/pyramid_endlocation_05.png "`startLocation: 0` | `endLocation: 0.5`")
 
 ## Binding settings to data
 

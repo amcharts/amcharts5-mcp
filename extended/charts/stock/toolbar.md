@@ -1,7 +1,7 @@
 ---
 title: "Stock toolbar"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Stock toolbar is a tool bundled with our Stock chart that can hold a number of chart-related controls, built-in or custom.
@@ -251,7 +251,13 @@ Example: [Stock chart controls + series type control](https://docs.amcharts.com/
 
 The toolbar can be used with a keyboard: TAB moves between its buttons, and arrow keys move through lists.
 
-> **Note:** Since version 5.21.0, this is on by default. In earlier versions, it needs `focusable: true`.
+* Opening a dropdown moves focus into it. Arrow keys, HOME and END move through its items. ESC, picking an item, or TAB closes it and returns focus to its button.
+* The period selector is one TAB stop: arrow keys move between its buttons.
+* When dates can be typed in, the date range calendars are skipped by TAB.
+
+Screen readers read buttons by their visible text and say whether a button is on or its dropdown is open. Dropdowns are menus whose items are read as checkboxes or radio buttons where they can be selected. Searching a dropdown list announces how many items were found.
+
+> **Note:** Since version 5.21.0, this is on by default. In earlier versions, it needs `focusable: true`. The list above and what screen readers read are available since version 5.24.0.
 
 To turn it off, set `focusable: false`:
 
@@ -313,13 +319,16 @@ As you can see, various elements can be targeted using built-in class names.
 
 The following table lists a few of those.
 
-| Class name                  | Comment                  |
-| --------------------------- | ------------------------ |
-| `am5stock-control`          | Wrapper for any control. |
-| `am5stock-control-button`   | Button wrapper.          |
-| `am5stock-control-dropdown` | Dropdown wrapper.        |
-| `am5stock-control-icon`     | Icon in the button.      |
-| `am5stock-control-label`    | Label.                   |
+| Class name                  | Comment                                                       |
+| --------------------------- | ------------------------------------------------------------- |
+| `am5stock-control`          | Wrapper for any control.                                      |
+| `am5stock-control-button`   | Button wrapper.                                               |
+| `am5stock-control-trigger`  | The clickable part of the button, holding its icon and label. |
+| `am5stock-control-dropdown` | Dropdown wrapper.                                             |
+| `am5stock-control-icon`     | Icon in the button.                                           |
+| `am5stock-control-label`    | Label.                                                        |
+
+> **Since 5.24.0:** A button's icon and label are inside `am5stock-control-trigger`, which takes focus. The dropdown stays next to it, in `am5stock-control-button`. CSS that targets the icon or label as direct children of `.am5stock-control-button` (`.am5stock-control-button > .am5stock-control-icon`) needs updating.
 
 There are more. We suggest right-clicking on any toolbar element, and selecting "Inspect element" item, which would open up browser's DOM tool.
 

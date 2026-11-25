@@ -1,7 +1,7 @@
 ---
 title: "Dropdown list control"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/dropdown-list-control/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > It's a generic control that can be populated with custom items for user to choose from, allowing enhancing stock toolbar with proprietary functionality.
@@ -116,7 +116,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list.png)
+![Custom dropdown list in the stock toolbar with three plain choices](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list.png)
 
 ### Sub-labels
 
@@ -180,7 +180,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_sublabels.png)
+![Custom dropdown list with a gray sublabel under each choice](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_sublabels.png)
 
 ### Headings
 
@@ -256,7 +256,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 > **Note:** We can also use `className` to add any custom class attribute to our list items.
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_heading.png)
+![Custom dropdown list with a bold Choices heading above the items](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_heading.png)
 
 ### Form fields
 
@@ -389,7 +389,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_forms.png)
+![Custom dropdown list with choices, a checkbox and a pair of radio buttons](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_forms.png)
 
 ## Name of the control
 
@@ -441,11 +441,11 @@ var myDropdown = am5stock.DropdownListControl.new(root, {
 
 Once an item is chosen from the list, it will replace default name.
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_ciustom_list_name.png)
+![Dropdown button showing its default name, Options](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_ciustom_list_name.png)
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_ciustom_list_name2.png)
+![Open dropdown list with Second choice highlighted](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_ciustom_list_name2.png)
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_ciustom_list_name3.png)
+![Dropdown button now named Second choice after the selection](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_ciustom_list_name3.png)
 
 If we'd like our control button to keep the original `name` (or no remain label-less), we can set control's `fixedLabel: true` setting.
 
@@ -537,7 +537,7 @@ var myDropdown = am5stock.DropdownListControl.new(root, {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_search.png)
+![Custom dropdown list with a search field at the top](https://docs.amcharts.com/v5/images/charts/stock/toolbar/dropdown-list-control/stock_custom_list_with_search.png)
 
 ### Dynamic search results
 

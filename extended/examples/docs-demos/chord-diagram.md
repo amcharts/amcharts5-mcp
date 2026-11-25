@@ -2,7 +2,7 @@
 title: "Chord diagram"
 source: "https://docs.amcharts.com/embeds/v5/chord-diagram/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/flow-charts/chord-diagram"]
 ---
 

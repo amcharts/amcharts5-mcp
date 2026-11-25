@@ -2,7 +2,7 @@
 title: "Gauge chart with hand"
 source: "https://docs.amcharts.com/embeds/v5/gauge-chart-with-hand/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/radar-chart/gauge-charts","concepts/animations"]
 ---
 

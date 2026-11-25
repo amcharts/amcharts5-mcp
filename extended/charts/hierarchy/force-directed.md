@@ -1,7 +1,7 @@
 ---
 title: "Force-directed"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/force-directed/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will look at how to configure force-directed series.
@@ -64,12 +64,12 @@ Those looks are controlled via application of certain [states](https://docs.amch
 
 An outer circle can have four built-in states:
 
-| State             | Example                                                                        | Comment                                     |
-| ----------------- | ------------------------------------------------------------------------------ | ------------------------------------------- |
-| `"disabled"`      | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-36-19.png) | Applied when node is collapsed.             |
-| `"hover"`         | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-37-23.png) | Applied when node is hovered.               |
-| `"hoverDisabled"` | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-39-33.png) | Applied when collapsed node is hovered.     |
-| `"hidden"`        | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-38-13.png) | Applied to nodes that do not have children. |
+| State             | Example                                                                                                                                     | Comment                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `"disabled"`      | ![Force-directed node with a dashed outer ring](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-36-19.png)                  | Applied when node is collapsed.             |
+| `"hover"`         | ![Force-directed node with a solid outer ring close to its edge](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-37-23.png) | Applied when node is hovered.               |
+| `"hoverDisabled"` | ![Force-directed node with a dashed outer ring set further out](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-39-33.png)  | Applied when collapsed node is hovered.     |
+| `"hidden"`        | ![Force-directed node with no outer ring](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/chrome_2021-08-04_16-38-13.png)                        | Applied to nodes that do not have children. |
 
 The following code modifies how outer circle looks like:
 
@@ -143,9 +143,9 @@ var series = container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/force_maxradius_8.png "(default) | `minRadius: am5.percent(1)` | `maxRadius: am5.percent(8)`")
+![Force-directed tree with small nodes and lots of space around them](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/force_maxradius_8.png "(default) | `minRadius: am5.percent(1)` | `maxRadius: am5.percent(8)`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/force_maxradius_20.png "`minRadius: 20` | `maxRadius: am5.percent(15)`")
+![Force-directed tree with large nodes filling the chart and spilling over its edges](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/force_maxradius_20.png "`minRadius: 20` | `maxRadius: am5.percent(15)`")
 
 Example: [Force-directed chart with topDepth](https://docs.amcharts.com/embeds/v5/force-directed-chart-with-topdepth/). Its code: get_example(path: "examples/docs-demos/force-directed-chart-with-topdepth").
 
@@ -229,11 +229,11 @@ var series = container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_1-1024x771.png "`nodePadding: 0` (default)")
+![Force-directed tree with nodes packed closely together](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_1-1024x771.png "`nodePadding: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forced_nodepadding_10-1024x771.png "`nodePadding: 10`")
+![Force-directed tree with some space between nodes](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forced_nodepadding_10-1024x771.png "`nodePadding: 10`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forced_nodepadding_20-1024x771.png "`nodePadding: 20`")
+![Force-directed tree with wider space between nodes](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forced_nodepadding_20-1024x771.png "`nodePadding: 20`")
 
 ### Fixed nodes
 
@@ -729,11 +729,11 @@ var series = container.children.push(
 
 The above will make all nodes bunch up around the center since the force pushing them away from each other is not that much greater than force that is attracting them all to the center.
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_1-1024x771.png "`manyBodyStrength: -1`")
+![Force-directed tree with nodes clustered tightly](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_1-1024x771.png "`manyBodyStrength: -1`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_15-1024x771.png "`manyBodyStrength: -15` (default)")
+![Force-directed tree with nodes moderately spread out](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_15-1024x771.png "`manyBodyStrength: -15` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_30-1024x771.png "`manyBodyStrength: -30`")
+![Force-directed tree with nodes pushed far apart](https://docs.amcharts.com/v5/images/charts/hierarchy/force-directed/forcedirected_strength_30-1024x771.png "`manyBodyStrength: -30`")
 
 Example: [Force-directed chart with strength configuration](https://docs.amcharts.com/embeds/v5/force-directed-chart-with-strength-configuration/). Its code: get_example(path: "examples/docs-demos/force-directed-chart-with-strength-configuration").
 

@@ -1,7 +1,7 @@
 ---
 title: "Responsive theme"
 source: "https://docs.amcharts.com/v5/concepts/responsive/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > The Responsive theme changes chart settings at the sizes you choose, with rules of your own.
@@ -131,7 +131,7 @@ The class name of the element is represented by its class' `className` and `clas
 
 Take a look at class reference of the `AxisRendererY` from the example above:
 
-![](https://docs.amcharts.com/v5/images/concepts/responsive/image.png)
+![AxisRendererY class reference listing its className and classNames defaults](https://docs.amcharts.com/v5/images/concepts/responsive/image.png)
 
 We can target elements by any of the class names. E.g. using `AxisRenderer` would target all axis renderers, not just ones for the Y axis.
 

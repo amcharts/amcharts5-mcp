@@ -1,7 +1,7 @@
 ---
 title: "Accessibility"
 source: "https://docs.amcharts.com/v5/concepts/accessibility/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will go through amCharts 5 built-in accessibility features as well as how to configure them.
@@ -12,7 +12,9 @@ This tutorial will go through amCharts 5 built-in accessibility features as well
 
 Focusable elements in charts can be selected using TAB key.
 
-Some elements are focusable by default, e.g. legend items, buttons, columns in series, etc.
+Some elements are focusable by default, e.g. legend items, buttons, columns in series, hierarchy breadcrumb labels, etc.
+
+Elements of a hidden series, or inside a hidden container, are not TAB stops.
 
 Whenever element is focused, it will show a contrasting outline around it. It will also trigger screen reader, if it also has such information attached to it.
 
@@ -159,7 +161,7 @@ To group elements, besides setting `focusable`, we can also set `focusableGroup`
 
 A group is a single TAB stop. TAB lands on the member that was focused last (or the first one, if none was), and arrow keys move between the members.
 
-Naturally, `ariaLabel` must contain additional instructions, exposing such capability.
+Tell users about it in `ariaLabel`. Name the up and down arrow keys: in a screen reader's browse mode they step from item to item, while left and right read letter by letter.
 
 TypeScript:
 
@@ -167,7 +169,7 @@ TypeScript:
 series.columns.template.setAll({
   focusable: true,
   focusableGroup: "Series #1",
-  ariaLabel: "{name}. {categoryX} {valueY}. Use arrow keys to select other columns in this series"
+  ariaLabel: "{name}. {categoryX} {valueY}. Use up and down arrow keys to move through the columns"
 });
 ```
 
@@ -177,7 +179,7 @@ JavaScript:
 series.columns.template.setAll({
   focusable: true,
   focusableGroup: "Series #1",
-  ariaLabel: "{name}. {categoryX} {valueY}. Use arrow keys to select other columns in this series"
+  ariaLabel: "{name}. {categoryX} {valueY}. Use up and down arrow keys to move through the columns"
 });
 ```
 
@@ -307,6 +309,226 @@ The above code will make columns in series focusable, as well as add reader text
 
 > **More info:** For more information on binding data to text, refer to "[Data placeholders](https://docs.amcharts.com/v5/concepts/formatters/data-placeholders/)" tutorial.
 
+### Setting a description
+
+`ariaDescription` sets a longer description, which screen readers read after the `ariaLabel`. It works on any element and accepts data placeholders.
+
+TypeScript:
+
+```ts
+let chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    focusable: true,
+    ariaLabel: "Quarterly expenses by department",
+    ariaDescription: "Marketing spending doubled in the third quarter, while other departments stayed flat."
+  })
+);
+```
+
+JavaScript:
+
+```js
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    focusable: true,
+    ariaLabel: "Quarterly expenses by department",
+    ariaDescription: "Marketing spending doubled in the third quarter, while other departments stayed flat."
+  })
+);
+```
+
+Use `ariaLabel` for a short name, and `ariaDescription` for what the reader should know beyond it: the main point of the chart, or how to use it.
+
+> **Note:** `ariaDescription` is available since version 5.24.0.
+
+## Data summary
+
+With `ariaSummary: true`, the chart describes its data to screen readers. For each series it reads out:
+
+* how many values it has;
+* the first and last values (XY series);
+* the highest and lowest values.
+
+TypeScript:
+
+```ts
+let chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    focusable: true,
+    ariaLabel: "Daily sales by region",
+    ariaSummary: true
+  })
+);
+```
+
+JavaScript:
+
+```js
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    focusable: true,
+    ariaLabel: "Daily sales by region",
+    ariaSummary: true
+  })
+);
+```
+
+When the chart is focused, a screen reader reads its label, then the summary. For a chart with daily data and two series, "North" and "South":
+
+```text
+Daily sales by region. North. Values: 30. From Jan 01, 2025 (100) to Jan 30, 2025 (158). Highest: Jan 13, 2025 (174). Lowest: Jan 01, 2025 (100). South. Values: 30. From Jan 01, 2025 (80) to Jan 30, 2025 (51). Highest: Jan 01, 2025 (80). Lowest: Jan 30, 2025 (51).
+```
+
+Other chart types read like this:
+
+| Chart | Summary                                                                     |
+| ----- | --------------------------------------------------------------------------- |
+| Pie   | Values: 3. Highest: Lithuania (501.9, 49.9%). Lowest: Estonia (201.1, 20%). |
+| Flow  | Values: 2. Highest: X > Y (5). Lowest: X > Z (3).                           |
+
+How the summary is put together:
+
+* On a chart, each series' summary starts with the series name.
+* Only XY series get "From … to …".
+* Values are formatted with the value axis' `tooltipNumberFormat`, or its `numberFormat` if that isn't set.
+* Dates are formatted with the date axis' tooltip format for its base interval: `tooltipDateFormats`, or `tooltipDateFormat` if that is set.
+
+In English, the default date formats read like this:
+
+| Base interval | Date read out        |
+| ------------- | -------------------- |
+| `day`         | Jan 01, 2025         |
+| `hour`        | 14:00 - Jan 01, 2025 |
+| `month`       | Jan, 2025            |
+| `year`        | 2025                 |
+
+The chart has to be `focusable` for this. The summary is the chart's `ariaDescription`, so an `ariaDescription` set in code is used instead.
+
+Each series' summary also goes to its legend item, read after the item's name. The summary follows the data: it is worked out again when the data changes.
+
+To leave a series out, set `ariaSummary: false` on it:
+
+TypeScript:
+
+```ts
+trendSeries.set("ariaSummary", false);
+```
+
+JavaScript:
+
+```js
+trendSeries.set("ariaSummary", false);
+```
+
+Hierarchy, flow and word cloud series are not in a chart, so they take `ariaSummary` themselves, and have to be `focusable`:
+
+TypeScript:
+
+```ts
+let series = root.container.children.push(
+  am5hierarchy.Treemap.new(root, {
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children",
+    focusable: true,
+    ariaLabel: "Sales by region",
+    ariaSummary: true
+  })
+);
+```
+
+JavaScript:
+
+```js
+var series = root.container.children.push(
+  am5hierarchy.Treemap.new(root, {
+    valueField: "value",
+    categoryField: "name",
+    childDataField: "children",
+    focusable: true,
+    ariaLabel: "Sales by region",
+    ariaSummary: true
+  })
+);
+```
+
+### Getting the summary as data
+
+`series.getSummary()` returns the summary as an object, for use in your own text or page:
+
+TypeScript:
+
+```ts
+let summary = series.getSummary();
+if (summary) {
+  console.log(summary.count, summary.highest.label, summary.highest.value);
+}
+```
+
+JavaScript:
+
+```js
+var summary = series.getSummary();
+if (summary) {
+  console.log(summary.count, summary.highest.label, summary.highest.value);
+}
+```
+
+| Property            | Contents                                          |
+| ------------------- | ------------------------------------------------- |
+| `count`             | Number of data items with a value.                |
+| `highest`, `lowest` | The data items with the highest and lowest value. |
+| `first`, `last`     | The first and last data items (XY series only).   |
+| `text`              | The whole summary, as screen readers read it.     |
+
+Each item has `label` (category, date or name), `value` (the number) and `text` (the value, formatted). `getSummary()` returns `undefined` if the series has no values.
+
+The texts ("Values", "From … to …", "Highest", "Lowest") come from the chart's [locale](https://docs.amcharts.com/v5/concepts/locales/).
+
+> **Note:** `ariaSummary` and `getSummary()` are available since version 5.24.0.
+
+## Data table
+
+With `ariaDataTable: true`, the chart gives screen readers its data as a table, hidden from view. It has a row for each category or date and a column for each series, so screen readers can move through it by row and column.
+
+TypeScript:
+
+```ts
+let chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    ariaLabel: "Monthly sales",
+    ariaDataTable: true
+  })
+);
+```
+
+JavaScript:
+
+```js
+var chart = root.container.children.push(
+  am5xy.XYChart.new(root, {
+    ariaLabel: "Monthly sales",
+    ariaDataTable: true
+  })
+);
+```
+
+* The table is captioned with the chart's `ariaLabel`.
+* Columns are headed with series names.
+* Values and dates are formatted as in the [data summary](#data-summary). With grouped data, dates use the format of their group interval.
+* The table doesn't need the chart to be focusable: screen readers find it as they read through the page.
+* It is updated when the data changes.
+
+With [data grouping](https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#dynamic-data-item-grouping) on a date axis, the table lists the groups shown when the chart is zoomed out all the way. It doesn't change with the zoom.
+
+To leave a series out of the table, set `ariaDataTable: false` on it.
+
+Hierarchy, flow and word cloud series are not in a chart, so they take `ariaDataTable` themselves and get a table of their own.
+
+> **More info:** `ariaSummary` and `ariaDataTable` work well together: the summary gives the main points when the chart is focused, and the table has every value for those who want them.
+
+> **Note:** `ariaDataTable` is available since version 5.24.0.
+
 ## Accessibility of Root element
 
 We can also make the Root (or more like its inner `<div>`) element accessible using three additional settings in Root: `focusable`, `ariaLabel`, and `role`.
@@ -363,25 +585,43 @@ It comes in a form of a `role` attribute of the related DOM element.
 
 For example, a grip button of a scrollbar will have `"slider"` role assigned, indicating that this element can be used to adjust position/zoom.
 
-Similarly, a focusable column in a column series will have a role of `"figure"`.
+Charts of every type have the `"img"` role, read with the chart's `ariaLabel`. That includes stock and Gantt charts, and series used as the chart itself, such as Sankey, treemap or word cloud. A focusable chart needs no role set.
 
-To change or set a role on specific element, we can use its `role` setting.
+Focusable data elements and bullets have the `"img"` role too, such as columns of a column series, and:
+
+* pie, funnel, pyramid and pictorial slices;
+* radar slices;
+* hierarchy nodes (leaves only);
+* flow nodes and links;
+* word cloud words;
+* Venn areas;
+* timeline curve slices;
+* map polygons and lines;
+* Gantt bars and milestones.
+
+`"img"` is the role whose name all major screen readers read out. JAWS, for one, reads nothing for a focused `"figure"`, `"group"` or `"region"`.
+
+A focusable element that toggles a state when clicked (one with `toggleKey`), such as a pie slice that pulls out, is exposed as a toggle button instead, so screen readers can tell whether it is on or off.
+
+Buttons, including hierarchy breadcrumbs, have the `"button"` role. While a [Gantt chart](https://docs.amcharts.com/v5/charts/gantt/#accessibility) is editable, its bars, milestones and grips are sliders.
+
+Any other focusable element with no role of its own, such as a `Container` made focusable by hand, is read as `"img"`.
+
+To give an element another meaning, use its `role` setting. For example, columns that do something when clicked:
 
 TypeScript:
 
 ```ts
-series.columns.template.set("role", "img");
+series.columns.template.set("role", "button");
 ```
 
 JavaScript:
 
 ```js
-series.columns.template.set("role", "img");
+series.columns.template.set("role", "button");
 ```
 
-The above will change role of columns in series to `"img"`.
-
-A focusable element that toggles a state when clicked (one with `toggleKey`), such as a pie slice that pulls out, is exposed as a toggle button, so screen readers can tell whether it is on or off.
+> **Note:** The `"img"` defaults are available since version 5.24.0. Before that, data elements had the `"figure"` role and charts had none.
 
 > **More info:** For a full list of available ARIA roles, refer to [this Mozilla article](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#roles).
 
@@ -404,8 +644,7 @@ TypeScript:
 ```ts
 columnSeries.columns.template.setAll({
   focusable: true,
-  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}",
-  role: "figure"
+  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}"
 });
 ```
 
@@ -414,8 +653,7 @@ JavaScript:
 ```js
 columnSeries.columns.template.setAll({
   focusable: true,
-  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}",
-  role: "figure"
+  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}"
 });
 ```
 
@@ -440,8 +678,7 @@ series.bullets.push(function() {
       radius: 5,
       fill: series.get("fill"),
       focusable: true,
-      ariaLabel: "Series: {name}. Date: {valueX.formatDate()}. Sales: {valueY}",
-      role: "figure"
+      ariaLabel: "Series: {name}. Date: {valueX.formatDate()}. Sales: {valueY}"
     })
   });
 });
@@ -456,14 +693,13 @@ series.bullets.push(function() {
       radius: 5,
       fill: series.get("fill"),
       focusable: true,
-      ariaLabel: "Series: {name}. Date: {valueX.formatDate()}. Sales: {valueY}",
-      role: "figure"
+      ariaLabel: "Series: {name}. Date: {valueX.formatDate()}. Sales: {valueY}"
     })
   });
 });
 ```
 
-If the bullet's sprite has no role, it gets `"figure"`. A sprite that has its own role, such as a button, keeps it.
+If the bullet's sprite has no role, it gets `"img"`. A sprite that has its own role, such as a button, keeps it.
 
 Example: [Line series with focusable bullets](https://docs.amcharts.com/embeds/v5/line-series-with-focusable-bullets/). Its code: get_example(path: "examples/docs-demos/line-series-with-focusable-bullets").
 
@@ -574,14 +810,14 @@ Objects left out with a series' `include` or `exclude` settings are not focusabl
 
 Here's a summary of keys that work on focused chart elements:
 
-| Key                | Action                                                                                    |
-| ------------------ | ----------------------------------------------------------------------------------------- |
-| TAB / SHIFT+TAB    | Moves focus to the next / previous element or group.                                      |
-| Arrow keys         | Drag a draggable element, or move between members of a group.                             |
-| SHIFT + arrow keys | Drag a draggable element that is in a group.                                              |
-| ENTER              | Clicks the focused element.                                                               |
-| SPACE              | Clicks the focused element, if it acts as a button (see below).                           |
-| ESC                | Hides the focused element's tooltip and ends a keyboard drag. Focus stays on the element. |
+| Key                | Action                                                                                                                |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| TAB / SHIFT+TAB    | Moves focus to the next / previous element or group.                                                                  |
+| Arrow keys         | Drag a draggable element, or move between members of a group. Up and down also work in a screen reader's browse mode. |
+| SHIFT + arrow keys | Drag a draggable element that is in a group.                                                                          |
+| ENTER              | Clicks the focused element.                                                                                           |
+| SPACE              | Clicks the focused element, if it acts as a button (see below).                                                       |
+| ESC                | Hides the focused element's tooltip and ends a keyboard drag. Focus stays on the element.                             |
 
 There are two types of objects on charts that can be interacted with with mouse/touch as well as with keyboard:
 
@@ -628,7 +864,7 @@ E.g. the legend items we already mentioned: they will read out "Press ENTER to t
 
 Toggles also tell screen readers their current state. A button with `toggleKey` is read out as pressed or not pressed. For elements that show or hide other content, the `ariaExpanded` setting tells whether it is expanded. It is set automatically on [Gantt](https://docs.amcharts.com/v5/charts/gantt/) tasks with subtasks and on hierarchy nodes with children.
 
-> **More info:** Some controls built with HTML have their own keyboard support: [export menu](https://docs.amcharts.com/v5/concepts/exporting/export-menu/#accessibility), [modal popups](https://docs.amcharts.com/v5/concepts/common-elements/modal-popups/), and [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/#accessibility).
+> **More info:** Some controls have their own keyboard support: [export menu](https://docs.amcharts.com/v5/concepts/exporting/export-menu/#accessibility), [modal popups](https://docs.amcharts.com/v5/concepts/common-elements/modal-popups/), [stock toolbar](https://docs.amcharts.com/v5/charts/stock/toolbar/#accessibility), [Gantt chart](https://docs.amcharts.com/v5/charts/gantt/#accessibility) and [color picker](https://docs.amcharts.com/v5/tutorials/using-the-color-picker/#accessibility).
 
 ## Events
 
@@ -661,6 +897,37 @@ series.slices.template.events.on("blur", function(ev) {
   console.log(ev.target);
 });
 ```
+
+## Testing with screen readers
+
+Charts are tested with NVDA, JAWS, Narrator and VoiceOver on macOS. Here's how they behave, and what to check.
+
+### Browse mode and focus mode
+
+* NVDA and JAWS start in browse mode, where they keep the arrow keys for themselves. Up and down step from item to item and read each one; left and right read the name letter by letter. This is why labels should name the up and down arrow keys.
+* In focus mode, all arrow keys reach the chart. Switch to it with NVDA+SPACE (NVDA), INSERT+Z (JAWS) or Narrator key+SPACE (Narrator).
+* Sliders, such as scrollbar grips, switch NVDA and JAWS to focus mode by themselves: left and right change the value, and the new value is read.
+* Dragging with SHIFT and arrow keys needs focus mode: in browse mode, the screen reader uses SHIFT+arrows to select text.
+* VoiceOver on macOS has no browse mode: arrow keys reach the chart directly. See the note on [Quick Nav](#grouping-focusable-elements).
+
+### Things to know
+
+* JAWS reads nothing for a focused element with the `"figure"`, `"group"`, `"region"` or `"graphics-document"` role. Keep the default `"img"` role on focusable elements, or use another role that JAWS reads.
+* Descriptions (`ariaDescription`, `ariaSummary`) are read after the name.
+* Toggling items, such as pie slices, are read as toggle buttons, with their state: "pressed" or "not pressed" (VoiceOver says "selected").
+* There's no single key to skip past a chart's elements: TAB stops at the chart, then once per group and per scrollbar grip. NVDA's comma key ("move past end of container") jumps past them; JAWS has no equivalent.
+* VoiceOver reads "To begin interacting with the contents of this image…" on a chart that has an `ariaDescription`. It does no harm.
+
+### Test steps
+
+1. TAB to the chart: its name and description are read.
+2. TAB again: the first item is read.
+3. Up and down arrow keys: one item per press.
+4. ENTER on a toggling item: its new state is read.
+5. TAB to a slider: left and right arrow keys change the value, which is read.
+6. Repeat in focus mode.
+
+Test NVDA and JAWS with Chrome or Edge, VoiceOver with Safari and Chrome, and Narrator with Edge.
 
 ## Related tutorials
 

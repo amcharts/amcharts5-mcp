@@ -1,7 +1,7 @@
 ---
 title: "Legend"
 source: "https://docs.amcharts.com/v5/concepts/legend/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Legend is a universal control that can be used on virtually any chart type, fed by series or other sources. This tutorial will cover common techniques of using a legend.
@@ -186,11 +186,11 @@ var chart = root.container.children.push(
 var legend = chart.children.push(am5.Legend.new(root, {}));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_bottom-1024x590.png "`layout: root.verticalLayout`")
+![Pie chart with the legend below it, one item per row](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_bottom-1024x590.png "`layout: root.verticalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_right-1024x590.png "`layout: root.horizontalLayout`")
+![Pie chart with the legend to its right](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_right-1024x590.png "`layout: root.horizontalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_unpositioned-1024x590.png "`layout` not set")
+![Pie chart with the legend drawn over its top](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_unpositioned-1024x590.png "`layout` not set")
 
 The legend appears on the bottom (or right) because it's the last element we've added to the chart.
 
@@ -220,11 +220,11 @@ var chart = root.container.children.push(
 var legend = chart.children.unshift(am5.Legend.new(root, {}));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_top-1024x590.png "`layout: root.verticalLayout`")
+![Pie chart with the legend above it, one item per row](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_top-1024x590.png "`layout: root.verticalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_left-1024x590.png "`layout: root.horizontalLayout`")
+![Pie chart with the legend to its left](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_left-1024x590.png "`layout: root.horizontalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_unpositioned-1024x590.png "`layout` not set")
+![Pie chart with the legend drawn over its top](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_unpositioned-1024x590.png "`layout` not set")
 
 > **More info:** For more information about layouts, visit our "[Containers: Layout](https://docs.amcharts.com/v5/concepts/common-elements/containers/#layout)" tutorial.
 
@@ -252,11 +252,11 @@ legend = chart.children.push(am5.Legend.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_top_align.png "`y: am5.percent(0)` | `centerY: am5.percent(0)`")
+![Pie chart with the legend to its right, aligned to the top](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_top_align.png "`y: am5.percent(0)` | `centerY: am5.percent(0)`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_bottom_align.png "`y: am5.percent(50)` | `centerY: am5.percent(50)`")
+![Pie chart with the legend to its right, centered vertically](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_bottom_align.png "`y: am5.percent(50)` | `centerY: am5.percent(50)`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_center_align.png "`y: am5.percent(100)` | `centerY: am5.percent(100)`")
+![Pie chart with the legend to its right, aligned to the bottom](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_center_align.png "`y: am5.percent(100)` | `centerY: am5.percent(100)`")
 
 ## Layout
 
@@ -288,11 +288,11 @@ legend = chart.children.push(am5.Legend.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_grid_layout.png "`layout: root.gridLayout` (default)")
+![Legend items in a grid of three columns below the pie chart](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_grid_layout.png "`layout: root.gridLayout` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_horizontal_layout.png "`layout: root.horizontalLayout`")
+![Legend items in a single row below the pie chart, overflowing its edges](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_horizontal_layout.png "`layout: root.horizontalLayout`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_vertical_layout.png "`layout: root.verticalLayout`")
+![Legend items in a single column below the pie chart](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_vertical_layout.png "`layout: root.verticalLayout`")
 
 Obviously, when choosing layout, we need to think of the place the legend will appear in, as well as a number of potential items in it.
 
@@ -333,11 +333,11 @@ var legend = chart.children.push(am5.Legend.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_grid_layout.png "`fixedWidthGrid: false` (default)")
+![Legend grid whose columns are as wide as their items](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_grid_layout.png "`fixedWidthGrid: false` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_fixedwidthcolumns.png "`fixedWidthGrid: true`")
+![Legend grid with three columns of equal width](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_fixedwidthcolumns.png "`fixedWidthGrid: true`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_maxcolumns_2.png "`maxColumns: 2`")
+![Legend grid with two columns](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_maxcolumns_2.png "`maxColumns: 2`")
 
 Example: [Pie chart legend alignment](https://docs.amcharts.com/embeds/v5/pie-chart-legend-alignment/). Its code: get_example(path: "examples/docs-demos/pie-chart-legend-alignment").
 
@@ -493,7 +493,7 @@ legend.markers.template.setup = function(marker) {
     marker.children.push(am5.Picture.new(root, {
       width: 20,
       height: 20,
-      src: "https://www.amcharts.com/wp-content/uploads/flags/" + series.get("name").toLowerCase() + ".svg"
+      src: "https://www.amcharts.com/static/flags/" + series.get("name").toLowerCase() + ".svg"
     }));
     
     dataItem.on("markerRectangle", function(rectangle) {
@@ -513,7 +513,7 @@ legend.markers.template.setup = function(marker) {
     marker.children.push(am5.Picture.new(root, {
       width: 20,
       height: 20,
-      src: "https://www.amcharts.com/wp-content/uploads/flags/" + series.get("name").toLowerCase() + ".svg"
+      src: "https://www.amcharts.com/static/flags/" + series.get("name").toLowerCase() + ".svg"
     }));
     
     dataItem.on("markerRectangle", function(rectangle) {
@@ -583,9 +583,9 @@ JavaScript:
 legend.valueLabels.template.set("forceHidden", true);
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_with_valuelabels.png "Value labels enabled (default)")
+![Column chart with a legend grid spaced out for value labels](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_with_valuelabels.png "Value labels enabled (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_without_valuelabels.png.png "Value labels disabled")
+![Column chart with a compact legend fitting all items in one row](https://docs.amcharts.com/v5/images/concepts/legend/index/legend_without_valuelabels.png.png "Value labels disabled")
 
 ### Dynamic label content
 

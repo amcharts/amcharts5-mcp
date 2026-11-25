@@ -2,7 +2,7 @@
 title: "Column series with focusable columns"
 source: "https://docs.amcharts.com/embeds/v5/column-series-with-focusable-columns-2/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/accessibility"]
 ---
 
@@ -90,8 +90,7 @@ series1.data.setAll(data);
 
 series1.columns.template.setAll({
   focusable: true,
-  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}",
-  role: "figure"
+  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}"
 });
 
 var series2 = chart.series.push(
@@ -108,8 +107,7 @@ series2.data.setAll(data);
 
 series2.columns.template.setAll({
   focusable: true,
-  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}",
-  role: "figure"
+  ariaLabel: "Series: {name}. Department: {categoryX}. Sales: {valueY}"
 });
 
 // Add legend

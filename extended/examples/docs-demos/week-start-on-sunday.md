@@ -2,7 +2,7 @@
 title: "Week start on Sunday"
 source: "https://docs.amcharts.com/embeds/v5/week-start-on-sunday/"
 category: "docs-demos"
-scraped: "2026-11-19"
+scraped: "2026-11-25"
 docsPages: ["getting-started/root-element"]
 ---
 

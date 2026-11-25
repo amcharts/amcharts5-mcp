@@ -2,7 +2,7 @@
 title: "XY scatter chart with heat rules on bullets"
 source: "https://docs.amcharts.com/embeds/v5/xy-scatter-chart-with-heat-rules-on-bullets/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/axes","concepts/settings/heat-rules"]
 ---
 

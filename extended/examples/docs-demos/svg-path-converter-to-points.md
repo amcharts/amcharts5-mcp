@@ -2,7 +2,7 @@
 title: "SVG path converter to points"
 source: "https://docs.amcharts.com/embeds/v5/svg-path-converter-to-points/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/timeline"]
 ---
 

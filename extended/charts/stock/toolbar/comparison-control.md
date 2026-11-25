@@ -1,7 +1,7 @@
 ---
 title: "Comparison control"
 source: "https://docs.amcharts.com/v5/charts/stock/toolbar/comparison-control/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Comparison control can be added to stock toolbar, and is used to interactively add additional series to the Stock chart, so that they can be compared to main series.
@@ -121,7 +121,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 
 Now, when we click the control, we'll get two items to choose from:
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/comparison-control/comparison_control.png)
+![Comparison control dropdown listing Apple (AAPL) and Tesla (TSLA)](https://docs.amcharts.com/v5/images/charts/stock/toolbar/comparison-control/comparison_control.png)
 
 ### Enabling search
 
@@ -173,7 +173,7 @@ var toolbar = am5stock.StockToolbar.new(root, {
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/stock/toolbar/comparison-control/searchable_comparison_control.png)
+![Comparison control dropdown with a search field above the Apple and Tesla items](https://docs.amcharts.com/v5/images/charts/stock/toolbar/comparison-control/searchable_comparison_control.png)
 
 ### Dynamic search results
 

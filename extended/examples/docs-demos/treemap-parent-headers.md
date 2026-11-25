@@ -2,7 +2,7 @@
 title: "Treemap with parent headers and one-level drill-down"
 source: "https://docs.amcharts.com/embeds/v5/treemap-parent-headers/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/hierarchy-drill-down","charts/hierarchy/treemap"]
 ---
 

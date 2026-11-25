@@ -1,7 +1,7 @@
 ---
 title: "Graticule series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/graticule-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Graticule is a special kind of map series that will draw a map grid.
@@ -71,8 +71,8 @@ var graticuleSeries = chart.series.unshift(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/graticule-series/graticule_step_10-1024x621.png "`step: 10` (default)")
+![World map with grid lines every 10 degrees](https://docs.amcharts.com/v5/images/charts/map-chart/graticule-series/graticule_step_10-1024x621.png "`step: 10` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/graticule-series/graticule_step_20-1024x621.png "`step: 20`")
+![World map with sparser grid lines every 20 degrees](https://docs.amcharts.com/v5/images/charts/map-chart/graticule-series/graticule_step_20-1024x621.png "`step: 20`")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/graticule-series/graticule_step_5-1024x621.png "`step: 5`")
+![World map with dense grid lines every 5 degrees](https://docs.amcharts.com/v5/images/charts/map-chart/graticule-series/graticule_step_5-1024x621.png "`step: 5`")

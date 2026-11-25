@@ -1,7 +1,7 @@
 ---
 title: "Creating themes"
 source: "https://docs.amcharts.com/v5/concepts/themes/creating-themes/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Custom themes is a really powerful way to create a functional reusable sets of settings, events, and adapters to apply to specific elements of the chart.
@@ -198,7 +198,7 @@ The class name of the element is represented by its class' `className` and `clas
 
 Let's take a look at reference for the `AxisRendererY`:
 
-![](https://docs.amcharts.com/v5/images/concepts/themes/creating-themes/image.png)
+![AxisRendererY class reference listing its className and classNames defaults](https://docs.amcharts.com/v5/images/concepts/themes/creating-themes/image.png)
 
 As per above, we can target renderers for vertical axes using `AxisRendererY` name, or all renderers using `AxisRenderer`.
 

@@ -2,7 +2,7 @@
 title: "Custom XLSX export"
 source: "https://docs.amcharts.com/embeds/v5/custom-xlsx-export/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/exporting/exporting-data"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Keyboard-controllable XY cursor"
 source: "https://docs.amcharts.com/embeds/v5/keyboard-controllable-xy-cursor/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/accessibility"]
 ---
 

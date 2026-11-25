@@ -1,7 +1,7 @@
 ---
 title: "Step line series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/step-line-series/"
-scraped: "2026-11-18"
+scraped: "2026-11-25"
 ---
 
 > A step line series is basically the same thing as line series, except instead of connecting data items with direct lines, it displays a stepped plot using only horizontal and vertical lines.
@@ -82,9 +82,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/steplineseries.png "`noRisers: false` (default)")
+![Step line chart with vertical risers joining the steps](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/steplineseries.png "`noRisers: false` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/steplineseries_norisers.png "`noRisers: true`")
+![Step line chart with separate horizontal steps and no risers](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/steplineseries_norisers.png "`noRisers: true`")
 
 Example: [StepLineSeries with no risers](https://docs.amcharts.com/embeds/v5/steplineseries-with-no-risers/). Its code: get_example(path: "examples/docs-demos/steplineseries-with-no-risers").
 
@@ -126,9 +126,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/steplineseries_norisers.png "Default behavior")
+![Step line chart without risers, each step as wide as its cell](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/steplineseries_norisers.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/stepwidth_50.png "`stepWidth: am5.percent(50)`")
+![Step line chart without risers, each step half as wide as its cell](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/stepwidth_50.png "`stepWidth: am5.percent(50)`")
 
 ## Start location
 
@@ -174,11 +174,11 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/step_location05.png "`location: 0.5` (default)")
+![Half-width steps centered in their cells](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/step_location05.png "`location: 0.5` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/step_locationX025.png "`location: 0.25`")
+![Half-width steps aligned to the start of their cells](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/step_locationX025.png "`location: 0.25`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/step_locationX075.png "`location: 0.75`")
+![Half-width steps aligned to the end of their cells](https://docs.amcharts.com/v5/images/charts/xy-chart/series/step-line-series/step_locationX075.png "`location: 0.75`")
 
 Example: [StepLineSeries with no risers](https://docs.amcharts.com/embeds/v5/steplineseries-with-no-risers-2/). Its code: get_example(path: "examples/docs-demos/steplineseries-with-no-risers-2").
 

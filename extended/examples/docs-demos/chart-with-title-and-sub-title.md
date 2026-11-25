@@ -2,7 +2,7 @@
 title: "Chart with title and sub-title"
 source: "https://docs.amcharts.com/embeds/v5/chart-with-title-and-sub-title/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/common-elements/labels"]
 ---
 

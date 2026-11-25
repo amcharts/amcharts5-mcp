@@ -2,7 +2,7 @@
 title: "Zooming by axis pan"
 source: "https://docs.amcharts.com/embeds/v5/zooming-by-axis-pan/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/zoom-and-pan"]
 ---
 

@@ -59,8 +59,8 @@ All amCharts libraries and plugins are available as a ready-to-include CDN resou
 amCharts 5 is also available on [cdnjs](https://cdnjs.com/libraries/amcharts5) and jsDelivr (`https://cdn.jsdelivr.net/gh/amcharts/amcharts5-dist@5/`), with the same file layout. Use them where only well-known public CDNs are allowed, such as sites with a strict Content Security Policy, or AI chat sandboxes (e.g. Claude artifacts), which allow cdnjs:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.23.0/index.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.23.0/xy.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.24.0/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/amcharts5/5.24.0/xy.js"></script>
 ```
 
 > **More info:** For what each CDN includes, see "[Public CDNs](https://www.amcharts.com/download/#public-cdn)" on our Downloads page.
@@ -73,17 +73,17 @@ Since version 5.22.0, the npm package `@amcharts/amcharts5` has the same files i
 * A sandbox or online code editor allows npm CDNs but not ours. AI chat sandboxes such as Claude artifacts also allow cdnjs, but it has only low-detail maps; jsDelivr and unpkg have every map.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/index.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/xy.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/themes/Animated.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/themes/ResponsiveMax.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.24.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.24.0/dist/xy.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.24.0/dist/themes/Animated.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.24.0/dist/themes/ResponsiveMax.js"></script>
 ```
 
 | Source         | URL prefix                                                      |
 | -------------- | --------------------------------------------------------------- |
 | `node_modules` | `/node_modules/@amcharts/amcharts5/dist/`                       |
-| jsDelivr       | `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.23.0/dist/` |
-| unpkg          | `https://unpkg.com/@amcharts/amcharts5@5.23.0/dist/`            |
+| jsDelivr       | `https://cdn.jsdelivr.net/npm/@amcharts/amcharts5@5.24.0/dist/` |
+| unpkg          | `https://unpkg.com/@amcharts/amcharts5@5.24.0/dist/`            |
 
 * Pin the version and load every file from the same one.
 * Use plain `<script>` tags, not `type="module"`. The exporting plugin's PDF, Excel and annotation code loads on first use from the `deps/` folder next to `index.js`, wherever that is served from.

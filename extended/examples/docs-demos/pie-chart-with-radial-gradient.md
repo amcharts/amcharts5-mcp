@@ -2,7 +2,7 @@
 title: "Pie chart with radial gradient"
 source: "https://docs.amcharts.com/embeds/v5/pie-chart-with-radial-gradient/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/colors-gradients-and-patterns/gradients"]
 ---
 

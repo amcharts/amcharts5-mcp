@@ -2,7 +2,7 @@
 title: "Using templateField on LineSeries troke"
 source: "https://docs.amcharts.com/embeds/v5/using-templatefield-on-lineseries-troke/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/series/line-series"]
 ---
 

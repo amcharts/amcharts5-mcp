@@ -1,7 +1,7 @@
 ---
 title: "Category date axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/category-date-axis/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Category date axis (or evenly spaced date axis) is a mashup of a category axis and a date axis' features. It will display an evenly spaced cell for each entry in data. Perfect for displaying irregularly spaced time-based data, where plotting using real time scale is not important.
@@ -10,9 +10,9 @@ Category date axis is being deprecated in favor of gapless date axis. [Gapless d
 
 Category date axis (or evenly spaced date axis) is a mashup of a category axis and a date axis' features. It will display an evenly spaced cell for each entry in data. Perfect for displaying irregularly spaced time-based data, where plotting using real time scale is not important.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/category-date-axis/dateaxis.png "Regular date axis with irregular data")
+![Line chart whose date axis shows every day, leaving wide gaps where data is missing](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/category-date-axis/dateaxis.png "Regular date axis with irregular data")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/category-date-axis/categorydateaxis.png "Category date axis with irregular data")
+![Line chart with evenly spaced points, the axis showing only dates that have data](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/category-date-axis/categorydateaxis.png "Category date axis with irregular data")
 
 ## Creating
 

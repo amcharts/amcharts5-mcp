@@ -2,7 +2,7 @@
 title: "Syncing axis widths across multiple charts"
 source: "https://docs.amcharts.com/embeds/v5/syncing-axis-widths-across-multiple-charts/"
 category: "docs-demos"
-scraped: "2026-11-18"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/axes/value-axis"]
 ---
 

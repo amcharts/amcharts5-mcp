@@ -1,7 +1,7 @@
 ---
 title: "Smoothed line series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/smoothed-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at what options we have to create smoothed line and area series.
@@ -46,11 +46,11 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/SmoothedXSeries.png "`SmoothedXSeries`")
+![Two smoothed lines running left to right across date columns](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/SmoothedXSeries.png "`SmoothedXSeries`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/SmootherdYSeries.png "`SmoothedYSeries`")
+![Two smoothed lines running bottom to top with dates on the vertical axis](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/SmootherdYSeries.png "`SmoothedYSeries`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/SmoothedXYSeries.png "`SmoothedXYSeries`")
+![Two smoothed lines looping back and forth between two value axes](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/SmoothedXYSeries.png "`SmoothedXYSeries`")
 
 Example: [Smoothed line series](https://docs.amcharts.com/embeds/v5/smoothed-line-series/). Its code: get_example(path: "examples/docs-demos/smoothed-line-series").
 
@@ -62,11 +62,11 @@ It's a numeric value from `0` (zero) to `1` (one) indicating strength the two co
 
 The smaller the number, the more lose and curvy the line will be. `1` indicates maximum strength which means it will be a perfectly straight line.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/tension_02.png "`tension: 0.2`")
+![Smoothed line chart with loose curves and flattened peaks](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/tension_02.png "`tension: 0.2`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/tension_05.png "`tension: 0.5` (default)")
+![Smoothed line chart with moderate curves](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/tension_05.png "`tension: 0.5` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/tension_08.png "`tension: 0.8`")
+![Smoothed line chart with nearly straight segments and slight curves](https://docs.amcharts.com/v5/images/charts/xy-chart/series/smoothed-series/tension_08.png "`tension: 0.8`")
 
 ## Configuring appearance
 

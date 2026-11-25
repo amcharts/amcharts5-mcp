@@ -2,7 +2,7 @@
 title: "Vertical Arc Diagram"
 source: "https://docs.amcharts.com/embeds/v5/vertical-arc-diagram/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/flow-charts/arc-diagram"]
 ---
 

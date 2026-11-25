@@ -2,7 +2,7 @@
 title: "Cursor and legend labels"
 source: "https://docs.amcharts.com/embeds/v5/cursor-and-legend-labels/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/legend-xy-series"]
 ---
 

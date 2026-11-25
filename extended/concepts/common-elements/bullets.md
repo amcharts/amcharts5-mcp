@@ -1,7 +1,7 @@
 ---
 title: "Bullets"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/bullets/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will look into all aspects of using bullets on series.
@@ -301,13 +301,13 @@ series.bullets.push(function(root, series) {
 
 > **Note:** Setting `field` makes the bullet completely ignore the `locationX` and `locationY` settings.
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_open-1024x768.png "`field: 'open'`")
+![Candlestick chart with circle bullets at each candle's open value](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_open-1024x768.png "`field: 'open'`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_value-1024x768.png "`field: 'value'` (default)")
+![Candlestick chart with circle bullets at each candle's close value](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_value-1024x768.png "`field: 'value'` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_high-1024x767.png "`field: 'high'`")
+![Candlestick chart with circle bullets at the top of each high wick](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_high-1024x767.png "`field: 'high'`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_low-1024x768.png "`field: 'low'`")
+![Candlestick chart with circle bullets at the bottom of each low wick](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/bullet_dield_low-1024x768.png "`field: 'low'`")
 
 Example: [Positioning series bullets by data field](https://docs.amcharts.com/embeds/v5/positioning-series-bullets-by-data-field/). Its code: get_example(path: "examples/docs-demos/positioning-series-bullets-by-data-field").
 
@@ -690,9 +690,9 @@ var series = chart.series.push(am5xy.ColumnSeries.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/masked_bullets.png "`maskBullets: true` (default)")
+![Column chart with the tallest column's bullet cut off at the plot area's top edge](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/masked_bullets.png "`maskBullets: true` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/unmasked_bullets.png "`maskBullets: false`")
+![Column chart with the tallest column's bullet shown in full above the plot area](https://docs.amcharts.com/v5/images/concepts/common-elements/bullets/unmasked_bullets.png "`maskBullets: false`")
 
 Example: [Column series with bullet masking disabled](https://docs.amcharts.com/embeds/v5/column-series-with-bullet-masking-disabled/). Its code: get_example(path: "examples/docs-demos/column-series-with-bullet-masking-disabled").
 

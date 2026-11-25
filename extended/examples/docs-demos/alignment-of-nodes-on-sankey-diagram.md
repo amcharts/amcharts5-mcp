@@ -2,7 +2,7 @@
 title: "Alignment of nodes on Sankey diagram"
 source: "https://docs.amcharts.com/embeds/v5/alignment-of-nodes-on-sankey-diagram/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/flow-charts/sankey-diagram"]
 ---
 

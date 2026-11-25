@@ -2,7 +2,7 @@
 title: "Line series with focusable bullets"
 source: "https://docs.amcharts.com/embeds/v5/line-series-with-focusable-bullets/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/accessibility"]
 ---
 
@@ -103,8 +103,7 @@ function createSeries(name, field) {
         radius: 5,
         fill: series.get("fill"),
         focusable: true,
-        ariaLabel: "Series: {name}. Date: {valueX.formatDate()}. Sales: {valueY}",
-        role: "figure"
+        ariaLabel: "Series: {name}. Date: {valueX.formatDate()}. Sales: {valueY}"
       })
     });
   });

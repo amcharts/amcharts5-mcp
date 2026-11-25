@@ -1,7 +1,7 @@
 ---
 title: "Hierarchy charts"
 source: "https://docs.amcharts.com/v5/charts/hierarchy/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Hierarchy charts (Treemap, Sunburst, Force-directed tree, etc.) are used to display multi-level data, in a branching parent-child tree.
@@ -34,15 +34,15 @@ Hierarchy charts are chart-less. This means that rather than creating a chart el
 
 There are following types of series supported in hierarchy charts:
 
-| Class            | Example                                                        | Comment                                            |
-| ---------------- | -------------------------------------------------------------- | -------------------------------------------------- |
-| `ForceDirected`  | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/forcedirected.png)       | [More info](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/)  |
-| `Pack`           | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/pack.png)                | [More info](https://docs.amcharts.com/v5/charts/hierarchy/pack/)            |
-| `Partition`      | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/partition.png)           | [More info](https://docs.amcharts.com/v5/charts/hierarchy/partition/)       |
-| `Sunburst`       | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/sunburst.png)            | [More info](https://docs.amcharts.com/v5/charts/hierarchy/sunburst/)        |
-| `Tree`           | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/tree.png)                | [More info](https://docs.amcharts.com/v5/charts/hierarchy/tree/)            |
-| `Treemap`        | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/treemap.png)             | [More info](https://docs.amcharts.com/v5/charts/hierarchy/treemap/)         |
-| `VoronoiTreemap` | ![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2023-07-04_11-26-06.png) | [More info](https://docs.amcharts.com/v5/charts/hierarchy/voronoi-treemap/) |
+| Class            | Example                                                                                                               | Comment                                            |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `ForceDirected`  | ![Force-directed tree with a root node and linked child bubbles](https://docs.amcharts.com/v5/images/charts/hierarchy/index/forcedirected.png) | [More info](https://docs.amcharts.com/v5/charts/hierarchy/force-directed/)  |
+| `Pack`           | ![Pack chart with child circles nested inside parent circles](https://docs.amcharts.com/v5/images/charts/hierarchy/index/pack.png)             | [More info](https://docs.amcharts.com/v5/charts/hierarchy/pack/)            |
+| `Partition`      | ![Partition chart with each level as a row of rectangles](https://docs.amcharts.com/v5/images/charts/hierarchy/index/partition.png)            | [More info](https://docs.amcharts.com/v5/charts/hierarchy/partition/)       |
+| `Sunburst`       | ![Sunburst chart with each level as a ring around the root](https://docs.amcharts.com/v5/images/charts/hierarchy/index/sunburst.png)           | [More info](https://docs.amcharts.com/v5/charts/hierarchy/sunburst/)        |
+| `Tree`           | ![Tree chart with the root at the top branching down](https://docs.amcharts.com/v5/images/charts/hierarchy/index/tree.png)                     | [More info](https://docs.amcharts.com/v5/charts/hierarchy/tree/)            |
+| `Treemap`        | ![Treemap with nested rectangles sized by value](https://docs.amcharts.com/v5/images/charts/hierarchy/index/treemap.png)                       | [More info](https://docs.amcharts.com/v5/charts/hierarchy/treemap/)         |
+| `VoronoiTreemap` | ![Voronoi treemap with polygon cells inside a circle](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2023-07-04_11-26-06.png)      | [More info](https://docs.amcharts.com/v5/charts/hierarchy/voronoi-treemap/) |
 
 Like everywhere else, we use its `new()` method to instantiate series, then push it into `series` list of the chart:
 
@@ -505,13 +505,13 @@ var series = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-01-44.png "`topDepth: 0` | `initialDepth: 1`")
+![Tree chart showing the root and its first level of children](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-01-44.png "`topDepth: 0` | `initialDepth: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-01-55.png "`topDepth: 0` | `initialDepth: 2`")
+![Tree chart showing the root and two levels of children](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-01-55.png "`topDepth: 0` | `initialDepth: 2`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-02-07.png "`topDepth: 0` | `initialDepth: 3`")
+![Tree chart showing the root and three levels of children](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-02-07.png "`topDepth: 0` | `initialDepth: 3`")
 
-![](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-01-24.png "`topDepth: 1` | `initialDepth: 1`")
+![Tree chart without the root, starting from its children, one level expanded](https://docs.amcharts.com/v5/images/charts/hierarchy/index/2021-08-01_11-01-24.png "`topDepth: 1` | `initialDepth: 1`")
 
 > **Note:** In hierarchy charts that size their nodes relatively, like a force-directed, top node will affect the size of other nodes even if it is hidden using `topDepth` is set to `1` (hiding top node). To work around it, simply set value for the top node to zero.
 

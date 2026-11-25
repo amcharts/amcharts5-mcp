@@ -1,7 +1,7 @@
 ---
 title: "Cursor"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/cursor/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Cursor is an optional functional component of an XY chart. It can be used to display crosshair over the hover/touch area, tooltips for some or all nearby series data items, as well as tooltips on axes.
@@ -56,11 +56,11 @@ chart.set("cursor", am5xy.XYCursor.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/zoomX.png "`behavior: 'zoomX'`")
+![Column chart with the cursor selecting a horizontal range across full height](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/zoomX.png "`behavior: 'zoomX'`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/zoomY.png "`behavior: 'zoomY'`")
+![Column chart with the cursor selecting a vertical value range across full width](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/zoomY.png "`behavior: 'zoomY'`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/zoomXY.png "`behavior: 'zoomXY'`")
+![Column chart with the cursor selecting a rectangle in both directions](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/zoomXY.png "`behavior: 'zoomXY'`")
 
 ### Selection
 
@@ -146,9 +146,9 @@ var chart = root.container.children.push(
 
 `maxTooltipDistance` also has a special value: `-1`. Setting it will ensure that only one tooltip will be shown, no matter what. Even in case there are multiple data items in exact space spot.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/multiple_tooltips.png "Default behavior")
+![Line chart with tooltips for both series shown at the cursor](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/multiple_tooltips.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/maxtooltipdistance_used.png "`maxTooltipDisatnce: 0`")
+![Line chart with a tooltip only for the series closest to the cursor](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/maxtooltipdistance_used.png "`maxTooltipDistance: 0`")
 
 The following demo shows how we can use `maxTooltipDistance` to show only single consolidated tooltip for multiple series.
 
@@ -342,9 +342,9 @@ xAxis.set("tooltip", am5.Tooltip.new(root, {}));
 yAxis.set("tooltip", am5.Tooltip.new(root, {}));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/without_axis_tooltips.png "Without axis tooltips")
+![Column chart with cursor lines and no labels on the axes](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/without_axis_tooltips.png "Without axis tooltips")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/axis_tooltips.png "With axis tooltips")
+![Column chart with cursor lines and their values shown in axis tooltips](https://docs.amcharts.com/v5/images/charts/xy-chart/cursor/axis_tooltips.png "With axis tooltips")
 
 ### Snapping to axis cells
 

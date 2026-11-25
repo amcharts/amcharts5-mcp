@@ -2,7 +2,7 @@
 title: "Slice grouper with breakdown of the \"Other\" slice in a tooltip"
 source: "https://docs.amcharts.com/embeds/v5/slice-grouper-with-breakdown-of-the-other-slice-in-a-tooltip/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/percent-charts/grouping-slices"]
 ---
 

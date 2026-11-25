@@ -1,18 +1,18 @@
 ---
 title: "Timeline chart"
 source: "https://docs.amcharts.com/v5/charts/timeline/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Timeline chart is used to create axis-based two-dimensional plots that can follow serpentine, spiral, or basically any custom shape. It can be used to depict linear data in a space-saving, non-boring way. The following sections will get you acquainted with this unique chart type.
 
 Below are a few of super-basic examples from our friends at [Data Viz Project](https://datavizproject.com/):
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/DVP_1_100-17.png)
+![Straight timeline with labeled events A to D at staggered heights above years](https://docs.amcharts.com/v5/images/charts/timeline/DVP_1_100-17.png)
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/DVP_101_200-38.png)
+![Straight timeline from 1910 to 1920 with events A to F as flags of varying heights](https://docs.amcharts.com/v5/images/charts/timeline/DVP_101_200-38.png)
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/DVP_1_100-97-1.png)
+![Serpentine timeline winding back and forth with events A to G along it](https://docs.amcharts.com/v5/images/charts/timeline/DVP_1_100-97-1.png)
 
 However, as we will see during the course of this article, it can be much much more.
 
@@ -465,11 +465,11 @@ The curvature is set via array of control points, connected by straight lines.
 
 Graphically it looks something like this:
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/timleine1.png)
+![Five control points joined by straight lines in a zigzag](https://docs.amcharts.com/v5/images/charts/timeline/timleine1.png)
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/timleine2.png)
+![Control points joined by straight lines in a square spiral](https://docs.amcharts.com/v5/images/charts/timeline/timleine2.png)
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/timleine3.png)
+![Four control points joined by straight lines in an N shape](https://docs.amcharts.com/v5/images/charts/timeline/timleine3.png)
 
 Each shape, however we put it is controlled by a few control points, connected by a straight line.
 
@@ -560,11 +560,11 @@ var yAxis = chart.yAxes.push(
 
 Here's how `radius axisLocation` setting affect the real chart:
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-48-59-1024x545.png "`axisLocation: 0.5` (default)")
+![Curved timeline bands with the axis line running through the middle band](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-48-59-1024x545.png "`axisLocation: 0.5` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-48-33-1024x545.png "`axisLocation: 1`")
+![Curved timeline bands with the axis line below the bottom band](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-48-33-1024x545.png "`axisLocation: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-49-20-1024x545.png "`axisLocation: 0`")
+![Curved timeline bands with the axis line above the top band](https://docs.amcharts.com/v5/images/charts/timeline/2019-09-10_12-49-20-1024x545.png "`axisLocation: 0`")
 
 ### Using SVG paths
 
@@ -579,9 +579,9 @@ To create a path, follow these three steps:
 1. Create a path in editor.
 2. Save as SVG, open it in any text editor, and look for the `<path>` element. Then grab whatever in it's `d` attribute - it's the SVG path.
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/inkscape_2019-09-10_12-22-45-1024x725.png "Create an SVG file with target curve of our chart")
+![Inkscape window with a single upward curve drawn on the page](https://docs.amcharts.com/v5/images/charts/timeline/inkscape_2019-09-10_12-22-45-1024x725.png "Create an SVG file with target curve of our chart")
 
-![](https://docs.amcharts.com/v5/images/charts/timeline/sublime_text_2019-09-10_12-24-06-1024x723.png "Open the file in editor and graph path data")
+![SVG file in a text editor with the d attribute of the path element highlighted](https://docs.amcharts.com/v5/images/charts/timeline/sublime_text_2019-09-10_12-24-06-1024x723.png "Open the file in editor and graph path data")
 
 #### Using existing SVG file
 

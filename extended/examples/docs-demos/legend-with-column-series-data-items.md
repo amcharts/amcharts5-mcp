@@ -2,7 +2,7 @@
 title: "Legend with column series data items"
 source: "https://docs.amcharts.com/embeds/v5/legend-with-column-series-data-items/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/legend"]
 ---
 

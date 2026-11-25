@@ -1,7 +1,7 @@
 ---
 title: "Candlestick and OHLC series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/candlestick-series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at what is involved in creating candlestick and OHLC series.
@@ -57,9 +57,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/candlestick-series/candlestick_series.png "`CandlestickSeries`")
+![Candlestick chart with green rising and red falling candles](https://docs.amcharts.com/v5/images/charts/xy-chart/series/candlestick-series/candlestick_series.png "`CandlestickSeries`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/candlestick-series/ohlc_series.png "`OHLCSeries`")
+![OHLC chart with open and close ticks on green and red bars](https://docs.amcharts.com/v5/images/charts/xy-chart/series/candlestick-series/ohlc_series.png "`OHLCSeries`")
 
 Example: [Candlestick series](https://docs.amcharts.com/embeds/v5/candlestick-series/). Its code: get_example(path: "examples/docs-demos/candlestick-series").
 

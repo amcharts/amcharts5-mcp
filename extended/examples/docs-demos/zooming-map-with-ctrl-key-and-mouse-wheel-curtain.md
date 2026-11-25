@@ -2,7 +2,7 @@
 title: "Zooming map with CTRL key and mouse wheel + curtain"
 source: "https://docs.amcharts.com/embeds/v5/zooming-map-with-ctrl-key-and-mouse-wheel-curtain/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/map-chart/map-pan-zoom"]
 ---
 

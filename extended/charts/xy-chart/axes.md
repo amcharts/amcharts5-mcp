@@ -1,7 +1,7 @@
 ---
 title: "Axes"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks into how to get the most of the axes on an XY chart.
@@ -188,11 +188,11 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Default behavior")
+![Column chart with value axis grid lines every 100](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/grid_distance_50.png "`minGridDistance: 50`")
+![Column chart with sparser value axis grid lines, every 200](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/grid_distance_50.png "`minGridDistance: 50`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/grid_distance_20.png "`minGridDistance: 20`")
+![Column chart with denser value axis grid lines, every 50](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/grid_distance_20.png "`minGridDistance: 20`")
 
 ### Fitting labels
 
@@ -262,9 +262,9 @@ var xAxis = chart.xAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/minor_grid_on-1024x782.png "`minorGridEnabled: true`")
+![Line chart with faint minor grid lines between the main grid lines](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/minor_grid_on-1024x782.png "`minorGridEnabled: true`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/minor_grid_off-1024x782.png "`minorGridEnabled: false` (default)")
+![Line chart with main grid lines only](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/minor_grid_off-1024x782.png "`minorGridEnabled: false` (default)")
 
 #### Enabling minor grid labels
 
@@ -542,21 +542,21 @@ xRenderer.labels.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_label_rotation_0.png "`rotation: 0` (default)")
+![Column chart with horizontal date labels overlapping into an unreadable row](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_label_rotation_0.png "`rotation: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_label_rotation_-90.png.png "`rotation: -90`")
+![Column chart with vertical date labels, each shifted right of its column](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_label_rotation_-90.png.png "`rotation: -90`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_label_rotation_-90_centered.png.png "`rotation: -90` | `centerY: am5.p50`")
+![Column chart with vertical date labels centered under their columns](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_label_rotation_-90_centered.png.png "`rotation: -90` | `centerY: am5.p50`")
 
 Example: [Rotated axis labels](https://docs.amcharts.com/embeds/v5/rotated-axis-labels/). Its code: get_example(path: "examples/docs-demos/rotated-axis-labels").
 
 Here's how the rotation works with out default centering options:
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/2018-06-17_09-39-18.gif "`centerX: am5.p50` (50% - middle) | `centerY: am5.p0` (0% - top)")
+![Axis label rotating a full turn around its top center](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/2018-06-17_09-39-18.gif "`centerX: am5.p50` (50% - middle) | `centerY: am5.p0` (0% - top)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/2018-06-17_09-49-07.gif "`centerX: am5.p0` (0% - left) | `centerY: am5.p50` (50% - middle)")
+![Axis label rotating a full turn around the middle of its left edge](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/2018-06-17_09-49-07.gif "`centerX: am5.p0` (0% - left) | `centerY: am5.p50` (50% - middle)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/2018-06-17_09-46-01.gif "`centerX: am5.p50` (50% - middle) | `centerY: am5.p50` (50% - middle)")
+![Axis label rotating a full turn around its center](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/2018-06-17_09-46-01.gif "`centerX: am5.p50` (50% - middle) | `centerY: am5.p50` (50% - middle)")
 
 ## Location of axis elements
 
@@ -588,9 +588,9 @@ xRenderer.grid.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "`location: 0` (default)")
+![Column chart with category grid lines between the columns](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "`location: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/grid_location_middle.png "`location: 0.5`")
+![Column chart with category grid lines running through the middle of each column](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/grid_location_middle.png "`location: 0.5`")
 
 ### Multi-location
 
@@ -677,9 +677,9 @@ yRenderer.labels.template.setAll({
 
 The above ensures that no label or tick is shown closer than 10% to either ends of the axis.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Default behavior")
+![Column chart with value axis labels running to both ends of the axis](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/min_max_position.png "`minPosition` and `maxPosition` set")
+![Column chart with no value axis labels near the top and bottom ends](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/min_max_position.png "`minPosition` and `maxPosition` set")
 
 ### Keeping labels in view
 
@@ -794,9 +794,9 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Regular axis")
+![Column chart with values increasing upwards and columns rising from the bottom](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Regular axis")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_true.png "Inversed axis")
+![Column chart with values increasing downwards and columns hanging from the top](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_true.png "Inversed axis")
 
 ## Axis position
 
@@ -828,9 +828,9 @@ var yAxis = chart.yAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Default behavior")
+![Column chart with the value axis on the left](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/xy_axis_inversed_false.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/opposite_axis.png "`opposite: true`")
+![Column chart with the value axis on the right](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/opposite_axis.png "`opposite: true`")
 
 ## Cell start/end locations
 
@@ -870,9 +870,9 @@ var xAxis = chart.xAxes.push(
 
 The above will restrict the space available for actual series to 60% of the actual cell.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/full_cell_width.png "Full cell width")
+![Clustered column chart with columns filling each category cell edge to edge](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/full_cell_width.png "Full cell width")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/cell_width_reduced.png "Cell start and end restricted")
+![Clustered column chart with columns in the central part of each cell, gaps on both sides](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/cell_width_reduced.png "Cell start and end restricted")
 
 ## Axis start/end locations
 
@@ -906,11 +906,11 @@ var xAxis = chart.xAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_endlocation1.png "(Default) | `startLocation: 0` | `endLocation: 1`")
+![Line chart with points in the middle of full-width date cells](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_endlocation1.png "(Default) | `startLocation: 0` | `endLocation: 1`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_endlocation08.png "`startLocation: 0.2` | `endLocation: 0.8`")
+![Line chart with the first and last date cells partly cut off](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_endlocation08.png "`startLocation: 0.2` | `endLocation: 0.8`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_endlocation05.png "`startLocation: 0.5` | `endLocation: 0.5`")
+![Line chart starting and ending exactly at the plot edges, half cells cut off](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_endlocation05.png "`startLocation: 0.5` | `endLocation: 0.5`")
 
 Example: [Axis start and end locations](https://docs.amcharts.com/embeds/v5/axis-start-and-end-locations/). Its code: get_example(path: "examples/docs-demos/axis-start-and-end-locations").
 
@@ -1180,9 +1180,9 @@ root.setThemes([
 ]);
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/normal_zoom.png "Axis fills disabled (default)")
+![Clustered column chart with a plain white plot area](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/normal_zoom.png "Axis fills disabled (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_fills.png "Axis fills enabled")
+![Clustered column chart with alternating pink bands between value axis grid lines](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_fills.png "Axis fills enabled")
 
 ### Fill rules
 
@@ -1234,7 +1234,7 @@ var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_fills_date_axis-1024x313.png "Custom fill rule on a date axis")
+![Line chart with weekend days highlighted by pink date axis fills](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/axis_fills_date_axis-1024x313.png "Custom fill rule on a date axis")
 
 ## Stacked axes
 
@@ -1340,9 +1340,9 @@ yAxis2.axisHeader.children.push(am5.Label.new(root, {
 }));
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/multiaxes_nonstack.png "Regular multi-Y-axis setup")
+![Column chart with two Y axes side by side on the left, both spanning the full height](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/multiaxes_nonstack.png "Regular multi-Y-axis setup")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/multiaxes_stacked.png "Stacked Y axes")
+![Column chart with Value and Volume Y axes stacked one above the other](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/index/multiaxes_stacked.png "Stacked Y axes")
 
 Example: [Stacked axes](https://docs.amcharts.com/embeds/v5/stacked-axes/). Its code: get_example(path: "examples/docs-demos/stacked-axes").
 

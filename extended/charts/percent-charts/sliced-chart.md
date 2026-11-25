@@ -1,7 +1,7 @@
 ---
 title: "Funnel, pyramid, and pictorial charts"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/sliced-chart/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will walk through common steps of creating sliced charts with funnel, pyramid, and pictorial stacked series.
@@ -345,9 +345,9 @@ JavaScript:
 chart.seriesContainer.set("layout", root.verticalLayout);
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/index/sliced_horizontal_layout-1024x715.png "` chart.seriesContainer.set('layout', root.verticalLayout)`")
+![Funnel and pyramid series side by side](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/index/sliced_horizontal_layout-1024x715.png "Default")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/index/sliced_vertical_layout-1024x715.png "` chart.seriesContainer.set('layout', root.verticalLayout)`")
+![Funnel series stacked above a pyramid series](https://docs.amcharts.com/v5/images/charts/percent-charts/sliced-chart/index/sliced_vertical_layout-1024x715.png "`chart.seriesContainer.set('layout', root.verticalLayout)`")
 
 ## Animation
 

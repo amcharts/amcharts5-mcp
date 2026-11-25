@@ -1,7 +1,7 @@
 ---
 title: "Venn diagram"
 source: "https://docs.amcharts.com/v5/charts/venn/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Venn diagrams are used to depict common qualities between different items by visualizing them as overlapping circles.
@@ -160,9 +160,9 @@ If data for the item contains only category and value, it will be shown as a ful
 
 If there's also am array of intersecting categories (circles), it will be shown as an intersection of listed circles.
 
-![](https://docs.amcharts.com/v5/images/charts/venn/venn.png "Data: | `\{ name: 'A', value: 10 }` | `\{ name: 'B', value: 10 }`")
+![Venn diagram with circles A and B side by side, not overlapping](https://docs.amcharts.com/v5/images/charts/venn/venn.png "Data: | `\{ name: 'A', value: 10 }` | `\{ name: 'B', value: 10 }`")
 
-![](https://docs.amcharts.com/v5/images/charts/venn/venn_intersecting.png "Data: | `\{ name: 'A', value: 10 }` | `\{ name: 'B', value: 10 }` | `\{ name: 'X', value: 4, sets: ['A', 'B'] }`")
+![Venn diagram with circles A and B overlapping in an intersection labeled X](https://docs.amcharts.com/v5/images/charts/venn/venn_intersecting.png "Data: | `\{ name: 'A', value: 10 }` | `\{ name: 'B', value: 10 }` | `\{ name: 'X', value: 4, sets: ['A', 'B'] }`")
 
 Let's take a look at the above two examples.
 

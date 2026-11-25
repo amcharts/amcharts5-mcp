@@ -2,7 +2,7 @@
 title: "Tracking XYCursor position"
 source: "https://docs.amcharts.com/embeds/v5/tracking-xycursor-position/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/cursor"]
 ---
 

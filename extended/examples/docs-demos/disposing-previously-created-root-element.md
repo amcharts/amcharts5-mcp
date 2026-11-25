@@ -2,7 +2,7 @@
 title: "Disposing previously created Root element"
 source: "https://docs.amcharts.com/embeds/v5/disposing-previously-created-root-element/"
 category: "docs-demos"
-scraped: "2026-11-19"
+scraped: "2026-11-25"
 docsPages: ["getting-started/root-element"]
 ---
 

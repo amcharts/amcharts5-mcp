@@ -2,7 +2,7 @@
 title: "Sunburst chart"
 source: "https://docs.amcharts.com/embeds/v5/sunburst-chart/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/hierarchy-drill-down"]
 ---
 

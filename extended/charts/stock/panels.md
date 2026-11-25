@@ -1,7 +1,7 @@
 ---
 title: "Panels"
 source: "https://docs.amcharts.com/v5/charts/stock/panels/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 > Panels are instances of StockPanel class (which in turn extends an XYChart) comprising the Stock chart. Zoom state of their X axes as well as cursor are automatically synced by the stock chart itself.
@@ -50,7 +50,7 @@ Controls are buttons that allow:
 * Expanding panel to full chart size.
 * Closing panel.
 
-![](https://docs.amcharts.com/v5/images/charts/stock/panels/stock_panel_controls.png)
+![Stock chart panel with move up, move down, expand and close buttons in its top-right corner](https://docs.amcharts.com/v5/images/charts/stock/panels/stock_panel_controls.png)
 
 Panel controls is an object of type `PanelControls`, and is accessible via panel's `panelControls` property.
 
@@ -74,18 +74,18 @@ mainPanel.panelControls.set("forceHidden", true);
 
 To show each panel's controls only while the pointer is over that panel's plot area, set the stock chart's `autoHidePanelControls` to `true` (since 5.13.0):
 
-JavaScript:
-
-```js
-var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
-  autoHidePanelControls: true
-}));
-```
-
 TypeScript:
 
 ```ts
 let stockChart = root.container.children.push(am5stock.StockChart.new(root, {
+  autoHidePanelControls: true
+}));
+```
+
+JavaScript:
+
+```js
+var stockChart = root.container.children.push(am5stock.StockChart.new(root, {
   autoHidePanelControls: true
 }));
 ```

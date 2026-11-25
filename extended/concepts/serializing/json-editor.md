@@ -1,7 +1,7 @@
 ---
 title: "JSON Editor"
 source: "https://docs.amcharts.com/v5/concepts/serializing/json-editor/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > To streamline JSON config editing, use amCharts Editor. It supports most charts (except Gantt and Stock Chart), and can be used to build a chart from scratch from one of the 60+ templates or import your own JSON config.
@@ -22,7 +22,7 @@ The editor uses [JSON config](https://docs.amcharts.com/v5/concepts/serializing/
 
 Start a new chart from a template then switch to Code tab and paste your JSON config. The editor will parse it automatically and updated UI accordingly. From that point onward, edit your chart via UI.
 
-![](https://docs.amcharts.com/v5/images/concepts/serializing/json-editor/image.png)
+![Chart editor Code tab showing an XY chart JSON config](https://docs.amcharts.com/v5/images/concepts/serializing/json-editor/image.png)
 
 ## Converting JSON to code
 

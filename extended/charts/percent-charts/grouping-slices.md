@@ -1,7 +1,7 @@
 ---
 title: "Grouping slices"
 source: "https://docs.amcharts.com/v5/charts/percent-charts/grouping-slices/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial will show how we can use Slice Grouper plugin to automatically group small slices.
@@ -12,11 +12,11 @@ This tutorial will show how we can use Slice Grouper plugin to automatically gro
 
 While this provide proportional information prominent, some relatively small slices, might be insignificant for conveying the "big picture, and contribute to the noise.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/chrome_2019-04-08_22-41-44-1024x765.png)
+![Pie chart with eleven slices, the smallest ones crowded with labels](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/chrome_2019-04-08_22-41-44-1024x765.png)
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-42-14-1024x765.png)
+![Pyramid chart with eleven slices, the bottom ones too thin to read](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-42-14-1024x765.png)
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-43-05-1024x765.png)
+![Curved funnel chart with eleven slices and crowded labels on the right](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-43-05-1024x765.png)
 
 What a clutter!
 
@@ -24,11 +24,11 @@ If we examine the charts closer, we'll see that the last four items have their o
 
 The purpose of SliceGrouper plugin is to automatically group those slices like that into a single "Other" slice.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-51-35-1024x765.png)
+![Pie chart with the four smallest slices grouped into an Other slice](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-51-35-1024x765.png)
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-52-07-1024x765.png)
+![Pyramid chart with the four smallest slices grouped into an Other slice](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-52-07-1024x765.png)
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-53-16-1024x765.png)
+![Curved funnel chart with the four smallest slices grouped into an Other slice](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_22-53-16-1024x765.png)
 
 ## Loading
 
@@ -140,11 +140,11 @@ Setting it to `"break"` will hide "Other" slice and will reveal actual small sli
 
 `"zoom"` setting will act similarly, except big slices will be hidden as well, in order for us to be able to concentrate on the actual relation between small slices.
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_23-14-30.gif "`clickBehavior: 'none'` (default)")
+![Pie chart pulling out the Other slice when clicked](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_23-14-30.gif "`clickBehavior: 'none'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_23-17-26.gif "`clickBehavior: 'break'`")
+![Pie chart replacing the clicked Other slice with the small slices it groups](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_23-17-26.gif "`clickBehavior: 'break'`")
 
-![](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_23-18-29.gif "`clickBehavior: 'zoom'`")
+![Pie chart showing only the small slices after the Other slice is clicked](https://docs.amcharts.com/v5/images/charts/percent-charts/grouping-slices/2019-04-08_23-18-29.gif "`clickBehavior: 'zoom'`")
 
 ### Legend
 

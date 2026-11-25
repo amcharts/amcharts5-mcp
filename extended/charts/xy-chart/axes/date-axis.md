@@ -1,7 +1,7 @@
 ---
 title: "Date axis"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Date axis is used to display date-based data with a natural time scale.
@@ -49,6 +49,30 @@ The `timeUnit` can be one of the following: `"millisecond"`, `"second"`, `"minut
 
 > **Important:** For month-based date axes, the value of `count` for `baseInterval` must be a divider of 12, i.e. `1`, `2`, `3`, `4`, `6`, `12`, `24`, etc.
 
+### Detecting the interval
+
+`baseInterval` can be left out. The axis then works it out from the smallest gap between dates in the data, and updates it when the data changes. Until there are two dates, it uses one day.
+
+The `baseMainInterval()` method returns the interval in use, whether it was set or worked out:
+
+TypeScript:
+
+```ts
+let interval = xAxis.baseMainInterval();
+// { timeUnit: "day", count: 1 }
+```
+
+JavaScript:
+
+```js
+var interval = xAxis.baseMainInterval();
+// { timeUnit: "day", count: 1 }
+```
+
+Set `baseInterval` when the smallest gap isn't the data's real interval, for example when timestamps are irregular.
+
+> **Note:** Available since 5.24.0. Before that, `baseInterval` is required. In TypeScript, `xAxis.get("baseInterval")` can now be `undefined`: use `baseMainInterval()` to read the interval.
+
 ## Grid granularity
 
 ### How it functions?
@@ -73,9 +97,9 @@ If that still not enough to display grids spaced out enough, it will revert to d
 
 The granularity depends on current date range of the axis, meaning that it will update dynamically when zooming the chart in and out:
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5.png "Zoomed out chart. Grid granularity at 5 days.")
+![Zoomed-out line chart with date axis grid lines four days apart](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5.png "Zoomed out chart. Grid granularity at 4 days.")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day1.png "Zooming in. Granularity is reverting to 1 day.")
+![Zoomed-in line chart with a date axis grid line for every day](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day1.png "Zooming in. Granularity is reverting to 1 day.")
 
 ### Customizing grid granularity
 
@@ -217,9 +241,9 @@ JavaScript:
 xAxis.get("dateFormats")["day"] = "MM/dd";
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5-1.png "Default format")
+![Date axis labels in the default format, Jan 01, Jan 05, Jan 09](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5-1.png "Default format")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis_dateformat.png "`dateFormats` modified")
+![Date axis labels as 01/05, 01/09, with the first label still Jan 01](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis_dateformat.png "`dateFormats` modified")
 
 #### Period change date formats
 
@@ -269,9 +293,9 @@ JavaScript:
 xAxis.get("periodChangeDateFormats")["day"] = "MMM";
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5-1.png "Default format")
+![Date axis labels in the default format, Jan 01, Jan 05, Jan 09](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/granularity_day5-1.png "Default format")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis_periodchangedateformats.png "Both label and period label formats customized")
+![Date axis labels as 01/05, 01/09, with the first label shown as January](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis_periodchangedateformats.png "Both label and period label formats customized")
 
 Example: [Formatting date axis labels](https://docs.amcharts.com/embeds/v5/formatting-date-axis-labels/). Its code: get_example(path: "examples/docs-demos/formatting-date-axis-labels").
 
@@ -398,11 +422,11 @@ The default of `-0.5` ensures that the tooltip uses a cell's beginning timestamp
 
 Resetting it to `0` (zero) would make it display timestamp from the actual position of the cursor's line.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_-05.png "`tooltipIntervalOffset: -0.5` (default)")
+![Cursor in the 02:00 cell with the axis tooltip showing 02:00](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_-05.png "`tooltipIntervalOffset: -0.5` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_0.png "`tooltipIntervalOffset: 0`")
+![Cursor in the 02:00 cell with the axis tooltip showing 02:30](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_0.png "`tooltipIntervalOffset: 0`")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_05.png "`tooltipIntervalOffset: 0.5`")
+![Cursor in the 02:00 cell with the axis tooltip showing 03:00](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/tooltipIntervalOffset_05.png "`tooltipIntervalOffset: 0.5`")
 
 ## Time zones
 
@@ -1066,9 +1090,9 @@ It can be used to display irregularly-spaced date-based data, where maintaining 
 
 For more information, please refer to "[Gapless date axis](https://docs.amcharts.com/v5/charts/xy-chart/axes/gapless-date-axis/)" tutorial.
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis.png "Regular date axis with irregular data")
+![Line chart whose date axis shows every day, leaving wide gaps where data is missing](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/dateaxis.png "Regular date axis with irregular data")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/categorydateaxis.png "Category date axis with irregular data")
+![Line chart with evenly spaced points, the axis showing only dates that have data](https://docs.amcharts.com/v5/images/charts/xy-chart/axes/date-axis/categorydateaxis.png "Category date axis with irregular data")
 
 ## Related tutorials
 

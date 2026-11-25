@@ -1,7 +1,7 @@
 ---
 title: "Integrations"
 source: "https://docs.amcharts.com/v5/getting-started/integrations/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Packages and tutorials for using amCharts 5 with frameworks.
@@ -21,6 +21,10 @@ For these frameworks there are packages that create and dispose the chart with y
 Each package's README has the full API, and its [folder on GitHub](https://github.com/amcharts/amcharts5/tree/master/integrations) has example apps.
 
 > **Note:** With a commercial license, call `am5.addLicense()` once when the app starts, before any chart is made. In React Native, use the `licenses` prop.
+
+## Figma
+
+amCharts plugins for Figma insert charts and maps into designs. In Dev Mode, a chart made with Chart Maker has its code for these frameworks and HTML. See "[Using amCharts 5 with Figma](https://docs.amcharts.com/v5/getting-started/integrations/figma/)".
 
 ## Other tutorials
 

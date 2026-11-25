@@ -1,7 +1,7 @@
 ---
 title: "Labels"
 source: "https://docs.amcharts.com/v5/concepts/common-elements/labels/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 ## Creating labels
@@ -129,13 +129,13 @@ Available values for `oversizedBehavior`:
 | `"wrap-no-break"` | Label text will be auto-wrapped into lines to fit within `maxWidth`, but will not break words, which means labels can be longer than `maxWidth`. |
 | `"truncate"`      | Label text will be truncated with an ellipsis to fit into `maxWidth`.                                                                            |
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_oversized.png "`oversizedBehavior: 'none'` (default)")
+![Column chart with long axis labels overlapping each other](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_oversized.png "`oversizedBehavior: 'none'` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_truncate.png "`oversizedBehavior: 'truncate'`")
+![Column chart with long axis labels cut short with an ellipsis](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_truncate.png "`oversizedBehavior: 'truncate'`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_wrap.png "`oversizedBehavior: 'wrap'`")
+![Column chart with long axis labels wrapped onto several lines](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_wrap.png "`oversizedBehavior: 'wrap'`")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_fit.png "`oversizedBehavior: 'fit'`")
+![Column chart with long axis labels scaled down to tiny text](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_fit.png "`oversizedBehavior: 'fit'`")
 
 Example: [Chart with oversized labels](https://docs.amcharts.com/embeds/v5/chart-with-oversized-labels/). Its code: get_example(path: "examples/docs-demos/chart-with-oversized-labels").
 
@@ -249,9 +249,9 @@ xAxis.get("renderer").labels.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_wrap.png "`texAlign: 'left'` (default)")
+![Column chart with wrapped axis labels aligned left](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/label_wrap.png "`texAlign: 'left'` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/textalign_center.png "`textAlign: 'center'`")
+![Column chart with wrapped axis labels centered](https://docs.amcharts.com/v5/images/concepts/common-elements/labels/textalign_center.png "`textAlign: 'center'`")
 
 ## Background
 

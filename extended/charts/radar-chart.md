@@ -1,7 +1,7 @@
 ---
 title: "Radar chart"
 source: "https://docs.amcharts.com/v5/charts/radar-chart/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Radar chart is used to create circular axis-based two-dimensional plots as well as gauges.
@@ -719,9 +719,9 @@ var chart = root.container.children.push(
 
 The above will result in a horizontal semi-circle:
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_full.png "Default behavior")
+![Radar column chart spanning a full circle](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_full.png "Default behavior")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_half_circle.png "`\{ startAngle: -180, endAngle: 0 }`")
+![Radar column chart spanning the top half circle](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_half_circle.png "`\{ startAngle: -180, endAngle: 0 }`")
 
 Example: [Radar chart with custom angles](https://docs.amcharts.com/embeds/v5/radar-chart-with-custom-angles/). Its code: get_example(path: "examples/docs-demos/radar-chart-with-custom-angles").
 
@@ -757,11 +757,11 @@ var chart = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_full-1.png "`radius: am5.percent(80)` (default)")
+![Radar column chart at its default size](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_full-1.png "`radius: am5.percent(80)` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radius_90p.png "`radius: am5.percent(90)`")
+![Radar column chart slightly larger, closer to the chart edges](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radius_90p.png "`radius: am5.percent(90)`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radius_100.png "`radius: 100`")
+![Smaller radar column chart surrounded by empty space](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radius_100.png "`radius: 100`")
 
 ### Inner radius
 
@@ -795,11 +795,11 @@ var chart = root.container.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_full.png "`innerRadius: 0` (default)")
+![Radar column chart with columns starting at the center](https://docs.amcharts.com/v5/images/charts/radar-chart/index/radar_full.png "`innerRadius: 0` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/innerradius_20.png "`innerRadius: am5.percent(20)`")
+![Radar column chart with a small hole in the middle](https://docs.amcharts.com/v5/images/charts/radar-chart/index/innerradius_20.png "`innerRadius: am5.percent(20)`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/index/innerradius_50.png "`innerRadius: am5.percent(50)`")
+![Radar column chart with a large hole, columns forming a ring](https://docs.amcharts.com/v5/images/charts/radar-chart/index/innerradius_50.png "`innerRadius: am5.percent(50)`")
 
 ## Gauge charts
 

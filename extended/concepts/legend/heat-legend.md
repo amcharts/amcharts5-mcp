@@ -1,7 +1,7 @@
 ---
 title: "Heat legend"
 source: "https://docs.amcharts.com/v5/concepts/legend/heat-legend/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 > Heat legend is a visual tool that usually compliments a chart with heat rules.
@@ -151,11 +151,11 @@ var heatLegend = chart.children.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/heat-legend/heatlegend_stepcount_1.png "`stepCount: 1` (default)")
+![Vertical heat legend with a smooth gradient from lowest to highest](https://docs.amcharts.com/v5/images/concepts/legend/heat-legend/heatlegend_stepcount_1.png "`stepCount: 1` (default)")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/heat-legend/heatlegend_stepcount_5.png "`stepCount: 5`")
+![Vertical heat legend split into five solid color steps](https://docs.amcharts.com/v5/images/concepts/legend/heat-legend/heatlegend_stepcount_5.png "`stepCount: 5`")
 
-![](https://docs.amcharts.com/v5/images/concepts/legend/heat-legend/heatlegend_stepcount_10.png "`stepCount: 10`")
+![Vertical heat legend split into ten solid color steps](https://docs.amcharts.com/v5/images/concepts/legend/heat-legend/heatlegend_stepcount_10.png "`stepCount: 10`")
 
 ## More than two colors
 

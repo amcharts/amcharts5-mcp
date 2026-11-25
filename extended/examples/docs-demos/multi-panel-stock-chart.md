@@ -2,7 +2,7 @@
 title: "Multi-panel stock chart"
 source: "https://docs.amcharts.com/embeds/v5/multi-panel-stock-chart/"
 category: "docs-demos"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 docsPages: ["charts/stock/panels"]
 ---
 
@@ -43,7 +43,7 @@ root.numberFormatter.set("numberFormat", "#,###.00");
 // https://docs.amcharts.com/v5/charts/stock/panels/
 function addPanel(ticker, showScrollbar, showTooltip) {
   // Create a main stock panel (chart)
-  // https://docs.amcharts.com/v5/charts/stock/#panels
+  // https://docs.amcharts.com/v5/charts/stock/panels/#adding-panels
   var mainPanel = stockChart.panels.push(
     am5stock.StockPanel.new(root, {
       wheelY: "zoomX",
@@ -198,14 +198,14 @@ function addPanel(ticker, showScrollbar, showTooltip) {
 
 addPanel("MSFT", true);
 addPanel("AAPL");
-addPanel("AMZN", false, true);
+addPanel("INTC", false, true);
 
 // Function that dynamically loads data
 function loadData(ticker, series) {
   // Load external data
   // https://docs.amcharts.com/v5/charts/xy-chart/series/#setting-data
   am5.net
-    .load("https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" + ticker + ".csv")
+    .load("https://www.amcharts.com/static/assets/stock/" + ticker + ".csv")
     .then(function (result) {
       // Parse loaded data
       var data = am5.CSVParser.parse(result.response, {

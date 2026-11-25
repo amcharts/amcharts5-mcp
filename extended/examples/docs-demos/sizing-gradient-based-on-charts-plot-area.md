@@ -2,7 +2,7 @@
 title: "Sizing gradient based on chart's plot area"
 source: "https://docs.amcharts.com/embeds/v5/sizing-gradient-based-on-charts-plot-area/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/colors-gradients-and-patterns/gradients"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Using d3 curve factories"
 source: "https://docs.amcharts.com/embeds/v5/using-d3-curve-factories/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/xy-chart/series/smoothed-series"]
 ---
 

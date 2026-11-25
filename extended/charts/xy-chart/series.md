@@ -1,7 +1,7 @@
 ---
 title: "XY chart series"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/series/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 This tutorial looks at general concepts behind series - a centerpiece of an XY chart.
@@ -218,9 +218,9 @@ var series = chart.series.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/index/stacked_regular_values.png "Stack using regular data fields")
+![Stacked column chart with stacks of different total heights](https://docs.amcharts.com/v5/images/charts/xy-chart/series/index/stacked_regular_values.png "Stack using regular data fields")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/series/index/stacked_total_percent.png "`valueYShow: 'valueYTotalPercent'`")
+![Stacked column chart with every stack filling 0 to 100 percent](https://docs.amcharts.com/v5/images/charts/xy-chart/series/index/stacked_total_percent.png "`valueYShow: 'valueYTotalPercent'`")
 
 Example: [Stacked column chart 100%](https://docs.amcharts.com/embeds/v5/stacked-column-chart-100/). Its code: get_example(path: "examples/docs-demos/stacked-column-chart-100").
 

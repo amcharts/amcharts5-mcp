@@ -1,7 +1,7 @@
 ---
 title: "Settings"
 source: "https://docs.amcharts.com/v5/concepts/settings/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Settings is a set of key - value pairs that each and every element of the chart has, that are used to configure its appearance and behavior. Settings can be manipulated in a number of ways, and, as we will see later in this tutorial, is the main method of configuring most of the things.
@@ -104,7 +104,7 @@ We can find out what settings each element has by consulting the class reference
 
 Each class' reference will have a separate section named "Settings", accessible via right-hand menu:
 
-![](https://docs.amcharts.com/v5/images/concepts/settings/index/image-1-1024x873.png)
+![DateAxis class reference Settings section, with Settings selected in the side menu](https://docs.amcharts.com/v5/images/concepts/settings/index/image-1-1024x873.png)
 
 As an example, check out `DateAxis` settings [here](https://docs.amcharts.com/v5/reference/dateaxis/#settings).
 

@@ -2,7 +2,7 @@
 title: "Using ellipses as nodes in Force-Directed Tree"
 source: "https://docs.amcharts.com/embeds/v5/using-ellipses-as-nodes-in-force-directed-tree/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/hierarchy/force-directed"]
 ---
 

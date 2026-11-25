@@ -1,7 +1,7 @@
 ---
 title: "Responsive charts"
 source: "https://docs.amcharts.com/v5/concepts/responsive-charts/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 > Two themes make charts adapt to their size: ResponsiveMax for every chart, Responsive for rules of your own.
@@ -17,18 +17,18 @@ amCharts 5 has two themes that make a chart adapt to the room it has.
 
 Add it next to the `Animated` theme. No setup:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_ResponsiveMax.new(root)
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 root.setThemes([
   am5themes_Animated.new(root),
   am5themes_ResponsiveMax.new(root)
@@ -41,9 +41,9 @@ What it changes, and how to turn parts off: "[ResponsiveMax theme](https://docs.
 
 Start empty and add rules for exactly what should change:
 
-JavaScript:
+TypeScript:
 
-```js
+```ts
 const responsive = am5themes_Responsive.newEmpty(root);
 
 responsive.addRule({
@@ -60,9 +60,9 @@ root.setThemes([
 ]);
 ```
 
-TypeScript:
+JavaScript:
 
-```ts
+```js
 const responsive = am5themes_Responsive.newEmpty(root);
 
 responsive.addRule({

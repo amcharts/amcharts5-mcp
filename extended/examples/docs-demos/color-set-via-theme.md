@@ -2,7 +2,7 @@
 title: "Color set via theme"
 source: "https://docs.amcharts.com/embeds/v5/color-set-via-theme/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["concepts/themes/creating-themes"]
 ---
 

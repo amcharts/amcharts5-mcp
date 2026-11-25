@@ -2,7 +2,7 @@
 title: "Map chart"
 source: "https://docs.amcharts.com/embeds/v5/map-chart/"
 category: "docs-demos"
-scraped: "2026-11-17"
+scraped: "2026-11-25"
 docsPages: ["charts/map-chart","charts/map-chart/map-polygon-series"]
 ---
 

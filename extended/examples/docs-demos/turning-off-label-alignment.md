@@ -2,7 +2,7 @@
 title: "Turning off label alignment"
 source: "https://docs.amcharts.com/embeds/v5/turning-off-label-alignment/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/percent-charts/pie-chart/pie-series"]
 ---
 

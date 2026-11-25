@@ -1,7 +1,7 @@
 ---
 title: "Map polygon series"
 source: "https://docs.amcharts.com/v5/charts/map-chart/map-polygon-series/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 Map polygon series are responsible for drawing actual map areas (countries, regions, etc.). This tutorial takes a look at various angles we can use them.
@@ -49,7 +49,7 @@ Ads an example, let's load a map of France:
 TypeScript:
 
 ```ts
-import worldLow from "@amcharts/amcharts5/geodata/franceLow";
+import am5geodata_franceLow from "@amcharts/amcharts5-geodata/franceLow";
 ```
 
 HTML:
@@ -389,20 +389,6 @@ A placeholder with no value shows as empty, so `"{name}: {value}"` reads "German
 
 To show different text for such polygons, add an adapter to `tooltipText`. Add it before setting the data:
 
-JavaScript:
-
-```js
-polygonSeries.mapPolygons.template.set("tooltipText", "{name}: {value}");
-
-polygonSeries.mapPolygons.template.adapters.add("tooltipText", function(text, target) {
-  var dataItem = target.dataItem;
-  if (dataItem && dataItem.get("value") == null) {
-    return "{name}: no data";
-  }
-  return text;
-});
-```
-
 TypeScript:
 
 ```ts
@@ -410,6 +396,20 @@ polygonSeries.mapPolygons.template.set("tooltipText", "{name}: {value}");
 
 polygonSeries.mapPolygons.template.adapters.add("tooltipText", (text, target) => {
   const dataItem = target.dataItem as am5.DataItem<am5map.IMapPolygonSeriesDataItem>;
+  if (dataItem && dataItem.get("value") == null) {
+    return "{name}: no data";
+  }
+  return text;
+});
+```
+
+JavaScript:
+
+```js
+polygonSeries.mapPolygons.template.set("tooltipText", "{name}: {value}");
+
+polygonSeries.mapPolygons.template.adapters.add("tooltipText", function(text, target) {
+  var dataItem = target.dataItem;
   if (dataItem && dataItem.get("value") == null) {
     return "{name}: no data";
   }
@@ -767,9 +767,9 @@ backgroundSeries.data.push({
 
 > **Note:** Series follow the order in which they were added to the chart. To ensure that background series is in the back, we need to add it first, or (as per code snippet above) we can ensure that it is inserted at index zero using `unshift()` method instead of `push()`.
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-polygon-series/map_background.png "Setting background on chart")
+![Globe map with the background color filling the whole chart](https://docs.amcharts.com/v5/images/charts/map-chart/map-polygon-series/map_background.png "Setting background on chart")
 
-![](https://docs.amcharts.com/v5/images/charts/map-chart/map-polygon-series/map_background_via_series.png "Using background series with projected rectangle")
+![Globe map with the background color only inside the globe](https://docs.amcharts.com/v5/images/charts/map-chart/map-polygon-series/map_background_via_series.png "Using background series with projected rectangle")
 
 Example: [Map chart with orthographic projection (globe)](https://docs.amcharts.com/embeds/v5/map-chart-with-orthographic-projection-globe/). Its code: get_example(path: "examples/docs-demos/map-chart-with-orthographic-projection-globe").
 

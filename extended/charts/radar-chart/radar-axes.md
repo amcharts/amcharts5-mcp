@@ -1,7 +1,7 @@
 ---
 title: "Radar axes"
 source: "https://docs.amcharts.com/v5/charts/radar-chart/radar-axes/"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 ---
 
 Radar chart reuses same axes types as XY chart. However it uses different axis renderers. While those are very similar to XY renderers in configuration, there some differences. This tutorial will address those.
@@ -36,11 +36,11 @@ xAxis.get("renderer").labels.template.setAll({
 });
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/radar_labels_circular.png "`textType: 'circular'` (default)")
+![Radar chart with axis labels curving along the circle](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/radar_labels_circular.png "`textType: 'circular'` (default)")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/radar_labels_adjusted-2.png "`textType: 'radial'`")
+![Radar chart with axis labels pointing outward from the center](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/radar_labels_adjusted-2.png "`textType: 'radial'`")
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/radar_labels_adjusted.png "`textType: 'adjusted'`")
+![Radar chart with horizontal axis labels placed around the circle](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/radar_labels_adjusted.png "`textType: 'adjusted'`")
 
 Example: [Radar chart axis labels](https://docs.amcharts.com/embeds/v5/radar-chart-axis-labels/). Its code: get_example(path: "examples/docs-demos/radar-chart-axis-labels").
 
@@ -110,7 +110,7 @@ We can also use negative values in `innerRadius`. Those will mean pixel distance
 
 Here's an example of a radar chart using two circular axes with different angle settings:
 
-![](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/dual_radar_axis.png)
+![Radar chart with two semicircular axes side by side, one per series](https://docs.amcharts.com/v5/images/charts/radar-chart/radar-axes/dual_radar_axis.png)
 
 The above chart has following setup:
 

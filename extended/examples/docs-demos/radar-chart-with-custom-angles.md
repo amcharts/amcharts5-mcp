@@ -2,7 +2,7 @@
 title: "Radar chart with custom angles"
 source: "https://docs.amcharts.com/embeds/v5/radar-chart-with-custom-angles/"
 category: "docs-demos"
-scraped: "2026-11-16"
+scraped: "2026-11-25"
 docsPages: ["charts/radar-chart"]
 ---
 

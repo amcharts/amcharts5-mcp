@@ -1,7 +1,7 @@
 ---
 title: "Zoom and pan"
 source: "https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/"
-scraped: "2026-11-14"
+scraped: "2026-11-25"
 ---
 
 An XY chart can be zoomed and panned in a number of ways. This tutorial takes a closer look at all of them.
@@ -401,9 +401,9 @@ var xAxis = chart.xAxes.push(
 );
 ```
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/zoom-and-pan/normal_zoom.png "Normal zoom")
+![Clustered column chart with categories filling the full plot width](https://docs.amcharts.com/v5/images/charts/xy-chart/zoom-and-pan/normal_zoom.png "Normal zoom")
 
-![](https://docs.amcharts.com/v5/images/charts/xy-chart/zoom-and-pan/overzoomed.png "Overzoomed by 20%")
+![Clustered column chart zoomed out past its data, with empty space on both sides](https://docs.amcharts.com/v5/images/charts/xy-chart/zoom-and-pan/overzoomed.png "Overzoomed by 20%")
 
 ## Excluding axes from pan or zoom
 
@@ -570,16 +570,6 @@ Zooming with the mouse wheel, the cursor or the zoom methods animates for the ax
 
 To turn the animation off (make zooming instant) on an axis, set its `interpolationDuration` to `0`. On a value axis this also turns off the animation to a new scale.
 
-JavaScript:
-
-```js
-var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  baseInterval: { timeUnit: "day", count: 1 },
-  renderer: am5xy.AxisRendererX.new(root, {}),
-  interpolationDuration: 0
-}));
-```
-
 TypeScript:
 
 ```ts
@@ -590,19 +580,17 @@ let xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
 }));
 ```
 
-To turn it off on all axes while keeping the Animated theme's other animations, add a theme rule after the Animated theme:
-
 JavaScript:
 
 ```js
-var noZoomAnimation = am5.Theme.new(root);
-noZoomAnimation.rule("Axis").set("interpolationDuration", 0);
-
-root.setThemes([
-  am5themes_Animated.new(root),
-  noZoomAnimation
-]);
+var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+  baseInterval: { timeUnit: "day", count: 1 },
+  renderer: am5xy.AxisRendererX.new(root, {}),
+  interpolationDuration: 0
+}));
 ```
+
+To turn it off on all axes while keeping the Animated theme's other animations, add a theme rule after the Animated theme:
 
 TypeScript:
 
@@ -616,18 +604,30 @@ root.setThemes([
 ]);
 ```
 
-Zoom methods also take a duration, which overrides the setting for that call. `0` zooms at once:
-
 JavaScript:
 
 ```js
-xAxis.zoom(0, 0.5, 0);
-xAxis.zoomToDates(new Date(2024, 0, 1), new Date(2024, 5, 30), 0);
+var noZoomAnimation = am5.Theme.new(root);
+noZoomAnimation.rule("Axis").set("interpolationDuration", 0);
+
+root.setThemes([
+  am5themes_Animated.new(root),
+  noZoomAnimation
+]);
 ```
+
+Zoom methods also take a duration, which overrides the setting for that call. `0` zooms at once:
 
 TypeScript:
 
 ```ts
+xAxis.zoom(0, 0.5, 0);
+xAxis.zoomToDates(new Date(2024, 0, 1), new Date(2024, 5, 30), 0);
+```
+
+JavaScript:
+
+```js
 xAxis.zoom(0, 0.5, 0);
 xAxis.zoomToDates(new Date(2024, 0, 1), new Date(2024, 5, 30), 0);
 ```
