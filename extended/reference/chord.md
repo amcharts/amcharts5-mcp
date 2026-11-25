@@ -2,7 +2,7 @@
 title: "Chord"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/chord/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Chord diagram: nodes as arcs around a circle, linked by ribbons. A node's arc shows its outgoing total, and a ribbon is as wide at each end as the flow out of that end, so a one-way link narrows to a point at its target. For one-way flows, see `ChordDirected`.
@@ -34,7 +34,7 @@ Extended by: ChordDirected, ChordNonRibbon
 Names only — see the declaring class's page (e.g. `get_api_reference("Flow")`) for signatures and descriptions.
 
 - _Flow_: hideDataItem, showDataItem
-- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Series_: addBullet, endIndex, getSummary, openUrl, startIndex
 - _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

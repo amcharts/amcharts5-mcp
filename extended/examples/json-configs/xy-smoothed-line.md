@@ -1,7 +1,7 @@
 ---
 title: "Smoothed Line Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-smoothed-line/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-smoothed-line/config.json"
 ---
 
 # Smoothed Line Chart (JSON config)
@@ -10,7 +10,7 @@ A smoothed line series with a fill and bullets on a date axis.
 
 Chart family: xy · Tags: smoothed line, area, bullets, date axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-smoothed-line/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-smoothed-line/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -45,6 +45,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         }
       }
     },
+    "focusable": true,
+    "ariaLabel": "Smoothed line chart of a daily value over the 30 days from January 1, 2024. Tab to the points, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -254,12 +256,12 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Circle",
                   "settings": {
                     "radius": 4,
-                    "stroke": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "stroke": "@root.interfaceColors.get('background')",
                     "strokeWidth": 2,
-                    "fill": "@series.get('fill')"
+                    "fill": "@series.get('fill')",
+                    "focusable": true,
+                    "focusableGroup": "points",
+                    "ariaLabel": "{valueX.formatDate('MMMM d, yyyy')}: {valueY}"
                   }
                 }
               }

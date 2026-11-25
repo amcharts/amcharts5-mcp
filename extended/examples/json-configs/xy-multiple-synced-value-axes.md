@@ -1,7 +1,7 @@
 ---
 title: "Multiple Synced Value Axes (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-multiple-synced-value-axes/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-multiple-synced-value-axes/config.json"
 ---
 
 # Multiple Synced Value Axes (JSON config)
@@ -10,7 +10,7 @@ Three line series with a value axis each, colored like their series, with the gr
 
 Chart family: xy · Tags: line, multiple axes, value axis, syncWithAxis, date axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-multiple-synced-value-axes/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-multiple-synced-value-axes/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -57,6 +57,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Line chart of daily visits, views and hits over January 2024, each on its own value axis. Tab to a line, then move along it with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -291,20 +293,14 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "settings": {
               "opposite": false,
               "strokeOpacity": 1,
-              "stroke": {
-                "type": "Color",
-                "value": "#67b7dc"
-              }
+              "stroke": "@colors.getIndex(0)"
             },
             "properties": {
               "labels": {
                 "properties": {
                   "template": {
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#67b7dc"
-                      }
+                      "fill": "@colors.getIndex(0)"
                     }
                   }
                 }
@@ -333,20 +329,14 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "settings": {
               "opposite": true,
               "strokeOpacity": 1,
-              "stroke": {
-                "type": "Color",
-                "value": "#8067dc"
-              }
+              "stroke": "@colors.getIndex(3)"
             },
             "properties": {
               "labels": {
                 "properties": {
                   "template": {
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#8067dc"
-                      }
+                      "fill": "@colors.getIndex(3)"
                     }
                   }
                 }
@@ -375,20 +365,14 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "settings": {
               "opposite": true,
               "strokeOpacity": 1,
-              "stroke": {
-                "type": "Color",
-                "value": "#dc67ce"
-              }
+              "stroke": "@colors.getIndex(6)"
             },
             "properties": {
               "labels": {
                 "properties": {
                   "template": {
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#dc67ce"
-                      }
+                      "fill": "@colors.getIndex(6)"
                     }
                   }
                 }
@@ -427,7 +411,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDuration": 1000
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "Visits",
+                    "ariaLabel": "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     },
@@ -451,7 +453,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDuration": 1000
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "Views",
+                    "ariaLabel": "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     },
@@ -475,7 +495,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDuration": 1000
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "Hits",
+                    "ariaLabel": "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     }

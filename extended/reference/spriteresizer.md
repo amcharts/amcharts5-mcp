@@ -2,7 +2,7 @@
 title: "SpriteResizer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/spriteresizer/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A frame with grips around an element: dragging the left or right grip scales the element, and the top or bottom grip rotates it.

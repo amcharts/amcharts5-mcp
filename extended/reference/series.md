@@ -2,7 +2,7 @@
 title: "Series"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/series/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Base class of all series.
@@ -37,6 +37,7 @@ Public properties (not settings):
 
 - `addBullet(dataItem: DataItem<this["_dataItemSettings"]>, bullet: Bullet): void` — Adds a bullet to one data item. Unlike `series.bullets`, it takes a `Bullet` instance, not a function. Parameters: `dataItem`: Target data item; `bullet`: Bullet instance. _Since 5.6.0._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/#adding-directly-to-data-item
 - `endIndex(): number` — Returns the index after the last data item in the visible range.
+- `getSummary(): ISeriesSummary | undefined` — Returns a summary of the series' data: how many values it has, its highest and lowest, and where the data has an order its first and last, with a text for screen readers. `undefined` if it has no values. Returns: Summary _Since 5.24.0._
 - `hideDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Hides a data item and its bullets. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
 - `openUrl(dataItem: DataItem<this["_dataItemSettings"]>): void` — Opens a data item's URL in the window set by `linkTarget`. Override to intercept links, e.g. in an editor. Parameters: `dataItem`: Data item. _Since 5.20.7._
 - `showDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Shows a data item and its bullets. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise

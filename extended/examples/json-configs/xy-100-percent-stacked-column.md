@@ -1,7 +1,7 @@
 ---
 title: "100% Stacked Column Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-100-percent-stacked-column/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-100-percent-stacked-column/config.json"
 ---
 
 # 100% Stacked Column Chart (JSON config)
@@ -10,7 +10,7 @@ Stacked columns shown as shares of each category's total, using valueYShow and c
 
 Chart family: xy · Tags: column, stacked, percent, category axis, legend
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-100-percent-stacked-column/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-100-percent-stacked-column/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -35,6 +35,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "layout": {
       "type": "VerticalLayout"
     },
+    "focusable": true,
+    "ariaLabel": "100% stacked column chart of six regions' shares over 2021 to 2023. Tab to a region's columns, then move between its years with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -76,7 +78,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "#series-3",
           "#series-4",
           "#series-5"
-        ]
+        ],
+        "itemContainers": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusableGroup": "legend",
+                "tabindexOrder": 10
+              }
+            }
+          }
+        }
       }
     }
   ],
@@ -157,6 +169,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         },
         "properties": {
           "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "Europe",
+                  "ariaLabel": "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#p')}"
+                }
+              }
+            }
+          },
           "bullets": [
             {
               "type": "Bullet",
@@ -165,10 +188,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueYTotalPercent.formatNumber('#.#p')}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -202,6 +222,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         },
         "properties": {
           "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "North America",
+                  "ariaLabel": "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#p')}"
+                }
+              }
+            }
+          },
           "bullets": [
             {
               "type": "Bullet",
@@ -210,10 +241,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueYTotalPercent.formatNumber('#.#p')}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -247,6 +275,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         },
         "properties": {
           "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "Asia",
+                  "ariaLabel": "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#p')}"
+                }
+              }
+            }
+          },
           "bullets": [
             {
               "type": "Bullet",
@@ -255,10 +294,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueYTotalPercent.formatNumber('#.#p')}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -292,6 +328,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         },
         "properties": {
           "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "Latin America",
+                  "ariaLabel": "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#p')}"
+                }
+              }
+            }
+          },
           "bullets": [
             {
               "type": "Bullet",
@@ -300,10 +347,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueYTotalPercent.formatNumber('#.#p')}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -337,6 +381,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         },
         "properties": {
           "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "Middle East",
+                  "ariaLabel": "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#p')}"
+                }
+              }
+            }
+          },
           "bullets": [
             {
               "type": "Bullet",
@@ -345,10 +400,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueYTotalPercent.formatNumber('#.#p')}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -382,6 +434,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         },
         "properties": {
           "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "Africa",
+                  "ariaLabel": "{name}, {categoryX}: {valueYTotalPercent.formatNumber('#.#p')}"
+                }
+              }
+            }
+          },
           "bullets": [
             {
               "type": "Bullet",
@@ -390,10 +453,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueYTotalPercent.formatNumber('#.#p')}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50

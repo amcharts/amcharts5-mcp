@@ -2,7 +2,7 @@
 title: "TemplateAdapters"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/templateadapters/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Adapters of a `Template`, added to every object that uses the template.

@@ -2,7 +2,7 @@
 title: "Animation"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/animation/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 An animation of a setting, returned by `animate()`. It can be paused, resumed, stopped or waited for.

@@ -2,7 +2,7 @@
 title: "SpriteEventDispatcher"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/spriteeventdispatcher/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 An `EventDispatcher` for `Sprite`.

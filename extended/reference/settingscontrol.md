@@ -2,7 +2,7 @@
 title: "SettingsControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/settingscontrol/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A settings dropdown for a `StockChart`: X axis fills, the Y axis scale (regular, percent or logarithmic) and auto-saving of drawings and indicators.

@@ -1,7 +1,7 @@
 ---
 title: "Globe with Raised Arcs (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-altitude-arcs/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-altitude-arcs/config.json"
 ---
 
 # Globe with Raised Arcs (JSON config)
@@ -10,7 +10,7 @@ Flight routes between cities on a globe, drawn as lines that rise above the surf
 
 Chart family: map · Tags: globe, map lines, altitude, arcs, routes
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-altitude-arcs/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-altitude-arcs/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,6 +33,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "panY": "rotateY",
     "rotationX": -20,
     "rotationY": -20,
+    "focusable": true,
+    "ariaLabel": "Globe with six routes between London, New York, Sao Paulo, Johannesburg and Singapore, drawn as arcs raised above the surface. Tab to the cities, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -153,10 +155,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.06,
                   "strokeOpacity": 0
                 }
@@ -195,12 +194,13 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                       "type": "Color",
                       "value": "#ff621f"
                     },
-                    "stroke": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "stroke": "@root.interfaceColors.get('background')",
                     "strokeWidth": 2,
-                    "tooltipText": "{title}"
+                    "tooltipText": "{title}",
+                    "focusable": true,
+                    "focusableGroup": "cities",
+                    "hoverOnFocus": true,
+                    "ariaLabel": "{title}"
                   }
                 }
               }

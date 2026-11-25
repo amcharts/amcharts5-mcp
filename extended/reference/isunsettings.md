@@ -2,7 +2,7 @@
 title: "ISunSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/isunsettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Settings shared by the series that show day and night.

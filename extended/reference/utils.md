@@ -1,7 +1,7 @@
 ---
 title: "utils"
 type: "namespace"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Helpers exported as `am5.utils`.
@@ -66,7 +66,7 @@ am5.utils.…
 - `removeElement(el: HTMLElement): void` — Removes a DOM element.
 - `rgbToHsl(color: iRGB): iHSL` — Converts an RGB color to HSL: `r`, `g` and `b` from `0` to `255` in, `h`, `s` and `l` from `0` to `1` out. Alpha is not carried over.
 - `sameBounds(a: IBounds, b?: IBounds): boolean`
-- `sanitizeHTML(html: string): string` — Removes the parts of an HTML string that are practically only used for cross-site scripting (XSS), leaving legitimate markup intact: _Since 5.19.0._
+- `sanitizeHTML(html: string): string` — Removes the parts of an HTML string that can run script or take over the page, leaving legitimate markup intact. The string is parsed by the browser into an inert document and the result is cleaned element by element: _Since 5.19.0._
 - `saturate(rgb: $type.Optional<iRGB>, saturation: number): $type.Optional<iRGB>` — Returns `rgb` with its saturation set to `saturation`, from `0` (grey) to `1`. The value replaces the color's saturation; `1` returns `rgb` unchanged.
 - `setInteractive(target: HTMLElement, interactive: boolean): void` — Disables or enables interactivity of a DOM element.
 - `setStyle(dom: HTMLElement, property: string, value: string | undefined): void` — Sets style property on DOM element.

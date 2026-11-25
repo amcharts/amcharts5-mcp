@@ -2,7 +2,7 @@
 title: "SceneNode"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/scenenode/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A renderer-neutral display object: state, place in the tree, transform and bounds. Backends paint it.
@@ -53,7 +53,7 @@ Public properties (not settings):
 - `getLocalBounds(): IBounds`
 - `hovering(): boolean`
 - `invalidateBounds(): void`
-- `markDirtyLayer(): void`
+- `markDirtyLayer(_deep?: boolean): void`
 - `on<C, Key extends keyof IRendererEvents>(key: Key, callback: (this: C, event: IRendererEvents[Key]) => void, context?: C): IDisposer`
 - `setLayer(order: number | undefined, margin: IMargin | undefined): void`
 - `shouldCancelTouch(): boolean`

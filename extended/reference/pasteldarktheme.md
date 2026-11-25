@@ -2,7 +2,7 @@
 title: "PastelDarkTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/pasteldarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 "Pastel Dark": the dark counterpart to `Pastel`, on a deep, muted background. Its pastels are deeper than those of `Pastel`, so they look rich rather than chalky on the dark background.

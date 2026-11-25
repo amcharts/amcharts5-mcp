@@ -1,7 +1,7 @@
 ---
 title: "Globe Rotating to a Country (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-globe-rotate-to-country/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-globe-rotate-to-country/config.json"
 ---
 
 # Globe Rotating to a Country (JSON config)
@@ -10,7 +10,7 @@ A globe that turns and zooms to the clicked country, and back when it is clicked
 
 Chart family: map · Tags: globe, orthographic, rotate, click, clickZoom, active state
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-globe-rotate-to-country/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-globe-rotate-to-country/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -35,6 +35,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "paddingTop": 20,
     "paddingLeft": 20,
     "paddingRight": 20,
+    "focusable": true,
+    "ariaLabel": "Globe of the world's countries. Tab to the countries, move between them with the up and down arrow keys, and press Enter to turn the globe to one and zoom in, or back out",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -73,10 +75,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.1,
                   "strokeOpacity": 0
                 }
@@ -99,25 +98,23 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "template": {
                 "settings": {
                   "tooltipText": "{name}",
-                  "interactive": true
+                  "interactive": true,
+                  "focusable": true,
+                  "focusableGroup": "countries",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}"
                 },
                 "states": [
                   {
                     "key": "hover",
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#6771dc"
-                      }
+                      "fill": "@root.interfaceColors.get('primaryButtonHover')"
                     }
                   },
                   {
                     "key": "active",
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#68dc76"
-                      }
+                      "fill": "@root.interfaceColors.get('primaryButtonActive')"
                     }
                   }
                 ]

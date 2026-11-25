@@ -2,7 +2,7 @@
 title: "AxisRendererCurveY"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/axisrenderercurvey/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Renderer for the Y axis of a `CurveChart`, which runs across the X axis line all along it.

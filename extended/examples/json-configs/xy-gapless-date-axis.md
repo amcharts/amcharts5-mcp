@@ -1,7 +1,7 @@
 ---
 title: "Gapless Date Axis (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-gapless-date-axis/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-gapless-date-axis/config.json"
 ---
 
 # Gapless Date Axis (JSON config)
@@ -10,7 +10,7 @@ A line of weekday values on a GaplessDateAxis, which leaves out the weekends so 
 
 Chart family: xy · Tags: line, date axis, gapless, weekends, cursor
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-gapless-date-axis/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-gapless-date-axis/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -51,6 +51,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Line chart of a daily value over 40 weekdays in January and February 2024, the weekends left out of the axis. Tab to the line, then move along it with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -298,7 +300,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDuration": 1000
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "points",
+                    "ariaLabel": "{valueX.formatDate('EEEE, MMMM d, yyyy')}: {valueY}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     }

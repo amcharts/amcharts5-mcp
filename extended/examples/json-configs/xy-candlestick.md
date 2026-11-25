@@ -1,7 +1,7 @@
 ---
 title: "Candlestick Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-candlestick/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-candlestick/config.json"
 ---
 
 # Candlestick Chart (JSON config)
@@ -10,7 +10,7 @@ Daily open, high, low and close prices as candles on a date axis; OHLCSeries tak
 
 Chart family: xy · Tags: candlestick, ohlc, date axis, cursor, scrollbar
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-candlestick/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-candlestick/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -48,6 +48,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Candlestick chart of a daily price over January and February 2024. Tab to the candles, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -548,7 +550,18 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDuration": 1000
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "columns": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "candles",
+                  "ariaLabel": "{valueX.formatDate('MMMM d, yyyy')}: open {openValueY}, high {highValueY}, low {lowValueY}, close {valueY}"
+                }
+              }
+            }
+          }
         }
       }
     }

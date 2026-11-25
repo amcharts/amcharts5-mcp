@@ -1,7 +1,7 @@
 ---
 title: "Timeline on a Custom Path (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/timeline-linear-process-diagram/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/timeline-linear-process-diagram/config.json"
 ---
 
 # Timeline on a Custom Path (JSON config)
@@ -10,7 +10,7 @@ A day as a timeline that follows a hand-made path: a curve chart whose axis runs
 
 Chart family: timeline · Tags: curve chart, custom path, bullets, icons, scrollbar
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-linear-process-diagram/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-linear-process-diagram/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -38,6 +38,8 @@ It loads files by relative path, which must be served beside the page: `icons/al
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Timeline of one day in 17 activities, from waking up at 6:00 to bed at 2:00, along a path that winds across the chart, with the breaks in a second row. Zoom with the scrollbar or the mouse wheel. Tab to the activities, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -65,10 +67,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/alarm.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#7ddc67"
-            },
+            "fill": "@colors.getIndex(15)",
             "__parse": true
           },
           "__parse": true
@@ -82,10 +81,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/water.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#a0dc67"
-            },
+            "fill": "@colors.getIndex(14)",
             "__parse": true
           },
           "__parse": true
@@ -99,10 +95,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/exercise.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#c3dc67"
-            },
+            "fill": "@colors.getIndex(13)",
             "__parse": true
           },
           "__parse": true
@@ -116,10 +109,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/breakfast.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dcd267"
-            },
+            "fill": "@colors.getIndex(12)",
             "__parse": true
           },
           "__parse": true
@@ -133,10 +123,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/car.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dcaf67"
-            },
+            "fill": "@colors.getIndex(11)",
             "__parse": true
           },
           "__parse": true
@@ -150,10 +137,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/work.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc8c67"
-            },
+            "fill": "@colors.getIndex(10)",
             "__parse": true
           },
           "__parse": true
@@ -167,10 +151,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/car.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc6788"
-            },
+            "fill": "@colors.getIndex(8)",
             "__parse": true
           },
           "__parse": true
@@ -184,10 +165,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/home.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc67ab"
-            },
+            "fill": "@colors.getIndex(7)",
             "__parse": true
           },
           "__parse": true
@@ -201,10 +179,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/beer.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc67ce"
-            },
+            "fill": "@colors.getIndex(6)",
             "__parse": true
           },
           "__parse": true
@@ -218,10 +193,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/dance.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#c767dc"
-            },
+            "fill": "@colors.getIndex(5)",
             "__parse": true
           },
           "__parse": true
@@ -235,10 +207,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/drink.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#a367dc"
-            },
+            "fill": "@colors.getIndex(4)",
             "__parse": true
           },
           "__parse": true
@@ -252,10 +221,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/drunk.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#6771dc"
-            },
+            "fill": "@colors.getIndex(2)",
             "__parse": true
           },
           "__parse": true
@@ -269,10 +235,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/bed.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#6794dc"
-            },
+            "fill": "@colors.getIndex(1)",
             "__parse": true
           },
           "__parse": true
@@ -286,10 +249,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/coffee.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc8c67"
-            },
+            "fill": "@colors.getIndex(10)",
             "__parse": true
           },
           "__parse": true
@@ -303,10 +263,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/dinner.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc8c67"
-            },
+            "fill": "@colors.getIndex(10)",
             "__parse": true
           },
           "__parse": true
@@ -320,10 +277,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/coffee.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc8c67"
-            },
+            "fill": "@colors.getIndex(10)",
             "__parse": true
           },
           "__parse": true
@@ -337,10 +291,7 @@ It loads files by relative path, which must be served beside the page: `icons/al
             "src": "icons/book.svg"
           },
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc67ab"
-            },
+            "fill": "@colors.getIndex(7)",
             "__parse": true
           },
           "__parse": true
@@ -1116,7 +1067,11 @@ It loads files by relative path, which must be served beside the page: `icons/al
                         "strokeOpacity": 0,
                         "tooltipText": "{text}",
                         "tooltipY": 0,
-                        "templateField": "settings"
+                        "templateField": "settings",
+                        "focusable": true,
+                        "focusableGroup": "activities",
+                        "hoverOnFocus": true,
+                        "ariaLabel": "{text}, {openValueX.formatDate('HH:mm')} to {valueX.formatDate('HH:mm')}"
                       }
                     },
                     {

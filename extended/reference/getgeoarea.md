@@ -1,7 +1,7 @@
 ---
 title: "getGeoArea"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Returns the area of a geometry on a sphere of radius 1, in steradians: the whole globe is 4π.

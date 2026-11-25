@@ -1,7 +1,7 @@
 ---
 title: "Bubble Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-bubble/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-bubble/config.json"
 ---
 
 # Bubble Chart (JSON config)
@@ -10,7 +10,7 @@ Countries as bubbles on two value axes, sized by a heat rule and colored per dat
 
 Chart family: xy · Tags: bubble, scatter, heat rules, templatefield, value axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-bubble/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-bubble/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -53,6 +53,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "vertical"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Bubble chart of 40 countries: GDP per capita across, life expectancy up, population as the bubble's size. Tab to the bubbles, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -758,7 +760,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "settings": {
                     "radius": 5,
                     "fillOpacity": 0.8,
-                    "templateField": "bulletSettings"
+                    "templateField": "bulletSettings",
+                    "focusable": true,
+                    "focusableGroup": "bubbles",
+                    "ariaLabel": "{country}: life expectancy {valueY.formatNumber('#.0')} years, GDP per capita {valueX.formatNumber('#,###.')} USD, population {value.formatNumber('#,###.')}"
                   },
                   "properties": {
                     "template": "#template-0"

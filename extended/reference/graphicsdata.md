@@ -2,7 +2,7 @@
 title: "GraphicsData"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/graphicsdata/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 What an `IGraphics` records: geometry and paint ops, in call order.
@@ -41,6 +41,8 @@ Public properties (not settings):
 - `endFill(): void`
 - `endGroup(): void`
 - `endStroke(): void`
+- `hitChanged(): boolean` — Whether what a hit test paints of the shape changed since `hitSeen()`.
+- `hitSeen(): void` — The renderer has looked at the shape.
 - `image(image: HTMLImageElement | HTMLCanvasElement, width: number, height: number, x: number, y: number): void`
 - `lineStyle(width?: number, color?: Color | IGradient | IPattern, alpha?: number, lineJoin?: "miter" | "round" | "bevel", lineCap?: "butt" | "round" | "square"): void`
 - `lineTo(x: number, y: number): void`

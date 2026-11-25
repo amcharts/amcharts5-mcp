@@ -2,7 +2,7 @@
 title: "GanttSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/ganttseries/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Series of a `Gantt` chart: draws the task bars, their progress and the links between tasks, and lets the user drag and resize them.
@@ -55,7 +55,7 @@ Public properties (not settings):
 - `getEndValue(openValue: number, duration: number): number` — Returns the end of a task with the given start and duration. With `excludeWeekends`, weekends and holidays don't count toward the duration. Parameters: `openValue`: Start timestamp in milliseconds; `duration`: Duration in `durationUnit` units. Returns: End timestamp in milliseconds
 - `getHolidayCount(start: number, end: number): number` — Counts the `durationUnit` steps between two timestamps that fall on weekends or holidays, leaving out those at the very end of the range. Parameters: `start`: Start timestamp in milliseconds; `end`: End timestamp in milliseconds. Returns: Count of holiday units
 - `getOpenValue(openValue: number): number` — Returns a task start moved off weekends and holidays to the next working unit. With `excludeWeekends` off, returns it unchanged. Parameters: `openValue`: Start timestamp in milliseconds. Returns: Adjusted start timestamp
-- `getUnitDuration(): number` — Returns the length of one `durationUnit` in milliseconds. Returns: Duration in milliseconds
+- `getUnitDuration(): number`
 - `hideDataItem(dataItem: DataItem<this["_dataItemSettings"]>, duration?: number): Promise<void>` — Hides a task's bar, with its grips, bullets and links. Parameters: `dataItem`: Data item; `duration`: Animation duration in milliseconds. Returns: Promise
 - `isCollapsed(dataItem: DataItem<IGanttSeriesDataItem>): boolean` — Checks whether the task is hidden inside a collapsed parent task, at any level above it. Parameters: `dataItem`: Data item. Returns: Inside a collapsed parent?
 - `isHoliday(value: number): boolean` — Checks whether a timestamp falls on one of the `weekends` days or a `holidays` date. Always `false` while `excludeWeekends` is off. Parameters: `value`: Timestamp in milliseconds. Returns: `true` on a weekend or holiday
@@ -67,7 +67,7 @@ Names only — see the declaring class's page (e.g. `get_api_reference("BaseColu
 
 - _BaseColumnSeries_: createAxisRange
 - _XYSeries_: hide, hideTooltip, resetExtremes, show, showDataItemTooltip
-- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Series_: addBullet, endIndex, getSummary, openUrl, startIndex
 - _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

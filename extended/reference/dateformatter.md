@@ -2,7 +2,7 @@
 title: "DateFormatter"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/dateformatter/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Formats dates in labels, tooltips and other text, and parses date strings.

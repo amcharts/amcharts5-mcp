@@ -2,7 +2,7 @@
 title: "OHLC"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/ohlc/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A bar of an `OHLCSeries`: a line from the low to the high value, with ticks marking the open and close values.

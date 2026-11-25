@@ -1,7 +1,7 @@
 ---
 title: "Gantt Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/gantt-simple/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/gantt-simple/config.json"
 ---
 
 # Gantt Chart (JSON config)
@@ -10,7 +10,7 @@ A Gantt chart with a flat list of linked tasks.
 
 Chart family: gantt · Tags: gantt, tasks, links
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/gantt-simple/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/gantt-simple/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -30,6 +30,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
 {
   "type": "Gantt",
   "settings": {
+    "focusable": true,
+    "ariaLabel": "Gantt chart of seven project tasks from September 18 to early October 2025. Tab to the tasks, then move between them with the up and down arrow keys. Left and right arrow keys move a task",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -42,7 +44,31 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     },
     "series": {
       "properties": {
-        "data": "#data-1"
+        "data": "#data-1",
+        "columns": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusable": true,
+                "focusableGroup": "tasks",
+                "hoverOnFocus": true,
+                "ariaLabel": "{name}, {progress.formatNumber('#.%')} done"
+              }
+            }
+          }
+        },
+        "zeroRectangles": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusable": true,
+                "focusableGroup": "tasks",
+                "hoverOnFocus": true,
+                "ariaLabel": "{name}, milestone"
+              }
+            }
+          }
+        }
       }
     }
   },

@@ -1,7 +1,7 @@
 ---
 title: "Treemap with Breadcrumbs (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/hierarchy-treemap/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/hierarchy-treemap/config.json"
 ---
 
 # Treemap with Breadcrumbs (JSON config)
@@ -10,7 +10,7 @@ A treemap that drills into a branch on click, with a breadcrumb bar to go back u
 
 Chart family: hierarchy · Tags: treemap, hierarchy, breadcrumbs, drill-down
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/hierarchy-treemap/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/hierarchy-treemap/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -38,7 +38,9 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     },
     "layout": {
       "type": "VerticalLayout"
-    }
+    },
+    "focusable": true,
+    "ariaLabel": "Treemap of sales in three departments, Electronics, Home and Sports, and their products, each tile sized by its sales. Tab to the tiles, move between them with the up and down arrow keys, and press Enter to open one; the breadcrumbs above lead back up"
   },
   "children": [
     "#series-0",
@@ -151,7 +153,19 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDelay": 100
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "nodes": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "nodes",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{category}: {sum}"
+                }
+              }
+            }
+          }
         }
       }
     }

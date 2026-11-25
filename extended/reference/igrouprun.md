@@ -2,12 +2,8 @@
 title: "IGroupRun"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/igrouprun/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
-
-An axis of dates and times, placing each data item at its time.
-
-Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/
 
 ## Inheritance
 

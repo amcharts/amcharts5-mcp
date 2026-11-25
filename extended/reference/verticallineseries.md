@@ -2,7 +2,7 @@
 title: "VerticalLineSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/verticallineseries/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A `SimpleLineSeries` subclass.
@@ -32,7 +32,7 @@ Names only — see the declaring class's page (e.g. `get_api_reference("SimpleLi
 - _SimpleLineSeries_: addLine, addPoints, enableDrawingSelection, setInteractive
 - _DrawingSeries_: cancelDrawing, clearDrawings, deleteDrawing, deleteSelected, disableDrawing, disableErasing, disposeIndex, enableDrawing, enableErasing, endIndex, getContext, getIndex, indexToDrawingId, markDirtyDrawings, selectDrawing, startIndex, toggleDrawing, unselectAllDrawings, unselectDrawing, unselectDrawings
 - _XYSeries_: createAxisRange, hide, hideDataItem, hideTooltip, resetExtremes, show, showDataItem, showDataItemTooltip
-- _Series_: addBullet, openUrl
+- _Series_: addBullet, getSummary, openUrl
 - _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

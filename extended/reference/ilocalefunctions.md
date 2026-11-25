@@ -2,7 +2,7 @@
 title: "ILocaleFunctions"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ilocalefunctions/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Defines functions that exist for the locale.

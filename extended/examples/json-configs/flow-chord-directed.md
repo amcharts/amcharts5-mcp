@@ -1,7 +1,7 @@
 ---
 title: "Directed Chord Diagram (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/flow-chord-directed/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/flow-chord-directed/config.json"
 ---
 
 # Directed Chord Diagram (JSON config)
@@ -10,7 +10,7 @@ A chord diagram whose links end in arrowheads, so each one shows its direction.
 
 Chart family: flow · Tags: chord, directed, flow, radial labels
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-chord-directed/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-chord-directed/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -36,6 +36,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
       "value": 75
     },
     "startAngle": 80,
+    "focusable": true,
+    "ariaLabel": "Directed chord diagram of 27 links from the six Friends characters to the people around them. Tab to the people or the links, then move through them with the up and down arrow keys; Enter on a person hides or shows their links",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -46,13 +48,29 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
       "properties": {
         "template": {
           "settings": {
-            "fillStyle": "source"
+            "fillStyle": "source",
+            "focusable": true,
+            "focusableGroup": "links",
+            "tabindexOrder": 5,
+            "hoverOnFocus": true,
+            "ariaLabel": "{sourceId} to {targetId}: {value}"
           }
         }
       }
     },
     "nodes": {
       "properties": {
+        "nodes": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusable": true,
+                "focusableGroup": "nodes",
+                "ariaLabel": "{name}: {sum} in all"
+              }
+            }
+          }
+        },
         "labels": {
           "properties": {
             "template": {

@@ -2,7 +2,7 @@
 title: "StockControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/stockcontrol/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Base class for the controls of a `StockToolbar`.
@@ -29,7 +29,7 @@ Extended by: ColorControl, DateRangeSelector, DrawingControl, DrawingToolControl
 ## Methods
 
 - `hide(): void` — Hides the control's button.
-- `isAccessible(): boolean`
+- `isAccessible(): boolean` — Returns `true` if the control can be used with a keyboard: it is not in a toolbar, or its toolbar is `focusable`. Returns: Accessible?
 - `show(): void` — Shows the control's button, unless `forceHidden` is set.
 
 ## Other inherited methods

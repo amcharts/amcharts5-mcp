@@ -1,7 +1,7 @@
 ---
 title: "Map Sankey with Waypoints (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-sankey-waypoints/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-sankey-waypoints/config.json"
 ---
 
 # Map Sankey with Waypoints (JSON config)
@@ -10,7 +10,7 @@ Oil routes on a globe: MapSankeySeries flows between coordinates, bent through w
 
 Chart family: map · Tags: map sankey series, waypoints, bullets, animations, globe, auto home
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-sankey-waypoints/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-sankey-waypoints/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -45,10 +45,12 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         }
       }
     },
-    "projectionName": "geoOrthographic",
+    "focusable": true,
+    "ariaLabel": "Globe of oil exports from six terminals in the Persian Gulf to ports in Asia and Europe, in thousands of barrels a day, drawn as flows along sea lanes. Tab to the flows or the ports, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
-    "appearDelay": 100
+    "appearDelay": 100,
+    "projectionName": "geoOrthographic"
   },
   "properties": {
     "series": [
@@ -699,10 +701,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.1,
                   "strokeOpacity": 0
                 }
@@ -720,10 +719,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "stroke": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "stroke": "@root.interfaceColors.get('alternativeBackground')",
                   "strokeOpacity": 0.08
                 }
               }
@@ -743,16 +739,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.15,
                   "strokeWidth": 0.5,
-                  "stroke": {
-                    "type": "Color",
-                    "value": "#ffffff"
-                  }
+                  "stroke": "@root.interfaceColors.get('background')"
                 }
               }
             }
@@ -780,7 +770,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   },
                   "fillOpacity": 0.5,
                   "strokeOpacity": 0,
-                  "tooltipText": "{source} > {target}: {value}k barrels a day"
+                  "tooltipText": "{source} > {target}: {value}k barrels a day",
+                  "focusable": true,
+                  "focusableGroup": "flows",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{source} to {target}: {value} thousand barrels a day"
                 }
               }
             }
@@ -795,12 +789,13 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                         "type": "Color",
                         "value": "#c8890a"
                       },
-                      "stroke": {
-                        "type": "Color",
-                        "value": "#ffffff"
-                      },
+                      "stroke": "@root.interfaceColors.get('background')",
                       "strokeWidth": 1.5,
-                      "tooltipText": "{name}: {sum}k barrels a day"
+                      "tooltipText": "{name}: {sum}k barrels a day",
+                      "focusable": true,
+                      "focusableGroup": "ports",
+                      "hoverOnFocus": true,
+                      "ariaLabel": "{name}: {sum} thousand barrels a day"
                     }
                   }
                 }
@@ -829,10 +824,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "settings": {
                     "svgPath": "M0,-7 C2,-4 5,0 5,3 C5,6 3,8 0,8 C-3,8 -5,6 -5,3 C-5,0 -2,-4 0,-7 Z",
                     "scale": 0.5,
-                    "fill": {
-                      "type": "Color",
-                      "value": "#000000"
-                    }
+                    "fill": "@root.interfaceColors.get('text')"
                   }
                 }
               }

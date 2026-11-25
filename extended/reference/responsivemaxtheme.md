@@ -2,7 +2,7 @@
 title: "ResponsiveMaxTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/responsivemaxtheme/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A theme that fits charts to small spaces by adapting them, hiding parts only as the last step. It turns on the settings that fit labels and legends to the room they have:

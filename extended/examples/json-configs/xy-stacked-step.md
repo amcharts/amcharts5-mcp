@@ -1,7 +1,7 @@
 ---
 title: "Stacked Step Line Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-stacked-step/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-stacked-step/config.json"
 ---
 
 # Stacked Step Line Chart (JSON config)
@@ -10,7 +10,7 @@ Two step line series with fills, one stacked on the other, on a date axis.
 
 Chart family: xy · Tags: step line, stacked, area, date axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-stacked-step/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-stacked-step/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -48,6 +48,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Stacked step line chart of two series over the 30 days from January 1, 2024. Tab to a series, then move along it with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -282,7 +284,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                 }
               }
             }
-          }
+          },
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "Series 1",
+                    "ariaLabel": "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     },
@@ -316,7 +336,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                 }
               }
             }
-          }
+          },
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "Series 2",
+                    "ariaLabel": "{name}, {valueX.formatDate('MMMM d, yyyy')}: {valueY}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     }

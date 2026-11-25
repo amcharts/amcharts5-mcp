@@ -2,7 +2,7 @@
 title: "VoronoiTreemap"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/voronoitreemap/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A weighted Voronoi treemap: nodes as polygon cells sized by value, each inside its parent's cell. Many items with very different values lay out poorly; group the small ones into an "Other" item.
@@ -39,7 +39,7 @@ Public properties (not settings):
 Names only — see the declaring class's page (e.g. `get_api_reference("Hierarchy")`) for signatures and descriptions.
 
 - _Hierarchy_: addChildData, disableDataItem, enableDataItem, getDataItemById, hideDataItem, hoverDataItem, selectDataItem, setFlatData, showDataItem, unhoverDataItem
-- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Series_: addBullet, endIndex, getSummary, openUrl, startIndex
 - _Component_: makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

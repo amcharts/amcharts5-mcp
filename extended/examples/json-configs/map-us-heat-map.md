@@ -1,7 +1,7 @@
 ---
 title: "US Heat Map (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-us-heat-map/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-us-heat-map/config.json"
 ---
 
 # US Heat Map (JSON config)
@@ -10,7 +10,7 @@ US states colored by value on a red, yellow and green scale, with heat rules and
 
 Chart family: map · Tags: heat rules, heat legend, choropleth, usa
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-us-heat-map/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-us-heat-map/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -30,6 +30,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
   "type": "MapChart",
   "settings": {
     "paddingBottom": 60,
+    "focusable": true,
+    "ariaLabel": "Heat map of the United States, each state colored by its customer satisfaction score, from red at 50 through yellow to green at 100. Tab to the states, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -338,7 +340,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "settings": {
           "tooltipText": "{name}: {value}",
           "stroke": "@root.interfaceColors.get('background')",
-          "strokeWidth": 1
+          "strokeWidth": 1,
+          "focusable": true,
+          "focusableGroup": "states",
+          "hoverOnFocus": true,
+          "ariaLabel": "{name}: score {value}"
         }
       }
     },

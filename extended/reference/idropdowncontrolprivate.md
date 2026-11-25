@@ -2,7 +2,7 @@
 title: "IDropdownControlPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/idropdowncontrolprivate/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -20,4 +20,4 @@ TypeScript: `am5stock.IDropdownControlPrivate` (`import type { IDropdownControlP
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IStockControlPrivate")`) for types, defaults and descriptions.
 
-- _IStockControlPrivate_: button, icon, label, toolbar
+- _IStockControlPrivate_: button, icon, label, toolbar, trigger

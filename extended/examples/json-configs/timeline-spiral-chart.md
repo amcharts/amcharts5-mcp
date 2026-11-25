@@ -1,7 +1,7 @@
 ---
 title: "Spiral Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/timeline-spiral-chart/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/timeline-spiral-chart/config.json"
 ---
 
 # Spiral Chart (JSON config)
@@ -10,7 +10,7 @@ A spiral chart: three years of monthly values as columns along a date axis that 
 
 Chart family: timeline · Tags: spiral, column, date axis, value axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-spiral-chart/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-spiral-chart/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -38,6 +38,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
       "type": "Percent",
       "value": 50
     },
+    "focusable": true,
+    "ariaLabel": "Spiral chart of a monthly value from January 2022 to December 2024, one turn a year, winding outward. Tab to the months, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -289,7 +291,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                     "type": "Percent",
                     "value": 80
                   },
-                  "tooltipText": "{valueX.formatDate('MMM yyyy')}: {valueY}"
+                  "tooltipText": "{valueX.formatDate('MMM yyyy')}: {valueY}",
+                  "focusable": true,
+                  "focusableGroup": "months",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{valueX.formatDate('MMMM yyyy')}: {valueY}"
                 }
               }
             }

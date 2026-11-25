@@ -1,7 +1,7 @@
 ---
 title: "Clustered Map Points (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-clustered-points/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-clustered-points/config.json"
 ---
 
 # Clustered Map Points (JSON config)
@@ -10,7 +10,7 @@ City markers that merge into clusters with a count when they are close together;
 
 Chart family: map · Tags: clustered point series, cluster, bullets, zoom
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-clustered-points/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-clustered-points/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -34,10 +34,12 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "zoomControl": {
       "type": "ZoomControl"
     },
-    "projectionName": "geoMercator",
+    "focusable": true,
+    "ariaLabel": "World map of 42 capital cities, where cities close together merge into clusters. Tab to the cities, move between them with the up and down arrow keys, and press Enter on a cluster to zoom in until it breaks up",
     "autoAppear": true,
     "appearDuration": 1000,
-    "appearDelay": 100
+    "appearDelay": 100,
+    "projectionName": "geoMercator"
   },
   "properties": {
     "series": [
@@ -277,10 +279,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.15
                 }
               }
@@ -299,7 +298,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "sprite": {
                 "type": "Container",
                 "settings": {
-                  "cursorOverStyle": "pointer"
+                  "cursorOverStyle": "pointer",
+                  "focusable": true,
+                  "focusableGroup": "cities",
+                  "role": "button",
+                  "ariaLabel": "A cluster of {value} cities"
                 },
                 "children": [
                   {
@@ -345,10 +348,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                         "type": "Percent",
                         "value": 50
                       },
-                      "fill": {
-                        "type": "Color",
-                        "value": "#ffffff"
-                      },
+                      "fill": "@root.interfaceColors.get('alternativeText')",
                       "populateText": true,
                       "fontSize": 8,
                       "text": "{value}"
@@ -374,7 +374,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                     "fill": {
                       "type": "Color",
                       "value": "#ff8c00"
-                    }
+                    },
+                    "focusable": true,
+                    "focusableGroup": "cities",
+                    "hoverOnFocus": true,
+                    "ariaLabel": "{title}"
                   }
                 }
               }

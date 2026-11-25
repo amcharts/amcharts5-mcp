@@ -2,7 +2,7 @@
 title: "ISceneHost"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iscenehost/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 What scene nodes need from the renderer that owns them.
@@ -19,6 +19,7 @@ TypeScript: not exported by name from the package.
 - **layers** (`readonly ILayer[]`)
 - **_interaction** (`InteractionManager<SceneNode>`)
 - **_useLayer** (`(order: number, margin: IMargin | undefined) => ILayer`) — The layer for `order`, created if needed, marked dirty and sized.
+- **_hitChanged** (`() => void`) — What can be hit may have changed (a node shown, hidden or made interactive), for a backend that keeps a hit-test canvas.
 - **_layerCanvas** (`(layer: ILayer) => HTMLCanvasElement`) — The canvas a layer paints on, for code that needs a raster element.
 - **_measureText** (`(text: SceneText) => IBounds`) — Lays out `text` and returns its local bounds.
 - **_textContext** (`(text: SceneText) => CanvasRenderingContext2D`) — The context `text` is measured with.

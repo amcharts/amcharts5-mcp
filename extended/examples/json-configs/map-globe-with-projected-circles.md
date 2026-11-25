@@ -1,7 +1,7 @@
 ---
 title: "Globe with Projected Circles (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-globe-with-projected-circles/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-globe-with-projected-circles/config.json"
 ---
 
 # Globe with Projected Circles (JSON config)
@@ -10,7 +10,7 @@ Population by country as circles that lie on the surface of a globe and flatten 
 
 Chart family: map · Tags: globe, orthographic, surface bullets, heat rules, map points
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-globe-with-projected-circles/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-globe-with-projected-circles/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,6 +33,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "panY": "rotateY",
     "rotationX": -80,
     "rotationY": -25,
+    "focusable": true,
+    "ariaLabel": "Globe with circles on 40 countries, sized by population, lying flat on its surface. Tab to the circles, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -281,10 +283,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.1,
                   "strokeOpacity": 0
                 }
@@ -305,16 +304,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.15,
                   "strokeWidth": 0.5,
-                  "stroke": {
-                    "type": "Color",
-                    "value": "#ffffff"
-                  }
+                  "stroke": "@root.interfaceColors.get('background')"
                 }
               }
             }
@@ -356,12 +349,13 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                       "value": "#ff621f"
                     },
                     "fillOpacity": 0.7,
-                    "stroke": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "stroke": "@root.interfaceColors.get('background')",
                     "strokeWidth": 1,
-                    "tooltipText": "{name}: {value.formatNumber('#.0a')}"
+                    "tooltipText": "{name}: {value.formatNumber('#.0a')}",
+                    "focusable": true,
+                    "focusableGroup": "circles",
+                    "hoverOnFocus": true,
+                    "ariaLabel": "{name}: population {value.formatNumber('#,###')}"
                   },
                   "properties": {
                     "template": "#template-0"

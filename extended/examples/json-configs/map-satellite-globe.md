@@ -1,7 +1,7 @@
 ---
 title: "Satellite Image Globe (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-satellite-globe/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-satellite-globe/config.json"
 ---
 
 # Satellite Image Globe (JSON config)
@@ -10,7 +10,7 @@ A slowly turning globe that shows a satellite image with MapRasterSeries, with c
 
 Chart family: map · Tags: globe, satellite, raster, image, animations
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-satellite-globe/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-satellite-globe/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -40,6 +40,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "loops": 0
       }
     ],
+    "focusable": true,
+    "ariaLabel": "Globe covered with a satellite image of the Earth, turning slowly, with the country borders on top",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -103,10 +105,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "template": {
                 "settings": {
                   "fillOpacity": 0,
-                  "stroke": {
-                    "type": "Color",
-                    "value": "#ffffff"
-                  },
+                  "stroke": "@root.interfaceColors.get('background')",
                   "strokeWidth": 0.5,
                   "strokeOpacity": 0.6
                 }

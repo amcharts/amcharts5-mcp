@@ -2,7 +2,7 @@
 title: "IDisplayObject"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/idisplayobject/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -37,6 +37,7 @@ TypeScript: not exported by name from the package.
 - **getLayer** (`() => ILayer`)
 - **setLayer** (`(order: number | undefined, margin: IMargin | undefined) => void`)
 - **markDirtyLayer** (`(deep?: boolean) => void`)
+- **markDirtyPaint** (`(deep?: boolean) => void`)
 - **clear** (`() => void`)
 - **invalidateBounds** (`() => void`)
 - **toLocal** (`(point: IPoint) => IPoint`)

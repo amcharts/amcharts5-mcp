@@ -2,7 +2,7 @@
 title: "DurationFormatter"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/durationformatter/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Formats numbers as durations, such as `125` seconds as `"02:05"`.

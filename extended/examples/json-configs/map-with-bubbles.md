@@ -1,7 +1,7 @@
 ---
 title: "Map with Bubbles (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-with-bubbles/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-with-bubbles/config.json"
 ---
 
 # Map with Bubbles (JSON config)
@@ -10,7 +10,7 @@ Bubbles placed on countries by their id, with heat rules setting each bubble's s
 
 Chart family: map · Tags: bubbles, point series, heat rules, polygon id
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-with-bubbles/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-with-bubbles/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,6 +31,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
   "settings": {
     "panX": "translateX",
     "panY": "translateY",
+    "focusable": true,
+    "ariaLabel": "World map with bubbles on 40 countries, sized and colored by population. Tab to the bubbles, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -252,7 +254,13 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     },
     {
       "template-0": {
-        "type": "Template"
+        "type": "Template",
+        "settings": {
+          "focusable": true,
+          "focusableGroup": "bubbles",
+          "hoverOnFocus": true,
+          "ariaLabel": "{name}: population {value.formatNumber('#,###')}"
+        }
       }
     },
     {
@@ -269,16 +277,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.15,
                   "strokeWidth": 0.5,
-                  "stroke": {
-                    "type": "Color",
-                    "value": "#ffffff"
-                  }
+                  "stroke": "@root.interfaceColors.get('background')"
                 }
               }
             }

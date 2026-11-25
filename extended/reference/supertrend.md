@@ -2,7 +2,7 @@
 title: "SuperTrend"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/supertrend/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Super Trend indicator: a line `multiplier` average true ranges (over `period`) from the price, below it in an uptrend and above it in a downtrend. Drawn over the main series.

@@ -2,7 +2,7 @@
 title: "HeatLegend"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/heatlegend/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A legend that shows a color scale from `startColor` to `endColor`, with the values at its ends.

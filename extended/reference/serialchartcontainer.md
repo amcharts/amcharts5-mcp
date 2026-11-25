@@ -2,7 +2,7 @@
 title: "SerialChartContainer"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/serialchartcontainer/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A chart for series of any kind, such as a force-directed tree, that can be zoomed and panned: its series sit in a `ZoomableContainer`.

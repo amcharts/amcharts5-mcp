@@ -2,7 +2,7 @@
 title: "ISpriteSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ispritesettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -68,7 +68,7 @@ TypeScript: `am5.ISpriteSettings` (`import type { ISpriteSettings } from "@amcha
 
 - **appearDuration** (`number`) — Duration of the `autoAppear` animation, in milliseconds. Without it, the element's `stateAnimationDuration` is used. _Since 5.21.0._
 - **appearDelay** (`number`) — default `0` — Milliseconds to wait before the `autoAppear` animation starts. The element stays hidden until then. _Since 5.21.0._
-- **forceInactive** (`boolean`) — default `null` _(code fallback)_ — Makes the element and its children ignore the pointer, even with `interactive: true` or event listeners set. _Since 5.0.21._
+- **forceInactive** (`boolean`) — Makes the element and its children ignore the pointer, even with `interactive: true` or event listeners set. _Since 5.0.21._
 - **showTooltipOn** (`"click" | "hover" | "always"`) — default `"hover"` — When the element's tooltip shows: • `"hover"` (default) - while the pointer is over the element, or after a tap on it until a tap elsewhere. • `"always"` - all the time. To show tooltips of several elements at once, give each its own `Tooltip` (`tooltip`). • `"click"` - after a click or tap on the element, until a click anywhere else on the page. _Since 5.0.16._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/tooltips/#sticky-tooltips
 - **crisp** (`boolean`) — default `false` — Draws the element sharply, with minimal anti-aliasing: its position is rounded to whole pixels, and `strokeWidth` is adjusted to the device pixel ratio, so lines may look thinner than expected. NOTE: it may not work well on several elements that are meant to fit together exactly. _Since 5.3.0._
 - **blur** (`number`) — default `0` _(code fallback)_ — Blur radius in pixels, from `0` (no blur) up. IMPORTANT: This setting is not supported in Safari browsers. _Since 5.5.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/filters/
@@ -97,6 +97,7 @@ TypeScript: `am5.ISpriteSettings` (`import type { ISpriteSettings } from "@amcha
 - **ariaValueMax** (`string`) — `aria-valuemax` setting.
 - **ariaValueText** (`string`) — `aria-valuetext` setting.
 - **ariaControls** (`string`) — `aria-controls` setting.
+- **ariaDescription** (`string`) — A longer description of the element for screen readers, read after its `ariaLabel` (`aria-describedby`). Can use data placeholders. A chart or series with `ariaSummary` fills it in with a summary of the data. _Since 5.24.0._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#screen-reader
 
 ## Other inherited settings
 

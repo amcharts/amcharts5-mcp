@@ -2,7 +2,7 @@
 title: "Momentum"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/momentum/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Momentum indicator: `field` minus its value `period` data items earlier. Drawn in a panel of its own.

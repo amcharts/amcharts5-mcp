@@ -2,7 +2,7 @@
 title: "IRoundedRectanglePrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iroundedrectangleprivate/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -19,4 +19,4 @@ _(none declared here — all inherited)_
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("ISpritePrivate")`) for types, defaults and descriptions.
 
-- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y
+- _ISpritePrivate_: customData, deform, drawHidden, focusable, focusDisabled, focusElement, focusExcluded, focusGroupVertical, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

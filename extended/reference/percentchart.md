@@ -2,7 +2,7 @@
 title: "PercentChart"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/percentchart/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Base class for the charts of percent series: `PieChart` and `SlicedChart` (for `FunnelSeries`, `PyramidSeries` and `PictorialStackedSeries`).

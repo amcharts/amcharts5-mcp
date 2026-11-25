@@ -1,7 +1,7 @@
 ---
 title: "Circle Pack (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/hierarchy-pack/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/hierarchy-pack/config.json"
 ---
 
 # Circle Pack (JSON config)
@@ -10,7 +10,7 @@ A pack chart: nested data as circles inside circles, sized by value, where a cli
 
 Chart family: hierarchy · Tags: pack, hierarchy, nested data, drill-down
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/hierarchy-pack/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/hierarchy-pack/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,12 +33,26 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "categoryField": "name",
     "childDataField": "children",
     "selectedDataItem": "@self.dataItems.0",
+    "focusable": true,
+    "ariaLabel": "Circle pack of food: fruit, drinks and dairy and the items in each, each circle sized by its value. Tab to the circles, move between them with the up and down arrow keys, and press Enter to open the next level",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
   },
   "properties": {
-    "data": "#data-0"
+    "data": "#data-0",
+    "nodes": {
+      "properties": {
+        "template": {
+          "settings": {
+            "focusable": true,
+            "focusableGroup": "nodes",
+            "hoverOnFocus": true,
+            "ariaLabel": "{category}: {sum}"
+          }
+        }
+      }
+    }
   },
   "refs": [
     {

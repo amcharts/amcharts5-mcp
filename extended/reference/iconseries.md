@@ -2,7 +2,7 @@
 title: "IconSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/iconseries/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Draws icons, for the Arrows & Icons tool of a `StockChart`.
@@ -43,7 +43,7 @@ Names only — see the declaring class's page (e.g. `get_api_reference("Polyline
 - _PolylineSeries_: cancelDrawing, clearDrawings, disableDrawing
 - _DrawingSeries_: deleteDrawing, deleteSelected, disableErasing, disposeIndex, enableDrawing, enableDrawingSelection, enableErasing, endIndex, getContext, getIndex, indexToDrawingId, markDirtyDrawings, selectDrawing, startIndex, unselectAllDrawings, unselectDrawing, unselectDrawings
 - _XYSeries_: createAxisRange, hide, hideDataItem, hideTooltip, resetExtremes, show, showDataItem, showDataItemTooltip
-- _Series_: addBullet, openUrl
+- _Series_: addBullet, getSummary, openUrl
 - _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

@@ -2,7 +2,7 @@
 title: "ISpritePrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ispriteprivate/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -31,5 +31,8 @@ TypeScript: `am5.ISpritePrivate` (`import type { ISpritePrivate } from "@amchart
 - **focusable** (`boolean`) — If set to `false`, its tabindex will be set to -1, so it does not get focused with TAB, regardless whether its public setting `focusable` is set to `true`. _Since 5.3.16._
 - **focusExcluded** (`boolean`) — _(internal)_ If set to `true`, the sprite gets no focus element, so it is left out of keyboard navigation and screen readers even if `focusable` is `true`. Used for map objects that their series leaves out with `include` or `exclude`.
 - **focusOutOfView** (`boolean`) — _(internal)_ If set to `true`, the sprite is outside the visible area (e.g. a map object panned or zoomed away): it is not a TAB stop, but screen readers can still read it.
+- **focusGroupVertical** (`boolean`) — _(internal)_ If set to `true`, only up and down arrow keys move between the members of the sprite's `focusableGroup`. Left and right drag it, without SHIFT.
+- **focusDisabled** (`boolean`) — _(internal)_ If set to `true`, the element can't be used now (e.g. a zoom button at the zoom limit): it is not a TAB stop, unless focused, and screen readers hear it as disabled.
+- **drawHidden** (`boolean`) — _(internal)_ If set to `true`, the element is transparent (and can't be hovered or clicked) but can still take keyboard focus, e.g. focusable bullets of a series too dense for them (`minBulletDistance`).
 - **trustBounds** (`boolean`) — Checks that the pointer is within the element's bounds before dispatching `"pointerover"`. This prevents ghost tooltips that sometimes appear while the pointer moves over interactive elements. It is `true` by default on `Rectangle` and `Circle`. _Since 5.5.0._
 - **lastTooltipCoords** (`IPoint`) — The last point the tooltip was shown at, so it is not shown again at the same place. _Since 5.11.3._

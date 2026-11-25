@@ -2,7 +2,7 @@
 title: "AxisLabel"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/axislabel/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A label on an axis, such as a category name or a value.

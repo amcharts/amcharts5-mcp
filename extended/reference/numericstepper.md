@@ -2,7 +2,7 @@
 title: "NumericStepper"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/numericstepper/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A number field with up and down arrows. The number can also be typed in.

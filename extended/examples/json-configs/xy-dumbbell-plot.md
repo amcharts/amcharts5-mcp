@@ -1,7 +1,7 @@
 ---
 title: "Dumbbell Plot (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-dumbbell-plot/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-dumbbell-plot/config.json"
 ---
 
 # Dumbbell Plot (JSON config)
@@ -10,7 +10,7 @@ A range per category drawn as a thin column from the open value to the close val
 
 Chart family: xy · Tags: dumbbell, column, bullet, category axis, range
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-dumbbell-plot/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-dumbbell-plot/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -42,6 +42,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         }
       }
     },
+    "focusable": true,
+    "ariaLabel": "Dumbbell plot of 29 people, each with a value that went from an open to a close value. Tab to the people, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -281,7 +283,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "width": 0.5
+                  "width": 0.5,
+                  "focusable": true,
+                  "focusableGroup": "dumbbells",
+                  "ariaLabel": "{categoryX}: from {openValueY} to {valueY}"
                 }
               }
             }
@@ -308,10 +313,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Circle",
                   "settings": {
                     "radius": 5,
-                    "fill": {
-                      "type": "Color",
-                      "value": "#6794dc"
-                    }
+                    "fill": "@colors.getIndex(1)"
                   }
                 }
               }

@@ -2,7 +2,7 @@
 title: "AxisTick"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/axistick/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A tick mark on an axis. Ticks are hidden by default.

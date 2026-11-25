@@ -2,7 +2,7 @@
 title: "IContainer"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/icontainer/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -23,5 +23,5 @@ TypeScript: not exported by name from the package.
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IDisplayObject")`) for types, defaults and descriptions.
 
-- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, mask, on, pivot, scale, setLayer, toGlobal, toLocal, touchAxis, visible, wheelable, x, y
+- _IDisplayObject_: _setMatrix, alpha, angle, buttonMode, cancelTouch, clear, crisp, cursorOverStyle, deform, exportable, exportName, filter, getAdjustedBounds, getCanvas, getContentBounds, getLayer, getLocalBounds, getLocalMatrix, hovering, inactive, interactive, invalidateBounds, isMeasured, markDirtyLayer, markDirtyPaint, mask, on, pivot, scale, setLayer, toGlobal, toLocal, touchAxis, visible, wheelable, x, y
 - _IDisposer_: dispose, isDisposed

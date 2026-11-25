@@ -2,7 +2,7 @@
 title: "PatternsDarkTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/patternsdarktheme/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 "Patterns Dark": the dark counterpart to `Patterns`, with gray interface colors on a dark background. Filled series take the same shades of gray, but with black patterns on top, which read as dark cuts into the gray. Line series are told apart by stroke width and dash.

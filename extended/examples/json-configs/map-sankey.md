@@ -1,7 +1,7 @@
 ---
 title: "Map Sankey (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-sankey/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-sankey/config.json"
 ---
 
 # Map Sankey (JSON config)
@@ -10,7 +10,7 @@ Flows between countries drawn as bands on a map with MapSankeySeries, each band 
 
 Chart family: map · Tags: map sankey series, flows, links, nodes
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-sankey/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-sankey/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,6 +31,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
   "settings": {
     "panX": "translateX",
     "panY": "translateY",
+    "focusable": true,
+    "ariaLabel": "World map of coffee exports from Brazil, Colombia, Ethiopia, Vietnam and Indonesia to the United States, Germany, Italy and Japan, in thousands of tonnes, drawn as flows as wide as their value. Tab to the flows or the countries, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -141,10 +143,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.15
                 }
               }
@@ -166,7 +165,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "template": {
                 "settings": {
                   "fillOpacity": 0.6,
-                  "tooltipText": "{source} > {target}: {value}"
+                  "tooltipText": "{source} > {target}: {value}",
+                  "focusable": true,
+                  "focusableGroup": "flows",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{source} to {target}: {value} thousand tonnes"
                 }
               }
             }
@@ -177,7 +180,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                 "properties": {
                   "template": {
                     "settings": {
-                      "tooltipText": "{name}: {sum}"
+                      "tooltipText": "{name}: {sum}",
+                      "focusable": true,
+                      "focusableGroup": "countries",
+                      "hoverOnFocus": true,
+                      "ariaLabel": "{name}: {sum} thousand tonnes in and out"
                     }
                   }
                 }

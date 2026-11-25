@@ -1,7 +1,7 @@
 ---
 title: "Pulsing Last Bullet (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-pulsing-last-bullet/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-pulsing-last-bullet/config.json"
 ---
 
 # Pulsing Last Bullet (JSON config)
@@ -10,7 +10,7 @@ A line whose last point has a pulsing bullet, switched on for one data item with
 
 Chart family: xy · Tags: line, bullet, animation, templatefield
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-pulsing-last-bullet/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-pulsing-last-bullet/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -42,6 +42,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         }
       }
     },
+    "focusable": true,
+    "ariaLabel": "Line chart of a daily value over June 1 to 15, 2024, the last day marked with a pulsing dot. Tab to the line, then move along it with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -209,20 +211,14 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                       "type": "Circle",
                       "settings": {
                         "radius": 5,
-                        "fill": {
-                          "type": "Color",
-                          "value": "#67b7dc"
-                        }
+                        "fill": "@colors.getIndex(0)"
                       }
                     },
                     {
                       "type": "Circle",
                       "settings": {
                         "radius": 5,
-                        "fill": {
-                          "type": "Color",
-                          "value": "#67b7dc"
-                        },
+                        "fill": "@colors.getIndex(0)",
                         "animations": [
                           {
                             "key": "scale",
@@ -248,6 +244,22 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   ],
                   "properties": {
                     "template": "#template-0"
+                  }
+                }
+              }
+            },
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "points",
+                    "ariaLabel": "{valueX.formatDate('MMMM d, yyyy')}: {valueY}"
                   }
                 }
               }

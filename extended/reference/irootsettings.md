@@ -2,7 +2,7 @@
 title: "IRootSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/irootsettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -21,7 +21,8 @@ TypeScript: not exported by name from the package.
 - **ariaLabel** (`string`) — If set to some string, it will be used as inner `<div>` ARIA-LABEL. Should be used in conjunction with `focusable`. _Since 5.3.17._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#accessibility-of-root-element
 - **role** (`string`) — Allows setting a "role" for the inner `<div>`. _Since 5.3.17._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#accessibility-of-root-element
 - **calculateSize** (`(dimensions: DOMRect) => ISize`) — A function that returns the width and height in pixels to draw the chart at, given the container's measured box. It runs when the chart is created and on every resize.
-- **sanitizeHTML** (`boolean`) — default `true` — Cleans potentially malicious code out of HTML content (`html` and `labelHTML` settings, HTML tooltips, modals, export menu labels) before it goes on the page. Turn it off only if you trust all HTML content: unsanitized HTML from untrusted data can lead to XSS attacks. _Since 5.19.0._
+- **sanitizeHTML** (`boolean`) — default `true` — Cleans potentially malicious code out of HTML content (`html` and `labelHTML` settings, HTML tooltips, modals, export menu labels, stock toolbar labels) before it goes on the page. Turn it off only if you trust all HTML content: unsanitized HTML from untrusted data can lead to XSS attacks. _Since 5.19.0._
+- **logoPosition** (`"bl" | "br" | "tl" | "tr"`) — default `"bl"` — The corner of the chart that shows the amCharts logo, when there is no licence: `"bl"` (bottom left), `"br"` (bottom right), `"tl"` (top left) or `"tr"` (top right). _Since 5.24.0._
 - **fontFamily** (`string`) — Font family for all labels. It overrides the theme's, but not a `fontFamily` set on a label itself. _Since 5.20.2._
 - **fontSize** (`string | number`) — Font size for all labels: a number in pixels, or a CSS size such as `"1.2em"`. It overrides the theme's, but not a `fontSize` set on a label itself. _Since 5.20.2._
 - **fontWeight** (`"normal" | "bold" | "bolder" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900"`) — Font weight for all labels. It overrides the theme's, but not a `fontWeight` set on a label itself. _Since 5.20.2._

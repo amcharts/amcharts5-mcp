@@ -2,7 +2,7 @@
 title: "Timezone"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/timezone/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A named timezone, such as `"America/New_York"`, used for `root.timezone`.

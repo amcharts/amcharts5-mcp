@@ -2,7 +2,7 @@
 title: "ValueAxis"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/valueaxis/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 An axis with a numeric scale.
@@ -35,7 +35,7 @@ Extended by: DateAxis, DurationAxis
 - `baseValue(): number` — Returns the `baseValue` setting, kept within the axis's scale. Returns: Base value
 - `getCellWidthPosition(): number` — Returns the distance between two grid lines as a share of the visible part of the axis. Returns: Distance (`0` to `1`)
 - `getSeriesItem(series: XYSeries, position: number): DataItem<IXYSeriesDataItem> | undefined` — Returns the series data item whose value is closest to a position on the axis. Parameters: `series`: Series; `position`: Position on the axis (`0` to `1`). Returns: Data item
-- `getTooltipText(position: number, _adjustPosition?: boolean): string | undefined` — Returns the text the axis tooltip shows at a position. Parameters: `position`: Position on the axis (`0` to `1`). Returns: Tooltip text
+- `getTooltipText(position: number, _adjustPosition?: boolean): string | undefined` — Returns the text the axis tooltip shows at a position.
 - `getX(value: number, location: number, baseValue: number): number` — Returns the X coordinate in pixels of a value, from the axis's left edge. Parameters: `value`: Numeric value; `location`: Where between `baseValue` (`0`) and `value` (`1`) to measure; `baseValue`: Base value. Returns: X coordinate
 - `getY(value: number, location: number, baseValue: number): number` — Returns the Y coordinate in pixels of a value, from the axis's top edge. Parameters: `value`: Numeric value; `location`: Where between `baseValue` (`0`) and `value` (`1`) to measure; `baseValue`: Base value. Returns: Y coordinate
 - `positionToValue(position: number): number` — Converts a position on the axis (`0` to `1`, regardless of zoom) to a value. Parameters: `position`: Relative position. Returns: Value
@@ -47,7 +47,7 @@ Extended by: DateAxis, DurationAxis
 Names only — see the declaring class's page (e.g. `get_api_reference("Axis")`) for signatures and descriptions.
 
 - _Axis_: coordinateToPosition, createAxisRange, toAxisPosition, toGlobalPosition, updateTooltip, zoom
-- _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
+- _Component_: getDataItemById, makeDataItem, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hide, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, show, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y
 - _Entity_: get, isType, remove, set, setTimeout

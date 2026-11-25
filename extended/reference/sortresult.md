@@ -2,7 +2,7 @@
 title: "SortResult"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/sortresult/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Result of a binary search: whether a match was found, and its index or the index to insert the value at.

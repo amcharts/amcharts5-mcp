@@ -2,7 +2,7 @@
 title: "SmoothedYLineSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/smoothedylineseries/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A line series drawn as a smooth curve, for data that runs along the Y axis.
@@ -32,7 +32,7 @@ Extends: LineSeries → XYSeries → Series → Component → Container → Spri
 Names only — see the declaring class's page (e.g. `get_api_reference("XYSeries")`) for signatures and descriptions.
 
 - _XYSeries_: createAxisRange, hide, hideDataItem, hideTooltip, resetExtremes, show, showDataItem, showDataItemTooltip
-- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Series_: addBullet, endIndex, getSummary, openUrl, startIndex
 - _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

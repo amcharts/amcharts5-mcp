@@ -2,7 +2,7 @@
 title: "StandardDeviation"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/standarddeviation/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Standard Deviation indicator: how widely `field` varies around its average over `period`. Drawn in a panel of its own.

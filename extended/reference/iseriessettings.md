@@ -2,7 +2,7 @@
 title: "ISeriesSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iseriessettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -15,6 +15,8 @@ TypeScript: `am5.ISeriesSettings` (`import type { ISeriesSettings } from "@amcha
 ## Settings
 
 - **name** (`string`) — Name of the series.
+- **ariaSummary** (`boolean`) — Describes the series' data to screen readers in a few short sentences: how many values it has, its highest and lowest, and where the data has an order (XY series), its first and last. The summary goes to the series' legend item, and to the series itself when it is not in a chart (a hierarchy, flow or word cloud), for which the series has to be `focusable`. In a chart, set `ariaSummary` on the chart instead: then `false` here leaves this series out. _Since 5.24.0._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#data-summary
+- **ariaDataTable** (`boolean`) — Gives screen readers the series' data as a table, hidden from view: a row for each category or date, with its value. Screen readers can move through it by row and column. With grouped data (a date axis with `groupData`), the table has the groups shown when the chart is zoomed out all the way, whatever the zoom. In a chart, set `ariaDataTable` on the chart instead, for one table with a column for each series: then `false` here leaves this series out. A series not in a chart (a hierarchy, flow or word cloud) with `true` gets a table of its own. _Since 5.24.0._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#data-table
 - **idField** (`string`) — A key to look up in data for an id of the data item.
 - **urlField** (`string`) — A key to look up in data for a URL to open when the data item's element (a bullet, column, slice, map polygon or map line) is clicked. Links are off until this is set. _Since 5.20.7._ _Note:_ Linked elements: bullet sprites of every series, `BaseColumnSeries` columns (column, candlestick, OHLC, Gantt…), `PercentSeries` slices (pie, funnel, pyramid, pictorial), Venn slices, `MapPolygon` (also NightSeries polygons) and `MapLine` — not hierarchy nodes, flow nodes/links, word-cloud labels or MapSankey nodes. A linked element gets `cursorOverStyle: "pointer"` unless you set one yourself. Script URLs (`javascript:`, `data:`, `vbscript:`) are never opened. Can be set after the data; a URL added later (e.g. `data.setIndex()`) links too. Clicks go through the public `series.openUrl(dataItem)` method — override it to intercept links.
 - **linkTarget** (`string`) — default `"_self"` — Where a data item's URL opens: `"_self"` for the same window, `"_blank"` for a new tab, or a named window / frame. A chart embedded in an iframe usually wants `"_blank"` or `"_top"`. _Since 5.20.7._ _Note:_ `"_blank"` opens the page with `noopener`.
@@ -35,11 +37,15 @@ TypeScript: `am5.ISeriesSettings` (`import type { ISeriesSettings } from "@amcha
 - **excludeFromAggregate** (`string[]`) — Fields to leave out of `calculateAggregates`, to save work where their aggregates are not needed. _Since 5.14.4._
 - **autoLabels** (`boolean`) — default `false` — Hides a label in the series' bullets where it would overlap a label shown before it, or be cut off at the edge of the area it is drawn in. Labels of the chart's earlier series come first, then those of earlier data items. A hidden label comes back once it fits. Only labels are hidden: a bullet's circle or other shape stays. A label with its own `forceHidden`, or in a bullet with `stacked` set, is left as it is. Labels of series without this setting are never hidden, and the others make room for them. _Since 5.22.0._ Docs: https://docs.amcharts.com/v5/concepts/common-elements/bullets/#hiding-overlapping-labels
 
+## Inherited settings with a different default on Series
+
+- **role** (`Role`) — default `"img"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#roles
+
 ## Other inherited settings
 
 Names only — see the declaring interface's page (e.g. `get_api_reference("IComponentSettings")`) for types, defaults and descriptions.
 
 - _IComponentSettings_: interpolationDuration, interpolationEasing
 - _IContainerSettings_: background, direction, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
-- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaDescription, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

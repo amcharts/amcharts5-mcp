@@ -1,7 +1,7 @@
 ---
 title: "Map with Home Position (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-auto-home/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-auto-home/config.json"
 ---
 
 # Map with Home Position (JSON config)
@@ -10,7 +10,7 @@ A map that opens zoomed in on Europe, using the home settings and autoHome, with
 
 Chart family: map · Tags: home, zoom, zoom control, autoHome
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-auto-home/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-auto-home/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -45,6 +45,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         }
       }
     },
+    "focusable": true,
+    "ariaLabel": "World map that opens zoomed in on Europe. Tab to the countries, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -73,7 +75,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "tooltipText": "{name}"
+                  "tooltipText": "{name}",
+                  "focusable": true,
+                  "focusableGroup": "countries",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}"
                 }
               }
             }

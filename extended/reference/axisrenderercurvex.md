@@ -2,7 +2,7 @@
 title: "AxisRendererCurveX"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/axisrenderercurvex/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Renderer for the X axis of a `CurveChart`, which runs along the line given in `points`.

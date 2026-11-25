@@ -2,7 +2,7 @@
 title: "MicrochartTheme"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/microcharttheme/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A theme. Apply it with `root.setThemes([am5themes_Micro.new(root)])`.

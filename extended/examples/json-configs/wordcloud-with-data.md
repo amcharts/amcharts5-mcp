@@ -1,7 +1,7 @@
 ---
 title: "Word Cloud from Data (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/wordcloud-with-data/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/wordcloud-with-data/config.json"
 ---
 
 # Word Cloud from Data (JSON config)
@@ -10,7 +10,7 @@ A word cloud made from a list of words with weights, colored by weight with a he
 
 Chart family: other · Tags: word cloud, data, heat rules
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/wordcloud-with-data/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/wordcloud-with-data/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -38,7 +38,9 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     },
     "layout": {
       "type": "VerticalLayout"
-    }
+    },
+    "focusable": true,
+    "ariaLabel": "Word cloud of 38 programming languages from the Stack Overflow survey of 2021, each sized and colored by the share of developers who use it. Tab to the words, then move between them with the up and down arrow keys"
   },
   "children": [
     {
@@ -223,7 +225,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,
-          "fontFamily": "Courier New"
+          "fontFamily": "Courier New",
+          "focusable": true,
+          "focusableGroup": "words",
+          "ariaLabel": "{category}: {value}%"
         }
       }
     },

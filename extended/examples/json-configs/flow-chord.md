@@ -1,7 +1,7 @@
 ---
 title: "Chord Diagram (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/flow-chord/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/flow-chord/config.json"
 ---
 
 # Chord Diagram (JSON config)
@@ -10,7 +10,7 @@ A chord diagram where ribbons between the nodes show how much flows each way.
 
 Chart family: flow · Tags: chord, flow, links
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-chord/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-chord/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,64 +31,46 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "sourceIdField": "source",
     "targetIdField": "target",
     "valueField": "value",
+    "focusable": true,
+    "ariaLabel": "Chord diagram of the flows between five European cities, both ways. Tab to the cities or the flows, then move through them with the up and down arrow keys; Enter on a city hides or shows its flows",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
   },
   "properties": {
     "data": "#data-0",
+    "links": {
+      "properties": {
+        "template": {
+          "settings": {
+            "focusable": true,
+            "focusableGroup": "links",
+            "tabindexOrder": 5,
+            "hoverOnFocus": true,
+            "ariaLabel": "{sourceId} to {targetId}: {value}"
+          }
+        }
+      }
+    },
     "nodes": {
+      "properties": {
+        "nodes": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusable": true,
+                "focusableGroup": "nodes",
+                "ariaLabel": "{name}: {sum} in all"
+              }
+            }
+          }
+        }
+      },
       "settings": {
         "colors": {
           "type": "ColorSet",
           "settings": {
-            "step": 2,
-            "passOptions": {
-              "hue": 0.05,
-              "saturation": 0,
-              "lightness": 0
-            },
-            "colors": [
-              {
-                "type": "Color",
-                "value": "#67b7dc"
-              },
-              {
-                "type": "Color",
-                "value": "#6794dc"
-              },
-              {
-                "type": "Color",
-                "value": "#6771dc"
-              },
-              {
-                "type": "Color",
-                "value": "#8067dc"
-              },
-              {
-                "type": "Color",
-                "value": "#a367dc"
-              },
-              {
-                "type": "Color",
-                "value": "#c767dc"
-              },
-              {
-                "type": "Color",
-                "value": "#dc67ce"
-              },
-              {
-                "type": "Color",
-                "value": "#dc67ab"
-              },
-              {
-                "type": "Color",
-                "value": "#dc6788"
-              }
-            ],
-            "reuse": false,
-            "startIndex": 0,
-            "stateAnimationDuration": 600
+            "step": 2
           }
         }
       }

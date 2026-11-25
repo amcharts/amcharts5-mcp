@@ -2,7 +2,7 @@
 title: "IDateAxisSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/idateaxissettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -14,7 +14,7 @@ TypeScript: `am5xy.IDateAxisSettings` (`import type { IDateAxisSettings } from "
 
 ## Settings
 
-- **baseInterval** (`ITimeInterval`) — The time interval of the data, such as `{ timeUnit: "day", count: 1 }` for daily data. Each data item takes up one such period on the axis. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#data-granularity
+- **baseInterval** (`ITimeInterval`) — The time interval of the data, such as `{ timeUnit: "day", count: 1 }` for daily data. Each data item takes up one such period on the axis. If not set, the axis works it out from the smallest gap between dates in the data and updates it when the data changes. `baseMainInterval()` returns the interval in use. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#data-granularity
 - **startLocation** (`number`) — default `0` _(theme)_ — Where within the first period the axis starts, from `0` (its start) to `1` (its end): `0.5` cuts off the first half of the first period.
 - **endLocation** (`number`) — default `1` _(theme)_ — Where within the last period the axis ends, from `0` (its start) to `1` (its end): `0.5` cuts off the second half of the last period.
 - **groupData** (`boolean`) — default `false` _(theme)_ — Groups data items into longer intervals from `groupIntervals` whenever more than `groupCount` of them would be in view, and back as the chart zooms in. Docs: https://docs.amcharts.com/v5/charts/xy-chart/axes/date-axis/#dynamic-data-item-grouping
@@ -45,5 +45,5 @@ Names only — see the declaring interface's page (e.g. `get_api_reference("IVal
 - _IAxisSettings_: bullet, end, fixAxisSize, maxDeviation, maxZoomCount, minorAxisFillsEnabled, minZoomCount, panX, panY, renderer, snapTooltip, start, tooltip, tooltipLocation, zoomable, zoomOut, zoomX, zoomY
 - _IComponentSettings_: interpolationDuration, interpolationEasing
 - _IContainerSettings_: background, direction, html, interactiveChildren, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
-- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaDescription, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, height, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, width, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

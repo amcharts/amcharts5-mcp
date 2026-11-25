@@ -2,7 +2,7 @@
 title: "Percent"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/percent/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A relative value in percent, such as 50% of a container's width.

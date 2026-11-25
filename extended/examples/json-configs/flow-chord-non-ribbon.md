@@ -1,7 +1,7 @@
 ---
 title: "Chord Diagram with Moving Bullets (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/flow-chord-non-ribbon/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/flow-chord-non-ribbon/config.json"
 ---
 
 # Chord Diagram with Moving Bullets (JSON config)
@@ -10,7 +10,7 @@ A chord diagram with thin line links, nodes drawn as circle bullets, and a circl
 
 Chart family: flow · Tags: chord, non-ribbon, bullets, animations
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-chord-non-ribbon/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-chord-non-ribbon/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,33 +31,53 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "sourceIdField": "source",
     "targetIdField": "target",
     "valueField": "value",
+    "focusable": true,
+    "ariaLabel": "Chord diagram of ten routes between seven airports, drawn as thin lines. Tab to the airports or the routes, then move through them with the up and down arrow keys; Enter on an airport hides or shows its routes",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
   },
   "properties": {
     "data": "#data-0",
+    "links": {
+      "properties": {
+        "template": {
+          "settings": {
+            "focusable": true,
+            "focusableGroup": "links",
+            "tabindexOrder": 5,
+            "hoverOnFocus": true,
+            "ariaLabel": "{sourceId} to {targetId}: {value}"
+          }
+        }
+      }
+    },
     "nodes": {
       "properties": {
+        "nodes": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusable": true,
+                "focusableGroup": "nodes",
+                "ariaLabel": "{name}: {sum} in all"
+              }
+            }
+          }
+        },
         "labels": {
           "properties": {
             "template": {
               "settings": {
                 "textType": "regular",
-                "fill": {
-                  "type": "Color",
-                  "value": "#ffffff"
-                },
+                "fill": "@root.interfaceColors.get('alternativeText')",
                 "radius": -5
               },
               "states": [
                 {
                   "key": "disabled",
                   "settings": {
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    }
+                    "fill": "@root.interfaceColors.get('alternativeText')"
                   }
                 }
               ]
@@ -72,19 +92,13 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                 "type": "Circle",
                 "settings": {
                   "radius": 24,
-                  "fill": {
-                    "type": "Color",
-                    "value": "#67b7dc"
-                  }
+                  "fill": "@colors.getIndex(0)"
                 },
                 "states": [
                   {
                     "key": "hidden",
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#adadad"
-                      }
+                      "fill": "@root.interfaceColors.get('disabled')"
                     }
                   }
                 ]
@@ -97,69 +111,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "colors": {
           "type": "ColorSet",
           "settings": {
-            "step": 2,
-            "passOptions": {
-              "hue": 0.05,
-              "saturation": 0,
-              "lightness": 0
-            },
-            "colors": [
-              {
-                "type": "Color",
-                "value": "#67b7dc"
-              },
-              {
-                "type": "Color",
-                "value": "#6794dc"
-              },
-              {
-                "type": "Color",
-                "value": "#6771dc"
-              },
-              {
-                "type": "Color",
-                "value": "#8067dc"
-              },
-              {
-                "type": "Color",
-                "value": "#a367dc"
-              },
-              {
-                "type": "Color",
-                "value": "#c767dc"
-              },
-              {
-                "type": "Color",
-                "value": "#dc67ce"
-              },
-              {
-                "type": "Color",
-                "value": "#dc67ab"
-              },
-              {
-                "type": "Color",
-                "value": "#dc6788"
-              },
-              {
-                "type": "Color",
-                "value": "#dc6967"
-              },
-              {
-                "type": "Color",
-                "value": "#dc8c67"
-              },
-              {
-                "type": "Color",
-                "value": "#dcaf67"
-              },
-              {
-                "type": "Color",
-                "value": "#dcd267"
-              }
-            ],
-            "reuse": false,
-            "startIndex": 0,
-            "stateAnimationDuration": 600
+            "step": 2
           }
         }
       }
@@ -184,10 +136,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "type": "Circle",
             "settings": {
               "radius": 5,
-              "fill": {
-                "type": "Color",
-                "value": "#67b7dc"
-              }
+              "fill": "@colors.getIndex(0)"
             }
           }
         }

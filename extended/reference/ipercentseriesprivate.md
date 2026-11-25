@@ -2,7 +2,7 @@
 title: "IPercentSeriesPrivate"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ipercentseriesprivate/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -26,4 +26,4 @@ Names only — see the declaring interface's page (e.g. `get_api_reference("ISer
 
 - _ISeriesPrivate_: adjustedEndIndex, adjustedStartIndex, baseValueSeries, chart, customValueAbsoluteSum, customValueAverage, customValueClose, customValueCount, customValueHigh, customValueLow, customValueOpen, customValueSum, endIndex, startIndex, valueClose, valueOpen
 - _IContainerPrivate_: htmlElement, htmlElementWrapper, wrapperContainer
-- _ISpritePrivate_: customData, deform, focusable, focusElement, focusExcluded, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y
+- _ISpritePrivate_: customData, deform, drawHidden, focusable, focusDisabled, focusElement, focusExcluded, focusGroupVertical, focusOutOfView, height, lastTooltipCoords, list, maxHeight, maxWidth, minHeight, minWidth, showingTooltip, tooltipTarget, touchHovering, trustBounds, visible, width, x, y

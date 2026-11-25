@@ -1,7 +1,7 @@
 ---
 title: "Zoom to Country (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-zoom-to-country/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-zoom-to-country/config.json"
 ---
 
 # Zoom to Country (JSON config)
@@ -10,7 +10,7 @@ Click a country to zoom in on it; click it again, the water or the home button t
 
 Chart family: map · Tags: zoom, click, clickZoom, active state, zoom control, home button
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-zoom-to-country/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-zoom-to-country/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -41,6 +41,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         }
       }
     },
+    "focusable": true,
+    "ariaLabel": "World map of countries that zooms to the one you pick. Tab to the countries, move between them with the up and down arrow keys, and press Enter to zoom to one or back out",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -71,25 +73,23 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "template": {
                 "settings": {
                   "tooltipText": "{name}",
-                  "interactive": true
+                  "interactive": true,
+                  "focusable": true,
+                  "focusableGroup": "countries",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}"
                 },
                 "states": [
                   {
                     "key": "hover",
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#6771dc"
-                      }
+                      "fill": "@root.interfaceColors.get('primaryButtonHover')"
                     }
                   },
                   {
                     "key": "active",
                     "settings": {
-                      "fill": {
-                        "type": "Color",
-                        "value": "#68dc76"
-                      }
+                      "fill": "@root.interfaceColors.get('primaryButtonActive')"
                     }
                   }
                 ]

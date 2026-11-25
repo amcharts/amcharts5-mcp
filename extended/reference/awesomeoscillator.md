@@ -2,7 +2,7 @@
 title: "AwesomeOscillator"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/awesomeoscillator/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Awesome Oscillator indicator: columns of the 5-period minus the 34-period simple moving average of the median price (high plus low, halved). Drawn in a panel of its own.

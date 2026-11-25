@@ -1,7 +1,7 @@
 ---
 title: "registerClass"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Registers a custom class, such as an indicator, so that objects using it can be serialized and restored.

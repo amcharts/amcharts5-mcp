@@ -1,7 +1,7 @@
 ---
 title: "Stacked and Clustered Columns (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-stacked-and-clustered-column/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-stacked-and-clustered-column/config.json"
 ---
 
 # Stacked and Clustered Columns (JSON config)
@@ -10,7 +10,7 @@ Column series where some are stacked and some start a new cluster, set per serie
 
 Chart family: xy · Tags: column, stacked, clustered, category axis, legend
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-stacked-and-clustered-column/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-stacked-and-clustered-column/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -35,6 +35,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "layout": {
       "type": "VerticalLayout"
     },
+    "focusable": true,
+    "ariaLabel": "Column chart of six regions over 2021 to 2023, in two stacks per year: Europe with North America, and Asia with the other regions. Tab to a region's columns, then move between its years with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -76,7 +78,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "#series-3",
           "#series-4",
           "#series-5"
-        ]
+        ],
+        "itemContainers": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusableGroup": "legend",
+                "tabindexOrder": 10
+              }
+            }
+          }
+        }
       }
     }
   ],
@@ -168,7 +180,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "tooltipY": {
                     "type": "Percent",
                     "value": 10
-                  }
+                  },
+                  "focusable": true,
+                  "focusableGroup": "Europe",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}, {categoryX}: {valueY}"
                 }
               }
             }
@@ -182,10 +198,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueY}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -230,7 +243,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "tooltipY": {
                     "type": "Percent",
                     "value": 10
-                  }
+                  },
+                  "focusable": true,
+                  "focusableGroup": "North America",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}, {categoryX}: {valueY}"
                 }
               }
             }
@@ -244,10 +261,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueY}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -292,7 +306,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "tooltipY": {
                     "type": "Percent",
                     "value": 10
-                  }
+                  },
+                  "focusable": true,
+                  "focusableGroup": "Asia",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}, {categoryX}: {valueY}"
                 }
               }
             }
@@ -306,10 +324,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueY}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -354,7 +369,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "tooltipY": {
                     "type": "Percent",
                     "value": 10
-                  }
+                  },
+                  "focusable": true,
+                  "focusableGroup": "Latin America",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}, {categoryX}: {valueY}"
                 }
               }
             }
@@ -368,10 +387,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueY}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -416,7 +432,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "tooltipY": {
                     "type": "Percent",
                     "value": 10
-                  }
+                  },
+                  "focusable": true,
+                  "focusableGroup": "Middle East",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}, {categoryX}: {valueY}"
                 }
               }
             }
@@ -430,10 +450,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueY}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50
@@ -478,7 +495,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "tooltipY": {
                     "type": "Percent",
                     "value": 10
-                  }
+                  },
+                  "focusable": true,
+                  "focusableGroup": "Africa",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{name}, {categoryX}: {valueY}"
                 }
               }
             }
@@ -492,10 +513,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "type": "Label",
                   "settings": {
                     "text": "{valueY}",
-                    "fill": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
+                    "fill": "@root.interfaceColors.get('alternativeText')",
                     "centerY": {
                       "type": "Percent",
                       "value": 50

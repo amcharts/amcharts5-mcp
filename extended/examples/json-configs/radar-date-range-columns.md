@@ -1,7 +1,7 @@
 ---
 title: "Radar Date Range Columns (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/radar-date-range-columns/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/radar-date-range-columns/config.json"
 ---
 
 # Radar Date Range Columns (JSON config)
@@ -10,7 +10,7 @@ Rounded radar columns that span date ranges on a circular date axis, with a ring
 
 Chart family: radar · Tags: radar, column, date axis, category axis, open value, rounded corners
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/radar-date-range-columns/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/radar-date-range-columns/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,6 +33,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
       "type": "Percent",
       "value": 30
     },
+    "focusable": true,
+    "ariaLabel": "Radar chart of the 2025 seasons of six kinds of produce, one ring each, with the months around the circle. Tab to the seasons, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -163,7 +165,11 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "template": {
                 "settings": {
                   "cornerRadius": 25,
-                  "tooltipText": "{categoryY}: {openValueX} - {valueX}"
+                  "tooltipText": "{categoryY}: {openValueX} - {valueX}",
+                  "focusable": true,
+                  "focusableGroup": "seasons",
+                  "hoverOnFocus": true,
+                  "ariaLabel": "{categoryY}: {openValueX} to {valueX}"
                 }
               }
             }

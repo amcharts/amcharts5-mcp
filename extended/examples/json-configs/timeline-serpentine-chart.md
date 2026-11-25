@@ -1,7 +1,7 @@
 ---
 title: "Serpentine Timeline (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/timeline-serpentine-chart/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/timeline-serpentine-chart/config.json"
 ---
 
 # Serpentine Timeline (JSON config)
@@ -10,7 +10,7 @@ A serpentine chart: tasks as columns along a date axis that winds back and forth
 
 Chart family: timeline · Tags: serpentine, gantt, bullets, flags, date axis
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-serpentine-chart/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/timeline-serpentine-chart/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,6 +31,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
   "settings": {
     "levelCount": 3,
     "startLocation": 0.2,
+    "focusable": true,
+    "ariaLabel": "Serpentine timeline of 13 tasks in four modules, from January to April 2019, with seven events lettered A to G, on a band that winds across the chart, one row per module. Tab to the tasks, then to the events, and move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -56,10 +58,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1547330400000,
           "task": "Gathering requirements",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#67b7dc"
-            },
+            "fill": "@colors.getIndex(0)",
             "__parse": true
           },
           "__parse": true
@@ -70,10 +69,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1555534800000,
           "task": "Development",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#67b7dc"
-            },
+            "fill": "@colors.getIndex(0)",
             "__parse": true
           },
           "__parse": true
@@ -84,10 +80,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1547071200000,
           "task": "Gathering requirements",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#a367dc"
-            },
+            "fill": "@colors.getIndex(4)",
             "__parse": true
           },
           "__parse": true
@@ -98,10 +91,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1547503200000,
           "task": "Producing specifications",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#a367dc"
-            },
+            "fill": "@colors.getIndex(4)",
             "__parse": true
           },
           "__parse": true
@@ -112,10 +102,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1549317600000,
           "task": "Development",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#a367dc"
-            },
+            "fill": "@colors.getIndex(4)",
             "__parse": true
           },
           "__parse": true
@@ -126,10 +113,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1550440800000,
           "task": "Testing and QA",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#a367dc"
-            },
+            "fill": "@colors.getIndex(4)",
             "__parse": true
           },
           "__parse": true
@@ -140,10 +124,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1547848800000,
           "task": "Gathering requirements",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc6788"
-            },
+            "fill": "@colors.getIndex(8)",
             "__parse": true
           },
           "__parse": true
@@ -154,10 +135,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1549749600000,
           "task": "Producing specifications",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc6788"
-            },
+            "fill": "@colors.getIndex(8)",
             "__parse": true
           },
           "__parse": true
@@ -168,10 +146,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1555275600000,
           "task": "Development",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc6788"
-            },
+            "fill": "@colors.getIndex(8)",
             "__parse": true
           },
           "__parse": true
@@ -182,10 +157,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1556571600000,
           "task": "Testing and QA",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dc6788"
-            },
+            "fill": "@colors.getIndex(8)",
             "__parse": true
           },
           "__parse": true
@@ -196,10 +168,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1549922400000,
           "task": "Gathering requirements",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dcd267"
-            },
+            "fill": "@colors.getIndex(12)",
             "__parse": true
           },
           "__parse": true
@@ -210,10 +179,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1552168800000,
           "task": "Development",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dcd267"
-            },
+            "fill": "@colors.getIndex(12)",
             "__parse": true
           },
           "__parse": true
@@ -224,10 +190,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "end": 1556485200000,
           "task": "Testing and QA",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#dcd267"
-            },
+            "fill": "@colors.getIndex(12)",
             "__parse": true
           },
           "__parse": true
@@ -400,7 +363,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   },
                   "strokeOpacity": 0,
                   "tooltipText": "{category}: {task}",
-                  "templateField": "settings"
+                  "templateField": "settings",
+                  "focusable": true,
+                  "focusableGroup": "tasks",
+                  "ariaLabel": "{category}: {task}, {openValueX.formatDate('MMMM d')} to {valueX.formatDate('MMMM d')}"
                 }
               }
             }
@@ -480,17 +446,14 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                     "paddingBottom": 1,
                     "paddingLeft": 0,
                     "paddingRight": 0,
+                    "focusable": true,
+                    "focusableGroup": "flags",
+                    "ariaLabel": "Event {letter}: {valueX.formatDate('MMMM d')}",
                     "background": {
                       "type": "PointedRectangle",
                       "settings": {
-                        "fill": {
-                          "type": "Color",
-                          "value": "#ffffff"
-                        },
-                        "stroke": {
-                          "type": "Color",
-                          "value": "#000000"
-                        },
+                        "fill": "@root.interfaceColors.get('background')",
+                        "stroke": "@root.interfaceColors.get('text')",
                         "cornerRadius": 0,
                         "pointerBaseWidth": 6,
                         "pointerX": 9,

@@ -2,7 +2,7 @@
 title: "GeometricHitTester"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/geometrichittester/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Answers "what is under this point" from geometry, the way the canvas renderer's ghost canvas does, without painting one.

@@ -2,7 +2,7 @@
 title: "IInteractionHost"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iinteractionhost/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 What the renderer provides: its DOM element, DOM event to chart coordinates, and a hit test.

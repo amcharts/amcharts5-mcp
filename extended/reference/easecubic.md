@@ -1,7 +1,7 @@
 ---
 title: "ease.cubic"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Starts slowly and speeds up, more sharply than `quad` (progress cubed).

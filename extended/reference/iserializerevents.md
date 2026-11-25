@@ -2,7 +2,7 @@
 title: "ISerializerEvents"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iserializerevents/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance

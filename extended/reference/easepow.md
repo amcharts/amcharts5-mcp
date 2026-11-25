@@ -1,7 +1,7 @@
 ---
 title: "ease.pow"
 type: "function"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Raises progress to the power `e`: `2` is the same as `quad`, `3` as `cubic`.

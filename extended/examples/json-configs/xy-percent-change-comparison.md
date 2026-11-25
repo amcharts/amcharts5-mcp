@@ -1,7 +1,7 @@
 ---
 title: "Percent Change Comparison (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-percent-change-comparison/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-percent-change-comparison/config.json"
 ---
 
 # Percent Change Comparison (JSON config)
@@ -10,7 +10,7 @@ Two price series shown as percent change from the start of the zoomed range, so 
 
 Chart family: xy · Tags: line, percent change, stacked axes, gapless date axis, legend, volume
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-percent-change-comparison/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-percent-change-comparison/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -47,6 +47,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Line chart comparing the daily prices of XTD and BTD as percent change, with their volume below, over 150 trading days from September 2023 to April 2024. Tab to the days, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -1041,7 +1043,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                   "data": [
                     "#series-0",
                     "#series-1"
-                  ]
+                  ],
+                  "itemContainers": {
+                    "properties": {
+                      "template": {
+                        "settings": {
+                          "focusableGroup": "legend",
+                          "tabindexOrder": 10
+                        }
+                      }
+                    }
+                  }
                 }
               }
             ]
@@ -1095,7 +1107,16 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                 "properties": {
                   "data": [
                     "#series-2"
-                  ]
+                  ],
+                  "itemContainers": {
+                    "properties": {
+                      "template": {
+                        "settings": {
+                          "tabindexOrder": 10
+                        }
+                      }
+                    }
+                  }
                 }
               }
             ]
@@ -1126,7 +1147,25 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "appearDuration": 1000
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "bullets": [
+            {
+              "type": "Bullet",
+              "settings": {
+                "sprite": {
+                  "type": "Circle",
+                  "settings": {
+                    "radius": 5,
+                    "fillOpacity": 0,
+                    "strokeOpacity": 0,
+                    "focusable": true,
+                    "focusableGroup": "days",
+                    "ariaLabel": "{valueX.formatDate('MMMM d, yyyy')}: XTD {price1}, BTD {price2}, volume {quantity}"
+                  }
+                }
+              }
+            }
+          ]
         }
       }
     },

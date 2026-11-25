@@ -2,7 +2,7 @@
 title: "GridLayout"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/gridlayout/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Lays out a `Container`'s children in rows from left to right, with as many columns as fit its width. With the container's `direction: "rtl"`, rows go from right to left, so a partly filled last row is on the right.

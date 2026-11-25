@@ -1,7 +1,7 @@
 ---
 title: "Partition Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/hierarchy-partition/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/hierarchy-partition/config.json"
 ---
 
 # Partition Chart (JSON config)
@@ -10,7 +10,7 @@ A partition chart: every level of nested data as a column of rectangles sized by
 
 Chart family: hierarchy · Tags: partition, hierarchy, nested data, orientation
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/hierarchy-partition/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/hierarchy-partition/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,12 +33,26 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "categoryField": "name",
     "childDataField": "children",
     "selectedDataItem": "@self.dataItems.0",
+    "focusable": true,
+    "ariaLabel": "Partition chart of a budget of 2,650: housing, food and transport and what each is spent on, one column per level. Tab to the boxes, move between them with the up and down arrow keys, and press Enter to zoom into one or back out",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
   },
   "properties": {
-    "data": "#data-0"
+    "data": "#data-0",
+    "nodes": {
+      "properties": {
+        "template": {
+          "settings": {
+            "focusable": true,
+            "focusableGroup": "nodes",
+            "hoverOnFocus": true,
+            "ariaLabel": "{category}: {sum}"
+          }
+        }
+      }
+    }
   },
   "refs": [
     {

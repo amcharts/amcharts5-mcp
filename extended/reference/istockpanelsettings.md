@@ -2,7 +2,7 @@
 title: "IStockPanelSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/istockpanelsettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -28,6 +28,7 @@ _(none declared here — all inherited)_
 - **paddingTop** (`number`) — default `16` _(theme)_ — _from IContainerSettings_ — Top padding in pixels.
 - **panX** (`boolean`) — default `true` _(theme)_ — _from IXYChartSettings_ — Lets the user pan the chart horizontally by dragging the plot area. Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#panning
 - **panY** (`boolean`) — default `true` _(theme)_ — _from IXYChartSettings_ — Lets the user pan the chart vertically by dragging the plot area. Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#panning
+- **role** (`Role`) — default `"img"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#roles
 - **wheelY** (`"none" | "zoomX" | "zoomY" | "zoomXY" | "panX" | "panY" | "panXY"`) — default `"zoomX"` _(theme)_ — _from IXYChartSettings_ — What scrolling the wheel vertically over the plot area does: zoom or pan along X, Y or both. Docs: https://docs.amcharts.com/v5/charts/xy-chart/zoom-and-pan/#mouse-wheel-behavior
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
@@ -36,7 +37,7 @@ _(none declared here — all inherited)_
 Names only — see the declaring interface's page (e.g. `get_api_reference("IXYChartSettings")`) for types, defaults and descriptions.
 
 - _IXYChartSettings_: arrangeTooltips, cursor, maxTooltipDistance, maxTooltipDistanceBy, pinchZoomX, pinchZoomY, scrollbarX, scrollbarY, strokeDasharrays, strokeWidths, wheelStep, wheelX, wheelZoomPositionX, wheelZoomPositionY
-- _ISerialChartSettings_: patterns
+- _ISerialChartSettings_: ariaDataTable, ariaSummary, patterns
 - _IContainerSettings_: background, direction, html, layout, mask, maskContent, reverseChildren, setStateOnChildren, verticalScrollbar
-- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, x, y
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaDescription, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minWidth, numberFormatter, opacity, position, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

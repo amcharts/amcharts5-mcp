@@ -2,7 +2,7 @@
 title: "ILocaleSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/ilocalesettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 Defines properties that exist for the locale.
@@ -209,6 +209,15 @@ TypeScript: not exported by name from the package.
 - **From %1 to %2** (`string`)
 - **From %1** (`string`)
 - **To %1** (`string`)
+- **Values: %1** (`string`)
+- **Highest: %1** (`string`)
+- **Lowest: %1** (`string`)
+- **Category** (`string`)
+- **Results: %1** (`string`)
+- **No results** (`string`)
+- **Hue** (`string`)
+- **Opacity** (`string`)
+- **Color** (`string`)
 - **No parser available for file: %1** (`string`)
 - **Error parsing file: %1** (`string`)
 - **Unable to load file: %1** (`string`)

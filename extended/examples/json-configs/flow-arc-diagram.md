@@ -1,7 +1,7 @@
 ---
 title: "Arc Diagram (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/flow-arc-diagram/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/flow-arc-diagram/config.json"
 ---
 
 # Arc Diagram (JSON config)
@@ -10,7 +10,7 @@ An arc diagram: nodes in a row, sized by their total, with arcs for the links be
 
 Chart family: flow · Tags: arc diagram, flow, links, labels
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-arc-diagram/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/flow-arc-diagram/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,14 +33,39 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "valueField": "value",
     "orientation": "horizontal",
     "paddingBottom": 70,
+    "focusable": true,
+    "ariaLabel": "Arc diagram of 26 links between the six Friends characters and the people around them, each circle sized by the total of its links. Tab to the people or the links, then move through them with the up and down arrow keys; Enter on a person hides or shows their links",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
   },
   "properties": {
     "data": "#data-0",
+    "links": {
+      "properties": {
+        "template": {
+          "settings": {
+            "focusable": true,
+            "focusableGroup": "links",
+            "tabindexOrder": 5,
+            "ariaLabel": "{sourceId} to {targetId}: {value}"
+          }
+        }
+      }
+    },
     "nodes": {
       "properties": {
+        "nodes": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusable": true,
+                "focusableGroup": "nodes",
+                "ariaLabel": "{name}: {sum} in all"
+              }
+            }
+          }
+        },
         "labels": {
           "properties": {
             "template": {

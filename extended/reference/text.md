@@ -2,7 +2,7 @@
 title: "Text"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/text/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A `Sprite` subclass.

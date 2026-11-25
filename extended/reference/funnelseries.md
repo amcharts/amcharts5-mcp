@@ -2,7 +2,7 @@
 title: "FunnelSeries"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/funnelseries/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A funnel series for a `SlicedChart`: slices of equal height, each as wide as its value relative to the largest one.
@@ -45,7 +45,7 @@ Public properties (not settings):
 Names only — see the declaring class's page (e.g. `get_api_reference("PercentSeries")`) for signatures and descriptions.
 
 - _PercentSeries_: hide, hoverDataItem, show, unhoverDataItem
-- _Series_: addBullet, endIndex, openUrl, startIndex
+- _Series_: addBullet, endIndex, getSummary, openUrl, startIndex
 - _Component_: getDataItemById, makeDataItem, markDirtyValues, pushDataItem, updateData
 - _Container_: allChildren, contentHeight, contentWidth, eachChildren, innerHeight, innerWidth, scrollToChild
 - _Sprite_: appear, compositeOpacity, compositeRotation, compositeScale, depth, getDateFormatter, getDurationFormatter, getNumberFormatter, getTooltip, height, hideTooltip, hover, isDragging, isFocus, isHidden, isHiding, isHover, isShowing, isVisible, isVisibleDeep, markDirtyKey, maxHeight, maxWidth, showTooltip, toBack, toFront, toGlobal, toLocal, unhover, width, x, y

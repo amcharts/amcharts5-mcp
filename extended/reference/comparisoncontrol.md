@@ -2,7 +2,7 @@
 title: "ComparisonControl"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/comparisoncontrol/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A dropdown control for picking series to compare with the main series of a `StockChart`. Adding the picked series is up to a `selected` event handler, usually with `addComparingSeries()`.

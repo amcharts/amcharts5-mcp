@@ -1,7 +1,7 @@
 ---
 title: "Animating Along Lines (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/map-animating-along-lines/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/map-animating-along-lines/config.json"
 ---
 
 # Animating Along Lines (JSON config)
@@ -10,7 +10,7 @@ A plane flies back and forth along a line between two cities, moved by the anima
 
 Chart family: map · Tags: line series, point series, animations, position on line, auto rotate
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-animating-along-lines/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/map-animating-along-lines/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,6 +31,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
   "settings": {
     "panX": "translateX",
     "panY": "translateY",
+    "focusable": true,
+    "ariaLabel": "World map of a plane flying back and forth along a route between Los Angeles and Paris. Tab to the cities, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100,
@@ -99,10 +101,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "fill": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "fill": "@root.interfaceColors.get('alternativeBackground')",
                   "fillOpacity": 0.15
                 }
               }
@@ -130,11 +129,12 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                       "type": "Color",
                       "value": "#ffba00"
                     },
-                    "stroke": {
-                      "type": "Color",
-                      "value": "#ffffff"
-                    },
-                    "strokeWidth": 2
+                    "stroke": "@root.interfaceColors.get('background')",
+                    "strokeWidth": 2,
+                    "focusable": true,
+                    "focusableGroup": "cities",
+                    "hoverOnFocus": true,
+                    "ariaLabel": "{title}"
                   }
                 }
               }
@@ -155,10 +155,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             "properties": {
               "template": {
                 "settings": {
-                  "stroke": {
-                    "type": "Color",
-                    "value": "#000000"
-                  },
+                  "stroke": "@root.interfaceColors.get('alternativeBackground')",
                   "strokeOpacity": 0.4,
                   "strokeWidth": 2
                 }
@@ -190,10 +187,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                       "type": "Percent",
                       "value": 50
                     },
-                    "fill": {
-                      "type": "Color",
-                      "value": "#000000"
-                    },
+                    "fill": "@root.interfaceColors.get('text')",
                     "animations": [
                       {
                         "key": "positionOnLine",

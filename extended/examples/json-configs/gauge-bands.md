@@ -1,7 +1,7 @@
 ---
 title: "Gauge with Bands (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/gauge-bands/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/gauge-bands/config.json"
 ---
 
 # Gauge with Bands (JSON config)
@@ -10,7 +10,7 @@ A gauge with labelled color bands, where the hand and the value label take the c
 
 Chart family: radar · Tags: gauge, bands, axis ranges, clock hand, animation
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/gauge-bands/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/gauge-bands/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -33,6 +33,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "panY": false,
     "startAngle": 160,
     "endAngle": 380,
+    "focusable": true,
+    "ariaLabel": "Gauge of a score from -40 to 100 in seven bands, from Unsustainable to High Performing, now at 84, High Performing",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -46,10 +48,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         {
           "type": "Label",
           "settings": {
-            "fill": {
-              "type": "Color",
-              "value": "#ffffff"
-            },
+            "fill": "@root.interfaceColors.get('background')",
             "centerX": {
               "type": "Percent",
               "value": 50
@@ -60,7 +59,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
             },
             "textAlign": "center",
             "fontSize": "3em",
-            "text": "82"
+            "text": "84"
           }
         }
       ]
@@ -85,10 +84,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
                 "properties": {
                   "template": {
                     "settings": {
-                      "stroke": {
-                        "type": "Color",
-                        "value": "#ffffff"
-                      },
+                      "stroke": "@root.interfaceColors.get('background')",
                       "visible": true,
                       "strokeOpacity": 0.8,
                       "strokeWidth": 2,
@@ -115,10 +111,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "Unsustainable"
             }
           },
@@ -150,10 +143,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "Volatile"
             }
           },
@@ -185,10 +175,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "Foundational"
             }
           },
@@ -220,10 +207,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "Developing"
             }
           },
@@ -255,10 +239,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "Maturing"
             }
           },
@@ -290,10 +271,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "Sustainable"
             }
           },
@@ -325,10 +303,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
               "radius": 15,
               "inside": true,
               "fontSize": "0.9em",
-              "fill": {
-                "type": "Color",
-                "value": "#ffffff"
-              },
+              "fill": "@root.interfaceColors.get('background')",
               "text": "High Performing"
             }
           },
@@ -351,7 +326,7 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
       "axisRange-7": {
         "axis": "#axis-0",
         "settings": {
-          "value": 82.43356914899199,
+          "value": 84.483,
           "bullet": {
             "type": "AxisBullet",
             "settings": {

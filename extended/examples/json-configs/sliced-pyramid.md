@@ -1,7 +1,7 @@
 ---
 title: "Pyramid Chart (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/sliced-pyramid/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/sliced-pyramid/config.json"
 ---
 
 # Pyramid Chart (JSON config)
@@ -10,7 +10,7 @@ A pyramid series in a sliced chart, with aligned labels and a legend.
 
 Chart family: percent · Tags: pyramid, sliced, legend
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/sliced-pyramid/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/sliced-pyramid/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -31,6 +31,8 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
     "layout": {
       "type": "VerticalLayout"
     },
+    "focusable": true,
+    "ariaLabel": "Pyramid chart of seven values, One to Seven, from the smallest at the tip to the largest at the base. Tab to the levels, then move between them with the up and down arrow keys",
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
@@ -56,7 +58,17 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "marginBottom": 15
       },
       "properties": {
-        "data": "#series-0.dataItems"
+        "data": "#series-0.dataItems",
+        "itemContainers": {
+          "properties": {
+            "template": {
+              "settings": {
+                "focusableGroup": "legend",
+                "tabindexOrder": 10
+              }
+            }
+          }
+        }
       }
     }
   ],
@@ -103,7 +115,18 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
           "autoAppear": true
         },
         "properties": {
-          "data": "#data-0"
+          "data": "#data-0",
+          "slices": {
+            "properties": {
+              "template": {
+                "settings": {
+                  "focusable": true,
+                  "focusableGroup": "slices",
+                  "ariaLabel": "{category}: {value}, {valuePercentTotal.formatNumber('0.0')}%"
+                }
+              }
+            }
+          }
         }
       }
     }

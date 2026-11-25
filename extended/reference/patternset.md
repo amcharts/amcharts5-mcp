@@ -2,7 +2,7 @@
 title: "PatternSet"
 type: "class"
 source: "https://docs.amcharts.com/v5/reference/patternset/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 A list of `Pattern` objects that series and other elements take in turn.

@@ -2,7 +2,7 @@
 title: "ISerialChartSettings"
 type: "interface"
 source: "https://docs.amcharts.com/v5/reference/iserialchartsettings/"
-generatedFrom: "@amcharts/amcharts5@5.23.0"
+generatedFrom: "@amcharts/amcharts5@5.24.0"
 ---
 
 ## Inheritance
@@ -16,11 +16,14 @@ TypeScript: `am5.ISerialChartSettings` (`import type { ISerialChartSettings } fr
 
 - **colors** (`ColorSet`) — The `ColorSet` series take their colors from. Docs: https://docs.amcharts.com/v5/charts/xy-chart/series/#series-colors
 - **patterns** (`PatternSet`) — The `PatternSet` series take their patterns from. _Since 5.10.0._ Docs: https://docs.amcharts.com/v5/concepts/colors-gradients-and-patterns/patterns/#pattern-sets
+- **ariaSummary** (`boolean`) — Describes the chart's data to screen readers: for each series, how many values it has, its highest and lowest, and where the data has an order (XY series) its first and last. Each series' summary also goes to its legend item. The chart has to be `focusable` for screen readers to read it. A series with `ariaSummary: false` is left out. _Since 5.24.0._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#data-summary
+- **ariaDataTable** (`boolean`) — Gives screen readers the chart's data as a table, hidden from view: a row for each category or date, a column for each series. Screen readers can move through it by row and column. It is captioned with the chart's `ariaLabel`. With grouped data (a date axis with `groupData`), the table has the groups shown when the chart is zoomed out all the way, whatever the zoom. A series with `ariaDataTable: false` is left out. _Since 5.24.0._ Docs: https://docs.amcharts.com/v5/concepts/accessibility/#data-table
 
 ## Inherited settings with a different default on SerialChart
 
 - **height** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Height in pixels, or a `Percent` of the parent's inner height. In a vertical layout, a percent height is a share of the height the other children leave.
 - **interactiveChildren** (`boolean`) — default `false` _(theme)_ — _from IContainerSettings_ — Makes every descendant, not just direct children, interactive when the container itself is interactive.
+- **role** (`Role`) — default `"img"` _(theme)_ — _from ISpriteSettings_ — Element's role. Docs: https://docs.amcharts.com/v5/concepts/accessibility/#roles
 - **width** (`number | Percent`) — default `am5.p100` _(theme)_ — _from ISpriteSettings_ — Width in pixels, or a `Percent` of the parent's inner width. In a horizontal layout, a percent width is a share of the width the other children leave.
 
 ## Other inherited settings
@@ -28,5 +31,5 @@ TypeScript: `am5.ISerialChartSettings` (`import type { ISerialChartSettings } fr
 Names only — see the declaring interface's page (e.g. `get_api_reference("IContainerSettings")`) for types, defaults and descriptions.
 
 - _IContainerSettings_: background, direction, html, layout, mask, maskContent, paddingBottom, paddingLeft, paddingRight, paddingTop, reverseChildren, setStateOnChildren, verticalScrollbar
-- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, role, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, x, y
+- _ISpriteSettings_: active, appearDelay, appearDuration, ariaChecked, ariaControls, ariaCurrent, ariaDescription, ariaExpanded, ariaHidden, ariaLabel, ariaLive, ariaOrientation, ariaSelected, ariaValueMax, ariaValueMin, ariaValueNow, ariaValueText, autoAppear, blur, brightness, centerX, centerY, clickAnnounceText, contrast, crisp, cursorOverStyle, dateFormatter, disabled, draggable, durationFormatter, dx, dy, exportable, filter, focusable, focusableGroup, forceHidden, forceInactive, hoverOnFocus, hue, interactive, invert, isMeasured, layer, layerMargin, marginBottom, marginLeft, marginRight, marginTop, maxHeight, maxWidth, minHeight, minWidth, numberFormatter, opacity, position, rotation, saturate, scale, sepia, showTooltipOn, tabindexOrder, templateField, toggleKey, tooltip, tooltipHTML, tooltipPosition, tooltipText, tooltipX, tooltipY, visible, wheelable, x, y
 - _IEntitySettings_: animations, id, ignoreThemes, stateAnimationDuration, stateAnimationEasing, themes, themeTags, themeTagsSelf, userData

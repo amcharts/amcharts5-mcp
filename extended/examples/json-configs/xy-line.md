@@ -1,7 +1,7 @@
 ---
 title: "Line Chart with Date Axis (JSON config)"
 category: "json-configs"
-source: "@amcharts/amcharts5@5.23.0: examples/xy-line/config.json"
+source: "@amcharts/amcharts5@5.24.0: examples/xy-line/config.json"
 ---
 
 # Line Chart with Date Axis (JSON config)
@@ -10,7 +10,7 @@ A line series on a date axis, with a cursor, a scrollbar and zoom.
 
 Chart family: xy · Tags: line, date axis, cursor, scrollbar, zoom
 
-A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-line/config.json, version 5.23.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
+A complete amCharts 5 JSON config, as shipped in the `@amcharts/amcharts5` npm package (examples/xy-line/config.json, version 5.24.0). It works with `am5plugins_json.JsonParser`, the `<am5-chart>` element, the framework packages' `config` prop, and Chart Maker links. The rules for writing one are in the skill's JSON reference (get_chart_reference("json")).
 
 Themes are not part of a config. The example is meant for: Animated, ResponsiveMax, set with `root.setThemes()`, the element's `themes` attribute, or a Chart Maker link's `theme`.
 
@@ -51,6 +51,10 @@ Themes are not part of a config. The example is meant for: Animated, ResponsiveM
         "orientation": "horizontal"
       }
     },
+    "focusable": true,
+    "ariaLabel": "Line chart of a daily value over 500 days from January 2024. Zoom with the scrollbar or the mouse wheel. The line has too many points to step through with the keyboard",
+    "ariaSummary": true,
+    "ariaDataTable": true,
     "autoAppear": true,
     "appearDuration": 1000,
     "appearDelay": 100
