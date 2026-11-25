@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Entries for versions up to 1.2.0 were reconstructed from git history.
 
+## [1.11.1] - 2026-11-25
+
+amCharts 5.24.0. Checked in Chromium on the 5.24.0 CDN.
+
+### Changed
+- **The skill covers amCharts 5.24.0** (SKILL.md, the references, cursorrules). The "New in 5.24.0" list replaces 5.23.0's.
+  - Accessibility: `ariaSummary` and `series.getSummary()`, `ariaDataTable` and `ariaDescription`, in the example and in their own section.
+  - Roles: charts, data items and bullets are `"img"` by default. The example no longer sets `role: "figure"`, which JAWS doesn't read.
+  - `DateAxis` `baseInterval` is optional, and `baseMainInterval()` returns the interval in use (xy.md).
+  - `MapLine` `fillToSurface` (map.md).
+  - Root `logoPosition` (License section).
+  - The stock toolbar's `.am5stock-control-trigger` element, and its keyboard and screen reader support (stock.md).
+  - Gantt keyboard support (gantt.md).
+  - Sanitized HTML loses `<style>` elements; inline `style` attributes stay.
+  - react-native 5.0.5. The npm CDN pins say 5.24.0.
+  - SPACE clicks elements whose `role` setting is button-like; ENTER clicks any focused element.
+  - `Pack` is in the hierarchy table's `singleBranchOnly: true` row. Venn series take `ariaSummary` and `ariaDataTable` themselves, like hierarchy, flow and word cloud series.
+- **Bundling sizes re-measured on 5.24.0** (SKILL.md, cursorrules). They were from 5.22.0. The method: esbuild, gzip -9, split builds loaded in Chromium.
+  - With the drawing, indicator or settings controls, `<am5-chart>`, the JSON plugin or exporting, keep splitting on: a stock chart loads about 300 KB split, against 1.4 MB as one file.
+  - Without them, with esbuild one file is smaller: a stock chart is about 160–175 KB as one file, while a split build of any stock chart loads about 300 KB. A line chart is about 135 KB.
+  - Script files: `index.js` + `xy.js` 197 KB, + `stock.js` 278 KB.
+- API reference regenerated from 5.24.0: the new settings and methods, and `DateAxis` has its description again. JSON config examples pin 5.24.0.
+- All 304 amcharts.com demos re-imported. The website updated them for 5.24.0: no `role: "figure"`, no `isMeasured: false` on radar columns, and scrollbar grips after the data in TAB order.
+- Docs copy: 82 pages re-imported, with their embedded demos. Among them are the accessibility page (description, data summary, data table, roles, testing with screen readers), the date axis's "Detecting the interval", map lines' "Filling to the surface", and the Gantt and stock toolbar accessibility sections. The layers page keeps our note on SVG renderer layers. The `getting-started` and `ai` pages are corrected to 5.24.0, because the live pages still say 5.22.0 (the docs team was told).
+
 ## [1.11.0] - 2026-11-24
 
 ### Added
